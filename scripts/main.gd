@@ -1,6 +1,7 @@
 extends Node
 ## Oyun denetleyicisi: açılış → ana menü → ülke seçimi → oyun akışını yönetir; harita, arayüz ve ses arasında köprüdür.
 
+const TK = preload("res://scripts/theme_kit.gd")
 const GS = preload("res://scripts/game_state.gd")
 const MapView = preload("res://scripts/map_view.gd")
 const UI = preload("res://scripts/ui.gd")
@@ -62,6 +63,10 @@ func _ready() -> void:
 	Settings.load_all()
 	Settings.language = Loc.setup(Settings.language)
 	Settings.apply_display(get_tree())
+	TK.install_touch_scroll(get_tree())
+	if OS.has_feature("mobile"):
+		Engine.max_fps = 60                  # 90/120 Hz ekranlarda boşuna ısınma/kasma olmasın
+		OS.low_processor_usage_mode = true   # ekran değişmiyorsa çizim yapılmaz (pil + ısı)
 	RenderingServer.set_default_clear_color(Color(0.03, 0.06, 0.11))
 	world_rng.randomize()
 	notifier = Notifier.new()

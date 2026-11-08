@@ -11,6 +11,9 @@ const Chokepoints = preload("res://scripts/chokepoints.gd")
 const Districts = preload("res://scripts/districts.gd")
 
 var map = null
+var fast := false            # kamera hareket ederken: yazı çizgileri (outline) atlanır, durunca tam çizilir
+var top: Control = null      # her karede yenilenen hafif üst katman (seçim nabzı)
+var sel_army_rect := Rect2()
 var show_country_names := true
 var show_province_names := true
 var show_armies := true
@@ -24,6 +27,27 @@ static func tw_char(font: Font, ch: String, fs: float) -> float:
 	return font.get_string_size(ch, HORIZONTAL_ALIGNMENT_LEFT, -1, 48).x * fs / 48.0
 
 var _banner_cache: Dictionary = {}
+
+
+func _ready() -> void:
+	top = TopLayer.new()
+	top.hud = self
+	top.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	top.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	add_child(top)
+
+
+## Seçim çerçevesi ve seçili ordu nabzı: sadece bu küçük katman her karede çizilir; ağır HUD yalnızca değişince.
+class TopLayer extends Control:
+	var hud = null
+	func _draw() -> void:
+		if hud == null or hud.map == null or hud.map.gs == null:
+			return
+		if hud.map.selected_prov >= 0:
+			hud._draw_selection(hud.map.gs, hud.map.selected_prov, self)
+		if hud.map.selected_army != null and hud.sel_army_rect.size.x > 0.0:
+			var pulse := 0.5 + 0.5 * sin(hud.map.anim_time * 6.0)
+			draw_rect(hud.sel_army_rect.grow(4.0 + pulse * 2.0), Color(TK.PAPER.r, TK.PAPER.g, TK.PAPER.b, 0.9), false, 2.0)
 
 
 func _gs():
@@ -98,9 +122,9 @@ func _draw() -> void:
 			draw_rect(r, Color(0.2, 0.2, 0.25))
 			draw_rect(Rect2(r.position, Vector2(w * fr, 6)), gs.countries[p.siege_by].color.lightened(0.15))
 
-	# --- seçili eyalet çerçevesi
-	if map.selected_prov >= 0:
-		_draw_selection(gs, map.selected_prov)
+	sel_army_rect = Rect2()
+	if top != null:
+		top.queue_redraw()
 
 	# --- emir yolları
 	_draw_paths(gs)
@@ -121,7 +145,8 @@ func _draw() -> void:
 func _label(text: String, pos: Vector2, size: int, font: Font, col: Color, outline: float = 4.0, align := HORIZONTAL_ALIGNMENT_CENTER) -> Rect2:
 	var ts := font.get_string_size(text, HORIZONTAL_ALIGNMENT_LEFT, -1, size)
 	var p := pos - Vector2(ts.x * 0.5, -ts.y * 0.3)
-	draw_string_outline(font, p, text, HORIZONTAL_ALIGNMENT_LEFT, -1, size, int(outline), Color(0.02, 0.06, 0.12, 0.85))
+	if not fast:
+		draw_string_outline(font, p, text, HORIZONTAL_ALIGNMENT_LEFT, -1, size, int(outline), Color(0.02, 0.06, 0.12, 0.85))
 	draw_string(font, p, text, HORIZONTAL_ALIGNMENT_LEFT, -1, size, col)
 	return Rect2(pos - ts * 0.5, ts)
 
@@ -186,7 +211,8 @@ func _draw_country_names(gs, z: float, screen: Rect2, font: Font) -> void:
 		if track < 1.0 and absf(bend_s) < fs * 0.08:
 			draw_set_transform(sp, lab2.ang, Vector2(sc, sc))
 			var p0 := Vector2(-total * 0.5, fs * 0.34) / sc
-			draw_string_outline(font, p0, name, HORIZONTAL_ALIGNMENT_LEFT, -1, fsq, ow, ocol)
+			if not fast:
+				draw_string_outline(font, p0, name, HORIZONTAL_ALIGNMENT_LEFT, -1, fsq, ow, ocol)
 			draw_string(font, p0, name, HORIZONTAL_ALIGNMENT_LEFT, -1, fsq, fcol)
 			draw_set_transform(Vector2.ZERO, 0.0, Vector2.ONE)
 			continue
@@ -203,7 +229,8 @@ func _draw_country_names(gs, z: float, screen: Rect2, font: Font) -> void:
 			var cp := sp + ax * uc + ay * vc
 			draw_set_transform(cp, lab2.ang + atan(slope), Vector2(sc, sc))
 			var pc := Vector2(-cw * 0.5, fs * 0.34) / sc
-			draw_string_outline(font, pc, ch, HORIZONTAL_ALIGNMENT_LEFT, -1, fsq, ow, ocol)
+			if not fast:
+				draw_string_outline(font, pc, ch, HORIZONTAL_ALIGNMENT_LEFT, -1, fsq, ow, ocol)
 			draw_string(font, pc, ch, HORIZONTAL_ALIGNMENT_LEFT, -1, fsq, fcol)
 			u += cw + track
 		draw_set_transform(Vector2.ZERO, 0.0, Vector2.ONE)
@@ -286,7 +313,8 @@ func _draw_province_names(gs, z: float, screen: Rect2, font: Font) -> void:
 		placed.append(rect)
 		var pp := sp - Vector2(ts.x * 0.5, -ts.y * 0.3) - Vector2(0, 7)
 		var pc: Array = TK.label_colors(gs.countries[p.owner].color, alpha)
-		draw_string_outline(font, pp, p.name, HORIZONTAL_ALIGNMENT_LEFT, -1, fs, 3, pc[1])
+		if not fast:
+			draw_string_outline(font, pp, p.name, HORIZONTAL_ALIGNMENT_LEFT, -1, fs, 3, pc[1])
 		draw_string(font, pp, p.name, HORIZONTAL_ALIGNMENT_LEFT, -1, fs, pc[0])
 
 
@@ -409,7 +437,7 @@ func _draw_chokes(gs, screen: Rect2) -> void:
 					draw_polyline(pts, wc, 1.5, true)
 
 
-func _draw_selection(gs, pid: int) -> void:
+func _draw_selection(gs, pid: int, cv: CanvasItem) -> void:
 	var p = gs.provinces[pid]
 	var pulse := 0.5 + 0.5 * sin(map.anim_time * 4.0)
 	for ring in p.rings:
@@ -419,8 +447,8 @@ func _draw_selection(gs, pid: int) -> void:
 		if pts.size() < 3:
 			continue
 		pts.append(pts[0])
-		draw_polyline(pts, Color(0.03, 0.04, 0.06, 0.8), 6.0, true)
-		draw_polyline(pts, Color(TK.PAPER.r, TK.PAPER.g, TK.PAPER.b, 0.85 + 0.15 * pulse), 3.0, true)
+		cv.draw_polyline(pts, Color(0.03, 0.04, 0.06, 0.8), 6.0, true)
+		cv.draw_polyline(pts, Color(TK.PAPER.r, TK.PAPER.g, TK.PAPER.b, 0.85 + 0.15 * pulse), 3.0, true)
 
 
 func _draw_paths(gs) -> void:
@@ -494,7 +522,6 @@ func _draw_armies(gs, z: float, screen: Rect2, font: Font) -> void:
 		Flags.draw(self, Rect2(rect.position + Vector2(5 * sc, (h - fh) * 0.5), Vector2(fw, fh)), c)
 		draw_string(font2, rect.position + Vector2(fw + 10 * sc, h * 0.5 + fs * 0.36), txt, HORIZONTAL_ALIGNMENT_LEFT, -1, fs, Color.WHITE)
 		if a == map.selected_army:
-			var pulse := 0.5 + 0.5 * sin(map.anim_time * 6.0)
-			draw_rect(rect.grow(4.0 + pulse * 2.0), Color(TK.PAPER.r, TK.PAPER.g, TK.PAPER.b, 0.9), false, 2.0)
+			sel_army_rect = rect
 		if (not a.path.is_empty() or a.sp_size > 0) and a.owner == me:
 			Icons.draw(self, "chev_r", Rect2(rect.end + Vector2(-2, -22), Vector2(14, 14)), TK.PAPER, 3.0)

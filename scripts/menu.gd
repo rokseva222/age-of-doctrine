@@ -203,12 +203,13 @@ func finish_splash() -> void:
 	if _intro != null:
 		_end_intro()
 	_splash_done = true
+	# İlk açılışta tanıtım videosunun karartması splash'ın ALTINDAN değil ÜSTÜNDEN gelir; ana menü hiç görünmez.
+	_build_promo()
 	var tw := create_tween()
 	tw.tween_property(splash, "modulate:a", 0.0, 0.4)
 	tw.tween_callback(func():
 		splash.visible = false
-		splash_done.emit()
-		_build_promo())
+		splash_done.emit())
 
 
 ## Tanıtım videosu (CapCut vb. ile yapılıp assets/brand/promo.ogv olarak eklenir): ilk açılışta bir kez oynar, dokununca geçilir.
@@ -241,19 +242,32 @@ func _build_promo() -> void:
 	pl.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	pl.volume_db = linear_to_db(maxf(0.001, Settings.sfx))
 	ar.add_child(pl)
-	var skip := TK.t("Geçmek için dokun", "kicker", TK.FAINT)
+	var skip := TK.t("Geçmek için dokun", "h3", TK.TEXT)
+	skip.add_theme_font_size_override("font_size", 38)
 	skip.set_anchors_preset(Control.PRESET_BOTTOM_RIGHT)
-	skip.offset_left = -300
-	skip.offset_top = -48
-	skip.offset_right = -20
-	skip.offset_bottom = -14
+	skip.grow_horizontal = Control.GROW_DIRECTION_BEGIN
+	skip.grow_vertical = Control.GROW_DIRECTION_BEGIN
+	skip.offset_left = -520
+	skip.offset_top = -86
+	skip.offset_right = -36
+	skip.offset_bottom = -30
 	skip.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+	skip.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 	skip.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	skip.add_theme_color_override("font_outline_color", Color(0, 0, 0, 0.9))
+	skip.add_theme_constant_override("outline_size", 8)
 	ov.add_child(skip)
+	var pulse := create_tween().set_loops()
+	pulse.tween_property(skip, "modulate:a", 0.55, 0.9).set_trans(Tween.TRANS_SINE)
+	pulse.tween_property(skip, "modulate:a", 1.0, 0.9).set_trans(Tween.TRANS_SINE)
 	var done := func():
-		if is_instance_valid(ov):
+		if is_instance_valid(ov) and not ov.has_meta("closing"):
+			ov.set_meta("closing", true)
 			pl.stop()
-			ov.queue_free()
+			pulse.kill()
+			var ft := create_tween()
+			ft.tween_property(ov, "modulate:a", 0.0, 0.35)
+			ft.tween_callback(ov.queue_free)
 	pl.finished.connect(done)
 	ov.gui_input.connect(func(ev: InputEvent):
 		if (ev is InputEventMouseButton or ev is InputEventScreenTouch) and ev.pressed:

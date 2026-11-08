@@ -138,7 +138,10 @@ static func tier_weights(tech: float) -> Array:
 
 
 ## Haritadaki sahra ordusu: kayıtlı personelin (yedek, jandarma, destek) yalnızca bu kadarı savaşabilir birliktir.
-const FIELD_RATIO := 0.6
+## Gerçek personel sayıları olduğu gibi kullanılır (eskiden %60'ı sahaya çıkıyordu; Türkiye 255 bin görünüyordu).
+## Maliyet dengesi bozulmasın diye modern çağda maaş buna göre ölçeklenir (WAGE_COMP).
+const FIELD_RATIO := 1.0
+const WAGE_COMP := 0.6
 
 static func init_country(gs, c) -> void:
 	_load()
@@ -419,7 +422,7 @@ static func ai_policy(gs, c) -> void:
 static func wage_week(c) -> float:
 	if era_on:
 		return 3.0 + 25.0 * pow(clampf(c.gdp / maxf(c.pop, 0.01) / 12000.0, 0.0, 1.0), 0.9)
-	return 12.0 + 400.0 * pow(clampf(c.gdp / maxf(c.pop, 0.01) / 60000.0, 0.0, 1.0), 0.9)
+	return (12.0 + 400.0 * pow(clampf(c.gdp / maxf(c.pop, 0.01) / 60000.0, 0.0, 1.0), 0.9)) * WAGE_COMP
 
 
 static func calc(gs, c) -> Dictionary:

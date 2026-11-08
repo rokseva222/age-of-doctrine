@@ -736,7 +736,12 @@ func is_dialog_open() -> bool:
 
 ## Basit diyalog: başlık, gövde metni, düğmeler [{text, cb, kind}]
 func show_dialog(title: String, body: String, buttons: Array, scene: String = "", icon: String = "") -> void:
-	var sh = _open_sheet(title, 580, false, buttons.size() < 2, "Bildiri")
+	var cancel_cb := Callable()
+	for bd in buttons:
+		if String(bd.text) in ["Vazgeç", "Reddet", "İptal", "Hayır", "Kapat", "Şimdi değil"]:
+			cancel_cb = bd.cb
+	var sh = _open_sheet(title, 580, false, buttons.size() < 2 or cancel_cb.is_valid(), "Bildiri")
+	sh.on_cancel = cancel_cb
 	if icon != "":
 		sh.set_icon(icon)
 	if scene == "":
@@ -754,7 +759,8 @@ func show_dialog(title: String, body: String, buttons: Array, scene: String = ""
 func show_deal_dialog(w, winner: int, options: Array, on_confirm: Callable, on_white: Callable) -> void:
 	var budget: int = w.score_of(winner)
 	var loser: int = w.other(winner)
-	var sh = _open_sheet("Barış Masası", 700, true, false, "Müzakere")
+	var sh = _open_sheet("Barış Masası", 700, true, true, "Müzakere")
+	sh.on_cancel = func(): gs.cancel_proposal()
 	sh.add_text("%s ile barış görüşmesi. Savaş puanın: %d. Almak istediğin işgal ettiğin eyaletleri seç (maliyet puandan düşer); seçmediklerin geri verilir." % [gs.countries[loser].name, budget], 22, TK.MUTED)
 	var rows: Array = []
 	var spent_lbl := TK.t("", "value", TK.GREEN)
@@ -843,6 +849,9 @@ func show_deal_dialog(w, winner: int, options: Array, on_confirm: Callable, on_w
 	white.pressed.connect(func():
 		sh.close()
 		on_white.call())
+	var back := TK.button("Vazgeç", "ghost", "", Vector2(160, 60))
+	back.pressed.connect(sh.cancel)
+	sh.footer.add_child(back)
 	sh.footer.add_child(white)
 	confirm.pressed.connect(func():
 		var picked: Array = []
@@ -987,7 +996,7 @@ func _objectives_block(sh) -> void:
 
 
 func show_goals() -> void:
-	var sh = _open_sheet("Hedefler ve başarımlar", 640, false, false, "İlerleme")
+	var sh = _open_sheet("Hedefler ve başarımlar", 640, false, true, "İlerleme")
 	_objectives_block(sh)
 	_missions_block(sh)
 	var nxt: Dictionary = Goals.next_tutorial()

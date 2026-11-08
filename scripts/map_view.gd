@@ -336,6 +336,9 @@ func _clamp_camera() -> void:
 	cam_pos.y = clampf(cam_pos.y, lo.y, hi.y)
 
 
+var _cam_t := 0
+
+
 func _apply() -> void:
 	if world == null:
 		return
@@ -347,6 +350,7 @@ func _apply() -> void:
 	border_mat.set_shader_parameter("zoom", zoom)
 	for m in glow_mats:
 		m.set_shader_parameter("zoom", zoom)
+	_cam_t = Time.get_ticks_msec()
 	hud.queue_redraw()
 
 
@@ -431,6 +435,10 @@ func focus_country(cid: int) -> void:
 
 func _process(delta: float) -> void:
 	anim_time += delta
+	var moving: bool = Time.get_ticks_msec() - _cam_t < 180
+	if hud.fast != moving:
+		hud.fast = moving
+		hud.queue_redraw()    # hareket bitince yazılar tam kalitede yeniden çizilir
 	if gs == null:
 		return
 	var redraw := false
@@ -460,7 +468,7 @@ func _process(delta: float) -> void:
 				army_anim.erase(k)
 		redraw = true
 	if selected_prov >= 0 or selected_army != null:
-		redraw = true    # seçili eyalet nabzı
+		hud.top.queue_redraw()    # seçili eyalet nabzı: yalnızca hafif üst katman
 	if redraw:
 		hud.queue_redraw()
 

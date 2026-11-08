@@ -1,421 +1,769 @@
 {
-"_source": "armedforces.eu sıralamaları (erişim 2026-11-04); yaklaşık değerler, oyun için yuvarlanmıştır",
-"countries": {
-"China": {
-"personnel": 2035000,
-"tank": 6100,
-"afv": 15880,
-"arty": 6390,
-"air": 5225,
-"sub": 72
-},
-"India": {
-"personnel": 1400000,
-"tank": 4215,
-"afv": 8600,
-"arty": 800,
-"air": 2659,
-"sub": 18
-},
-"United States of America": {
-"personnel": 1358500,
-"tank": 5652,
-"afv": 38639,
-"arty": 2226,
-"air": 13175,
-"sub": 70
-},
-"North Korea": {
-"personnel": 1320000,
-"tank": 5144,
-"afv": 4000,
-"arty": 8000,
-"air": 965,
-"sub": 98
-},
-"Ukraine": {
-"personnel": 1250000,
-"tank": 1462,
-"afv": 5739,
-"arty": 1592,
-"air": 297,
-"sub": 0
-},
-"Russia": {
-"personnel": 1000000,
-"tank": 6384,
-"afv": 14792,
-"arty": 7252,
-"air": 4699,
-"sub": 61
-},
-"Pakistan": {
-"personnel": 654000,
-"tank": 2867,
-"afv": 5945,
-"arty": 2182,
-"air": 1504,
-"sub": 8
-},
-"Iran": {
-"personnel": 587000,
-"tank": 2198,
-"afv": 2875,
-"arty": 2494,
-"air": 1052,
-"sub": 25
-},
-"South Korea": {
-"personnel": 555000,
-"tank": 2201,
-"afv": 4456,
-"arty": 3696,
-"air": 1524,
-"sub": 22
-},
-"Vietnam": {
-"personnel": 482000,
-"tank": 1829,
-"afv": 2300,
-"arty": 530,
-"air": 311,
-"sub": 9
-},
-"Saudi Arabia": {
-"personnel": 480000,
-"tank": 915,
-"afv": 7329,
-"arty": 653,
-"air": 1251,
-"sub": 0
-},
-"Egypt": {
-"personnel": 438500,
-"tank": 3610,
-"afv": 6532,
-"arty": 1587,
-"air": 854,
-"sub": 8
-},
-"Turkey": {
-"personnel": 425000,
-"tank": 2203,
-"afv": 9323,
-"arty": 1356,
-"air": 1408,
-"sub": 12
-},
-"Indonesia": {
-"personnel": 400000,
-"tank": 241,
-"afv": 1628,
-"arty": 253,
-"air": 504,
-"sub": 4
-},
-"Brazil": {
-"personnel": 334500,
-"tank": 292,
-"afv": 2452,
-"arty": 153,
-"air": 481,
-"sub": 4
-},
-"Venezuela": {
-"personnel": 330000,
-"tank": 203,
-"afv": 1217,
-"arty": 96,
-"air": 219,
-"sub": 3
-},
-"France": {
-"personnel": 270000,
-"tank": 406,
-"afv": 6748,
-"arty": 107,
-"air": 1143,
-"sub": 10
-},
-"Japan": {
-"personnel": 247150,
-"tank": 477,
-"afv": 3149,
-"arty": 283,
-"air": 1233,
-"sub": 23
-},
-"Poland": {
-"personnel": 200000,
-"tank": 700,
-"afv": 2333,
-"arty": 970,
-"air": 481,
-"sub": 1
-},
-"Iraq": {
-"personnel": 193000,
-"tank": 827,
-"afv": 4249,
-"arty": 716,
-"air": 369,
-"sub": 0
-},
-"Germany": {
-"personnel": 183638,
-"tank": 295,
-"afv": 3752,
-"arty": 167,
-"air": 682,
-"sub": 6
-},
-"Taiwan": {
-"personnel": 180000,
-"tank": 888,
-"afv": 2031,
-"arty": 682,
-"air": 791,
-"sub": 5
-},
-"Israel": {
-"personnel": 169500,
-"tank": 1300,
-"afv": 6190,
-"arty": 450,
-"air": 626,
-"sub": 6
-},
-"Syria": {
-"personnel": 169000,
-"tank": 731,
-"afv": 1729,
-"arty": 632,
-"air": 320,
-"sub": 0
-},
-"Italy": {
-"personnel": 165500,
-"tank": 200,
-"afv": 3792,
-"arty": 85,
-"air": 675,
-"sub": 8
-},
-"United Arab Emirates": {
-"personnel": 150000,
-"tank": 354,
-"afv": 8372,
-"arty": 265,
-"air": 518,
-"sub": 0
-},
-"United Kingdom": {
-"personnel": 148220,
-"tank": 272,
-"afv": 4338,
-"arty": 112,
-"air": 869,
-"sub": 10
-},
-"Philippines": {
-"personnel": 143100,
-"tank": 18,
-"afv": 607,
-"arty": 12,
-"air": 239,
-"sub": 0
-},
-"Switzerland": {
-"personnel": 140000,
-"tank": 205,
-"afv": 1908,
-"arty": 133,
-"air": 160,
-"sub": 0
-},
-"Spain": {
-"personnel": 133282,
-"tank": 317,
-"afv": 1644,
-"arty": 95,
-"air": 516,
-"sub": 2
-},
-"Azerbaijan": {
-"personnel": 126400,
-"tank": 647,
-"afv": 2100,
-"arty": 517,
-"air": 196,
-"sub": 4
-},
-"Malaysia": {
-"personnel": 113000,
-"tank": 48,
-"afv": 884,
-"arty": 36,
-"air": 118,
-"sub": 2
-},
-"Greece": {
-"personnel": 107600,
-"tank": 1344,
-"afv": 4804,
-"arty": 741,
-"air": 741,
-"sub": 10
-},
-"Jordan": {
-"personnel": 100500,
-"tank": 1426,
-"afv": 2497,
-"arty": 565,
-"air": 245,
-"sub": 0
-},
-"Singapore": {
-"personnel": 71000,
-"tank": 170,
-"afv": 3072,
-"arty": 72,
-"air": 247,
-"sub": 6
-},
-"Armenia": {
-"personnel": 70600,
-"tank": 129,
-"afv": 575,
-"arty": 156,
-"air": 69,
-"sub": 0
-},
-"Romania": {
-"personnel": 68500,
-"tank": 451,
-"afv": 1345,
-"arty": 290,
-"air": 159,
-"sub": 1
-},
-"Canada": {
-"personnel": 68000,
-"tank": 74,
-"afv": 1678,
-"arty": 0,
-"air": 446,
-"sub": 4
-},
-"Qatar": {
-"personnel": 66550,
-"tank": 109,
-"afv": 863,
-"arty": 62,
-"air": 248,
-"sub": 0
-},
-"Belarus": {
-"personnel": 63000,
-"tank": 500,
-"afv": 1831,
-"arty": 621,
-"air": 193,
-"sub": 0
-},
-"Australia": {
-"personnel": 60330,
-"tank": 73,
-"afv": 1582,
-"arty": 0,
-"air": 361,
-"sub": 6
-},
-"Netherlands": {
-"personnel": 41199,
-"tank": 18,
-"afv": 1169,
-"arty": 48,
-"air": 154,
-"sub": 3
-},
-"Hungary": {
-"personnel": 37650,
-"tank": 211,
-"afv": 715,
-"arty": 24,
-"air": 73,
-"sub": 0
-},
-"Lithuania": {
-"personnel": 37150,
-"tank": 0,
-"afv": 1045,
-"arty": 21,
-"air": 10,
-"sub": 0
-},
-"Georgia": {
-"personnel": 37000,
-"tank": 223,
-"afv": 503,
-"arty": 104,
-"air": 63,
-"sub": 0
-},
-"Finland": {
-"personnel": 24000,
-"tank": 200,
-"afv": 2264,
-"arty": 201,
-"air": 163,
-"sub": 0
-},
-"Sweden": {
-"personnel": 23600,
-"tank": 110,
-"afv": 2588,
-"arty": 26,
-"air": 173,
-"sub": 5
-},
-"Norway": {
-"personnel": 23250,
-"tank": 44,
-"afv": 684,
-"arty": 28,
-"air": 107,
-"sub": 6
-},
-"Austria": {
-"personnel": 23000,
-"tank": 56,
-"afv": 492,
-"arty": 30,
-"air": 92,
-"sub": 0
-},
-"Denmark": {
-"personnel": 21000,
-"tank": 44,
-"afv": 621,
-"arty": 27,
-"air": 133,
-"sub": 0
-},
-"Latvia": {
-"personnel": 17345,
-"tank": 0,
-"afv": 405,
-"arty": 47,
-"air": 0,
-"sub": 0
-},
-"Estonia": {
-"personnel": 7700,
-"tank": 0,
-"afv": 447,
-"arty": 48,
-"air": 4,
-"sub": 0
-}
-}
+ "_source": "armedforces.eu sıralamaları (erişim 2026-11-04); yaklaşık değerler, oyun için yuvarlanmıştır | ek ülkeler: IISS Military Balance 2024 aktif personel (yaklaşık)",
+ "countries": {
+  "China": {
+   "personnel": 2035000,
+   "tank": 6100,
+   "afv": 15880,
+   "arty": 6390,
+   "air": 5225,
+   "sub": 72
+  },
+  "India": {
+   "personnel": 1400000,
+   "tank": 4215,
+   "afv": 8600,
+   "arty": 800,
+   "air": 2659,
+   "sub": 18
+  },
+  "United States of America": {
+   "personnel": 1358500,
+   "tank": 5652,
+   "afv": 38639,
+   "arty": 2226,
+   "air": 13175,
+   "sub": 70
+  },
+  "North Korea": {
+   "personnel": 1320000,
+   "tank": 5144,
+   "afv": 4000,
+   "arty": 8000,
+   "air": 965,
+   "sub": 98
+  },
+  "Ukraine": {
+   "personnel": 1250000,
+   "tank": 1462,
+   "afv": 5739,
+   "arty": 1592,
+   "air": 297,
+   "sub": 0
+  },
+  "Russia": {
+   "personnel": 1000000,
+   "tank": 6384,
+   "afv": 14792,
+   "arty": 7252,
+   "air": 4699,
+   "sub": 61
+  },
+  "Pakistan": {
+   "personnel": 654000,
+   "tank": 2867,
+   "afv": 5945,
+   "arty": 2182,
+   "air": 1504,
+   "sub": 8
+  },
+  "Iran": {
+   "personnel": 587000,
+   "tank": 2198,
+   "afv": 2875,
+   "arty": 2494,
+   "air": 1052,
+   "sub": 25
+  },
+  "South Korea": {
+   "personnel": 555000,
+   "tank": 2201,
+   "afv": 4456,
+   "arty": 3696,
+   "air": 1524,
+   "sub": 22
+  },
+  "Vietnam": {
+   "personnel": 482000,
+   "tank": 1829,
+   "afv": 2300,
+   "arty": 530,
+   "air": 311,
+   "sub": 9
+  },
+  "Saudi Arabia": {
+   "personnel": 480000,
+   "tank": 915,
+   "afv": 7329,
+   "arty": 653,
+   "air": 1251,
+   "sub": 0
+  },
+  "Egypt": {
+   "personnel": 438500,
+   "tank": 3610,
+   "afv": 6532,
+   "arty": 1587,
+   "air": 854,
+   "sub": 8
+  },
+  "Turkey": {
+   "personnel": 425000,
+   "tank": 2203,
+   "afv": 9323,
+   "arty": 1356,
+   "air": 1408,
+   "sub": 12
+  },
+  "Indonesia": {
+   "personnel": 400000,
+   "tank": 241,
+   "afv": 1628,
+   "arty": 253,
+   "air": 504,
+   "sub": 4
+  },
+  "Brazil": {
+   "personnel": 334500,
+   "tank": 292,
+   "afv": 2452,
+   "arty": 153,
+   "air": 481,
+   "sub": 4
+  },
+  "Venezuela": {
+   "personnel": 330000,
+   "tank": 203,
+   "afv": 1217,
+   "arty": 96,
+   "air": 219,
+   "sub": 3
+  },
+  "France": {
+   "personnel": 270000,
+   "tank": 406,
+   "afv": 6748,
+   "arty": 107,
+   "air": 1143,
+   "sub": 10
+  },
+  "Japan": {
+   "personnel": 247150,
+   "tank": 477,
+   "afv": 3149,
+   "arty": 283,
+   "air": 1233,
+   "sub": 23
+  },
+  "Poland": {
+   "personnel": 200000,
+   "tank": 700,
+   "afv": 2333,
+   "arty": 970,
+   "air": 481,
+   "sub": 1
+  },
+  "Iraq": {
+   "personnel": 193000,
+   "tank": 827,
+   "afv": 4249,
+   "arty": 716,
+   "air": 369,
+   "sub": 0
+  },
+  "Germany": {
+   "personnel": 183638,
+   "tank": 295,
+   "afv": 3752,
+   "arty": 167,
+   "air": 682,
+   "sub": 6
+  },
+  "Taiwan": {
+   "personnel": 180000,
+   "tank": 888,
+   "afv": 2031,
+   "arty": 682,
+   "air": 791,
+   "sub": 5
+  },
+  "Israel": {
+   "personnel": 169500,
+   "tank": 1300,
+   "afv": 6190,
+   "arty": 450,
+   "air": 626,
+   "sub": 6
+  },
+  "Syria": {
+   "personnel": 169000,
+   "tank": 731,
+   "afv": 1729,
+   "arty": 632,
+   "air": 320,
+   "sub": 0
+  },
+  "Italy": {
+   "personnel": 165500,
+   "tank": 200,
+   "afv": 3792,
+   "arty": 85,
+   "air": 675,
+   "sub": 8
+  },
+  "United Arab Emirates": {
+   "personnel": 150000,
+   "tank": 354,
+   "afv": 8372,
+   "arty": 265,
+   "air": 518,
+   "sub": 0
+  },
+  "United Kingdom": {
+   "personnel": 148220,
+   "tank": 272,
+   "afv": 4338,
+   "arty": 112,
+   "air": 869,
+   "sub": 10
+  },
+  "Philippines": {
+   "personnel": 143100,
+   "tank": 18,
+   "afv": 607,
+   "arty": 12,
+   "air": 239,
+   "sub": 0
+  },
+  "Switzerland": {
+   "personnel": 140000,
+   "tank": 205,
+   "afv": 1908,
+   "arty": 133,
+   "air": 160,
+   "sub": 0
+  },
+  "Spain": {
+   "personnel": 133282,
+   "tank": 317,
+   "afv": 1644,
+   "arty": 95,
+   "air": 516,
+   "sub": 2
+  },
+  "Azerbaijan": {
+   "personnel": 126400,
+   "tank": 647,
+   "afv": 2100,
+   "arty": 517,
+   "air": 196,
+   "sub": 4
+  },
+  "Malaysia": {
+   "personnel": 113000,
+   "tank": 48,
+   "afv": 884,
+   "arty": 36,
+   "air": 118,
+   "sub": 2
+  },
+  "Greece": {
+   "personnel": 107600,
+   "tank": 1344,
+   "afv": 4804,
+   "arty": 741,
+   "air": 741,
+   "sub": 10
+  },
+  "Jordan": {
+   "personnel": 100500,
+   "tank": 1426,
+   "afv": 2497,
+   "arty": 565,
+   "air": 245,
+   "sub": 0
+  },
+  "Singapore": {
+   "personnel": 71000,
+   "tank": 170,
+   "afv": 3072,
+   "arty": 72,
+   "air": 247,
+   "sub": 6
+  },
+  "Armenia": {
+   "personnel": 70600,
+   "tank": 129,
+   "afv": 575,
+   "arty": 156,
+   "air": 69,
+   "sub": 0
+  },
+  "Romania": {
+   "personnel": 68500,
+   "tank": 451,
+   "afv": 1345,
+   "arty": 290,
+   "air": 159,
+   "sub": 1
+  },
+  "Canada": {
+   "personnel": 68000,
+   "tank": 74,
+   "afv": 1678,
+   "arty": 0,
+   "air": 446,
+   "sub": 4
+  },
+  "Qatar": {
+   "personnel": 66550,
+   "tank": 109,
+   "afv": 863,
+   "arty": 62,
+   "air": 248,
+   "sub": 0
+  },
+  "Belarus": {
+   "personnel": 63000,
+   "tank": 500,
+   "afv": 1831,
+   "arty": 621,
+   "air": 193,
+   "sub": 0
+  },
+  "Australia": {
+   "personnel": 60330,
+   "tank": 73,
+   "afv": 1582,
+   "arty": 0,
+   "air": 361,
+   "sub": 6
+  },
+  "Netherlands": {
+   "personnel": 41199,
+   "tank": 18,
+   "afv": 1169,
+   "arty": 48,
+   "air": 154,
+   "sub": 3
+  },
+  "Hungary": {
+   "personnel": 37650,
+   "tank": 211,
+   "afv": 715,
+   "arty": 24,
+   "air": 73,
+   "sub": 0
+  },
+  "Lithuania": {
+   "personnel": 37150,
+   "tank": 0,
+   "afv": 1045,
+   "arty": 21,
+   "air": 10,
+   "sub": 0
+  },
+  "Georgia": {
+   "personnel": 37000,
+   "tank": 223,
+   "afv": 503,
+   "arty": 104,
+   "air": 63,
+   "sub": 0
+  },
+  "Finland": {
+   "personnel": 24000,
+   "tank": 200,
+   "afv": 2264,
+   "arty": 201,
+   "air": 163,
+   "sub": 0
+  },
+  "Sweden": {
+   "personnel": 23600,
+   "tank": 110,
+   "afv": 2588,
+   "arty": 26,
+   "air": 173,
+   "sub": 5
+  },
+  "Norway": {
+   "personnel": 23250,
+   "tank": 44,
+   "afv": 684,
+   "arty": 28,
+   "air": 107,
+   "sub": 6
+  },
+  "Austria": {
+   "personnel": 23000,
+   "tank": 56,
+   "afv": 492,
+   "arty": 30,
+   "air": 92,
+   "sub": 0
+  },
+  "Denmark": {
+   "personnel": 21000,
+   "tank": 44,
+   "afv": 621,
+   "arty": 27,
+   "air": 133,
+   "sub": 0
+  },
+  "Latvia": {
+   "personnel": 17345,
+   "tank": 0,
+   "afv": 405,
+   "arty": 47,
+   "air": 0,
+   "sub": 0
+  },
+  "Estonia": {
+   "personnel": 7700,
+   "tank": 0,
+   "afv": 447,
+   "arty": 48,
+   "air": 4,
+   "sub": 0
+  },
+  "Thailand": {
+   "personnel": 360000
+  },
+  "Mexico": {
+   "personnel": 270000
+  },
+  "Nigeria": {
+   "personnel": 230000
+  },
+  "Bangladesh": {
+   "personnel": 163000
+  },
+  "Ethiopia": {
+   "personnel": 140000
+  },
+  "Dem. Rep. Congo": {
+   "personnel": 134000
+  },
+  "South Africa": {
+   "personnel": 75000
+  },
+  "Colombia": {
+   "personnel": 295000
+  },
+  "Argentina": {
+   "personnel": 73000
+  },
+  "Algeria": {
+   "personnel": 140000
+  },
+  "Morocco": {
+   "personnel": 195000
+  },
+  "Myanmar": {
+   "personnel": 406000
+  },
+  "Kenya": {
+   "personnel": 24000
+  },
+  "Tanzania": {
+   "personnel": 27000
+  },
+  "Angola": {
+   "personnel": 107000
+  },
+  "Sudan": {
+   "personnel": 200000
+  },
+  "Afghanistan": {
+   "personnel": 150000
+  },
+  "Peru": {
+   "personnel": 81000
+  },
+  "Chile": {
+   "personnel": 68000
+  },
+  "Kazakhstan": {
+   "personnel": 40000
+  },
+  "Uzbekistan": {
+   "personnel": 48000
+  },
+  "Cuba": {
+   "personnel": 50000
+  },
+  "Serbia": {
+   "personnel": 28000
+  },
+  "Bulgaria": {
+   "personnel": 37000
+  },
+  "Czechia": {
+   "personnel": 24000
+  },
+  "Portugal": {
+   "personnel": 27000
+  },
+  "Belgium": {
+   "personnel": 25000
+  },
+  "Libya": {
+   "personnel": 40000
+  },
+  "Yemen": {
+   "personnel": 40000
+  },
+  "Sri Lanka": {
+   "personnel": 200000
+  },
+  "Nepal": {
+   "personnel": 95000
+  },
+  "Cambodia": {
+   "personnel": 124000
+  },
+  "Laos": {
+   "personnel": 29000
+  },
+  "Mongolia": {
+   "personnel": 10000
+  },
+  "Tunisia": {
+   "personnel": 36000
+  },
+  "Oman": {
+   "personnel": 42000
+  },
+  "Kuwait": {
+   "personnel": 17000
+  },
+  "Bahrain": {
+   "personnel": 8000
+  },
+  "Lebanon": {
+   "personnel": 80000
+  },
+  "Croatia": {
+   "personnel": 15000
+  },
+  "Bosnia and Herz.": {
+   "personnel": 10000
+  },
+  "Albania": {
+   "personnel": 8000
+  },
+  "Moldova": {
+   "personnel": 5000
+  },
+  "North Macedonia": {
+   "personnel": 8000
+  },
+  "Slovakia": {
+   "personnel": 15000
+  },
+  "Slovenia": {
+   "personnel": 7000
+  },
+  "Ireland": {
+   "personnel": 8000
+  },
+  "New Zealand": {
+   "personnel": 9000
+  },
+  "Eritrea": {
+   "personnel": 200000
+  },
+  "Somalia": {
+   "personnel": 20000
+  },
+  "Uganda": {
+   "personnel": 45000
+  },
+  "Zimbabwe": {
+   "personnel": 29000
+  },
+  "Zambia": {
+   "personnel": 16000
+  },
+  "Ghana": {
+   "personnel": 16000
+  },
+  "Cameroon": {
+   "personnel": 14000
+  },
+  "Côte d'Ivoire": {
+   "personnel": 25000
+  },
+  "Senegal": {
+   "personnel": 14000
+  },
+  "Mozambique": {
+   "personnel": 11000
+  },
+  "Madagascar": {
+   "personnel": 14000
+  },
+  "Rwanda": {
+   "personnel": 33000
+  },
+  "Burundi": {
+   "personnel": 30000
+  },
+  "Chad": {
+   "personnel": 34000
+  },
+  "Niger": {
+   "personnel": 12000
+  },
+  "Mali": {
+   "personnel": 20000
+  },
+  "Burkina Faso": {
+   "personnel": 11000
+  },
+  "Guinea": {
+   "personnel": 12000
+  },
+  "Paraguay": {
+   "personnel": 14000
+  },
+  "Ecuador": {
+   "personnel": 40000
+  },
+  "Bolivia": {
+   "personnel": 34000
+  },
+  "Uruguay": {
+   "personnel": 15000
+  },
+  "Honduras": {
+   "personnel": 15000
+  },
+  "Guatemala": {
+   "personnel": 18000
+  },
+  "El Salvador": {
+   "personnel": 20000
+  },
+  "Nicaragua": {
+   "personnel": 12000
+  },
+  "Panama": {
+   "personnel": 4000
+  },
+  "Dominican Rep.": {
+   "personnel": 56000
+  },
+  "Jamaica": {
+   "personnel": 4000
+  },
+  "Trinidad and Tobago": {
+   "personnel": 4000
+  },
+  "Turkmenistan": {
+   "personnel": 36000
+  },
+  "Tajikistan": {
+   "personnel": 9000
+  },
+  "Kyrgyzstan": {
+   "personnel": 10000
+  },
+  "Cyprus": {
+   "personnel": 12000
+  },
+  "Brunei": {
+   "personnel": 7000
+  },
+  "Fiji": {
+   "personnel": 4000
+  },
+  "Papua New Guinea": {
+   "personnel": 4000
+  },
+  "S. Sudan": {
+   "personnel": 185000
+  },
+  "Somaliland": {
+   "personnel": 8000
+  },
+  "Kosovo": {
+   "personnel": 5000
+  },
+  "Montenegro": {
+   "personnel": 2000
+  },
+  "Luxembourg": {
+   "personnel": 1000
+  },
+  "Malta": {
+   "personnel": 2000
+  },
+  "Haiti": {
+   "personnel": 1000
+  },
+  "Palestine": {
+   "personnel": 20000
+  },
+  "Togo": {
+   "personnel": 14000
+  },
+  "Benin": {
+   "personnel": 12000
+  },
+  "Gabon": {
+   "personnel": 5000
+  },
+  "Mauritania": {
+   "personnel": 16000
+  },
+  "Namibia": {
+   "personnel": 10000
+  },
+  "Botswana": {
+   "personnel": 9000
+  },
+  "Malawi": {
+   "personnel": 11000
+  },
+  "Liberia": {
+   "personnel": 2000
+  },
+  "Sierra Leone": {
+   "personnel": 9000
+  },
+  "Congo": {
+   "personnel": 10000
+  },
+  "Central African Rep.": {
+   "personnel": 9000
+  },
+  "Djibouti": {
+   "personnel": 10000
+  },
+  "Guyana": {
+   "personnel": 3000
+  },
+  "Suriname": {
+   "personnel": 2000
+  },
+  "Mauritius": {
+   "personnel": 2000
+  },
+  "Lesotho": {
+   "personnel": 2000
+  },
+  "eSwatini": {
+   "personnel": 3000
+  },
+  "Gambia": {
+   "personnel": 4000
+  },
+  "Eq. Guinea": {
+   "personnel": 3000
+  },
+  "Bhutan": {
+   "personnel": 8000
+  },
+  "Maldives": {
+   "personnel": 4000
+  },
+  "Cabo Verde": {
+   "personnel": 1000
+  },
+  "Timor-Leste": {
+   "personnel": 2000
+  }
+ }
 }

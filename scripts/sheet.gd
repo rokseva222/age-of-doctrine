@@ -11,6 +11,7 @@ var body: VBoxContainer
 var footer: HFlowContainer
 var title_lbl: Label
 var can_close := true
+var on_cancel: Callable = Callable()  ## X'e / boşluğa dokunarak kapatınca çağrılır (vazgeçme)
 var _closing := false
 
 
@@ -30,8 +31,8 @@ func _build(title: String, width: float, tall: bool, closable: bool, kicker: Str
 	dim.color = Color(0.03, 0.04, 0.06, 0.78)
 	dim.mouse_filter = Control.MOUSE_FILTER_STOP
 	dim.gui_input.connect(func(ev: InputEvent):
-		if can_close and ev is InputEventMouseButton and ev.pressed:
-			close())
+		if can_close and ((ev is InputEventMouseButton and ev.pressed) or (ev is InputEventScreenTouch and ev.pressed)):
+			cancel())
 	add_child(dim)
 	var center := CenterContainer.new()
 	center.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
@@ -58,7 +59,7 @@ func _build(title: String, width: float, tall: bool, closable: bool, kicker: Str
 	if closable:
 		var x := TK.icon_button("x", 56, "ghost")
 		x.size_flags_vertical = Control.SIZE_SHRINK_CENTER
-		x.pressed.connect(close)
+		x.pressed.connect(cancel)
 		head.add_child(x)
 	v.add_child(head)
 	v.add_child(TK.hsep())
@@ -140,6 +141,14 @@ func add_button(text: String, cb: Callable, kind: String = "", close_after: bool
 		cb.call())
 	footer.add_child(b)
 	return b
+
+
+func cancel() -> void:
+	if _closing:
+		return
+	if on_cancel.is_valid():
+		on_cancel.call()
+	close()
 
 
 func close() -> void:

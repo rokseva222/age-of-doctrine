@@ -644,3 +644,33 @@ static func ignore_mouse(n: Node) -> void:
 		n.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	for c in n.get_children():
 		ignore_mouse(c)
+
+
+# ---------------------------------------------------------------- dokunmatik kaydırma
+## Mobilde bir düğme/panel üstünden sürükleyince ScrollContainer kaydırsın diye: kaydırma alanlarının içindeki
+## STOP filtreli denetimler PASS yapılır (olay üst ScrollContainer'a da ulaşır). Kaydırıcı, metin kutusu vb. dokunulmaz.
+static var _ts_installed := false
+
+
+static func install_touch_scroll(tree: SceneTree) -> void:
+	if _ts_installed:
+		return
+	_ts_installed = true
+	tree.node_added.connect(func(n: Node):
+		if n is Control:
+			_ts_fix.call_deferred(n))
+
+
+static func _ts_fix(n: Node) -> void:
+	if not is_instance_valid(n) or not (n is Control) or not n.is_inside_tree():
+		return
+	if n is Slider or n is ScrollBar or n is LineEdit or n is TextEdit or n is OptionButton or n is SpinBox:
+		return
+	if n.mouse_filter != Control.MOUSE_FILTER_STOP:
+		return
+	var p := n.get_parent()
+	while p != null:
+		if p is ScrollContainer:
+			n.mouse_filter = Control.MOUSE_FILTER_PASS
+			return
+		p = p.get_parent()
