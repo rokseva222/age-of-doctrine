@@ -1,0 +1,62 @@
+{
+ "El Salvador": {
+  "def": "René Francis Merino Monroy",
+  "for": "Juana Alexandra Hill Tinoco|f",
+  "fin": "Jerson Rogelio Posada Molina",
+  "int": "Héctor Gustavo Villatoro Funes",
+  "hlt": "Francisco José Alabí Montoya"
+ },
+ "Costa Rica": {
+  "for": "Manuel Tovar Rivera",
+  "fin": "Rodrigo Chaves Robles",
+  "int": "Gerald Campos Valverde",
+  "hlt": "Alexander Sánchez Cabo"
+ },
+ "Panama": {
+  "for": "Javier Eduardo Martínez-Acha Vásquez",
+  "fin": "Felipe Chapman Bernal",
+  "int": "Frank Alexis Ábrego Mendoza",
+  "hlt": "Fernando Boyd Galindo"
+ },
+ "Uruguay": {
+  "def": "Sandra Lazo|f",
+  "for": "Mario Lubetkin",
+  "fin": "Gabriel Oddone",
+  "int": "Carlos Negro",
+  "hlt": "Cristina Lustemberg|f"
+ },
+ "Honduras": {
+  "def": "Enrique Rodríguez Burchard"
+ },
+ "Ecuador": {
+  "for": "Roberto Kury"
+ },
+ "Jamaica": {
+  "def": "Andrew Holness",
+  "for": "Kamina Johnson Smith|f",
+  "fin": "Fayval Williams|f",
+  "int": "Horace Chang",
+  "hlt": "Christopher Tufton"
+ },
+ "Suriname": {
+  "def": "Uraiqit Ramsaran",
+  "for": "Melvin Bouva",
+  "fin": "Adelien Wijnerman|f",
+  "int": "Harish Monorath",
+  "hlt": "Andre Misiekaba"
+ },
+ "Guyana": {
+  "def": "Mohamed Irfaan Ali",
+  "for": "Hugh Todd",
+  "fin": "Ashni Singh",
+  "int": "Oneidge Walrond|f",
+  "hlt": "Frank Anthony"
+ },
+ "Trinidad and Tobago": {
+  "def": "Wayne Sturge",
+  "for": "Sean Sobers",
+  "fin": "Davendranath Tancoo",
+  "int": "Roger Alexander",
+  "hlt": "Lackram Bodoe"
+ }
+}

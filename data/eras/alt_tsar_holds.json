@@ -1,0 +1,194 @@
+{
+ "id": "alt_tsar_holds",
+ "name": "Çar Ayakta",
+ "sub": "Ağustos 1914 – Alternatif",
+ "base": "ww1",
+ "family": "ww1",
+ "pack": "alt",
+ "icon": "helmet_ww1",
+ "mood": "war",
+ "start_year": 1914,
+ "start_doy": 212,
+ "blurb": "Rusya'da devrim hiç patlamadı. Çar'ın hükûmeti reform yaptı, ordu ikmali düzeldi; Doğu Cephesi'nde Alman ve Avusturya ordularının ağır bir rakibi var.",
+ "suggest": [
+  "Russia",
+  "Germany",
+  "Austria",
+  "Turkey",
+  "France",
+  "United Kingdom"
+ ],
+ "look": {
+  "shadow": [
+   0.09,
+   0.07,
+   0.05
+  ],
+  "mid": [
+   0.56,
+   0.45,
+   0.29
+  ],
+  "light": [
+   0.96,
+   0.9,
+   0.74
+  ],
+  "amount": 0.38,
+  "vignette": 0.18,
+  "grain": 0.012
+ },
+ "setup": {
+  "blocs": [
+   {
+    "name": "İtilaf Devletleri",
+    "members": [
+     "United Kingdom",
+     "France",
+     "Russia",
+     "Serbia",
+     "Belgium",
+     "Japan",
+     "Canada",
+     "Australia",
+     "New Zealand",
+     "South Africa"
+    ],
+    "emblem": {
+     "shape": 5,
+     "inner": 1,
+     "symbol": "shield",
+     "c1": "2f4f9a",
+     "c2": "ece6d6",
+     "c3": "2f4f9a"
+    }
+   },
+   {
+    "name": "Merkezi Güçler",
+    "members": [
+     "Germany",
+     "Austria",
+     "Turkey",
+     "Bulgaria"
+    ],
+    "emblem": {
+     "shape": 4,
+     "inner": 1,
+     "symbol": "crown",
+     "c1": "6d6f78",
+     "c2": "e3a92b",
+     "c3": "e3a92b"
+    }
+   }
+  ],
+  "wars": [
+   [
+    "Austria",
+    "Serbia"
+   ],
+   [
+    "Germany",
+    "Russia"
+   ],
+   [
+    "Germany",
+    "France"
+   ],
+   [
+    "Germany",
+    "Belgium"
+   ],
+   [
+    "United Kingdom",
+    "Germany"
+   ],
+   [
+    "Austria",
+    "Russia"
+   ],
+   [
+    "Japan",
+    "Germany"
+   ]
+  ],
+  "truce": [],
+  "intro": "Ağustos 1914: Rusya'da seferberlik beklenenden düzenli ilerliyor; Çar II. Nikolay ordunun başında.",
+  "troops_mult": {
+   "Russia": 1.15
+  },
+  "stability": {
+   "Russia": 10
+  }
+ },
+ "inherit_until": [
+  9999,
+  1
+ ],
+ "inherit_exclude": [
+  "Rusya'da Şubat",
+  "Rusya'da Ekim",
+  "Brest-Litovsk"
+ ],
+ "events": [
+  {
+   "y": 1916,
+   "m": 6,
+   "t": "Brusilov taarruzunun başarısı çarlık rejimini güçlendirdi; Duma savaş bütçesini onayladı.",
+   "fx": [
+    [
+     "stab",
+     "Russia",
+     5
+    ]
+   ]
+  }
+ ],
+ "objectives": {
+  "*": [
+   {
+    "id": "o1",
+    "type": "survive",
+    "text": "Üç yıl ayakta kal",
+    "turns": 156
+   }
+  ],
+  "Russia": [
+   {
+    "id": "r1",
+    "type": "own_capital",
+    "text": "Berlin'i ele geçir",
+    "country": "Germany"
+   },
+   {
+    "id": "r2",
+    "type": "stability",
+    "text": "İstikrarı 60 üzerinde tut",
+    "n": 60,
+    "required": false
+   }
+  ],
+  "Germany": [
+   {
+    "id": "g1",
+    "type": "cease_war",
+    "text": "Rusya ile barış yap",
+    "with": "Russia"
+   }
+  ]
+ },
+ "en": {
+  "name": "The Tsar Holds",
+  "sub": "August 1914 – Alternate",
+  "blurb": "The revolution in Russia never erupted. The Tsar's government reformed, army supply improved; on the Eastern Front, the German and Austrian armies face a heavy opponent.",
+  "setup_intro": "August 1914: Russian mobilization is proceeding more smoothly than expected; Nicholas II is at the head of the army.",
+  "events": {
+   "0": "The success of the Brusilov offensive strengthened the Tsarist regime; the Duma approved the war budget."
+  },
+  "objectives": {
+   "o1": "Survive three years",
+   "r1": "Take Berlin",
+   "r2": "Keep stability above 60",
+   "g1": "Make peace with Russia"
+  }
+ }
+}

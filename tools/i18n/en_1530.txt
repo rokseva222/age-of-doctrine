@@ -1,0 +1,38 @@
+1530|Play 5 turns
+1531|Give 3 army orders
+1532|Fight 2 battles
+1533|Play 12 turns
+1534|Conquer a province
+1535|Form an alliance
+1536|Pass a UN motion
+1537|Sign a peace
+1538|Conquer 3 provinces
+1539|Fight 6 battles
+1540|Make an amphibious landing
+1541|Sign 2 peace deals
+1542|Declare a war
+1543|Play 40 turns this week
+1544|Fight 12 battles this week
+1545|Conquer 6 provinces this week
+1546|Sign 2 peace deals this week
+1547|Pass 2 UN motions this week
+1548|Conquer 12 provinces this week
+1549|Declare 2 wars this week
+1550|Form 3 alliances this week
+1551|Sergeant
+1552|Lieutenant
+1553|Captain
+1554|Major
+1555|Colonel
+1556|Brigadier General
+1557|Major General
+1558|Lieutenant General
+1559|General
+1560|Field Marshal
+1561|Daily missions
+1562|Weekly missions
+1563|pts
+1564|Streak: %d days
+1565|No streak
+1566|Mission complete: %s (+%d pts)
+1567|Promoted: %s!

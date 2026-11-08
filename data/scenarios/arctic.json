@@ -1,0 +1,145 @@
+{
+ "id": "arctic",
+ "kind": "real",
+ "name": "Arktik Yarışı",
+ "sub": "Rusya – NATO – Kanada",
+ "blurb": "Buzullar çekildikçe yeni deniz yolları ve milyarlarca dolarlık enerji rezervi açığa çıkıyor. Kutup, büyük güçlerin yeni satranç tahtası.",
+ "intro": "Arktik: erime hızlandı. Kuzey Deniz Yolu açıldı, kutup üsleri yeniden doluyor.",
+ "suggest": [
+  "Russia",
+  "Canada",
+  "Norway",
+  "United States of America",
+  "Denmark"
+ ],
+ "blocs": [
+  {
+   "name": "Kutup Savunma Hattı",
+   "members": [
+    "United States of America",
+    "Canada",
+    "Norway",
+    "Denmark",
+    "Iceland",
+    "Finland",
+    "Sweden"
+   ],
+   "emblem": {
+    "shape": 0,
+    "inner": 2,
+    "symbol": "shield",
+    "c1": "2f4f9a",
+    "c2": "ece6d6",
+    "c3": "2f4f9a"
+   }
+  }
+ ],
+ "cold": [
+  [
+   "Russia",
+   "Norway"
+  ],
+  [
+   "Russia",
+   "Canada"
+  ],
+  [
+   "Russia",
+   "Denmark"
+  ]
+ ],
+ "embargo": [
+  [
+   "United States of America",
+   "Russia"
+  ]
+ ],
+ "cyber": {
+  "Russia": 25
+ },
+ "troops_mult": {
+  "Russia": 1.1,
+  "Norway": 1.2,
+  "Finland": 1.2
+ },
+ "events": [
+  {
+   "turn": 12,
+   "t": "Rusya, Kuzey Deniz Yolu'nda yeni nükleer buzkıranlar hizmete soktu.",
+   "fx": [
+    [
+     "stab",
+     "Russia",
+     2
+    ]
+   ]
+  },
+  {
+   "turn": 30,
+   "t": "Norveç açıklarında denizaltı kablosu kesildi; şüpheler Moskova'ya çevrildi.",
+   "fx": [
+    [
+     "stab",
+     "Norway",
+     -3
+    ]
+   ]
+  },
+  {
+   "turn": 60,
+   "t": "Arktik Konseyi'nde sınır belirleme toplantısı çıkmaza girdi.",
+   "fx": []
+  }
+ ],
+ "objectives": {
+  "*": [
+   {
+    "id": "a1",
+    "type": "survive",
+    "turns": 104,
+    "text": "İki yıl ayakta kal"
+   },
+   {
+    "id": "a2",
+    "type": "gdp_share",
+    "pct": 6,
+    "text": "Dünya GSYH payını %6'ya çıkar",
+    "required": false
+   }
+  ],
+  "Russia": [
+   {
+    "id": "ar1",
+    "type": "alliances",
+    "n": 3,
+    "text": "3 müttefik edin"
+   }
+  ],
+  "Canada": [
+   {
+    "id": "ac1",
+    "type": "no_war",
+    "turns": 104,
+    "text": "Savaşsız iki yıl"
+   }
+  ]
+ },
+ "deadline": 208,
+ "en": {
+  "name": "Arctic Race",
+  "sub": "Russia – NATO – Canada",
+  "blurb": "As the ice recedes, new sea lanes and billions of dollars in energy reserves are emerging. The pole is the great powers' new chessboard.",
+  "intro": "Arctic: the melt has accelerated. The Northern Sea Route is open and polar bases are filling up again.",
+  "objectives": {
+   "a1": "Survive two years",
+   "a2": "Raise world GDP share to 6%",
+   "ar1": "Make 3 allies",
+   "ac1": "Two years without war"
+  },
+  "events": {
+   "0": "Russia commissioned new nuclear icebreakers on the Northern Sea Route.",
+   "1": "A subsea cable off Norway was cut; suspicion falls on Moscow.",
+   "2": "The Arctic Council's border-delimitation meeting hit a deadlock."
+  }
+ }
+}

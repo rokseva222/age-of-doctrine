@@ -1,0 +1,43 @@
+1446|Welcome, commander
+1447|This short guide teaches the basics of the game. You can skip any step with “Skip”; action steps advance by themselves when you do them.
+1448|Learn the map
+1449|Drag the map with your finger and pinch with two fingers to zoom. Now tap any province.
+1450|Province card
+1451|The card shows the province's owner, population, income and defense; the capital has a star. Your provinces bring you income, and you lose income as you lose them.
+1452|Top bar
+1453|Treasury (money), troops, province count and date are here. Each turn is one week: income is added to your treasury every week, while army upkeep and spending are deducted.
+1454|Select your army
+1455|Tap one of your own provinces and press “Select army” on the card. Armies appear on the map with their troop counts.
+1456|Move the army
+1457|Tap a neighboring province and press “March army here”. An army you send by hand waits on arrival; armies you give no orders to fight automatically if that setting is on.
+1458|End the turn
+1459|Advance one week with the “End turn” button at the top right. News flows in the World Bulletin at the top; tap it to open the history.
+1460|Policy panel
+1461|The tank button on the right: budget split (military, industry, cyber, logistics...), arms purchases, inventory, trade, fronts, alliances, intelligence and cabinet. Your strength grows here.
+1462|Cabinet and stability
+1463|Policy → Cabinet: ministers are appointed according to the country's culture; a good minister boosts income, army and stability. War weariness and low stability cause unrest and rebellion in provinces; you can hire mercenaries to strengthen your army quickly.
+1464|Declaring war
+1465|First pick a weak neighboring country. My suggestion: {target}. Tap one of its provinces and press “Declare war”. Its allies may turn against you; weigh the cost.
+1466|Tap an enemy province and press “Assault”. Pick your armies and choose the operation type (artillery, air, naval, missile, paradrop, special forces...). The advantage bar shows your chance of winning.
+1467|Siege and conquest
+1468|An army that beats the defense enters the province and besieges it; when the siege time runs out the province becomes yours and your war score rises. Armies need permission to cross borders.
+1469|The peace table
+1470|With a high war score, tap an enemy province and choose “Offer peace”: pick the provinces you take plus reparations, disarmament and buffer-zone terms using your score. Too many conquests raise “world reaction”; above 50 countries form a coalition.
+1471|Alliances and relations
+1472|Tap a friendly country's province: “Propose alliance” or “Relations” (who is allied with whom, who is at war). The handshake button on the right paints the map by relation colors.
+1473|World and the UN
+1474|The globe button on the right: rankings, blocs, news and the UN. In the UN you pass motions such as ceasefire, reconstruction, aid and sanctions by majority vote (no veto).
+1475|Nuclear power and risks
+1476|If you are a nuclear power you can launch a nuclear strike on an enemy province: massive destruction, but heavy sanctions and a coalition follow. Keep it as a last resort.
+1477|Save and goals
+1478|The ≡ menu at the top left: save/load, settings and “Goals and achievements”. You can enable autosave in settings. Achievements are permanent.
+1479|You are ready!
+1480|You are now ready for conquest, diplomacy or peaceful development. You can reopen the tutorial from the menu any time. Good luck!
+1481|TUTORIAL
+1482|Skip
+1483|Finish
+1484|Do what it says and the card advances by itself.
+1485|Done!
+1486|a neighboring country
+1487|Close tutorial
+1488|Tutorial

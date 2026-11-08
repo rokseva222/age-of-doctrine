@@ -1,0 +1,22 @@
+{
+ "Afghanistan": {
+  "def": "Mohammad Yaqoob",
+  "for": "Amir Khan Muttaqi",
+  "fin": "Hedayatullah Badri",
+  "int": "Sirajuddin Haqqani",
+  "hlt": "Noor Jalal Jalali"
+ },
+ "Uzbekistan": {
+  "for": "Bakhtiyor Saidov",
+  "fin": "Jamshid Kuchkarov",
+  "int": "Pulat Bobojonov",
+  "hlt": "Amrillo Inoyatov"
+ },
+ "Malaysia": {
+  "def": "Mohamed Khaled Nordin",
+  "for": "Mohamad Hasan",
+  "fin": "Anwar Ibrahim",
+  "int": "Saifuddin Nasution Ismail",
+  "hlt": "Dzulkefly Ahmad"
+ }
+}

@@ -1,0 +1,5 @@
+1263|Jefe de Estado
+1264|Líder de la Nación
+1265|Dictador
+1266|Presidente de los Comisarios del Pueblo
+1267|Canciller

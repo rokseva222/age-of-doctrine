@@ -1,0 +1,58 @@
+1568|Store
+1569|AOD Points
+1570|Reward
+1571|Locked
+1572|Free AP
+1573|Get AP
+1574|Content
+1575|Balance
+1576|Daily reward
+1577|Claim
+1578|Claimed
+1579|Watch ad
+1580|Get bonus
+1581|Once a day. Counts toward today's ad limit.
+1582|Come back tomorrow. Missed days never reset the counter.
+1583|AOD Points are earned from ads, missions, victories and purchases. They never expire and never buy armies, money or an advantage.
+1584|Missions, achievements and first victories also give AP.
+1585|One-time offer. No time pressure; take it whenever you like.
+1586|Full Version
+1587|All scenarios and historical eras, plus today's and future free content updates. One-time purchase.
+1588|Raises manual save slots from 3 to 5. Permanent.
+1589|Restore purchases
+1590|Prices are shown in your local currency on Google Play. AP never expires and is not used in other games.
+1591|Content locked
+1592|This content is not in the free version. Unlock it with AP or a one-time purchase.
+1593|Reward day %d: +%d AP
+1594|Left today: %d/%d
+1595|No ad available right now.
+1596|You've used today's ads. They refresh tomorrow.
+1597|Next ad: %s
+1598|Watch an ad  +%d AP
+1599|Daily bonus ad  +%d AP
+1600|+%d AP
+1601|Starter offer  %d AP
+1602|%d AP
+1603|Extra save slots  +%d
+1604|Extra save slots unlocked.
+1605|Not enough AP.
+1606|Unlocked: %s
+1607|%d purchase(s) restored.
+1608|No purchases to restore were found.
+1609|Purchase complete.
+1610|Purchase not completed.
+1611|Full Version unlocked.
+1612|Unlock for %d AP  (balance %d)
+1613|%d AP needed  (balance %d)  /  Store
+1614|Unlock only this  %s
+1615|Full Version  %s  (unlock everything)
+1616|AOD Points: +%d AP
+1617|Victory reward: +%d AP
+1618|You've used today's ads.
+1619|Wait a little before the next ad.
+1620|Today's bonus was already claimed.
+1621|The ad was not completed.
+1622|The store isn't connected in this build.
+1623|Couldn't reach the store. Check your connection.
+1624|Couldn't reach the store.
+1625|The purchase couldn't be verified.

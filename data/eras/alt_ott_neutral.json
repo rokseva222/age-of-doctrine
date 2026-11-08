@@ -1,0 +1,205 @@
+{
+ "id": "alt_ott_neutral",
+ "name": "Osmanlı Tarafsız",
+ "sub": "Ağustos 1914 – Alternatif",
+ "base": "ww1",
+ "family": "ww1",
+ "pack": "alt",
+ "icon": "helmet_ww1",
+ "mood": "war",
+ "start_year": 1914,
+ "start_doy": 212,
+ "blurb": "Enver Paşa'nın savaş yanlıları geri adım attı: İstanbul tarafsız kaldı. Boğazlar kapalı, Rusya'nın tahılı çıkamıyor, İtilaf ve Merkezî Güçler Osmanlı'yı kendi safına çekmeye çalışıyor.",
+ "suggest": [
+  "Turkey",
+  "Germany",
+  "Russia",
+  "United Kingdom",
+  "Austria",
+  "Bulgaria"
+ ],
+ "look": {
+  "shadow": [
+   0.09,
+   0.07,
+   0.05
+  ],
+  "mid": [
+   0.56,
+   0.45,
+   0.29
+  ],
+  "light": [
+   0.96,
+   0.9,
+   0.74
+  ],
+  "amount": 0.38,
+  "vignette": 0.18,
+  "grain": 0.012
+ },
+ "setup": {
+  "blocs": [
+   {
+    "name": "İtilaf Devletleri",
+    "members": [
+     "United Kingdom",
+     "France",
+     "Russia",
+     "Serbia",
+     "Belgium",
+     "Japan",
+     "Canada",
+     "Australia",
+     "New Zealand",
+     "South Africa"
+    ],
+    "emblem": {
+     "shape": 5,
+     "inner": 1,
+     "symbol": "shield",
+     "c1": "2f4f9a",
+     "c2": "ece6d6",
+     "c3": "2f4f9a"
+    }
+   },
+   {
+    "name": "Merkezi Güçler",
+    "members": [
+     "Germany",
+     "Austria",
+     "Bulgaria"
+    ],
+    "emblem": {
+     "shape": 4,
+     "inner": 1,
+     "symbol": "crown",
+     "c1": "6d6f78",
+     "c2": "e3a92b",
+     "c3": "e3a92b"
+    }
+   }
+  ],
+  "wars": [
+   [
+    "Austria",
+    "Serbia"
+   ],
+   [
+    "Germany",
+    "Russia"
+   ],
+   [
+    "Germany",
+    "France"
+   ],
+   [
+    "Germany",
+    "Belgium"
+   ],
+   [
+    "United Kingdom",
+    "Germany"
+   ],
+   [
+    "Austria",
+    "Russia"
+   ],
+   [
+    "Japan",
+    "Germany"
+   ]
+  ],
+  "truce": [],
+  "intro": "Ağustos 1914: Osmanlı Devleti tarafsızlığını ilan etti. Berlin de Londra da İstanbul'a tekliflerle geliyor; Boğazlar kimin eline geçerse savaşın seyri değişebilir."
+ },
+ "free": true,
+ "inherit_until": [
+  9999,
+  1
+ ],
+ "inherit_exclude": [
+  "Osmanlı Devleti Karadeniz",
+  "Çanakkale"
+ ],
+ "events": [
+  {
+   "y": 1914,
+   "m": 11,
+   "t": "Boğazlar kapalı kalırken Rusya'nın tahıl ihracatı çöktü; Petrograd'da ekmek kuyrukları büyüyor.",
+   "fx": [
+    [
+     "stab",
+     "Russia",
+     -4
+    ]
+   ]
+  },
+  {
+   "y": 1915,
+   "m": 3,
+   "t": "İtilaf İstanbul'a Boğazlar ve toprak vaatleri sundu; Merkezî Güçler de karşı teklif hazırladı.",
+   "fx": []
+  },
+  {
+   "y": 1916,
+   "m": 6,
+   "t": "Osmanlı hükûmeti tarafsızlık politikasını sürdürüyor; ticaret limanlarında altın akıyor.",
+   "fx": [
+    [
+     "stab",
+     "Turkey",
+     4
+    ]
+   ]
+  }
+ ],
+ "objectives": {
+  "*": [
+   {
+    "id": "o1",
+    "type": "survive",
+    "text": "Üç yıl ayakta kal",
+    "turns": 156
+   },
+   {
+    "id": "o2",
+    "type": "alliances",
+    "text": "3 müttefik edin",
+    "n": 3,
+    "required": false
+   }
+  ],
+  "Turkey": [
+   {
+    "id": "t1",
+    "type": "no_war",
+    "text": "İki yıl savaşsız kal",
+    "turns": 104
+   },
+   {
+    "id": "t2",
+    "type": "stability",
+    "text": "İstikrarı 60 üzerinde tut",
+    "n": 60
+   }
+  ]
+ },
+ "en": {
+  "name": "Ottoman Neutrality",
+  "sub": "August 1914 – Alternate",
+  "blurb": "The war faction around Enver Pasha backed down: Istanbul stayed neutral. The Straits are shut, Russian grain cannot get out, and both blocs court the Ottomans.",
+  "setup_intro": "August 1914: the Ottoman Empire has declared neutrality. Berlin and London both arrive in Istanbul with offers; whoever wins the Straits may change the course of the war.",
+  "events": {
+   "0": "With the Straits closed, Russian grain exports collapsed; bread queues grow in Petrograd.",
+   "1": "The Entente offered Istanbul the Straits and territory; the Central Powers prepared a counter-offer.",
+   "2": "The Ottoman government keeps its neutrality; gold flows into its trading ports."
+  },
+  "objectives": {
+   "o1": "Survive three years",
+   "o2": "Make 3 allies",
+   "t1": "Stay out of war for two years",
+   "t2": "Keep stability above 60"
+  }
+ }
+}

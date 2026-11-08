@@ -1,0 +1,73 @@
+{
+ "Sweden": {
+  "hlt": "Elisabet Lann|f",
+  "spy": "Charlotte von Essen|f"
+ },
+ "Pakistan": {
+  "hlt": "Mustafa Kamal",
+  "spy": "Asim Malik"
+ },
+ "Indonesia": {
+  "hlt": "Budi Gunadi Sadikin",
+  "spy": "Herindra"
+ },
+ "Mexico": {
+  "spy": "Francisco Almazán Barocio",
+  "hlt": "David Kershenobich"
+ },
+ "Argentina": {
+  "hlt": "Mario Lugones",
+  "spy": "Cristian Auguadra"
+ },
+ "Greece": {
+  "hlt": "Adonis Georgiadis",
+  "spy": "Themistoklis Demiris"
+ },
+ "Syria": {
+  "hlt": "Musab al-Ali",
+  "spy": "Abdulqader al-Tahhan"
+ },
+ "South Africa": {
+  "hlt": "Aaron Motsoaledi"
+ },
+ "United Arab Emirates": {
+  "hlt": "Ahmed Al Sayegh"
+ },
+ "Nigeria": {
+  "spy": "Adeola Ajayi",
+  "hlt": "Muhammad Ali Pate"
+ },
+ "Taiwan": {
+  "hlt": "Shih Chung-liang",
+  "spy": "Tsai Ming-yen"
+ },
+ "Vietnam": {
+  "hlt": "Dao Hong Lan|f",
+  "spy": "Luong Tam Quang"
+ },
+ "Netherlands": {
+  "hlt": "Sophie Hermans|f",
+  "spy": "Simone Smit|f"
+ },
+ "Iraq": {
+  "hlt": "Abdulhussein Aziz",
+  "spy": "Ali al-Zaidi"
+ },
+ "Algeria": {
+  "hlt": "Mohamed Seddik Aït Messaoudène"
+ },
+ "Ethiopia": {
+  "hlt": "Mekdes Daba|f",
+  "spy": "Redwan Hussien"
+ },
+ "Thailand": {
+  "hlt": "Pattana Promphat",
+  "spy": "Kitiphon Ruensamrit"
+ },
+ "Philippines": {
+  "hlt": "Jose Brix Pujalte Jr."
+ },
+ "Spain": {
+  "hlt": "Mónica García|f"
+ }
+}

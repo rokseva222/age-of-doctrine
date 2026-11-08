@@ -1,0 +1,1374 @@
+0	Verteidigungsminister
+1	Außenminister
+2	Innenminister
+3	Finanzminister
+4	Gesundheitsminister
+5	Geheimdienstchef
+6	Botschafter
+7	Zwielichtiger Händler
+8	Präsident des Sportverbands
+9	Vorsitzender der Wahlkommission
+10	Herr, wir planen ein großes Manöver an der Grenze zu {nb}. Zeigen wir Stärke oder bleiben wir vorsichtig?
+11	Großes Manöver
+12	Truppen wurden an der Grenze zusammengezogen. Die Moral der Armee stieg, die Nachbarn sind beunruhigt.
+13	Begrenztes Manöver
+14	Es fand ein kleines, unauffälliges Manöver statt.
+15	Absagen
+16	Das Manöver wurde abgesagt; Geld wurde gespart, die Offiziere murrten.
+17	Das heimische Gewehr- und Panzerfahrzeugprojekt wartet auf Mittel. Volle Unterstützung würde auch die Industrie beleben.
+18	Volle Unterstützung
+19	Die Prototypen wurden geliefert, die Fabriken laufen in drei Schichten.
+20	Teilweise Unterstützung
+21	Das Projekt kommt langsam, aber stetig voran.
+22	Verschieben
+23	Das Projekt wurde auf Eis gelegt.
+24	Um die Armee schnell zu vergrößern, empfehle ich, die Wehrpflicht zu verlängern.
+25	Dienstzeit verlängern
+26	Die Kasernen sind voll, aber die Familien sind unzufrieden.
+27	Freiwillige fördern
+28	Prämien und Stipendien ließen die Zahl der Freiwilligen steigen.
+29	Lassen, wie es ist
+30	Das aktuelle System bleibt bestehen.
+31	Unter den Offizieren gibt es Unruhe wegen der Bezahlung. In einigen Garnisonen finden Treffen statt.
+32	Gehalt erhöhen
+33	Der Sold wurde erhöht, die Offiziere beruhigten sich.
+34	Festnahmen beginnen
+35	Mehrere Obersten wurden verhaftet; die Armee ging auf Distanz zu Ihnen.
+36	Die Geduld der Offiziere war am Ende: Die Armee ergriff die Macht. Ihre Regierung ist beendet.
+37	Gespräch führen
+38	Mit den Kommandeuren fand ein Abendessen statt.
+39	{nb} möchte auf unserem Gebiet einen gemeinsamen Stützpunkt bauen und bietet dafür eine ordentliche Zahlung an.
+40	Annehmen
+41	Der Deal wurde unterzeichnet; die Opposition schreit, die Souveränität sei verkauft worden.
+42	Ablehnen
+43	Das Angebot wurde höflich abgelehnt.
+44	Ich empfehle, ein Cyberkommando einzurichten. Von dort aus werden Verteidigung und Angriff geführt.
+45	Vollständiges Kommando einrichten
+46	Hunderte junge Ingenieure traten dem Cyberarm der Armee bei.
+47	Kleine Einheit
+48	Innerhalb der Armee wurde eine kleine Cybereinheit gebildet.
+49	Unnötig
+50	Der Vorschlag wurde abgelehnt.
+51	Die Munitionsvorräte an der Front von {en} gehen zur Neige. Wir brauchen eine schnelle Entscheidung.
+52	Dringende Auslandsbestellung
+53	Die Munition kam per Luftfracht; die Fronten halten wieder stand.
+54	Zivile Fabriken umrüsten
+55	Zivile Produktionslinien wurden auf Waffenproduktion umgestellt.
+56	Durchhalten
+57	Die Fronteinheiten kamen mit eigenen Mitteln zurecht.
+58	Da sich der Krieg hinzieht, nehmen die Desertionen an der Front zu. Wie halten wir die Disziplin aufrecht?
+59	Amnestie erklären
+60	Die Deserteure wurden begnadigt; einige kehrten zurück.
+61	Harte Strafen
+62	Die Disziplin wurde härter; die Armee erholte sich, aber die Bevölkerung ist unruhig.
+63	Moralkampagne
+64	Zeitungen, Radio und Lieder hoben die Moral an der Front.
+65	Wissenschaftler warten auf Mittel für ein geheimes Programm für fortschrittliche Waffen. Bei Entdeckung drohen Sanktionen.
+66	Heimlich beginnen
+67	Das Programm begann. Der ausländische Geheimdienst scheint etwas bemerkt zu haben.
+68	Über zivile Kanäle vorgehen
+69	Die Forschung wurde unter einem „zivilen“ Etikett fortgesetzt.
+70	Das Projekt wurde abgebrochen.
+71	Der Staatschef von {nb} wünscht einen Gipfel. Eine Teilnahme könnte die Beziehungen entspannen.
+72	Persönlich hingehen
+73	Der Gipfel verlief herzlich; beide Seiten gaben eine gemeinsame Erklärung ab.
+74	Einen Gesandten schicken
+75	Es wurde eine Delegation mittlerer Ebene entsandt.
+76	Die Einladung wurde abgelehnt; die Presse las es als mutige Haltung.
+77	Ich schlage vor, die diplomatischen Beziehungen zu {nb} aufzuwerten: Botschaft, Handelsbüro, Visaabkommen.
+78	Botschaft eröffnen
+79	Eine neue Botschaft wurde eröffnet, Handelsdelegationen begannen zu kommen und zu gehen.
+80	Nur Handelsbüro
+81	Ein Handelsbüro wurde eröffnet.
+82	Nicht nötig
+83	Das aktuelle Niveau wurde beibehalten.
+84	{nb} möchte, dass wir ein drittes Land sanktionieren, und verspricht uns Unterstützung.
+85	Mitmachen
+86	Der Sanktionsbeschluss wurde gebilligt; das Zielland reagierte scharf.
+87	Neutral bleiben
+88	Die Regierung erklärte ihre Neutralität.
+89	Widersprechen
+90	Ihr Widerspruch gegen die Sanktionen wurde bekannt gegeben; die Beziehungen werden eine Weile kühl sein.
+91	Zwischen zwei Nachbarländern wächst die Spannung, und sie bitten uns zu vermitteln.
+92	Vermittlung übernehmen
+93	Als Gipfelgastgeber steigerten Sie Ihr Ansehen; die Spannung ließ nach.
+94	Heraushalten
+95	Die Parteien fanden ihren eigenen Weg.
+96	Unser Botschafter wurde von {nb} wegen Spionagevorwürfen ausgewiesen. Wie reagieren wir?
+97	Förmlich protestieren
+98	Eine Note wurde überreicht; die beiden Länder beriefen gegenseitig ihre Gesandten ab.
+99	Schweigen
+100	Der Vorfall war in der Presse bald vergessen.
+101	Vergeltung üben
+102	Es gab eine Gegenmaßnahme; die Beziehungen froren ein.
+103	{nb} bittet nach einer Katastrophe um internationale Hilfe. Großzügigkeit würde unser Ansehen heben.
+104	Große Hilfe
+105	Hilfskonvois brachen auf; die Weltöffentlichkeit lobte Sie.
+106	Symbolische Hilfe
+107	Ein kleines Hilfspaket wurde geschickt.
+108	Die Hilfsanfrage blieb unbeantwortet.
+109	Geheime diplomatische Korrespondenz wurde an die Presse durchgestochen. Unsere Beziehungen zu einigen Ländern könnten leiden.
+110	Die Dokumente bestreiten
+111	Das Dementi wirkte nicht überzeugend.
+112	Untersuchung einleiten
+113	Im Ministerium begann eine umfassende Untersuchung.
+114	Einen Staatssekretär opfern
+115	Der verantwortliche Bürokrat trat zurück; die Sache wurde abgeschlossen.
+116	{nb} erklärt ein Gebiet an der Grenzlinie zu seinem Territorium. Wie sollen wir reagieren?
+117	Truppen an die Grenze schicken
+118	Sich gegenüberstehende Truppen verschärften die Spannung.
+119	Verhandlungstisch
+120	Diplomatische Gespräche begannen.
+121	Zugeständnis machen
+122	Das Zugeständnis wurde angenommen; die Öffentlichkeit sah darin Schwäche.
+123	Drittländer drängen auf einen Waffenstillstand im Krieg mit {en}. Die Weltöffentlichkeit ist des Krieges müde.
+124	Zu Waffenstillstandsgesprächen setzen
+125	Hintergrundkanäle öffneten sich. Die Kriegsstimmung beruhigte sich.
+126	Krieg fortsetzen
+127	Der Krieg geht entschlossen weiter; der diplomatische Druck wurde härter.
+128	Ein drittes Land auf unsere Seite ziehen
+129	Ein neues Finanzhilfepaket hielt ein Land auf unserer Seite.
+130	In den Straßen von {cap} gibt es einen riesigen Protest; wirtschaftliche Forderungen werden laut. Die Menge wächst stündlich.
+131	Mittel bewilligen
+132	Ein Hilfspaket wurde angekündigt; die Menge zerstreute sich.
+133	Festnahmen und Gas
+134	Die Polizei griff ein; die Wut breitete sich auf alle Städte aus.
+135	Die Straßen erhoben sich und die Regierung wurde gestürzt. Sie wurden entmachtet.
+136	Verhandeln
+137	Es wurde mit Gewerkschafts- und Studentenvertretern gesprochen.
+138	Der Geheimdienst meldete einen Bombenanschlagsplan in einer Großstadt. Die Zeit drängt.
+139	Razzia
+140	Die Zelle wurde zerschlagen; die Presse nannte Sie einen Falken.
+141	Ausgangssperre
+142	Die Stadt stand eine Nacht still, der Plan wurde vereitelt, aber die Bevölkerung fühlte sich erdrückt.
+143	Der Hinweis ist übertrieben
+144	Der Anschlag geschah. Eine Welle tiefer Trauer und Wut folgte.
+145	Hohe Beamte werden der Günstlingswirtschaft und Korruption beschuldigt. Die Justiz erwartet Sie.
+146	Sie säubern
+147	Mehrere Namen wurden entlassen; die Öffentlichkeit fühlte sich erleichtert.
+148	Vertuschen
+149	Die Akte wurde geschlossen. Das Geld wurde geschützt, aber das Vertrauen litt.
+150	Unabhängige Untersuchung
+151	Eine unabhängige Kommission nahm ihre Arbeit auf.
+152	An der Grenze gibt es eine neue Migrationswelle. Tausende warten am Tor.
+153	Aufnehmen, Lager bauen
+154	Lager wurden gebaut; neue Arbeitskräfte begannen auf den Markt zu strömen.
+155	Grenze schließen
+156	Die Grenze wurde geschlossen; die Nachbarregierung kritisiert Sie.
+157	Um internationale Hilfe bitten
+158	Hilfsorganisationen setzten sich zusammen, um eine gemeinsame Lösung zu finden.
+159	Die Opposition fordert vorgezogene Neuwahlen. Auf den Straßen sind Wahlurnen-Parolen zu hören.
+160	Vorgezogene Wahlen ausrufen
+161	Die Wahl fand statt: Die jetzige Regierung erneuerte ihr Mandat.
+162	Sie haben die Wahl verloren. Die Macht wechselte, und eine neue Regierung wurde gebildet.
+163	Die Forderung wurde abgelehnt; die Opposition bereitet sich darauf vor, auf die Straße zu gehen.
+164	Ein Referendum vorschlagen
+165	Die Referendumskampagne begann.
+166	Einige Journalisten kritisieren die Regierung scharf. Soll ich die Senderbesitzer unter Druck setzen?
+167	Die Presse in Ruhe lassen
+168	Die Pressefreiheit blieb gewahrt; die Kritik geht weiter.
+169	Zensur
+170	Anweisungen gingen an die Sender; die digitale Überwachung wurde verstärkt.
+171	Die Sender schließen
+172	Mehrere Sender wurden geschlossen; aus dem Ausland kam eine scharfe Reaktion.
+173	Eine schwere Erdbeben- oder Flutkatastrophe traf das Land; Hunderttausende sind betroffen.
+174	Nationale Mobilmachung
+175	Armee und Zivilgesellschaft mobilisierten sich; die Städte werden wieder aufgebaut.
+176	Teilhilfe
+177	Die Hilfe kam zu spät.
+178	Dem Privatsektor überlassen
+179	Die Hilfe war unorganisiert; die Bevölkerung ist wütend.
+180	Das Haushaltsdefizit wächst. Die Reserven schrumpfen schnell.
+181	Steuern erhöhen
+182	Neue Steuern füllten die Staatskasse, die Bevölkerung murrte.
+183	Schulden aufnehmen
+184	Es wurden Schulden an den internationalen Märkten aufgenommen; die Zinslast bleibt für die kommenden Wochen.
+185	Ausgaben kürzen
+186	Nach dem Einfrieren öffentlicher Investitionen erholte sich die Staatskasse.
+187	Ein ausländischer Investor möchte in Ihrem Land eine riesige Fabrik bauen. Es gibt Anreizbedingungen.
+188	Steueranreiz geben
+189	Die Fundamente wurden gelegt; Tausende fanden Arbeit.
+190	Bedingte Zusage
+191	Nach zähem Verhandeln wurde eine kleine Anlage gebaut.
+192	Die nationalen Gefühle wurden gestreichelt.
+193	Die Inflation steigt, und die Bevölkerung klagt über die Preise.
+194	Zinsen erhöhen
+195	Das Geld wurde knapper; Kredite wurden teuer.
+196	Preisobergrenze festlegen
+197	Die Regalpreise stoppten, aber die Produzenten haben es schwer.
+198	Der Zentralbank vertrauen
+199	Das Problem lief nach seiner eigenen Dynamik weiter.
+200	Ein umfassendes Handelsabkommen mit {nb} liegt auf dem Tisch. Landwirtschaft und Energie sind ebenfalls enthalten.
+201	Unterzeichnen
+202	Das Abkommen wurde unterzeichnet; der Verkehr in den Häfen nahm zu.
+203	Feilschen
+204	Es wurde ein Teilabkommen geschlossen.
+205	Es wurde eine Ablehnung zum Schutz der heimischen Erzeuger beschlossen.
+206	Wir warten auf die Genehmigung eines riesigen Infrastrukturprojekts: Brücke, Hochgeschwindigkeitsbahn, Hafen.
+207	Alles bauen
+208	Baustellen wurden eingerichtet; die Projekte wurden zum Stolz des Volkes.
+209	Nur den Hafen
+210	Der Hafen wurde erweitert; der Handel beschleunigte sich.
+211	Die Projekte wurden dem nächsten Haushalt überlassen.
+212	Die Weltmärkte brechen ein und die Börse unseres Landes fiel um 20 %.
+213	Rettungspaket
+214	Der Staat stützte die Banken; die Panik stoppte.
+215	Sparpolitik
+216	Es wurden harte Sparmaßnahmen ergriffen.
+217	Der wirtschaftliche Zusammenbruch und Straßenaufstände stürzten die Regierung.
+218	Reserven verkaufen
+219	Reserven wurden verkauft; der Markt holte Luft.
+220	Es gibt eine neue Epidemiewelle. Die Krankenhäuser beginnen sich zu füllen.
+221	Quarantäne verhängen
+222	Die Städte wurden abgeriegelt, die Epidemie unter Kontrolle gebracht.
+223	Impfkampagne
+224	Es wurde eine Impfkampagne im Stil einer Mobilmachung durchgeführt.
+225	Ignorieren
+226	Die Epidemie breitete sich aus; Produktion und Armee wurden geschwächt.
+227	Das Stadtkrankenhausprogramm wartet auf Genehmigung: neue Betten, neue Ärzte.
+228	Großes Programm
+229	Neue Krankenhäuser eröffneten; die Bevölkerung ist zufrieden.
+230	Teilprogramm
+231	Es begann zuerst in den dringendsten Regionen.
+232	Das Programm wurde verschoben.
+233	Ich habe einen Plan zum Aufbau einer heimischen Pharma- und Medizintechnikindustrie vorgelegt.
+234	Staatliche Beteiligung
+235	UN
+236	Vereinte Nationen
+237	%d Mitglieder   /   Entscheidung mit einfacher Mehrheit, kein Veto
+238	in %d Wo.
+239	Kosten %s
+240	Bereit
+241	Letzte Resolutionen
+242	Noch keine Resolutionen.
+243	Wählen Sie das Ziel der Resolution.
+244	Wählen Sie den Krieg, in dem ein Waffenstillstand gefordert wird.
+245	Resolution angenommen
+246	Resolution abgelehnt
+247	Resolution konnte nicht eingebracht werden
+248	Waffenstillstandsresolution
+249	Ruft beide Kriegsparteien zu einem Waffenstillstand auf.
+250	Wiederaufbaufonds
+251	Mittel werden zur Reparatur der beschädigten Provinzen des Ziellandes bereitgestellt.
+252	Humanitäre Hilfe
+253	Haushalts- und Stabilitätshilfe für das Zielland.
+254	Sanktionsresolution
+255	Die Einnahmen des Ziellandes sinken 26 Wochen lang um 25 Prozent.
+256	Gemeinsame Aktion
+257	Bei Annahme erklären die Länder, die mit Ja gestimmt haben, dem Ziel den Krieg.
+258	Die Vereinten Nationen sind noch nicht gegründet.
+259	Sie müssen %d Wochen warten, bevor Sie diese Resolution erneut einbringen können.
+260	Unzureichende Mittel: Die Resolution kostet %s.
+261	Es gibt kein gültiges Ziel.
+262	UN: Die %s-Resolution wurde abgelehnt (%d dafür, %d dagegen).
+263	UN: Die %s-Resolution wurde angenommen (%d dafür, %d dagegen). %s
+264	Zwischen %s und %s hat ein Waffenstillstand begonnen.
+265	Fonds für %s überwiesen: %s; die Provinzen werden repariert.
+266	Hilfe für %s gesendet: %s.
+267	Ein 26-wöchiges Sanktionsregime gegen %s hat begonnen.
+268	%d Länder erklärten den Krieg. Ziel: %s.
+269	Friedenstruppe
+270	Beruhigt die Unruhen im Zielland und erhöht dessen Stabilität.
+271	Entwicklungsprogramm
+272	Die am wenigsten entwickelten Provinzen des Ziellandes verbessern sich um eine Stufe.
+273	Souveränitätsgarantie
+274	Die Länder, die mit Ja gestimmt haben, greifen das Ziel 26 Wochen lang nicht an.
+275	Waffenembargo
+276	Industrie und Logistik des Ziellandes werden geschwächt.
+277	Internationale Untersuchung
+278	Stabilität und Aggressivität des Ziellandes sinken.
+279	Abrüstungsresolution
+280	Die Armee des Ziellandes schrumpft um 12 Prozent.
+281	Friedenstruppen in %s stationiert; die Unruhen lassen nach.
+282	Entwicklungsprogramm für %s: %d Provinzen verbessert.
+283	%d Länder sagten 26 Wochen Gewaltverzicht gegenüber %s zu.
+284	Waffenembargo gegen %s: Industrie und Logistik geschwächt.
+285	Internationale Untersuchung zu %s: Die Stabilität sank, die Aggression ließ nach.
+286	Die Armee von %s schrumpfte um 12 Prozent.
+287	Meer
+288	Amphibische Landung
+289	Landung vom Meer aus: Angriff −15 Prozent, Verteidigung +10 Prozent. Die Transportkapazität ist durch Ihre Marine begrenzt.
+290	Amphibische Landung: Transportkapazität %s Soldaten
+291	Beziehungen
+292	Beziehungsansicht aus.
+293	Beziehungsansicht: gelb gewähltes Land, blau Verbündete, rot im Krieg, lila Waffenruhe.
+294	Keine
+295	Bündnisblock: %s
+296	%d Provinzen   /   Truppen %s   /   Einkommen %s
+297	Verbündete
+298	Das Osmanische Reich trat in den Krieg ein, indem es russische Schwarzmeerhäfen beschoss.
+299	Weihnachtsfrieden an der Westfront: Die Soldaten in den Schützengräben legten für einen Tag die Waffen nieder.
+300	Großer Flottenangriff auf die Dardanellen: Das Schicksal der Meerengen steht auf dem Spiel.
+301	Italien erklärte Österreich-Ungarn den Krieg und schloss sich der Entente an.
+302	Bulgarien trat den Mittelmächten bei und griff Serbien an.
+303	Die Schlacht um Verdun begann: Frankreich und Deutschland traten in ein monatelanges Blutbad ein.
+304	Rumänien trat aufseiten der Entente in den Krieg ein und griff Österreich-Ungarn an.
+305	Februarrevolution in Russland: Das Zarenregime brach zusammen, das Land versank im Chaos.
+306	Die Vereinigten Staaten erklärten Deutschland den Krieg und traten in den Krieg ein.
+307	Griechenland erklärte den Mittelmächten aufseiten der Entente den Krieg.
+308	Oktoberrevolution in Russland: Die Bolschewiki ergriffen die Macht.
+309	Frieden von Brest-Litowsk: Sowjetrussland schloss einen Separatfrieden mit Deutschland.
+310	Waffenstillstand vom 11. November: An der Westfront verstummen die Geschütze.
+311	Der Vertrag von Versailles wurde unterzeichnet: Die Nachkriegsordnung wird neu gezeichnet.
+312	Die New Yorker Börse brach ein: Die Weltwirtschaftskrise erschüttert die Welt.
+313	Hitler wurde in Deutschland Reichskanzler.
+314	Deutschland überfiel Polen: Ein neuer Weltkrieg beginnt.
+315	Polen ist gefallen; Deutschland und die UdSSR haben das Land aufgeteilt.
+316	Deutschland griff Dänemark und Norwegen an.
+317	Deutschland startete seine große Offensive im Westen: Die Niederlande und Belgien werden angegriffen.
+318	Der Fall Frankreichs: Auch Italien erklärte Frankreich und Großbritannien den Krieg.
+319	Luftschlacht um England: Die Luftwaffe steht über dem britischen Himmel.
+320	Dreimächtepakt unterzeichnet: Deutschland, Italien und Japan bilden ein Bündnis.
+321	Unternehmen Barbarossa: Deutschland und seine Verbündeten griffen die UdSSR an.
+322	Pearl Harbor: Japan griff die USA und Großbritannien an, und Deutschland erklärte den USA den Krieg.
+323	Schlacht um Midway: Die Schlagkraft der japanischen Flotte wurde gebrochen.
+324	Die Schlacht von Stalingrad begann.
+325	Italien bat um einen Waffenstillstand; die Alliierten landeten nach Sizilien in Italien.
+326	D-Day: Die Alliierten landeten in der Normandie.
+327	Rumänien wechselte die Seiten und erklärte Deutschland den Krieg.
+328	Bulgarien und Finnland wandten sich gegen Deutschland.
+329	Die Türkei erklärte Deutschland und Japan symbolisch den Krieg.
+330	Der Krieg in Europa endet: Deutschland kapitulierte bedingungslos.
+331	Atombomben wurden auf Hiroshima und Nagasaki abgeworfen; die UdSSR erklärte Japan den Krieg.
+332	Japan kapitulierte: Der Zweite Weltkrieg ist vorbei.
+333	Die NATO wurde gegründet: Das westliche Bündnis nimmt Gestalt an.
+334	Der Koreakrieg begann.
+335	Sie haben keine Atomwaffen.
+336	Das Atomarsenal ist nicht bereit (%d Wochen).
+337	Sie müssen sich mit dem Ziel im Krieg befinden, um Atomwaffen einzusetzen.
+338	ATOMSCHLAG! %s setzte eine Atomwaffe gegen %s ein; die Welt ist schockiert und Sanktionen kommen.
+339	Atomschlag
+340	Gegen %s wird eine Atomwaffe eingesetzt. 80 %% der verteidigenden Armee werden vernichtet, aber Ihre Stabilität sinkt, es folgen 26 Wochen Sanktionen und die Verbündeten des Ziels könnten Ihnen den Krieg erklären. Sind Sie sicher?
+341	Starten
+342	%d - %d   %dW
+343	Waffenruhe
+344	Erste Schritte
+345	Tutorial abgeschlossen
+346	Erfolge
+347	Erfolg: %s
+348	Ziel erreicht: %s
+349	Nächstes Ziel: %s
+350	Ziel: %s
+351	Ziele und Erfolge
+352	Spiele die erste Runde
+353	Drücke die Play-Taste oder gehe eine Runde weiter.
+354	Bewege eine Armee
+355	Wähle eine Armee und tippe dann auf eine Nachbarprovinz.
+356	Tippe auf eine Provinz eines Nachbarlandes und erkläre den Krieg.
+357	Erobere deine erste Provinz
+358	Greife mit einer Armee eine feindliche Provinz an und nimm sie ein.
+359	Schließe Frieden
+360	Beende einen Krieg mit Frieden und sichere die Beute.
+361	Eroberer
+362	Erobere 10 Provinzen.
+363	Erobere 50 Provinzen.
+364	Herr der Welt
+365	Erobere 150 Provinzen.
+366	Schlachterprobt
+367	Bestreite 50 Schlachten.
+368	Unterzeichne 5 Friedensverträge.
+369	Freund in der Not
+370	Schließe ein Bündnis.
+371	Staatenzerstörer
+372	Lösche ein Land von der Karte.
+373	Kulissendiplomatie
+374	Bringe eine UN-Resolution durch.
+375	Geist der Normandie
+376	Lande Truppen vom Meer aus.
+377	Büchse der Pandora
+378	Setze eine Atomwaffe ein. Der Preis ist hoch.
+379	Ein Jahr durchhalten
+380	Spiele 52 Wochen (1 Jahr).
+381	Ein Jahrzehnt
+382	Spiele 520 Wochen (10 Jahre).
+383	Großmacht
+384	Besitze gleichzeitig 30 Provinzen.
+385	Kriegsreparationen
+386	Die Hälfte der Staatskasse des Verlierers geht an dich und seine Stabilität sinkt.
+387	Abrüstung
+388	Die Armeen des Verlierers werden halbiert.
+389	Pufferzone
+390	Der Waffenstillstand dauert 78 statt 26 Wochen; keine Seite kann angreifen.
+391	Friedensbedingungen: %s erlegte %s Folgendes auf: %s.
+392	Reparationen
+393	Abrüstung
+394	Pufferzone
+395	\nKommandeur: %s (Stufe %d)
+396	Kommandeur %s gewann den Feldzug: Stufe %d (+%%%d Kampfstärke).
+397	Luftoperation
+398	Luftbombardement: Die Wirkung hängt von der Luftüberlegenheit ab (bis zu −20 % Verteidigung, wenn Ihre Luftmacht die des Feindes übertrifft). In der frühen Epoche nicht verfügbar.
+399	Weltreaktion: %d / 100 (steigt mit Eroberungen; über 50 bildet sich eine Koalition)
+400	Die Welt ist besorgt über den Aufstieg von %s: Nachbarn und Großmächte werden kühl.
+401	KOALITION! %d Länder erklärten %s wegen seiner Eroberungen den Krieg.
+402	Flottenbeschuss
+403	Schiffsartillerie auf eine Küstenprovinz: bis zu −18 % Verteidigung, wenn Ihre Marine stärker ist als die des Feindes. Nur Küstenprovinzen.
+404	Raketenschlag
+405	Langstreckenraketen und Präzisionsschläge: bis zu −30 % Verteidigung, keine Luftüberlegenheit nötig. Nur moderne Epoche.
+406	Luftlandung
+407	Fallschirmjägerangriff aus dem Rücken: Die Verteidigung der Provinz und der Heimatverteidiger-Bonus entfallen. Epochen des Zweiten Weltkriegs und der Moderne.
+408	Spezialkräfte-Einsatz
+409	Ein harter Schlag mit einer kleinen Elitetruppe: +18 % Angriff, geringe Verluste. Bis zu 25.000 Soldaten; Epochen des Zweiten Weltkriegs und der Moderne.
+410	Diese Operation kann hier nicht eingesetzt werden.
+411	Willkommen, Kommandeur
+412	Diese kurze Anleitung erklärt die Grundlagen des Spiels. Du kannst jeden Schritt mit „Überspringen“ auslassen; Aktionsschritte gehen von selbst weiter, wenn du sie ausführst.
+413	Lerne die Karte kennen
+414	Ziehe die Karte mit dem Finger und zoome mit zwei Fingern. Tippe nun auf eine beliebige Provinz.
+415	Provinzkarte
+416	Die Karte zeigt Besitzer, Bevölkerung, Einkommen und Verteidigung der Provinz; die Hauptstadt hat einen Stern. Deine Provinzen bringen dir Einkommen, und mit jedem Verlust sinkt es.
+417	Obere Leiste
+418	Hier stehen Staatskasse (Geld), Truppen, Provinzanzahl und Datum. Jede Runde ist eine Woche: Das Einkommen wird jede Woche der Staatskasse gutgeschrieben, während Armeeunterhalt und Ausgaben abgezogen werden.
+419	Wähle deine Armee
+420	Tippe auf eine deiner Provinzen und drücke auf der Karte „Armee wählen“. Armeen erscheinen auf der Karte mit ihrer Truppenzahl.
+421	Bewege die Armee
+422	Tippe auf eine Nachbarprovinz und drücke „Armee hierher marschieren lassen“. Eine von Hand entsandte Armee wartet nach der Ankunft; Armeen ohne Befehle kämpfen automatisch, wenn diese Einstellung aktiv ist.
+423	Beende die Runde
+424	Gehe mit der Taste „Runde beenden“ oben rechts eine Woche weiter. Nachrichten erscheinen im Weltbulletin oben; tippe darauf, um den Verlauf zu öffnen.
+425	Politikpanel
+426	Die Panzertaste rechts: Budgetaufteilung (Militär, Industrie, Cyber, Logistik ...), Waffenkäufe, Inventar, Handel, Fronten, Bündnisse, Geheimdienst und Kabinett. Hier wächst deine Stärke.
+427	Kabinett und Stabilität
+428	Politik → Kabinett: Minister werden nach der Kultur des Landes ernannt; ein guter Minister steigert Einkommen, Armee und Stabilität. Kriegsmüdigkeit und niedrige Stabilität führen zu Unruhen und Rebellionen in den Provinzen; du kannst Söldner anheuern, um deine Armee schnell zu verstärken.
+429	Krieg erklären
+430	Wähle zuerst ein schwaches Nachbarland. Mein Vorschlag: {target}. Tippe auf eine seiner Provinzen und drücke „Krieg erklären“. Seine Verbündeten könnten sich gegen dich wenden; wäge die Kosten ab.
+431	Tippe auf eine feindliche Provinz und drücke „Angriff“. Wähle deine Armeen und die Operationsart (Artillerie, Luft, See, Raketen, Fallschirm, Spezialkräfte ...). Der Vorteilsbalken zeigt deine Siegchance.
+432	Belagerung und Eroberung
+433	Eine Armee, die die Verteidigung besiegt, zieht in die Provinz ein und belagert sie; läuft die Belagerungszeit ab, gehört die Provinz dir und dein Kriegspunktestand steigt. Armeen brauchen eine Genehmigung, um Grenzen zu überschreiten.
+434	Der Friedenstisch
+435	Mit hohem Kriegspunktestand tippe auf eine feindliche Provinz und wähle „Frieden anbieten“: Wähle die Provinzen, die du nimmst, sowie Reparationen, Abrüstung und Pufferzone nach deinem Punktestand. Zu viele Eroberungen erhöhen die „Weltreaktion“; über 50 bilden Länder eine Koalition.
+436	Bündnisse und Beziehungen
+437	Tippe auf eine Provinz eines befreundeten Landes: „Bündnis vorschlagen“ oder „Beziehungen“ (wer mit wem verbündet ist, wer im Krieg ist). Die Handschlag-Taste rechts färbt die Karte nach Beziehungsfarben.
+438	Welt und UN
+439	Die Globus-Taste rechts: Ranglisten, Blöcke, Nachrichten und die UN. In der UN bringst du per Mehrheitsentscheid Anträge wie Waffenstillstand, Wiederaufbau, Hilfe und Sanktionen durch (kein Veto).
+440	Atommacht und Risiken
+441	Als Atommacht kannst du einen Atomschlag auf eine feindliche Provinz starten: massive Zerstörung, aber es folgen harte Sanktionen und eine Koalition. Bewahre ihn als letztes Mittel auf.
+442	Speichern und Ziele
+443	Das ≡-Menü oben links: Speichern/Laden, Einstellungen und „Ziele und Erfolge“. In den Einstellungen kannst du Autospeichern aktivieren. Erfolge sind dauerhaft.
+444	Du bist bereit!
+445	Jetzt bist du bereit für Eroberung, Diplomatie oder friedliche Entwicklung. Du kannst das Tutorial jederzeit im Menü erneut öffnen. Viel Glück!
+446	TUTORIAL
+447	Überspringen
+448	Beenden
+449	Tu, was dort steht, und die Karte geht von selbst weiter.
+450	Fertig!
+451	ein Nachbarland
+452	Tutorial schließen
+453	Tutorial
+454	Weltweite Pandemie
+455	Spanische Grippe
+456	Epidemie
+457	Globaler Finanzcrash
+458	Finanzpanik
+459	Nachbeben der Depression
+460	Hungersnot und Nahrungsmittelkrise
+461	Energieschock
+462	Treibstoffknappheit
+463	Herr, eine Epidemie dringt ins Land ein und breitet sich über die Welt aus. Das Gesundheitssystem wird belastet. Was tun wir?
+464	Herr, die Märkte brechen zusammen und die Banken wanken. Die Krise erfasst die ganze Welt. Was soll die Staatskasse tun?
+465	Herr, Dürre und Schifffahrtsprobleme haben die Lebensmittelpreise in die Höhe getrieben. Die Menschen stehen nach Brot an. Was tun wir?
+466	Herr, die Ölpreise sind explodiert; Industrie und Verkehr kämpfen. Was tun wir?
+467	Notfall-Hilfspaket
+468	Ein umfassendes Hilfspaket wurde angekündigt. Die Krise wird Ihr Land kaum treffen, die Erholung wird schnell gehen.
+469	Die Ausgaben wurden gekürzt. Eine harte, aber billige Maßnahme; die Bevölkerung murrt.
+470	Abwarten
+471	Die Regierung entschied sich zu warten. Die Krise wird mit voller Wucht treffen, aber das halten Sie aus.
+472	Krisenwirkung gemindert
+473	Krise in voller Wirkung
+474	Weltkrise: %s hat begonnen; ihre Auswirkungen dauern etwa %d Wochen.
+475	%s ist vorbei; die Weltwirtschaft erholt sich.
+476	Flugzeugträgerkampfgruppe
+477	Erhöht die Landungskapazität und den Landungsangriff; Sie können feindliche Küstenprovinzen (auch Inselstaaten) angreifen, ohne eine Armee zu schicken. Gekaufte Gruppen verursachen Unterhaltskosten.
+478	Kaufen: %s
+479	Eine neue Trägergruppe ist in Dienst gestellt.
+480	Trägerschlag
+481	Trägerschlag: %s Verluste zugefügt.
+482	Trägerschlag ausgeführt: keine Armee am Ziel.
+483	In dieser Epoche gibt es keine Flugzeugträger.
+484	Nicht genug Technologie für einen Flugzeugträger (mindestens %%%d).
+485	Sie können keine weiteren Trägergruppen betreiben.
+486	Unzureichende Mittel: %s nötig.
+487	%s hat eine neue Trägergruppe in Dienst gestellt.
+488	Sie haben keinen Flugzeugträger.
+489	Die Trägergruppe wird vorbereitet (%d Wochen).
+490	Sie müssen sich mit dem Ziel im Krieg befinden.
+491	Das Ziel liegt nicht an der Küste.
+492	Unzureichende Mittel: %s.
+493	Die Träger von %s griffen %s%s an.
+494	: %s Verluste
+495	Spiele 5 Runden
+496	Gib 3 Armeebefehle
+497	Bestreite 2 Schlachten
+498	Spiele 12 Runden
+499	Erobere eine Provinz
+500	Schließe ein Bündnis
+501	Bringe einen UN-Antrag durch
+502	Schließe Frieden
+503	Erobere 3 Provinzen
+504	Bestreite 6 Schlachten
+505	Führe eine amphibische Landung durch
+506	Schließe 2 Friedensabkommen
+507	Erkläre einen Krieg
+508	Spiele diese Woche 40 Runden
+509	Bestreite diese Woche 12 Schlachten
+510	Erobere diese Woche 6 Provinzen
+511	Schließe diese Woche 2 Friedensabkommen
+512	Bringe diese Woche 2 UN-Anträge durch
+513	Erobere diese Woche 12 Provinzen
+514	Erkläre diese Woche 2 Kriege
+515	Schließe diese Woche 3 Bündnisse
+516	Unteroffizier
+517	Leutnant
+518	Hauptmann
+519	Major
+520	Oberst
+521	Brigadegeneral
+522	Generalmajor
+523	Generalleutnant
+524	General
+525	Feldmarschall
+526	Tägliche Missionen
+527	Wöchentliche Missionen
+528	Pkt.
+529	Serie: %d Tage
+530	Keine Serie
+531	Mission erfüllt: %s (+%d Pkt.)
+532	Befördert: %s!
+533	Shop
+534	AOD-Punkte
+535	Belohnung
+536	Gesperrt
+537	Gratis-AP
+538	AP erhalten
+539	Inhalt
+540	Guthaben
+541	Tägliche Belohnung
+542	Abholen
+543	Abgeholt
+544	Werbung ansehen
+545	Bonus erhalten
+546	Einmal am Tag. Zählt zum heutigen Werbelimit.
+547	Komm morgen wieder. Verpasste Tage setzen den Zähler nie zurück.
+548	AOD-Punkte werden durch Werbung, Missionen, Siege und Käufe verdient. Sie verfallen nie und kaufen niemals Armeen, Geld oder Vorteile.
+549	Missionen, Erfolge und erste Siege geben ebenfalls AP.
+550	Einmaliges Angebot. Kein Zeitdruck; nimm es, wann du willst.
+551	Vollversion
+552	Alle Szenarien und historischen Epochen sowie heutige und künftige kostenlose Inhaltsupdates. Einmalkauf.
+553	Erhöht die manuellen Speicherplätze von 3 auf 5. Dauerhaft.
+554	Käufe wiederherstellen
+555	Preise werden in Ihrer Landeswährung bei Google Play angezeigt. AP verfallen nie und werden in keinem anderen Spiel verwendet.
+556	Inhalt gesperrt
+557	Dieser Inhalt ist nicht in der kostenlosen Version enthalten. Schalte ihn mit AP oder einem Einmalkauf frei.
+558	Belohnungstag %d: +%d AP
+559	Heute übrig: %d/%d
+560	Gerade ist keine Werbung verfügbar.
+561	Du hast die heutige Werbung aufgebraucht. Sie wird morgen erneuert.
+562	Nächste Werbung: %s
+563	Werbung ansehen  +%d AP
+564	Tägliche Bonuswerbung  +%d AP
+565	Starterangebot  %d AP
+566	Zusätzliche Speicherplätze  +%d
+567	Zusätzliche Speicherplätze freigeschaltet.
+568	Nicht genug AP.
+569	Freigeschaltet: %s
+570	%d Kauf/Käufe wiederhergestellt.
+571	Es wurden keine wiederherstellbaren Käufe gefunden.
+572	Kauf abgeschlossen.
+573	Kauf nicht abgeschlossen.
+574	Vollversion freigeschaltet.
+575	Für %d AP freischalten  (Guthaben %d)
+576	%d AP nötig  (Guthaben %d)  /  Shop
+577	Nur dies freischalten  %s
+578	Vollversion  %s  (schaltet alles frei)
+579	AOD-Punkte: +%d AP
+580	Siegesbelohnung: +%d AP
+581	Du hast die heutige Werbung aufgebraucht.
+582	Warte etwas bis zur nächsten Werbung.
+583	Der heutige Bonus wurde bereits abgeholt.
+584	Die Werbung wurde nicht abgeschlossen.
+585	Der Shop ist in dieser Version nicht verbunden.
+586	Der Shop war nicht erreichbar. Prüfe deine Verbindung.
+587	Der Shop war nicht erreichbar.
+588	Der Kauf konnte nicht verifiziert werden.
+589	Die heimischen Pharmawerke stellten ihre ersten Produkte her.
+590	Privatsektor fördern
+591	Die Unternehmer kamen in Bewegung.
+592	Weiter importieren
+593	Die aktuelle Liefervereinbarung blieb bestehen.
+594	Die Verluste an der Front steigen. Die Feldlazarette reichen nicht aus.
+595	Feldlazarette einrichten
+596	Die Verwundeten wurden schneller versorgt und kehrten an die Front zurück.
+597	Zivile Krankenhäuser nutzen
+598	Die Stadtkrankenhäuser übernahmen die Last der Front.
+599	Keine Ressourcen
+600	Die Verluste stiegen.
+601	Es gibt eine Hungerwarnung. Die Nahrungsvorräte sind auf kritischem Niveau.
+602	Notimport von Nahrungsmitteln
+603	Schiffe brachten Weizen von Hafen zu Hafen.
+604	Rationierung einführen
+605	Ein Rationierungssystem wurde eingeführt; die Schlangen wurden länger.
+606	Dem Markt überlassen
+607	Die Preise schossen in die Höhe, die Wut wuchs.
+608	Wir haben zuverlässige Informationen, dass eine Gruppe von Offizieren einen Putsch plant.
+609	Jetzt verhaften
+610	Die Operation wurde durchgeführt und die Pläne vereitelt. Das Vertrauen innerhalb der Armee wurde beschädigt.
+611	Weiter beobachten
+612	Die Überwachung wurde verstärkt.
+613	Der Putsch geschah: Truppen umstellten die Hauptstadt und die Regierung wechselte.
+614	Die Offiziere belohnen
+615	Loyalität wurde mit Beförderungen und Gehaltserhöhungen erkauft.
+616	Wir haben einen großen Cyberangriff auf die Energie- und Banknetze des Landes entdeckt.
+617	Gegenangriff
+618	Die angreifenden Server wurden ausgeschaltet; die internationale Spannung stieg.
+619	Nur verteidigen
+620	Die Verteidigungsnetze wurden gestärkt.
+621	Es gab einige Tage Dienstausfall.
+622	Ein Oberst der Armee von {nb} bittet um Asyl; er hat wichtige Informationen mitgebracht.
+623	Der Oberst teilte seine Informationen; die Nachbarregierung beschuldigt Sie.
+624	Der Oberst wurde an der Grenze zurückgeschickt.
+625	Es wurde klar, dass unser Spionagenetz in {nb} kurz vor der Enttarnung steht.
+626	Netz abziehen
+627	Die Agenten zogen sich leise zurück.
+628	Weitermachen
+629	Das Netz wurde gefasst, aber einige Geheimnisse wurden herausgeschmuggelt; die Beziehungen wurden angespannt.
+630	Wir stehen kurz davor, die Pläne von {en} zu erbeuten, aber der Preis ist hoch.
+631	Operation starten
+632	Die Pläne wurden erbeutet; die Kommandeure aktualisierten die Frontlinien.
+633	Nur mithören
+634	Geheime Kommunikation wurde abgehört.
+635	Abbrechen
+636	Die Operation wurde abgebrochen.
+637	Herr, ein Handels- und Visaabkommen mit {nb} liegt auf dem Tisch. Wenn wir unterzeichnen, gewinnen beide Länder, aber die heimische Industrie wird klagen.
+638	Abkommen unterzeichnen
+639	Das Abkommen wurde unterzeichnet; das Handelsvolumen wuchs, die heimischen Produzenten murrten.
+640	Bedingungen verschärfen
+641	Die Verhandlungen zogen sich hin; wir erhielten nur ein kleines Zugeständnis.
+642	Das Abkommen wurde abgelehnt; die Binnenmeinung ist zufrieden, der Nachbar kühl.
+643	Unser Botschafter steckt in {nb} mitten in einem Skandal; die lokale Presse jagt uns. Sollen wir ihn abberufen?
+644	Abberufen
+645	Der Botschafter wurde abberufen; die Beziehungen kühlten kurz ab.
+646	Ihn verteidigen
+647	Der Botschafter blieb im Amt; die Opposition kritisierte die Regierung.
+648	Leise ersetzen
+649	Ein neuer Botschafter wurde ernannt; der Vorfall war vergessen.
+650	Die Botschaft hat eine Aufnahme einer geheimen Sitzung der Regierung von {nb} erhalten. Was tun wir?
+651	Veröffentlichen
+652	Die Aufnahme wurde an die Presse durchgestochen; die innere Unterstützung wuchs, der Nachbar ist wütend.
+653	Als Druckmittel behalten
+654	Die Aufnahme liegt im Tresor; Ihre Hand in den Verhandlungen ist stärker.
+655	Der Gegenseite zurückgeben
+656	Die Aufnahme wurde zurückgegeben; im Gegenzug kamen wirtschaftliche Zugeständnisse.
+657	Die Staatschefs von {nb} wollen einen Gipfel abhalten; unser Botschafter hat die Vorbereitungen abgeschlossen. Sollen wir ausrichten?
+658	Ausrichten
+659	Der Gipfel war großartig; das Ansehen des Landes stieg.
+660	Nur teilnehmen
+661	Sie nahmen am Gipfel teil; es war ein gewöhnliches Treffen.
+662	Nicht teilnehmen
+663	Die Einladung wurde abgelehnt; die Presse las es als Arroganz.
+664	Ein Mann mit leuchtenden Augen am Hafen: „Ich habe drei beim Zoll nicht registrierte Kisten, Herr. Selbst ich weiß nicht, was drin ist. Welche hätten Sie gern?“
+665	Kleine Kiste
+666	Aus der Kiste kamen Goldbarren! Der Händler war schon verschwunden.
+667	Die Kiste war voller Sand. Der Händler ging winkend davon.
+668	Mittlere Kiste
+669	In der Kiste lag ein altes Labortagebuch; die Wissenschaftler jubelten.
+670	Die Presse erfuhr vom Falschgeld aus der Kiste. Wir standen blamiert da.
+671	Große Kiste
+672	Eine große Kiste voller Prototypen und Baupläne! Die Fabriken jubelten.
+673	Was aus der Kiste kam, war verlorenes Eigentum des Nachbarn. Es entstand ein diplomatisches Problem.
+674	Wegschicken
+675	Der Händler zuckte mit den Schultern und zog zum nächsten Hafen weiter.
+676	Der Händler mit leiser Stimme: „Ich habe eine billige Waffenpartie, die Papiere sind etwas schmutzig, aber der Preis lockt ...“
+677	Alles kaufen
+678	Die Waffen kamen wie neu heraus; die Einheiten wurden stärker.
+679	Die Läufe klemmten. Die Offiziere tobten.
+680	Die Hälfte kaufen
+681	Eine halbe Partie wurde problemlos geliefert.
+682	Die Partie fehlte; der Händler sagte: „Na ja, so etwas passiert.“
+683	Seine Papiere prüfen
+684	Das Netz des Händlers wurde entwirrt; unser Geheimdienst erfuhr viel.
+685	Der Händler verwischte seine Spuren.
+686	Der Händler hält eine kleine Schachtel hin: „Legendärer Tee, Herr. Drei Jahre in den Bergen getrocknet. Verteilen Sie ihn ans Volk, und Sie werden geliebt.“
+687	Ans Volk verteilen
+688	Die Teeschlange füllte den Stadtplatz. Dankesbekundungen strömten ein.
+689	Selbst trinken
+690	Der Tee war wirklich köstlich. Niemand weiß das.
+691	Der Händler verkaufte den Tee an jemand anderen.
+692	Das WM-Finale hat begonnen und die Nationalmannschaft von {c} hat die Gruppenphase überstanden! Sollen wir dem Team eine Prämie versprechen?
+693	Riesenprämie
+694	{c} IST WELTMEISTER! Die Straßen sind ein Fest.
+695	Wir sind im Elfmeterschießen ausgeschieden. Die Straßen sind still.
+696	{c} gewann die WM! Das Land feiert.
+697	Normale Prämie
+698	Ein Wunder! Das Team hob den Pokal.
+699	Wir schieden im Viertelfinale aus; der Trainer trat zurück.
+700	{c} gewann überraschend die WM!
+701	Keine Prämie
+702	Ein Pokal umsonst! Die Spieler wurden ohne Gage Meister.
+703	Die Spieler schmollten und wir schieden in der ersten Runde aus.
+704	{c}, WM-Sieger ohne Prämie!
+705	Die Olympischen Spiele haben begonnen! Unsere Athleten jagen Medaillen. Wie viel investieren wir ins Trainingslager?
+706	Ein Medaillenregen! Die Zeitungen machten Schlagzeilen.
+707	Wir holten ein paar Bronzemedaillen; immerhin war die Teilnahme genug.
+708	{c} beendete die Olympischen Spiele an der Spitze des Medaillenspiegels!
+709	Unser Athlet gewann Gold, das Volk weinte.
+710	Keine Medaillen, aber das Volk ist trotzdem stolz.
+711	Kein Budget
+712	Die Athleten reisten auf eigene Kosten. Niemand sagte etwas.
+713	Laut einer zuverlässigen Quelle haben die Offiziere in {nb} die Regierung satt. Ein kleiner Funke genügt. Was tun wir?
+714	Leise unterstützen
+715	Die Offiziere handelten: Die Regierung in {nb} wankte. Es gibt keine Fingerabdrücke von uns.
+716	Die Operation wurde durchgestochen; die Regierung von {nb} ist wütend auf uns.
+717	Die Informationen teilen
+718	Die Regierung von {nb} nahm die Informationen dankbar entgegen; die Spannung sank.
+719	Zuhören und vergessen
+720	Die Akte wurde ins Archiv gelegt.
+721	Ein Journalist hat peinliche Dokumente über den Staatschef von {nb}. Er will sie uns verkaufen.
+722	Kaufen und veröffentlichen
+723	Die Dokumente verbreiteten sich; die Regierung von {nb} wackelt.
+724	Behalten (Erpressungsmittel)
+725	Die Dokumente liegen im Tresor. {nb} ist jetzt etwas höflicher.
+726	Der Journalist fand einen anderen Käufer.
+727	Der Wahltag ist da! Das Volk geht zu den Urnen. Wie führen wir den Wahlkampf?
+728	Riesenkampagne
+729	Arbeit vor Ort
+730	Stille Kampagne
+731	Wahl verschieben
+732	Die Wahl wurde wegen „außergewöhnlicher Umstände“ verschoben. Die Presse ist wütend.
+733	Die Verschiebung der Wahl brachte das Volk auf die Straße. Ihre Regierung fiel.
+734	Neuling
+735	Veteran
+736	Meister
+737	Armeestärke wächst nicht
+738	Armeestärke wächst langsam
+739	Armeestärke wächst schnell
+740	Nachbarn ändern sich nicht
+741	Nachbarn werden langsam milder
+742	Nachbarn werden spürbar milder
+743	Stabilität erodiert leicht
+744	Stabilität steigt leicht
+745	Stabilität steigt stetig
+746	Jede Woche versickert ein Teil des Einkommens
+747	Die Staatskasse wächst leicht
+748	Die Staatskasse gewinnt jede Woche
+749	Unruhen bleiben sich selbst überlassen
+750	Unruhen sinken gelegentlich
+751	Unruhen sinken oft
+752	Cyberabwehr ist statisch
+753	Cyberreife steigt langsam
+754	Cyberreife steigt schnell
+755	Sein Schwager ist ein ehemaliger Minister. Sein Lebenslauf ist eine Seite lang, in großer Schrift.
+756	In jeder Sitzung sagt er „Das habe ich schon mal gesehen“; hat er nicht.
+757	Er verlangt ein niedriges Gehalt; da muss ein Grund sein.
+758	Aus der Parteijugend. Energisch, eifrig, auch ein bisschen gefährlich.
+759	Niemand kennt ihn, also widerspricht niemand.
+760	Unter seinen Referenzen ist ein Heimatverein.
+761	Er schläft beim Mittagessen, ist aber dem Haushalt treu (vorerst).
+762	Ein zwanzigjähriger Bürokrat. Keine Überraschungen, keine Skandale.
+763	Ruhig, ordentlich; verliert nie seine Akten.
+764	Sogar die Opposition nennt ihn „seriös“.
+765	Die Person in jedem Kabinett, an die sich niemand erinnert.
+766	Ein fähiger, unauffälliger Techniker.
+767	Mittelmaß: ärgert niemanden, beeindruckt niemanden.
+768	Ein preisgekrönter Technokrat; seine Diplome wiegen mehr als sein Geldbeutel.
+769	Eine Legende mit Erfahrung in Krieg und Frieden; sein Gehalt ist ebenfalls legendär.
+770	Er hat in drei Ländern beraten, und alle wollen ihn zurück.
+771	Die Weltpresse nennt ihn „das Gehirn des Kabinetts“.
+772	Arbeitet nur mit den Besten; das hat seinen Preis.
+773	Einer der seltenen Namen, die sowohl vom Volk als auch von der Armee geliebt werden.
+774	%s: %s trat sein Amt an. (%s)
+775	%s %s stürzte wegen Korruptionsvorwürfen aus dem Amt. Wen ernennen wir an seiner Stelle?
+776	%s %s trat zurück. Wen ernennen wir an seiner Stelle?
+777	%s %s wurde entlassen. Wen ernennen wir an seiner Stelle?
+778	Eine neue Regierung wird gebildet: %s %s verlässt den Posten. Wen ernennen wir an seiner Stelle?
+779	%s %s beendete die Amtszeit. Wen ernennen wir an seiner Stelle?
+780	SKANDAL: %s %s wurde von Veruntreuungsvorwürfen erschüttert; %s verschwanden aus der Staatskasse.
+781	%s %s trat zurück.
+782	Nachbarland
+783	Hauptstadt
+784	%s%d Stabilität
+785	%s%d Cyber
+786	%s%d Industrie
+787	%s%d Logistik
+788	%s%.1f Technologie
+789	%s%s Truppen
+790	Unruhen
+791	Nachbarn verhärtet
+792	Nachbarn besänftigt
+793	%s erschüttert
+794	+Entwicklung
+795	Die Wahlurnen sind offen: Sie haben die Wahl mit %%%d der Stimmen gewonnen! Das Volk steht hinter Ihnen.
+796	Bei den Wahlen in %s erneuerte die Regierung ihr Mandat mit %%%d der Stimmen.
+797	Wahl: %%%d
+798	+4 Stabilität
+799	Die Wahlurnen sind offen: Sie erhielten nur %%%d der Stimmen. Die Opposition übernimmt die Macht; der neue Führer ist %s. Ein Teil des Kabinetts wird wechseln.
+800	Die Opposition gewann die Wahl in %s; der neue Führer %s trat sein Amt an.
+801	−6 Stabilität
+802	Erster Weltkrieg
+803	August 1914
+804	Nach dem Attentat von Sarajevo bricht die gesamte Diplomatie Europas zusammen. Entente und Mittelmächte versinken in den Schützengräben; Maschinengewehre, schwere Artillerie und die ersten Panzer verändern das Gesicht des Krieges.
+805	Zweiter Weltkrieg
+806	September 1939
+807	Deutschland greift Polen an; Großbritannien und Frankreich erklären den Krieg. Panzerkeile, Bomber und U-Boot-Krieg. Der Krieg kann sich auf alle Kontinente ausbreiten.
+808	Deutschland
+809	Reichskanzler
+810	UdSSR
+811	Generalsekretär
+812	Britisches Empire
+813	Premierminister
+814	Frankreich
+815	Italien
+816	Kaiserreich Japan
+817	Kaiser
+818	USA
+819	Präsident
+820	Republik China
+821	Oberbefehlshaber
+822	Polen
+823	Präsident
+824	Königreich Jugoslawien
+825	Regent
+826	Niederlande
+827	Königin
+828	Belgien
+829	König
+830	Spanien
+831	Rumänien
+832	Kanada
+833	Australien
+834	Neuseeland
+835	Südafrika
+836	Dänemark
+837	Schweden
+838	Finnland
+839	Ungarn
+840	Bulgarien
+841	Zar
+842	Griechenland
+843	Norwegen
+844	Portugal
+845	Iran
+846	Schah
+847	Ägypten
+848	Irak
+849	Saudi-Arabien
+850	Thailand
+851	Brasilien
+852	Argentinien
+853	Mexiko
+854	Mongolei
+855	Irland
+856	Slowakischer Staat
+857	Deutsches Kaiserreich
+858	Österreich-Ungarn
+859	Osmanisches Reich
+860	Russisches Kaiserreich
+861	Serbien
+862	Montenegro
+863	Schweiz
+864	Bundesrat
+865	Siam
+866	Alliierte Mächte
+867	Achsenmächte
+868	1. September 1939: Deutsche Armeen überschritten die polnische Grenze. Großbritannien und Frankreich traten in den Krieg ein; im Fernen Osten kämpft Japan gegen China.
+869	Entente-Mächte
+870	Mittelmächte
+871	August 1914: Das Attentat von Sarajevo löste eine Kette von Bündnissen aus. Europa mobilisierte; Schützengräben werden gegraben.
+872	Afrika
+873	Januar
+874	Februar
+875	März
+876	April
+877	Mai
+878	Juni
+879	Juli
+880	August
+881	September
+882	Oktober
+883	November
+884	Dezember
+885	Land%d
+886	Region%d
+887	%s hat %s den Krieg erklärt!
+888	Die Welt ist schockiert: Zwischen %s und %s ist Krieg ausgebrochen.
+889	EILMELDUNG: %s-Armeen rückten an die Grenze zu %s vor.
+890	Die Diplomatie brach zusammen: %s eröffnete die Front gegen %s.
+891	WARNUNG: %s hat Ihnen den Krieg erklärt!
+892	%s-Armeen stehen an Ihrer Grenze. Der Krieg hat begonnen!
+893	Weltgazette: Sie befinden sich im Krieg mit %s. Die Grenzen stehen unter Beschuss.
+894	Sie haben den Krieg erklärt: Sie befinden sich im Krieg mit %s.
+895	Die Welt spricht über Sie: Sie sind gegen %s in den Krieg gezogen!
+896	Ihre Armeen haben sich in Bewegung gesetzt, Ziel: %s.
+897	Die Provinz %s ist gefallen! Die Flagge von %s weht.
+898	Die Armee von %s hat die Provinz %s eingenommen.
+899	Frontbericht: Die Provinz %s steht jetzt unter der Kontrolle von %s.
+900	Sieg! Die Provinz %s wurde erobert.
+901	Ihre Armee ist in die Provinz %s eingezogen, die Bevölkerung ist verblüfft.
+902	Die Welt spricht über Sie: Die Provinz %s steht jetzt unter Ihrer Kontrolle!
+903	Verlust: Die Provinz %s fiel in Feindeshand!
+904	Die Provinz %s wurde besetzt, Sie müssen sie befreien!
+905	Schlechte Nachrichten: Die Provinz %s ist gefallen.
+906	Zwischen %s und %s wurde Frieden geschlossen.
+907	Die Waffen schwiegen: %s und %s erreichten Frieden.
+908	%s verließ den Friedenstisch mit %d Provinzen: %s.
+909	Gemäß dem Abkommen erhielt %s %d Provinzen: %s.
+910	Blutiger Zusammenstoß! Die Armee von %s schlug die Armee von %s in der Provinz %s in die Flucht.
+911	Große Schlacht in der Provinz %s: %s siegte, %s erlitt schwere Verluste.
+912	Der Staat %s wurde von der Karte getilgt.
+913	In die Geschichte eingegangen: %s existiert nicht mehr.
+914	Quartalsbericht: stärkste Wirtschaft %s, größte Armee %s, größtes Gebiet %s.
+915	Boom in der Wirtschaft von %s: %s flossen in die Staatskasse.
+916	Die Börsen steigen! Die Staatskasse von %s gewann %s.
+917	Eine Wirtschaftskrise traf %s: %s gingen verloren.
+918	Defizit in der Staatskasse von %s: %s lösten sich in Luft auf.
+919	In der Provinz %s wurde ein reiches Erzvorkommen gefunden! (%s)
+920	In der Provinz %s wurde eine Ölreserve entdeckt. (%s)
+921	Das Volk von %s mobilisierte sich: %s Freiwillige schlossen sich der Armee an.
+922	Ein Ruf an die Heimat! %s Freiwillige meldeten sich zur Armee von %s.
+923	Erdbeben in der Provinz %s! Die Produktion sank. (%s)
+924	AUFSTAND! %s erhob sich in der Provinz %s. (%s)
+925	%s übernahm die Kontrolle über die Provinz %s. (%s)
+926	Unruhen brachen aus: Die Provinz %s ist in den Händen von %s. (%s)
+927	%s wurde niedergeschlagen, der Widerstand ist vorbei.
+928	Der Aufstand ist vorbei: %s löste sich auf.
+929	%s erklärte die Unabhängigkeit! Neuer Staat: %s. (Früherer Besitzer: %s)
+930	Eine neue Flagge auf der Karte: %s gründete einen Staat mit dem Namen %s. (Früherer Besitzer: %s)
+931	%s und %s schlossen ein Bündnis.
+932	Neue Front: %s und %s unterzeichneten ein Bündnis.
+933	%s-Pakt
+934	%s-Verteidigungsunion
+935	%s-Solidaritätsbündnis
+936	%s-Sicherheitsrat
+937	%s-Partnerschaft
+938	%s-Pakt %d
+939	Das Bündnis zwischen %s und %s ist beendet.
+940	%s zog für seinen Verbündeten %s gegen %s in den Krieg.
+941	Bündnisfall: %s eröffnete um %s willen die Front gegen %s.
+942	Republik %s
+943	In {c} breitet sich eine Epidemie aus: Die Krankenhäuser sind voll, die Stabilität wankt.
+944	Ansteckende Krankheit in der Provinz {p}! {c} verhängte Quarantäne.
+945	Flutkatastrophe in der Provinz {p}! Die Infrastruktur wurde beschädigt. ({c})
+946	Über die Ufer getretene Flüsse überschwemmten die Provinz {p}. ({c})
+947	Dürre in {c}: Die Ernte brach ein, {a} gingen verloren.
+948	Hungerwarnung! Die Agrarproduktion von {c} sank, {a} Schaden.
+949	Ein heftiger Sturm traf die Küsten von {c}: {a} Schaden in den Häfen.
+950	Hurrikan vor der Küste von {p}! Der Hafenverkehr von {c} kam zum Erliegen.
+951	Großer Protest in der Provinz {p}! Das Volk ist auf den Straßen. ({c})
+952	{c}: Die Demonstrationen gegen die Regierung in der Provinz {p} verschärften sich.
+953	Putschversuch! Die Regierung von {c} behielt nur knapp die Kontrolle.
+954	Schüsse in der Hauptstadt von {c}: Der Putschversuch wurde niedergeschlagen.
+955	Eine Flüchtlingswelle an der Grenze: {c} gab {a} für Hilfe aus.
+956	Massenmigration in die Provinz {p}! {c} errichtete provisorische Lager.
+957	Rekordernte! Die Bauern von {c} verdienten {a} zusätzliches Einkommen.
+958	Ein ertragreiches Jahr: Die Getreideexporte von {c} boomten.
+959	Die Wissenschaftler von {c} verkündeten einen technologischen Durchbruch!
+960	Eine bahnbrechende Entdeckung in einem Forschungszentrum von {c}.
+961	Von {c} ausgerichteter Gipfel: Das diplomatische Ansehen stieg.
+962	Ein Tauwetter zugunsten von {c} beim internationalen Gipfel. Die Stabilität stieg.
+963	Kein Krieg zu Beginn. Wähle eines der 200 Länder auf der Karte; baue Budget, Armee und Bündnisse selbst auf.
+964	Ostfront
+965	Russland – Ukraine
+966	Europas größter Landkrieg tobt weiter. Russland mit seiner Massenarmee, die Ukraine im Widerstand mit westlicher Unterstützung; Cyber- und Logistiklinien sind so wichtig wie die Front.
+967	Nordatlantisches Bündnis
+968	Pakt für kollektive Sicherheit
+969	Ostfront: Zwischen Russland und der Ukraine tobt ein großer Krieg. Westliche Länder unterstützen die Ukraine wirtschaftlich und militärisch.
+970	Meerengen-Krise
+971	China – Taiwan
+972	China hat eine See- und Luftblockade in der Taiwanstraße begonnen. Das Eingreifen der USA und Japans sowie die Halbleiterversorgung werden die Weltwirtschaft prägen.
+973	Pazifische Verteidigungslinie
+974	Eurasische Partnerschaft
+975	Meerengen-Krise: Die chinesische Marine hat Taiwan umzingelt. Die Halbleiter-Lieferkette ist unterbrochen; die USA und ihre Verbündeten bereiten sich vor.
+976	Golffeuer
+977	Iran – Israel – USA
+978	Iran und Israel befinden sich im direkten Krieg; die USA stehen an der Seite Israels. Die Straße von Hormus und der Ölfluss sind bedroht, Cyberangriffe treffen die Stromnetze.
+979	Atlantische Sicherheitspartnerschaft
+980	Achse des Widerstands
+981	Golffeuer: Iran beschoss Israel mit Raketen- und Drohnensalven; die USA schickten eine Flotte in die Region.
+982	Himalaya-Schatten
+983	Indien – Pakistan
+984	Der Zusammenstoß an der Kaschmir-Grenze ist zu einem totalen Krieg geworden. China steht hinter Pakistan, Russland pumpt Waffen nach Indien; zwischen zwei Atommächten läuft die Zeit davon.
+985	Karakorum-Partnerschaft
+986	Himalaya-Schatten: Indien und Pakistan eröffneten entlang der Grenze das Feuer aufeinander. In beiden Hauptstädten wurde der Notstand ausgerufen.
+987	38. Breitengrad
+988	Nordkorea – Südkorea
+989	Nordkoreanische Artillerie hat Seoul in Reichweite. An der am stärksten bewaffneten Grenze der Welt sind Luftmacht und Cyberkrieg entscheidend.
+990	Pazifische Verteidigungsunion
+991	Nordachse
+992	38. Breitengrad: Nordkorea eröffnete entlang der Grenze das Artilleriefeuer. Südkorea und die USA aktivierten ihre Verteidigungspläne.
+993	Kaukasus-Knoten
+994	Aserbaidschan – Armenien
+995	Nach Bergkarabach flammte die Spannung wieder auf. Die Türkei steht an der Seite Aserbaidschans, Russland an der Armeniens; Korridore und Energielinien sind in Gefahr.
+996	Kaspi-Anatolien-Linie
+997	Kaukasus-Knoten: An der Grenze zwischen Aserbaidschan und Armenien brachen erneut schwere Kämpfe aus.
+998	Schwarzes Banner
+999	Fiktiv: extremistische Wiedergeburt
+1000	In der Wüste Syriens und des Irak hat eine fiktive extremistische Einheit, das Kalifat des Schwarzen Banners, mehrere Provinzen an sich gerissen und wächst schnell. Während die Staaten der Region einer nach dem anderen zerfallen, ist unklar, wer eingreifen wird.
+1001	Kalifat des Schwarzen Banners
+1002	Kalif
+1003	Schwarzes Banner: Im Wüstengürtel tauchte eine neue extremistische Einheit auf und eroberte den Osten Syriens und des Irak.
+1004	Neues Reich
+1005	Führer
+1006	Fiktiv: autoritäre Wiederbelebung
+1007	Im Osten Deutschlands hat sich eine fiktive autoritäre Bewegung, das Neue Reich, abgespalten und eine moderne Armee aufgebaut. Europas Demokratien müssen sich zu einer einzigen Front zusammenschließen. (Es werden keine realen historischen Symbole verwendet.)
+1008	Europäischer Verteidigungsring
+1009	Neues Reich: Im Osten Deutschlands wurde eine autoritäre separatistische Einheit ausgerufen. Die europäischen Hauptstädte traten zu einer Dringlichkeitssitzung zusammen.
+1010	Baltischer Funke
+1011	Fiktiv: großer Krieg im Norden
+1012	Russland rückte unter Berufung auf eine Grenzverletzung gegen Estland und Lettland vor. Der NATO-Artikel gilt: Ein im Norden entzündeter Funke kann sich über den Kontinent ausbreiten.
+1013	Baltischer Funke: Russische Truppen überschritten die Grenze zu Estland und Lettland. Die NATO berief sich auf ihren Artikel zur kollektiven Verteidigung.
+1014	Rückkehr des Kaisers
+1015	Fiktiv: Das napoleonische Zeitalter kehrt zurück
+1016	In Frankreich rief ein charismatischer General das „Neue Kaiserreich“ aus und nahm mit einem Teil der Armee die Region Paris ein. Revolutionsgeist und kaiserliche Nostalgie kamen zusammen; Europa hält wieder den Atem an.
+1017	Neues Kaiserreich
+1018	Rückkehr des Kaisers: In Frankreich wurde unter der Führung des Generals das Neue Kaiserreich ausgerufen; die Armee spaltete sich in zwei.
+1019	Stiller Krieg
+1020	Fiktiv: Cyberzeitalter, eine Front ohne Waffen
+1021	Es gibt kein Artilleriefeuer, aber die Welt befindet sich im Krieg. Die Supermächte treffen gegenseitig Stromnetze, Häfen und Börsen; Embargos eskalieren. Die Sicherheit von Fabriken und Logistik zählt mehr als die Armee.
+1022	Stiller Krieg: Es gibt keinen offenen Krieg zwischen den Großmächten; aber Stromnetze, Häfen und Börsen stehen unter Cyberangriff.
+1023	Missionsziele
+1024	optional
+1025	Verbleibende Zeit: %d Wochen
+1026	Alle Ziele erreicht! Mission erfüllt.
+1027	Die Zeit ist abgelaufen: Die Ziele wurden nicht rechtzeitig erreicht.
+1028	Szenario erstellen
+1029	Bearbeiten
+1030	Dein eigenes Szenario
+1031	Szenarioname
+1032	Untertitel (optional)
+1033	Zu Beginn angezeigte Nachrichtenzeile
+1034	Land des Spielers
+1035	Im Menü standardmäßig ausgewählt; Spieler können auch ein anderes Land wählen.
+1036	Embargos
+1037	Spannungen
+1038	Bündnisse (Blöcke)
+1039	Ländereinstellungen
+1040	Zeitlimit (Wochen, 0 = keines)
+1041	Freigabecode
+1042	Aus Code importieren
+1043	Hinzufügen
+1044	Mitglied hinzufügen
+1045	Bündnis erstellen
+1046	Ein Bündnis braucht einen Namen und mindestens 2 Mitglieder.
+1047	Beide Seiten dürfen nicht dasselbe Land sein.
+1048	Armee
+1049	Armee-Multiplikator
+1050	Staatskassen-Multiplikator
+1051	Stabilitätsänderung
+1052	Einstellung anwenden
+1053	Überleben (Wochen)
+1054	Aus dem Krieg heraushalten (Wochen)
+1055	Provinzanzahl
+1056	Anzahl Verbündeter
+1057	Stabilitätsschwelle
+1058	Anzahl der Blockmitglieder
+1059	Frieden schließen (Land)
+1060	Ausschalten (Land)
+1061	BIP-Anteil (%)
+1062	Ziel hinzufügen
+1063	Optional
+1064	Gib dem Szenario zuerst einen Namen.
+1065	Das Szenario konnte nicht gespeichert werden.
+1066	Ein von dir erstelltes Szenario.
+1067	Sende diesen Code an einen Freund; er kann dein Szenario mit „Aus Code importieren“ zu seinem Spiel hinzufügen.
+1068	In die Zwischenablage kopieren
+1069	Füge den Freigabecode unten ein.
+1070	Einfügen
+1071	Importieren
+1072	Der Code ist ungültig oder beschädigt.
+1073	Deine Szenarien
+1074	DEIN SZENARIO
+1075	Kalter Krieg
+1076	Großoperation
+1077	Bereitschaft
+1078	Sieg
+1079	Teilweise
+1080	Fiasko
+1081	Operationsname
+1082	Land
+1083	Eine Entscheidungsoperation, die Land-, Luft-, See-, Sabotage- und Cyberangriffe in einem Plan vereint. Sie ist teuer, dauert 3 Wochen und kann lange nicht wiederholt werden. Gelingt sie, fällt etwa die Hälfte der Städte des Ziels auf einmal.
+1084	Bei Sieg eingenommene Städte: %d / %d
+1085	Kosten: %s   /   Weltreaktion: +%d (+%d mehr bei Sieg)
+1086	Der Generalstab formiert sich neu (%d Wochen).
+1087	Großoperation gestartet: %s
+1088	Für eine Großoperation müssen Sie sich mit dem Ziel im Krieg befinden.
+1089	Eine Großoperation gegen dieses Ziel läuft bereits.
+1090	Eine Großoperation braucht mindestens %d Soldaten.
+1091	Das Ziel muss noch mindestens %d Provinzen haben.
+1092	Unzureichende Staatskasse: Die Großoperation kostet %s.
+1093	Weg zur Unabhängigkeit
+1094	Bewegungspanel
+1095	Neuer Modus
+1096	Führe eine fiktive Bewegung an. Organisiere dich im Geheimen, erhebe dich, verhandle, erkläre die Unabhängigkeit, gewinne Anerkennung und halte den Staat am Leben. Ausländische Unterstützung folgt deiner Ideologie; jede Hilfe hat eine Bedingung.
+1097	Land, von dem man sich lösen will
+1098	Region und Größe
+1099	Identität der Bewegung
+1100	Name der Bewegung
+1101	Name des Anführers (fiktiv)
+1102	Zufällig
+1103	Ideologie (bestimmt die ausländische Unterstützung)
+1104	Methode
+1105	Aktionen
+1106	Unterstützer
+1107	Andere Gruppen
+1108	Noch keine ausländische Unterstützung.
+1109	Volksunterstützung
+1110	Geheimhaltung
+1111	Legitimität
+1112	Abhängigkeit: %d   /   Anerkennungen: %d   /   Provinzen: %d   /   Truppen: %s   /   Staatskasse: %s
+1113	Konsolidierung: %d / 52 Wochen
+1114	Erfolgschance %%%d
+1115	Ideologische Nähe: %%%d   /   Beziehungen: %d   /   Truppen: %s   /   Provinzen: %d
+1116	Hilfe
+1117	Bedingungen
+1118	zog Unterstützung zurück
+1119	neutral
+1120	verbündet
+1121	Rivale
+1122	verschmolzen
+1123	Fusion vorschlagen
+1124	Bündnis vorschlagen
+1125	Rund um die Hauptstadt
+1126	Ost
+1127	West
+1128	Nord
+1129	Süd
+1130	Diese Gruppe existiert nicht mehr.
+1131	Du hast vor Kurzem mit dieser Gruppe gesprochen (%d Wochen).
+1132	Die Gespräche mit %s verliefen gut.
+1133	%s lehnte das Bündnis ab.
+1134	%s schloss sich der Bewegung an!
+1135	%s lehnte die Fusion ab.
+1136	Die Rivalität mit %s wurde zum Krieg.
+1137	Die Volksunterstützung muss mindestens 40 betragen
+1138	Die Volksunterstützung muss mindestens 50 betragen
+1139	Die Legitimität muss mindestens 35 betragen
+1140	Mindestens 5 Länder müssen dich anerkennen
+1141	Du musst zuerst einen Waffenstillstand mit dem Zentrum schließen
+1142	Du musst zuerst Frieden mit dem Zentrum schließen
+1143	Eine Propagandakampagne wurde durchgeführt.
+1144	Eine neue Geheimzelle wurde gegründet.
+1145	Gelder wurden gesammelt.
+1146	Eine Waffenlieferung traf ein.
+1147	Der Aufstand hat begonnen!
+1148	Freiwillige schlossen sich der Armee an.
+1149	Es wurde ein Appell an die Weltöffentlichkeit gerichtet.
+1150	Die Unabhängigkeit wurde einseitig erklärt!
+1151	Der Grenzvertrag wurde unterzeichnet.
+1152	Die Entwicklungsinvestition hat begonnen.
+1153	Der Putsch gelang!
+1154	Der Putsch scheiterte.
+1155	Referendum gewonnen: Unabhängigkeit erklärt!
+1156	Referendum verloren; das Volk ist gespalten.
+1157	UN-Mitgliedschaft gewährt!
+1158	Der UN-Antrag wurde abgelehnt (Veto oder zu wenige Stimmen).
+1159	Weg zur Unabhängigkeit abgeschlossen: Du hast den Staat gegründet, Anerkennung gewonnen und ihn am Leben gehalten.
+1160	Alternativgeschichte-Paket
+1161	Strategische Meerengen
+1162	Welthandel
+1163	Das Land, das eine Meerenge oder einen Kanal kontrolliert, steuert die Durchfahrt: Es kann Maut erheben, sie für Feinde sperren oder für alle schließen. Erobere die Schlüsselprovinz, um die Kontrolle zu übernehmen.
+1164	Gesamtwirkung der Meerengen auf dein Einkommen: %+.1f%%
+1165	Wirkung auf dich: %+.1f%%
+1166	Niemand
+1167	Ungültiger Modus.
+1168	Du kontrollierst diese Meerenge nicht.
+1169	Eine neue Entscheidung zu dieser Meerenge kann in %d Wochen getroffen werden.
+1170	Tägliche Herausforderung
+1171	Für alle gleich
+1172	Jeden Tag starten alle mit demselben Land in derselben Welt. Nach 52 Wochen wird dein Punktestand berechnet, basierend auf Wachstum und Stabilität. Du erhältst AP bei deinem ersten Abschluss des Tages und kannst beliebig oft neu versuchen.
+1173	Land von heute
+1174	Wendung von heute
+1175	Beste Punktzahl heute: %d
+1176	Du hast es heute noch nicht versucht.
+1177	Bestleistung aller Zeiten: %d
+1178	Status der Herausforderung
+1179	Abgeschlossen. Punktzahl: %d
+1180	Aktuelle Punktzahl: %d
+1181	Tägliche Herausforderung: %s — %s
+1182	Tägliche Herausforderung abgeschlossen!\nDeine Punktzahl: %d
+1183	Deine beste Punktzahl heute!
+1184	Belohnung: +%d AP
+1185	Politisches System
+1186	Nächste Wahl
+1187	in %d Wochen
+1188	Wahl
+1189	Putsch-/Krisenrisiko
+1190	Kriegsrecht
+1191	Noch %d Wochen
+1192	Politische Aktionen
+1193	Sehr niedrig
+1194	Kriegsraum
+1195	Plane eine mehrphasige Operation: Du legst Ziele, Operationsarten und Zeitpunkt fest; der Plan läuft jede Runde selbstständig. 15 % der Kosten geplanter Angriffe werden erstattet; gelingt der gesamte Plan, gewinnst du Stabilität.
+1196	Du befindest dich gerade nicht im Krieg; für einen Plan brauchst du einen Krieg.
+1197	Feind, gegen den geplant wird
+1198	Zielland: %s
+1199	Noch keine Phasen. Füge sie von Hand hinzu oder lasse einen automatischen Plan vorschlagen.
+1200	Erfolgschance ≈ %%%d   /   Wartezeit: %d Wo.
+1201	Entfernen
+1202	Erfolgreich: %d   /   Fehlgeschlagen: %d   /   Gesamt: %d
+1203	Plan abbrechen
+1204	Phase hinzufügen
+1205	Automatischen Plan vorschlagen
+1206	Es wurde kein Weg zur Hauptstadt gefunden.
+1207	In Kraft setzen
+1208	Plan zurücksetzen
+1209	Zielprovinz
+1210	Keine feindlichen Provinzen in Reichweite deiner Armeen. Bringe deine Armeen zuerst näher an die Front.
+1211	Kräfteverhältnis
+1212	Warten (nach der vorherigen Phase)
+1213	Geschätzte Erfolgschance: %%%d
+1214	Es können höchstens 6 Phasen hinzugefügt werden.
+1215	Diese Provinz ist bereits im Plan.
+1216	Füge dem Plan mindestens eine Phase hinzu.
+1217	Es ist keine Armee mehr übrig, die das Ziel erreichen kann.
+1218	Die Zeit ist abgelaufen.
+1219	Läuft
+1220	Erfolgreich
+1221	Fehlgeschlagen
+1222	Wartend
+1223	Alle Meerengen
+1224	China
+1225	Indien
+1226	Indonesien
+1227	Nigeria
+1228	Bangladesch
+1229	Russland
+1230	Japan
+1231	Äthiopien
+1232	Philippinen
+1233	Dem. Rep. Kongo
+1234	Türkei
+1235	Vereinigtes Königreich
+1236	Südafrika
+1237	Tansania
+1238	Südkorea
+1239	Kolumbien
+1240	Ukraine
+1241	Algerien
+1242	Afghanistan
+1243	Marokko
+1244	Usbekistan
+1245	Malaysia
+1246	Ghana
+1247	Mosambik
+1248	Madagaskar
+1249	Kamerun
+1250	Elfenbeinküste
+1251	Nordkorea
+1252	Taiwan
+1253	Niger
+1254	Chile
+1255	Malawi
+1256	Kasachstan
+1257	Sambia
+1258	Ecuador
+1259	Syrien
+1260	Kambodscha
+1261	Tschad
+1262	Simbabwe
+1263	Guinea
+1264	Ruanda
+1265	Tunesien
+1266	Bolivien
+1267	Kuba
+1268	Südsudan
+1269	Dominikan. Rep.
+1270	Tschechien
+1271	Somalia
+1272	Jordanien
+1273	Aserbaidschan
+1274	Vereinigte Arabische Emirate
+1275	Belarus
+1276	Tadschikistan
+1277	Israel
+1278	Österreich
+1279	Papua-Neuguinea
+1280	Libanon
+1281	Nicaragua
+1282	Kirgisistan
+1283	Eritrea
+1284	Turkmenistan
+1285	Singapur
+1286	Slowakei
+1287	Kongo
+1288	Costa Rica
+1289	Oman
+1290	Liberia
+1291	Zentralafrik. Rep.
+1292	Palästina
+1293	Mauretanien
+1294	Kuwait
+1295	Kroatien
+1296	Georgien
+1297	Bosnien und Herz.
+1298	Armenien
+1299	Jamaika
+1300	Albanien
+1301	Katar
+1302	Litauen
+1303	Namibia
+1304	Gambia
+1305	Botsuana
+1306	Slowenien
+1307	Nordmazedonien
+1308	Guinea-Bissau
+1309	Lettland
+1310	Kosovo
+1311	Bahrain
+1312	Trinidad und Tobago
+1313	Äquatorialguinea
+1314	Estland
+1315	Timor-Leste
+1316	Zypern
+1317	Eswatini
+1318	Dschibuti
+1319	Komoren
+1320	Salomonen
+1321	Luxemburg
+1322	Westsahara
+1323	Suriname
+1324	Kap Verde
+1325	Malediven
+1326	Bahamas
+1327	Island
+1328	Nordzypern
+1329	São Tomé und Príncipe
+1330	Mikronesien
+1331	St. Vincent und Gren.
+1332	Seychellen
+1333	Antigua und Barbuda
+1334	Dominica
+1335	Marshallinseln
+1336	Grönland
+1337	St. Kitts und Nevis
+1338	Monaco
+1339	Liechtenstein
+1340	Unabhängigkeitsfront
+1341	Schattennetz
+1342	Bergmiliz
+1343	Volksunion
+1344	Freiheitsarmee
+1345	Nordwiderstand
+1346	Untergrundbewegung
+1347	Infanteriegewehr
+1348	Panzer
+1349	Gepanzertes Fahrzeug
+1350	Artillerie und Raketen
+1351	Flugzeuge und Drohnen
+1352	U-Boot
+1353	Kreis
+1354	Schild
+1355	Sechseck
+1356	Raute
+1357	Achteck
+1358	Abzeichen
+1359	Sonne
+1360	Quadrat
+1361	Schlicht
+1362	Innenrahmen
+1363	Innenkreis
+1364	Fiktiv
+1365	extremistische Wiedergeburt
+1366	autoritäres Wiedererstarken
+1367	großer Krieg im Norden
+1368	Das napoleonische Zeitalter kehrt zurück
+1369	Cyberzeitalter
+1370	die unbewaffnete Front
+1371	Cyberzeitalter, die unbewaffnete Front
+1372	Morgenröte-Brigade
+1373	Grenzschützer

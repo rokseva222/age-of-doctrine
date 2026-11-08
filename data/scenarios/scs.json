@@ -1,0 +1,146 @@
+{
+ "id": "scs",
+ "kind": "real",
+ "name": "Güney Çin Denizi",
+ "sub": "Çin – Filipinler – Vietnam",
+ "blurb": "Resif ve adacıklar üzerindeki hak iddiaları, dünya ticaretinin üçte birinin geçtiği suları kaynatıyor. Bir küçük çatışma bölgeyi ateşe verebilir.",
+ "intro": "Güney Çin Denizi: sahil güvenlik gemileri su topu ve lazerlerle karşı karşıya. ABD donanması bölgeye yöneldi.",
+ "suggest": [
+  "Philippines",
+  "China",
+  "Vietnam",
+  "Malaysia",
+  "Taiwan"
+ ],
+ "blocs": [
+  {
+   "name": "Hint-Pasifik Güvenlik Ortaklığı",
+   "members": [
+    "United States of America",
+    "Philippines",
+    "Japan",
+    "Australia",
+    "South Korea"
+   ],
+   "emblem": {
+    "shape": 1,
+    "inner": 1,
+    "symbol": "anchor",
+    "c1": "2f4f9a",
+    "c2": "ece6d6",
+    "c3": "2f4f9a"
+   }
+  }
+ ],
+ "cold": [
+  [
+   "China",
+   "Philippines"
+  ],
+  [
+   "China",
+   "Vietnam"
+  ],
+  [
+   "China",
+   "Malaysia"
+  ]
+ ],
+ "embargo": [],
+ "cyber": {
+  "China": 30,
+  "Vietnam": 10,
+  "Philippines": 8
+ },
+ "doctrine": {
+  "China": 3
+ },
+ "troops_mult": {
+  "Philippines": 1.2
+ },
+ "events": [
+  {
+   "turn": 8,
+   "t": "Çin sahil güvenliği ile Filipin gemileri bir resif yakınında çarpıştı.",
+   "fx": [
+    [
+     "stab",
+     "Philippines",
+     -3
+    ]
+   ]
+  },
+  {
+   "turn": 24,
+   "t": "Vietnam ve Filipinler ortak devriye anlaşması imzaladı.",
+   "fx": [
+    [
+     "ally",
+     "Vietnam",
+     "Philippines"
+    ]
+   ]
+  },
+  {
+   "turn": 40,
+   "t": "Tayvan Boğazı'nda büyük çaplı Çin tatbikatı.",
+   "fx": [
+    [
+     "stab",
+     "Taiwan",
+     -5
+    ]
+   ]
+  }
+ ],
+ "objectives": {
+  "*": [
+   {
+    "id": "s1",
+    "type": "survive",
+    "turns": 104,
+    "text": "İki yıl ayakta kal"
+   },
+   {
+    "id": "s2",
+    "type": "alliances",
+    "n": 3,
+    "text": "3 müttefik edin"
+   }
+  ],
+  "China": [
+   {
+    "id": "sc1",
+    "type": "own_provinces",
+    "n": 45,
+    "text": "45 eyalete ulaş"
+   }
+  ],
+  "Philippines": [
+   {
+    "id": "sp1",
+    "type": "no_war",
+    "turns": 78,
+    "text": "1,5 yıl savaşsız kal"
+   }
+  ]
+ },
+ "deadline": 208,
+ "en": {
+  "name": "South China Sea",
+  "sub": "China – Philippines – Vietnam",
+  "blurb": "Claims over reefs and islets are boiling waters that carry a third of world trade. One small clash could set the region ablaze.",
+  "intro": "South China Sea: coast guard ships face off with water cannons and lasers. The US Navy is heading to the region.",
+  "objectives": {
+   "s1": "Survive two years",
+   "s2": "Make 3 allies",
+   "sc1": "Reach 45 provinces",
+   "sp1": "Stay out of war for 1.5 years"
+  },
+  "events": {
+   "0": "A Chinese coast guard vessel and a Philippine ship collided near a reef.",
+   "1": "Vietnam and the Philippines signed a joint patrol agreement.",
+   "2": "Large-scale Chinese exercise in the Taiwan Strait."
+  }
+ }
+}

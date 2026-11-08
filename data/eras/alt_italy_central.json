@@ -1,0 +1,194 @@
+{
+ "id": "alt_italy_central",
+ "name": "Üçlü İttifak Sağlam",
+ "sub": "Ağustos 1914 – Alternatif",
+ "base": "ww1",
+ "family": "ww1",
+ "pack": "alt",
+ "icon": "helmet_ww1",
+ "mood": "war",
+ "start_year": 1914,
+ "start_doy": 212,
+ "blurb": "İtalya 1914'te ittifakını bozmadı ve Merkezî Güçler'in yanında savaşa girdi. Alpler'den Akdeniz'e kadar yeni bir cephe açıldı; Fransız güneyi tehlikede.",
+ "suggest": [
+  "Italy",
+  "France",
+  "Germany",
+  "United Kingdom",
+  "Austria",
+  "Russia"
+ ],
+ "look": {
+  "shadow": [
+   0.09,
+   0.07,
+   0.05
+  ],
+  "mid": [
+   0.56,
+   0.45,
+   0.29
+  ],
+  "light": [
+   0.96,
+   0.9,
+   0.74
+  ],
+  "amount": 0.38,
+  "vignette": 0.18,
+  "grain": 0.012
+ },
+ "setup": {
+  "blocs": [
+   {
+    "name": "İtilaf Devletleri",
+    "members": [
+     "United Kingdom",
+     "France",
+     "Russia",
+     "Serbia",
+     "Belgium",
+     "Japan",
+     "Canada",
+     "Australia",
+     "New Zealand",
+     "South Africa"
+    ],
+    "emblem": {
+     "shape": 5,
+     "inner": 1,
+     "symbol": "shield",
+     "c1": "2f4f9a",
+     "c2": "ece6d6",
+     "c3": "2f4f9a"
+    }
+   },
+   {
+    "name": "Merkezi Güçler",
+    "members": [
+     "Germany",
+     "Austria",
+     "Turkey",
+     "Bulgaria",
+     "Italy"
+    ],
+    "emblem": {
+     "shape": 4,
+     "inner": 1,
+     "symbol": "crown",
+     "c1": "6d6f78",
+     "c2": "e3a92b",
+     "c3": "e3a92b"
+    }
+   }
+  ],
+  "wars": [
+   [
+    "Austria",
+    "Serbia"
+   ],
+   [
+    "Germany",
+    "Russia"
+   ],
+   [
+    "Germany",
+    "France"
+   ],
+   [
+    "Germany",
+    "Belgium"
+   ],
+   [
+    "United Kingdom",
+    "Germany"
+   ],
+   [
+    "Austria",
+    "Russia"
+   ],
+   [
+    "Japan",
+    "Germany"
+   ],
+   [
+    "Italy",
+    "France"
+   ],
+   [
+    "Italy",
+    "United Kingdom"
+   ],
+   [
+    "Italy",
+    "Serbia"
+   ]
+  ],
+  "truce": [],
+  "intro": "Ağustos 1914: Roma Üçlü İttifak'a sadık kaldı. İtalyan orduları Fransa sınırına yöneldi; Akdeniz'de İtilaf donanması tek başına.",
+  "troops_mult": {
+   "Italy": 1.1
+  }
+ },
+ "inherit_until": [
+  9999,
+  1
+ ],
+ "inherit_exclude": [
+  "İtalya, Avusturya-Macaristan'a"
+ ],
+ "events": [
+  {
+   "y": 1915,
+   "m": 5,
+   "t": "İtalyan birlikleri Fransız Alpleri'nde ilerliyor; İtilaf yedek kuvvetleri güneye kaydırıyor.",
+   "fx": [
+    [
+     "stab",
+     "France",
+     -4
+    ]
+   ]
+  }
+ ],
+ "objectives": {
+  "*": [
+   {
+    "id": "o1",
+    "type": "survive",
+    "text": "Üç yıl ayakta kal",
+    "turns": 156
+   }
+  ],
+  "Italy": [
+   {
+    "id": "i1",
+    "type": "own_provinces",
+    "text": "40 eyalete ulaş",
+    "n": 40
+   }
+  ],
+  "France": [
+   {
+    "id": "f1",
+    "type": "own_capital",
+    "text": "Paris'i elinde tut",
+    "country": "France"
+   }
+  ]
+ },
+ "en": {
+  "name": "The Triple Alliance Holds",
+  "sub": "August 1914 – Alternate",
+  "blurb": "Italy never broke its alliance in 1914 and entered the war with the Central Powers. A new front opens from the Alps to the Mediterranean; southern France is in danger.",
+  "setup_intro": "August 1914: Rome stayed loyal to the Triple Alliance. Italian armies turn toward the French border; the Entente fleet stands alone in the Mediterranean.",
+  "events": {
+   "0": "Italian troops advance in the French Alps; the Entente shifts reserves south."
+  },
+  "objectives": {
+   "o1": "Survive three years",
+   "i1": "Reach 40 provinces",
+   "f1": "Hold Paris"
+  }
+ }
+}

@@ -1,0 +1,42 @@
+{
+ "eSwatini": {
+  "for": "Pholile Shakantu|f",
+  "fin": "Neal Rijkenberg",
+  "int": "Princess Lindiwe|f",
+  "hlt": "Mduduzi Matsebula"
+ },
+ "Djibouti": {
+  "def": "Hassan Omar Bourhan",
+  "for": "Abdoulkader Houssein Omar",
+  "fin": "Ilyas Moussa Dawaleh",
+  "int": "Omar Abdi Said",
+  "hlt": "Mouna Osman Aden|f"
+ },
+ "Comoros": {
+  "for": "Mbae Mohamed",
+  "fin": "Moussa Abderemane",
+  "int": "Mohamed Ahmed Assoumani",
+  "hlt": "Ahamadi Sidi Nahouda"
+ },
+ "Mauritius": {
+  "def": "Navin Ramgoolam",
+  "for": "Ritish Ramful",
+  "fin": "Navin Ramgoolam",
+  "int": "Navin Ramgoolam",
+  "hlt": "Anil Bachoo"
+ },
+ "Seychelles": {
+  "def": "Patrick Herminie",
+  "for": "Barry Faure",
+  "fin": "Pierre Laporte",
+  "int": "James Camille",
+  "hlt": "Marvin Fanny"
+ },
+ "Somaliland": {
+  "def": "Mohamed Yusuf Ali Ahmed",
+  "for": "Abdirahman Dahir Adam",
+  "fin": "Abdillahi Hassan Adan",
+  "int": "Abdalle Mohamed Arab",
+  "hlt": "Hussein Bashir Herzi"
+ }
+}

@@ -1,0 +1,147 @@
+{
+ "id": "korea",
+ "kind": "real",
+ "name": "Kore Yarımadası",
+ "sub": "Kuzey Kore – Güney Kore",
+ "blurb": "Dünyanın en militarize sınırı. Nükleer tehditler, füze denemeleri ve bölgesel güçlerin gölgesi: Seul'ün bir adımı bile tüm bölgeyi etkileyebilir.",
+ "intro": "Kore: füze denemesi alarmı verildi, sınırdaki tatbikatlar sürüyor. Çin ve ABD çıkar hesabında.",
+ "suggest": [
+  "South Korea",
+  "North Korea",
+  "Japan",
+  "China"
+ ],
+ "blocs": [
+  {
+   "name": "Pasifik Savunma Hattı",
+   "members": [
+    "United States of America",
+    "South Korea",
+    "Japan"
+   ],
+   "emblem": {
+    "shape": 0,
+    "inner": 2,
+    "symbol": "shield",
+    "c1": "2f4f9a",
+    "c2": "ece6d6",
+    "c3": "2f4f9a"
+   }
+  }
+ ],
+ "cold": [
+  [
+   "North Korea",
+   "South Korea"
+  ],
+  [
+   "North Korea",
+   "Japan"
+  ]
+ ],
+ "embargo": [
+  [
+   "North Korea",
+   "United States of America"
+  ]
+ ],
+ "cyber": {
+  "North Korea": 35,
+  "South Korea": 25
+ },
+ "doctrine": {
+  "North Korea": 4
+ },
+ "troops_mult": {
+  "North Korea": 1.2
+ },
+ "stability": {
+  "North Korea": -8
+ },
+ "events": [
+  {
+   "turn": 9,
+   "t": "Kuzey Kore denizde bir balistik füze denemesi yaptı.",
+   "fx": [
+    [
+     "stab",
+     "South Korea",
+     -3
+    ],
+    [
+     "stab",
+     "Japan",
+     -2
+    ]
+   ]
+  },
+  {
+   "turn": 36,
+   "t": "Güney Kore, Japonya ve ABD ortak tatbikat yaptı.",
+   "fx": [
+    [
+     "stab",
+     "North Korea",
+     -3
+    ]
+   ]
+  }
+ ],
+ "objectives": {
+  "*": [
+   {
+    "id": "k1",
+    "type": "survive",
+    "turns": 104,
+    "text": "İki yıl ayakta kal"
+   }
+  ],
+  "South Korea": [
+   {
+    "id": "ks1",
+    "type": "no_war",
+    "turns": 104,
+    "text": "İki yıl savaşsız kal"
+   },
+   {
+    "id": "ks2",
+    "type": "alliances",
+    "n": 3,
+    "text": "3 müttefik edin",
+    "required": false
+   }
+  ],
+  "North Korea": [
+   {
+    "id": "kn1",
+    "type": "stability",
+    "n": 50,
+    "text": "İstikrarı 50 üzerinde tut"
+   },
+   {
+    "id": "kn2",
+    "type": "alliances",
+    "n": 2,
+    "text": "2 müttefik edin"
+   }
+  ]
+ },
+ "deadline": 208,
+ "en": {
+  "name": "Korean Peninsula",
+  "sub": "North Korea – South Korea",
+  "blurb": "The world's most militarized border. Nuclear threats, missile tests and the shadow of regional powers: even one step by Seoul can affect the whole region.",
+  "intro": "Korea: a missile test alert has sounded and drills along the border continue. China and the US are calculating.",
+  "objectives": {
+   "k1": "Survive two years",
+   "ks1": "Two years without war",
+   "ks2": "Make 3 allies",
+   "kn1": "Keep stability above 50",
+   "kn2": "Make 2 allies"
+  },
+  "events": {
+   "0": "North Korea carried out a ballistic missile test at sea.",
+   "1": "South Korea, Japan and the US held a joint exercise."
+  }
+ }
+}

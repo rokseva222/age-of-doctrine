@@ -1,0 +1,2 @@
+1432|Air Operation
+1433|Aerial bombardment: its effect depends on air superiority (up to −20% defence if your air power exceeds the enemy's). Not available in the early era.

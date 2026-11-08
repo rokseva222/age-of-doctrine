@@ -1,0 +1,191 @@
+{
+ "id": "alt_turkey_allies",
+ "name": "Ankara Safını Seçti",
+ "sub": "Eylül 1939 – Alternatif",
+ "base": "ww2",
+ "family": "ww2",
+ "pack": "alt",
+ "icon": "helmet_ww2",
+ "mood": "war",
+ "start_year": 1939,
+ "start_doy": 243,
+ "blurb": "Türkiye ve Yunanistan Müttefikler'e katıldı. Balkanlar'da yeni bir cephe, Akdeniz'de güçlü bir üs: Berlin ve Roma güney kanadı için endişeli.",
+ "suggest": [
+  "Turkey",
+  "Germany",
+  "United Kingdom",
+  "Italy",
+  "Greece",
+  "Russia"
+ ],
+ "look": {
+  "shadow": [
+   0.05,
+   0.07,
+   0.06
+  ],
+  "mid": [
+   0.36,
+   0.42,
+   0.31
+  ],
+  "light": [
+   0.9,
+   0.9,
+   0.82
+  ],
+  "amount": 0.3,
+  "vignette": 0.14,
+  "grain": 0.01
+ },
+ "setup": {
+  "blocs": [
+   {
+    "name": "Müttefik Devletler",
+    "members": [
+     "United Kingdom",
+     "France",
+     "Poland",
+     "Australia",
+     "New Zealand",
+     "Canada",
+     "South Africa",
+     "Turkey",
+     "Greece"
+    ],
+    "emblem": {
+     "shape": 1,
+     "inner": 1,
+     "symbol": "shield",
+     "c1": "2f4f9a",
+     "c2": "ece6d6",
+     "c3": "2f4f9a"
+    }
+   },
+   {
+    "name": "Mihver Devletleri",
+    "members": [
+     "Germany",
+     "Italy",
+     "Japan",
+     "Slovakia"
+    ],
+    "emblem": {
+     "shape": 4,
+     "inner": 1,
+     "symbol": "bolt",
+     "c1": "5d6068",
+     "c2": "ece6d6",
+     "c3": "e5482f"
+    }
+   }
+  ],
+  "wars": [
+   [
+    "Germany",
+    "Poland"
+   ],
+   [
+    "United Kingdom",
+    "Germany"
+   ],
+   [
+    "France",
+    "Germany"
+   ],
+   [
+    "Australia",
+    "Germany"
+   ],
+   [
+    "New Zealand",
+    "Germany"
+   ],
+   [
+    "Canada",
+    "Germany"
+   ],
+   [
+    "South Africa",
+    "Germany"
+   ],
+   [
+    "Japan",
+    "China"
+   ]
+  ],
+  "truce": [
+   [
+    "Germany",
+    "Russia",
+    90
+   ]
+  ],
+  "intro": "Eylül 1939: Ankara Londra ve Paris'le ittifak imzaladı. Boğazlar Müttefik gemilerine açık; Balkanlar'da seferberlik başladı.",
+  "troops_mult": {
+   "Turkey": 1.15
+  },
+  "treasury_mult": {
+   "Turkey": 1.3
+  }
+ },
+ "inherit_until": [
+  9999,
+  1
+ ],
+ "inherit_exclude": [
+  "Türkiye sembolik"
+ ],
+ "events": [
+  {
+   "y": 1941,
+   "m": 4,
+   "t": "Balkanlar'da Alman hazırlıkları başladı; Türk ordusu sınırda tetikte.",
+   "fx": [
+    [
+     "stab",
+     "Turkey",
+     -2
+    ]
+   ]
+  }
+ ],
+ "objectives": {
+  "*": [
+   {
+    "id": "o1",
+    "type": "survive",
+    "text": "Üç yıl ayakta kal",
+    "turns": 156
+   }
+  ],
+  "Turkey": [
+   {
+    "id": "t1",
+    "type": "own_provinces",
+    "text": "Ordunu büyüt: 40 eyalete ulaş",
+    "n": 40
+   },
+   {
+    "id": "t2",
+    "type": "alliances",
+    "text": "4 müttefik edin",
+    "n": 4
+   }
+  ]
+ },
+ "en": {
+  "name": "Ankara Chooses a Side",
+  "sub": "September 1939 – Alternate",
+  "blurb": "Turkey and Greece joined the Allies. A new front in the Balkans, a strong base in the Mediterranean: Berlin and Rome are worried about their southern flank.",
+  "setup_intro": "September 1939: Ankara signed an alliance with London and Paris. The Straits are open to Allied ships; mobilization has begun in the Balkans.",
+  "events": {
+   "0": "German preparations begin in the Balkans; the Turkish army is on alert at the border."
+  },
+  "objectives": {
+   "o1": "Survive three years",
+   "t1": "Grow the army: reach 40 provinces",
+   "t2": "Make 4 allies"
+  }
+ }
+}

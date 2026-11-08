@@ -1,0 +1,184 @@
+{
+ "id": "alt_berlin_hot",
+ "name": "Berlin Sıcak Savaşı",
+ "sub": "Ekim 1962 – Alternatif",
+ "base": "cw62",
+ "family": "cold",
+ "pack": "alt",
+ "icon": "helmet",
+ "mood": "war",
+ "start_year": 1962,
+ "start_doy": 290,
+ "blurb": "Berlin ablukası tırmandı ve ilk kurşunlar atıldı. Şehir ikiye bölünmüş, orduların karşılıklı mevzilendiği Avrupa nükleer cephenin tam ortasında.",
+ "suggest": [
+  "Germany",
+  "Russia",
+  "United States of America",
+  "Poland",
+  "United Kingdom",
+  "France"
+ ],
+ "look": {
+  "shadow": [
+   0.06,
+   0.07,
+   0.09
+  ],
+  "mid": [
+   0.42,
+   0.45,
+   0.42
+  ],
+  "light": [
+   0.93,
+   0.9,
+   0.83
+  ],
+  "amount": 0.28,
+  "vignette": 0.14,
+  "grain": 0.01
+ },
+ "setup": {
+  "blocs": [
+   {
+    "name": "Kuzey Atlantik İttifakı",
+    "members": [
+     "United States of America",
+     "Canada",
+     "United Kingdom",
+     "France",
+     "Germany",
+     "Italy",
+     "Belgium",
+     "Netherlands",
+     "Luxembourg",
+     "Denmark",
+     "Norway",
+     "Iceland",
+     "Portugal",
+     "Greece",
+     "Turkey"
+    ],
+    "emblem": {
+     "shape": 0,
+     "inner": 2,
+     "symbol": "star",
+     "c1": "2f4f9a",
+     "c2": "ece6d6",
+     "c3": "2f4f9a"
+    }
+   },
+   {
+    "name": "Varşova Paktı",
+    "members": [
+     "Russia",
+     "Poland",
+     "Czechia",
+     "Hungary",
+     "Romania",
+     "Bulgaria",
+     "Albania"
+    ],
+    "emblem": {
+     "shape": 4,
+     "inner": 1,
+     "symbol": "star",
+     "c1": "b53a2e",
+     "c2": "e3a92b",
+     "c3": "e3a92b"
+    }
+   }
+  ],
+  "wars": [
+   [
+    "Russia",
+    "Germany"
+   ],
+   [
+    "Poland",
+    "Germany"
+   ]
+  ],
+  "truce": [],
+  "intro": "Ekim 1962: Sovyet kuvvetleri Batı Berlin'e giriş yollarını kapattı. Almanya sınırında NATO ve Varşova Paktı mevzilendi.",
+  "cold": [
+   [
+    "United States of America",
+    "Russia"
+   ]
+  ],
+  "stability": {
+   "Germany": -6
+  }
+ },
+ "inherit_until": [
+  9999,
+  1
+ ],
+ "inherit_exclude": [
+  "Küba krizi",
+  "Sovyet füzeleri"
+ ],
+ "events": [
+  {
+   "y": 1962,
+   "m": 12,
+   "t": "Berlin'de hava köprüsü yeniden kuruldu; ABD ve Britanya ortak bir plan açıkladı.",
+   "fx": [
+    [
+     "stab",
+     "Germany",
+     3
+    ]
+   ]
+  }
+ ],
+ "objectives": {
+  "*": [
+   {
+    "id": "o1",
+    "type": "survive",
+    "text": "İki yıl ayakta kal",
+    "turns": 104
+   }
+  ],
+  "Germany": [
+   {
+    "id": "g1",
+    "type": "own_capital",
+    "text": "Berlin'i elinde tut",
+    "country": "Germany"
+   },
+   {
+    "id": "g2",
+    "type": "cease_war",
+    "text": "SSCB ile barış yap",
+    "with": "Russia",
+    "required": false
+   }
+  ],
+  "Russia": [
+   {
+    "id": "r1",
+    "type": "own_capital",
+    "text": "Bonn'u ele geçir",
+    "country": "Germany"
+   }
+  ]
+ },
+ "en": {
+  "name": "The Berlin War",
+  "sub": "October 1962 – Alternate",
+  "blurb": "The Berlin blockade escalated and the first shots were fired. The divided city and the armies lined up across Europe sit at the heart of the nuclear front.",
+  "setup_intro": "October 1962: Soviet forces have shut the access routes to West Berlin. NATO and the Warsaw Pact have taken positions on the German border.",
+  "events": {
+   "0": "The Berlin airlift was re-established; the US and Britain announced a joint plan."
+  },
+  "objectives": {
+   "o1": "Survive two years",
+   "g1": "Hold Berlin",
+   "g2": "Make peace with the USSR",
+   "r1": "Take the western German capital"
+  }
+ }
+}

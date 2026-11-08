@@ -1,0 +1,805 @@
+{
+"_source": "Wikipedia: List of current heads of state and government (Kasım 2026); yalnızca metin",
+"leaders": {
+"Afghanistan": {
+"t": "Dini Lider",
+"n": "Hibatullah Akhundzada"
+},
+"Albania": {
+"t": "Başbakan",
+"n": "Edi Rama"
+},
+"Algeria": {
+"t": "Cumhurbaşkanı",
+"n": "Abdelmadjid Tebboune"
+},
+"Andorra": {
+"t": "Başbakan",
+"n": "Xavier Espot Zamora"
+},
+"Angola": {
+"t": "Cumhurbaşkanı",
+"n": "João Lourenço"
+},
+"Antigua and Barb.": {
+"t": "Başbakan",
+"n": "Gaston Browne"
+},
+"Argentina": {
+"t": "Cumhurbaşkanı",
+"n": "Javier Milei"
+},
+"Armenia": {
+"t": "Başbakan",
+"n": "Nikol Pashinyan"
+},
+"Australia": {
+"t": "Başbakan",
+"n": "Anthony Albanese"
+},
+"Austria": {
+"t": "Şansölye",
+"n": "Christian Stocker"
+},
+"Azerbaijan": {
+"t": "Cumhurbaşkanı",
+"n": "İlham Aliyev"
+},
+"Bahamas": {
+"t": "Başbakan",
+"n": "Philip Davis"
+},
+"Bahrain": {
+"t": "Kral",
+"n": "Hamad bin İsa Al Halife"
+},
+"Bangladesh": {
+"t": "Başbakan",
+"n": "Tarique Rahman"
+},
+"Barbados": {
+"t": "Başbakan",
+"n": "Mia Mottley"
+},
+"Belarus": {
+"t": "Cumhurbaşkanı",
+"n": "Aleksandr Lukaşenko"
+},
+"Belgium": {
+"t": "Başbakan",
+"n": "Bart De Wever"
+},
+"Belize": {
+"t": "Başbakan",
+"n": "Johnny Briceño"
+},
+"Benin": {
+"t": "Cumhurbaşkanı",
+"n": "Romuald Wadagni"
+},
+"Bhutan": {
+"t": "Kral",
+"n": "Jigme Khesar Namgyel Wangchuck"
+},
+"Bolivia": {
+"t": "Cumhurbaşkanı",
+"n": "Rodrigo Paz"
+},
+"Bosnia and Herz.": {
+"t": "Başkanlık Konseyi Başkanı",
+"n": "Denis Bećirović"
+},
+"Botswana": {
+"t": "Cumhurbaşkanı",
+"n": "Duma Boko"
+},
+"Brazil": {
+"t": "Cumhurbaşkanı",
+"n": "Luiz Inácio Lula da Silva"
+},
+"Brunei": {
+"t": "Sultan",
+"n": "Hassanal Bolkiah"
+},
+"Bulgaria": {
+"t": "Başbakan",
+"n": "Rumen Radev"
+},
+"Burkina Faso": {
+"t": "Cumhurbaşkanı",
+"n": "Ibrahim Traoré"
+},
+"Burundi": {
+"t": "Cumhurbaşkanı",
+"n": "Évariste Ndayishimiye"
+},
+"Cabo Verde": {
+"t": "Başbakan",
+"n": "Francisco Carvalho"
+},
+"Cambodia": {
+"t": "Başbakan",
+"n": "Hun Manet"
+},
+"Cameroon": {
+"t": "Cumhurbaşkanı",
+"n": "Paul Biya"
+},
+"Canada": {
+"t": "Başbakan",
+"n": "Mark Carney"
+},
+"Central African Rep.": {
+"t": "Cumhurbaşkanı",
+"n": "Faustin-Archange Touadéra"
+},
+"Chad": {
+"t": "Cumhurbaşkanı",
+"n": "Mahamat Déby"
+},
+"Chile": {
+"t": "Cumhurbaşkanı",
+"n": "José Antonio Kast"
+},
+"China": {
+"t": "Devlet Başkanı",
+"n": "Xi Jinping"
+},
+"Colombia": {
+"t": "Cumhurbaşkanı",
+"n": "Abelardo de la Espriella"
+},
+"Comoros": {
+"t": "Cumhurbaşkanı",
+"n": "Azali Assoumani"
+},
+"Congo": {
+"t": "Cumhurbaşkanı",
+"n": "Denis Sassou Nguesso"
+},
+"Costa Rica": {
+"t": "Cumhurbaşkanı",
+"n": "Laura Fernández"
+},
+"Croatia": {
+"t": "Başbakan",
+"n": "Andrej Plenković"
+},
+"Cuba": {
+"t": "Cumhurbaşkanı",
+"n": "Miguel Díaz-Canel"
+},
+"Cyprus": {
+"t": "Cumhurbaşkanı",
+"n": "Nikos Christodoulides"
+},
+"Czechia": {
+"t": "Başbakan",
+"n": "Andrej Babiš"
+},
+"Côte d'Ivoire": {
+"t": "Cumhurbaşkanı",
+"n": "Alassane Ouattara"
+},
+"Dem. Rep. Congo": {
+"t": "Cumhurbaşkanı",
+"n": "Félix Tshisekedi"
+},
+"Denmark": {
+"t": "Başbakan",
+"n": "Mette Frederiksen"
+},
+"Djibouti": {
+"t": "Cumhurbaşkanı",
+"n": "İsmaïl Omar Guelleh"
+},
+"Dominica": {
+"t": "Başbakan",
+"n": "Roosevelt Skerrit"
+},
+"Dominican Rep.": {
+"t": "Cumhurbaşkanı",
+"n": "Luis Abinader"
+},
+"Ecuador": {
+"t": "Cumhurbaşkanı",
+"n": "Daniel Noboa"
+},
+"Egypt": {
+"t": "Cumhurbaşkanı",
+"n": "Abdülfettah es-Sisi"
+},
+"El Salvador": {
+"t": "Cumhurbaşkanı",
+"n": "Nayib Bukele"
+},
+"Eq. Guinea": {
+"t": "Cumhurbaşkanı",
+"n": "Teodoro Obiang Nguema"
+},
+"Eritrea": {
+"t": "Cumhurbaşkanı",
+"n": "Isaias Afwerki"
+},
+"Estonia": {
+"t": "Başbakan",
+"n": "Kristen Michal"
+},
+"Ethiopia": {
+"t": "Başbakan",
+"n": "Abiy Ahmed"
+},
+"Fiji": {
+"t": "Başbakan",
+"n": "Sitiveni Rabuka"
+},
+"Finland": {
+"t": "Cumhurbaşkanı",
+"n": "Alexander Stubb"
+},
+"France": {
+"t": "Cumhurbaşkanı",
+"n": "Emmanuel Macron"
+},
+"Gabon": {
+"t": "Cumhurbaşkanı",
+"n": "Brice Oligui Nguema"
+},
+"Gambia": {
+"t": "Cumhurbaşkanı",
+"n": "Adama Barrow"
+},
+"Georgia": {
+"t": "Başbakan",
+"n": "Irakli Kobakhidze"
+},
+"Germany": {
+"t": "Şansölye",
+"n": "Friedrich Merz"
+},
+"Ghana": {
+"t": "Cumhurbaşkanı",
+"n": "John Mahama"
+},
+"Greece": {
+"t": "Başbakan",
+"n": "Kyriakos Mitsotakis"
+},
+"Greenland": {
+"t": "Danimarka Kralı",
+"n": "Frederik X"
+},
+"Grenada": {
+"t": "Başbakan",
+"n": "Dickon Mitchell"
+},
+"Guatemala": {
+"t": "Cumhurbaşkanı",
+"n": "Bernardo Arévalo"
+},
+"Guinea": {
+"t": "Cumhurbaşkanı",
+"n": "Mamady Doumbouya"
+},
+"Guinea-Bissau": {
+"t": "Cumhurbaşkanı",
+"n": "Horta Inta-A Na Man"
+},
+"Guyana": {
+"t": "Cumhurbaşkanı",
+"n": "Irfaan Ali"
+},
+"Haiti": {
+"t": "Başbakan",
+"n": "Alix Didier Fils-Aimé"
+},
+"Honduras": {
+"t": "Cumhurbaşkanı",
+"n": "Nasry Asfura"
+},
+"Hungary": {
+"t": "Başbakan",
+"n": "Péter Magyar"
+},
+"Iceland": {
+"t": "Başbakan",
+"n": "Kristrún Frostadóttir"
+},
+"India": {
+"t": "Başbakan",
+"n": "Narendra Modi"
+},
+"Indonesia": {
+"t": "Cumhurbaşkanı",
+"n": "Prabowo Subianto"
+},
+"Iran": {
+"t": "Dini Lider",
+"n": "Mojtaba Hamaney"
+},
+"Iraq": {
+"t": "Başbakan",
+"n": "Ali ez-Zeydi"
+},
+"Ireland": {
+"t": "Başbakan",
+"n": "Micheál Martin"
+},
+"Israel": {
+"t": "Başbakan",
+"n": "Benjamin Netanyahu"
+},
+"Italy": {
+"t": "Başbakan",
+"n": "Giorgia Meloni"
+},
+"Jamaica": {
+"t": "Başbakan",
+"n": "Andrew Holness"
+},
+"Japan": {
+"t": "Başbakan",
+"n": "Sanae Takaichi"
+},
+"Jordan": {
+"t": "Kral",
+"n": "II. Abdullah"
+},
+"Kazakhstan": {
+"t": "Cumhurbaşkanı",
+"n": "Kasım-Cömart Tokayev"
+},
+"Kenya": {
+"t": "Cumhurbaşkanı",
+"n": "William Ruto"
+},
+"Kiribati": {
+"t": "Cumhurbaşkanı",
+"n": "Taneti Maamau"
+},
+"Kosovo": {
+"t": "Başbakan",
+"n": "Albin Kurti"
+},
+"Kuwait": {
+"t": "Emir",
+"n": "Mişal el-Ahmed es-Sabah"
+},
+"Kyrgyzstan": {
+"t": "Cumhurbaşkanı",
+"n": "Sadyr Caparov"
+},
+"Laos": {
+"t": "Cumhurbaşkanı",
+"n": "Thongloun Sisoulith"
+},
+"Latvia": {
+"t": "Başbakan",
+"n": "Andris Kulbergs"
+},
+"Lebanon": {
+"t": "Cumhurbaşkanı",
+"n": "Joseph Aoun"
+},
+"Lesotho": {
+"t": "Başbakan",
+"n": "Sam Matekane"
+},
+"Liberia": {
+"t": "Cumhurbaşkanı",
+"n": "Joseph Boakai"
+},
+"Libya": {
+"t": "Başkanlık Konseyi Başkanı",
+"n": "Muhammed el-Menfi"
+},
+"Liechtenstein": {
+"t": "Başbakan",
+"n": "Brigitte Haas"
+},
+"Lithuania": {
+"t": "Başbakan",
+"n": "Mindaugas Sinkevičius"
+},
+"Luxembourg": {
+"t": "Başbakan",
+"n": "Luc Frieden"
+},
+"Madagascar": {
+"t": "Cumhurbaşkanı",
+"n": "Michael Randrianirina"
+},
+"Malawi": {
+"t": "Cumhurbaşkanı",
+"n": "Peter Mutharika"
+},
+"Malaysia": {
+"t": "Başbakan",
+"n": "Anwar İbrahim"
+},
+"Maldives": {
+"t": "Cumhurbaşkanı",
+"n": "Mohamed Muizzu"
+},
+"Mali": {
+"t": "Cumhurbaşkanı",
+"n": "Assimi Goïta"
+},
+"Malta": {
+"t": "Başbakan",
+"n": "Robert Abela"
+},
+"Marshall Is.": {
+"t": "Cumhurbaşkanı",
+"n": "Hilda Heine"
+},
+"Mauritania": {
+"t": "Cumhurbaşkanı",
+"n": "Mohamed Ould Ghazouani"
+},
+"Mauritius": {
+"t": "Başbakan",
+"n": "Navin Ramgoolam"
+},
+"Mexico": {
+"t": "Cumhurbaşkanı",
+"n": "Claudia Sheinbaum"
+},
+"Micronesia": {
+"t": "Cumhurbaşkanı",
+"n": "Wesley Simina"
+},
+"Moldova": {
+"t": "Cumhurbaşkanı",
+"n": "Maia Sandu"
+},
+"Monaco": {
+"t": "Prens",
+"n": "II. Albert"
+},
+"Mongolia": {
+"t": "Cumhurbaşkanı",
+"n": "Ukhnaagiin Khürelsükh"
+},
+"Montenegro": {
+"t": "Cumhurbaşkanı",
+"n": "Jakov Milatović"
+},
+"Morocco": {
+"t": "Kral",
+"n": "VI. Muhammed"
+},
+"Mozambique": {
+"t": "Cumhurbaşkanı",
+"n": "Daniel Chapo"
+},
+"Myanmar": {
+"t": "Cumhurbaşkanı",
+"n": "Min Aung Hlaing"
+},
+"N. Cyprus": {
+"t": "Cumhurbaşkanı",
+"n": "Tufan Erhürman"
+},
+"Namibia": {
+"t": "Cumhurbaşkanı",
+"n": "Netumbo Nandi-Ndaitwah"
+},
+"Nauru": {
+"t": "Cumhurbaşkanı",
+"n": "David Adeang"
+},
+"Nepal": {
+"t": "Başbakan",
+"n": "Balen Shah"
+},
+"Netherlands": {
+"t": "Başbakan",
+"n": "Rob Jetten"
+},
+"New Zealand": {
+"t": "Başbakan",
+"n": "Christopher Luxon"
+},
+"Nicaragua": {
+"t": "Eş Başkanlar",
+"n": "Daniel Ortega / Rosario Murillo"
+},
+"Niger": {
+"t": "Cumhurbaşkanı",
+"n": "Abdourahamane Tiani"
+},
+"Nigeria": {
+"t": "Cumhurbaşkanı",
+"n": "Bola Tinubu"
+},
+"North Korea": {
+"t": "Genel Sekreter",
+"n": "Kim Jong Un"
+},
+"North Macedonia": {
+"t": "Başbakan",
+"n": "Hristijan Mickoski"
+},
+"Norway": {
+"t": "Başbakan",
+"n": "Jonas Gahr Støre"
+},
+"Oman": {
+"t": "Sultan",
+"n": "Heysem bin Tarık"
+},
+"Pakistan": {
+"t": "Başbakan",
+"n": "Shehbaz Sharif"
+},
+"Palau": {
+"t": "Cumhurbaşkanı",
+"n": "Surangel Whipps Jr."
+},
+"Palestine": {
+"t": "Cumhurbaşkanı",
+"n": "Mahmud Abbas"
+},
+"Panama": {
+"t": "Cumhurbaşkanı",
+"n": "José Raúl Mulino"
+},
+"Papua New Guinea": {
+"t": "Başbakan",
+"n": "James Marape"
+},
+"Paraguay": {
+"t": "Cumhurbaşkanı",
+"n": "Santiago Peña"
+},
+"Peru": {
+"t": "Cumhurbaşkanı",
+"n": "Keiko Fujimori"
+},
+"Philippines": {
+"t": "Cumhurbaşkanı",
+"n": "Bongbong Marcos"
+},
+"Poland": {
+"t": "Başbakan",
+"n": "Donald Tusk"
+},
+"Portugal": {
+"t": "Başbakan",
+"n": "Luís Montenegro"
+},
+"Qatar": {
+"t": "Emir",
+"n": "Temim bin Hamad Al Sani"
+},
+"Romania": {
+"t": "Cumhurbaşkanı",
+"n": "Nicușor Dan"
+},
+"Russia": {
+"t": "Cumhurbaşkanı",
+"n": "Vladimir Putin"
+},
+"Rwanda": {
+"t": "Cumhurbaşkanı",
+"n": "Paul Kagame"
+},
+"S. Sudan": {
+"t": "Cumhurbaşkanı",
+"n": "Salva Kiir"
+},
+"Saint Lucia": {
+"t": "Başbakan",
+"n": "Philip J. Pierre"
+},
+"Samoa": {
+"t": "Başbakan",
+"n": "Laʻauli Leuatea Schmidt"
+},
+"San Marino": {
+"t": "Kaptan Naipler",
+"n": "Alice Mina / Vladimiro Selva"
+},
+"Saudi Arabia": {
+"t": "Veliaht Prens",
+"n": "Muhammed bin Selman"
+},
+"Senegal": {
+"t": "Cumhurbaşkanı",
+"n": "Bassirou Diomaye Faye"
+},
+"Serbia": {
+"t": "Cumhurbaşkanı",
+"n": "Aleksandar Vučić"
+},
+"Seychelles": {
+"t": "Cumhurbaşkanı",
+"n": "Patrick Herminie"
+},
+"Sierra Leone": {
+"t": "Cumhurbaşkanı",
+"n": "Julius Maada Bio"
+},
+"Singapore": {
+"t": "Başbakan",
+"n": "Lawrence Wong"
+},
+"Slovakia": {
+"t": "Başbakan",
+"n": "Robert Fico"
+},
+"Slovenia": {
+"t": "Başbakan",
+"n": "Janez Janša"
+},
+"Solomon Is.": {
+"t": "Başbakan",
+"n": "Matthew Wale"
+},
+"Somalia": {
+"t": "Cumhurbaşkanı",
+"n": "Hassan Sheikh Mohamud"
+},
+"Somaliland": {
+"t": "Cumhurbaşkanı",
+"n": "Abdirahman Mohamed Abdullahi"
+},
+"South Africa": {
+"t": "Cumhurbaşkanı",
+"n": "Cyril Ramaphosa"
+},
+"South Korea": {
+"t": "Cumhurbaşkanı",
+"n": "Lee Jae-myung"
+},
+"Spain": {
+"t": "Başbakan",
+"n": "Pedro Sánchez"
+},
+"Sri Lanka": {
+"t": "Cumhurbaşkanı",
+"n": "Anura Kumara Dissanayake"
+},
+"St. Kitts and Nevis": {
+"t": "Başbakan",
+"n": "Terrance Drew"
+},
+"St. Vin. and Gren.": {
+"t": "Başbakan",
+"n": "Godwin Friday"
+},
+"Sudan": {
+"t": "Egemenlik Konseyi Başkanı",
+"n": "Abdulfettah el-Burhan"
+},
+"Suriname": {
+"t": "Cumhurbaşkanı",
+"n": "Jennifer Geerlings-Simons"
+},
+"Sweden": {
+"t": "Başbakan",
+"n": "Ulf Kristersson"
+},
+"Switzerland": {
+"t": "Federal Konsey Başkanı",
+"n": "Guy Parmelin"
+},
+"Syria": {
+"t": "Cumhurbaşkanı",
+"n": "Ahmed eş-Şara"
+},
+"São Tomé and Principe": {
+"t": "Cumhurbaşkanı",
+"n": "Carlos Vila Nova"
+},
+"Taiwan": {
+"t": "Cumhurbaşkanı",
+"n": "Lai Ching-te"
+},
+"Tajikistan": {
+"t": "Cumhurbaşkanı",
+"n": "Emomali Rahmon"
+},
+"Tanzania": {
+"t": "Cumhurbaşkanı",
+"n": "Samia Suluhu Hassan"
+},
+"Thailand": {
+"t": "Başbakan",
+"n": "Anutin Charnvirakul"
+},
+"Timor-Leste": {
+"t": "Başbakan",
+"n": "Xanana Gusmão"
+},
+"Togo": {
+"t": "Başbakan",
+"n": "Faure Gnassingbé"
+},
+"Tonga": {
+"t": "Başbakan",
+"n": "Fatafehi Fakafānua"
+},
+"Trinidad and Tobago": {
+"t": "Başbakan",
+"n": "Kamla Persad-Bissessar"
+},
+"Tunisia": {
+"t": "Cumhurbaşkanı",
+"n": "Kays Said"
+},
+"Turkey": {
+"t": "Cumhurbaşkanı",
+"n": "Recep Tayyip Erdoğan"
+},
+"Turkmenistan": {
+"t": "Cumhurbaşkanı",
+"n": "Serdar Berdimuhamedov"
+},
+"Tuvalu": {
+"t": "Başbakan",
+"n": "Feleti Teo"
+},
+"Uganda": {
+"t": "Cumhurbaşkanı",
+"n": "Yoweri Museveni"
+},
+"Ukraine": {
+"t": "Cumhurbaşkanı",
+"n": "Volodimir Zelenskiy"
+},
+"United Arab Emirates": {
+"t": "Cumhurbaşkanı",
+"n": "Muhammed bin Zayid Al Nahyan"
+},
+"United Kingdom": {
+"t": "Başbakan",
+"n": "Andy Burnham"
+},
+"United States of America": {
+"t": "Başkan",
+"n": "Donald Trump"
+},
+"Uruguay": {
+"t": "Cumhurbaşkanı",
+"n": "Yamandú Orsi"
+},
+"Uzbekistan": {
+"t": "Cumhurbaşkanı",
+"n": "Şevket Mirziyoyev"
+},
+"Vanuatu": {
+"t": "Başbakan",
+"n": "Jotham Napat"
+},
+"Venezuela": {
+"t": "Vekil Başkan",
+"n": "Delcy Rodríguez"
+},
+"Vietnam": {
+"t": "Genel Sekreter",
+"n": "Tô Lâm"
+},
+"W. Sahara": {
+"t": "Cumhurbaşkanı",
+"n": "Brahim Gali"
+},
+"Yemen": {
+"t": "Başkanlık Konseyi Başkanı",
+"n": "Reşad el-Alimi"
+},
+"Zambia": {
+"t": "Cumhurbaşkanı",
+"n": "Hakainde Hichilema"
+},
+"Zimbabwe": {
+"t": "Cumhurbaşkanı",
+"n": "Emmerson Mnangagwa"
+},
+"eSwatini": {
+"t": "Kral",
+"n": "III. Mswati"
+}
+}
+}

@@ -1,0 +1,7 @@
+1325|Relations
+1326|Relations view off.
+1327|Relations view: yellow selected country, blue allies, red at war, purple truce.
+1328|None
+1329|Alliance bloc: %s
+1330|%d provinces   /   troops %s   /   income %s
+1331|Allies

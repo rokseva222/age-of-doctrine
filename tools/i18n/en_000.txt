@@ -1,0 +1,260 @@
+0|Cabinet change
+1|   ·   scandal risk
+2|Free
+3|Assault operation
+4|Forces (tap to select)
+5|Sent
+6|Operation type
+7|Launch operation
+8|Cancel
+9|Defender
+10|Empty
+11|Province defense
+12|Siege time
+13|%d wk
+14|Income
+15|You have no army nearby. Bring your armies within 6 provinces of the target or raise a new unit.
+16|Estimated odds
+17|Select at least one army.
+18|Undefended: the army marches in and the siege begins.
+19|Overwhelming advantage
+20|Advantage
+21|Balanced: down to luck
+22|Hard: losses may be heavy
+23|Very risky: defeat expected
+24|Attack %sK  /  Defense %sK
+25|Defense Minister
+26|Foreign Minister
+27|Interior Minister
+28|Finance Minister
+29|Health Minister
+30|Intelligence Chief
+31|Ambassador
+32|Shady Trader
+33|Sports Federation Chief
+34|Election Board Chair
+35|Sir, we are planning a large exercise along the {nb} border. Do we put on a show of force, or stay cautious?
+36|Large exercise
+37|Troops massed on the border. Army morale rose, the neighbors are uneasy.
+38|Limited exercise
+39|A small, low-profile exercise was held.
+40|Cancel it
+41|The exercise was cancelled; the budget was saved, the officers grumbled.
+42|The domestic rifle and armored vehicle project is waiting for funds. Full backing would revive industry too.
+43|Full backing
+44|Prototypes delivered, the factories are running three shifts.
+45|Partial backing
+46|The project is moving slowly but steadily.
+47|Postpone
+48|The project was shelved.
+49|To grow the army quickly I suggest extending the conscription period.
+50|Extend service
+51|The barracks are full but families are unhappy.
+52|Encourage volunteers
+53|Bonuses and scholarships raised the volunteer numbers.
+54|Leave it
+55|The current system continues.
+56|There is unrest among the officers over pay. Meetings are being held in some garrisons.
+57|Give a raise
+58|Pay was increased, the officers calmed down.
+59|Start detentions
+60|Several colonels were arrested; the army grew cold toward you.
+61|The officers' patience ran out: the army seized power. Your government is over.
+62|Opinion
+63|A dinner meeting was held with the commanders.
+64|{nb} wants to build a joint base on our territory and offers a serious payment in return.
+65|Accept
+66|The deal was signed; the opposition shouts that sovereignty was sold.
+67|Refuse
+68|The offer was politely declined.
+69|I recommend creating a cyber command. Both defense and offense will run from there.
+70|Create a full command
+71|Hundreds of young engineers joined the army's cyber arm.
+72|Small unit
+73|A small cyber unit was formed inside the army.
+74|Unnecessary
+75|The proposal was rejected.
+76|Ammunition stocks are running low on the {en} front. We need a quick decision.
+77|Urgent foreign order
+78|Ammunition arrived by air freight; the fronts are resilient again.
+79|Convert civilian factories
+80|Civilian production lines were converted to arms production.
+81|Hold on
+82|The front-line units managed with their own means.
+83|As the war drags on, desertions on the front rise. How do we keep discipline?
+84|Declare an amnesty
+85|Deserters were pardoned; some of them returned.
+86|Harsh punishment
+87|Discipline hardened; the army recovered but the public is restless.
+88|Morale campaign
+89|Newspapers, radio and songs lifted morale at the front.
+90|Scientists are waiting for funds for a secret advanced weapons program. If caught, sanctions may follow.
+91|Start in secret
+92|The program started. Foreign intelligence seems to have sensed something.
+93|Proceed through civilian channels
+94|The research continued under a 'civilian' label.
+95|The project was cancelled.
+96|The leader of {nb} wants a summit. Attending could ease relations.
+97|Go in person
+98|The summit went warmly; both sides issued a joint statement.
+99|Send an envoy
+100|A mid-level delegation was sent.
+101|The invitation was declined; the press read it as a brave stance.
+102|I suggest upgrading diplomatic ties with {nb}: an embassy, a trade office, a visa agreement.
+103|Open an embassy
+104|A new embassy opened and trade delegations began to come and go.
+105|Trade office only
+106|A trade office was opened.
+107|No need
+108|The current level was kept.
+109|{nb} wants us to sanction a third country and promises us support.
+110|Join in
+111|The sanctions decision was approved; the target country reacted harshly.
+112|Stay neutral
+113|The government declared its neutrality.
+114|Oppose it
+115|Your opposition to the sanctions was announced; relations will be cool for a while.
+116|Tension is growing between two neighboring countries and they call on us to mediate.
+117|Take the mediation
+118|As summit host you raised your prestige; the tension eased.
+119|Stay out of it
+120|The parties found their own way.
+121|Our ambassador was expelled by {nb} on espionage charges. How do we respond?
+122|Protest formally
+123|A note was delivered; the two countries recalled each other's envoys.
+124|Stay silent
+125|The incident was soon forgotten in the press.
+126|Retaliate
+127|A counter-move was made; relations froze.
+128|{nb} is asking for international aid after a disaster. Being generous would raise our standing.
+129|Large aid
+130|Aid convoys set out; world opinion praised you.
+131|Symbolic aid
+132|A small aid package was sent.
+133|The aid request went unanswered.
+134|Secret diplomatic correspondence leaked to the press. Our relations with some countries may suffer.
+135|Deny the documents
+136|The denial was not found convincing.
+137|Open an inquiry
+138|A comprehensive investigation began in the ministry.
+139|Sacrifice an undersecretary
+140|The responsible bureaucrat resigned; the matter was closed.
+141|{nb} is declaring a region on the border line as its own territory. What should our reaction be?
+142|Send troops to the border
+143|Troops facing each other escalated the tension.
+144|Negotiating table
+145|Diplomatic talks began.
+146|Make a concession
+147|The concession was accepted; the public saw it as weakness.
+148|Third countries are pressing for a ceasefire in the war with {en}. World opinion is tired of the war.
+149|Sit down for ceasefire talks
+150|Back channels opened. War opinion calmed.
+151|Continue the war
+152|The war continues with determination; diplomatic pressure hardened.
+153|Win a third country to our side
+154|A new financial support package kept a country on our side.
+155|There is a huge protest in the streets of {cap}; economic demands are being voiced. The crowd grows by the hour.
+156|Grant funds
+157|A support package was announced; the crowd dispersed.
+158|Arrests and gas
+159|Police intervened; the anger spread to all cities.
+160|The streets rose up and the government was toppled. You were removed from power.
+161|Negotiate
+162|Talks were held with union and student representatives.
+163|Intelligence reported a bomb attack plot in a big city. Time is short.
+164|Raid operation
+165|The cell was dismantled; the press called you a hawk.
+166|Curfew
+167|The city stopped for a night, the plot was foiled but the public felt stifled.
+168|The tip is exaggerated
+169|The attack happened. A wave of heavy mourning and anger followed.
+170|Senior bureaucrats are accused of favoritism and corruption. The judiciary awaits you.
+171|Purge them
+172|Several names were dismissed; the public felt relieved.
+173|Cover it up
+174|The file was closed. Money was protected but trust was damaged.
+175|Independent investigation
+176|An independent board started work.
+177|There is a new wave of migration at the border. Thousands are waiting at the gate.
+178|Accept, build camps
+179|Camps were built; new labor began entering the market.
+180|Close the border
+181|The border was closed; the neighboring government criticizes you.
+182|Ask for international aid
+183|Aid organizations sat down to find a joint solution.
+184|The opposition demands early elections. Ballot-box slogans are heard in the streets.
+185|Go to early elections
+186|The election was held: the current administration renewed its mandate.
+187|You lost the election. Power changed hands and a new government was formed.
+188|The demand was rejected; the opposition is preparing to take to the streets.
+189|Propose a referendum
+190|The referendum campaign began.
+191|Some journalists sharply criticize the government. Do you want me to pressure the channel owners?
+192|Leave the press alone
+193|Press freedom was preserved; the criticism continues.
+194|Censorship
+195|Instructions went to the channels; digital monitoring was strengthened.
+196|Shut down the channels
+197|Several channels were shut down; a harsh reaction came from abroad.
+198|A major earthquake/flood disaster struck; hundreds of thousands are affected.
+199|National mobilization
+200|The army and civil society mobilized; cities are being rebuilt.
+201|Partial aid
+202|The aid arrived late.
+203|Leave it to the private sector
+204|The relief was unorganized; the public is angry.
+205|The budget deficit is growing. Reserves are shrinking fast.
+206|Raise taxes
+207|New taxes filled the treasury, the public grumbled.
+208|Borrow
+209|Debt was taken from international markets; the interest burden is left for coming weeks.
+210|Cut spending
+211|After public investments were frozen, the treasury recovered.
+212|A foreign investor wants to build a giant factory in your country. There are incentive terms.
+213|Give a tax incentive
+214|The foundations were laid; thousands found jobs.
+215|Conditional acceptance
+216|After bargaining a small facility was built.
+217|National feelings were stroked.
+218|Inflation is rising and the public complains about prices.
+219|Raise interest rates
+220|Money tightened; loans got expensive.
+221|Set a price cap
+222|Shelf prices stopped but producers struggle.
+223|Trust the central bank
+224|The problem continued on its own dynamics.
+225|A broad trade agreement with {nb} is on the table. Agriculture and energy are included as well.
+226|Sign
+227|The agreement was signed; traffic at the ports increased.
+228|Bargain
+229|A partial agreement was made.
+230|A rejection was decided on grounds of protecting domestic producers.
+231|We are waiting for approval of a giant infrastructure project: bridge, high-speed rail, port.
+232|Build it all
+233|Construction sites were set up; the projects became the pride of the people.
+234|Port only
+235|The port was expanded; trade sped up.
+236|The projects were left to the next budget.
+237|Global markets are collapsing and our country's stock exchange fell 20%.
+238|Bailout package
+239|The state backed the banks; the panic stopped.
+240|Austerity
+241|Harsh savings measures were taken.
+242|The economic collapse and street uprisings toppled the government.
+243|Sell reserves
+244|Reserves were sold; the market caught its breath.
+245|There is a new wave of epidemic. Hospitals are starting to fill up.
+246|Impose quarantine
+247|Cities closed down, the epidemic was brought under control.
+248|Vaccine campaign
+249|A mobilization-style vaccine campaign was run.
+250|Ignore it
+251|The epidemic spread; production and the army weakened.
+252|The city hospitals program awaits approval: new beds, new doctors.
+253|Large program
+254|New hospitals opened; the public is pleased.
+255|Partial program
+256|It started first in the most urgent regions.
+257|The program was postponed.
+258|I have presented a plan to build a domestic pharmaceutical and medical device industry.
+259|State partnership

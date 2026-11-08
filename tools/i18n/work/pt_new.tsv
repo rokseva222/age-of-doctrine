@@ -1,0 +1,1374 @@
+0	Ministro da Defesa
+1	Ministro das Relações Exteriores
+2	Ministro do Interior
+3	Ministro da Fazenda
+4	Ministro da Saúde
+5	Chefe da Inteligência
+6	Embaixador
+7	Comerciante duvidoso
+8	Presidente da Federação Esportiva
+9	Presidente do Tribunal Eleitoral
+10	Senhor, estamos planejando um grande exercício na fronteira com {nb}. Fazemos uma demonstração de força ou ficamos cautelosos?
+11	Grande exercício
+12	Tropas se concentraram na fronteira. O moral do exército subiu, os vizinhos estão inquietos.
+13	Exercício limitado
+14	Realizou-se um pequeno exercício discreto.
+15	Cancelar
+16	O exercício foi cancelado; economizou-se orçamento, os oficiais resmungaram.
+17	O projeto nacional de fuzil e veículo blindado aguarda verba. Apoio total reativaria também a indústria.
+18	Apoio total
+19	Os protótipos foram entregues, as fábricas trabalham em três turnos.
+20	Apoio parcial
+21	O projeto avança devagar, mas com firmeza.
+22	Adiar
+23	O projeto foi engavetado.
+24	Para ampliar o exército rapidamente, sugiro estender o serviço militar.
+25	Estender o serviço
+26	Os quartéis estão cheios, mas as famílias estão descontentes.
+27	Incentivar voluntários
+28	Bônus e bolsas aumentaram o número de voluntários.
+29	Deixar como está
+30	O sistema atual continua.
+31	Há inquietação entre os oficiais por causa do soldo. Reuniões ocorrem em algumas guarnições.
+32	Dar aumento
+33	O soldo foi aumentado, os oficiais se acalmaram.
+34	Iniciar detenções
+35	Vários coronéis foram presos; o exército esfriou em relação a você.
+36	A paciência dos oficiais acabou: o exército tomou o poder. Seu governo acabou.
+37	Conversar
+38	Realizou-se um jantar com os comandantes.
+39	{nb} quer construir uma base conjunta em nosso território e oferece em troca um pagamento considerável.
+40	Aceitar
+41	O acordo foi assinado; a oposição grita que a soberania foi vendida.
+42	Recusar
+43	A oferta foi recusada com educação.
+44	Recomendo criar um comando cibernético. Dali serão conduzidas a defesa e o ataque.
+45	Criar um comando completo
+46	Centenas de jovens engenheiros se juntaram ao braço cibernético do exército.
+47	Unidade pequena
+48	Uma pequena unidade cibernética foi formada dentro do exército.
+49	Desnecessário
+50	A proposta foi rejeitada.
+51	Os estoques de munição estão acabando na frente de {en}. Precisamos de uma decisão rápida.
+52	Pedido urgente ao exterior
+53	A munição chegou por frete aéreo; as frentes voltam a resistir.
+54	Converter fábricas civis
+55	As linhas de produção civis foram convertidas para a fabricação de armas.
+56	Aguentar
+57	As unidades da frente se viraram com os próprios meios.
+58	Com a guerra se arrastando, as deserções na frente aumentam. Como manter a disciplina?
+59	Declarar anistia
+60	Os desertores foram anistiados; alguns voltaram.
+61	Punição severa
+62	A disciplina endureceu; o exército se recuperou, mas a população está inquieta.
+63	Campanha de moral
+64	Jornais, rádio e canções elevaram o moral na frente.
+65	Cientistas aguardam verba para um programa secreto de armas avançadas. Se descobertos, podem vir sanções.
+66	Começar em segredo
+67	O programa começou. A inteligência estrangeira parece ter farejado algo.
+68	Prosseguir por canais civis
+69	A pesquisa continuou sob um rótulo «civil».
+70	O projeto foi cancelado.
+71	O líder de {nb} quer uma cúpula. Comparecer poderia aliviar as relações.
+72	Ir pessoalmente
+73	A cúpula foi cordial; ambos os lados emitiram uma declaração conjunta.
+74	Enviar um emissário
+75	Uma delegação de nível médio foi enviada.
+76	O convite foi recusado; a imprensa leu isso como uma postura corajosa.
+77	Sugiro elevar as relações diplomáticas com {nb}: uma embaixada, um escritório comercial, um acordo de vistos.
+78	Abrir uma embaixada
+79	Uma nova embaixada foi aberta e delegações comerciais começaram a ir e vir.
+80	Só escritório comercial
+81	Um escritório comercial foi aberto.
+82	Não é preciso
+83	O nível atual foi mantido.
+84	{nb} quer que sancionemos um terceiro país e promete nos apoiar.
+85	Aderir
+86	A decisão de sancionar foi aprovada; o país-alvo reagiu duramente.
+87	Ficar neutro
+88	O governo declarou sua neutralidade.
+89	Opor-se
+90	Sua oposição às sanções foi anunciada; as relações ficarão frias por um tempo.
+91	A tensão cresce entre dois países vizinhos e eles pedem que façamos a mediação.
+92	Assumir a mediação
+93	Como anfitrião da cúpula você aumentou seu prestígio; a tensão diminuiu.
+94	Ficar de fora
+95	As partes acharam seu próprio caminho.
+96	Nosso embaixador foi expulso por {nb} sob acusação de espionagem. Como respondemos?
+97	Protestar formalmente
+98	Uma nota foi entregue; os dois países chamaram de volta seus enviados.
+99	Ficar em silêncio
+100	O incidente logo foi esquecido na imprensa.
+101	Retaliar
+102	Uma contramedida foi tomada; as relações congelaram.
+103	{nb} pede ajuda internacional após um desastre. Ser generoso elevaria nossa imagem.
+104	Grande ajuda
+105	Comboios de ajuda partiram; a opinião mundial o elogiou.
+106	Ajuda simbólica
+107	Um pequeno pacote de ajuda foi enviado.
+108	O pedido de ajuda ficou sem resposta.
+109	Correspondência diplomática secreta vazou para a imprensa. Nossas relações com alguns países podem sofrer.
+110	Negar os documentos
+111	O desmentido não pareceu convincente.
+112	Abrir um inquérito
+113	Uma investigação abrangente começou no ministério.
+114	Sacrificar um subsecretário
+115	O burocrata responsável pediu demissão; o assunto foi encerrado.
+116	{nb} declara uma região da linha de fronteira como seu território. Qual deve ser a nossa reação?
+117	Enviar tropas à fronteira
+118	Tropas frente a frente aumentaram a tensão.
+119	Mesa de negociação
+120	Começaram as conversas diplomáticas.
+121	Fazer uma concessão
+122	A concessão foi aceita; o público viu isso como fraqueza.
+123	Terceiros países pressionam por um cessar-fogo na guerra com {en}. A opinião mundial está cansada da guerra.
+124	Sentar para negociar o cessar-fogo
+125	Canais discretos se abriram. A opinião sobre a guerra se acalmou.
+126	Continuar a guerra
+127	A guerra continua com determinação; a pressão diplomática endureceu.
+128	Trazer um terceiro país para o nosso lado
+129	Um novo pacote de apoio financeiro manteve um país do nosso lado.
+130	Há um enorme protesto nas ruas de {cap}; exigências econômicas são ouvidas. A multidão cresce a cada hora.
+131	Conceder verbas
+132	Um pacote de apoio foi anunciado; a multidão se dispersou.
+133	Prisões e gás
+134	A polícia interveio; a raiva se espalhou para todas as cidades.
+135	As ruas se levantaram e o governo foi derrubado. Você foi afastado do poder.
+136	Negociar
+137	Conversou-se com representantes de sindicatos e estudantes.
+138	A inteligência informou um plano de atentado a bomba em uma grande cidade. O tempo é curto.
+139	Operação de batida
+140	A célula foi desmantelada; a imprensa o chamou de falcão.
+141	Toque de recolher
+142	A cidade parou por uma noite, o plano foi frustrado, mas a população se sentiu sufocada.
+143	O alerta é exagerado
+144	O atentado aconteceu. Seguiu-se uma onda de luto profundo e raiva.
+145	Altos funcionários são acusados de favoritismo e corrupção. A justiça espera por você.
+146	Expurgá-los
+147	Vários nomes foram demitidos; o público sentiu alívio.
+148	Abafar
+149	O processo foi arquivado. O dinheiro foi protegido, mas a confiança foi abalada.
+150	Investigação independente
+151	Uma comissão independente começou a trabalhar.
+152	Há uma nova onda de migração na fronteira. Milhares esperam no portão.
+153	Aceitar e construir campos
+154	Campos foram construídos; nova mão de obra começou a entrar no mercado.
+155	Fechar a fronteira
+156	A fronteira foi fechada; o governo vizinho o critica.
+157	Pedir ajuda internacional
+158	Organizações de ajuda se sentaram para achar uma solução conjunta.
+159	A oposição exige eleições antecipadas. Gritos de urnas são ouvidos nas ruas.
+160	Convocar eleições antecipadas
+161	A eleição foi realizada: o governo atual renovou seu mandato.
+162	Você perdeu a eleição. O poder mudou de mãos e um novo governo foi formado.
+163	O pedido foi rejeitado; a oposição se prepara para ir às ruas.
+164	Propor um referendo
+165	A campanha do referendo começou.
+166	Alguns jornalistas criticam duramente o governo. Quer que eu pressione os donos dos canais?
+167	Deixar a imprensa em paz
+168	A liberdade de imprensa foi preservada; as críticas continuam.
+169	Censura
+170	Instruções foram enviadas aos canais; a vigilância digital foi reforçada.
+171	Fechar os canais
+172	Vários canais foram fechados; veio uma reação dura do exterior.
+173	Um grande desastre de terremoto ou inundação atingiu o país; centenas de milhares de pessoas foram afetadas.
+174	Mobilização nacional
+175	O exército e a sociedade civil se mobilizaram; as cidades estão sendo reconstruídas.
+176	Ajuda parcial
+177	A ajuda chegou tarde.
+178	Deixar para o setor privado
+179	O socorro foi desorganizado; a população está com raiva.
+180	O déficit orçamentário está crescendo. As reservas diminuem rápido.
+181	Aumentar impostos
+182	Novos impostos encheram o tesouro, a população resmungou.
+183	Tomar empréstimos
+184	Dívida foi tomada nos mercados internacionais; o peso dos juros fica para as próximas semanas.
+185	Cortar gastos
+186	Depois que os investimentos públicos foram congelados, o tesouro se recuperou.
+187	Um investidor estrangeiro quer construir uma fábrica gigante no seu país. Há condições de incentivo.
+188	Dar incentivo fiscal
+189	As fundações foram lançadas; milhares encontraram emprego.
+190	Aceitação condicional
+191	Depois de barganhar, uma pequena instalação foi construída.
+192	Os sentimentos nacionais foram afagados.
+193	A inflação está subindo e a população reclama dos preços.
+194	Aumentar os juros
+195	O dinheiro ficou escasso; os empréstimos encareceram.
+196	Fixar um teto de preços
+197	Os preços nas prateleiras pararam, mas os produtores sofrem.
+198	Confiar no banco central
+199	O problema continuou em sua própria dinâmica.
+200	Um amplo acordo comercial com {nb} está sobre a mesa. Agricultura e energia também estão incluídas.
+201	Assinar
+202	O acordo foi assinado; o tráfego nos portos aumentou.
+203	Barganhar
+204	Um acordo parcial foi feito.
+205	Decidiu-se pela rejeição para proteger os produtores nacionais.
+206	Aguardamos a aprovação de um gigantesco projeto de infraestrutura: ponte, trem de alta velocidade, porto.
+207	Construir tudo
+208	Canteiros de obras foram montados; os projetos tornaram-se orgulho do povo.
+209	Só o porto
+210	O porto foi ampliado; o comércio acelerou.
+211	Os projetos ficaram para o próximo orçamento.
+212	Os mercados globais estão desabando e a bolsa do nosso país caiu 20 %.
+213	Pacote de resgate
+214	O Estado amparou os bancos; o pânico parou.
+215	Austeridade
+216	Medidas duras de economia foram tomadas.
+217	O colapso econômico e as revoltas de rua derrubaram o governo.
+218	Vender reservas
+219	As reservas foram vendidas; o mercado respirou.
+220	Há uma nova onda de epidemia. Os hospitais começam a encher.
+221	Impor quarentena
+222	As cidades fecharam, a epidemia foi controlada.
+223	Campanha de vacinação
+224	Uma campanha de vacinação nos moldes de uma mobilização foi realizada.
+225	Ignorar
+226	A epidemia se espalhou; a produção e o exército se enfraqueceram.
+227	O programa de hospitais urbanos aguarda aprovação: novos leitos, novos médicos.
+228	Programa grande
+229	Novos hospitais abriram; a população está satisfeita.
+230	Programa parcial
+231	Começou primeiro nas regiões mais urgentes.
+232	O programa foi adiado.
+233	Apresentei um plano para criar uma indústria nacional farmacêutica e de equipamentos médicos.
+234	Parceria com o Estado
+235	ONU
+236	Nações Unidas
+237	%d membros   /   decide-se por maioria simples, sem veto
+238	em %d sem.
+239	Custo %s
+240	Pronto
+241	Resoluções recentes
+242	Ainda não há resoluções.
+243	Escolha o alvo da resolução.
+244	Escolha a guerra em que pedir cessar-fogo.
+245	Resolução aprovada
+246	Resolução rejeitada
+247	A resolução não pôde ser apresentada
+248	Resolução de cessar-fogo
+249	Convoca ambos os lados em guerra a um cessar-fogo.
+250	Fundo de reconstrução
+251	Recursos são reservados para reparar as províncias danificadas do país-alvo.
+252	Ajuda humanitária
+253	Apoio de tesouro e estabilidade ao país-alvo.
+254	Resolução de sanções
+255	A receita do país-alvo cai 25 por cento por 26 semanas.
+256	Ação conjunta
+257	Se aprovada, os países que votaram sim declaram guerra ao alvo.
+258	As Nações Unidas ainda não foram fundadas.
+259	Você deve esperar %d semanas antes de apresentar esta resolução novamente.
+260	Fundos insuficientes: a resolução custa %s.
+261	Não há alvo válido.
+262	ONU: a resolução de %s foi rejeitada (%d a favor, %d contra).
+263	ONU: a resolução de %s foi aprovada (%d a favor, %d contra). %s
+264	Um cessar-fogo entre %s e %s começou.
+265	Fundo transferido para %s: %s; as províncias estão sendo reparadas.
+266	Ajuda enviada para %s: %s.
+267	Um regime de sanções de 26 semanas contra %s começou.
+268	%d países declararam guerra. Alvo: %s.
+269	Força de paz
+270	Acalma os distúrbios no país-alvo e aumenta sua estabilidade.
+271	Programa de desenvolvimento
+272	As províncias menos desenvolvidas do país-alvo melhoram um nível.
+273	Garantia de soberania
+274	Os países que votaram sim não atacarão o alvo por 26 semanas.
+275	Embargo de armas
+276	A indústria e a logística do país-alvo se enfraquecem.
+277	Investigação internacional
+278	A estabilidade e a agressividade do país-alvo caem.
+279	Resolução de desarmamento
+280	O exército do país-alvo diminui 12 por cento.
+281	Forças de paz implantadas em %s; os distúrbios diminuem.
+282	Programa de desenvolvimento para %s: %d províncias melhoradas.
+283	%d países se comprometeram com 26 semanas de não agressão contra %s.
+284	Embargo de armas a %s: indústria e logística enfraquecidas.
+285	Investigação internacional sobre %s: a estabilidade caiu, a agressão diminuiu.
+286	O exército de %s diminuiu 12 por cento.
+287	Mar
+288	Desembarque anfíbio
+289	Desembarque pelo mar: ataque −15 por cento, defesa +10 por cento. A capacidade de transporte é limitada pela sua marinha.
+290	Desembarque anfíbio: capacidade de transporte de %s soldados
+291	Relações
+292	Visão de relações desativada.
+293	Visão de relações: amarelo país selecionado, azul aliados, vermelho em guerra, roxo trégua.
+294	Nenhum
+295	Bloco aliado: %s
+296	%d províncias   /   tropas %s   /   renda %s
+297	Aliados
+298	O Império Otomano entrou na guerra bombardeando portos russos do mar Negro.
+299	Trégua de Natal na Frente Ocidental: os soldados nas trincheiras depuseram as armas por um dia.
+300	Grande assalto naval aos Dardanelos: o destino dos Estreitos está em jogo.
+301	A Itália declarou guerra à Áustria-Hungria e juntou-se à Entente.
+302	A Bulgária juntou-se às Potências Centrais e atacou a Sérvia.
+303	A Batalha de Verdun começou: França e Alemanha entraram em um banho de sangue de meses.
+304	A Romênia entrou na guerra ao lado da Entente e atacou a Áustria-Hungria.
+305	Revolução de Fevereiro na Rússia: o regime czarista desmoronou e o país mergulhou no caos.
+306	Os Estados Unidos declararam guerra à Alemanha e entraram na guerra.
+307	A Grécia declarou guerra às Potências Centrais ao lado da Entente.
+308	Revolução de Outubro na Rússia: os bolcheviques tomaram o poder.
+309	Tratado de Brest-Litovsk: a Rússia soviética assinou uma paz separada com a Alemanha.
+310	Armistício de 11 de novembro: os canhões se calam na Frente Ocidental.
+311	O Tratado de Versalhes foi assinado: a ordem do pós-guerra está sendo redesenhada.
+312	A bolsa de Nova York quebrou: a Grande Depressão abala o mundo.
+313	Hitler tornou-se chanceler na Alemanha.
+314	A Alemanha invadiu a Polônia: começa uma nova guerra mundial.
+315	A Polônia caiu; Alemanha e URSS dividiram o país.
+316	A Alemanha atacou a Dinamarca e a Noruega.
+317	A Alemanha lançou sua grande ofensiva no Ocidente: Países Baixos e Bélgica estão sob ataque.
+318	A queda da França: a Itália também declarou guerra à França e à Grã-Bretanha.
+319	Batalha da Inglaterra: a Luftwaffe está sobre os céus britânicos.
+320	Pacto Tripartite assinado: Alemanha, Itália e Japão formam uma aliança.
+321	Operação Barbarossa: a Alemanha e seus aliados atacaram a URSS.
+322	Pearl Harbor: o Japão atacou os EUA e a Grã-Bretanha, e a Alemanha declarou guerra aos EUA.
+323	Batalha de Midway: o poder de ataque da frota japonesa foi quebrado.
+324	A Batalha de Stalingrado começou.
+325	A Itália pediu um armistício; os Aliados desembarcaram na Itália depois da Sicília.
+326	Dia D: os Aliados desembarcaram na Normandia.
+327	A Romênia mudou de lado e declarou guerra à Alemanha.
+328	Bulgária e Finlândia voltaram-se contra a Alemanha.
+329	A Turquia declarou guerra simbolicamente à Alemanha e ao Japão.
+330	A guerra na Europa está terminando: a Alemanha se rendeu incondicionalmente.
+331	Bombas atômicas foram lançadas sobre Hiroshima e Nagasaki; a URSS declarou guerra ao Japão.
+332	O Japão se rendeu: a Segunda Guerra Mundial acabou.
+333	A OTAN foi fundada: a aliança ocidental toma forma.
+334	A Guerra da Coreia começou.
+335	Você não tem armas nucleares.
+336	O arsenal nuclear não está pronto (%d semanas).
+337	Você deve estar em guerra com o alvo para usar armas nucleares.
+338	ATAQUE NUCLEAR! %s usou uma arma nuclear contra %s; o mundo está em choque e sanções estão vindo.
+339	Ataque nuclear
+340	Uma arma nuclear será usada contra %s. 80 %% do exército defensor será destruído, mas sua estabilidade cai, seguem-se 26 semanas de sanções e os aliados do alvo podem declarar guerra a você. Tem certeza?
+341	Lançar
+342	%d - %d   %dsem
+343	Trégua
+344	Primeiros passos
+345	Tutorial concluído
+346	Conquistas
+347	Conquista: %s
+348	Objetivo cumprido: %s
+349	Próximo objetivo: %s
+350	Objetivo: %s
+351	Objetivos e conquistas
+352	Jogue o primeiro turno
+353	Pressione o botão de jogar ou avance um turno.
+354	Mova um exército
+355	Selecione um exército e toque em uma província vizinha.
+356	Toque em uma província de um país vizinho e declare guerra.
+357	Conquiste sua primeira província
+358	Ataque uma província inimiga com um exército e capture-a.
+359	Faça a paz
+360	Termine uma guerra com paz e garanta os espólios.
+361	Conquistador
+362	Conquiste 10 províncias.
+363	Conquiste 50 províncias.
+364	Mestre do Mundo
+365	Conquiste 150 províncias.
+366	Calejado em batalha
+367	Lute 50 batalhas.
+368	Assine 5 tratados de paz.
+369	Amigo nas horas difíceis
+370	Forme uma aliança.
+371	Destruidor de Estados
+372	Apague um país do mapa.
+373	Diplomacia de bastidores
+374	Aprove uma resolução da ONU.
+375	Espírito da Normandia
+376	Desembarque tropas pelo mar.
+377	Caixa de Pandora
+378	Use uma arma nuclear. O preço é alto.
+379	Aguentar um ano
+380	Jogue 52 semanas (1 ano).
+381	Uma década
+382	Jogue 520 semanas (10 anos).
+383	Grande potência
+384	Possua 30 províncias ao mesmo tempo.
+385	Reparações de guerra
+386	Metade do tesouro do perdedor passa para você e a estabilidade dele cai.
+387	Desarmamento
+388	Os exércitos do perdedor são cortados pela metade.
+389	Zona-tampão
+390	A trégua dura 78 semanas em vez de 26; nenhum dos lados pode atacar.
+391	Termos de paz: %s impôs a %s o seguinte: %s.
+392	reparações
+393	desarmamento
+394	zona-tampão
+395	\nComandante: %s (Nv. %d)
+396	O comandante %s venceu a campanha: nível %d (+%%%d de força de combate).
+397	Operação aérea
+398	Bombardeio aéreo: o efeito depende da superioridade aérea (até −20 % de defesa se seu poder aéreo superar o do inimigo). Indisponível na era inicial.
+399	Reação mundial: %d / 100 (sobe com as conquistas; acima de 50 forma-se uma coalizão)
+400	O mundo está preocupado com a ascensão de %s: vizinhos e grandes potências estão esfriando.
+401	COALIZÃO! %d países declararam guerra a %s por causa de suas conquistas.
+402	Bombardeio naval
+403	Artilharia naval sobre uma província costeira: até −18 % de defesa se sua marinha for mais forte que a inimiga. Somente províncias costeiras.
+404	Ataque de mísseis
+405	Mísseis de longo alcance e ataques de precisão: até −30 % de defesa, sem precisar de superioridade aérea. Somente era moderna.
+406	Lançamento aerotransportado
+407	Ataque de paraquedistas pela retaguarda: a defesa da província e o bônus de defensores locais não se aplicam. Eras da Segunda Guerra e moderna.
+408	Ataque de forças especiais
+409	Um golpe duro com uma pequena força de elite: +18 % de ataque, poucas baixas. Até 25.000 soldados; eras da Segunda Guerra e moderna.
+410	Esta operação não pode ser usada aqui.
+411	Bem-vindo, comandante
+412	Este breve guia ensina o básico do jogo. Você pode pular qualquer passo com «Pular»; os passos de ação avançam sozinhos quando você os faz.
+413	Conheça o mapa
+414	Arraste o mapa com o dedo e use o gesto de pinça com dois dedos para dar zoom. Agora toque em qualquer província.
+415	Ficha da província
+416	A ficha mostra o dono, a população, a renda e a defesa da província; a capital tem uma estrela. Suas províncias geram renda, e você a perde ao perdê-las.
+417	Barra superior
+418	Aqui ficam o tesouro (dinheiro), as tropas, o número de províncias e a data. Cada turno é uma semana: a renda é somada ao tesouro toda semana, enquanto a manutenção do exército e os gastos são descontados.
+419	Selecione seu exército
+420	Toque em uma de suas províncias e pressione «Selecionar exército» na ficha. Os exércitos aparecem no mapa com o número de tropas.
+421	Mova o exército
+422	Toque em uma província vizinha e pressione «Marchar exército para cá». Um exército enviado manualmente espera ao chegar; exércitos sem ordens lutam automaticamente se essa opção estiver ligada.
+423	Termine o turno
+424	Avance uma semana com o botão «Encerrar turno» no canto superior direito. As notícias chegam ao Boletim Mundial no topo; toque nele para abrir o histórico.
+425	Painel de política
+426	O botão do tanque à direita: divisão do orçamento (militar, indústria, cibernética, logística...), compra de armas, inventário, comércio, frentes, alianças, inteligência e gabinete. É aqui que sua força cresce.
+427	Gabinete e estabilidade
+428	Política → Gabinete: os ministros são nomeados de acordo com a cultura do país; um bom ministro aumenta a renda, o exército e a estabilidade. A fadiga de guerra e a baixa estabilidade causam distúrbios e rebeliões nas províncias; você pode contratar mercenários para reforçar o exército rapidamente.
+429	Declarar guerra
+430	Primeiro escolha um país vizinho fraco. Minha sugestão: {target}. Toque em uma de suas províncias e pressione «Declarar guerra». Os aliados dele podem se voltar contra você; pese o custo.
+431	Toque em uma província inimiga e pressione «Assalto». Escolha seus exércitos e o tipo de operação (artilharia, aérea, naval, mísseis, paraquedistas, forças especiais...). A barra de vantagem mostra sua chance de vitória.
+432	Cerco e conquista
+433	Um exército que vence a defesa entra na província e a cerca; quando o tempo de cerco acaba, a província passa a ser sua e sua pontuação de guerra sobe. Os exércitos precisam de permissão para cruzar fronteiras.
+434	A mesa de paz
+435	Com uma pontuação de guerra alta, toque em uma província inimiga e escolha «Oferecer paz»: escolha as províncias que você toma, além dos termos de reparações, desarmamento e zona-tampão conforme sua pontuação. Conquistas demais elevam a «reação mundial»; acima de 50 os países formam uma coalizão.
+436	Alianças e relações
+437	Toque em uma província de um país amigo: «Propor aliança» ou «Relações» (quem é aliado de quem, quem está em guerra). O botão de aperto de mão à direita pinta o mapa com as cores das relações.
+438	Mundo e ONU
+439	O botão do globo à direita: rankings, blocos, notícias e a ONU. Na ONU você aprova por maioria moções como cessar-fogo, reconstrução, ajuda e sanções (sem veto).
+440	Poder nuclear e riscos
+441	Se você é uma potência nuclear, pode lançar um ataque nuclear contra uma província inimiga: destruição em massa, mas seguem-se sanções pesadas e uma coalizão. Guarde como último recurso.
+442	Salvar e objetivos
+443	O menu ≡ no canto superior esquerdo: salvar/carregar, configurações e «Objetivos e conquistas». Você pode ativar o salvamento automático nas configurações. As conquistas são permanentes.
+444	Você está pronto!
+445	Agora você está pronto para a conquista, a diplomacia ou o desenvolvimento pacífico. Pode reabrir o tutorial pelo menu a qualquer momento. Boa sorte!
+446	TUTORIAL
+447	Pular
+448	Concluir
+449	Faça o que diz e o cartão avançará sozinho.
+450	Feito!
+451	um país vizinho
+452	Fechar tutorial
+453	Tutorial
+454	Pandemia global
+455	Gripe espanhola
+456	Epidemia
+457	Crash financeiro global
+458	Pânico financeiro
+459	Efeitos da depressão
+460	Fome e crise alimentar
+461	Choque de energia
+462	Escassez de combustível
+463	Senhor, uma epidemia está entrando no país e se espalhando pelo mundo. O sistema de saúde será pressionado. O que fazemos?
+464	Senhor, os mercados estão desabando e os bancos tremem. A crise envolve o mundo inteiro. O que o tesouro deve fazer?
+465	Senhor, a seca e os problemas de transporte marítimo dispararam os preços dos alimentos. As pessoas fazem fila por pão. O que fazemos?
+466	Senhor, os preços do petróleo dispararam; a indústria e o transporte sofrem. O que fazemos?
+467	Pacote de socorro de emergência
+468	Um amplo pacote de socorro foi anunciado. A crise mal tocará seu país e a recuperação será rápida.
+469	Os gastos foram cortados. Uma medida dura, mas barata; a população resmunga.
+470	Esperar para ver
+471	O governo decidiu esperar. A crise atingirá com força total, mas você aguenta isso.
+472	Impacto da crise reduzido
+473	Crise com efeito total
+474	Crise mundial: %s começou; seus efeitos durarão cerca de %d semanas.
+475	%s terminou; a economia mundial se recupera.
+476	Grupo de ataque de porta-aviões
+477	Aumenta a capacidade de desembarque e o assalto anfíbio; você pode atacar províncias costeiras inimigas (inclusive nações insulares) sem enviar um exército. Os grupos comprados têm custo de manutenção.
+478	Comprar: %s
+479	Um novo grupo de porta-aviões entrou em serviço.
+480	Ataque de porta-aviões
+481	Ataque de porta-aviões: causou %s baixas.
+482	Ataque de porta-aviões realizado: não havia exército no alvo.
+483	Não há porta-aviões nesta era.
+484	Tecnologia insuficiente para um porta-aviões (pelo menos %%%d).
+485	Você não pode operar mais grupos de porta-aviões.
+486	Fundos insuficientes: são necessários %s.
+487	%s colocou em serviço um novo grupo de porta-aviões.
+488	Você não tem porta-aviões.
+489	O grupo de porta-aviões está se preparando (%d semanas).
+490	Você deve estar em guerra com o alvo.
+491	O alvo não está na costa.
+492	Fundos insuficientes: %s.
+493	Os porta-aviões de %s atacaram %s%s.
+494	: %s baixas
+495	Jogue 5 turnos
+496	Dê 3 ordens ao exército
+497	Lute 2 batalhas
+498	Jogue 12 turnos
+499	Conquiste uma província
+500	Forme uma aliança
+501	Aprove uma moção da ONU
+502	Assine uma paz
+503	Conquiste 3 províncias
+504	Lute 6 batalhas
+505	Faça um desembarque anfíbio
+506	Assine 2 acordos de paz
+507	Declare uma guerra
+508	Jogue 40 turnos esta semana
+509	Lute 12 batalhas esta semana
+510	Conquiste 6 províncias esta semana
+511	Assine 2 acordos de paz esta semana
+512	Aprove 2 moções da ONU esta semana
+513	Conquiste 12 províncias esta semana
+514	Declare 2 guerras esta semana
+515	Forme 3 alianças esta semana
+516	Sargento
+517	Tenente
+518	Capitão
+519	Major
+520	Coronel
+521	General de brigada
+522	General de divisão
+523	Tenente-general
+524	General
+525	Marechal de campo
+526	Missões diárias
+527	Missões semanais
+528	pts
+529	Sequência: %d dias
+530	Sem sequência
+531	Missão cumprida: %s (+%d pts)
+532	Promovido: %s!
+533	Loja
+534	Pontos AOD
+535	Recompensa
+536	Bloqueado
+537	AP grátis
+538	Obter AP
+539	Conteúdo
+540	Saldo
+541	Recompensa diária
+542	Resgatar
+543	Resgatado
+544	Assistir anúncio
+545	Obter bônus
+546	Uma vez por dia. Conta para o limite de anúncios de hoje.
+547	Volte amanhã. Dias perdidos nunca reiniciam o contador.
+548	Os Pontos AOD são ganhos com anúncios, missões, vitórias e compras. Nunca expiram e nunca compram exércitos, dinheiro ou vantagem.
+549	Missões, conquistas e as primeiras vitórias também dão AP.
+550	Oferta única. Sem pressão de tempo; leve quando quiser.
+551	Versão completa
+552	Todos os cenários e eras históricas, além das atualizações de conteúdo gratuitas de hoje e do futuro. Compra única.
+553	Aumenta os espaços de salvamento manual de 3 para 5. Permanente.
+554	Restaurar compras
+555	Os preços são exibidos na sua moeda local no Google Play. Os AP nunca expiram e não são usados em outros jogos.
+556	Conteúdo bloqueado
+557	Este conteúdo não está na versão gratuita. Desbloqueie com AP ou com uma compra única.
+558	Dia de recompensa %d: +%d AP
+559	Restam hoje: %d/%d
+560	Nenhum anúncio disponível agora.
+561	Você usou os anúncios de hoje. Eles renovam amanhã.
+562	Próximo anúncio: %s
+563	Assistir a um anúncio  +%d AP
+564	Anúncio de bônus diário  +%d AP
+565	Oferta inicial  %d AP
+566	Espaços de salvamento extras  +%d
+567	Espaços de salvamento extras desbloqueados.
+568	AP insuficientes.
+569	Desbloqueado: %s
+570	%d compra(s) restaurada(s).
+571	Nenhuma compra para restaurar foi encontrada.
+572	Compra concluída.
+573	A compra não foi concluída.
+574	Versão completa desbloqueada.
+575	Desbloquear por %d AP  (saldo %d)
+576	São necessários %d AP  (saldo %d)  /  Loja
+577	Desbloquear só este  %s
+578	Versão completa  %s  (desbloqueia tudo)
+579	Pontos AOD: +%d AP
+580	Recompensa de vitória: +%d AP
+581	Você usou os anúncios de hoje.
+582	Aguarde um pouco antes do próximo anúncio.
+583	O bônus de hoje já foi resgatado.
+584	O anúncio não foi concluído.
+585	A loja não está conectada nesta versão.
+586	Não foi possível acessar a loja. Verifique sua conexão.
+587	Não foi possível acessar a loja.
+588	A compra não pôde ser verificada.
+589	As fábricas farmacêuticas nacionais produziram seus primeiros produtos.
+590	Incentivar o setor privado
+591	Os empreendedores se mexeram.
+592	Continuar importando
+593	O arranjo de fornecimento atual foi mantido.
+594	As baixas na frente estão aumentando. Os hospitais de campanha são insuficientes.
+595	Montar hospitais de campanha
+596	Os feridos foram tratados mais rápido e voltaram à frente.
+597	Usar hospitais civis
+598	Os hospitais urbanos assumiram o peso da frente.
+599	Sem recursos
+600	As perdas por baixas aumentaram.
+601	Há um alerta de fome. Os estoques de alimentos estão em nível crítico.
+602	Importação emergencial de alimentos
+603	Navios levaram trigo de porto em porto.
+604	Introduzir racionamento
+605	Um sistema de ração foi introduzido; as filas ficaram mais longas.
+606	Deixar para o mercado
+607	Os preços dispararam, a raiva cresceu.
+608	Recebemos informações confiáveis de que um grupo de oficiais planeja um golpe.
+609	Prendê-los agora
+610	A operação foi realizada e os planos foram frustrados. A confiança dentro do exército foi abalada.
+611	Continuar vigiando
+612	A vigilância foi aumentada.
+613	O golpe aconteceu: tropas cercaram a capital e o governo mudou de mãos.
+614	Recompensar os oficiais
+615	A lealdade foi comprada com promoções e aumentos.
+616	Detectamos um grande ataque cibernético contra as redes de energia e bancos do país.
+617	Contra-ataque
+618	Os servidores atacantes foram derrubados; a tensão internacional aumentou.
+619	Apenas defender
+620	As redes de defesa foram reforçadas.
+621	Houve alguns dias de interrupção do serviço.
+622	Um coronel do exército de {nb} pede asilo; ele trouxe informações importantes.
+623	O coronel compartilhou suas informações; o governo vizinho o acusa.
+624	O coronel foi devolvido na fronteira.
+625	Ficou claro que nossa rede de espiões em {nb} está prestes a ser exposta.
+626	Retirar a rede
+627	Os agentes recuaram em silêncio.
+628	Continuar
+629	A rede foi capturada, mas alguns segredos foram contrabandeados para fora; as relações ficaram tensas.
+630	Estamos prestes a capturar os planos de {en}, mas o preço é alto.
+631	Iniciar a operação
+632	Os planos foram capturados; os comandantes atualizaram as linhas de frente.
+633	Apenas escutar
+634	As comunicações secretas foram monitoradas.
+635	Cancelar
+636	A operação foi cancelada.
+637	Senhor, um acordo comercial e de vistos com {nb} está sobre a mesa. Se assinarmos, os dois países ganham, mas a indústria nacional vai reclamar.
+638	Assinar o acordo
+639	O acordo foi assinado; o volume de comércio cresceu, os produtores nacionais resmungaram.
+640	Endurecer os termos
+641	As negociações se arrastaram; só conseguimos uma pequena concessão.
+642	O acordo foi rejeitado; a opinião interna está satisfeita, o vizinho está frio.
+643	Nosso embaixador está no meio de um escândalo em {nb}; a imprensa local está atrás de nós. Devemos chamá-lo de volta?
+644	Chamar de volta
+645	O embaixador foi chamado de volta; as relações esfriaram brevemente.
+646	Defendê-lo
+647	O embaixador foi mantido no posto; a oposição criticou o governo.
+648	Substituir discretamente
+649	Um novo embaixador foi nomeado; o incidente foi esquecido.
+650	A embaixada obteve uma gravação de uma reunião secreta do governo de {nb}. O que fazemos?
+651	Tornar público
+652	A gravação vazou para a imprensa; o apoio interno cresceu, o vizinho está furioso.
+653	Guardar como alavanca
+654	A gravação espera no cofre; sua mão nas negociações está mais forte.
+655	Devolver à outra parte
+656	A gravação foi devolvida; vieram concessões econômicas em troca.
+657	Os líderes de {nb} querem realizar uma cúpula; nosso embaixador concluiu os preparativos. Vamos sediar?
+658	Sediar
+659	A cúpula foi magnífica; o prestígio do país aumentou.
+660	Apenas comparecer
+661	Você compareceu à cúpula; foi uma reunião comum.
+662	Não comparecer
+663	O convite foi recusado; a imprensa leu isso como arrogância.
+664	Um homem de olhos brilhantes no porto: «Tenho três caixas não registradas na alfândega, senhor. Nem eu sei o que há dentro. Qual o senhor quer?»
+665	Caixa pequena
+666	Saíram barras de ouro da caixa! O comerciante já tinha sumido.
+667	A caixa estava cheia de areia. O comerciante foi embora acenando.
+668	Caixa média
+669	Havia um velho caderno de laboratório na caixa; os cientistas comemoraram.
+670	A imprensa soube do dinheiro falso da caixa. Fomos desmoralizados.
+671	Caixa grande
+672	Uma grande caixa cheia de protótipos e plantas! As fábricas se alegraram.
+673	O que saiu da caixa eram bens perdidos do vizinho. Surgiu um problema diplomático.
+674	Mandá-lo embora
+675	O comerciante deu de ombros e seguiu para o próximo porto.
+676	O comerciante em voz baixa: «Tenho um lote barato de armas, o histórico está meio sujo, mas o preço tenta...»
+677	Comprar tudo
+678	As armas saíram como novas; as unidades ficaram mais fortes.
+679	Os canos travaram. Os oficiais enlouqueceram.
+680	Comprar metade
+681	Meio lote foi entregue sem problemas.
+682	O lote veio incompleto; o comerciante disse «bem, essas coisas acontecem».
+683	Verificar o histórico dele
+684	A rede do comerciante foi desvendada; nossa inteligência aprendeu muito.
+685	O comerciante apagou seus rastros.
+686	O comerciante estende uma caixinha: «Chá lendário, senhor. Secado por três anos nas montanhas. Distribua ao povo e o senhor será amado.»
+687	Distribuir ao povo
+688	A fila do chá encheu a praça da cidade. Os agradecimentos choveram.
+689	Beber você mesmo
+690	O chá era realmente delicioso. Ninguém sabe disso.
+691	O comerciante vendeu o chá a outra pessoa.
+692	As finais da Copa do Mundo começaram e a seleção de {c} passou da fase de grupos! Prometemos um bônus ao time?
+693	Bônus gigante
+694	{c} É CAMPEÃ DO MUNDO! As ruas são uma festa.
+695	Fomos eliminados nos pênaltis. As ruas estão em silêncio.
+696	{c} ganhou a Copa do Mundo! O país comemora.
+697	Bônus simples
+698	Um milagre! O time levantou a taça.
+699	Caímos nas quartas de final; o técnico pediu demissão.
+700	{c} ganhou a Copa do Mundo de surpresa!
+701	Sem bônus
+702	Uma taça de graça! Os jogadores foram campeões sem pagamento.
+703	Os jogadores fizeram birra e caímos na primeira fase.
+704	{c}, campeã do mundo sem bônus!
+705	Os Jogos Olímpicos começaram! Nossos atletas buscam medalhas. Quanto investimos na preparação?
+706	Uma chuva de medalhas! Os jornais fizeram manchetes.
+707	Conquistamos alguns bronzes; ao menos participar bastou.
+708	{c} terminou os Jogos Olímpicos no topo do quadro de medalhas!
+709	Nosso atleta ganhou ouro, o povo chorou.
+710	Sem medalhas, mas o povo continua orgulhoso.
+711	Sem orçamento
+712	Os atletas foram por conta própria. Ninguém disse nada.
+713	Segundo uma fonte confiável nossa, os oficiais em {nb} estão fartos do governo. Uma pequena faísca basta. O que fazemos?
+714	Apoiar discretamente
+715	Os oficiais se moveram: o governo de {nb} balançou. Não há digitais nossas.
+716	A operação vazou; a administração de {nb} está furiosa conosco.
+717	Compartilhar a informação
+718	A administração de {nb} recebeu a informação com gratidão; a tensão diminuiu.
+719	Ouvir e esquecer
+720	O arquivo foi para o arquivo morto.
+721	Um jornalista tem documentos constrangedores sobre o líder de {nb}. Ele quer vendê-los para nós.
+722	Comprar e publicar
+723	Os documentos se espalharam; o governo de {nb} está balançando.
+724	Guardar (alavanca de chantagem)
+725	Os documentos estão no cofre. {nb} está um pouco mais educado agora.
+726	O jornalista encontrou outro comprador.
+727	O dia da eleição chegou! O povo vai às urnas. Como conduzimos a campanha?
+728	Campanha gigante
+729	Trabalho de campo
+730	Campanha discreta
+731	Adiar a eleição
+732	A eleição foi adiada por «circunstâncias excepcionais». A imprensa está irritada.
+733	Adiar a eleição levou o povo às ruas. Seu governo caiu.
+734	Novato
+735	Veterano
+736	Mestre
+737	A força do exército não cresce
+738	A força do exército cresce devagar
+739	A força do exército cresce rápido
+740	Os vizinhos não mudam
+741	Os vizinhos suavizam devagar
+742	Os vizinhos suavizam visivelmente
+743	A estabilidade se erode levemente
+744	A estabilidade sobe levemente
+745	A estabilidade sobe de forma constante
+746	Uma parte da renda vaza toda semana
+747	O tesouro cresce levemente
+748	O tesouro lucra toda semana
+749	Os distúrbios são deixados à própria sorte
+750	Os distúrbios caem de vez em quando
+751	Os distúrbios caem com frequência
+752	A defesa cibernética é estática
+753	A maturidade cibernética sobe devagar
+754	A maturidade cibernética sobe rápido
+755	O cunhado dele é ex-ministro. O currículo dele tem uma página, em letras grandes.
+756	Em toda reunião ele diz «já vi isso antes»; não viu.
+757	Ele pede um salário baixo; deve haver um motivo.
+758	Da ala jovem do partido. Enérgico, ansioso, um pouco perigoso também.
+759	Ninguém o conhece, então ninguém se opõe.
+760	Entre as referências dele está uma associação de conterrâneos.
+761	Dorme no almoço, mas é leal ao orçamento (por enquanto).
+762	Um burocrata de vinte anos. Sem surpresas, sem escândalos.
+763	Calmo, organizado; nunca perde seus processos.
+764	Até a oposição o chama de «sério».
+765	A pessoa de todo gabinete de quem ninguém se lembra.
+766	Um técnico competente e discreto.
+767	Meio-termo: não irrita ninguém, não impressiona ninguém.
+768	Um tecnocrata premiado; seus diplomas pesam mais que sua carteira.
+769	Uma lenda com experiência em guerra e paz; o salário dele também é lendário.
+770	Assessorou três países, e todos querem que ele volte.
+771	A imprensa mundial o chama de «o cérebro do gabinete».
+772	Trabalha só com os melhores; isso vem com uma conta.
+773	Um dos raros nomes amados tanto pelo povo quanto pelo exército.
+774	%s: %s tomou posse. (%s)
+775	%s %s caiu do cargo por acusações de corrupção. Quem nomeamos em seu lugar?
+776	%s %s pediu demissão. Quem nomeamos em seu lugar?
+777	%s %s foi demitido. Quem nomeamos em seu lugar?
+778	Um novo governo está sendo formado: %s %s deixa o cargo. Quem nomeamos em seu lugar?
+779	%s %s concluiu o mandato. Quem nomeamos em seu lugar?
+780	ESCÂNDALO: %s %s foi abalado por acusações de desvio; %s sumiram do tesouro.
+781	%s %s pediu demissão.
+782	país vizinho
+783	capital
+784	%s%d Estabilidade
+785	%s%d Cibernética
+786	%s%d Indústria
+787	%s%d Logística
+788	%s%.1f Tecnologia
+789	%s%s Tropas
+790	Distúrbios
+791	Vizinhos endurecidos
+792	Vizinhos suavizados
+793	%s abalado
+794	+Desenvolvimento
+795	As urnas estão abertas: você venceu a eleição com %%%d dos votos! O povo está com você.
+796	Nas eleições de %s o governo renovou seu mandato com %%%d dos votos.
+797	Eleição: %%%d
+798	+4 Estabilidade
+799	As urnas estão abertas: você obteve apenas %%%d dos votos. A oposição assume o poder; o novo líder é %s. Parte do gabinete mudará.
+800	A oposição venceu a eleição em %s; o novo líder %s tomou posse.
+801	−6 Estabilidade
+802	Primeira Guerra Mundial
+803	Agosto de 1914
+804	Após o assassinato em Sarajevo, toda a diplomacia da Europa desmorona. A Entente e as Potências Centrais afundarão nas trincheiras; metralhadoras, artilharia pesada e os primeiros tanques mudarão a face da guerra.
+805	Segunda Guerra Mundial
+806	Setembro de 1939
+807	A Alemanha ataca a Polônia; Grã-Bretanha e França declaram guerra. Cunhas blindadas, bombardeiros e guerra submarina. A guerra pode se espalhar por todos os continentes.
+808	Alemanha
+809	Chanceler do Reich
+810	URSS
+811	Secretário-Geral
+812	Império Britânico
+813	Primeiro-Ministro
+814	França
+815	Itália
+816	Império do Japão
+817	Imperador
+818	EUA
+819	Presidente
+820	República da China
+821	Comandante-em-Chefe
+822	Polônia
+823	Presidente
+824	Reino da Iugoslávia
+825	Regente
+826	Países Baixos
+827	Rainha
+828	Bélgica
+829	Rei
+830	Espanha
+831	Romênia
+832	Canadá
+833	Austrália
+834	Nova Zelândia
+835	África do Sul
+836	Dinamarca
+837	Suécia
+838	Finlândia
+839	Hungria
+840	Bulgária
+841	Czar
+842	Grécia
+843	Noruega
+844	Portugal
+845	Irã
+846	Xá
+847	Egito
+848	Iraque
+849	Arábia Saudita
+850	Tailândia
+851	Brasil
+852	Argentina
+853	México
+854	Mongólia
+855	Irlanda
+856	Estado Eslovaco
+857	Império Alemão
+858	Áustria-Hungria
+859	Império Otomano
+860	Império Russo
+861	Sérvia
+862	Montenegro
+863	Suíça
+864	Conselho Federal
+865	Sião
+866	Potências Aliadas
+867	Potências do Eixo
+868	1.º de setembro de 1939: exércitos alemães cruzaram a fronteira polonesa. Grã-Bretanha e França entraram na guerra; no Extremo Oriente o Japão luta contra a China.
+869	Potências da Entente
+870	Potências Centrais
+871	Agosto de 1914: o assassinato em Sarajevo desencadeou uma cadeia de alianças. A Europa se mobilizou; trincheiras estão sendo cavadas.
+872	África
+873	Janeiro
+874	Fevereiro
+875	Março
+876	Abril
+877	Maio
+878	Junho
+879	Julho
+880	Agosto
+881	Setembro
+882	Outubro
+883	Novembro
+884	Dezembro
+885	País%d
+886	Região%d
+887	%s declarou guerra a %s!
+888	O mundo está em choque: a guerra estourou entre %s e %s.
+889	ÚLTIMAS NOTÍCIAS: exércitos de %s avançaram sobre a fronteira com %s.
+890	A diplomacia desmoronou: %s abriu a frente contra %s.
+891	AVISO: %s declarou guerra a você!
+892	Exércitos de %s estão na sua fronteira. A guerra começou!
+893	Gazeta Mundial: você está em guerra com %s. As fronteiras estão sob fogo.
+894	Você declarou guerra: está em guerra com %s.
+895	O mundo fala de você: você foi à guerra contra %s!
+896	Seus exércitos se moveram, alvo: %s.
+897	A província de %s caiu! A bandeira de %s tremula.
+898	O exército de %s capturou a província de %s.
+899	Relatório da frente: a província de %s está agora sob controle de %s.
+900	Vitória! A província de %s foi capturada.
+901	Seu exército entrou na província de %s, o povo está atônito.
+902	O mundo fala de você: a província de %s está agora sob seu controle!
+903	Perda: a província de %s caiu em mãos inimigas!
+904	A província de %s foi ocupada, você deve libertá-la!
+905	Más notícias: a província de %s caiu.
+906	A paz foi assinada entre %s e %s.
+907	Os canhões se calaram: %s e %s chegaram à paz.
+908	%s saiu da mesa de paz com %d províncias: %s.
+909	Pelo acordo, %s ganhou %d províncias: %s.
+910	Confronto sangrento! O exército de %s derrotou o exército de %s na província de %s.
+911	Grande batalha na província de %s: %s venceu, %s sofreu pesadas perdas.
+912	O Estado de %s foi apagado do mapa.
+913	Foi para a história: %s não existe mais.
+914	Relatório trimestral: economia mais forte %s, maior exército %s, maior território %s.
+915	Boom na economia de %s: %s entraram no tesouro.
+916	Bolsas disparam! O tesouro de %s ganhou %s.
+917	Uma crise econômica atingiu %s: %s perdidos.
+918	Déficit no tesouro de %s: %s evaporaram.
+919	Uma rica jazida de minério foi encontrada na província de %s! (%s)
+920	Uma reserva de petróleo foi descoberta na província de %s. (%s)
+921	O povo de %s se mobilizou: %s voluntários se juntaram ao exército.
+922	Um chamado à pátria! %s voluntários se alistaram no exército de %s.
+923	Terremoto na província de %s! A produção caiu. (%s)
+924	REVOLTA! %s se levantou na província de %s. (%s)
+925	%s assumiu o controle da província de %s. (%s)
+926	Os distúrbios eclodiram: a província de %s está nas mãos de %s. (%s)
+927	%s foi suprimido, a resistência acabou.
+928	A revolta acabou: %s foi dissolvido.
+929	%s declarou independência! Novo Estado: %s. (Antigo dono: %s)
+930	Uma nova bandeira no mapa: %s fundou um Estado com o nome %s. (Antigo dono: %s)
+931	%s e %s formaram uma aliança.
+932	Nova frente: %s e %s assinaram uma aliança.
+933	Pacto de %s
+934	União de Defesa de %s
+935	Aliança de Solidariedade de %s
+936	Conselho de Segurança de %s
+937	Parceria de %s
+938	Pacto de %s %d
+939	A aliança entre %s e %s acabou.
+940	%s foi à guerra contra %s por seu aliado %s.
+941	Aliança em vigor: %s abriu a frente contra %s por causa de %s.
+942	República de %s
+943	Uma epidemia se espalha em {c}: os hospitais estão cheios, a estabilidade está abalada.
+944	Doença contagiosa na província de {p}! {c} declarou quarentena.
+945	Desastre de inundação na província de {p}! A infraestrutura foi danificada. ({c})
+946	Rios transbordando inundaram a província de {p}. ({c})
+947	Seca em {c}: a colheita colapsou, {a} perdidos.
+948	Alerta de fome! A produção agrícola de {c} caiu, {a} em prejuízos.
+949	Uma tempestade violenta atingiu as costas de {c}: {a} em prejuízos nos portos.
+950	Furacão na costa de {p}! O tráfego portuário de {c} parou.
+951	Grande protesto na província de {p}! O povo está nas ruas. ({c})
+952	{c}: manifestações contra o governo se intensificaram na província de {p}.
+953	Tentativa de golpe! O governo de {c} mal manteve o controle.
+954	Tiros na capital de {c}: a tentativa de golpe foi sufocada.
+955	Uma enxurrada de refugiados na fronteira: {c} gastou {a} em ajuda.
+956	Migração em massa para a província de {p}! {c} montou campos temporários.
+957	Colheita recorde! Os agricultores de {c} ganharam {a} em renda extra.
+958	Um ano farto: as exportações de grãos de {c} dispararam.
+959	Os cientistas de {c} anunciaram um avanço tecnológico!
+960	Uma descoberta revolucionária em um centro de pesquisa de {c}.
+961	Cúpula sediada por {c}: o prestígio diplomático subiu.
+962	Um degelo a favor de {c} na cúpula internacional. A estabilidade subiu.
+963	Sem guerra no início. Escolha um dos 200 países do mapa; construa você mesmo seu orçamento, exército e alianças.
+964	Frente Oriental
+965	Rússia – Ucrânia
+966	A maior guerra terrestre da Europa continua. A Rússia com seu exército de massa, a Ucrânia resistindo com apoio ocidental; as linhas cibernéticas e logísticas importam tanto quanto a frente.
+967	Aliança do Atlântico Norte
+968	Pacto de Segurança Coletiva
+969	Frente Oriental: uma guerra em grande escala acontece entre Rússia e Ucrânia. Países ocidentais dão apoio econômico e militar à Ucrânia.
+970	Crise do Estreito
+971	China – Taiwan
+972	A China iniciou um bloqueio naval e aéreo no Estreito de Taiwan. A intervenção dos EUA e do Japão e o fornecimento de semicondutores moldarão a economia mundial.
+973	Linha de Defesa do Pacífico
+974	Parceria Eurasiática
+975	Crise do Estreito: a marinha chinesa cercou Taiwan. A cadeia de suprimentos de semicondutores está cortada; os EUA e seus aliados se preparam.
+976	Fogo no Golfo
+977	Irã – Israel – EUA
+978	Irã e Israel estão em guerra direta; os EUA estão ao lado de Israel. O Estreito de Ormuz e o fluxo de petróleo estão ameaçados, ataques cibernéticos atingem as redes elétricas.
+979	Parceria de Segurança Atlântica
+980	Eixo da Resistência
+981	Fogo no Golfo: o Irã atacou Israel com salvas de mísseis e drones; os EUA enviaram uma frota à região.
+982	Sombra do Himalaia
+983	Índia – Paquistão
+984	O confronto na fronteira da Caxemira virou guerra total. A China está atrás do Paquistão, a Rússia despeja armas na Índia; o tempo se esgota entre dois países nucleares.
+985	Parceria do Caracórum
+986	Sombra do Himalaia: Índia e Paquistão abriram fogo um contra o outro ao longo da fronteira. Estado de emergência foi declarado nas duas capitais.
+987	Paralelo 38
+988	Coreia do Norte – Coreia do Sul
+989	A artilharia norte-coreana tem Seul ao alcance. Na fronteira mais armada do mundo, o poder aéreo e a guerra cibernética são decisivos.
+990	União de Defesa do Pacífico
+991	Eixo do Norte
+992	Paralelo 38: a Coreia do Norte abriu fogo de artilharia ao longo da fronteira. A Coreia do Sul e os EUA ativaram seus planos de defesa.
+993	Nó do Cáucaso
+994	Azerbaijão – Armênia
+995	A tensão voltou a se acender após Carabaque. A Turquia está com o Azerbaijão, a Rússia com a Armênia; corredores e linhas de energia estão em perigo.
+996	Linha Cáspio-Anatólia
+997	Nó do Cáucaso: grandes combates voltaram a eclodir na fronteira entre Azerbaijão e Armênia.
+998	Bandeira Negra
+999	Fictício: renascimento extremista
+1000	No deserto da Síria e do Iraque, uma entidade extremista fictícia, o Califado da Bandeira Negra, tomou várias províncias e cresce rápido. Enquanto os Estados da região se desfazem um a um, não está claro quem vai intervir.
+1001	Califado da Bandeira Negra
+1002	Califa
+1003	Bandeira Negra: uma nova entidade extremista surgiu no cinturão desértico e tomou o leste da Síria e do Iraque.
+1004	Novo Reich
+1005	Líder
+1006	Fictício: ressurgimento autoritário
+1007	No leste da Alemanha, um movimento autoritário fictício, o Novo Reich, se separou e construiu um exército moderno. As democracias da Europa precisam se unir em uma única frente. (Nenhum símbolo histórico real é usado.)
+1008	Anel de Defesa Europeu
+1009	Novo Reich: uma entidade separatista autoritária foi declarada no leste da Alemanha. As capitais europeias se reuniram em sessão de emergência.
+1010	Faísca do Báltico
+1011	Fictício: grande guerra no norte
+1012	A Rússia avançou contra a Estônia e a Letônia, alegando violação de fronteira. O artigo da OTAN está em vigor: uma faísca iniciada no norte pode se espalhar pelo continente.
+1013	Faísca do Báltico: tropas russas cruzaram a fronteira da Estônia e da Letônia. A OTAN invocou seu artigo de defesa coletiva.
+1014	Retorno do Imperador
+1015	Fictício: a era napoleônica retorna
+1016	Na França, um general carismático proclamou o «Novo Império» e tomou a região de Paris com parte do exército. O espírito revolucionário e a nostalgia imperial se juntaram; a Europa de novo prende a respiração.
+1017	Novo Império
+1018	Retorno do Imperador: o Novo Império foi proclamado na França sob a liderança do general; o exército se dividiu em dois.
+1019	Guerra Silenciosa
+1020	Fictício: era cibernética, uma frente sem armas
+1021	Não há fogo de artilharia, mas o mundo está em guerra. As superpotências atingem as redes elétricas, portos e bolsas umas das outras; os embargos escalam. A segurança das fábricas e da logística importa mais que o exército.
+1022	Guerra Silenciosa: não há guerra aberta entre as grandes potências; mas redes elétricas, portos e bolsas estão sob ataque cibernético.
+1023	Objetivos da missão
+1024	opcional
+1025	Tempo restante: %d semanas
+1026	Todos os objetivos cumpridos! Missão cumprida.
+1027	O tempo acabou: os objetivos não foram alcançados a tempo.
+1028	Criar cenário
+1029	Editar
+1030	Seu próprio cenário
+1031	Nome do cenário
+1032	Subtítulo (opcional)
+1033	Linha de notícia exibida no início
+1034	País do jogador
+1035	Selecionado por padrão no menu; os jogadores também podem escolher outro país.
+1036	Embargos
+1037	Tensões
+1038	Alianças (blocos)
+1039	Configurações de país
+1040	Limite de tempo (semanas, 0 = nenhum)
+1041	Código de compartilhamento
+1042	Importar de código
+1043	Adicionar
+1044	Adicionar membro
+1045	Criar aliança
+1046	Uma aliança precisa de um nome e pelo menos 2 membros.
+1047	Os dois lados não podem ser o mesmo país.
+1048	Exército
+1049	Multiplicador de exército
+1050	Multiplicador de tesouro
+1051	Mudança de estabilidade
+1052	Aplicar configuração
+1053	Sobreviver (semanas)
+1054	Ficar fora da guerra (semanas)
+1055	Número de províncias
+1056	Número de aliados
+1057	Limite de estabilidade
+1058	Número de membros do bloco
+1059	Fazer a paz (país)
+1060	Eliminar (país)
+1061	Parcela do PIB (%)
+1062	Adicionar objetivo
+1063	Opcional
+1064	Primeiro dê um nome ao cenário.
+1065	Não foi possível salvar o cenário.
+1066	Um cenário que você criou.
+1067	Envie este código a um amigo; ele poderá adicionar seu cenário ao jogo dele com «Importar de código».
+1068	Copiar para a área de transferência
+1069	Cole o código de compartilhamento abaixo.
+1070	Colar
+1071	Importar
+1072	O código é inválido ou está corrompido.
+1073	Seus cenários
+1074	SEU CENÁRIO
+1075	Guerra Fria
+1076	Grande Operação
+1077	Prontidão
+1078	Vitória
+1079	Parcial
+1080	Fiasco
+1081	Nome da operação
+1082	Terra
+1083	Uma operação decisiva que combina em um só plano ataques terrestres, aéreos, navais, de sabotagem e cibernéticos. É cara, dura 3 semanas e não pode ser repetida por muito tempo. Se der certo, cerca de metade das cidades do alvo cai de uma vez.
+1084	Cidades tomadas na vitória: %d / %d
+1085	Custo: %s   /   Reação mundial: +%d (+%d a mais na vitória)
+1086	O estado-maior está se reorganizando (%d semanas).
+1087	Grande Operação lançada: %s
+1088	Você deve estar em guerra com o alvo para uma Grande Operação.
+1089	Uma Grande Operação contra este alvo já está em andamento.
+1090	Uma Grande Operação precisa de pelo menos %d soldados.
+1091	O alvo deve ter pelo menos %d províncias restantes.
+1092	Tesouro insuficiente: a Grande Operação custa %s.
+1093	Caminho para a Independência
+1094	Painel do movimento
+1095	Novo modo
+1096	Lidere um movimento fictício. Organize-se em segredo, levante-se, negocie, declare a independência, conquiste reconhecimento e mantenha o Estado de pé. O apoio estrangeiro segue sua ideologia; toda ajuda vem com uma condição.
+1097	País do qual se separar
+1098	Região e tamanho
+1099	Identidade do movimento
+1100	Nome do movimento
+1101	Nome do líder (fictício)
+1102	Aleatório
+1103	Ideologia (determina o apoio estrangeiro)
+1104	Método
+1105	Ações
+1106	Apoiadores
+1107	Outros grupos
+1108	Ainda não há apoio estrangeiro.
+1109	Apoio popular
+1110	Sigilo
+1111	Legitimidade
+1112	Dependência: %d   /   Reconhecimentos: %d   /   Províncias: %d   /   Tropas: %s   /   Tesouro: %s
+1113	Consolidação: %d / 52 semanas
+1114	chance de sucesso %%%d
+1115	Afinidade ideológica: %%%d   /   Relações: %d   /   Tropas: %s   /   Províncias: %d
+1116	ajuda
+1117	condições
+1118	retirou o apoio
+1119	neutro
+1120	aliado
+1121	rival
+1122	fundido
+1123	Propor fusão
+1124	Propor aliança
+1125	Em torno da capital
+1126	Leste
+1127	Oeste
+1128	Norte
+1129	Sul
+1130	Este grupo não existe mais.
+1131	Você conversou com este grupo recentemente (%d semanas).
+1132	As conversas com %s correram bem.
+1133	%s rejeitou a aliança.
+1134	%s juntou-se ao movimento!
+1135	%s rejeitou a fusão.
+1136	A rivalidade com %s virou guerra.
+1137	O apoio popular deve ser de pelo menos 40
+1138	O apoio popular deve ser de pelo menos 50
+1139	A legitimidade deve ser de pelo menos 35
+1140	Pelo menos 5 países devem reconhecer você
+1141	Você deve primeiro fazer um cessar-fogo com o centro
+1142	Você deve primeiro fazer a paz com o centro
+1143	Uma campanha de propaganda foi realizada.
+1144	Uma nova célula secreta foi estabelecida.
+1145	Fundos foram arrecadados.
+1146	Um carregamento de armas chegou.
+1147	A revolta começou!
+1148	Voluntários se juntaram ao exército.
+1149	Um apelo foi feito à opinião mundial.
+1150	A independência foi declarada unilateralmente!
+1151	O tratado de fronteira foi assinado.
+1152	O investimento em desenvolvimento começou.
+1153	O golpe deu certo!
+1154	O golpe fracassou.
+1155	Referendo vencido: independência declarada!
+1156	Referendo perdido; o povo está dividido.
+1157	Adesão à ONU concedida!
+1158	O pedido de adesão à ONU foi rejeitado (veto ou votos insuficientes).
+1159	Caminho para a Independência concluído: você fundou o Estado, conquistou reconhecimento e o manteve de pé.
+1160	Pacote de História Alternativa
+1161	Estreitos estratégicos
+1162	Comércio mundial
+1163	O país que controla um estreito ou canal gerencia a passagem: pode cobrar pedágio, fechá-lo aos inimigos ou fechá-lo a todos. Capture a província-chave para assumir o controle.
+1164	Efeito total dos estreitos na sua renda: %+.1f%%
+1165	efeito em você: %+.1f%%
+1166	Ninguém
+1167	Modo inválido.
+1168	Você não controla este estreito.
+1169	Uma nova decisão sobre este estreito pode ser tomada em %d semanas.
+1170	Desafio diário
+1171	Igual para todos
+1172	Todo dia todos começam com o mesmo país no mesmo mundo. Após 52 semanas sua pontuação é calculada, com base no crescimento e na estabilidade. Você ganha AP na sua primeira conclusão do dia e pode tentar de novo quantas vezes quiser.
+1173	País de hoje
+1174	Reviravolta de hoje
+1175	Melhor pontuação hoje: %d
+1176	Você ainda não tentou hoje.
+1177	Melhor de todos os tempos: %d
+1178	Status do desafio
+1179	Concluído. Pontuação: %d
+1180	Pontuação atual: %d
+1181	Desafio diário: %s — %s
+1182	Desafio diário concluído!\nSua pontuação: %d
+1183	Sua melhor pontuação de hoje!
+1184	Recompensa: +%d AP
+1185	Sistema político
+1186	Próxima eleição
+1187	em %d semanas
+1188	Eleição
+1189	Risco de golpe / crise
+1190	Lei marcial
+1191	Faltam %d semanas
+1192	Ações políticas
+1193	Muito baixo
+1194	Sala de Guerra
+1195	Planeje uma operação em várias fases: você define os alvos, os tipos de operação e o momento; o plano roda sozinho a cada turno. 15 % do custo dos assaltos planejados é reembolsado; se todo o plano der certo, você ganha estabilidade.
+1196	Você não está em guerra agora; precisa de uma guerra para fazer um plano.
+1197	Inimigo contra o qual planejar
+1198	País-alvo: %s
+1199	Ainda não há fases. Adicione-as à mão ou sugira um plano automático.
+1200	Chance de sucesso ≈ %%%d   /   espera: %d sem.
+1201	Remover
+1202	Com sucesso: %d   /   Fracassadas: %d   /   Total: %d
+1203	Cancelar plano
+1204	Adicionar fase
+1205	Sugerir plano automático
+1206	Nenhuma rota até a capital foi encontrada.
+1207	Pôr em prática
+1208	Reiniciar plano
+1209	Província-alvo
+1210	Não há províncias inimigas ao alcance dos seus exércitos. Aproxime primeiro seus exércitos da frente.
+1211	Proporção de forças
+1212	Esperar (após a fase anterior)
+1213	Chance de sucesso estimada: %%%d
+1214	No máximo 6 fases podem ser adicionadas.
+1215	Esta província já está no plano.
+1216	Adicione pelo menos uma fase ao plano.
+1217	Não resta nenhum exército que possa alcançar o alvo.
+1218	O tempo acabou.
+1219	Em andamento
+1220	Com sucesso
+1221	Fracassada
+1222	Em espera
+1223	Todos os estreitos
+1224	China
+1225	Índia
+1226	Indonésia
+1227	Nigéria
+1228	Bangladesh
+1229	Rússia
+1230	Japão
+1231	Etiópia
+1232	Filipinas
+1233	R. D. do Congo
+1234	Turquia
+1235	Reino Unido
+1236	África do Sul
+1237	Tanzânia
+1238	Coreia do Sul
+1239	Colômbia
+1240	Ucrânia
+1241	Argélia
+1242	Afeganistão
+1243	Marrocos
+1244	Uzbequistão
+1245	Malásia
+1246	Gana
+1247	Moçambique
+1248	Madagascar
+1249	Camarões
+1250	Costa do Marfim
+1251	Coreia do Norte
+1252	Taiwan
+1253	Níger
+1254	Chile
+1255	Malaui
+1256	Cazaquistão
+1257	Zâmbia
+1258	Equador
+1259	Síria
+1260	Camboja
+1261	Chade
+1262	Zimbábue
+1263	Guiné
+1264	Ruanda
+1265	Tunísia
+1266	Bolívia
+1267	Cuba
+1268	Sudão do Sul
+1269	Rep. Dominicana
+1270	Tchéquia
+1271	Somália
+1272	Jordânia
+1273	Azerbaijão
+1274	Emirados Árabes Unidos
+1275	Belarus
+1276	Tajiquistão
+1277	Israel
+1278	Áustria
+1279	Papua-Nova Guiné
+1280	Líbano
+1281	Nicarágua
+1282	Quirguistão
+1283	Eritreia
+1284	Turcomenistão
+1285	Singapura
+1286	Eslováquia
+1287	Congo
+1288	Costa Rica
+1289	Omã
+1290	Libéria
+1291	Rep. Centro-Africana
+1292	Palestina
+1293	Mauritânia
+1294	Kuwait
+1295	Croácia
+1296	Geórgia
+1297	Bósnia e Herz.
+1298	Armênia
+1299	Jamaica
+1300	Albânia
+1301	Catar
+1302	Lituânia
+1303	Namíbia
+1304	Gâmbia
+1305	Botsuana
+1306	Eslovênia
+1307	Macedônia do Norte
+1308	Guiné-Bissau
+1309	Letônia
+1310	Kosovo
+1311	Bahrein
+1312	Trinidad e Tobago
+1313	Guiné Equat.
+1314	Estônia
+1315	Timor-Leste
+1316	Chipre
+1317	Essuatíni
+1318	Djibuti
+1319	Comores
+1320	Ilhas Salomão
+1321	Luxemburgo
+1322	Saara Ocidental
+1323	Suriname
+1324	Cabo Verde
+1325	Maldivas
+1326	Bahamas
+1327	Islândia
+1328	Chipre do N.
+1329	São Tomé e Príncipe
+1330	Micronésia
+1331	São Vicente e Gren.
+1332	Seicheles
+1333	Antígua e Barbuda
+1334	Dominica
+1335	Ilhas Marshall
+1336	Groenlândia
+1337	São Cristóvão e Nevis
+1338	Mônaco
+1339	Liechtenstein
+1340	Frente da Independência
+1341	Rede nas Sombras
+1342	Milícia da Montanha
+1343	União Popular
+1344	Exército da Liberdade
+1345	Resistência do Norte
+1346	Movimento Clandestino
+1347	Fuzil de infantaria
+1348	Tanque
+1349	Veículo blindado
+1350	Artilharia e foguetes
+1351	Aeronaves e drones
+1352	Submarino
+1353	Círculo
+1354	Escudo
+1355	Hexágono
+1356	Losango
+1357	Octógono
+1358	Distintivo
+1359	Sol
+1360	Quadrado
+1361	Liso
+1362	Moldura interna
+1363	Círculo interno
+1364	Fictício
+1365	renascimento extremista
+1366	ressurgimento autoritário
+1367	grande guerra no norte
+1368	a era napoleônica retorna
+1369	era cibernética
+1370	a frente sem armas
+1371	era cibernética, a frente sem armas
+1372	Brigada da Alvorada
+1373	Guardas de Fronteira

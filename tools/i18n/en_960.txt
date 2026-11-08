@@ -1,0 +1,303 @@
+960|%s Partnership
+961|%s Pact %d
+962|The alliance between %s and %s has ended.
+963|%s went to war with %s for its ally %s.
+964|Alliance in effect: %s opened the front against %s for the sake of %s.
+965|Republic of %s
+966|An epidemic is spreading in {c}: hospitals are full, stability is shaken.
+967|Contagious disease in the province of {p}! {c} declared quarantine.
+968|Flood disaster in the province of {p}! Infrastructure was damaged. ({c})
+969|Overflowing rivers flooded the province of {p}. ({c})
+970|Drought in {c}: the harvest collapsed, {a} lost.
+971|Famine warning! {c}'s agricultural output fell, {a} in damage.
+972|A violent storm hit the coasts of {c}: {a} in damage at the ports.
+973|Hurricane off the coast of {p}! {c}'s port traffic stopped.
+974|Large protest in the province of {p}! The people are in the streets. ({c})
+975|{c}: anti-government demonstrations intensified in the province of {p}.
+976|Coup attempt! The {c} government barely kept control.
+977|Gunfire in the capital of {c}: the coup attempt was put down.
+978|A flood of refugees at the border: {c} spent {a} on aid.
+979|Mass migration into the province of {p}! {c} set up temporary camps.
+980|Record harvest! {c}'s farmers earned {a} in extra income.
+981|A bountiful year: {c}'s grain exports boomed.
+982|{c}'s scientists announced a technological breakthrough!
+983|A groundbreaking discovery at a {c} research center.
+984|Summit hosted by {c}: diplomatic prestige rose.
+985|A thaw in {c}'s favor at the international summit. Stability rose.
+986|=
+987|=
+988|Reminders
+989|Your army awaits you
+990|=
+991|Budget
+992|Arms Purchase
+993|Inventory
+994|Fronts
+995|Alliance
+996|Intelligence
+997|Cabinet
+998|Policy
+999|General Staff  /  
+1000|Weekly financial statement
+1001|Army pay
+1002|Weapons upkeep
+1003|Net treasury
+1004|Army expenses exceed the defense share; the difference of %s is cut from other items (treasury, industry…).
+1005|Budget allocation (percent of income)
+1006|Status indicators
+1007|Stability
+1008|Technology
+1009|Army doctrine
+1010|Doctrine changed: 
+1011|Doctrine change costs %s; then you wait %d weeks.
+1012|You must wait %d weeks for a new doctrine.
+1013|Defense fund
+1014|Pending order
+1015|Procurement policy
+1016|Unit: %s. Prices are approximate, in millions of $. Domestic production has a discount and shorter delivery.
+1017|Pending deliveries
+1018|%d weeks
+1019|Automatic arms procurement
+1020|When on, the defense fund buys weapons on its own according to the priorities and doctrine below. When off, the fund accumulates; you make the purchases.
+1021|Procurement priority (auto purchase)
+1022|Low
+1023|High
+1024|Priority determines how much of the share goes to a category's missing equipment. The Air-Land doctrine favors aircraft, the Asymmetric doctrine favors artillery/rocket launchers.
+1025|%s%s   /   delivery %d wk   /   on hand %s
+1026| (domestic)
+1027|$%s M
+1028|Order: %d × %s
+1029|Target
+1030|Land equipment
+1031|Air power
+1032|Naval power
+1033|The target troop count is set by the defense budget and war status; the difference is conscripted automatically and distributed to the fronts.
+1034|=
+1035|When a minister's term ends, or they resign or fall, 3 candidates come to replace them: the master is expensive, the novice is cheap but risky. Veteran and master ministers give a small weekly bonus.
+1036|%s  ·  ~%.1f yr
+1037|Dismiss
+1038|Dismissal
+1039|Dismiss %s? Stability −2. 3 candidates will come to replace them after the next bulletin.
+1040|%s was dismissed
+1041|Covert operations weaken a rival without declaring war. The chance of success depends on your cyber power and technology; if caught, domestic politics and relations suffer. Agents need to lie low for a while on each target.
+1042|There is no neighbor yet that can be contacted.
+1043|stability %d  cyber %d
+1044|War
+1045|cooldown %d turns
+1046|Cost %s
+1047|  ·  chance %%%d
+1048|Trade income
+1049|Open trade
+1050|Naval blockade
+1051|Because of a cyber attack, foreign trade is cut for %d more weeks.
+1052|Trade with countries at war and under embargo stops. An embargo hits both sides; use it to squeeze a rival economically.
+1053|Open
+1054|Embargo
+1055|Embargoed
+1056|Disrupted
+1057|Lift embargo
+1058|Impose embargo
+1059|Mercenaries
+1060|Hire a temporary unit from private companies: the fee is paid upfront, the unit is stationed in an empty front/capital province and disbands when the contract ends. Its name comes randomly according to your country's culture.
+1061|%s troops  /  %d wk  /  %s
+1062|Hire
+1063|%s began service: %s (%s troops)
+1064|Armies commanded automatically
+1065|When on, the staff launches operations on its own against the weak provinces of your enemy. When off, you give orders to the armies from the map.
+1066|You are not at war right now. When you declare war, the fronts are listed here.
+1067|Enemy troops
+1068|Equipment
+1069|Air
+1070|Attack
+1071|Cyber: 
+1072|Shape
+1073|Inner pattern
+1074|Symbol
+1075|Main color
+1076|Background and symbol
+1077|Line
+1078|Your alliance
+1079|%d members   /   founder: %s
+1080|Members do not attack each other; when one is attacked the others are called in. A country at war with one of the members cannot join the alliance.
+1081|Members
+1082|Alliance name
+1083|Save
+1084|The alliance name must be at least 3 letters.
+1085|Edit name and emblem
+1086|Invite a new member
+1087|Neighbor
+1088|Invite
+1089|%s joined the alliance.
+1090|Leave the alliance
+1091|Found your own alliance: choose the name and emblem, then invite countries. You can also found it before starting if the game is paused.
+1092|Alliance name (e.g. Eastern Defense Pact)
+1093|Found the alliance
+1094|Alliance founded: 
+1095|No war at the start. Choose one of the 200 countries on the map; build your budget, army and alliances yourself.
+1096|Eastern Front
+1097|Russia – Ukraine
+1098|Europe's largest land war rages on. Russia with its mass army, Ukraine resisting with Western support; cyber and logistics lines matter as much as the front.
+1099|North Atlantic Alliance
+1100|=
+1101|Collective Security Pact
+1102|Eastern Front: a large-scale war is going on between Russia and Ukraine. Western countries provide economic and military support to Ukraine.
+1103|Strait Crisis
+1104|China – Taiwan
+1105|China has begun a naval and air blockade in the Taiwan Strait. US and Japanese intervention and the semiconductor supply will shape the world economy.
+1106|Pacific Defense Line
+1107|Eurasian Partnership
+1108|Strait Crisis: the Chinese navy has surrounded Taiwan. The semiconductor supply chain is cut; the US and its allies are preparing.
+1109|Gulf Fire
+1110|Iran – Israel – USA
+1111|Iran and Israel are in direct war; the US stands with Israel. The Strait of Hormuz and oil flow are under threat, cyber attacks are hitting the grids.
+1112|Atlantic Security Partnership
+1113|Axis of Resistance
+1114|Gulf Fire: Iran struck Israel with missile and drone salvos; the US sent a fleet to the region.
+1115|Himalayan Shadow
+1116|India – Pakistan
+1117|The clash on the Kashmir border has turned into full war. China is behind Pakistan, Russia is pouring arms into India; time is running out between two nuclear countries.
+1118|Karakoram Partnership
+1119|Himalayan Shadow: India and Pakistan opened fire on each other along the border. A state of emergency was declared in both capitals.
+1120|38th Parallel
+1121|North Korea – South Korea
+1122|North Korean artillery has Seoul in range. On the world's most heavily armed border, air power and cyber warfare are decisive.
+1123|Pacific Defense Union
+1124|Northern Axis
+1125|38th Parallel: North Korea opened artillery fire along the border. South Korea and the US activated their defense plans.
+1126|Caucasus Knot
+1127|Azerbaijan – Armenia
+1128|Tension flared again after Karabakh. Türkiye is with Azerbaijan, Russia with Armenia; corridors and energy lines are in danger.
+1129|Caspian-Anatolia Line
+1130|Caucasus Knot: major fighting broke out again on the Azerbaijan–Armenia border.
+1131|Black Banner
+1132|Fictional: extremist rebirth
+1133|In the desert of Syria and Iraq, a fictional extremist entity, the Black Banner Caliphate, has seized several provinces and is growing fast. As the states of the region unravel one by one, it is unclear who will intervene.
+1134|Black Banner Caliphate
+1135|Caliph
+1136|Black Banner: a new extremist entity appeared in the desert belt and seized the east of Syria and Iraq.
+1137|New Reich
+1138|Leader
+1139|Fictional: authoritarian revival
+1140|In the east of Germany, a fictional authoritarian movement, the New Reich, broke away and built a modern army. Europe's democracies must unite on a single front. (No real historical symbols are used.)
+1141|European Defense Ring
+1142|New Reich: an authoritarian separatist entity was declared in the east of Germany. European capitals met in emergency session.
+1143|Baltic Spark
+1144|Fictional: great war in the north
+1145|Russia moved against Estonia and Latvia, citing a border violation. The NATO article is in force: a spark that began in the north may spread across the continent.
+1146|Baltic Spark: Russian troops crossed the Estonian and Latvian border. NATO invoked its collective defense article.
+1147|Return of the Emperor
+1148|Fictional: the Napoleonic age returns
+1149|In France a charismatic general proclaimed the 'New Empire' and seized the Paris area with part of the army. The revolutionary spirit and imperial nostalgia came together; Europe is once more holding its breath.
+1150|New Empire
+1151|Return of the Emperor: the New Empire was proclaimed in France under the general's leadership; the army split in two.
+1152|Silent War
+1153|Fictional: cyber age, a front without weapons
+1154|There is no artillery fire, but the world is at war. The superpowers hit each other's grids, ports and stock exchanges; embargoes escalate. The security of factories and logistics matters more than the army.
+1155|Silent War: there is no open war between the great powers; but grids, ports and stock exchanges are under cyber attack.
+1156|How many troops to send?
+1157|%s troops set out
+1158|%s troops stay in %s. Estimated arrival: %d wk.
+1159|The whole army sets out; %s is left undefended.
+1160|Send
+1161|your army awaits you
+1162|Load
+1163|Save slots
+1164|The autosave (turned on/off in Settings) is kept in a separate slot and cannot be overwritten from here.
+1165|Slot %d
+1166|Old save
+1167|%s  /  %d provinces  /  %s
+1168|Are you sure?
+1169|Sure?
+1170|Delete
+1171|=
+1172|=
+1173|=
+1174|=
+1175|=
+1176|=
+1177|=
+1178|=
+1179|=
+1180|The AI states are making their moves...
+1181|Armies are advancing, battles are being resolved...
+1182|The economy, budgets and trade are being calculated...
+1183|Diplomacy and alliances are being assessed...
+1184|The World Gazette is going to press...
+1185|Age of Doctrine  /  End of turn
+1186|World Gazette
+1187|Issue %d  /  weekly edition
+1188|No major development in the world this week.
+1189|No other important news.
+1190|War report
+1191|VICTORY
+1192|DEFEAT
+1193|%s%s: against %s. Losses: you %s, the other side %s.
+1194|Siege: %s  %d/%d
+1195|There was no fighting this week.
+1196|Treasury and army
+1197|Show on map
+1198|Continue
+1199|NEWS
+1200|WAR
+1201|CONQUEST
+1202|LOSS
+1203|PEACE
+1204|EVENT
+1205|CLASH
+1206|BREAKING
+1207|REVOLT
+1208|ALLIANCE
+1209|RANKING
+1210|CYBER
+1211|OPERATION
+1212|SUPPLY
+1213|State
+1214|Date
+1215|End turn
+1216|Waiting for news...
+1217|Capital
+1218|Yours
+1219|Ally
+1220|At war
+1221|Rebel: 
+1222|Occupied: 
+1223|Army: %s troops (%s)
+1224|\nMercenary unit: %s (%d wk left)
+1225|Siege %d/%d
+1226|Unrest %d/12: station an army!
+1227|Selected army: %s troops, %s. Give the order with the button below.
+1228|Army selected (%s troops). Tap the province to go to, then confirm the order.
+1229|March the army here
+1230|Release selection
+1231|Offer peace
+1232|Truce: %d weeks
+1233|Declare war
+1234|Break alliance
+1235|Offer alliance
+1236|Stop
+1237|Select army
+1238|Declaration
+1239|Peace Table
+1240|Negotiation
+1241|Peace talks with %s. Your war points: %d. Choose the occupied provinces you want to take (the cost is deducted from your points); the ones you do not choose are returned.
+1242|SPENT  %d / %d POINTS
+1243|%d POINTS
+1244|Paused
+1245|Game menu
+1246|You
+1247|World
+1248|Situation room
+1249|Countries
+1250|Wars
+1251|News
+1252|Alliances
+1253|Non-state groups
+1254|%d PROVINCES
+1255|%s TROOPS
+1256|There is no active war in the world right now.
+1257|No alliance has been founded yet. You can found your own from the Policy > Alliance tab.
+1258|   (yours)
+1259|%d members   /   total troops %s
+1260|All
+1261|Diplomacy
+1262|Events

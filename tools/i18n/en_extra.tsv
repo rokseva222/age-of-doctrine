@@ -1,0 +1,308 @@
+Görev hedefleri	Mission objectives
+isteğe bağlı	optional
+Kalan süre: %d hafta	Time left: %d weeks
+Hedef tamamlandı: %s	Objective complete: %s
+Tüm hedefler tamamlandı! Görev başarıyla bitti.	All objectives complete! Mission accomplished.
+Süre doldu: hedeflere zamanında ulaşılamadı.	Time is up: the objectives were not reached in time.
+Senaryo oluştur	Create scenario
+Düzenle	Edit
+Kendi senaryon	Your own scenario
+Senaryo adı	Scenario name
+Alt başlık (isteğe bağlı)	Subtitle (optional)
+Oyun başında okunacak haber cümlesi	News line shown at the start
+Oyuncu ülkesi	Player country
+Menüde varsayılan olarak seçili gelir; oyuncu başka ülkeyi de seçebilir.	Selected by default in the menu; players can pick another country too.
+Ambargolar	Embargoes
+Gerginlikler	Tensions
+İttifaklar (bloklar)	Alliances (blocs)
+Ülke ayarları	Country settings
+Süre sınırı (hafta, 0 = yok)	Time limit (weeks, 0 = none)
+Paylaşım kodu	Share code
+Koddan içe aktar	Import from code
+Ekle	Add
+Üye ekle	Add member
+İttifak adı	Alliance name
+İttifakı oluştur	Create alliance
+İttifak için bir ad ve en az 2 üye gerekir.	An alliance needs a name and at least 2 members.
+İki taraf aynı ülke olamaz.	Both sides cannot be the same country.
+Ordu	Army
+İstikrar	Stability
+Ordu çarpanı	Army multiplier
+Kasa çarpanı	Treasury multiplier
+İstikrar farkı	Stability change
+Ayarı uygula	Apply setting
+Hayatta kal (hafta)	Survive (weeks)
+Savaşsız kal (hafta)	Stay out of war (weeks)
+Eyalet sayısı	Province count
+Müttefik sayısı	Ally count
+İstikrar eşiği	Stability threshold
+Blok üye sayısı	Bloc member count
+Barış yap (ülke)	Make peace (country)
+Yok et (ülke)	Eliminate (country)
+GSYH payı (%)	GDP share (%)
+Hedef ekle	Add objective
+İsteğe bağlı	Optional
+Önce senaryoya bir ad ver.	Give the scenario a name first.
+Senaryo kaydedilemedi.	The scenario could not be saved.
+Senin hazırladığın senaryo.	A scenario you made.
+Bu kodu arkadaşına gönder; o da "Koddan içe aktar" ile senaryonu kendi oyununa ekler.	Send this code to a friend; they can add your scenario to their game with "Import from code".
+Panoya kopyala	Copy to clipboard
+Paylaşım kodunu aşağıya yapıştır.	Paste the share code below.
+Yapıştır	Paste
+İçe aktar	Import
+Kod geçersiz ya da bozuk.	The code is invalid or corrupted.
+Senin senaryoların	Your scenarios
+SENİN SENARYON	YOUR SCENARIO
+Soğuk Savaş	Cold War
+Büyük Harekât	Grand Operation
+Hazırlık	Readiness
+Zafer	Victory
+Kısmi	Partial
+Fiyasko	Fiasco
+Harekâtın adı	Operation name
+Harekâtı başlat	Launch operation
+Vazgeç	Cancel
+Kara	Land
+Hava	Air
+Deniz	Sea
+Sabotaj	Sabotage
+Siber	Cyber
+Kara, hava, deniz, sabotaj ve siber saldırıyı tek planda birleştiren bitirici operasyon. Pahalıdır, 3 hafta sürer ve uzun süre tekrarlanamaz. Başarırsan hedefin şehirlerinin yaklaşık yarısı bir anda düşer.	A finishing operation combining land, air, naval, sabotage and cyber attacks in one plan. It is expensive, takes 3 weeks and cannot be repeated for a long time. If it succeeds, about half of the target's cities fall at once.
+Zaferde ele geçecek şehir: %d / %d	Cities taken on victory: %d / %d
+Bedel: %s   /   Dünya tepkisi: +%d (zaferde +%d daha)	Cost: %s   /   World reaction: +%d (+%d more on victory)
+Genelkurmay yeniden hazırlanıyor (%d hafta).	The general staff is reorganizing (%d weeks).
+Büyük Harekât başladı: %s	Grand Operation launched: %s
+Geçersiz hedef.	Invalid target.
+Büyük Harekât için hedefle savaşta olmalısın.	You must be at war with the target for a Grand Operation.
+Bu hedefe karşı zaten bir Büyük Harekât sürüyor.	A Grand Operation against this target is already under way.
+Büyük Harekât için en az %d asker gerekir.	A Grand Operation needs at least %d troops.
+Hedefin en az %d eyaleti kalmış olmalı.	The target must have at least %d provinces left.
+Kasa yetersiz: Büyük Harekât bedeli %s.	Insufficient treasury: the Grand Operation costs %s.
+Bağımsızlık Yolu	Path to Independence
+Hareket paneli	Movement panel
+Yeni kip	New mode
+Kurgusal bir hareketin lideri ol. Gizlice örgütlen, ayaklan, müzakere et, bağımsızlığını ilan et, tanınmanı sağla ve devleti ayakta tut. Yabancı destek ideolojine göre gelir; her yardımın bir şartı vardır.	Lead a fictional movement. Organize in secret, rise up, negotiate, declare independence, win recognition and keep the state standing. Foreign support follows your ideology; every aid comes with a condition.
+Ayrılacağın ülke	Country to break away from
+Bölge ve büyüklük	Region and size
+Hareketin kimliği	Identity of the movement
+Hareketin adı	Movement name
+Lider adı (kurgusal)	Leader name (fictional)
+Rastgele	Random
+İdeoloji (yabancı desteği belirler)	Ideology (determines foreign support)
+Yöntem	Method
+Başla	Start
+Eylemler	Actions
+Destekçiler	Backers
+Diğer hareketler	Other groups
+Henüz yabancı destek yok.	No foreign support yet.
+Halk desteği	Popular support
+Gizlilik	Secrecy
+Meşruiyet	Legitimacy
+Bağımlılık: %d   /   Tanıyan ülke: %d   /   Eyalet: %d   /   Asker: %s   /   Kasa: %s	Dependency: %d   /   Recognizers: %d   /   Provinces: %d   /   Troops: %s   /   Treasury: %s
+Konsolidasyon: %d / 52 hafta	Consolidation: %d / 52 weeks
+başarı şansı %%%d	success chance %%%d
+şans %%%d	chance %%%d
+İdeolojik yakınlık: %%%d   /   İlişki: %d   /   Asker: %s   /   Eyalet: %d	Ideological affinity: %%%d   /   Relations: %d   /   Troops: %s   /   Provinces: %d
+yardım	aid
+şart	conditions
+desteği kesti	withdrew support
+tarafsız	neutral
+müttefik	allied
+rakip	rival
+birleşti	merged
+Birleşmeyi öner	Propose merger
+İttifak öner	Propose alliance
+Görüş	Talk
+Başkent çevresi	Around the capital
+Doğu	East
+Batı	West
+Kuzey	North
+Güney	South
+Bu grup artık yok.	This group no longer exists.
+Bu grupla yakın zamanda görüştün (%d hafta).	You talked with this group recently (%d weeks).
+%s ile görüşme olumlu geçti.	The talks with %s went well.
+%s ittifakı reddetti.	%s rejected the alliance.
+%s hareketine katıldı!	%s joined the movement!
+%s birleşmeyi reddetti.	%s rejected the merger.
+%s ile rekabet savaşa döndü.	The rivalry with %s turned into war.
+Halk desteği en az 40 olmalı	Popular support must be at least 40
+Halk desteği en az 50 olmalı	Popular support must be at least 50
+Meşruiyet en az 35 olmalı	Legitimacy must be at least 35
+En az 5 ülke tanımalı	At least 5 countries must recognize you
+Önce merkezle ateşkes yapmalısın	You must make a ceasefire with the center first
+Önce merkezle barış yapmalısın	You must make peace with the center first
+Propaganda kampanyası yürütüldü.	A propaganda campaign was run.
+Yeni bir gizli hücre kuruldu.	A new secret cell was established.
+Bağış toplandı.	Funds were raised.
+Silah sevkiyatı ulaştı.	A weapons shipment arrived.
+Ayaklanma başladı!	The uprising has begun!
+Gönüllüler orduya katıldı.	Volunteers joined the army.
+Uluslararası kamuoyuna çağrı yapıldı.	An appeal was made to world opinion.
+Bağımsızlık tek taraflı ilan edildi!	Independence was declared unilaterally!
+Sınır antlaşması imzalandı.	The border treaty was signed.
+Kalkınma yatırımı başladı.	The development investment has begun.
+Darbe başarılı!	The coup succeeded!
+Darbe başarısız oldu.	The coup failed.
+Referandum kazanıldı: bağımsızlık ilan edildi!	Referendum won: independence declared!
+Referandum kaybedildi; halk bölündü.	Referendum lost; the people are divided.
+BM üyeliği kabul edildi!	UN membership granted!
+BM başvurusu reddedildi (veto ya da yetersiz oy).	The UN application was rejected (veto or insufficient votes).
+Bağımsızlık Yolu tamamlandı: devleti kurdun, tanıttın ve ayakta tuttun.	Path to Independence complete: you founded the state, won recognition and kept it standing.
+Alternatif Tarih Paketi	Alternate History Pack
+Stratejik geçitler	Strategic straits
+Dünya ticareti	World trade
+Boğazları ve kanalları kontrol eden ülke geçişi yönetir: ücret alabilir, düşmana kapatabilir ya da herkese kapatabilir. Anahtar eyaleti ele geçirerek kontrolü alırsın.	The country that controls a strait or canal manages passage: it can charge tolls, close it to enemies or close it to everyone. Capture the key province to take control.
+Geçitlerin gelirine toplam etkisi: %+.1f%%	Total effect of the straits on your income: %+.1f%%
+sana etkisi: %+.1f%%	effect on you: %+.1f%%
+Kimse	Nobody
+Geçersiz mod.	Invalid mode.
+Bu geçidi sen kontrol etmiyorsun.	You do not control this strait.
+Bu geçit için yeni karar %d hafta sonra verilebilir.	A new decision on this strait can be made in %d weeks.
+Günlük Meydan Okuma	Daily Challenge
+Herkes için aynı	The same for everyone
+Her gün herkes aynı ülkeyle, aynı dünyada başlar. 52 hafta sonunda skorun hesaplanır; büyümeye ve istikrara göre puan alırsın. Günün ilk bitirişinde AP kazanırsın, istediğin kadar tekrar deneyebilirsin.	Every day everyone starts with the same country in the same world. After 52 weeks your score is calculated, based on growth and stability. You earn AP on your first finish of the day and can retry as often as you like.
+Bugünün ülkesi	Today's country
+Günün çarpıtması	Today's twist
+Bugünkü en iyi skor: %d	Best score today: %d
+Bugün henüz denemedin.	You haven't tried today yet.
+Seri: %d gün	Streak: %d days
+Tüm zamanların en iyisi: %d	All-time best: %d
+Meydan okuma durumu	Challenge status
+Tamamlandı. Skor: %d	Completed. Score: %d
+Anlık skor: %d	Current score: %d
+Kalan süre: %d hafta	Time left: %d weeks
+Günlük Meydan Okuma: %s — %s	Daily Challenge: %s — %s
+Günlük Meydan Okuma tamamlandı!\nSkorun: %d	Daily Challenge complete!\nYour score: %d
+Bugünün en iyi skorun!	Your best score today!
+Ödül: +%d AP	Reward: +%d AP
+Siyasi sistem	Political system
+Sonraki seçim	Next election
+%d hafta sonra	in %d weeks
+Seçim	Election
+Yok	None
+Darbe / kriz riski	Coup / crisis risk
+İstikrar	Stability
+Sıkıyönetim	Martial law
+%d hafta kaldı	%d weeks left
+Siyasi eylemler	Political actions
+Çok düşük	Very low
+Düşük	Low
+Orta	Medium
+Yüksek	High
+Kimse	Nobody
+Savaş Odası	War Room
+Birden çok aşamalı bir harekât planla: hedefleri, harekât türünü ve zamanlamayı sen belirle; plan her turu kendisi yürütür. Plana uyan taarruzların bedelinin %15'i iade edilir; tüm plan başarılı olursa istikrar kazanırsın.	Plan a multi-phase operation: you set the targets, operation types and timing; the plan runs itself each turn. 15% of the cost of planned assaults is refunded; if the whole plan succeeds you gain stability.
+Şu an savaşta değilsin; plan yapmak için bir savaş gerekir.	You are not at war right now; you need a war to make a plan.
+Plan kurulacak düşman	Enemy to plan against
+Hedef ülke: %s	Target country: %s
+Henüz aşama yok. Elle ekle ya da otomatik plan öner.	No phases yet. Add them by hand or suggest an automatic plan.
+Başarı şansı ≈ %%%d   /   bekleme: %d hf	Success chance ≈ %%%d   /   wait: %d wk
+Kaldır	Remove
+Başarılı: %d   /   Başarısız: %d   /   Toplam: %d	Succeeded: %d   /   Failed: %d   /   Total: %d
+Planı iptal et	Cancel plan
+Aşama ekle	Add phase
+Otomatik plan öner	Suggest automatic plan
+Başkente giden yol bulunamadı.	No route to the capital was found.
+Yürürlüğe koy	Put into effect
+Planı sıfırla	Reset plan
+Hedef eyalet	Target province
+şans %%%d	chance %%%d
+Ordularının menzilinde düşman eyaleti yok. Önce ordularını cepheye yaklaştır.	No enemy provinces within reach of your armies. Move your armies closer to the front first.
+Vazgeç	Cancel
+Harekât türü	Operation type
+Kuvvet oranı	Force ratio
+Bekleme (önceki aşamadan sonra)	Wait (after the previous phase)
+%d hf	%d wk
+Tahmini başarı şansı: %%%d	Estimated success chance: %%%d
+Ekle	Add
+Geri	Back
+En fazla 6 aşama eklenebilir.	At most 6 phases can be added.
+Bu eyalet planda zaten var.	This province is already in the plan.
+Plana en az bir aşama ekle.	Add at least one phase to the plan.
+Bu ülkeyle savaşta değilsin.	You are not at war with this country.
+Hedefe ulaşabilecek ordu kalmadı.	No army is left that can reach the target.
+Süre doldu.	Time ran out.
+Sürüyor	In progress
+Başarılı	Succeeded
+Başarısız	Failed
+Bekliyor	Waiting
+Tüm geçitler	All straits
+sana etkisi: %+.1f%%	effect on you: %+.1f%%
+Emeği Geçenler	Credits
+Çeviriler	Translations
+Yapım	Production
+Çeviriye emek verenlere teşekkürler.	Thanks to everyone who helped translate the game.
+Merkez şehirler	Home cities
+Hareket önce seçtiğin şehirlerin ilçelerinde başlar. Nüfusu yoğun şehirde güvenlik güçleri de yoğundur; ilçe almak zor olur. Başkenti seçersen oradaki ilçeler gizli ağla alınır.	The movement starts in the districts of the cities you choose. Dense cities have dense security forces, so taking districts is harder. If you pick the capital, its districts are taken through a secret network.
+ · başkent	 · capital
+%s milyon	%s million
+Toplam şehir nüfusu: %s milyon	Total city population: %s million
+Başlangıç zorluğu	Starting difficulty
+Başkent dahil	Includes capital
+Çok yüksek	Very high
+Yerel kontrol (ilçeler)	Local control (districts)
+Müzakere evresi için en az bir şehrin ilçelerinin %60'ını ele geçirmelisin.	To enter the negotiation phase you must hold at least 60% of the districts of one city.
+İlçeler	Districts
+Yerel kontrol	Local control
+İlçeyi örgütleyerek hareketin eline geçir. Güvenlik yoğunsa şans düşer; halk desteği ve şehirdeki birliklerin şansı artırır. Elindeki ilçeleri güçlendirmezsen merkez geri alabilir.	Organize a district to bring it under the movement. Heavy security lowers the odds; popular support and troops in the city raise them. If you don't reinforce the districts you hold, the center may retake them.
+Hareketin elinde	Held by the movement
+Merkezin elinde	Held by the center
+Güvenlik	Security
+Tutunma	Hold
+Başarı şansı	Success chance
+Güçlendir	Reinforce
+Örgütle	Organize
+Merkez	Center
+Güneydoğu	Southeast
+Güneybatı	Southwest
+Kuzeybatı	Northwest
+Kuzeydoğu	Northeast
+Çok yoğun	Very dense
+Yoğun	Dense
+Zayıf	Weak
+Tam korunuyor	Fully guarded
+%s ilçesinde savunma güçlendirildi.	Defenses reinforced in %s district.
+%s ilçesi hareketin eline geçti.	%s district fell to the movement.
+%s ilçesinde girişim başarısız oldu.	The attempt failed in %s district.
+%s ilçesi merkez güçlerinin eline geçti.	%s district was taken by central forces.
+%s ilçesinde halk ayaklandı.	The people rose up in %s district.
+%s hareketin denetimine girdi.	%s came under the movement's control.
+%s yeniden merkezin eline geçti.	%s fell back into the center's hands.
+Güvenlik güçleri toparlanıyor: ilçelerde örgütlenmek için 6 haftan var.	Security forces are regrouping: you have 6 weeks to organize in the districts.
+Bekleme: %d hafta	Cooldown: %d weeks
+Kasa yetersiz	Insufficient funds
+%s halkın direnişiyle kurtarıldı.	%s was liberated by the people's resistance.
+İlerleme	Progress
+Harita: Natural Earth (kamu malı)   /   Yazı: Big Shoulders, Instrument Sans, IBM Plex Mono (OFL)	Map: Natural Earth (public domain)   /   Type: Big Shoulders, Instrument Sans, IBM Plex Mono (OFL)
+Pers Devleti	Persia
+Küçük devlet: güçlü komşular erken saldırabilir. İlk 16 hafta savunma desteği alırsın.	Small state: strong neighbors may attack early. You get defensive support for the first 16 weeks.
+Savaşta değilsin; yardım istemek için savaş gerek.	You are not at war; you need a war to ask for help.
+%s yakında yanıt verdi; %d hafta sonra tekrar iste.	%s answered recently; ask again in %d weeks.
+%s zaten tüm düşmanlarınla savaşıyor.	%s is already fighting all your enemies.
+%s yardım isteğini kabul etti ve %s'a savaş açtı!	%s accepted your call for help and declared war on %s!
+%s şimdilik savaşa girmek istemiyor.	%s does not want to enter the war right now.
+Müttefikin yok.	You have no allies.
+%d müttefik savaşa katıldı.	%d allies joined the war.
+Hiçbir müttefik savaşa katılmadı.	No ally joined the war.
+%s'ın savaşına katılabileceğin bir düşman yok.	There is no enemy of %s that you can join the war against.
+Yeni yardım için %d hafta bekle.	Wait %d weeks before sending more aid.
+%s, müttefiki %s'a mali yardım gönderdi.	%s sent financial aid to its ally %s.
+Yardım iste	Ask for help
+Savaşına katıl	Join their war
+Mali yardım gönder	Send financial aid
+Müttefiklerden yardım iste	Ask allies for help
+Katılabileceğin bir savaş yok.	There is no war you can join.
+Müttefike yardım	Aid an ally
+%s, %s ile savaşıyor. Yanında yer alıp %s devletine savaş açmak ister misin?	%s is fighting %s. Do you want to stand by their side and declare war on %s?
+Savaş aç	Declare war
+Mali yardım	Financial aid
+%s altını %s devletine göndermek ister misin? (Müttefikin %s alır, istikrarı artar, sana minnet duyar.)	Do you want to send %s gold to %s? (Your ally receives %s, its stability rises and it will be grateful.)
+Yardım gönderildi.	Aid sent.
+Çok Oyunculu	Multiplayer
+Yakında	Coming soon
+Online çok oyunculu mod yakında geliyor!	Online multiplayer is coming soon!
+Lansman: tüm çağlar ve senaryolar açık (%d gün kaldı)	Launch offer: all eras and scenarios unlocked (%d days left)
+Geçmek için dokun	Tap to skip
+Kaynaklar	Sources
+Harita: Natural Earth (kamu malı)	Map: Natural Earth (public domain)
+Yazı tipleri: Big Shoulders, Instrument Sans, IBM Plex Mono (SIL Open Font License)	Fonts: Big Shoulders, Instrument Sans, IBM Plex Mono (SIL Open Font License)

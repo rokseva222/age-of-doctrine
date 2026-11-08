@@ -1,0 +1,212 @@
+{
+ "id": "alt_axis_ussr",
+ "name": "Moskova–Berlin Ekseni",
+ "sub": "Eylül 1939 – Alternatif",
+ "base": "ww2",
+ "family": "ww2",
+ "pack": "alt",
+ "icon": "helmet_ww2",
+ "mood": "war",
+ "start_year": 1939,
+ "start_doy": 243,
+ "blurb": "Stalin Hitler'le kalıcı ittifak yaptı. Doğu güvende, Batı yalnız: Britanya ve Fransa iki devle birden karşı karşıya.",
+ "suggest": [
+  "United Kingdom",
+  "Germany",
+  "Russia",
+  "United States of America",
+  "France",
+  "Japan"
+ ],
+ "look": {
+  "shadow": [
+   0.05,
+   0.07,
+   0.06
+  ],
+  "mid": [
+   0.36,
+   0.42,
+   0.31
+  ],
+  "light": [
+   0.9,
+   0.9,
+   0.82
+  ],
+  "amount": 0.3,
+  "vignette": 0.14,
+  "grain": 0.01
+ },
+ "setup": {
+  "blocs": [
+   {
+    "name": "Müttefik Devletler",
+    "members": [
+     "United Kingdom",
+     "France",
+     "Poland",
+     "Australia",
+     "New Zealand",
+     "Canada",
+     "South Africa"
+    ],
+    "emblem": {
+     "shape": 1,
+     "inner": 1,
+     "symbol": "shield",
+     "c1": "2f4f9a",
+     "c2": "ece6d6",
+     "c3": "2f4f9a"
+    }
+   },
+   {
+    "name": "Mihver Devletleri",
+    "members": [
+     "Germany",
+     "Italy",
+     "Japan",
+     "Slovakia",
+     "Russia"
+    ],
+    "emblem": {
+     "shape": 4,
+     "inner": 1,
+     "symbol": "bolt",
+     "c1": "5d6068",
+     "c2": "ece6d6",
+     "c3": "e5482f"
+    }
+   }
+  ],
+  "wars": [
+   [
+    "Germany",
+    "Poland"
+   ],
+   [
+    "United Kingdom",
+    "Germany"
+   ],
+   [
+    "France",
+    "Germany"
+   ],
+   [
+    "Australia",
+    "Germany"
+   ],
+   [
+    "New Zealand",
+    "Germany"
+   ],
+   [
+    "Canada",
+    "Germany"
+   ],
+   [
+    "South Africa",
+    "Germany"
+   ],
+   [
+    "Japan",
+    "China"
+   ],
+   [
+    "Russia",
+    "Poland"
+   ]
+  ],
+  "truce": [
+   [
+    "Japan",
+    "Russia",
+    400
+   ]
+  ],
+  "intro": "Eylül 1939: Molotov–Ribbentrop anlaşması ittifaka dönüştü. Sovyet ve Alman orduları ortak planlarla Polonya'yı paylaşıyor."
+ },
+ "inherit_until": [
+  9999,
+  1
+ ],
+ "inherit_exclude": [
+  "Barbarossa",
+  "SSCB ile"
+ ],
+ "events": [
+  {
+   "y": 1940,
+   "m": 6,
+   "t": "Moskova ve Berlin ortak bir ekonomik anlaşma imzaladı; Sovyet petrolü Alman tanklarını besliyor.",
+   "fx": [
+    [
+     "stab",
+     "Germany",
+     3
+    ]
+   ]
+  },
+  {
+   "y": 1941,
+   "m": 4,
+   "t": "Sovyet birlikleri Balkanlar'a ilerliyor; Londra ve Washington telaşta.",
+   "fx": [
+    [
+     "stab",
+     "United Kingdom",
+     -3
+    ]
+   ]
+  }
+ ],
+ "objectives": {
+  "*": [
+   {
+    "id": "o1",
+    "type": "survive",
+    "text": "Üç yıl ayakta kal",
+    "turns": 156
+   }
+  ],
+  "United Kingdom": [
+   {
+    "id": "u1",
+    "type": "alliances",
+    "text": "3 müttefik edin",
+    "n": 3
+   },
+   {
+    "id": "u2",
+    "type": "own_capital",
+    "text": "Berlin'i ele geçir",
+    "country": "Germany",
+    "required": false
+   }
+  ],
+  "Germany": [
+   {
+    "id": "g1",
+    "type": "own_capital",
+    "text": "Londra'yı ele geçir",
+    "country": "United Kingdom"
+   }
+  ]
+ },
+ "en": {
+  "name": "The Moscow–Berlin Axis",
+  "sub": "September 1939 – Alternate",
+  "blurb": "Stalin made a lasting alliance with Hitler. The East is safe and the West is alone: Britain and France face two giants at once.",
+  "setup_intro": "September 1939: the Molotov–Ribbentrop pact has turned into an alliance. Soviet and German armies carve up Poland under joint plans.",
+  "events": {
+   "0": "Moscow and Berlin signed a joint economic deal; Soviet oil fuels German tanks.",
+   "1": "Soviet troops advance into the Balkans; London and Washington are alarmed."
+  },
+  "objectives": {
+   "o1": "Survive three years",
+   "u1": "Make 3 allies",
+   "u2": "Take Berlin",
+   "g1": "Take London"
+  }
+ }
+}

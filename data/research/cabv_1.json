@@ -1,0 +1,77 @@
+{
+ "Germany": {
+  "hlt": "Carsten Linnemann",
+  "spy": "Martin Jäger"
+ },
+ "United Kingdom": {
+  "hlt": "Yvette Cooper|f",
+  "spy": "Blaise Metreweli|f"
+ },
+ "Japan": {
+  "hlt": "Kenichiro Ueno",
+  "spy": "Kazuya Hara"
+ },
+ "Brazil": {
+  "hlt": "Alexandre Padilha"
+ },
+ "Israel": {
+  "hlt": "Haim Katz",
+  "spy": "Roman Gofman"
+ },
+ "China": {
+  "hlt": "Lei Haichao",
+  "spy": "Chen Yixin"
+ },
+ "Ukraine": {
+  "hlt": "Viktor Liashko",
+  "spy": "Oleksandr Poklad"
+ },
+ "Egypt": {
+  "hlt": "Khaled Abdel Ghaffar"
+ },
+ "Iran": {
+  "hlt": "Mohammad-Reza Zafarghandi"
+ },
+ "India": {
+  "spy": "Parag Jain",
+  "hlt": "J. P. Nadda"
+ },
+ "United States of America": {
+  "hlt": "Robert F. Kennedy Jr.",
+  "spy": "John Ratcliffe"
+ },
+ "Poland": {
+  "hlt": "Jolanta Sobierańska-Grenda|f"
+ },
+ "Canada": {
+  "hlt": "Marjorie Michel|f",
+  "spy": "Daniel Rogers"
+ },
+ "South Korea": {
+  "hlt": "Jeong Eun-kyeong|f",
+  "spy": "Lee Jong-seok"
+ },
+ "Turkey": {
+  "hlt": "Kemal Memişoğlu",
+  "spy": "İbrahim Kalın"
+ },
+ "France": {
+  "hlt": "Stéphanie Rist|f",
+  "spy": "Nicolas Lerner"
+ },
+ "Russia": {
+  "hlt": "Mikhail Murashko",
+  "spy": "Sergey Naryshkin"
+ },
+ "Saudi Arabia": {
+  "hlt": "Fahad Al-Jalajel",
+  "spy": "Khalid bin Ali Al Humaidan"
+ },
+ "Italy": {
+  "hlt": "Orazio Schillaci"
+ },
+ "Australia": {
+  "hlt": "Mark Butler",
+  "spy": "Mike Burgess"
+ }
+}

@@ -1,0 +1,9 @@
+1437|Naval Bombardment
+1438|Ship gunnery on a coastal province: up to −18% defence if your navy is stronger than the enemy's. Coastal provinces only.
+1439|Missile Strike
+1440|Long-range missiles and precision strikes: up to −30% defence, no air superiority needed. Modern era only.
+1441|Airborne Drop
+1442|Paratroop raid from behind: the province's defence and home-defender bonus do not apply. WW2 and modern eras.
+1443|Special Forces Raid
+1444|A hard strike with a small elite force: +18% attack, low losses. Up to 25,000 troops; WW2 and modern eras.
+1445|This operation cannot be used here.

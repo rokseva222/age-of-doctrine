@@ -1,0 +1,395 @@
+480|World War I
+481|August 1914
+482|After the assassination in Sarajevo, all of Europe's diplomacy collapses. The Entente and the Central Powers will sink into the trenches; machine guns, heavy artillery and the first tanks will change the face of war.
+483|World War II
+484|September 1939
+485|Germany attacks Poland; Britain and France declare war. Armored wedges, bombers and submarine warfare. The war may spread to every continent.
+499|Germany
+500|Reich Chancellor
+501|USSR
+502|General Secretary
+503|British Empire
+504|Prime Minister
+505|France
+506|Italy
+507|Empire of Japan
+508|Emperor
+509|USA
+510|President
+511|Republic of China
+512|Commander-in-Chief
+513|Poland
+514|President
+515|Kingdom of Yugoslavia
+516|Regent
+517|Netherlands
+518|Queen
+519|Belgium
+520|King
+521|Spain
+522|Caudillo
+523|Türkiye
+524|Romania
+525|Canada
+526|Australia
+527|New Zealand
+528|South Africa
+529|Denmark
+530|Sweden
+531|Finland
+532|Hungary
+533|Bulgaria
+534|Tsar
+535|Greece
+536|Norway
+537|Portugal
+538|Iran
+539|Shah
+540|Egypt
+541|Iraq
+542|Saudi Arabia
+543|Thailand
+544|Brazil
+545|Argentina
+546|Mexico
+547|Mongolia
+548|Ireland
+549|Taoiseach
+550|Slovak State
+551|German Empire
+552|Austria-Hungary
+553|Ottoman Empire
+554|Sultan
+555|Russian Empire
+556|Serbia
+557|Montenegro
+558|Switzerland
+559|Federal Council
+560|Siam
+561|Allied Powers
+562|Axis Powers
+563|1 September 1939: German armies crossed the Polish border. Britain and France entered the war; in the Far East Japan is fighting China.
+564|Entente Powers
+565|Central Powers
+566|August 1914: The assassination in Sarajevo set off a chain of alliances. Europe went into mobilization; trenches are being dug.
+573|New game: the race for world dominance has begun under the leadership of %s.
+574|The simulation has begun.
+575|Ground Assault
+576|A standard combined-arms assault.
+577|Artillery and Air Preparation
+578|Pounds the defense first: defense −12%, attack +4%.
+579|Cyber and Electronic Warfare
+580|Blinds the command network: defense −14%.
+581|Blitz Assault
+582|Attack +12%; if defeated only 25% survive.
+583|Invalid operation.
+584|There must be a war before you can assault this province.
+585|Insufficient funds: the operation costs %s.
+586|No army can reach the target (no transit permission or no route).
+587|%s left the %s alliance.
+588|%s dissolved.
+589|Invalid target.
+590|%s is already in another alliance.
+591|%s is at war with the alliance member %s.
+592|%s declined the invitation.
+593|You are already in an alliance.
+594|The alliance name must be 3-30 letters.
+595|This name is in use.
+596|%s founded the "%s" alliance.
+597|Found an alliance first.
+598|%s joined the %s alliance.
+599|You cannot ally with rebels.
+600|You cannot offer an alliance while at war.
+601|You are already allies.
+602|You can have at most 3 allies.
+603|%s rejected the alliance offer.
+604|You are not allies.
+605|You are not at war with this country.
+606|You do not negotiate with rebels; retake the provinces.
+607|%s: The war has just begun, they will not entertain peace.
+608|%s rejected the peace offer.
+609|%s accepted peace and took %d provinces.
+610|A draw peace was signed.
+611|New leader in %s: %s %s took office.
+612|The state of %s has fallen. The World Gazette offers you its condolences.
+613|You rule %d%% of the world. World dominance is yours!
+614|You control %%%d of the world economy. Economic hegemony is yours!
+615|This army is not yours.
+616|You cannot get there (no transit permission or no route).
+617|You are already at war.
+618|You cannot declare war on an ally; break the alliance first.
+619|A truce is in effect (%d turns).
+620|Spy network
+621|Steal the target's defense secrets: your technology rises.
+622|Propaganda
+623|Incite the people against the government in the target: its stability drops.
+624|Sabotage
+625|Damage factories and infrastructure: industry and stability drop.
+626|Embassy
+627|Diplomatic contact: the target's aggression toward you decreases.
+628|Agents are in hiding on this target (%d turns).
+629|Not enough funds.
+630|You cannot open an embassy in a country at war.
+631|%s's defense plans were captured. Your weapons technology advanced.
+632|Your spy network in %s was dismantled. The scandal shook domestic politics.
+633|Protests are growing in %s. Stability fell.
+634|%s censored your propaganda; the money was wasted.
+635|Mysterious fires broke out in the factories of %s. Industry was shaken.
+636|Your sabotage team was caught! %s is furious at you.
+637|Relations with %s warmed up; its aggression decreased.
+638|%s received your embassy coldly.
+639|Volunteer Band
+640|Cheap and numerous; short contract.
+641|Professional Unit
+642|Trained, balanced cost.
+643|Special Operations Company
+644|Expensive, but a large and experienced force.
+645|Insufficient funds: the contract costs %s.
+646|There is no free province to station the unit.
+647|The unit could not be stationed.
+648|%s signed a contract: %s (%d troops) started service in %s.
+649|The contract of %s ended; %s troops left.
+650|%s carried out an attack in %s; security forces are on alert. (%s)
+651|The %s attack rocked %s. %s took emergency measures.
+652|Voice from the underground: %s claimed the attack in %s. (%s)
+653|Settings
+654|Preferences
+655|Sound
+656|Music
+657|Sound effects
+658|Display
+659|Country names
+660|Scales with the size of the country; appears as you zoom in.
+661|Province names
+662|Shows province names when you zoom in.
+663|Army badges
+664|High quality effects
+665|Coastal glow. Turning it off improves smoothness on old phones.
+666|Interface size
+667|Game
+668|Autosave
+669|Saves every 13 weeks (three months).
+670|Cabinet cards
+671|Ministers occasionally ask for a decision (defense, foreign, interior, finance, health, intelligence). Some risky choices can end the game.
+672|Auto troop assignment
+673|If you give no orders in a turn, idle armies at war are sent to the best front targets on their own. When off, armies wait in place until you tell them.
+674|Notifications
+675|On a phone, while a game is in progress, sends an "your army awaits you" reminder every 5 hours. No notifications if there is no game or it has ended.
+676|Difficulty
+677|Easy
+678|Normal
+679|Hard
+680|Difficulty applies to newly started games.
+681|Conquest, province by province
+682|The map is the real world. Each country is made of a few provinces. Tap a province to see its info and what you can do. Pinch to zoom, drag to pan.
+683|Raise troops
+684|In your own province use 'Troops +10' or '+30' to raise an army. Your income comes from provinces; the army has upkeep, so do not let your gold go negative.
+685|Turn-based game
+686|Time does not flow by itself. When ready, press 'End turn' at the top right: one week passes, then the World Gazette shows what happened in the world and the war report.
+687|Tap a province of a country you are at war with and choose 'Assault'. Select your nearby armies, choose the operation type (ground assault, artillery and air preparation, cyber warfare, blitz), see the estimated advantage and give the order. You will see the result in the report after you end the turn.
+688|Sending troops and mercenaries
+689|After selecting an army and tapping the target, choose with the slider how many troops set out (25% / 50% / 75% / 100%); the rest wait in place. Assaults have the same ratio. In Policy > Fronts you can hire a temporary mercenary unit. If you give no orders in a turn, idle armies at war may be assigned automatically (turn it off in Settings).
+690|War, peace, alliance
+691|Sieges and victories earn war points. At the peace table you take provinces with your points. Allies fight together; you cannot attack during a truce.
+692|From time to time a minister comes to you and asks for a decision. The icons next to the options show which area they affect (the direction is hidden); a ☠ mark is a risky choice that can end the game. When a minister leaves office (resignation, scandal, election) 3 candidates come: cheap-novice, mid-veteran, expensive-master; you choose. You can replace a minister from the Cabinet tab. There are also niche cards: election night, the shady trader's crate (gamble), World Cup/Olympics, the informant. It can be turned off in Settings.
+693|News and victory
+694|The World Gazette at the top reports what happens in the world; tap to open the history. The country that takes 55% of the world's provinces becomes world ruler.
+695|How to play
+696|Guide
+697|Step %d / %d
+698|Back
+699|Next
+700|Start
+701|Defense
+702|Industry
+703|Cyber
+704|Logistics
+705|Domestic Stability
+706|Treasury
+707|Salaries, conscription and arms purchases
+708|Income and domestic arms discount
+709|Cyber attack and defense
+710|Supply strength on foreign soil
+711|Prevents rebellion and income loss
+712|Goes directly to the treasury
+713|Balanced Operations
+714|Medium in every area; no pluses or minuses.
+715|Mass Assault
+716|Numbers-based attack. Attack +12%, defense −5%.
+717|Defense in Depth
+718|Defense +18%, attack −8%.
+719|Air-Land Operations
+720|Almost double the effect of air superiority.
+721|Asymmetric Warfare
+722|Defense +12%, high supply tolerance, cyber +30%.
+723|Network-Centric Warfare
+724|Cyber power +60%, command-network advantage.
+725|%s$%s tn
+726|%s$%s bn
+727|%s$%d M
+728|You must wait %d weeks to change doctrine.
+729|The doctrine change costs %s; there is not enough money in the treasury.
+730|Not for sale
+731|Not yet developed (in week %d)
+732|Your technology level is insufficient
+733|Industrial base insufficient (%%%d required)
+734|No producer country
+735|%s will not sell (war/embargo)
+736|Insufficient budget: %s required.
+737|Delivery: %d × %s added to the inventory.
+738|Automatic
+739|Trade
+740|Finance
+741|Off
+742|Cyber defense: an attack from %s was blocked.
+743|The %s cyber firewall repelled an attack.
+744|Ransomware from %s halted the factories of %s.
+745|%s knocked out the railway and port signaling of %s; supply lines are faltering.
+746|%s cyber attack: the port and stock exchange connections of %s were cut, foreign trade has stopped.
+747|%s stole %s from the banks of %s.
+748|%s air operation: the industrial plants of %s were hit.
+749|%s aircraft hit the logistics lines and bridges of %s.
+750|%s bombed the ammunition depots and vehicle parks of %s.
+751|Tap the 'End turn' button to begin.
+752|Game saved: slot %d.
+753|Save failed.
+754|Save not found or could not be read.
+755|Game loaded: %s
+756|You gave no orders: %d idle armies were assigned automatically.
+757|Army selected. Tap the province to go to.
+758|%d armies set out (arrival: %d wk). The result is in the report.
+759|%s troops set out: %s
+760|Alliance formed!
+761|Peace
+762|You have occupied no province; a draw peace will be made.
+763|Draw peace
+764|Peace offer
+765|%s wants peace. War points: you %d, them %d.\nYou can sit at the table and take provinces.
+766|Sit at the table
+767|Peace terms
+768|%s demands the following for peace: %s.\nIf you refuse, the war continues.
+769|Draw offer
+770|%s proposes a draw peace. Occupied places are returned.
+771|VICTORY!
+772|Keep playing
+773|Main menu
+774|Defeat
+775|Your ally %s was attacked by %s! Will you join the war?\nIf you do not, the alliance breaks.
+776|Your ally %s declared war on %s. Will you stand by them?\nIf you do not, the alliance breaks.
+777|Alliance call
+778|Join the war
+779|Alliance offer
+780|%s wants to form an alliance with you.
+781|Your army awaits you, commander!
+782|New decisions await for %s. End the turn!
+783|There is movement at the front; give your orders.
+784|You have savings in the treasury. Weapons or buildings? Your call.
+785|The world does not turn without you: there is new news in the World Gazette.
+786|=
+787|Europe
+788|Asia
+789|Africa
+790|North America
+791|South America
+792|Oceania
+793|=
+794|Antarctica
+795|=
+796|Ocean
+797|Conquer the world, province by province
+798|=
+799|Play
+800|Historical Wars
+801|Continue
+802|How to Play
+803|Exit
+804|Version 1.0   /   1 week = 1 turn
+805|New game
+806|Choose your country
+807|World 2027
+808|Search country...
+809|Choose a scenario
+810|Game mode
+811|FREE
+812|REAL CRISIS
+813|FICTIONAL
+814|Free play
+815|Real-world scenarios
+816|Fictional modern scenarios
+817|Selected
+818|Close
+819|Historical wars
+820|A separate game mode: the empires, weapons, alliances and colors of the era. Independent of the scenarios.
+821|HISTORICAL MODE   /   %s
+822|Recommended
+823|Medium
+824|Very hard
+825|Population
+826|Provinces
+827|Income/wk
+828|Troops
+829|Start with %s
+830|January
+831|February
+832|March
+833|April
+834|May
+835|June
+836|July
+837|August
+838|September
+839|October
+840|November
+841|December
+908|Country%d
+909|Region%d
+910|%s declared war on %s!
+911|The world is in shock: war has broken out between %s and %s.
+912|BREAKING: %s armies moved on the %s border.
+913|Diplomacy collapsed: %s opened the front against %s.
+914|WARNING: %s has declared war on you!
+915|%s armies are at your border. The war has begun!
+916|World Gazette: you are at war with %s. The borders are under fire.
+917|You declared war: you are at war with %s.
+918|The world is talking about you: you went to war with %s!
+919|Your armies have moved, target: %s.
+920|%s province has fallen! The %s flag is flying.
+921|The %s army has captured the province of %s.
+922|Report from the front: %s province is now under %s control.
+923|Victory! The province of %s has been captured.
+924|Your army entered the province of %s, the people are stunned.
+925|The world is talking about you: the province of %s is now under your control!
+926|Loss: the province of %s fell into enemy hands!
+927|The province of %s was occupied, you must liberate it!
+928|Bad news: the province of %s has fallen.
+929|Peace was signed between %s and %s.
+930|The guns fell silent: %s and %s reached peace.
+931|%s left the peace table with %d provinces: %s.
+932|Under the agreement %s gained %d provinces: %s.
+933|Bloody clash! The %s army routed the %s army in the province of %s.
+934|Major battle in the province of %s: %s won, %s suffered heavy losses.
+935|The state of %s was wiped off the map.
+936|Gone to history: %s no longer exists.
+937|Quarterly report: strongest economy %s, largest army %s, largest territory %s.
+938|Boom in the %s economy: %s entered the treasury.
+939|Stock markets soar! The %s treasury gained %s.
+940|An economic crisis hit %s: %s lost.
+941|Deficit in the %s treasury: %s evaporated.
+942|A rich ore deposit was found in the province of %s! (%s)
+943|An oil reserve was discovered in the province of %s. (%s)
+944|The people of %s mobilized: %s volunteers joined the army.
+945|A call to the homeland! %s volunteers enlisted in the %s army.
+946|Earthquake in the province of %s! Production fell. (%s)
+947|REVOLT! %s rose up in the province of %s. (%s)
+948|%s seized control of the province of %s. (%s)
+949|Unrest erupted: the province of %s is in the hands of %s. (%s)
+950|%s was suppressed, the resistance is over.
+951|The revolt is over: %s dissolved.
+952|%s declared independence! New state: %s. (Former owner: %s)
+953|A new flag on the map: %s founded a state under the name %s. (Former owner: %s)
+954|%s and %s formed an alliance.
+955|New front: %s and %s signed an alliance.
+956|%s Pact
+957|%s Defense Union
+958|%s Solidarity Alliance
+959|%s Security Council

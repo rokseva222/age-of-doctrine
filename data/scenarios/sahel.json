@@ -1,0 +1,141 @@
+{
+ "id": "sahel",
+ "kind": "fiction",
+ "name": "Sahel Ateşi",
+ "sub": "Kurgusal: darbeler ve silahlı gruplar",
+ "blurb": "Kurgusal bir senaryo: Sahel kuşağında hükümetler çöküyor, kurgusal silahlı gruplar kuzeyden kontrol alıyor. Dış güçler nüfuz için yarışıyor. (Gerçek örgüt adı ve sembolleri kullanılmaz.)",
+ "intro": "Sahel Ateşi: Mali ve Nijer'in kuzeyinde Çöl Birliği adlı bir yapı ortaya çıktı; başkentler ayakta kalmaya çalışıyor.",
+ "suggest": [
+  "Mali",
+  "Niger",
+  "Algeria",
+  "Nigeria",
+  "France",
+  "Burkina Faso"
+ ],
+ "factions": [
+  {
+   "name": "Çöl Birliği",
+   "leader": "Komutan|Abdelhakim el-Sahri",
+   "from": [
+    [
+     "Mali",
+     3
+    ],
+    [
+     "Niger",
+     2
+    ]
+   ],
+   "dir": "north",
+   "troops": 30000,
+   "tech": 0.2,
+   "doctrine": 4,
+   "colors": [
+    "8a6a3a",
+    "1c1f24",
+    "ece6d6"
+   ],
+   "pattern": 2,
+   "aggression": 1.0
+  }
+ ],
+ "blocs": [
+  {
+   "name": "Sahel Ülkeleri Paktı",
+   "members": [
+    "Mali",
+    "Niger",
+    "Burkina Faso"
+   ],
+   "emblem": {
+    "shape": 2,
+    "inner": 1,
+    "symbol": "shield",
+    "c1": "d8a05c",
+    "c2": "1c1f24",
+    "c3": "ece6d6"
+   }
+  }
+ ],
+ "stability": {
+  "Mali": -20,
+  "Niger": -18,
+  "Burkina Faso": -18,
+  "Chad": -8
+ },
+ "troops_mult": {
+  "Mali": 0.8,
+  "Niger": 0.8
+ },
+ "events": [
+  {
+   "turn": 8,
+   "t": "Çöl Birliği sınır kasabalarında kontrolü ele geçirdi; binlerce kişi yerinden oldu.",
+   "fx": []
+  },
+  {
+   "turn": 24,
+   "t": "Komşu ülkeler ortak güç oluşturmayı görüştü.",
+   "fx": [
+    [
+     "stab",
+     "Nigeria",
+     2
+    ]
+   ]
+  },
+  {
+   "turn": 44,
+   "t": "Yabancı güçlerin çekilmesi tartışılıyor; başkentler yeni güvenlik düzeni arıyor.",
+   "fx": [
+    [
+     "stab",
+     "Mali",
+     -3
+    ]
+   ]
+  }
+ ],
+ "objectives": {
+  "*": [
+   {
+    "id": "h1",
+    "type": "survive",
+    "turns": 104,
+    "text": "İki yıl ayakta kal"
+   },
+   {
+    "id": "h2",
+    "type": "stability",
+    "n": 50,
+    "text": "İstikrarı 50 üzerine çıkar"
+   }
+  ],
+  "Mali": [
+   {
+    "id": "hm1",
+    "type": "own_provinces",
+    "n": 10,
+    "text": "10 eyalete ulaş"
+   }
+  ]
+ },
+ "deadline": 208,
+ "en": {
+  "name": "Sahel Fire",
+  "sub": "Fiction: coups and armed groups",
+  "blurb": "A fictional scenario: governments are collapsing across the Sahel belt and fictional armed groups are taking control in the north. Outside powers race for influence. (No real organization names or symbols are used.)",
+  "intro": "Sahel Fire: a body called the Desert Union has emerged in northern Mali and Niger; capitals struggle to survive.",
+  "objectives": {
+   "h1": "Survive two years",
+   "h2": "Raise stability above 50",
+   "hm1": "Reach 10 provinces"
+  },
+  "events": {
+   "0": "The Desert Union took control of border towns; thousands were displaced.",
+   "1": "Neighbouring countries discussed forming a joint force.",
+   "2": "The withdrawal of foreign forces is debated; capitals seek a new security order."
+  }
+ }
+}

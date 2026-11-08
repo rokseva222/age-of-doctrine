@@ -1,0 +1,18 @@
+1303|Peacekeeping force
+1304|Calms unrest in the target country and raises its stability.
+1305|Development program
+1306|The target country's least developed provinces improve by one level.
+1307|Sovereignty guarantee
+1308|Countries that voted yes will not attack the target for 26 weeks.
+1309|Arms embargo
+1310|The target country's industry and logistics weaken.
+1311|International investigation
+1312|The target country's stability and aggression fall.
+1313|Disarmament resolution
+1314|The target country's army shrinks by 12 percent.
+1315|Peacekeepers deployed in %s; unrest is subsiding.
+1316|Development program for %s: %d provinces improved.
+1317|%d countries pledged 26 weeks of non-aggression toward %s.
+1318|Arms embargo on %s: industry and logistics weakened.
+1319|International investigation of %s: stability fell, aggression eased.
+1320|The army of %s shrank by 12 percent.

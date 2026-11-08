@@ -1,0 +1,211 @@
+{
+ "id": "alt_cuba_hot",
+ "name": "Füze Krizi Patlıyor",
+ "sub": "Ekim 1962 – Alternatif",
+ "base": "cw62",
+ "family": "cold",
+ "pack": "alt",
+ "icon": "helmet",
+ "mood": "war",
+ "start_year": 1962,
+ "start_doy": 290,
+ "blurb": "Karantina çöktü: ABD Küba'ya çıkarma yapıyor, Sovyetler Türkiye'deki Jüpiter füzelerine karşılık verdi. Dünya nükleer savaşın eşiğinde — ve bu sefer geri adım yok.",
+ "suggest": [
+  "United States of America",
+  "Russia",
+  "Cuba",
+  "Turkey",
+  "United Kingdom"
+ ],
+ "look": {
+  "shadow": [
+   0.06,
+   0.07,
+   0.09
+  ],
+  "mid": [
+   0.42,
+   0.45,
+   0.42
+  ],
+  "light": [
+   0.93,
+   0.9,
+   0.83
+  ],
+  "amount": 0.28,
+  "vignette": 0.14,
+  "grain": 0.01
+ },
+ "setup": {
+  "blocs": [
+   {
+    "name": "Kuzey Atlantik İttifakı",
+    "members": [
+     "United States of America",
+     "Canada",
+     "United Kingdom",
+     "France",
+     "Germany",
+     "Italy",
+     "Belgium",
+     "Netherlands",
+     "Luxembourg",
+     "Denmark",
+     "Norway",
+     "Iceland",
+     "Portugal",
+     "Greece",
+     "Turkey"
+    ],
+    "emblem": {
+     "shape": 0,
+     "inner": 2,
+     "symbol": "star",
+     "c1": "2f4f9a",
+     "c2": "ece6d6",
+     "c3": "2f4f9a"
+    }
+   },
+   {
+    "name": "Varşova Paktı",
+    "members": [
+     "Russia",
+     "Poland",
+     "Czechia",
+     "Hungary",
+     "Romania",
+     "Bulgaria",
+     "Albania"
+    ],
+    "emblem": {
+     "shape": 4,
+     "inner": 1,
+     "symbol": "star",
+     "c1": "b53a2e",
+     "c2": "e3a92b",
+     "c3": "e3a92b"
+    }
+   }
+  ],
+  "wars": [
+   [
+    "United States of America",
+    "Cuba"
+   ],
+   [
+    "Russia",
+    "Turkey"
+   ]
+  ],
+  "truce": [],
+  "intro": "Ekim 1962: Diplomasi iflas etti. Küba'da çatışma başladı, Karadeniz'de Sovyet ve Türk birlikleri karşı karşıya.",
+  "cold": [
+   [
+    "United States of America",
+    "Russia"
+   ]
+  ],
+  "stability": {
+   "United States of America": -6,
+   "Russia": -6,
+   "Cuba": -10
+  }
+ },
+ "events": [
+  {
+   "y": 1962,
+   "m": 11,
+   "t": "Küba'da ağır çarpışmalar sürüyor; BM Güvenlik Konseyi olağanüstü toplandı.",
+   "fx": [
+    [
+     "stab",
+     "Cuba",
+     -6
+    ]
+   ]
+  },
+  {
+   "y": 1962,
+   "m": 12,
+   "t": "Moskova ve Washington arasında sıcak hat yeniden açıldı: ateşkes görüşmeleri başlıyor.",
+   "fx": [
+    [
+     "stab",
+     "United States of America",
+     3
+    ],
+    [
+     "stab",
+     "Russia",
+     3
+    ]
+   ]
+  }
+ ],
+ "objectives": {
+  "*": [
+   {
+    "id": "o1",
+    "type": "survive",
+    "text": "Bir yıl ayakta kal",
+    "turns": 52
+   },
+   {
+    "id": "o2",
+    "type": "alliances",
+    "text": "3 müttefik edin",
+    "n": 3,
+    "required": false
+   }
+  ],
+  "Cuba": [
+   {
+    "id": "c1",
+    "type": "own_capital",
+    "text": "Havana'yı elinde tut",
+    "country": "Cuba"
+   }
+  ],
+  "Turkey": [
+   {
+    "id": "t1",
+    "type": "cease_war",
+    "text": "SSCB ile barış yap",
+    "with": "Russia"
+   },
+   {
+    "id": "t2",
+    "type": "stability",
+    "text": "İstikrarı 50 üzerinde tut",
+    "n": 50
+   }
+  ],
+  "United States of America": [
+   {
+    "id": "a1",
+    "type": "cease_war",
+    "text": "SSCB ile savaş çıkmasını önle",
+    "with": "Russia"
+   }
+  ]
+ },
+ "en": {
+  "name": "The Missile Crisis Explodes",
+  "sub": "October 1962 – Alternate",
+  "blurb": "The quarantine collapsed: the US is landing on Cuba and the Soviets have retaliated against the Jupiter missiles in Turkey. The world stands at the edge of nuclear war — and this time nobody blinks.",
+  "setup_intro": "October 1962: diplomacy has failed. Fighting has begun in Cuba, and Soviet and Turkish forces face off on the Black Sea.",
+  "events": {
+   "0": "Heavy fighting continues in Cuba; the UN Security Council has met in emergency session.",
+   "1": "The hotline between Moscow and Washington reopened: ceasefire talks begin."
+  },
+  "objectives": {
+   "o1": "Survive one year",
+   "o2": "Make 3 allies",
+   "c1": "Hold Havana",
+   "t1": "Make peace with the USSR",
+   "t2": "Keep stability above 50",
+   "a1": "Prevent war with the USSR"
+  }
+ }
+}

@@ -1,0 +1,1626 @@
+0	Kabine değişikliği	appoint_ui.gd
+1	   ·   skandal riski	appoint_ui.gd
+2	Ücretsiz	appoint_ui.gd
+3	Taarruz harekâtı	assault_ui.gd
+4	Kuvvetler (dokunarak seç)	assault_ui.gd
+5	Gönderilen	assault_ui.gd
+6	Harekât türü	assault_ui.gd
+7	Harekâtı başlat	assault_ui.gd
+8	Vazgeç	assault_ui.gd
+9	Savunan	assault_ui.gd
+10	Boş	assault_ui.gd
+11	Eyalet savunması	assault_ui.gd
+12	Kuşatma süresi	assault_ui.gd
+13	%d hf	assault_ui.gd
+14	Gelir	assault_ui.gd
+15	Yakında ordun yok. Ordularını hedefe 6 eyalet mesafeye getir ya da yeni birlik kur.	assault_ui.gd
+16	Tahmini üstünlük	assault_ui.gd
+17	En az bir ordu seç.	assault_ui.gd
+18	Savunmasız: ordu yürür, kuşatma başlar.	assault_ui.gd
+19	Ezici üstünlük	assault_ui.gd
+20	Üstünlük	assault_ui.gd
+21	Dengeli: şansa bağlı	assault_ui.gd
+22	Zor: kayıp ağır olabilir	assault_ui.gd
+23	Çok riskli: yenilgi bekleniyor	assault_ui.gd
+24	Taarruz %sK  /  Savunma %sK	assault_ui.gd
+25	Savunma Bakanı	cabinet.gd
+26	Dışişleri Bakanı	cabinet.gd
+27	İçişleri Bakanı	cabinet.gd
+28	Maliye Bakanı	cabinet.gd
+29	Sağlık Bakanı	cabinet.gd
+30	İstihbarat Başkanı	cabinet.gd
+31	Büyükelçi	cabinet.gd
+32	Gölge Tüccarı	cabinet.gd
+33	Spor Federasyonu Başkanı	cabinet.gd
+34	Seçim Kurulu Başkanı	cabinet.gd
+35	Efendim, {nb} sınırı boyunca büyük bir tatbikat planlıyoruz. Gövde gösterisi mi yapalım, yoksa temkinli mi kalalım?	cabinet.gd
+36	Büyük tatbikat	cabinet.gd
+37	Birlikler sınıra yığıldı. Ordunun moral sesi yükseldi, komşular tedirgin.	cabinet.gd
+38	Sınırlı tatbikat	cabinet.gd
+39	Küçük ölçekli, dikkat çekmeyen bir tatbikat yapıldı.	cabinet.gd
+40	İptal et	cabinet.gd
+41	Tatbikat iptal edildi; bütçe korundu, subaylar homurdandı.	cabinet.gd
+42	Yerli tüfek ve zırhlı araç projesi bütçe bekliyor. Tam destek verirsek sanayi de canlanır.	cabinet.gd
+43	Tam destek	cabinet.gd
+44	Prototipler teslim alındı, fabrikalar üç vardiya çalışıyor.	cabinet.gd
+45	Kısmi destek	cabinet.gd
+46	Proje yavaş ama düzenli ilerliyor.	cabinet.gd
+47	Ertele	cabinet.gd
+48	Proje rafa kalktı.	cabinet.gd
+49	Ordu mevcudunu hızla büyütmek için zorunlu hizmet süresini uzatmayı öneriyorum.	cabinet.gd
+50	Süreyi uzat	cabinet.gd
+51	Kışlalar doldu ama aileler hoşnut değil.	cabinet.gd
+52	Gönüllüyü teşvik et	cabinet.gd
+53	Prim ve burslarla gönüllü sayısı arttı.	cabinet.gd
+54	Dokunma	cabinet.gd
+55	Mevcut sistem sürüyor.	cabinet.gd
+56	Subaylar arasında maaşlar yüzünden kıpırdanma var. Bazı garnizonlarda toplantılar yapılıyor.	cabinet.gd
+57	Zam ver	cabinet.gd
+58	Maaşlar artırıldı, subaylar sakinleşti.	cabinet.gd
+59	Gözaltıları başlat	cabinet.gd
+60	Birkaç albay tutuklandı; ordu içinde soğukluk büyüdü.	cabinet.gd
+61	Subayların sabrı taştı: ordu yönetime el koydu. Hükümetin sona erdi.	cabinet.gd
+62	Görüş	cabinet.gd
+63	Komutanlarla yemekli bir toplantı yapıldı.	cabinet.gd
+64	{nb} topraklarımızda ortak bir üs kurmak istiyor. Karşılığında ciddi bir ödeme teklif ediyor.	cabinet.gd
+65	Kabul et	cabinet.gd
+66	Anlaşma imzalandı; muhalefet 'egemenlik satıldı' diye bağırıyor.	cabinet.gd
+67	Reddet	cabinet.gd
+68	Teklif nazikçe geri çevrildi.	cabinet.gd
+69	Siber komutanlık kurulmasını öneriyorum. Savunma da saldırı da buradan yürüyecek.	cabinet.gd
+70	Tam komutanlık kur	cabinet.gd
+71	Yüzlerce genç mühendis ordunun siber kanadına katıldı.	cabinet.gd
+72	Küçük birim	cabinet.gd
+73	Ordu içinde küçük bir siber birim kuruldu.	cabinet.gd
+74	Gereksiz	cabinet.gd
+75	Öneri reddedildi.	cabinet.gd
+76	{en} cephesinde cephane stokları azalıyor. Hızlı bir karar gerek.	cabinet.gd
+77	Acil dış sipariş	cabinet.gd
+78	Havai nakliyatla cephane ulaştı; cepheler yeniden dirençli.	cabinet.gd
+79	Sivil fabrikaları dönüştür	cabinet.gd
+80	Sivil üretim hatları silah üretimine çevrildi.	cabinet.gd
+81	Dayanın	cabinet.gd
+82	Cephedeki birlikler kendi imkânlarıyla idare etti.	cabinet.gd
+83	Savaş uzadıkça cephede firarlar artıyor. Disiplini nasıl sağlayalım?	cabinet.gd
+84	Af ilan et	cabinet.gd
+85	Firariler affedildi; bir kısmı geri döndü.	cabinet.gd
+86	Sıkı ceza	cabinet.gd
+87	Disiplin sertleşti; ordu toparlandı ama halk huzursuz.	cabinet.gd
+88	Moral kampanyası	cabinet.gd
+89	Gazete, radyo ve şarkılarla cephede moral yükseltildi.	cabinet.gd
+90	Gizli bir ileri silah programı için bilim insanları kaynak bekliyor. Yakalanırsak yaptırım gelebilir.	cabinet.gd
+91	Gizlice başlat	cabinet.gd
+92	Program başladı. Yabancı istihbarat bir şeyler sezmiş gibi.	cabinet.gd
+93	Sivil kanaldan ilerle	cabinet.gd
+94	Araştırma 'sivil' etiketiyle sürdü.	cabinet.gd
+95	Proje iptal edildi.	cabinet.gd
+96	{nb} lideri bir zirve toplantısı istiyor. Katılmak ilişkileri rahatlatabilir.	cabinet.gd
+97	Bizzat git	cabinet.gd
+98	Zirve sıcak geçti; iki taraf da ortak bildiri yayımladı.	cabinet.gd
+99	Elçi gönder	cabinet.gd
+100	Orta düzey bir heyet gönderildi.	cabinet.gd
+101	Davet reddedildi; basın cesur bir duruş olarak yorumladı.	cabinet.gd
+102	{nb} ile elçilik ilişkilerini yükseltmeyi öneriyorum: büyükelçilik, ticaret ofisi, vize anlaşması.	cabinet.gd
+103	Büyükelçilik aç	cabinet.gd
+104	Yeni büyükelçilik açıldı, ticari heyetler gidip gelmeye başladı.	cabinet.gd
+105	Sadece ticaret ofisi	cabinet.gd
+106	Ticaret ofisi açıldı.	cabinet.gd
+107	Gerek yok	cabinet.gd
+108	Mevcut düzey korundu.	cabinet.gd
+109	{nb} bir üçüncü ülkeye yaptırım uygulamamızı istiyor ve bize destek sözü veriyor.	cabinet.gd
+110	Katıl	cabinet.gd
+111	Yaptırım kararı onaylandı; hedef ülke sert tepki verdi.	cabinet.gd
+112	Tarafsız kal	cabinet.gd
+113	Hükümet tarafsızlığını açıkladı.	cabinet.gd
+114	Karşı çık	cabinet.gd
+115	Yaptırıma karşı olduğun duyuruldu; bir süre soğukluk yaşanacak.	cabinet.gd
+116	Komşu iki ülke arasında gerginlik büyüyor ve bizi arabuluculuğa çağırıyorlar.	cabinet.gd
+117	Arabuluculuğu üstlen	cabinet.gd
+118	Zirve ev sahibi olarak prestiji büyüttün; gerginlik azaldı.	cabinet.gd
+119	Kenarda dur	cabinet.gd
+120	Taraflar kendi yollarını buldu.	cabinet.gd
+121	Büyükelçimiz {nb} tarafından casusluk suçlamasıyla sınır dışı edildi. Nasıl karşılık verelim?	cabinet.gd
+122	Resmen protesto et	cabinet.gd
+123	Nota verildi; iki ülke karşılıklı elçi çağırdı.	cabinet.gd
+124	Sessiz kal	cabinet.gd
+125	Olay basında kısa sürede unutuldu.	cabinet.gd
+126	Karşılık ver	cabinet.gd
+127	Karşı hamle yapıldı; ilişkiler dondu.	cabinet.gd
+128	{nb} afet nedeniyle uluslararası yardım istiyor. Cömert davranmak itibarımızı yükseltir.	cabinet.gd
+129	Büyük yardım	cabinet.gd
+130	Yardım konvoyları yola çıktı; dünya kamuoyu seni övdü.	cabinet.gd
+131	Sembolik yardım	cabinet.gd
+132	Küçük bir yardım paketi gönderildi.	cabinet.gd
+133	Yardım isteği yanıtsız kaldı.	cabinet.gd
+134	Gizli diplomatik yazışmalar basına sızdı. Bazı ülkelerle ilişkilerimiz zorlanabilir.	cabinet.gd
+135	Belgeleri yalanla	cabinet.gd
+136	Yalanlama inandırıcı bulunmadı.	cabinet.gd
+137	Soruşturma aç	cabinet.gd
+138	Bakanlıkta kapsamlı bir soruşturma başladı.	cabinet.gd
+139	Bir müsteşar feda et	cabinet.gd
+140	Sorumlu bürokrat istifa etti; olay kapandı.	cabinet.gd
+141	{nb} sınır hattındaki bir bölgeyi kendi toprağı ilan ediyor. Tepkimiz ne olsun?	cabinet.gd
+142	Sınıra birlik gönder	cabinet.gd
+143	Karşı karşıya duran birlikler gerginliği tırmandırdı.	cabinet.gd
+144	Müzakere masası	cabinet.gd
+145	Diplomatik görüşmeler başladı.	cabinet.gd
+146	Taviz ver	cabinet.gd
+147	Taviz kabul edildi; halk bunu zayıflık olarak gördü.	cabinet.gd
+148	{en} ile savaşta üçüncü ülkeler ateşkes için baskı yapıyor. Dünya kamuoyu savaştan yoruldu.	cabinet.gd
+149	Ateşkes görüşmelerine otur	cabinet.gd
+150	Gizli kanallar açıldı. Savaş kamuoyu sakinleşti.	cabinet.gd
+151	Savaşa devam	cabinet.gd
+152	Savaş kararlılıkla sürüyor; diplomatik baskı sertleşti.	cabinet.gd
+153	Üçüncü ülkeyi kendi yanımıza çek	cabinet.gd
+154	Yeni bir mali destek paketiyle bir ülke yanımızda durdu.	cabinet.gd
+155	{cap} sokaklarında büyük bir protesto var; ekonomik talepler dile getiriliyor. Kalabalık her saat büyüyor.	cabinet.gd
+156	Ödenek ver	cabinet.gd
+157	Bir destek paketi açıklandı; kalabalık dağıldı.	cabinet.gd
+158	Gözaltı ve gaz	cabinet.gd
+159	Polis müdahale etti; öfke tüm şehirlere yayıldı.	cabinet.gd
+160	Sokaklar ayaklandı, hükümet devrildi. Yönetim elinden alındı.	cabinet.gd
+161	Müzakere et	cabinet.gd
+162	Sendika ve öğrenci temsilcileriyle görüşüldü.	cabinet.gd
+163	İstihbarat, büyük bir şehirde bombalı saldırı planı ihbar etti. Zaman kısıtlı.	cabinet.gd
+164	Baskın operasyonu	cabinet.gd
+165	Hücre çökertildi; basın seni şahin ilan etti.	cabinet.gd
+166	Sokağa çıkma yasağı	cabinet.gd
+167	Şehir bir gece durdu, plan bozuldu ama halk bunaldı.	cabinet.gd
+168	İhbar abartı	cabinet.gd
+169	Saldırı gerçekleşti. Ağır bir yas ve öfke dalgası var.	cabinet.gd
+170	Üst düzey bürokratlar kayırmacılık ve yolsuzlukla suçlanıyor. Yargı seni bekliyor.	cabinet.gd
+171	Tasfiye et	cabinet.gd
+172	Birkaç isim görevden alındı; kamuoyu rahatladı.	cabinet.gd
+173	Örtbas et	cabinet.gd
+174	Dosya kapatıldı. Para korundu ama güven zedelendi.	cabinet.gd
+175	Bağımsız soruşturma	cabinet.gd
+176	Bağımsız bir kurul çalışmaya başladı.	cabinet.gd
+177	Sınırda yeni bir göç dalgası var. Binlerce kişi kapıda bekliyor.	cabinet.gd
+178	Kabul et, kamp kur	cabinet.gd
+179	Kamplar kuruldu; yeni iş gücü piyasaya girmeye başladı.	cabinet.gd
+180	Sınırı kapat	cabinet.gd
+181	Sınır kapatıldı; komşu hükümet seni eleştiriyor.	cabinet.gd
+182	Uluslararası yardım iste	cabinet.gd
+183	Yardım örgütleri ortak bir çözüm bulmak için masaya oturdu.	cabinet.gd
+184	Muhalefet erken seçim istiyor. Sokaklarda sandık sloganları duyuluyor.	cabinet.gd
+185	Erken seçime git	cabinet.gd
+186	Seçim yapıldı: mevcut yönetim güvenini tazeledi.	cabinet.gd
+187	Seçimi kaybettin. İktidar el değiştirdi, yeni hükümet kuruldu.	cabinet.gd
+188	Talep reddedildi; muhalefet sokağa dökülmek için hazırlık yapıyor.	cabinet.gd
+189	Referandum öner	cabinet.gd
+190	Referandum kampanyası başladı.	cabinet.gd
+191	Bazı gazeteciler hükümeti sert eleştiriyor. Kanal sahiplerine baskı yapmamı ister misin?	cabinet.gd
+192	Basına dokunma	cabinet.gd
+193	Basın özgürlüğü korundu; eleştiriler sürüyor.	cabinet.gd
+194	Sansür	cabinet.gd
+195	Kanallara talimat gitti; dijital izleme güçlendirildi.	cabinet.gd
+196	Kanalları kapat	cabinet.gd
+197	Birkaç kanal kapatıldı; dışarıdan sert tepki geldi.	cabinet.gd
+198	Büyük bir deprem/sel felaketi yaşandı; yüz binlerce kişi etkilendi.	cabinet.gd
+199	Ulusal seferberlik	cabinet.gd
+200	Ordu ve sivil toplum seferber oldu; şehirler yeniden inşa ediliyor.	cabinet.gd
+201	Kısmi yardım	cabinet.gd
+202	Yardım gecikmeli geldi.	cabinet.gd
+203	Özel sektöre bırak	cabinet.gd
+204	Yardım örgütsüz kaldı; halk öfkeli.	cabinet.gd
+205	Bütçe açığı büyüyor. Rezervler hızla azalıyor.	cabinet.gd
+206	Vergileri artır	cabinet.gd
+207	Yeni vergiler kasayı doldurdu, halk homurdandı.	cabinet.gd
+208	Borçlan	cabinet.gd
+209	Uluslararası piyasalardan borç alındı; faiz yükü gelecek haftalara kaldı.	cabinet.gd
+210	Harcama kıs	cabinet.gd
+211	Kamu yatırımları dondurulduktan sonra kasa toparlandı.	cabinet.gd
+212	Yabancı bir yatırımcı ülkende dev bir fabrika kurmak istiyor. Teşvik şartları var.	cabinet.gd
+213	Vergi teşviki ver	cabinet.gd
+214	Fabrika temelleri atıldı; binlerce kişi iş buldu.	cabinet.gd
+215	Şartlı kabul	cabinet.gd
+216	Pazarlıkla küçük bir tesis kuruldu.	cabinet.gd
+217	Milli duygular okşandı.	cabinet.gd
+218	Enflasyon yükseliyor ve halk fiyatlardan şikâyetçi.	cabinet.gd
+219	Faizi artır	cabinet.gd
+220	Para sıkılaştı; krediler pahalandı.	cabinet.gd
+221	Fiyat tavanı koy	cabinet.gd
+222	Raflardaki fiyatlar durdu ama üretici zorlanıyor.	cabinet.gd
+223	Merkez bankasına güven	cabinet.gd
+224	Sorun kendi dinamiğiyle sürdü.	cabinet.gd
+225	{nb} ile geniş kapsamlı bir ticaret anlaşması masada. Ek olarak tarım ve enerji de var.	cabinet.gd
+226	İmzala	cabinet.gd
+227	Anlaşma imzalandı; limanlarda yoğunluk arttı.	cabinet.gd
+228	Pazarlık et	cabinet.gd
+229	Kısmi bir anlaşma yapıldı.	cabinet.gd
+230	Yerli üretici koruması gerekçesiyle ret kararı verildi.	cabinet.gd
+231	Dev bir altyapı projesi için onay bekliyoruz: köprü, hızlı tren, liman.	cabinet.gd
+232	Hepsini yap	cabinet.gd
+233	Şantiyeler kuruldu; projeler halkın gururu oldu.	cabinet.gd
+234	Sadece liman	cabinet.gd
+235	Liman genişletildi; ticaret hızlandı.	cabinet.gd
+236	Projeler gelecek bütçeye kaldı.	cabinet.gd
+237	Küresel piyasalar çöküyor ve ülkemizin borsası %20 düştü.	cabinet.gd
+238	Kurtarma paketi	cabinet.gd
+239	Devlet bankalara destek verdi; panik durdu.	cabinet.gd
+240	Kemer sıkma	cabinet.gd
+241	Sert tasarruf önlemleri alındı.	cabinet.gd
+242	Ekonomik çöküş ve sokak ayaklanmaları hükümeti yıktı.	cabinet.gd
+243	Rezerv sat	cabinet.gd
+244	Rezervler satıldı; piyasa nefes aldı.	cabinet.gd
+245	Yeni bir salgın dalgası var. Hastaneler dolmaya başladı.	cabinet.gd
+246	Karantina uygula	cabinet.gd
+247	Şehirler kapandı, salgın kontrol altına alındı.	cabinet.gd
+248	Aşı kampanyası	cabinet.gd
+249	Seferberlik gibi bir aşı kampanyası yürütüldü.	cabinet.gd
+250	Görmezden gel	cabinet.gd
+251	Salgın yayıldı; üretim ve ordu zayıfladı.	cabinet.gd
+252	Şehir hastaneleri programı onayını bekliyor: yeni yataklar, yeni doktorlar.	cabinet.gd
+253	Büyük program	cabinet.gd
+254	Yeni hastaneler açıldı; halk memnun.	cabinet.gd
+255	Kısmi program	cabinet.gd
+256	Önce en acil bölgelerde başlandı.	cabinet.gd
+257	Program ertelendi.	cabinet.gd
+258	Yerli ilaç ve tıbbi cihaz sanayisini kurmak için bir plan sundum.	cabinet.gd
+259	Devlet ortaklığı	cabinet.gd
+260	Yerli ilaç fabrikaları ilk ürünlerini çıkardı.	cabinet.gd
+261	Özel sektörü teşvik et	cabinet.gd
+262	Girişimciler harekete geçti.	cabinet.gd
+263	İthal etmeye devam	cabinet.gd
+264	Mevcut tedarik düzeni korundu.	cabinet.gd
+265	Cephede yaralı sayısı arttı. Sahra hastaneleri yetersiz.	cabinet.gd
+266	Sahra hastaneleri kur	cabinet.gd
+267	Yaralılar daha hızlı tedavi edilip cepheye döndü.	cabinet.gd
+268	Sivil hastaneleri kullan	cabinet.gd
+269	Şehir hastaneleri cephenin yükünü aldı.	cabinet.gd
+270	Kaynak yok	cabinet.gd
+271	Yaralı kayıpları arttı.	cabinet.gd
+272	Kıtlık uyarısı var. Gıda stokları kritik seviyede.	cabinet.gd
+273	Acil gıda ithali	cabinet.gd
+274	Gemiler liman liman buğday taşıdı.	cabinet.gd
+275	Karne uygula	cabinet.gd
+276	Karne sistemi getirildi; kuyruklar uzadı.	cabinet.gd
+277	Piyasaya bırak	cabinet.gd
+278	Fiyatlar uçtu, öfke arttı.	cabinet.gd
+279	Bir grup subayın darbe planladığına dair güvenilir bilgi aldık.	cabinet.gd
+280	Hemen tutuklat	cabinet.gd
+281	Operasyon yapıldı, planlar bozuldu. Ordu içinde güven zedelendi.	cabinet.gd
+282	İzlemeye devam	cabinet.gd
+283	Gözetim artırıldı.	cabinet.gd
+284	Darbe gerçekleşti: birlikler başkenti kuşattı ve yönetim el değiştirdi.	cabinet.gd
+285	Subayları ödüllendir	cabinet.gd
+286	Terfi ve zamlarla sadakat satın alındı.	cabinet.gd
+287	Ülkenin enerji ve bankacılık ağlarına yönelik büyük bir siber saldırı tespit ettik.	cabinet.gd
+288	Karşı saldırı	cabinet.gd
+289	Saldırgan sunucular çökertildi; uluslararası gerginlik arttı.	cabinet.gd
+290	Sadece savun	cabinet.gd
+291	Savunma ağları güçlendirildi.	cabinet.gd
+292	Birkaç gün hizmet kesintisi yaşandı.	cabinet.gd
+293	{nb} ordusundan bir albay sığınma talep ediyor; önemli bilgiler getirmiş.	cabinet.gd
+294	Albay bilgi paylaştı; komşu hükümet seni suçluyor.	cabinet.gd
+295	Albay sınırdan geri gönderildi.	cabinet.gd
+296	{nb} içindeki casus ağımızın açığa çıkmak üzere olduğu anlaşıldı.	cabinet.gd
+297	Ağı çek	cabinet.gd
+298	Ajanlar sessizce geri çekildi.	cabinet.gd
+299	Devam et	cabinet.gd
+300	Ağ yakalandı ama bazı sırlar kaçırıldı; ilişkiler gerildi.	cabinet.gd
+301	{en} planlarını ele geçirmek üzereyiz ama bedeli yüksek.	cabinet.gd
+302	Operasyonu başlat	cabinet.gd
+303	Planlar ele geçti; komutanlar cephe hatlarını güncelledi.	cabinet.gd
+304	Sadece dinle	cabinet.gd
+305	Gizli haberleşme izlendi.	cabinet.gd
+306	İptal	cabinet.gd
+307	Operasyon iptal edildi.	cabinet.gd
+308	Efendim, {nb} ile ticaret ve vize anlaşması masada. İmzalarsak iki ülke de kazanır, ama iç sanayi şikâyet edecek.	cabinet.gd
+309	Anlaşmayı imzala	cabinet.gd
+310	Anlaşma imzalandı; ticaret hacmi arttı, yerli üreticiler homurdandı.	cabinet.gd
+311	Şartları sertleştir	cabinet.gd
+312	Müzakere uzadı; küçük bir tavizle yetinildi.	cabinet.gd
+313	Anlaşma reddedildi; iç kamuoyu memnun, komşu soğuk.	cabinet.gd
+314	Büyükelçimiz {nb}'de bir skandalın ortasında; yerel basın peşimizde. Geri çağıralım mı?	cabinet.gd
+315	Geri çağır	cabinet.gd
+316	Büyükelçi geri çağrıldı; ilişkilerde kısa bir soğukluk oldu.	cabinet.gd
+317	Savun	cabinet.gd
+318	Büyükelçi görevinde tutuldu; muhalefet hükümeti eleştirdi.	cabinet.gd
+319	Sessizce değiştir	cabinet.gd
+320	Yeni büyükelçi atandı; olay unutuldu.	cabinet.gd
+321	Büyükelçilik, {nb} yönetiminin gizli bir görüşme kaydını ele geçirdi. Ne yapalım?	cabinet.gd
+322	Kamuoyuna açıkla	cabinet.gd
+323	Kayıt basına sızdı; iç kamuoyunda destek arttı, komşu öfkeli.	cabinet.gd
+324	Koz olarak sakla	cabinet.gd
+325	Kayıt kasada bekliyor; müzakerelerde elin güçlendi.	cabinet.gd
+326	Karşı tarafa geri ver	cabinet.gd
+327	Kayıt iade edildi; karşılığında ekonomik tavizler geldi.	cabinet.gd
+328	{nb} liderleri bir zirve düzenlemek istiyor; büyükelçimiz hazırlıkları tamamladı. Ev sahipliği yapalım mı?	cabinet.gd
+329	Ev sahipliği yap	cabinet.gd
+330	Zirve görkemli geçti; ülkenin itibarı yükseldi.	cabinet.gd
+331	Sadece katıl	cabinet.gd
+332	Zirveye katıldın; sıradan bir görüşme oldu.	cabinet.gd
+333	Katılma	cabinet.gd
+334	Davet geri çevrildi; basın bunu kibir olarak yorumladı.	cabinet.gd
+335	Limanda parlak gözlü bir adam: 'Gümrüğe kayıtsız üç sandığım var, efendim. İçini ben bile bilmiyorum. Hangisini istersiniz?'	cabinet.gd
+336	Küçük sandık	cabinet.gd
+337	Sandıktan külçe altın çıktı! Tüccar çoktan ortadan kayboldu.	cabinet.gd
+338	Sandık kumla doluydu. Tüccar el sallayarak uzaklaştı.	cabinet.gd
+339	Orta sandık	cabinet.gd
+340	Sandığın içinde eski bir laboratuvar defteri vardı; bilim insanları bayram etti.	cabinet.gd
+341	Sandıktan çıkan sahte parayı basın duydu. Rezil olduk.	cabinet.gd
+342	Büyük sandık	cabinet.gd
+343	Büyük sandık dolusu prototip ve şema! Fabrikalar şenlendi.	cabinet.gd
+344	Sandıktan çıkan şey komşunun kayıp malıymış. Diplomatik sorun çıktı.	cabinet.gd
+345	Gönder gitsin	cabinet.gd
+346	Tüccar omuz silkip bir sonraki limana gitti.	cabinet.gd
+347	Tüccar kısık sesle: 'Elimde ucuz bir silah partisi var, sicili biraz kirli ama fiyatı gönül alıcı...'	cabinet.gd
+348	Hepsini al	cabinet.gd
+349	Silahlar yeni gibi çıktı; birlikler güçlendi.	cabinet.gd
+350	Namlular tutukluk yaptı. Subaylar çıldırdı.	cabinet.gd
+351	Yarısını al	cabinet.gd
+352	Yarım parti sorunsuz teslim edildi.	cabinet.gd
+353	Parti kayıp çıktı; tüccar 'ya, olur böyle şeyler' dedi.	cabinet.gd
+354	Sicilini araştır	cabinet.gd
+355	Tüccarın ağı çözüldü; istihbaratımız çok şey öğrendi.	cabinet.gd
+356	Tüccar izini kaybettirdi.	cabinet.gd
+357	Tüccar küçük bir kutu uzatıyor: 'Efsanevi çay, efendim. Üç yıl dağda kurutuldu. Halka dağıtırsanız sevilirsiniz.'	cabinet.gd
+358	Halka dağıt	cabinet.gd
+359	Çay kuyruğu şehir meydanını doldurdu. Şükranlar yağdı.	cabinet.gd
+360	Kendin iç	cabinet.gd
+361	Çay gerçekten çok güzelmiş. Kimse bunu bilmiyor.	cabinet.gd
+362	Tüccar çayı başkasına sattı.	cabinet.gd
+363	Dünya Kupası finalleri başladı ve {c} milli takımı grupları geçti! Takıma prim vaat edelim mi?	cabinet.gd
+364	Dev prim	cabinet.gd
+365	{c} DÜNYA ŞAMPİYONU! Sokaklar bayram yeri.	cabinet.gd
+366	Penaltılarda elendik. Sokak sessiz.	cabinet.gd
+367	{c} Dünya Kupası'nı kazandı! Ülke bayram yapıyor.	cabinet.gd
+368	Sade prim	cabinet.gd
+369	Mucize! Takım kupayı kaldırdı.	cabinet.gd
+370	Çeyrek finalde elendik; teknik direktör istifa etti.	cabinet.gd
+371	{c} sürpriz şekilde Dünya Kupası'nı kazandı!	cabinet.gd
+372	Prim yok	cabinet.gd
+373	Karşılıksız kupa! Futbolcular parasız şampiyon oldu.	cabinet.gd
+374	Futbolcular küstü, ilk turda elendik.	cabinet.gd
+375	{c}, primsiz Dünya Kupası şampiyonu!	cabinet.gd
+376	Olimpiyat oyunları başladı! Sporcularımız madalya peşinde. Kampa ne kadar yatırım yapalım?	cabinet.gd
+377	Madalya yağmuru! Gazeteler manşet yaptı.	cabinet.gd
+378	Birkaç bronz aldık; neyse ki katılım yeterli oldu.	cabinet.gd
+379	{c} Olimpiyatlar'ı madalya sıralamasında zirvede bitirdi!	cabinet.gd
+380	Atletimiz altın aldı, halk ağladı.	cabinet.gd
+381	Madalya yok ama halk yine de gururlu.	cabinet.gd
+382	Bütçe yok	cabinet.gd
+383	Sporcular kendi imkânlarıyla gitti. Kimse bir şey demedi.	cabinet.gd
+384	Güvenilir bir kaynağımıza göre {nb}'de subaylar hükümetten bıkmış durumda. Küçük bir kıvılcım yeter. Ne yapalım?	cabinet.gd
+385	Gizlice destekle	cabinet.gd
+386	Subaylar harekete geçti: {nb}'de hükümet sarsıldı. Parmak izimiz yok.	cabinet.gd
+387	İşlem sızdı; {nb} yönetimi bize karşı öfkeli.	cabinet.gd
+388	Bilgiyi paylaş	cabinet.gd
+389	{nb} yönetimi bilgiyi minnetle aldı; gerginlik düştü.	cabinet.gd
+390	Dinle ve unut	cabinet.gd
+391	Dosya arşive kaldırıldı.	cabinet.gd
+392	Bir gazetecinin elinde {nb} liderine dair utanç verici belgeler var. Bize satmak istiyor.	cabinet.gd
+393	Satın al ve yay	cabinet.gd
+394	Belgeler yayıldı; {nb} hükümeti sallanıyor.	cabinet.gd
+395	Sakla (şantaj kozu)	cabinet.gd
+396	Belgeler kasada. {nb} artık biraz daha nazik.	cabinet.gd
+397	Gazeteci başka alıcı buldu.	cabinet.gd
+398	Seçim günü geldi çattı! Halk sandığa gidiyor. Kampanyayı nasıl yürütelim?	cabinet.gd
+399	Dev kampanya	cabinet.gd
+400	Sahada çalış	cabinet.gd
+401	Sessiz kampanya	cabinet.gd
+402	Seçimi ertele	cabinet.gd
+403	Seçim 'olağanüstü koşullar' gerekçesiyle ertelendi. Basın tepkili.	cabinet.gd
+404	Seçimin ertelenmesi halkı sokağa döktü. Hükümetin düştü.	cabinet.gd
+405	Acemi	cabinet.gd
+406	Kıdemli	cabinet.gd
+407	Usta	cabinet.gd
+408	Ordu mevcudu büyümez	cabinet.gd
+409	Ordu mevcudu yavaş büyür	cabinet.gd
+410	Ordu mevcudu hızla büyür	cabinet.gd
+411	Komşular değişmez	cabinet.gd
+412	Komşular yavaşça yumuşar	cabinet.gd
+413	Komşular belirgin biçimde yumuşar	cabinet.gd
+414	İstikrar hafifçe aşınır	cabinet.gd
+415	İstikrar hafifçe artar	cabinet.gd
+416	İstikrar düzenli artar	cabinet.gd
+417	Her hafta gelirden pay kaçar	cabinet.gd
+418	Hazine hafifçe büyür	cabinet.gd
+419	Hazine her hafta kâr eder	cabinet.gd
+420	Huzursuzluk kendi hâline	cabinet.gd
+421	Huzursuzluk ara sıra azalır	cabinet.gd
+422	Huzursuzluk sık sık azalır	cabinet.gd
+423	Siber savunma durağan	cabinet.gd
+424	Siber olgunluk yavaş artar	cabinet.gd
+425	Siber olgunluk hızla artar	cabinet.gd
+426	Eniştesi eski bakan. Özgeçmişi tek sayfa, o da büyük puntolu.	cabinet.gd
+427	Her toplantıda 'bunu daha önce görmüştüm' diyor; görmemiş.	cabinet.gd
+428	Maaşını az istiyor; bunun bir nedeni olmalı.	cabinet.gd
+429	Parti gençlik kolundan. Enerjik, hevesli, biraz da tehlikeli.	cabinet.gd
+430	Kimse tanımıyor, bu yüzden kimse itiraz etmiyor.	cabinet.gd
+431	Referansları arasında bir hemşehri derneği var.	cabinet.gd
+432	Öğle yemeğinde uyuyor ama bütçeye sadık (şimdilik).	cabinet.gd
+433	Yirmi yıllık bürokrat. Sürpriz yok, skandal yok.	cabinet.gd
+434	Sakin, düzenli; dosyalarını hiç kaybetmez.	cabinet.gd
+435	Muhalefet bile ona 'ciddi' diyor.	cabinet.gd
+436	Her kabinede olan, kimsenin hatırlamadığı kişi.	cabinet.gd
+437	İş bilen, iddiasız bir teknisyen.	cabinet.gd
+438	Orta yollu: kimseyi kızdırmıyor, kimseyi uçurmuyor.	cabinet.gd
+439	Ödüllü teknokrat; diplomaları cüzdanından daha ağır.	cabinet.gd
+440	Savaş ve barış tecrübeli bir efsane; maaşı da efsane.	cabinet.gd
+441	Üç ülkede danışmanlık yaptı, hepsi geri çağırıyor.	cabinet.gd
+442	Dünya basını ona 'kabinenin beyni' diyor.	cabinet.gd
+443	Yalnızca en iyisiyle çalışır; bunun faturası var.	cabinet.gd
+444	Hem halkın hem ordunun sevdiği nadir isimlerden.	cabinet.gd
+445	%s: %s göreve başladı. (%s)	cabinet.gd
+446	%s %s yolsuzluk iddialarıyla görevden düştü. Yerine kimi atayalım?	cabinet.gd
+447	%s %s istifa etti. Yerine kimi atayalım?	cabinet.gd
+448	%s %s görevden alındı. Yerine kimi atayalım?	cabinet.gd
+449	Yeni hükümet kuruluyor: %s %s görevini bırakıyor. Yerine kimi atayalım?	cabinet.gd
+450	%s %s görev süresini tamamladı. Yerine kimi atayalım?	cabinet.gd
+451	SKANDAL: %s %s zimmet iddialarıyla sarsıldı; kasadan %s kayboldu.	cabinet.gd
+452	%s %s istifa etti.	cabinet.gd
+453	komşu ülke	cabinet.gd
+454	başkent	cabinet.gd
+455	%s%d İstikrar	cabinet.gd
+456	%s%d Siber	cabinet.gd
+457	%s%d Sanayi	cabinet.gd
+458	%s%d Lojistik	cabinet.gd
+459	%s%.1f Teknoloji	cabinet.gd
+460	%s%s Asker	cabinet.gd
+461	Huzursuzluk	cabinet.gd
+462	Komşular sertleşti	cabinet.gd
+463	Komşular yumuşadı	cabinet.gd
+464	%s sarsıldı	cabinet.gd
+465	+Kalkınma	cabinet.gd
+466	Sandıklar açıldı: %%%d oyla seçimi kazandın! Halk seninle.	cabinet.gd
+467	%s seçimlerinde iktidar %%%d oyla güven tazeledi.	cabinet.gd
+468	Seçim: %%%d	cabinet.gd
+469	+4 İstikrar	cabinet.gd
+470	Sandıklar açıldı: yalnızca %%%d oy aldın. Muhalefet iktidara geliyor; yeni lider %s. Kabinenin bir kısmı değişecek.	cabinet.gd
+471	%s'de seçimi muhalefet kazandı; yeni lider %s göreve başladı.	cabinet.gd
+472	−6 İstikrar	cabinet.gd
+473	Kabine toplantısı	cabinet_ui.gd
+474	Kabine üyesi	cabinet_ui.gd
+475	Karar uygulandı	cabinet_ui.gd
+476	Kader anı	cabinet_ui.gd
+477	Şans güldü	cabinet_ui.gd
+478	Olmadı	cabinet_ui.gd
+479	Tamam	cabinet_ui.gd
+480	I. Dünya Savaşı	eras.gd
+481	Ağustos 1914	eras.gd
+482	Saraybosna'daki suikastın ardından Avrupa'nın bütün diplomasisi çöküyor. İtilaf ile Merkezi Güçler siperlere gömülecek; makineli tüfek, ağır top ve ilk tanklar savaşın yüzünü değiştirecek.	eras.gd
+483	II. Dünya Savaşı	eras.gd
+484	Eylül 1939	eras.gd
+485	Almanya Polonya'ya saldırıyor; Britanya ve Fransa savaş ilan ediyor. Zırhlı kamalar, bombardıman uçakları ve denizaltı savaşı. Savaş bütün kıtalara yayılabilir.	eras.gd
+486	Heilongjiang	eras.gd
+487	Jilin	eras.gd
+488	Liaoning	eras.gd
+489	Inner Mongol	eras.gd
+490	Beijing	eras.gd
+491	Tianjin	eras.gd
+492	Hebei	eras.gd
+493	Shandong	eras.gd
+494	Shanghai	eras.gd
+495	Jiangsu	eras.gd
+496	Shanxi	eras.gd
+497	Yuen Long	eras.gd
+498	Masovian	eras.gd
+499	Almanya	eras.gd
+500	Reich Şansölyesi	eras.gd
+501	SSCB	eras.gd
+502	Genel Sekreter	eras.gd
+503	Britanya İmparatorluğu	eras.gd
+504	Başbakan	eras.gd
+505	Fransa	eras.gd
+506	İtalya	eras.gd
+507	Japon İmparatorluğu	eras.gd
+508	İmparator	eras.gd
+509	ABD	eras.gd
+510	Başkan	eras.gd
+511	Çin Cumhuriyeti	eras.gd
+512	Başkomutan	eras.gd
+513	Polonya	eras.gd
+514	Cumhurbaşkanı	eras.gd
+515	Yugoslavya Krallığı	eras.gd
+516	Naip	eras.gd
+517	Hollanda	eras.gd
+518	Kraliçe	eras.gd
+519	Belçika	eras.gd
+520	Kral	eras.gd
+521	İspanya	eras.gd
+522	Caudillo	eras.gd
+523	Türkiye	eras.gd
+524	Romanya	eras.gd
+525	Kanada	eras.gd
+526	Avustralya	eras.gd
+527	Yeni Zelanda	eras.gd
+528	Güney Afrika	eras.gd
+529	Danimarka	eras.gd
+530	İsveç	eras.gd
+531	Finlandiya	eras.gd
+532	Macaristan	eras.gd
+533	Bulgaristan	eras.gd
+534	Çar	eras.gd
+535	Yunanistan	eras.gd
+536	Norveç	eras.gd
+537	Portekiz	eras.gd
+538	İran	eras.gd
+539	Şah	eras.gd
+540	Mısır	eras.gd
+541	Irak	eras.gd
+542	Suudi Arabistan	eras.gd
+543	Tayland	eras.gd
+544	Brezilya	eras.gd
+545	Arjantin	eras.gd
+546	Meksika	eras.gd
+547	Moğolistan	eras.gd
+548	İrlanda	eras.gd
+549	Taoiseach	eras.gd
+550	Slovak Devleti	eras.gd
+551	Alman İmparatorluğu	eras.gd
+552	Avusturya-Macaristan	eras.gd
+553	Osmanlı İmparatorluğu	eras.gd
+554	Sultan	eras.gd
+555	Rus İmparatorluğu	eras.gd
+556	Sırbistan	eras.gd
+557	Karadağ	eras.gd
+558	İsviçre	eras.gd
+559	Federal Konsey	eras.gd
+560	Siyam	eras.gd
+561	Müttefik Devletler	eras.gd
+562	Mihver Devletleri	eras.gd
+563	1 Eylül 1939: Alman orduları Polonya sınırını aştı. Britanya ve Fransa savaşa girdi; Uzakdoğu'da Japonya Çin'le savaşıyor.	eras.gd
+564	İtilaf Devletleri	eras.gd
+565	Merkezi Güçler	eras.gd
+566	Ağustos 1914: Saraybosna'daki suikast zincirleme ittifakları harekete geçirdi. Avrupa mobilizasyona girdi; siperler kazılıyor.	eras.gd
+567	Europe	eras.gd
+568	North America	eras.gd
+569	Asia	eras.gd
+570	Africa	eras.gd
+571	South America	eras.gd
+572	Oceania	eras.gd
+573	Yeni oyun: %s liderliğinde cihan hâkimiyeti yarışı başladı.	game_state.gd
+574	Simülasyon başladı.	game_state.gd
+575	Kara Taarruzu	game_state.gd
+576	Standart birleşik silah taarruzu.	game_state.gd
+577	Topçu ve Hava Hazırlığı	game_state.gd
+578	Önce savunmayı döver: savunma −%12, taarruz +%4.	game_state.gd
+579	Siber ve Elektronik Harp	game_state.gd
+580	Komuta ağını kör eder: savunma −%14.	game_state.gd
+581	Yıldırım Taarruzu	game_state.gd
+582	Taarruz +%12; yenilirsen sağ kalan yalnız %25.	game_state.gd
+583	Geçersiz harekât.	game_state.gd
+584	Bu eyalete taarruz için önce savaş olmalı.	game_state.gd
+585	Kasa yetersiz: harekât bedeli %s.	game_state.gd
+586	Hedefe ulaşabilen ordu yok (geçiş izni ya da yol yok).	game_state.gd
+587	%s, %s ittifakından ayrıldı.	game_state.gd
+588	%s dağıldı.	game_state.gd
+589	Geçersiz hedef.	game_state.gd
+590	%s zaten başka bir ittifakta.	game_state.gd
+591	%s, ittifak üyesi %s ile savaşta.	game_state.gd
+592	%s daveti reddetti.	game_state.gd
+593	Zaten bir ittifaktasın.	game_state.gd
+594	İttifak adı 3-30 harf olmalı.	game_state.gd
+595	Bu ad kullanımda.	game_state.gd
+596	%s, "%s" ittifakını kurdu.	game_state.gd
+597	Önce bir ittifak kur.	game_state.gd
+598	%s, %s ittifakına katıldı.	game_state.gd
+599	İsyancılarla ittifak kurulmaz.	game_state.gd
+600	Savaştayken ittifak teklif edilemez.	game_state.gd
+601	Zaten müttefiksiniz.	game_state.gd
+602	En fazla 3 müttefikin olabilir.	game_state.gd
+603	%s ittifak teklifini reddetti.	game_state.gd
+604	Müttefik değilsiniz.	game_state.gd
+605	Bu ülkeyle savaşta değilsin.	game_state.gd
+606	İsyancılarla müzakere edilmez; eyaletleri geri al.	game_state.gd
+607	%s: Savaş yeni başladı, barışa yanaşmıyorlar.	game_state.gd
+608	%s barış teklifini reddetti.	game_state.gd
+609	%s barışı kabul etti ve %d eyalet aldı.	game_state.gd
+610	Beraberlik barışı imzalandı.	game_state.gd
+611	%s'de yeni lider: %s %s göreve başladı.	game_state.gd
+612	%s devleti yıkıldı. Cihan Bülteni sana başsağlığı diliyor.	game_state.gd
+613	Dünyanın %d%%'ine hükmediyorsun. Cihan hâkimiyeti senin!	game_state.gd
+614	Dünya ekonomisinin %%%d'ini kontrol ediyorsun. Ekonomik hegemonya senin!	game_state.gd
+615	Bu ordu senin değil.	game_state.gd
+616	Oraya ulaşamazsın (geçiş izni yok ya da yol yok).	game_state.gd
+617	Zaten savaştasınız.	game_state.gd
+618	Müttefike savaş açamazsın; önce ittifakı boz.	game_state.gd
+619	Ateşkes sürüyor (%d tur).	game_state.gd
+620	Casusluk ağı	game_state.gd
+621	Hedefin savunma sırlarını çal: teknolojin yükselir.	game_state.gd
+622	Propaganda	game_state.gd
+623	Hedefte halkı yönetime karşı kışkırt: istikrarı düşer.	game_state.gd
+624	Sabotaj	game_state.gd
+625	Fabrika ve altyapıya zarar ver: sanayi ve istikrar düşer.	game_state.gd
+626	Elçilik	game_state.gd
+627	Diplomatik temas: hedefin sana karşı saldırganlığı azalır.	game_state.gd
+628	Bu hedefte ajanlar saklanıyor (%d tur).	game_state.gd
+629	Kasa yetmiyor.	game_state.gd
+630	Savaştaki devlete elçilik açılmaz.	game_state.gd
+631	%s'nın savunma planları ele geçirildi. Silah teknolojin ilerledi.	game_state.gd
+632	Casus ağın %s'da çökertildi. Skandal iç siyaseti sarstı.	game_state.gd
+633	%s'da protestolar büyüyor. İstikrar düştü.	game_state.gd
+634	%s propagandanı sansürledi; para boşa gitti.	game_state.gd
+635	%s'da fabrikalarda gizemli yangınlar çıktı. Sanayi sarsıldı.	game_state.gd
+636	Sabotaj timin yakalandı! %s sana öfkeli.	game_state.gd
+637	%s ile ilişkiler ısındı; saldırganlığı azaldı.	game_state.gd
+638	%s elçiliğini soğuk karşıladı.	game_state.gd
+639	Gönüllü Çete	game_state.gd
+640	Ucuz ve kalabalık; kısa sözleşme.	game_state.gd
+641	Profesyonel Birlik	game_state.gd
+642	Eğitimli, dengeli maliyet.	game_state.gd
+643	Özel Harekât Şirketi	game_state.gd
+644	Pahalı ama büyük ve tecrübeli kadro.	game_state.gd
+645	Kasa yetersiz: sözleşme bedeli %s.	game_state.gd
+646	Birlik yerleştirecek boş eyalet yok.	game_state.gd
+647	Birlik yerleştirilemedi.	game_state.gd
+648	%s sözleşme imzaladı: %s (%d asker) %s eyaletinde göreve başladı.	game_state.gd
+649	%s sözleşmesi bitti; %s asker ayrıldı.	game_state.gd
+650	%s, %s eyaletinde saldırı düzenledi; güvenlik güçleri alarmda. (%s)	game_state.gd
+651	%s saldırısı %s eyaletini sarstı. %s olağanüstü tedbir aldı.	game_state.gd
+652	Yeraltından ses: %s, %s eyaletindeki saldırıyı üstlendi. (%s)	game_state.gd
+653	Ayarlar	info_sheets.gd
+654	Tercihler	info_sheets.gd
+655	Ses	info_sheets.gd
+656	Müzik	info_sheets.gd
+657	Ses efektleri	info_sheets.gd
+658	Görünüm	info_sheets.gd
+659	Ülke adları	info_sheets.gd
+660	Ülkenin boyuna göre ölçeklenir; yakınlaştıkça belirir.	info_sheets.gd
+661	Eyalet adları	info_sheets.gd
+662	Yakınlaştırınca eyalet isimlerini gösterir.	info_sheets.gd
+663	Ordu rozetleri	info_sheets.gd
+664	Yüksek kalite efektler	info_sheets.gd
+665	Kıyı parıltısı. Eski telefonlarda kapatmak akıcılığı artırır.	info_sheets.gd
+666	Arayüz boyutu	info_sheets.gd
+667	Oyun	info_sheets.gd
+668	Otomatik kayıt	info_sheets.gd
+669	Her 13 haftada (üç ayda) bir kaydeder.	info_sheets.gd
+670	Kabine kartları	info_sheets.gd
+671	Bakanlar arada bir karar sorar (savunma, dışişleri, içişleri, maliye, sağlık, istihbarat). Bazı riskli seçimler oyunu bitirebilir.	info_sheets.gd
+672	Otomatik asker atama	info_sheets.gd
+673	Bir turda hiç emir vermezsen, savaştaki boş ordular en uygun cephe hedeflerine kendiliğinden yönlendirilir. Kapalıyken ordular sen söyleyene dek yerinde bekler.	info_sheets.gd
+674	Bildirimler	info_sheets.gd
+675	Telefonda, devam eden bir oyun varken 5 saatte bir "ordun seni bekliyor" hatırlatması gönderir. Oyun yoksa ya da bittiyse bildirim gelmez.	info_sheets.gd
+676	Zorluk	info_sheets.gd
+677	Kolay	info_sheets.gd
+678	Normal	info_sheets.gd
+679	Zor	info_sheets.gd
+680	Zorluk yeni başlayan oyunlarda geçerlidir.	info_sheets.gd
+681	Eyalet eyalet fetih	info_sheets.gd
+682	Harita gerçek dünyadır. Her ülke birkaç eyaletten oluşur. Bir eyalete dokun; bilgisini ve yapabileceklerini gör. İki parmakla yakınlaştır, sürükleyerek gez.	info_sheets.gd
+683	Asker topla	info_sheets.gd
+684	Kendi eyaletinde 'Asker +10' ya da '+30' ile ordu kur. Gelirin eyaletlerden gelir; ordunun bakım gideri vardır, altının eksiye düşmesin.	info_sheets.gd
+685	Tur tabanlı oyun	info_sheets.gd
+686	Zaman kendiliğinden akmaz. Hazır olunca sağ üstteki 'Turu geç' düğmesine bas: bir hafta geçer, ardından Cihan Bülteni dünyada olanları ve harp raporunu gösterir.	info_sheets.gd
+687	Savaştığın bir ülkenin eyaletine dokun, 'Taarruz' de. Yakındaki ordularını seç, harekât türünü belirle (kara taarruzu, topçu ve hava hazırlığı, siber harp, yıldırım), tahmini üstünlüğü gör ve emri ver. Sonucu Turu geç sonrası raporda görürsün.	info_sheets.gd
+688	Asker gönderme ve paralı asker	info_sheets.gd
+689	Ordu seçip hedefe dokununca kaç askerin yola çıkacağını kaydırıcıyla (%25 / %50 / %75 / %100) seçersin; kalanlar yerinde bekler. Taarruzda da aynı oran vardır. Politika > Cepheler'den süreli paralı birlik kiralayabilirsin. Bir turda emir vermezsen savaştaki boş ordular otomatik görev alabilir (Ayarlar'dan kapatılır).	info_sheets.gd
+690	Savaş, barış, ittifak	info_sheets.gd
+691	Kuşatma ve zaferler savaş puanı kazandırır. Barış masasında puanınla eyalet alırsın. Müttefikler birlikte savaşır; ateşkes süresince saldıramazsın.	info_sheets.gd
+692	Zaman zaman bir bakan karşına çıkıp karar sorar. Seçeneklerin yanındaki simgeler hangi alanı etkileyeceğini gösterir (yönü gizlidir); ☠ işareti oyunu bitirebilecek riskli bir seçimdir. Bir bakan görevden ayrılınca (istifa, skandal, seçim) 3 aday gelir: ucuz-acemi, orta-kıdemli, pahalı-usta; sen seçersin. Kabine sekmesinden bakanı değiştirebilirsin. Ayrıca nişe kartlar çıkar: seçim gecesi, şüpheli tüccarın kasası (kumar), Dünya Kupası/Olimpiyat, muhbir. Ayarlardan kapatılabilir.	info_sheets.gd
+693	Haberler ve zafer	info_sheets.gd
+694	Üstteki Cihan Bülteni dünyada olan biteni haber yapar; dokunarak geçmişi aç. Dünyadaki eyaletlerin %55'ini ele geçiren ülke cihan hâkimi olur.	info_sheets.gd
+695	Nasıl oynanır	info_sheets.gd
+696	Rehber	info_sheets.gd
+697	Adım %d / %d	info_sheets.gd
+698	Geri	info_sheets.gd
+699	İleri	info_sheets.gd
+700	Başla	info_sheets.gd
+701	Savunma	macro.gd
+702	Sanayi	macro.gd
+703	Siber	macro.gd
+704	Lojistik	macro.gd
+705	İç İstikrar	macro.gd
+706	Hazine	macro.gd
+707	Maaş, askerlik ve silah alımı	macro.gd
+708	Gelir ve yerli silah indirimi	macro.gd
+709	Siber saldırı ve savunma	macro.gd
+710	Yabancı toprakta tedarik gücü	macro.gd
+711	İsyan ve gelir kaybını önler	macro.gd
+712	Doğrudan hazineye girer	macro.gd
+713	Dengeli Harekât	macro.gd
+714	Her alanda orta düzey; artısı ve eksisi yok.	macro.gd
+715	Kitlesel Taarruz	macro.gd
+716	Sayıya dayalı saldırı. Taarruz +%12, savunma −%5.	macro.gd
+717	Derinlemesine Savunma	macro.gd
+718	Savunma +%18, taarruz −%8.	macro.gd
+719	Hava-Kara Harekâtı	macro.gd
+720	Hava üstünlüğü etkisi neredeyse iki katı.	macro.gd
+721	Asimetrik Harp	macro.gd
+722	Savunma +%12, tedarik toleransı yüksek, siber +%30.	macro.gd
+723	Ağ Merkezli Harp	macro.gd
+724	Siber güç +%60, komuta ağı avantajı.	macro.gd
+725	%s$%s tr	macro.gd
+726	%s$%s mr	macro.gd
+727	%s$%d mn	macro.gd
+728	Doktrin değişikliği için %d hafta beklemelisin.	macro.gd
+729	Doktrin değişimi %s tutuyor; hazinede yeterli para yok.	macro.gd
+730	Satışta değil	macro.gd
+731	Henüz geliştirilmedi (%d. haftada)	macro.gd
+732	Teknoloji düzeyin yetersiz	macro.gd
+733	Sanayi altyapısı yetersiz (%%%d gerekli)	macro.gd
+734	Üretici ülke yok	macro.gd
+735	%s satmıyor (savaş/ambargo)	macro.gd
+736	Yetersiz bütçe: %s gerekiyor.	macro.gd
+737	Teslimat: %d × %s envantere katıldı.	macro.gd
+738	Otomatik	macro.gd
+739	Ticaret	macro.gd
+740	Finans	macro.gd
+741	Kapalı	macro.gd
+742	Siber savunma: %s kaynaklı saldırı engellendi.	macro.gd
+743	%s siber güvenlik duvarın bir saldırıyı püskürttü.	macro.gd
+744	%s kaynaklı fidye yazılımı %s fabrikalarını durdurdu.	macro.gd
+745	%s, %s demiryolu ve liman sinyalizasyonunu çökertti; tedarik hatları aksıyor.	macro.gd
+746	%s siber saldırısı: %s liman ve borsa bağlantıları kesildi, dış ticaret duruyor.	macro.gd
+747	%s, %s bankalarından %s çaldı.	macro.gd
+748	%s hava harekâtı: %s sanayi tesisleri vuruldu.	macro.gd
+749	%s uçakları %s lojistik hatlarını ve köprüleri vurdu.	macro.gd
+750	%s, %s cephane depolarını ve araç parklarını bombaladı.	macro.gd
+751	Başlamak için «Turu geç» düğmesine dokun.	main.gd
+752	Oyun kaydedildi: yuva %d.	main.gd
+753	Kayıt başarısız.	main.gd
+754	Kayıt bulunamadı ya da okunamadı.	main.gd
+755	Oyun yüklendi: %s	main.gd
+756	Emir vermedin: %d boşta ordu otomatik görevlendirildi.	main.gd
+757	Ordu seçildi. Gidilecek eyalete dokun.	main.gd
+758	%d ordu yola çıktı (varış: %d hf). Sonuç raporda.	main.gd
+759	%s asker yola çıktı: %s	main.gd
+760	İttifak kuruldu!	main.gd
+761	Barış	main.gd
+762	İşgal ettiğin eyalet yok; beraberlik barışı yapılacak.	main.gd
+763	Beraberlik barışı	main.gd
+764	Barış teklifi	main.gd
+765	%s barış istiyor. Savaş puanların: sen %d, onlar %d.\nMasaya oturup eyalet alabilirsin.	main.gd
+766	Masaya otur	main.gd
+767	Barış şartları	main.gd
+768	%s barış için şunları talep ediyor: %s.\nReddedersen savaş sürer.	main.gd
+769	Beraberlik teklifi	main.gd
+770	%s beraberlik barışı öneriyor. İşgal edilen yerler geri verilir.	main.gd
+771	ZAFER!	main.gd
+772	Oynamaya devam et	main.gd
+773	Ana menü	main.gd
+774	Yenilgi	main.gd
+775	Müttefikin %s, %s tarafından saldırıya uğradı! Savaşa katılacak mısın?\nKatılmazsan ittifak bozulur.	main.gd
+776	Müttefikin %s, %s devletine savaş açtı. Yanında yer alacak mısın?\nKatılmazsan ittifak bozulur.	main.gd
+777	İttifak çağrısı	main.gd
+778	Savaşa katıl	main.gd
+779	İttifak teklifi	main.gd
+780	%s seninle ittifak kurmak istiyor.	main.gd
+781	Ordun seni bekliyor, komutan!	main.gd
+782	%s için yeni kararlar bekliyor. Turu geç!	main.gd
+783	Cephede hareketlilik var; emirlerini ver.	main.gd
+784	Kasanda birikim var. Silah mı, bina mı? Karar senin.	main.gd
+785	Dünya sensiz dönmüyor: Cihan Bülteni'nde yeni haberler var.	main.gd
+786	Age of Doctrine	main.gd
+787	Avrupa	menu.gd
+788	Asya	menu.gd
+789	Afrika	menu.gd
+790	Kuzey Amerika	menu.gd
+791	Güney Amerika	menu.gd
+792	Okyanusya	menu.gd
+793	Antarctica	menu.gd
+794	Antarktika	menu.gd
+795	Seven seas (open ocean)	menu.gd
+796	Okyanus	menu.gd
+797	Dünyayı il il fethet	menu.gd
+798	Harita: Natural Earth (kamu malı)   /   Yazı: Big Shoulders, Instrument Sans, IBM Plex Mono (OFL)	menu.gd
+799	Oyna	menu.gd
+800	Tarihî Savaşlar	menu.gd
+801	Devam Et	menu.gd
+802	Nasıl Oynanır	menu.gd
+803	Çıkış	menu.gd
+804	Sürüm 1.0   /   1 hafta = 1 tur	menu.gd
+805	Yeni oyun	menu.gd
+806	Ülkeni seç	menu.gd
+807	Dünya 2027	menu.gd
+808	Ülke ara...	menu.gd
+809	Senaryo seç	menu.gd
+810	Oyun kipi	menu.gd
+811	SERBEST	menu.gd
+812	GERÇEK KRİZ	menu.gd
+813	KURGUSAL	menu.gd
+814	Serbest oyun	menu.gd
+815	Gerçek dünya senaryoları	menu.gd
+816	Kurgusal modern senaryolar	menu.gd
+817	Seçili	menu.gd
+818	Kapat	menu.gd
+819	Tarihî savaşlar	menu.gd
+820	Ayrı bir oyun kipi: dönemin imparatorlukları, silahları, ittifakları ve renkleri. Senaryolardan bağımsızdır.	menu.gd
+821	TARİHÎ KİP   /   %s	menu.gd
+822	Önerilen	menu.gd
+823	Orta	menu.gd
+824	Çok zor	menu.gd
+825	Nüfus	menu.gd
+826	Eyalet	menu.gd
+827	Gelir/hf	menu.gd
+828	Asker	menu.gd
+829	%s ile başla	menu.gd
+830	Ocak	names.gd
+831	Şubat	names.gd
+832	Mart	names.gd
+833	Nisan	names.gd
+834	Mayıs	names.gd
+835	Haziran	names.gd
+836	Temmuz	names.gd
+837	Ağustos	names.gd
+838	Eylül	names.gd
+839	Ekim	names.gd
+840	Kasım	names.gd
+841	Aralık	names.gd
+842	Kar	names.gd
+843	Vel	names.gd
+844	Dor	names.gd
+845	Mir	names.gd
+846	Zan	names.gd
+847	Nor	names.gd
+848	Sal	names.gd
+849	Ben	names.gd
+850	Kor	names.gd
+851	Ves	names.gd
+852	Tal	names.gd
+853	Mor	names.gd
+854	Ish	names.gd
+855	Bra	names.gd
+856	Sar	names.gd
+857	Lun	names.gd
+858	Gar	names.gd
+859	Tev	names.gd
+860	Hal	names.gd
+861	Zen	names.gd
+862	Fal	names.gd
+863	Dar	names.gd
+864	Min	names.gd
+865	Pol	names.gd
+866	Ayd	names.gd
+867	Cer	names.gd
+868	Dal	names.gd
+869	Erz	names.gd
+870	Fen	names.gd
+871	Gor	names.gd
+872	Hav	names.gd
+873	Ibr	names.gd
+874	Jav	names.gd
+875	Kel	names.gd
+876	Lor	names.gd
+877	Mak	names.gd
+878	Nav	names.gd
+879	Orm	names.gd
+880	Par	names.gd
+881	Rav	names.gd
+882	Sol	names.gd
+883	Tarn	names.gd
+884	Ul	names.gd
+885	Vor	names.gd
+886	Yar	names.gd
+887	Zul	names.gd
+888	Bela	names.gd
+889	Sera	names.gd
+890	Nora	names.gd
+891	Tola	names.gd
+892	Mira	names.gd
+893	Vala	names.gd
+894	Dora	names.gd
+895	Kasa	names.gd
+896	Ruma	names.gd
+897	Teka	names.gd
+898	Sova	names.gd
+899	Bağımsızlık Cephesi	names.gd
+900	Gölge Ağı	names.gd
+901	Dağ Milisleri	names.gd
+902	Halk Birliği	names.gd
+903	Özgürlük Ordusu	names.gd
+904	Kuzey Direnişi	names.gd
+905	Yeraltı Hareketi	names.gd
+906	Şafak Tugayı	names.gd
+907	Sınır Muhafızları	names.gd
+908	Ülke%d	names.gd
+909	Bölge%d	names.gd
+910	%s, %s devletine savaş ilan etti!	names.gd
+911	Cihan şokta: %s ile %s arasında savaş başladı.	names.gd
+912	SON DAKİKA: %s orduları %s sınırında harekete geçti.	names.gd
+913	Diplomasi çöktü: %s, %s devletine cepheyi açtı.	names.gd
+914	DİKKAT: %s sana savaş ilan etti!	names.gd
+915	%s orduları sınırına dayandı. Savaş başladı!	names.gd
+916	Cihan Bülteni: %s ile savaştasın. Sınırlar ateş altında.	names.gd
+917	Savaş ilan ettin: %s ile savaştasın.	names.gd
+918	Cihan senden söz ediyor: %s devletine savaş açtın!	names.gd
+919	Orduların harekete geçti, hedef: %s.	names.gd
+920	%s eyaleti düştü! %s bayrağı dalgalanıyor.	names.gd
+921	%s ordusu %s eyaletini ele geçirdi.	names.gd
+922	Cepheden haber: %s eyaleti artık %s kontrolünde.	names.gd
+923	Zafer! %s eyaleti ele geçirildi.	names.gd
+924	Ordun %s eyaletine girdi, halk şaşkın.	names.gd
+925	Cihan senden bahsediyor: %s eyaleti artık senin kontrolünde!	names.gd
+926	Kayıp: %s eyaleti düşmanın eline geçti!	names.gd
+927	%s eyaleti işgal edildi, kurtarmalısın!	names.gd
+928	Kötü haber: %s eyaleti düştü.	names.gd
+929	%s ile %s arasında barış imzalandı.	names.gd
+930	Silahlar sustu: %s ve %s barışa ulaştı.	names.gd
+931	%s barış masasından %d eyaletle kalktı: %s.	names.gd
+932	Anlaşma gereği %s, %d eyalet kazandı: %s.	names.gd
+933	Kanlı çatışma! %s ordusu, %s ordusunu %s eyaletinde bozguna uğrattı.	names.gd
+934	%s eyaletinde büyük muharebe: %s galip, %s ağır kayıp verdi.	names.gd
+935	%s devleti haritadan silindi.	names.gd
+936	Tarihe karıştı: %s artık yok.	names.gd
+937	Çeyrek raporu: En güçlü ekonomi %s, en büyük ordu %s, en geniş topraklar %s.	names.gd
+938	%s ekonomisinde patlama: hazineye %s girdi.	names.gd
+939	Borsalar uçuşta! %s hazinesi %s kazandı.	names.gd
+940	Ekonomik kriz %s ülkesini vurdu: %s kayıp.	names.gd
+941	%s hazinesinde açık: %s buharlaştı.	names.gd
+942	%s eyaletinde zengin maden yatağı bulundu! (%s)	names.gd
+943	%s eyaletinde petrol rezervi keşfedildi. (%s)	names.gd
+944	%s halkı seferber oldu: %s gönüllü orduya katıldı.	names.gd
+945	Vatan çağrısı! %s ordusuna %s gönüllü yazıldı.	names.gd
+946	%s eyaletinde deprem! Üretim düştü. (%s)	names.gd
+947	İSYAN! %s eyaletinde %s ayaklandı. (%s)	names.gd
+948	%s, %s eyaletinin kontrolünü ele geçirdi. (%s)	names.gd
+949	Huzursuzluk patladı: %s eyaleti %s elinde. (%s)	names.gd
+950	%s bastırıldı, direniş sona erdi.	names.gd
+951	İsyan bitti: %s dağıldı.	names.gd
+952	%s bağımsızlığını ilan etti! Yeni devlet: %s. (Eski sahibi: %s)	names.gd
+953	Haritada yeni bir bayrak: %s, %s adıyla devlet kurdu. (Eski sahibi: %s)	names.gd
+954	%s ile %s ittifak kurdu.	names.gd
+955	Yeni cephe: %s ve %s ittifak imzaladı.	names.gd
+956	%s Paktı	names.gd
+957	%s Savunma Birliği	names.gd
+958	%s Dayanışma İttifakı	names.gd
+959	%s Güvenlik Konseyi	names.gd
+960	%s Ortaklığı	names.gd
+961	%s Paktı %d	names.gd
+962	%s ile %s arasındaki ittifak sona erdi.	names.gd
+963	%s, müttefiki %s için %s ile savaşa girdi.	names.gd
+964	İttifak devrede: %s, %s uğruna %s devletine karşı cepheyi açtı.	names.gd
+965	%s Cumhuriyeti	names.gd
+966	{c} ülkesinde salgın yayılıyor: hastaneler doldu, istikrar sarsıldı.	names.gd
+967	{p} eyaletinde bulaşıcı hastalık! {c} karantina ilan etti.	names.gd
+968	{p} eyaletinde sel felaketi! Altyapı zarar gördü. ({c})	names.gd
+969	Taşan nehirler {p} eyaletini bastı. ({c})	names.gd
+970	{c} ülkesinde kuraklık: hasat çöktü, {a} kayıp.	names.gd
+971	Kıtlık uyarısı! {c} tarım üretimi düştü, {a} zarar.	names.gd
+972	Şiddetli fırtına {c} kıyılarını vurdu: limanlarda {a} hasar.	names.gd
+973	{p} açıklarında kasırga! {c} liman trafiği durdu.	names.gd
+974	{p} eyaletinde büyük protesto! Halk sokakta. ({c})	names.gd
+975	{c}: hükümet karşıtı gösteriler {p} eyaletinde şiddetlendi.	names.gd
+976	Darbe girişimi! {c} yönetimi güçlükle kontrolü korudu.	names.gd
+977	{c} başkentinde silah sesleri: darbe girişimi bastırıldı.	names.gd
+978	Sınırda mülteci akını: {c} yardım için {a} harcadı.	names.gd
+979	{p} eyaletine toplu göç! {c} geçici kamplar kurdu.	names.gd
+980	Rekor hasat! {c} çiftçileri {a} ek gelir sağladı.	names.gd
+981	Bereketli bir yıl: {c} tahıl ihracatı patladı.	names.gd
+982	{c} bilim insanları teknolojik atılım duyurdu!	names.gd
+983	{c} araştırma merkezinde çığır açan buluş.	names.gd
+984	{c} ev sahipliğinde zirve: diplomatik itibar yükseldi.	names.gd
+985	Uluslararası zirvede {c} lehine yumuşama. İstikrar arttı.	names.gd
+986	NotificationScheduler	notifier.gd
+987	NotificationChannel	notifier.gd
+988	Hatırlatmalar	notifier.gd
+989	Ordun seni bekliyor	notifier.gd
+990	NotificationData	notifier.gd
+991	Bütçe	policy_ui.gd
+992	Silah Alımı	policy_ui.gd
+993	Envanter	policy_ui.gd
+994	Cepheler	policy_ui.gd
+995	İttifak	policy_ui.gd
+996	İstihbarat	policy_ui.gd
+997	Kabine	policy_ui.gd
+998	Politika	policy_ui.gd
+999	Genel Kurmay  /  	policy_ui.gd
+1000	Haftalık mali tablo	policy_ui.gd
+1001	Ordu maaşı	policy_ui.gd
+1002	Silah bakımı	policy_ui.gd
+1003	Net hazine	policy_ui.gd
+1004	Ordu masrafları savunma payını aşıyor; fark %s diğer kalemlerden (hazine, sanayi…) kesiliyor.	policy_ui.gd
+1005	Bütçe dağılımı (gelirin yüzdesi)	policy_ui.gd
+1006	Durum göstergeleri	policy_ui.gd
+1007	İstikrar	policy_ui.gd
+1008	Teknoloji	policy_ui.gd
+1009	Ordu doktrini	policy_ui.gd
+1010	Doktrin değişti: 	policy_ui.gd
+1011	Doktrin değiştirme bedeli %s; ardından %d hafta beklenir.	policy_ui.gd
+1012	Yeni doktrin için %d hafta beklemelisin.	policy_ui.gd
+1013	Savunma fonu	policy_ui.gd
+1014	Bekleyen sipariş	policy_ui.gd
+1015	Tedarik politikası	policy_ui.gd
+1016	Birim: %s. Fiyatlar yaklaşık, milyon $ cinsindendir. Yerli üretimde indirim ve kısa teslimat vardır.	policy_ui.gd
+1017	Teslimat bekleyenler	policy_ui.gd
+1018	%d hafta	policy_ui.gd
+1019	Otomatik silah tedariki	policy_ui.gd
+1020	Açıkken savunma fonu, aşağıdaki öncelik ve doktrine göre kendiliğinden silah alır. Kapalıyken fon birikir; alımı sen yaparsın.	policy_ui.gd
+1021	Tedarik önceliği (otomatik alım)	policy_ui.gd
+1022	Düşük	policy_ui.gd
+1023	Yüksek	policy_ui.gd
+1024	Öncelik, bir kategorinin eksik donanımına ne kadar pay ayrılacağını belirler. Hava-Kara doktrini uçak alımını, Asimetrik doktrin top/roketatarı öne çıkarır.	policy_ui.gd
+1025	%s%s   /   teslim %d hf   /   elde %s	policy_ui.gd
+1026	 (yerli)	policy_ui.gd
+1027	$%s mn	policy_ui.gd
+1028	Sipariş: %d × %s	policy_ui.gd
+1029	Hedef	policy_ui.gd
+1030	Kara donanımı	policy_ui.gd
+1031	Hava gücü	policy_ui.gd
+1032	Deniz gücü	policy_ui.gd
+1033	Hedef asker sayısı, savunma bütçesi ve savaş durumuna göre belirlenir; fark kendiliğinden askere alınır ve cephelere dağıtılır.	policy_ui.gd
+1034	 set	policy_ui.gd
+1035	Bakanlar görev süresi dolunca, istifa edince ya da düşünce yerine 3 aday gelir: usta olan pahalı, acemi olan ucuz ama riskli. Kıdemli ve usta bakanlar her hafta küçük bir bonus verir.	policy_ui.gd
+1036	%s  ·  ~%.1f yıl	policy_ui.gd
+1037	Görevden al	policy_ui.gd
+1038	Görevden alma	policy_ui.gd
+1039	%s görevden alınsın mı? İstikrar −2. Yerine bir sonraki bülten sonrasında 3 aday gelir.	policy_ui.gd
+1040	%s görevden alındı	policy_ui.gd
+1041	Gizli harekâtlar savaş ilan etmeden rakibi zayıflatır. Başarı şansı siber gücüne ve teknolojine bağlıdır; yakalanırsan iç siyaset ve ilişkiler zarar görür. Her hedefte ajanların kısa süre saklanması gerekir.	policy_ui.gd
+1042	Henüz temas kurulabilecek komşu yok.	policy_ui.gd
+1043	istikrar %d  siber %d	policy_ui.gd
+1044	Savaş	policy_ui.gd
+1045	bekleme %d tur	policy_ui.gd
+1046	Bedel %s	policy_ui.gd
+1047	  ·  şans %%%d	policy_ui.gd
+1048	Ticaret geliri	policy_ui.gd
+1049	Açık ticaret	policy_ui.gd
+1050	Deniz ablukası	policy_ui.gd
+1051	Siber saldırı yüzünden dış ticaret %d hafta daha kesik.	policy_ui.gd
+1052	Savaştaki ve ambargolu ülkelerle ticaret durur. Ambargo her iki tarafı da vurur; rakibini ekonomik olarak sıkıştırmak için kullan.	policy_ui.gd
+1053	Açık	policy_ui.gd
+1054	Ambargo	policy_ui.gd
+1055	Ambargolu	policy_ui.gd
+1056	Kesinti	policy_ui.gd
+1057	Ambargoyu kaldır	policy_ui.gd
+1058	Ambargo koy	policy_ui.gd
+1059	Paralı asker	policy_ui.gd
+1060	Özel şirketlerden süreli birlik kirala: ücret peşin ödenir, birlik boş bir cephe/başkent eyaletine yerleşir, sözleşme bitince dağılır. Adı ülkeni kültürüne göre rastgele gelir.	policy_ui.gd
+1061	%s asker  /  %d hf  /  %s	policy_ui.gd
+1062	Kirala	policy_ui.gd
+1063	%s göreve başladı: %s (%s asker)	policy_ui.gd
+1064	Ordular otomatik komuta edilsin	policy_ui.gd
+1065	Açıkken kurmay, savaştığın düşmanın zayıf eyaletlerine kendiliğinden harekât düzenler. Kapalıyken ordulara haritadan sen emir verirsin.	policy_ui.gd
+1066	Şu an savaşta değilsin. Savaş ilan ettiğinde cepheler burada listelenir.	policy_ui.gd
+1067	Düşman askeri	policy_ui.gd
+1068	Donanım	policy_ui.gd
+1069	Hava	policy_ui.gd
+1070	Taarruz	policy_ui.gd
+1071	Siber: 	policy_ui.gd
+1072	Şekil	policy_ui.gd
+1073	İç desen	policy_ui.gd
+1074	Simge	policy_ui.gd
+1075	Ana renk	policy_ui.gd
+1076	Zemin ve simge	policy_ui.gd
+1077	Çizgi	policy_ui.gd
+1078	İttifakın	policy_ui.gd
+1079	%d üye   /   kurucu: %s	policy_ui.gd
+1080	Üyeler birbirine saldırmaz; biri saldırıya uğrayınca diğerleri çağrılır. Üyelerden biriyle savaşan ülke ittifaka katılamaz.	policy_ui.gd
+1081	Üyeler	policy_ui.gd
+1082	İttifak adı	policy_ui.gd
+1083	Kaydet	policy_ui.gd
+1084	İttifak adı en az 3 harf olmalı.	policy_ui.gd
+1085	Adı ve amblemi düzenle	policy_ui.gd
+1086	Yeni üye davet et	policy_ui.gd
+1087	Komşu	policy_ui.gd
+1088	Davet et	policy_ui.gd
+1089	%s ittifaka katıldı.	policy_ui.gd
+1090	İttifaktan ayrıl	policy_ui.gd
+1091	Kendi ittifakını kur: ad ve amblemi sen belirle, sonra ülkeleri davet et. Oyun şu an duraklatıldıysa başlamadan da kurabilirsin.	policy_ui.gd
+1092	İttifak adı (örn. Doğu Savunma Paktı)	policy_ui.gd
+1093	İttifakı kur	policy_ui.gd
+1094	İttifak kuruldu: 	policy_ui.gd
+1095	Başlangıçta savaş yok. Haritadaki 200 ülkeden birini seç; bütçeni, ordunu ve ittifaklarını kendin kur.	scenarios.gd
+1096	Doğu Cephesi	scenarios.gd
+1097	Rusya – Ukrayna	scenarios.gd
+1098	Avrupa'nın en büyük kara savaşı sürüyor. Rusya kitlesel ordusuyla, Ukrayna Batı desteğiyle direniyor; siber ve lojistik hatlar cephe kadar önemli.	scenarios.gd
+1099	Kuzey Atlantik İttifakı	scenarios.gd
+1100	NATO	scenarios.gd
+1101	Toplu Güvenlik Paktı	scenarios.gd
+1102	Doğu Cephesi: Rusya ile Ukrayna arasında geniş çaplı savaş sürüyor. Batı ülkeleri Ukrayna'ya ekonomik ve askerî destek veriyor.	scenarios.gd
+1103	Boğaz Krizi	scenarios.gd
+1104	Çin – Tayvan	scenarios.gd
+1105	Çin, Tayvan Boğazı'nda deniz ve hava ablukası başlattı. ABD ve Japonya'nın müdahalesi ve yarı iletken tedariki dünya ekonomisini belirleyecek.	scenarios.gd
+1106	Pasifik Savunma Hattı	scenarios.gd
+1107	Avrasya Ortaklığı	scenarios.gd
+1108	Boğaz Krizi: Çin donanması Tayvan'ı kuşattı. Yarı iletken tedarik zinciri kesildi; ABD ve müttefikleri hazırlık yapıyor.	scenarios.gd
+1109	Körfez Ateşi	scenarios.gd
+1110	İran – İsrail – ABD	scenarios.gd
+1111	İran ile İsrail doğrudan savaşta; ABD İsrail'in yanında. Hürmüz Boğazı ve petrol akışı tehdit altında, siber saldırılar şebekeleri vuruyor.	scenarios.gd
+1112	Atlantik Güvenlik Ortaklığı	scenarios.gd
+1113	Direniş Ekseni	scenarios.gd
+1114	Körfez Ateşi: İran füze ve İHA salvolarıyla İsrail'i vurdu; ABD bölgeye donanma gönderdi.	scenarios.gd
+1115	Himalaya Gölgesi	scenarios.gd
+1116	Hindistan – Pakistan	scenarios.gd
+1117	Keşmir sınırında çatışma tam savaşa döndü. Çin Pakistan'ın arkasında, Rusya Hindistan'a silah akıtıyor; iki nükleer ülke arasında zaman daralıyor.	scenarios.gd
+1118	Karakurum Ortaklığı	scenarios.gd
+1119	Himalaya Gölgesi: Hindistan ve Pakistan sınır boyunca birbirine ateş açtı. Her iki başkentte olağanüstü hâl ilan edildi.	scenarios.gd
+1120	38. Paralel	scenarios.gd
+1121	Kuzey Kore – Güney Kore	scenarios.gd
+1122	Kuzey Kore topçusu Seul'ü menzile aldı. Dünyanın en yoğun silahlı sınırında hava gücü ve siber savaş belirleyici.	scenarios.gd
+1123	Pasifik Savunma Birliği	scenarios.gd
+1124	Kuzey Ekseni	scenarios.gd
+1125	38. Paralel: Kuzey Kore sınır boyunca topçu ateşi açtı. Güney Kore ve ABD savunma planlarını devreye aldı.	scenarios.gd
+1126	Kafkas Düğümü	scenarios.gd
+1127	Azerbaycan – Ermenistan	scenarios.gd
+1128	Karabağ sonrası gerilim yeniden alevlendi. Türkiye Azerbaycan'ın, Rusya Ermenistan'ın yanında; koridor ve enerji hatları tehlikede.	scenarios.gd
+1129	Hazar Anadolu Hattı	scenarios.gd
+1130	Kafkas Düğümü: Azerbaycan ve Ermenistan sınırında yeniden büyük çatışma başladı.	scenarios.gd
+1131	Kara Sancak	scenarios.gd
+1132	Kurgusal: aşırılıkçı yeniden doğuş	scenarios.gd
+1133	Suriye ve Irak'ın çölünde, kurgusal bir aşırılıkçı yapı olan Kara Sancak Hilafeti birkaç eyaleti ele geçirip hızla büyüyor. Bölgedeki devletler tek tek çözülürken kimin müdahale edeceği belirsiz.	scenarios.gd
+1134	Kara Sancak Hilafeti	scenarios.gd
+1135	Halife	scenarios.gd
+1136	Kara Sancak: Çöl kuşağında yeni bir aşırılıkçı yapı ortaya çıktı ve Suriye ile Irak'ın doğusunu ele geçirdi.	scenarios.gd
+1137	Yeni Reich	scenarios.gd
+1138	Lider	scenarios.gd
+1139	Kurgusal: otoriter yeniden diriliş	scenarios.gd
+1140	Almanya'nın doğusunda, kurgusal bir otoriter hareket olan Yeni Reich ayrılıp modern bir ordu kurdu. Avrupa'nın demokrasileri tek cephede birleşmek zorunda. (Gerçek tarihî semboller kullanılmaz.)	scenarios.gd
+1141	Avrupa Savunma Çemberi	scenarios.gd
+1142	Yeni Reich: Almanya'nın doğusunda otoriter bir ayrılıkçı yapı ilan edildi. Avrupa başkentleri olağanüstü toplandı.	scenarios.gd
+1143	Baltık Kıvılcımı	scenarios.gd
+1144	Kurgusal: kuzeyde büyük savaş	scenarios.gd
+1145	Rusya, Estonya ve Letonya'ya karşı sınır ihlalini gerekçe göstererek harekete geçti. NATO maddesi devrede: kuzeyde başlayan kıvılcım tüm kıtaya yayılabilir.	scenarios.gd
+1146	Baltık Kıvılcımı: Rus birlikleri Estonya ve Letonya sınırını geçti. NATO ortak savunma maddesini devreye aldı.	scenarios.gd
+1147	İmparatorun Dönüşü	scenarios.gd
+1148	Kurgusal: Napolyon çağı geri dönüyor	scenarios.gd
+1149	Fransa'da karizmatik bir general, 'Yeni İmparatorluk'u ilan edip ordunun bir kısmıyla Paris çevresini ele geçirdi. Devrim ruhu ve imparatorluk özlemi bir araya geldi; Avrupa bir kez daha nefesini tutuyor.	scenarios.gd
+1150	Yeni İmparatorluk	scenarios.gd
+1151	İmparatorun Dönüşü: Fransa'da general önderliğinde Yeni İmparatorluk ilan edildi; ordu ikiye bölündü.	scenarios.gd
+1152	Sessiz Savaş	scenarios.gd
+1153	Kurgusal: siber çağ, silahsız cephe	scenarios.gd
+1154	Topçu ateşi yok, ama dünya savaşta. Süper güçler birbirinin şebekelerini, limanlarını ve borsalarını vuruyor; ambargolar tırmanıyor. Fabrikaların ve lojistiğin güvenliği ordudan önemli.	scenarios.gd
+1155	Sessiz Savaş: Büyük güçler arasında açık savaş yok; ama şebekeler, limanlar ve borsalar siber saldırı altında.	scenarios.gd
+1156	Kaç asker gönderilsin?	send_ui.gd
+1157	%s asker yola çıkar	send_ui.gd
+1158	%s asker %s'da kalır. Yaklaşık varış: %d hf.	send_ui.gd
+1159	Ordunun tamamı yola çıkar; %s savunmasız kalır.	send_ui.gd
+1160	Gönder	send_ui.gd
+1161	ordun seni bekliyor	settings.gd
+1162	Yükle	slots_ui.gd
+1163	Kayıt yuvaları	slots_ui.gd
+1164	Otomatik kayıt (Ayarlar'dan açılır/kapanır) ayrı bir yuvada tutulur ve buradan üzerine yazılamaz.	slots_ui.gd
+1165	Yuva %d	slots_ui.gd
+1166	Eski kayıt	slots_ui.gd
+1167	%s  /  %d eyalet  /  %s	slots_ui.gd
+1168	Emin misin?	slots_ui.gd
+1169	Emin?	slots_ui.gd
+1170	Sil	slots_ui.gd
+1171	Label	theme_kit.gd
+1172	Button	theme_kit.gd
+1173	PanelContainer	theme_kit.gd
+1174	LineEdit	theme_kit.gd
+1175	VScrollBar	theme_kit.gd
+1176	HScrollBar	theme_kit.gd
+1177	VBoxContainer	theme_kit.gd
+1178	HBoxContainer	theme_kit.gd
+1179	HFlowContainer	theme_kit.gd
+1180	Yapay zekâ devletleri hamlelerini yapıyor...	turn_ui.gd
+1181	Ordular ilerliyor, muharebeler çözülüyor...	turn_ui.gd
+1182	Ekonomi, bütçe ve ticaret hesaplanıyor...	turn_ui.gd
+1183	Diplomasi ve ittifaklar değerlendiriliyor...	turn_ui.gd
+1184	Cihan Bülteni basılıyor...	turn_ui.gd
+1185	Age of Doctrine  /  Tur sonu	turn_ui.gd
+1186	Cihan Bülteni	turn_ui.gd
+1187	Sayı %d  /  haftalık baskı	turn_ui.gd
+1188	Bu hafta dünyada büyük bir gelişme yaşanmadı.	turn_ui.gd
+1189	Başka önemli haber yok.	turn_ui.gd
+1190	Harp raporu	turn_ui.gd
+1191	ZAFER	turn_ui.gd
+1192	YENİLGİ	turn_ui.gd
+1193	%s%s: %s karşısında. Kayıp: sen %s, karşı taraf %s.	turn_ui.gd
+1194	Kuşatma: %s  %d/%d	turn_ui.gd
+1195	Bu hafta çatışma olmadı.	turn_ui.gd
+1196	Hazine ve ordu	turn_ui.gd
+1197	Haritada göster	turn_ui.gd
+1198	Devam	turn_ui.gd
+1199	HABER	ui.gd
+1200	SAVAŞ	ui.gd
+1201	FETİH	ui.gd
+1202	KAYIP	ui.gd
+1203	BARIŞ	ui.gd
+1204	OLAY	ui.gd
+1205	ÇATIŞMA	ui.gd
+1206	SON	ui.gd
+1207	İSYAN	ui.gd
+1208	İTTİFAK	ui.gd
+1209	SIRALAMA	ui.gd
+1210	SİBER	ui.gd
+1211	HAREKÂT	ui.gd
+1212	TEDARİK	ui.gd
+1213	Devlet	ui.gd
+1214	Tarih	ui.gd
+1215	Turu geç	ui.gd
+1216	Haber bekleniyor...	ui.gd
+1217	Başkent	ui.gd
+1218	Senin	ui.gd
+1219	Müttefik	ui.gd
+1220	Savaşta	ui.gd
+1221	İsyancı: 	ui.gd
+1222	İşgal: 	ui.gd
+1223	Ordu: %s asker (%s)	ui.gd
+1224	\nParalı birlik: %s (%d hf kaldı)	ui.gd
+1225	Kuşatma %d/%d	ui.gd
+1226	Huzursuzluk %d/12: ordu bulundur!	ui.gd
+1227	Seçili ordu: %s asker, %s. Emri aşağıdaki düğmeyle ver.	ui.gd
+1228	Ordu seçili (%s asker). Gidilecek eyalete dokun, sonra emri onayla.	ui.gd
+1229	Ordu buraya yürüsün	ui.gd
+1230	Seçimi bırak	ui.gd
+1231	Barış teklif et	ui.gd
+1232	Ateşkes: %d hafta	ui.gd
+1233	Savaş ilan et	ui.gd
+1234	İttifakı boz	ui.gd
+1235	İttifak teklif et	ui.gd
+1236	Durdur	ui.gd
+1237	Ordu seç	ui.gd
+1238	Bildiri	ui.gd
+1239	Barış Masası	ui.gd
+1240	Müzakere	ui.gd
+1241	%s ile barış görüşmesi. Savaş puanın: %d. Almak istediğin işgal ettiğin eyaletleri seç (maliyet puandan düşer); seçmediklerin geri verilir.	ui.gd
+1242	HARCANAN  %d / %d PUAN	ui.gd
+1243	%d PUAN	ui.gd
+1244	Duraklatıldı	ui.gd
+1245	Oyun menüsü	ui.gd
+1246	Sen	ui.gd
+1247	Dünya	ui.gd
+1248	Durum odası	ui.gd
+1249	Ülkeler	ui.gd
+1250	Savaşlar	ui.gd
+1251	Haberler	ui.gd
+1252	İttifaklar	ui.gd
+1253	Devlet dışı gruplar	ui.gd
+1254	%d EYALET	ui.gd
+1255	%s ASKER	ui.gd
+1256	Şu an dünyada aktif bir savaş yok.	ui.gd
+1257	Henüz kurulmuş bir ittifak yok. Politika > İttifak sekmesinden kendi ittifakını kurabilirsin.	ui.gd
+1258	   (senin)	ui.gd
+1259	%d üye   /   toplam asker %s	ui.gd
+1260	Tümü	ui.gd
+1261	Diplomasi	ui.gd
+1262	Olaylar	ui.gd
+1263	Devlet Başkanı	era_leaders.gd
+1264	Ulus Önderi	era_leaders.gd
+1265	Diktatör	era_leaders.gd
+1266	Halk Komiserleri Başkanı	era_leaders.gd
+1267	Şansölye	era_leaders.gd
+1268	\nElle konuşlu (otomatik komut dışı)	ui.gd
+1269	BM	un.gd/ui.gd
+1270	Birleşmiş Milletler	un.gd/ui.gd
+1271	%d üye   /   karar salt çoğunlukla, veto yok	un.gd/ui.gd
+1272	%d hf sonra	un.gd/ui.gd
+1273	Maliyet %s	un.gd/ui.gd
+1274	Hazır	un.gd/ui.gd
+1275	Son kararlar	un.gd/ui.gd
+1276	Henüz karar alınmadı.	un.gd/ui.gd
+1277	Önergenin hedefini seç.	un.gd/ui.gd
+1278	Ateşkes istenecek savaşı seç.	un.gd/ui.gd
+1279	Önerge kabul edildi	un.gd/ui.gd
+1280	Önerge reddedildi	un.gd/ui.gd
+1281	Önerge verilemedi	un.gd/ui.gd
+1282	Ateşkes çağrısı	un.gd/ui.gd
+1283	Savaşan iki tarafı ateşkese çağırır.	un.gd/ui.gd
+1284	Yeniden inşa fonu	un.gd/ui.gd
+1285	Hedef ülkenin harap eyaletlerini onarmak için fon ayrılır.	un.gd/ui.gd
+1286	İnsani yardım	un.gd/ui.gd
+1287	Hedef ülkeye hazine ve istikrar desteği.	un.gd/ui.gd
+1288	Yaptırım kararı	un.gd/ui.gd
+1289	Hedef ülkenin geliri 26 hafta boyunca yüzde 25 düşer.	un.gd/ui.gd
+1290	Ortak harekât	un.gd/ui.gd
+1291	Kabul edilirse lehte oy veren ülkeler hedefe savaş açar.	un.gd/ui.gd
+1292	Birleşmiş Milletler henüz kurulmadı.	un.gd/ui.gd
+1293	Bu önerge için %d hafta beklemelisin.	un.gd/ui.gd
+1294	Kasa yetersiz: önerge bedeli %s.	un.gd/ui.gd
+1295	Geçerli bir hedef yok.	un.gd/ui.gd
+1296	BM: %s önergesi reddedildi (%d lehte, %d aleyhte).	un.gd/ui.gd
+1297	BM: %s önergesi kabul edildi (%d lehte, %d aleyhte). %s	un.gd/ui.gd
+1298	%s ile %s arasında ateşkes başladı.	un.gd/ui.gd
+1299	%s için %s fon aktarıldı; eyaletler onarılıyor.	un.gd/ui.gd
+1300	%s için %s yardım gönderildi.	un.gd/ui.gd
+1301	%s için 26 haftalık yaptırım başladı.	un.gd/ui.gd
+1302	%d ülke savaş açtı. Hedef: %s.	un.gd/ui.gd
+1303	Barış gücü	un.gd
+1304	Hedef ülkede huzursuzluğu söndürür, istikrarı artırır.	un.gd
+1305	Kalkınma programı	un.gd
+1306	Hedef ülkenin en az gelişmiş eyaletleri bir kademe gelişir.	un.gd
+1307	Egemenlik garantisi	un.gd
+1308	Lehte oy veren ülkeler hedefe 26 hafta saldırmaz.	un.gd
+1309	Silah ambargosu	un.gd
+1310	Hedef ülkenin sanayisi ve lojistiği zayıflar.	un.gd
+1311	Uluslararası soruşturma	un.gd
+1312	Hedef ülkenin istikrarı ve saldırganlığı düşer.	un.gd
+1313	Silahsızlanma kararı	un.gd
+1314	Hedef ülkenin ordusu yüzde 12 küçülür.	un.gd
+1315	Barış gücü %s topraklarına konuşlandı; huzursuzluk sönüyor.	un.gd
+1316	%s için kalkınma programı: %d eyalet gelişti.	un.gd
+1317	%d ülke %s için 26 hafta saldırmazlık verdi.	un.gd
+1318	%s için silah ambargosu: sanayi ve lojistik zayıfladı.	un.gd
+1319	%s için uluslararası soruşturma: istikrar düştü, saldırganlık azaldı.	un.gd
+1320	%s ordusu yüzde 12 küçüldü.	un.gd
+1321	Deniz	game_state.gd
+1322	Amfibi Çıkarma	game_state.gd
+1323	Deniz aşırı çıkarma: taarruz −15 yüzde, savunma +10 yüzde. Taşıma kapasitesi donanmanla sınırlı.	game_state.gd
+1324	Amfibi çıkarma: taşıma kapasitesi %s asker	game_state.gd
+1325	İlişkiler	ui.gd
+1326	İlişki görünümü kapalı.	ui.gd
+1327	İlişki görünümü: sarı seçili ülke, mavi müttefik, kırmızı savaş, mor ateşkes.	ui.gd
+1328	Yok	ui.gd
+1329	İttifak bloğu: %s	ui.gd
+1330	%d eyalet   /   asker %s   /   gelir %s	ui.gd
+1331	Müttefikler	ui.gd
+1332	Osmanlı Devleti Karadeniz'de Rus limanlarını bombalayarak savaşa girdi.	era_events.gd
+1333	Batı Cephesi'nde Noel ateşkesi: siperlerdeki askerler bir gün silah bıraktı.	era_events.gd
+1334	Çanakkale Boğazı'na büyük bir donanma saldırısı: Boğaz'ın kaderi tehlikede.	era_events.gd
+1335	İtalya, Avusturya-Macaristan'a savaş ilan ederek İtilaf Devletleri safına geçti.	era_events.gd
+1336	Bulgaristan Merkezi Güçler'e katıldı ve Sırbistan'a saldırdı.	era_events.gd
+1337	Verdun Muharebesi başladı: Fransa ve Almanya aylarca sürecek bir kan gölüne girdi.	era_events.gd
+1338	Romanya İtilaf safında savaşa girdi ve Avusturya-Macaristan'a saldırdı.	era_events.gd
+1339	Rusya'da Şubat Devrimi: çarlık yıkıldı, ülke karışıklığa sürüklendi.	era_events.gd
+1340	ABD, Almanya'ya savaş ilan ederek savaşa girdi.	era_events.gd
+1341	Yunanistan İtilaf safında Merkezi Güçler'e savaş ilan etti.	era_events.gd
+1342	Rusya'da Ekim Devrimi: Bolşevikler iktidarı ele geçirdi.	era_events.gd
+1343	Brest-Litovsk Antlaşması: Sovyet Rusya Almanya ile ayrı barış imzaladı.	era_events.gd
+1344	11 Kasım Mütarekesi: Batı Cephesi'nde silahlar susuyor.	era_events.gd
+1345	Versay Antlaşması imzalandı: savaş sonrası düzen yeniden çiziliyor.	era_events.gd
+1346	New York Borsası çöktü: Büyük Buhran dünyayı sarsıyor.	era_events.gd
+1347	Almanya'da Hitler başbakan oldu.	era_events.gd
+1348	Almanya Polonya'ya saldırdı: yeni bir dünya savaşı başlıyor.	era_events.gd
+1349	Polonya düştü; Almanya ile SSCB ülkeyi paylaştı.	era_events.gd
+1350	Almanya Danimarka ve Norveç'e saldırdı.	era_events.gd
+1351	Almanya Batı'da büyük taarruz başlattı: Hollanda ve Belçika saldırı altında.	era_events.gd
+1352	Fransa'nın düşüşü: İtalya da Fransa ve Britanya'ya savaş ilan etti.	era_events.gd
+1353	Britanya Muharebesi: Luftwaffe İngiliz göklerinde.	era_events.gd
+1354	Üçlü Pakt imzalandı: Almanya, İtalya ve Japonya ittifak kurdu.	era_events.gd
+1355	Barbarossa Harekâtı: Almanya ve müttefikleri SSCB'ye saldırdı.	era_events.gd
+1356	Pearl Harbor: Japonya ABD ve Britanya'ya saldırdı, Almanya ABD'ye savaş ilan etti.	era_events.gd
+1357	Midway Muharebesi: Japon donanmasının saldırı gücü kırıldı.	era_events.gd
+1358	Stalingrad Muharebesi başladı.	era_events.gd
+1359	İtalya ateşkes istedi; Müttefikler Sicilya'dan sonra İtalya'ya çıktı.	era_events.gd
+1360	D-Day: Müttefikler Normandiya'ya çıktı.	era_events.gd
+1361	Romanya taraf değiştirdi ve Almanya'ya savaş açtı.	era_events.gd
+1362	Bulgaristan ve Finlandiya Almanya'ya karşı çıktı.	era_events.gd
+1363	Türkiye sembolik olarak Almanya ve Japonya'ya savaş ilan etti.	era_events.gd
+1364	Avrupa'da savaş sona eriyor: Almanya koşulsuz teslim oldu.	era_events.gd
+1365	Hiroşima ve Nagasaki'ye atom bombaları atıldı; SSCB Japonya'ya savaş açtı.	era_events.gd
+1366	Japonya teslim oldu: II. Dünya Savaşı sona erdi.	era_events.gd
+1367	NATO kuruldu: Batı ittifakı şekilleniyor.	era_events.gd
+1368	Kore Savaşı başladı.	era_events.gd
+1369	Nükleer silahın yok.	game_state.gd
+1370	Nükleer arsenal hazır değil (%d hafta).	game_state.gd
+1371	Nükleer saldırı için hedefle savaşta olmalısın.	game_state.gd
+1372	NÜKLEER SALDIRI! %s, %s eyaletine nükleer silah kullandı; dünya şokta, yaptırımlar geliyor.	game_state.gd
+1373	Nükleer saldırı	main.gd
+1374	%s eyaletine nükleer silah kullanılacak. Hedef ordusunun %%80'i yok olur, ama istikrarın düşer, 26 hafta yaptırım gelir ve hedefin müttefikleri sana savaş açabilir. Emin misin?	main.gd
+1375	Saldır	main.gd
+1376	%d - %d   %dH	ui.gd
+1377	Ateşkes	ui.gd
+1378	İlk adımlar	goals.gd
+1379	Öğretici tamamlandı	goals.gd
+1380	Başarımlar	goals.gd
+1381	Başarım: %s	goals.gd
+1382	Hedef tamamlandı: %s	goals.gd
+1383	Sıradaki hedef: %s	goals.gd
+1384	Hedef: %s	goals.gd
+1385	Hedefler ve başarımlar	goals.gd
+1386	İlk turu oyna	goals.gd
+1387	Alttaki oynat düğmesine bas ya da tur ilerlet.	goals.gd
+1388	Bir ordu hareket ettir	goals.gd
+1389	Bir ordu seç, sonra bir komşu eyalete dokun.	goals.gd
+1390	Komşu bir ülkenin eyaletine dokun ve savaş ilan et.	goals.gd
+1391	İlk eyaleti fethet	goals.gd
+1392	Orduyla düşman eyaletine saldır ve ele geçir.	goals.gd
+1393	Barış yap	goals.gd
+1394	Savaşı barışla bitir; ganimeti güvene al.	goals.gd
+1395	Fatih	goals.gd
+1396	10 eyalet fethet.	goals.gd
+1397	50 eyalet fethet.	goals.gd
+1398	Cihan Hâkimi	goals.gd
+1399	150 eyalet fethet.	goals.gd
+1400	Savaş Tecrübesi	goals.gd
+1401	50 muharebe yap.	goals.gd
+1402	Diplomat	goals.gd
+1403	5 barış anlaşması imzala.	goals.gd
+1404	Dost Bulan	goals.gd
+1405	Bir ittifak kur.	goals.gd
+1406	Devlet Yıkıcı	goals.gd
+1407	Bir ülkeyi haritadan sil.	goals.gd
+1408	Salon Diplomasisi	goals.gd
+1409	Bir BM önergesini kabul ettir.	goals.gd
+1410	Normandiya Ruhu	goals.gd
+1411	Denizden çıkarma yap.	goals.gd
+1412	Pandora'nın Kutusu	goals.gd
+1413	Nükleer silah kullan. Bedeli ağırdır.	goals.gd
+1414	Bir Yıl Dayan	goals.gd
+1415	52 hafta (1 yıl) oyna.	goals.gd
+1416	On Yıl	goals.gd
+1417	520 hafta (10 yıl) oyna.	goals.gd
+1418	Büyük Devlet	goals.gd
+1419	Aynı anda 30 eyalete sahip ol.	goals.gd
+1420	Savaş tazminatı	game_state.gd
+1421	Yenilenin kasasının yarısı sana geçer, istikrarı düşer.	game_state.gd
+1422	Silahsızlandırma	game_state.gd
+1423	Yenilenin orduları yarıya iner.	game_state.gd
+1424	Tampon bölge	game_state.gd
+1425	Ateşkes 26 yerine 78 hafta sürer; iki taraf da saldıramaz.	game_state.gd
+1426	Barış şartları: %s, %s'e şunları dayattı: %s.	game_state.gd
+1427	tazminat	game_state.gd
+1428	silahsızlandırma	game_state.gd
+1429	tampon bölge	game_state.gd
+1430	\nKomutan: %s (Sv %d)	ui.gd
+1431	Komutan %s sefer kazandı: seviye %d (+%%%d savaş gücü).	game_state.gd
+1432	Hava Harekâtı	game_state.gd
+1433	Havadan bombardıman: etkisi hava üstünlüğüne bağlı (hava gücün rakipten fazlaysa savunma −%20'ye kadar). Eski çağda yoktur.	game_state.gd
+1434	Dünya tepkisi: %d / 100 (fetih arttıkça yükselir; 50'yi aşarsa koalisyon kurulur)	ui.gd
+1435	Dünya, %s'nin yükselişinden endişeli: komşular ve büyük güçler soğuk bakıyor.	game_state.gd
+1436	KOALİSYON! %d ülke, %s'nin fetihlerine karşı savaş ilan etti.	game_state.gd
+1437	Donanma Bombardımanı	game_state.gd
+1438	Sahildeki eyalete gemi topçusu: donanma gücün rakipten fazlaysa savunma −%18'e kadar. Yalnız kıyı eyaletleri.	game_state.gd
+1439	Füze Saldırısı	game_state.gd
+1440	Uzun menzilli füze ve hassas vuruş: savunma −%30'a kadar, hava üstünlüğü gerekmez. Yalnız modern çağda.	game_state.gd
+1441	Hava İndirme	game_state.gd
+1442	Arkadan paraşütlü baskın: eyaletin savunma ve evde-savunma bonusu işlemez. WW2 ve modern çağda.	game_state.gd
+1443	Özel Kuvvet Baskını	game_state.gd
+1444	Küçük, seçkin birlikle sert vuruş: taarruz +%18, kayıplar düşük. En çok 25.000 askerle; WW2 ve modern çağda.	game_state.gd
+1445	Bu harekât burada kullanılamaz.	game_state.gd
+1446	Hoş geldin, komutan	tutorial.gd
+1447	Bu kısa rehber oyunun temelini öğretir. İstediğin adımı «Geç» ile atlayabilirsin; eylem adımları sen yapınca kendiliğinden ilerler.	tutorial.gd
+1448	Haritayı tanı	tutorial.gd
+1449	Haritayı parmağınla sürükle, iki parmakla yakınlaştır. Şimdi herhangi bir eyalete dokun.	tutorial.gd
+1450	Eyalet kartı	tutorial.gd
+1451	Kartta eyaletin sahibi, nüfusu, geliri ve savunması yazar; başkent yıldızlıdır. Eyaletlerin sana gelir getirir, kaybettikçe gelirin düşer.	tutorial.gd
+1452	Üst çubuk	tutorial.gd
+1453	Kasa (para), asker, eyalet sayısı ve tarih burada. Her tur bir haftadır: gelir her hafta kasana eklenir, ordu ve harcamalar düşer.	tutorial.gd
+1454	Ordunu seç	tutorial.gd
+1455	Kendi eyaletine dokun ve kartta «Ordu seç» düğmesine bas. Ordular harita üzerinde asker sayısıyla görünür.	tutorial.gd
+1456	Ordu hareketi	tutorial.gd
+1457	Komşu bir eyalete dokun ve «Ordu buraya yürüsün» de. Elle gönderdiğin ordu varışta bekler; emir vermediğin ordular, ayardaysa, otomatik savaşır.	tutorial.gd
+1458	Turu geçir	tutorial.gd
+1459	Sağ üstteki «Turu geç» düğmesiyle bir hafta ilerlet. Haberler üstteki Cihan Bülteni'nde akar; dokunarak geçmişi aç.	tutorial.gd
+1460	Politika paneli	tutorial.gd
+1461	Sağdaki tank düğmesi: bütçe dağılımı (askerî, sanayi, siber, lojistik...), silah alımı, envanter, ticaret, cepheler, ittifaklar, istihbarat ve kabine. Gücün buradan büyür.	tutorial.gd
+1462	Kabine ve istikrar	tutorial.gd
+1463	Politika → Kabine: bakanlar ülkenin kültürüne göre atanır; iyi bakan gelir, ordu ve istikrara bonus verir. Savaş yorgunluğu ve düşük istikrar eyaletlerde huzursuzluk ve isyan çıkarır; paralı asker kiralayarak ordunu hızla güçlendirebilirsin.	tutorial.gd
+1464	Savaş ilanı	tutorial.gd
+1465	Önce komşu zayıf bir ülke seç. Önerim: {target}. Onun bir eyaletine dokun ve «Savaş ilan et» de. Müttefikleri sana karşı çıkabilir; bedeli düşün.	tutorial.gd
+1466	Düşman eyaletine dokun ve «Taarruz»a bas. Ordularını seç, harekât türünü belirle (topçu, hava, donanma, füze, paraşüt, özel kuvvet...). Üstünlük çubuğu kazanma şansını gösterir.	tutorial.gd
+1467	Kuşatma ve fetih	tutorial.gd
+1468	Savunmayı yenen ordu eyalete girer ve kuşatır; kuşatma süresi dolunca eyalet senin olur ve savaş puanın artar. Ordular sınırı geçerken izin gerekir.	tutorial.gd
+1469	Barış masası	tutorial.gd
+1470	Savaş puanın yüksekse düşman eyaletine dokunup «Barış teklif et»: aldığın eyaletleri ve tazminat, silahsızlandırma, tampon bölge şartlarını puanınla seçersin. Fazla fetih «dünya tepkisi»ni artırır; 50'yi aşarsa ülkeler koalisyon kurar.	tutorial.gd
+1471	İttifak ve ilişkiler	tutorial.gd
+1472	Dost bir ülkenin eyaletine dokun: «İttifak teklif et» ya da «İlişkiler» (kim kimle müttefik, kim savaşta). Sağdaki el sıkışma düğmesi haritayı ilişki renklerine boyar.	tutorial.gd
+1473	Dünya ve BM	tutorial.gd
+1474	Sağdaki küre düğmesi: sıralama, bloklar, haberler ve BM. BM'de ateşkes, yeniden inşa, yardım, yaptırım gibi önergeleri oy çokluğuyla geçirirsin (veto yok).	tutorial.gd
+1475	Nükleer ve riskler	tutorial.gd
+1476	Nükleer güçsen düşman eyaletine nükleer saldırı yapabilirsin: büyük yıkım, ama ağır yaptırım ve koalisyon getirir. Son çare olarak sakla.	tutorial.gd
+1477	Kaydet ve hedefler	tutorial.gd
+1478	Sol üstteki ≡ menüsü: kaydet/yükle, ayarlar ve «Hedefler ve başarımlar». Ayarlardan otomatik kayıt açılabilir. Başarımlar kalıcıdır.	tutorial.gd
+1479	Hazırsın!	tutorial.gd
+1480	Artık fethe, diplomasiye ya da barışla kalkınmaya hazırsın. Öğreticiyi istediğin an menüden tekrar açabilirsin. İyi şanslar!	tutorial.gd
+1481	ÖĞRETİCİ	tutorial.gd
+1482	Geç	tutorial.gd
+1483	Bitir	tutorial.gd
+1484	Yönergeyi yap, kart kendiliğinden ilerler.	tutorial.gd
+1485	Tamam!	tutorial.gd
+1486	komşu bir ülke	tutorial.gd
+1487	Öğreticiyi kapat	tutorial.gd
+1488	Öğretici	tutorial.gd
+1489	Küresel Salgın	crises.gd
+1490	İspanyol Gribi	crises.gd
+1491	Salgın Hastalık	crises.gd
+1492	Küresel Mali Çöküş	crises.gd
+1493	Mali Panik	crises.gd
+1494	Büyük Buhran Artçısı	crises.gd
+1495	Kıtlık ve Gıda Krizi	crises.gd
+1496	Enerji Şoku	crises.gd
+1497	Yakıt Kıtlığı	crises.gd
+1498	Efendim, ülkeye bir salgın giriyor ve tüm dünyada yayılıyor. Sağlık sistemi zorlanacak. Ne yapalım?	crises.gd
+1499	Efendim, borsalar çöküyor ve bankalar sallanıyor. Kriz tüm dünyayı sarıyor. Hazine ne yapsın?	crises.gd
+1500	Efendim, kuraklık ve nakliye sorunları gıda fiyatlarını uçurdu. Halk ekmek kuyruğunda. Ne yapalım?	crises.gd
+1501	Efendim, petrol fiyatları fırladı; sanayi ve ulaşım zorlanıyor. Ne yapalım?	crises.gd
+1502	Acil önlem paketi	crises.gd
+1503	Geniş bir önlem paketi açıklandı. Kriz ülkeni çok az etkileyecek, toparlanma hızlı olacak.	crises.gd
+1504	Harcamalar kısıldı. Sert ama ucuz bir önlem; halk homurdanıyor.	crises.gd
+1505	Bekle ve izle	crises.gd
+1506	Hükümet beklemeyi seçti. Kriz tam etkisini gösterecek, ama bu kadarını atlatırsın.	crises.gd
+1507	Kriz etkisi azaldı	crises.gd
+1508	Kriz tam etkili	crises.gd
+1509	Dünya krizi: %s başladı; etkileri yaklaşık %d hafta sürecek.	crises.gd
+1510	%s sona erdi; dünya ekonomisi toparlanıyor.	crises.gd
+1511	Uçak gemisi grubu	carriers.gd
+1512	Çıkarma kapasitesini ve çıkarma saldırısını güçlendirir; kıyıdaki düşman eyaletlerini (ada ülkeleri dâhil) ordu göndermeden vurabilirsin. Satın alınanların bakım gideri vardır.	carriers.gd
+1513	Satın al: %s	carriers.gd
+1514	Yeni uçak gemisi grubu devrede.	carriers.gd
+1515	Uçak gemisi saldırısı	carriers.gd
+1516	Uçak gemisi saldırısı: %s asker kaybı verdirdi.	carriers.gd
+1517	Uçak gemisi saldırısı yapıldı: hedefte ordu yok.	carriers.gd
+1518	Bu çağda uçak gemisi yok.	carriers.gd
+1519	Uçak gemisi için teknoloji yetersiz (en az %%%d).	carriers.gd
+1520	Daha fazla uçak gemisi grubu işletemezsin.	carriers.gd
+1521	Kasa yetersiz: %s gerekir.	carriers.gd
+1522	%s yeni bir uçak gemisi grubu devreye aldı.	carriers.gd
+1523	Uçak gemin yok.	carriers.gd
+1524	Uçak gemisi grubu hazırlanıyor (%d hafta).	carriers.gd
+1525	Hedefle savaşta olmalısın.	carriers.gd
+1526	Hedef kıyıda değil.	carriers.gd
+1527	Kasa yetersiz: %s.	carriers.gd
+1528	%s uçak gemileri %s eyaletini vurdu%s.	carriers.gd
+1529	: %s asker kaybı	carriers.gd
+1530	5 tur oyna	missions.gd
+1531	3 ordu emri ver	missions.gd
+1532	2 muharebeye gir	missions.gd
+1533	12 tur oyna	missions.gd
+1534	Bir eyalet fethet	missions.gd
+1535	Bir ittifak kur	missions.gd
+1536	BM'de bir önerge geçir	missions.gd
+1537	Bir barış imzala	missions.gd
+1538	3 eyalet fethet	missions.gd
+1539	6 muharebeye gir	missions.gd
+1540	Amfibi çıkarma yap	missions.gd
+1541	2 barış imzala	missions.gd
+1542	Bir savaş ilan et	missions.gd
+1543	Bu hafta 40 tur oyna	missions.gd
+1544	Bu hafta 12 muharebeye gir	missions.gd
+1545	Bu hafta 6 eyalet fethet	missions.gd
+1546	Bu hafta 2 barış imzala	missions.gd
+1547	Bu hafta BM'de 2 önerge geçir	missions.gd
+1548	Bu hafta 12 eyalet fethet	missions.gd
+1549	Bu hafta 2 savaş ilan et	missions.gd
+1550	Bu hafta 3 ittifak kur	missions.gd
+1551	Çavuş	missions.gd
+1552	Teğmen	missions.gd
+1553	Yüzbaşı	missions.gd
+1554	Binbaşı	missions.gd
+1555	Albay	missions.gd
+1556	Tuğgeneral	missions.gd
+1557	Tümgeneral	missions.gd
+1558	Korgeneral	missions.gd
+1559	Orgeneral	missions.gd
+1560	Mareşal	missions.gd
+1561	Günlük görevler	missions.gd
+1562	Haftalık görevler	missions.gd
+1563	puan	missions.gd
+1564	Seri: %d gün	missions.gd
+1565	Seri yok	missions.gd
+1566	Görev tamam: %s (+%d puan)	missions.gd
+1567	Terfi: %s!	missions.gd
+1568	Mağaza	menu.gd
+1569	AOD Puanı	ap_ui.gd
+1570	Ödül	menu.gd
+1571	Kilitli	menu.gd
+1572	Ücretsiz AP	ap_ui.gd
+1573	AP al	ap_ui.gd
+1574	İçerik	ap_ui.gd
+1575	Bakiye	ap_ui.gd
+1576	Günlük ödül	ap_ui.gd
+1577	Al	ap_ui.gd
+1578	Alındı	ap_ui.gd
+1579	Reklamı izle	ap_ui.gd
+1580	Bonusu al	ap_ui.gd
+1581	Günde bir kez. Bugünkü reklam hakkından sayılır.	ap_ui.gd
+1582	Yarın tekrar gel. Kaçırdığın günler sayacı sıfırlamaz.	ap_ui.gd
+1583	AOD Puanı reklamdan, görevlerden, zaferlerden ve satın almadan kazanılır. Süresi dolmaz. Ordu, para ya da avantaj satmaz.	ap_ui.gd
+1584	Görevler, başarımlar ve ilk zaferler de AP verir.	ap_ui.gd
+1585	Tek seferlik. Süre baskısı yok, istediğin zaman alabilirsin.	ap_ui.gd
+1586	Tam Sürüm	ap_ui.gd
+1587	Tüm senaryolar ve tarihî çağlar, bugünkü ve gelecek ücretsiz içerik güncellemeleri. Tek seferlik.	ap_ui.gd
+1588	Elle kayıt yuvalarını 3'ten 5'e çıkarır. Kalıcı.	ap_ui.gd
+1589	Satın alımları geri yükle	ap_ui.gd
+1590	Fiyatlar Google Play'de yerel para biriminde gösterilir. AP süresiz geçerlidir, başka oyunlarda kullanılmaz.	ap_ui.gd
+1591	İçerik kilitli	ap_ui.gd
+1592	Bu içerik ücretsiz sürümde yok. AP ile ya da tek seferlik satın almayla açabilirsin.	ap_ui.gd
+1593	%d. ödül günü: +%d AP	ap_ui.gd
+1594	Bugün kalan: %d/%d	ap_ui.gd
+1595	Reklam şu an yok.	ap_ui.gd
+1596	Bugünlük reklam hakkın bitti. Yarın yenilenir.	ap_ui.gd
+1597	Sonraki reklam: %s	ap_ui.gd
+1598	Reklam izle  +%d AP	ap_ui.gd
+1599	Günlük bonus reklamı  +%d AP	ap_ui.gd
+1600	+%d AP	ap_ui.gd
+1601	Başlangıç teklifi  %d AP	ap_ui.gd
+1602	%d AP	ap_ui.gd
+1603	Ek kayıt yuvası  +%d	ap_ui.gd
+1604	Ek kayıt yuvaları açıldı.	ap_ui.gd
+1605	Yetersiz AP.	ap_ui.gd
+1606	Açıldı: %s	ap_ui.gd
+1607	%d satın alma geri yüklendi.	ap_ui.gd
+1608	Geri yüklenecek satın alma bulunamadı.	ap_ui.gd
+1609	Satın alma tamamlandı.	ap_ui.gd
+1610	Satın alma tamamlanmadı.	ap_ui.gd
+1611	Tam Sürüm açıldı.	ap_ui.gd
+1612	%d AP ile aç  (bakiye %d)	ap_ui.gd
+1613	%d AP gerekli  (bakiye %d)  /  Mağaza	ap_ui.gd
+1614	Yalnızca bunu aç  %s	ap_ui.gd
+1615	Tam Sürüm  %s  (hepsini aç)	ap_ui.gd
+1616	AOD Puanı: +%d AP	main.gd
+1617	Zafer ödülü: +%d AP	main.gd
+1618	Bugünlük reklam hakkın bitti.	ap.gd
+1619	Sonraki reklam için biraz bekle.	ap.gd
+1620	Günlük bonus bugün alındı.	ap.gd
+1621	Reklam tamamlanmadı.	ap.gd
+1622	Mağaza bu sürümde bağlı değil.	ap_provider.gd
+1623	Mağazaya bağlanılamadı. İnternetini kontrol et.	bridge_play.gd
+1624	Mağazaya bağlanılamadı.	bridge_play.gd
+1625	Satın alma doğrulanamadı.	bridge_play.gd

@@ -1,0 +1,19 @@
+1511|Carrier strike group
+1512|Boosts landing capacity and the landing assault; you can strike enemy coastal provinces (island nations included) without sending an army. Purchased groups have an upkeep cost.
+1513|Buy: %s
+1514|New carrier group is in service.
+1515|Carrier strike
+1516|Carrier strike: inflicted %s casualties.
+1517|Carrier strike carried out: no army at the target.
+1518|There are no aircraft carriers in this era.
+1519|Not enough technology for a carrier (at least %%%d).
+1520|You cannot operate more carrier groups.
+1521|Insufficient funds: %s needed.
+1522|%s commissioned a new carrier group.
+1523|You have no carrier.
+1524|Carrier group is preparing (%d weeks).
+1525|You must be at war with the target.
+1526|The target is not on the coast.
+1527|Insufficient funds: %s.
+1528|%s's carriers struck %s%s.
+1529|: %s casualties

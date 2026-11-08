@@ -1,0 +1,114 @@
+{
+ "id": "essequibo",
+ "kind": "real",
+ "name": "Esequibo Anlaşmazlığı",
+ "sub": "Venezuela – Guyana",
+ "blurb": "Petrol zengini Guyana'nın batısındaki Esequibo bölgesi üzerinde Venezuela hak iddia ediyor. Küçük bir ülke, büyük komşu, uzak ama ilgili müttefikler.",
+ "intro": "Esequibo: Karakas haritaları yeniden çizdi, birlikleri sınıra yığdı. Georgetown BM'ye başvurdu.",
+ "suggest": [
+  "Guyana",
+  "Venezuela",
+  "Brazil",
+  "United States of America"
+ ],
+ "transfer": [
+  [
+   1764,
+   "Guyana",
+   "Venezuela",
+   "occ"
+  ]
+ ],
+ "cold": [
+  [
+   "Venezuela",
+   "Guyana"
+  ]
+ ],
+ "embargo": [
+  [
+   "Venezuela",
+   "Guyana"
+  ]
+ ],
+ "troops_mult": {
+  "Venezuela": 1.2,
+  "Guyana": 0.9
+ },
+ "stability": {
+  "Venezuela": -10
+ },
+ "events": [
+  {
+   "turn": 6,
+   "t": "Brezilya sınır boyunca birlik sevk etti ve gerilimin düşürülmesini istedi.",
+   "fx": [
+    [
+     "stab",
+     "Venezuela",
+     -2
+    ]
+   ]
+  },
+  {
+   "turn": 20,
+   "t": "ABD Guyana ile ortak tatbikat yaptı.",
+   "fx": [
+    [
+     "ally",
+     "United States of America",
+     "Guyana"
+    ]
+   ]
+  }
+ ],
+ "objectives": {
+  "*": [
+   {
+    "id": "e1",
+    "type": "survive",
+    "turns": 78,
+    "text": "1,5 yıl ayakta kal"
+   }
+  ],
+  "Guyana": [
+   {
+    "id": "eg1",
+    "type": "own_province",
+    "province": 1764,
+    "text": "Potaro-Siparuni eyaletini geri al"
+   },
+   {
+    "id": "eg2",
+    "type": "alliances",
+    "n": 2,
+    "text": "2 müttefik edin"
+   }
+  ],
+  "Venezuela": [
+   {
+    "id": "ev1",
+    "type": "own_provinces",
+    "n": 22,
+    "text": "22 eyalete ulaş"
+   }
+  ]
+ },
+ "deadline": 208,
+ "en": {
+  "name": "Essequibo Dispute",
+  "sub": "Venezuela – Guyana",
+  "blurb": "Venezuela claims the Essequibo region west of oil-rich Guyana. A small country, a large neighbour, distant but interested allies.",
+  "intro": "Essequibo: Caracas has redrawn its maps and massed troops on the border. Georgetown appealed to the UN.",
+  "objectives": {
+   "e1": "Survive 1.5 years",
+   "eg1": "Retake Potaro-Siparuni",
+   "eg2": "Make 2 allies",
+   "ev1": "Reach 22 provinces"
+  },
+  "events": {
+   "0": "Brazil moved troops along the border and urged de-escalation.",
+   "1": "The US held a joint exercise with Guyana."
+  }
+ }
+}

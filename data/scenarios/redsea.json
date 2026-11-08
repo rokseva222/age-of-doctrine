@@ -1,0 +1,157 @@
+{
+ "id": "redsea",
+ "kind": "real",
+ "name": "Kızıldeniz Krizi",
+ "sub": "Yemen – Körfez – Süveyş",
+ "blurb": "Ticaret gemilerine yönelik saldırılar Süveyş hattını tıkıyor. Deniz ticaretinin can damarı, bölgesel vekâlet savaşlarının cephesi.",
+ "intro": "Kızıldeniz: tankerler Ümit Burnu'na yöneliyor, sigorta primleri uçtu. Bölge ülkeleri hamle bekliyor.",
+ "suggest": [
+  "Egypt",
+  "Saudi Arabia",
+  "Israel",
+  "Iran",
+  "Yemen"
+ ],
+ "blocs": [
+  {
+   "name": "Kızıldeniz Güvenlik Görev Gücü",
+   "members": [
+    "United States of America",
+    "United Kingdom",
+    "France",
+    "Saudi Arabia",
+    "Egypt"
+   ],
+   "emblem": {
+    "shape": 1,
+    "inner": 1,
+    "symbol": "anchor",
+    "c1": "2f4f9a",
+    "c2": "ece6d6",
+    "c3": "2f4f9a"
+   }
+  }
+ ],
+ "wars": [
+  [
+   "Saudi Arabia",
+   "Yemen"
+  ]
+ ],
+ "cold": [
+  [
+   "Iran",
+   "Israel"
+  ],
+  [
+   "Iran",
+   "Saudi Arabia"
+  ]
+ ],
+ "embargo": [
+  [
+   "Iran",
+   "United States of America"
+  ]
+ ],
+ "cyber": {
+  "Iran": 20,
+  "Israel": 25
+ },
+ "treasury_mult": {
+  "Egypt": 0.7
+ },
+ "stability": {
+  "Yemen": -25,
+  "Egypt": -5
+ },
+ "events": [
+  {
+   "turn": 10,
+   "t": "Süveyş Kanalı gelirleri ciddi biçimde düştü.",
+   "fx": [
+    [
+     "stab",
+     "Egypt",
+     -4
+    ]
+   ]
+  },
+  {
+   "turn": 28,
+   "t": "Körfez'de arabuluculuk girişimi: Riyad ve Tahran temaslarını artırdı.",
+   "fx": [
+    [
+     "stab",
+     "Saudi Arabia",
+     2
+    ]
+   ]
+  }
+ ],
+ "objectives": {
+  "*": [
+   {
+    "id": "r1",
+    "type": "survive",
+    "turns": 78,
+    "text": "1,5 yıl ayakta kal"
+   },
+   {
+    "id": "r2",
+    "type": "stability",
+    "n": 55,
+    "text": "İstikrarı 55 üzerine çıkar"
+   }
+  ],
+  "Egypt": [
+   {
+    "id": "re1",
+    "type": "alliances",
+    "n": 3,
+    "text": "3 müttefik edin"
+   },
+   {
+    "id": "re2",
+    "type": "hold_choke",
+    "choke": "suez",
+    "text": "Süveyş Kanalı'nı elinde tut",
+    "required": false
+   }
+  ],
+  "Saudi Arabia": [
+   {
+    "id": "rs1",
+    "type": "cease_war",
+    "with": "Yemen",
+    "text": "Yemen ile barış yap"
+   },
+   {
+    "id": "rs2",
+    "type": "hold_choke",
+    "choke": "babelmandeb",
+    "text": "Babülmendeb'i kontrol et",
+    "required": false
+   }
+  ]
+ },
+ "deadline": 208,
+ "en": {
+  "name": "Red Sea Crisis",
+  "sub": "Yemen – Gulf – Suez",
+  "blurb": "Attacks on merchant ships are choking the Suez route. The lifeline of sea trade is the front of regional proxy wars.",
+  "intro": "Red Sea: tankers are rerouting around the Cape and insurance premiums have soared. Regional powers await a move.",
+  "objectives": {
+   "r1": "Survive 1.5 years",
+   "r2": "Raise stability above 55",
+   "re1": "Make 3 allies",
+   "re2": "Hold the Suez Canal",
+   "rs1": "Make peace with Yemen",
+   "rs2": "Control Bab-el-Mandeb"
+  },
+  "events": {
+   "0": "Suez Canal revenues have dropped sharply.",
+   "1": "A mediation attempt in the Gulf: Riyadh and Tehran increased contacts."
+  }
+ }
+}

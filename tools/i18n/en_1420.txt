@@ -1,0 +1,10 @@
+1420|War reparations
+1421|Half of the loser's treasury passes to you and its stability drops.
+1422|Disarmament
+1423|The loser's armies are cut in half.
+1424|Buffer zone
+1425|The truce lasts 78 weeks instead of 26; neither side can attack.
+1426|Peace terms: %s imposed the following on %s: %s.
+1427|reparations
+1428|disarmament
+1429|buffer zone

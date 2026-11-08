@@ -1,0 +1,34 @@
+1269|UN
+1270|United Nations
+1271|%d members   /   decided by simple majority, no veto
+1272|in %d wk
+1273|Cost %s
+1274|Ready
+1275|Recent resolutions
+1276|No resolutions yet.
+1277|Choose the target of the resolution.
+1278|Choose the war to call a ceasefire in.
+1279|Resolution passed
+1280|Resolution rejected
+1281|Resolution could not be submitted
+1282|Ceasefire resolution
+1283|Calls both warring sides to a ceasefire.
+1284|Reconstruction fund
+1285|Funds are set aside to repair the target country's damaged provinces.
+1286|Humanitarian aid
+1287|Treasury and stability support for the target country.
+1288|Sanctions resolution
+1289|The target country's income drops 25 percent for 26 weeks.
+1290|Joint action
+1291|If passed, countries that voted yes declare war on the target.
+1292|The United Nations has not been founded yet.
+1293|You must wait %d weeks before submitting this resolution again.
+1294|Insufficient funds: the resolution costs %s.
+1295|There is no valid target.
+1296|UN: the %s resolution was rejected (%d for, %d against).
+1297|UN: the %s resolution passed (%d for, %d against). %s
+1298|A ceasefire between %s and %s has begun.
+1299|Fund transferred for %s: %s; provinces are being repaired.
+1300|Aid sent for %s: %s.
+1301|A 26-week sanctions regime on %s has begun.
+1302|%d countries declared war. Target: %s.

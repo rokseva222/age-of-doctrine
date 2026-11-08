@@ -1,0 +1,9 @@
+1369|You have no nuclear weapons.
+1370|The nuclear arsenal is not ready (%d weeks).
+1371|You must be at war with the target to use nuclear weapons.
+1372|NUCLEAR STRIKE! %s used a nuclear weapon on %s; the world is in shock and sanctions are coming.
+1373|Nuclear strike
+1374|A nuclear weapon will be used on %s. 80%% of the defending army is destroyed, but your stability drops, 26 weeks of sanctions follow and the target's allies may declare war on you. Are you sure?
+1375|Launch
+1376|%d - %d   %dw
+1377|Truce

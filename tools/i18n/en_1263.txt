@@ -1,0 +1,5 @@
+1263|Head of State
+1264|Leader of the Nation
+1265|Dictator
+1266|Chairman of the Council of People's Commissars
+1267|Chancellor

@@ -1,0 +1,215 @@
+{
+ "id": "alt_schlieffen",
+ "name": "Schlieffen Planı Tutuyor",
+ "sub": "Ağustos 1914 – Alternatif",
+ "base": "ww1",
+ "family": "ww1",
+ "pack": "alt",
+ "icon": "helmet_ww1",
+ "mood": "war",
+ "start_year": 1914,
+ "start_doy": 212,
+ "blurb": "Marne'da sonuç değişti: Alman kuvvetleri Paris çevresine ulaştı. Fransa çöküşün eşiğinde, Britanya Seferî Kuvvetleri denize sıkıştı; savaş kısa mı sürecek, yoksa Rusya'ya mı kayacak?",
+ "suggest": [
+  "France",
+  "Germany",
+  "United Kingdom",
+  "Russia",
+  "Belgium"
+ ],
+ "look": {
+  "shadow": [
+   0.09,
+   0.07,
+   0.05
+  ],
+  "mid": [
+   0.56,
+   0.45,
+   0.29
+  ],
+  "light": [
+   0.96,
+   0.9,
+   0.74
+  ],
+  "amount": 0.38,
+  "vignette": 0.18,
+  "grain": 0.012
+ },
+ "setup": {
+  "blocs": [
+   {
+    "name": "İtilaf Devletleri",
+    "members": [
+     "United Kingdom",
+     "France",
+     "Russia",
+     "Serbia",
+     "Belgium",
+     "Japan",
+     "Canada",
+     "Australia",
+     "New Zealand",
+     "South Africa"
+    ],
+    "emblem": {
+     "shape": 5,
+     "inner": 1,
+     "symbol": "shield",
+     "c1": "2f4f9a",
+     "c2": "ece6d6",
+     "c3": "2f4f9a"
+    }
+   },
+   {
+    "name": "Merkezi Güçler",
+    "members": [
+     "Germany",
+     "Austria",
+     "Turkey",
+     "Bulgaria"
+    ],
+    "emblem": {
+     "shape": 4,
+     "inner": 1,
+     "symbol": "crown",
+     "c1": "6d6f78",
+     "c2": "e3a92b",
+     "c3": "e3a92b"
+    }
+   }
+  ],
+  "wars": [
+   [
+    "Austria",
+    "Serbia"
+   ],
+   [
+    "Germany",
+    "Russia"
+   ],
+   [
+    "Germany",
+    "France"
+   ],
+   [
+    "Germany",
+    "Belgium"
+   ],
+   [
+    "United Kingdom",
+    "Germany"
+   ],
+   [
+    "Austria",
+    "Russia"
+   ],
+   [
+    "Japan",
+    "Germany"
+   ]
+  ],
+  "truce": [],
+  "intro": "Eylül 1914: Marne'daki karşı taarruz başarısız oldu. Alman kolları Paris'in kapılarında; hükûmet kaçıyor.",
+  "troops_mult": {
+   "Germany": 1.25,
+   "France": 0.75,
+   "Belgium": 0.6
+  },
+  "stability": {
+   "France": -18,
+   "Belgium": -10,
+   "Germany": 6
+  }
+ },
+ "inherit_until": [
+  9999,
+  1
+ ],
+ "inherit_exclude": [
+  "Verdun"
+ ],
+ "events": [
+  {
+   "y": 1914,
+   "m": 10,
+   "t": "Paris kuşatma altında: Fransız hükûmeti Bordeaux'dan müzakere sinyalleri veriyor.",
+   "fx": [
+    [
+     "stab",
+     "France",
+     -8
+    ]
+   ]
+  },
+  {
+   "y": 1915,
+   "m": 2,
+   "t": "Britanya Seferî Kuvvetleri Kanal limanlarından tahliye ediliyor.",
+   "fx": [
+    [
+     "stab",
+     "United Kingdom",
+     -4
+    ]
+   ]
+  }
+ ],
+ "objectives": {
+  "*": [
+   {
+    "id": "o1",
+    "type": "survive",
+    "text": "Üç yıl ayakta kal",
+    "turns": 156
+   }
+  ],
+  "France": [
+   {
+    "id": "f1",
+    "type": "own_capital",
+    "text": "Paris'i elinde tut",
+    "country": "France"
+   },
+   {
+    "id": "f2",
+    "type": "cease_war",
+    "text": "Almanya ile barış yap",
+    "with": "Germany"
+   }
+  ],
+  "Germany": [
+   {
+    "id": "g1",
+    "type": "own_capital",
+    "text": "Paris'i ele geçir",
+    "country": "France"
+   },
+   {
+    "id": "g2",
+    "type": "cease_war",
+    "text": "Rusya ile barış yap",
+    "with": "Russia",
+    "required": false
+   }
+  ]
+ },
+ "en": {
+  "name": "The Schlieffen Plan Works",
+  "sub": "August 1914 – Alternate",
+  "blurb": "The outcome at the Marne changed: German forces reached the outskirts of Paris. France is on the brink; the British Expeditionary Force is pinned to the sea.",
+  "setup_intro": "September 1914: the counter-offensive on the Marne failed. German columns stand at the gates of Paris; the government is fleeing.",
+  "events": {
+   "0": "Paris is besieged: the French government signals openness to talks from Bordeaux.",
+   "1": "The British Expeditionary Force is being evacuated from the Channel ports."
+  },
+  "objectives": {
+   "o1": "Survive three years",
+   "f1": "Hold Paris",
+   "f2": "Make peace with Germany",
+   "g1": "Take Paris",
+   "g2": "Make peace with Russia"
+  }
+ }
+}

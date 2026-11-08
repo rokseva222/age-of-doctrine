@@ -1,0 +1,155 @@
+{
+ "id": "kuraklik",
+ "kind": "fiction",
+ "name": "Büyük Kuraklık",
+ "sub": "Kurgusal: su krizi",
+ "blurb": "Kurgusal bir senaryo: üst üste gelen kuraklıklar nehirleri kurutuyor, tarım çöküyor. Su paylaşım anlaşmaları çatırdıyor; ülkeler barajları, kaynakları ve nehir yataklarını savunuyor.",
+ "intro": "Büyük Kuraklık: üç yıldır yağış yok. Nehirler çekiliyor, tahıl fiyatları uçuyor.",
+ "suggest": [
+  "Turkey",
+  "Egypt",
+  "India",
+  "Iraq",
+  "Ethiopia",
+  "Pakistan"
+ ],
+ "cold": [
+  [
+   "Egypt",
+   "Ethiopia"
+  ],
+  [
+   "Turkey",
+   "Iraq"
+  ],
+  [
+   "India",
+   "Pakistan"
+  ],
+  [
+   "Iran",
+   "Afghanistan"
+  ]
+ ],
+ "embargo": [
+  [
+   "Egypt",
+   "Ethiopia"
+  ]
+ ],
+ "treasury_mult": {
+  "Egypt": 0.7,
+  "Iraq": 0.6,
+  "Pakistan": 0.7,
+  "India": 0.85
+ },
+ "stability": {
+  "Egypt": -10,
+  "Iraq": -15,
+  "Pakistan": -12,
+  "Sudan": -15,
+  "Syria": -15,
+  "Iran": -8
+ },
+ "events": [
+  {
+   "turn": 6,
+   "t": "Tahıl fiyatları rekor kırdı; birçok ülkede ekmek isyanları başladı.",
+   "fx": [
+    [
+     "stab",
+     "Egypt",
+     -5
+    ],
+    [
+     "stab",
+     "Iraq",
+     -4
+    ],
+    [
+     "stab",
+     "Pakistan",
+     -4
+    ]
+   ]
+  },
+  {
+   "turn": 18,
+   "t": "Dicle ve Fırat'ın debisi yarıya indi; Bağdat Ankara'dan su istedi.",
+   "fx": [
+    [
+     "stab",
+     "Iraq",
+     -4
+    ]
+   ]
+  },
+  {
+   "turn": 34,
+   "t": "Birleşmiş Milletler, küresel su yönetimi için acil toplantı çağırdı.",
+   "fx": []
+  },
+  {
+   "turn": 50,
+   "t": "Yağışlar kısmen geri döndü; krizin en kötüsü geride kalmış olabilir.",
+   "fx": [
+    [
+     "stab",
+     "Egypt",
+     3
+    ],
+    [
+     "stab",
+     "Iraq",
+     3
+    ],
+    [
+     "stab",
+     "Pakistan",
+     3
+    ]
+   ]
+  }
+ ],
+ "objectives": {
+  "*": [
+   {
+    "id": "d1",
+    "type": "survive",
+    "turns": 104,
+    "text": "İki yıl ayakta kal"
+   },
+   {
+    "id": "d2",
+    "type": "stability",
+    "n": 55,
+    "text": "İstikrarı 55 üzerine çıkar"
+   },
+   {
+    "id": "d3",
+    "type": "no_war",
+    "turns": 52,
+    "text": "Bir yıl savaşsız kal",
+    "required": false
+   }
+  ]
+ },
+ "deadline": 208,
+ "en": {
+  "name": "The Great Drought",
+  "sub": "Fiction: water crisis",
+  "blurb": "A fictional scenario: successive droughts dry up the rivers and farming collapses. Water-sharing deals are cracking; countries defend dams, springs and riverbeds.",
+  "intro": "The Great Drought: no rain for three years. Rivers are receding and grain prices are soaring.",
+  "objectives": {
+   "d1": "Survive two years",
+   "d2": "Raise stability above 55",
+   "d3": "Stay out of war for a year"
+  },
+  "events": {
+   "0": "Grain prices hit record highs; bread riots began in many countries.",
+   "1": "The flow of the Tigris and Euphrates halved; Baghdad asked Ankara for water.",
+   "2": "The United Nations called an emergency meeting on global water governance.",
+   "3": "Rains partly returned; the worst of the crisis may be behind us."
+  }
+ }
+}

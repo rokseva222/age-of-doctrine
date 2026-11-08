@@ -1,0 +1,5 @@
+1263|Staatsoberhaupt
+1264|Führer der Nation
+1265|Diktator
+1266|Vorsitzender der Volkskommissare
+1267|Kanzler

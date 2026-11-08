@@ -1,0 +1,220 @@
+260|The domestic pharmaceutical plants produced their first products.
+261|Encourage the private sector
+262|Entrepreneurs got moving.
+263|Keep importing
+264|The current supply arrangement was kept.
+265|Casualties at the front are rising. Field hospitals are insufficient.
+266|Set up field hospitals
+267|The wounded were treated faster and returned to the front.
+268|Use civilian hospitals
+269|City hospitals took the burden of the front.
+270|No resources
+271|Casualty losses rose.
+272|There is a famine warning. Food stocks are at a critical level.
+273|Emergency food imports
+274|Ships carried wheat from port to port.
+275|Introduce rationing
+276|A ration system was introduced; the queues got longer.
+277|Leave it to the market
+278|Prices soared, anger grew.
+279|We received reliable information that a group of officers is planning a coup.
+280|Arrest them now
+281|The operation was carried out and the plans were foiled. Trust inside the army was damaged.
+282|Keep watching
+283|Surveillance was increased.
+284|The coup happened: troops surrounded the capital and the government changed hands.
+285|Reward the officers
+286|Loyalty was bought with promotions and raises.
+287|We detected a major cyber attack aimed at the country's energy and banking networks.
+288|Counter-attack
+289|The attacking servers were taken down; international tension rose.
+290|Defend only
+291|Defense networks were strengthened.
+292|There were a few days of service outage.
+293|A colonel from the {nb} army is asking for asylum; he has brought important information.
+294|The colonel shared his information; the neighboring government accuses you.
+295|The colonel was sent back at the border.
+296|It became clear that our spy network inside {nb} is about to be exposed.
+297|Pull the network out
+298|The agents quietly withdrew.
+299|Continue
+300|The network was caught but some secrets were smuggled out; relations became strained.
+301|We are about to capture the plans of {en}, but the price is high.
+302|Start the operation
+303|The plans were captured; the commanders updated the front lines.
+304|Just listen
+305|Secret communications were monitored.
+306|Cancel
+307|The operation was cancelled.
+308|Sir, a trade and visa agreement with {nb} is on the table. If we sign, both countries win, but domestic industry will complain.
+309|Sign the agreement
+310|The agreement was signed; trade volume grew, domestic producers grumbled.
+311|Harden the terms
+312|Negotiations dragged on; a small concession was all we got.
+313|The agreement was rejected; domestic opinion is pleased, the neighbor is cold.
+314|Our ambassador is in the middle of a scandal in {nb}; the local press is after us. Shall we recall him?
+315|Recall
+316|The ambassador was recalled; relations briefly cooled.
+317|Defend him
+318|The ambassador was kept in post; the opposition criticized the government.
+319|Replace quietly
+320|A new ambassador was appointed; the incident was forgotten.
+321|The embassy has obtained a recording of a secret meeting of the {nb} government. What do we do?
+322|Make it public
+323|The recording leaked to the press; domestic support grew, the neighbor is furious.
+324|Keep it as leverage
+325|The recording waits in the vault; your hand is stronger in negotiations.
+326|Hand it back to the other side
+327|The recording was returned; economic concessions came in exchange.
+328|The leaders of {nb} want to hold a summit; our ambassador has completed the preparations. Shall we host?
+329|Host it
+330|The summit was magnificent; the country's prestige rose.
+331|Just attend
+332|You attended the summit; it was an ordinary meeting.
+333|Don't attend
+334|The invitation was declined; the press read it as arrogance.
+335|A bright-eyed man at the port: 'I have three crates that are unregistered at customs, sir. Even I don't know what is inside. Which one would you like?'
+336|Small crate
+337|Gold bullion came out of the crate! The trader had already vanished.
+338|The crate was full of sand. The trader walked away waving.
+339|Medium crate
+340|There was an old laboratory notebook in the crate; the scientists celebrated.
+341|The press heard about the counterfeit money from the crate. We were disgraced.
+342|Large crate
+343|A big crate full of prototypes and blueprints! The factories rejoiced.
+344|What came out of the crate was the neighbor's lost property. A diplomatic problem arose.
+345|Send him away
+346|The trader shrugged and went on to the next port.
+347|The trader in a low voice: 'I have a cheap batch of weapons, the record is a bit dirty, but the price is tempting...'
+348|Buy it all
+349|The weapons came out like new; the units got stronger.
+350|The barrels jammed. The officers went mad.
+351|Buy half
+352|Half a batch was delivered without problems.
+353|The batch turned out to be missing; the trader said 'well, these things happen'.
+354|Check his record
+355|The trader's network was unraveled; our intelligence learned a lot.
+356|The trader covered his tracks.
+357|The trader holds out a small box: 'Legendary tea, sir. Dried three years in the mountains. Hand it out to the people and you will be loved.'
+358|Hand it out to the people
+359|The tea queue filled the city square. Thanks poured in.
+360|Drink it yourself
+361|The tea really was lovely. Nobody knows that.
+362|The trader sold the tea to someone else.
+363|The World Cup finals have begun and the {c} national team made it through the groups! Shall we promise the team a bonus?
+364|Giant bonus
+365|{c} ARE WORLD CHAMPIONS! The streets are a festival.
+366|We were knocked out on penalties. The streets are silent.
+367|{c} won the World Cup! The country is celebrating.
+368|Plain bonus
+369|A miracle! The team lifted the cup.
+370|We went out in the quarter-final; the coach resigned.
+371|{c} won the World Cup in a surprise!
+372|No bonus
+373|A cup for nothing! The players became champions without pay.
+374|The players sulked and we were out in the first round.
+375|{c}, World Cup champions without a bonus!
+376|The Olympic Games have started! Our athletes are chasing medals. How much shall we invest in the camp?
+377|A rain of medals! The newspapers made headlines.
+378|We took a few bronzes; at least participation was enough.
+379|{c} finished the Olympics at the top of the medal table!
+380|Our athlete won gold, the people wept.
+381|No medals but the people are still proud.
+382|No budget
+383|The athletes went on their own means. Nobody said anything.
+384|According to a reliable source of ours, the officers in {nb} are fed up with the government. A small spark is enough. What do we do?
+385|Support quietly
+386|The officers moved: the government in {nb} was shaken. There are no fingerprints of ours.
+387|The operation leaked; the {nb} administration is furious at us.
+388|Share the information
+389|The {nb} administration received the information with gratitude; tension dropped.
+390|Listen and forget
+391|The file was put in the archive.
+392|A journalist holds embarrassing documents about the leader of {nb}. He wants to sell them to us.
+393|Buy and publish
+394|The documents spread; the {nb} government is wobbling.
+395|Keep them (blackmail leverage)
+396|The documents are in the vault. {nb} is a bit more polite now.
+397|The journalist found another buyer.
+398|Election day has arrived! The people are going to the polls. How do we run the campaign?
+399|Giant campaign
+400|Work on the ground
+401|Quiet campaign
+402|Postpone the election
+403|The election was postponed on 'exceptional circumstances'. The press is angry.
+404|Postponing the election put the people on the streets. Your government fell.
+405|Novice
+406|Veteran
+407|Master
+408|Army strength does not grow
+409|Army strength grows slowly
+410|Army strength grows fast
+411|Neighbors do not change
+412|Neighbors soften slowly
+413|Neighbors soften noticeably
+414|Stability erodes slightly
+415|Stability rises slightly
+416|Stability rises steadily
+417|A share leaks from income every week
+418|The treasury grows slightly
+419|The treasury profits every week
+420|Unrest is left to itself
+421|Unrest drops occasionally
+422|Unrest drops often
+423|Cyber defense is static
+424|Cyber maturity rises slowly
+425|Cyber maturity rises fast
+426|His brother-in-law is a former minister. His résumé is one page, in large print.
+427|At every meeting he says 'I've seen this before'; he hasn't.
+428|He asks for a low salary; there must be a reason.
+429|From the party youth wing. Energetic, eager, a bit dangerous too.
+430|Nobody knows him, so nobody objects.
+431|Among his references is a hometown association.
+432|He sleeps at lunch but is loyal to the budget (for now).
+433|A twenty-year bureaucrat. No surprises, no scandals.
+434|Calm, orderly; never loses his files.
+435|Even the opposition calls him 'serious'.
+436|The person in every cabinet whom nobody remembers.
+437|A competent, unassuming technician.
+438|Middle of the road: annoys nobody, impresses nobody.
+439|An award-winning technocrat; his diplomas weigh more than his wallet.
+440|A legend experienced in war and peace; his salary is legendary too.
+441|He has advised in three countries, and all of them want him back.
+442|The world press calls him 'the brain of the cabinet'.
+443|Works only with the best; that comes with a bill.
+444|One of the rare names loved by both the people and the army.
+445|%s: %s took office. (%s)
+446|%s %s fell from office over corruption allegations. Whom shall we appoint in their place?
+447|%s %s resigned. Whom shall we appoint in their place?
+448|%s %s was dismissed. Whom shall we appoint in their place?
+449|A new government is being formed: %s %s is leaving the post. Whom shall we appoint in their place?
+450|%s %s completed the term of office. Whom shall we appoint in their place?
+451|SCANDAL: %s %s was rocked by embezzlement allegations; %s vanished from the treasury.
+452|%s %s resigned.
+453|neighboring country
+454|capital
+455|%s%d Stability
+456|%s%d Cyber
+457|%s%d Industry
+458|%s%d Logistics
+459|%s%.1f Technology
+460|%s%s Troops
+461|Unrest
+462|Neighbors hardened
+463|Neighbors softened
+464|%s shaken
+465|+Development
+466|The ballots are open: you won the election with %%%d of the vote! The people are with you.
+467|In the %s elections the government renewed its mandate with %%%d of the vote.
+468|Election: %%%d
+469|+4 Stability
+470|The ballots are open: you got only %%%d of the vote. The opposition takes power; the new leader is %s. Part of the cabinet will change.
+471|The opposition won the election in %s; new leader %s took office.
+472|−6 Stability
+473|Cabinet meeting
+474|Cabinet member
+475|Decision carried out
+476|Moment of fate
+477|Luck smiled
+478|It didn't work
+479|OK

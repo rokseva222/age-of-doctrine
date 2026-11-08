@@ -1,0 +1,4 @@
+1321|Sea
+1322|Amphibious Landing
+1323|Landing from the sea: attack −15 percent, defense +10 percent. Transport capacity is limited by your navy.
+1324|Amphibious landing: transport capacity %s troops

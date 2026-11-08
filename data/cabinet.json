@@ -1,0 +1,1108 @@
+{
+ "_source": "Wikipedia ve resmî hükümet siteleri (Kasım 2026); yalnızca metin. Eksik görevlerde isim kültürüne göre rastgele isim üretilir.",
+ "ministers": {
+  "United States of America": {
+   "def": "Pete Hegseth",
+   "for": "Marco Rubio",
+   "fin": "Scott Bessent",
+   "int": "Markwayne Mullin",
+   "hlt": "Robert F. Kennedy Jr.",
+   "spy": "John Ratcliffe"
+  },
+  "China": {
+   "def": "Dong Jun",
+   "for": "Wang Yi",
+   "fin": "Lan Fo'an",
+   "int": "Lu Zhiyuan",
+   "hlt": "Lei Haichao",
+   "spy": "Chen Yixin"
+  },
+  "Russia": {
+   "def": "Andrey Belousov",
+   "for": "Sergey Lavrov",
+   "fin": "Anton Siluanov",
+   "int": "Vladimir Kolokoltsev",
+   "hlt": "Mikhail Murashko",
+   "spy": "Sergey Naryshkin"
+  },
+  "Turkey": {
+   "def": "Yaşar Güler",
+   "for": "Hakan Fidan",
+   "fin": "Mehmet Şimşek",
+   "int": "Ali Yerlikaya",
+   "hlt": "Kemal Memişoğlu",
+   "spy": "İbrahim Kalın"
+  },
+  "India": {
+   "def": "Rajnath Singh",
+   "for": "S. Jaishankar",
+   "fin": "Nirmala Sitharaman|f",
+   "int": "Amit Shah",
+   "spy": "Parag Jain",
+   "hlt": "J. P. Nadda"
+  },
+  "Japan": {
+   "def": "Shinjirō Koizumi",
+   "for": "Toshimitsu Motegi",
+   "fin": "Satsuki Katayama|f",
+   "int": "Takeaki Matsumoto",
+   "hlt": "Kenichiro Ueno",
+   "spy": "Kazuya Hara"
+  },
+  "Germany": {
+   "def": "Boris Pistorius",
+   "for": "Johann Wadephul",
+   "fin": "Lars Klingbeil",
+   "int": "Alexander Dobrindt",
+   "hlt": "Carsten Linnemann",
+   "spy": "Martin Jäger"
+  },
+  "United Kingdom": {
+   "def": "Dan Jarvis",
+   "for": "Ed Miliband",
+   "fin": "John Healey",
+   "int": "Shabana Mahmood|f",
+   "hlt": "Yvette Cooper|f",
+   "spy": "Blaise Metreweli|f"
+  },
+  "France": {
+   "def": "Catherine Vautrin|f",
+   "for": "Jean-Noël Barrot",
+   "fin": "Roland Lescure",
+   "int": "Laurent Nuñez",
+   "hlt": "Stéphanie Rist|f",
+   "spy": "Nicolas Lerner"
+  },
+  "Italy": {
+   "def": "Guido Crosetto",
+   "for": "Antonio Tajani",
+   "fin": "Giancarlo Giorgetti",
+   "int": "Matteo Piantedosi",
+   "hlt": "Orazio Schillaci"
+  },
+  "Brazil": {
+   "def": "José Múcio",
+   "for": "Mauro Vieira",
+   "fin": "Dario Durigan",
+   "hlt": "Alexandre Padilha"
+  },
+  "Iran": {
+   "for": "Abbas Araghchi",
+   "fin": "Rahmatollah Akrami",
+   "int": "Eskandar Momeni",
+   "hlt": "Mohammad-Reza Zafarghandi"
+  },
+  "Saudi Arabia": {
+   "def": "Khalid bin Salman",
+   "for": "Faisal bin Farhan",
+   "fin": "Mohammed Al-Jadaan",
+   "int": "Abdulaziz bin Saud",
+   "hlt": "Fahad Al-Jalajel",
+   "spy": "Khalid bin Ali Al Humaidan"
+  },
+  "Israel": {
+   "def": "Israel Katz",
+   "for": "Gideon Sa'ar",
+   "fin": "Bezalel Smotrich",
+   "int": "Yariv Levin",
+   "hlt": "Haim Katz",
+   "spy": "Roman Gofman"
+  },
+  "Egypt": {
+   "def": "Abdel Mageed Saqr",
+   "for": "Badr Abdelatty",
+   "fin": "Ahmed Kouchouk",
+   "int": "Mahmoud Tawfik",
+   "hlt": "Khaled Abdel Ghaffar"
+  },
+  "South Korea": {
+   "def": "Ahn Gyu-back",
+   "for": "Cho Hyun",
+   "fin": "Koo Yun-cheol",
+   "int": "Yun Ho-jung",
+   "hlt": "Jeong Eun-kyeong|f",
+   "spy": "Lee Jong-seok"
+  },
+  "Canada": {
+   "def": "David McGuinty",
+   "for": "Anita Anand|f",
+   "fin": "François-Philippe Champagne",
+   "int": "Gary Anandasangaree",
+   "hlt": "Marjorie Michel|f",
+   "spy": "Daniel Rogers"
+  },
+  "Australia": {
+   "def": "Richard Marles",
+   "for": "Penny Wong|f",
+   "fin": "Jim Chalmers",
+   "int": "Tony Burke",
+   "hlt": "Mark Butler",
+   "spy": "Mike Burgess"
+  },
+  "Ukraine": {
+   "def": "Mykhailo Fedorov",
+   "for": "Andrii Sybiha",
+   "fin": "Serhiy Marchenko",
+   "int": "Ihor Klymenko",
+   "hlt": "Viktor Liashko",
+   "spy": "Oleksandr Poklad"
+  },
+  "Poland": {
+   "def": "Władysław Kosiniak-Kamysz",
+   "for": "Radosław Sikorski",
+   "fin": "Andrzej Domański",
+   "int": "Tomasz Siemoniak",
+   "hlt": "Jolanta Sobierańska-Grenda|f"
+  },
+  "Spain": {
+   "def": "Margarita Robles|f",
+   "for": "José Manuel Albares",
+   "fin": "Arcadi España",
+   "int": "Fernando Grande-Marlaska",
+   "hlt": "Mónica García|f"
+  },
+  "Pakistan": {
+   "def": "Khawaja Asif",
+   "for": "Ishaq Dar",
+   "fin": "Muhammad Aurangzeb",
+   "int": "Mohsin Naqvi",
+   "hlt": "Mustafa Kamal",
+   "spy": "Asim Malik"
+  },
+  "Indonesia": {
+   "def": "Sjafrie Sjamsoeddin",
+   "for": "Sugiono",
+   "fin": "Suahasil Nazara",
+   "int": "Tito Karnavian",
+   "hlt": "Budi Gunadi Sadikin",
+   "spy": "Herindra"
+  },
+  "Mexico": {
+   "def": "Ricardo Trevilla Trejo",
+   "for": "Roberto Velasco Álvarez",
+   "fin": "Edgar Amador Zamora",
+   "int": "Rosa Icela Rodríguez|f",
+   "spy": "Francisco Almazán Barocio",
+   "hlt": "David Kershenobich"
+  },
+  "Argentina": {
+   "def": "Carlos Presti",
+   "for": "Pablo Quirno",
+   "fin": "Luis Caputo",
+   "int": "Diego Santilli",
+   "hlt": "Mario Lugones",
+   "spy": "Cristian Auguadra"
+  },
+  "Greece": {
+   "def": "Nikos Dendias",
+   "for": "Giorgos Gerapetritis",
+   "fin": "Kyriakos Pierrakakis",
+   "int": "Thodoris Livanios",
+   "hlt": "Adonis Georgiadis",
+   "spy": "Themistoklis Demiris"
+  },
+  "Syria": {
+   "def": "Murhaf Abu Qasra",
+   "for": "Asaad al-Shaibani",
+   "fin": "Mohammed Yisr Barnieh",
+   "int": "Anas Khattab",
+   "hlt": "Musab al-Ali",
+   "spy": "Abdulqader al-Tahhan"
+  },
+  "United Arab Emirates": {
+   "def": "Hamdan bin Mohammed",
+   "for": "Abdullah bin Zayed",
+   "fin": "Maktoum bin Mohammed",
+   "int": "Saif bin Zayed",
+   "hlt": "Ahmed Al Sayegh"
+  },
+  "South Africa": {
+   "def": "Angie Motshekga|f",
+   "for": "Ronald Lamola",
+   "fin": "Enoch Godongwana",
+   "int": "Leon Schreiber",
+   "hlt": "Aaron Motsoaledi"
+  },
+  "Nigeria": {
+   "def": "Christopher Musa",
+   "for": "Yusuf Tuggar",
+   "fin": "Wale Edun",
+   "int": "Olubunmi Tunji-Ojo",
+   "spy": "Adeola Ajayi",
+   "hlt": "Muhammad Ali Pate"
+  },
+  "Taiwan": {
+   "def": "Wellington Koo",
+   "for": "Lin Chia-lung",
+   "fin": "Chuang Tsui-yun|f",
+   "int": "Liu Shyh-fang|f",
+   "hlt": "Shih Chung-liang",
+   "spy": "Tsai Ming-yen"
+  },
+  "North Korea": {
+   "def": "No Kwang-chol",
+   "for": "Choe Son-hui|f",
+   "fin": "Ri Myong Guk"
+  },
+  "Vietnam": {
+   "def": "Phan Văn Giang",
+   "for": "Lê Hoài Trung",
+   "fin": "Ngô Văn Tuấn",
+   "int": "Phạm Thị Thanh Trà|f",
+   "hlt": "Dao Hong Lan|f",
+   "spy": "Luong Tam Quang"
+  },
+  "Netherlands": {
+   "def": "Dilan Yeşilgöz|f",
+   "for": "Tom Berendsen",
+   "fin": "Eelco Heinen",
+   "int": "Pieter Heerma",
+   "hlt": "Sophie Hermans|f",
+   "spy": "Simone Smit|f"
+  },
+  "Sweden": {
+   "def": "Pål Jonson",
+   "for": "Maria Malmer Stenergard|f",
+   "fin": "Elisabeth Svantesson|f",
+   "int": "Gunnar Strömmer",
+   "hlt": "Elisabet Lann|f",
+   "spy": "Charlotte von Essen|f"
+  },
+  "Iraq": {
+   "for": "Fuad Hussein",
+   "fin": "Taif Sami Mohammed",
+   "int": "Abdul Amir al-Shammari",
+   "hlt": "Abdulhussein Aziz",
+   "spy": "Ali al-Zaidi"
+  },
+  "Algeria": {
+   "for": "Ahmed Attaf",
+   "fin": "Abdelkrim Bouzred",
+   "int": "Saïd Sayoud",
+   "hlt": "Mohamed Seddik Aït Messaoudène"
+  },
+  "Ethiopia": {
+   "def": "Aisha Mohammed|f",
+   "for": "Gedion Timothewos",
+   "fin": "Ahmed Shide",
+   "hlt": "Mekdes Daba|f",
+   "spy": "Redwan Hussien"
+  },
+  "Thailand": {
+   "def": "Natthaphon Narkphanit",
+   "for": "Sihasak Phuangketkeow",
+   "fin": "Ekniti Nitithanprapas",
+   "hlt": "Pattana Promphat",
+   "spy": "Kitiphon Ruensamrit"
+  },
+  "Philippines": {
+   "def": "Gilbert Teodoro",
+   "for": "Tess Lazaro|f",
+   "fin": "Frederick Go",
+   "int": "Jonvic Remulla",
+   "hlt": "Jose Brix Pujalte Jr."
+  },
+  "Dem. Rep. Congo": {
+   "def": "Guy Kabombo Muadiamvita",
+   "for": "Thérèse Kayikwamba Wagner|f",
+   "fin": "Doudou Fwamba Likunde",
+   "int": "Jacquemain Shabani",
+   "hlt": "Samuel Roger Kamba"
+  },
+  "Tanzania": {
+   "def": "Rhimo Nyansaho",
+   "for": "Mahmoud Thabit Kombo",
+   "fin": "Khamis Mussa Omar",
+   "int": "Boniface Simbachawene",
+   "hlt": "Mohamed Mchengerwa"
+  },
+  "Kenya": {
+   "def": "Soipan Tuya|f",
+   "for": "Musalia Mudavadi",
+   "fin": "John Mbadi",
+   "int": "Kipchumba Murkomen",
+   "hlt": "Aden Duale"
+  },
+  "Uganda": {
+   "def": "Kiryowa Kiwanuka",
+   "for": "Adonia Ayebare",
+   "fin": "Henry Musasizi",
+   "int": "Ephraim Kamuntu",
+   "hlt": "Chris Baryomunsi"
+  },
+  "Sudan": {
+   "def": "Hassan Daoud Kayan",
+   "for": "Mohieldin Salim Ahmed Ibrahim",
+   "fin": "Gibril Ibrahim",
+   "int": "Babiker Samra Mustafa",
+   "hlt": "Haitham Ibrahim"
+  },
+  "S. Sudan": {
+   "def": "Chol Thon Balok",
+   "for": "James Pitia Morgan",
+   "fin": "Kuol Daniel Ayulo",
+   "int": "Aleu Ayieny Aleu",
+   "hlt": "Luke Thompson Thoan"
+  },
+  "Angola": {
+   "def": "Lúcio Amaral",
+   "for": "Téte António",
+   "fin": "Vera Daves de Sousa|f",
+   "int": "Eugénio Laborinho",
+   "hlt": "Sílvia Lutucuta|f"
+  },
+  "Mozambique": {
+   "def": "Cristóvão Chume",
+   "for": "Maria Manuela Lucas|f",
+   "fin": "Carla Louveira|f",
+   "int": "Paulo Chachine",
+   "hlt": "Ussene Isse"
+  },
+  "Madagascar": {
+   "def": "Maminirina Ely Razafitombo",
+   "for": "Alice N'Diaye|f",
+   "fin": "Herinjatovo Aimé Ramiarison",
+   "int": "Hanitra Velonjara Tiaray Rakotonandrasana|f",
+   "hlt": "Monira Managna|f"
+  },
+  "Malawi": {
+   "def": "Feston Kaupa",
+   "for": "George Chaponda",
+   "fin": "Joseph Mwanamveka",
+   "int": "Peter Mukhito",
+   "hlt": "Madalitso Baloyi|f"
+  },
+  "Zambia": {
+   "def": "Ambrose Lufuma",
+   "for": "Mulambo Haimbe",
+   "fin": "Situmbeko Musokotwane",
+   "int": "Jack Mwiimbu",
+   "hlt": "Roma Chilengi|f"
+  },
+  "Zimbabwe": {
+   "def": "Oppah Muchinguri-Kashiri|f",
+   "for": "Amon Murwira",
+   "fin": "Mthuli Ncube",
+   "int": "Kazembe Kazembe",
+   "hlt": "Douglas Mombeshora"
+  },
+  "Colombia": {
+   "def": "Jorge Eduardo Mora López",
+   "for": "Omar Bula Escobar",
+   "fin": "Miguel Gómez Martínez",
+   "int": "Rodrigo Lara Restrepo",
+   "hlt": "Ana María Vesga Gaviria|f"
+  },
+  "Peru": {
+   "def": "Rafael Belaúnde Llosa",
+   "for": "Carlos Espá",
+   "fin": "Elmer Cuba",
+   "int": "César Astudillo",
+   "hlt": "Luis Dyer"
+  },
+  "Venezuela": {
+   "def": "Gustavo González López",
+   "for": "Félix Plasencia",
+   "int": "Diosdado Cabello",
+   "hlt": "Nuramy Gutiérrez|f"
+  },
+  "Chile": {
+   "def": "Fernando Barros Tocornal",
+   "for": "Francisco Pérez Mackenna",
+   "fin": "Jorge Quiroz",
+   "int": "Claudio Alvarado",
+   "hlt": "May Chomali|f"
+  },
+  "Ecuador": {
+   "def": "Gian Carlo Loffredo",
+   "fin": "Bernardo Cordovez",
+   "int": "John Reimberg",
+   "hlt": "Juan Carlos Aveiga",
+   "for": "Roberto Kury"
+  },
+  "Guatemala": {
+   "def": "Henry Sáenz",
+   "for": "Carlos Ramiro Martínez",
+   "fin": "Débora Alvarado|f",
+   "int": "Marco Antonio Villeda",
+   "hlt": "Joaquín Barnoya"
+  },
+  "Bolivia": {
+   "def": "Ernesto Justiniano",
+   "for": "Héctor Huanca",
+   "fin": "Christian Morales",
+   "int": "Marco Antonio Oviedo",
+   "hlt": "Marcela Flores|f"
+  },
+  "Cuba": {
+   "def": "Álvaro López Miera",
+   "for": "Bruno Rodríguez Parrilla",
+   "fin": "Vladimir Regueiro Ale",
+   "int": "Lázaro Alberto Álvarez Casas",
+   "hlt": "José Ángel Portal Miranda"
+  },
+  "Haiti": {
+   "def": "Mario Andresol",
+   "for": "Raina Forbin|f",
+   "fin": "Serge Gabriel Collin",
+   "int": "Paul Antoine Bien-Aimé",
+   "hlt": "Bertrand Sinal"
+  },
+  "Dominican Rep.": {
+   "def": "Carlos Antonio Fernández Onofre",
+   "for": "Víctor Bisonó",
+   "fin": "Magín Díaz",
+   "int": "Faride Raful|f",
+   "hlt": "Víctor Atallah"
+  },
+  "Honduras": {
+   "for": "Mireya Agüero|f",
+   "fin": "Emilio Hércules",
+   "int": "Gerzón Velásquez",
+   "def": "Enrique Rodríguez Burchard"
+  },
+  "Paraguay": {
+   "def": "Óscar González",
+   "for": "Rubén Ramírez Lezcano",
+   "fin": "Carlos Fernández Valdovinos",
+   "int": "Enrique Riera",
+   "hlt": "María Teresa Barán|f"
+  },
+  "Nicaragua": {
+   "def": "Martha Ruiz Sevilla|f",
+   "for": "Valdrack Jaentschke",
+   "fin": "Iván Acosta Montalván",
+   "int": "María Amelia Coronel|f",
+   "hlt": "Martha Reyes|f"
+  },
+  "Romania": {
+   "def": "Radu Oprea",
+   "for": "Sebastian-Dănuț Neculăescu",
+   "fin": "Alexandru Nazare",
+   "int": "Marian Neacșu",
+   "hlt": "Alexandru Rogobete"
+  },
+  "Belgium": {
+   "def": "Theo Francken",
+   "for": "Maxime Prévot",
+   "fin": "Jan Jambon",
+   "int": "Bernard Quintin",
+   "hlt": "Frank Vandenbroucke"
+  },
+  "Czechia": {
+   "def": "Jaromír Zůna",
+   "for": "Petr Macinka",
+   "fin": "Alena Schillerová|f",
+   "int": "Lubomír Metnar",
+   "hlt": "Adam Vojtěch"
+  },
+  "Portugal": {
+   "def": "Nuno Melo",
+   "for": "Paulo Rangel",
+   "fin": "Joaquim Miranda Sarmento",
+   "int": "Luís Neves",
+   "hlt": "Ana Paula Martins|f"
+  },
+  "Hungary": {
+   "def": "Romulusz Ruszin-Szendi",
+   "for": "Anita Orbán|f",
+   "fin": "András Kármán",
+   "int": "Gábor Pósfai",
+   "hlt": "Zsolt Hegedűs"
+  },
+  "Belarus": {
+   "def": "Viktor Khrenin",
+   "for": "Maxim Ryzhenkov",
+   "fin": "Yury Seliverstov",
+   "int": "Ivan Kubrakov",
+   "hlt": "Alexander Khodzhayev"
+  },
+  "Austria": {
+   "def": "Klaudia Tanner|f",
+   "for": "Beate Meinl-Reisinger|f",
+   "fin": "Markus Marterbauer",
+   "int": "Gerhard Karner",
+   "hlt": "Korinna Schumann|f"
+  },
+  "Switzerland": {
+   "def": "Martin Pfister",
+   "for": "Ignazio Cassis",
+   "fin": "Karin Keller-Sutter|f",
+   "int": "Elisabeth Baume-Schneider|f",
+   "hlt": "Elisabeth Baume-Schneider|f"
+  },
+  "Bulgaria": {
+   "def": "Dimitar Stoyanov",
+   "for": "Velislava Petrova-Chamova|f",
+   "fin": "Galab Donev",
+   "int": "Ivan Demerdzhiev",
+   "hlt": "Katya Ivkova|f"
+  },
+  "Serbia": {
+   "def": "Bratislav Gašić",
+   "for": "Marko Đurić",
+   "fin": "Siniša Mali",
+   "int": "Ivica Dačić",
+   "hlt": "Zlatibor Lončar"
+  },
+  "Denmark": {
+   "def": "Jeppe Bruus",
+   "for": "Lars Løkke Rasmussen",
+   "fin": "Peter Hummelgaard",
+   "int": "Pia Olsen Dyhr|f",
+   "hlt": "Ida Auken|f"
+  },
+  "Finland": {
+   "def": "Antti Häkkänen",
+   "for": "Elina Valtonen|f",
+   "fin": "Riikka Purra|f",
+   "int": "Mari Rantanen|f",
+   "hlt": "Wille Rydman"
+  },
+  "Slovakia": {
+   "def": "Robert Kaliňák",
+   "for": "Juraj Blanár",
+   "fin": "Ladislav Kamenický",
+   "int": "Matúš Šutaj Eštok",
+   "hlt": "Zuzana Dolinková|f"
+  },
+  "Norway": {
+   "def": "Tore O. Sandvik",
+   "for": "Espen Barth Eide",
+   "fin": "Jens Stoltenberg",
+   "int": "Astri Aas-Hansen|f",
+   "hlt": "Jan Christian Vestre"
+  },
+  "Ireland": {
+   "def": "Helen McEntee|f",
+   "for": "Helen McEntee|f",
+   "fin": "Simon Harris",
+   "int": "Jim O'Callaghan",
+   "hlt": "Jennifer Carroll MacNeill|f"
+  },
+  "Croatia": {
+   "def": "Ivan Anušić",
+   "for": "Gordan Grlić Radman",
+   "fin": "Tomislav Ćorić",
+   "int": "Davor Božinović",
+   "hlt": "Irena Hrstić|f"
+  },
+  "Bosnia and Herz.": {
+   "def": "Zukan Helez",
+   "for": "Elmedin Konaković",
+   "fin": "Srđan Amidžić",
+   "int": "Ivica Bošnjak"
+  },
+  "Albania": {
+   "def": "Ermal Nufi",
+   "for": "Ferit Hoxha",
+   "fin": "Petrit Malaj",
+   "int": "Ervin Demo",
+   "hlt": "Klodiana Spahiu|f"
+  },
+  "Lithuania": {
+   "def": "Robertas Kaunas",
+   "for": "Kęstutis Budrys",
+   "fin": "Taurimas Valys",
+   "int": "Martynas Katelynas",
+   "hlt": "Linas Kukuraitis"
+  },
+  "Slovenia": {
+   "def": "Valentin Hajdinjak",
+   "for": "Tone Kajzer",
+   "fin": "Andrej Šircelj",
+   "int": "Franci Matoz",
+   "hlt": "Tadej Ostrc"
+  },
+  "North Macedonia": {
+   "def": "Vlado Misajlovski",
+   "for": "Timčo Mucunski",
+   "fin": "Gordana Dimitrieska-Kočoska|f",
+   "int": "Panče Toškovski",
+   "hlt": "Sašo Klekovski"
+  },
+  "Latvia": {
+   "def": "Raivis Melnis",
+   "for": "Baiba Braže|f",
+   "fin": "Māris Kučinskis",
+   "int": "Jānis Dombrava",
+   "hlt": "Hosams Abu Meri"
+  },
+  "Kosovo": {
+   "def": "Ejup Maqedonci",
+   "for": "Glauk Konjufca",
+   "fin": "Hekuran Murati",
+   "int": "Xhelal Sveçla",
+   "hlt": "Arben Vitia"
+  },
+  "Estonia": {
+   "def": "Hanno Pevkur",
+   "for": "Margus Tsahkna",
+   "fin": "Jürgen Ligi",
+   "int": "Igor Taro",
+   "hlt": "Karmen Joller|f"
+  },
+  "Montenegro": {
+   "def": "Dragan Krapović",
+   "for": "Ervin Ibrahimović",
+   "fin": "Novica Vuković",
+   "int": "Danilo Šaranović",
+   "hlt": "Vojislav Šimun"
+  },
+  "Luxembourg": {
+   "def": "Yuriko Backes|f",
+   "for": "Xavier Bettel",
+   "fin": "Gilles Roth",
+   "int": "Léon Gloden",
+   "hlt": "Martine Deprez|f"
+  },
+  "Malta": {
+   "for": "Chris Fearne",
+   "fin": "Clyde Caruana",
+   "int": "Glenn Bedingfield",
+   "hlt": "Ian Borg"
+  },
+  "Papua New Guinea": {
+   "def": "Elias Kapavore",
+   "for": "Justin Tkatchenko",
+   "fin": "Ian Ling-Stuckey",
+   "int": "John Pundari",
+   "hlt": "Billy Joseph"
+  },
+  "New Zealand": {
+   "def": "Paul Goldsmith",
+   "for": "Winston Peters",
+   "fin": "Nicola Willis|f",
+   "int": "Mark Mitchell",
+   "hlt": "Simeon Brown"
+  },
+  "Fiji": {
+   "def": "Pio Tikoduadua",
+   "for": "Sakiasi Ditoka",
+   "fin": "Esrom Immanuel",
+   "int": "Ioane Naivalurua",
+   "hlt": "Atonio Lalabalavu"
+  },
+  "Solomon Is.": {
+   "for": "Rick Houenipwela",
+   "fin": "Rexon Ramofafia",
+   "int": "John Tuhaika Jr.",
+   "hlt": "Morris Toiraena"
+  },
+  "Vanuatu": {
+   "for": "Marc Ati",
+   "fin": "Johnny Koanapo",
+   "int": "Andrew Napuat",
+   "hlt": "John Still Tari Qetu"
+  },
+  "Rwanda": {
+   "def": "Juvenal Marizamunda",
+   "for": "Olivier Nduhungirehe",
+   "fin": "Yusuf Murangwa",
+   "int": "Vincent Biruta",
+   "hlt": "Sabin Nsanzimana"
+  },
+  "Burundi": {
+   "def": "Marie-Chantal Nijimbere|f",
+   "for": "Edouard Bizimana",
+   "fin": "Alain Ndikumana",
+   "int": "Léonidas Ndaruzaniye",
+   "hlt": "Fidèle Nkezabahizi"
+  },
+  "Botswana": {
+   "def": "Moeti Mohwasa",
+   "for": "Phenyo Butale",
+   "fin": "Ndaba Gaolathe",
+   "int": "Pius Mokgware",
+   "hlt": "Stephen Modise"
+  },
+  "Lesotho": {
+   "def": "Samuel Matekane",
+   "for": "Limpho Tau",
+   "fin": "Retšelisitsoe Matlanyane|f",
+   "int": "Voeswa Tsheka",
+   "hlt": "Mamokete Ntšekhe|f"
+  },
+  "Namibia": {
+   "def": "Frans Kapofi",
+   "for": "Selma Ashipala-Musavyi|f",
+   "fin": "Ericah Shafudah|f",
+   "int": "Lucia Iipumbu|f",
+   "hlt": "Esperance Luvindao|f"
+  },
+  "Somalia": {
+   "def": "Ahmed Moalim Fiqi",
+   "for": "Abdisalam Abdi Ali",
+   "fin": "Bihi Iman Egeh",
+   "int": "Ali Yusuf Ali Hosh",
+   "hlt": "Ali Haji Adan"
+  },
+  "Eritrea": {
+   "for": "Osman Saleh Mohammed",
+   "fin": "Gergis Teklemicael",
+   "hlt": "Amna Nurhussein|f"
+  },
+  "eSwatini": {
+   "for": "Pholile Shakantu|f",
+   "fin": "Neal Rijkenberg",
+   "int": "Princess Lindiwe|f",
+   "hlt": "Mduduzi Matsebula"
+  },
+  "Djibouti": {
+   "def": "Hassan Omar Bourhan",
+   "for": "Abdoulkader Houssein Omar",
+   "fin": "Ilyas Moussa Dawaleh",
+   "int": "Omar Abdi Said",
+   "hlt": "Mouna Osman Aden|f"
+  },
+  "Comoros": {
+   "for": "Mbae Mohamed",
+   "fin": "Moussa Abderemane",
+   "int": "Mohamed Ahmed Assoumani",
+   "hlt": "Ahamadi Sidi Nahouda"
+  },
+  "Mauritius": {
+   "def": "Navin Ramgoolam",
+   "for": "Ritish Ramful",
+   "fin": "Navin Ramgoolam",
+   "int": "Navin Ramgoolam",
+   "hlt": "Anil Bachoo"
+  },
+  "Seychelles": {
+   "def": "Patrick Herminie",
+   "for": "Barry Faure",
+   "fin": "Pierre Laporte",
+   "int": "James Camille",
+   "hlt": "Marvin Fanny"
+  },
+  "Somaliland": {
+   "def": "Mohamed Yusuf Ali Ahmed",
+   "for": "Abdirahman Dahir Adam",
+   "fin": "Abdillahi Hassan Adan",
+   "int": "Abdalle Mohamed Arab",
+   "hlt": "Hussein Bashir Herzi"
+  },
+  "Samoa": {
+   "for": "La'auli Leuatea Schmidt",
+   "fin": "Mulipola Anarosa Ale Molio'o|f",
+   "int": "La'auli Leuatea Schmidt",
+   "hlt": "Va'aaoao Alofipo"
+  },
+  "Kiribati": {
+   "for": "Taneti Maamau",
+   "fin": "Teuea Toatu",
+   "int": "Harry Tekaiti",
+   "hlt": "Booti Nauan"
+  },
+  "Tonga": {
+   "def": "Tupouto'a 'Ulukalala",
+   "for": "Tupouto'a 'Ulukalala",
+   "fin": "Vika Sivoki Lavemaau|f",
+   "int": "Fatafehi Fakafanua",
+   "hlt": "Siale 'Akau'ola"
+  },
+  "Micronesia": {
+   "for": "Ricky Cantero",
+   "fin": "Rose Nakanaga|f",
+   "int": "Leonito Bacalando Jr.",
+   "hlt": "Marcus Samo"
+  },
+  "Marshall Is.": {
+   "for": "Kalani Kaneko",
+   "fin": "David Paul",
+   "int": "Ota Kisino",
+   "hlt": "Bremity Lakjohn"
+  },
+  "Tuvalu": {
+   "for": "Paulson Panapa",
+   "fin": "Panapasi Nelesone",
+   "int": "Maina Vakafua Talia",
+   "hlt": "Tuafafa Latasi"
+  },
+  "Palau": {
+   "for": "Gustav Aitaro",
+   "int": "Jennifer Sekang Olegeriil|f",
+   "hlt": "Raynold Oilouch"
+  },
+  "Nauru": {
+   "for": "Lionel Aingimea",
+   "fin": "David Adeang",
+   "hlt": "David Adeang"
+  },
+  "Iceland": {
+   "for": "Þorgerður Katrín Gunnarsdóttir|f",
+   "fin": "Daði Már Kristófersson",
+   "int": "Þorbjörg Sigríður Gunnlaugsdóttir|f",
+   "hlt": "Alma D. Möller|f"
+  },
+  "Moldova": {
+   "def": "Anatolie Nosatîi",
+   "for": "Mihai Popșoi",
+   "fin": "Victoria Belous|f",
+   "int": "Daniella Misail-Nichitin|f",
+   "hlt": "Alexandru Gasnaș"
+  },
+  "Andorra": {
+   "for": "Imma Tor|f",
+   "fin": "Ramon Lladós",
+   "int": "Ester Molné|f",
+   "hlt": "Helena Mas|f"
+  },
+  "Monaco": {
+   "for": "Isabelle Berro-Amadeï|f",
+   "fin": "Frédéric Cottalorda",
+   "int": "Lionel Beffre",
+   "hlt": "Christophe Robino"
+  },
+  "San Marino": {
+   "for": "Luca Beccari",
+   "fin": "Marco Gatti",
+   "int": "Andrea Belluzzi",
+   "hlt": "Massimo Andrea Ugolini"
+  },
+  "Liechtenstein": {
+   "for": "Sabine Monauni|f",
+   "fin": "Brigitte Haas|f",
+   "int": "Hubert Büchel",
+   "hlt": "Emanuel Schädler"
+  },
+  "Greenland": {
+   "for": "Múte Bourup Egede",
+   "fin": "Múte Bourup Egede",
+   "int": "Bentiaraq Ottosen",
+   "hlt": "Anna Wangenheim|f"
+  },
+  "El Salvador": {
+   "def": "René Francis Merino Monroy",
+   "for": "Juana Alexandra Hill Tinoco|f",
+   "fin": "Jerson Rogelio Posada Molina",
+   "int": "Héctor Gustavo Villatoro Funes",
+   "hlt": "Francisco José Alabí Montoya"
+  },
+  "Costa Rica": {
+   "for": "Manuel Tovar Rivera",
+   "fin": "Rodrigo Chaves Robles",
+   "int": "Gerald Campos Valverde",
+   "hlt": "Alexander Sánchez Cabo"
+  },
+  "Panama": {
+   "for": "Javier Eduardo Martínez-Acha Vásquez",
+   "fin": "Felipe Chapman Bernal",
+   "int": "Frank Alexis Ábrego Mendoza",
+   "hlt": "Fernando Boyd Galindo"
+  },
+  "Uruguay": {
+   "def": "Sandra Lazo|f",
+   "for": "Mario Lubetkin",
+   "fin": "Gabriel Oddone",
+   "int": "Carlos Negro",
+   "hlt": "Cristina Lustemberg|f"
+  },
+  "Jamaica": {
+   "def": "Andrew Holness",
+   "for": "Kamina Johnson Smith|f",
+   "fin": "Fayval Williams|f",
+   "int": "Horace Chang",
+   "hlt": "Christopher Tufton"
+  },
+  "Suriname": {
+   "def": "Uraiqit Ramsaran",
+   "for": "Melvin Bouva",
+   "fin": "Adelien Wijnerman|f",
+   "int": "Harish Monorath",
+   "hlt": "Andre Misiekaba"
+  },
+  "Guyana": {
+   "def": "Mohamed Irfaan Ali",
+   "for": "Hugh Todd",
+   "fin": "Ashni Singh",
+   "int": "Oneidge Walrond|f",
+   "hlt": "Frank Anthony"
+  },
+  "Trinidad and Tobago": {
+   "def": "Wayne Sturge",
+   "for": "Sean Sobers",
+   "fin": "Davendranath Tancoo",
+   "int": "Roger Alexander",
+   "hlt": "Lackram Bodoe"
+  },
+  "Belize": {
+   "def": "Michel Chebat",
+   "for": "Francis Fonseca",
+   "fin": "John Briceno",
+   "int": "Michel Chebat",
+   "hlt": "Kevin Bernard"
+  },
+  "Bahamas": {
+   "def": "Myles Laroda",
+   "for": "Fred Mitchell",
+   "fin": "Michael Halkitis",
+   "int": "Myles Laroda",
+   "hlt": "Michael Darville"
+  },
+  "Barbados": {
+   "for": "Chris Sinckler",
+   "fin": "Ryan Straughn",
+   "int": "Gregory Nicholls",
+   "hlt": "Lisa Cummins|f"
+  },
+  "Saint Lucia": {
+   "for": "Alva Baptiste",
+   "fin": "Philip J. Pierre",
+   "int": "Virginia Albert-Poyotte|f",
+   "hlt": "Moses Jn. Baptiste"
+  },
+  "St. Vin. and Gren.": {
+   "def": "St. Clair Leacock",
+   "for": "Fitzgerald Bramble",
+   "fin": "Godwin Friday",
+   "int": "St. Clair Leacock",
+   "hlt": "Daniel Cummings"
+  },
+  "Grenada": {
+   "def": "Dickon Mitchell",
+   "for": "Joseph Andall",
+   "fin": "Dennis Cornwall",
+   "int": "Dickon Mitchell",
+   "hlt": "Philip Telesford"
+  },
+  "Antigua and Barb.": {
+   "def": "Gaston Browne",
+   "for": "Chet Greene",
+   "fin": "Gaston Browne",
+   "hlt": "Michael Joseph"
+  },
+  "Dominica": {
+   "def": "Rayburn Blackmoore",
+   "for": "Vince Henderson",
+   "fin": "Irving McIntyre",
+   "int": "Rayburn Blackmoore",
+   "hlt": "Cassanni Laville|f"
+  },
+  "St. Kitts and Nevis": {
+   "def": "Terrance Drew",
+   "for": "Denzil Douglas",
+   "fin": "Terrance Drew",
+   "int": "Terrance Drew",
+   "hlt": "Terrance Drew"
+  },
+  "Ghana": {
+   "def": "Kenneth Gilbert Adjei",
+   "for": "Samuel Okudzeto Ablakwa",
+   "fin": "Cassiel Ato Forson",
+   "int": "Mubarak Muntaka",
+   "hlt": "Kwabena Mintah Akandoh"
+  },
+  "Côte d'Ivoire": {
+   "def": "Téné Birahima Ouattara",
+   "for": "Nialé Kaba|f",
+   "fin": "Adama Coulibaly",
+   "int": "Vagondo Diomandé",
+   "hlt": "Pierre Ngou Dimba"
+  },
+  "Chad": {
+   "def": "Issakha Malloua Diamouss",
+   "for": "Abdoulaye Sabre Fadoul",
+   "fin": "Tahir Hamid Nguilin",
+   "int": "Limane Mahamat",
+   "hlt": "Abdelmadjid Abderrahim"
+  },
+  "Guinea": {
+   "def": "Ibrahima Kalil Condé",
+   "for": "Morissanda Kouyaté",
+   "fin": "Mariama Ciré Sylla",
+   "int": "Djenabou Touré|f",
+   "hlt": "Khaïté Sall"
+  },
+  "Benin": {
+   "def": "Gildas Agonkan",
+   "for": "Corinne Amori Brunet|f",
+   "fin": "Aristide Médenou",
+   "int": "Djibril Mama Cissé Moussa",
+   "hlt": "Benjamin Hounkpatin"
+  },
+  "Congo": {
+   "fin": "Christian Yoka"
+  },
+  "Morocco": {
+   "def": "Abdellatif Loudiyi",
+   "for": "Nasser Bourita",
+   "fin": "Fouzi Lekjaa",
+   "int": "Abdelouafi Laftit",
+   "hlt": "Younes Bjijou"
+  },
+  "Nepal": {
+   "def": "Balen Shah",
+   "for": "Shisir Khanal",
+   "fin": "Swarnim Wagle",
+   "int": "Sudan Gurung",
+   "hlt": "Nisha Mehta|f"
+  },
+  "Myanmar": {
+   "def": "Tun Aung",
+   "for": "Tin Maung Swe",
+   "fin": "Kan Zaw",
+   "int": "Ko Ko Oo",
+   "hlt": "Thet Khaing Win"
+  },
+  "Bangladesh": {
+   "def": "Tarique Rahman",
+   "for": "Khalilur Rahman",
+   "fin": "Amir Khasru Mahmud Chowdhury",
+   "int": "Salahuddin Ahmed",
+   "hlt": "Sardar Sakhawat Hossain Bakul"
+  },
+  "Sri Lanka": {
+   "def": "Anura Kumara Dissanayake",
+   "for": "Vijitha Herath",
+   "fin": "Anura Kumara Dissanayake",
+   "int": "Ananda Wijepala",
+   "hlt": "Nalinda Jayatissa"
+  },
+  "Cambodia": {
+   "def": "Tea Seiha",
+   "for": "Prak Sokhonn",
+   "fin": "Aun Pornmoniroth",
+   "int": "Sar Sokha",
+   "hlt": "Chheang Ra"
+  },
+  "Singapore": {
+   "def": "Chan Chun Sing",
+   "for": "Vivian Balakrishnan",
+   "fin": "Lawrence Wong",
+   "int": "K. Shanmugam",
+   "hlt": "Ong Ye Kung"
+  },
+  "Qatar": {
+   "for": "Mohammed bin Abdulrahman Al Thani"
+  },
+  "Cameroon": {
+   "def": "Joseph Beti Assomo",
+   "for": "Lejeune Mbella Mbella",
+   "fin": "Louis Paul Motaze",
+   "int": "Paul Atanga Nji",
+   "hlt": "Malachie Manaouda"
+  },
+  "Niger": {
+   "def": "Salifou Mody",
+   "for": "Bakary Yaou Sangaré",
+   "fin": "Ali Lamine Zeine",
+   "int": "Mohamed Toumba",
+   "hlt": "Garba Hakimi"
+  },
+  "Burkina Faso": {
+   "def": "Célestin Simporé",
+   "for": "Karamoko Jean-Marie Traoré",
+   "fin": "Aboubakar Nacanabo",
+   "int": "Émile Zerbo",
+   "hlt": "Robert Lucien Jean-Claude Kargougou"
+  },
+  "Mali": {
+   "def": "Assimi Goïta",
+   "for": "Abdoulaye Diop",
+   "fin": "Alousseni Sanou",
+   "int": "Issa Ousmane Coulibaly",
+   "hlt": "Assa Badiallo Touré|f"
+  }
+ }
+}

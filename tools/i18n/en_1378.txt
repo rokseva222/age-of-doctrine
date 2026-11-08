@@ -1,0 +1,42 @@
+1378|First steps
+1379|Tutorial complete
+1380|Achievements
+1381|Achievement: %s
+1382|Goal complete: %s
+1383|Next goal: %s
+1384|Goal: %s
+1385|Goals and achievements
+1386|Play the first turn
+1387|Press the play button or advance a turn.
+1388|Move an army
+1389|Select an army, then tap a neighbouring province.
+1390|Tap a neighbouring country's province and declare war.
+1391|Conquer your first province
+1392|Attack an enemy province with an army and capture it.
+1393|Make peace
+1394|End a war with peace and secure the spoils.
+1395|Conqueror
+1396|Conquer 10 provinces.
+1397|Conquer 50 provinces.
+1398|World Master
+1399|Conquer 150 provinces.
+1400|Battle-Hardened
+1401|Fight 50 battles.
+1402|Diplomat
+1403|Sign 5 peace treaties.
+1404|Friend in Need
+1405|Form an alliance.
+1406|State Breaker
+1407|Wipe a country off the map.
+1408|Lobby Diplomacy
+1409|Pass a UN resolution.
+1410|Spirit of Normandy
+1411|Land troops from the sea.
+1412|Pandora's Box
+1413|Use a nuclear weapon. The price is heavy.
+1414|Hold Out for a Year
+1415|Play 52 weeks (1 year).
+1416|A Decade
+1417|Play 520 weeks (10 years).
+1418|Great Power
+1419|Own 30 provinces at once.

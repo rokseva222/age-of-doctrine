@@ -1,0 +1,23 @@
+{
+ "Nepal": {
+  "def": "Balen Shah",
+  "for": "Shisir Khanal",
+  "fin": "Swarnim Wagle",
+  "int": "Sudan Gurung",
+  "hlt": "Nisha Mehta|f"
+ },
+ "Myanmar": {
+  "def": "Tun Aung",
+  "for": "Tin Maung Swe",
+  "fin": "Kan Zaw",
+  "int": "Ko Ko Oo",
+  "hlt": "Thet Khaing Win"
+ },
+ "Bangladesh": {
+  "def": "Tarique Rahman",
+  "for": "Khalilur Rahman",
+  "fin": "Amir Khasru Mahmud Chowdhury",
+  "int": "Salahuddin Ahmed",
+  "hlt": "Sardar Sakhawat Hossain Bakul"
+ }
+}

@@ -1,0 +1,22 @@
+1489|Global Pandemic
+1490|Spanish Flu
+1491|Epidemic
+1492|Global Financial Crash
+1493|Financial Panic
+1494|Depression Aftershock
+1495|Famine and Food Crisis
+1496|Energy Shock
+1497|Fuel Shortage
+1498|Sir, an epidemic is entering the country and spreading across the world. The health system will be strained. What do we do?
+1499|Sir, the markets are collapsing and banks are shaking. The crisis is engulfing the whole world. What should the treasury do?
+1500|Sir, drought and shipping problems have sent food prices soaring. People are queuing for bread. What do we do?
+1501|Sir, oil prices have skyrocketed; industry and transport are struggling. What do we do?
+1502|Emergency relief package
+1503|A broad relief package was announced. The crisis will barely touch your country and recovery will be quick.
+1504|Spending was cut. A harsh but cheap measure; the public grumbles.
+1505|Wait and see
+1506|The government chose to wait. The crisis will hit in full, but you can weather this much.
+1507|Crisis impact reduced
+1508|Crisis at full effect
+1509|World crisis: %s has begun; its effects will last about %d weeks.
+1510|%s is over; the world economy is recovering.

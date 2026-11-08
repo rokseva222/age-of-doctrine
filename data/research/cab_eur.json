@@ -1,0 +1,196 @@
+{
+ "Romania": {
+  "def": "Radu Oprea",
+  "for": "Sebastian-Dănuț Neculăescu",
+  "fin": "Alexandru Nazare",
+  "int": "Marian Neacșu",
+  "hlt": "Alexandru Rogobete"
+ },
+ "Belgium": {
+  "def": "Theo Francken",
+  "for": "Maxime Prévot",
+  "fin": "Jan Jambon",
+  "int": "Bernard Quintin",
+  "hlt": "Frank Vandenbroucke"
+ },
+ "Czechia": {
+  "def": "Jaromír Zůna",
+  "for": "Petr Macinka",
+  "fin": "Alena Schillerová|f",
+  "int": "Lubomír Metnar",
+  "hlt": "Adam Vojtěch"
+ },
+ "Portugal": {
+  "def": "Nuno Melo",
+  "for": "Paulo Rangel",
+  "fin": "Joaquim Miranda Sarmento",
+  "int": "Luís Neves",
+  "hlt": "Ana Paula Martins|f"
+ },
+ "Hungary": {
+  "def": "Romulusz Ruszin-Szendi",
+  "for": "Anita Orbán|f",
+  "fin": "András Kármán",
+  "int": "Gábor Pósfai",
+  "hlt": "Zsolt Hegedűs"
+ },
+ "Belarus": {
+  "def": "Viktor Khrenin",
+  "for": "Maxim Ryzhenkov",
+  "fin": "Yury Seliverstov",
+  "int": "Ivan Kubrakov",
+  "hlt": "Alexander Khodzhayev"
+ },
+ "Austria": {
+  "def": "Klaudia Tanner|f",
+  "for": "Beate Meinl-Reisinger|f",
+  "fin": "Markus Marterbauer",
+  "int": "Gerhard Karner",
+  "hlt": "Korinna Schumann|f"
+ },
+ "Switzerland": {
+  "def": "Martin Pfister",
+  "for": "Ignazio Cassis",
+  "fin": "Karin Keller-Sutter|f",
+  "int": "Elisabeth Baume-Schneider|f",
+  "hlt": "Elisabeth Baume-Schneider|f"
+ },
+ "Bulgaria": {
+  "def": "Dimitar Stoyanov",
+  "for": "Velislava Petrova-Chamova|f",
+  "fin": "Galab Donev",
+  "int": "Ivan Demerdzhiev",
+  "hlt": "Katya Ivkova|f"
+ },
+ "Serbia": {
+  "def": "Bratislav Gašić",
+  "for": "Marko Đurić",
+  "fin": "Siniša Mali",
+  "int": "Ivica Dačić",
+  "hlt": "Zlatibor Lončar"
+ },
+ "Denmark": {
+  "def": "Jeppe Bruus",
+  "for": "Lars Løkke Rasmussen",
+  "fin": "Peter Hummelgaard",
+  "int": "Pia Olsen Dyhr|f",
+  "hlt": "Ida Auken|f"
+ },
+ "Finland": {
+  "def": "Antti Häkkänen",
+  "for": "Elina Valtonen|f",
+  "fin": "Riikka Purra|f",
+  "int": "Mari Rantanen|f",
+  "hlt": "Wille Rydman"
+ },
+ "Slovakia": {
+  "def": "Robert Kaliňák",
+  "for": "Juraj Blanár",
+  "fin": "Ladislav Kamenický",
+  "int": "Matúš Šutaj Eštok",
+  "hlt": "Zuzana Dolinková|f"
+ },
+ "Norway": {
+  "def": "Tore O. Sandvik",
+  "for": "Espen Barth Eide",
+  "fin": "Jens Stoltenberg",
+  "int": "Astri Aas-Hansen|f",
+  "hlt": "Jan Christian Vestre"
+ },
+ "Ireland": {
+  "def": "Helen McEntee|f",
+  "for": "Helen McEntee|f",
+  "fin": "Simon Harris",
+  "int": "Jim O'Callaghan",
+  "hlt": "Jennifer Carroll MacNeill|f"
+ },
+ "Croatia": {
+  "def": "Ivan Anušić",
+  "for": "Gordan Grlić Radman",
+  "fin": "Tomislav Ćorić",
+  "int": "Davor Božinović",
+  "hlt": "Irena Hrstić|f"
+ },
+ "Bosnia and Herz.": {
+  "def": "Zukan Helez",
+  "for": "Elmedin Konaković",
+  "fin": "Srđan Amidžić",
+  "int": "Ivica Bošnjak"
+ },
+ "Albania": {
+  "def": "Ermal Nufi",
+  "for": "Ferit Hoxha",
+  "fin": "Petrit Malaj",
+  "int": "Ervin Demo",
+  "hlt": "Klodiana Spahiu|f"
+ },
+ "Lithuania": {
+  "def": "Robertas Kaunas",
+  "for": "Kęstutis Budrys",
+  "fin": "Taurimas Valys",
+  "int": "Martynas Katelynas",
+  "hlt": "Linas Kukuraitis"
+ },
+ "Moldova": {},
+ "Slovenia": {
+  "def": "Valentin Hajdinjak",
+  "for": "Tone Kajzer",
+  "fin": "Andrej Šircelj",
+  "int": "Franci Matoz",
+  "hlt": "Tadej Ostrc"
+ },
+ "North Macedonia": {
+  "def": "Vlado Misajlovski",
+  "for": "Timčo Mucunski",
+  "fin": "Gordana Dimitrieska-Kočoska|f",
+  "int": "Panče Toškovski",
+  "hlt": "Sašo Klekovski"
+ },
+ "Latvia": {
+  "def": "Raivis Melnis",
+  "for": "Baiba Braže|f",
+  "fin": "Māris Kučinskis",
+  "int": "Jānis Dombrava",
+  "hlt": "Hosams Abu Meri"
+ },
+ "Kosovo": {
+  "def": "Ejup Maqedonci",
+  "for": "Glauk Konjufca",
+  "fin": "Hekuran Murati",
+  "int": "Xhelal Sveçla",
+  "hlt": "Arben Vitia"
+ },
+ "Estonia": {
+  "def": "Hanno Pevkur",
+  "for": "Margus Tsahkna",
+  "fin": "Jürgen Ligi",
+  "int": "Igor Taro",
+  "hlt": "Karmen Joller|f"
+ },
+ "Montenegro": {
+  "def": "Dragan Krapović",
+  "for": "Ervin Ibrahimović",
+  "fin": "Novica Vuković",
+  "int": "Danilo Šaranović",
+  "hlt": "Vojislav Šimun"
+ },
+ "Luxembourg": {
+  "def": "Yuriko Backes|f",
+  "for": "Xavier Bettel",
+  "fin": "Gilles Roth",
+  "int": "Léon Gloden",
+  "hlt": "Martine Deprez|f"
+ },
+ "Malta": {
+  "for": "Chris Fearne",
+  "fin": "Clyde Caruana",
+  "int": "Glenn Bedingfield",
+  "hlt": "Ian Borg"
+ },
+ "Iceland": {},
+ "Andorra": {},
+ "Greenland": {},
+ "Monaco": {},
+ "Liechtenstein": {},
+ "San Marino": {}
+}

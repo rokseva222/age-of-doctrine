@@ -1,0 +1,228 @@
+{
+ "id": "alt_hitler_dead",
+ "name": "Hitler'e Suikast",
+ "sub": "Eylül 1939 – Alternatif",
+ "base": "ww2",
+ "family": "ww2",
+ "pack": "alt",
+ "icon": "helmet_ww2",
+ "mood": "war",
+ "start_year": 1939,
+ "start_doy": 243,
+ "blurb": "Berlin'de bir bomba patladı: Hitler öldü. Ordu iktidarı devraldı, Almanya Polonya'dan çekilmeyi tartışıyor. Dünya bir nefeste barış ile savaş arasında.",
+ "suggest": [
+  "Germany",
+  "Poland",
+  "United Kingdom",
+  "France",
+  "Russia",
+  "Italy"
+ ],
+ "look": {
+  "shadow": [
+   0.05,
+   0.07,
+   0.06
+  ],
+  "mid": [
+   0.36,
+   0.42,
+   0.31
+  ],
+  "light": [
+   0.9,
+   0.9,
+   0.82
+  ],
+  "amount": 0.3,
+  "vignette": 0.14,
+  "grain": 0.01
+ },
+ "setup": {
+  "blocs": [
+   {
+    "name": "Müttefik Devletler",
+    "members": [
+     "United Kingdom",
+     "France",
+     "Poland",
+     "Australia",
+     "New Zealand",
+     "Canada",
+     "South Africa"
+    ],
+    "emblem": {
+     "shape": 1,
+     "inner": 1,
+     "symbol": "shield",
+     "c1": "2f4f9a",
+     "c2": "ece6d6",
+     "c3": "2f4f9a"
+    }
+   },
+   {
+    "name": "Mihver Devletleri",
+    "members": [
+     "Germany",
+     "Italy",
+     "Japan",
+     "Slovakia"
+    ],
+    "emblem": {
+     "shape": 4,
+     "inner": 1,
+     "symbol": "bolt",
+     "c1": "5d6068",
+     "c2": "ece6d6",
+     "c3": "e5482f"
+    }
+   }
+  ],
+  "wars": [
+   [
+    "Germany",
+    "Poland"
+   ],
+   [
+    "United Kingdom",
+    "Germany"
+   ],
+   [
+    "France",
+    "Germany"
+   ],
+   [
+    "Australia",
+    "Germany"
+   ],
+   [
+    "New Zealand",
+    "Germany"
+   ],
+   [
+    "Canada",
+    "Germany"
+   ],
+   [
+    "South Africa",
+    "Germany"
+   ],
+   [
+    "Japan",
+    "China"
+   ]
+  ],
+  "truce": [
+   [
+    "Germany",
+    "Russia",
+    90
+   ]
+  ],
+  "intro": "Eylül 1939: Hitler suikastta öldü. Generaller yönetimi ele geçirdi; Polonya'daki harekât durdu ama kapılar henüz kapanmadı.",
+  "stability": {
+   "Germany": -30
+  },
+  "troops_mult": {
+   "Germany": 0.9
+  }
+ },
+ "inherit_until": [
+  9999,
+  1
+ ],
+ "inherit_exclude": [
+  "Polonya düştü",
+  "Danimarka ve Norveç",
+  "Batı'da büyük taarruz",
+  "Fransa'nın düşüşü",
+  "Britanya Muharebesi"
+ ],
+ "events": [
+  {
+   "y": 1939,
+   "m": 10,
+   "t": "Berlin'de askerî konsey ateşkes teklif etti; Londra ve Paris şartlarını açıklıyor.",
+   "fx": [
+    [
+     "peace",
+     "Germany",
+     "United Kingdom"
+    ],
+    [
+     "peace",
+     "Germany",
+     "France"
+    ]
+   ]
+  },
+  {
+   "y": 1940,
+   "m": 3,
+   "t": "Almanya'da siyasi hizipler çatışıyor; ordunun iktidarı kalıcı mı olacak?",
+   "fx": [
+    [
+     "stab",
+     "Germany",
+     -6
+    ]
+   ]
+  }
+ ],
+ "objectives": {
+  "*": [
+   {
+    "id": "o1",
+    "type": "survive",
+    "text": "Üç yıl ayakta kal",
+    "turns": 156
+   },
+   {
+    "id": "o2",
+    "type": "no_war",
+    "text": "Bir yıl savaşsız kal",
+    "turns": 52,
+    "required": false
+   }
+  ],
+  "Germany": [
+   {
+    "id": "g1",
+    "type": "stability",
+    "text": "İstikrarı 55 üzerinde tut",
+    "n": 55
+   },
+   {
+    "id": "g2",
+    "type": "cease_war",
+    "text": "Britanya ile barış yap",
+    "with": "United Kingdom"
+   }
+  ],
+  "Poland": [
+   {
+    "id": "p1",
+    "type": "own_capital",
+    "text": "Varşova'yı elinde tut",
+    "country": "Poland"
+   }
+  ]
+ },
+ "en": {
+  "name": "The Plot Against Hitler",
+  "sub": "September 1939 – Alternate",
+  "blurb": "A bomb went off in Berlin: Hitler is dead. The army took power and Germany debates withdrawing from Poland. The world holds its breath between peace and war.",
+  "setup_intro": "September 1939: Hitler died in an assassination. The generals took over; the Polish operation has stalled, but the doors are not yet closed.",
+  "events": {
+   "0": "The military council in Berlin offered a ceasefire; London and Paris state their terms.",
+   "1": "Political factions clash in Germany: will army rule last?"
+  },
+  "objectives": {
+   "o1": "Survive three years",
+   "o2": "Stay out of war for a year",
+   "g1": "Keep stability above 55",
+   "g2": "Make peace with Britain",
+   "p1": "Hold Warsaw"
+  }
+ }
+}

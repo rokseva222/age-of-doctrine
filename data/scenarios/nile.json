@@ -1,0 +1,161 @@
+{
+ "id": "nile",
+ "kind": "real",
+ "name": "Nil'in Suları",
+ "sub": "Mısır – Etiyopya – Sudan",
+ "blurb": "Etiyopya'nın Büyük Rönesans Barajı Nil'in akışını değiştiriyor. Mısır için su, bir hayat meselesi. Diplomasi çökerse Nil kıyıları cepheye dönebilir.",
+ "intro": "Nil Krizi: baraj gölü dolarken Kahire son uyarısını yaptı. Hartum iki arada, bölge gergin.",
+ "suggest": [
+  "Egypt",
+  "Ethiopia",
+  "Sudan",
+  "Eritrea"
+ ],
+ "blocs": [
+  {
+   "name": "Nil Havzası Girişimi",
+   "members": [
+    "Egypt",
+    "Sudan",
+    "S. Sudan"
+   ],
+   "emblem": {
+    "shape": 2,
+    "inner": 1,
+    "symbol": "wheat",
+    "c1": "2f7a5a",
+    "c2": "ece6d6",
+    "c3": "e3a92b"
+   }
+  }
+ ],
+ "cold": [
+  [
+   "Egypt",
+   "Ethiopia"
+  ]
+ ],
+ "embargo": [
+  [
+   "Egypt",
+   "Ethiopia"
+  ]
+ ],
+ "troops_mult": {
+  "Egypt": 1.2,
+  "Ethiopia": 1.1
+ },
+ "stability": {
+  "Sudan": -20,
+  "Ethiopia": -8
+ },
+ "cyber": {
+  "Egypt": 15,
+  "Ethiopia": 8
+ },
+ "events": [
+  {
+   "turn": 10,
+   "t": "Baraj gölünün dolum aşaması başladı; Mısır Nil akışındaki düşüşten şikâyetçi.",
+   "fx": [
+    [
+     "stab",
+     "Egypt",
+     -4
+    ]
+   ]
+  },
+  {
+   "turn": 26,
+   "t": "Mısır sınırda tatbikat başlattı; Etiyopya hava savunmasını güçlendiriyor.",
+   "fx": [
+    [
+     "stab",
+     "Ethiopia",
+     -3
+    ]
+   ]
+  },
+  {
+   "turn": 52,
+   "t": "Arabulucular Nil için müzakere masası kurdu.",
+   "fx": [
+    [
+     "stab",
+     "Egypt",
+     3
+    ],
+    [
+     "stab",
+     "Sudan",
+     3
+    ]
+   ]
+  }
+ ],
+ "objectives": {
+  "*": [
+   {
+    "id": "n1",
+    "type": "survive",
+    "turns": 104,
+    "text": "İki yıl ayakta kal"
+   },
+   {
+    "id": "n2",
+    "type": "stability",
+    "n": 55,
+    "text": "İstikrarı 55 üzerine çıkar",
+    "required": false
+   }
+  ],
+  "Egypt": [
+   {
+    "id": "ne1",
+    "type": "no_war",
+    "turns": 52,
+    "text": "Bir yıl savaşsız kal"
+   },
+   {
+    "id": "ne2",
+    "type": "alliances",
+    "n": 3,
+    "text": "3 müttefik edin"
+   }
+  ],
+  "Ethiopia": [
+   {
+    "id": "nt1",
+    "type": "survive",
+    "turns": 104,
+    "text": "Barajı ve devleti koru: iki yıl ayakta kal"
+   },
+   {
+    "id": "nt2",
+    "type": "alliances",
+    "n": 2,
+    "text": "2 müttefik edin"
+   }
+  ]
+ },
+ "deadline": 208,
+ "en": {
+  "name": "Waters of the Nile",
+  "sub": "Egypt – Ethiopia – Sudan",
+  "blurb": "Ethiopia's Grand Renaissance Dam is changing the Nile's flow. For Egypt, water is a matter of life. If diplomacy collapses, the banks of the Nile could become a front line.",
+  "intro": "Nile Crisis: as the reservoir fills, Cairo issues its final warning. Khartoum is caught in between.",
+  "objectives": {
+   "n1": "Survive two years",
+   "n2": "Raise stability above 55",
+   "ne1": "Stay out of war for a year",
+   "ne2": "Make 3 allies",
+   "nt1": "Protect the dam and the state: survive two years",
+   "nt2": "Make 2 allies"
+  },
+  "events": {
+   "0": "The reservoir filling phase has begun; Egypt complains of a drop in Nile flow.",
+   "1": "Egypt launched border exercises; Ethiopia is reinforcing its air defenses.",
+   "2": "Mediators have set up a negotiating table for the Nile."
+  }
+ }
+}

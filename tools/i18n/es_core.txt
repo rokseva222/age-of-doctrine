@@ -1,0 +1,488 @@
+0|Cambio de gabinete
+1|   ·   riesgo de escándalo
+2|Gratis
+3|Operación de asalto
+4|Fuerzas (toca para elegir)
+5|Enviadas
+6|Tipo de operación
+7|Iniciar operación
+8|Cancelar
+9|Defensor
+10|Vacío
+11|Defensa de la provincia
+12|Duración del asedio
+13|%d sem.
+14|Ingresos
+15|No tienes ningún ejército cerca. Acerca tus ejércitos a un máximo de 6 provincias del objetivo o forma una unidad nueva.
+16|Probabilidad estimada
+17|Elige al menos un ejército.
+18|Sin defensa: el ejército entra y comienza el asedio.
+19|Ventaja abrumadora
+20|Ventaja
+21|Equilibrado: depende de la suerte
+22|Difícil: las bajas pueden ser graves
+23|Muy arriesgado: se espera una derrota
+24|Ataque %sK  /  Defensa %sK
+473|Reunión de gabinete
+474|Miembro del gabinete
+475|Decisión ejecutada
+476|Momento del destino
+477|La suerte sonrió
+478|No funcionó
+479|Aceptar
+573|Nueva partida: la carrera por el dominio mundial ha comenzado bajo el liderazgo de %s.
+574|La simulación ha comenzado.
+575|Asalto terrestre
+576|Un asalto estándar de armas combinadas.
+577|Preparación de artillería y aire
+578|Castiga primero la defensa: defensa −12 %, ataque +4 %.
+579|Guerra cibernética y electrónica
+580|Ciega la red de mando: defensa −14 %.
+581|Asalto relámpago
+582|Ataque +12 %; si es derrotado solo sobrevive el 25 %.
+583|Operación no válida.
+584|Debe haber una guerra antes de poder asaltar esta provincia.
+585|Fondos insuficientes: la operación cuesta %s.
+586|Ningún ejército puede llegar al objetivo (sin permiso de tránsito o sin ruta).
+587|%s abandonó la alianza %s.
+588|%s se disolvió.
+589|Objetivo no válido.
+590|%s ya pertenece a otra alianza.
+591|%s está en guerra con el miembro de la alianza %s.
+592|%s rechazó la invitación.
+593|Ya perteneces a una alianza.
+594|El nombre de la alianza debe tener entre 3 y 30 letras.
+595|Este nombre ya está en uso.
+596|%s fundó la alianza «%s».
+597|Funda primero una alianza.
+598|%s se unió a la alianza %s.
+599|No puedes aliarte con rebeldes.
+600|No puedes ofrecer una alianza estando en guerra.
+601|Ya son aliados.
+602|Puedes tener como máximo 3 aliados.
+603|%s rechazó la oferta de alianza.
+604|No son aliados.
+605|No estás en guerra con este país.
+606|No se negocia con rebeldes; recupera las provincias.
+607|%s: la guerra acaba de empezar, no considerarán la paz.
+608|%s rechazó la oferta de paz.
+609|%s aceptó la paz y se quedó con %d provincias.
+610|Se firmó una paz en tablas.
+611|Nuevo líder en %s: %s %s asumió el cargo.
+612|El estado de %s ha caído. La Gaceta Mundial te envía sus condolencias.
+613|Gobiernas el %d%% del mundo. ¡El dominio mundial es tuyo!
+614|Controlas el %d%% de la economía mundial. ¡La hegemonía económica es tuya!
+615|Este ejército no es tuyo.
+616|No puedes llegar allí (sin permiso de tránsito o sin ruta).
+617|Ya estás en guerra.
+618|No puedes declarar la guerra a un aliado; rompe antes la alianza.
+619|Hay una tregua en vigor (%d turnos).
+620|Red de espionaje
+621|Roba los secretos de defensa del objetivo: tu tecnología avanza.
+622|Propaganda
+623|Incita al pueblo del objetivo contra su gobierno: su estabilidad baja.
+624|Sabotaje
+625|Daña fábricas e infraestructuras: la industria y la estabilidad bajan.
+626|Embajada
+627|Contacto diplomático: la agresividad del objetivo hacia ti disminuye.
+628|Hay agentes escondidos en este objetivo (%d turnos).
+629|Fondos insuficientes.
+630|No puedes abrir una embajada en un país en guerra.
+631|Se capturaron los planes de defensa de %s. Tu tecnología armamentística avanzó.
+632|Tu red de espionaje en %s fue desmantelada. El escándalo sacudió la política interna.
+633|Crecen las protestas en %s. La estabilidad cayó.
+634|%s censuró tu propaganda; el dinero se desperdició.
+635|Misteriosos incendios estallaron en las fábricas de %s. La industria quedó sacudida.
+636|¡Tu equipo de sabotaje fue capturado! %s está furioso contigo.
+637|Las relaciones con %s mejoraron; su agresividad disminuyó.
+638|%s recibió con frialdad tu embajada.
+639|Banda de voluntarios
+640|Barata y numerosa; contrato corto.
+641|Unidad profesional
+642|Entrenada, coste equilibrado.
+643|Compañía de operaciones especiales
+644|Cara, pero una fuerza grande y con experiencia.
+645|Fondos insuficientes: el contrato cuesta %s.
+646|No hay ninguna provincia libre donde estacionar la unidad.
+647|No se pudo estacionar la unidad.
+648|%s firmó un contrato: %s (%d soldados) comenzó a servir en %s.
+649|El contrato de %s terminó; se fueron %s soldados.
+650|%s llevó a cabo un atentado en %s; las fuerzas de seguridad están en alerta. (%s)
+651|El atentado de %s sacudió %s. %s tomó medidas de emergencia.
+652|Voz desde la clandestinidad: %s reivindicó el atentado en %s. (%s)
+653|Ajustes
+654|Preferencias
+655|Sonido
+656|Música
+657|Efectos de sonido
+658|Pantalla
+659|Nombres de países
+660|Se escala con el tamaño del país; aparece al acercar el zoom.
+661|Nombres de provincias
+662|Muestra los nombres de las provincias al acercar el zoom.
+663|Insignias de ejércitos
+664|Efectos de alta calidad
+665|Brillo costero. Desactivarlo mejora la fluidez en móviles antiguos.
+666|Tamaño de la interfaz
+667|Juego
+668|Autoguardado
+669|Guarda cada 13 semanas (tres meses).
+670|Cartas del gabinete
+671|Los ministros piden de vez en cuando una decisión (defensa, exteriores, interior, finanzas, sanidad, inteligencia). Algunas decisiones arriesgadas pueden terminar la partida.
+672|Asignación automática de tropas
+673|Si no das órdenes en un turno, los ejércitos inactivos en guerra se envían solos a los mejores objetivos del frente. Si está desactivado, los ejércitos esperan en su sitio hasta que les ordenes algo.
+674|Notificaciones
+675|En el móvil, mientras haya una partida en curso, envía cada 5 horas el recordatorio «tu ejército te espera». Sin partida o con la partida terminada no hay notificaciones.
+676|Dificultad
+677|Fácil
+678|Normal
+679|Difícil
+680|La dificultad se aplica a las partidas nuevas.
+681|Conquista, provincia a provincia
+682|El mapa es el mundo real. Cada país se compone de varias provincias. Toca una provincia para ver su información y lo que puedes hacer. Pellizca para hacer zoom y arrastra para desplazarte.
+683|Reclutar tropas
+684|En tu propia provincia usa «Tropas +10» o «+30» para formar un ejército. Tus ingresos provienen de las provincias; el ejército tiene mantenimiento, así que no dejes que tu dinero se quede en negativo.
+685|Juego por turnos
+686|El tiempo no pasa solo. Cuando estés listo, pulsa «Terminar turno» arriba a la derecha: pasa una semana y luego la Gaceta Mundial muestra lo ocurrido en el mundo y el parte de guerra.
+687|Toca una provincia de un país con el que estés en guerra y elige «Asalto». Selecciona tus ejércitos cercanos, elige el tipo de operación (asalto terrestre, preparación de artillería y aire, guerra cibernética, relámpago), consulta la ventaja estimada y da la orden. Verás el resultado en el informe tras terminar el turno.
+688|Enviar tropas y mercenarios
+689|Tras elegir un ejército y tocar el objetivo, elige con el control deslizante cuántas tropas parten (25 % / 50 % / 75 % / 100 %); el resto espera en su sitio. Los asaltos usan la misma proporción. En Política > Frentes puedes contratar una unidad mercenaria temporal. Si no das órdenes en un turno, los ejércitos inactivos en guerra pueden asignarse automáticamente (desactívalo en Ajustes).
+690|Guerra, paz, alianza
+691|Los asedios y las victorias dan puntos de guerra. En la mesa de paz te quedas con provincias a cambio de tus puntos. Los aliados luchan juntos; no puedes atacar durante una tregua.
+692|De vez en cuando un ministro te pide una decisión. Los iconos junto a las opciones indican el ámbito al que afectan (la dirección está oculta); una marca ☠ es una opción arriesgada que puede terminar la partida. Cuando un ministro deja el cargo (dimisión, escándalo, elecciones) llegan 3 candidatos: novato barato, veterano intermedio, maestro caro; tú eliges. Puedes reemplazar a un ministro en la pestaña Gabinete. También hay cartas especiales: noche electoral, el cofre del comerciante turbio (apuesta), Mundial/Juegos Olímpicos, el informante. Se puede desactivar en Ajustes.
+693|Noticias y victoria
+694|La Gaceta Mundial de arriba informa de lo que ocurre en el mundo; tócala para abrir el historial. El país que se haga con el 55 % de las provincias del mundo se convierte en gobernante mundial.
+695|Cómo jugar
+696|Guía
+697|Paso %d / %d
+698|Atrás
+699|Siguiente
+700|Empezar
+701|Defensa
+702|Industria
+703|Cibernética
+704|Logística
+705|Estabilidad interna
+706|Tesorería
+707|Salarios, reclutamiento y compra de armas
+708|Ingresos y descuento en armas nacionales
+709|Ciberataque y defensa
+710|Fuerza de suministro en suelo extranjero
+711|Evita la rebelión y la pérdida de ingresos
+712|Va directamente a la tesorería
+713|Operaciones equilibradas
+714|Medio en todos los ámbitos; sin bonificaciones ni penalizaciones.
+715|Asalto masivo
+716|Ataque basado en números. Ataque +12 %, defensa −5 %.
+717|Defensa en profundidad
+718|Defensa +18 %, ataque −8 %.
+719|Operaciones aeroterrestres
+720|Casi el doble de efecto de la superioridad aérea.
+721|Guerra asimétrica
+722|Defensa +12 %, alta tolerancia de suministro, cibernética +30 %.
+723|Guerra centrada en red
+724|Poder cibernético +60 %, ventaja en la red de mando.
+725|%s$%s B
+726|%s$%s mil M
+727|%s$%d M
+728|Debes esperar %d semanas para cambiar de doctrina.
+729|El cambio de doctrina cuesta %s; no hay dinero suficiente en la tesorería.
+730|No está a la venta
+731|Aún no desarrollado (en la semana %d)
+732|Tu nivel tecnológico es insuficiente
+733|Base industrial insuficiente (se requiere el %d%%)
+734|Sin país productor
+735|%s no venderá (guerra/embargo)
+736|Presupuesto insuficiente: se requieren %s.
+737|Entrega: %d × %s añadido al inventario.
+738|Automático
+739|Comercio
+740|Finanzas
+741|Desactivado
+742|Ciberdefensa: se bloqueó un ataque de %s.
+743|El cortafuegos cibernético de %s repelió un ataque.
+744|Un ransomware de %s paralizó las fábricas de %s.
+745|%s inutilizó la señalización ferroviaria y portuaria de %s; las líneas de suministro flaquean.
+746|Ciberataque de %s: se cortaron las conexiones portuarias y bursátiles de %s, el comercio exterior se ha detenido.
+747|%s robó %s de los bancos de %s.
+748|Operación aérea de %s: se alcanzaron las plantas industriales de %s.
+749|Aviones de %s golpearon las líneas logísticas y los puentes de %s.
+750|%s bombardeó los depósitos de munición y los parques de vehículos de %s.
+751|Toca el botón «Terminar turno» para empezar.
+752|Partida guardada: ranura %d.
+753|Error al guardar.
+754|No se encontró la partida guardada o no se pudo leer.
+755|Partida cargada: %s
+756|No diste órdenes: se asignaron automáticamente %d ejércitos inactivos.
+757|Ejército seleccionado. Toca la provincia de destino.
+758|%d ejércitos se pusieron en marcha (llegada: %d sem.). El resultado está en el informe.
+759|%s soldados se pusieron en marcha: %s
+760|¡Alianza formada!
+761|Paz
+762|No has ocupado ninguna provincia; se firmará una paz en tablas.
+763|Paz en tablas
+764|Oferta de paz
+765|%s quiere la paz. Puntos de guerra: tú %d, ellos %d.\nPuedes sentarte a la mesa y quedarte con provincias.
+766|Sentarse a la mesa
+767|Condiciones de paz
+768|%s exige lo siguiente para la paz: %s.\nSi te niegas, la guerra continúa.
+769|Oferta de tablas
+770|%s propone una paz en tablas. Los lugares ocupados se devuelven.
+771|¡VICTORIA!
+772|Seguir jugando
+773|Menú principal
+774|Derrota
+775|¡Tu aliado %s fue atacado por %s! ¿Te unirás a la guerra?\nSi no lo haces, la alianza se rompe.
+776|Tu aliado %s declaró la guerra a %s. ¿Lo apoyarás?\nSi no lo haces, la alianza se rompe.
+777|Llamada de la alianza
+778|Unirse a la guerra
+779|Oferta de alianza
+780|%s quiere formar una alianza contigo.
+781|¡Tu ejército te espera, comandante!
+782|Nuevas decisiones esperan a %s. ¡Termina el turno!
+783|Hay movimiento en el frente; da tus órdenes.
+784|Tienes ahorros en la tesorería. ¿Armas o edificios? Tú decides.
+785|El mundo no gira sin ti: hay noticias nuevas en la Gaceta Mundial.
+787|Europa
+788|Asia
+789|África
+790|Norteamérica
+791|Sudamérica
+792|Oceanía
+794|Antártida
+796|Océano
+797|Conquista el mundo, provincia a provincia
+799|Jugar
+800|Guerras históricas
+801|Continuar
+802|Cómo jugar
+803|Salir
+804|Versión 1.0   /   1 semana = 1 turno
+805|Partida nueva
+806|Elige tu país
+807|Mundo 2027
+808|Buscar país...
+809|Elige un escenario
+810|Modo de juego
+811|LIBRE
+812|CRISIS REAL
+813|FICTICIO
+814|Juego libre
+815|Escenarios del mundo real
+816|Escenarios modernos ficticios
+817|Seleccionado
+818|Cerrar
+819|Guerras históricas
+820|Un modo de juego aparte: los imperios, armas, alianzas y colores de cada época. Independiente de los escenarios.
+821|MODO HISTÓRICO   /   %s
+822|Recomendado
+823|Medio
+824|Muy difícil
+825|Población
+826|Provincias
+827|Ingresos/sem.
+828|Tropas
+829|Empezar con %s
+988|Recordatorios
+989|Tu ejército te espera
+991|Presupuesto
+992|Compra de armas
+993|Inventario
+994|Frentes
+995|Alianza
+996|Inteligencia
+997|Gabinete
+998|Política
+999|Estado Mayor  /
+1000|Estado financiero semanal
+1001|Paga del ejército
+1002|Mantenimiento de armas
+1003|Tesorería neta
+1004|Los gastos del ejército superan la parte de defensa; la diferencia de %s se recorta de otras partidas (tesorería, industria…).
+1005|Reparto del presupuesto (porcentaje de los ingresos)
+1006|Indicadores de estado
+1007|Estabilidad
+1008|Tecnología
+1009|Doctrina del ejército
+1010|Doctrina cambiada:
+1011|El cambio de doctrina cuesta %s; después esperas %d semanas.
+1012|Debes esperar %d semanas para una nueva doctrina.
+1013|Fondo de defensa
+1014|Pedido pendiente
+1015|Política de adquisiciones
+1016|Unidad: %s. Los precios son aproximados, en millones de $. La producción nacional tiene descuento y entrega más corta.
+1017|Entregas pendientes
+1018|%d semanas
+1019|Adquisición automática de armas
+1020|Si está activada, el fondo de defensa compra armas por sí solo según las prioridades y la doctrina de abajo. Si está desactivada, el fondo se acumula; tú haces las compras.
+1021|Prioridad de adquisición (compra automática)
+1022|Baja
+1023|Alta
+1024|La prioridad determina qué parte de la cuota va al equipo faltante de cada categoría. La doctrina aeroterrestre favorece los aviones; la asimétrica, la artillería y los lanzacohetes.
+1025|%s%s   /   entrega %d sem.   /   en existencia %s
+1026| (nacional)
+1027|$%s M
+1028|Pedido: %d × %s
+1029|Objetivo
+1030|Equipo terrestre
+1031|Poder aéreo
+1032|Poder naval
+1033|El número de tropas objetivo depende del presupuesto de defensa y del estado de guerra; la diferencia se recluta automáticamente y se reparte entre los frentes.
+1035|Cuando termina el mandato de un ministro, o este dimite o cae, llegan 3 candidatos para sustituirlo: el maestro es caro, el novato es barato pero arriesgado. Los ministros veteranos y maestros dan una pequeña bonificación semanal.
+1036|%s  ·  ~%.1f años
+1037|Destituir
+1038|Destitución
+1039|¿Destituir a %s? Estabilidad −2. Tras el próximo boletín llegarán 3 candidatos para sustituirle.
+1040|%s fue destituido
+1041|Las operaciones encubiertas debilitan a un rival sin declarar la guerra. La probabilidad de éxito depende de tu poder cibernético y tu tecnología; si te descubren, sufren la política interna y las relaciones. Los agentes necesitan ocultarse un tiempo en cada objetivo.
+1042|Aún no hay ningún vecino con el que se pueda contactar.
+1043|estabilidad %d  cibernética %d
+1044|Guerra
+1045|espera de %d turnos
+1046|Coste %s
+1047|  ·  probabilidad %d%%
+1048|Ingresos comerciales
+1049|Abrir comercio
+1050|Bloqueo naval
+1051|Por un ciberataque, el comercio exterior está cortado %d semanas más.
+1052|El comercio con países en guerra y bajo embargo se detiene. Un embargo afecta a ambas partes; úsalo para asfixiar económicamente a un rival.
+1053|Abierto
+1054|Embargo
+1055|Embargado
+1056|Interrumpido
+1057|Levantar embargo
+1058|Imponer embargo
+1059|Mercenarios
+1060|Contrata una unidad temporal a empresas privadas: el pago es por adelantado, la unidad se estaciona en una provincia vacía del frente o en la capital y se disuelve al terminar el contrato. Su nombre se elige al azar según la cultura de tu país.
+1061|%s soldados  /  %d sem.  /  %s
+1062|Contratar
+1063|%s comenzó a servir: %s (%s soldados)
+1064|Ejércitos al mando automático
+1065|Si está activado, el estado mayor lanza operaciones por su cuenta contra las provincias débiles de tu enemigo. Si está desactivado, das órdenes a los ejércitos desde el mapa.
+1066|Ahora mismo no estás en guerra. Cuando declares la guerra, los frentes se enumerarán aquí.
+1067|Tropas enemigas
+1068|Equipo
+1069|Aire
+1070|Ataque
+1071|Cibernética:
+1072|Forma
+1073|Patrón interior
+1074|Símbolo
+1075|Color principal
+1076|Fondo y símbolo
+1077|Línea
+1078|Tu alianza
+1079|%d miembros   /   fundador: %s
+1080|Los miembros no se atacan entre sí; cuando uno es atacado, se llama a los demás. Un país en guerra con uno de los miembros no puede unirse a la alianza.
+1081|Miembros
+1082|Nombre de la alianza
+1083|Guardar
+1084|El nombre de la alianza debe tener al menos 3 letras.
+1085|Editar nombre y emblema
+1086|Invitar a un nuevo miembro
+1087|Vecino
+1088|Invitar
+1089|%s se unió a la alianza.
+1090|Abandonar la alianza
+1091|Funda tu propia alianza: elige el nombre y el emblema y luego invita a países. También puedes fundarla antes de empezar si la partida está en pausa.
+1092|Nombre de la alianza (p. ej. Pacto de Defensa Oriental)
+1093|Fundar la alianza
+1094|Alianza fundada:
+1156|¿Cuántas tropas enviar?
+1157|%s soldados se pusieron en marcha
+1158|%s soldados se quedan en %s. Llegada estimada: %d sem.
+1159|Todo el ejército se pone en marcha; %s queda sin defensa.
+1160|Enviar
+1161|tu ejército te espera
+1162|Cargar
+1163|Ranuras de guardado
+1164|El autoguardado (se activa/desactiva en Ajustes) se conserva en una ranura aparte y no se puede sobrescribir desde aquí.
+1165|Ranura %d
+1166|Guardado antiguo
+1167|%s  /  %d provincias  /  %s
+1168|¿Estás seguro?
+1169|¿Seguro?
+1170|Eliminar
+1180|Los estados controlados por la IA están haciendo sus movimientos...
+1181|Los ejércitos avanzan, se resuelven las batallas...
+1182|Se calculan la economía, los presupuestos y el comercio...
+1183|Se evalúan la diplomacia y las alianzas...
+1184|La Gaceta Mundial se va a imprenta...
+1185|Age of Doctrine  /  Fin del turno
+1186|Gaceta Mundial
+1187|Número %d  /  edición semanal
+1188|Esta semana no hubo grandes novedades en el mundo.
+1189|No hay más noticias importantes.
+1190|Parte de guerra
+1191|VICTORIA
+1192|DERROTA
+1193|%s%s: contra %s. Bajas: tú %s, el otro bando %s.
+1194|Asedio: %s  %d/%d
+1195|Esta semana no hubo combates.
+1196|Tesorería y ejército
+1197|Mostrar en el mapa
+1198|Continuar
+1199|NOTICIAS
+1200|GUERRA
+1201|CONQUISTA
+1202|PÉRDIDA
+1203|PAZ
+1204|EVENTO
+1205|ENFRENTAMIENTO
+1206|ÚLTIMA HORA
+1207|REVUELTA
+1208|ALIANZA
+1209|CLASIFICACIÓN
+1210|CIBERNÉTICA
+1211|OPERACIÓN
+1212|SUMINISTRO
+1213|Estado
+1214|Fecha
+1215|Terminar turno
+1216|Esperando noticias...
+1217|Capital
+1218|Tuyo
+1219|Aliado
+1220|En guerra
+1221|Rebelde:
+1222|Ocupada:
+1223|Ejército: %s soldados (%s)
+1224|\nUnidad mercenaria: %s (quedan %d sem.)
+1225|Asedio %d/%d
+1226|Disturbios %d/12: ¡estaciona un ejército!
+1227|Ejército seleccionado: %s soldados, %s. Da la orden con el botón de abajo.
+1228|Ejército seleccionado (%s soldados). Toca la provincia de destino y confirma la orden.
+1229|Marchar con el ejército hasta aquí
+1230|Anular selección
+1231|Ofrecer la paz
+1232|Tregua: %d semanas
+1233|Declarar la guerra
+1234|Romper la alianza
+1235|Ofrecer alianza
+1236|Detener
+1237|Elegir ejército
+1238|Declaración
+1239|Mesa de paz
+1240|Negociación
+1241|Conversaciones de paz con %s. Tus puntos de guerra: %d. Elige las provincias ocupadas que quieres quedarte (el coste se descuenta de tus puntos); las que no elijas se devuelven.
+1242|GASTADOS  %d / %d PUNTOS
+1243|%d PUNTOS
+1244|En pausa
+1245|Menú del juego
+1246|Tú
+1247|Mundo
+1248|Sala de situación
+1249|Países
+1250|Guerras
+1251|Noticias
+1252|Alianzas
+1253|Grupos no estatales
+1254|%d PROVINCIAS
+1255|%s SOLDADOS
+1256|Ahora mismo no hay ninguna guerra activa en el mundo.
+1257|Todavía no se ha fundado ninguna alianza. Puedes fundar la tuya en Política > Alianza.
+1258|   (tuyo)
+1259|%d miembros   /   total de tropas %s
+1260|Todo
+1261|Diplomacia
+1262|Eventos

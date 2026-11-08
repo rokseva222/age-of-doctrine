@@ -1,0 +1,1374 @@
+0	Savunma Bakanı	Defense Minister
+1	Dışişleri Bakanı	Foreign Minister
+2	İçişleri Bakanı	Interior Minister
+3	Maliye Bakanı	Finance Minister
+4	Sağlık Bakanı	Health Minister
+5	İstihbarat Başkanı	Intelligence Chief
+6	Büyükelçi	Ambassador
+7	Gölge Tüccarı	Shady Trader
+8	Spor Federasyonu Başkanı	Sports Federation Chief
+9	Seçim Kurulu Başkanı	Election Board Chair
+10	Efendim, {nb} sınırı boyunca büyük bir tatbikat planlıyoruz. Gövde gösterisi mi yapalım, yoksa temkinli mi kalalım?	Sir, we are planning a large exercise along the {nb} border. Do we put on a show of force, or stay cautious?
+11	Büyük tatbikat	Large exercise
+12	Birlikler sınıra yığıldı. Ordunun moral sesi yükseldi, komşular tedirgin.	Troops massed on the border. Army morale rose, the neighbors are uneasy.
+13	Sınırlı tatbikat	Limited exercise
+14	Küçük ölçekli, dikkat çekmeyen bir tatbikat yapıldı.	A small, low-profile exercise was held.
+15	İptal et	Cancel it
+16	Tatbikat iptal edildi; bütçe korundu, subaylar homurdandı.	The exercise was cancelled; the budget was saved, the officers grumbled.
+17	Yerli tüfek ve zırhlı araç projesi bütçe bekliyor. Tam destek verirsek sanayi de canlanır.	The domestic rifle and armored vehicle project is waiting for funds. Full backing would revive industry too.
+18	Tam destek	Full backing
+19	Prototipler teslim alındı, fabrikalar üç vardiya çalışıyor.	Prototypes delivered, the factories are running three shifts.
+20	Kısmi destek	Partial backing
+21	Proje yavaş ama düzenli ilerliyor.	The project is moving slowly but steadily.
+22	Ertele	Postpone
+23	Proje rafa kalktı.	The project was shelved.
+24	Ordu mevcudunu hızla büyütmek için zorunlu hizmet süresini uzatmayı öneriyorum.	To grow the army quickly I suggest extending the conscription period.
+25	Süreyi uzat	Extend service
+26	Kışlalar doldu ama aileler hoşnut değil.	The barracks are full but families are unhappy.
+27	Gönüllüyü teşvik et	Encourage volunteers
+28	Prim ve burslarla gönüllü sayısı arttı.	Bonuses and scholarships raised the volunteer numbers.
+29	Dokunma	Leave it
+30	Mevcut sistem sürüyor.	The current system continues.
+31	Subaylar arasında maaşlar yüzünden kıpırdanma var. Bazı garnizonlarda toplantılar yapılıyor.	There is unrest among the officers over pay. Meetings are being held in some garrisons.
+32	Zam ver	Give a raise
+33	Maaşlar artırıldı, subaylar sakinleşti.	Pay was increased, the officers calmed down.
+34	Gözaltıları başlat	Start detentions
+35	Birkaç albay tutuklandı; ordu içinde soğukluk büyüdü.	Several colonels were arrested; the army grew cold toward you.
+36	Subayların sabrı taştı: ordu yönetime el koydu. Hükümetin sona erdi.	The officers' patience ran out: the army seized power. Your government is over.
+37	Görüş	Talk
+38	Komutanlarla yemekli bir toplantı yapıldı.	A dinner meeting was held with the commanders.
+39	{nb} topraklarımızda ortak bir üs kurmak istiyor. Karşılığında ciddi bir ödeme teklif ediyor.	{nb} wants to build a joint base on our territory and offers a serious payment in return.
+40	Kabul et	Accept
+41	Anlaşma imzalandı; muhalefet 'egemenlik satıldı' diye bağırıyor.	The deal was signed; the opposition shouts that sovereignty was sold.
+42	Reddet	Refuse
+43	Teklif nazikçe geri çevrildi.	The offer was politely declined.
+44	Siber komutanlık kurulmasını öneriyorum. Savunma da saldırı da buradan yürüyecek.	I recommend creating a cyber command. Both defense and offense will run from there.
+45	Tam komutanlık kur	Create a full command
+46	Yüzlerce genç mühendis ordunun siber kanadına katıldı.	Hundreds of young engineers joined the army's cyber arm.
+47	Küçük birim	Small unit
+48	Ordu içinde küçük bir siber birim kuruldu.	A small cyber unit was formed inside the army.
+49	Gereksiz	Unnecessary
+50	Öneri reddedildi.	The proposal was rejected.
+51	{en} cephesinde cephane stokları azalıyor. Hızlı bir karar gerek.	Ammunition stocks are running low on the {en} front. We need a quick decision.
+52	Acil dış sipariş	Urgent foreign order
+53	Havai nakliyatla cephane ulaştı; cepheler yeniden dirençli.	Ammunition arrived by air freight; the fronts are resilient again.
+54	Sivil fabrikaları dönüştür	Convert civilian factories
+55	Sivil üretim hatları silah üretimine çevrildi.	Civilian production lines were converted to arms production.
+56	Dayanın	Hold on
+57	Cephedeki birlikler kendi imkânlarıyla idare etti.	The front-line units managed with their own means.
+58	Savaş uzadıkça cephede firarlar artıyor. Disiplini nasıl sağlayalım?	As the war drags on, desertions on the front rise. How do we keep discipline?
+59	Af ilan et	Declare an amnesty
+60	Firariler affedildi; bir kısmı geri döndü.	Deserters were pardoned; some of them returned.
+61	Sıkı ceza	Harsh punishment
+62	Disiplin sertleşti; ordu toparlandı ama halk huzursuz.	Discipline hardened; the army recovered but the public is restless.
+63	Moral kampanyası	Morale campaign
+64	Gazete, radyo ve şarkılarla cephede moral yükseltildi.	Newspapers, radio and songs lifted morale at the front.
+65	Gizli bir ileri silah programı için bilim insanları kaynak bekliyor. Yakalanırsak yaptırım gelebilir.	Scientists are waiting for funds for a secret advanced weapons program. If caught, sanctions may follow.
+66	Gizlice başlat	Start in secret
+67	Program başladı. Yabancı istihbarat bir şeyler sezmiş gibi.	The program started. Foreign intelligence seems to have sensed something.
+68	Sivil kanaldan ilerle	Proceed through civilian channels
+69	Araştırma 'sivil' etiketiyle sürdü.	The research continued under a 'civilian' label.
+70	Proje iptal edildi.	The project was cancelled.
+71	{nb} lideri bir zirve toplantısı istiyor. Katılmak ilişkileri rahatlatabilir.	The leader of {nb} wants a summit. Attending could ease relations.
+72	Bizzat git	Go in person
+73	Zirve sıcak geçti; iki taraf da ortak bildiri yayımladı.	The summit went warmly; both sides issued a joint statement.
+74	Elçi gönder	Send an envoy
+75	Orta düzey bir heyet gönderildi.	A mid-level delegation was sent.
+76	Davet reddedildi; basın cesur bir duruş olarak yorumladı.	The invitation was declined; the press read it as a brave stance.
+77	{nb} ile elçilik ilişkilerini yükseltmeyi öneriyorum: büyükelçilik, ticaret ofisi, vize anlaşması.	I suggest upgrading diplomatic ties with {nb}: an embassy, a trade office, a visa agreement.
+78	Büyükelçilik aç	Open an embassy
+79	Yeni büyükelçilik açıldı, ticari heyetler gidip gelmeye başladı.	A new embassy opened and trade delegations began to come and go.
+80	Sadece ticaret ofisi	Trade office only
+81	Ticaret ofisi açıldı.	A trade office was opened.
+82	Gerek yok	No need
+83	Mevcut düzey korundu.	The current level was kept.
+84	{nb} bir üçüncü ülkeye yaptırım uygulamamızı istiyor ve bize destek sözü veriyor.	{nb} wants us to sanction a third country and promises us support.
+85	Katıl	Join in
+86	Yaptırım kararı onaylandı; hedef ülke sert tepki verdi.	The sanctions decision was approved; the target country reacted harshly.
+87	Tarafsız kal	Stay neutral
+88	Hükümet tarafsızlığını açıkladı.	The government declared its neutrality.
+89	Karşı çık	Oppose it
+90	Yaptırıma karşı olduğun duyuruldu; bir süre soğukluk yaşanacak.	Your opposition to the sanctions was announced; relations will be cool for a while.
+91	Komşu iki ülke arasında gerginlik büyüyor ve bizi arabuluculuğa çağırıyorlar.	Tension is growing between two neighboring countries and they call on us to mediate.
+92	Arabuluculuğu üstlen	Take the mediation
+93	Zirve ev sahibi olarak prestiji büyüttün; gerginlik azaldı.	As summit host you raised your prestige; the tension eased.
+94	Kenarda dur	Stay out of it
+95	Taraflar kendi yollarını buldu.	The parties found their own way.
+96	Büyükelçimiz {nb} tarafından casusluk suçlamasıyla sınır dışı edildi. Nasıl karşılık verelim?	Our ambassador was expelled by {nb} on espionage charges. How do we respond?
+97	Resmen protesto et	Protest formally
+98	Nota verildi; iki ülke karşılıklı elçi çağırdı.	A note was delivered; the two countries recalled each other's envoys.
+99	Sessiz kal	Stay silent
+100	Olay basında kısa sürede unutuldu.	The incident was soon forgotten in the press.
+101	Karşılık ver	Retaliate
+102	Karşı hamle yapıldı; ilişkiler dondu.	A counter-move was made; relations froze.
+103	{nb} afet nedeniyle uluslararası yardım istiyor. Cömert davranmak itibarımızı yükseltir.	{nb} is asking for international aid after a disaster. Being generous would raise our standing.
+104	Büyük yardım	Large aid
+105	Yardım konvoyları yola çıktı; dünya kamuoyu seni övdü.	Aid convoys set out; world opinion praised you.
+106	Sembolik yardım	Symbolic aid
+107	Küçük bir yardım paketi gönderildi.	A small aid package was sent.
+108	Yardım isteği yanıtsız kaldı.	The aid request went unanswered.
+109	Gizli diplomatik yazışmalar basına sızdı. Bazı ülkelerle ilişkilerimiz zorlanabilir.	Secret diplomatic correspondence leaked to the press. Our relations with some countries may suffer.
+110	Belgeleri yalanla	Deny the documents
+111	Yalanlama inandırıcı bulunmadı.	The denial was not found convincing.
+112	Soruşturma aç	Open an inquiry
+113	Bakanlıkta kapsamlı bir soruşturma başladı.	A comprehensive investigation began in the ministry.
+114	Bir müsteşar feda et	Sacrifice an undersecretary
+115	Sorumlu bürokrat istifa etti; olay kapandı.	The responsible bureaucrat resigned; the matter was closed.
+116	{nb} sınır hattındaki bir bölgeyi kendi toprağı ilan ediyor. Tepkimiz ne olsun?	{nb} is declaring a region on the border line as its own territory. What should our reaction be?
+117	Sınıra birlik gönder	Send troops to the border
+118	Karşı karşıya duran birlikler gerginliği tırmandırdı.	Troops facing each other escalated the tension.
+119	Müzakere masası	Negotiating table
+120	Diplomatik görüşmeler başladı.	Diplomatic talks began.
+121	Taviz ver	Make a concession
+122	Taviz kabul edildi; halk bunu zayıflık olarak gördü.	The concession was accepted; the public saw it as weakness.
+123	{en} ile savaşta üçüncü ülkeler ateşkes için baskı yapıyor. Dünya kamuoyu savaştan yoruldu.	Third countries are pressing for a ceasefire in the war with {en}. World opinion is tired of the war.
+124	Ateşkes görüşmelerine otur	Sit down for ceasefire talks
+125	Gizli kanallar açıldı. Savaş kamuoyu sakinleşti.	Back channels opened. War opinion calmed.
+126	Savaşa devam	Continue the war
+127	Savaş kararlılıkla sürüyor; diplomatik baskı sertleşti.	The war continues with determination; diplomatic pressure hardened.
+128	Üçüncü ülkeyi kendi yanımıza çek	Win a third country to our side
+129	Yeni bir mali destek paketiyle bir ülke yanımızda durdu.	A new financial support package kept a country on our side.
+130	{cap} sokaklarında büyük bir protesto var; ekonomik talepler dile getiriliyor. Kalabalık her saat büyüyor.	There is a huge protest in the streets of {cap}; economic demands are being voiced. The crowd grows by the hour.
+131	Ödenek ver	Grant funds
+132	Bir destek paketi açıklandı; kalabalık dağıldı.	A support package was announced; the crowd dispersed.
+133	Gözaltı ve gaz	Arrests and gas
+134	Polis müdahale etti; öfke tüm şehirlere yayıldı.	Police intervened; the anger spread to all cities.
+135	Sokaklar ayaklandı, hükümet devrildi. Yönetim elinden alındı.	The streets rose up and the government was toppled. You were removed from power.
+136	Müzakere et	Negotiate
+137	Sendika ve öğrenci temsilcileriyle görüşüldü.	Talks were held with union and student representatives.
+138	İstihbarat, büyük bir şehirde bombalı saldırı planı ihbar etti. Zaman kısıtlı.	Intelligence reported a bomb attack plot in a big city. Time is short.
+139	Baskın operasyonu	Raid operation
+140	Hücre çökertildi; basın seni şahin ilan etti.	The cell was dismantled; the press called you a hawk.
+141	Sokağa çıkma yasağı	Curfew
+142	Şehir bir gece durdu, plan bozuldu ama halk bunaldı.	The city stopped for a night, the plot was foiled but the public felt stifled.
+143	İhbar abartı	The tip is exaggerated
+144	Saldırı gerçekleşti. Ağır bir yas ve öfke dalgası var.	The attack happened. A wave of heavy mourning and anger followed.
+145	Üst düzey bürokratlar kayırmacılık ve yolsuzlukla suçlanıyor. Yargı seni bekliyor.	Senior bureaucrats are accused of favoritism and corruption. The judiciary awaits you.
+146	Tasfiye et	Purge them
+147	Birkaç isim görevden alındı; kamuoyu rahatladı.	Several names were dismissed; the public felt relieved.
+148	Örtbas et	Cover it up
+149	Dosya kapatıldı. Para korundu ama güven zedelendi.	The file was closed. Money was protected but trust was damaged.
+150	Bağımsız soruşturma	Independent investigation
+151	Bağımsız bir kurul çalışmaya başladı.	An independent board started work.
+152	Sınırda yeni bir göç dalgası var. Binlerce kişi kapıda bekliyor.	There is a new wave of migration at the border. Thousands are waiting at the gate.
+153	Kabul et, kamp kur	Accept, build camps
+154	Kamplar kuruldu; yeni iş gücü piyasaya girmeye başladı.	Camps were built; new labor began entering the market.
+155	Sınırı kapat	Close the border
+156	Sınır kapatıldı; komşu hükümet seni eleştiriyor.	The border was closed; the neighboring government criticizes you.
+157	Uluslararası yardım iste	Ask for international aid
+158	Yardım örgütleri ortak bir çözüm bulmak için masaya oturdu.	Aid organizations sat down to find a joint solution.
+159	Muhalefet erken seçim istiyor. Sokaklarda sandık sloganları duyuluyor.	The opposition demands early elections. Ballot-box slogans are heard in the streets.
+160	Erken seçime git	Go to early elections
+161	Seçim yapıldı: mevcut yönetim güvenini tazeledi.	The election was held: the current administration renewed its mandate.
+162	Seçimi kaybettin. İktidar el değiştirdi, yeni hükümet kuruldu.	You lost the election. Power changed hands and a new government was formed.
+163	Talep reddedildi; muhalefet sokağa dökülmek için hazırlık yapıyor.	The demand was rejected; the opposition is preparing to take to the streets.
+164	Referandum öner	Propose a referendum
+165	Referandum kampanyası başladı.	The referendum campaign began.
+166	Bazı gazeteciler hükümeti sert eleştiriyor. Kanal sahiplerine baskı yapmamı ister misin?	Some journalists sharply criticize the government. Do you want me to pressure the channel owners?
+167	Basına dokunma	Leave the press alone
+168	Basın özgürlüğü korundu; eleştiriler sürüyor.	Press freedom was preserved; the criticism continues.
+169	Sansür	Censorship
+170	Kanallara talimat gitti; dijital izleme güçlendirildi.	Instructions went to the channels; digital monitoring was strengthened.
+171	Kanalları kapat	Shut down the channels
+172	Birkaç kanal kapatıldı; dışarıdan sert tepki geldi.	Several channels were shut down; a harsh reaction came from abroad.
+173	Büyük bir deprem/sel felaketi yaşandı; yüz binlerce kişi etkilendi.	A major earthquake/flood disaster struck; hundreds of thousands are affected.
+174	Ulusal seferberlik	National mobilization
+175	Ordu ve sivil toplum seferber oldu; şehirler yeniden inşa ediliyor.	The army and civil society mobilized; cities are being rebuilt.
+176	Kısmi yardım	Partial aid
+177	Yardım gecikmeli geldi.	The aid arrived late.
+178	Özel sektöre bırak	Leave it to the private sector
+179	Yardım örgütsüz kaldı; halk öfkeli.	The relief was unorganized; the public is angry.
+180	Bütçe açığı büyüyor. Rezervler hızla azalıyor.	The budget deficit is growing. Reserves are shrinking fast.
+181	Vergileri artır	Raise taxes
+182	Yeni vergiler kasayı doldurdu, halk homurdandı.	New taxes filled the treasury, the public grumbled.
+183	Borçlan	Borrow
+184	Uluslararası piyasalardan borç alındı; faiz yükü gelecek haftalara kaldı.	Debt was taken from international markets; the interest burden is left for coming weeks.
+185	Harcama kıs	Cut spending
+186	Kamu yatırımları dondurulduktan sonra kasa toparlandı.	After public investments were frozen, the treasury recovered.
+187	Yabancı bir yatırımcı ülkende dev bir fabrika kurmak istiyor. Teşvik şartları var.	A foreign investor wants to build a giant factory in your country. There are incentive terms.
+188	Vergi teşviki ver	Give a tax incentive
+189	Fabrika temelleri atıldı; binlerce kişi iş buldu.	The foundations were laid; thousands found jobs.
+190	Şartlı kabul	Conditional acceptance
+191	Pazarlıkla küçük bir tesis kuruldu.	After bargaining a small facility was built.
+192	Milli duygular okşandı.	National feelings were stroked.
+193	Enflasyon yükseliyor ve halk fiyatlardan şikâyetçi.	Inflation is rising and the public complains about prices.
+194	Faizi artır	Raise interest rates
+195	Para sıkılaştı; krediler pahalandı.	Money tightened; loans got expensive.
+196	Fiyat tavanı koy	Set a price cap
+197	Raflardaki fiyatlar durdu ama üretici zorlanıyor.	Shelf prices stopped but producers struggle.
+198	Merkez bankasına güven	Trust the central bank
+199	Sorun kendi dinamiğiyle sürdü.	The problem continued on its own dynamics.
+200	{nb} ile geniş kapsamlı bir ticaret anlaşması masada. Ek olarak tarım ve enerji de var.	A broad trade agreement with {nb} is on the table. Agriculture and energy are included as well.
+201	İmzala	Sign
+202	Anlaşma imzalandı; limanlarda yoğunluk arttı.	The agreement was signed; traffic at the ports increased.
+203	Pazarlık et	Bargain
+204	Kısmi bir anlaşma yapıldı.	A partial agreement was made.
+205	Yerli üretici koruması gerekçesiyle ret kararı verildi.	A rejection was decided on grounds of protecting domestic producers.
+206	Dev bir altyapı projesi için onay bekliyoruz: köprü, hızlı tren, liman.	We are waiting for approval of a giant infrastructure project: bridge, high-speed rail, port.
+207	Hepsini yap	Build it all
+208	Şantiyeler kuruldu; projeler halkın gururu oldu.	Construction sites were set up; the projects became the pride of the people.
+209	Sadece liman	Port only
+210	Liman genişletildi; ticaret hızlandı.	The port was expanded; trade sped up.
+211	Projeler gelecek bütçeye kaldı.	The projects were left to the next budget.
+212	Küresel piyasalar çöküyor ve ülkemizin borsası %20 düştü.	Global markets are collapsing and our country's stock exchange fell 20%.
+213	Kurtarma paketi	Bailout package
+214	Devlet bankalara destek verdi; panik durdu.	The state backed the banks; the panic stopped.
+215	Kemer sıkma	Austerity
+216	Sert tasarruf önlemleri alındı.	Harsh savings measures were taken.
+217	Ekonomik çöküş ve sokak ayaklanmaları hükümeti yıktı.	The economic collapse and street uprisings toppled the government.
+218	Rezerv sat	Sell reserves
+219	Rezervler satıldı; piyasa nefes aldı.	Reserves were sold; the market caught its breath.
+220	Yeni bir salgın dalgası var. Hastaneler dolmaya başladı.	There is a new wave of epidemic. Hospitals are starting to fill up.
+221	Karantina uygula	Impose quarantine
+222	Şehirler kapandı, salgın kontrol altına alındı.	Cities closed down, the epidemic was brought under control.
+223	Aşı kampanyası	Vaccine campaign
+224	Seferberlik gibi bir aşı kampanyası yürütüldü.	A mobilization-style vaccine campaign was run.
+225	Görmezden gel	Ignore it
+226	Salgın yayıldı; üretim ve ordu zayıfladı.	The epidemic spread; production and the army weakened.
+227	Şehir hastaneleri programı onayını bekliyor: yeni yataklar, yeni doktorlar.	The city hospitals program awaits approval: new beds, new doctors.
+228	Büyük program	Large program
+229	Yeni hastaneler açıldı; halk memnun.	New hospitals opened; the public is pleased.
+230	Kısmi program	Partial program
+231	Önce en acil bölgelerde başlandı.	It started first in the most urgent regions.
+232	Program ertelendi.	The program was postponed.
+233	Yerli ilaç ve tıbbi cihaz sanayisini kurmak için bir plan sundum.	I have presented a plan to build a domestic pharmaceutical and medical device industry.
+234	Devlet ortaklığı	State partnership
+235	BM	UN
+236	Birleşmiş Milletler	United Nations
+237	%d üye   /   karar salt çoğunlukla, veto yok	%d members   /   decided by simple majority, no veto
+238	%d hf sonra	in %d wk
+239	Maliyet %s	Cost %s
+240	Hazır	Ready
+241	Son kararlar	Recent resolutions
+242	Henüz karar alınmadı.	No resolutions yet.
+243	Önergenin hedefini seç.	Choose the target of the resolution.
+244	Ateşkes istenecek savaşı seç.	Choose the war to call a ceasefire in.
+245	Önerge kabul edildi	Resolution passed
+246	Önerge reddedildi	Resolution rejected
+247	Önerge verilemedi	Resolution could not be submitted
+248	Ateşkes çağrısı	Ceasefire resolution
+249	Savaşan iki tarafı ateşkese çağırır.	Calls both warring sides to a ceasefire.
+250	Yeniden inşa fonu	Reconstruction fund
+251	Hedef ülkenin harap eyaletlerini onarmak için fon ayrılır.	Funds are set aside to repair the target country's damaged provinces.
+252	İnsani yardım	Humanitarian aid
+253	Hedef ülkeye hazine ve istikrar desteği.	Treasury and stability support for the target country.
+254	Yaptırım kararı	Sanctions resolution
+255	Hedef ülkenin geliri 26 hafta boyunca yüzde 25 düşer.	The target country's income drops 25 percent for 26 weeks.
+256	Ortak harekât	Joint action
+257	Kabul edilirse lehte oy veren ülkeler hedefe savaş açar.	If passed, countries that voted yes declare war on the target.
+258	Birleşmiş Milletler henüz kurulmadı.	The United Nations has not been founded yet.
+259	Bu önerge için %d hafta beklemelisin.	You must wait %d weeks before submitting this resolution again.
+260	Kasa yetersiz: önerge bedeli %s.	Insufficient funds: the resolution costs %s.
+261	Geçerli bir hedef yok.	There is no valid target.
+262	BM: %s önergesi reddedildi (%d lehte, %d aleyhte).	UN: the %s resolution was rejected (%d for, %d against).
+263	BM: %s önergesi kabul edildi (%d lehte, %d aleyhte). %s	UN: the %s resolution passed (%d for, %d against). %s
+264	%s ile %s arasında ateşkes başladı.	A ceasefire between %s and %s has begun.
+265	%s için %s fon aktarıldı; eyaletler onarılıyor.	Fund transferred for %s: %s; provinces are being repaired.
+266	%s için %s yardım gönderildi.	Aid sent for %s: %s.
+267	%s için 26 haftalık yaptırım başladı.	A 26-week sanctions regime on %s has begun.
+268	%d ülke savaş açtı. Hedef: %s.	%d countries declared war. Target: %s.
+269	Barış gücü	Peacekeeping force
+270	Hedef ülkede huzursuzluğu söndürür, istikrarı artırır.	Calms unrest in the target country and raises its stability.
+271	Kalkınma programı	Development program
+272	Hedef ülkenin en az gelişmiş eyaletleri bir kademe gelişir.	The target country's least developed provinces improve by one level.
+273	Egemenlik garantisi	Sovereignty guarantee
+274	Lehte oy veren ülkeler hedefe 26 hafta saldırmaz.	Countries that voted yes will not attack the target for 26 weeks.
+275	Silah ambargosu	Arms embargo
+276	Hedef ülkenin sanayisi ve lojistiği zayıflar.	The target country's industry and logistics weaken.
+277	Uluslararası soruşturma	International investigation
+278	Hedef ülkenin istikrarı ve saldırganlığı düşer.	The target country's stability and aggression fall.
+279	Silahsızlanma kararı	Disarmament resolution
+280	Hedef ülkenin ordusu yüzde 12 küçülür.	The target country's army shrinks by 12 percent.
+281	Barış gücü %s topraklarına konuşlandı; huzursuzluk sönüyor.	Peacekeepers deployed in %s; unrest is subsiding.
+282	%s için kalkınma programı: %d eyalet gelişti.	Development program for %s: %d provinces improved.
+283	%d ülke %s için 26 hafta saldırmazlık verdi.	%d countries pledged 26 weeks of non-aggression toward %s.
+284	%s için silah ambargosu: sanayi ve lojistik zayıfladı.	Arms embargo on %s: industry and logistics weakened.
+285	%s için uluslararası soruşturma: istikrar düştü, saldırganlık azaldı.	International investigation of %s: stability fell, aggression eased.
+286	%s ordusu yüzde 12 küçüldü.	The army of %s shrank by 12 percent.
+287	Deniz	Sea
+288	Amfibi Çıkarma	Amphibious Landing
+289	Deniz aşırı çıkarma: taarruz −15 yüzde, savunma +10 yüzde. Taşıma kapasitesi donanmanla sınırlı.	Landing from the sea: attack −15 percent, defense +10 percent. Transport capacity is limited by your navy.
+290	Amfibi çıkarma: taşıma kapasitesi %s asker	Amphibious landing: transport capacity %s troops
+291	İlişkiler	Relations
+292	İlişki görünümü kapalı.	Relations view off.
+293	İlişki görünümü: sarı seçili ülke, mavi müttefik, kırmızı savaş, mor ateşkes.	Relations view: yellow selected country, blue allies, red at war, purple truce.
+294	Yok	None
+295	İttifak bloğu: %s	Alliance bloc: %s
+296	%d eyalet   /   asker %s   /   gelir %s	%d provinces   /   troops %s   /   income %s
+297	Müttefikler	Allies
+298	Osmanlı Devleti Karadeniz'de Rus limanlarını bombalayarak savaşa girdi.	The Ottoman Empire entered the war by shelling Russian Black Sea ports.
+299	Batı Cephesi'nde Noel ateşkesi: siperlerdeki askerler bir gün silah bıraktı.	Christmas truce on the Western Front: soldiers in the trenches laid down arms for a day.
+300	Çanakkale Boğazı'na büyük bir donanma saldırısı: Boğaz'ın kaderi tehlikede.	A great naval assault on the Dardanelles: the fate of the Straits is at stake.
+301	İtalya, Avusturya-Macaristan'a savaş ilan ederek İtilaf Devletleri safına geçti.	Italy declared war on Austria-Hungary and joined the Entente.
+302	Bulgaristan Merkezi Güçler'e katıldı ve Sırbistan'a saldırdı.	Bulgaria joined the Central Powers and attacked Serbia.
+303	Verdun Muharebesi başladı: Fransa ve Almanya aylarca sürecek bir kan gölüne girdi.	The Battle of Verdun began: France and Germany entered a months-long bloodbath.
+304	Romanya İtilaf safında savaşa girdi ve Avusturya-Macaristan'a saldırdı.	Romania entered the war on the Entente side and attacked Austria-Hungary.
+305	Rusya'da Şubat Devrimi: çarlık yıkıldı, ülke karışıklığa sürüklendi.	February Revolution in Russia: the tsarist regime collapsed and the country slid into turmoil.
+306	ABD, Almanya'ya savaş ilan ederek savaşa girdi.	The United States declared war on Germany and entered the war.
+307	Yunanistan İtilaf safında Merkezi Güçler'e savaş ilan etti.	Greece declared war on the Central Powers on the Entente side.
+308	Rusya'da Ekim Devrimi: Bolşevikler iktidarı ele geçirdi.	October Revolution in Russia: the Bolsheviks seized power.
+309	Brest-Litovsk Antlaşması: Sovyet Rusya Almanya ile ayrı barış imzaladı.	Treaty of Brest-Litovsk: Soviet Russia signed a separate peace with Germany.
+310	11 Kasım Mütarekesi: Batı Cephesi'nde silahlar susuyor.	Armistice of 11 November: the guns fall silent on the Western Front.
+311	Versay Antlaşması imzalandı: savaş sonrası düzen yeniden çiziliyor.	The Treaty of Versailles was signed: the post-war order is being redrawn.
+312	New York Borsası çöktü: Büyük Buhran dünyayı sarsıyor.	The New York stock market crashed: the Great Depression shakes the world.
+313	Almanya'da Hitler başbakan oldu.	Hitler became chancellor in Germany.
+314	Almanya Polonya'ya saldırdı: yeni bir dünya savaşı başlıyor.	Germany invaded Poland: a new world war begins.
+315	Polonya düştü; Almanya ile SSCB ülkeyi paylaştı.	Poland has fallen; Germany and the USSR have partitioned the country.
+316	Almanya Danimarka ve Norveç'e saldırdı.	Germany attacked Denmark and Norway.
+317	Almanya Batı'da büyük taarruz başlattı: Hollanda ve Belçika saldırı altında.	Germany launched its great offensive in the West: the Netherlands and Belgium are under attack.
+318	Fransa'nın düşüşü: İtalya da Fransa ve Britanya'ya savaş ilan etti.	The fall of France: Italy also declared war on France and Britain.
+319	Britanya Muharebesi: Luftwaffe İngiliz göklerinde.	Battle of Britain: the Luftwaffe is over British skies.
+320	Üçlü Pakt imzalandı: Almanya, İtalya ve Japonya ittifak kurdu.	Tripartite Pact signed: Germany, Italy and Japan form an alliance.
+321	Barbarossa Harekâtı: Almanya ve müttefikleri SSCB'ye saldırdı.	Operation Barbarossa: Germany and its allies attacked the USSR.
+322	Pearl Harbor: Japonya ABD ve Britanya'ya saldırdı, Almanya ABD'ye savaş ilan etti.	Pearl Harbor: Japan attacked the US and Britain, and Germany declared war on the US.
+323	Midway Muharebesi: Japon donanmasının saldırı gücü kırıldı.	Battle of Midway: the striking power of the Japanese fleet was broken.
+324	Stalingrad Muharebesi başladı.	The Battle of Stalingrad began.
+325	İtalya ateşkes istedi; Müttefikler Sicilya'dan sonra İtalya'ya çıktı.	Italy sought an armistice; the Allies landed in Italy after Sicily.
+326	D-Day: Müttefikler Normandiya'ya çıktı.	D-Day: the Allies landed in Normandy.
+327	Romanya taraf değiştirdi ve Almanya'ya savaş açtı.	Romania switched sides and declared war on Germany.
+328	Bulgaristan ve Finlandiya Almanya'ya karşı çıktı.	Bulgaria and Finland turned against Germany.
+329	Türkiye sembolik olarak Almanya ve Japonya'ya savaş ilan etti.	Turkey symbolically declared war on Germany and Japan.
+330	Avrupa'da savaş sona eriyor: Almanya koşulsuz teslim oldu.	The war in Europe is ending: Germany surrendered unconditionally.
+331	Hiroşima ve Nagasaki'ye atom bombaları atıldı; SSCB Japonya'ya savaş açtı.	Atomic bombs were dropped on Hiroshima and Nagasaki; the USSR declared war on Japan.
+332	Japonya teslim oldu: II. Dünya Savaşı sona erdi.	Japan surrendered: the Second World War is over.
+333	NATO kuruldu: Batı ittifakı şekilleniyor.	NATO was founded: the Western alliance takes shape.
+334	Kore Savaşı başladı.	The Korean War began.
+335	Nükleer silahın yok.	You have no nuclear weapons.
+336	Nükleer arsenal hazır değil (%d hafta).	The nuclear arsenal is not ready (%d weeks).
+337	Nükleer saldırı için hedefle savaşta olmalısın.	You must be at war with the target to use nuclear weapons.
+338	NÜKLEER SALDIRI! %s, %s eyaletine nükleer silah kullandı; dünya şokta, yaptırımlar geliyor.	NUCLEAR STRIKE! %s used a nuclear weapon on %s; the world is in shock and sanctions are coming.
+339	Nükleer saldırı	Nuclear strike
+340	%s eyaletine nükleer silah kullanılacak. Hedef ordusunun %%80'i yok olur, ama istikrarın düşer, 26 hafta yaptırım gelir ve hedefin müttefikleri sana savaş açabilir. Emin misin?	A nuclear weapon will be used on %s. 80%% of the defending army is destroyed, but your stability drops, 26 weeks of sanctions follow and the target's allies may declare war on you. Are you sure?
+341	Saldır	Launch
+342	%d - %d   %dH	%d - %d   %dw
+343	Ateşkes	Truce
+344	İlk adımlar	First steps
+345	Öğretici tamamlandı	Tutorial complete
+346	Başarımlar	Achievements
+347	Başarım: %s	Achievement: %s
+348	Hedef tamamlandı: %s	Objective complete: %s
+349	Sıradaki hedef: %s	Next goal: %s
+350	Hedef: %s	Goal: %s
+351	Hedefler ve başarımlar	Goals and achievements
+352	İlk turu oyna	Play the first turn
+353	Alttaki oynat düğmesine bas ya da tur ilerlet.	Press the play button or advance a turn.
+354	Bir ordu hareket ettir	Move an army
+355	Bir ordu seç, sonra bir komşu eyalete dokun.	Select an army, then tap a neighbouring province.
+356	Komşu bir ülkenin eyaletine dokun ve savaş ilan et.	Tap a neighbouring country's province and declare war.
+357	İlk eyaleti fethet	Conquer your first province
+358	Orduyla düşman eyaletine saldır ve ele geçir.	Attack an enemy province with an army and capture it.
+359	Barış yap	Make peace
+360	Savaşı barışla bitir; ganimeti güvene al.	End a war with peace and secure the spoils.
+361	Fatih	Conqueror
+362	10 eyalet fethet.	Conquer 10 provinces.
+363	50 eyalet fethet.	Conquer 50 provinces.
+364	Cihan Hâkimi	World Master
+365	150 eyalet fethet.	Conquer 150 provinces.
+366	Savaş Tecrübesi	Battle-Hardened
+367	50 muharebe yap.	Fight 50 battles.
+368	5 barış anlaşması imzala.	Sign 5 peace treaties.
+369	Dost Bulan	Friend in Need
+370	Bir ittifak kur.	Form an alliance.
+371	Devlet Yıkıcı	State Breaker
+372	Bir ülkeyi haritadan sil.	Wipe a country off the map.
+373	Salon Diplomasisi	Lobby Diplomacy
+374	Bir BM önergesini kabul ettir.	Pass a UN resolution.
+375	Normandiya Ruhu	Spirit of Normandy
+376	Denizden çıkarma yap.	Land troops from the sea.
+377	Pandora'nın Kutusu	Pandora's Box
+378	Nükleer silah kullan. Bedeli ağırdır.	Use a nuclear weapon. The price is heavy.
+379	Bir Yıl Dayan	Hold Out for a Year
+380	52 hafta (1 yıl) oyna.	Play 52 weeks (1 year).
+381	On Yıl	A Decade
+382	520 hafta (10 yıl) oyna.	Play 520 weeks (10 years).
+383	Büyük Devlet	Great Power
+384	Aynı anda 30 eyalete sahip ol.	Own 30 provinces at once.
+385	Savaş tazminatı	War reparations
+386	Yenilenin kasasının yarısı sana geçer, istikrarı düşer.	Half of the loser's treasury passes to you and its stability drops.
+387	Silahsızlandırma	Disarmament
+388	Yenilenin orduları yarıya iner.	The loser's armies are cut in half.
+389	Tampon bölge	Buffer zone
+390	Ateşkes 26 yerine 78 hafta sürer; iki taraf da saldıramaz.	The truce lasts 78 weeks instead of 26; neither side can attack.
+391	Barış şartları: %s, %s'e şunları dayattı: %s.	Peace terms: %s imposed the following on %s: %s.
+392	tazminat	reparations
+393	silahsızlandırma	disarmament
+394	tampon bölge	buffer zone
+395	\nKomutan: %s (Sv %d)	\nCommander: %s (Lv %d)
+396	Komutan %s sefer kazandı: seviye %d (+%%%d savaş gücü).	Commander %s won the campaign: level %d (+%%%d combat strength).
+397	Hava Harekâtı	Air Operation
+398	Havadan bombardıman: etkisi hava üstünlüğüne bağlı (hava gücün rakipten fazlaysa savunma −%20'ye kadar). Eski çağda yoktur.	Aerial bombardment: its effect depends on air superiority (up to −20% defence if your air power exceeds the enemy's). Not available in the early era.
+399	Dünya tepkisi: %d / 100 (fetih arttıkça yükselir; 50'yi aşarsa koalisyon kurulur)	World reaction: %d / 100 (rises with conquest; above 50 a coalition forms)
+400	Dünya, %s'nin yükselişinden endişeli: komşular ve büyük güçler soğuk bakıyor.	The world is worried about the rise of %s: neighbours and great powers are growing cold.
+401	KOALİSYON! %d ülke, %s'nin fetihlerine karşı savaş ilan etti.	COALITION! %d countries declared war on %s over its conquests.
+402	Donanma Bombardımanı	Naval Bombardment
+403	Sahildeki eyalete gemi topçusu: donanma gücün rakipten fazlaysa savunma −%18'e kadar. Yalnız kıyı eyaletleri.	Ship gunnery on a coastal province: up to −18% defence if your navy is stronger than the enemy's. Coastal provinces only.
+404	Füze Saldırısı	Missile Strike
+405	Uzun menzilli füze ve hassas vuruş: savunma −%30'a kadar, hava üstünlüğü gerekmez. Yalnız modern çağda.	Long-range missiles and precision strikes: up to −30% defence, no air superiority needed. Modern era only.
+406	Hava İndirme	Airborne Drop
+407	Arkadan paraşütlü baskın: eyaletin savunma ve evde-savunma bonusu işlemez. WW2 ve modern çağda.	Paratroop raid from behind: the province's defence and home-defender bonus do not apply. WW2 and modern eras.
+408	Özel Kuvvet Baskını	Special Forces Raid
+409	Küçük, seçkin birlikle sert vuruş: taarruz +%18, kayıplar düşük. En çok 25.000 askerle; WW2 ve modern çağda.	A hard strike with a small elite force: +18% attack, low losses. Up to 25,000 troops; WW2 and modern eras.
+410	Bu harekât burada kullanılamaz.	This operation cannot be used here.
+411	Hoş geldin, komutan	Welcome, commander
+412	Bu kısa rehber oyunun temelini öğretir. İstediğin adımı «Geç» ile atlayabilirsin; eylem adımları sen yapınca kendiliğinden ilerler.	This short guide teaches the basics of the game. You can skip any step with “Skip”; action steps advance by themselves when you do them.
+413	Haritayı tanı	Learn the map
+414	Haritayı parmağınla sürükle, iki parmakla yakınlaştır. Şimdi herhangi bir eyalete dokun.	Drag the map with your finger and pinch with two fingers to zoom. Now tap any province.
+415	Eyalet kartı	Province card
+416	Kartta eyaletin sahibi, nüfusu, geliri ve savunması yazar; başkent yıldızlıdır. Eyaletlerin sana gelir getirir, kaybettikçe gelirin düşer.	The card shows the province's owner, population, income and defense; the capital has a star. Your provinces bring you income, and you lose income as you lose them.
+417	Üst çubuk	Top bar
+418	Kasa (para), asker, eyalet sayısı ve tarih burada. Her tur bir haftadır: gelir her hafta kasana eklenir, ordu ve harcamalar düşer.	Treasury (money), troops, province count and date are here. Each turn is one week: income is added to your treasury every week, while army upkeep and spending are deducted.
+419	Ordunu seç	Select your army
+420	Kendi eyaletine dokun ve kartta «Ordu seç» düğmesine bas. Ordular harita üzerinde asker sayısıyla görünür.	Tap one of your own provinces and press “Select army” on the card. Armies appear on the map with their troop counts.
+421	Ordu hareketi	Move the army
+422	Komşu bir eyalete dokun ve «Ordu buraya yürüsün» de. Elle gönderdiğin ordu varışta bekler; emir vermediğin ordular, ayardaysa, otomatik savaşır.	Tap a neighboring province and press “March army here”. An army you send by hand waits on arrival; armies you give no orders to fight automatically if that setting is on.
+423	Turu geçir	End the turn
+424	Sağ üstteki «Turu geç» düğmesiyle bir hafta ilerlet. Haberler üstteki Cihan Bülteni'nde akar; dokunarak geçmişi aç.	Advance one week with the “End turn” button at the top right. News flows in the World Bulletin at the top; tap it to open the history.
+425	Politika paneli	Policy panel
+426	Sağdaki tank düğmesi: bütçe dağılımı (askerî, sanayi, siber, lojistik...), silah alımı, envanter, ticaret, cepheler, ittifaklar, istihbarat ve kabine. Gücün buradan büyür.	The tank button on the right: budget split (military, industry, cyber, logistics...), arms purchases, inventory, trade, fronts, alliances, intelligence and cabinet. Your strength grows here.
+427	Kabine ve istikrar	Cabinet and stability
+428	Politika → Kabine: bakanlar ülkenin kültürüne göre atanır; iyi bakan gelir, ordu ve istikrara bonus verir. Savaş yorgunluğu ve düşük istikrar eyaletlerde huzursuzluk ve isyan çıkarır; paralı asker kiralayarak ordunu hızla güçlendirebilirsin.	Policy → Cabinet: ministers are appointed according to the country's culture; a good minister boosts income, army and stability. War weariness and low stability cause unrest and rebellion in provinces; you can hire mercenaries to strengthen your army quickly.
+429	Savaş ilanı	Declaring war
+430	Önce komşu zayıf bir ülke seç. Önerim: {target}. Onun bir eyaletine dokun ve «Savaş ilan et» de. Müttefikleri sana karşı çıkabilir; bedeli düşün.	First pick a weak neighboring country. My suggestion: {target}. Tap one of its provinces and press “Declare war”. Its allies may turn against you; weigh the cost.
+431	Düşman eyaletine dokun ve «Taarruz»a bas. Ordularını seç, harekât türünü belirle (topçu, hava, donanma, füze, paraşüt, özel kuvvet...). Üstünlük çubuğu kazanma şansını gösterir.	Tap an enemy province and press “Assault”. Pick your armies and choose the operation type (artillery, air, naval, missile, paradrop, special forces...). The advantage bar shows your chance of winning.
+432	Kuşatma ve fetih	Siege and conquest
+433	Savunmayı yenen ordu eyalete girer ve kuşatır; kuşatma süresi dolunca eyalet senin olur ve savaş puanın artar. Ordular sınırı geçerken izin gerekir.	An army that beats the defense enters the province and besieges it; when the siege time runs out the province becomes yours and your war score rises. Armies need permission to cross borders.
+434	Barış masası	The peace table
+435	Savaş puanın yüksekse düşman eyaletine dokunup «Barış teklif et»: aldığın eyaletleri ve tazminat, silahsızlandırma, tampon bölge şartlarını puanınla seçersin. Fazla fetih «dünya tepkisi»ni artırır; 50'yi aşarsa ülkeler koalisyon kurar.	With a high war score, tap an enemy province and choose “Offer peace”: pick the provinces you take plus reparations, disarmament and buffer-zone terms using your score. Too many conquests raise “world reaction”; above 50 countries form a coalition.
+436	İttifak ve ilişkiler	Alliances and relations
+437	Dost bir ülkenin eyaletine dokun: «İttifak teklif et» ya da «İlişkiler» (kim kimle müttefik, kim savaşta). Sağdaki el sıkışma düğmesi haritayı ilişki renklerine boyar.	Tap a friendly country's province: “Propose alliance” or “Relations” (who is allied with whom, who is at war). The handshake button on the right paints the map by relation colors.
+438	Dünya ve BM	World and the UN
+439	Sağdaki küre düğmesi: sıralama, bloklar, haberler ve BM. BM'de ateşkes, yeniden inşa, yardım, yaptırım gibi önergeleri oy çokluğuyla geçirirsin (veto yok).	The globe button on the right: rankings, blocs, news and the UN. In the UN you pass motions such as ceasefire, reconstruction, aid and sanctions by majority vote (no veto).
+440	Nükleer ve riskler	Nuclear power and risks
+441	Nükleer güçsen düşman eyaletine nükleer saldırı yapabilirsin: büyük yıkım, ama ağır yaptırım ve koalisyon getirir. Son çare olarak sakla.	If you are a nuclear power you can launch a nuclear strike on an enemy province: massive destruction, but heavy sanctions and a coalition follow. Keep it as a last resort.
+442	Kaydet ve hedefler	Save and goals
+443	Sol üstteki ≡ menüsü: kaydet/yükle, ayarlar ve «Hedefler ve başarımlar». Ayarlardan otomatik kayıt açılabilir. Başarımlar kalıcıdır.	The ≡ menu at the top left: save/load, settings and “Goals and achievements”. You can enable autosave in settings. Achievements are permanent.
+444	Hazırsın!	You are ready!
+445	Artık fethe, diplomasiye ya da barışla kalkınmaya hazırsın. Öğreticiyi istediğin an menüden tekrar açabilirsin. İyi şanslar!	You are now ready for conquest, diplomacy or peaceful development. You can reopen the tutorial from the menu any time. Good luck!
+446	ÖĞRETİCİ	TUTORIAL
+447	Geç	Skip
+448	Bitir	Finish
+449	Yönergeyi yap, kart kendiliğinden ilerler.	Do what it says and the card advances by itself.
+450	Tamam!	Done!
+451	komşu bir ülke	a neighboring country
+452	Öğreticiyi kapat	Close tutorial
+453	Öğretici	Tutorial
+454	Küresel Salgın	Global Pandemic
+455	İspanyol Gribi	Spanish Flu
+456	Salgın Hastalık	Epidemic
+457	Küresel Mali Çöküş	Global Financial Crash
+458	Mali Panik	Financial Panic
+459	Büyük Buhran Artçısı	Depression Aftershock
+460	Kıtlık ve Gıda Krizi	Famine and Food Crisis
+461	Enerji Şoku	Energy Shock
+462	Yakıt Kıtlığı	Fuel Shortage
+463	Efendim, ülkeye bir salgın giriyor ve tüm dünyada yayılıyor. Sağlık sistemi zorlanacak. Ne yapalım?	Sir, an epidemic is entering the country and spreading across the world. The health system will be strained. What do we do?
+464	Efendim, borsalar çöküyor ve bankalar sallanıyor. Kriz tüm dünyayı sarıyor. Hazine ne yapsın?	Sir, the markets are collapsing and banks are shaking. The crisis is engulfing the whole world. What should the treasury do?
+465	Efendim, kuraklık ve nakliye sorunları gıda fiyatlarını uçurdu. Halk ekmek kuyruğunda. Ne yapalım?	Sir, drought and shipping problems have sent food prices soaring. People are queuing for bread. What do we do?
+466	Efendim, petrol fiyatları fırladı; sanayi ve ulaşım zorlanıyor. Ne yapalım?	Sir, oil prices have skyrocketed; industry and transport are struggling. What do we do?
+467	Acil önlem paketi	Emergency relief package
+468	Geniş bir önlem paketi açıklandı. Kriz ülkeni çok az etkileyecek, toparlanma hızlı olacak.	A broad relief package was announced. The crisis will barely touch your country and recovery will be quick.
+469	Harcamalar kısıldı. Sert ama ucuz bir önlem; halk homurdanıyor.	Spending was cut. A harsh but cheap measure; the public grumbles.
+470	Bekle ve izle	Wait and see
+471	Hükümet beklemeyi seçti. Kriz tam etkisini gösterecek, ama bu kadarını atlatırsın.	The government chose to wait. The crisis will hit in full, but you can weather this much.
+472	Kriz etkisi azaldı	Crisis impact reduced
+473	Kriz tam etkili	Crisis at full effect
+474	Dünya krizi: %s başladı; etkileri yaklaşık %d hafta sürecek.	World crisis: %s has begun; its effects will last about %d weeks.
+475	%s sona erdi; dünya ekonomisi toparlanıyor.	%s is over; the world economy is recovering.
+476	Uçak gemisi grubu	Carrier strike group
+477	Çıkarma kapasitesini ve çıkarma saldırısını güçlendirir; kıyıdaki düşman eyaletlerini (ada ülkeleri dâhil) ordu göndermeden vurabilirsin. Satın alınanların bakım gideri vardır.	Boosts landing capacity and the landing assault; you can strike enemy coastal provinces (island nations included) without sending an army. Purchased groups have an upkeep cost.
+478	Satın al: %s	Buy: %s
+479	Yeni uçak gemisi grubu devrede.	New carrier group is in service.
+480	Uçak gemisi saldırısı	Carrier strike
+481	Uçak gemisi saldırısı: %s asker kaybı verdirdi.	Carrier strike: inflicted %s casualties.
+482	Uçak gemisi saldırısı yapıldı: hedefte ordu yok.	Carrier strike carried out: no army at the target.
+483	Bu çağda uçak gemisi yok.	There are no aircraft carriers in this era.
+484	Uçak gemisi için teknoloji yetersiz (en az %%%d).	Not enough technology for a carrier (at least %%%d).
+485	Daha fazla uçak gemisi grubu işletemezsin.	You cannot operate more carrier groups.
+486	Kasa yetersiz: %s gerekir.	Insufficient funds: %s needed.
+487	%s yeni bir uçak gemisi grubu devreye aldı.	%s commissioned a new carrier group.
+488	Uçak gemin yok.	You have no carrier.
+489	Uçak gemisi grubu hazırlanıyor (%d hafta).	Carrier group is preparing (%d weeks).
+490	Hedefle savaşta olmalısın.	You must be at war with the target.
+491	Hedef kıyıda değil.	The target is not on the coast.
+492	Kasa yetersiz: %s.	Insufficient funds: %s.
+493	%s uçak gemileri %s eyaletini vurdu%s.	%s's carriers struck %s%s.
+494	: %s asker kaybı	: %s casualties
+495	5 tur oyna	Play 5 turns
+496	3 ordu emri ver	Give 3 army orders
+497	2 muharebeye gir	Fight 2 battles
+498	12 tur oyna	Play 12 turns
+499	Bir eyalet fethet	Conquer a province
+500	Bir ittifak kur	Form an alliance
+501	BM'de bir önerge geçir	Pass a UN motion
+502	Bir barış imzala	Sign a peace
+503	3 eyalet fethet	Conquer 3 provinces
+504	6 muharebeye gir	Fight 6 battles
+505	Amfibi çıkarma yap	Make an amphibious landing
+506	2 barış imzala	Sign 2 peace deals
+507	Bir savaş ilan et	Declare a war
+508	Bu hafta 40 tur oyna	Play 40 turns this week
+509	Bu hafta 12 muharebeye gir	Fight 12 battles this week
+510	Bu hafta 6 eyalet fethet	Conquer 6 provinces this week
+511	Bu hafta 2 barış imzala	Sign 2 peace deals this week
+512	Bu hafta BM'de 2 önerge geçir	Pass 2 UN motions this week
+513	Bu hafta 12 eyalet fethet	Conquer 12 provinces this week
+514	Bu hafta 2 savaş ilan et	Declare 2 wars this week
+515	Bu hafta 3 ittifak kur	Form 3 alliances this week
+516	Çavuş	Sergeant
+517	Teğmen	Lieutenant
+518	Yüzbaşı	Captain
+519	Binbaşı	Major
+520	Albay	Colonel
+521	Tuğgeneral	Brigadier General
+522	Tümgeneral	Major General
+523	Korgeneral	Lieutenant General
+524	Orgeneral	General
+525	Mareşal	Field Marshal
+526	Günlük görevler	Daily missions
+527	Haftalık görevler	Weekly missions
+528	puan	pts
+529	Seri: %d gün	Streak: %d days
+530	Seri yok	No streak
+531	Görev tamam: %s (+%d puan)	Mission complete: %s (+%d pts)
+532	Terfi: %s!	Promoted: %s!
+533	Mağaza	Store
+534	AOD Puanı	AOD Points
+535	Ödül	Reward
+536	Kilitli	Locked
+537	Ücretsiz AP	Free AP
+538	AP al	Get AP
+539	İçerik	Content
+540	Bakiye	Balance
+541	Günlük ödül	Daily reward
+542	Al	Claim
+543	Alındı	Claimed
+544	Reklamı izle	Watch ad
+545	Bonusu al	Get bonus
+546	Günde bir kez. Bugünkü reklam hakkından sayılır.	Once a day. Counts toward today's ad limit.
+547	Yarın tekrar gel. Kaçırdığın günler sayacı sıfırlamaz.	Come back tomorrow. Missed days never reset the counter.
+548	AOD Puanı reklamdan, görevlerden, zaferlerden ve satın almadan kazanılır. Süresi dolmaz. Ordu, para ya da avantaj satmaz.	AOD Points are earned from ads, missions, victories and purchases. They never expire and never buy armies, money or an advantage.
+549	Görevler, başarımlar ve ilk zaferler de AP verir.	Missions, achievements and first victories also give AP.
+550	Tek seferlik. Süre baskısı yok, istediğin zaman alabilirsin.	One-time offer. No time pressure; take it whenever you like.
+551	Tam Sürüm	Full Version
+552	Tüm senaryolar ve tarihî çağlar, bugünkü ve gelecek ücretsiz içerik güncellemeleri. Tek seferlik.	All scenarios and historical eras, plus today's and future free content updates. One-time purchase.
+553	Elle kayıt yuvalarını 3'ten 5'e çıkarır. Kalıcı.	Raises manual save slots from 3 to 5. Permanent.
+554	Satın alımları geri yükle	Restore purchases
+555	Fiyatlar Google Play'de yerel para biriminde gösterilir. AP süresiz geçerlidir, başka oyunlarda kullanılmaz.	Prices are shown in your local currency on Google Play. AP never expires and is not used in other games.
+556	İçerik kilitli	Content locked
+557	Bu içerik ücretsiz sürümde yok. AP ile ya da tek seferlik satın almayla açabilirsin.	This content is not in the free version. Unlock it with AP or a one-time purchase.
+558	%d. ödül günü: +%d AP	Reward day %d: +%d AP
+559	Bugün kalan: %d/%d	Left today: %d/%d
+560	Reklam şu an yok.	No ad available right now.
+561	Bugünlük reklam hakkın bitti. Yarın yenilenir.	You've used today's ads. They refresh tomorrow.
+562	Sonraki reklam: %s	Next ad: %s
+563	Reklam izle  +%d AP	Watch an ad  +%d AP
+564	Günlük bonus reklamı  +%d AP	Daily bonus ad  +%d AP
+565	Başlangıç teklifi  %d AP	Starter offer  %d AP
+566	Ek kayıt yuvası  +%d	Extra save slots  +%d
+567	Ek kayıt yuvaları açıldı.	Extra save slots unlocked.
+568	Yetersiz AP.	Not enough AP.
+569	Açıldı: %s	Unlocked: %s
+570	%d satın alma geri yüklendi.	%d purchase(s) restored.
+571	Geri yüklenecek satın alma bulunamadı.	No purchases to restore were found.
+572	Satın alma tamamlandı.	Purchase complete.
+573	Satın alma tamamlanmadı.	Purchase not completed.
+574	Tam Sürüm açıldı.	Full Version unlocked.
+575	%d AP ile aç  (bakiye %d)	Unlock for %d AP  (balance %d)
+576	%d AP gerekli  (bakiye %d)  /  Mağaza	%d AP needed  (balance %d)  /  Store
+577	Yalnızca bunu aç  %s	Unlock only this  %s
+578	Tam Sürüm  %s  (hepsini aç)	Full Version  %s  (unlock everything)
+579	AOD Puanı: +%d AP	AOD Points: +%d AP
+580	Zafer ödülü: +%d AP	Victory reward: +%d AP
+581	Bugünlük reklam hakkın bitti.	You've used today's ads.
+582	Sonraki reklam için biraz bekle.	Wait a little before the next ad.
+583	Günlük bonus bugün alındı.	Today's bonus was already claimed.
+584	Reklam tamamlanmadı.	The ad was not completed.
+585	Mağaza bu sürümde bağlı değil.	The store isn't connected in this build.
+586	Mağazaya bağlanılamadı. İnternetini kontrol et.	Couldn't reach the store. Check your connection.
+587	Mağazaya bağlanılamadı.	Couldn't reach the store.
+588	Satın alma doğrulanamadı.	The purchase couldn't be verified.
+589	Yerli ilaç fabrikaları ilk ürünlerini çıkardı.	The domestic pharmaceutical plants produced their first products.
+590	Özel sektörü teşvik et	Encourage the private sector
+591	Girişimciler harekete geçti.	Entrepreneurs got moving.
+592	İthal etmeye devam	Keep importing
+593	Mevcut tedarik düzeni korundu.	The current supply arrangement was kept.
+594	Cephede yaralı sayısı arttı. Sahra hastaneleri yetersiz.	Casualties at the front are rising. Field hospitals are insufficient.
+595	Sahra hastaneleri kur	Set up field hospitals
+596	Yaralılar daha hızlı tedavi edilip cepheye döndü.	The wounded were treated faster and returned to the front.
+597	Sivil hastaneleri kullan	Use civilian hospitals
+598	Şehir hastaneleri cephenin yükünü aldı.	City hospitals took the burden of the front.
+599	Kaynak yok	No resources
+600	Yaralı kayıpları arttı.	Casualty losses rose.
+601	Kıtlık uyarısı var. Gıda stokları kritik seviyede.	There is a famine warning. Food stocks are at a critical level.
+602	Acil gıda ithali	Emergency food imports
+603	Gemiler liman liman buğday taşıdı.	Ships carried wheat from port to port.
+604	Karne uygula	Introduce rationing
+605	Karne sistemi getirildi; kuyruklar uzadı.	A ration system was introduced; the queues got longer.
+606	Piyasaya bırak	Leave it to the market
+607	Fiyatlar uçtu, öfke arttı.	Prices soared, anger grew.
+608	Bir grup subayın darbe planladığına dair güvenilir bilgi aldık.	We received reliable information that a group of officers is planning a coup.
+609	Hemen tutuklat	Arrest them now
+610	Operasyon yapıldı, planlar bozuldu. Ordu içinde güven zedelendi.	The operation was carried out and the plans were foiled. Trust inside the army was damaged.
+611	İzlemeye devam	Keep watching
+612	Gözetim artırıldı.	Surveillance was increased.
+613	Darbe gerçekleşti: birlikler başkenti kuşattı ve yönetim el değiştirdi.	The coup happened: troops surrounded the capital and the government changed hands.
+614	Subayları ödüllendir	Reward the officers
+615	Terfi ve zamlarla sadakat satın alındı.	Loyalty was bought with promotions and raises.
+616	Ülkenin enerji ve bankacılık ağlarına yönelik büyük bir siber saldırı tespit ettik.	We detected a major cyber attack aimed at the country's energy and banking networks.
+617	Karşı saldırı	Counter-attack
+618	Saldırgan sunucular çökertildi; uluslararası gerginlik arttı.	The attacking servers were taken down; international tension rose.
+619	Sadece savun	Defend only
+620	Savunma ağları güçlendirildi.	Defense networks were strengthened.
+621	Birkaç gün hizmet kesintisi yaşandı.	There were a few days of service outage.
+622	{nb} ordusundan bir albay sığınma talep ediyor; önemli bilgiler getirmiş.	A colonel from the {nb} army is asking for asylum; he has brought important information.
+623	Albay bilgi paylaştı; komşu hükümet seni suçluyor.	The colonel shared his information; the neighboring government accuses you.
+624	Albay sınırdan geri gönderildi.	The colonel was sent back at the border.
+625	{nb} içindeki casus ağımızın açığa çıkmak üzere olduğu anlaşıldı.	It became clear that our spy network inside {nb} is about to be exposed.
+626	Ağı çek	Pull the network out
+627	Ajanlar sessizce geri çekildi.	The agents quietly withdrew.
+628	Devam et	Continue
+629	Ağ yakalandı ama bazı sırlar kaçırıldı; ilişkiler gerildi.	The network was caught but some secrets were smuggled out; relations became strained.
+630	{en} planlarını ele geçirmek üzereyiz ama bedeli yüksek.	We are about to capture the plans of {en}, but the price is high.
+631	Operasyonu başlat	Start the operation
+632	Planlar ele geçti; komutanlar cephe hatlarını güncelledi.	The plans were captured; the commanders updated the front lines.
+633	Sadece dinle	Just listen
+634	Gizli haberleşme izlendi.	Secret communications were monitored.
+635	İptal	Cancel
+636	Operasyon iptal edildi.	The operation was cancelled.
+637	Efendim, {nb} ile ticaret ve vize anlaşması masada. İmzalarsak iki ülke de kazanır, ama iç sanayi şikâyet edecek.	Sir, a trade and visa agreement with {nb} is on the table. If we sign, both countries win, but domestic industry will complain.
+638	Anlaşmayı imzala	Sign the agreement
+639	Anlaşma imzalandı; ticaret hacmi arttı, yerli üreticiler homurdandı.	The agreement was signed; trade volume grew, domestic producers grumbled.
+640	Şartları sertleştir	Harden the terms
+641	Müzakere uzadı; küçük bir tavizle yetinildi.	Negotiations dragged on; a small concession was all we got.
+642	Anlaşma reddedildi; iç kamuoyu memnun, komşu soğuk.	The agreement was rejected; domestic opinion is pleased, the neighbor is cold.
+643	Büyükelçimiz {nb}'de bir skandalın ortasında; yerel basın peşimizde. Geri çağıralım mı?	Our ambassador is in the middle of a scandal in {nb}; the local press is after us. Shall we recall him?
+644	Geri çağır	Recall
+645	Büyükelçi geri çağrıldı; ilişkilerde kısa bir soğukluk oldu.	The ambassador was recalled; relations briefly cooled.
+646	Savun	Defend him
+647	Büyükelçi görevinde tutuldu; muhalefet hükümeti eleştirdi.	The ambassador was kept in post; the opposition criticized the government.
+648	Sessizce değiştir	Replace quietly
+649	Yeni büyükelçi atandı; olay unutuldu.	A new ambassador was appointed; the incident was forgotten.
+650	Büyükelçilik, {nb} yönetiminin gizli bir görüşme kaydını ele geçirdi. Ne yapalım?	The embassy has obtained a recording of a secret meeting of the {nb} government. What do we do?
+651	Kamuoyuna açıkla	Make it public
+652	Kayıt basına sızdı; iç kamuoyunda destek arttı, komşu öfkeli.	The recording leaked to the press; domestic support grew, the neighbor is furious.
+653	Koz olarak sakla	Keep it as leverage
+654	Kayıt kasada bekliyor; müzakerelerde elin güçlendi.	The recording waits in the vault; your hand is stronger in negotiations.
+655	Karşı tarafa geri ver	Hand it back to the other side
+656	Kayıt iade edildi; karşılığında ekonomik tavizler geldi.	The recording was returned; economic concessions came in exchange.
+657	{nb} liderleri bir zirve düzenlemek istiyor; büyükelçimiz hazırlıkları tamamladı. Ev sahipliği yapalım mı?	The leaders of {nb} want to hold a summit; our ambassador has completed the preparations. Shall we host?
+658	Ev sahipliği yap	Host it
+659	Zirve görkemli geçti; ülkenin itibarı yükseldi.	The summit was magnificent; the country's prestige rose.
+660	Sadece katıl	Just attend
+661	Zirveye katıldın; sıradan bir görüşme oldu.	You attended the summit; it was an ordinary meeting.
+662	Katılma	Don't attend
+663	Davet geri çevrildi; basın bunu kibir olarak yorumladı.	The invitation was declined; the press read it as arrogance.
+664	Limanda parlak gözlü bir adam: 'Gümrüğe kayıtsız üç sandığım var, efendim. İçini ben bile bilmiyorum. Hangisini istersiniz?'	A bright-eyed man at the port: 'I have three crates that are unregistered at customs, sir. Even I don't know what is inside. Which one would you like?'
+665	Küçük sandık	Small crate
+666	Sandıktan külçe altın çıktı! Tüccar çoktan ortadan kayboldu.	Gold bullion came out of the crate! The trader had already vanished.
+667	Sandık kumla doluydu. Tüccar el sallayarak uzaklaştı.	The crate was full of sand. The trader walked away waving.
+668	Orta sandık	Medium crate
+669	Sandığın içinde eski bir laboratuvar defteri vardı; bilim insanları bayram etti.	There was an old laboratory notebook in the crate; the scientists celebrated.
+670	Sandıktan çıkan sahte parayı basın duydu. Rezil olduk.	The press heard about the counterfeit money from the crate. We were disgraced.
+671	Büyük sandık	Large crate
+672	Büyük sandık dolusu prototip ve şema! Fabrikalar şenlendi.	A big crate full of prototypes and blueprints! The factories rejoiced.
+673	Sandıktan çıkan şey komşunun kayıp malıymış. Diplomatik sorun çıktı.	What came out of the crate was the neighbor's lost property. A diplomatic problem arose.
+674	Gönder gitsin	Send him away
+675	Tüccar omuz silkip bir sonraki limana gitti.	The trader shrugged and went on to the next port.
+676	Tüccar kısık sesle: 'Elimde ucuz bir silah partisi var, sicili biraz kirli ama fiyatı gönül alıcı...'	The trader in a low voice: 'I have a cheap batch of weapons, the record is a bit dirty, but the price is tempting...'
+677	Hepsini al	Buy it all
+678	Silahlar yeni gibi çıktı; birlikler güçlendi.	The weapons came out like new; the units got stronger.
+679	Namlular tutukluk yaptı. Subaylar çıldırdı.	The barrels jammed. The officers went mad.
+680	Yarısını al	Buy half
+681	Yarım parti sorunsuz teslim edildi.	Half a batch was delivered without problems.
+682	Parti kayıp çıktı; tüccar 'ya, olur böyle şeyler' dedi.	The batch turned out to be missing; the trader said 'well, these things happen'.
+683	Sicilini araştır	Check his record
+684	Tüccarın ağı çözüldü; istihbaratımız çok şey öğrendi.	The trader's network was unraveled; our intelligence learned a lot.
+685	Tüccar izini kaybettirdi.	The trader covered his tracks.
+686	Tüccar küçük bir kutu uzatıyor: 'Efsanevi çay, efendim. Üç yıl dağda kurutuldu. Halka dağıtırsanız sevilirsiniz.'	The trader holds out a small box: 'Legendary tea, sir. Dried three years in the mountains. Hand it out to the people and you will be loved.'
+687	Halka dağıt	Hand it out to the people
+688	Çay kuyruğu şehir meydanını doldurdu. Şükranlar yağdı.	The tea queue filled the city square. Thanks poured in.
+689	Kendin iç	Drink it yourself
+690	Çay gerçekten çok güzelmiş. Kimse bunu bilmiyor.	The tea really was lovely. Nobody knows that.
+691	Tüccar çayı başkasına sattı.	The trader sold the tea to someone else.
+692	Dünya Kupası finalleri başladı ve {c} milli takımı grupları geçti! Takıma prim vaat edelim mi?	The World Cup finals have begun and the {c} national team made it through the groups! Shall we promise the team a bonus?
+693	Dev prim	Giant bonus
+694	{c} DÜNYA ŞAMPİYONU! Sokaklar bayram yeri.	{c} ARE WORLD CHAMPIONS! The streets are a festival.
+695	Penaltılarda elendik. Sokak sessiz.	We were knocked out on penalties. The streets are silent.
+696	{c} Dünya Kupası'nı kazandı! Ülke bayram yapıyor.	{c} won the World Cup! The country is celebrating.
+697	Sade prim	Plain bonus
+698	Mucize! Takım kupayı kaldırdı.	A miracle! The team lifted the cup.
+699	Çeyrek finalde elendik; teknik direktör istifa etti.	We went out in the quarter-final; the coach resigned.
+700	{c} sürpriz şekilde Dünya Kupası'nı kazandı!	{c} won the World Cup in a surprise!
+701	Prim yok	No bonus
+702	Karşılıksız kupa! Futbolcular parasız şampiyon oldu.	A cup for nothing! The players became champions without pay.
+703	Futbolcular küstü, ilk turda elendik.	The players sulked and we were out in the first round.
+704	{c}, primsiz Dünya Kupası şampiyonu!	{c}, World Cup champions without a bonus!
+705	Olimpiyat oyunları başladı! Sporcularımız madalya peşinde. Kampa ne kadar yatırım yapalım?	The Olympic Games have started! Our athletes are chasing medals. How much shall we invest in the camp?
+706	Madalya yağmuru! Gazeteler manşet yaptı.	A rain of medals! The newspapers made headlines.
+707	Birkaç bronz aldık; neyse ki katılım yeterli oldu.	We took a few bronzes; at least participation was enough.
+708	{c} Olimpiyatlar'ı madalya sıralamasında zirvede bitirdi!	{c} finished the Olympics at the top of the medal table!
+709	Atletimiz altın aldı, halk ağladı.	Our athlete won gold, the people wept.
+710	Madalya yok ama halk yine de gururlu.	No medals but the people are still proud.
+711	Bütçe yok	No budget
+712	Sporcular kendi imkânlarıyla gitti. Kimse bir şey demedi.	The athletes went on their own means. Nobody said anything.
+713	Güvenilir bir kaynağımıza göre {nb}'de subaylar hükümetten bıkmış durumda. Küçük bir kıvılcım yeter. Ne yapalım?	According to a reliable source of ours, the officers in {nb} are fed up with the government. A small spark is enough. What do we do?
+714	Gizlice destekle	Support quietly
+715	Subaylar harekete geçti: {nb}'de hükümet sarsıldı. Parmak izimiz yok.	The officers moved: the government in {nb} was shaken. There are no fingerprints of ours.
+716	İşlem sızdı; {nb} yönetimi bize karşı öfkeli.	The operation leaked; the {nb} administration is furious at us.
+717	Bilgiyi paylaş	Share the information
+718	{nb} yönetimi bilgiyi minnetle aldı; gerginlik düştü.	The {nb} administration received the information with gratitude; tension dropped.
+719	Dinle ve unut	Listen and forget
+720	Dosya arşive kaldırıldı.	The file was put in the archive.
+721	Bir gazetecinin elinde {nb} liderine dair utanç verici belgeler var. Bize satmak istiyor.	A journalist holds embarrassing documents about the leader of {nb}. He wants to sell them to us.
+722	Satın al ve yay	Buy and publish
+723	Belgeler yayıldı; {nb} hükümeti sallanıyor.	The documents spread; the {nb} government is wobbling.
+724	Sakla (şantaj kozu)	Keep them (blackmail leverage)
+725	Belgeler kasada. {nb} artık biraz daha nazik.	The documents are in the vault. {nb} is a bit more polite now.
+726	Gazeteci başka alıcı buldu.	The journalist found another buyer.
+727	Seçim günü geldi çattı! Halk sandığa gidiyor. Kampanyayı nasıl yürütelim?	Election day has arrived! The people are going to the polls. How do we run the campaign?
+728	Dev kampanya	Giant campaign
+729	Sahada çalış	Work on the ground
+730	Sessiz kampanya	Quiet campaign
+731	Seçimi ertele	Postpone the election
+732	Seçim 'olağanüstü koşullar' gerekçesiyle ertelendi. Basın tepkili.	The election was postponed on 'exceptional circumstances'. The press is angry.
+733	Seçimin ertelenmesi halkı sokağa döktü. Hükümetin düştü.	Postponing the election put the people on the streets. Your government fell.
+734	Acemi	Novice
+735	Kıdemli	Veteran
+736	Usta	Master
+737	Ordu mevcudu büyümez	Army strength does not grow
+738	Ordu mevcudu yavaş büyür	Army strength grows slowly
+739	Ordu mevcudu hızla büyür	Army strength grows fast
+740	Komşular değişmez	Neighbors do not change
+741	Komşular yavaşça yumuşar	Neighbors soften slowly
+742	Komşular belirgin biçimde yumuşar	Neighbors soften noticeably
+743	İstikrar hafifçe aşınır	Stability erodes slightly
+744	İstikrar hafifçe artar	Stability rises slightly
+745	İstikrar düzenli artar	Stability rises steadily
+746	Her hafta gelirden pay kaçar	A share leaks from income every week
+747	Hazine hafifçe büyür	The treasury grows slightly
+748	Hazine her hafta kâr eder	The treasury profits every week
+749	Huzursuzluk kendi hâline	Unrest is left to itself
+750	Huzursuzluk ara sıra azalır	Unrest drops occasionally
+751	Huzursuzluk sık sık azalır	Unrest drops often
+752	Siber savunma durağan	Cyber defense is static
+753	Siber olgunluk yavaş artar	Cyber maturity rises slowly
+754	Siber olgunluk hızla artar	Cyber maturity rises fast
+755	Eniştesi eski bakan. Özgeçmişi tek sayfa, o da büyük puntolu.	His brother-in-law is a former minister. His résumé is one page, in large print.
+756	Her toplantıda 'bunu daha önce görmüştüm' diyor; görmemiş.	At every meeting he says 'I've seen this before'; he hasn't.
+757	Maaşını az istiyor; bunun bir nedeni olmalı.	He asks for a low salary; there must be a reason.
+758	Parti gençlik kolundan. Enerjik, hevesli, biraz da tehlikeli.	From the party youth wing. Energetic, eager, a bit dangerous too.
+759	Kimse tanımıyor, bu yüzden kimse itiraz etmiyor.	Nobody knows him, so nobody objects.
+760	Referansları arasında bir hemşehri derneği var.	Among his references is a hometown association.
+761	Öğle yemeğinde uyuyor ama bütçeye sadık (şimdilik).	He sleeps at lunch but is loyal to the budget (for now).
+762	Yirmi yıllık bürokrat. Sürpriz yok, skandal yok.	A twenty-year bureaucrat. No surprises, no scandals.
+763	Sakin, düzenli; dosyalarını hiç kaybetmez.	Calm, orderly; never loses his files.
+764	Muhalefet bile ona 'ciddi' diyor.	Even the opposition calls him 'serious'.
+765	Her kabinede olan, kimsenin hatırlamadığı kişi.	The person in every cabinet whom nobody remembers.
+766	İş bilen, iddiasız bir teknisyen.	A competent, unassuming technician.
+767	Orta yollu: kimseyi kızdırmıyor, kimseyi uçurmuyor.	Middle of the road: annoys nobody, impresses nobody.
+768	Ödüllü teknokrat; diplomaları cüzdanından daha ağır.	An award-winning technocrat; his diplomas weigh more than his wallet.
+769	Savaş ve barış tecrübeli bir efsane; maaşı da efsane.	A legend experienced in war and peace; his salary is legendary too.
+770	Üç ülkede danışmanlık yaptı, hepsi geri çağırıyor.	He has advised in three countries, and all of them want him back.
+771	Dünya basını ona 'kabinenin beyni' diyor.	The world press calls him 'the brain of the cabinet'.
+772	Yalnızca en iyisiyle çalışır; bunun faturası var.	Works only with the best; that comes with a bill.
+773	Hem halkın hem ordunun sevdiği nadir isimlerden.	One of the rare names loved by both the people and the army.
+774	%s: %s göreve başladı. (%s)	%s: %s took office. (%s)
+775	%s %s yolsuzluk iddialarıyla görevden düştü. Yerine kimi atayalım?	%s %s fell from office over corruption allegations. Whom shall we appoint in their place?
+776	%s %s istifa etti. Yerine kimi atayalım?	%s %s resigned. Whom shall we appoint in their place?
+777	%s %s görevden alındı. Yerine kimi atayalım?	%s %s was dismissed. Whom shall we appoint in their place?
+778	Yeni hükümet kuruluyor: %s %s görevini bırakıyor. Yerine kimi atayalım?	A new government is being formed: %s %s is leaving the post. Whom shall we appoint in their place?
+779	%s %s görev süresini tamamladı. Yerine kimi atayalım?	%s %s completed the term of office. Whom shall we appoint in their place?
+780	SKANDAL: %s %s zimmet iddialarıyla sarsıldı; kasadan %s kayboldu.	SCANDAL: %s %s was rocked by embezzlement allegations; %s vanished from the treasury.
+781	%s %s istifa etti.	%s %s resigned.
+782	komşu ülke	neighboring country
+783	başkent	capital
+784	%s%d İstikrar	%s%d Stability
+785	%s%d Siber	%s%d Cyber
+786	%s%d Sanayi	%s%d Industry
+787	%s%d Lojistik	%s%d Logistics
+788	%s%.1f Teknoloji	%s%.1f Technology
+789	%s%s Asker	%s%s Troops
+790	Huzursuzluk	Unrest
+791	Komşular sertleşti	Neighbors hardened
+792	Komşular yumuşadı	Neighbors softened
+793	%s sarsıldı	%s shaken
+794	+Kalkınma	+Development
+795	Sandıklar açıldı: %%%d oyla seçimi kazandın! Halk seninle.	The ballots are open: you won the election with %%%d of the vote! The people are with you.
+796	%s seçimlerinde iktidar %%%d oyla güven tazeledi.	In the %s elections the government renewed its mandate with %%%d of the vote.
+797	Seçim: %%%d	Election: %%%d
+798	+4 İstikrar	+4 Stability
+799	Sandıklar açıldı: yalnızca %%%d oy aldın. Muhalefet iktidara geliyor; yeni lider %s. Kabinenin bir kısmı değişecek.	The ballots are open: you got only %%%d of the vote. The opposition takes power; the new leader is %s. Part of the cabinet will change.
+800	%s'de seçimi muhalefet kazandı; yeni lider %s göreve başladı.	The opposition won the election in %s; new leader %s took office.
+801	−6 İstikrar	−6 Stability
+802	I. Dünya Savaşı	World War I
+803	Ağustos 1914	August 1914
+804	Saraybosna'daki suikastın ardından Avrupa'nın bütün diplomasisi çöküyor. İtilaf ile Merkezi Güçler siperlere gömülecek; makineli tüfek, ağır top ve ilk tanklar savaşın yüzünü değiştirecek.	After the assassination in Sarajevo, all of Europe's diplomacy collapses. The Entente and the Central Powers will sink into the trenches; machine guns, heavy artillery and the first tanks will change the face of war.
+805	II. Dünya Savaşı	World War II
+806	Eylül 1939	September 1939
+807	Almanya Polonya'ya saldırıyor; Britanya ve Fransa savaş ilan ediyor. Zırhlı kamalar, bombardıman uçakları ve denizaltı savaşı. Savaş bütün kıtalara yayılabilir.	Germany attacks Poland; Britain and France declare war. Armored wedges, bombers and submarine warfare. The war may spread to every continent.
+808	Almanya	Germany
+809	Reich Şansölyesi	Reich Chancellor
+810	SSCB	USSR
+811	Genel Sekreter	General Secretary
+812	Britanya İmparatorluğu	British Empire
+813	Başbakan	Prime Minister
+814	Fransa	France
+815	İtalya	Italy
+816	Japon İmparatorluğu	Empire of Japan
+817	İmparator	Emperor
+818	ABD	USA
+819	Başkan	President
+820	Çin Cumhuriyeti	Republic of China
+821	Başkomutan	Commander-in-Chief
+822	Polonya	Poland
+823	Cumhurbaşkanı	President
+824	Yugoslavya Krallığı	Kingdom of Yugoslavia
+825	Naip	Regent
+826	Hollanda	Netherlands
+827	Kraliçe	Queen
+828	Belçika	Belgium
+829	Kral	King
+830	İspanya	Spain
+831	Romanya	Romania
+832	Kanada	Canada
+833	Avustralya	Australia
+834	Yeni Zelanda	New Zealand
+835	Güney Afrika	South Africa
+836	Danimarka	Denmark
+837	İsveç	Sweden
+838	Finlandiya	Finland
+839	Macaristan	Hungary
+840	Bulgaristan	Bulgaria
+841	Çar	Tsar
+842	Yunanistan	Greece
+843	Norveç	Norway
+844	Portekiz	Portugal
+845	İran	Iran
+846	Şah	Shah
+847	Mısır	Egypt
+848	Irak	Iraq
+849	Suudi Arabistan	Saudi Arabia
+850	Tayland	Thailand
+851	Brezilya	Brazil
+852	Arjantin	Argentina
+853	Meksika	Mexico
+854	Moğolistan	Mongolia
+855	İrlanda	Ireland
+856	Slovak Devleti	Slovak State
+857	Alman İmparatorluğu	German Empire
+858	Avusturya-Macaristan	Austria-Hungary
+859	Osmanlı İmparatorluğu	Ottoman Empire
+860	Rus İmparatorluğu	Russian Empire
+861	Sırbistan	Serbia
+862	Karadağ	Montenegro
+863	İsviçre	Switzerland
+864	Federal Konsey	Federal Council
+865	Siyam	Siam
+866	Müttefik Devletler	Allied Powers
+867	Mihver Devletleri	Axis Powers
+868	1 Eylül 1939: Alman orduları Polonya sınırını aştı. Britanya ve Fransa savaşa girdi; Uzakdoğu'da Japonya Çin'le savaşıyor.	1 September 1939: German armies crossed the Polish border. Britain and France entered the war; in the Far East Japan is fighting China.
+869	İtilaf Devletleri	Entente Powers
+870	Merkezi Güçler	Central Powers
+871	Ağustos 1914: Saraybosna'daki suikast zincirleme ittifakları harekete geçirdi. Avrupa mobilizasyona girdi; siperler kazılıyor.	August 1914: The assassination in Sarajevo set off a chain of alliances. Europe went into mobilization; trenches are being dug.
+872	Afrika	Africa
+873	Ocak	January
+874	Şubat	February
+875	Mart	March
+876	Nisan	April
+877	Mayıs	May
+878	Haziran	June
+879	Temmuz	July
+880	Ağustos	August
+881	Eylül	September
+882	Ekim	October
+883	Kasım	November
+884	Aralık	December
+885	Ülke%d	Country%d
+886	Bölge%d	Region%d
+887	%s, %s devletine savaş ilan etti!	%s declared war on %s!
+888	Cihan şokta: %s ile %s arasında savaş başladı.	The world is in shock: war has broken out between %s and %s.
+889	SON DAKİKA: %s orduları %s sınırında harekete geçti.	BREAKING: %s armies moved on the %s border.
+890	Diplomasi çöktü: %s, %s devletine cepheyi açtı.	Diplomacy collapsed: %s opened the front against %s.
+891	DİKKAT: %s sana savaş ilan etti!	WARNING: %s has declared war on you!
+892	%s orduları sınırına dayandı. Savaş başladı!	%s armies are at your border. The war has begun!
+893	Cihan Bülteni: %s ile savaştasın. Sınırlar ateş altında.	World Gazette: you are at war with %s. The borders are under fire.
+894	Savaş ilan ettin: %s ile savaştasın.	You declared war: you are at war with %s.
+895	Cihan senden söz ediyor: %s devletine savaş açtın!	The world is talking about you: you went to war with %s!
+896	Orduların harekete geçti, hedef: %s.	Your armies have moved, target: %s.
+897	%s eyaleti düştü! %s bayrağı dalgalanıyor.	%s province has fallen! The %s flag is flying.
+898	%s ordusu %s eyaletini ele geçirdi.	The %s army has captured the province of %s.
+899	Cepheden haber: %s eyaleti artık %s kontrolünde.	Report from the front: %s province is now under %s control.
+900	Zafer! %s eyaleti ele geçirildi.	Victory! The province of %s has been captured.
+901	Ordun %s eyaletine girdi, halk şaşkın.	Your army entered the province of %s, the people are stunned.
+902	Cihan senden bahsediyor: %s eyaleti artık senin kontrolünde!	The world is talking about you: the province of %s is now under your control!
+903	Kayıp: %s eyaleti düşmanın eline geçti!	Loss: the province of %s fell into enemy hands!
+904	%s eyaleti işgal edildi, kurtarmalısın!	The province of %s was occupied, you must liberate it!
+905	Kötü haber: %s eyaleti düştü.	Bad news: the province of %s has fallen.
+906	%s ile %s arasında barış imzalandı.	Peace was signed between %s and %s.
+907	Silahlar sustu: %s ve %s barışa ulaştı.	The guns fell silent: %s and %s reached peace.
+908	%s barış masasından %d eyaletle kalktı: %s.	%s left the peace table with %d provinces: %s.
+909	Anlaşma gereği %s, %d eyalet kazandı: %s.	Under the agreement %s gained %d provinces: %s.
+910	Kanlı çatışma! %s ordusu, %s ordusunu %s eyaletinde bozguna uğrattı.	Bloody clash! The %s army routed the %s army in the province of %s.
+911	%s eyaletinde büyük muharebe: %s galip, %s ağır kayıp verdi.	Major battle in the province of %s: %s won, %s suffered heavy losses.
+912	%s devleti haritadan silindi.	The state of %s was wiped off the map.
+913	Tarihe karıştı: %s artık yok.	Gone to history: %s no longer exists.
+914	Çeyrek raporu: En güçlü ekonomi %s, en büyük ordu %s, en geniş topraklar %s.	Quarterly report: strongest economy %s, largest army %s, largest territory %s.
+915	%s ekonomisinde patlama: hazineye %s girdi.	Boom in the %s economy: %s entered the treasury.
+916	Borsalar uçuşta! %s hazinesi %s kazandı.	Stock markets soar! The %s treasury gained %s.
+917	Ekonomik kriz %s ülkesini vurdu: %s kayıp.	An economic crisis hit %s: %s lost.
+918	%s hazinesinde açık: %s buharlaştı.	Deficit in the %s treasury: %s evaporated.
+919	%s eyaletinde zengin maden yatağı bulundu! (%s)	A rich ore deposit was found in the province of %s! (%s)
+920	%s eyaletinde petrol rezervi keşfedildi. (%s)	An oil reserve was discovered in the province of %s. (%s)
+921	%s halkı seferber oldu: %s gönüllü orduya katıldı.	The people of %s mobilized: %s volunteers joined the army.
+922	Vatan çağrısı! %s ordusuna %s gönüllü yazıldı.	A call to the homeland! %s volunteers enlisted in the %s army.
+923	%s eyaletinde deprem! Üretim düştü. (%s)	Earthquake in the province of %s! Production fell. (%s)
+924	İSYAN! %s eyaletinde %s ayaklandı. (%s)	REVOLT! %s rose up in the province of %s. (%s)
+925	%s, %s eyaletinin kontrolünü ele geçirdi. (%s)	%s seized control of the province of %s. (%s)
+926	Huzursuzluk patladı: %s eyaleti %s elinde. (%s)	Unrest erupted: the province of %s is in the hands of %s. (%s)
+927	%s bastırıldı, direniş sona erdi.	%s was suppressed, the resistance is over.
+928	İsyan bitti: %s dağıldı.	The revolt is over: %s dissolved.
+929	%s bağımsızlığını ilan etti! Yeni devlet: %s. (Eski sahibi: %s)	%s declared independence! New state: %s. (Former owner: %s)
+930	Haritada yeni bir bayrak: %s, %s adıyla devlet kurdu. (Eski sahibi: %s)	A new flag on the map: %s founded a state under the name %s. (Former owner: %s)
+931	%s ile %s ittifak kurdu.	%s and %s formed an alliance.
+932	Yeni cephe: %s ve %s ittifak imzaladı.	New front: %s and %s signed an alliance.
+933	%s Paktı	%s Pact
+934	%s Savunma Birliği	%s Defense Union
+935	%s Dayanışma İttifakı	%s Solidarity Alliance
+936	%s Güvenlik Konseyi	%s Security Council
+937	%s Ortaklığı	%s Partnership
+938	%s Paktı %d	%s Pact %d
+939	%s ile %s arasındaki ittifak sona erdi.	The alliance between %s and %s has ended.
+940	%s, müttefiki %s için %s ile savaşa girdi.	%s went to war with %s for its ally %s.
+941	İttifak devrede: %s, %s uğruna %s devletine karşı cepheyi açtı.	Alliance in effect: %s opened the front against %s for the sake of %s.
+942	%s Cumhuriyeti	Republic of %s
+943	{c} ülkesinde salgın yayılıyor: hastaneler doldu, istikrar sarsıldı.	An epidemic is spreading in {c}: hospitals are full, stability is shaken.
+944	{p} eyaletinde bulaşıcı hastalık! {c} karantina ilan etti.	Contagious disease in the province of {p}! {c} declared quarantine.
+945	{p} eyaletinde sel felaketi! Altyapı zarar gördü. ({c})	Flood disaster in the province of {p}! Infrastructure was damaged. ({c})
+946	Taşan nehirler {p} eyaletini bastı. ({c})	Overflowing rivers flooded the province of {p}. ({c})
+947	{c} ülkesinde kuraklık: hasat çöktü, {a} kayıp.	Drought in {c}: the harvest collapsed, {a} lost.
+948	Kıtlık uyarısı! {c} tarım üretimi düştü, {a} zarar.	Famine warning! {c}'s agricultural output fell, {a} in damage.
+949	Şiddetli fırtına {c} kıyılarını vurdu: limanlarda {a} hasar.	A violent storm hit the coasts of {c}: {a} in damage at the ports.
+950	{p} açıklarında kasırga! {c} liman trafiği durdu.	Hurricane off the coast of {p}! {c}'s port traffic stopped.
+951	{p} eyaletinde büyük protesto! Halk sokakta. ({c})	Large protest in the province of {p}! The people are in the streets. ({c})
+952	{c}: hükümet karşıtı gösteriler {p} eyaletinde şiddetlendi.	{c}: anti-government demonstrations intensified in the province of {p}.
+953	Darbe girişimi! {c} yönetimi güçlükle kontrolü korudu.	Coup attempt! The {c} government barely kept control.
+954	{c} başkentinde silah sesleri: darbe girişimi bastırıldı.	Gunfire in the capital of {c}: the coup attempt was put down.
+955	Sınırda mülteci akını: {c} yardım için {a} harcadı.	A flood of refugees at the border: {c} spent {a} on aid.
+956	{p} eyaletine toplu göç! {c} geçici kamplar kurdu.	Mass migration into the province of {p}! {c} set up temporary camps.
+957	Rekor hasat! {c} çiftçileri {a} ek gelir sağladı.	Record harvest! {c}'s farmers earned {a} in extra income.
+958	Bereketli bir yıl: {c} tahıl ihracatı patladı.	A bountiful year: {c}'s grain exports boomed.
+959	{c} bilim insanları teknolojik atılım duyurdu!	{c}'s scientists announced a technological breakthrough!
+960	{c} araştırma merkezinde çığır açan buluş.	A groundbreaking discovery at a {c} research center.
+961	{c} ev sahipliğinde zirve: diplomatik itibar yükseldi.	Summit hosted by {c}: diplomatic prestige rose.
+962	Uluslararası zirvede {c} lehine yumuşama. İstikrar arttı.	A thaw in {c}'s favor at the international summit. Stability rose.
+963	Başlangıçta savaş yok. Haritadaki 200 ülkeden birini seç; bütçeni, ordunu ve ittifaklarını kendin kur.	No war at the start. Choose one of the 200 countries on the map; build your budget, army and alliances yourself.
+964	Doğu Cephesi	Eastern Front
+965	Rusya – Ukrayna	Russia – Ukraine
+966	Avrupa'nın en büyük kara savaşı sürüyor. Rusya kitlesel ordusuyla, Ukrayna Batı desteğiyle direniyor; siber ve lojistik hatlar cephe kadar önemli.	Europe's largest land war rages on. Russia with its mass army, Ukraine resisting with Western support; cyber and logistics lines matter as much as the front.
+967	Kuzey Atlantik İttifakı	North Atlantic Alliance
+968	Toplu Güvenlik Paktı	Collective Security Pact
+969	Doğu Cephesi: Rusya ile Ukrayna arasında geniş çaplı savaş sürüyor. Batı ülkeleri Ukrayna'ya ekonomik ve askerî destek veriyor.	Eastern Front: a large-scale war is going on between Russia and Ukraine. Western countries provide economic and military support to Ukraine.
+970	Boğaz Krizi	Strait Crisis
+971	Çin – Tayvan	China – Taiwan
+972	Çin, Tayvan Boğazı'nda deniz ve hava ablukası başlattı. ABD ve Japonya'nın müdahalesi ve yarı iletken tedariki dünya ekonomisini belirleyecek.	China has begun a naval and air blockade in the Taiwan Strait. US and Japanese intervention and the semiconductor supply will shape the world economy.
+973	Pasifik Savunma Hattı	Pacific Defense Line
+974	Avrasya Ortaklığı	Eurasian Partnership
+975	Boğaz Krizi: Çin donanması Tayvan'ı kuşattı. Yarı iletken tedarik zinciri kesildi; ABD ve müttefikleri hazırlık yapıyor.	Strait Crisis: the Chinese navy has surrounded Taiwan. The semiconductor supply chain is cut; the US and its allies are preparing.
+976	Körfez Ateşi	Gulf Fire
+977	İran – İsrail – ABD	Iran – Israel – USA
+978	İran ile İsrail doğrudan savaşta; ABD İsrail'in yanında. Hürmüz Boğazı ve petrol akışı tehdit altında, siber saldırılar şebekeleri vuruyor.	Iran and Israel are in direct war; the US stands with Israel. The Strait of Hormuz and oil flow are under threat, cyber attacks are hitting the grids.
+979	Atlantik Güvenlik Ortaklığı	Atlantic Security Partnership
+980	Direniş Ekseni	Axis of Resistance
+981	Körfez Ateşi: İran füze ve İHA salvolarıyla İsrail'i vurdu; ABD bölgeye donanma gönderdi.	Gulf Fire: Iran struck Israel with missile and drone salvos; the US sent a fleet to the region.
+982	Himalaya Gölgesi	Himalayan Shadow
+983	Hindistan – Pakistan	India – Pakistan
+984	Keşmir sınırında çatışma tam savaşa döndü. Çin Pakistan'ın arkasında, Rusya Hindistan'a silah akıtıyor; iki nükleer ülke arasında zaman daralıyor.	The clash on the Kashmir border has turned into full war. China is behind Pakistan, Russia is pouring arms into India; time is running out between two nuclear countries.
+985	Karakurum Ortaklığı	Karakoram Partnership
+986	Himalaya Gölgesi: Hindistan ve Pakistan sınır boyunca birbirine ateş açtı. Her iki başkentte olağanüstü hâl ilan edildi.	Himalayan Shadow: India and Pakistan opened fire on each other along the border. A state of emergency was declared in both capitals.
+987	38. Paralel	38th Parallel
+988	Kuzey Kore – Güney Kore	North Korea – South Korea
+989	Kuzey Kore topçusu Seul'ü menzile aldı. Dünyanın en yoğun silahlı sınırında hava gücü ve siber savaş belirleyici.	North Korean artillery has Seoul in range. On the world's most heavily armed border, air power and cyber warfare are decisive.
+990	Pasifik Savunma Birliği	Pacific Defense Union
+991	Kuzey Ekseni	Northern Axis
+992	38. Paralel: Kuzey Kore sınır boyunca topçu ateşi açtı. Güney Kore ve ABD savunma planlarını devreye aldı.	38th Parallel: North Korea opened artillery fire along the border. South Korea and the US activated their defense plans.
+993	Kafkas Düğümü	Caucasus Knot
+994	Azerbaycan – Ermenistan	Azerbaijan – Armenia
+995	Karabağ sonrası gerilim yeniden alevlendi. Türkiye Azerbaycan'ın, Rusya Ermenistan'ın yanında; koridor ve enerji hatları tehlikede.	Tension flared again after Karabakh. Türkiye is with Azerbaijan, Russia with Armenia; corridors and energy lines are in danger.
+996	Hazar Anadolu Hattı	Caspian-Anatolia Line
+997	Kafkas Düğümü: Azerbaycan ve Ermenistan sınırında yeniden büyük çatışma başladı.	Caucasus Knot: major fighting broke out again on the Azerbaijan–Armenia border.
+998	Kara Sancak	Black Banner
+999	Kurgusal: aşırılıkçı yeniden doğuş	Fictional: extremist rebirth
+1000	Suriye ve Irak'ın çölünde, kurgusal bir aşırılıkçı yapı olan Kara Sancak Hilafeti birkaç eyaleti ele geçirip hızla büyüyor. Bölgedeki devletler tek tek çözülürken kimin müdahale edeceği belirsiz.	In the desert of Syria and Iraq, a fictional extremist entity, the Black Banner Caliphate, has seized several provinces and is growing fast. As the states of the region unravel one by one, it is unclear who will intervene.
+1001	Kara Sancak Hilafeti	Black Banner Caliphate
+1002	Halife	Caliph
+1003	Kara Sancak: Çöl kuşağında yeni bir aşırılıkçı yapı ortaya çıktı ve Suriye ile Irak'ın doğusunu ele geçirdi.	Black Banner: a new extremist entity appeared in the desert belt and seized the east of Syria and Iraq.
+1004	Yeni Reich	New Reich
+1005	Lider	Leader
+1006	Kurgusal: otoriter yeniden diriliş	Fictional: authoritarian revival
+1007	Almanya'nın doğusunda, kurgusal bir otoriter hareket olan Yeni Reich ayrılıp modern bir ordu kurdu. Avrupa'nın demokrasileri tek cephede birleşmek zorunda. (Gerçek tarihî semboller kullanılmaz.)	In the east of Germany, a fictional authoritarian movement, the New Reich, broke away and built a modern army. Europe's democracies must unite on a single front. (No real historical symbols are used.)
+1008	Avrupa Savunma Çemberi	European Defense Ring
+1009	Yeni Reich: Almanya'nın doğusunda otoriter bir ayrılıkçı yapı ilan edildi. Avrupa başkentleri olağanüstü toplandı.	New Reich: an authoritarian separatist entity was declared in the east of Germany. European capitals met in emergency session.
+1010	Baltık Kıvılcımı	Baltic Spark
+1011	Kurgusal: kuzeyde büyük savaş	Fictional: great war in the north
+1012	Rusya, Estonya ve Letonya'ya karşı sınır ihlalini gerekçe göstererek harekete geçti. NATO maddesi devrede: kuzeyde başlayan kıvılcım tüm kıtaya yayılabilir.	Russia moved against Estonia and Latvia, citing a border violation. The NATO article is in force: a spark that began in the north may spread across the continent.
+1013	Baltık Kıvılcımı: Rus birlikleri Estonya ve Letonya sınırını geçti. NATO ortak savunma maddesini devreye aldı.	Baltic Spark: Russian troops crossed the Estonian and Latvian border. NATO invoked its collective defense article.
+1014	İmparatorun Dönüşü	Return of the Emperor
+1015	Kurgusal: Napolyon çağı geri dönüyor	Fictional: the Napoleonic age returns
+1016	Fransa'da karizmatik bir general, 'Yeni İmparatorluk'u ilan edip ordunun bir kısmıyla Paris çevresini ele geçirdi. Devrim ruhu ve imparatorluk özlemi bir araya geldi; Avrupa bir kez daha nefesini tutuyor.	In France a charismatic general proclaimed the 'New Empire' and seized the Paris area with part of the army. The revolutionary spirit and imperial nostalgia came together; Europe is once more holding its breath.
+1017	Yeni İmparatorluk	New Empire
+1018	İmparatorun Dönüşü: Fransa'da general önderliğinde Yeni İmparatorluk ilan edildi; ordu ikiye bölündü.	Return of the Emperor: the New Empire was proclaimed in France under the general's leadership; the army split in two.
+1019	Sessiz Savaş	Silent War
+1020	Kurgusal: siber çağ, silahsız cephe	Fictional: cyber age, a front without weapons
+1021	Topçu ateşi yok, ama dünya savaşta. Süper güçler birbirinin şebekelerini, limanlarını ve borsalarını vuruyor; ambargolar tırmanıyor. Fabrikaların ve lojistiğin güvenliği ordudan önemli.	There is no artillery fire, but the world is at war. The superpowers hit each other's grids, ports and stock exchanges; embargoes escalate. The security of factories and logistics matters more than the army.
+1022	Sessiz Savaş: Büyük güçler arasında açık savaş yok; ama şebekeler, limanlar ve borsalar siber saldırı altında.	Silent War: there is no open war between the great powers; but grids, ports and stock exchanges are under cyber attack.
+1023	Görev hedefleri	Mission objectives
+1024	isteğe bağlı	optional
+1025	Kalan süre: %d hafta	Time left: %d weeks
+1026	Tüm hedefler tamamlandı! Görev başarıyla bitti.	All objectives complete! Mission accomplished.
+1027	Süre doldu: hedeflere zamanında ulaşılamadı.	Time is up: the objectives were not reached in time.
+1028	Senaryo oluştur	Create scenario
+1029	Düzenle	Edit
+1030	Kendi senaryon	Your own scenario
+1031	Senaryo adı	Scenario name
+1032	Alt başlık (isteğe bağlı)	Subtitle (optional)
+1033	Oyun başında okunacak haber cümlesi	News line shown at the start
+1034	Oyuncu ülkesi	Player country
+1035	Menüde varsayılan olarak seçili gelir; oyuncu başka ülkeyi de seçebilir.	Selected by default in the menu; players can pick another country too.
+1036	Ambargolar	Embargoes
+1037	Gerginlikler	Tensions
+1038	İttifaklar (bloklar)	Alliances (blocs)
+1039	Ülke ayarları	Country settings
+1040	Süre sınırı (hafta, 0 = yok)	Time limit (weeks, 0 = none)
+1041	Paylaşım kodu	Share code
+1042	Koddan içe aktar	Import from code
+1043	Ekle	Add
+1044	Üye ekle	Add member
+1045	İttifakı oluştur	Create alliance
+1046	İttifak için bir ad ve en az 2 üye gerekir.	An alliance needs a name and at least 2 members.
+1047	İki taraf aynı ülke olamaz.	Both sides cannot be the same country.
+1048	Ordu	Army
+1049	Ordu çarpanı	Army multiplier
+1050	Kasa çarpanı	Treasury multiplier
+1051	İstikrar farkı	Stability change
+1052	Ayarı uygula	Apply setting
+1053	Hayatta kal (hafta)	Survive (weeks)
+1054	Savaşsız kal (hafta)	Stay out of war (weeks)
+1055	Eyalet sayısı	Province count
+1056	Müttefik sayısı	Ally count
+1057	İstikrar eşiği	Stability threshold
+1058	Blok üye sayısı	Bloc member count
+1059	Barış yap (ülke)	Make peace (country)
+1060	Yok et (ülke)	Eliminate (country)
+1061	GSYH payı (%)	GDP share (%)
+1062	Hedef ekle	Add objective
+1063	İsteğe bağlı	Optional
+1064	Önce senaryoya bir ad ver.	Give the scenario a name first.
+1065	Senaryo kaydedilemedi.	The scenario could not be saved.
+1066	Senin hazırladığın senaryo.	A scenario you made.
+1067	Bu kodu arkadaşına gönder; o da "Koddan içe aktar" ile senaryonu kendi oyununa ekler.	Send this code to a friend; they can add your scenario to their game with "Import from code".
+1068	Panoya kopyala	Copy to clipboard
+1069	Paylaşım kodunu aşağıya yapıştır.	Paste the share code below.
+1070	Yapıştır	Paste
+1071	İçe aktar	Import
+1072	Kod geçersiz ya da bozuk.	The code is invalid or corrupted.
+1073	Senin senaryoların	Your scenarios
+1074	SENİN SENARYON	YOUR SCENARIO
+1075	Soğuk Savaş	Cold War
+1076	Büyük Harekât	Grand Operation
+1077	Hazırlık	Readiness
+1078	Zafer	Victory
+1079	Kısmi	Partial
+1080	Fiyasko	Fiasco
+1081	Harekâtın adı	Operation name
+1082	Kara	Land
+1083	Kara, hava, deniz, sabotaj ve siber saldırıyı tek planda birleştiren bitirici operasyon. Pahalıdır, 3 hafta sürer ve uzun süre tekrarlanamaz. Başarırsan hedefin şehirlerinin yaklaşık yarısı bir anda düşer.	A finishing operation combining land, air, naval, sabotage and cyber attacks in one plan. It is expensive, takes 3 weeks and cannot be repeated for a long time. If it succeeds, about half of the target's cities fall at once.
+1084	Zaferde ele geçecek şehir: %d / %d	Cities taken on victory: %d / %d
+1085	Bedel: %s   /   Dünya tepkisi: +%d (zaferde +%d daha)	Cost: %s   /   World reaction: +%d (+%d more on victory)
+1086	Genelkurmay yeniden hazırlanıyor (%d hafta).	The general staff is reorganizing (%d weeks).
+1087	Büyük Harekât başladı: %s	Grand Operation launched: %s
+1088	Büyük Harekât için hedefle savaşta olmalısın.	You must be at war with the target for a Grand Operation.
+1089	Bu hedefe karşı zaten bir Büyük Harekât sürüyor.	A Grand Operation against this target is already under way.
+1090	Büyük Harekât için en az %d asker gerekir.	A Grand Operation needs at least %d troops.
+1091	Hedefin en az %d eyaleti kalmış olmalı.	The target must have at least %d provinces left.
+1092	Kasa yetersiz: Büyük Harekât bedeli %s.	Insufficient treasury: the Grand Operation costs %s.
+1093	Bağımsızlık Yolu	Path to Independence
+1094	Hareket paneli	Movement panel
+1095	Yeni kip	New mode
+1096	Kurgusal bir hareketin lideri ol. Gizlice örgütlen, ayaklan, müzakere et, bağımsızlığını ilan et, tanınmanı sağla ve devleti ayakta tut. Yabancı destek ideolojine göre gelir; her yardımın bir şartı vardır.	Lead a fictional movement. Organize in secret, rise up, negotiate, declare independence, win recognition and keep the state standing. Foreign support follows your ideology; every aid comes with a condition.
+1097	Ayrılacağın ülke	Country to break away from
+1098	Bölge ve büyüklük	Region and size
+1099	Hareketin kimliği	Identity of the movement
+1100	Hareketin adı	Movement name
+1101	Lider adı (kurgusal)	Leader name (fictional)
+1102	Rastgele	Random
+1103	İdeoloji (yabancı desteği belirler)	Ideology (determines foreign support)
+1104	Yöntem	Method
+1105	Eylemler	Actions
+1106	Destekçiler	Backers
+1107	Diğer hareketler	Other groups
+1108	Henüz yabancı destek yok.	No foreign support yet.
+1109	Halk desteği	Popular support
+1110	Gizlilik	Secrecy
+1111	Meşruiyet	Legitimacy
+1112	Bağımlılık: %d   /   Tanıyan ülke: %d   /   Eyalet: %d   /   Asker: %s   /   Kasa: %s	Dependency: %d   /   Recognizers: %d   /   Provinces: %d   /   Troops: %s   /   Treasury: %s
+1113	Konsolidasyon: %d / 52 hafta	Consolidation: %d / 52 weeks
+1114	başarı şansı %%%d	success chance %%%d
+1115	İdeolojik yakınlık: %%%d   /   İlişki: %d   /   Asker: %s   /   Eyalet: %d	Ideological affinity: %%%d   /   Relations: %d   /   Troops: %s   /   Provinces: %d
+1116	yardım	aid
+1117	şart	conditions
+1118	desteği kesti	withdrew support
+1119	tarafsız	neutral
+1120	müttefik	allied
+1121	rakip	rival
+1122	birleşti	merged
+1123	Birleşmeyi öner	Propose merger
+1124	İttifak öner	Propose alliance
+1125	Başkent çevresi	Around the capital
+1126	Doğu	East
+1127	Batı	West
+1128	Kuzey	North
+1129	Güney	South
+1130	Bu grup artık yok.	This group no longer exists.
+1131	Bu grupla yakın zamanda görüştün (%d hafta).	You talked with this group recently (%d weeks).
+1132	%s ile görüşme olumlu geçti.	The talks with %s went well.
+1133	%s ittifakı reddetti.	%s rejected the alliance.
+1134	%s hareketine katıldı!	%s joined the movement!
+1135	%s birleşmeyi reddetti.	%s rejected the merger.
+1136	%s ile rekabet savaşa döndü.	The rivalry with %s turned into war.
+1137	Halk desteği en az 40 olmalı	Popular support must be at least 40
+1138	Halk desteği en az 50 olmalı	Popular support must be at least 50
+1139	Meşruiyet en az 35 olmalı	Legitimacy must be at least 35
+1140	En az 5 ülke tanımalı	At least 5 countries must recognize you
+1141	Önce merkezle ateşkes yapmalısın	You must make a ceasefire with the center first
+1142	Önce merkezle barış yapmalısın	You must make peace with the center first
+1143	Propaganda kampanyası yürütüldü.	A propaganda campaign was run.
+1144	Yeni bir gizli hücre kuruldu.	A new secret cell was established.
+1145	Bağış toplandı.	Funds were raised.
+1146	Silah sevkiyatı ulaştı.	A weapons shipment arrived.
+1147	Ayaklanma başladı!	The uprising has begun!
+1148	Gönüllüler orduya katıldı.	Volunteers joined the army.
+1149	Uluslararası kamuoyuna çağrı yapıldı.	An appeal was made to world opinion.
+1150	Bağımsızlık tek taraflı ilan edildi!	Independence was declared unilaterally!
+1151	Sınır antlaşması imzalandı.	The border treaty was signed.
+1152	Kalkınma yatırımı başladı.	The development investment has begun.
+1153	Darbe başarılı!	The coup succeeded!
+1154	Darbe başarısız oldu.	The coup failed.
+1155	Referandum kazanıldı: bağımsızlık ilan edildi!	Referendum won: independence declared!
+1156	Referandum kaybedildi; halk bölündü.	Referendum lost; the people are divided.
+1157	BM üyeliği kabul edildi!	UN membership granted!
+1158	BM başvurusu reddedildi (veto ya da yetersiz oy).	The UN application was rejected (veto or insufficient votes).
+1159	Bağımsızlık Yolu tamamlandı: devleti kurdun, tanıttın ve ayakta tuttun.	Path to Independence complete: you founded the state, won recognition and kept it standing.
+1160	Alternatif Tarih Paketi	Alternate History Pack
+1161	Stratejik geçitler	Strategic straits
+1162	Dünya ticareti	World trade
+1163	Boğazları ve kanalları kontrol eden ülke geçişi yönetir: ücret alabilir, düşmana kapatabilir ya da herkese kapatabilir. Anahtar eyaleti ele geçirerek kontrolü alırsın.	The country that controls a strait or canal manages passage: it can charge tolls, close it to enemies or close it to everyone. Capture the key province to take control.
+1164	Geçitlerin gelirine toplam etkisi: %+.1f%%	Total effect of the straits on your income: %+.1f%%
+1165	sana etkisi: %+.1f%%	effect on you: %+.1f%%
+1166	Kimse	Nobody
+1167	Geçersiz mod.	Invalid mode.
+1168	Bu geçidi sen kontrol etmiyorsun.	You do not control this strait.
+1169	Bu geçit için yeni karar %d hafta sonra verilebilir.	A new decision on this strait can be made in %d weeks.
+1170	Günlük Meydan Okuma	Daily Challenge
+1171	Herkes için aynı	The same for everyone
+1172	Her gün herkes aynı ülkeyle, aynı dünyada başlar. 52 hafta sonunda skorun hesaplanır; büyümeye ve istikrara göre puan alırsın. Günün ilk bitirişinde AP kazanırsın, istediğin kadar tekrar deneyebilirsin.	Every day everyone starts with the same country in the same world. After 52 weeks your score is calculated, based on growth and stability. You earn AP on your first finish of the day and can retry as often as you like.
+1173	Bugünün ülkesi	Today's country
+1174	Günün çarpıtması	Today's twist
+1175	Bugünkü en iyi skor: %d	Best score today: %d
+1176	Bugün henüz denemedin.	You haven't tried today yet.
+1177	Tüm zamanların en iyisi: %d	All-time best: %d
+1178	Meydan okuma durumu	Challenge status
+1179	Tamamlandı. Skor: %d	Completed. Score: %d
+1180	Anlık skor: %d	Current score: %d
+1181	Günlük Meydan Okuma: %s — %s	Daily Challenge: %s — %s
+1182	Günlük Meydan Okuma tamamlandı!\nSkorun: %d	Daily Challenge complete!\nYour score: %d
+1183	Bugünün en iyi skorun!	Your best score today!
+1184	Ödül: +%d AP	Reward: +%d AP
+1185	Siyasi sistem	Political system
+1186	Sonraki seçim	Next election
+1187	%d hafta sonra	in %d weeks
+1188	Seçim	Election
+1189	Darbe / kriz riski	Coup / crisis risk
+1190	Sıkıyönetim	Martial law
+1191	%d hafta kaldı	%d weeks left
+1192	Siyasi eylemler	Political actions
+1193	Çok düşük	Very low
+1194	Savaş Odası	War Room
+1195	Birden çok aşamalı bir harekât planla: hedefleri, harekât türünü ve zamanlamayı sen belirle; plan her turu kendisi yürütür. Plana uyan taarruzların bedelinin %15'i iade edilir; tüm plan başarılı olursa istikrar kazanırsın.	Plan a multi-phase operation: you set the targets, operation types and timing; the plan runs itself each turn. 15% of the cost of planned assaults is refunded; if the whole plan succeeds you gain stability.
+1196	Şu an savaşta değilsin; plan yapmak için bir savaş gerekir.	You are not at war right now; you need a war to make a plan.
+1197	Plan kurulacak düşman	Enemy to plan against
+1198	Hedef ülke: %s	Target country: %s
+1199	Henüz aşama yok. Elle ekle ya da otomatik plan öner.	No phases yet. Add them by hand or suggest an automatic plan.
+1200	Başarı şansı ≈ %%%d   /   bekleme: %d hf	Success chance ≈ %%%d   /   wait: %d wk
+1201	Kaldır	Remove
+1202	Başarılı: %d   /   Başarısız: %d   /   Toplam: %d	Succeeded: %d   /   Failed: %d   /   Total: %d
+1203	Planı iptal et	Cancel plan
+1204	Aşama ekle	Add phase
+1205	Otomatik plan öner	Suggest automatic plan
+1206	Başkente giden yol bulunamadı.	No route to the capital was found.
+1207	Yürürlüğe koy	Put into effect
+1208	Planı sıfırla	Reset plan
+1209	Hedef eyalet	Target province
+1210	Ordularının menzilinde düşman eyaleti yok. Önce ordularını cepheye yaklaştır.	No enemy provinces within reach of your armies. Move your armies closer to the front first.
+1211	Kuvvet oranı	Force ratio
+1212	Bekleme (önceki aşamadan sonra)	Wait (after the previous phase)
+1213	Tahmini başarı şansı: %%%d	Estimated success chance: %%%d
+1214	En fazla 6 aşama eklenebilir.	At most 6 phases can be added.
+1215	Bu eyalet planda zaten var.	This province is already in the plan.
+1216	Plana en az bir aşama ekle.	Add at least one phase to the plan.
+1217	Hedefe ulaşabilecek ordu kalmadı.	No army is left that can reach the target.
+1218	Süre doldu.	Time ran out.
+1219	Sürüyor	In progress
+1220	Başarılı	Succeeded
+1221	Başarısız	Failed
+1222	Bekliyor	Waiting
+1223	Tüm geçitler	All straits
+1224	Çin	China
+1225	Hindistan	India
+1226	Endonezya	Indonesia
+1227	Nijerya	Nigeria
+1228	Bangladeş	Bangladesh
+1229	Rusya	Russia
+1230	Japonya	Japan
+1231	Etiyopya	Ethiopia
+1232	Filipinler	Philippines
+1233	DK Kongo	Dem. Rep. Congo
+1234	Türkiye	Turkey
+1235	Birleşik Krallık	United Kingdom
+1236	Güney Afrika Cumhuriyeti	South Africa
+1237	Tanzanya	Tanzania
+1238	Güney Kore	South Korea
+1239	Kolombiya	Colombia
+1240	Ukrayna	Ukraine
+1241	Cezayir	Algeria
+1242	Afganistan	Afghanistan
+1243	Fas	Morocco
+1244	Özbekistan	Uzbekistan
+1245	Malezya	Malaysia
+1246	Gana	Ghana
+1247	Mozambik	Mozambique
+1248	Madagaskar	Madagascar
+1249	Kamerun	Cameroon
+1250	Fildişi Sahili	Côte d'Ivoire
+1251	Kuzey Kore	North Korea
+1252	Tayvan	Taiwan
+1253	Nijer	Niger
+1254	Şili	Chile
+1255	Malavi	Malawi
+1256	Kazakistan	Kazakhstan
+1257	Zambiya	Zambia
+1258	Ekvador	Ecuador
+1259	Suriye	Syria
+1260	Kamboçya	Cambodia
+1261	Çad	Chad
+1262	Zimbabve	Zimbabwe
+1263	Gine	Guinea
+1264	Ruanda	Rwanda
+1265	Tunus	Tunisia
+1266	Bolivya	Bolivia
+1267	Küba	Cuba
+1268	Güney Sudan	S. Sudan
+1269	Dominik Cum.	Dominican Rep.
+1270	Çekya	Czechia
+1271	Somali	Somalia
+1272	Ürdün	Jordan
+1273	Azerbaycan	Azerbaijan
+1274	BAE	United Arab Emirates
+1275	Beyaz Rusya	Belarus
+1276	Tacikistan	Tajikistan
+1277	İsrail	Israel
+1278	Avusturya	Austria
+1279	Papua Yeni Gine	Papua New Guinea
+1280	Lübnan	Lebanon
+1281	Nikaragua	Nicaragua
+1282	Kırgızistan	Kyrgyzstan
+1283	Eritre	Eritrea
+1284	Türkmenistan	Turkmenistan
+1285	Singapur	Singapore
+1286	Slovakya	Slovakia
+1287	Kongo	Congo
+1288	Kosta Rika	Costa Rica
+1289	Umman	Oman
+1290	Liberya	Liberia
+1291	Orta Afrika	Central African Rep.
+1292	Filistin	Palestine
+1293	Moritanya	Mauritania
+1294	Kuveyt	Kuwait
+1295	Hırvatistan	Croatia
+1296	Gürcistan	Georgia
+1297	Bosna-Hersek	Bosnia and Herz.
+1298	Ermenistan	Armenia
+1299	Jamaika	Jamaica
+1300	Arnavutluk	Albania
+1301	Katar	Qatar
+1302	Litvanya	Lithuania
+1303	Namibya	Namibia
+1304	Gambiya	Gambia
+1305	Botsvana	Botswana
+1306	Slovenya	Slovenia
+1307	Kuzey Makedonya	North Macedonia
+1308	Gine-Bissau	Guinea-Bissau
+1309	Letonya	Latvia
+1310	Kosova	Kosovo
+1311	Bahreyn	Bahrain
+1312	Trinidad-Tobago	Trinidad and Tobago
+1313	Ekvator Ginesi	Eq. Guinea
+1314	Estonya	Estonia
+1315	Doğu Timor	Timor-Leste
+1316	Kıbrıs Cumhuriyeti	Cyprus
+1317	Esvatini	eSwatini
+1318	Cibuti	Djibouti
+1319	Komorlar	Comoros
+1320	Solomon Adaları	Solomon Is.
+1321	Lüksemburg	Luxembourg
+1322	Batı Sahra	W. Sahara
+1323	Surinam	Suriname
+1324	Yeşil Burun Adaları	Cabo Verde
+1325	Maldivler	Maldives
+1326	Bahamalar	Bahamas
+1327	İzlanda	Iceland
+1328	Kuzey Kıbrıs Türk Cumhuriyeti	N. Cyprus
+1329	São Tomé	São Tomé and Principe
+1330	Mikronezya	Micronesia
+1331	St. Vincent	St. Vin. and Gren.
+1332	Seyşeller	Seychelles
+1333	Antigua	Antigua and Barb.
+1334	Dominika	Dominica
+1335	Marshall Adaları	Marshall Is.
+1336	Grönland	Greenland
+1337	St. Kitts	St. Kitts and Nevis
+1338	Monako	Monaco
+1339	Lihtenştayn	Liechtenstein
+1340	Bağımsızlık Cephesi	Independence Front
+1341	Gölge Ağı	Shadow Network
+1342	Dağ Milisleri	Mountain Militia
+1343	Halk Birliği	People's Union
+1344	Özgürlük Ordusu	Freedom Army
+1345	Kuzey Direnişi	Northern Resistance
+1346	Yeraltı Hareketi	Underground Movement
+1347	Piyade Tüfeği	Infantry Rifle
+1348	Tank	Tank
+1349	Zırhlı Araç	Armored Vehicle
+1350	Top & Roketatar	Artillery & Rockets
+1351	Uçak & İHA	Aircraft & UAV
+1352	Denizaltı	Submarine
+1353	Daire	Circle
+1354	Kalkan	Shield
+1355	Altıgen	Hexagon
+1356	Elmas	Diamond
+1357	Sekizgen	Octagon
+1358	Rozet	Badge
+1359	Güneş	Sun
+1360	Kare	Square
+1361	Düz	Plain
+1362	İç çerçeve	Inner frame
+1363	İç daire	Inner circle
+1364	Kurgusal	Fictional
+1365	aşırılıkçı yeniden doğuş	extremist rebirth
+1366	otoriter yeniden diriliş	authoritarian resurgence
+1367	kuzeyde büyük savaş	great war in the north
+1368	Napolyon çağı geri dönüyor	the Napoleonic age returns
+1369	siber çağ	cyber age
+1370	silahsız cephe	the unarmed front
+1371	siber çağ, silahsız cephe	cyber age, the unarmed front
+1372	Şafak Tugayı	Dawn Brigade
+1373	Sınır Muhafızları	Border Guards

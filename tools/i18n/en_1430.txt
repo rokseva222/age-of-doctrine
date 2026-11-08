@@ -1,0 +1,2 @@
+1430|\nCommander: %s (Lv %d)
+1431|Commander %s won the campaign: level %d (+%%%d combat strength).

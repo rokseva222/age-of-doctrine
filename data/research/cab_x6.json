@@ -1,0 +1,62 @@
+{
+ "Belize": {
+  "def": "Michel Chebat",
+  "for": "Francis Fonseca",
+  "fin": "John Briceno",
+  "int": "Michel Chebat",
+  "hlt": "Kevin Bernard"
+ },
+ "Bahamas": {
+  "def": "Myles Laroda",
+  "for": "Fred Mitchell",
+  "fin": "Michael Halkitis",
+  "int": "Myles Laroda",
+  "hlt": "Michael Darville"
+ },
+ "Barbados": {
+  "for": "Chris Sinckler",
+  "fin": "Ryan Straughn",
+  "int": "Gregory Nicholls",
+  "hlt": "Lisa Cummins|f"
+ },
+ "Saint Lucia": {
+  "for": "Alva Baptiste",
+  "fin": "Philip J. Pierre",
+  "int": "Virginia Albert-Poyotte|f",
+  "hlt": "Moses Jn. Baptiste"
+ },
+ "St. Vin. and Gren.": {
+  "def": "St. Clair Leacock",
+  "for": "Fitzgerald Bramble",
+  "fin": "Godwin Friday",
+  "int": "St. Clair Leacock",
+  "hlt": "Daniel Cummings"
+ },
+ "Grenada": {
+  "def": "Dickon Mitchell",
+  "for": "Joseph Andall",
+  "fin": "Dennis Cornwall",
+  "int": "Dickon Mitchell",
+  "hlt": "Philip Telesford"
+ },
+ "Antigua and Barb.": {
+  "def": "Gaston Browne",
+  "for": "Chet Greene",
+  "fin": "Gaston Browne",
+  "hlt": "Michael Joseph"
+ },
+ "Dominica": {
+  "def": "Rayburn Blackmoore",
+  "for": "Vince Henderson",
+  "fin": "Irving McIntyre",
+  "int": "Rayburn Blackmoore",
+  "hlt": "Cassanni Laville|f"
+ },
+ "St. Kitts and Nevis": {
+  "def": "Terrance Drew",
+  "for": "Denzil Douglas",
+  "fin": "Terrance Drew",
+  "int": "Terrance Drew",
+  "hlt": "Terrance Drew"
+ }
+}

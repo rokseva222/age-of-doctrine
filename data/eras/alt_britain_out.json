@@ -1,0 +1,226 @@
+{
+ "id": "alt_britain_out",
+ "name": "Londra Seyirci",
+ "sub": "Ağustos 1914 – Alternatif",
+ "base": "ww1",
+ "family": "ww1",
+ "pack": "alt",
+ "icon": "helmet_ww1",
+ "mood": "war",
+ "start_year": 1914,
+ "start_doy": 212,
+ "blurb": "Kabine Belçika için savaşmayı reddetti: Britanya tarafsız. Fransa ve Rusya Almanya'ya tek başına karşı; Kayzer'in orduları Paris'e doğru ilerliyor.",
+ "suggest": [
+  "Germany",
+  "France",
+  "Russia",
+  "Austria",
+  "United Kingdom",
+  "Belgium"
+ ],
+ "look": {
+  "shadow": [
+   0.09,
+   0.07,
+   0.05
+  ],
+  "mid": [
+   0.56,
+   0.45,
+   0.29
+  ],
+  "light": [
+   0.96,
+   0.9,
+   0.74
+  ],
+  "amount": 0.38,
+  "vignette": 0.18,
+  "grain": 0.012
+ },
+ "setup": {
+  "blocs": [
+   {
+    "name": "İtilaf Devletleri",
+    "members": [
+     "France",
+     "Russia",
+     "Serbia",
+     "Belgium",
+     "Japan",
+     "Canada",
+     "Australia",
+     "New Zealand",
+     "South Africa"
+    ],
+    "emblem": {
+     "shape": 5,
+     "inner": 1,
+     "symbol": "shield",
+     "c1": "2f4f9a",
+     "c2": "ece6d6",
+     "c3": "2f4f9a"
+    }
+   },
+   {
+    "name": "Merkezi Güçler",
+    "members": [
+     "Germany",
+     "Austria",
+     "Turkey",
+     "Bulgaria"
+    ],
+    "emblem": {
+     "shape": 4,
+     "inner": 1,
+     "symbol": "crown",
+     "c1": "6d6f78",
+     "c2": "e3a92b",
+     "c3": "e3a92b"
+    }
+   }
+  ],
+  "wars": [
+   [
+    "Austria",
+    "Serbia"
+   ],
+   [
+    "Germany",
+    "Russia"
+   ],
+   [
+    "Germany",
+    "France"
+   ],
+   [
+    "Germany",
+    "Belgium"
+   ],
+   [
+    "Austria",
+    "Russia"
+   ],
+   [
+    "Japan",
+    "Germany"
+   ]
+  ],
+  "truce": [],
+  "intro": "Ağustos 1914: Britanya Kabinesi Belçika'nın işgaline rağmen tarafsız kalmayı seçti. Kanal'ın ötesindeki donanma limanda; kıta kendi kaderine terk edildi.",
+  "stability": {
+   "France": -6,
+   "Belgium": -8
+  },
+  "troops_mult": {
+   "Germany": 1.1
+  }
+ },
+ "inherit_until": [
+  1915,
+  1
+ ],
+ "inherit_exclude": [
+  "Çanakkale",
+  "ABD, Almanya"
+ ],
+ "events": [
+  {
+   "y": 1914,
+   "m": 9,
+   "t": "Marne hattında Alman ilerleyişi sürüyor; Fransız hükûmeti Bordeaux'ya taşınmaya hazırlanıyor.",
+   "fx": [
+    [
+     "stab",
+     "France",
+     -6
+    ]
+   ]
+  },
+  {
+   "y": 1915,
+   "m": 4,
+   "t": "Londra'da savaş yanlıları sokağa çıktı: kamuoyu Kabine'yi savaşa girmeye çağırıyor.",
+   "fx": [
+    [
+     "stab",
+     "United Kingdom",
+     -5
+    ]
+   ]
+  }
+ ],
+ "objectives": {
+  "*": [
+   {
+    "id": "o1",
+    "type": "survive",
+    "text": "Üç yıl ayakta kal",
+    "turns": 156
+   }
+  ],
+  "France": [
+   {
+    "id": "f1",
+    "type": "own_capital",
+    "text": "Paris'i elinde tut",
+    "country": "France"
+   },
+   {
+    "id": "f2",
+    "type": "alliances",
+    "text": "3 müttefik edin",
+    "n": 3
+   }
+  ],
+  "Germany": [
+   {
+    "id": "g1",
+    "type": "own_capital",
+    "text": "Paris'i ele geçir",
+    "country": "France"
+   },
+   {
+    "id": "g2",
+    "type": "eliminate",
+    "text": "Belçika'yı yok et",
+    "country": "Belgium",
+    "required": false
+   }
+  ],
+  "United Kingdom": [
+   {
+    "id": "u1",
+    "type": "no_war",
+    "text": "İki yıl savaşsız kal",
+    "turns": 104
+   },
+   {
+    "id": "u2",
+    "type": "gdp_share",
+    "text": "Dünya GSYH payını %6'ya çıkar",
+    "pct": 6,
+    "required": false
+   }
+  ]
+ },
+ "en": {
+  "name": "London Stays Out",
+  "sub": "August 1914 – Alternate",
+  "blurb": "The Cabinet refused to fight for Belgium: Britain is neutral. France and Russia face Germany alone, and the Kaiser's armies are marching on Paris.",
+  "setup_intro": "August 1914: Despite the invasion of Belgium, the British Cabinet chose neutrality. The fleet stays in port; the continent is left to its fate.",
+  "events": {
+   "0": "The German advance along the Marne continues; the French government prepares to move to Bordeaux.",
+   "1": "War advocates take to London's streets: public opinion urges the Cabinet to enter the war."
+  },
+  "objectives": {
+   "o1": "Survive three years",
+   "f1": "Hold Paris",
+   "f2": "Make 3 allies",
+   "g1": "Take Paris",
+   "g2": "Eliminate Belgium",
+   "u1": "Stay out of war for two years",
+   "u2": "Raise world GDP share to 6%"
+  }
+ }
+}

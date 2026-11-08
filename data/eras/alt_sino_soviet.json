@@ -1,0 +1,175 @@
+{
+ "id": "alt_sino_soviet",
+ "name": "Çin–Sovyet Savaşı",
+ "sub": "Ekim 1962 – Alternatif",
+ "base": "cw62",
+ "family": "cold",
+ "pack": "alt",
+ "icon": "helmet",
+ "mood": "war",
+ "start_year": 1962,
+ "start_doy": 290,
+ "blurb": "Komünist dünya yarıldı: Ussuri'de başlayan sınır çatışması 1962'de tam çaplı savaşa dönüştü. NATO bu yarılmayı fırsata çevirebilir mi?",
+ "suggest": [
+  "China",
+  "Russia",
+  "United States of America",
+  "India",
+  "Japan"
+ ],
+ "look": {
+  "shadow": [
+   0.06,
+   0.07,
+   0.09
+  ],
+  "mid": [
+   0.42,
+   0.45,
+   0.42
+  ],
+  "light": [
+   0.93,
+   0.9,
+   0.83
+  ],
+  "amount": 0.28,
+  "vignette": 0.14,
+  "grain": 0.01
+ },
+ "setup": {
+  "blocs": [
+   {
+    "name": "Kuzey Atlantik İttifakı",
+    "members": [
+     "United States of America",
+     "Canada",
+     "United Kingdom",
+     "France",
+     "Germany",
+     "Italy",
+     "Belgium",
+     "Netherlands",
+     "Luxembourg",
+     "Denmark",
+     "Norway",
+     "Iceland",
+     "Portugal",
+     "Greece",
+     "Turkey"
+    ],
+    "emblem": {
+     "shape": 0,
+     "inner": 2,
+     "symbol": "star",
+     "c1": "2f4f9a",
+     "c2": "ece6d6",
+     "c3": "2f4f9a"
+    }
+   },
+   {
+    "name": "Varşova Paktı",
+    "members": [
+     "Russia",
+     "Poland",
+     "Czechia",
+     "Hungary",
+     "Romania",
+     "Bulgaria",
+     "Albania"
+    ],
+    "emblem": {
+     "shape": 4,
+     "inner": 1,
+     "symbol": "star",
+     "c1": "b53a2e",
+     "c2": "e3a92b",
+     "c3": "e3a92b"
+    }
+   }
+  ],
+  "wars": [
+   [
+    "China",
+    "Russia"
+   ]
+  ],
+  "truce": [],
+  "intro": "Ekim 1962: Pekin ve Moskova arasındaki kopuş silaha döküldü. Sibirya sınırında iki ordu karşı karşıya.",
+  "stability": {
+   "China": -5,
+   "Russia": -4
+  }
+ },
+ "inherit_until": [
+  9999,
+  1
+ ],
+ "inherit_exclude": [
+  "Küba krizi",
+  "Sovyet füzeleri"
+ ],
+ "events": [
+  {
+   "y": 1963,
+   "m": 2,
+   "t": "Kuzey Çin'de Sovyet zırhlıları ilerliyor; Pekin yedek kuvvet seferber etti.",
+   "fx": [
+    [
+     "stab",
+     "China",
+     -4
+    ]
+   ]
+  }
+ ],
+ "objectives": {
+  "*": [
+   {
+    "id": "o1",
+    "type": "survive",
+    "text": "İki yıl ayakta kal",
+    "turns": 104
+   }
+  ],
+  "China": [
+   {
+    "id": "c1",
+    "type": "cease_war",
+    "text": "SSCB ile barış yap",
+    "with": "Russia"
+   }
+  ],
+  "Russia": [
+   {
+    "id": "r1",
+    "type": "own_capital",
+    "text": "Pekin'i ele geçir",
+    "country": "China"
+   }
+  ],
+  "United States of America": [
+   {
+    "id": "a1",
+    "type": "alliances",
+    "text": "5 müttefik edin",
+    "n": 5
+   }
+  ]
+ },
+ "en": {
+  "name": "The Sino-Soviet War",
+  "sub": "October 1962 – Alternate",
+  "blurb": "The communist world split: the border clash on the Ussuri became a full-scale war in 1962. Can NATO turn the rift into an opportunity?",
+  "setup_intro": "October 1962: the break between Beijing and Moscow has turned to arms. Two armies face each other on the Siberian border.",
+  "events": {
+   "0": "Soviet armor advances in northern China; Beijing mobilizes reserves."
+  },
+  "objectives": {
+   "o1": "Survive two years",
+   "c1": "Make peace with the USSR",
+   "r1": "Take Beijing",
+   "a1": "Make 5 allies"
+  }
+ }
+}

@@ -1,0 +1,3 @@
+1434|World reaction: %d / 100 (rises with conquest; above 50 a coalition forms)
+1435|The world is worried about the rise of %s: neighbours and great powers are growing cold.
+1436|COALITION! %d countries declared war on %s over its conquests.

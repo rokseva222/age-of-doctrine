@@ -1,0 +1,199 @@
+{
+ "id": "alt_japan_north",
+ "name": "Japonya Kuzeye",
+ "sub": "Eylül 1939 – Alternatif",
+ "base": "ww2",
+ "family": "ww2",
+ "pack": "alt",
+ "icon": "helmet_ww2",
+ "mood": "war",
+ "start_year": 1939,
+ "start_doy": 243,
+ "blurb": "Japon ordusu Çin'e saplanmak yerine Sibirya'ya döndü: Halhin Gol'un devamı gerçek bir savaşa dönüştü. Sovyet Uzak Doğu'su ve Moğol bozkırı yeniden ateşte.",
+ "suggest": [
+  "Japan",
+  "Russia",
+  "China",
+  "United States of America",
+  "Germany"
+ ],
+ "look": {
+  "shadow": [
+   0.05,
+   0.07,
+   0.06
+  ],
+  "mid": [
+   0.36,
+   0.42,
+   0.31
+  ],
+  "light": [
+   0.9,
+   0.9,
+   0.82
+  ],
+  "amount": 0.3,
+  "vignette": 0.14,
+  "grain": 0.01
+ },
+ "setup": {
+  "blocs": [
+   {
+    "name": "Müttefik Devletler",
+    "members": [
+     "United Kingdom",
+     "France",
+     "Poland",
+     "Australia",
+     "New Zealand",
+     "Canada",
+     "South Africa"
+    ],
+    "emblem": {
+     "shape": 1,
+     "inner": 1,
+     "symbol": "shield",
+     "c1": "2f4f9a",
+     "c2": "ece6d6",
+     "c3": "2f4f9a"
+    }
+   },
+   {
+    "name": "Mihver Devletleri",
+    "members": [
+     "Germany",
+     "Italy",
+     "Japan",
+     "Slovakia"
+    ],
+    "emblem": {
+     "shape": 4,
+     "inner": 1,
+     "symbol": "bolt",
+     "c1": "5d6068",
+     "c2": "ece6d6",
+     "c3": "e5482f"
+    }
+   }
+  ],
+  "wars": [
+   [
+    "Germany",
+    "Poland"
+   ],
+   [
+    "United Kingdom",
+    "Germany"
+   ],
+   [
+    "France",
+    "Germany"
+   ],
+   [
+    "Australia",
+    "Germany"
+   ],
+   [
+    "New Zealand",
+    "Germany"
+   ],
+   [
+    "Canada",
+    "Germany"
+   ],
+   [
+    "South Africa",
+    "Germany"
+   ],
+   [
+    "Japan",
+    "China"
+   ],
+   [
+    "Japan",
+    "Russia"
+   ]
+  ],
+  "truce": [
+   [
+    "Germany",
+    "Russia",
+    90
+   ]
+  ],
+  "intro": "Eylül 1939: Kwantung Ordusu Sovyet sınırını aştı. Moskova iki cepheli savaşa hazırlıksız yakalandı.",
+  "stability": {
+   "Russia": -6
+  }
+ },
+ "inherit_until": [
+  9999,
+  1
+ ],
+ "inherit_exclude": [
+  "Japonya Sovyet"
+ ],
+ "events": [
+  {
+   "y": 1940,
+   "m": 3,
+   "t": "Sibirya demiryolu boyunca ağır çarpışmalar: Moskova takviye yetiştirmeye çalışıyor.",
+   "fx": [
+    [
+     "stab",
+     "Russia",
+     -3
+    ]
+   ]
+  }
+ ],
+ "objectives": {
+  "*": [
+   {
+    "id": "o1",
+    "type": "survive",
+    "text": "Üç yıl ayakta kal",
+    "turns": 156
+   }
+  ],
+  "Japan": [
+   {
+    "id": "j1",
+    "type": "own_provinces",
+    "text": "35 eyalete ulaş",
+    "n": 35
+   }
+  ],
+  "Russia": [
+   {
+    "id": "r1",
+    "type": "cease_war",
+    "text": "Japonya ile barış yap",
+    "with": "Japan"
+   },
+   {
+    "id": "r2",
+    "type": "own_capital",
+    "text": "Berlin'i ele geçir",
+    "country": "Germany",
+    "required": false
+   }
+  ]
+ },
+ "en": {
+  "name": "Japan Turns North",
+  "sub": "September 1939 – Alternate",
+  "blurb": "Instead of sinking into China, the Japanese army turned toward Siberia: the sequel to Khalkhin Gol became a real war. The Soviet Far East and the Mongolian steppe are on fire.",
+  "setup_intro": "September 1939: the Kwantung Army crossed the Soviet border. Moscow was caught unprepared for a two-front war.",
+  "events": {
+   "0": "Heavy fighting along the Trans-Siberian railway: Moscow scrambles to bring reinforcements."
+  },
+  "objectives": {
+   "o1": "Survive three years",
+   "j1": "Reach 35 provinces",
+   "r1": "Make peace with Japan",
+   "r2": "Take Berlin"
+  }
+ }
+}

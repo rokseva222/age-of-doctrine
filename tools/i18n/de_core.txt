@@ -1,0 +1,488 @@
+0|Kabinettswechsel
+1|   ·   Skandalrisiko
+2|Kostenlos
+3|Angriffsoperation
+4|Truppen (zum Auswählen tippen)
+5|Entsandt
+6|Operationsart
+7|Operation starten
+8|Abbrechen
+9|Verteidiger
+10|Leer
+11|Provinzverteidigung
+12|Belagerungsdauer
+13|%d Wo.
+14|Einkommen
+15|Du hast keine Armee in der Nähe. Bringe deine Armeen auf höchstens 6 Provinzen ans Ziel heran oder stelle eine neue Einheit auf.
+16|Geschätzte Erfolgsaussicht
+17|Wähle mindestens eine Armee.
+18|Unverteidigt: Die Armee marschiert ein und die Belagerung beginnt.
+19|Überwältigender Vorteil
+20|Vorteil
+21|Ausgeglichen: Glückssache
+22|Schwierig: Es drohen hohe Verluste
+23|Sehr riskant: Niederlage zu erwarten
+24|Angriff %sK  /  Verteidigung %sK
+473|Kabinettssitzung
+474|Kabinettsmitglied
+475|Entscheidung ausgeführt
+476|Schicksalsmoment
+477|Das Glück war dir hold
+478|Es hat nicht geklappt
+479|OK
+573|Neues Spiel: Das Rennen um die Weltherrschaft hat unter der Führung von %s begonnen.
+574|Die Simulation hat begonnen.
+575|Bodenangriff
+576|Ein normaler Angriff der verbundenen Waffen.
+577|Artillerie- und Luftvorbereitung
+578|Beschießt zuerst die Verteidigung: Verteidigung −12 %, Angriff +4 %.
+579|Cyber- und elektronische Kriegsführung
+580|Blendet das Führungsnetz: Verteidigung −14 %.
+581|Blitzangriff
+582|Angriff +12 %; bei einer Niederlage überleben nur 25 %.
+583|Ungültige Operation.
+584|Vor einem Angriff auf diese Provinz muss Krieg herrschen.
+585|Nicht genug Geld: Die Operation kostet %s.
+586|Keine Armee kann das Ziel erreichen (keine Durchmarscherlaubnis oder kein Weg).
+587|%s hat das Bündnis %s verlassen.
+588|%s wurde aufgelöst.
+589|Ungültiges Ziel.
+590|%s gehört bereits einem anderen Bündnis an.
+591|%s befindet sich im Krieg mit dem Bündnismitglied %s.
+592|%s hat die Einladung abgelehnt.
+593|Du bist bereits in einem Bündnis.
+594|Der Bündnisname muss 3–30 Buchstaben lang sein.
+595|Dieser Name ist vergeben.
+596|%s hat das Bündnis „%s“ gegründet.
+597|Gründe zuerst ein Bündnis.
+598|%s ist dem Bündnis %s beigetreten.
+599|Du kannst dich nicht mit Rebellen verbünden.
+600|Im Krieg kannst du kein Bündnis anbieten.
+601|Ihr seid bereits Verbündete.
+602|Du kannst höchstens 3 Verbündete haben.
+603|%s hat das Bündnisangebot abgelehnt.
+604|Ihr seid keine Verbündeten.
+605|Du befindest dich nicht im Krieg mit diesem Land.
+606|Mit Rebellen wird nicht verhandelt; erobere die Provinzen zurück.
+607|%s: Der Krieg hat gerade erst begonnen, man will noch keinen Frieden.
+608|%s hat das Friedensangebot abgelehnt.
+609|%s hat den Frieden angenommen und %d Provinzen erhalten.
+610|Ein Remis-Frieden wurde geschlossen.
+611|Neue Führung in %s: %s %s hat das Amt übernommen.
+612|Der Staat %s ist gefallen. Die Weltgazette spricht dir ihr Beileid aus.
+613|Du beherrschst %d%% der Welt. Die Weltherrschaft gehört dir!
+614|Du kontrollierst %d%% der Weltwirtschaft. Die Wirtschaftshegemonie gehört dir!
+615|Diese Armee gehört dir nicht.
+616|Du kannst dort nicht hin (keine Durchmarscherlaubnis oder kein Weg).
+617|Du befindest dich bereits im Krieg.
+618|Du kannst einem Verbündeten nicht den Krieg erklären; löse zuerst das Bündnis auf.
+619|Ein Waffenstillstand gilt (%d Züge).
+620|Spionagenetz
+621|Stiehl die Verteidigungsgeheimnisse des Ziels: Deine Technologie steigt.
+622|Propaganda
+623|Wiegle das Volk im Zielland gegen die Regierung auf: Seine Stabilität sinkt.
+624|Sabotage
+625|Beschädige Fabriken und Infrastruktur: Industrie und Stabilität sinken.
+626|Botschaft
+627|Diplomatischer Kontakt: Die Aggression des Ziels dir gegenüber nimmt ab.
+628|Agenten halten sich in diesem Ziel versteckt (%d Züge).
+629|Nicht genug Geld.
+630|In einem Land im Krieg kannst du keine Botschaft eröffnen.
+631|Die Verteidigungspläne von %s wurden erbeutet. Deine Waffentechnologie hat Fortschritte gemacht.
+632|Dein Spionagenetz in %s wurde zerschlagen. Der Skandal erschütterte die Innenpolitik.
+633|In %s wachsen die Proteste. Die Stabilität ist gesunken.
+634|%s hat deine Propaganda zensiert; das Geld war umsonst.
+635|In den Fabriken von %s sind mysteriöse Brände ausgebrochen. Die Industrie wurde erschüttert.
+636|Dein Sabotagetrupp wurde gefasst! %s ist wütend auf dich.
+637|Die Beziehungen zu %s haben sich erwärmt; seine Aggression hat nachgelassen.
+638|%s hat deine Botschaft kühl empfangen.
+639|Freiwilligentruppe
+640|Billig und zahlreich; kurzer Vertrag.
+641|Berufseinheit
+642|Ausgebildet, ausgewogene Kosten.
+643|Spezialkompanie
+644|Teuer, aber eine große und erfahrene Truppe.
+645|Nicht genug Geld: Der Vertrag kostet %s.
+646|Es gibt keine freie Provinz zur Stationierung der Einheit.
+647|Die Einheit konnte nicht stationiert werden.
+648|%s hat einen Vertrag unterzeichnet: %s (%d Soldaten) hat den Dienst in %s aufgenommen.
+649|Der Vertrag von %s ist ausgelaufen; %s Soldaten sind abgezogen.
+650|%s hat einen Anschlag in %s verübt; die Sicherheitskräfte sind in Alarmbereitschaft. (%s)
+651|Der Anschlag von %s erschütterte %s. %s ergriff Notmaßnahmen.
+652|Stimme aus dem Untergrund: %s bekannte sich zum Anschlag in %s. (%s)
+653|Einstellungen
+654|Präferenzen
+655|Ton
+656|Musik
+657|Soundeffekte
+658|Anzeige
+659|Ländernamen
+660|Skaliert mit der Größe des Landes; erscheint beim Heranzoomen.
+661|Provinznamen
+662|Zeigt Provinznamen beim Heranzoomen an.
+663|Armeeabzeichen
+664|Hochwertige Effekte
+665|Küstenleuchten. Ausschalten verbessert die Flüssigkeit auf alten Handys.
+666|Oberflächengröße
+667|Spiel
+668|Automatisch speichern
+669|Speichert alle 13 Wochen (drei Monate).
+670|Kabinettskarten
+671|Minister bitten gelegentlich um eine Entscheidung (Verteidigung, Äußeres, Inneres, Finanzen, Gesundheit, Geheimdienst). Einige riskante Entscheidungen können das Spiel beenden.
+672|Automatische Truppenzuweisung
+673|Gibst du in einem Zug keine Befehle, werden untätige Armeen im Krieg selbstständig zu den besten Frontzielen geschickt. Ist die Funktion aus, warten Armeen an Ort und Stelle auf deine Befehle.
+674|Benachrichtigungen
+675|Auf dem Handy sendet das Spiel bei laufender Partie alle 5 Stunden die Erinnerung „Deine Armee erwartet dich“. Ohne laufende oder bei beendeter Partie keine Benachrichtigungen.
+676|Schwierigkeit
+677|Leicht
+678|Normal
+679|Schwer
+680|Die Schwierigkeit gilt für neu gestartete Spiele.
+681|Eroberung, Provinz für Provinz
+682|Die Karte ist die echte Welt. Jedes Land besteht aus einigen Provinzen. Tippe auf eine Provinz, um Infos und Möglichkeiten zu sehen. Zum Zoomen zwei Finger spreizen, zum Verschieben ziehen.
+683|Truppen aufstellen
+684|In deiner eigenen Provinz kannst du mit „Truppen +10“ oder „+30“ eine Armee aufstellen. Dein Einkommen stammt aus den Provinzen; die Armee verursacht Unterhalt, achte also darauf, dass dein Geld nicht ins Minus rutscht.
+685|Rundenbasiertes Spiel
+686|Die Zeit läuft nicht von selbst. Wenn du bereit bist, tippe oben rechts auf „Zug beenden“: Eine Woche vergeht, danach zeigt die Weltgazette, was in der Welt geschehen ist, und den Kriegsbericht.
+687|Tippe auf eine Provinz eines Landes, mit dem du im Krieg bist, und wähle „Angriff“. Wähle deine Armeen in der Nähe, die Operationsart (Bodenangriff, Artillerie- und Luftvorbereitung, Cyberkrieg, Blitz), sieh dir den geschätzten Vorteil an und gib den Befehl. Das Ergebnis siehst du nach dem Zugende im Bericht.
+688|Truppen und Söldner entsenden
+689|Nachdem du eine Armee gewählt und das Ziel angetippt hast, bestimmst du per Regler, wie viele Soldaten aufbrechen (25 % / 50 % / 75 % / 100 %); der Rest bleibt vor Ort. Angriffe haben dasselbe Verhältnis. Unter Politik > Fronten kannst du eine zeitlich begrenzte Söldnereinheit anheuern. Gibst du in einem Zug keine Befehle, können untätige Armeen im Krieg automatisch zugewiesen werden (in den Einstellungen abschaltbar).
+690|Krieg, Frieden, Bündnis
+691|Belagerungen und Siege bringen Kriegspunkte. Am Verhandlungstisch nimmst du dir mit deinen Punkten Provinzen. Verbündete kämpfen gemeinsam; während eines Waffenstillstands kannst du nicht angreifen.
+692|Von Zeit zu Zeit kommt ein Minister zu dir und bittet um eine Entscheidung. Die Symbole neben den Optionen zeigen, welchen Bereich sie betreffen (die Richtung bleibt verborgen); ein ☠-Zeichen steht für eine riskante Wahl, die das Spiel beenden kann. Wenn ein Minister aus dem Amt scheidet (Rücktritt, Skandal, Wahl), kommen 3 Kandidaten: günstiger Neuling, mittlerer Veteran, teurer Meister; du wählst. Im Reiter „Kabinett“ kannst du einen Minister ersetzen. Es gibt auch besondere Karten: Wahlnacht, die Kiste des zwielichtigen Händlers (Glücksspiel), WM/Olympia, der Informant. In den Einstellungen abschaltbar.
+693|Nachrichten und Sieg
+694|Die Weltgazette oben berichtet, was in der Welt geschieht; tippe darauf, um die Chronik zu öffnen. Das Land, das 55 % der Provinzen der Welt einnimmt, wird Weltherrscher.
+695|Spielanleitung
+696|Anleitung
+697|Schritt %d / %d
+698|Zurück
+699|Weiter
+700|Start
+701|Verteidigung
+702|Industrie
+703|Cyber
+704|Logistik
+705|Innere Stabilität
+706|Staatskasse
+707|Gehälter, Wehrdienst und Waffenkäufe
+708|Einkommen und Rabatt auf heimische Waffen
+709|Cyberangriff und -abwehr
+710|Versorgungsstärke auf fremdem Boden
+711|Verhindert Aufstände und Einkommensverluste
+712|Geht direkt in die Staatskasse
+713|Ausgewogene Operationen
+714|In jedem Bereich mittel; keine Boni oder Mali.
+715|Massenangriff
+716|Angriff auf Zahlenbasis. Angriff +12 %, Verteidigung −5 %.
+717|Tiefenverteidigung
+718|Verteidigung +18 %, Angriff −8 %.
+719|Luft-Land-Operationen
+720|Fast doppelte Wirkung der Luftüberlegenheit.
+721|Asymmetrische Kriegsführung
+722|Verteidigung +12 %, hohe Versorgungstoleranz, Cyber +30 %.
+723|Netzwerkzentrierte Kriegsführung
+724|Cybermacht +60 %, Vorteil im Führungsnetz.
+725|%s$%s Bio.
+726|%s$%s Mrd.
+727|%s$%d Mio.
+728|Du musst %d Wochen warten, um die Doktrin zu wechseln.
+729|Der Doktrinwechsel kostet %s; in der Staatskasse ist nicht genug Geld.
+730|Nicht verkäuflich
+731|Noch nicht entwickelt (in Woche %d)
+732|Dein Technologieniveau reicht nicht aus
+733|Industriebasis unzureichend (%d%% erforderlich)
+734|Kein Herstellerland
+735|%s verkauft nicht (Krieg/Embargo)
+736|Budget unzureichend: %s erforderlich.
+737|Lieferung: %d × %s wurde dem Bestand hinzugefügt.
+738|Automatisch
+739|Handel
+740|Finanzen
+741|Aus
+742|Cyberabwehr: Ein Angriff von %s wurde abgewehrt.
+743|Die Cyber-Firewall von %s hat einen Angriff abgewehrt.
+744|Ransomware aus %s hat die Fabriken von %s lahmgelegt.
+745|%s hat die Bahn- und Hafensignalanlagen von %s ausgeschaltet; die Nachschublinien geraten ins Stocken.
+746|Cyberangriff von %s: Die Hafen- und Börsenverbindungen von %s wurden gekappt, der Außenhandel steht still.
+747|%s hat %s von den Banken von %s gestohlen.
+748|Luftoperation von %s: Die Industrieanlagen von %s wurden getroffen.
+749|Flugzeuge von %s trafen die Logistiklinien und Brücken von %s.
+750|%s bombardierte die Munitionsdepots und Fahrzeugparks von %s.
+751|Tippe auf „Zug beenden“, um zu beginnen.
+752|Spiel gespeichert: Platz %d.
+753|Speichern fehlgeschlagen.
+754|Spielstand nicht gefunden oder nicht lesbar.
+755|Spiel geladen: %s
+756|Du hast keine Befehle gegeben: %d untätige Armeen wurden automatisch zugewiesen.
+757|Armee gewählt. Tippe auf die Zielprovinz.
+758|%d Armeen sind aufgebrochen (Ankunft: %d Wo.). Das Ergebnis steht im Bericht.
+759|%s Soldaten sind aufgebrochen: %s
+760|Bündnis geschlossen!
+761|Frieden
+762|Du hast keine Provinz besetzt; es wird ein Remis-Frieden geschlossen.
+763|Remis-Frieden
+764|Friedensangebot
+765|%s will Frieden. Kriegspunkte: du %d, der Gegner %d.\nDu kannst dich an den Tisch setzen und Provinzen nehmen.
+766|An den Tisch setzen
+767|Friedensbedingungen
+768|%s fordert für den Frieden Folgendes: %s.\nLehnst du ab, geht der Krieg weiter.
+769|Remis-Angebot
+770|%s schlägt einen Remis-Frieden vor. Besetzte Gebiete werden zurückgegeben.
+771|SIEG!
+772|Weiterspielen
+773|Hauptmenü
+774|Niederlage
+775|Dein Verbündeter %s wurde von %s angegriffen! Trittst du dem Krieg bei?\nTust du es nicht, zerbricht das Bündnis.
+776|Dein Verbündeter %s hat %s den Krieg erklärt. Stehst du ihm bei?\nTust du es nicht, zerbricht das Bündnis.
+777|Bündnisruf
+778|Dem Krieg beitreten
+779|Bündnisangebot
+780|%s möchte ein Bündnis mit dir eingehen.
+781|Deine Armee erwartet dich, Kommandant!
+782|Für %s warten neue Entscheidungen. Beende den Zug!
+783|An der Front tut sich etwas; gib deine Befehle.
+784|Du hast Ersparnisse in der Staatskasse. Waffen oder Gebäude? Du entscheidest.
+785|Die Welt dreht sich nicht ohne dich: Es gibt neue Meldungen in der Weltgazette.
+787|Europa
+788|Asien
+789|Afrika
+790|Nordamerika
+791|Südamerika
+792|Ozeanien
+794|Antarktis
+796|Ozean
+797|Erobere die Welt, Provinz für Provinz
+799|Spielen
+800|Historische Kriege
+801|Fortsetzen
+802|Spielanleitung
+803|Beenden
+804|Version 1.0   /   1 Woche = 1 Zug
+805|Neues Spiel
+806|Wähle dein Land
+807|Welt 2027
+808|Land suchen...
+809|Wähle ein Szenario
+810|Spielmodus
+811|FREI
+812|ECHTE KRISE
+813|FIKTIV
+814|Freies Spiel
+815|Szenarien der realen Welt
+816|Fiktive moderne Szenarien
+817|Ausgewählt
+818|Schließen
+819|Historische Kriege
+820|Ein eigener Spielmodus: die Reiche, Waffen, Bündnisse und Farben der jeweiligen Epoche. Unabhängig von den Szenarien.
+821|HISTORISCHER MODUS   /   %s
+822|Empfohlen
+823|Mittel
+824|Sehr schwer
+825|Bevölkerung
+826|Provinzen
+827|Einkommen/Wo.
+828|Truppen
+829|Mit %s starten
+988|Erinnerungen
+989|Deine Armee erwartet dich
+991|Haushalt
+992|Waffenkauf
+993|Bestand
+994|Fronten
+995|Bündnis
+996|Geheimdienst
+997|Kabinett
+998|Politik
+999|Generalstab  /
+1000|Wöchentliche Finanzübersicht
+1001|Armeesold
+1002|Waffenunterhalt
+1003|Netto-Staatskasse
+1004|Die Armeeausgaben übersteigen den Verteidigungsanteil; die Differenz von %s wird bei anderen Posten (Staatskasse, Industrie …) gekürzt.
+1005|Haushaltsverteilung (Prozent des Einkommens)
+1006|Statusanzeigen
+1007|Stabilität
+1008|Technologie
+1009|Armeedoktrin
+1010|Doktrin gewechselt:
+1011|Der Doktrinwechsel kostet %s; danach wartest du %d Wochen.
+1012|Du musst %d Wochen auf eine neue Doktrin warten.
+1013|Verteidigungsfonds
+1014|Ausstehender Auftrag
+1015|Beschaffungspolitik
+1016|Einheit: %s. Die Preise sind ungefähr, in Millionen $. Heimische Produktion ist günstiger und wird schneller geliefert.
+1017|Ausstehende Lieferungen
+1018|%d Wochen
+1019|Automatische Waffenbeschaffung
+1020|Wenn aktiv, kauft der Verteidigungsfonds nach den Prioritäten und der Doktrin unten selbstständig Waffen. Wenn aus, sammelt sich der Fonds an; du tätigst die Käufe selbst.
+1021|Beschaffungspriorität (Auto-Kauf)
+1022|Niedrig
+1023|Hoch
+1024|Die Priorität bestimmt, wie viel des Anteils in die fehlende Ausrüstung einer Kategorie fließt. Die Luft-Land-Doktrin bevorzugt Flugzeuge, die asymmetrische Doktrin Artillerie/Raketenwerfer.
+1025|%s%s   /   Lieferung %d Wo.   /   vorrätig %s
+1026| (heimisch)
+1027|$%s Mio.
+1028|Bestellung: %d × %s
+1029|Ziel
+1030|Landausrüstung
+1031|Luftmacht
+1032|Seemacht
+1033|Die Zieltruppenstärke richtet sich nach dem Verteidigungsbudget und dem Kriegsstatus; die Differenz wird automatisch eingezogen und auf die Fronten verteilt.
+1035|Endet die Amtszeit eines Ministers oder tritt er zurück oder fällt, kommen 3 Kandidaten als Ersatz: Der Meister ist teuer, der Neuling billig, aber riskant. Veteranen- und Meisterminister geben einen kleinen wöchentlichen Bonus.
+1036|%s  ·  ~%.1f J.
+1037|Entlassen
+1038|Entlassung
+1039|%s entlassen? Stabilität −2. Nach der nächsten Ausgabe kommen 3 Kandidaten als Ersatz.
+1040|%s wurde entlassen
+1041|Verdeckte Operationen schwächen einen Rivalen, ohne den Krieg zu erklären. Die Erfolgschance hängt von deiner Cybermacht und Technologie ab; wirst du erwischt, leiden Innenpolitik und Beziehungen. Agenten müssen sich bei jedem Ziel eine Weile bedeckt halten.
+1042|Es gibt noch keinen Nachbarn, zu dem Kontakt aufgenommen werden kann.
+1043|Stabilität %d  Cyber %d
+1044|Krieg
+1045|Abklingzeit %d Züge
+1046|Kosten %s
+1047|  ·  Chance %d%%
+1048|Handelseinkommen
+1049|Handel öffnen
+1050|Seeblockade
+1051|Wegen eines Cyberangriffs ist der Außenhandel noch %d Wochen unterbrochen.
+1052|Der Handel mit Ländern im Krieg und unter Embargo kommt zum Erliegen. Ein Embargo trifft beide Seiten; nutze es, um einen Rivalen wirtschaftlich unter Druck zu setzen.
+1053|Offen
+1054|Embargo
+1055|Mit Embargo belegt
+1056|Gestört
+1057|Embargo aufheben
+1058|Embargo verhängen
+1059|Söldner
+1060|Heuere bei Privatfirmen eine befristete Einheit an: Das Honorar wird im Voraus bezahlt, die Einheit wird in einer leeren Front-/Hauptstadtprovinz stationiert und löst sich nach Vertragsende auf. Ihr Name wird zufällig passend zur Kultur deines Landes gewählt.
+1061|%s Soldaten  /  %d Wo.  /  %s
+1062|Anheuern
+1063|%s hat den Dienst aufgenommen: %s (%s Soldaten)
+1064|Automatisch geführte Armeen
+1065|Wenn aktiv, startet der Stab selbstständig Operationen gegen die schwachen Provinzen deines Feindes. Wenn aus, gibst du den Armeen von der Karte aus Befehle.
+1066|Du befindest dich derzeit nicht im Krieg. Sobald du den Krieg erklärst, werden die Fronten hier aufgelistet.
+1067|Feindliche Truppen
+1068|Ausrüstung
+1069|Luft
+1070|Angriff
+1071|Cyber:
+1072|Form
+1073|Innenmuster
+1074|Symbol
+1075|Hauptfarbe
+1076|Hintergrund und Symbol
+1077|Linie
+1078|Dein Bündnis
+1079|%d Mitglieder   /   Gründer: %s
+1080|Mitglieder greifen einander nicht an; wird eines angegriffen, werden die anderen gerufen. Ein Land im Krieg mit einem der Mitglieder kann dem Bündnis nicht beitreten.
+1081|Mitglieder
+1082|Bündnisname
+1083|Speichern
+1084|Der Bündnisname muss mindestens 3 Buchstaben lang sein.
+1085|Name und Emblem bearbeiten
+1086|Neues Mitglied einladen
+1087|Nachbar
+1088|Einladen
+1089|%s ist dem Bündnis beigetreten.
+1090|Bündnis verlassen
+1091|Gründe dein eigenes Bündnis: Wähle Namen und Emblem und lade dann Länder ein. Du kannst es auch vor dem Start gründen, wenn das Spiel pausiert ist.
+1092|Bündnisname (z. B. Östlicher Verteidigungspakt)
+1093|Bündnis gründen
+1094|Bündnis gegründet:
+1156|Wie viele Soldaten sollen aufbrechen?
+1157|%s Soldaten sind aufgebrochen
+1158|%s Soldaten bleiben in %s. Voraussichtliche Ankunft: %d Wo.
+1159|Die gesamte Armee bricht auf; %s bleibt unverteidigt.
+1160|Senden
+1161|Deine Armee erwartet dich
+1162|Laden
+1163|Speicherplätze
+1164|Der Autospeicherstand (in den Einstellungen ein-/ausschaltbar) liegt in einem eigenen Platz und kann von hier aus nicht überschrieben werden.
+1165|Platz %d
+1166|Alter Spielstand
+1167|%s  /  %d Provinzen  /  %s
+1168|Bist du sicher?
+1169|Sicher?
+1170|Löschen
+1180|Die KI-Staaten machen ihre Züge ...
+1181|Armeen rücken vor, Gefechte werden entschieden ...
+1182|Wirtschaft, Haushalte und Handel werden berechnet ...
+1183|Diplomatie und Bündnisse werden bewertet ...
+1184|Die Weltgazette geht in Druck ...
+1185|Age of Doctrine  /  Zugende
+1186|Weltgazette
+1187|Ausgabe %d  /  Wochenausgabe
+1188|Diese Woche gab es keine größere Entwicklung in der Welt.
+1189|Keine weiteren wichtigen Nachrichten.
+1190|Kriegsbericht
+1191|SIEG
+1192|NIEDERLAGE
+1193|%s%s: gegen %s. Verluste: du %s, die Gegenseite %s.
+1194|Belagerung: %s  %d/%d
+1195|Diese Woche gab es keine Kämpfe.
+1196|Staatskasse und Armee
+1197|Auf der Karte zeigen
+1198|Weiter
+1199|NACHRICHTEN
+1200|KRIEG
+1201|EROBERUNG
+1202|VERLUST
+1203|FRIEDEN
+1204|EREIGNIS
+1205|GEFECHT
+1206|EILMELDUNG
+1207|AUFSTAND
+1208|BÜNDNIS
+1209|RANGLISTE
+1210|CYBER
+1211|OPERATION
+1212|NACHSCHUB
+1213|Staat
+1214|Datum
+1215|Zug beenden
+1216|Warte auf Nachrichten ...
+1217|Hauptstadt
+1218|Deins
+1219|Verbündet
+1220|Im Krieg
+1221|Rebell:
+1222|Besetzt:
+1223|Armee: %s Soldaten (%s)
+1224|\nSöldnereinheit: %s (%d Wo. verbleibend)
+1225|Belagerung %d/%d
+1226|Unruhen %d/12: Stationiere eine Armee!
+1227|Gewählte Armee: %s Soldaten, %s. Gib den Befehl mit der Schaltfläche unten.
+1228|Armee gewählt (%s Soldaten). Tippe auf die Zielprovinz und bestätige dann den Befehl.
+1229|Armee hierher marschieren lassen
+1230|Auswahl aufheben
+1231|Frieden anbieten
+1232|Waffenstillstand: %d Wochen
+1233|Krieg erklären
+1234|Bündnis brechen
+1235|Bündnis anbieten
+1236|Stopp
+1237|Armee wählen
+1238|Erklärung
+1239|Friedenstisch
+1240|Verhandlung
+1241|Friedensgespräche mit %s. Deine Kriegspunkte: %d. Wähle die besetzten Provinzen, die du nehmen willst (die Kosten werden von deinen Punkten abgezogen); die nicht gewählten werden zurückgegeben.
+1242|AUSGEGEBEN  %d / %d PUNKTE
+1243|%d PUNKTE
+1244|Pausiert
+1245|Spielmenü
+1246|Du
+1247|Welt
+1248|Lagezentrum
+1249|Länder
+1250|Kriege
+1251|Nachrichten
+1252|Bündnisse
+1253|Nichtstaatliche Gruppen
+1254|%d PROVINZEN
+1255|%s SOLDATEN
+1256|Derzeit gibt es keinen aktiven Krieg in der Welt.
+1257|Es wurde noch kein Bündnis gegründet. Du kannst unter Politik > Bündnis dein eigenes gründen.
+1258|   (deins)
+1259|%d Mitglieder   /   Gesamttruppen %s
+1260|Alle
+1261|Diplomatie
+1262|Ereignisse
