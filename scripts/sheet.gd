@@ -62,23 +62,21 @@ func _build(title: String, width: float, tall: bool, closable: bool, kicker: Str
 		head.add_child(x)
 	v.add_child(head)
 	v.add_child(TK.hsep())
-	if tall:
-		var scroll := ScrollContainer.new()
-		scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
-		scroll.custom_minimum_size = Vector2(0, clampf(vp.y * 0.6, 240.0, 560.0))
-		body = VBoxContainer.new()
-		body.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		body.add_theme_constant_override("separation", 10)
-		scroll.add_child(body)
-		v.add_child(scroll)
-	else:
-		body = VBoxContainer.new()
-		body.add_theme_constant_override("separation", 12)
-		v.add_child(body)
+	scroll = ScrollContainer.new()
+	scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	_tall_min = clampf(vp.y * 0.6, 240.0, 560.0) if tall else 0.0
+	scroll.custom_minimum_size = Vector2(0, _tall_min)
+	body = VBoxContainer.new()
+	body.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	body.add_theme_constant_override("separation", 10 if tall else 12)
+	scroll.add_child(body)
+	v.add_child(scroll)
+	body.minimum_size_changed.connect(_refit)
 	footer = HFlowContainer.new()
 	footer.alignment = FlowContainer.ALIGNMENT_END
 	footer.add_theme_constant_override("h_separation", 12)
 	v.add_child(footer)
+	_refit()
 	modulate = Color(1, 1, 1, 0)
 	panel.pivot_offset = panel.custom_minimum_size * 0.5
 	var tw := create_tween().set_parallel(true)
@@ -86,6 +84,28 @@ func _build(title: String, width: float, tall: bool, closable: bool, kicker: Str
 
 
 var head_box: HBoxContainer
+var scroll: ScrollContainer
+var _tall_min := 0.0
+var _fit_pending := false
+
+
+## İçerik ekrandan uzunsa gövde kaydırılır; kısaysa panel içeriği kadar kalır (başlık ve alt düğmeler hep görünür).
+func _refit() -> void:
+	if _fit_pending:
+		return
+	_fit_pending = true
+	_do_refit.call_deferred()
+
+
+func _do_refit() -> void:
+	_fit_pending = false
+	if not is_inside_tree() or scroll == null:
+		return
+	var vp := get_viewport_rect().size
+	var chrome: float = panel.get_combined_minimum_size().y - scroll.get_combined_minimum_size().y
+	var avail: float = maxf(120.0, vp.y - 24.0 - chrome)
+	var want: float = maxf(_tall_min, body.get_combined_minimum_size().y)
+	scroll.custom_minimum_size = Vector2(0, minf(want, avail))
 
 
 ## Başlığın soluna renkli ikon koyar (yeni ikon yoksa fallback kullanılır; ikisi de yoksa hiçbir şey eklemez).

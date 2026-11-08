@@ -58,6 +58,7 @@ var root: Control
 var topbar: PanelContainer
 var ticker: Button
 var side: VBoxContainer
+var _side_btns: Array = []
 var card: PanelContainer
 var toast_panel: PanelContainer
 var toast_lbl: Label
@@ -446,6 +447,22 @@ func _build_side() -> void:
 		b.add_theme_stylebox_override("normal", TK.box(Color(TK.PANEL.r, TK.PANEL.g, TK.PANEL.b, 0.96), TK.LINE, 3, 1, 1))
 		b.pressed.connect(_side_pressed.bind(d[1]))
 		side.add_child(b)
+		_side_btns.append(b)
+	get_viewport().size_changed.connect(_fit_side)
+	_fit_side.call_deferred()
+
+
+## Kısa ekranlarda (büyük arayüz ölçeği) yan düğmeler ekran altına taşmasın diye küçülür.
+func _fit_side() -> void:
+	if side == null or _side_btns.is_empty():
+		return
+	var vp: Vector2 = get_viewport().get_visible_rect().size
+	var avail: float = vp.y - side.offset_top - 12.0
+	var sz: float = clampf((avail - 6.0 * (_side_btns.size() - 1)) / _side_btns.size(), 44.0, 70.0)
+	for b in _side_btns:
+		b.custom_minimum_size = Vector2(sz, sz)
+		b.size = Vector2(sz, sz)
+	side.offset_left = -(sz + 14.0)
 
 
 func _side_pressed(key: String) -> void:
