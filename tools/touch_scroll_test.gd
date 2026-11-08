@@ -1,14 +1,16 @@
 extends SceneTree
-## Mobil simülasyonu: telefon çözünürlüğü, dokunma olayı ile düğme üstünden sürükleyip kaydırma testi.
+## Mobil simülasyonu: dokunma yayıyla (emulate_touch_from_mouse=true ile çalıştır) düğme üstünden sürükleyip kaydırma testi.
+## Kullanım: proje kopyasında project.godot içinde pointing/emulate_touch_from_mouse=true yapıp: xvfb-run -a godot --path . --resolution 1600x720 -s tools/touch_scroll_test.gd
 var main
 var fails := 0
 func _wait(s: float) -> void:
 	await create_timer(s).timeout
 func _touch(pos: Vector2, pressed: bool) -> void:
-	var e := InputEventScreenTouch.new(); e.index = 0; e.position = pos; e.pressed = pressed
+	var e := InputEventMouseButton.new(); e.button_index = MOUSE_BUTTON_LEFT; e.position = pos; e.global_position = pos; e.pressed = pressed
+	e.button_mask = MOUSE_BUTTON_MASK_LEFT if pressed else 0
 	Input.parse_input_event(e)
 func _drag(pos: Vector2, rel: Vector2) -> void:
-	var e := InputEventScreenDrag.new(); e.index = 0; e.position = pos; e.relative = rel
+	var e := InputEventMouseMotion.new(); e.position = pos; e.global_position = pos; e.relative = rel; e.button_mask = MOUSE_BUTTON_MASK_LEFT
 	Input.parse_input_event(e)
 func _find_scroll(n: Node, out: Array) -> void:
 	if n is ScrollContainer and n.is_visible_in_tree() and n.get_v_scroll_bar().max_value > n.get_v_scroll_bar().page + 4:
