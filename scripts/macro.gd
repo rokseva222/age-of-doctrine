@@ -558,10 +558,12 @@ static func recruit_cost(c) -> float:
 
 
 static func troop_goal(c) -> float:
-	var g: float = c.base_troops * (0.75 + float(c.budget["mil"]) / 100.0)
+	# savunma bütçesi payı arttıkça hedef sınırsızca büyür (varsayılan %18 payda eski değere yakın: x1.0);
+	# asıl tavan nüfusun %4'ü ve maaş yükü (savunma fonunun taşabileceği kadar)
+	var g: float = c.base_troops * (0.5 + float(c.budget["mil"]) / 36.0)
 	if not c.enemies.is_empty():
 		g *= 1.35
-	return minf(g, c.pop * 1.0e6 * 0.03)
+	return minf(g, c.pop * 1.0e6 * 0.04)
 
 
 static func _recruit(gs, c, mult: float) -> void:
