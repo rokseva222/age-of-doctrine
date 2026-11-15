@@ -161,7 +161,7 @@ func _build_intro() -> void:
 	_intro.add_child(bg)
 	var ar := AspectRatioContainer.new()
 	ar.ratio = 16.0 / 9.0
-	ar.stretch_mode = AspectRatioContainer.STRETCH_FIT
+	ar.stretch_mode = AspectRatioContainer.STRETCH_COVER
 	ar.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	ar.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	_intro.add_child(ar)
@@ -232,7 +232,7 @@ func _build_promo() -> void:
 	ov.add_child(bg)
 	var ar := AspectRatioContainer.new()
 	ar.ratio = 16.0 / 9.0
-	ar.stretch_mode = AspectRatioContainer.STRETCH_FIT
+	ar.stretch_mode = AspectRatioContainer.STRETCH_COVER
 	ar.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	ar.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	ov.add_child(ar)
