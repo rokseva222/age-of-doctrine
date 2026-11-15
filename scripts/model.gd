@@ -111,6 +111,8 @@ class Country:
 	var auto_cmd := false                    # oyuncu: ordular otomatik komuta edilsin mi
 	var pri: Dictionary = {"inf": 1.0, "tank": 1.0, "afv": 1.0, "arty": 1.0, "air": 1.0, "sub": 1.0}
 	var base_troops := 0
+	var mob_until := -1                      # seferberlik bitiş turu (-1: yok)
+	var mob_cd := -1                         # seferberlik yeniden ilan edilebilir tur
 	var eq_land := 1.0
 	var air_pow := 0.0
 	var naval_pow := 0.0

@@ -467,6 +467,7 @@ static func net_income(gs, c) -> float:
 # ===================================================================== haftalık işlemler
 
 static func weekly(gs) -> void:
+	_now = gs.turn
 	if gs.macro_idx.is_empty():
 		build_idx(gs)
 	if gs.turn % 26 == 1:
@@ -557,13 +558,51 @@ static func recruit_cost(c) -> float:
 	return 0.0015 + 0.02 * c.capacity
 
 
+static var _now := 0   # son haftalık işlemin turu (seferberlik süresi karşılaştırması için)
+
+
+static func mob_active(c) -> bool:
+	return c.mob_until > _now
+
+
+static func mob_cost(c) -> float:
+	return maxf(c.income, 1.0) * 10.0
+
+
+## Seferberlik: büyük bir bedel karşılığı nüfusun bir kısmı derhal silah altına alınır; 26 hafta boyunca asker hedefi x1.4,
+## işe alma hızı x2.5, nüfus tavanı %6 olur. İstikrar düşer. 78 hafta bekleme süresi.
+static func mobilize(gs, c) -> String:
+	if mob_active(c):
+		return "Seferberlik zaten sürüyor (%d hafta kaldı)." % (c.mob_until - gs.turn)
+	if c.mob_cd > gs.turn:
+		return "Seferberlik %d hafta sonra yeniden ilan edilebilir." % (c.mob_cd - gs.turn)
+	var cost: float = mob_cost(c)
+	if c.gold < cost:
+		return "Kasa yetersiz: seferberlik bedeli %s." % money(cost)
+	c.gold -= cost
+	c.mob_until = gs.turn + 26
+	c.mob_cd = gs.turn + 78
+	_now = gs.turn
+	c.stability = maxf(5.0, c.stability - 5.0)
+	var n: int = int(minf(c.pop * 1.0e6 * 0.006, float(c.troops) * 0.5))
+	gs.place_recruits(c, n)
+	gs.refresh_stats()
+	gs.post_news("%s seferberlik ilan etti: %s asker silah altına alındı." % [c.name, num(n)], c.capital, "war")
+	gs.player_acted = true
+	return ""
+
+
 static func troop_goal(c) -> float:
 	# savunma bütçesi payı arttıkça hedef sınırsızca büyür (varsayılan %18 payda eski değere yakın: x1.0);
 	# asıl tavan nüfusun %4'ü ve maaş yükü (savunma fonunun taşabileceği kadar)
 	var g: float = c.base_troops * (0.5 + float(c.budget["mil"]) / 36.0)
 	if not c.enemies.is_empty():
 		g *= 1.35
-	return minf(g, c.pop * 1.0e6 * 0.04)
+	var pct := 0.04
+	if mob_active(c):
+		g *= 1.4
+		pct = 0.06
+	return minf(g, c.pop * 1.0e6 * pct)
 
 
 static func _recruit(gs, c, mult: float) -> void:
@@ -571,7 +610,7 @@ static func _recruit(gs, c, mult: float) -> void:
 	if c.troops >= goal or c.fund <= 0.0:
 		return
 	var unit: float = recruit_cost(c)
-	var maxn: int = int(goal * 0.012 * mult)
+	var maxn: int = int(goal * 0.012 * mult * (2.5 if mob_active(c) else 1.0))
 	var n: int = mini(int(goal - c.troops), mini(maxn, int(c.fund * 0.45 / unit)))
 	if n < 200:
 		return
@@ -911,7 +950,7 @@ static func to_dict(c) -> Dictionary:
 	return {"budget": c.budget, "doctrine": c.doctrine, "dturn": c.doctrine_turn, "industry": c.industry, "cyber": c.cyber,
 		"logistics": c.logistics, "stability": c.stability, "capacity": c.capacity, "tech": c.tech, "bloc": c.bloc,
 		"inv": c.inv, "orders": c.orders, "auto_buy": c.auto_buy, "auto_cmd": c.auto_cmd, "pri": c.pri, "base": c.base_troops,
-		"fund": c.fund, "embargo": c.embargo, "fronts": c.fronts, "tblock": c.trade_block, "alliance": c.alliance, "leader": c.leader, "carriers": c.carriers, "car_x": c.carrier_extra, "car_cd": c.carrier_cd, "covert": c.covert_cd, "cab": c.cab, "elect": c.elect_turn}
+		"fund": c.fund, "embargo": c.embargo, "fronts": c.fronts, "tblock": c.trade_block, "alliance": c.alliance, "leader": c.leader, "carriers": c.carriers, "car_x": c.carrier_extra, "car_cd": c.carrier_cd, "covert": c.covert_cd, "cab": c.cab, "elect": c.elect_turn, "mob": c.mob_until, "mobcd": c.mob_cd}
 
 
 static func from_dict(c, d: Dictionary) -> void:
@@ -942,6 +981,8 @@ static func from_dict(c, d: Dictionary) -> void:
 	c.leader = d.get("leader", "")
 	c.cab = d.get("cab", {}).duplicate(true)
 	c.elect_turn = int(d.get("elect", -1))
+	c.mob_until = int(d.get("mob", -1))
+	c.mob_cd = int(d.get("mobcd", -1))
 	c.covert_cd = {}
 	for k in d.get("covert", {}):
 		c.covert_cd[int(k)] = int(d.covert[k])

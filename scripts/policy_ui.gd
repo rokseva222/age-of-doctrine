@@ -423,6 +423,18 @@ func _tab_inventory() -> void:
 	]))
 	_carrier_row(c)
 	content.add_child(_wrap("Hedef asker sayısı, savunma bütçesi ve savaş durumuna göre belirlenir; fark kendiliğinden askere alınır ve cephelere dağıtılır.", "small", TK.FAINT))
+	Macro._now = gs.turn
+	if Macro.mob_active(c):
+		content.add_child(_wrap("Seferberlik sürüyor: %d hafta kaldı. Asker hedefi x1.4, işe alma hızı x2.5." % (c.mob_until - gs.turn), "body", TK.GREEN))
+	else:
+		var mb := TK.button("Seferberlik ilan et  (%s)" % Macro.money(Macro.mob_cost(c)), "danger", "sword", Vector2(0, 60), 16)
+		mb.pressed.connect(func():
+			ui._click()
+			var er: String = Macro.mobilize(gs, c)
+			_toast(er if er != "" else "Seferberlik ilan edildi: nüfusun bir kısmı silah altında.")
+			render_keep())
+		content.add_child(mb)
+		content.add_child(_wrap("Büyük bir bedel karşılığı mevcut ordunun yarısına kadar (nüfusun en çok binde 6'sı) hemen askere alınır; 26 hafta boyunca asker hedefi ve işe alma hızı artar. İstikrar düşer, 78 hafta sonra tekrar ilan edilebilir.", "small", TK.FAINT))
 	for row in Macro.inventory_rows(c):
 		if row["items"].is_empty():
 			continue
