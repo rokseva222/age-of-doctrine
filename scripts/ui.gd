@@ -1,5 +1,6 @@
 extends CanvasLayer
 const Loc = preload("res://scripts/loc.gd")
+const UNArt = preload("res://scripts/un_art.gd")
 ## Oyun içi arayüz (HUD): durum şeridi, haber bülteni, yan düğmeler, eyalet dosyası, Dünya paneli, barış masası, duraklatma menüsü.
 ## Görsel dil: grafit paneller, krem birincil eylem, tek kırmızı vurgu. Ayrıntı için theme_kit.gd.
 
@@ -1438,8 +1439,7 @@ func show_un_targets(kind: String) -> void:
 			_click()
 			sh.close()
 			var r: Dictionary = UN.propose(gs, kind, gs.player, tid)
-			var title: String = Loc.t("Önerge kabul edildi") if r.passed else (Loc.t("Önerge reddedildi") if r.ok else Loc.t("Önerge verilemedi"))
-			show_dialog(title, r.text, [{"text": "Tamam", "cb": func(): pass}]))
+			show_un_result(r))
 		content.add_child(b)
 		shown += 1
 		if shown >= 60:
@@ -1447,6 +1447,20 @@ func show_un_targets(kind: String) -> void:
 	if list.is_empty():
 		content.add_child(TK.t("Geçerli bir hedef yok.", "body", TK.MUTED))
 	sh.add_button("Geri", func(): show_world_panel(4), "", true, "", 160)
+
+
+## BM sonucu: oylama animasyonu + sonuç metni. r: UN.propose / UN.player_vote sonucu.
+func show_un_result(r: Dictionary) -> void:
+	if not r.get("ok", false):
+		show_dialog(Loc.t("Önerge verilemedi"), String(r.get("text", "")), [{"text": "Tamam", "cb": func(): pass}])
+		return
+	var title: String = Loc.t("Önerge kabul edildi") if r.passed else Loc.t("Önerge reddedildi")
+	var sh = _open_sheet(title, 620, false, true, "Birleşmiş Milletler")
+	sh.body.add_child(UNArt.make(r, 210))
+	sh.add_text(String(r.text))
+	sh.add_button("Tamam", func(): pass, "good" if r.passed else "", true, "", 170)
+	if sfx != null:
+		sfx.play("news")
 
 
 # ------------------------------------------------------------------ Dünya paneli

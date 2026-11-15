@@ -16,6 +16,7 @@ const AppointUI = preload("res://scripts/appoint_ui.gd")
 const TurnUI = preload("res://scripts/turn_ui.gd")
 const Sfx = preload("res://scripts/sfx.gd")
 const Loc = preload("res://scripts/loc.gd")
+const UN = preload("res://scripts/un.gd")
 const Macro = preload("res://scripts/macro.gd")
 const Carriers = preload("res://scripts/carriers.gd")
 const Missions = preload("res://scripts/missions.gd")
@@ -201,6 +202,7 @@ func _attach_gs(g) -> void:
 	gs.peace_proposal.connect(_on_peace_proposal)
 	gs.game_over.connect(_on_game_over)
 	gs.ally_call.connect(_on_ally_call)
+	gs.un_vote_card.connect(_on_un_vote_card)
 	gs.alliance_proposal.connect(_on_alliance_proposal)
 	gs.indep_card.connect(_on_indep_card)
 	gs.pol_card.connect(_on_pol_card)
@@ -216,7 +218,7 @@ func _detach_gs() -> void:
 	playing = false
 	timer.stop()
 	if gs != null:
-		for pair in [[gs.news_posted, _on_news], [gs.state_changed, _on_state_changed], [gs.peace_proposal, _on_peace_proposal], [gs.game_over, _on_game_over], [gs.ally_call, _on_ally_call], [gs.alliance_proposal, _on_alliance_proposal], [gs.indep_card, _on_indep_card], [gs.pol_card, _on_pol_card], [gs.wroom_card, _on_wroom_card]]:
+		for pair in [[gs.news_posted, _on_news], [gs.state_changed, _on_state_changed], [gs.peace_proposal, _on_peace_proposal], [gs.game_over, _on_game_over], [gs.ally_call, _on_ally_call], [gs.un_vote_card, _on_un_vote_card], [gs.alliance_proposal, _on_alliance_proposal], [gs.indep_card, _on_indep_card], [gs.pol_card, _on_pol_card], [gs.wroom_card, _on_wroom_card]]:
 			if pair[0].is_connected(pair[1]):
 				pair[0].disconnect(pair[1])
 	ui.hide_dialog()
@@ -1002,6 +1004,20 @@ func _on_ally_call(friend: int, foe: int, kind: String) -> void:
 			gs.cancel_proposal()
 			gs.break_alliance(gs.player, friend)},
 	])
+
+
+func _on_un_vote_card() -> void:
+	_on_speed_changed(0)
+	var body: String = UN.pending_text(gs)
+	var cast := func(v: int):
+		var r: Dictionary = UN.player_vote(gs, v)
+		if r.get("ok", false):
+			ui.show_un_result(r)
+	ui.show_dialog("BM oylaması", body + "\n\nOyun, ilişkilerini etkiler.", [
+		{"text": "Lehte oy ver", "cb": func(): cast.call(1), "kind": "good"},
+		{"text": "Aleyhte oy ver", "cb": func(): cast.call(0), "kind": "danger"},
+		{"text": "Çekimser", "cb": func(): cast.call(-1)},
+	], "", "")
 
 
 func _on_alliance_proposal(from_country: int) -> void:

@@ -127,24 +127,36 @@ static func _p_yes(gs, kind: String, m: int, proposer: int, target: int, w) -> f
 			return clampf(p2, 0.03, 0.93)
 
 
-## Oylama: {yes, no, passed, yes_ids}
-static func vote(gs, kind: String, proposer: int, target: int, w = null) -> Dictionary:
+## Oylama: {yes, no, abstain, passed, yes_ids}. forced: üye kimliği -> 1 (lehte) / 0 (aleyhte) / -1 (çekimser); oyuncunun oyu için.
+static func vote(gs, kind: String, proposer: int, target: int, w = null, forced: Dictionary = {}) -> Dictionary:
 	var yes := 0
 	var no := 0
+	var abstain := 0
 	var yes_ids: Array = []
 	for m in members(gs):
+		if forced.has(m):
+			var f: int = int(forced[m])
+			if f < 0:
+				abstain += 1
+			elif f == 1:
+				yes += 1
+				yes_ids.append(m)
+			else:
+				no += 1
+			continue
 		if gs.rng.randf() < _p_yes(gs, kind, m, proposer, target, w):
 			yes += 1
 			yes_ids.append(m)
 		else:
 			no += 1
-	return {"yes": yes, "no": no, "passed": yes > no, "yes_ids": yes_ids}
+	return {"yes": yes, "no": no, "abstain": abstain, "passed": yes > no, "yes_ids": yes_ids}
 
 
 ## Önergeyi verir: bedel/bekleme kontrolü (yalnızca oyuncu için), oylama ve uygulama.
 ## target: ateşkesse savaşın dizini (gs.wars), diğerlerinde ülke kimliği.
-static func propose(gs, kind: String, proposer: int, target: int) -> Dictionary:
-	var res := {"ok": false, "passed": false, "text": "", "yes": 0, "no": 0}
+static func propose(gs, kind: String, proposer: int, target: int, forced: Dictionary = {}) -> Dictionary:
+	var res := {"ok": false, "passed": false, "text": "", "yes": 0, "no": 0, "abstain": 0, "kind": kind, "proposer": proposer, "target": target,
+		"pv": int(forced.get(gs.player, -2)), "mine": proposer == gs.player}
 	if not available(gs):
 		res.text = "Birleşmiş Milletler henüz kurulmadı."
 		return res
@@ -173,16 +185,17 @@ static func propose(gs, kind: String, proposer: int, target: int) -> Dictionary:
 		gs.countries[proposer].gold -= cost_of(gs, kind)
 		gs.un_cd[kind] = gs.turn + int(KINDS[kind]["cd"])
 		gs.player_acted = true
-	var v: Dictionary = vote(gs, kind, proposer, tc, w)
+	var v: Dictionary = vote(gs, kind, proposer, tc, w, forced)
 	res.ok = true
 	res.yes = v.yes
 	res.no = v.no
+	res.abstain = v.abstain
 	res.passed = v.passed
 	var kname: String = KINDS[kind]["name"]
 	if not v.passed:
 		res.text = "BM: %s önergesi reddedildi (%d lehte, %d aleyhte)." % [kname, v.yes, v.no]
 		_log(gs, res.text, false)
-		if is_player:
+		if is_player or forced.has(gs.player):
 			gs.post_news(res.text, -1, "peace")
 		return res
 	var eff: String = _apply(gs, kind, proposer, tc, w, v.yes_ids)
@@ -288,10 +301,17 @@ static func _apply(gs, kind: String, proposer: int, target: int, w, yes_ids: Arr
 			return "%d ülke savaş açtı. Hedef: %s." % [n, gs.countries[target].name]
 
 
-## Yapay zekâ önergeleri: 26 haftada bir ateşkes ya da yardım.
-static func weekly(gs) -> void:
-	if gs.turn % 26 != 13 or not available(gs):
-		return
+## Yapay zekâ önergesini seçer: {kind, proposer, target} ya da boş.
+static func _pick_ai_proposal(gs) -> Dictionary:
+	var mem: Array = members(gs)
+	if mem.is_empty():
+		return {}
+	var proposer: int = mem[gs.rng.randi_range(0, mem.size() - 1)]
+	if proposer == gs.player:
+		return {}
+	# dünya, fetih peşindeki oyuncuya karşı yaptırım isteyebilir
+	if gs.infamy >= 60.0 and gs.rng.randf() < 0.5 and not gs.is_allied(proposer, gs.player):
+		return {"kind": "sanction", "proposer": proposer, "target": gs.player}
 	var cands: Array = []
 	for i in gs.wars.size():
 		var w = gs.wars[i]
@@ -299,24 +319,89 @@ static func weekly(gs) -> void:
 			continue
 		if gs.turn - w.start >= 20:
 			cands.append(i)
-	var mem: Array = members(gs)
-	if mem.is_empty():
-		return
-	var proposer: int = mem[gs.rng.randi_range(0, mem.size() - 1)]
-	if proposer == gs.player:
-		return
 	if not cands.is_empty() and gs.rng.randf() < 0.6:
 		var wi: int = cands[gs.rng.randi_range(0, cands.size() - 1)]
 		if gs.wars[wi].a == proposer or gs.wars[wi].b == proposer:
-			return
-		propose(gs, "ceasefire", proposer, wi)
-		return
+			return {}
+		return {"kind": "ceasefire", "proposer": proposer, "target": wi}
 	var needy := -1
 	var lo := 100.0
 	for m in mem:
+		if m == gs.player:
+			continue
 		var c = gs.countries[m]
 		if c.stability < lo:
 			lo = c.stability
 			needy = m
 	if needy >= 0 and lo < 35.0:
-		propose(gs, "aid", proposer, needy)
+		return {"kind": "aid" if gs.rng.randf() < 0.6 else "rebuild", "proposer": proposer, "target": needy}
+	# aksi halde: en saldırgan ülkeye soruşturma ya da bir ülkeye kalkınma programı
+	var worst := -1
+	var wa := 0.0
+	for m2 in mem:
+		var c2 = gs.countries[m2]
+		if m2 != proposer and c2.aggression > wa and not gs.is_allied(proposer, m2):
+			wa = c2.aggression
+			worst = m2
+	if worst >= 0 and wa > 0.75 and gs.rng.randf() < 0.5:
+		return {"kind": "probe", "proposer": proposer, "target": worst}
+	return {}
+
+
+## Yapay zekâ önergeleri: 13 haftada bir. Oyuncu BM üyesiyse oylama kartı açılır (gs.un_pending), değilse doğrudan sonuçlanır.
+static func weekly(gs) -> void:
+	if gs.turn % 13 != 6 or not available(gs):
+		return
+	var p: Dictionary = _pick_ai_proposal(gs)
+	if p.is_empty():
+		return
+	if gs.player >= 0 and gs.countries[gs.player].alive and not gs.countries[gs.player].is_rebel:
+		gs.un_pending = p
+		gs.un_vote_card.emit()
+		return
+	propose(gs, p.kind, p.proposer, p.target)
+
+
+## Oyuncunun beklemedeki önergeye oyu: 1 lehte, 0 aleyhte, -1 çekimser. Sonucu döndürür (propose ile aynı biçim).
+static func player_vote(gs, v: int) -> Dictionary:
+	var p: Dictionary = gs.un_pending
+	gs.un_pending = {}
+	if p.is_empty():
+		return {"ok": false, "text": ""}
+	var kind: String = p.kind
+	var proposer: int = p.proposer
+	var target: int = p.target
+	var tc: int = target
+	if kind == "ceasefire":
+		if target < 0 or target >= gs.wars.size():
+			return {"ok": false, "text": ""}
+		tc = gs.wars[target].a
+	# oy, ilişkileri etkiler
+	if v >= 0 and tc != gs.player and kind != "ceasefire":
+		var hostile: bool = kind in HOSTILE
+		if v == 1:
+			gs.relation_add(gs.player, tc, -8.0 if hostile else 5.0)
+		else:
+			gs.relation_add(gs.player, tc, 4.0 if hostile else -3.0)
+	if v == 1:
+		gs.relation_add(gs.player, proposer, 4.0)
+	elif v == 0:
+		gs.relation_add(gs.player, proposer, -3.0)
+	return propose(gs, kind, proposer, target, {gs.player: v})
+
+
+## Beklemedeki önergenin hedef/özet metni (oylama kartı için).
+static func pending_text(gs) -> String:
+	var p: Dictionary = gs.un_pending
+	if p.is_empty():
+		return ""
+	var kind: String = p.kind
+	var pn: String = gs.countries[p.proposer].name
+	var def: Dictionary = KINDS[kind]
+	if kind == "ceasefire":
+		var w = gs.wars[p.target]
+		return "%s, %s ile %s arasında ateşkes çağrısı yapıyor." % [pn, gs.countries[w.a].name, gs.countries[w.b].name]
+	var tn: String = gs.countries[p.target].name
+	if p.target == gs.player:
+		tn = "SENİN ÜLKEN"
+	return "%s önerge verdi: %s. Hedef: %s.\n%s" % [pn, def.name, tn, def.desc]

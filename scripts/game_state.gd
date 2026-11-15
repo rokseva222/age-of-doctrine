@@ -32,6 +32,7 @@ signal wroom_card(title: String, body: String, scene: String)
 signal grand_resolved(kind: String, op_name: String, taken: int)
 signal indep_card
 signal ally_call(friend: int, foe: int, kind: String)
+signal un_vote_card
 signal alliance_proposal(from_country: int)
 
 const MAX_MERGE := 250000
@@ -67,6 +68,7 @@ const AI_MAX_ALLIES := 6               # yalnız yapay zekâ için yumuşak sın
 var aid: Dictionary = {"cd": {}, "good": {}}   # müttefik yardımı: bekleme süreleri / minnet (müttefik -> tur)
 var un_cd: Dictionary = {}               # BM önerge bekleme süreleri (önerge -> tur)
 var un_log: Array = []                   # son BM kararları
+var un_pending: Dictionary = {}          # oyuncunun oyunu bekleyen yapay zekâ önergesi {kind, proposer, target}
 var last_auto := 0                       # son turda otomatik görevlendirilen ordu sayısı
 var victory_declared := false
 var game_started := false
@@ -93,6 +95,7 @@ var cold: Array = []             # soğuk savaş çiftleri: yalnızca siber oper
 func new_world(seed_val: int, _ncountries: int = 0) -> void:
 	news_log.clear()
 	pending_proposal = false
+	un_pending = {}
 	game_started = false
 	rebel_name_count = {}
 	merc_names = {}
@@ -3151,6 +3154,7 @@ func from_dict(d: Dictionary) -> bool:
 	un_cd = d.get("un_cd", {}).duplicate()
 	aid = d.get("aid", {"cd": {}, "good": {}}).duplicate(true)
 	un_log = d.get("un_log", []).duplicate(true)
+	un_pending = {}
 	turn = d.turn
 	Macro.build_idx(self)
 	refresh_stats()
