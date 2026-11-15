@@ -412,7 +412,15 @@ class PowerBar extends Control:
 	func _draw() -> void:
 		var y := size.y * 0.5 - 2.0
 		draw_rect(Rect2(0, y, size.x, 4), Color("2a313b"))
-		draw_rect(Rect2(0, y, size.x * clampf(frac, 0.06, 1.0), 4), Color("ece6d6"))
+		# güç kademesine göre renk: zayıf = gri-mavi, orta = kâğıt, güçlü = sarı, süper güç = kırmızı
+		var col := Color("7f8a99")
+		if frac > 0.75:
+			col = Color("e5482f")
+		elif frac > 0.5:
+			col = Color("e3a92b")
+		elif frac > 0.28:
+			col = Color("ece6d6")
+		draw_rect(Rect2(0, y, size.x * clampf(frac, 0.06, 1.0), 4), col)
 
 
 class Pips extends Control:
@@ -739,7 +747,15 @@ func _populate_list() -> void:
 		hb.add_child(badge)
 		var pb := PowerBar.new()
 		pb.frac = sqrt(_power[cid] / maxp)
-		hb.add_child(pb)
+		var pbox := VBoxContainer.new()
+		pbox.add_theme_constant_override("separation", 2)
+		pbox.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+		var plb := TK.t("Güç", "kicker", TK.MUTED)
+		plb.add_theme_font_size_override("font_size", 15)
+		plb.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		pbox.add_child(plb)
+		pbox.add_child(pb)
+		hb.add_child(pbox)
 		TK.ignore_mouse(hb)
 		b.pressed.connect(func():
 			_click()
