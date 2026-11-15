@@ -81,17 +81,30 @@ static func open_setup(parent: Node, on_start: Callable) -> void:
 	sh.body.add_child(TK.hsep())
 	# ülke
 	sh.body.add_child(TK.t("Ayrılacağın ülke", "kicker", TK.GOLD))
+	var host_search := LineEdit.new()
+	host_search.placeholder_text = Loc.t("Ülke ara...")
+	host_search.clear_button_enabled = true
+	host_search.custom_minimum_size = Vector2(0, 52)
+	sh.body.add_child(host_search)
 	var host := OptionButton.new()
 	host.custom_minimum_size = Vector2(0, 52)
-	var sel := 0
-	var i := 0
-	for c in U.countries():
-		host.add_item(c["tr"] if _tr() else _cname(c))
-		host.set_item_metadata(i, c["en"])
-		if c["en"] == p.host_en:
-			sel = i
-		i += 1
-	host.select(sel)
+	var fill_host := func(q: String):
+		var keep: String = String(p.host_en)
+		host.clear()
+		var sel := -1
+		var n := 0
+		for c in U.countries():
+			var label: String = c["tr"] if _tr() else _cname(c)
+			if q != "" and not (String(c["tr"]) + " " + String(c["en"]) + " " + label).to_lower().contains(q.to_lower()):
+				continue
+			host.add_item(label)
+			host.set_item_metadata(n, c["en"])
+			if c["en"] == keep:
+				sel = n
+			n += 1
+		if n > 0:
+			host.select(maxi(sel, 0))
+	fill_host.call("")
 	host.item_selected.connect(func(_i): p.host_en = String(host.get_item_metadata(host.selected)))
 	sh.body.add_child(host)
 	# merkez şehirler: hareketin üssü; seçilen şehirlerin ilçeleri haritada görünür
@@ -105,6 +118,12 @@ static func open_setup(parent: Node, on_start: Callable) -> void:
 	var sels: Array = [-1, -1, -1]
 	var diff_lbl := TK.t("", "small", TK.GOLD)
 	diff_lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	var city_search := LineEdit.new()
+	city_search.placeholder_text = Loc.t("Şehir ara...")
+	city_search.clear_button_enabled = true
+	city_search.custom_minimum_size = Vector2(0, 52)
+	sh.body.add_child(city_search)
+	var cfilter := {"q": ""}
 	var rebuild := func():
 		var cities: Array = host_cities(String(p.host_en))
 		var ncity: int = clampi(int(p.ncity), 1, maxi(1, mini(3, cities.size())))
@@ -139,8 +158,11 @@ static func open_setup(parent: Node, on_start: Callable) -> void:
 			for j in ncity:
 				if j != k:
 					other.append(int(sels[j]))
+			var cq: String = String(cfilter["q"]).to_lower()
 			for c2 in cities:
 				if other.has(int(c2.pid)):
+					continue
+				if cq != "" and int(c2.pid) != int(sels[k]) and not String(c2.name).to_lower().contains(cq):
 					continue
 				var txt: String = "%s%s  (%s)" % [String(c2.name), Loc.t(" · başkent") if bool(c2.cap) else "", Loc.t("%s milyon" % ("%.1f" % float(c2.cpop)))]
 				ob.add_item(txt)
@@ -177,6 +199,17 @@ static func open_setup(parent: Node, on_start: Callable) -> void:
 	sh.body.add_child(diff_lbl)
 	host.item_selected.connect(func(_i2):
 		sels.fill(-1)
+		rebuild.call())
+	host_search.text_changed.connect(func(t: String):
+		fill_host.call(t)
+		if host.item_count > 0:
+			p.host_en = String(host.get_item_metadata(host.selected))
+			sels.fill(-1)
+			cfilter["q"] = ""
+			city_search.text = ""
+			rebuild.call())
+	city_search.text_changed.connect(func(t: String):
+		cfilter["q"] = t
 		rebuild.call())
 	rebuild.call()
 	# ad / lider

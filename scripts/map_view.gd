@@ -622,6 +622,8 @@ func _unhandled_input(event: InputEvent) -> void:
 			_touches.erase(event.index)
 	elif event is InputEventScreenDrag:
 		_touches[event.index] = event.position
+		if _dragging and _press_pos.distance_to(event.position) > maxf(12.0, minf(get_viewport_rect().size.x, get_viewport_rect().size.y) * 0.018):
+			_moved = true
 		if _touches.size() == 2:
 			var pts2: Array = _touches.values()
 			var d: float = (pts2[0] as Vector2).distance_to(pts2[1])
@@ -651,7 +653,10 @@ func _unhandled_input(event: InputEvent) -> void:
 				_dragging = false
 	elif event is InputEventMouseMotion:
 		if _dragging and _touches.size() < 2 and not _suppress_tap:
-			if not _moved and _press_pos.distance_to(event.position) > 12.0:
+			# yüksek çözünürlüklü telefonlarda parmak titremesi 12 px'i kolayca aşar: eşik ekran boyuna göre ölçeklenir
+			var vs: Vector2 = get_viewport_rect().size
+			var thr: float = maxf(12.0, minf(vs.x, vs.y) * 0.018)
+			if not _moved and _press_pos.distance_to(event.position) > thr:
 				_moved = true
 			if _moved:
 				cam_pos -= event.relative / zoom
