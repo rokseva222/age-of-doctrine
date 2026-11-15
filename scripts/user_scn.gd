@@ -9,6 +9,8 @@ const Loc = preload("res://scripts/loc.gd")
 const DIR := "user://scenarios"
 const CODE_PREFIX := "AOD1."
 const MAX_ITEMS := 40
+const MAX_EVENTS := 20
+const FX_TYPES := ["war", "peace", "ally", "xstab", "xgold", "xtroops"]
 const OBJ_TYPES := ["survive", "own_provinces", "alliances", "no_war", "cease_war", "stability", "eliminate", "gdp_share", "bloc_members"]
 
 static var _countries: Array = []
@@ -160,7 +162,7 @@ static func sanitize(d: Dictionary) -> Dictionary:
 		return {}
 	out["sub"] = _s(d.get("sub", ""), 60)
 	out["blurb"] = _s(d.get("blurb", ""), 300)
-	out["intro"] = _s(d.get("intro", ""), 300)
+	out["intro"] = _s(d.get("intro", ""), 400)
 	var sug: Array = []
 	for c in d.get("suggest", []):
 		if valid_country(c) and sug.size() < 4:
@@ -225,6 +227,34 @@ static func sanitize(d: Dictionary) -> Dictionary:
 			objs.append(e)
 	if not objs.is_empty():
 		out["objectives"] = {"*": objs}
+	var evs: Array = []
+	var raw_e = d.get("events", [])
+	if typeof(raw_e) == TYPE_ARRAY:
+		for e in raw_e:
+			if evs.size() >= MAX_EVENTS or typeof(e) != TYPE_DICTIONARY:
+				continue
+			var txt: String = _s(e.get("t", ""), 220)
+			var fxs: Array = []
+			var raw_fx = e.get("fx", [])
+			if typeof(raw_fx) == TYPE_ARRAY:
+				for f in raw_fx:
+					if typeof(f) != TYPE_ARRAY or f.size() < 2 or fxs.size() >= 3:
+						continue
+					var ft: String = String(f[0])
+					if not FX_TYPES.has(ft) or not valid_country(f[1]):
+						continue
+					if ft in ["war", "peace", "ally"]:
+						if f.size() >= 3 and valid_country(f[2]) and f[1] != f[2]:
+							fxs.append([ft, f[1], f[2]])
+					elif f.size() >= 3:
+						var lim := 30.0 if ft == "xstab" else (20.0 if ft == "xgold" else 60.0)
+						fxs.append([ft, f[1], clampf(float(f[2]), -lim, lim)])
+			if txt == "" and fxs.is_empty():
+				continue
+			evs.append({"turn": clampi(int(e.get("turn", 1)), 0, 1000), "t": txt, "fx": fxs})
+		evs.sort_custom(func(a, b): return int(a["turn"]) < int(b["turn"]))
+	if not evs.is_empty():
+		out["events"] = evs
 	var dl: int = clampi(int(d.get("deadline", 0)), 0, 1000)
 	if dl > 0:
 		out["deadline"] = dl
@@ -273,5 +303,9 @@ static func finalize(d: Dictionary) -> Dictionary:
 	var objs = out.get("objectives", {}).get("*", [])
 	for o in objs:
 		en_obj[String(o["id"])] = describe(o, "en")
-	out["en"] = {"name": out["name"], "sub": out.get("sub", ""), "blurb": out.get("blurb", ""), "intro": out.get("intro", ""), "objectives": en_obj}
+	var en_ev := {}
+	var evl: Array = out.get("events", [])
+	for i in evl.size():
+		en_ev[str(i)] = String(evl[i].get("t", ""))
+	out["en"] = {"name": out["name"], "sub": out.get("sub", ""), "blurb": out.get("blurb", ""), "intro": out.get("intro", ""), "objectives": en_obj, "events": en_ev}
 	return out

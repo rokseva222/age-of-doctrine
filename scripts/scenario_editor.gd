@@ -35,7 +35,7 @@ static func open(parent: Node, existing: Dictionary, done_cb: Callable) -> void:
 
 func _start(existing: Dictionary) -> void:
 	if existing.is_empty():
-		d = {"id": U.new_id(), "kind": "user", "name": "", "sub": "", "intro": "", "suggest": ["Turkey"], "wars": [], "embargo": [], "cold": [], "blocs": [],
+		d = {"id": U.new_id(), "kind": "user", "name": "", "sub": "", "intro": "", "events": [], "suggest": ["Turkey"], "wars": [], "embargo": [], "cold": [], "blocs": [],
 			"troops_mult": {}, "treasury_mult": {}, "stability": {}, "objectives": {"*": [{"id": "o0", "type": "survive", "turns": 104, "text": ""}]}, "deadline": 0}
 	else:
 		d = existing.duplicate(true)
@@ -45,6 +45,8 @@ func _start(existing: Dictionary) -> void:
 		for k in ["troops_mult", "treasury_mult", "stability"]:
 			if not d.has(k):
 				d[k] = {}
+		if not d.has("events"):
+			d["events"] = []
 		if not d.has("objectives") or not d["objectives"].has("*"):
 			d["objectives"] = {"*": []}
 	_build()
@@ -132,8 +134,8 @@ func _build() -> void:
 	_sub_edit.custom_minimum_size = Vector2(0, 56)
 	_sheet.body.add_child(_sub_edit)
 	_intro_edit = LineEdit.new()
-	_intro_edit.placeholder_text = Loc.t("Oyun başında okunacak haber cümlesi")
-	_intro_edit.max_length = 200
+	_intro_edit.placeholder_text = Loc.t("Hikâyenin girişi: oyun başında okunacak haber metni")
+	_intro_edit.max_length = 400
 	_intro_edit.text = String(d.get("intro", ""))
 	_intro_edit.custom_minimum_size = Vector2(0, 56)
 	_sheet.body.add_child(_intro_edit)
@@ -144,6 +146,7 @@ func _build() -> void:
 		_section(key, pk[1], func(): _fill_pairs(key))
 	_section("blocs", "İttifaklar (bloklar)", _fill_blocs)
 	_section("mods", "Ülke ayarları", _fill_mods)
+	_section("events", "Hikâye olayları (zamanlı)", _fill_events)
 	_section("objs", "Hedefler", _fill_objs)
 	var dlb := HBoxContainer.new()
 	dlb.add_theme_constant_override("separation", 10)
@@ -322,6 +325,104 @@ func _fill_mods() -> void:
 		_refill("mods", _fill_mods), "good"))
 
 
+const FX_LABELS := [["", "Yalnızca haber"], ["war", "Savaş çıkar"], ["peace", "Barış olur"], ["ally", "İttifak kurulur"],
+	["xstab", "İstikrar değişir (±)"], ["xgold", "Hazine değişir (± haftalık gelir)"], ["xtroops", "Ordu değişir (± %)"]]
+
+
+func _fx_text(f: Array) -> String:
+	var t: String = String(f[0])
+	match t:
+		"war":
+			return "%s → %s: %s" % [U.country_label(f[1]), U.country_label(f[2]), Loc.t("savaş")]
+		"peace":
+			return "%s – %s: %s" % [U.country_label(f[1]), U.country_label(f[2]), Loc.t("barış")]
+		"ally":
+			return "%s + %s: %s" % [U.country_label(f[1]), U.country_label(f[2]), Loc.t("ittifak")]
+		"xstab":
+			return "%s: %s %+d" % [U.country_label(f[1]), Loc.t("istikrar"), int(f[2])]
+		"xgold":
+			return "%s: %s %+d %s" % [U.country_label(f[1]), Loc.t("hazine"), int(f[2]), Loc.t("hafta")]
+		"xtroops":
+			return "%s: %s %+d%%" % [U.country_label(f[1]), Loc.t("ordu"), int(f[2])]
+	return ""
+
+
+func _fill_events() -> void:
+	var box: VBoxContainer = _sections["events"]
+	box.add_child(TK.t("Hikâyeni zamana yay: belirlediğin haftada haber düşer ve istersen bir olay gerçekleşir (savaş, barış, ittifak, istikrar/hazine/ordu değişimi). Oyuncu ülkesi de etkilenebilir.", "small", TK.MUTED))
+	var arr: Array = d["events"]
+	arr.sort_custom(func(a, b): return int(a["turn"]) < int(b["turn"]))
+	for i in arr.size():
+		var e: Dictionary = arr[i]
+		var idx: int = i
+		var line := "%s %d: %s" % [Loc.t("Hafta"), int(e["turn"]), String(e["t"])]
+		for f in e["fx"]:
+			line += "\n   › " + _fx_text(f)
+		box.add_child(_row_label(line, func():
+			arr.remove_at(idx)
+			_refill("events", _fill_events)))
+	if arr.size() >= U.MAX_EVENTS:
+		return
+	var wk := SpinBox.new()
+	wk.min_value = 0
+	wk.max_value = 520
+	wk.step = 1
+	wk.value = 8
+	wk.prefix = Loc.t("Hafta") + " "
+	wk.custom_minimum_size = Vector2(200, 52)
+	var txt := LineEdit.new()
+	txt.placeholder_text = Loc.t("Haber metni (ör. Sınırda silah sesleri duyuldu)")
+	txt.max_length = 220
+	txt.custom_minimum_size = Vector2(0, 56)
+	var hb0 := HBoxContainer.new()
+	hb0.add_theme_constant_override("separation", 8)
+	hb0.add_child(wk)
+	txt.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	hb0.add_child(txt)
+	box.add_child(hb0)
+	var tp := OptionButton.new()
+	tp.custom_minimum_size = Vector2(0, 52)
+	for fl in FX_LABELS:
+		tp.add_item(Loc.t(fl[1]))
+	var a := _country_picker("Turkey")
+	var b := _country_picker("Greece")
+	var amt := SpinBox.new()
+	amt.min_value = -30
+	amt.max_value = 30
+	amt.value = -10
+	amt.custom_minimum_size = Vector2(150, 52)
+	var hb := HBoxContainer.new()
+	hb.add_theme_constant_override("separation", 8)
+	hb.add_child(tp)
+	hb.add_child(a)
+	hb.add_child(b)
+	hb.add_child(amt)
+	box.add_child(hb)
+	var sync := func():
+		var t: String = FX_LABELS[tp.selected][0]
+		a.visible = t != ""
+		b.visible = t in ["war", "peace", "ally"]
+		amt.visible = t in ["xstab", "xgold", "xtroops"]
+	tp.item_selected.connect(func(_i): sync.call())
+	sync.call()
+	box.add_child(_small_btn("Olayı ekle", func():
+		var t: String = FX_LABELS[tp.selected][0]
+		var fx: Array = []
+		if t in ["war", "peace", "ally"]:
+			if _val(a) == _val(b):
+				_msg.text = Loc.t("İki taraf aynı ülke olamaz.")
+				return
+			fx.append([t, _val(a), _val(b)])
+		elif t != "":
+			fx.append([t, _val(a), float(amt.value)])
+		if txt.text.strip_edges() == "" and fx.is_empty():
+			_msg.text = Loc.t("Haber metni yaz ya da bir etki seç.")
+			return
+		_msg.text = ""
+		arr.append({"turn": int(wk.value), "t": txt.text.strip_edges(), "fx": fx})
+		_refill("events", _fill_events), "good"))
+
+
 func _fill_objs() -> void:
 	var box: VBoxContainer = _sections["objs"]
 	var arr: Array = d["objectives"]["*"]
@@ -408,6 +509,8 @@ func _collect() -> Dictionary:
 	for k in ["troops_mult", "treasury_mult", "stability"]:
 		if d.has(k) and d[k].is_empty():
 			d.erase(k)
+	if d.get("events", []).is_empty():
+		d.erase("events")
 	var objs: Array = d["objectives"]["*"]
 	for o in objs:
 		o["text"] = U.describe(o, "tr")

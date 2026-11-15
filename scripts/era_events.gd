@@ -117,6 +117,14 @@ static func _apply(gs, f: Array) -> void:
 				var w = gs.get_war(a, b2)
 				if w != null:
 					gs.finish_peace(w, -1, [])
+		"xstab":   # hikâye modu: oyuncu dahil herhangi bir ülkenin istikrarı
+			gs.countries[a].stability = clampf(gs.countries[a].stability + float(f[2]), 5.0, 100.0)
+		"xgold":   # hikâye modu: ülkenin kasasına f[2] haftalık gelir kadar ekler/çıkarır
+			gs.countries[a].gold = maxf(0.0, gs.countries[a].gold + maxf(gs.countries[a].income, 1.0) * float(f[2]))
+		"xtroops": # hikâye modu: ordu büyüklüğü yüzde değişim
+			for ar in gs.armies_of(a):
+				ar.size = maxi(1, int(ar.size * (1.0 + float(f[2]) / 100.0)))
+			gs.refresh_stats()
 		"ally":
 			var b3: int = _id(gs, String(f[2]))
 			if b3 >= 0 and gs.countries[b3].alive and a != gs.player and b3 != gs.player and not gs.is_allied(a, b3) and not gs.at_war(a, b3):
