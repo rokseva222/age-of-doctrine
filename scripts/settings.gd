@@ -15,6 +15,7 @@ static var language := ""             # "tr" / "en"; boşsa sistem dilinden seç
 static var auto_orders := true        # emir vermediğin turda boştaki ordular otomatik görev alır
 static var smooth := true
 static var ui_scale := 1.0
+static var ui_scale_custom := false   # kullanıcı kaydırıcıyı elle ayarladı mı (değilse ölçek cihaza göre her açılışta yeniden hesaplanır)
 static var seen_howto := false
 static var seen_promo := false
 static var tut_done := false
@@ -36,10 +37,24 @@ static func default_scale() -> float:
 		return 0.8
 	var dpi: int = DisplayServer.screen_get_dpi()
 	var sz: Vector2i = DisplayServer.screen_get_size()
-	if dpi <= 0 or sz.x <= 0:
-		return 0.8
+	# Bazı cihazlar kurulumdan hemen sonra DPI'yı hiç ya da saçma (ör. 0, 1, 1000+) bildirir:
+	# o durumda fiziksel boyuta güvenmeyip sabit güvenli değer kullanılır.
+	if dpi < 100 or dpi > 800 or sz.x <= 0 or sz.y <= 0:
+		return 0.82
 	var width_mm: float = float(maxi(sz.x, sz.y)) / float(dpi) * 25.4
+	if width_mm < 80.0 or width_mm > 600.0:
+		return 0.82
 	return clampf(120.0 / width_mm, 0.75, 0.95)
+
+
+## Kullanıcı elle ayarlamadıysa ölçeği cihazın o anki ekran bilgisine göre yeniden hesaplar (boyut değişince / ilk karede çağrılır).
+static func refresh_auto_scale(tree: SceneTree) -> void:
+	if ui_scale_custom:
+		return
+	var v: float = default_scale()
+	if absf(v - ui_scale) > 0.001:
+		ui_scale = v
+		apply_display(tree)
 
 
 static func load_all() -> void:
@@ -54,7 +69,9 @@ static func load_all() -> void:
 	armies = bool(cf.get_value("view", "armies", armies))
 	smooth = bool(cf.get_value("view", "smooth", smooth))
 	# sürüm 2: varsayılan ölçek küçüldü; eski kayıtlı (otomatik) değer bir kez yeni varsayılana çekilir
-	if int(cf.get_value("view", "ui_scale_ver", 1)) >= 2:
+	# sürüm 3: yalnızca elle ayarlanmış ölçek saklanır; otomatik hesaplanan eski değerler (kurulumda yanlış DPI ile kaydedilmiş olabilir) atılır
+	ui_scale_custom = bool(cf.get_value("view", "ui_scale_custom", false)) and int(cf.get_value("view", "ui_scale_ver", 1)) >= 3
+	if ui_scale_custom:
 		ui_scale = clampf(float(cf.get_value("view", "ui_scale", ui_scale)), 0.6, 1.4)
 	autosave = bool(cf.get_value("game", "autosave", autosave))
 	cabinet = bool(cf.get_value("game", "cabinet", cabinet))
@@ -88,7 +105,8 @@ static func save_all() -> void:
 	cf.set_value("view", "armies", armies)
 	cf.set_value("view", "smooth", smooth)
 	cf.set_value("view", "ui_scale", ui_scale)
-	cf.set_value("view", "ui_scale_ver", 2)
+	cf.set_value("view", "ui_scale_custom", ui_scale_custom)
+	cf.set_value("view", "ui_scale_ver", 3)
 	cf.set_value("game", "autosave", autosave)
 	cf.set_value("game", "cabinet", cabinet)
 	cf.set_value("game", "auto_orders", auto_orders)

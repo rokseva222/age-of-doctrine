@@ -117,7 +117,14 @@ static func open_settings(parent: Node, on_change: Callable, sfx = null) -> void
 		changed.call(), "Kıyı parıltısı. Eski telefonlarda kapatmak akıcılığı artırır."))
 	sh.body.add_child(TK.slider_row("Arayüz boyutu", Settings.ui_scale, func(v: float):
 		Settings.ui_scale = v
+		Settings.ui_scale_custom = true
 		changed.call(), 0.6, 1.4, 0.05))
+	var ar := TK.button("Arayüz boyutunu otomatik ayarla", "ghost", "", Vector2(0, 44), 14)
+	ar.pressed.connect(func():
+		Settings.ui_scale_custom = false
+		Settings.ui_scale = Settings.default_scale()
+		changed.call())
+	sh.body.add_child(ar)
 	_section(sh, "Oyun")
 	sh.body.add_child(TK.toggle_row("Otomatik kayıt", Settings.autosave, func(on: bool):
 		Settings.autosave = on

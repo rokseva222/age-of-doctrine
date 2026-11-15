@@ -64,6 +64,7 @@ func _ready() -> void:
 	Settings.language = Loc.setup(Settings.language)
 	Settings.apply_display(get_tree())
 	TK.install_touch_scroll(get_tree())
+	Settings.refresh_auto_scale.call_deferred(get_tree())
 	if OS.has_feature("mobile"):
 		Engine.max_fps = 60                  # 90/120 Hz ekranlarda boşuna ısınma/kasma olmasın
 		OS.low_processor_usage_mode = true   # ekran değişmiyorsa çizim yapılmaz (pil + ısı)
@@ -120,6 +121,7 @@ func _ready() -> void:
 
 
 func _on_resized() -> void:
+	Settings.refresh_auto_scale(get_tree())
 	_update_insets()
 
 
