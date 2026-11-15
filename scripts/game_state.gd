@@ -1741,40 +1741,94 @@ func _leader_turnover() -> void:
 			post_news("%s'de yeni lider: %s %s göreve başladı." % [c.name, cur[0], nm], -1, "info")
 
 
-## Kısmî gönderim: ordudan ayrılan müfreze tek başına yola çıkar, kalanlar yerinde durur.
+## Kısmî gönderim: ordudan ayrılan müfrezeler tek başlarına yola çıkar, kalanlar yerinde durur.
+## Bir ordu tek turda birden fazla hedefe bölünebilir (ilk müfreze sp_*, ekstralar splits).
 func _move_detachments() -> void:
 	for a in armies.values().duplicate():
-		if a.sp_size <= 0:
+		if a.sp_size <= 0 and a.splits.is_empty():
 			continue
-		var n: int = mini(a.sp_size, a.size - 1)
-		var path: Array = a.sp_path.duplicate()
-		var op: String = a.sp_op
+		var jobs: Array = []
+		if a.sp_size > 0:
+			jobs.append({"n": a.sp_size, "path": a.sp_path.duplicate(), "op": a.sp_op, "hold": a.sp_hold})
+		for s in a.splits:
+			jobs.append(s)
 		a.sp_size = 0
 		a.sp_path = []
 		a.sp_op = ""
-		if n <= 0 or path.is_empty():
-			continue
-		var d := Model.Army.new()
-		d.id = next_army_id
-		next_army_id += 1
-		d.owner = a.owner
-		d.prov = a.prov
-		d.size = n
-		d.path = path
-		d.op = op
-		d.leaving = true
-		d.merc = a.merc
-		d.merc_until = a.merc_until
-		d.hold = a.sp_hold
 		a.sp_hold = false
-		a.size -= n
-		var origin: int = a.prov
-		armies[origin] = d
-		_step_army(d)
-		if armies.get(origin) == d:
-			a.size += d.size          # yerinde kaldı (yol kapandı ya da yenildi): geri katıl
-		armies[origin] = a
-		armies_changed.emit()
+		a.splits = []
+		for j in jobs:
+			_launch_detachment(a, int(j.n), j.path, String(j.op), bool(j.hold))
+
+
+func _launch_detachment(a, n_req: int, path: Array, op: String, hold: bool) -> void:
+	var n: int = mini(n_req, a.size - 1)
+	if n <= 0 or path.is_empty():
+		return
+	var d := Model.Army.new()
+	d.id = next_army_id
+	next_army_id += 1
+	d.owner = a.owner
+	d.prov = a.prov
+	d.size = n
+	d.path = path
+	d.op = op
+	d.leaving = true
+	d.merc = a.merc
+	d.merc_until = a.merc_until
+	d.hold = hold
+	a.size -= n
+	var origin: int = a.prov
+	armies[origin] = d
+	_step_army(d)
+	if armies.get(origin) == d:
+		a.size += d.size          # yerinde kaldı (yol kapandı ya da yenildi): geri katıl
+	armies[origin] = a
+	armies_changed.emit()
+
+
+## Ordunun bu tur için ayrılması planlanan toplam müfreze askeri
+func split_pending(a) -> int:
+	var t: int = maxi(a.sp_size, 0)
+	for s in a.splits:
+		t += int(s.n)
+	return t
+
+
+## Yeni bir müfreze emri ekler. Aynı hedefe daha önce emir varsa onun yerini alır. Eklenen asker sayısını döndürür (0 = yer yok).
+func _queue_split(a, n: int, path: Array, op: String, hold: bool) -> int:
+	var dest: int = int(path[path.size() - 1])
+	# aynı hedefe önceki emri kaldır
+	var kept: Array = []
+	for s in a.splits:
+		if int(s.path[s.path.size() - 1]) != dest:
+			kept.append(s)
+	a.splits = kept
+	if a.sp_size > 0 and not a.sp_path.is_empty() and int(a.sp_path[a.sp_path.size() - 1]) == dest:
+		a.sp_size = 0
+		a.sp_path = []
+		a.sp_op = ""
+		a.sp_hold = false
+		if not a.splits.is_empty():
+			var first: Dictionary = a.splits.pop_front()
+			a.sp_size = int(first.n)
+			a.sp_path = first.path
+			a.sp_op = String(first.op)
+			a.sp_hold = bool(first.hold)
+	var room: int = a.size - 1 - split_pending(a)
+	var k: int = mini(n, room)
+	if k < 1:
+		return 0
+	if a.sp_size <= 0:
+		a.sp_size = k
+		a.sp_path = path
+		a.sp_op = op
+		a.sp_hold = hold
+	elif a.splits.size() < 3:
+		a.splits.append({"n": k, "path": path, "op": op, "hold": hold})
+	else:
+		return 0
+	return k
 
 
 func _move_armies() -> void:
@@ -2153,15 +2207,16 @@ func player_order_move(a, target: int, count: int = 0) -> String:
 	if path.is_empty():
 		return "Oraya ulaşamazsın (geçiş izni yok ya da yol yok)."
 	if count > 0 and count < a.size:
-		a.sp_size = clampi(count, 1, a.size - 1)
-		a.sp_path = path
-		a.sp_op = ""
-		a.sp_hold = true             # gönderilen müfreze varış yerinde elle kalır; kalanlar otomatikte
+		# gönderilen müfreze varış yerinde elle kalır; kalanlar otomatikte. Aynı turda başka hedeflere de bölünebilir.
+		var queued: int = _queue_split(a, clampi(count, 1, a.size - 1), path, "", true)
+		if queued <= 0:
+			return "Bu orduda dağıtılacak asker kalmadı (tek turda en fazla 4 gruba bölünür)."
 		a.path.clear()
 		a.leaving = false
 	else:
 		a.sp_size = 0
 		a.sp_path = []
+		a.splits = []
 		a.path = path
 		a.leaving = true
 		a.hold = true
@@ -2176,6 +2231,7 @@ func player_cancel_move(a) -> void:
 	a.leaving = false
 	a.sp_size = 0
 	a.sp_path = []
+	a.splits = []
 	armies_changed.emit()
 
 
@@ -2508,7 +2564,7 @@ func _ai_orders(c) -> int:
 		return 0
 	var failed: Array = []     # hedefi bulunamayan aramalar: [ziyaret_haritası, ordu_büyüklüğü]; aynı bölgedeki eşit/küçük ordular tekrar aramaz
 	for a in armies_of(c.id):
-		if not a.path.is_empty() or a.sp_size > 0 or a.size < 2000 or is_sieging(a) or a.hold:
+		if not a.path.is_empty() or a.sp_size > 0 or not a.splits.is_empty() or a.size < 2000 or is_sieging(a) or a.hold:
 			continue
 		var cid: int = c.id
 		var arm = a
@@ -2954,7 +3010,7 @@ func to_dict() -> Dictionary:
 	d["countries"] = cs
 	var arms: Array = []
 	for a in armies.values():
-		arms.append([a.id, a.owner, a.prov, a.size, a.path, a.prev_prov, a.op, a.sp_size, a.sp_path, a.sp_op, a.merc, a.merc_until, a.hold, a.sp_hold, a.cmd_lvl, a.cmd_name, a.cmd_wins, a.leaving])
+		arms.append([a.id, a.owner, a.prov, a.size, a.path, a.prev_prov, a.op, a.sp_size, a.sp_path, a.sp_op, a.merc, a.merc_until, a.hold, a.sp_hold, a.cmd_lvl, a.cmd_name, a.cmd_wins, a.leaving, a.splits])
 	d["armies"] = arms
 	var ws: Array = []
 	for w in wars:
@@ -3060,6 +3116,8 @@ func from_dict(d: Dictionary) -> bool:
 			a.cmd_wins = int(r[16])
 		if r.size() > 17:
 			a.leaving = bool(r[17])
+		if r.size() > 18:
+			a.splits = (r[18] as Array).duplicate(true)
 		armies[a.prov] = a
 	wars.clear()
 	for r in d.wars:

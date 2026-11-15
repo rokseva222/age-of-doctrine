@@ -10,6 +10,8 @@ static func open(ui, gs, army, dest: int, on_send: Callable) -> void:
 	var to_p = gs.provinces[dest]
 	var sh = ui._open_sheet("Kaç asker gönderilsin?", 760, false, true, "%s  →  %s" % [from_p.name, to_p.name])
 	var st := {"frac": 1.0}
+	var pending: int = gs.split_pending(army)
+	var avail: int = army.size - pending
 	var info := TK.t("", "h3", TK.TEXT)
 	info.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	var sub := TK.t("", "small", TK.MUTED)
@@ -19,9 +21,15 @@ static func open(ui, gs, army, dest: int, on_send: Callable) -> void:
 	var slider_holder := VBoxContainer.new()
 	sh.body.add_child(slider_holder)
 	var upd := func():
-		var n: int = _count(army, st.frac)
+		var n: int = _count(avail, st.frac)
 		info.text = "%s asker yola çıkar" % Macro.num(n)
-		sub.text = "%s asker %s'da kalır. Yaklaşık varış: %d hf." % [Macro.num(army.size - n), from_p.name, maxi(1, gs.path_to(gs.player, army.prov, dest).size())] if n < army.size else "Ordunun tamamı yola çıkar; %s savunmasız kalır." % from_p.name
+		var eta: int = maxi(1, gs.path_to(gs.player, army.prov, dest).size())
+		if pending > 0:
+			sub.text = "Bu turda %s asker başka hedeflere ayrıldı. %s asker %s'da kalır (en az 1 grup yerinde kalır). Yaklaşık varış: %d hf." % [Macro.num(pending), Macro.num(maxi(1, avail - n)), from_p.name, eta]
+		elif n < army.size:
+			sub.text = "%s asker %s'da kalır; kalanı başka hedeflere de gönderebilirsin (tek turda 4 gruba kadar). Yaklaşık varış: %d hf." % [Macro.num(army.size - n), from_p.name, eta]
+		else:
+			sub.text = "Ordunun tamamı yola çıkar; %s savunmasız kalır." % from_p.name
 	var chips := HBoxContainer.new()
 	chips.add_theme_constant_override("separation", 8)
 	var sl_row: HBoxContainer = TK.slider_row("Oran", 1.0, func(v: float):
@@ -40,10 +48,10 @@ static func open(ui, gs, army, dest: int, on_send: Callable) -> void:
 	sh.body.add_child(chips)
 	upd.call()
 	sh.add_button("Gönder", func():
-		var n: int = _count(army, st.frac)
-		on_send.call(n if n < army.size else 0), "gold", true, "play", 240)
+		var n: int = _count(avail, st.frac)
+		on_send.call(n if (pending > 0 or n < army.size) else 0), "gold", true, "play", 240)
 	sh.add_button("Vazgeç", func(): pass, "ghost", true, "", 150)
 
 
-static func _count(army, frac: float) -> int:
-	return clampi(int(round(army.size * frac)), 1, army.size)
+static func _count(avail: int, frac: float) -> int:
+	return clampi(int(round(avail * frac)), 1, maxi(1, avail))

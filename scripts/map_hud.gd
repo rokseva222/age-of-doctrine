@@ -453,25 +453,36 @@ func _draw_selection(gs, pid: int, cv: CanvasItem) -> void:
 
 func _draw_paths(gs) -> void:
 	for a in gs.armies.values():
-		var route: Array = a.sp_path if a.sp_size > 0 else a.path
-		if route.is_empty():
-			continue
+		var routes: Array = []
+		if a.sp_size > 0:
+			routes.append(a.sp_path)
+			for sx in a.splits:
+				routes.append(sx.path)
+		else:
+			routes.append(a.path)
 		if a.owner != gs.player and a != map.selected_army:
 			continue
-		var pts := PackedVector2Array()
-		pts.append(map.world_to_screen(gs.provinces[a.prov].label_pos))
-		for pid in route:
-			pts.append(map.world_to_screen(gs.provinces[pid].label_pos))
-		var col := Color(TK.PAPER.r, TK.PAPER.g, TK.PAPER.b, 0.95) if a == map.selected_army else Color(1, 1, 1, 0.75)
-		for i in pts.size() - 1:
-			draw_dashed_line(pts[i], pts[i + 1], Color(0, 0, 0, 0.5), 5.0, 9.0)
-			draw_dashed_line(pts[i], pts[i + 1], col, 3.0, 9.0)
-		# ok ucu
-		var last := pts[pts.size() - 1]
-		var prev := pts[pts.size() - 2]
-		var d := (last - prev).normalized()
-		var n := Vector2(-d.y, d.x)
-		draw_colored_polygon(PackedVector2Array([last + d * 4, last - d * 12 + n * 8, last - d * 12 - n * 8]), col)
+		for route in routes:
+			_draw_one_path(gs, a, route)
+
+
+func _draw_one_path(gs, a, route: Array) -> void:
+	if route.is_empty():
+		return
+	var pts := PackedVector2Array()
+	pts.append(map.world_to_screen(gs.provinces[a.prov].label_pos))
+	for pid in route:
+		pts.append(map.world_to_screen(gs.provinces[pid].label_pos))
+	var col := Color(TK.PAPER.r, TK.PAPER.g, TK.PAPER.b, 0.95) if a == map.selected_army else Color(1, 1, 1, 0.75)
+	for i in pts.size() - 1:
+		draw_dashed_line(pts[i], pts[i + 1], Color(0, 0, 0, 0.5), 5.0, 9.0)
+		draw_dashed_line(pts[i], pts[i + 1], col, 3.0, 9.0)
+	# ok ucu
+	var last := pts[pts.size() - 1]
+	var prev := pts[pts.size() - 2]
+	var d := (last - prev).normalized()
+	var n := Vector2(-d.y, d.x)
+	draw_colored_polygon(PackedVector2Array([last + d * 4, last - d * 12 + n * 8, last - d * 12 - n * 8]), col)
 
 
 func _draw_armies(gs, z: float, screen: Rect2, font: Font) -> void:

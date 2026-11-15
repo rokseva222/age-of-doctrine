@@ -146,6 +146,7 @@ class Army:
 	var merc_until := -1         # sözleşme bitiş turu
 	var hold := false            # oyuncu elle konuşlandırdı: otomatik komut bu orduya dokunmaz
 	var sp_hold := false         # ayrılacak müfreze elle konuşlandırılıyor mu
+	var splits: Array = []       # ek müfrezeler (ilk müfrezeden sonra): [{n, path, op, hold}] — tek turda 2-4 farklı hedefe bölme
 	var cmd_lvl := 0             # komutan seviyesi (0 = komutansız); her seviye +%5 saldırı/savunma
 	var cmd_name := ""
 	var cmd_wins := 0

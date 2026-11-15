@@ -691,6 +691,9 @@ func _on_ui_action(act: String, arg) -> void:
 					else:
 						ui.toast("%s asker yola çıktı: %s" % [Macro.num(sent), gs.provinces[dest].name])
 						sfx.play("order")
+					if err2 == "" and count > 0 and count < arm.size and gs.split_pending(arm) < arm.size - 1:
+						_refresh_selection()     # ordu seçili kalır: başka bir hedefe dokunarak kalanı da bölebilirsin
+						return
 					selected_army = null
 					map.set_selected_army(null)
 					_select(dest)
