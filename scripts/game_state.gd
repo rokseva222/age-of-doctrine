@@ -962,6 +962,7 @@ func bloc_add(bid: int, cid: int) -> void:
 		if not is_allied(cid, m):
 			countries[cid].allies.append(m)
 			countries[m].allies.append(cid)
+			relation_add(cid, m, 20.0)
 	b.members.append(cid)
 	countries[cid].alliance = bid
 
@@ -982,6 +983,7 @@ func bloc_leave(cid: int, silent: bool = false) -> void:
 		if m != cid:
 			countries[cid].allies.erase(m)
 			countries[m].allies.erase(cid)
+			relation_add(cid, m, -15.0)
 	b.members.erase(cid)
 	if not silent:
 		post_news("%s, %s ittifakından ayrıldı." % [countries[cid].name, b.name], countries[cid].capital, "alliance")
@@ -1002,6 +1004,8 @@ func bloc_accepts(target: int, bid: int) -> String:
 		return "Geçersiz hedef."
 	if t.alliance >= 0:
 		return "%s zaten başka bir ittifakta." % t.name
+	if relation_of(target, b.founder) < RELATION_ALLIANCE_MIN:
+		return "%s: İlişkiler henüz yeterince iyi değil (%s). Önce ilişkileri geliştir." % [t.name, relation_tier_name(target, b.founder)]
 	var near := false
 	var common := false
 	for m in b.members:
@@ -1043,6 +1047,9 @@ func player_invite(target: int) -> String:
 	var bid: int = countries[player].alliance
 	if bid < 0:
 		return "Önce bir ittifak kur."
+	if int(countries[player].alliance_req_turn.get(target, -1)) == turn:
+		return "%s: Bu tur zaten bir teklif götürdün, gelecek tura kadar beklemelisin." % countries[target].name
+	countries[player].alliance_req_turn[target] = turn
 	var why: String = bloc_accepts(target, bid)
 	if why != "":
 		return why
@@ -1090,6 +1097,11 @@ func player_propose_alliance(target: int) -> String:
 		return "Savaştayken ittifak teklif edilemez."
 	if is_allied(player, target):
 		return "Zaten müttefiksiniz."
+	if int(countries[player].alliance_req_turn.get(target, -1)) == turn:
+		return "%s: Bu tur zaten bir teklif götürdün, gelecek tura kadar beklemelisin." % t.name
+	countries[player].alliance_req_turn[target] = turn
+	if relation_of(player, target) < RELATION_ALLIANCE_MIN:
+		return "%s: İlişkiler henüz yeterince iyi değil (%s). Önce ilişkileri geliştir." % [t.name, relation_tier_name(player, target)]
 	if ai_accepts_alliance(target, player):
 		make_alliance(player, target)
 		return ""
@@ -1467,6 +1479,9 @@ func player_request_peace(enemy: int) -> Dictionary:
 		return {"ok": false, "text": "Bu ülkeyle savaşta değilsin."}
 	if countries[enemy].is_rebel:
 		return {"ok": false, "text": "İsyancılarla müzakere edilmez; eyaletleri geri al."}
+	if int(countries[player].peace_req_turn.get(enemy, -1)) == turn:
+		return {"ok": false, "text": "%s: Bu tur zaten bir teklif götürdün, gelecek tura kadar beklemelisin." % countries[enemy].name}
+	countries[player].peace_req_turn[enemy] = turn
 	var dur: int = turn - w.start
 	var mine: int = w.score_of(player)
 	var theirs: int = w.score_of(enemy)

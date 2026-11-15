@@ -975,6 +975,9 @@ func _tab_alliance() -> void:
 			h.add_child(nm)
 			if nb.has(oid):
 				h.add_child(TK.stamp("Komşu", TK.BLUE))
+			var rel_tier: String = gs.relation_tier_name(c.id, oid)
+			var rel_col: Color = TK.GREEN if gs.relation_of(c.id, oid) >= gs.RELATION_ALLIANCE_MIN else TK.MUTED
+			h.add_child(TK.stamp(rel_tier, rel_col))
 			var ib := TK.button("Davet et", "gold", "recruit", Vector2(150, 52), 14)
 			ib.pressed.connect(func():
 				ui._click()
