@@ -661,6 +661,10 @@ func show_province(pid: int, selected_army) -> void:
 				_abtn("İttifakı boz", "ghost", "x", "break_alliance", p.owner)
 			else:
 				_abtn("İttifak teklif et", "blue", "handshake", "alliance", p.owner)
+				if gs.has_passage(me, p.owner):
+					_abtn("Geçiş izni: %d hafta" % (int(gs.countries[p.owner].passage[me]) - gs.turn), "", "hourglass", "none", 0, false)
+				else:
+					_abtn("Geçiş izni iste", "", "flag", "ask_passage", p.owner)
 	if not oc.is_rebel:
 		_abtn("İlişkiler", "ghost", "handshake", "relations", p.owner)
 	if army != null and army.owner == me:

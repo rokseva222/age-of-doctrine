@@ -71,6 +71,8 @@ class Country:
 	var relation: Dictionary = {}            # diğer ülke id -> ilişki puanı (0-100, varsayılan 50)
 	var peace_req_turn: Dictionary = {}      # düşman id -> en son barış/ateşkes teklifi götürülen tur (spam engeli)
 	var alliance_req_turn: Dictionary = {}   # hedef id -> en son ittifak teklifi götürülen tur (spam engeli)
+	var passage_req_turn: Dictionary = {}    # hedef id -> en son geçiş izni istenen tur
+	var passage: Dictionary = {}             # misafir ülke id -> bu ülkenin topraklarından geçiş iznin bitiş turu
 	var is_rebel := false
 	var born := 0
 	var label_pos := Vector2.ZERO

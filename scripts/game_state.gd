@@ -679,7 +679,55 @@ func is_allied(a: int, b: int) -> bool:
 
 func can_enter(cid: int, pid: int) -> bool:
 	var o: int = provinces[pid].owner
-	return o == cid or at_war(cid, o) or is_allied(cid, o)
+	return o == cid or at_war(cid, o) or is_allied(cid, o) or has_passage(cid, o)
+
+
+## host ülkesinin topraklarından geçiş izni var mı (müttefiklere izin zaten otomatik)
+func has_passage(guest: int, host: int) -> bool:
+	if guest < 0 or host < 0 or guest == host:
+		return false
+	return int(countries[host].passage.get(guest, -1)) > turn
+
+
+## Oyuncu bir ülkeden geçiş izni ister: 26 hafta geçerli. İlişki ne kadar iyiyse kabul olasılığı o kadar yüksek.
+func player_request_passage(target: int) -> String:
+	var t = countries[target]
+	if t.is_rebel or not t.alive:
+		return "Geçerli bir hedef yok."
+	if at_war(player, target):
+		return "Savaştaki ülkeden izin istenmez; zaten topraklarına girebilirsin."
+	if is_allied(player, target):
+		return "Müttefikin topraklarından zaten serbestçe geçebilirsin."
+	if has_passage(player, target):
+		return "%s zaten geçiş izni verdi (%d hafta kaldı)." % [t.name, int(t.passage[player]) - turn]
+	if int(countries[player].passage_req_turn.get(target, -1)) == turn:
+		return "%s: Bu tur zaten bir teklif götürdün, gelecek tura kadar beklemelisin." % t.name
+	countries[player].passage_req_turn[target] = turn
+	# hedef, oyuncunun düşmanıyla müttefikse reddeder
+	for e in countries[player].enemies:
+		if is_allied(target, e):
+			return "%s, düşmanın %s ile müttefik olduğu için izin vermedi." % [t.name, countries[e].name]
+	var rel: float = relation_of(target, player)
+	if rel < 40.0:
+		return "%s: İlişkiler çok kötü (%s); geçiş izni vermiyor." % [t.name, relation_tier_name(target, player)]
+	var chance: float = clampf((rel - 25.0) / 50.0, 0.1, 0.95)
+	if rng.randf() >= chance:
+		return "%s geçiş iznini reddetti." % t.name
+	t.passage[player] = turn + 26
+	relation_add(player, target, -3.0)   # küçük bir bedel: topraklarından ordu geçmesi gerginlik yaratır
+	post_news("%s, %s ordularına 26 haftalık geçiş izni verdi." % [t.name, countries[player].name], t.capital, "info")
+	state_changed.emit()
+	return ""
+
+
+## Geçiş izni biten ülkelerin topraklarındaki orduları eve gönderir.
+func _passage_expire() -> void:
+	for arm in armies.values().duplicate():
+		var p2 = provinces[arm.prov]
+		if p2.owner >= 0 and p2.owner != arm.owner and not at_war(arm.owner, p2.owner) and not is_allied(arm.owner, p2.owner) and not has_passage(arm.owner, p2.owner):
+			if p2.controller == arm.owner:
+				continue
+			_send_home(arm)
 
 
 func is_sieging(a) -> bool:
@@ -1637,6 +1685,7 @@ func end_turn() -> void:
 	_check_elimination()
 	_alliance_decay()
 	_relation_decay()
+	_passage_expire()
 	_process_unrest()
 	refresh_stats()
 	t = _tp("stats_unrest", t)
@@ -2898,7 +2947,7 @@ func to_dict() -> Dictionary:
 		cs.append({
 			"name": c.name, "color": c.color.to_html(), "color2": c.color2.to_html(), "color3": c.color3.to_html(),
 			"pattern": c.flag_pattern, "capital": c.capital, "gold": c.gold, "alive": c.alive,
-			"aggr": c.aggression, "enemies": c.enemies, "truce": c.truce, "allies": c.allies,
+			"aggr": c.aggression, "enemies": c.enemies, "truce": c.truce, "allies": c.allies, "rel": c.relation, "pass": c.passage,
 			"rebel": c.is_rebel, "born": c.born, "leader": c.leader, "sanc": c.sanction_until, "macro": Macro.to_dict(c), "pop": c.pop, "gdp": c.gdp,
 			"name_en": c.name_en, "a3": c.a3, "cont": c.continent, "tech": c.tech_set,
 		})
@@ -2969,6 +3018,8 @@ func from_dict(d: Dictionary) -> bool:
 		c.enemies = r.enemies.duplicate()
 		c.truce = r.truce.duplicate()
 		c.allies = r.allies.duplicate()
+		c.relation = (r.get("rel", {}) as Dictionary).duplicate()
+		c.passage = (r.get("pass", {}) as Dictionary).duplicate()
 		c.is_rebel = r.rebel
 		c.born = r.born
 		c.sanction_until = int(r.get("sanc", -1))
