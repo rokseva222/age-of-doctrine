@@ -68,6 +68,9 @@ class Country:
 	var enemies: Array = []
 	var truce: Dictionary = {}
 	var allies: Array = []
+	var relation: Dictionary = {}            # diğer ülke id -> ilişki puanı (0-100, varsayılan 50)
+	var peace_req_turn: Dictionary = {}      # düşman id -> en son barış/ateşkes teklifi götürülen tur (spam engeli)
+	var alliance_req_turn: Dictionary = {}   # hedef id -> en son ittifak teklifi götürülen tur (spam engeli)
 	var is_rebel := false
 	var born := 0
 	var label_pos := Vector2.ZERO

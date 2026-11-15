@@ -58,9 +58,13 @@ static func write(gs, slot: int, era: String = "") -> bool:
 
 
 static func delete(slot: int) -> void:
+	var dir := DirAccess.open("user://")
+	if dir == null:
+		return
 	for p in [path(slot), meta_path(slot)]:
-		if FileAccess.file_exists(p):
-			DirAccess.remove_absolute(ProjectSettings.globalize_path(p))
+		var fname: String = p.get_file()
+		if dir.file_exists(fname):
+			dir.remove(fname)
 
 
 ## En yeni kaydın yuvası (yoksa -1).

@@ -542,6 +542,60 @@ func get_war(a: int, b: int):
 	return null
 
 
+# ------------------------------------------------------------ ikili ilişkiler
+## İlişki puanı 0-100 arası, varsayılan 50 (nötr). Simetrik olarak tutulur.
+const RELATION_TIERS := [
+	{"max": 25, "name": "Düşmanca"},
+	{"max": 50, "name": "Soğuk"},
+	{"max": 75, "name": "Dostça"},
+	{"max": 101, "name": "Çok dostça"},
+]
+const RELATION_ALLIANCE_MIN := 75.0  ## İttifak teklifi için gereken minimum ilişki puanı
+
+
+func relation_of(a: int, b: int) -> float:
+	if a == b or a < 0 or b < 0:
+		return 50.0
+	return float(countries[a].relation.get(b, 50.0))
+
+
+func relation_tier_name(a: int, b: int) -> String:
+	var r := relation_of(a, b)
+	for t in RELATION_TIERS:
+		if r < float(t["max"]):
+			return t["name"]
+	return "Çok dostça"
+
+
+func relation_add(a: int, b: int, delta: float) -> void:
+	if a == b or a < 0 or b < 0:
+		return
+	var na: float = clampf(relation_of(a, b) + delta, 0.0, 100.0)
+	var nb: float = clampf(relation_of(b, a) + delta, 0.0, 100.0)
+	countries[a].relation[b] = na
+	countries[b].relation[a] = nb
+
+
+## Her tur ilişkileri yavaşça 50'ye (nötre) çeker; savaş/ittifak gibi olaylar bu temel çizgiyi aşan ani değişimler yaratır.
+func _relation_decay() -> void:
+	for c in countries:
+		if not c.alive:
+			continue
+		for other_id in c.relation.keys():
+			if other_id <= c.id:
+				continue
+			var r: float = c.relation[other_id]
+			if absf(r - 50.0) < 0.5:
+				continue
+			var step := 1.0 if r < 50.0 else -1.0
+			# savaştaki veya müttefik olan ülkeler nötre sürüklenmesin
+			if at_war(c.id, other_id):
+				continue
+			r += step
+			c.relation[other_id] = r
+			countries[other_id].relation[c.id] = r
+
+
 func country_province_ids(cid: int) -> Array:
 	return countries[cid].owned_ids.duplicate()
 
@@ -671,6 +725,7 @@ func declare_war(a: int, b: int, joined: bool = false) -> bool:
 	wars.append(w)
 	countries[a].enemies.append(b)
 	countries[b].enemies.append(a)
+	relation_add(a, b, -40.0)
 	stats.wars += 1
 	if a == player or b == player:
 		stats.p_wars += 1
@@ -835,6 +890,7 @@ func make_alliance(a: int, b: int) -> void:
 		return
 	countries[a].allies.append(b)
 	countries[b].allies.append(a)
+	relation_add(a, b, 20.0)
 	stats.alliances += 1
 	if a == player or b == player:
 		stats.p_alliances += 1
@@ -858,6 +914,7 @@ func break_alliance(a: int, b: int) -> void:
 		return
 	countries[a].allies.erase(b)
 	countries[b].allies.erase(a)
+	relation_add(a, b, -15.0)
 	post_news(Names.alliance_broken(rng, countries[a].name, countries[b].name), -1, "info")
 	if countries[a].alliance >= 0 and countries[a].alliance == countries[b].alliance:
 		bloc_leave(a, true)
@@ -1011,6 +1068,8 @@ func ai_accepts_alliance(ai: int, other: int) -> bool:
 	for e2 in o.enemies:
 		if c.allies.has(e2):
 			return false
+	if relation_of(ai, other) < RELATION_ALLIANCE_MIN:
+		return false
 	var common := false
 	for e in o.enemies:
 		if c.enemies.has(e):
@@ -1293,6 +1352,7 @@ func finish_peace(w, winner: int, annex: Array, terms: Array = []) -> void:
 	countries[b].enemies.erase(a)
 	countries[a].truce[b] = turn + 26
 	countries[b].truce[a] = turn + 26
+	relation_add(a, b, 15.0)
 	# artık savaşta olmadığımız topraklardaki ordular eve döner
 	for arm in armies.values().duplicate():
 		if arm.owner == a or arm.owner == b:
@@ -1514,6 +1574,7 @@ func end_turn() -> void:
 	refresh_stats()
 	_check_elimination()
 	_alliance_decay()
+	_relation_decay()
 	_process_unrest()
 	refresh_stats()
 	t = _tp("stats_unrest", t)
