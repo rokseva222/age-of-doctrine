@@ -1529,7 +1529,7 @@ func show_world_panel(tab: int = 0) -> void:
 			hb.add_child(TK.fill())
 			hb.add_child(_stat_lbl(str(c.prov_owned), 100.0))
 			hb.add_child(_stat_lbl(Macro.money(c.income), 130.0, TK.GOLD))
-			hb.add_child(_stat_lbl(Macro.compact(c.troops), 100.0, TK.MUTED))
+			hb.add_child(_stat_lbl(Macro.compact(c.troops) if gs.troops_known(cid) else "?", 100.0, TK.MUTED))
 			TK.ignore_mouse(hb)
 			b.pressed.connect(func():
 				_click()

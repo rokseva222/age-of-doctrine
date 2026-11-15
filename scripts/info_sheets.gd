@@ -156,6 +156,31 @@ static func open_settings(parent: Node, on_change: Callable, sfx = null) -> void
 	refresh.call()
 	sh.body.add_child(drow)
 	sh.body.add_child(TK.t("Zorluk yeni başlayan oyunlarda geçerlidir.", "small", TK.FAINT))
+	var frow := HBoxContainer.new()
+	frow.add_theme_constant_override("separation", 8)
+	var fl := TK.t("Savaş sisi", "body")
+	fl.custom_minimum_size = Vector2(220, 0)
+	fl.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	frow.add_child(fl)
+	var fbtns: Array = []
+	var fnames := ["Kapalı", "Orta", "Tam"]
+	for i in 3:
+		var fb := TK.button(fnames[i], "", "", Vector2(0, 60), 16)
+		fb.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		fbtns.append(fb)
+		frow.add_child(fb)
+	var frefresh := func():
+		for i in 3:
+			TK.style_button(fbtns[i], "gold" if Settings.fog == i else "ghost")
+	for i in 3:
+		var fidx := i
+		fbtns[i].pressed.connect(func():
+			Settings.fog = fidx
+			frefresh.call()
+			changed.call())
+	frefresh.call()
+	sh.body.add_child(frow)
+	sh.body.add_child(TK.t("Kapalı: tüm orduları görürsün. Orta: yalnızca topraklarına ve müttefiklerine yakın düşman ordularını görürsün. Tam: yalnızca kendi ve müttefik ordularını görürsün; düşman ancak senin topraklarına girince ya da ordunla aynı eyalete gelince görünür.", "small", TK.FAINT))
 	sh.add_button("Emeği Geçenler", func(): open_credits(parent), "ghost", true, "", 220)
 	sh.add_button("Tamam", func(): pass, "gold", true, "check", 180)
 

@@ -2,6 +2,7 @@ extends RefCounted
 ## Oyun durumu ve tüm kurallar: tur akışı, ordular, kuşatma, savaş/barış, yapay zeka, olaylar.
 
 const Model = preload("res://scripts/model.gd")
+const Settings = preload("res://scripts/settings.gd")
 const Names = preload("res://scripts/names.gd")
 const WorldData = preload("res://scripts/world_data.gd")
 const Macro = preload("res://scripts/macro.gd")
@@ -540,6 +541,52 @@ func get_war(a: int, b: int):
 		if (w.a == a and w.b == b) or (w.a == b and w.b == a):
 			return w
 	return null
+
+
+# ------------------------------------------------------------ savaş sisi
+var _fog_key := ""
+var _fog_vis: Dictionary = {}
+
+
+## Savaş sisi: 0 kapalı (herkes görünür), 1 orta (kendi/müttefik toprağına ve ordusuna 1 eyalet yakınlık), 2 tam (yalnızca kendi/müttefik ordusunun bulunduğu eyaletler)
+func _fog_provinces() -> Dictionary:
+	var mode: int = Settings.fog
+	var key := "%d:%d:%d:%d" % [mode, turn, armies.size(), player]
+	if key == _fog_key:
+		return _fog_vis
+	_fog_key = key
+	_fog_vis = {}
+	if player < 0:
+		return _fog_vis
+	for pid in countries[player].held_ids:
+		_fog_vis[pid] = true
+	for a in armies.values():
+		if a.owner == player or is_allied(player, a.owner):
+			_fog_vis[a.prov] = true
+	if mode == 1:
+		var base: Array = _fog_vis.keys()
+		for pid2 in base:
+			for nb in provinces[pid2].neighbors:
+				_fog_vis[nb] = true
+	return _fog_vis
+
+
+## Ordu oyuncuya görünür mü? (kendi, müttefik ve sis kapalıyken hepsi)
+func army_visible(a) -> bool:
+	if Settings.fog == 0 or player < 0:
+		return true
+	if a.owner == player or is_allied(player, a.owner):
+		return true
+	return _fog_provinces().has(a.prov)
+
+
+## Savaş sisi açıkken yabancı ülkenin asker sayısı gösterilmez (orta: yalnızca komşular ve müttefikler)
+func troops_known(cid: int) -> bool:
+	if Settings.fog == 0 or player < 0 or cid == player or is_allied(player, cid):
+		return true
+	if Settings.fog == 1:
+		return neighbor_countries(player).has(cid)
+	return false
 
 
 # ------------------------------------------------------------ ikili ilişkiler

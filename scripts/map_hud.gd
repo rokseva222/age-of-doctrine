@@ -491,6 +491,8 @@ func _draw_armies(gs, z: float, screen: Rect2, font: Font) -> void:
 			near = true
 		if not near and not show_all:
 			continue
+		if not gs.army_visible(a):
+			continue
 		var wp: Vector2 = gs.provinces[a.prov].label_pos
 		var anim = map.army_anim.get(a.id)
 		if anim != null:
