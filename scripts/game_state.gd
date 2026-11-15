@@ -246,7 +246,7 @@ func player_has_nukes() -> bool:
 		return false
 	var nm: String = countries[player].name_en
 	var fam: String = Eras.family()
-	if fam == "ww1":
+	if fam == "ww1" or fam == "pre":
 		return false
 	if fam == "ww2":
 		var ym: Array = Names.year_month(turn)
@@ -361,13 +361,13 @@ func op_available(op: String, prov = null, army_list: Array = [], frac: float = 
 	var fam: String = Eras.family()
 	match op:
 		"air", "paradrop", "special":
-			if fam == "ww1":
+			if fam == "ww1" or fam == "pre":
 				return false
 		"missile", "cyber":
 			if era != "":
 				return false
 		"blitz":
-			if fam == "ww1":
+			if fam == "ww1" or fam == "pre":
 				return false
 	if op == "naval" and prov != null and not prov.coastal:
 		return false

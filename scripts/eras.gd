@@ -313,6 +313,7 @@ static func prepare(id: String) -> void:
 		return
 	Arsenal.set_era(id)
 	Macro.era_on = true
+	Macro.pre_era = family(id) == "pre"
 	var mil: Dictionary = {}
 	var DF: Dictionary = _t("defs", id)
 	for n in DF:
@@ -331,6 +332,7 @@ static func clear() -> void:
 	current = ""
 	Arsenal.set_era("")
 	Macro.era_on = false
+	Macro.pre_era = false
 	Macro.era_mil = {}
 	Names.start_year = 2027
 	Names.start_doy = 0

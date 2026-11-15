@@ -4,6 +4,14 @@ extends RefCounted
 
 const CATS := ["inf", "tank", "afv", "arty", "air", "sub"]
 const CAT_NAME := {"inf": "Piyade Tüfeği", "tank": "Tank", "afv": "Zırhlı Araç", "arty": "Top & Roketatar", "air": "Uçak & İHA", "sub": "Denizaltı"}
+## Çağa göre sınıf adları (silah tablosunun "cat_names" alanı); yoksa modern adlar
+static var cat_names_ovr: Dictionary = {}
+
+
+static func cat_name(k: String) -> String:
+	return String(cat_names_ovr.get(k, CAT_NAME[k]))
+
+
 const CAT_UNIT := {"inf": "1.000 kişilik set", "tank": "adet", "afv": "adet", "arty": "adet", "air": "adet", "sub": "adet"}
 const CAT_STEP := {"inf": 5, "tank": 10, "afv": 20, "arty": 10, "air": 4, "sub": 1}
 # veri tablosundaki ortalama (1.000 asker başına) ağırlıklı referans: güç hesabında normalizasyon
@@ -359,6 +367,7 @@ static func set_era(id: String) -> void:
 		BLOC_OF = BLOC_OF_MODERN
 		TECH_OVR = TECH_MODERN
 		GATE = {}
+		cat_names_ovr = {}
 		return
 	var e: Dictionary = r
 	ITEMS = e["items"]
@@ -368,6 +377,7 @@ static func set_era(id: String) -> void:
 	BLOC_OF = e["bloc_of"]
 	TECH_OVR = e.get("tech", {})
 	GATE = e.get("gate", {})
+	cat_names_ovr = e.get("cat_names", {})
 
 
 static func name_of(id: String) -> String:

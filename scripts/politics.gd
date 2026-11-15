@@ -95,6 +95,8 @@ static func ensure(gs) -> void:
 
 static func _default_regime(name_en: String) -> String:
 	var fam: String = Eras.family()
+	if fam == "pre":
+		return "monarchy"
 	if fam == "ww1" or fam == "ww2" or fam == "cold":
 		var t: Dictionary = ERA[fam]
 		for r in REGIMES:

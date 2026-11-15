@@ -135,7 +135,7 @@ static func components(gs, tgt: int) -> Dictionary:
 	var sab: float = clampf(0.35 + (me.tech - foe.tech) * 1.4 + 0.1 * float(me.doctrine >= 3), 0.0, 1.0)
 	var cyber: float = _share(me.cyber, foe.cyber, 0.4)
 	var fam: String = Eras.family()
-	if fam == "ww1":
+	if fam == "ww1" or fam == "pre":
 		air = 0.0
 		cyber = 0.0
 		sab = 0.0
@@ -147,7 +147,7 @@ static func components(gs, tgt: int) -> Dictionary:
 static func active_weights() -> Dictionary:
 	var w: Dictionary = WEIGHT.duplicate()
 	var fam: String = Eras.family()
-	if fam == "ww1":
+	if fam == "ww1" or fam == "pre":
 		w = {"land": 0.75, "air": 0.0, "sea": 0.25, "sab": 0.0, "cyber": 0.0}
 	elif Eras.current != "":
 		w = {"land": 0.50, "air": 0.25, "sea": 0.15, "sab": 0.10, "cyber": 0.0}

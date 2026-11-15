@@ -28,7 +28,7 @@ static func count(c) -> int:
 
 
 static func available() -> bool:
-	return Eras.family() != "ww1"
+	return Eras.family() != "ww1" and Eras.family() != "pre"
 
 
 static func cost(c) -> float:

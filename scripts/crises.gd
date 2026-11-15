@@ -12,13 +12,13 @@ const MIN_STABILITY := 45.0     # oyuncunun istikrarı bunun altındaysa kriz ba
 
 # inc: gelir kaybı (şiddet 1.0'da), stab: haftalık istikrar kaybı, dur: [en az, en çok] hafta, eras: hangi dönemlerde ("" = modern)
 const KINDS := {
-	"pandemic": {"name": "Küresel Salgın", "icon": "virus", "inc": 0.08, "stab": 0.25, "dur": [10, 16], "eras": ["", "ww1", "ww2"], "role": "hlt",
-		"names": {"ww1": "İspanyol Gribi", "ww2": "Salgın Hastalık"},
+	"pandemic": {"name": "Küresel Salgın", "icon": "virus", "inc": 0.08, "stab": 0.25, "dur": [10, 16], "eras": ["", "ww1", "ww2", "pre"], "role": "hlt",
+		"names": {"ww1": "İspanyol Gribi", "ww2": "Salgın Hastalık", "pre": "Veba Salgını"},
 		"q": "Efendim, ülkeye bir salgın giriyor ve tüm dünyada yayılıyor. Sağlık sistemi zorlanacak. Ne yapalım?"},
 	"crash": {"name": "Küresel Mali Çöküş", "icon": "debt", "inc": 0.09, "stab": 0.22, "dur": [12, 18], "eras": ["", "ww1", "ww2"], "role": "fin",
 		"names": {"ww1": "Mali Panik", "ww2": "Büyük Buhran Artçısı"},
 		"q": "Efendim, borsalar çöküyor ve bankalar sallanıyor. Kriz tüm dünyayı sarıyor. Hazine ne yapsın?"},
-	"famine": {"name": "Kıtlık ve Gıda Krizi", "icon": "wheat", "inc": 0.06, "stab": 0.30, "dur": [10, 15], "eras": ["", "ww1", "ww2"], "role": "int",
+	"famine": {"name": "Kıtlık ve Gıda Krizi", "icon": "wheat", "inc": 0.06, "stab": 0.30, "dur": [10, 15], "eras": ["", "ww1", "ww2", "pre"], "role": "int",
 		"names": {},
 		"q": "Efendim, kuraklık ve nakliye sorunları gıda fiyatlarını uçurdu. Halk ekmek kuyruğunda. Ne yapalım?"},
 	"energy": {"name": "Enerji Şoku", "icon": "oil", "inc": 0.07, "stab": 0.18, "dur": [10, 14], "eras": ["", "ww2"], "role": "fin",
@@ -34,7 +34,7 @@ static func sev_mult(gs) -> float:
 ## Kriz havuzu için çağ ailesi: JSON çağları ("cold" gibi) modern kurallara düşer
 static func _fam() -> String:
 	var f: String = Eras.family()
-	return f if (f == "" or f == "ww1" or f == "ww2") else ""
+	return f if (f == "" or f == "ww1" or f == "ww2" or f == "pre") else ""
 
 
 static func kind_name(kind: String) -> String:

@@ -1,0 +1,3167 @@
+{
+ "id": "ott1520",
+ "name": "Osmanlı Çağı",
+ "sub": "Eylül 1520 – Kanuni Süleyman",
+ "family": "pre",
+ "icon": "crown",
+ "mood": "war",
+ "start_year": 1520,
+ "start_doy": 263,
+ "blurb": "Yavuz Sultan Selim öldü; genç Süleyman tahtta. Habsburglar, Fransa, Safevîler, Moskova, Ming ve Dekkan sultanlıkları dünyayı paylaşıyor. Yeniçeri fitilli tüfekleri, kuşatma topları ve kadırgalarla bir imparatorluğun çağı başlıyor.",
+ "suggest": [
+  "Turkey",
+  "Spain",
+  "Iran",
+  "France",
+  "Poland",
+  "Russia",
+  "Italy",
+  "China",
+  "Hungary",
+  "Uzbekistan"
+ ],
+ "look": {
+  "shadow": [
+   0.1,
+   0.07,
+   0.04
+  ],
+  "mid": [
+   0.58,
+   0.44,
+   0.26
+  ],
+  "light": [
+   0.97,
+   0.89,
+   0.7
+  ],
+  "amount": 0.42,
+  "vignette": 0.2,
+  "grain": 0.014
+ },
+ "arsenal": {
+  "items": {
+   "i_levy": [
+    "Köylü Mızraklı Milis",
+    "inf",
+    "Poland",
+    1,
+    0.08,
+    true
+   ],
+   "i_azap": [
+    "Azap Yaylı Piyadesi",
+    "inf",
+    "Turkey",
+    1,
+    0.12,
+    true
+   ],
+   "i_pike": [
+    "Pike ve Kılıç Piyadesi",
+    "inf",
+    "Germany",
+    2,
+    0.22,
+    true
+   ],
+   "i_jani": [
+    "Yeniçeri Ocağı (Fitilli Tüfek)",
+    "inf",
+    "Turkey",
+    3,
+    0.42,
+    true
+   ],
+   "i_jani2": [
+    "Yeniçeri Tüfek + Humbara Bölükleri",
+    "inf",
+    "Turkey",
+    4,
+    0.55,
+    true
+   ],
+   "i_lands": [
+    "Landsknecht (Pike + Arkebüz)",
+    "inf",
+    "Germany",
+    3,
+    0.38,
+    true
+   ],
+   "i_tercio": [
+    "Tercio",
+    "inf",
+    "Spain",
+    4,
+    0.52,
+    true
+   ],
+   "i_swiss": [
+    "İsviçre Pikecileri",
+    "inf",
+    "Switzerland",
+    3,
+    0.33,
+    true
+   ],
+   "i_arqfr": [
+    "Arkebüzcü Bölükleri",
+    "inf",
+    "France",
+    3,
+    0.36,
+    true
+   ],
+   "i_longbow": [
+    "Uzun Yay Okçuları",
+    "inf",
+    "United Kingdom",
+    2,
+    0.18,
+    true
+   ],
+   "i_kizil": [
+    "Kızılbaş Piyadesi",
+    "inf",
+    "Iran",
+    2,
+    0.18,
+    true
+   ],
+   "i_tofang": [
+    "Tofangçi Tüfekçileri",
+    "inf",
+    "Iran",
+    3,
+    0.36,
+    true
+   ],
+   "i_ming": [
+    "Ming Mızrak ve Kılıç Piyadesi",
+    "inf",
+    "China",
+    2,
+    0.18,
+    true
+   ],
+   "i_mingf": [
+    "Ming Ateşli Silah Birlikleri",
+    "inf",
+    "China",
+    3,
+    0.34,
+    true
+   ],
+   "i_ashig": [
+    "Aşigaru (Mızrak + Tanegashima)",
+    "inf",
+    "Japan",
+    3,
+    0.3,
+    true
+   ],
+   "i_tribal": [
+    "Kabile Savaşçıları",
+    "inf",
+    "Ethiopia",
+    1,
+    0.06,
+    true
+   ],
+   "i_bow2": [
+    "Kompozit Yaylı Piyade",
+    "inf",
+    "India",
+    2,
+    0.14,
+    true
+   ],
+   "i_mughal": [
+    "Babürlü Tüfekçiler",
+    "inf",
+    "Afghanistan",
+    3,
+    0.38,
+    true
+   ],
+   "t_sipahi": [
+    "Tımarlı Sipahi",
+    "tank",
+    "Turkey",
+    2,
+    0.02,
+    true
+   ],
+   "t_kapikulu": [
+    "Kapıkulu Süvarisi",
+    "tank",
+    "Turkey",
+    3,
+    0.032,
+    true
+   ],
+   "t_knight": [
+    "Zırhlı Şövalye Süvarisi",
+    "tank",
+    "France",
+    2,
+    0.025,
+    true
+   ],
+   "t_gend": [
+    "Gendarmes (Ağır Şövalye)",
+    "tank",
+    "France",
+    3,
+    0.036,
+    true
+   ],
+   "t_reiter": [
+    "Reiter (Tabancalı Süvari)",
+    "tank",
+    "Germany",
+    3,
+    0.03,
+    true
+   ],
+   "t_hussar": [
+    "Kanatlı Hussar",
+    "tank",
+    "Poland",
+    3,
+    0.03,
+    true
+   ],
+   "t_kizilc": [
+    "Kızılbaş Ağır Süvarisi",
+    "tank",
+    "Iran",
+    2,
+    0.022,
+    true
+   ],
+   "t_ming_c": [
+    "Ming Zırhlı Süvarisi",
+    "tank",
+    "China",
+    2,
+    0.02,
+    true
+   ],
+   "t_samurai": [
+    "Samuray Süvarisi",
+    "tank",
+    "Japan",
+    2,
+    0.022,
+    true
+   ],
+   "t_boyar": [
+    "Boyar Atlıları",
+    "tank",
+    "Russia",
+    2,
+    0.018,
+    true
+   ],
+   "t_eleph": [
+    "Savaş Fili Birlikleri",
+    "tank",
+    "India",
+    2,
+    0.05,
+    true
+   ],
+   "t_tribe_c": [
+    "Kabile Süvari Mızraklıları",
+    "tank",
+    "Mongolia",
+    1,
+    0.01,
+    true
+   ],
+   "a_akinci": [
+    "Akıncı Süvarisi",
+    "afv",
+    "Turkey",
+    1,
+    0.008,
+    true
+   ],
+   "a_deli": [
+    "Deli ve Tatar Atlıları",
+    "afv",
+    "Turkey",
+    2,
+    0.01,
+    true
+   ],
+   "a_hussar_l": [
+    "Hafif Hussar",
+    "afv",
+    "Hungary",
+    2,
+    0.01,
+    true
+   ],
+   "a_strad": [
+    "Stradyot Hafif Süvarisi",
+    "afv",
+    "Italy",
+    2,
+    0.01,
+    true
+   ],
+   "a_horsearch": [
+    "Atlı Okçular",
+    "afv",
+    "Mongolia",
+    1,
+    0.006,
+    true
+   ],
+   "a_tatar": [
+    "Kırım Tatar Süvarisi",
+    "afv",
+    "Ukraine",
+    2,
+    0.008,
+    true
+   ],
+   "a_ming_l": [
+    "Ming Hafif Süvarisi",
+    "afv",
+    "China",
+    1,
+    0.007,
+    true
+   ],
+   "a_rajput": [
+    "Racput Süvarisi",
+    "afv",
+    "India",
+    2,
+    0.01,
+    true
+   ],
+   "y_catap": [
+    "Mancınık ve Kuşatma Kuleleri",
+    "arty",
+    "Germany",
+    1,
+    0.05,
+    true
+   ],
+   "y_bombard": [
+    "Şahi Bombardı",
+    "arty",
+    "Turkey",
+    2,
+    0.15,
+    true
+   ],
+   "y_darb": [
+    "Darbzen Saha Topu",
+    "arty",
+    "Turkey",
+    3,
+    0.22,
+    true
+   ],
+   "y_basil": [
+    "Balyemez (Ağır Duvar Kıran Top)",
+    "arty",
+    "Turkey",
+    4,
+    0.4,
+    true
+   ],
+   "y_culv": [
+    "Kulevrin",
+    "arty",
+    "France",
+    3,
+    0.2,
+    true
+   ],
+   "y_falc": [
+    "Falkonet ve Sakr",
+    "arty",
+    "Germany",
+    3,
+    0.15,
+    true
+   ],
+   "y_rocket": [
+    "Ateşli Ok ve Roketler",
+    "arty",
+    "China",
+    1,
+    0.06,
+    true
+   ],
+   "y_fo": [
+    "Fo-lang-chi Topu",
+    "arty",
+    "China",
+    3,
+    0.18,
+    true
+   ],
+   "s_dhow": [
+    "Kürekli Savaş Gemisi / Dhow",
+    "sub",
+    "Oman",
+    1,
+    0.5,
+    true
+   ],
+   "s_galley": [
+    "Kadırga",
+    "sub",
+    "Turkey",
+    1,
+    0.8,
+    true
+   ],
+   "s_cog": [
+    "Kogge Savaş Gemisi",
+    "sub",
+    "Denmark",
+    1,
+    0.6,
+    true
+   ],
+   "s_carrack": [
+    "Karaka",
+    "sub",
+    "Portugal",
+    2,
+    1.2,
+    true
+   ],
+   "s_kalite": [
+    "Kalite / Kalyon",
+    "sub",
+    "Turkey",
+    3,
+    1.4,
+    true
+   ],
+   "s_galleass": [
+    "Galyas",
+    "sub",
+    "Italy",
+    3,
+    1.6,
+    true
+   ],
+   "s_galleon": [
+    "Galyon",
+    "sub",
+    "Spain",
+    4,
+    2.5,
+    true
+   ],
+   "s_junk": [
+    "Savaş Cunk'ı",
+    "sub",
+    "China",
+    2,
+    0.8,
+    true
+   ],
+   "f_none": [
+    "—",
+    "air",
+    "Turkey",
+    1,
+    0.0,
+    false
+   ]
+  },
+  "bloc": {
+   "tr": {
+    "inf": [
+     "i_azap",
+     "i_azap",
+     "i_jani",
+     "i_jani2"
+    ],
+    "tank": [
+     "t_sipahi",
+     "t_sipahi",
+     "t_kapikulu",
+     "t_kapikulu"
+    ],
+    "afv": [
+     "a_akinci",
+     "a_akinci",
+     "a_deli",
+     "a_deli"
+    ],
+    "arty": [
+     "y_bombard",
+     "y_bombard",
+     "y_darb",
+     "y_basil"
+    ],
+    "air": [
+     "f_none",
+     "f_none",
+     "f_none",
+     "f_none"
+    ],
+    "sub": [
+     "s_galley",
+     "s_galley",
+     "s_kalite",
+     "s_kalite"
+    ]
+   },
+   "eu": {
+    "inf": [
+     "i_levy",
+     "i_pike",
+     "i_lands",
+     "i_tercio"
+    ],
+    "tank": [
+     "t_knight",
+     "t_knight",
+     "t_gend",
+     "t_reiter"
+    ],
+    "afv": [
+     "a_strad",
+     "a_strad",
+     "a_hussar_l",
+     "a_hussar_l"
+    ],
+    "arty": [
+     "y_catap",
+     "y_falc",
+     "y_culv",
+     "y_culv"
+    ],
+    "air": [
+     "f_none",
+     "f_none",
+     "f_none",
+     "f_none"
+    ],
+    "sub": [
+     "s_cog",
+     "s_carrack",
+     "s_galleass",
+     "s_galleon"
+    ]
+   },
+   "ir": {
+    "inf": [
+     "i_kizil",
+     "i_kizil",
+     "i_tofang",
+     "i_tofang"
+    ],
+    "tank": [
+     "t_kizilc",
+     "t_kizilc",
+     "t_kizilc",
+     "t_kizilc"
+    ],
+    "afv": [
+     "a_horsearch",
+     "a_tatar",
+     "a_rajput",
+     "a_deli"
+    ],
+    "arty": [
+     "y_catap",
+     "y_bombard",
+     "y_bombard",
+     "y_darb"
+    ],
+    "air": [
+     "f_none",
+     "f_none",
+     "f_none",
+     "f_none"
+    ],
+    "sub": [
+     "s_dhow",
+     "s_dhow",
+     "s_galley",
+     "s_galley"
+    ]
+   },
+   "as": {
+    "inf": [
+     "i_ming",
+     "i_ming",
+     "i_mingf",
+     "i_ashig"
+    ],
+    "tank": [
+     "t_ming_c",
+     "t_samurai",
+     "t_ming_c",
+     "t_samurai"
+    ],
+    "afv": [
+     "a_ming_l",
+     "a_ming_l",
+     "a_horsearch",
+     "a_horsearch"
+    ],
+    "arty": [
+     "y_rocket",
+     "y_rocket",
+     "y_fo",
+     "y_fo"
+    ],
+    "air": [
+     "f_none",
+     "f_none",
+     "f_none",
+     "f_none"
+    ],
+    "sub": [
+     "s_junk",
+     "s_junk",
+     "s_junk",
+     "s_junk"
+    ]
+   },
+   "ot": {
+    "inf": [
+     "i_tribal",
+     "i_bow2",
+     "i_bow2",
+     "i_levy"
+    ],
+    "tank": [
+     "t_tribe_c",
+     "t_tribe_c",
+     "t_tribe_c",
+     "t_tribe_c"
+    ],
+    "afv": [
+     "a_horsearch",
+     "a_horsearch",
+     "a_tatar",
+     "a_tatar"
+    ],
+    "arty": [
+     "y_catap",
+     "y_catap",
+     "y_rocket",
+     "y_rocket"
+    ],
+    "air": [
+     "f_none",
+     "f_none",
+     "f_none",
+     "f_none"
+    ],
+    "sub": [
+     "s_dhow",
+     "s_dhow",
+     "s_dhow",
+     "s_dhow"
+    ]
+   }
+  },
+  "family": {
+   "Poland": {
+    "tank": [
+     "t_hussar",
+     "t_hussar",
+     "t_hussar",
+     "t_hussar"
+    ],
+    "afv": [
+     "a_hussar_l",
+     "a_hussar_l",
+     "a_hussar_l",
+     "a_hussar_l"
+    ]
+   },
+   "Russia": {
+    "tank": [
+     "t_boyar",
+     "t_boyar",
+     "t_boyar",
+     "t_boyar"
+    ],
+    "afv": [
+     "a_tatar",
+     "a_tatar",
+     "a_tatar",
+     "a_tatar"
+    ]
+   },
+   "Japan": {
+    "inf": [
+     "i_ming",
+     "i_ming",
+     "i_ashig",
+     "i_ashig"
+    ],
+    "tank": [
+     "t_samurai",
+     "t_samurai",
+     "t_samurai",
+     "t_samurai"
+    ]
+   },
+   "India": {
+    "inf": [
+     "i_bow2",
+     "i_bow2",
+     "i_bow2",
+     "i_bow2"
+    ],
+    "tank": [
+     "t_eleph",
+     "t_eleph",
+     "t_eleph",
+     "t_eleph"
+    ],
+    "afv": [
+     "a_rajput",
+     "a_rajput",
+     "a_rajput",
+     "a_rajput"
+    ]
+   },
+   "Afghanistan": {
+    "inf": [
+     "i_bow2",
+     "i_bow2",
+     "i_mughal",
+     "i_mughal"
+    ],
+    "afv": [
+     "a_horsearch",
+     "a_horsearch",
+     "a_rajput",
+     "a_rajput"
+    ]
+   },
+   "Mongolia": {
+    "tank": [
+     "t_tribe_c",
+     "t_tribe_c",
+     "t_tribe_c",
+     "t_tribe_c"
+    ],
+    "afv": [
+     "a_horsearch",
+     "a_horsearch",
+     "a_horsearch",
+     "a_horsearch"
+    ]
+   },
+   "Kazakhstan": {
+    "afv": [
+     "a_horsearch",
+     "a_horsearch",
+     "a_horsearch",
+     "a_horsearch"
+    ]
+   },
+   "Uzbekistan": {
+    "inf": [
+     "i_kizil",
+     "i_kizil",
+     "i_kizil",
+     "i_tofang"
+    ],
+    "afv": [
+     "a_horsearch",
+     "a_horsearch",
+     "a_horsearch",
+     "a_horsearch"
+    ]
+   },
+   "United Kingdom": {
+    "inf": [
+     "i_longbow",
+     "i_longbow",
+     "i_pike",
+     "i_pike"
+    ]
+   },
+   "Switzerland": {
+    "inf": [
+     "i_swiss",
+     "i_swiss",
+     "i_swiss",
+     "i_swiss"
+    ]
+   },
+   "Ethiopia": {
+    "inf": [
+     "i_tribal",
+     "i_tribal",
+     "i_tribal",
+     "i_tribal"
+    ]
+   }
+  },
+  "bloc_of": {
+   "Turkey": "tr",
+   "Algeria": "tr",
+   "Egypt": "tr",
+   "Tunisia": "tr",
+   "Spain": "eu",
+   "Germany": "eu",
+   "France": "eu",
+   "Italy": "eu",
+   "Poland": "eu",
+   "Hungary": "eu",
+   "Russia": "eu",
+   "Portugal": "eu",
+   "United Kingdom": "eu",
+   "Denmark": "eu",
+   "Sweden": "eu",
+   "Switzerland": "eu",
+   "Romania": "eu",
+   "Latvia": "eu",
+   "Malta": "eu",
+   "Georgia": "eu",
+   "Ukraine": "ir",
+   "Iran": "ir",
+   "Uzbekistan": "ir",
+   "Afghanistan": "ir",
+   "India": "ir",
+   "Kazakhstan": "ir",
+   "Pakistan": "ir",
+   "Sri Lanka": "ir",
+   "Bangladesh": "ir",
+   "Oman": "ir",
+   "United Arab Emirates": "ir",
+   "Saudi Arabia": "ir",
+   "Yemen": "ir",
+   "Moldova": "ir",
+   "China": "as",
+   "Japan": "as",
+   "South Korea": "as",
+   "Vietnam": "as",
+   "Thailand": "as",
+   "Myanmar": "as",
+   "Indonesia": "as",
+   "Malaysia": "as",
+   "Cambodia": "as",
+   "Laos": "as",
+   "Philippines": "as",
+   "Mongolia": "ir",
+   "Bhutan": "as"
+  },
+  "tech": {
+   "Turkey": 0.58,
+   "Spain": 0.52,
+   "France": 0.48,
+   "Germany": 0.46,
+   "Italy": 0.52,
+   "China": 0.5,
+   "Iran": 0.38,
+   "Poland": 0.32,
+   "Russia": 0.3,
+   "Japan": 0.36,
+   "India": 0.28,
+   "Hungary": 0.34,
+   "United Kingdom": 0.36,
+   "Portugal": 0.44,
+   "Afghanistan": 0.34,
+   "Uzbekistan": 0.3,
+   "Algeria": 0.42,
+   "Switzerland": 0.4
+  },
+  "new": [
+   "i_jani2",
+   "i_tercio",
+   "y_basil",
+   "s_galleon",
+   "i_mughal",
+   "i_ashig",
+   "s_kalite",
+   "y_darb",
+   "t_reiter",
+   "t_gend",
+   "s_galleass",
+   "i_tofang",
+   "y_fo",
+   "i_mingf"
+  ],
+  "gate": {
+   "i_jani2": 100,
+   "i_tercio": 60,
+   "y_basil": 90,
+   "s_galleon": 140,
+   "i_mughal": 30,
+   "i_ashig": 1100,
+   "s_kalite": 40,
+   "y_darb": 20,
+   "t_reiter": 90,
+   "t_gend": 20,
+   "s_galleass": 30,
+   "i_tofang": 40,
+   "y_fo": 20,
+   "i_mingf": 10
+  },
+  "cat_names": {
+   "inf": "Piyade",
+   "tank": "Ağır Süvari",
+   "afv": "Hafif Süvari",
+   "arty": "Top ve Kuşatma",
+   "air": "—",
+   "sub": "Savaş Gemisi"
+  }
+ },
+ "absorb": {
+  "Turkey": [
+   "Greece",
+   "Bulgaria",
+   "Serbia",
+   "North Macedonia",
+   "Albania",
+   "Bosnia and Herz.",
+   "Kosovo",
+   "Montenegro",
+   "Syria",
+   "Lebanon",
+   "Israel",
+   "Palestine",
+   "Jordan",
+   "Egypt"
+  ],
+  "Spain": [
+   "Austria",
+   "Slovenia",
+   "Netherlands",
+   "Belgium",
+   "Luxembourg",
+   "Andorra",
+   "Liechtenstein"
+  ],
+  "Italy": [
+   "Cyprus",
+   "N. Cyprus",
+   "San Marino",
+   "Monaco"
+  ],
+  "Portugal": [
+   "Cabo Verde",
+   "São Tomé and Principe",
+   "Guinea-Bissau"
+  ],
+  "Denmark": [
+   "Norway",
+   "Iceland",
+   "Greenland"
+  ],
+  "Sweden": [
+   "Finland"
+  ],
+  "Poland": [
+   "Lithuania",
+   "Belarus"
+  ],
+  "Hungary": [
+   "Slovakia",
+   "Croatia",
+   "Czechia"
+  ],
+  "Latvia": [
+   "Estonia"
+  ],
+  "Romania": [
+   "Moldova"
+  ],
+  "Iran": [
+   "Iraq",
+   "Azerbaijan",
+   "Armenia"
+  ],
+  "Uzbekistan": [
+   "Tajikistan",
+   "Turkmenistan"
+  ],
+  "Kazakhstan": [
+   "Kyrgyzstan"
+  ],
+  "United Arab Emirates": [
+   "Qatar",
+   "Bahrain",
+   "Kuwait"
+  ],
+  "Tunisia": [
+   "Libya"
+  ],
+  "Morocco": [
+   "W. Sahara"
+  ],
+  "South Korea": [
+   "North Korea"
+  ],
+  "Malaysia": [
+   "Singapore"
+  ],
+  "Indonesia": [
+   "Timor-Leste"
+  ],
+  "Papua New Guinea": [
+   "Solomon Is.",
+   "Vanuatu",
+   "Fiji",
+   "Micronesia",
+   "Marshall Is.",
+   "Palau",
+   "Nauru",
+   "Kiribati",
+   "Tuvalu",
+   "Samoa",
+   "Tonga"
+  ],
+  "Australia": [
+   "New Zealand"
+  ],
+  "Ethiopia": [
+   "Eritrea"
+  ],
+  "Somalia": [
+   "Somaliland",
+   "Djibouti"
+  ],
+  "Sudan": [
+   "S. Sudan"
+  ],
+  "Chad": [
+   "Central African Rep."
+  ],
+  "Mali": [
+   "Mauritania",
+   "Burkina Faso",
+   "Niger",
+   "Guinea",
+   "Gambia",
+   "Senegal",
+   "Sierra Leone",
+   "Liberia"
+  ],
+  "Nigeria": [
+   "Cameroon",
+   "Benin",
+   "Togo"
+  ],
+  "Ghana": [
+   "Côte d'Ivoire"
+  ],
+  "Dem. Rep. Congo": [
+   "Congo",
+   "Gabon",
+   "Angola",
+   "Eq. Guinea"
+  ],
+  "Tanzania": [
+   "Kenya",
+   "Comoros"
+  ],
+  "Uganda": [
+   "Rwanda",
+   "Burundi"
+  ],
+  "Zimbabwe": [
+   "Mozambique",
+   "Zambia",
+   "Malawi",
+   "Botswana",
+   "Namibia",
+   "South Africa",
+   "Lesotho",
+   "eSwatini"
+  ],
+  "Madagascar": [
+   "Mauritius",
+   "Seychelles"
+  ],
+  "Guatemala": [
+   "Belize",
+   "Honduras",
+   "El Salvador",
+   "Nicaragua",
+   "Costa Rica",
+   "Panama"
+  ],
+  "Peru": [
+   "Ecuador",
+   "Bolivia",
+   "Chile"
+  ],
+  "Colombia": [
+   "Venezuela",
+   "Guyana",
+   "Suriname"
+  ],
+  "Brazil": [
+   "Paraguay",
+   "Uruguay",
+   "Argentina"
+  ],
+  "Cuba": [
+   "Haiti",
+   "Dominican Rep.",
+   "Jamaica",
+   "Bahamas",
+   "Barbados",
+   "Trinidad and Tobago",
+   "Antigua and Barb.",
+   "Dominica",
+   "Grenada",
+   "Saint Lucia",
+   "St. Kitts and Nevis",
+   "St. Vin. and Gren."
+  ]
+ },
+ "split": [
+  [
+   545,
+   "Italy",
+   "Spain",
+   "own"
+  ],
+  [
+   541,
+   "Italy",
+   "Spain",
+   "own"
+  ],
+  [
+   542,
+   "Italy",
+   "Spain",
+   "own"
+  ],
+  [
+   543,
+   "Italy",
+   "Spain",
+   "own"
+  ],
+  [
+   544,
+   "Italy",
+   "Spain",
+   "own"
+  ],
+  [
+   555,
+   "Italy",
+   "Spain",
+   "own"
+  ],
+  [
+   547,
+   "Italy",
+   "Spain",
+   "own"
+  ],
+  [
+   548,
+   "Italy",
+   "Spain",
+   "own"
+  ],
+  [
+   835,
+   "Saudi Arabia",
+   "Turkey",
+   "own"
+  ],
+  [
+   836,
+   "Saudi Arabia",
+   "Turkey",
+   "own"
+  ],
+  [
+   55,
+   "India",
+   "Portugal",
+   "own"
+  ],
+  [
+   56,
+   "India",
+   "Sri Lanka",
+   "own"
+  ],
+  [
+   57,
+   "India",
+   "Sri Lanka",
+   "own"
+  ],
+  [
+   58,
+   "India",
+   "Sri Lanka",
+   "own"
+  ],
+  [
+   59,
+   "India",
+   "Sri Lanka",
+   "own"
+  ],
+  [
+   51,
+   "India",
+   "Sri Lanka",
+   "own"
+  ],
+  [
+   66,
+   "India",
+   "Nepal",
+   "own"
+  ],
+  [
+   54,
+   "India",
+   "Nepal",
+   "own"
+  ],
+  [
+   36,
+   "India",
+   "Bangladesh",
+   "own"
+  ],
+  [
+   940,
+   "Nepal",
+   "Bhutan",
+   "own"
+  ],
+  [
+   941,
+   "Nepal",
+   "Bhutan",
+   "own"
+  ],
+  [
+   942,
+   "Nepal",
+   "Bhutan",
+   "own"
+  ],
+  [
+   943,
+   "Nepal",
+   "Bhutan",
+   "own"
+  ],
+  [
+   944,
+   "Nepal",
+   "Bhutan",
+   "own"
+  ],
+  [
+   945,
+   "Nepal",
+   "Bhutan",
+   "own"
+  ],
+  [
+   946,
+   "Nepal",
+   "Bhutan",
+   "own"
+  ],
+  [
+   947,
+   "Nepal",
+   "Bhutan",
+   "own"
+  ],
+  [
+   948,
+   "Nepal",
+   "Bhutan",
+   "own"
+  ],
+  [
+   949,
+   "Nepal",
+   "Bhutan",
+   "own"
+  ],
+  [
+   950,
+   "Nepal",
+   "Bhutan",
+   "own"
+  ],
+  [
+   1,
+   "China",
+   "Bhutan",
+   "own"
+  ],
+  [
+   25,
+   "China",
+   "Bhutan",
+   "own"
+  ],
+  [
+   682,
+   "Ukraine",
+   "Poland",
+   "own"
+  ],
+  [
+   683,
+   "Ukraine",
+   "Poland",
+   "own"
+  ],
+  [
+   684,
+   "Ukraine",
+   "Poland",
+   "own"
+  ],
+  [
+   685,
+   "Ukraine",
+   "Poland",
+   "own"
+  ],
+  [
+   686,
+   "Ukraine",
+   "Poland",
+   "own"
+  ],
+  [
+   688,
+   "Ukraine",
+   "Poland",
+   "own"
+  ],
+  [
+   689,
+   "Ukraine",
+   "Poland",
+   "own"
+  ],
+  [
+   227,
+   "Russia",
+   "Kazakhstan",
+   "own"
+  ],
+  [
+   229,
+   "Russia",
+   "Kazakhstan",
+   "own"
+  ],
+  [
+   230,
+   "Russia",
+   "Kazakhstan",
+   "own"
+  ],
+  [
+   235,
+   "Russia",
+   "Kazakhstan",
+   "own"
+  ],
+  [
+   236,
+   "Russia",
+   "Kazakhstan",
+   "own"
+  ],
+  [
+   237,
+   "Russia",
+   "Kazakhstan",
+   "own"
+  ],
+  [
+   238,
+   "Russia",
+   "Kazakhstan",
+   "own"
+  ],
+  [
+   239,
+   "Russia",
+   "Kazakhstan",
+   "own"
+  ],
+  [
+   240,
+   "Russia",
+   "Kazakhstan",
+   "own"
+  ],
+  [
+   241,
+   "Russia",
+   "Kazakhstan",
+   "own"
+  ],
+  [
+   242,
+   "Russia",
+   "Kazakhstan",
+   "own"
+  ],
+  [
+   243,
+   "Russia",
+   "Kazakhstan",
+   "own"
+  ],
+  [
+   244,
+   "Russia",
+   "Kazakhstan",
+   "own"
+  ],
+  [
+   245,
+   "Russia",
+   "Kazakhstan",
+   "own"
+  ],
+  [
+   246,
+   "Russia",
+   "Kazakhstan",
+   "own"
+  ],
+  [
+   247,
+   "Russia",
+   "Kazakhstan",
+   "own"
+  ],
+  [
+   248,
+   "Russia",
+   "Kazakhstan",
+   "own"
+  ],
+  [
+   249,
+   "Russia",
+   "Kazakhstan",
+   "own"
+  ],
+  [
+   250,
+   "Russia",
+   "Kazakhstan",
+   "own"
+  ],
+  [
+   251,
+   "Russia",
+   "Kazakhstan",
+   "own"
+  ],
+  [
+   252,
+   "Russia",
+   "Kazakhstan",
+   "own"
+  ],
+  [
+   253,
+   "Russia",
+   "Kazakhstan",
+   "own"
+  ],
+  [
+   254,
+   "Russia",
+   "Kazakhstan",
+   "own"
+  ],
+  [
+   256,
+   "Russia",
+   "Kazakhstan",
+   "own"
+  ],
+  [
+   259,
+   "Russia",
+   "Kazakhstan",
+   "own"
+  ],
+  [
+   260,
+   "Russia",
+   "Kazakhstan",
+   "own"
+  ],
+  [
+   261,
+   "Russia",
+   "Kazakhstan",
+   "own"
+  ],
+  [
+   262,
+   "Russia",
+   "Kazakhstan",
+   "own"
+  ],
+  [
+   263,
+   "Russia",
+   "Kazakhstan",
+   "own"
+  ],
+  [
+   264,
+   "Russia",
+   "Kazakhstan",
+   "own"
+  ],
+  [
+   265,
+   "Russia",
+   "Kazakhstan",
+   "own"
+  ],
+  [
+   266,
+   "Russia",
+   "Kazakhstan",
+   "own"
+  ],
+  [
+   267,
+   "Russia",
+   "Kazakhstan",
+   "own"
+  ],
+  [
+   268,
+   "Russia",
+   "Kazakhstan",
+   "own"
+  ],
+  [
+   270,
+   "Russia",
+   "Kazakhstan",
+   "own"
+  ],
+  [
+   280,
+   "Russia",
+   "Kazakhstan",
+   "own"
+  ],
+  [
+   281,
+   "Russia",
+   "Kazakhstan",
+   "own"
+  ]
+ ],
+ "capital": {
+  "Turkey": 423,
+  "Iran": 459,
+  "Russia": 277,
+  "Sri Lanka": 59,
+  "Nepal": 66,
+  "Bhutan": 1,
+  "Bangladesh": 36,
+  "Ukraine": 693,
+  "Poland": 689
+ },
+ "defs": {
+  "Turkey": {
+   "name": "Osmanlı Devleti",
+   "color": "b83a3a",
+   "leader": "Padişah|I. Süleyman",
+   "gdp": 60,
+   "mil": {
+    "personnel": 150000,
+    "tank": 25000,
+    "afv": 40000,
+    "arty": 600,
+    "air": 0,
+    "sub": 250
+   }
+  },
+  "Spain": {
+   "name": "Habsburg Hanedanı",
+   "color": "c9a227",
+   "leader": "İmparator|V. Karl",
+   "gdp": 70,
+   "mil": {
+    "personnel": 120000,
+    "tank": 14000,
+    "afv": 8000,
+    "arty": 900,
+    "air": 0,
+    "sub": 220
+   }
+  },
+  "France": {
+   "name": "Fransa Krallığı",
+   "color": "4f74b8",
+   "leader": "Kral|I. François",
+   "gdp": 55,
+   "mil": {
+    "personnel": 90000,
+    "tank": 16000,
+    "afv": 6000,
+    "arty": 700,
+    "air": 0,
+    "sub": 120
+   }
+  },
+  "Germany": {
+   "name": "Kutsal Roma Prenslikleri",
+   "color": "8e8a7a",
+   "leader": "Seçmen Prens|Bilge Frederik",
+   "gdp": 45,
+   "mil": {
+    "personnel": 70000,
+    "tank": 9000,
+    "afv": 3000,
+    "arty": 500,
+    "air": 0,
+    "sub": 20
+   }
+  },
+  "Switzerland": {
+   "name": "İsviçre Konfederasyonu",
+   "color": "d04a4a",
+   "leader": "Landammann|Kantonlar Meclisi",
+   "gdp": 8,
+   "mil": {
+    "personnel": 25000,
+    "tank": 500,
+    "afv": 200,
+    "arty": 60,
+    "air": 0,
+    "sub": 0
+   }
+  },
+  "Italy": {
+   "name": "İtalyan Devletleri",
+   "color": "5f9c6a",
+   "leader": "Doge|Antonio Grimani",
+   "gdp": 50,
+   "mil": {
+    "personnel": 60000,
+    "tank": 8000,
+    "afv": 5000,
+    "arty": 500,
+    "air": 0,
+    "sub": 260
+   }
+  },
+  "Malta": {
+   "name": "Aziz Yuhanna Şövalyeleri",
+   "color": "c0392b",
+   "leader": "Büyük Üstat|Villiers de L'Isle-Adam",
+   "gdp": 3,
+   "mil": {
+    "personnel": 6000,
+    "tank": 600,
+    "afv": 0,
+    "arty": 120,
+    "air": 0,
+    "sub": 30
+   }
+  },
+  "Portugal": {
+   "name": "Portekiz Krallığı",
+   "color": "2f6f4f",
+   "leader": "Kral|I. Manuel",
+   "gdp": 14,
+   "mil": {
+    "personnel": 30000,
+    "tank": 3000,
+    "afv": 1500,
+    "arty": 400,
+    "air": 0,
+    "sub": 190
+   }
+  },
+  "United Kingdom": {
+   "name": "İngiltere Krallığı",
+   "color": "d98ca0",
+   "leader": "Kral|VIII. Henry",
+   "gdp": 20,
+   "mil": {
+    "personnel": 30000,
+    "tank": 4000,
+    "afv": 1500,
+    "arty": 250,
+    "air": 0,
+    "sub": 80
+   }
+  },
+  "Ireland": {
+   "name": "İrlanda Lordlukları",
+   "color": "3f8a4f",
+   "leader": "Lord|Gaelik Beyler",
+   "gdp": 3,
+   "mil": {
+    "personnel": 12000,
+    "tank": 800,
+    "afv": 500,
+    "arty": 0,
+    "air": 0,
+    "sub": 0
+   }
+  },
+  "Denmark": {
+   "name": "Danimarka-Norveç",
+   "color": "b04545",
+   "leader": "Kral|II. Christian",
+   "gdp": 12,
+   "mil": {
+    "personnel": 25000,
+    "tank": 2500,
+    "afv": 800,
+    "arty": 250,
+    "air": 0,
+    "sub": 60
+   }
+  },
+  "Sweden": {
+   "name": "İsveç",
+   "color": "3c6fb0",
+   "leader": "Naip|Sten Sture",
+   "gdp": 6,
+   "mil": {
+    "personnel": 18000,
+    "tank": 1500,
+    "afv": 500,
+    "arty": 150,
+    "air": 0,
+    "sub": 30
+   }
+  },
+  "Poland": {
+   "name": "Polonya-Litvanya",
+   "color": "b04a4a",
+   "leader": "Kral|I. Zygmunt",
+   "gdp": 22,
+   "mil": {
+    "personnel": 50000,
+    "tank": 9000,
+    "afv": 12000,
+    "arty": 300,
+    "air": 0,
+    "sub": 0
+   }
+  },
+  "Hungary": {
+   "name": "Macaristan ve Bohemya",
+   "color": "7a5aa0",
+   "leader": "Kral|II. Lajos",
+   "gdp": 18,
+   "mil": {
+    "personnel": 40000,
+    "tank": 7000,
+    "afv": 8000,
+    "arty": 300,
+    "air": 0,
+    "sub": 10
+   }
+  },
+  "Russia": {
+   "name": "Moskova Büyük Knezliği",
+   "color": "5a7a4a",
+   "leader": "Büyük Knez|III. Vasili",
+   "gdp": 16,
+   "mil": {
+    "personnel": 60000,
+    "tank": 12000,
+    "afv": 8000,
+    "arty": 250,
+    "air": 0,
+    "sub": 0
+   }
+  },
+  "Latvia": {
+   "name": "Livonya Tarikatı",
+   "color": "b9b9a8",
+   "leader": "Üstat|Wolter von Plettenberg",
+   "gdp": 3,
+   "mil": {
+    "personnel": 8000,
+    "tank": 1200,
+    "afv": 200,
+    "arty": 60,
+    "air": 0,
+    "sub": 0
+   }
+  },
+  "Romania": {
+   "name": "Eflak ve Boğdan",
+   "color": "b0a05a",
+   "leader": "Voyvoda|Neagoe Basarab",
+   "gdp": 6,
+   "mil": {
+    "personnel": 30000,
+    "tank": 3000,
+    "afv": 6000,
+    "arty": 40,
+    "air": 0,
+    "sub": 0
+   }
+  },
+  "Georgia": {
+   "name": "Gürcü Krallıkları",
+   "color": "a05a7a",
+   "leader": "Kral|Gürcü Hanedanları",
+   "gdp": 4,
+   "mil": {
+    "personnel": 15000,
+    "tank": 3000,
+    "afv": 2000,
+    "arty": 30,
+    "air": 0,
+    "sub": 0
+   }
+  },
+  "Ukraine": {
+   "name": "Kırım Hanlığı ve Bozkır",
+   "color": "c08a3c",
+   "leader": "Han|I. Mehmed Giray",
+   "gdp": 5,
+   "mil": {
+    "personnel": 40000,
+    "tank": 2000,
+    "afv": 30000,
+    "arty": 30,
+    "air": 0,
+    "sub": 10
+   }
+  },
+  "Iran": {
+   "name": "Safevî Devleti",
+   "color": "3a7a5a",
+   "leader": "Şah|I. İsmail",
+   "gdp": 22,
+   "mil": {
+    "personnel": 70000,
+    "tank": 20000,
+    "afv": 15000,
+    "arty": 150,
+    "air": 0,
+    "sub": 10
+   }
+  },
+  "Afghanistan": {
+   "name": "Kâbil Beyliği",
+   "color": "8a7a3a",
+   "leader": "Emir|Babür",
+   "gdp": 4,
+   "mil": {
+    "personnel": 15000,
+    "tank": 3000,
+    "afv": 6000,
+    "arty": 20,
+    "air": 0,
+    "sub": 0
+   }
+  },
+  "Uzbekistan": {
+   "name": "Şeybânî Özbek Hanlığı",
+   "color": "d0a030",
+   "leader": "Han|Köçkünçü Han",
+   "gdp": 8,
+   "mil": {
+    "personnel": 45000,
+    "tank": 6000,
+    "afv": 20000,
+    "arty": 40,
+    "air": 0,
+    "sub": 0
+   }
+  },
+  "Kazakhstan": {
+   "name": "Kazak Hanlığı ve Bozkır Hanlıkları",
+   "color": "a8803a",
+   "leader": "Han|Kasım Han",
+   "gdp": 5,
+   "mil": {
+    "personnel": 60000,
+    "tank": 3000,
+    "afv": 40000,
+    "arty": 10,
+    "air": 0,
+    "sub": 0
+   }
+  },
+  "Mongolia": {
+   "name": "Moğol Hanlıkları",
+   "color": "8f6a3a",
+   "leader": "Han|Dayan Han",
+   "gdp": 3,
+   "mil": {
+    "personnel": 50000,
+    "tank": 4000,
+    "afv": 30000,
+    "arty": 0,
+    "air": 0,
+    "sub": 0
+   }
+  },
+  "Saudi Arabia": {
+   "name": "Arap Kabile Emirlikleri",
+   "color": "b09a5a",
+   "leader": "Emir|Kabile Şeyhleri",
+   "gdp": 3,
+   "mil": {
+    "personnel": 20000,
+    "tank": 500,
+    "afv": 8000,
+    "arty": 0,
+    "air": 0,
+    "sub": 0
+   }
+  },
+  "Yemen": {
+   "name": "Tahirî ve Zeydî Yemen",
+   "color": "6a9a6a",
+   "leader": "Sultan|Âmir bin Abdülvehhab",
+   "gdp": 3,
+   "mil": {
+    "personnel": 15000,
+    "tank": 600,
+    "afv": 3000,
+    "arty": 20,
+    "air": 0,
+    "sub": 6
+   }
+  },
+  "Oman": {
+   "name": "Umman",
+   "color": "9a5a4a",
+   "leader": "İmam|Ömân Seçilmiş İmamı",
+   "gdp": 2,
+   "mil": {
+    "personnel": 8000,
+    "tank": 200,
+    "afv": 1000,
+    "arty": 10,
+    "air": 0,
+    "sub": 15
+   }
+  },
+  "United Arab Emirates": {
+   "name": "Hürmüz Krallığı",
+   "color": "6a7aa0",
+   "leader": "Şah|Türan Şah",
+   "gdp": 4,
+   "mil": {
+    "personnel": 6000,
+    "tank": 300,
+    "afv": 500,
+    "arty": 40,
+    "air": 0,
+    "sub": 30
+   }
+  },
+  "Algeria": {
+   "name": "Cezayir (Barbaros)",
+   "color": "d05a3a",
+   "leader": "Beylerbeyi|Barbaros Hayreddin",
+   "gdp": 3,
+   "mil": {
+    "personnel": 10000,
+    "tank": 1200,
+    "afv": 2000,
+    "arty": 80,
+    "air": 0,
+    "sub": 40
+   }
+  },
+  "Tunisia": {
+   "name": "Hafsîler",
+   "color": "8a9a5a",
+   "leader": "Sultan|Mevlây Hasan",
+   "gdp": 3,
+   "mil": {
+    "personnel": 12000,
+    "tank": 800,
+    "afv": 4000,
+    "arty": 40,
+    "air": 0,
+    "sub": 15
+   }
+  },
+  "Morocco": {
+   "name": "Vattasîler ve Sa'dîler",
+   "color": "6a8a4a",
+   "leader": "Sultan|Muhammed eş-Şeyh",
+   "gdp": 5,
+   "mil": {
+    "personnel": 20000,
+    "tank": 1200,
+    "afv": 6000,
+    "arty": 40,
+    "air": 0,
+    "sub": 10
+   }
+  },
+  "China": {
+   "name": "Ming İmparatorluğu",
+   "color": "d6b25e",
+   "leader": "İmparator|Zhengde",
+   "gdp": 140,
+   "mil": {
+    "personnel": 800000,
+    "tank": 60000,
+    "afv": 80000,
+    "arty": 4000,
+    "air": 0,
+    "sub": 400
+   }
+  },
+  "Japan": {
+   "name": "Sengoku Japonyası",
+   "color": "e2a53a",
+   "leader": "Şogun|Ashikaga Yoshitane",
+   "gdp": 35,
+   "mil": {
+    "personnel": 150000,
+    "tank": 20000,
+    "afv": 5000,
+    "arty": 0,
+    "air": 0,
+    "sub": 200
+   }
+  },
+  "South Korea": {
+   "name": "Joseon Krallığı",
+   "color": "c8c8d0",
+   "leader": "Kral|Jungjong",
+   "gdp": 12,
+   "mil": {
+    "personnel": 60000,
+    "tank": 8000,
+    "afv": 5000,
+    "arty": 400,
+    "air": 0,
+    "sub": 100
+   }
+  },
+  "India": {
+   "name": "Delhi Sultanlığı (Lodî)",
+   "color": "5a9a8a",
+   "leader": "Sultan|İbrahim Lodî",
+   "gdp": 55,
+   "mil": {
+    "personnel": 100000,
+    "tank": 6000,
+    "afv": 20000,
+    "arty": 60,
+    "air": 0,
+    "sub": 0
+   }
+  },
+  "Sri Lanka": {
+   "name": "Vijayanagara İmparatorluğu",
+   "color": "c05a2a",
+   "leader": "İmparator|Krişnadevaraya",
+   "gdp": 40,
+   "mil": {
+    "personnel": 120000,
+    "tank": 12000,
+    "afv": 20000,
+    "arty": 150,
+    "air": 0,
+    "sub": 30
+   }
+  },
+  "Bangladesh": {
+   "name": "Bengal Sultanlığı",
+   "color": "7a9a3a",
+   "leader": "Sultan|Nusret Şah",
+   "gdp": 15,
+   "mil": {
+    "personnel": 40000,
+    "tank": 2000,
+    "afv": 8000,
+    "arty": 40,
+    "air": 0,
+    "sub": 40
+   }
+  },
+  "Pakistan": {
+   "name": "Sind ve Multan Beylikleri",
+   "color": "9aa05a",
+   "leader": "Emir|Şah Hüseyin Arğun",
+   "gdp": 8,
+   "mil": {
+    "personnel": 25000,
+    "tank": 1500,
+    "afv": 6000,
+    "arty": 10,
+    "air": 0,
+    "sub": 6
+   }
+  },
+  "Nepal": {
+   "name": "Dekkan Sultanlıkları (Bahmanî mirası)",
+   "color": "7a5a9a",
+   "leader": "Sultan|Kutb Şah",
+   "gdp": 20,
+   "mil": {
+    "personnel": 50000,
+    "tank": 4000,
+    "afv": 10000,
+    "arty": 60,
+    "air": 0,
+    "sub": 0
+   }
+  },
+  "Bhutan": {
+   "name": "Tibet ve Himalaya",
+   "color": "a0507a",
+   "leader": "Gyalpo|Phagmodrupa Hanedanı",
+   "gdp": 3,
+   "mil": {
+    "personnel": 18000,
+    "tank": 1500,
+    "afv": 3000,
+    "arty": 0,
+    "air": 0,
+    "sub": 0
+   }
+  },
+  "Maldives": {
+   "name": "Maldiv Sultanlığı",
+   "color": "5a9aa0",
+   "leader": "Sultan|Hasan IX",
+   "gdp": 1,
+   "mil": {
+    "personnel": 3000,
+    "tank": 0,
+    "afv": 0,
+    "arty": 5,
+    "air": 0,
+    "sub": 20
+   }
+  },
+  "Myanmar": {
+   "name": "Toungoo ve Ava (Birmanya)",
+   "color": "b06a3a",
+   "leader": "Kral|Mingyinyo",
+   "gdp": 10,
+   "mil": {
+    "personnel": 45000,
+    "tank": 3000,
+    "afv": 6000,
+    "arty": 40,
+    "air": 0,
+    "sub": 20
+   }
+  },
+  "Thailand": {
+   "name": "Ayutthaya Krallığı",
+   "color": "9a3a5a",
+   "leader": "Kral|Ramathibodi II",
+   "gdp": 9,
+   "mil": {
+    "personnel": 50000,
+    "tank": 3000,
+    "afv": 6000,
+    "arty": 40,
+    "air": 0,
+    "sub": 30
+   }
+  },
+  "Vietnam": {
+   "name": "Dai Viet (Le Hanedanı)",
+   "color": "b0903a",
+   "leader": "İmparator|Le Tuong Duc",
+   "gdp": 12,
+   "mil": {
+    "personnel": 60000,
+    "tank": 3000,
+    "afv": 5000,
+    "arty": 30,
+    "air": 0,
+    "sub": 60
+   }
+  },
+  "Laos": {
+   "name": "Lan Xang Krallığı",
+   "color": "a05a2a",
+   "leader": "Kral|Photisarath",
+   "gdp": 3,
+   "mil": {
+    "personnel": 20000,
+    "tank": 600,
+    "afv": 400,
+    "arty": 10,
+    "air": 0,
+    "sub": 0
+   }
+  },
+  "Cambodia": {
+   "name": "Khmer Krallığı",
+   "color": "8a6aa0",
+   "leader": "Kral|Ang Chan",
+   "gdp": 4,
+   "mil": {
+    "personnel": 20000,
+    "tank": 800,
+    "afv": 500,
+    "arty": 10,
+    "air": 0,
+    "sub": 10
+   }
+  },
+  "Malaysia": {
+   "name": "Malay Sultanlıkları (Malakka mirası)",
+   "color": "5aa08a",
+   "leader": "Sultan|Mahmud Şah",
+   "gdp": 8,
+   "mil": {
+    "personnel": 20000,
+    "tank": 300,
+    "afv": 400,
+    "arty": 80,
+    "air": 0,
+    "sub": 50
+   }
+  },
+  "Brunei": {
+   "name": "Brunei Sultanlığı",
+   "color": "c0a03a",
+   "leader": "Sultan|Bolkiah",
+   "gdp": 2,
+   "mil": {
+    "personnel": 5000,
+    "tank": 100,
+    "afv": 100,
+    "arty": 20,
+    "air": 0,
+    "sub": 30
+   }
+  },
+  "Indonesia": {
+   "name": "Demak ve Nusantara Sultanlıkları",
+   "color": "a07a3a",
+   "leader": "Sultan|Trenggana",
+   "gdp": 18,
+   "mil": {
+    "personnel": 50000,
+    "tank": 500,
+    "afv": 2000,
+    "arty": 80,
+    "air": 0,
+    "sub": 150
+   }
+  },
+  "Philippines": {
+   "name": "Filipin Beylikleri",
+   "color": "6aa06a",
+   "leader": "Datu|Konfederasyon",
+   "gdp": 3,
+   "mil": {
+    "personnel": 15000,
+    "tank": 0,
+    "afv": 0,
+    "arty": 5,
+    "air": 0,
+    "sub": 20
+   }
+  },
+  "Taiwan": {
+   "name": "Tayvan Toplulukları",
+   "color": "7aa08a",
+   "leader": "Şef|Yerli Konseyi",
+   "gdp": 1,
+   "mil": {
+    "personnel": 4000,
+    "tank": 0,
+    "afv": 0,
+    "arty": 0,
+    "air": 0,
+    "sub": 6
+   }
+  },
+  "Papua New Guinea": {
+   "name": "Melanezya ve Pasifik Toplulukları",
+   "color": "8a8a6a",
+   "leader": "Şef|Yerli Konseyi",
+   "gdp": 2,
+   "mil": {
+    "personnel": 10000,
+    "tank": 0,
+    "afv": 0,
+    "arty": 0,
+    "air": 0,
+    "sub": 30
+   }
+  },
+  "Australia": {
+   "name": "Aborjin Toplulukları",
+   "color": "9a7a5a",
+   "leader": "Şef|Yerli Konseyi",
+   "gdp": 2,
+   "mil": {
+    "personnel": 8000,
+    "tank": 0,
+    "afv": 0,
+    "arty": 0,
+    "air": 0,
+    "sub": 5
+   }
+  },
+  "Ethiopia": {
+   "name": "Etiyopya İmparatorluğu",
+   "color": "5a8a5a",
+   "leader": "Negus|Lebna Dengel",
+   "gdp": 8,
+   "mil": {
+    "personnel": 60000,
+    "tank": 4000,
+    "afv": 8000,
+    "arty": 10,
+    "air": 0,
+    "sub": 0
+   }
+  },
+  "Somalia": {
+   "name": "Adal Sultanlığı ve Somali Şehirleri",
+   "color": "a0803a",
+   "leader": "Sultan|Ebubekir bin Muhammed",
+   "gdp": 3,
+   "mil": {
+    "personnel": 25000,
+    "tank": 800,
+    "afv": 6000,
+    "arty": 10,
+    "air": 0,
+    "sub": 8
+   }
+  },
+  "Sudan": {
+   "name": "Funj Sultanlığı",
+   "color": "9a6a4a",
+   "leader": "Sultan|Amara Dunqas",
+   "gdp": 4,
+   "mil": {
+    "personnel": 20000,
+    "tank": 1000,
+    "afv": 4000,
+    "arty": 0,
+    "air": 0,
+    "sub": 0
+   }
+  },
+  "Chad": {
+   "name": "Bornu İmparatorluğu",
+   "color": "7a6a4a",
+   "leader": "Mai|İdris Katarkamabi",
+   "gdp": 3,
+   "mil": {
+    "personnel": 25000,
+    "tank": 1500,
+    "afv": 5000,
+    "arty": 0,
+    "air": 0,
+    "sub": 0
+   }
+  },
+  "Mali": {
+   "name": "Songhay İmparatorluğu",
+   "color": "c0a05a",
+   "leader": "Askia|Askia Muhammed",
+   "gdp": 8,
+   "mil": {
+    "personnel": 50000,
+    "tank": 3000,
+    "afv": 8000,
+    "arty": 0,
+    "air": 0,
+    "sub": 0
+   }
+  },
+  "Nigeria": {
+   "name": "Hausa Şehirleri ve Benin Krallığı",
+   "color": "8a5a3a",
+   "leader": "Oba|Esigie",
+   "gdp": 6,
+   "mil": {
+    "personnel": 30000,
+    "tank": 1500,
+    "afv": 4000,
+    "arty": 0,
+    "air": 0,
+    "sub": 0
+   }
+  },
+  "Ghana": {
+   "name": "Akan Devletleri",
+   "color": "c09a3a",
+   "leader": "Şef|Akan Konseyi",
+   "gdp": 4,
+   "mil": {
+    "personnel": 15000,
+    "tank": 0,
+    "afv": 500,
+    "arty": 0,
+    "air": 0,
+    "sub": 0
+   }
+  },
+  "Dem. Rep. Congo": {
+   "name": "Kongo Krallığı",
+   "color": "5a7a5a",
+   "leader": "Manikongo|I. Afonso",
+   "gdp": 5,
+   "mil": {
+    "personnel": 25000,
+    "tank": 0,
+    "afv": 200,
+    "arty": 0,
+    "air": 0,
+    "sub": 0
+   }
+  },
+  "Tanzania": {
+   "name": "Kilwa ve Swahili Kıyısı",
+   "color": "6a9a8a",
+   "leader": "Sultan|Swahili Şehir Meclisi",
+   "gdp": 4,
+   "mil": {
+    "personnel": 10000,
+    "tank": 0,
+    "afv": 500,
+    "arty": 20,
+    "air": 0,
+    "sub": 25
+   }
+  },
+  "Uganda": {
+   "name": "Bunyoro-Kitara ve Büyük Göller",
+   "color": "7a8a4a",
+   "leader": "Omukama|Bunyoro Hanedanı",
+   "gdp": 3,
+   "mil": {
+    "personnel": 20000,
+    "tank": 0,
+    "afv": 500,
+    "arty": 0,
+    "air": 0,
+    "sub": 0
+   }
+  },
+  "Zimbabwe": {
+   "name": "Mutapa ve Güney Afrika Krallıkları",
+   "color": "8a7a4a",
+   "leader": "Mwene|Mutapa Mahenji",
+   "gdp": 4,
+   "mil": {
+    "personnel": 20000,
+    "tank": 0,
+    "afv": 500,
+    "arty": 0,
+    "air": 0,
+    "sub": 0
+   }
+  },
+  "Madagascar": {
+   "name": "Madagaskar Krallıkları",
+   "color": "7a8a9a",
+   "leader": "Kral|Yerel Hanedanlar",
+   "gdp": 3,
+   "mil": {
+    "personnel": 12000,
+    "tank": 0,
+    "afv": 0,
+    "arty": 0,
+    "air": 0,
+    "sub": 15
+   }
+  },
+  "Mexico": {
+   "name": "Aztek Üçlü İttifakı",
+   "color": "3a8a5a",
+   "leader": "Tlatoani|II. Moctezuma",
+   "gdp": 8,
+   "mil": {
+    "personnel": 60000,
+    "tank": 0,
+    "afv": 0,
+    "arty": 0,
+    "air": 0,
+    "sub": 0
+   }
+  },
+  "Guatemala": {
+   "name": "Maya Şehir Devletleri",
+   "color": "5a9a6a",
+   "leader": "Halach Uinic|Şehir Konseyleri",
+   "gdp": 3,
+   "mil": {
+    "personnel": 25000,
+    "tank": 0,
+    "afv": 0,
+    "arty": 0,
+    "air": 0,
+    "sub": 5
+   }
+  },
+  "Peru": {
+   "name": "İnka İmparatorluğu",
+   "color": "c05a3a",
+   "leader": "Sapa Inka|Huayna Capac",
+   "gdp": 9,
+   "mil": {
+    "personnel": 80000,
+    "tank": 0,
+    "afv": 0,
+    "arty": 0,
+    "air": 0,
+    "sub": 10
+   }
+  },
+  "Colombia": {
+   "name": "Muisca ve Karayip Şeflikleri",
+   "color": "7a9a5a",
+   "leader": "Zipa|Muisca Konfederasyonu",
+   "gdp": 3,
+   "mil": {
+    "personnel": 20000,
+    "tank": 0,
+    "afv": 0,
+    "arty": 0,
+    "air": 0,
+    "sub": 5
+   }
+  },
+  "Brazil": {
+   "name": "Tupi ve Guarani Toplulukları",
+   "color": "4a9a4a",
+   "leader": "Şef|Yerli Konseyi",
+   "gdp": 3,
+   "mil": {
+    "personnel": 30000,
+    "tank": 0,
+    "afv": 0,
+    "arty": 0,
+    "air": 0,
+    "sub": 10
+   }
+  },
+  "Cuba": {
+   "name": "Antiller (Taíno ve İspanyol Üsleri)",
+   "color": "6aa08a",
+   "leader": "Cacique|Diego Colón",
+   "gdp": 3,
+   "mil": {
+    "personnel": 8000,
+    "tank": 0,
+    "afv": 0,
+    "arty": 5,
+    "air": 0,
+    "sub": 12
+   }
+  },
+  "United States of America": {
+   "name": "Kuzey Amerika Konfederasyonları",
+   "color": "6a8a5a",
+   "leader": "Şef|Konfederasyon Meclisi",
+   "gdp": 4,
+   "mil": {
+    "personnel": 30000,
+    "tank": 0,
+    "afv": 0,
+    "arty": 0,
+    "air": 0,
+    "sub": 10
+   }
+  },
+  "Canada": {
+   "name": "Algonkin ve Irokua Toplulukları",
+   "color": "5a8a8a",
+   "leader": "Şef|Konfederasyon Meclisi",
+   "gdp": 3,
+   "mil": {
+    "personnel": 20000,
+    "tank": 0,
+    "afv": 0,
+    "arty": 0,
+    "air": 0,
+    "sub": 10
+   }
+  }
+ },
+ "setup": {
+  "blocs": [],
+  "wars": [],
+  "truce": [
+   [
+    "Turkey",
+    "Hungary",
+    52
+   ],
+   [
+    "Turkey",
+    "Iran",
+    40
+   ],
+   [
+    "Turkey",
+    "Italy",
+    60
+   ],
+   [
+    "Spain",
+    "France",
+    10
+   ]
+  ],
+  "intro": "Eylül 1520: Yavuz Sultan Selim vefat etti, yirmi altı yaşındaki Süleyman Osmanlı tahtına çıkıyor. Avrupa'da Habsburglar ile Valois Fransa'sı kapışmaya hazırlanıyor; doğuda Safevî Şah İsmail Tebriz'de Osmanlı'yı gözlüyor."
+ },
+ "pop_f": {
+  "Europe": 0.12,
+  "Asia": 0.09,
+  "Africa": 0.05,
+  "North America": 0.015,
+  "South America": 0.02,
+  "Oceania": 0.01
+ },
+ "gdp_default": 0.008,
+ "nukes": [],
+ "carriers": {},
+ "events": [
+  {
+   "y": 1520,
+   "m": 11,
+   "t": "Stockholm Kanlı Banyosu: Danimarka Kralı II. Christian İsveç soylularını idam ettirdi; ülkede isyan kıvılcımı çaktı.",
+   "fx": [
+    [
+     "stab",
+     "Sweden",
+     -10
+    ]
+   ]
+  },
+  {
+   "y": 1521,
+   "m": 3,
+   "t": "Magellan seferi Filipin adalarına ulaştı; Avrupa'nın Pasifik'e açılan yolu belirdi.",
+   "fx": []
+  },
+  {
+   "y": 1521,
+   "m": 4,
+   "t": "Worms Meclisi: Martin Luther imparatorun huzuruna çıktı; Almanya'da Reform fırtınası büyüyor.",
+   "fx": [
+    [
+     "stab",
+     "Germany",
+     -6
+    ]
+   ]
+  },
+  {
+   "y": 1521,
+   "m": 5,
+   "t": "Habsburg–Valois savaşı başladı: V. Karl ile I. François İtalya için silaha sarıldı.",
+   "fx": [
+    [
+     "war",
+     "Spain",
+     "France"
+    ]
+   ]
+  },
+  {
+   "y": 1521,
+   "m": 8,
+   "t": "Osmanlı ordusu Belgrad'ı kuşattı ve aldı; Macaristan'ın kapısı açıldı.",
+   "fx": [
+    [
+     "war",
+     "Turkey",
+     "Hungary"
+    ]
+   ]
+  },
+  {
+   "y": 1521,
+   "m": 8,
+   "t": "Cortés, Tenochtitlan'ı ele geçirdi; Aztek İttifakı çöktü.",
+   "fx": [
+    [
+     "war",
+     "Spain",
+     "Mexico"
+    ],
+    [
+     "stab",
+     "Mexico",
+     -35
+    ]
+   ]
+  },
+  {
+   "y": 1522,
+   "m": 12,
+   "t": "Rodos şövalyelerle yaptığı altı aylık direnişin ardından Osmanlı'ya teslim oldu.",
+   "fx": [
+    [
+     "war",
+     "Turkey",
+     "Malta"
+    ]
+   ]
+  },
+  {
+   "y": 1523,
+   "m": 6,
+   "t": "Gustav Vasa İsveç'in kralı ilan edildi; Kalmar Birliği fiilen dağıldı.",
+   "fx": [
+    [
+     "war",
+     "Sweden",
+     "Denmark"
+    ]
+   ]
+  },
+  {
+   "y": 1524,
+   "m": 5,
+   "t": "Safevî Şahı İsmail vefat etti; yerine küçük oğlu Tahmasp geçti, Kızılbaş beyleri çekişiyor.",
+   "fx": [
+    [
+     "stab",
+     "Iran",
+     -12
+    ]
+   ]
+  },
+  {
+   "y": 1525,
+   "m": 2,
+   "t": "Pavia Muharebesi: Fransa Kralı I. François esir düştü.",
+   "fx": [
+    [
+     "stab",
+     "France",
+     -15
+    ]
+   ]
+  },
+  {
+   "y": 1526,
+   "m": 4,
+   "t": "Panipat Muharebesi: Babür, Delhi Sultanı İbrahim Lodî'yi yendi; Hindistan'da Babür Devleti doğuyor.",
+   "fx": [
+    [
+     "war",
+     "Afghanistan",
+     "India"
+    ],
+    [
+     "stab",
+     "India",
+     -30
+    ]
+   ]
+  },
+  {
+   "y": 1526,
+   "m": 8,
+   "t": "Mohaç Meydan Muharebesi: Macar ordusu bir saatte dağıldı, Kral II. Lajos öldü.",
+   "fx": [
+    [
+     "stab",
+     "Hungary",
+     -40
+    ]
+   ]
+  },
+  {
+   "y": 1527,
+   "m": 5,
+   "t": "Roma Yağması: V. Karl'ın askerleri Roma'yı yağmaladı; İtalya sarsıldı.",
+   "fx": [
+    [
+     "stab",
+     "Italy",
+     -15
+    ]
+   ]
+  },
+  {
+   "y": 1529,
+   "m": 9,
+   "t": "Osmanlı ordusu Viyana önlerinde: Habsburg başkenti kuşatıldı.",
+   "fx": [
+    [
+     "war",
+     "Turkey",
+     "Spain"
+    ]
+   ]
+  },
+  {
+   "y": 1529,
+   "m": 12,
+   "t": "Adal Sultanlığı'nda Ahmed Gran, Habeş topraklarına büyük bir akın başlattı.",
+   "fx": [
+    [
+     "war",
+     "Somalia",
+     "Ethiopia"
+    ]
+   ]
+  },
+  {
+   "y": 1532,
+   "m": 11,
+   "t": "Pizarro İnka İmparatoru Atahualpa'yı Cajamarca'da tuzağa düşürdü.",
+   "fx": [
+    [
+     "war",
+     "Spain",
+     "Peru"
+    ],
+    [
+     "stab",
+     "Peru",
+     -30
+    ]
+   ]
+  },
+  {
+   "y": 1534,
+   "m": 12,
+   "t": "Osmanlı Bağdat'ı aldı; Irak Safevîlerin elinden çıktı.",
+   "fx": [
+    [
+     "war",
+     "Turkey",
+     "Iran"
+    ]
+   ]
+  },
+  {
+   "y": 1538,
+   "m": 9,
+   "t": "Preveze Deniz Muharebesi: Barbaros Hayreddin Paşa Haçlı donanmasını yendi, Akdeniz Osmanlı gölü oldu.",
+   "fx": [
+    [
+     "war",
+     "Turkey",
+     "Italy"
+    ]
+   ]
+  },
+  {
+   "y": 1541,
+   "m": 8,
+   "t": "Budin Osmanlı eyaleti ilan edildi; Macaristan üç parçaya bölündü.",
+   "fx": [
+    [
+     "stab",
+     "Hungary",
+     -15
+    ]
+   ]
+  },
+  {
+   "y": 1547,
+   "m": 4,
+   "t": "Barış: Osmanlı ile Habsburglar arasında beş yıllık ateşkes imzalandı.",
+   "fx": [
+    [
+     "peace",
+     "Turkey",
+     "Spain"
+    ]
+   ]
+  },
+  {
+   "y": 1556,
+   "m": 1,
+   "t": "V. Karl tahttan çekildi; imparatorluk Habsburg'un iki koluna bölündü.",
+   "fx": [
+    [
+     "stab",
+     "Spain",
+     -8
+    ]
+   ]
+  },
+  {
+   "y": 1559,
+   "m": 4,
+   "t": "Cateau-Cambrésis Antlaşması: Habsburg–Valois savaşları sona erdi.",
+   "fx": [
+    [
+     "peace",
+     "Spain",
+     "France"
+    ]
+   ]
+  },
+  {
+   "y": 1565,
+   "m": 5,
+   "t": "Malta Kuşatması başladı: Osmanlı donanması Aziz Yuhanna Şövalyelerinin adasını çevirdi.",
+   "fx": [
+    [
+     "war",
+     "Turkey",
+     "Malta"
+    ]
+   ]
+  },
+  {
+   "y": 1566,
+   "m": 9,
+   "t": "Kanuni Sultan Süleyman Zigetvar'da hayatını kaybetti.",
+   "fx": [
+    [
+     "stab",
+     "Turkey",
+     -8
+    ]
+   ]
+  }
+ ],
+ "leaders": {
+  "horizon": 1566,
+  "chain": {
+   "Spain": [
+    [
+     1556,
+     1,
+     "Kral|II. Felipe"
+    ]
+   ],
+   "France": [
+    [
+     1547,
+     3,
+     "Kral|II. Henri"
+    ]
+   ],
+   "United Kingdom": [
+    [
+     1547,
+     1,
+     "Kral|VI. Edward"
+    ],
+    [
+     1553,
+     7,
+     "Kraliçe|I. Mary"
+    ],
+    [
+     1558,
+     11,
+     "Kraliçe|I. Elizabeth"
+    ]
+   ],
+   "Iran": [
+    [
+     1524,
+     5,
+     "Şah|I. Tahmasp"
+    ]
+   ],
+   "Russia": [
+    [
+     1533,
+     12,
+     "Büyük Knez|IV. İvan"
+    ],
+    [
+     1547,
+     1,
+     "Çar|IV. İvan"
+    ]
+   ],
+   "Poland": [
+    [
+     1548,
+     4,
+     "Kral|II. Zygmunt August"
+    ]
+   ],
+   "Turkey": [
+    [
+     1566,
+     9,
+     "Padişah|II. Selim"
+    ]
+   ],
+   "Afghanistan": [
+    [
+     1530,
+     12,
+     "Padişah|Hümayun"
+    ]
+   ],
+   "Hungary": [
+    [
+     1526,
+     8,
+     "Kral|I. Ferdinand"
+    ]
+   ],
+   "Uzbekistan": [
+    [
+     1533,
+     1,
+     "Han|Ubeydullah Han"
+    ]
+   ]
+  }
+ },
+ "objectives": {
+  "*": [
+   {
+    "id": "o1",
+    "type": "survive",
+    "turns": 260,
+    "text": "Beş yıl boyunca ayakta kal"
+   },
+   {
+    "id": "o2",
+    "type": "alliances",
+    "n": 3,
+    "text": "3 müttefik edin"
+   },
+   {
+    "id": "o3",
+    "type": "stability",
+    "n": 55,
+    "text": "İstikrarı 55 üzerinde tut",
+    "required": false
+   }
+  ],
+  "Turkey": [
+   {
+    "id": "t1",
+    "type": "own_capital",
+    "country": "Hungary",
+    "text": "Macaristan'ın başkentini (Budin) al"
+   },
+   {
+    "id": "t2",
+    "type": "own_capital",
+    "country": "Austria",
+    "text": "Viyana'yı fethet",
+    "required": false
+   },
+   {
+    "id": "t3",
+    "type": "hold_choke",
+    "choke": "bosphorus",
+    "text": "Boğazlar'a hâkim ol"
+   }
+  ],
+  "Spain": [
+   {
+    "id": "s1",
+    "type": "own_capital",
+    "country": "France",
+    "text": "Paris'e hâkim ol"
+   },
+   {
+    "id": "s2",
+    "type": "own_provinces",
+    "n": 70,
+    "text": "70 eyalete ulaş"
+   }
+  ],
+  "Iran": [
+   {
+    "id": "i1",
+    "type": "own_capital",
+    "country": "Iraq",
+    "text": "Bağdat'ı elinde tut"
+   },
+   {
+    "id": "i2",
+    "type": "alliances",
+    "n": 2,
+    "text": "2 müttefik edin"
+   }
+  ]
+ },
+ "en": {
+  "name": "Age of the Ottomans",
+  "sub": "September 1520 – Suleiman the Magnificent",
+  "blurb": "Selim the Grim is dead; young Suleiman takes the throne. Habsburgs, Valois France, the Safavids, Muscovy, Ming China and the Deccan sultanates divide the world. Janissary matchlocks, siege cannon and galleys open the age of an empire.",
+  "setup_intro": "September 1520: Sultan Selim has died and twenty-six-year-old Suleiman ascends the Ottoman throne. The Habsburgs and Valois France prepare to fight over Italy; in the east Shah Ismail watches the Ottomans from Tabriz.",
+  "events": {
+   "0": "Stockholm Bloodbath: Christian II of Denmark executed Swedish nobles; a revolt is brewing.",
+   "1": "Magellan's expedition reaches the Philippines.",
+   "2": "Diet of Worms: Martin Luther stands before the emperor; the Reformation storm grows in Germany.",
+   "3": "The Habsburg–Valois war begins: Charles V and Francis I take up arms for Italy.",
+   "4": "The Ottoman army besieges and takes Belgrade; the gate to Hungary is open.",
+   "5": "Cortés takes Tenochtitlan; the Aztec Alliance collapses.",
+   "6": "Rhodes surrenders to the Ottomans after a six-month defence by the Knights.",
+   "7": "Gustav Vasa is proclaimed King of Sweden; the Kalmar Union is effectively dissolved.",
+   "8": "Shah Ismail of Persia dies; his young son Tahmasp succeeds and the Qizilbash beys quarrel.",
+   "9": "Battle of Pavia: Francis I of France is taken prisoner.",
+   "10": "Battle of Panipat: Babur defeats Ibrahim Lodi, the Sultan of Delhi; the Mughal state is born.",
+   "11": "Battle of Mohács: the Hungarian army is destroyed in an hour and King Louis II dies.",
+   "12": "Sack of Rome: Charles V's troops plunder the city; Italy is shaken.",
+   "13": "The Ottoman army stands before Vienna: the Habsburg capital is besieged.",
+   "14": "In Adal, Ahmad Gran launches a great invasion of Ethiopia.",
+   "15": "Pizarro ambushes the Inca emperor Atahualpa at Cajamarca.",
+   "16": "The Ottomans take Baghdad; Iraq passes from the Safavids.",
+   "17": "Battle of Preveza: Barbarossa defeats the Holy League fleet; the Mediterranean becomes an Ottoman lake.",
+   "18": "Buda is made an Ottoman province; Hungary is split in three.",
+   "19": "Peace: a five-year truce is signed between the Ottomans and the Habsburgs.",
+   "20": "Charles V abdicates; the Habsburg inheritance is split into two branches.",
+   "21": "Treaty of Cateau-Cambrésis ends the Habsburg–Valois wars.",
+   "22": "The Siege of Malta begins: the Ottoman fleet surrounds the Knights' island.",
+   "23": "Suleiman the Magnificent dies at Szigetvár."
+  },
+  "objectives": {
+   "o1": "Stay alive for five years",
+   "o2": "Make 3 allies",
+   "o3": "Keep stability above 55",
+   "t1": "Take Hungary's capital (Buda)",
+   "t2": "Conquer Vienna",
+   "t3": "Control the Straits",
+   "s1": "Dominate Paris",
+   "s2": "Reach 70 provinces",
+   "i1": "Hold Baghdad",
+   "i2": "Make 2 allies"
+  }
+ }
+}

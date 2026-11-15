@@ -10,6 +10,16 @@ const Carriers = preload("res://scripts/carriers.gd")
 const Loc = preload("res://scripts/loc.gd")
 
 const BUDGET_KEYS := ["mil", "ind", "cyber", "logi", "stab", "res"]
+static var pre_era := false   # ilk barut çağı ailesi (eras.gd ayarlar)
+
+
+## Çağa göre bütçe kalemi adı (ilk barut çağında "siber" = casusluk ve karşı istihbarat)
+static func budget_name(key: String) -> String:
+	if key == "cyber" and pre_era:
+		return "Casusluk"
+	return String(BUDGET_NAMES[key])
+
+
 const BUDGET_NAMES := {"mil": "Savunma", "ind": "Sanayi", "cyber": "Siber", "logi": "Lojistik", "stab": "İç İstikrar", "res": "Hazine"}
 const BUDGET_HINT := {
 	"mil": "Maaş, askerlik ve silah alımı",

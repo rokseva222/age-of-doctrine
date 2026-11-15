@@ -172,7 +172,7 @@ func _tab_budget() -> void:
 		var nv := VBoxContainer.new()
 		nv.custom_minimum_size = Vector2(260, 0)
 		nv.add_theme_constant_override("separation", -2)
-		nv.add_child(TK.t(Macro.BUDGET_NAMES[key], "bodyb"))
+		nv.add_child(TK.t(Macro.budget_name(key), "bodyb"))
 		var hint := TK.t(Macro.BUDGET_HINT[key], "small", TK.FAINT)
 		hint.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		nv.add_child(hint)
@@ -205,7 +205,7 @@ func _tab_budget() -> void:
 	content.add_child(_kick("Durum göstergeleri"))
 	content.add_child(_stat_row([
 		["Sanayi", "%d" % int(c.industry)],
-		["Siber", "%d" % int(c.cyber)],
+		[Macro.budget_name("cyber"), "%d" % int(c.cyber)],
 		["Lojistik", "%d" % int(c.logistics)],
 		["İstikrar", "%d" % int(c.stability), TK.GREEN if c.stability >= 50.0 else TK.RED_TEXT],
 		["Teknoloji", "%d" % int(c.tech * 100.0)],
@@ -257,7 +257,9 @@ func _tab_buy() -> void:
 	cf.add_theme_constant_override("v_separation", 6)
 	for k in Arsenal.CATS:
 		var key2: String = k
-		var cb := TK.button(Arsenal.CAT_NAME[key2], "gold" if cat == key2 else "ghost", CAT_ICON[key2], Vector2(0, 52), 14)
+		if Arsenal.list_cat(key2).is_empty():
+			continue
+		var cb := TK.button(Arsenal.cat_name(key2), "gold" if cat == key2 else "ghost", CAT_ICON[key2], Vector2(0, 52), 14)
 		cb.pressed.connect(func():
 			ui._click()
 			cat = key2
@@ -315,9 +317,11 @@ func _buy_policy(c) -> void:
 	pr.add_theme_constant_override("v_separation", 6)
 	for k in Arsenal.CATS:
 		var key: String = k
+		if Arsenal.list_cat(key).is_empty():
+			continue
 		var lvl: float = c.pri.get(key, 1.0)
 		var name: String = ["Düşük", "Normal", "Yüksek"][0 if lvl < 0.8 else (1 if lvl < 1.6 else 2)]
-		var b := TK.button("%s: %s" % [Arsenal.CAT_NAME[key], name], "ghost", CAT_ICON[key], Vector2(0, 52), 14)
+		var b := TK.button("%s: %s" % [Arsenal.cat_name(key), name], "ghost", CAT_ICON[key], Vector2(0, 52), 14)
 		b.pressed.connect(func():
 			ui._click()
 			var cur: float = c.pri.get(key, 1.0)
@@ -447,7 +451,7 @@ func _tab_inventory() -> void:
 		iv.custom_minimum_size = Vector2(38, 38)
 		iv.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 		hh.add_child(iv)
-		var ct := TK.t(Arsenal.CAT_NAME[row["cat"]], "caps", TK.TEXT)
+		var ct := TK.t(Arsenal.cat_name(row["cat"]), "caps", TK.TEXT)
 		ct.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		hh.add_child(ct)
 		var unit := " set" if row["cat"] == "inf" else ""
