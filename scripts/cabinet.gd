@@ -122,9 +122,9 @@ const CARDS := [
 	{"id": "f_border", "role": "for", "w": 1.1, "war": 0,
 	 "q": "{nb} sınır hattındaki bir bölgeyi kendi toprağı ilan ediyor. Tepkimiz ne olsun?",
 	 "o": [
-		{"t": "Sınıra birlik gönder", "e": {"g": -0.4, "stab": 2, "aggr": 0.15}, "r": "Karşı karşıya duran birlikler gerginliği tırmandırdı."},
-		{"t": "Müzakere masası", "e": {"g": -0.2, "aggr": -0.05}, "r": "Diplomatik görüşmeler başladı."},
-		{"t": "Taviz ver", "e": {"stab": -4, "aggr": -0.15}, "r": "Taviz kabul edildi; halk bunu zayıflık olarak gördü."}]},
+		{"t": "Sınıra birlik gönder", "e": {"g": -0.4, "stab": 2, "aggr": 0.15, "bforce": 0.06, "brel": -12}, "r": "Karşı karşıya duran birlikler gerginliği tırmandırdı."},
+		{"t": "Müzakere masası", "e": {"g": -0.2, "aggr": -0.05, "bnego": 1}, "r": "Diplomatik görüşmeler başladı."},
+		{"t": "Taviz ver", "e": {"stab": -4, "aggr": -0.15, "bcede": 1, "brel": 10}, "r": "Taviz kabul edildi; halk bunu zayıflık olarak gördü."}]},
 	{"id": "f_peacepush", "role": "for", "w": 1.2, "war": 1,
 	 "q": "{en} ile savaşta üçüncü ülkeler ateşkes için baskı yapıyor. Dünya kamuoyu savaştan yoruldu.",
 	 "o": [
@@ -788,7 +788,94 @@ static func apply(gs, eff: Dictionary) -> Array:
 					var cp = gs.provinces[c.capital]
 					cp.dev = mini(cp.dev + int(v), 6)
 				out.append({"ic": "city", "txt": "+Kalkınma", "good": true})
+			"brel":
+				if _nb_id >= 0 and _nb_id < gs.countries.size():
+					gs.relation_add(c.id, _nb_id, v)
+					out.append({"ic": "flag", "txt": "%s ilişkisi %s%d" % [gs.countries[_nb_id].name, "+" if v >= 0 else "−", int(absf(v))], "good": v >= 0})
+			"bforce":
+				out.append_array(_border_force(gs, c, v))
+			"bcede":
+				out.append_array(_border_cede(gs, c))
+			"bnego":
+				out.append_array(_border_negotiate(gs, c))
 	return out
+
+
+## a ülkesinin b ülkesiyle sınırdaş eyaletleri
+static func _border_pids(gs, a: int, b: int) -> Array:
+	var out: Array = []
+	for pid in gs.countries[a].owned_ids:
+		for nb in gs.provinces[pid].neighbors:
+			if gs.provinces[nb].owner == b:
+				out.append(pid)
+				break
+	return out
+
+
+## Sınır eyaletine takviye: toplam askerin v oranı kadar birlik
+static func _border_force(gs, c, v: float) -> Array:
+	if _nb_id < 0:
+		return []
+	var bp: Array = _border_pids(gs, c.id, _nb_id)
+	if bp.is_empty():
+		return []
+	var pid: int = bp[gs.rng.randi_range(0, bp.size() - 1)]
+	var n: int = maxi(2000, int(c.troops * v))
+	var a = gs._spawn_army(c.id, pid, n)
+	if a == null:
+		return []
+	gs.armies_changed.emit()
+	return [{"ic": "infantry", "txt": "+%s asker %s sınırına" % [Macro.num(n), gs.countries[_nb_id].name], "good": true}]
+
+
+## Taviz: en az gelişmiş sınır eyaleti komşuya devredilir
+static func _border_cede(gs, c) -> Array:
+	if _nb_id < 0 or c.prov_owned <= 4:
+		return []
+	var cand: Array = []
+	for pid in _border_pids(gs, c.id, _nb_id):
+		if not gs.provinces[pid].is_capital:
+			cand.append(pid)
+	if cand.is_empty():
+		return []
+	cand.sort_custom(func(x, y): return gs.provinces[x].dev < gs.provinces[y].dev)
+	var pid2: int = cand[0]
+	_transfer_province(gs, pid2, _nb_id)
+	return [{"ic": "city", "txt": "%s eyaleti %s'e devredildi" % [gs.provinces[pid2].name, gs.countries[_nb_id].name], "good": false}]
+
+
+## Müzakere: ilişki artar, %35 ihtimalle komşu en az gelişmiş sınır eyaletini sınır düzeltmesiyle verir
+static func _border_negotiate(gs, c) -> Array:
+	if _nb_id < 0:
+		return []
+	gs.relation_add(c.id, _nb_id, 8.0)
+	var out: Array = [{"ic": "flag", "txt": "%s ilişkisi +8" % gs.countries[_nb_id].name, "good": true}]
+	if gs.rng.randf() < 0.35 and gs.countries[_nb_id].prov_owned > 4:
+		var cand: Array = []
+		for pid in _border_pids(gs, _nb_id, c.id):
+			if not gs.provinces[pid].is_capital:
+				cand.append(pid)
+		if not cand.is_empty():
+			cand.sort_custom(func(x, y): return gs.provinces[x].dev < gs.provinces[y].dev)
+			_transfer_province(gs, cand[0], c.id)
+			out.append({"ic": "city", "txt": "Sınır düzeltmesi: %s bize geçti" % gs.provinces[cand[0]].name, "good": true})
+	return out
+
+
+static func _transfer_province(gs, pid: int, to_cid: int) -> void:
+	var p = gs.provinces[pid]
+	var from_cid: int = p.owner
+	p.owner = to_cid
+	p.controller = to_cid
+	p.siege = 0
+	p.unrest = 0
+	p.acquired = gs.turn
+	p.is_capital = false
+	var arm = gs.armies.get(pid)
+	if arm != null and arm.owner != to_cid:
+		gs._send_home(arm)
+	gs.refresh_stats()
+	gs.state_changed.emit()
 
 
 static func _election(gs, c, bonus: float) -> Array:
