@@ -314,6 +314,7 @@ func _build_main() -> void:
 	btns.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	btns.add_theme_constant_override("separation", 10)
 	bscroll.add_child(btns)
+	bscroll.set_deferred("scroll_vertical", 0)   # dil değişimi/yeniden kurulumdan sonra liste başı (Tarihî Savaşlar) görünür kalsın
 	var hist := TK.button("Tarihî Savaşlar", "", "hourglass", Vector2(0, 64), 21)
 	hist.pressed.connect(func():
 		_click()
