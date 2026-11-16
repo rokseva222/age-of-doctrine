@@ -717,7 +717,7 @@ func _on_ui_action(act: String, arg) -> void:
 					selected_army = null
 					map.set_selected_army(null)
 					_select(dest)
-				if arm.size >= 1000:
+				if arm.size >= 200:
 					SendUI.open(ui, gs, arm, dest, go)
 				else:
 					go.call(0)
@@ -797,6 +797,8 @@ func _on_ui_action(act: String, arg) -> void:
 				ui.toast("İlişki görünümü: sarı seçili ülke, mavi müttefik, kırmızı savaş, mor ateşkes.")
 		"relations":
 			ui.show_relations(int(arg))
+		"diplomacy":
+			ui.DiplomacyUI.open(ui, gs, int(arg))
 		"focus_country":
 			var c = gs.countries[arg]
 			map.focus_country(arg)

@@ -49,17 +49,22 @@ static func _row(slot: int, mode: String, st: Dictionary, on_pick: Callable, sh,
 		v.add_child(TK.t(str(m.name), "h3", TK.TEXT))
 		v.add_child(TK.t("%s  /  %d eyalet  /  %s" % [m.date, int(m.prov), Saves.stamp_text(int(m.ts))], "small", TK.MUTED))
 	h.add_child(v)
+	var narrow: bool = parent_w() < 900
+	var bx: BoxContainer = VBoxContainer.new() if narrow else HBoxContainer.new()
+	bx.add_theme_constant_override("separation", 6)
+	bx.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+	h.add_child(bx)
 	if mode == "load":
-		var b := TK.button("Yükle", "gold", "folder", Vector2(150, 52), 16)
+		var b := TK.button("Yükle", "gold", "folder", Vector2(140, 48), 15)
 		b.disabled = not filled
 		b.pressed.connect(func():
 			if click.is_valid(): click.call()
 			sh.close()
 			on_pick.call(slot))
-		h.add_child(b)
+		bx.add_child(b)
 	else:
 		var sure: bool = st.confirm == slot
-		var b2 := TK.button("Emin misin?" if sure else "Kaydet", "danger" if sure else "gold", "save", Vector2(170, 52), 16)
+		var b2 := TK.button("Emin misin?" if sure else "Kaydet", "danger" if sure else "gold", "save", Vector2(150, 48), 15)
 		b2.pressed.connect(func():
 			if click.is_valid(): click.call()
 			if filled and not sure:
@@ -68,10 +73,10 @@ static func _row(slot: int, mode: String, st: Dictionary, on_pick: Callable, sh,
 				return
 			sh.close()
 			on_pick.call(slot))
-		h.add_child(b2)
+		bx.add_child(b2)
 	if filled:
 		var asked: bool = st.confirm == -100 - slot
-		var d := TK.button("Emin?" if asked else "Sil", "danger" if asked else "ghost", "x", Vector2(120, 52), 15)
+		var d := TK.button("Emin?" if asked else "Sil", "danger" if asked else "ghost", "x", Vector2(140, 44), 14)
 		d.pressed.connect(func():
 			if click.is_valid(): click.call()
 			if asked:
@@ -80,5 +85,12 @@ static func _row(slot: int, mode: String, st: Dictionary, on_pick: Callable, sh,
 			else:
 				st.confirm = -100 - slot
 			render.call())
-		h.add_child(d)
+		bx.add_child(d)
 	return panel
+
+
+static func parent_w() -> float:
+	var ml = Engine.get_main_loop()
+	if ml is SceneTree:
+		return float((ml as SceneTree).root.get_visible_rect().size.x)
+	return 1280.0

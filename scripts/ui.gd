@@ -9,6 +9,7 @@ const Macro = preload("res://scripts/macro.gd")
 const Carriers = preload("res://scripts/carriers.gd")
 const Missions = preload("res://scripts/missions.gd")
 const Emblem = preload("res://scripts/emblem.gd")
+const DiplomacyUI = preload("res://scripts/diplomacy_ui.gd")
 const PolicyUI = preload("res://scripts/policy_ui.gd")
 const SceneArt = preload("res://scripts/scene_art.gd")
 const Sheet = preload("res://scripts/sheet.gd")
@@ -483,10 +484,10 @@ func _side_pressed(key: String) -> void:
 	elif key == "wars":
 		show_world_panel(1)
 	elif key == "rel":
-		var rc: int = gs.player
+		var rc: int = -1
 		if card.visible and _card_pid >= 0:
 			rc = gs.provinces[_card_pid].owner
-		action.emit("rel_view", rc)
+		DiplomacyUI.open(self, gs, rc)
 	elif key == "capital":
 		action.emit("capital", 0)
 	elif key == "fit":
@@ -637,13 +638,13 @@ func show_province(pid: int, selected_army) -> void:
 	var moving: bool = selected_army != null and selected_army.owner == me and selected_army.prov != pid
 	if selected_army != null:
 		if moving:
-			hint = "Seçili ordu: %s asker, %s. Emri aşağıdaki düğmeyle ver." % [Macro.num(selected_army.size), gs.provinces[selected_army.prov].name]
+			hint = "Seçili ordu: %s asker, %s. Aşağıdaki düğmeyle yolla; ordunun yalnızca bir kısmını (%%25 / %%50 / %%75) da gönderip kalanını başka yere sevk edebilirsin." % [Macro.num(selected_army.size), gs.provinces[selected_army.prov].name]
 		else:
 			hint = "Ordu seçili (%s asker). Gidilecek eyalete dokun, sonra emri onayla." % Macro.num(selected_army.size)
 	_card_hint.text = hint
 	_card_hint.visible = hint != ""
 	if moving:
-		_abtn("Ordu buraya yürüsün", "gold", "play", "move_army", pid)
+		_abtn("Yolla / böl: oran seç" if selected_army.size >= 200 else "Ordu buraya yürüsün", "gold", "play", "move_army", pid)
 		_abtn("Seçimi bırak", "ghost", "x", "deselect", pid)
 	if p.owner != me:
 		if gs.at_war(me, p.owner) or (p.controller >= 0 and gs.at_war(me, p.controller)):
@@ -675,7 +676,7 @@ func show_province(pid: int, selected_army) -> void:
 				else:
 					_abtn("Geçiş izni iste", "", Icons.pick("passage_grant", "flag"), "ask_passage", p.owner)
 	if not oc.is_rebel:
-		_abtn("İlişkiler", "ghost", "handshake", "relations", p.owner)
+		_abtn("Diplomasi", "blue", Icons.pick("diplomacy", "handshake"), "diplomacy", p.owner)
 	if army != null and army.owner == me:
 		if selected_army == army:
 			if not army.path.is_empty():
@@ -1150,6 +1151,8 @@ func show_relations(cid: int) -> void:
 				sh.close()
 				show_relations(oid))
 			content.add_child(b3)
+	if cid != gs.player:
+		sh.add_button("Diplomasi", func(): DiplomacyUI.open(self, gs, cid), "gold", true, "handshake", 200)
 	sh.add_button("Haritada göster", func(): action.emit("rel_view", cid), "blue", true, "handshake", 240)
 	if cid == gs.player and not c.allies.is_empty() and not c.enemies.is_empty():
 		sh.add_button("Müttefiklerden yardım iste", func(): action.emit("ask_aid_all", cid), "gold", true, "handshake", 300)

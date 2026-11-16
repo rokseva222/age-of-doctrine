@@ -1218,6 +1218,51 @@ func player_propose_alliance(target: int) -> String:
 	return "%s ittifak teklifini reddetti." % t.name
 
 
+## İlişki geliştirme eylemleri: altın karşılığı puan; her biri hedef başına bekleme süresine tabidir.
+const DIPLO_ACTS := {
+	"envoy": {"name": "Elçi gönder", "mul": 0.25, "rel": 5.0, "cd": 4, "gift": 0.0, "icon": "diplomacy"},
+	"gift": {"name": "Hediye gönder", "mul": 1.0, "rel": 12.0, "cd": 8, "gift": 0.6, "icon": "gift"},
+	"pact": {"name": "Ticaret ve kültür anlaşması", "mul": 3.0, "rel": 24.0, "cd": 16, "gift": 0.4, "icon": "improve_rel"},
+}
+
+
+func diplo_cost(kind: String) -> float:
+	return aid_gold_cost() * float(DIPLO_ACTS[kind].mul)
+
+
+func diplo_left(kind: String, target: int) -> int:
+	return _aid_left("d" + kind.left(1), target)
+
+
+func player_improve_relations(target: int, kind: String) -> String:
+	if not DIPLO_ACTS.has(kind) or target < 0 or target == player:
+		return "Geçersiz eylem."
+	var t = countries[target]
+	if t.is_rebel or not t.alive:
+		return "Geçerli bir hedef yok."
+	if at_war(player, target):
+		return "Savaştayken ilişkiler geliştirilemez; önce barış yap."
+	var left := diplo_left(kind, target)
+	if left > 0:
+		return "%s için %d hafta bekle." % [t.name, left]
+	if relation_of(player, target) >= 98.0:
+		return "İlişkiler zaten en üst düzeyde."
+	var act: Dictionary = DIPLO_ACTS[kind]
+	var cost := diplo_cost(kind)
+	var me = countries[player]
+	if me.gold < cost:
+		return "Kasa yetmiyor (%s gerekli)." % Macro.money(cost)
+	me.gold -= cost
+	t.gold += cost * float(act.gift)
+	var gain: float = float(act.rel)
+	if t.aggression > 0.7:
+		gain *= 0.7      # saldırgan devletler daha zor yumuşar
+	relation_add(player, target, gain)
+	_aid_set("d" + kind.left(1), target, int(act.cd))
+	state_changed.emit()
+	return ""
+
+
 func player_break_alliance(target: int) -> String:
 	if not is_allied(player, target):
 		return "Müttefik değilsiniz."
