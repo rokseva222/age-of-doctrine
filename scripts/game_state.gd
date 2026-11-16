@@ -424,6 +424,10 @@ func player_launch_assault(pid: int, ids: Array, op: String, frac: float = 1.0) 
 	if not (at_war(player, p.owner) or (p.controller >= 0 and at_war(player, p.controller))):
 		res.err = "Bu eyalete taarruz için önce savaş olmalı."
 		return res
+	var occ = armies.get(pid)
+	if occ != null and occ.owner != player and not at_war(player, occ.owner):
+		res.err = "Bu eyalette savaşta olmadığın %s ordusu var; saldırı mümkün değil. Önce o ülkeyle savaş durumuna girmen gerekir." % countries[occ.owner].name
+		return res
 	var sel: Array = []
 	for a0 in armies.values():
 		if a0.owner == player and ids.has(a0.id):
@@ -1941,6 +1945,9 @@ func _enter(a, dest: int) -> void:
 	elif d.owner == a.owner:
 		if d.size + a.size > MAX_MERGE or (a.merc != "") != (d.merc != ""):
 			a.path.clear()
+			if a.owner == player:
+				var why: String = "bir eyalette en fazla %s asker toplanabilir" % Macro.num(MAX_MERGE) if d.size + a.size > MAX_MERGE else "paralı ve düzenli birlikler birleşemez"
+				post_news("Ordumuz %s eyaletindeki orduya katılamadı: %s. Beklemeye aldı; ordunu bölerek ya da komşu eyalete yollayabilirsin." % [provinces[dest].name, why], dest, "war_player")
 			return
 		d.size += a.size
 		if a.hold:
@@ -1955,6 +1962,8 @@ func _enter(a, dest: int) -> void:
 		_battle(a, d, dest)
 	else:
 		a.path.clear()
+		if a.owner == player:
+			post_news("Ordumuz %s eyaletinde ilerleyemedi: orada savaşta olmadığımız %s ordusu var." % [provinces[dest].name, countries[d.owner].name], dest, "war_player")
 
 
 func _relocate(a, dest: int) -> void:
@@ -2910,7 +2919,7 @@ func _process_unrest() -> void:
 	for p in provinces:
 		if p.owner < 0 or countries[p.owner].is_rebel or p.controller != p.owner:
 			continue
-		if p.owner != p.core and turn - p.acquired > 60:
+		if p.owner != p.core and turn - p.acquired > 45:
 			p.core = p.owner  # zamanla sindirilir
 		var oc = countries[p.owner]
 		var restless: bool = p.owner != p.core
@@ -2924,7 +2933,7 @@ func _process_unrest() -> void:
 			p.unrest += 1
 		else:
 			p.unrest = maxi(0, p.unrest - 1)
-		if p.unrest >= 12 and rebels_active < 8 and rng.randf() < 0.3:
+		if p.unrest >= 12 and rebels_active < 8 and rng.randf() < (0.16 if p.owner == player else 0.3):
 			if _spawn_rebels(p):
 				rebels_active += 1
 
@@ -2970,7 +2979,8 @@ func _check_rebels() -> void:
 		if not c.alive or not c.is_rebel:
 			continue
 		var age: int = turn - c.born
-		if c.prov_owned > 0 or (c.prov_held >= 2 and age >= 15):
+		# tek eyalete tutunan isyancılar da sonunda devlet kurar (Afganistan örneği: sonsuza dek isyancı kalıp boğaz tutuyorlardı)
+		if c.prov_owned > 0 or (c.prov_held >= 2 and age >= 15) or (c.prov_held >= 1 and age >= 22):
 			_rebel_independence(c)
 		elif c.prov_held == 0 and c.troops == 0:
 			_rebel_crushed(c)
