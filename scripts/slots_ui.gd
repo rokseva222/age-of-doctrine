@@ -12,17 +12,18 @@ static func open(parent: Node, mode: String, on_pick: Callable, click: Callable 
 	box.add_theme_constant_override("separation", 8)
 	sh.body.add_child(box)
 	var st := {"confirm": -1}
-	var render := func(): pass
-	render = func():
+	# lambda kendi değişkenini değer olarak yakalar; kendine referans için sözlük kullanılır
+	var holder := {"r": Callable()}
+	holder.r = func():
 		for ch in box.get_children():
 			box.remove_child(ch)
 			ch.queue_free()
 		var first := 0 if mode == "load" else 1
 		for slot in range(first, Saves.slot_count() + 1):
-			box.add_child(_row(slot, mode, st, on_pick, sh, render, click))
+			box.add_child(_row(slot, mode, st, on_pick, sh, holder.r, click))
 		if mode == "save":
 			box.add_child(TK.t("Otomatik kayıt (Ayarlar'dan açılır/kapanır) ayrı bir yuvada tutulur ve buradan üzerine yazılamaz.", "small", TK.FAINT))
-	render.call()
+	holder.r.call()
 	sh.add_button("Kapat", func(): pass, "ghost", true, "", 170)
 
 

@@ -53,7 +53,7 @@ const CARDS := [
 	{"id": "d_base", "role": "def", "w": 0.8, "war": 0,
 	 "q": "{nb} topraklarımızda ortak bir üs kurmak istiyor. Karşılığında ciddi bir ödeme teklif ediyor.",
 	 "o": [
-		{"t": "Kabul et", "e": {"g": 1.2, "stab": -2, "aggr": 0.05}, "r": "Anlaşma imzalandı; muhalefet 'egemenlik satıldı' diye bağırıyor."},
+		{"t": "Kabul et", "e": {"g": 1.2, "stab": -2, "aggr": 0.05, "nbrel": 15, "nbtruce": 26}, "r": "Anlaşma imzalandı; muhalefet 'egemenlik satıldı' diye bağırıyor."},
 		{"t": "Reddet", "e": {"stab": 1}, "r": "Teklif nazikçe geri çevrildi."}]},
 	{"id": "d_cyber", "role": "def", "w": 0.9, "war": 0,
 	 "q": "Siber komutanlık kurulmasını öneriyorum. Savunma da saldırı da buradan yürüyecek.",
@@ -83,21 +83,21 @@ const CARDS := [
 	{"id": "f_summit", "role": "for", "w": 1.0, "war": 0,
 	 "q": "{nb} lideri bir zirve toplantısı istiyor. Katılmak ilişkileri rahatlatabilir.",
 	 "o": [
-		{"t": "Bizzat git", "e": {"g": -0.3, "stab": 2, "aggr": -0.1}, "r": "Zirve sıcak geçti; iki taraf da ortak bildiri yayımladı."},
+		{"t": "Bizzat git", "e": {"g": -0.3, "stab": 2, "aggr": -0.1, "nbrel": 10}, "r": "Zirve sıcak geçti; iki taraf da ortak bildiri yayımladı."},
 		{"t": "Elçi gönder", "e": {"g": -0.1, "aggr": -0.04}, "r": "Orta düzey bir heyet gönderildi."},
 		{"t": "Reddet", "e": {"stab": 1, "aggr": 0.08}, "r": "Davet reddedildi; basın cesur bir duruş olarak yorumladı."}]},
 	{"id": "f_embassy", "role": "for", "w": 1.0, "war": 0,
 	 "q": "{nb} ile elçilik ilişkilerini yükseltmeyi öneriyorum: büyükelçilik, ticaret ofisi, vize anlaşması.",
 	 "o": [
-		{"t": "Büyükelçilik aç", "e": {"g": -0.5, "aggr": -0.08, "stab": 1}, "r": "Yeni büyükelçilik açıldı, ticari heyetler gidip gelmeye başladı."},
+		{"t": "Büyükelçilik aç", "e": {"g": -0.5, "aggr": -0.08, "stab": 1, "nbrel": 8}, "r": "Yeni büyükelçilik açıldı, ticari heyetler gidip gelmeye başladı."},
 		{"t": "Sadece ticaret ofisi", "e": {"g": -0.2, "aggr": -0.03}, "r": "Ticaret ofisi açıldı."},
 		{"t": "Gerek yok", "e": {}, "r": "Mevcut düzey korundu."}]},
 	{"id": "f_sanction", "role": "for", "w": 0.9, "war": 0,
 	 "q": "{nb} bir üçüncü ülkeye yaptırım uygulamamızı istiyor ve bize destek sözü veriyor.",
 	 "o": [
-		{"t": "Katıl", "e": {"stab": 1, "g": -0.3, "aggr": 0.08}, "r": "Yaptırım kararı onaylandı; hedef ülke sert tepki verdi."},
+		{"t": "Katıl", "e": {"stab": 1, "g": -0.3, "aggr": 0.08, "nbrel": 15, "nbtruce": 26}, "r": "Yaptırım kararı onaylandı; hedef ülke sert tepki verdi."},
 		{"t": "Tarafsız kal", "e": {}, "r": "Hükümet tarafsızlığını açıkladı."},
-		{"t": "Karşı çık", "e": {"stab": -1, "aggr": 0.04}, "r": "Yaptırıma karşı olduğun duyuruldu; bir süre soğukluk yaşanacak."}]},
+		{"t": "Karşı çık", "e": {"stab": -1, "aggr": 0.04, "nbrel": -8}, "r": "Yaptırıma karşı olduğun duyuruldu; bir süre soğukluk yaşanacak."}]},
 	{"id": "f_mediate", "role": "for", "w": 0.8, "war": 0,
 	 "q": "Komşu iki ülke arasında gerginlik büyüyor ve bizi arabuluculuğa çağırıyorlar.",
 	 "o": [
@@ -112,7 +112,7 @@ const CARDS := [
 	{"id": "f_aid", "role": "for", "w": 0.9, "war": 0,
 	 "q": "{nb} afet nedeniyle uluslararası yardım istiyor. Cömert davranmak itibarımızı yükseltir.",
 	 "o": [
-		{"t": "Büyük yardım", "e": {"g": -0.6, "stab": 2, "aggr": -0.12}, "r": "Yardım konvoyları yola çıktı; dünya kamuoyu seni övdü."},
+		{"t": "Büyük yardım", "e": {"g": -0.6, "stab": 2, "aggr": -0.12, "nbrel": 14}, "r": "Yardım konvoyları yola çıktı; dünya kamuoyu seni övdü."},
 		{"t": "Sembolik yardım", "e": {"g": -0.1, "aggr": -0.02}, "r": "Küçük bir yardım paketi gönderildi."},
 		{"t": "Reddet", "e": {"stab": -1}, "r": "Yardım isteği yanıtsız kaldı."}]},
 	{"id": "f_leak", "role": "for", "w": 0.8, "war": 0,
@@ -651,11 +651,11 @@ static func _random_neighbor(gs, cid: int, rng: RandomNumberGenerator) -> String
 	var cands: Array = []
 	for n in nbs:
 		var cc = gs.countries[n]
-		if cc.alive and not cc.is_rebel:
+		if cc.alive and not cc.is_rebel and not gs.at_war(cid, n):
 			cands.append(cc)
 	if cands.is_empty():
 		for cc2 in gs.countries:
-			if cc2.alive and not cc2.is_rebel and cc2.id != cid:
+			if cc2.alive and not cc2.is_rebel and cc2.id != cid and not gs.at_war(cid, cc2.id):
 				cands.append(cc2)
 				if cands.size() > 6:
 					break
@@ -789,6 +789,16 @@ static func apply(gs, eff: Dictionary) -> Array:
 					if cc.alive and not cc.is_rebel:
 						cc.aggression = clampf(cc.aggression + v, 0.05, 0.98)
 				out.append({"ic": "flag", "txt": ("Komşular sertleşti" if v > 0 else "Komşular yumuşadı"), "good": v < 0})
+			"nbrel":
+				if _nb_id >= 0 and _nb_id < gs.countries.size():
+					gs.relation_add(c.id, _nb_id, v)
+					out.append({"ic": "handshake", "txt": "%s ilişkisi %s%d" % [gs.countries[_nb_id].name, "+" if v >= 0 else "−", int(absf(v))], "good": v >= 0})
+			"nbtruce":
+				if _nb_id >= 0 and _nb_id < gs.countries.size():
+					var until: int = gs.turn + int(v)
+					c.truce[_nb_id] = maxi(int(c.truce.get(_nb_id, -1)), until)
+					gs.countries[_nb_id].truce[c.id] = maxi(int(gs.countries[_nb_id].truce.get(c.id, -1)), until)
+					out.append({"ic": "dove", "txt": "%s ile %d hafta saldırmazlık" % [gs.countries[_nb_id].name, int(v)], "good": true})
 			"nbstab":
 				if _nb_id >= 0 and _nb_id < gs.countries.size():
 					var nc = gs.countries[_nb_id]

@@ -64,13 +64,14 @@ static func open(parent: Node, toast: Callable = Callable()) -> void:
 	box.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	box.add_theme_constant_override("separation", 8)
 	sh.body.add_child(box)
-	var render := func(): pass
-	render = func():
+	# lambda kendi değişkenini değer olarak yakalar; kendine referans için sözlük kullanılır
+	var holder := {"r": Callable()}
+	holder.r = func():
 		for ch in box.get_children():
 			box.remove_child(ch)
 			ch.queue_free()
-		_fill(box, render, toast)
-	render.call()
+		_fill(box, holder.r, toast)
+	holder.r.call()
 	sh.add_button("Kapat", func(): pass, "ghost", true, "", 170)
 
 
