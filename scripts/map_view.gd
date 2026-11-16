@@ -281,8 +281,19 @@ func _on_armies_changed() -> void:
 
 
 func select_province(pid: int) -> void:
+	var old := selected_prov
 	selected_prov = pid
-	hud.queue_redraw()
+	# Ağır HUD'ı yalnızca seçim, deniz bağlantısı vurgusunu etkiliyorsa yeniden çiz;
+	# çerçeve zaten hafif üst katmanda çiziliyor (dokununca takılmayı önler).
+	var heavy := false
+	if gs != null:
+		for q in [old, pid]:
+			if q >= 0 and q < gs.provinces.size() and not gs.provinces[q].sea_links.is_empty():
+				heavy = true
+	if heavy:
+		hud.queue_redraw()
+	else:
+		hud.top.queue_redraw()
 
 
 func set_selected_army(a) -> void:

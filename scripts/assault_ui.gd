@@ -268,6 +268,13 @@ static func _render(ui, gs, pid: int, near: Array, st: Dictionary, parts: Dictio
 		var ml := TK.t("Taarruz %sK  /  Savunma %sK" % [Macro.num(est.ap / 1000.0), Macro.num(est.dp / 1000.0)], "mono", TK.MUTED)
 		ml.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		xb.add_child(ml)
+	if armies.is_empty():
+		var why: String = "Kara yoluyla ulaşabilecek ordun yok."
+		if p.coastal:
+			why += " Amfibi çıkarma için hedefle deniz bağlantısı olan bir kıyı eyaletinde ordun bulunmalı (ilk çıkarmada o ordu yola çıktığı için tekrar çıkarma yapmak istiyorsan kıyıya yeni birlik getir). Taşıma kapasitesi donanmanla sınırlı: %s asker." % Macro.num(gs.landing_cap(gs.player))
+		var why_l := TK.t(why, "small", TK.MUTED)
+		why_l.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		xb.add_child(why_l)
 	if any_sea:
 		var cap_l := TK.t("Amfibi çıkarma: taşıma kapasitesi %s asker" % Macro.num(gs.landing_cap(gs.player)), "small", TK.BLUE)
 		cap_l.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART

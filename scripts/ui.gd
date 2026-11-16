@@ -650,9 +650,11 @@ func show_province(pid: int, selected_army) -> void:
 		if gs.at_war(me, p.owner) or (p.controller >= 0 and gs.at_war(me, p.controller)):
 			_abtn("Taarruz", "danger", "swords", "assault", pid)
 		if Carriers.count(gs.countries[me]) > 0 and p.coastal and (gs.at_war(me, p.owner) or (p.controller >= 0 and gs.at_war(me, p.controller))):
-			_abtn("Uçak gemisi saldırısı", "danger", Icons.pick("carrier_strike", "ship"), "carrier", pid, gs.countries[me].carrier_cd <= gs.turn)
+			var car_left: int = gs.countries[me].carrier_cd - gs.turn
+			_abtn("Uçak gemisi saldırısı" if car_left <= 0 else "Uçak gemisi: %d hafta bekle" % car_left, "danger", Icons.pick("carrier_strike", "ship"), "carrier", pid, car_left <= 0)
 		if gs.player_has_nukes() and (gs.at_war(me, p.owner) or (p.controller >= 0 and gs.at_war(me, p.controller))):
-			_abtn("Nükleer saldırı", "danger", "nuke", "nuke", pid, gs.nuke_cd <= gs.turn)
+			var nuke_left: int = gs.nuke_cd - gs.turn
+			_abtn("Nükleer saldırı" if nuke_left <= 0 else "Nükleer: %d hafta bekle" % nuke_left, "danger", "nuke", "nuke", pid, nuke_left <= 0)
 		if gs.at_war(me, p.owner):
 			_abtn("Barış teklif et", "good", "handshake", "peace", p.owner)
 		elif not allied:
