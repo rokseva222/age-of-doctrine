@@ -625,7 +625,7 @@ static func search_field(content: Control, placeholder: String = "Ara...") -> Li
 	return le
 
 
-static func _apply_filter(content: Control, q: String) -> void:
+static func _apply_filter(content, q: String) -> void:
 	if not is_instance_valid(content):
 		return
 	q = q.strip_edges().to_lower()
