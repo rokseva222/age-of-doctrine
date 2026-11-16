@@ -58,6 +58,13 @@ const HORSEMAN := [
 	".mm.mm...mm.mm",
 	".kk.kk...kk.kk",
 ]
+const JET := [
+	"......k.",
+	"....kkkk",
+	"kkkkkkkk",
+	"....kkkk",
+	"......k.",
+]
 const MAN := [
 	"..kkkk..",
 	".kkkkkk.",
@@ -127,6 +134,7 @@ func draw(ctrl: Control, kind: String, time: float) -> void:
 		"mobilize": _mobilize()
 		"border": _border()
 		"crisis": _crisis()
+		"carrier": _carrier()
 		_: _assault()
 
 
@@ -835,3 +843,60 @@ func _crisis() -> void:
 		R(fposmod(i * 23.0 + sin(t + i) * 4.0, pw), f * ph, 1, 1, A("o", 1.0 - f))
 	if sin(t * 1.7) > 0.93:
 		R(0, 0, pw, ph, A("w", 0.12))
+
+
+## Uçak gemisi saldırısı: alacakaranlık deniz, güvertede kalkış, kıyıya dalış ve patlamalar, uçaksavar
+func _carrier() -> void:
+	sky(["n", "p", "o", "y"])
+	stars(8, int(gy * 0.3), 7.0)
+	circ(pw * 0.5, gy - 2, 6, "o")
+	waves(gy + 2, "b", "c", 2.0)
+	# sağda kıyı şeridi + şehir silüeti
+	var cx0: int = int(pw * 0.64)
+	var x := cx0
+	while x < pw:
+		var hgt: int = int(6 + 5 * (0.5 + 0.5 * sin((x - cx0) * 0.09 + 1.0)) + minf(8.0, (x - cx0) * 0.35))
+		R(x, gy + 2 - hgt, 2, hgt + 6, "d")
+		x += 2
+	for i in 5:
+		var bx: float = cx0 + 6 + i * 7
+		R(bx, gy - 12 - (i % 3) * 3, 4, 10 + (i % 3) * 3, "k")
+	# gemi: sol (2x ölçek)
+	var sx: float = pw * 0.05 + sin(t * 0.4)
+	var sy: float = gy + 1 + int(sin(t * 0.8))
+	R(sx, sy, 44, 6, "s")                                          # gövde
+	R(sx + 2, sy + 6, 40, 2, "d")
+	R(sx - 3, sy - 4, 50, 4, "l")                                  # uçuş güvertesi
+	R(sx - 1, sy - 3, 46, 1, "d")
+	for i in 7:
+		R(sx + 1 + i * 7, sy - 3, 3, 1, "y")                       # güverte çizgileri
+	R(sx + 32, sy - 12, 7, 8, "s")                                 # ada (köprü)
+	R(sx + 34, sy - 16, 2, 4, "k")
+	R(sx + 33, sy - 10, 5, 1, "C")
+	R(sx + 35, sy - 18 - int((fr / 2) % 2), 1, 2, "r")
+	spr(JET, sx + 6, sy - 9, false, PAL, 1)                        # güvertede bekleyen jet
+	# kalkış: güverteden fırlayıp sağa tırmanan, kıyıya dalan jetler
+	for i in 3:
+		var f: float = fposmod(t * 0.3 + i * 0.33, 1.0)
+		var jx: float = sx + 10 + f * (pw * 0.95)
+		var climb: float = sin(minf(f * 1.8, 1.0) * PI * 0.5) * (gy * 0.7)
+		var dive: float = ((f - 0.62) * gy * 1.6) if f > 0.62 else 0.0
+		var jy: float = sy - 6 - climb + dive
+		spr(JET, jx, jy, false, PAL, 2)
+		if f < 0.1:
+			R(jx - 5, jy + 4, 5, 2, A("y", 0.9))                   # katapult alevi
+		elif f > 0.55 and f < 0.9:
+			R(jx + 6, jy + 10, 2, 3, "y")                          # bomba
+	# kıyıda patlamalar
+	for i in 3:
+		var age: float = fposmod(t * 0.5 + i * 0.37, 1.3)
+		boom(cx0 + 8 + i * 12, gy - 8 - (i % 2) * 4, age)
+	smoke(cx0 + 14, gy - 10, 6, "d", 30)
+	# uçaksavar (flak) bulutları ve izleri
+	for i in 5:
+		var fa: float = fposmod(t * 0.9 + i * 0.21, 1.0)
+		if fa < 0.5:
+			circ(pw * (0.5 + fposmod(i * 0.37, 0.45)), gy * (0.2 + fposmod(i * 0.29, 0.45)), 1 + int(fa * 5), A("l", 0.6 - fa))
+	for i in 3:
+		var tr_: float = fposmod(t * 1.5 + i * 0.33, 1.0)
+		R(cx0 + 10 + i * 10, gy - 6 - tr_ * (gy - 8), 1, 2, "y")

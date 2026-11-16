@@ -10,7 +10,7 @@ const IMG_ALIAS := {"summit": "alliance", "nuke": "war", "embargo": "sanction"}
 ## Dosya (jpg) varsa onun adı IMG_ALIAS ile, yoksa kodla çizilen sahne PX_ALIAS ile seçilir
 const PX_ALIAS := {"era_ww2": "blitz", "era_cw62": "missile", "era_alt": "spy", "era_modern": "missile", "era_story": "alliance",
 	"un_ceasefire": "peace", "un_sanction": "sanction", "un_aid": "trade", "un_probe": "spy"}
-const FIRE := ["era_ww1", "era_ww2", "crisis", "assault", "barrage", "blitz", "naval", "air", "missile", "paradrop", "special", "landing", "war"]
+const FIRE := ["era_ww1", "era_ww2", "crisis", "carrier", "assault", "barrage", "blitz", "naval", "air", "missile", "paradrop", "special", "landing", "war"]
 const SCAN := ["cyber", "spy", "un_probe", "era_alt"]
 static var _tex_cache: Dictionary = {}
 

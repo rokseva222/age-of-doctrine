@@ -641,7 +641,7 @@ func show_province(pid: int, selected_army) -> void:
 		if gs.at_war(me, p.owner) or (p.controller >= 0 and gs.at_war(me, p.controller)):
 			_abtn("Taarruz", "danger", "swords", "assault", pid)
 		if Carriers.count(gs.countries[me]) > 0 and p.coastal and (gs.at_war(me, p.owner) or (p.controller >= 0 and gs.at_war(me, p.controller))):
-			_abtn("Uçak gemisi saldırısı", "danger", "ship", "carrier", pid, gs.countries[me].carrier_cd <= gs.turn)
+			_abtn("Uçak gemisi saldırısı", "danger", Icons.pick("carrier_strike", "ship"), "carrier", pid, gs.countries[me].carrier_cd <= gs.turn)
 		if gs.player_has_nukes() and (gs.at_war(me, p.owner) or (p.controller >= 0 and gs.at_war(me, p.controller))):
 			_abtn("Nükleer saldırı", "danger", "nuke", "nuke", pid, gs.nuke_cd <= gs.turn)
 		if gs.at_war(me, p.owner):

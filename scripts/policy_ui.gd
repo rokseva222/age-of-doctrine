@@ -391,7 +391,7 @@ func _carrier_row(c) -> void:
 	var h := HBoxContainer.new()
 	h.add_theme_constant_override("separation", 12)
 	var iv := TK.IconView.new()
-	iv.icon = "ship"
+	iv.icon = Icons.pick("carrier", "ship")
 	iv.color = Color.WHITE
 	iv.custom_minimum_size = Vector2(38, 38)
 	iv.size_flags_vertical = Control.SIZE_SHRINK_CENTER
@@ -401,9 +401,10 @@ func _carrier_row(c) -> void:
 	h.add_child(nm)
 	h.add_child(TK.t(str(Carriers.count(c)), "value", TK.TEXT))
 	content.add_child(h)
+	content.add_child(SceneArt.make("carrier", 100))
 	content.add_child(_wrap("Çıkarma kapasitesini ve çıkarma saldırısını güçlendirir; kıyıdaki düşman eyaletlerini (ada ülkeleri dâhil) ordu göndermeden vurabilirsin. Satın alınanların bakım gideri vardır.", "small", TK.FAINT))
 	var err: String = Carriers.can_buy(gs, c)
-	var b := TK.button("Satın al: %s" % Macro.money(Carriers.cost(c)), "gold", "ship", Vector2(0, 56), 15)
+	var b := TK.button("Satın al: %s" % Macro.money(Carriers.cost(c)), "gold", Icons.pick("carrier", "ship"), Vector2(0, 56), 15)
 	b.disabled = err != "" and not err.begins_with("Kasa")
 	b.pressed.connect(func():
 		var e2: String = Carriers.buy(gs)

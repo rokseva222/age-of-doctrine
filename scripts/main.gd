@@ -665,14 +665,19 @@ func _on_ui_action(act: String, arg) -> void:
 					sfx.play("drumroll", 0.7)
 				_refresh_selection())
 		"carrier":
-			var cr: Dictionary = Carriers.strike(gs, int(arg))
-			if cr.err != "":
-				ui.toast(cr.err)
-				sfx.play("error")
-			else:
-				ui.toast("Uçak gemisi saldırısı: %s asker kaybı verdirdi." % Macro.num(cr.killed) if cr.killed > 0 else "Uçak gemisi saldırısı yapıldı: hedefte ordu yok.")
-				sfx.play("drumroll", 0.9)
-				_refresh_selection()
+			var cp: int = int(arg)
+			ui.show_dialog("Uçak gemisi saldırısı", "%s eyaletine uçak gemisi grubundan hava taarruzu düzenlenecek. Hedefteki ordu ağır kayıp verir; grup %d hafta yeniden hazırlanır." % [gs.provinces[cp].name, Carriers.STRIKE_CD], [
+				{"text": "Vazgeç", "cb": func(): pass, "kind": "ghost"},
+				{"text": "Saldır", "kind": "danger", "icon": Icons.pick("carrier_strike", "ship"), "cb": func():
+					var cr: Dictionary = Carriers.strike(gs, cp)
+					if cr.err != "":
+						ui.toast(cr.err)
+						sfx.play("error")
+						return
+					sfx.play("drumroll", 0.9)
+					_refresh_selection()
+					var body: String = "Hedef: %s.\n%s" % [gs.provinces[cp].name, ("Düşman %s asker kaybetti." % Macro.num(cr.killed)) if cr.killed > 0 else "Hedefte ordu yoktu; sahil tesisleri vuruldu."]
+					ui.show_dialog("Harekât tamamlandı", body, [{"text": "Tamam", "cb": func(): pass, "kind": "good"}], "carrier", "")}], "carrier", "")
 		"nuke":
 			var np: int = int(arg)
 			ui.show_dialog("Nükleer saldırı", "%s eyaletine nükleer silah kullanılacak. Hedef ordusunun %%80'i yok olur, ama istikrarın düşer, 26 hafta yaptırım gelir ve hedefin müttefikleri sana savaş açabilir. Emin misin?" % gs.provinces[np].name, [

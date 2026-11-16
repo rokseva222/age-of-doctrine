@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Tek görselde (ızgara) üretilmiş ikonları assets/icons/<ad>_c.png olarak keser.
-Kullanım: python3 tools/slice_icons.py sayfa.png [sütun] [satır] [--set=objects|pack2|pack3|pack4|pack5|pack6|pack7|pack8|all] [--start=N] [--mono] [--tiles]
+Kullanım: python3 tools/slice_icons.py sayfa.png [sütun] [satır] [--set=objects|pack2|pack3|pack4|pack5|pack6|pack7|pack8|pack9|all] [--start=N] [--mono] [--tiles]
  - İkonlar soldan sağa, yukarıdan aşağıya tools/ICON_PROMPTS.md'deki sırayla dizilmeli.
  - Düz magenta (#FF00FF) arka plan (veya şeffaf) otomatik şeffaflaştırılır; renkli ikon korunur.
  - --mono: renkleri beyaz tek renk glife çevirir ve <ad>.png yazar (oyun bunu duruma göre boyar).
@@ -15,13 +15,14 @@ PACK5 = ['un_peacekeeper', 'assembly_hall', 'rebuild', 'develop', 'guarantee', '
 PACK6 = ['strait', 'canal', 'toll_gate', 'strait_closed', 'tanker', 'shipping_lane', 'strait_control', 'trade_shock', 'politics', 'martial_law', 'generals_plot', 'reform', 'constitution', 'democratize', 'power_tower', 'regime_change', 'war_room', 'attack_phases', 'phase_wait', 'phase_success', 'phase_fail', 'reserve_force', 'combined_arms', 'capital_falls', 'daily_challenge', 'score_star', 'streak_flame', 'alt_history', 'what_if', 'grand_operation', 'uprising_banner', 'founding_scroll']
 PACK7 = ['phase_spark', 'phase_uprising', 'phase_negotiation', 'phase_statehood', 'phase_consolidation', 'method_uprising', 'method_coup', 'method_political', 'ideo_liberal', 'ideo_social', 'ideo_national', 'ideo_traditional', 'ideo_federal', 'ideo_techno', 'foreign_patron', 'recognition_stamp', 'card_leak', 'card_diaspora', 'card_students', 'card_raid', 'card_elders', 'card_swap', 'card_journalist', 'card_hunger', 'card_autonomy', 'card_hardliners', 'card_currency', 'card_militia', 'card_border', 'card_election', 'card_investors', 'card_constitution']
 PACK8 = ['era_ott1520', 'era_tim1380', 'era_cw62', 'mode_story', 'mobilize', 'mob_active', 'rel_hostile', 'rel_cold', 'rel_warm', 'rel_close', 'passage_grant', 'passage_deny', 'army_split', 'vote_yes', 'vote_no', 'vote_abstain', 'un_hall', 'un_notice', 'border_clash', 'border_cede', 'border_talk', 'plague', 'famine', 'bombard', 'galley', 'matchlock', 'horse_archer', 'yurt', 'palace_domes', 'caravan', 'war_standard', 'decree']
+PACK9 = ['carrier_strike', 'carrier_ready', 'carrier_refit', 'jet_launch', 'diplomacy', 'gift', 'improve_rel', 'embargo_lift']
 RAW60 = ['pt_raw_%02d' % i for i in range(60)]
 root = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..")
 src = open(os.path.join(root, "scripts/icons.gd")).read()
 allnames = re.findall(r'"([a-z0-9_]+)"', re.search(r'const NAMES := \[(.*?)\]', src, re.S).group(1))
 opts = {a.split("=")[0]: (a.split("=")[1] if "=" in a else True) for a in sys.argv[1:] if a.startswith("--")}
 args = [a for a in sys.argv[1:] if not a.startswith("--")]
-names = {"objects": OBJECTS, "pack2": PACK2, "pack3": PACK3, "pack4": PACK4, "pack5": PACK5, "pack6": PACK6, "pack7": PACK7, "pack8": PACK8, "raw60": RAW60}.get(opts.get("--set", "objects"), allnames)
+names = {"objects": OBJECTS, "pack2": PACK2, "pack3": PACK3, "pack4": PACK4, "pack5": PACK5, "pack6": PACK6, "pack7": PACK7, "pack8": PACK8, "pack9": PACK9, "raw60": RAW60}.get(opts.get("--set", "objects"), allnames)
 start = int(opts.get("--start", 0))
 mono = "--mono" in opts
 if "--tiles" in opts:
@@ -38,7 +39,7 @@ if "--tiles" in opts:
         if h > 40 and w > 40:
             boxes.append((sl[0].start, sl[1].start, sl[0].stop, sl[1].stop))
     boxes.sort(key=lambda b: (round((b[0] + b[2]) / 2 / 60), b[1]))
-    names = {"objects": OBJECTS, "pack2": PACK2, "pack3": PACK3, "pack4": PACK4, "pack5": PACK5, "pack6": PACK6, "pack7": PACK7, "pack8": PACK8, "raw60": RAW60}.get(opts.get("--set", "objects"), allnames)
+    names = {"objects": OBJECTS, "pack2": PACK2, "pack3": PACK3, "pack4": PACK4, "pack5": PACK5, "pack6": PACK6, "pack7": PACK7, "pack8": PACK8, "pack9": PACK9, "raw60": RAW60}.get(opts.get("--set", "objects"), allnames)
     out = os.path.join(root, "assets/icons"); os.makedirs(out, exist_ok=True)
     cnt = 0
     for name, (y0, x0, y1, x1) in zip(names[int(opts.get("--start", 0)):], boxes):
