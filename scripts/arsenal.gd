@@ -16,9 +16,9 @@ static func cat_name(k: String) -> String:
 const CAT_ICON := {"inf": "rifle", "tank": "tank", "afv": "afv", "arty": "arty", "air": "jet", "sub": "sub"}
 const CAT_ICON_FAM := {
 	"pre": {"inf": "u_azap", "tank": "u_sipahi", "afv": "u_akinci", "arty": "u_darbzen", "air": "jet", "sub": "u_galiot"},
-	"ww1": {"inf": "rifle", "tank": "u_mark_tank", "afv": "u_armored_car", "arty": "arty", "air": "biplane", "sub": "u_dreadnought"},
-	"ww2": {"inf": "rifle", "tank": "tank", "afv": "afv", "arty": "arty", "air": "bomber", "sub": "sub"},
-	"cold": {"inf": "rifle", "tank": "tank", "afv": "afv", "arty": "arty", "air": "jet", "sub": "u_nuclear_sub"},
+	"ww1": {"inf": "w2_garand", "tank": "u_mark_tank", "afv": "u_armored_car", "arty": "w2_howitzer", "air": "biplane", "sub": "u_dreadnought"},
+	"ww2": {"inf": "w2_garand", "tank": "w2_sherman", "afv": "w2_halftrack", "arty": "w2_howitzer", "air": "w2_fighter", "sub": "w2_uboat"},
+	"cold": {"inf": "rifle", "tank": "cw_t55", "afv": "cw_apc", "arty": "arty", "air": "cw_mig", "sub": "u_nuclear_sub"},
 }
 ## Birlik kimliğinden simge: önce birliğe özel, sonra çağın sınıf simgesi, en sonda modern sınıf simgesi (Icons.pick dosya yoksa yedeğe düşer)
 const ITEM_ICON := {
@@ -35,6 +35,37 @@ const ITEM_ICON := {
 	"y_rocket": "u_ming_cannon", "y_fo": "u_ming_cannon", "y_ram": "u_siege_tower", "y_trebu": "u_trebuchet",
 	"s_dhow": "u_galiot", "s_galley": "galley", "s_galley2": "galley", "s_cog": "u_galiot", "s_carrack": "u_galiot", "s_kalite": "galley",
 	"s_galleass": "galley", "s_galleon": "u_galiot", "s_junk": "u_galiot",
+	# --- WW1 / WW2 / Soğuk Savaş
+	"i_gew98": "w2_garand", "i_mg08": "w2_mg42", "i_mg1718": "w2_mg42", "i_mp18": "w2_mp40", "i_smle": "w2_garand", "i_vickers": "w2_mg42", "i_lewis": "w2_mg42",
+	"i_lebel": "w2_garand", "i_chauchat": "w2_mg42", "i_berthier": "w2_garand", "i_mosin": "w2_garand", "i_maxim": "w2_mg42", "i_mann": "w2_garand", "i_mann2": "w2_mg42",
+	"i_mauser": "w2_garand", "i_springfield": "w2_garand", "i_garand": "w2_garand", "i_arisaka": "w2_garand", "i_carcano": "w2_garand",
+	"t_mk1": "u_mark_tank", "t_mk4": "u_mark_tank", "t_mk5": "u_mark_tank", "t_schn": "u_mark_tank", "t_ft17": "u_mark_tank", "t_a7v": "u_mark_tank",
+	"a_rr": "u_armored_car", "a_aust": "u_armored_car", "a_eh": "u_armored_car", "a_peug": "u_armored_car", "y_fk96": "w2_howitzer", "y_21": "w2_howitzer",
+	"i_k98": "w2_garand", "i_mp40": "w2_mp40", "i_g43": "w2_mg42", "i_stg44": "w2_mp40", "i_svt": "w2_garand", "i_ppsh": "w2_mp40", "i_enfield": "w2_garand",
+	"i_sten": "w2_mp40", "i_carbine": "w2_mp40", "i_type100": "w2_mp40",
+	"t_pz1": "w2_panzer", "t_pz3": "w2_panzer", "t_pz4": "w2_panzer", "t_panther": "w2_panzer", "t_tiger": "w2_heavy_tank", "t_t26": "w2_t34", "t_t34": "w2_t34",
+	"t_kv1": "w2_heavy_tank", "t_t3485": "w2_t34", "t_is2": "w2_heavy_tank", "t_vick": "w2_sherman", "t_matilda": "w2_heavy_tank", "t_crus": "w2_sherman",
+	"t_crom": "w2_sherman", "t_stuart": "w2_sherman", "t_sherman": "w2_sherman", "t_pershing": "w2_heavy_tank", "t_r35": "w2_sherman", "t_b1": "w2_heavy_tank",
+	"t_l3": "w2_sherman", "t_m13": "w2_sherman", "t_chiha": "w2_t34", "t_chihan": "w2_t34", "t_7tp": "w2_sherman", "t_lt38": "w2_panzer",
+	"a_sdkfz222": "u_armored_car", "a_sdkfz251": "w2_halftrack", "a_ba10": "u_armored_car", "a_ba64": "w2_jeep", "a_carrier": "w2_halftrack",
+	"a_daimler": "w2_jeep", "a_m3": "w2_halftrack", "a_m8": "u_armored_car", "a_amr": "u_armored_car", "a_as37": "w2_jeep", "a_type94": "w2_halftrack",
+	"y_lefh18": "w2_howitzer", "y_sfh18": "w2_howitzer", "y_nebel": "w2_katyusha", "y_m30": "w2_howitzer", "y_zis3": "w2_howitzer", "y_katyusha": "w2_katyusha",
+	"y_25pdr": "w2_howitzer", "y_m101": "w2_howitzer", "y_m2": "w2_howitzer", "y_m1897": "w2_howitzer", "y_cann": "w2_howitzer", "y_type91": "w2_howitzer",
+	"f_pzlp11": "w2_fighter", "f_i16": "w2_fighter", "f_yak9": "w2_stuka", "f_la7": "w2_fighter", "f_bf109": "w2_fighter", "f_fw190": "w2_fighter",
+	"f_me262": "cw_mig", "f_hurr": "w2_fighter", "f_spit": "w2_heavy_bomber", "f_spit2": "w2_fighter", "f_p40": "w2_fighter", "f_p47": "w2_heavy_bomber",
+	"f_p51": "w2_heavy_bomber", "f_ms406": "w2_fighter", "f_cr42": "biplane", "f_ki27": "w2_zero", "f_zero": "w2_zero",
+	"s_s": "w2_uboat", "s_vii": "w2_uboat", "s_ix": "w2_uboat", "s_t": "w2_uboat", "s_gato": "w2_uboat", "s_redout": "w2_uboat", "s_marcello": "w2_uboat", "s_i": "w2_uboat",
+	"i_m1": "w2_garand", "i_m14": "w2_mg42", "i_m16": "w2_mp40", "i_sks": "w2_garand", "i_ak47": "w2_mp40", "i_akm": "w2_mp40", "i_slr": "w2_garand",
+	"i_mas49": "w2_garand", "i_fn": "w2_mg42", "i_g3": "w2_garand", "i_type56": "w2_mp40",
+	"t_m47": "cw_t55", "t_m48": "cw_t55", "t_m60": "cw_t55", "t_t54": "cw_t55", "t_t55": "cw_t55", "t_t62": "cw_t55", "t_cent": "cw_t55", "t_cheft": "cw_t55",
+	"t_amx13": "cw_t55", "t_amx30": "cw_t55", "t_type59": "cw_t55", "t_leo": "cw_t55",
+	"a_m59": "cw_apc", "a_m113": "cw_apc", "a_btr152": "cw_apc", "a_btr60": "cw_apc", "a_bmp1": "cw_apc", "a_sar": "cw_apc", "a_fv432": "cw_apc",
+	"a_panhard": "u_armored_car", "a_vci": "cw_apc", "a_type63": "cw_apc",
+	"y_m114": "w2_howitzer", "y_m110": "w2_howitzer", "y_m46": "w2_howitzer", "y_d30": "w2_howitzer", "y_bm21": "w2_katyusha", "y_bl55": "w2_howitzer",
+	"y_mle50": "w2_howitzer", "y_f3": "w2_howitzer", "y_type54": "w2_howitzer",
+	"f_f86": "cw_mig", "f_f100": "cw_mig", "f_f4": "cw_mig", "f_mig15": "cw_mig", "f_mig17": "cw_mig", "f_mig21": "cw_mig", "f_su7": "cw_b52",
+	"f_hunter": "cw_mig", "f_lightning": "cw_mig", "f_mystere": "cw_mig", "f_mirage": "cw_mig", "f_j5": "cw_mig",
+	"s_guppy": "w2_uboat", "s_skipjack": "u_nuclear_sub", "s_gwash": "cw_polaris",
 }
 
 
