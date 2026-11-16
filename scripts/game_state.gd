@@ -37,6 +37,7 @@ signal indep_card
 signal career_card
 signal moment_card
 signal ally_call(friend: int, foe: int, kind: String)
+signal side_call(a: int, b: int)
 signal un_vote_card
 signal alliance_proposal(from_country: int)
 
@@ -47,6 +48,7 @@ const VICTORY_RATIO := 0.55
 const ECON_RATIO := 0.5
 
 var rng := RandomNumberGenerator.new()
+var side_cd := 0                         # bir sonraki 'taraf seç' çağrısına kadar bekleme (tur)
 var setup_mode := false                  # senaryo kurulurken oyuncuya ittifak çağrısı gösterilmez
 var seed_value := 0
 var world = null
@@ -855,7 +857,50 @@ func declare_war(a: int, b: int, joined: bool = false) -> bool:
 		else:
 			post_news(Names.war_declared(rng, na, nb), countries[a].capital, "war")
 		_call_allies(a, b)
+		_maybe_side_call(a, b)
 	return true
+
+
+## İki büyük güç savaşa tutuşunca oyuncuya (savaşta değilse) taraf seçme çağrısı gider.
+func _maybe_side_call(a: int, b: int) -> void:
+	if player < 0 or setup_mode or pending_proposal or turn < 4 or turn < side_cd:
+		return
+	if a == player or b == player or at_war(player, a) or at_war(player, b):
+		return
+	if is_allied(player, a) or is_allied(player, b):
+		return
+	for cid in [a, b]:
+		var c = countries[cid]
+		if c.is_rebel or c.name_en.begins_with("faction_"):
+			return
+		var rank := 0
+		for o in countries:
+			if o.alive and not o.is_rebel and o.troops > c.troops:
+				rank += 1
+		if rank >= 14:
+			return
+	side_cd = turn + 40
+	pending_proposal = true
+	side_call.emit(a, b)
+
+
+## choice: 0 = a'nın yanında (b'ye savaş), 1 = b'nin yanında (a'ya savaş), 2 = tarafsız.
+func player_choose_side(a: int, b: int, choice: int) -> String:
+	pending_proposal = false
+	var me = countries[player]
+	if choice == 2:
+		me.gold += maxf(me.income, 1.0) * 2.0
+		me.stability = minf(100.0, me.stability + 2.0)
+		post_news("%s, %s–%s savaşında tarafsız kalmayı seçti; ticaret ve istikrar kazandı." % [me.name, countries[a].name, countries[b].name], me.capital, "info")
+		state_changed.emit()
+		return ""
+	var friend: int = a if choice == 0 else b
+	var foe: int = b if choice == 0 else a
+	declare_war(player, foe, true)
+	relation_add(player, friend, 15.0)
+	post_news("%s, %s'nın yanında %s'a karşı savaşa girdi!" % [me.name, countries[friend].name, countries[foe].name], me.capital, "war_player")
+	state_changed.emit()
+	return ""
 
 
 # ===================================================================== ittifaklar

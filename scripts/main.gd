@@ -210,6 +210,7 @@ func _attach_gs(g) -> void:
 	gs.peace_proposal.connect(_on_peace_proposal)
 	gs.game_over.connect(_on_game_over)
 	gs.ally_call.connect(_on_ally_call)
+	gs.side_call.connect(_on_side_call)
 	gs.un_vote_card.connect(_on_un_vote_card)
 	gs.alliance_proposal.connect(_on_alliance_proposal)
 	gs.indep_card.connect(_on_indep_card)
@@ -1124,6 +1125,18 @@ func _on_ally_call(friend: int, foe: int, kind: String) -> void:
 			gs.cancel_proposal()
 			gs.break_alliance(gs.player, friend)},
 	])
+
+
+func _on_side_call(a: int, b: int) -> void:
+	_on_speed_changed(0)
+	var an: String = gs.countries[a].name
+	var bn: String = gs.countries[b].name
+	var body := "%s ve %s birbirine savaş açtı. Dünya taraf tutuyor: birinin yanında savaşa girebilir ya da tarafsız kalabilirsin.\n\nTarafsızlık ticaret ve istikrar getirir; bir tarafı seçersen o ülkeyle ilişkin güçlenir, diğeriyle savaşa girersin." % [an, bn]
+	ui.show_dialog("Büyük savaş: taraf seç", body, [
+		{"text": "%s yanında savaş" % an, "cb": func(): gs.player_choose_side(a, b, 0), "kind": "danger"},
+		{"text": "%s yanında savaş" % bn, "cb": func(): gs.player_choose_side(a, b, 1), "kind": "danger"},
+		{"text": "Tarafsız kal", "cb": func(): gs.player_choose_side(a, b, 2), "kind": "good"},
+	], "war")
 
 
 func _on_un_vote_card() -> void:
