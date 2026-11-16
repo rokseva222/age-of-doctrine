@@ -1,6 +1,7 @@
 extends RefCounted
 ## Oyun durumu ve tüm kurallar: tur akışı, ordular, kuşatma, savaş/barış, yapay zeka, olaylar.
 
+const EraNames = preload("res://scripts/era_names.gd")
 const Model = preload("res://scripts/model.gd")
 const Settings = preload("res://scripts/settings.gd")
 const Names = preload("res://scripts/names.gd")
@@ -103,6 +104,8 @@ func new_world(seed_val: int, _ncountries: int = 0) -> void:
 	rng.seed = seed_val
 	world = WorldData.instance()
 	world.populate(self)
+	if Eras.current != "":
+		EraNames.apply(self, Eras.current)
 	base_country_count = countries.size()
 	_init_armies()
 	refresh_stats()
@@ -3036,6 +3039,8 @@ func from_dict(d: Dictionary) -> bool:
 		Eras.clear()
 	world = WorldData.instance()
 	world.populate(self)
+	if Eras.current != "":
+		EraNames.apply(self, Eras.current)
 	base_country_count = d.base
 	var ps: Array = d.provinces
 	if ps.size() != provinces.size():

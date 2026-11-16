@@ -3,6 +3,8 @@ extends RefCounted
 ## Seçime göre bütçe, istikrar, ordu, komşu tutumu değişir; bazı riskli seçimler oyunu bitirebilir.
 ## Ayarlardan kapatılabilir (Settings.cabinet).
 
+const EraNames = preload("res://scripts/era_names.gd")
+const Eras_ = preload("res://scripts/eras.gd")
 const Macro = preload("res://scripts/macro.gd")
 const Names = preload("res://scripts/names.gd")
 const NameGen = preload("res://scripts/name_gen.gd")
@@ -395,6 +397,8 @@ static func _load() -> void:
 ## [isim, kadın mı]. Gerçek isimler (Kasım 2026) birkaç yıl geçerli; sonra ülkenin isim kültürüne göre
 ## deterministik rastgele isimler gelir. Tarihî kiplerde ve gerçek isim bulunmayan görevlerde de üretilir.
 static func minister_of(c, role: String, turn: int = 0) -> Array:
+	if c.is_player:
+		player_en = c.name_en
 	if role in ["trd", "spt", "ele"]:
 		return _guest_of(c, role, turn)
 	if c.is_player and role in APPOINT:
@@ -418,8 +422,21 @@ static func _guest_of(c, role: String, turn: int) -> Array:
 
 static func _base_real(c, role: String) -> String:
 	_load()
+	if Macro.era_on:
+		return EraNames.real_minister(Eras_.current, c.name_en, role) if role != "amb" else ""
 	var e: Dictionary = _names.get(c.name_en, {})
-	return e.get(role, "") if (not Macro.era_on and role != "amb") else ""
+	return e.get(role, "") if role != "amb" else ""
+
+
+## Unvan: tarihî kipte dönemin unvanı (Sadrazam, Harbiye Nazırı...), yoksa modern bakanlık adı
+static func role_title(role: String) -> String:
+	var base: String = String(ROLE_TITLE.get(role, role))
+	if Macro.era_on:
+		return EraNames.role_title(Eras_.current, role, base, player_en)
+	return base
+
+
+static var player_en := ""        # unvanlar oyuncunun ülkesine göre çözülür (minister_of oyuncu için çağrılınca güncellenir)
 
 
 static func _base_minister(c, role: String, turn: int = 0) -> Array:
@@ -528,7 +545,7 @@ static func appoint(gs, role: String, cand: Dictionary) -> void:
 	c.gold = maxf(0.0, c.gold - float(cand.cost))
 	var term: int = 52 * (3 + absi(hash(cand.n)) % 3)
 	c.cab[role] = {"n": cand.n, "f": cand.f, "q": int(cand.q), "since": gs.turn, "until": gs.turn + term, "real": false, "why": ""}
-	gs.post_news("%s: %s göreve başladı. (%s)" % [ROLE_TITLE[role], cand.n, Q_NAME[int(cand.q)]], -1, "info", "badge")
+	gs.post_news("%s: %s göreve başladı. (%s)" % [role_title(role), cand.n, Q_NAME[int(cand.q)]], -1, "info", "badge")
 
 
 ## Bakanı görevden alır; istikrar bedeli. Sonraki kabine toplantısında yerine aday gelir.
@@ -546,14 +563,14 @@ static func vacancy_text(gs, role: String) -> String:
 	var e: Dictionary = c.cab[role]
 	match String(e.get("why", "")):
 		"scandal":
-			return "%s %s yolsuzluk iddialarıyla görevden düştü. Yerine kimi atayalım?" % [ROLE_TITLE[role], e.n]
+			return "%s %s yolsuzluk iddialarıyla görevden düştü. Yerine kimi atayalım?" % [role_title(role), e.n]
 		"resign":
-			return "%s %s istifa etti. Yerine kimi atayalım?" % [ROLE_TITLE[role], e.n]
+			return "%s %s istifa etti. Yerine kimi atayalım?" % [role_title(role), e.n]
 		"fired":
-			return "%s %s görevden alındı. Yerine kimi atayalım?" % [ROLE_TITLE[role], e.n]
+			return "%s %s görevden alındı. Yerine kimi atayalım?" % [role_title(role), e.n]
 		"gov":
-			return "Yeni hükümet kuruluyor: %s %s görevini bırakıyor. Yerine kimi atayalım?" % [ROLE_TITLE[role], e.n]
-	return "%s %s görev süresini tamamladı. Yerine kimi atayalım?" % [ROLE_TITLE[role], e.n]
+			return "Yeni hükümet kuruluyor: %s %s görevini bırakıyor. Yerine kimi atayalım?" % [role_title(role), e.n]
+	return "%s %s görev süresini tamamladı. Yerine kimi atayalım?" % [role_title(role), e.n]
 
 
 ## Her hafta: bakanların bonusu, skandal/istifa riski (gerçek isimler ayrı tutulur: onlara asla skandal yazılmaz).
@@ -606,11 +623,11 @@ static func weekly(gs) -> void:
 			var loss: float = maxf(c.income, 1.0) * rng.randf_range(1.0, 2.0)
 			c.gold = maxf(0.0, c.gold - loss)
 			c.stability = clampf(c.stability - 3.0, 5.0, 100.0)
-			gs.post_news("SKANDAL: %s %s zimmet iddialarıyla sarsıldı; kasadan %s kayboldu." % [ROLE_TITLE[role], e.n, Macro.money(loss)], c.capital, "event_player", "megaphone")
+			gs.post_news("SKANDAL: %s %s zimmet iddialarıyla sarsıldı; kasadan %s kayboldu." % [role_title(role), e.n, Macro.money(loss)], c.capital, "event_player", "megaphone")
 		elif rng.randf() < 0.0005:
 			e.until = gs.turn
 			e.why = "resign"
-			gs.post_news("%s %s istifa etti." % [ROLE_TITLE[role], e.n], -1, "info", "badge")
+			gs.post_news("%s %s istifa etti." % [role_title(role), e.n], -1, "info", "badge")
 	# seçim takvimi
 	if c.elect_turn < 0:
 		c.elect_turn = gs.turn + 70 + absi(hash(c.name_en)) % 60

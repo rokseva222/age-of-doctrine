@@ -512,7 +512,7 @@ func _tab_cabinet() -> void:
 		tv.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		tv.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 		tv.add_theme_constant_override("separation", 0)
-		tv.add_child(TK.t(Cabinet.ROLE_TITLE[role], "kicker", TK.GOLD))
+		tv.add_child(TK.t(Cabinet.role_title(role), "kicker", TK.GOLD))
 		tv.add_child(TK.t(e.n, "bodyb", TK.TEXT))
 		var q: int = int(e.q)
 		tv.add_child(_wrap(Cabinet.ROLE_FX[role][q], "small", TK.GREEN if q > 0 else TK.MUTED))
