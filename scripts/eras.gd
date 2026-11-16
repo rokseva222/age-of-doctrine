@@ -8,6 +8,7 @@ extends RefCounted
 const Macro = preload("res://scripts/macro.gd")
 const Names = preload("res://scripts/names.gd")
 const Flags = preload("res://scripts/flags.gd")
+const EraMoments = preload("res://scripts/era_moments.gd")
 const Arsenal = preload("res://scripts/arsenal.gd")
 const Scenarios = preload("res://scripts/scenarios.gd")
 const EraLeaders = preload("res://scripts/era_leaders.gd")
@@ -489,6 +490,8 @@ static func start(gs, id: String) -> void:
 		if a >= 0 and b >= 0:
 			gs.countries[a].truce[b] = gs.turn + int(t[2])
 			gs.countries[b].truce[a] = gs.turn + int(t[2])
+	EraMoments.start(gs, id, Names.year_month(gs.turn))
+
 
 
 static func look(id: String) -> Dictionary:
@@ -507,6 +510,7 @@ static func leaders_tick(gs) -> void:
 	if current == "" or gs.turn <= 0:
 		return
 	EraEvents.tick(gs, current, Names.year_month(gs.turn - 1), Names.year_month(gs.turn))
+	EraMoments.tick(gs, current, Names.year_month(gs.turn - 1), Names.year_month(gs.turn))
 	var changed: Array = EraLeaders.tick(gs, current, Names.year_month(gs.turn - 1), Names.year_month(gs.turn))
 	for cid in changed:
 		var c = gs.countries[cid]

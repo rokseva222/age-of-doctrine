@@ -620,7 +620,7 @@ static func _recruit(gs, c, mult: float) -> void:
 	if c.troops >= goal or c.fund <= 0.0:
 		return
 	var unit: float = recruit_cost(c)
-	var maxn: int = int(goal * 0.012 * mult * (2.5 if mob_active(c) else 1.0))
+	var maxn: int = int(goal * 0.012 * mult * (2.5 if mob_active(c) else 1.0) * buff(c, "recruit"))
 	var n: int = mini(int(goal - c.troops), mini(maxn, int(c.fund * 0.45 / unit)))
 	if n < 200:
 		return
@@ -820,7 +820,21 @@ static func battle_mult(gs, me_id: int, foe_id: int, attacking: bool, prov) -> f
 	if attacking and prov.controller != me_id:
 		m *= minf(1.0, 0.78 + 0.22 * clampf(me.logistics / 100.0 * dm["logi"], 0.0, 1.2))
 	m *= 0.9 + 0.1 * me.stability / 100.0
+	m *= buff(me, "att" if attacking else "def")
 	return m
+
+
+## Süreli etki çarpanı (tarihî an kararları, hikâye modu); süresi dolanlar temizlenir
+static func buff(c, key: String) -> float:
+	if c.buffs.is_empty():
+		return 1.0
+	var b = c.buffs.get(key)
+	if b == null:
+		return 1.0
+	if _now > int(b[1]):
+		c.buffs.erase(key)
+		return 1.0
+	return float(b[0])
 
 
 static func power(gs, c) -> float:
@@ -960,7 +974,7 @@ static func to_dict(c) -> Dictionary:
 	return {"budget": c.budget, "doctrine": c.doctrine, "dturn": c.doctrine_turn, "industry": c.industry, "cyber": c.cyber,
 		"logistics": c.logistics, "stability": c.stability, "capacity": c.capacity, "tech": c.tech, "bloc": c.bloc,
 		"inv": c.inv, "orders": c.orders, "auto_buy": c.auto_buy, "auto_cmd": c.auto_cmd, "pri": c.pri, "base": c.base_troops,
-		"fund": c.fund, "embargo": c.embargo, "fronts": c.fronts, "tblock": c.trade_block, "alliance": c.alliance, "leader": c.leader, "carriers": c.carriers, "car_x": c.carrier_extra, "car_cd": c.carrier_cd, "covert": c.covert_cd, "cab": c.cab, "elect": c.elect_turn, "mob": c.mob_until, "mobcd": c.mob_cd}
+		"fund": c.fund, "embargo": c.embargo, "fronts": c.fronts, "tblock": c.trade_block, "alliance": c.alliance, "leader": c.leader, "carriers": c.carriers, "car_x": c.carrier_extra, "car_cd": c.carrier_cd, "covert": c.covert_cd, "cab": c.cab, "elect": c.elect_turn, "mob": c.mob_until, "mobcd": c.mob_cd, "buffs": c.buffs}
 
 
 static func from_dict(c, d: Dictionary) -> void:
@@ -992,6 +1006,7 @@ static func from_dict(c, d: Dictionary) -> void:
 	c.cab = d.get("cab", {}).duplicate(true)
 	c.elect_turn = int(d.get("elect", -1))
 	c.mob_until = int(d.get("mob", -1))
+	c.buffs = (d.get("buffs", {}) as Dictionary).duplicate(true)
 	c.mob_cd = int(d.get("mobcd", -1))
 	c.covert_cd = {}
 	for k in d.get("covert", {}):

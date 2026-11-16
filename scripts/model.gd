@@ -129,6 +129,7 @@ class Country:
 	var leader := ""
 	var cab: Dictionary = {}                 # oyuncunun kabinesi: rol -> {n,f,q,until,real,why}
 	var elect_turn := -1                     # sonraki seçim turu (oyuncu)
+	var buffs: Dictionary = {}   # tarihî an/karar etkileri: {"att": [çarpan, bitiş_turu], "def": ..., "recruit": ...}
 	var tech_set := -1.0                     # >=0 ise teknoloji düzeyi sabitlenir (senaryo grupları)
 
 

@@ -150,8 +150,82 @@ const CULTURE_OF := {
 const ARAB := ["Saudi Arabia", "United Arab Emirates", "Qatar", "Kuwait", "Bahrain", "Oman", "Yemen", "Jordan", "Lebanon", "Syria", "Iraq", "Palestine"]
 
 
+## Tarihî kipler: dönem adları (1380/1520 için ortaçağ havuzları; WW1/WW2 Türkiye için Osmanlı sonu adları)
+const PRE_CULT := {"Uzbekistan": "tk", "Kazakhstan": "tk", "Turkmenistan": "tk", "Kyrgyzstan": "tk", "Azerbaijan": "tk", "Mongolia": "tk", "Tajikistan": "fa",
+	"China": "zh", "Taiwan": "zh", "Japan": "ja", "South Korea": "ko", "North Korea": "ko", "Egypt": "mm", "Syria": "mm", "Iraq": "mm", "Saudi Arabia": "mm", "Yemen": "mm",
+	"Tunisia": "mm", "Algeria": "mm", "Morocco": "mm", "Libya": "mm", "Jordan": "mm", "Lebanon": "mm", "Israel": "mm", "Palestine": "mm", "Oman": "mm", "Kuwait": "mm"}
+const PRE_POOLS := {
+	"tr": [["Mehmed", "Ahmed", "Mustafa", "Ali", "Hasan", "Hüseyin", "İbrahim", "Davud", "Sinan", "Piri", "Ferhad", "Rüstem", "Lütfi", "Ayas", "Bali", "Hızır", "Oruç", "Turgut", "Murad", "İskender", "Yakub", "Kasım", "Mahmud", "Yusuf", "Hersekzade Ahmed", "Malkoçoğlu Bali", "Evrenos", "Mihaloğlu Ali", "Turahan", "Gazi Hüseyin"],
+		["Hatice", "Ayşe", "Fatma", "Hafsa", "Mihrimah", "Gülbahar", "Gülfem", "Nurbanu", "Safiye", "Hüma", "Nilüfer", "Şahhuban", "Gevherhan", "Hanzade"],
+		["Paşa", "Bey", "Ağa", "Çelebi", "Efendi", "Paşa", "Bey"], false, "Hatun"],
+	"tk": [["Timur", "Miranşah", "Şahruh", "Ömer Şeyh", "Pir Muhammed", "Halil", "Uluğ", "Cihangir", "Ebu Said", "Seyfeddin", "Çeku", "Akbuğa", "Edigü", "Toktamış", "Berdibek", "Urus", "Keşlü", "Hüseyin", "Kazagan", "Hacı", "Sarıbuğa", "Yesun"],
+		["Saray Mülk", "Tuman Ağa", "Dilşad", "Gevher Şad", "Kutlug Terken", "Ulus", "Hanzade", "Bibi"],
+		["Barlas", "Arlat", "Celayir", "Kıpçak", "Nayman", "Kongrat", "Mangıt", "Argun", "Suldus", "Dulday", "Tarhan", "Bahadır", "Mirza", "Bey"], false, "Hatun"],
+	"fa": [["İsmail", "Tahmasp", "Hüseyin", "Ali", "Hasan", "Mahmud", "Rüstem", "Bahram", "Cihanşah", "Muhammed", "Şah Kulu", "Durmuş", "Ahmed", "Mansur", "Şuca"],
+		["Taçlı", "Perihan", "Mihinbanu", "Gevher", "Şahzade", "Zeynep"],
+		["Şamlu", "Rumlu", "Ustaclu", "Tekelü", "Afşar", "Kaçar", "Zülkadr", "Türkman", "Karamanlu", "Han", "Sultan", "Mirza"], false, "Begüm"],
+	"mm": [["Kansu", "Tumanbay", "Hayır", "Canberdi", "Baybars", "Kayıtbay", "Berkuk", "Şeyh", "İnal", "Çakmak", "Yeşbek", "Timraz", "Ezbek", "Akberdi", "Kurkmas", "Canbolat"],
+		["Fatıma", "Şekerbay", "Zeyneb", "Hadice", "Esma"],
+		["el-Gavri", "ez-Zahiri", "el-Eşrefi", "en-Nasıri", "el-Müeyyedi", "Bey", "Emir", "el-Yusufi"], false, "Hatun"],
+	"en": [["William", "Richard", "Edmund", "Thomas", "Henry", "Edward", "Walter", "Hugh", "Roger", "Geoffrey", "Simon", "Humphrey", "John", "Ralph", "Gilbert"],
+		["Margaret", "Eleanor", "Anne", "Catherine", "Isabel", "Joan", "Cecily", "Elizabeth", "Alice"],
+		["de Vere", "Neville", "Percy", "Howard", "Talbot", "Stafford", "Courtenay", "Mortimer", "Beaufort", "Grey", "Fitzalan", "Bourchier"], false, ""],
+	"de": [["Georg", "Friedrich", "Albrecht", "Konrad", "Ulrich", "Wolfgang", "Ludwig", "Johann", "Sigismund", "Maximilian", "Berthold", "Götz", "Franz", "Wilhelm"],
+		["Margarethe", "Elisabeth", "Anna", "Kunigunde", "Agnes", "Barbara", "Sibylle"],
+		["von Hohenberg", "von Berlichingen", "von Sickingen", "von Hutten", "von Waldburg", "von Thurn", "von Schwarzenberg", "von Starhemberg", "von Waldeck", "von Salm", "von Roggendorf"], false, ""],
+	"fr": [["Jean", "Louis", "Charles", "Philippe", "Guillaume", "Antoine", "Robert", "Guy", "Olivier", "Enguerrand", "Bertrand", "Gaston", "Anne", "Claude"],
+		["Marguerite", "Louise", "Anne", "Jeanne", "Catherine", "Diane", "Isabeau", "Renée"],
+		["de Montmorency", "de Bourbon", "de Foix", "de La Trémoille", "de Lorraine", "de Rohan", "de Clisson", "d'Albret", "de Coucy", "de Brézé", "de Guise", "de Bayard"], false, ""],
+	"es": [["Alonso", "Fernando", "Rodrigo", "Gonzalo", "Diego", "Íñigo", "Juan", "Pedro", "Álvaro", "Nuño", "García", "Hernán"],
+		["Isabel", "Juana", "María", "Leonor", "Catalina", "Beatriz", "Mencía"],
+		["de Mendoza", "de Guzmán", "de Toledo", "Fernández de Córdoba", "de Velasco", "de Zúñiga", "Pacheco", "de Alba", "de Cárdenas", "Pimentel", "de Leyva"], false, ""],
+	"pt": [["Afonso", "Duarte", "Nuno", "Vasco", "Diogo", "Pedro", "Lopo", "Francisco", "Manuel", "João"],
+		["Leonor", "Isabel", "Beatriz", "Catarina", "Maria"],
+		["de Albuquerque", "da Gama", "de Almeida", "de Sequeira", "de Castro", "Pereira", "de Sousa", "de Meneses", "Coutinho"], false, ""],
+	"it": [["Andrea", "Francesco", "Giovanni", "Lorenzo", "Ludovico", "Cosimo", "Piero", "Niccolò", "Vettor", "Carlo", "Prospero", "Fabrizio", "Bartolomeo"],
+		["Caterina", "Isabella", "Lucrezia", "Bianca", "Beatrice", "Eleonora", "Giulia"],
+		["Colonna", "Orsini", "Gonzaga", "Sforza", "Medici", "Doria", "Gritti", "Contarini", "Loredan", "Malatesta", "della Rovere", "Farnese", "Zeno", "Pisani"], false, ""],
+	"ru": [["Ivan", "Dmitri", "Vasili", "Andrei", "Mihail", "Yuri", "Fyodor", "Semyon", "Boris", "Nikita", "Daniil", "Vladimir"],
+		["Yelena", "Sofya", "Anastasiya", "Mariya", "Yevdokiya", "Irina"],
+		["Şuyski", "Belski", "Glinski", "Obolenski", "Vorotınski", "Şein", "Saburov", "Kurbski", "Golitsın", "Mstislavski", "Bobrok", "Serpuhovski"], false, ""],
+	"gr": [["Manuel", "Ioannis", "Demetrios", "Theodoros", "Konstantinos", "Andronikos", "Alexios", "Georgios", "Loukas", "Nikephoros"],
+		["Helena", "Anna", "Theodora", "Eirene", "Maria", "Zoe"],
+		["Palaiologos", "Kantakouzenos", "Notaras", "Laskaris", "Komnenos", "Doukas", "Sphrantzes", "Raoul", "Asen", "Tornikes"], false, ""],
+	"sl": [["Lazar", "Vuk", "Stefan", "Đurađ", "Tvrtko", "Hrvoje", "Miloš", "Marko", "Radoslav", "Nikola", "Ivaniš", "Sandalj"],
+		["Milica", "Jelena", "Mara", "Katarina", "Olivera", "Jerina"],
+		["Branković", "Lazarević", "Balšić", "Hrebeljanović", "Kotromanić", "Vukčić", "Crnojević", "Mrnjavčević", "Hranić", "Kosača"], false, ""],
+	"hu": [["János", "Pál", "László", "Miklós", "István", "Tamás", "Ferenc", "Imre", "Bálint", "György", "Lajos"],
+		["Erzsébet", "Anna", "Katalin", "Borbála", "Mária", "Ilona"],
+		["Zápolya", "Hunyadi", "Báthory", "Garai", "Tomori", "Perényi", "Batthyány", "Frangepán", "Drágffy", "Bebek"], true, ""],
+	"pl": [["Jan", "Mikołaj", "Krzysztof", "Stanisław", "Andrzej", "Piotr", "Jakub", "Hieronim", "Spytek", "Zbigniew"],
+		["Jadwiga", "Anna", "Elżbieta", "Barbara", "Zofia", "Katarzyna"],
+		["Tarnowski", "Łaski", "Firlej", "Szydłowiecki", "Radziwiłł", "Ostrogski", "Tęczyński", "Kmita", "Zborowski", "Oleśnicki"], false, ""],
+	"in": [["Firuz", "Mahmud", "İbrahim", "Sikandar", "Devlet", "Bahlul", "Hemu", "Sanga", "Krishnadeva", "Harihara", "Bukka", "Malik", "Alaeddin", "Nizam", "Hüseyin"],
+		["Rani", "Padmini", "Mira", "Durgavati", "Jodha", "Karnavati"],
+		["Lodi", "Tuğluk", "Halaci", "Sur", "Rao", "Raya", "Şah", "Han", "Nizam Şah", "Adil Şah"], false, ""],
+	"zh": [["Da", "Yuanzhang", "Shanchang", "Weiyong", "Yu", "Yuchun", "Sheng", "Youde", "Wenzhong", "He", "Bin", "Liang", "Zhen", "Qi"],
+		["Xiu", "Lan", "Mei", "Yun", "Ying", "Hua"],
+		["Zhu", "Xu", "Li", "Hu", "Lan", "Tang", "Fu", "Chang", "Deng", "Liao", "Wang", "Chen", "Zhang", "Yang"], true, ""],
+	"ja": [["Yoshimitsu", "Yoriyuki", "Yoshimasa", "Mochikuni", "Ujikiyo", "Yoshihiro", "Norizane", "Ujitsuna", "Nobutora", "Ujichika", "Motonaga", "Harumoto"],
+		["Tomiko", "Yoshiko", "Chacha", "Nene", "Oichi"],
+		["Ashikaga", "Hosokawa", "Shiba", "Hatakeyama", "Yamana", "Ōuchi", "Uesugi", "Hōjō", "Takeda", "Imagawa", "Ōtomo", "Shimazu"], true, ""],
+	"ko": [["Seong-gye", "Yeong", "Bang-won", "Do-jeon", "Mong-ju", "Saek", "In-im", "Hwa", "Ji-ran"],
+		["Sin-ui", "Won-gyeong", "Sin-deok"],
+		["Yi", "Choe", "Jeong", "Yun", "Nam", "Jo", "Kim", "Gang"], true, ""],
+}
+const WW_TR := [["Ahmed", "Mehmed", "Mustafa", "Ali", "İsmail", "Cemal", "Halil", "Nuri", "Kâzım", "Fevzi", "Rauf", "Refet", "Cafer", "Hakkı", "Fuad", "Cevad", "Vehib", "Şükrü", "Esad", "Yakub Şevki", "Fahri", "Nihad", "Cevdet"],
+	["Halide", "Nezihe", "Fatma Aliye", "Nigâr", "Şükûfe", "Latife", "Sabiha", "Mediha", "Nakiye", "Müfide"],
+	["Bey", "Paşa", "Bey", "Paşa", "Efendi"], false, "Hanım"]
+
+
+static func _fam() -> String:
+	return load("res://scripts/eras.gd").family()
+
+
 static func culture_of(c) -> String:
 	var n: String = c.name_en
+	if _fam() == "pre" and PRE_CULT.has(n):
+		return PRE_CULT[n]
 	if CULTURE_OF.has(n):
 		return CULTURE_OF[n]
 	if n in ARAB:
@@ -168,6 +242,23 @@ static func culture_of(c) -> String:
 
 ## key: aynı anahtar aynı kişiyi üretir (ülke+rol+dönem gibi)
 static func person(culture: String, key: String, female: bool) -> String:
+	var fam := _fam()
+	var hist: Array = []
+	if fam == "pre" and PRE_POOLS.has(culture):
+		hist = PRE_POOLS[culture]
+	elif (fam == "ww1" or fam == "ww2") and culture == "tr":
+		hist = WW_TR
+	if not hist.is_empty():
+		var r2 := RandomNumberGenerator.new()
+		r2.seed = hash(key)
+		var gv: Array = hist[1] if female else hist[0]
+		var g: String = gv[r2.randi() % gv.size()]
+		var sf: String = hist[2][r2.randi() % hist[2].size()]
+		if female:
+			return ("%s %s" % [g, hist[4]]).strip_edges()
+		if bool(hist[3]):
+			return "%s %s" % [sf, g]
+		return "%s %s" % [g, sf]
 	var pool: Array = POOLS.get(culture, POOLS["en"])
 	var rng := RandomNumberGenerator.new()
 	rng.seed = hash(key)
@@ -179,6 +270,15 @@ static func person(culture: String, key: String, female: bool) -> String:
 
 
 static func is_female(key: String, chance: float = 0.22) -> bool:
+	var fam := _fam()
+	if fam == "pre":
+		return false
+	if fam == "ww1":
+		chance *= 0.15
+	elif fam == "ww2":
+		chance *= 0.3
+	elif fam == "cold":
+		chance *= 0.5
 	var rng := RandomNumberGenerator.new()
 	rng.seed = hash("g:" + key)
 	return rng.randf() < chance

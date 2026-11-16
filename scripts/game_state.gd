@@ -12,6 +12,7 @@ const Eras = preload("res://scripts/eras.gd")
 const GrandOp = preload("res://scripts/grand_op.gd")
 const Independence = preload("res://scripts/independence.gd")
 const Career = preload("res://scripts/career.gd")
+const EraMoments = preload("res://scripts/era_moments.gd")
 const Chokepoints = preload("res://scripts/chokepoints.gd")
 const Daily = preload("res://scripts/daily.gd")
 const Politics = preload("res://scripts/politics.gd")
@@ -34,6 +35,7 @@ signal wroom_card(title: String, body: String, scene: String)
 signal grand_resolved(kind: String, op_name: String, taken: int)
 signal indep_card
 signal career_card
+signal moment_card
 signal ally_call(friend: int, foe: int, kind: String)
 signal un_vote_card
 signal alliance_proposal(from_country: int)
@@ -62,6 +64,8 @@ var infamy_warned := false
 var infamy := 0.0                        # dünya tepkisi (0-100): fetihle artar, zamanla söner; yüksekse koalisyon kurulur
 var indep: Dictionary = {}               # Bağımsızlık Yolu kipi durumu (independence.gd)
 var career: Dictionary = {}              # Hikâye Modu (kariyer) durumu (career.gd)
+var moment_pending: Dictionary = {}      # bekleyen tarihî an kartı (era_moments.gd)
+var moment_flags: Dictionary = {}        # tarihî an bayrakları ve ateşlenenler
 var wroom: Dictionary = {}               # Savaş Odası planı (war_room.gd)
 var pol: Dictionary = {}                 # siyasi sistem durumu (politics.gd): rejimler, YZ seçimleri, kartlar
 var daily: Dictionary = {}               # Günlük Meydan Okuma durumu (daily.gd)
@@ -109,6 +113,8 @@ func new_world(seed_val: int, _ncountries: int = 0) -> void:
 	world.populate(self)
 	if Eras.current != "":
 		EraNames.apply(self, Eras.current)
+	if player >= 0:
+		Cabinet.player_en = countries[player].name_en
 	base_country_count = countries.size()
 	_init_armies()
 	refresh_stats()
@@ -3002,7 +3008,7 @@ func to_dict() -> Dictionary:
 		"v": 3, "seed": seed_value, "base": base_country_count,
 		"turn": turn, "player": player, "next_army_id": next_army_id, "victory": victory_declared,
 		"rng_state": rng.state, "rebel_names": rebel_name_count, "merc_names": merc_names, "stats": stats,
-		"difficulty": difficulty, "blocs": blocs, "next_bloc": next_bloc_id, "cold": cold, "sea_camp": sea_campaign.keys(), "crisis": crisis, "crisis_end": crisis_last_end, "scn": scn, "era": Eras.current, "nuke_cd": nuke_cd, "grand": grand, "chokes": chokes, "daily": daily, "pol": pol, "wroom": wroom, "indep": indep, "career": career, "infamy": infamy, "un_cd": un_cd, "un_log": un_log, "aid": aid,
+		"difficulty": difficulty, "blocs": blocs, "next_bloc": next_bloc_id, "cold": cold, "sea_camp": sea_campaign.keys(), "crisis": crisis, "crisis_end": crisis_last_end, "scn": scn, "era": Eras.current, "nuke_cd": nuke_cd, "grand": grand, "chokes": chokes, "daily": daily, "pol": pol, "wroom": wroom, "indep": indep, "career": career, "moment_p": moment_pending, "moment_f": moment_flags, "infamy": infamy, "un_cd": un_cd, "un_log": un_log, "aid": aid,
 	}
 	var ps: Array = []
 	for p in provinces:
@@ -3160,6 +3166,8 @@ func from_dict(d: Dictionary) -> bool:
 	Chokepoints.tick(self)
 	indep = d.get("indep", {}).duplicate(true)
 	career = d.get("career", {}).duplicate(true)
+	moment_pending = d.get("moment_p", {}).duplicate(true)
+	moment_flags = d.get("moment_f", {}).duplicate(true)
 	infamy = float(d.get("infamy", 0.0))
 	un_cd = d.get("un_cd", {}).duplicate()
 	aid = d.get("aid", {"cd": {}, "good": {}}).duplicate(true)

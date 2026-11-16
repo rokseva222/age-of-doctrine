@@ -1,0 +1,692 @@
+{
+"moments": [
+{
+"id": "chaldiran_aftermath",
+"y": 1520,
+"m": 10,
+"title": "Yeni Padişah",
+"scene": "pre_court",
+"icon": "crown",
+"text": "Yavuz Sultan Selim vefat etti; Süleyman tahta çıktı. Avrupa 'genç ve yumuşak' bir sultan bekliyor.",
+"major": true,
+"default_fx": [
+[
+"stab",
+"Turkey",
+5
+]
+],
+"roles": {
+"Turkey": {
+"text": "Tahta çıktın. Babanın mirası: Mısır, Suriye, güçlü ordu. İlk sefer nereye?",
+"options": [
+{
+"t": "Belgrad ve Rodos'a yürü (tarihî)",
+"d": "Batı'ya",
+"fx": [
+[
+"war",
+"Turkey",
+"Hungary"
+],
+[
+"buff",
+"Turkey",
+"att",
+1.2,
+52
+],
+[
+"xstab",
+"Turkey",
+5
+],
+[
+"flag",
+"belgrade_campaign"
+]
+],
+"r": "Ordu Belgrad'a yürüyor."
+},
+{
+"t": "Doğu'ya: Safevi'yi bitir",
+"d": "Tebriz",
+"fx": [
+[
+"war",
+"Turkey",
+"Iran"
+],
+[
+"buff",
+"Turkey",
+"att",
+1.15,
+52
+]
+],
+"r": "Ordu Tebriz yolunda."
+},
+{
+"t": "Barış ve imar",
+"d": "Hazineyi büyüt",
+"fx": [
+[
+"gold",
+"Turkey",
+10
+],
+[
+"xstab",
+"Turkey",
+10
+],
+[
+"buff",
+"Turkey",
+"recruit",
+1.2,
+52
+]
+],
+"r": "İstanbul'da büyük şantiyeler."
+}
+]
+},
+"Hungary": {
+"text": "Genç sultan tahtta; Belgrad tehdit altında. Hazine boş, soylular kavgada.",
+"options": [
+{
+"t": "Belgrad'ı tahkim et",
+"d": "Sınırı tut",
+"fx": [
+[
+"buff",
+"Hungary",
+"def",
+1.3,
+52
+],
+[
+"gold",
+"Hungary",
+-3
+]
+],
+"r": "Belgrad surları güçlendirildi."
+},
+{
+"t": "Haçlı yardımı iste",
+"d": "Papa ve İmparator",
+"fx": [
+[
+"rel",
+"Hungary",
+"Spain",
+20
+],
+[
+"rel",
+"Hungary",
+"Germany",
+20
+],
+[
+"gold",
+"Hungary",
+3
+]
+],
+"r": "Roma'dan altın geldi, asker gelmedi."
+},
+{
+"t": "Sultanla barış",
+"d": "Haraç öde",
+"fx": [
+[
+"rel",
+"Hungary",
+"Turkey",
+25
+],
+[
+"gold",
+"Hungary",
+-4
+],
+[
+"stab",
+"Hungary",
+-5
+]
+],
+"r": "Macaristan haraçla barış aldı."
+}
+]
+}
+}
+},
+{
+"id": "belgrade",
+"y": 1521,
+"m": 8,
+"title": "Belgrad Düştü",
+"scene": "pre_siege",
+"icon": "u_castle",
+"text": "Macaristan'ın kilidi Belgrad Osmanlı eline geçti.",
+"major": true,
+"default_fx": [
+[
+"cede",
+"Hungary",
+"Turkey",
+1
+]
+],
+"roles": {
+"Turkey": {
+"text": "Belgrad kuşatıldı. Surlar güçlü ama Macar yardımı gelmiyor.",
+"options": [
+{
+"t": "Topla döv, hücum",
+"d": "Hızlı sonuç",
+"fx": [
+[
+"buff",
+"Turkey",
+"att",
+1.3,
+8
+],
+[
+"troops",
+"Turkey",
+-5
+],
+[
+"cede",
+"Hungary",
+"Turkey",
+1
+]
+],
+"r": "Belgrad düştü."
+},
+{
+"t": "Aç bırak",
+"d": "Yavaş, ucuz",
+"fx": [
+[
+"buff",
+"Turkey",
+"att",
+1.1,
+26
+],
+[
+"cede",
+"Hungary",
+"Turkey",
+1
+],
+[
+"gold",
+"Turkey",
+2
+]
+],
+"r": "Belgrad teslim oldu."
+}
+]
+}
+},
+"requires": [
+"belgrade_campaign"
+]
+},
+{
+"id": "rhodes",
+"y": 1522,
+"m": 6,
+"title": "Rodos Kuşatması",
+"scene": "pre_naval",
+"icon": "galley",
+"text": "Hospitalier şövalyeleri Rodos'ta direniyor; Osmanlı donanması adayı sardı.",
+"major": true,
+"default_fx": [],
+"roles": {
+"Turkey": {
+"text": "Rodos şövalyeleri Anadolu kıyılarını vuruyor. Ada kalesi Avrupa'nın en güçlüsü.",
+"options": [
+{
+"t": "Kuşat (tarihî)",
+"d": "Altı ay",
+"fx": [
+[
+"buff",
+"Turkey",
+"att",
+1.2,
+26
+],
+[
+"troops",
+"Turkey",
+-8
+],
+[
+"xstab",
+"Turkey",
+5
+],
+[
+"flag",
+"rhodes"
+]
+],
+"r": "Rodos teslim: şövalyeler Malta'ya."
+},
+{
+"t": "Ablukayla yetin",
+"d": "Donanma",
+"fx": [
+[
+"buff",
+"Turkey",
+"def",
+1.1,
+26
+],
+[
+"gold",
+"Turkey",
+-1
+]
+],
+"r": "Rodos abluka altında."
+}
+]
+}
+}
+},
+{
+"id": "mohacs",
+"y": 1526,
+"m": 8,
+"title": "Mohaç",
+"scene": "pre_assault",
+"icon": "u_hussar",
+"text": "Mohaç ovasında iki saat: Macar ordusu yok oldu, Kral II. Lajos bataklıkta.",
+"major": true,
+"default_fx": [
+[
+"war",
+"Turkey",
+"Hungary"
+],
+[
+"stab",
+"Hungary",
+-30
+]
+],
+"roles": {
+"Turkey": {
+"text": "Macar ordusu Mohaç'ta karşına çıktı. Ağır süvari hücumunu nasıl karşılarsın?",
+"options": [
+{
+"t": "Topçu hattı ve yeniçeri (tarihî)",
+"d": "Zincirli toplar",
+"fx": [
+[
+"war",
+"Turkey",
+"Hungary"
+],
+[
+"buff",
+"Turkey",
+"att",
+1.4,
+8
+],
+[
+"stab",
+"Hungary",
+-35
+],
+[
+"flag",
+"mohacs"
+]
+],
+"r": "Mohaç: Macar ordusu iki saatte bitti."
+},
+{
+"t": "Budin'e yürü, savaşma",
+"d": "Başkenti al",
+"fx": [
+[
+"war",
+"Turkey",
+"Hungary"
+],
+[
+"buff",
+"Turkey",
+"att",
+1.15,
+13
+]
+],
+"r": "Ordu Budin'e."
+},
+{
+"t": "Geri dön",
+"d": "Kışı bekle",
+"fx": [
+[
+"xstab",
+"Turkey",
+-5
+]
+],
+"r": "Sefer ertelendi."
+}
+]
+},
+"Hungary": {
+"text": "Sultan Mohaç'ta. Zápolya'nın ordusu uzakta; soylular hemen saldırmak istiyor.",
+"options": [
+{
+"t": "Zápolya'yı bekle",
+"d": "Birleşik ordu",
+"fx": [
+[
+"buff",
+"Hungary",
+"def",
+1.3,
+8
+],
+[
+"stab",
+"Hungary",
+-5
+]
+],
+"r": "Macar ordusu geri çekildi ve toplandı."
+},
+{
+"t": "Hücum (tarihî)",
+"d": "Şövalye onuru",
+"fx": [
+[
+"buff",
+"Hungary",
+"att",
+1.1,
+4
+],
+[
+"troops",
+"Hungary",
+-40
+],
+[
+"stab",
+"Hungary",
+-30
+]
+],
+"r": "Mohaç: kral öldü, ordu yok."
+},
+{
+"t": "Budin'i boşalt, Pozsony'ye",
+"d": "Habsburg'a sığın",
+"fx": [
+[
+"rel",
+"Hungary",
+"Germany",
+25
+],
+[
+"cede",
+"Hungary",
+"Turkey",
+2
+],
+[
+"stab",
+"Hungary",
+-15
+]
+],
+"r": "Budin boşaltıldı."
+}
+]
+}
+}
+},
+{
+"id": "vienna",
+"y": 1529,
+"m": 9,
+"title": "Viyana Kuşatması",
+"scene": "pre_siege",
+"icon": "u_siege_tower",
+"text": "Osmanlı ordusu Viyana surlarında. Sonbahar yağmurları ağır topları çamurda bıraktı.",
+"major": true,
+"default_fx": [],
+"roles": {
+"Turkey": {
+"text": "Viyana önündesin ama ağır toplar geride kaldı, kış yakın. Son hücum mu, geri dönüş mü?",
+"options": [
+{
+"t": "Son hücum",
+"d": "Her şeyi dene",
+"fx": [
+[
+"buff",
+"Turkey",
+"att",
+1.2,
+4
+],
+[
+"troops",
+"Turkey",
+-12
+]
+],
+"r": "Kanlı hücumlar surları aşamadı."
+},
+{
+"t": "Geri dön (tarihî)",
+"d": "Yeniçerileri koru",
+"fx": [
+[
+"xstab",
+"Turkey",
+-3
+],
+[
+"buff",
+"Turkey",
+"def",
+1.1,
+26
+]
+],
+"r": "Ordu İstanbul'a döndü."
+},
+{
+"t": "Kışla, bahara kuşat",
+"d": "Riskli",
+"fx": [
+[
+"troops",
+"Turkey",
+-15
+],
+[
+"buff",
+"Turkey",
+"att",
+1.3,
+13
+]
+],
+"r": "Ordu Viyana önünde kışladı."
+}
+]
+},
+"Germany": {
+"text": "Sultan Viyana'da. Şehir savunması 17.000 asker; Kutsal Roma ordusu toplanıyor.",
+"options": [
+{
+"t": "Surları tut",
+"d": "Salm'ın savunması",
+"fx": [
+[
+"buff",
+"Germany",
+"def",
+1.4,
+13
+],
+[
+"stab",
+"Germany",
+5
+]
+],
+"r": "Viyana tutuldu."
+},
+{
+"t": "İmparatorluk ordusuyla yardım",
+"d": "Linz'den yürü",
+"fx": [
+[
+"buff",
+"Germany",
+"att",
+1.2,
+13
+],
+[
+"gold",
+"Germany",
+-3
+]
+],
+"r": "Habsburg ordusu Viyana'ya."
+}
+]
+}
+}
+},
+{
+"id": "preveza",
+"y": 1538,
+"m": 9,
+"title": "Preveze",
+"scene": "pre_naval",
+"icon": "galley",
+"text": "Barbaros Hayreddin Paşa Preveze'de Haçlı donanmasını dağıttı: Akdeniz Osmanlı gölü.",
+"major": true,
+"default_fx": [
+[
+"buff",
+"Turkey",
+"att",
+1.1,
+52
+]
+],
+"roles": {
+"Turkey": {
+"text": "Andrea Doria'nın birleşik donanması Preveze açıklarında. Barbaros rüzgârı bekliyor.",
+"options": [
+{
+"t": "Rüzgârla saldır (tarihî)",
+"d": "Hafif kadırgalar",
+"fx": [
+[
+"buff",
+"Turkey",
+"att",
+1.3,
+13
+],
+[
+"stab",
+"Italy",
+-5
+],
+[
+"flag",
+"preveza"
+]
+],
+"r": "Preveze: Doria kaçtı."
+},
+{
+"t": "Körfezde savun",
+"d": "Toplar kıyıda",
+"fx": [
+[
+"buff",
+"Turkey",
+"def",
+1.2,
+26
+]
+],
+"r": "Haçlı donanması dağıldı, savaş olmadı."
+}
+]
+},
+"Spain": {
+"text": "Doria komutasında 300 gemi. Barbaros körfezde. Saldır mı, abluka mı?",
+"options": [
+{
+"t": "Saldır",
+"d": "Ağır kalyonlar",
+"fx": [
+[
+"buff",
+"Spain",
+"att",
+1.1,
+8
+],
+[
+"troops",
+"Spain",
+-5
+]
+],
+"r": "Preveze'de kalyonlar rüzgârsız kaldı."
+},
+{
+"t": "Abluka ve çekil",
+"d": "Filoyu koru",
+"fx": [
+[
+"buff",
+"Spain",
+"def",
+1.1,
+26
+]
+],
+"r": "Doria filoyu korudu."
+}
+]
+}
+}
+}
+]
+}

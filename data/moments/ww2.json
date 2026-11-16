@@ -1,0 +1,1676 @@
+{
+"moments": [
+{
+"id": "winter_war",
+"y": 1939,
+"m": 11,
+"title": "Kış Savaşı",
+"scene": "pre_border",
+"icon": "helmet_ww2",
+"text": "SSCB Finlandiya'ya saldırdı. Küçük Finlandiya karda direniyor.",
+"major": true,
+"default_fx": [
+[
+"war",
+"Russia",
+"Finland"
+]
+],
+"roles": {
+"Finland": {
+"text": "Moskova Karelya Kıstağı'nı istedi; reddettin. Kızıl Ordu sınırda.",
+"options": [
+{
+"t": "Mannerheim Hattı'nda savaş",
+"d": "Kış ve kayak birlikleri",
+"fx": [
+[
+"buff",
+"Finland",
+"def",
+1.6,
+26
+],
+[
+"stab",
+"Finland",
+10
+]
+],
+"r": "Suomussalmi: Sovyet tümenleri donarak öldü."
+},
+{
+"t": "Toprak ver, barış koru",
+"d": "Viipuri'yi bırak",
+"fx": [
+[
+"cede",
+"Finland",
+"Russia",
+1
+],
+[
+"stab",
+"Finland",
+-10
+],
+[
+"peace",
+"Finland",
+"Russia"
+]
+],
+"r": "Finlandiya Karelya'yı bıraktı."
+},
+{
+"t": "Almanya'dan yardım iste",
+"d": "Berlin kapısı",
+"fx": [
+[
+"rel",
+"Finland",
+"Germany",
+30
+],
+[
+"buff",
+"Finland",
+"def",
+1.3,
+26
+]
+],
+"r": "Alman silahları Finlandiya'ya."
+}
+]
+},
+"Russia": {
+"text": "Leningrad sınıra 30 km. Finlandiya toprak takasını reddetti. Voroşilov 'iki haftada Helsinki' diyor.",
+"options": [
+{
+"t": "Saldır (tarihî)",
+"d": "Kanlı kış",
+"fx": [
+[
+"war",
+"Russia",
+"Finland"
+],
+[
+"troops",
+"Russia",
+-5
+],
+[
+"stab",
+"Russia",
+-3
+]
+],
+"r": "Kızıl Ordu Finlandiya'ya girdi."
+},
+{
+"t": "Baskıyı sürdür, savaşma",
+"d": "Diplomatik kuşatma",
+"fx": [
+[
+"rel",
+"Russia",
+"Finland",
+-20
+],
+[
+"gold",
+"Russia",
+2
+]
+],
+"r": "Moskova bekliyor."
+},
+{
+"t": "Kıstak için pazarlık",
+"d": "Üs kirala",
+"fx": [
+[
+"rel",
+"Russia",
+"Finland",
+10
+],
+[
+"gold",
+"Russia",
+-2
+]
+],
+"r": "Hanko kiralandı; savaş yok."
+}
+]
+}
+}
+},
+{
+"id": "fall_france",
+"y": 1940,
+"m": 5,
+"title": "Sarı Plan: Ardenler",
+"scene": "blitz",
+"icon": "tank",
+"text": "Alman zırhlıları Ardenler'den geçti; Sedan düştü, Müttefikler Dunkirk'e sıkıştı.",
+"major": true,
+"default_fx": [
+[
+"buff",
+"Germany",
+"att",
+1.2,
+13
+]
+],
+"roles": {
+"Germany": {
+"text": "Manstein'in orak darbesi: Ardenler'den Sedan'a. Guderian durmak istemiyor; Hitler zırhlıları durdurmayı düşünüyor.",
+"options": [
+{
+"t": "Orak darbesi: durma",
+"d": "Dunkirk'ü kapat",
+"fx": [
+[
+"buff",
+"Germany",
+"att",
+1.35,
+13
+],
+[
+"stab",
+"France",
+-20
+],
+[
+"stab",
+"United Kingdom",
+-8
+],
+[
+"flag",
+"dunkirk_lost"
+]
+],
+"r": "İngiliz Seferi Kuvveti kıyıda kapana kısıldı."
+},
+{
+"t": "Zırhlıları durdur (tarihî)",
+"d": "Luftwaffe bitirir",
+"fx": [
+[
+"buff",
+"Germany",
+"att",
+1.2,
+13
+],
+[
+"stab",
+"France",
+-15
+]
+],
+"r": "Dunkirk mucizesi: 338.000 asker kaçtı."
+},
+{
+"t": "Maginot'ya saldır",
+"d": "Klasik plan",
+"fx": [
+[
+"troops",
+"Germany",
+-10
+],
+[
+"buff",
+"Germany",
+"att",
+1.05,
+13
+]
+],
+"r": "Maginot'da kanlı taarruz."
+}
+]
+},
+"France": {
+"text": "Ardenler 'geçilmez' sanıldı. Sedan düştü; Gamelin'in yedeği yok.",
+"options": [
+{
+"t": "Weygand hattı: Somme'da savun",
+"d": "Son hat",
+"fx": [
+[
+"buff",
+"France",
+"def",
+1.2,
+13
+],
+[
+"stab",
+"France",
+-5
+]
+],
+"r": "Fransız ordusu Somme'da direniyor."
+},
+{
+"t": "Paris'i açık şehir ilan et, Afrika'dan savaş",
+"d": "Hükûmet Cezayir'e",
+"fx": [
+[
+"stab",
+"France",
+-15
+],
+[
+"buff",
+"France",
+"def",
+1.1,
+52
+],
+[
+"rel",
+"France",
+"United Kingdom",
+20
+]
+],
+"r": "Fransa Afrika'dan savaşıyor."
+},
+{
+"t": "Mütareke iste (tarihî)",
+"d": "Vichy",
+"fx": [
+[
+"peace",
+"France",
+"Germany"
+],
+[
+"peace",
+"France",
+"Italy"
+],
+[
+"cede",
+"France",
+"Germany",
+3
+],
+[
+"stab",
+"France",
+-25
+],
+[
+"flag",
+"vichy"
+]
+],
+"r": "Compiègne vagonu: Fransa teslim."
+}
+]
+},
+"United Kingdom": {
+"text": "Fransa çöküyor; Seferi Kuvvet Dunkirk'te. Churchill: 'Kıyılarda savaşacağız.'",
+"options": [
+{
+"t": "Dynamo Harekâtı: tahliye",
+"d": "Küçük tekneler",
+"fx": [
+[
+"troops",
+"United Kingdom",
+5
+],
+[
+"stab",
+"United Kingdom",
+10
+]
+],
+"r": "Dunkirk'ten 338.000 asker kurtarıldı."
+},
+{
+"t": "Fransa'ya daha çok uçak gönder",
+"d": "Dowding karşı",
+"fx": [
+[
+"rel",
+"United Kingdom",
+"France",
+20
+],
+[
+"buff",
+"United Kingdom",
+"def",
+0.9,
+26
+]
+],
+"r": "RAF filoları Fransa'da eridi."
+},
+{
+"t": "Barış yoklaması",
+"d": "Halifax'ın yolu",
+"fx": [
+[
+"stab",
+"United Kingdom",
+-15
+],
+[
+"rel",
+"United Kingdom",
+"Germany",
+10
+]
+],
+"r": "Londra'da barış fısıltıları; Churchill öfkeli."
+}
+]
+}
+}
+},
+{
+"id": "battle_britain",
+"y": 1940,
+"m": 8,
+"title": "Britanya Muharebesi",
+"scene": "ww1_air",
+"icon": "bomber",
+"text": "Luftwaffe İngiliz göklerinde. 'Bu kadar azına bu kadar çok şey borçlu olunmamıştı.'",
+"major": true,
+"default_fx": [
+[
+"stab",
+"United Kingdom",
+5
+]
+],
+"roles": {
+"United Kingdom": {
+"text": "Göring RAF'ı yok etmek istiyor. Radar zinciri ve Spitfire'lar hazır. Bombardıman şehirlere kayabilir.",
+"options": [
+{
+"t": "Radar ve avcı savunması",
+"d": "Hava üstünlüğünü koru",
+"fx": [
+[
+"buff",
+"United Kingdom",
+"def",
+1.3,
+26
+],
+[
+"stab",
+"United Kingdom",
+8
+],
+[
+"flag",
+"raf_won"
+]
+],
+"r": "RAF kazandı: Deniz Aslanı iptal."
+},
+{
+"t": "Berlin'i bombala",
+"d": "Hitler'i şehirlere yönelt",
+"fx": [
+[
+"stab",
+"Germany",
+-5
+],
+[
+"stab",
+"United Kingdom",
+-5
+],
+[
+"buff",
+"United Kingdom",
+"def",
+1.15,
+26
+]
+],
+"r": "Blitz başladı; ama üsler kurtuldu."
+},
+{
+"t": "Avcıları sakla, çıkarmayı bekle",
+"d": "Kumar",
+"fx": [
+[
+"buff",
+"United Kingdom",
+"def",
+0.95,
+13
+],
+[
+"buff",
+"United Kingdom",
+"def",
+1.4,
+13
+]
+],
+"r": "RAF saklandı; kıyı savunması güçlendi."
+}
+]
+},
+"Germany": {
+"text": "Deniz Aslanı için hava üstünlüğü şart. Hedef radarlar mı, üsler mi, Londra mı?",
+"options": [
+{
+"t": "Radar ve üsleri vur",
+"d": "Askerî hedefler",
+"fx": [
+[
+"buff",
+"Germany",
+"att",
+1.15,
+13
+],
+[
+"buff",
+"United Kingdom",
+"def",
+0.9,
+13
+]
+],
+"r": "RAF üsleri harabe."
+},
+{
+"t": "Londra'yı bombala (tarihî)",
+"d": "Terör bombardımanı",
+"fx": [
+[
+"stab",
+"United Kingdom",
+-8
+],
+[
+"buff",
+"United Kingdom",
+"def",
+1.1,
+13
+]
+],
+"r": "Blitz: Londra yanıyor, RAF toparlanıyor."
+},
+{
+"t": "Vazgeç, Doğu'ya dön",
+"d": "Barbarossa hazırlığı",
+"fx": [
+[
+"buff",
+"Germany",
+"att",
+1.1,
+52
+]
+],
+"r": "Deniz Aslanı rafa kalktı."
+}
+]
+}
+}
+},
+{
+"id": "barbarossa",
+"y": 1941,
+"m": 6,
+"title": "Barbarossa Harekâtı",
+"scene": "blitz",
+"icon": "tank",
+"text": "Tarihin en büyük kara taarruzu: 3 milyon asker SSCB sınırını geçti.",
+"major": true,
+"default_fx": [],
+"roles": {
+"Germany": {
+"text": "Molotov-Ribbentrop Paktı hâlâ geçerli. Generaller Moskova'ya kadar 10 hafta diyor. Balkanlar seferi taarruzu geciktirdi.",
+"options": [
+{
+"t": "Barbarossa: tam taarruz (tarihî)",
+"d": "Üç ordu grubu, Moskova hedef",
+"fx": [
+[
+"war",
+"Germany",
+"Russia"
+],
+[
+"war",
+"Romania",
+"Russia"
+],
+[
+"war",
+"Hungary",
+"Russia"
+],
+[
+"war",
+"Finland",
+"Russia"
+],
+[
+"buff",
+"Germany",
+"att",
+1.3,
+20
+],
+[
+"flag",
+"barbarossa"
+]
+],
+"r": "Tanklar Bug nehrini geçti: Doğu Cephesi açıldı."
+},
+{
+"t": "Ertele, Akdeniz'e odaklan",
+"d": "Malta, Süveyş, Ortadoğu",
+"fx": [
+[
+"rel",
+"Germany",
+"Russia",
+5
+],
+[
+"buff",
+"Germany",
+"att",
+1.15,
+26
+],
+[
+"gold",
+"Germany",
+4
+],
+[
+"flag",
+"no_barbarossa"
+]
+],
+"r": "Afrika Kolordusu güçlendi; Doğu sessiz."
+},
+{
+"t": "Paktı koru",
+"d": "Rusya ile ticaret",
+"fx": [
+[
+"rel",
+"Germany",
+"Russia",
+25
+],
+[
+"gold",
+"Germany",
+8
+],
+[
+"flag",
+"no_barbarossa"
+]
+],
+"r": "Berlin-Moskova ticareti sürüyor."
+}
+]
+},
+"Russia": {
+"text": "İstihbarat raporları saldırı diyor; Stalin inanmıyor. Sınır birlikleri hazırlıksız.",
+"options": [
+{
+"t": "Alarma geç ve seferberlik",
+"d": "Sınır birliklerini derinliğe çek",
+"fx": [
+[
+"mob",
+"Russia",
+26
+],
+[
+"buff",
+"Russia",
+"def",
+1.3,
+26
+],
+[
+"war",
+"Germany",
+"Russia"
+]
+],
+"r": "Kızıl Ordu hazır karşıladı: ilk darbe hafif."
+},
+{
+"t": "Hazırlıksız (tarihî)",
+"d": "'Provokasyona kapılmayın'",
+"fx": [
+[
+"war",
+"Germany",
+"Russia"
+],
+[
+"buff",
+"Russia",
+"def",
+0.8,
+13
+],
+[
+"troops",
+"Russia",
+-10
+],
+[
+"buff",
+"Russia",
+"recruit",
+1.6,
+52
+]
+],
+"r": "Hava kuvvetleri yerde yok edildi; kuşatmalar."
+},
+{
+"t": "Önleyici taarruz",
+"d": "Jukov'un planı",
+"fx": [
+[
+"war",
+"Russia",
+"Germany"
+],
+[
+"buff",
+"Russia",
+"att",
+1.15,
+13
+],
+[
+"troops",
+"Russia",
+-5
+]
+],
+"r": "Kızıl Ordu önce vurdu."
+}
+]
+},
+"Finland": {
+"text": "Almanya SSCB'ye saldırıyor. Karelya'yı geri almak için fırsat; ama Müttefiklerle köprüler yanar.",
+"options": [
+{
+"t": "Devam Savaşı (tarihî)",
+"d": "Karelya'yı geri al",
+"fx": [
+[
+"war",
+"Finland",
+"Russia"
+],
+[
+"buff",
+"Finland",
+"att",
+1.2,
+26
+]
+],
+"r": "Fin ordusu eski sınıra yürüdü."
+},
+{
+"t": "Tarafsız kal",
+"d": "Almanya kızar",
+"fx": [
+[
+"rel",
+"Finland",
+"Germany",
+-20
+],
+[
+"rel",
+"Finland",
+"United Kingdom",
+15
+],
+[
+"gold",
+"Finland",
+2
+]
+],
+"r": "Finlandiya savaş dışı."
+}
+]
+}
+}
+},
+{
+"id": "moscow",
+"y": 1941,
+"m": 12,
+"title": "Moskova Önlerinde",
+"scene": "era_ww2",
+"icon": "helmet_ww2",
+"text": "Alman öncüleri Moskova'ya 30 km. Kış -30°, Sibirya tümenleri geldi: Sovyet karşı taarruzu.",
+"major": true,
+"default_fx": [
+[
+"buff",
+"Russia",
+"def",
+1.2,
+13
+]
+],
+"roles": {
+"Russia": {
+"text": "Sibirya tümenleri Moskova'da. Jukov karşı taarruz istiyor; Stalin şehirde kalmaya karar verdi.",
+"options": [
+{
+"t": "Karşı taarruz",
+"d": "Kışı kullan",
+"fx": [
+[
+"buff",
+"Russia",
+"att",
+1.3,
+13
+],
+[
+"buff",
+"Germany",
+"def",
+0.85,
+13
+],
+[
+"xstab",
+"Russia",
+10
+]
+],
+"r": "Alman ordusu Moskova'dan püskürtüldü."
+},
+{
+"t": "Savunmada kal, güç biriktir",
+"d": "1942 için",
+"fx": [
+[
+"buff",
+"Russia",
+"def",
+1.25,
+26
+],
+[
+"buff",
+"Russia",
+"recruit",
+1.3,
+26
+]
+],
+"r": "Moskova tutuldu; taarruz bahara."
+},
+{
+"t": "Sanayiyi Ural'a taşı",
+"d": "Uzun savaş",
+"fx": [
+[
+"gold",
+"Russia",
+6
+],
+[
+"buff",
+"Russia",
+"recruit",
+1.5,
+52
+]
+],
+"r": "Fabrikalar Ural'da üretime başladı."
+}
+]
+},
+"Germany": {
+"text": "Tayfun Harekâtı çamura ve kışa saplandı. Hitler 'bir adım geri yok' diyor; generaller çekilmek istiyor.",
+"options": [
+{
+"t": "Bir adım geri yok",
+"d": "Kirpi savunması",
+"fx": [
+[
+"buff",
+"Germany",
+"def",
+1.2,
+13
+],
+[
+"troops",
+"Germany",
+-8
+]
+],
+"r": "Alman hattı kırılmadı ama dondu."
+},
+{
+"t": "Kış hattına çekil",
+"d": "Orduyu kurtar",
+"fx": [
+[
+"buff",
+"Germany",
+"def",
+1.1,
+26
+],
+[
+"stab",
+"Germany",
+-5
+]
+],
+"r": "Ordu Grubu Merkez geri çekildi."
+},
+{
+"t": "Son hamle: Moskova'ya yüklen",
+"d": "Her şeyi ver",
+"fx": [
+[
+"buff",
+"Germany",
+"att",
+1.2,
+6
+],
+[
+"troops",
+"Germany",
+-15
+]
+],
+"r": "Moskova önlerinde donmuş taarruz."
+}
+]
+}
+},
+"requires": [
+"barbarossa"
+]
+},
+{
+"id": "pearl",
+"y": 1941,
+"m": 12,
+"title": "Pearl Harbor",
+"scene": "carrier",
+"icon": "carrier",
+"text": "Japon uçak gemileri Pearl Harbor'ı vurdu. 'Alçaklıkla anılacak bir gün.'",
+"major": true,
+"default_fx": [],
+"roles": {
+"Japan": {
+"text": "Amerikan petrol ambargosu donanmayı boğuyor. Yamamoto Pearl Harbor'ı vurmayı öneriyor: 'Altı ay kudurmuş gibi savaşırım.'",
+"options": [
+{
+"t": "Pearl Harbor (tarihî)",
+"d": "Güneye yol aç",
+"fx": [
+[
+"war",
+"Japan",
+"United States of America"
+],
+[
+"war",
+"Japan",
+"United Kingdom"
+],
+[
+"war",
+"Japan",
+"Netherlands"
+],
+[
+"buff",
+"Japan",
+"att",
+1.3,
+26
+],
+[
+"stab",
+"United States of America",
+10
+]
+],
+"r": "Pasifik Filosu limanda vuruldu."
+},
+{
+"t": "Yalnızca Güney'e saldır",
+"d": "ABD'yi dışarıda tut",
+"fx": [
+[
+"war",
+"Japan",
+"United Kingdom"
+],
+[
+"war",
+"Japan",
+"Netherlands"
+],
+[
+"buff",
+"Japan",
+"att",
+1.2,
+26
+],
+[
+"rel",
+"Japan",
+"United States of America",
+-20
+]
+],
+"r": "Malaya ve Hindiçini'ye çıkarma; ABD bekliyor."
+},
+{
+"t": "Washington ile anlaş",
+"d": "Çin'den çekil",
+"fx": [
+[
+"rel",
+"Japan",
+"United States of America",
+30
+],
+[
+"gold",
+"Japan",
+6
+],
+[
+"stab",
+"Japan",
+-10
+]
+],
+"r": "Tokyo geri adım attı; ordu öfkeli."
+}
+]
+},
+"United States of America": {
+"text": "Pasifik Filosu vuruldu. Kongre savaş istiyor. Almanya da savaş ilan etti: önce Avrupa mı, Pasifik mi?",
+"options": [
+{
+"t": "Önce Almanya (tarihî)",
+"d": "Avrupa öncelikli",
+"fx": [
+[
+"war",
+"United States of America",
+"Japan"
+],
+[
+"war",
+"United States of America",
+"Germany"
+],
+[
+"buff",
+"United States of America",
+"recruit",
+1.6,
+78
+],
+[
+"stab",
+"United States of America",
+10
+]
+],
+"r": "Amerika iki okyanusta savaşta."
+},
+{
+"t": "Önce Japonya",
+"d": "İntikam",
+"fx": [
+[
+"war",
+"United States of America",
+"Japan"
+],
+[
+"buff",
+"United States of America",
+"att",
+1.2,
+52
+],
+[
+"rel",
+"United States of America",
+"United Kingdom",
+-10
+]
+],
+"r": "Pasifik'e öncelik verildi."
+},
+{
+"t": "Yalnız Japonya'yla savaş",
+"d": "Avrupa'ya girme",
+"fx": [
+[
+"war",
+"United States of America",
+"Japan"
+],
+[
+"gold",
+"United States of America",
+6
+],
+[
+"rel",
+"United States of America",
+"United Kingdom",
+-25
+]
+],
+"r": "ABD Avrupa'dan uzak durdu."
+}
+]
+}
+}
+},
+{
+"id": "stalingrad",
+"y": 1942,
+"m": 8,
+"title": "Stalingrad",
+"scene": "crisis",
+"icon": "flame",
+"text": "Volga kıyısında şehir savaşı başladı: her sokak, her fabrika.",
+"major": true,
+"default_fx": [],
+"roles": {
+"Russia": {
+"text": "6. Ordu şehre girdi. Çuykov Volga'nın batı yakasında tutunuyor. Uranüs Harekâtı için yedekler birikiyor.",
+"options": [
+{
+"t": "Şehri tut, kanatları kuşat (Uranüs)",
+"d": "Büyük kuşatma",
+"fx": [
+[
+"buff",
+"Russia",
+"def",
+1.3,
+13
+],
+[
+"buff",
+"Russia",
+"att",
+1.35,
+13
+],
+[
+"troops",
+"Germany",
+-15
+],
+[
+"flag",
+"stalingrad_won"
+]
+],
+"r": "6. Ordu kuşatıldı: 91.000 esir."
+},
+{
+"t": "Şehri bırak, Volga'nın doğusuna çekil",
+"d": "Orduyu koru",
+"fx": [
+[
+"xstab",
+"Russia",
+-15
+],
+[
+"buff",
+"Russia",
+"def",
+1.1,
+26
+]
+],
+"r": "Stalingrad düştü; Volga kesildi."
+},
+{
+"t": "Sürekli takviye",
+"d": "Şehirde kıyma makinesi",
+"fx": [
+[
+"troops",
+"Russia",
+-12
+],
+[
+"troops",
+"Germany",
+-10
+],
+[
+"buff",
+"Russia",
+"def",
+1.2,
+26
+]
+],
+"r": "Şehir enkaz, iki ordu da eriyor."
+}
+]
+},
+"Germany": {
+"text": "Paulus şehre saplandı; kanatlar Rumen ve İtalyan ordularında. Halder çekilmek istiyor.",
+"options": [
+{
+"t": "Şehri her ne pahasına al",
+"d": "Prestij",
+"fx": [
+[
+"buff",
+"Germany",
+"att",
+1.15,
+13
+],
+[
+"troops",
+"Germany",
+-15
+]
+],
+"r": "Fabrikalar için ölümüne savaş."
+},
+{
+"t": "Çekil, Don hattında savun",
+"d": "Kuşatmadan kaç",
+"fx": [
+[
+"buff",
+"Germany",
+"def",
+1.2,
+26
+],
+[
+"stab",
+"Germany",
+-5
+]
+],
+"r": "6. Ordu Don'a çekildi; kuşatma önlendi."
+},
+{
+"t": "Kafkas petrolüne yüklen",
+"d": "Bakü",
+"fx": [
+[
+"buff",
+"Germany",
+"att",
+1.1,
+13
+],
+[
+"gold",
+"Germany",
+4
+],
+[
+"troops",
+"Germany",
+-8
+]
+],
+"r": "Mavi Harekât Kafkasya'da sürdü."
+}
+]
+}
+},
+"requires": [
+"barbarossa"
+]
+},
+{
+"id": "dday",
+"y": 1944,
+"m": 6,
+"title": "D-Day",
+"scene": "landing",
+"icon": "landing",
+"text": "Normandiya: tarihin en büyük çıkarması. Omaha, Utah, Gold, Juno, Sword.",
+"major": true,
+"default_fx": [],
+"roles": {
+"United States of America": {
+"text": "Eisenhower'ın masasında hava raporu: 6 Haziran'da kısa bir pencere. Pas-de-Calais aldatmacası sürüyor.",
+"options": [
+{
+"t": "Normandiya, 6 Haziran (tarihî)",
+"d": "Overlord",
+"fx": [
+[
+"buff",
+"United States of America",
+"att",
+1.3,
+13
+],
+[
+"buff",
+"United Kingdom",
+"att",
+1.3,
+13
+],
+[
+"stab",
+"Germany",
+-10
+],
+[
+"flag",
+"dday"
+]
+],
+"r": "Müttefikler Avrupa kalesinde."
+},
+{
+"t": "Pas-de-Calais'ye çık",
+"d": "Kısa yol, güçlü savunma",
+"fx": [
+[
+"buff",
+"United States of America",
+"att",
+1.1,
+13
+],
+[
+"troops",
+"United States of America",
+-12
+]
+],
+"r": "Calais'de kanlı plajlar."
+},
+{
+"t": "Bir ay ertele",
+"d": "Hava bozuk",
+"fx": [
+[
+"rel",
+"United States of America",
+"Russia",
+-10
+],
+[
+"buff",
+"United States of America",
+"att",
+1.2,
+13
+]
+],
+"r": "Overlord Temmuz'a kaldı."
+}
+]
+},
+"Germany": {
+"text": "Rommel plajda durdurmak istiyor; Rundstedt içeride karşı taarruz. Zırhlı yedekler Hitler'in emrinde.",
+"options": [
+{
+"t": "Zırhlıları plaja sür",
+"d": "Rommel'in planı",
+"fx": [
+[
+"buff",
+"Germany",
+"def",
+1.3,
+6
+],
+[
+"troops",
+"Germany",
+-6
+]
+],
+"r": "Panzerler ilk gün plajda."
+},
+{
+"t": "Yedekleri Calais'de tut (tarihî)",
+"d": "Aldatmacaya kan",
+"fx": [
+[
+"buff",
+"Germany",
+"def",
+0.9,
+13
+]
+],
+"r": "Zırhlılar bekledi; köprübaşı tutundu."
+},
+{
+"t": "Seine'e çekil",
+"d": "Fransa'yı bırak",
+"fx": [
+[
+"buff",
+"Germany",
+"def",
+1.2,
+26
+],
+[
+"cede",
+"Germany",
+"France",
+2
+]
+],
+"r": "Alman ordusu Seine hattına."
+}
+]
+}
+}
+},
+{
+"id": "hiroshima",
+"y": 1945,
+"m": 8,
+"title": "Atom Bombası",
+"scene": "nuke",
+"icon": "nuke",
+"text": "Hiroşima ve Nagasaki: yeni bir çağ. SSCB Japonya'ya savaş açtı.",
+"major": true,
+"default_fx": [
+[
+"war",
+"Russia",
+"Japan"
+]
+],
+"roles": {
+"United States of America": {
+"text": "Trinity testi başarılı. İşgal planı 1 milyon kayıp öngörüyor. Truman'ın masasında bomba.",
+"options": [
+{
+"t": "Bombayı kullan (tarihî)",
+"d": "Hiroşima, Nagasaki",
+"fx": [
+[
+"stab",
+"Japan",
+-30
+],
+[
+"buff",
+"United States of America",
+"att",
+1.5,
+13
+],
+[
+"flag",
+"abomb"
+]
+],
+"r": "Hiroşima: 'Güneş'ten parlak.'"
+},
+{
+"t": "Gösteri patlaması",
+"d": "Issız adada",
+"fx": [
+[
+"stab",
+"Japan",
+-10
+],
+[
+"rel",
+"United States of America",
+"Japan",
+5
+]
+],
+"r": "Japonya izledi; teslim gecikti."
+},
+{
+"t": "Kyushu'ya çıkarma",
+"d": "Olimpik Harekâtı",
+"fx": [
+[
+"buff",
+"United States of America",
+"att",
+1.2,
+26
+],
+[
+"troops",
+"United States of America",
+-15
+],
+[
+"troops",
+"Japan",
+-25
+]
+],
+"r": "Kyushu plajlarında kıyamet."
+}
+]
+},
+"Japan": {
+"text": "Hiroşima yok edildi, SSCB Mançurya'ya girdi. Ordu son adama kadar savaşmak istiyor; İmparator barış.",
+"options": [
+{
+"t": "Koşulsuz teslim (tarihî)",
+"d": "İmparatorun sesi",
+"fx": [
+[
+"peace",
+"Japan",
+"United States of America"
+],
+[
+"peace",
+"Japan",
+"United Kingdom"
+],
+[
+"peace",
+"Japan",
+"Russia"
+],
+[
+"peace",
+"Japan",
+"China"
+],
+[
+"xstab",
+"Japan",
+-10
+]
+],
+"r": "'Dayanılmazı dayanarak...' Japonya teslim."
+},
+{
+"t": "Son adama kadar",
+"d": "Ketsu-Go",
+"fx": [
+[
+"buff",
+"Japan",
+"def",
+1.4,
+26
+],
+[
+"xstab",
+"Japan",
+-25
+],
+[
+"troops",
+"Japan",
+-20
+]
+],
+"r": "Japonya ölümüne direniyor."
+}
+]
+}
+}
+},
+{
+"id": "turkey_ww2",
+"y": 1943,
+"m": 1,
+"title": "Adana Görüşmesi",
+"scene": "pre_alliance",
+"icon": "treaty",
+"text": "Churchill Adana'da İnönü ile buluştu: Türkiye savaşa girsin mi?",
+"major": true,
+"default_fx": [],
+"roles": {
+"Turkey": {
+"text": "Churchill savaşa girmeni istiyor; Almanya sınırda, Stalingrad yeni kazanıldı. İnönü zaman kazanıyor.",
+"options": [
+{
+"t": "Tarafsız kal (tarihî)",
+"d": "Krom sat, bekle",
+"fx": [
+[
+"gold",
+"Turkey",
+6
+],
+[
+"xstab",
+"Turkey",
+5
+],
+[
+"rel",
+"Turkey",
+"United Kingdom",
+-5
+]
+],
+"r": "Türkiye 'faal tarafsızlık' sürdürdü."
+},
+{
+"t": "Müttefiklere katıl",
+"d": "Balkanlar'a yüklen",
+"fx": [
+[
+"war",
+"Turkey",
+"Germany"
+],
+[
+"war",
+"Turkey",
+"Bulgaria"
+],
+[
+"buff",
+"Turkey",
+"att",
+1.1,
+26
+],
+[
+"gold",
+"Turkey",
+8
+],
+[
+"rel",
+"Turkey",
+"United Kingdom",
+30
+]
+],
+"r": "Türk ordusu Trakya'da taarruzda."
+},
+{
+"t": "Mihver'e yanaş",
+"d": "Almanya ile anlaşma",
+"fx": [
+[
+"rel",
+"Turkey",
+"Germany",
+30
+],
+[
+"rel",
+"Turkey",
+"United Kingdom",
+-40
+],
+[
+"gold",
+"Turkey",
+4
+]
+],
+"r": "Ankara Berlin'e yaklaştı."
+}
+]
+}
+}
+}
+]
+}

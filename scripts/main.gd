@@ -34,6 +34,7 @@ const AP = preload("res://scripts/ap.gd")
 const Independence = preload("res://scripts/independence.gd")
 const Career = preload("res://scripts/career.gd")
 const CareerUI = preload("res://scripts/career_ui.gd")
+const EraMoments = preload("res://scripts/era_moments.gd")
 const Daily = preload("res://scripts/daily.gd")
 const Politics = preload("res://scripts/politics.gd")
 const ApUi = preload("res://scripts/ap_ui.gd")
@@ -211,6 +212,7 @@ func _attach_gs(g) -> void:
 	gs.alliance_proposal.connect(_on_alliance_proposal)
 	gs.indep_card.connect(_on_indep_card)
 	gs.career_card.connect(_on_career_card)
+	gs.moment_card.connect(_on_moment_card)
 	gs.pol_card.connect(_on_pol_card)
 	gs.wroom_card.connect(_on_wroom_card)
 	selected_pid = -1
@@ -224,7 +226,7 @@ func _detach_gs() -> void:
 	playing = false
 	timer.stop()
 	if gs != null:
-		for pair in [[gs.news_posted, _on_news], [gs.state_changed, _on_state_changed], [gs.peace_proposal, _on_peace_proposal], [gs.game_over, _on_game_over], [gs.ally_call, _on_ally_call], [gs.un_vote_card, _on_un_vote_card], [gs.alliance_proposal, _on_alliance_proposal], [gs.indep_card, _on_indep_card], [gs.career_card, _on_career_card], [gs.pol_card, _on_pol_card], [gs.wroom_card, _on_wroom_card]]:
+		for pair in [[gs.news_posted, _on_news], [gs.state_changed, _on_state_changed], [gs.peace_proposal, _on_peace_proposal], [gs.game_over, _on_game_over], [gs.ally_call, _on_ally_call], [gs.un_vote_card, _on_un_vote_card], [gs.alliance_proposal, _on_alliance_proposal], [gs.indep_card, _on_indep_card], [gs.career_card, _on_career_card], [gs.moment_card, _on_moment_card], [gs.pol_card, _on_pol_card], [gs.wroom_card, _on_wroom_card]]:
 			if pair[0].is_connected(pair[1]):
 				pair[0].disconnect(pair[1])
 	ui.hide_dialog()
@@ -333,6 +335,7 @@ func _on_start_requested(cid: int) -> void:
 			ui.toast("Başlamak için «Turu geç» düğmesine dokun.")
 		else:
 			ui.toast(Loc.t("Hedef: %s") % Loc.t(nx.name) + "\n" + Loc.t(nx.desc))
+	EraMoments.resume(gs)
 
 
 ## Dil değişince arayüz yeniden kurulur: oyun varsa önce otomatik kayıt yuvasına yazılır, sonra sahne yeniden yüklenir.
@@ -399,6 +402,7 @@ func _load_game(slot: int = 0) -> void:
 	ui.toast("Oyun yüklendi: %s" % Names.date_string(gs.turn))
 	Independence.resume(gs)
 	Career.resume(gs)
+	EraMoments.resume(gs)
 
 
 # ------------------------------------------------------------------ zaman
@@ -963,6 +967,34 @@ func _start_career(era_id: String, params: Dictionary) -> void:
 	var hc = gs.countries[host]
 	gs.career["pending"] = {"kind": "chapter", "idx": 0}
 	_on_career_card()
+
+
+func _on_moment_card() -> void:
+	if gs == null or gs.moment_pending.is_empty():
+		return
+	var c: Dictionary = EraMoments.card(gs)
+	if c.is_empty():
+		return
+	_on_speed_changed(0)
+	var btns: Array = []
+	if (c.options as Array).is_empty():
+		btns.append({"text": "Tamam", "cb": func(): gs.moment_pending = {}, "kind": "good"})
+	else:
+		for i in c.options.size():
+			var idx: int = i
+			var o: Dictionary = c.options[i]
+			btns.append({"text": String(o.t), "cb": func():
+				EraMoments.choose(gs, idx)
+				ui.refresh_top(), "kind": String(o.get("kind", "good" if i == 0 else ""))})
+	var body: String = String(c.body)
+	if not (c.options as Array).is_empty():
+		var ds: Array = []
+		for o2 in c.options:
+			if String(o2.d) != "":
+				ds.append("• %s: %s" % [String(o2.t), String(o2.d)])
+		if not ds.is_empty():
+			body += "\n\n" + "\n".join(ds)
+	ui.show_dialog("TARİHÎ AN  /  " + String(c.title), body, btns, String(c.scene), String(c.icon))
 
 
 func _on_career_card() -> void:

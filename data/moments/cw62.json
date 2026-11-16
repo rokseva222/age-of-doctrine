@@ -1,0 +1,1100 @@
+{
+"moments": [
+{
+"id": "cuba_crisis",
+"y": 1962,
+"m": 10,
+"title": "Küba Füze Krizi",
+"scene": "missile",
+"icon": "missile",
+"text": "U-2 fotoğrafları: Küba'da Sovyet füzeleri. 13 gün dünya nefesini tuttu.",
+"major": true,
+"default_fx": [],
+"roles": {
+"United States of America": {
+"text": "ExComm toplandı. Hava saldırısı, işgal ya da deniz karantinası. Kruşçev'in gözünün içine bakıyorsun.",
+"options": [
+{
+"t": "Deniz karantinası (tarihî)",
+"d": "Ablukayla baskı",
+"fx": [
+[
+"rel",
+"United States of America",
+"Russia",
+-20
+],
+[
+"stab",
+"United States of America",
+5
+],
+[
+"buff",
+"United States of America",
+"def",
+1.1,
+13
+],
+[
+"flag",
+"quarantine"
+]
+],
+"r": "Karantina: Sovyet gemileri geri döndü."
+},
+{
+"t": "Hava saldırısı ve işgal",
+"d": "Füzeleri yok et",
+"fx": [
+[
+"war",
+"United States of America",
+"Cuba"
+],
+[
+"rel",
+"United States of America",
+"Russia",
+-50
+],
+[
+"stab",
+"United States of America",
+-5
+],
+[
+"flag",
+"cuba_war"
+]
+],
+"r": "Bombardıman uçakları Küba üzerinde; dünya uçurumda."
+},
+{
+"t": "Gizli takas: Türkiye'deki Jüpiterler",
+"d": "Diplomasi",
+"fx": [
+[
+"rel",
+"United States of America",
+"Russia",
+20
+],
+[
+"rel",
+"United States of America",
+"Turkey",
+-15
+],
+[
+"stab",
+"United States of America",
+-3
+],
+[
+"flag",
+"jupiter_deal"
+]
+],
+"r": "Füzeler karşılıklı söküldü."
+}
+]
+},
+"Russia": {
+"text": "Füzeler Küba'da ama ABD anladı. Kennedy karantina ilan etti; gemiler yolda.",
+"options": [
+{
+"t": "Gemileri geri çek (tarihî)",
+"d": "Takas: Küba'ya saldırı yok",
+"fx": [
+[
+"rel",
+"Russia",
+"United States of America",
+15
+],
+[
+"stab",
+"Russia",
+-5
+],
+[
+"flag",
+"soviet_back"
+]
+],
+"r": "Kruşçev: 'Füzeleri söküyoruz.'"
+},
+{
+"t": "Ablukayı yar",
+"d": "Denizaltılarla eşlik",
+"fx": [
+[
+"rel",
+"Russia",
+"United States of America",
+-50
+],
+[
+"buff",
+"Russia",
+"att",
+1.1,
+13
+],
+[
+"flag",
+"cuba_war"
+]
+],
+"r": "Karayipler'de çatışma; DEFCON 2."
+},
+{
+"t": "Berlin'i sıkıştır",
+"d": "Karşı hamle",
+"fx": [
+[
+"rel",
+"Russia",
+"United States of America",
+-30
+],
+[
+"stab",
+"Germany",
+-10
+]
+],
+"r": "Berlin'de tanklar burun buruna."
+}
+]
+},
+"Cuba": {
+"text": "Castro Kruşçev'e yazdı: 'İşgal olursa ilk vuran olun.' Füzeler senin toprağında ama kontrol Moskova'da.",
+"options": [
+{
+"t": "Moskova'ya bağlı kal",
+"d": "Sovyet şemsiyesi",
+"fx": [
+[
+"rel",
+"Cuba",
+"Russia",
+20
+],
+[
+"gold",
+"Cuba",
+4
+]
+],
+"r": "Havana Moskova'nın kararını bekliyor."
+},
+{
+"t": "Seferberlik ilan et",
+"d": "İşgale hazırlan",
+"fx": [
+[
+"mob",
+"Cuba",
+26
+],
+[
+"buff",
+"Cuba",
+"def",
+1.4,
+26
+]
+],
+"r": "Küba halkı silah altında."
+},
+{
+"t": "Füzelerin kalmasında diren",
+"d": "Kruşçev'e rest",
+"fx": [
+[
+"rel",
+"Cuba",
+"Russia",
+-20
+],
+[
+"stab",
+"Cuba",
+5
+]
+],
+"r": "Castro öfkeli: füzeler sökülüyor."
+}
+]
+},
+"Turkey": {
+"text": "İzmir'deki Jüpiter füzeleri pazarlık masasında. Washington gizlice sökmek istiyor.",
+"options": [
+{
+"t": "Sökülmesine itiraz etme",
+"d": "NATO dayanışması",
+"fx": [
+[
+"rel",
+"Turkey",
+"United States of America",
+15
+],
+[
+"gold",
+"Turkey",
+3
+]
+],
+"r": "Jüpiterler sessizce söküldü."
+},
+{
+"t": "Karşılığında Polaris ve yardım iste",
+"d": "Pazarlık",
+"fx": [
+[
+"gold",
+"Turkey",
+8
+],
+[
+"buff",
+"Turkey",
+"def",
+1.1,
+52
+]
+],
+"r": "Ankara pazarlık kazandı."
+},
+{
+"t": "Füzeleri tut",
+"d": "Moskova'ya rest",
+"fx": [
+[
+"rel",
+"Turkey",
+"Russia",
+-30
+],
+[
+"rel",
+"Turkey",
+"United States of America",
+-10
+],
+[
+"buff",
+"Turkey",
+"def",
+1.15,
+26
+]
+],
+"r": "Türkiye füzeleri bırakmadı."
+}
+]
+}
+}
+},
+{
+"id": "berlin_wall",
+"y": 1962,
+"m": 11,
+"title": "Checkpoint Charlie",
+"scene": "border",
+"icon": "border_clash",
+"text": "Berlin'de Amerikan ve Sovyet tankları 16 saat burun buruna.",
+"major": false,
+"default_fx": [],
+"roles": {
+"United States of America": {
+"text": "Doğu Alman polisi diplomatları durdurdu. Clay tankları sınıra sürdü.",
+"options": [
+{
+"t": "Tankları tut, telefon aç",
+"d": "Gerilimi düşür",
+"fx": [
+[
+"rel",
+"United States of America",
+"Russia",
+10
+]
+],
+"r": "Tanklar birer birer çekildi."
+},
+{
+"t": "Zorla geç",
+"d": "Dört güç hakları",
+"fx": [
+[
+"rel",
+"United States of America",
+"Russia",
+-25
+],
+[
+"stab",
+"Germany",
+-5
+]
+],
+"r": "Berlin'de kıvılcım."
+}
+]
+}
+}
+},
+{
+"id": "sino_indian",
+"y": 1962,
+"m": 10,
+"title": "Çin-Hindistan Savaşı",
+"scene": "pre_border",
+"icon": "border_clash",
+"text": "Himalaya'da Çin ordusu Hint mevzilerini süpürdü: Aksai Chin ve NEFA.",
+"major": true,
+"default_fx": [
+[
+"war",
+"China",
+"India"
+]
+],
+"roles": {
+"India": {
+"text": "Çin birlikleri McMahon Hattı'nı geçti. Nehru 'ileri politika'yı sürdürdü; ordu hazırsız.",
+"options": [
+{
+"t": "Diren ve ABD'den silah iste",
+"d": "Himalaya'da savun",
+"fx": [
+[
+"buff",
+"India",
+"def",
+1.2,
+26
+],
+[
+"rel",
+"India",
+"United States of America",
+25
+],
+[
+"gold",
+"India",
+4
+]
+],
+"r": "Amerikan silahları Kalküta'ya indi."
+},
+{
+"t": "Geri çekil, ateşkes",
+"d": "Toprak kaybı",
+"fx": [
+[
+"peace",
+"India",
+"China"
+],
+[
+"stab",
+"India",
+-10
+]
+],
+"r": "Hindistan ateşkesi kabul etti."
+},
+{
+"t": "Karşı taarruz",
+"d": "Tibet'e yüklen",
+"fx": [
+[
+"buff",
+"India",
+"att",
+1.1,
+13
+],
+[
+"troops",
+"India",
+-10
+]
+],
+"r": "Hint taarruzu karda eridi."
+}
+]
+},
+"China": {
+"text": "Sınır çatışması büyüdü. Mao bir 'ders' vermek istiyor.",
+"options": [
+{
+"t": "Taarruz ve tek taraflı ateşkes (tarihî)",
+"d": "Ders ver, çekil",
+"fx": [
+[
+"war",
+"China",
+"India"
+],
+[
+"buff",
+"China",
+"att",
+1.3,
+8
+],
+[
+"stab",
+"India",
+-10
+]
+],
+"r": "Çin Assam'a indi, sonra geri çekildi."
+},
+{
+"t": "Aksai Chin'i tut, savaşma",
+"d": "Diplomasi",
+"fx": [
+[
+"rel",
+"China",
+"India",
+-20
+]
+],
+"r": "Himalaya'da soğuk barış."
+}
+]
+}
+}
+},
+{
+"id": "kennedy",
+"y": 1963,
+"m": 11,
+"title": "Dallas",
+"scene": "crisis",
+"icon": "warning",
+"text": "Başkan Kennedy Dallas'ta suikasta kurban gitti. Johnson yemin etti.",
+"major": false,
+"default_fx": [
+[
+"stab",
+"United States of America",
+-8
+]
+],
+"roles": {
+"United States of America": {
+"text": "Dallas'ta silah sesleri. Ülke yasta; Vietnam ve Küba politikası masada.",
+"options": [
+{
+"t": "Sürekliliği koru",
+"d": "Johnson Kennedy çizgisinde",
+"fx": [
+[
+"xstab",
+"United States of America",
+5
+]
+],
+"r": "Johnson: 'Devam edelim.'"
+},
+{
+"t": "Soruşturma komisyonu",
+"d": "Warren",
+"fx": [
+[
+"xstab",
+"United States of America",
+3
+],
+[
+"gold",
+"United States of America",
+-1
+]
+],
+"r": "Warren Komisyonu kuruldu."
+}
+]
+}
+}
+},
+{
+"id": "tonkin",
+"y": 1964,
+"m": 8,
+"title": "Tonkin Körfezi",
+"scene": "naval",
+"icon": "ship",
+"text": "Maddox muhribi Kuzey Vietnam hücumbotlarıyla çatıştı. Kongre savaş yetkisi veriyor.",
+"major": true,
+"default_fx": [],
+"roles": {
+"United States of America": {
+"text": "Tonkin raporları belirsiz. Johnson Kongre'den geniş yetki istiyor: Vietnam'a girecek misin?",
+"options": [
+{
+"t": "Tonkin kararı: Vietnam'a gir",
+"d": "Tırmanma",
+"fx": [
+[
+"war",
+"United States of America",
+"Vietnam"
+],
+[
+"buff",
+"United States of America",
+"att",
+1.1,
+26
+],
+[
+"stab",
+"United States of America",
+-5
+],
+[
+"flag",
+"vietnam"
+]
+],
+"r": "Amerikan deniz piyadeleri Da Nang'da."
+},
+{
+"t": "Hava saldırılarıyla sınırlı kal",
+"d": "Yuvarlanan Gök Gürültüsü",
+"fx": [
+[
+"rel",
+"United States of America",
+"Vietnam",
+-30
+],
+[
+"gold",
+"United States of America",
+-2
+]
+],
+"r": "Bombardıman sürdü, kara askeri yok."
+},
+{
+"t": "Vietnam'dan uzak dur",
+"d": "Saygon kendi başına",
+"fx": [
+[
+"gold",
+"United States of America",
+6
+],
+[
+"stab",
+"United States of America",
+3
+]
+],
+"r": "Washington Vietnam'ı Saygon'a bıraktı."
+}
+]
+}
+}
+},
+{
+"id": "six_day",
+"y": 1967,
+"m": 6,
+"title": "Altı Gün Savaşı",
+"scene": "air",
+"icon": "jet",
+"text": "İsrail uçakları sabah Mısır hava kuvvetlerini yerde yok etti. Altı günde Sina, Batı Şeria, Golan.",
+"major": true,
+"default_fx": [
+[
+"war",
+"Israel",
+"Egypt"
+],
+[
+"war",
+"Israel",
+"Syria"
+],
+[
+"war",
+"Israel",
+"Jordan"
+]
+],
+"roles": {
+"Israel": {
+"text": "Nasır Tiran Boğazı'nı kapattı; Arap orduları sınırda. Önleyici vuruş mu, bekleyiş mi?",
+"options": [
+{
+"t": "Önleyici hava vuruşu (tarihî)",
+"d": "Odak Harekâtı",
+"fx": [
+[
+"war",
+"Israel",
+"Egypt"
+],
+[
+"war",
+"Israel",
+"Syria"
+],
+[
+"war",
+"Israel",
+"Jordan"
+],
+[
+"buff",
+"Israel",
+"att",
+1.5,
+6
+]
+],
+"r": "Mısır hava kuvvetleri 3 saatte yok."
+},
+{
+"t": "Bekle, diplomasi",
+"d": "ABD baskısı",
+"fx": [
+[
+"rel",
+"Israel",
+"United States of America",
+15
+],
+[
+"buff",
+"Israel",
+"def",
+1.2,
+13
+]
+],
+"r": "İsrail bekledi; gerilim sürüyor."
+}
+]
+},
+"Egypt": {
+"text": "Tiran'ı kapattın, BM gücünü çıkardın. Amer ordu hazır diyor; pilotlar sabah kahvaltıda.",
+"options": [
+{
+"t": "Hazır ol: uçakları dağıt",
+"d": "Sürprizi önle",
+"fx": [
+[
+"buff",
+"Egypt",
+"def",
+1.3,
+13
+]
+],
+"r": "Mısır hava kuvvetleri havada karşıladı."
+},
+{
+"t": "Blöfü sürdür (tarihî)",
+"d": "Savaş istemeden kriz",
+"fx": [
+[
+"buff",
+"Egypt",
+"def",
+0.8,
+6
+],
+[
+"stab",
+"Egypt",
+-10
+]
+],
+"r": "Sabah 7.45: uçaklar yerde vuruldu."
+},
+{
+"t": "Boğazı aç, geri çekil",
+"d": "Yüz kaybı",
+"fx": [
+[
+"stab",
+"Egypt",
+-12
+],
+[
+"rel",
+"Egypt",
+"Israel",
+10
+]
+],
+"r": "Nasır geri adım attı."
+}
+]
+}
+}
+},
+{
+"id": "prague",
+"y": 1968,
+"m": 8,
+"title": "Prag Baharı",
+"scene": "crisis",
+"icon": "protest",
+"text": "Varşova Paktı tankları Prag'a girdi: Dubček'in 'güler yüzlü sosyalizmi' ezildi.",
+"major": false,
+"default_fx": [
+[
+"stab",
+"Czechia",
+-15
+]
+],
+"roles": {
+"Russia": {
+"text": "Dubček reformları Pakt'ı tehdit ediyor. Brejnev: 'Sosyalizm tehlikedeyse egemenlik sınırlıdır.'",
+"options": [
+{
+"t": "Tankları gönder (tarihî)",
+"d": "Brejnev Doktrini",
+"fx": [
+[
+"xstab",
+"Russia",
+3
+],
+[
+"stab",
+"Czechia",
+-20
+],
+[
+"rel",
+"Russia",
+"United States of America",
+-10
+]
+],
+"r": "Prag'da tank sesleri."
+},
+{
+"t": "Reformlara göz yum",
+"d": "Risk",
+"fx": [
+[
+"xstab",
+"Russia",
+-8
+],
+[
+"rel",
+"Russia",
+"United States of America",
+10
+]
+],
+"r": "Prag Baharı sürdü; Moskova huzursuz."
+}
+]
+}
+}
+},
+{
+"id": "cyprus",
+"y": 1974,
+"m": 7,
+"title": "Kıbrıs Harekâtı",
+"scene": "pre_landing",
+"icon": "landing",
+"text": "Yunan cuntasının darbesinin ardından Türkiye Kıbrıs'a çıkarma yaptı.",
+"major": true,
+"default_fx": [
+[
+"war",
+"Turkey",
+"Cyprus"
+]
+],
+"roles": {
+"Turkey": {
+"text": "EOKA-B darbesi: Makarios devrildi, Sampson 'cumhurbaşkanı'. Garantörlük hakkın var; Ecevit Londra'dan eli boş döndü.",
+"options": [
+{
+"t": "Ayşe tatile çıksın (tarihî)",
+"d": "Kıbrıs'a çıkarma",
+"fx": [
+[
+"war",
+"Turkey",
+"Cyprus"
+],
+[
+"buff",
+"Turkey",
+"att",
+1.3,
+13
+],
+[
+"xstab",
+"Turkey",
+10
+],
+[
+"rel",
+"Turkey",
+"United States of America",
+-20
+],
+[
+"flag",
+"cyprus_1974"
+]
+],
+"r": "Türk birlikleri Girne'de."
+},
+{
+"t": "Diplomasi: İngiltere ile ortak müdahale",
+"d": "Londra'yı ikna et",
+"fx": [
+[
+"rel",
+"Turkey",
+"United Kingdom",
+20
+],
+[
+"rel",
+"Turkey",
+"Greece",
+-20
+]
+],
+"r": "Londra görüşmeleri uzadı."
+},
+{
+"t": "Bekle",
+"d": "Darbe çökene kadar",
+"fx": [
+[
+"xstab",
+"Turkey",
+-8
+],
+[
+"stab",
+"Cyprus",
+-10
+]
+],
+"r": "Ankara bekledi; adada katliam korkusu."
+}
+]
+},
+"Greece": {
+"text": "Cunta darbe yaptı, Türkiye çıkarma hazırlığında. Ordu Türkiye ile savaşı kaldıramaz.",
+"options": [
+{
+"t": "Cunta düşsün, demokrasi",
+"d": "Karamanlis döner",
+"fx": [
+[
+"xstab",
+"Greece",
+15
+],
+[
+"peace",
+"Greece",
+"Turkey"
+],
+[
+"rel",
+"Greece",
+"United States of America",
+10
+]
+],
+"r": "Cunta çöktü; Karamanlis Atina'da."
+},
+{
+"t": "Türkiye'ye savaş ilan et",
+"d": "Ege'de savaş",
+"fx": [
+[
+"war",
+"Greece",
+"Turkey"
+],
+[
+"buff",
+"Greece",
+"def",
+1.1,
+13
+],
+[
+"xstab",
+"Greece",
+-10
+]
+],
+"r": "Ege'de savaş rüzgârı."
+}
+]
+}
+}
+},
+{
+"id": "afghan",
+"y": 1979,
+"m": 12,
+"title": "Afganistan İşgali",
+"scene": "pre_mobilize",
+"icon": "helmet",
+"text": "Sovyet 40. Ordusu Kâbil'e girdi: on yıl sürecek bataklık.",
+"major": true,
+"default_fx": [
+[
+"war",
+"Russia",
+"Afghanistan"
+]
+],
+"roles": {
+"Russia": {
+"text": "Kâbil'deki komünist hükûmet çöküyor. Politbüro 'kısa bir operasyon' diyor.",
+"options": [
+{
+"t": "İşgal (tarihî)",
+"d": "40. Ordu Kâbil'e",
+"fx": [
+[
+"war",
+"Russia",
+"Afghanistan"
+],
+[
+"buff",
+"Russia",
+"att",
+1.2,
+13
+],
+[
+"rel",
+"Russia",
+"United States of America",
+-30
+],
+[
+"flag",
+"afghan_war"
+]
+],
+"r": "Sovyet paraşütçüleri Kâbil Havalimanı'nda."
+},
+{
+"t": "Danışman ve silah gönder",
+"d": "Dolaylı destek",
+"fx": [
+[
+"gold",
+"Afghanistan",
+4
+],
+[
+"rel",
+"Russia",
+"United States of America",
+-10
+]
+],
+"r": "Moskova dolaylı yoldan destekliyor."
+},
+{
+"t": "Uzak dur",
+"d": "Bataklık",
+"fx": [
+[
+"xstab",
+"Russia",
+2
+],
+[
+"rel",
+"Russia",
+"United States of America",
+5
+]
+],
+"r": "Politbüro işgalden vazgeçti."
+}
+]
+},
+"United States of America": {
+"text": "Sovyetler Afganistan'da. Mücahitleri silahlandırmak Moskova'yı kanatır.",
+"options": [
+{
+"t": "Siklon Harekâtı: mücahitleri silahlandır",
+"d": "Stinger'lar",
+"fx": [
+[
+"buff",
+"Afghanistan",
+"def",
+1.4,
+104
+],
+[
+"rel",
+"United States of America",
+"Russia",
+-20
+],
+[
+"gold",
+"United States of America",
+-2
+]
+],
+"r": "Pakistan üzerinden silahlar akıyor."
+},
+{
+"t": "Olimpiyat boykotu ve ambargo",
+"d": "Yumuşak baskı",
+"fx": [
+[
+"rel",
+"United States of America",
+"Russia",
+-15
+],
+[
+"gold",
+"Russia",
+-4
+]
+],
+"r": "Moskova Olimpiyatları boykot edildi."
+}
+]
+}
+}
+}
+]
+}

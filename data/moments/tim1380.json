@@ -1,0 +1,591 @@
+{
+"moments": [
+{
+"id": "ankara1402",
+"y": 1402,
+"m": 7,
+"title": "Ankara Savaşı",
+"scene": "pre_assault",
+"icon": "u_elephant",
+"text": "Timur ve Bayezid Çubuk Ovası'nda karşılaştı: Osmanlı ordusu dağıldı, Yıldırım esir.",
+"major": true,
+"default_fx": [
+[
+"war",
+"Uzbekistan",
+"Turkey"
+],
+[
+"stab",
+"Turkey",
+-30
+]
+],
+"roles": {
+"Uzbekistan": {
+"text": "Bayezid Çubuk'ta. Anadolu beylerinin askerleri onun saflarında ama eski beylerine sadık.",
+"options": [
+{
+"t": "Beyleri saf değiştirmeye çağır (tarihî)",
+"d": "Filler ve okçular",
+"fx": [
+[
+"war",
+"Uzbekistan",
+"Turkey"
+],
+[
+"buff",
+"Uzbekistan",
+"att",
+1.4,
+8
+],
+[
+"stab",
+"Turkey",
+-35
+],
+[
+"flag",
+"ankara_won"
+]
+],
+"r": "Osmanlı ordusu dağıldı; Bayezid esir."
+},
+{
+"t": "Su kaynaklarını kes, bekle",
+"d": "Susuz ordu",
+"fx": [
+[
+"war",
+"Uzbekistan",
+"Turkey"
+],
+[
+"buff",
+"Uzbekistan",
+"att",
+1.2,
+13
+]
+],
+"r": "Osmanlı ordusu susuz kaldı."
+},
+{
+"t": "Anadolu'ya girme, Çin'e dön",
+"d": "Ming seferi",
+"fx": [
+[
+"rel",
+"Uzbekistan",
+"Turkey",
+10
+],
+[
+"buff",
+"Uzbekistan",
+"att",
+1.1,
+52
+]
+],
+"r": "Timur doğuya döndü."
+}
+]
+},
+"Turkey": {
+"text": "Timur Sivas'ı yerle bir etti. Ordun Çubuk'ta; Anadolu beylerinin askerleri saf değiştirebilir.",
+"options": [
+{
+"t": "Savaş (tarihî)",
+"d": "Yıldırım'ın onuru",
+"fx": [
+[
+"war",
+"Turkey",
+"Uzbekistan"
+],
+[
+"buff",
+"Turkey",
+"att",
+1.1,
+4
+],
+[
+"troops",
+"Turkey",
+-35
+],
+[
+"stab",
+"Turkey",
+-30
+]
+],
+"r": "Ankara: ordu dağıldı."
+},
+{
+"t": "Bursa'ya çekil, Rumeli'ye geç",
+"d": "Zaman kazan",
+"fx": [
+[
+"buff",
+"Turkey",
+"def",
+1.2,
+26
+],
+[
+"cede",
+"Turkey",
+"Uzbekistan",
+2
+],
+[
+"stab",
+"Turkey",
+-10
+]
+],
+"r": "Anadolu geçici kaybedildi, devlet kurtuldu."
+},
+{
+"t": "Haraç öde",
+"d": "Timur'a boyun eğ",
+"fx": [
+[
+"gold",
+"Turkey",
+-8
+],
+[
+"rel",
+"Turkey",
+"Uzbekistan",
+30
+],
+[
+"stab",
+"Turkey",
+-15
+]
+],
+"r": "Bayezid Timur'a boyun eğdi."
+}
+]
+}
+}
+},
+{
+"id": "kosovo1389",
+"y": 1389,
+"m": 6,
+"title": "Kosova",
+"scene": "pre_assault",
+"icon": "sword",
+"text": "Kosova Ovası: Murad Hüdavendigar şehit, Lazar öldü; Sırp direnişi kırıldı.",
+"major": true,
+"default_fx": [
+[
+"war",
+"Turkey",
+"Serbia"
+],
+[
+"stab",
+"Serbia",
+-25
+]
+],
+"roles": {
+"Turkey": {
+"text": "Lazar'ın Sırp-Boşnak ordusu Kosova'da. Şehzade Bayezid sağ kanatta.",
+"options": [
+{
+"t": "Savaş (tarihî)",
+"d": "Zafer, ama Sultan şehit",
+"fx": [
+[
+"war",
+"Turkey",
+"Serbia"
+],
+[
+"buff",
+"Turkey",
+"att",
+1.3,
+8
+],
+[
+"stab",
+"Serbia",
+-30
+],
+[
+"xstab",
+"Turkey",
+-5
+],
+[
+"flag",
+"kosovo"
+]
+],
+"r": "Kosova: zafer; Murad şehit, Bayezid sultan."
+},
+{
+"t": "Vardar'da bekle",
+"d": "Sırpları bölünmeye zorla",
+"fx": [
+[
+"war",
+"Turkey",
+"Serbia"
+],
+[
+"buff",
+"Turkey",
+"def",
+1.2,
+13
+]
+],
+"r": "Sırp birliği dağıldı."
+},
+{
+"t": "Vasallık teklif et",
+"d": "Haraç",
+"fx": [
+[
+"rel",
+"Turkey",
+"Serbia",
+25
+],
+[
+"gold",
+"Turkey",
+3
+]
+],
+"r": "Lazar haraç kabul etti."
+}
+]
+},
+"Serbia": {
+"text": "Murad geliyor. Vuk Branković ve Bosna kralı Tvrtko yanında. Ovada mı, tepelerde mi?",
+"options": [
+{
+"t": "Ovada savaş (tarihî)",
+"d": "Hepsi ya da hiç",
+"fx": [
+[
+"war",
+"Serbia",
+"Turkey"
+],
+[
+"buff",
+"Serbia",
+"att",
+1.1,
+4
+],
+[
+"troops",
+"Serbia",
+-35
+],
+[
+"stab",
+"Serbia",
+-25
+]
+],
+"r": "Kosova: Lazar düştü."
+},
+{
+"t": "Kalelere çekil",
+"d": "Yıpratma",
+"fx": [
+[
+"buff",
+"Serbia",
+"def",
+1.3,
+26
+],
+[
+"cede",
+"Serbia",
+"Turkey",
+1
+]
+],
+"r": "Sırplar kalelere."
+},
+{
+"t": "Vasal ol",
+"d": "Haraç",
+"fx": [
+[
+"rel",
+"Serbia",
+"Turkey",
+30
+],
+[
+"gold",
+"Serbia",
+-3
+],
+[
+"stab",
+"Serbia",
+-5
+]
+],
+"r": "Sırbistan haraçgüzar."
+}
+]
+}
+}
+},
+{
+"id": "tokhtamysh",
+"y": 1382,
+"m": 8,
+"title": "Moskova Yakıldı",
+"scene": "pre_war",
+"icon": "flame",
+"text": "Altın Orda hanı Toktamış Moskova'yı yaktı: Kulikovo'nun intikamı.",
+"major": true,
+"default_fx": [
+[
+"war",
+"Kazakhstan",
+"Russia"
+],
+[
+"stab",
+"Russia",
+-15
+]
+],
+"roles": {
+"Russia": {
+"text": "Kulikovo'dan iki yıl sonra Toktamış Moskova'da. Dmitri Donskoy asker toplamak için kuzeye gitti.",
+"options": [
+{
+"t": "Şehri savun",
+"d": "Kremlin surları",
+"fx": [
+[
+"buff",
+"Russia",
+"def",
+1.3,
+8
+],
+[
+"troops",
+"Russia",
+-10
+]
+],
+"r": "Moskova direndi."
+},
+{
+"t": "Kapıları aç, haraç öde (tarihî)",
+"d": "Yıkım",
+"fx": [
+[
+"gold",
+"Russia",
+-5
+],
+[
+"stab",
+"Russia",
+-20
+],
+[
+"rel",
+"Russia",
+"Kazakhstan",
+10
+]
+],
+"r": "Moskova yakıldı; haraç yeniden."
+},
+{
+"t": "Kuzeye çekil, orduyu topla",
+"d": "Kostroma",
+"fx": [
+[
+"buff",
+"Russia",
+"att",
+1.2,
+26
+],
+[
+"stab",
+"Russia",
+-10
+]
+],
+"r": "Dmitri Kostroma'da ordu topluyor."
+}
+]
+},
+"Kazakhstan": {
+"text": "Timur'un desteğiyle Altın Orda'yı birleştirdin. Moskova haraç vermiyor.",
+"options": [
+{
+"t": "Moskova'yı yak (tarihî)",
+"d": "Ders",
+"fx": [
+[
+"war",
+"Kazakhstan",
+"Russia"
+],
+[
+"buff",
+"Kazakhstan",
+"att",
+1.3,
+8
+],
+[
+"stab",
+"Russia",
+-20
+]
+],
+"r": "Moskova küle döndü."
+},
+{
+"t": "Timur'a karşı dön",
+"d": "Harezm ve Azerbaycan",
+"fx": [
+[
+"war",
+"Kazakhstan",
+"Uzbekistan"
+],
+[
+"buff",
+"Kazakhstan",
+"att",
+1.15,
+26
+]
+],
+"r": "Toktamış Timur'a meydan okudu."
+}
+]
+}
+}
+},
+{
+"id": "timur_delhi",
+"y": 1398,
+"m": 12,
+"title": "Delhi Yağması",
+"scene": "pre_war",
+"icon": "u_elephant",
+"text": "Timur Delhi'yi aldı; Tuğluk sultanlığı çöktü. Yüz bin esir.",
+"major": true,
+"default_fx": [
+[
+"war",
+"Uzbekistan",
+"India"
+],
+[
+"stab",
+"India",
+-30
+]
+],
+"roles": {
+"Uzbekistan": {
+"text": "Hindistan'ın hazinesi Delhi'de. Filler ordunu korkutuyor; develeri ateşe verip sürmeyi öneriyorlar.",
+"options": [
+{
+"t": "Delhi'ye yürü (tarihî)",
+"d": "Yağma",
+"fx": [
+[
+"war",
+"Uzbekistan",
+"India"
+],
+[
+"buff",
+"Uzbekistan",
+"att",
+1.3,
+13
+],
+[
+"gold",
+"Uzbekistan",
+12
+],
+[
+"stab",
+"India",
+-30
+]
+],
+"r": "Delhi yağmalandı: hazine Semerkand'a."
+},
+{
+"t": "Haraç al, dön",
+"d": "Hızlı sefer",
+"fx": [
+[
+"gold",
+"Uzbekistan",
+6
+],
+[
+"rel",
+"Uzbekistan",
+"India",
+-10
+]
+],
+"r": "Tuğluklar haraç ödedi."
+},
+{
+"t": "Batı'ya dön: Bağdat ve Şam",
+"d": "Memlükler",
+"fx": [
+[
+"war",
+"Uzbekistan",
+"Egypt"
+],
+[
+"buff",
+"Uzbekistan",
+"att",
+1.2,
+26
+]
+],
+"r": "Timur Suriye'ye döndü."
+}
+]
+}
+}
+}
+]
+}

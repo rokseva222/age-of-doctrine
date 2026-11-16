@@ -1,0 +1,2093 @@
+{
+"moments": [
+{
+"id": "tannenberg",
+"y": 1914,
+"m": 8,
+"title": "Tannenberg",
+"scene": "ww1_assault",
+"icon": "helmet_ww1",
+"text": "Doğu Prusya'da Rus 2. Ordusu kuşatıldı: Tannenberg'de Almanya büyük bir zafer kazandı.",
+"major": true,
+"default_fx": [
+[
+"stab",
+"Russia",
+-4
+]
+],
+"roles": {
+"Germany": {
+"text": "Rus 2. Ordusu Doğu Prusya'ya girdi. Hindenburg ve Ludendorff iç hatlardan kuşatma öneriyor; Batı'dan kolordu çekmek Schlieffen Planı'nı zayıflatır.",
+"options": [
+{
+"t": "Kuşat (iç hatlar)",
+"d": "Doğu'da büyük zafer; Batı taarruzu hafif yavaşlar",
+"fx": [
+[
+"buff",
+"Germany",
+"att",
+1.15,
+12
+],
+[
+"stab",
+"Russia",
+-6
+],
+[
+"stab",
+"Germany",
+4
+]
+],
+"r": "Tannenberg: Rus 2. Ordusu yok edildi."
+},
+{
+"t": "Batı'dan kolordu çek",
+"d": "Doğu güvende, Marne'da güç eksilir",
+"fx": [
+[
+"buff",
+"Germany",
+"def",
+1.1,
+12
+],
+[
+"buff",
+"Germany",
+"att",
+0.93,
+8
+]
+],
+"r": "Doğu cephesi tutuldu, Batı'da hız kesildi."
+},
+{
+"t": "Doğu Prusya'yı boşalt",
+"d": "Riskli; Berlin'de panik",
+"fx": [
+[
+"stab",
+"Germany",
+-8
+],
+[
+"gold",
+"Germany",
+2
+]
+],
+"r": "Doğu Prusya geçici olarak bırakıldı."
+}
+]
+},
+"Russia": {
+"text": "Çar, Fransa'yı rahatlatmak için Doğu Prusya'ya erken taarruz istiyor. Ordular hazır değil, iletişim şifresiz.",
+"options": [
+{
+"t": "Taarruz et (tarihî)",
+"d": "Fransa'ya nefes aldırır; büyük kayıp riski",
+"fx": [
+[
+"buff",
+"Russia",
+"att",
+1.1,
+6
+],
+[
+"troops",
+"Russia",
+-8
+],
+[
+"rel",
+"Russia",
+"France",
+15
+]
+],
+"r": "2. Ordu Mazurya bataklıklarında eridi."
+},
+{
+"t": "Savunmada kal, seferberliği tamamla",
+"d": "Yavaş ama sağlam",
+"fx": [
+[
+"mob",
+"Russia",
+26
+],
+[
+"buff",
+"Russia",
+"def",
+1.12,
+26
+],
+[
+"rel",
+"Russia",
+"France",
+-10
+]
+],
+"r": "Rus ordusu Vistül hattında toparlanıyor."
+},
+{
+"t": "Galiçya'ya yüklen",
+"d": "Avusturya zayıf halka",
+"fx": [
+[
+"buff",
+"Russia",
+"att",
+1.12,
+16
+],
+[
+"stab",
+"Austria",
+-6
+]
+],
+"r": "Lemberg düştü: Avusturya-Macaristan sarsıldı."
+}
+]
+}
+}
+},
+{
+"id": "marne",
+"y": 1914,
+"m": 9,
+"title": "Marne Mucizesi",
+"scene": "ww1_assault",
+"icon": "helmet_ww1",
+"text": "Paris'in kapısında Fransız ve İngiliz orduları Alman ilerleyişini durdurdu: Batı Cephesi siperlere gömülüyor.",
+"major": true,
+"default_fx": [
+[
+"stab",
+"France",
+5
+],
+[
+"buff",
+"Germany",
+"att",
+0.9,
+26
+]
+],
+"roles": {
+"France": {
+"text": "Alman sağ kanadı Paris'in doğusundan geçiyor. Joffre karşı taarruz istiyor; Paris taksileri askerleri cepheye taşıyor.",
+"options": [
+{
+"t": "Marne'da karşı taarruz",
+"d": "Paris kurtulur, siper savaşı başlar",
+"fx": [
+[
+"buff",
+"France",
+"def",
+1.15,
+26
+],
+[
+"stab",
+"France",
+8
+],
+[
+"buff",
+"Germany",
+"att",
+0.9,
+26
+]
+],
+"r": "Marne Mucizesi: Paris kurtuldu."
+},
+{
+"t": "Paris'i boşalt, Loire'da savun",
+"d": "Başkent düşebilir; ordu bütün kalır",
+"fx": [
+[
+"stab",
+"France",
+-15
+],
+[
+"buff",
+"France",
+"def",
+1.2,
+20
+]
+],
+"r": "Hükümet Bordeaux'ya taşındı."
+},
+{
+"t": "Alsas'a yüklen (Plan XVII)",
+"d": "Kaybedilen topraklar için saldırı",
+"fx": [
+[
+"buff",
+"France",
+"att",
+1.1,
+10
+],
+[
+"troops",
+"France",
+-10
+]
+],
+"r": "Alsas'ta kanlı taarruzlar."
+}
+]
+},
+"Germany": {
+"text": "Kluck'un 1. Ordusu Paris'in doğusuna sarktı; kanadı açık. Moltke'nin elinde iki seçenek var.",
+"options": [
+{
+"t": "Paris'e yüklen",
+"d": "Her şey ya da hiç",
+"fx": [
+[
+"buff",
+"Germany",
+"att",
+1.2,
+6
+],
+[
+"troops",
+"Germany",
+-12
+],
+[
+"stab",
+"France",
+-10
+]
+],
+"r": "Paris önlerinde kanlı günler."
+},
+{
+"t": "Aisne'e çekil, siper kaz",
+"d": "Kazanımı koru",
+"fx": [
+[
+"buff",
+"Germany",
+"def",
+1.15,
+26
+]
+],
+"r": "Alman ordusu Aisne'de kazdı: siper savaşı."
+},
+{
+"t": "Kanalı tut (Denize Koşu)",
+"d": "Limanları al, İngiltere'yi kes",
+"fx": [
+[
+"buff",
+"Germany",
+"att",
+1.08,
+16
+],
+[
+"rel",
+"Germany",
+"United Kingdom",
+-10
+]
+],
+"r": "Flandre'da denize koşu başladı."
+}
+]
+}
+}
+},
+{
+"id": "ott_entry",
+"y": 1914,
+"m": 10,
+"title": "Osmanlı Savaşa Giriyor",
+"scene": "pre_naval",
+"icon": "helmet_ww1",
+"text": "Goeben ve Breslau Rus limanlarını bombaladı: Osmanlı Devleti Merkezi Güçler safında savaşa girdi.",
+"major": true,
+"default_fx": [
+[
+"war",
+"Turkey",
+"Russia"
+],
+[
+"war",
+"Turkey",
+"United Kingdom"
+],
+[
+"war",
+"Turkey",
+"France"
+]
+],
+"roles": {
+"Turkey": {
+"text": "Enver Paşa Alman ittifakına girmek istiyor; Goeben ve Breslau Boğaz'da. Cavid Bey ve Said Halim Paşa tarafsızlığı savunuyor. Karar senin.",
+"options": [
+{
+"t": "Karadeniz baskını (tarihî)",
+"d": "Rusya, Britanya ve Fransa ile savaş",
+"fx": [
+[
+"war",
+"Turkey",
+"Russia"
+],
+[
+"war",
+"Turkey",
+"United Kingdom"
+],
+[
+"war",
+"Turkey",
+"France"
+],
+[
+"ally",
+"Turkey",
+"Germany"
+],
+[
+"buff",
+"Turkey",
+"recruit",
+1.3,
+26
+],
+[
+"gold",
+"Turkey",
+6
+]
+],
+"r": "Osmanlı donanması Sivastopol'u bombaladı: savaş!"
+},
+{
+"t": "Silahlı tarafsızlık",
+"d": "Boğazları kapat, bekle",
+"fx": [
+[
+"gold",
+"Turkey",
+4
+],
+[
+"stab",
+"Turkey",
+6
+],
+[
+"rel",
+"Turkey",
+"Germany",
+-20
+],
+[
+"rel",
+"Turkey",
+"United Kingdom",
+10
+]
+],
+"r": "Boğazlar kapandı; Osmanlı tarafsız kalıyor."
+},
+{
+"t": "İtilaf'a yanaş",
+"d": "Rusya ile tarihi düşmanlık, ama Britanya altını",
+"fx": [
+[
+"rel",
+"Turkey",
+"United Kingdom",
+30
+],
+[
+"rel",
+"Turkey",
+"France",
+25
+],
+[
+"rel",
+"Turkey",
+"Germany",
+-40
+],
+[
+"gold",
+"Turkey",
+8
+]
+],
+"r": "İstanbul İtilaf ile gizli görüşmelere başladı."
+}
+]
+},
+"Russia": {
+"text": "Osmanlı gemileri limanlarını vurdu. Boğazlar kapalı; Karadeniz ticaretin bitti. Kafkas Cephesi açılıyor.",
+"options": [
+{
+"t": "Kafkasya'da taarruz",
+"d": "Sarıkamış yolu",
+"fx": [
+[
+"buff",
+"Russia",
+"att",
+1.1,
+13
+]
+],
+"r": "Rus Kafkas Ordusu sınırı geçti."
+},
+{
+"t": "Savunmada kal, Almanya'ya odaklan",
+"d": "Kafkasya'yı tutar, Avrupa'ya yüklenirsin",
+"fx": [
+[
+"buff",
+"Russia",
+"def",
+1.1,
+26
+]
+],
+"r": "Kafkasya'da sessiz kış."
+}
+]
+}
+}
+},
+{
+"id": "gallipoli",
+"y": 1915,
+"m": 4,
+"title": "Çanakkale Kara Harekâtı",
+"scene": "pre_landing",
+"icon": "helmet_ww1",
+"text": "Müttefikler Gelibolu'ya çıktı. Boğaz'ı zorlayan donanma Mart'ta geri püskürtülmüştü; şimdir çıkarma ordusu geliyor.",
+"major": true,
+"default_fx": [
+[
+"stab",
+"Turkey",
+5
+]
+],
+"roles": {
+"Turkey": {
+"text": "Anzak ve İngiliz birlikleri Arıburnu ve Seddülbahir'e çıktı. Mustafa Kemal 57. Alay'a 'ölmeyi emrediyor'. Boğaz'ı nasıl savunacaksın?",
+"options": [
+{
+"t": "Her karış toprağı savun",
+"d": "Ağır kayıp, ama Boğaz geçilmez",
+"fx": [
+[
+"buff",
+"Turkey",
+"def",
+1.35,
+39
+],
+[
+"troops",
+"Turkey",
+-10
+],
+[
+"stab",
+"Turkey",
+12
+],
+[
+"flag",
+"gallipoli_held"
+]
+],
+"r": "Çanakkale geçilmez: Müttefikler yarımadada çakıldı."
+},
+{
+"t": "Kıyıyı bırak, iç hatta savun",
+"d": "Daha az kayıp, Boğaz tehlikede",
+"fx": [
+[
+"buff",
+"Turkey",
+"def",
+1.1,
+26
+],
+[
+"stab",
+"Turkey",
+-6
+]
+],
+"r": "Kıyı başları düştü, savunma iç hatta."
+},
+{
+"t": "Almanya'dan takviye iste",
+"d": "Sanders'in planı",
+"fx": [
+[
+"buff",
+"Turkey",
+"def",
+1.2,
+26
+],
+[
+"rel",
+"Turkey",
+"Germany",
+10
+],
+[
+"gold",
+"Turkey",
+-2
+]
+],
+"r": "Alman subayları ve topçu desteği geldi."
+}
+]
+},
+"United Kingdom": {
+"text": "Churchill'in planı: Boğazları geç, İstanbul'u düşür, Rusya'ya yol aç. Donanma Mart'ta başaramadı; şimdi kara çıkarması.",
+"options": [
+{
+"t": "Gelibolu'ya çık (tarihî)",
+"d": "Büyük kumar",
+"fx": [
+[
+"buff",
+"United Kingdom",
+"att",
+1.1,
+13
+],
+[
+"troops",
+"United Kingdom",
+-8
+]
+],
+"r": "Anzak Koyu'nda kanlı çıkarma."
+},
+{
+"t": "Vazgeç, Batı Cephesi'ne odaklan",
+"d": "Churchill istifa eder",
+"fx": [
+[
+"buff",
+"United Kingdom",
+"def",
+1.08,
+26
+],
+[
+"stab",
+"United Kingdom",
+-3
+]
+],
+"r": "Çanakkale planı rafa kalktı."
+},
+{
+"t": "Selanik'e çık",
+"d": "Balkanlardan yüklen",
+"fx": [
+[
+"rel",
+"United Kingdom",
+"Greece",
+15
+],
+[
+"buff",
+"United Kingdom",
+"att",
+1.05,
+26
+]
+],
+"r": "Selanik Cephesi açıldı."
+}
+]
+}
+}
+},
+{
+"id": "lusitania",
+"y": 1915,
+"m": 5,
+"title": "Lusitania Battı",
+"scene": "naval",
+"icon": "ship",
+"text": "Bir Alman denizaltısı Lusitania yolcu gemisini batırdı: 1.198 ölü, 128'i Amerikalı. ABD'de öfke.",
+"major": false,
+"default_fx": [
+[
+"rel",
+"Germany",
+"United States of America",
+-20
+]
+],
+"roles": {
+"Germany": {
+"text": "U-20, Lusitania'yı batırdı. Washington sert bir nota gönderdi. Sınırsız denizaltı savaşı İngiltere'yi boğuyor ama Amerika'yı kızdırıyor.",
+"options": [
+{
+"t": "Denizaltı savaşını sınırla",
+"d": "Amerika yatışır, abluka gevşer",
+"fx": [
+[
+"rel",
+"Germany",
+"United States of America",
+15
+],
+[
+"buff",
+"United Kingdom",
+"recruit",
+1.05,
+26
+]
+],
+"r": "Berlin yolcu gemilerine saldırmayı durdurdu."
+},
+{
+"t": "Sınırsız denizaltı savaşı",
+"d": "Britanya'yı aç bırak; ABD'yi savaşa sokabilir",
+"fx": [
+[
+"rel",
+"Germany",
+"United States of America",
+-35
+],
+[
+"gold",
+"United Kingdom",
+-6
+],
+[
+"stab",
+"United Kingdom",
+-5
+],
+[
+"flag",
+"usw"
+]
+],
+"r": "Denizaltılar her gemiyi vuruyor."
+}
+]
+},
+"United States of America": {
+"text": "128 Amerikalı öldü. Kamuoyu savaş istiyor; Wilson tarafsızlık diyor.",
+"options": [
+{
+"t": "Sert nota, tarafsız kal",
+"d": "Zaman kazan",
+"fx": [
+[
+"rel",
+"United States of America",
+"Germany",
+-10
+],
+[
+"gold",
+"United States of America",
+3
+]
+],
+"r": "Wilson: 'Savaşmayacak kadar gururluyuz.'"
+},
+{
+"t": "Savaş hazırlığı başlat",
+"d": "Seferberlik, henüz savaş yok",
+"fx": [
+[
+"mob",
+"United States of America",
+26
+],
+[
+"buff",
+"United States of America",
+"recruit",
+1.3,
+52
+],
+[
+"rel",
+"United States of America",
+"Germany",
+-20
+]
+],
+"r": "Amerikan ordusu büyüyor."
+},
+{
+"t": "Almanya'ya savaş ilan et",
+"d": "Erken giriş",
+"fx": [
+[
+"war",
+"United States of America",
+"Germany"
+],
+[
+"stab",
+"United States of America",
+-5
+]
+],
+"r": "ABD 1915'te savaşa girdi!"
+}
+]
+}
+}
+},
+{
+"id": "verdun",
+"y": 1916,
+"m": 2,
+"title": "Verdun",
+"scene": "ww1_assault",
+"icon": "helmet_ww1",
+"text": "Falkenhayn Fransa'yı 'kanının son damlasına kadar' akıtmak için Verdun'a yüklendi. 'Geçemeyecekler!'",
+"major": true,
+"default_fx": [
+[
+"troops",
+"France",
+-6
+],
+[
+"troops",
+"Germany",
+-6
+]
+],
+"roles": {
+"France": {
+"text": "Verdun kalesi ağır bombardıman altında. Pétain komutayı aldı: 'Kutsal Yol' ile ikmal sürüyor.",
+"options": [
+{
+"t": "Geçemeyecekler!",
+"d": "Kaleyi sonuna kadar tut",
+"fx": [
+[
+"buff",
+"France",
+"def",
+1.25,
+26
+],
+[
+"troops",
+"France",
+-10
+],
+[
+"stab",
+"France",
+8
+]
+],
+"r": "Verdun tutuldu: Fransa'nın onuru."
+},
+{
+"t": "Esnek savunma, geri çekil",
+"d": "Kaleyi bırak, orduyu koru",
+"fx": [
+[
+"stab",
+"France",
+-12
+],
+[
+"buff",
+"France",
+"def",
+1.1,
+26
+]
+],
+"r": "Verdun boşaltıldı; Paris'te öfke."
+},
+{
+"t": "Somme'da baskıyı azaltacak taarruz iste",
+"d": "İngilizleri erken saldırt",
+"fx": [
+[
+"rel",
+"France",
+"United Kingdom",
+10
+],
+[
+"troops",
+"United Kingdom",
+-6
+],
+[
+"buff",
+"Germany",
+"def",
+0.95,
+13
+]
+],
+"r": "Somme taarruzu öne alındı."
+}
+]
+},
+"Germany": {
+"text": "Falkenhayn: 'Fransa'yı kan kaybından öldürelim.' Taarruz pahalı; kazanım belirsiz.",
+"options": [
+{
+"t": "Taarruzu sürdür",
+"d": "Yıpratma savaşı",
+"fx": [
+[
+"buff",
+"Germany",
+"att",
+1.12,
+26
+],
+[
+"troops",
+"Germany",
+-12
+],
+[
+"troops",
+"France",
+-10
+]
+],
+"r": "Verdun cehennemi aylarca sürdü."
+},
+{
+"t": "Taarruzu durdur, Doğu'ya dön",
+"d": "Fransa rahatlar, Rusya baskı altında",
+"fx": [
+[
+"buff",
+"Germany",
+"att",
+1.1,
+26
+],
+[
+"stab",
+"Russia",
+-6
+]
+],
+"r": "Verdun'da taarruz kesildi."
+}
+]
+}
+}
+},
+{
+"id": "somme",
+"y": 1916,
+"m": 7,
+"title": "Somme",
+"scene": "ww1_assault",
+"icon": "helmet_ww1",
+"text": "Somme'un ilk günü: İngiliz ordusu 57.000 kayıp verdi. Tanklar ilk kez savaş alanında.",
+"major": false,
+"default_fx": [
+[
+"troops",
+"United Kingdom",
+-5
+]
+],
+"roles": {
+"United Kingdom": {
+"text": "Haig büyük taarruzu başlatıyor. Yeni silah 'tank' hazır ama az sayıda.",
+"options": [
+{
+"t": "Tankları kullan (sürpriz)",
+"d": "Teknoloji avantajı",
+"fx": [
+[
+"buff",
+"United Kingdom",
+"att",
+1.15,
+13
+],
+[
+"troops",
+"United Kingdom",
+-6
+]
+],
+"r": "Tanklar Flers'te Alman siperlerini ezdi."
+},
+{
+"t": "Tankları sakla, topçuyla yüklen",
+"d": "Klasik taarruz",
+"fx": [
+[
+"troops",
+"United Kingdom",
+-10
+],
+[
+"troops",
+"Germany",
+-6
+]
+],
+"r": "Somme'da kanlı aylar."
+},
+{
+"t": "Taarruzu iptal et",
+"d": "Fransa'ya destek yok",
+"fx": [
+[
+"rel",
+"United Kingdom",
+"France",
+-15
+],
+[
+"stab",
+"United Kingdom",
+2
+]
+],
+"r": "Haig taarruzu erteledi."
+}
+]
+}
+}
+},
+{
+"id": "feb_rev",
+"y": 1917,
+"m": 3,
+"title": "Şubat Devrimi",
+"scene": "crisis",
+"icon": "protest",
+"text": "Petrograd'da ekmek isyanı orduya sıçradı: Çar II. Nikolay tahttan çekildi. Geçici Hükûmet kuruldu.",
+"major": true,
+"default_fx": [
+[
+"stab",
+"Russia",
+-25
+]
+],
+"roles": {
+"Russia": {
+"text": "Petrograd garnizonu isyancılara katıldı. Duma ve Sovyetler iktidar istiyor. Çar'ın treni Pskov'da bekliyor.",
+"options": [
+{
+"t": "Çar tahttan çekilsin (tarihî)",
+"d": "Geçici Hükûmet; savaş sürer",
+"fx": [
+[
+"xstab",
+"Russia",
+-20
+],
+[
+"gold",
+"Russia",
+3
+],
+[
+"flag",
+"prov_gov"
+]
+],
+"r": "Çar tahttan çekildi; Geçici Hükûmet savaşa devam diyor."
+},
+{
+"t": "Orduyu Petrograd'a sür",
+"d": "Kanlı bastırma",
+"fx": [
+[
+"xstab",
+"Russia",
+-30
+],
+[
+"troops",
+"Russia",
+-15
+],
+[
+"buff",
+"Russia",
+"def",
+0.85,
+26
+]
+],
+"r": "Başkent kanla susturuldu; ordu çözülüyor."
+},
+{
+"t": "Ayrı barış ara",
+"d": "Almanya ile görüş",
+"fx": [
+[
+"xstab",
+"Russia",
+-10
+],
+[
+"peace",
+"Russia",
+"Germany"
+],
+[
+"peace",
+"Russia",
+"Austria"
+],
+[
+"peace",
+"Russia",
+"Turkey"
+],
+[
+"rel",
+"Russia",
+"France",
+-40
+]
+],
+"r": "Rusya savaştan çekiliyor."
+}
+]
+}
+}
+},
+{
+"id": "us_entry",
+"y": 1917,
+"m": 4,
+"title": "ABD Savaşa Giriyor",
+"scene": "trade",
+"icon": "flag",
+"text": "Zimmermann Telgrafı ve denizaltı saldırıları Wilson'ı ikna etti: ABD Almanya'ya savaş ilan etti.",
+"major": true,
+"default_fx": [],
+"roles": {
+"United States of America": {
+"text": "Almanya Meksika'ya ittifak teklif etti; denizaltılar Amerikan gemilerini batırıyor. Kongre senin kararını bekliyor.",
+"options": [
+{
+"t": "Savaş ilan et (tarihî)",
+"d": "Dünyayı demokrasi için güvenli kıl",
+"fx": [
+[
+"war",
+"United States of America",
+"Germany"
+],
+[
+"buff",
+"United States of America",
+"recruit",
+1.5,
+52
+],
+[
+"stab",
+"United States of America",
+5
+]
+],
+"r": "ABD savaşta!"
+},
+{
+"t": "Yalnızca Almanya'ya ambargo",
+"d": "Ekonomik baskı",
+"fx": [
+[
+"rel",
+"United States of America",
+"Germany",
+-30
+],
+[
+"gold",
+"United States of America",
+4
+]
+],
+"r": "ABD tarafsız ama kızgın."
+},
+{
+"t": "Tarafsız kal",
+"d": "Avrupa'nın savaşı",
+"fx": [
+[
+"stab",
+"United States of America",
+-3
+],
+[
+"gold",
+"United States of America",
+6
+]
+],
+"r": "Wilson tarafsızlığı korudu."
+}
+]
+},
+"Germany": {
+"text": "Sınırsız denizaltı savaşı Amerika'yı getirdi. Ludendorff: 'Amerikalılar gelmeden Batı'da bitirmeliyiz.'",
+"options": [
+{
+"t": "1918 Bahar Taarruzu'na hazırlan",
+"d": "Son büyük kumar",
+"fx": [
+[
+"buff",
+"Germany",
+"att",
+1.25,
+20
+],
+[
+"troops",
+"Germany",
+-5
+]
+],
+"r": "Fırtına birlikleri eğitiliyor."
+},
+{
+"t": "Savunmaya geç, barış ara",
+"d": "Zaman Amerika'dan yana",
+"fx": [
+[
+"buff",
+"Germany",
+"def",
+1.15,
+39
+],
+[
+"rel",
+"Germany",
+"United States of America",
+10
+]
+],
+"r": "Berlin barış yoklamaları yapıyor."
+}
+]
+}
+}
+},
+{
+"id": "oct_rev",
+"y": 1917,
+"m": 11,
+"title": "Ekim Devrimi",
+"scene": "crisis",
+"icon": "uprising_banner",
+"text": "Bolşevikler Kışlık Saray'ı bastı: Lenin iktidarda. 'Barış, ekmek, toprak.'",
+"major": true,
+"default_fx": [
+[
+"stab",
+"Russia",
+-15
+]
+],
+"roles": {
+"Russia": {
+"text": "Kerenski kaçtı; Lenin barış kararnamesi istiyor. Almanya ile ayrı barış ordunu kurtarır ama Batı'yı yalnız bırakır.",
+"options": [
+{
+"t": "Barış kararnamesi (tarihî)",
+"d": "Brest-Litovsk yolu",
+"fx": [
+[
+"peace",
+"Russia",
+"Germany"
+],
+[
+"peace",
+"Russia",
+"Austria"
+],
+[
+"peace",
+"Russia",
+"Turkey"
+],
+[
+"peace",
+"Russia",
+"Bulgaria"
+],
+[
+"xstab",
+"Russia",
+10
+],
+[
+"flag",
+"bolshevik"
+]
+],
+"r": "Rusya savaştan çıktı."
+},
+{
+"t": "Devrimci savaş",
+"d": "Troçki: 'Ne savaş ne barış'",
+"fx": [
+[
+"buff",
+"Russia",
+"def",
+1.1,
+26
+],
+[
+"xstab",
+"Russia",
+-10
+]
+],
+"r": "Kızıl Ordu kuruluyor; cephe çöküyor."
+},
+{
+"t": "Beyaz generalleri destekle",
+"d": "Kornilov ve Denikin",
+"fx": [
+[
+"xstab",
+"Russia",
+-20
+],
+[
+"troops",
+"Russia",
+-10
+]
+],
+"r": "İç savaş alevlendi."
+}
+]
+},
+"Germany": {
+"text": "Rusya çöküyor. Doğu'daki 50 tümeni Batı'ya kaydırabilirsin ya da Doğu'da büyük toprak koparırsın.",
+"options": [
+{
+"t": "Tümenleri Batı'ya kaydır",
+"d": "1918'de Paris'e yürü",
+"fx": [
+[
+"buff",
+"Germany",
+"att",
+1.2,
+26
+]
+],
+"r": "Doğu'dan gelen tümenler Batı'da."
+},
+{
+"t": "Doğu'da toprak kopar",
+"d": "Ukrayna, Baltık, Polonya",
+"fx": [
+[
+"cede",
+"Russia",
+"Germany",
+6
+],
+[
+"stab",
+"Germany",
+4
+]
+],
+"r": "Brest-Litovsk: Rusya büyük toprak bıraktı."
+}
+]
+}
+}
+},
+{
+"id": "armistice",
+"y": 1918,
+"m": 11,
+"title": "11 Kasım Mütarekesi",
+"scene": "peace",
+"icon": "dove",
+"text": "Compiègne'de bir vagon: silahlar 11. ayın 11. gününün 11. saatinde sustu.",
+"major": true,
+"default_fx": [],
+"roles": {
+"Germany": {
+"text": "Ordu çözülüyor, Kiel'de denizciler isyanda, İmparator Hollanda'ya kaçtı. Mütareke şartları ağır.",
+"options": [
+{
+"t": "Mütarekeyi imzala (tarihî)",
+"d": "Savaş biter; Versay gelir",
+"fx": [
+[
+"peace",
+"Germany",
+"France"
+],
+[
+"peace",
+"Germany",
+"United Kingdom"
+],
+[
+"peace",
+"Germany",
+"United States of America"
+],
+[
+"peace",
+"Germany",
+"Belgium"
+],
+[
+"xstab",
+"Germany",
+-10
+],
+[
+"flag",
+"armistice"
+]
+],
+"r": "Silahlar sustu. Almanya'da devrim."
+},
+{
+"t": "Son direniş",
+"d": "Ren'de savun",
+"fx": [
+[
+"buff",
+"Germany",
+"def",
+1.1,
+13
+],
+[
+"xstab",
+"Germany",
+-25
+],
+[
+"troops",
+"Germany",
+-15
+]
+],
+"r": "Almanya ölüme direniyor; iç savaş riski."
+}
+]
+},
+"France": {
+"text": "Almanya mütareke istiyor. Foch sert şartlar istiyor; Pershing Berlin'e kadar yürümeyi.",
+"options": [
+{
+"t": "Mütarekeyi kabul et",
+"d": "Savaş biter",
+"fx": [
+[
+"peace",
+"France",
+"Germany"
+],
+[
+"peace",
+"United Kingdom",
+"Germany"
+],
+[
+"peace",
+"United States of America",
+"Germany"
+],
+[
+"stab",
+"France",
+10
+]
+],
+"r": "Zafer! Paris'te çanlar."
+},
+{
+"t": "Berlin'e yürü",
+"d": "Koşulsuz teslim",
+"fx": [
+[
+"buff",
+"France",
+"att",
+1.15,
+13
+],
+[
+"troops",
+"France",
+-8
+],
+[
+"stab",
+"Germany",
+-15
+]
+],
+"r": "Müttefikler Ren'i geçiyor."
+}
+]
+}
+}
+},
+{
+"id": "samsun",
+"y": 1919,
+"m": 5,
+"title": "Samsun'a Çıkış: Kurtuluş Savaşı",
+"scene": "pre_mobilize",
+"icon": "uprising_banner",
+"text": "Mustafa Kemal Paşa Samsun'a çıktı; İzmir Yunan işgalinde. Anadolu'da Millî Mücadele başlıyor.",
+"major": true,
+"default_fx": [
+[
+"stab",
+"Turkey",
+-10
+],
+[
+"war",
+"Greece",
+"Turkey"
+]
+],
+"roles": {
+"Turkey": {
+"text": "İzmir işgal edildi, İstanbul İtilaf kontrolünde. 9. Ordu Müfettişi olarak Samsun'dasın. Anadolu seni bekliyor.",
+"options": [
+{
+"t": "Millî Mücadele'yi başlat (tarihî)",
+"d": "Amasya, Erzurum, Sivas: Anadolu'ya geç",
+"fx": [
+[
+"war",
+"Turkey",
+"Greece"
+],
+[
+"buff",
+"Turkey",
+"recruit",
+1.5,
+78
+],
+[
+"buff",
+"Turkey",
+"def",
+1.25,
+78
+],
+[
+"xstab",
+"Turkey",
+15
+],
+[
+"troops",
+"Turkey",
+25
+],
+[
+"flag",
+"kuvayi_milliye"
+]
+],
+"r": "'Ya istiklal ya ölüm!' Kuvayımilliye ayaklandı."
+},
+{
+"t": "İstanbul hükûmetine bağlı kal",
+"d": "Mondros'a uy, bekle",
+"fx": [
+[
+"xstab",
+"Turkey",
+-15
+],
+[
+"gold",
+"Turkey",
+3
+],
+[
+"rel",
+"Turkey",
+"United Kingdom",
+15
+]
+],
+"r": "Anadolu'da mütareke şartları uygulanıyor."
+},
+{
+"t": "Manda ve himaye iste",
+"d": "Amerikan mandası",
+"fx": [
+[
+"rel",
+"Turkey",
+"United States of America",
+30
+],
+[
+"gold",
+"Turkey",
+8
+],
+[
+"xstab",
+"Turkey",
+-8
+]
+],
+"r": "Sivas'ta manda tartışması."
+}
+]
+},
+"Greece": {
+"text": "Venizelos'un Megali İdea'sı: İzmir'e çıktın. Anadolu'nun içine yürümek büyük kumar.",
+"options": [
+{
+"t": "Anadolu'ya ilerle",
+"d": "Ankara'ya yürü",
+"fx": [
+[
+"war",
+"Greece",
+"Turkey"
+],
+[
+"buff",
+"Greece",
+"att",
+1.15,
+52
+],
+[
+"troops",
+"Greece",
+-5
+]
+],
+"r": "Yunan ordusu Anadolu içlerine ilerliyor."
+},
+{
+"t": "İzmir'de kal, konsolide et",
+"d": "Kıyıyı tut",
+"fx": [
+[
+"buff",
+"Greece",
+"def",
+1.2,
+52
+],
+[
+"gold",
+"Greece",
+2
+]
+],
+"r": "Yunan ordusu Ege kıyısında kaldı."
+},
+{
+"t": "Geri çekil",
+"d": "Büyük Güçler'e bırak",
+"fx": [
+[
+"stab",
+"Greece",
+-10
+],
+[
+"rel",
+"Greece",
+"United Kingdom",
+-10
+]
+],
+"r": "İzmir boşaltıldı."
+}
+]
+},
+"United Kingdom": {
+"text": "Osmanlı'yı paylaşıyorsun. Yunanlar İzmir'de, Anadolu'da direniş kıpırdanıyor.",
+"options": [
+{
+"t": "Yunanistan'ı destekle",
+"d": "Sèvres'i dayat",
+"fx": [
+[
+"rel",
+"United Kingdom",
+"Greece",
+20
+],
+[
+"gold",
+"Greece",
+4
+],
+[
+"buff",
+"Greece",
+"att",
+1.1,
+52
+]
+],
+"r": "Londra Atina'nın arkasında."
+},
+{
+"t": "Ankara ile anlaş",
+"d": "Yeni Türkiye'yi tanı",
+"fx": [
+[
+"rel",
+"United Kingdom",
+"Turkey",
+30
+],
+[
+"peace",
+"United Kingdom",
+"Turkey"
+]
+],
+"r": "İngiltere Anadolu hareketiyle masaya oturdu."
+}
+]
+}
+}
+},
+{
+"id": "sakarya",
+"y": 1921,
+"m": 9,
+"title": "Sakarya",
+"scene": "pre_assault",
+"icon": "sword",
+"text": "Sakarya Meydan Muharebesi: 'Hattı müdafaa yoktur, sathı müdafaa vardır.' Yunan ilerleyişi kırıldı.",
+"major": true,
+"default_fx": [
+[
+"buff",
+"Turkey",
+"att",
+1.15,
+52
+],
+[
+"stab",
+"Greece",
+-10
+]
+],
+"roles": {
+"Turkey": {
+"text": "Yunan ordusu Polatlı'da, Ankara'dan top sesleri duyuluyor. Başkomutan olarak her şeyi ortaya koyuyorsun.",
+"options": [
+{
+"t": "Sathı müdafaa",
+"d": "22 gün 22 gece",
+"fx": [
+[
+"buff",
+"Turkey",
+"def",
+1.3,
+13
+],
+[
+"buff",
+"Turkey",
+"att",
+1.2,
+52
+],
+[
+"xstab",
+"Turkey",
+10
+],
+[
+"flag",
+"sakarya"
+]
+],
+"r": "Sakarya kazanıldı: Yunan taarruzu bitti."
+},
+{
+"t": "Ankara'yı boşalt, Kayseri'ye çekil",
+"d": "Orduyu koru",
+"fx": [
+[
+"xstab",
+"Turkey",
+-15
+],
+[
+"buff",
+"Turkey",
+"def",
+1.1,
+26
+]
+],
+"r": "Meclis Kayseri'ye taşındı."
+},
+{
+"t": "Tekâlif-i Milliye",
+"d": "Halkın her şeyi orduya",
+"fx": [
+[
+"gold",
+"Turkey",
+6
+],
+[
+"troops",
+"Turkey",
+15
+],
+[
+"xstab",
+"Turkey",
+-5
+]
+],
+"r": "Tekâlif-i Milliye emirleri: millet seferber."
+}
+]
+}
+},
+"requires": [
+"kuvayi_milliye"
+]
+},
+{
+"id": "buyuk_taarruz",
+"y": 1922,
+"m": 8,
+"title": "Büyük Taarruz",
+"scene": "pre_assault",
+"icon": "sword",
+"text": "'Ordular, ilk hedefiniz Akdeniz'dir, ileri!' Dumlupınar'da Yunan ordusu çöktü; 9 Eylül İzmir.",
+"major": true,
+"default_fx": [
+[
+"buff",
+"Turkey",
+"att",
+1.3,
+13
+],
+[
+"peace",
+"Turkey",
+"Greece"
+]
+],
+"roles": {
+"Turkey": {
+"text": "Bir yıl hazırlık bitti. Afyon'da gizli yığınak tamam. Taarruz emrini ver.",
+"options": [
+{
+"t": "Taarruz! (tarihî)",
+"d": "Başkomutanlık Meydan Muharebesi",
+"fx": [
+[
+"buff",
+"Turkey",
+"att",
+1.4,
+13
+],
+[
+"troops",
+"Turkey",
+10
+],
+[
+"xstab",
+"Turkey",
+15
+],
+[
+"flag",
+"izmir"
+]
+],
+"r": "Dumlupınar: Yunan ordusu dağıldı, İzmir kurtuldu."
+},
+{
+"t": "Bir yıl daha bekle",
+"d": "Daha fazla top ve asker",
+"fx": [
+[
+"buff",
+"Turkey",
+"recruit",
+1.3,
+52
+],
+[
+"xstab",
+"Turkey",
+-5
+]
+],
+"r": "Taarruz ertelendi."
+},
+{
+"t": "Barış masası",
+"d": "Mudanya'ya erken git",
+"fx": [
+[
+"peace",
+"Turkey",
+"Greece"
+],
+[
+"rel",
+"Turkey",
+"United Kingdom",
+15
+],
+[
+"xstab",
+"Turkey",
+5
+]
+],
+"r": "Ateşkes görüşmeleri başladı."
+}
+]
+}
+},
+"requires": [
+"sakarya"
+]
+},
+{
+"id": "lausanne",
+"y": 1923,
+"m": 7,
+"title": "Lozan",
+"scene": "pre_alliance",
+"icon": "treaty",
+"text": "Lozan Antlaşması imzalandı: yeni Türkiye tanındı. Ekim'de Cumhuriyet ilan edilecek.",
+"major": false,
+"default_fx": [
+[
+"stab",
+"Turkey",
+15
+]
+],
+"roles": {
+"Turkey": {
+"text": "İsmet Paşa Lozan'da. Kapitülasyonlar, Boğazlar, Musul: her madde bir savaş.",
+"options": [
+{
+"t": "Antlaşmayı imzala",
+"d": "Misak-ı Millî büyük ölçüde",
+"fx": [
+[
+"xstab",
+"Turkey",
+20
+],
+[
+"gold",
+"Turkey",
+6
+],
+[
+"peace",
+"Turkey",
+"United Kingdom"
+],
+[
+"peace",
+"Turkey",
+"France"
+],
+[
+"flag",
+"lausanne"
+]
+],
+"r": "Lozan: tam bağımsızlık. Cumhuriyet yolda."
+},
+{
+"t": "Musul için diren",
+"d": "Masadan kalk",
+"fx": [
+[
+"xstab",
+"Turkey",
+5
+],
+[
+"rel",
+"Turkey",
+"United Kingdom",
+-20
+],
+[
+"buff",
+"Turkey",
+"att",
+1.1,
+26
+]
+],
+"r": "Musul sorunu açık kaldı."
+}
+]
+}
+},
+"requires": [
+"izmir"
+]
+},
+{
+"id": "hitler",
+"y": 1933,
+"m": 1,
+"title": "Hitler Şansölye",
+"scene": "crisis",
+"icon": "warning",
+"text": "Hindenburg, Hitler'i şansölye atadı. Weimar'ın sonu yaklaşıyor.",
+"major": false,
+"default_fx": [
+[
+"stab",
+"Germany",
+-4
+]
+],
+"roles": {
+"Germany": {
+"text": "Nazi Partisi en büyük parti. Hindenburg seni şansölye atamak üzere; yetki kanunu kapıda.",
+"options": [
+{
+"t": "Yetki kanunu ve silahlanma",
+"d": "Versay'ı yırt",
+"fx": [
+[
+"buff",
+"Germany",
+"recruit",
+1.5,
+104
+],
+[
+"xstab",
+"Germany",
+10
+],
+[
+"rel",
+"Germany",
+"France",
+-30
+],
+[
+"flag",
+"rearm"
+]
+],
+"r": "Almanya yeniden silahlanıyor."
+},
+{
+"t": "Koalisyon hükûmeti",
+"d": "Demokrasiyi koru",
+"fx": [
+[
+"xstab",
+"Germany",
+5
+],
+[
+"gold",
+"Germany",
+4
+],
+[
+"rel",
+"Germany",
+"France",
+10
+]
+],
+"r": "Weimar bir süre daha ayakta."
+}
+]
+}
+}
+}
+]
+}

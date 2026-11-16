@@ -1,0 +1,311 @@
+#!/usr/bin/env python3
+"""data/era_names.json üretir: çağa göre eyalet/şehir adları, kabine unvanları ve dönemin gerçek devlet adamları.
+Anahtarlar: bugünkü eyalet adı (data/world.json) -> dönem adı. Kabine: name_en -> {rol: "Ad|f"} (f: kadın).
+Roller: def savunma, for dışişleri, int içişleri, fin maliye, hlt sağlık, spy istihbarat."""
+import json, os
+root = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..")
+
+# ------------------------------------------------------------ ortak: Arapça/Orta Doğu adlarının Türkçe biçimleri (tüm tarihî kipler)
+ARAB = {
+    "Al Isma'iliyah": "İsmailiye", "As Suways": "Süveyş", "Aswan": "Asvan", "Bani Suwayf": "Beni Suef", "Al Fayyum": "Feyyum", "Al Minya": "Minye",
+    "Suhaj": "Sohag", "Qina": "Kına", "Matruh": "Mersa Matruh", "Al Buhayrah": "Damanhur", "Ash Sharqiyah": "Zagazig", "Ad Daqahliyah": "Mansure",
+    "Al Gharbiyah": "Tanta", "Kafr ash Shaykh": "Kefrüşşeyh", "Al Minufiyah": "Şibin el-Kum", "Al Qalyubiyah": "Benha", "Janub Sina": "Tur",
+    "Shamal Sina": "Ariş", "Al Wadi at Jadid": "Harga", "Al Bahr al Ahmar": "Kuseyr", "Asyut": "Asyut",
+    "Al-Basrah": "Basra", "Arbil": "Erbil", "As-Sulaymaniyah": "Süleymaniye", "At-Ta'mim": "Kerkük", "Dhi-Qar": "Nasıriye", "Maysan": "Amara",
+    "Wasit": "Kut", "Diyala": "Bakuba", "An-Najaf": "Necef", "Al-Qādisiyyah": "Divaniye", "Al-Muthannia": "Samava", "Sala ad-Din": "Tikrit", "Al-Anbar": "Ramadi",
+    "Ar Raqqah": "Rakka", "Dayr Az Zawr": "Deyrizor", "Hasaka (Al Haksa)": "Hasiçe", "Hamah": "Hama", "Dar'a": "Dera", "As Suwayda": "Süveyde",
+    "HaDarom": "Beerşeba", "HaMerkaz": "Ramle", "HaZafon": "Safed", "Tel Aviv": "Yafa", "North Lebanon": "Trablusşam", "South Lebanon": "Sayda",
+    "Beqaa": "Bekaa", "An Nabatiyah": "Nebatiye", "Karak": "Kerek", "Ma'an": "Maan", "Aqaba": "Akabe", "Zarqa": "Zerka", "Mafraq": "Mafrak",
+    "Ad Dammam": "El-Ahsa", "Al Quassim": "Kasım", "Ha'il": "Hail", "Al Jawf": "Cevf", "Jizan": "Cizan", "Najran": "Necran", "Al Bahah": "Baha", "'Asir": "Asir",
+    "Al Hudud ash Shamaliyah": "Kuzey Sınırı", "Al Hudaydah": "Hudeyde", "Hadramawt": "Hadramut", "Ta'izz": "Taiz", "Sa'dah": "Sada", "Ma'rib": "Marib",
+    "Al Bayda": "Beyda", "Al Mahrah": "Mehre", "Al Jawf": "Cevf", "Hajjah": "Hacce", "Lahij": "Lahic", "Shabwah": "Şebve", "Abyan": "Ebyen", "San'a": "Sana",
+    "Al Butnan": "Tobruk", "Al Jufrah": "Cufra", "Al Kufrah": "Kufra", "Al Qubbah": "Derne", "Ash Shati": "Şati", "Ghadamis": "Gadamis", "Misratah": "Misrata",
+    "Surt": "Sirte", "Wadi al Hayaa": "Vadi el-Hayat", "Murzuq": "Murzuk", "Mizdah": "Mizde",
+}
+# ------------------------------------------------------------ 1914
+P1914 = {
+    "Sankt Petersburg": "Petrograd", "Leningrad": "Petrograd Guberniyası", "Volgograd": "Tsaritsin", "Kirov": "Vyatka", "Krasnodar": "Yekaterinodar",
+    "Donets'k": "Yuzovka", "Luhans'k": "Lugansk", "Dnipro": "Yekaterinoslav", "Zaporizhzhya": "Aleksandrovsk", "Kirovohrad": "Yelisavetgrad",
+    "L'viv": "Lemberg", "Mykolayiv": "Nikolayev", "Khmel'nyts'kyy": "Proskurov", "Rivne": "Rovno", "Chernihiv": "Çernigov", "Vinnytsya": "Vinnitsa",
+    "Zhytomyr": "Jitomir", "Brest": "Brest-Litovsk", "Kişinev": "Kişinev", "Tallinn": "Reval", "Vilnius": "Vilna", "Klaipedos": "Memel",
+    "Katowice": "Kattowitz", "Lower Silesian": "Breslau", "Pomeranian": "Danzig", "Warmian-Masurian": "Allenstein", "Lubusz": "Frankfurt (Oder)",
+    "West Pomeranian": "Stettin", "Greater Poland": "Posen", "Kuyavian-Pomeranian": "Bromberg", "Lesser Poland": "Krakau", "Subcarpathian": "Przemyśl",
+    "Podlachian": "Białystok", "Niedersachsen": "Hannover", "Rheinland-Pfalz": "Koblenz", "Sachsen-Anhalt": "Magdeburg", "Mecklenburg-Vorpommern": "Schwerin",
+    "Sachsen": "Dresden", "Thüringen": "Weimar", "Saarland": "Saarbrücken", "Münih": "München", "Essen": "Köln",
+    "Jihomoravský": "Brünn", "Moravskoslezský": "Mährisch-Ostrau", "Plzeňský": "Pilsen", "Královéhradecký": "Königgrätz", "Ústecký": "Aussig", "Jihočeský": "Budweis",
+    "Bratislava": "Pozsony", "Košický": "Kassa", "Prešov": "Eperjes", "Nitriansky": "Nyitra", "Banskobystrický": "Besztercebánya",
+    "Timis": "Temesvár", "Maramures": "Máramaros", "Harghita": "Csíkszereda", "Suceava": "Czernowitz", "Južno-Backi": "Újvidék", "Zadarska": "Zara",
+    "Primorsko-Goranska": "Fiume", "Ljubljana": "Laibach", "Kocevje": "Gottschee", "Osjecko-Baranjska": "Eszék",
+    "Thessalia": "Larisa", "Kriti": "Girit", "Kentriki Makedonia": "Selanik", "Anatoliki Makedonia kai Thraki": "Dedeağaç", "Dytiki Makedonia": "Kozani",
+    "Stereá Elláda": "Lamia", "Peloponnisos": "Mora", "Bitola": "Manastır", "Üsküp": "Üsküp", "Shkodër": "İşkodra", "Korçë": "Görice", "Gjirokastër": "Ergiri",
+    "İstanbul": "Dersaadet", "Şanlıurfa": "Urfa", "Gaziantep": "Antep", "Afyonkarahisar": "Karahisar-ı Sahib", "Diyarbakır": "Diyarbekir", "Ağrı": "Bayezid",
+    "Yozgat": "Bozok", "Trablus": "Trablusgarp", "Helsinki": "Helsingfors", "Tahran": "Tahran", "Khuzestan": "Arabistan (Ahvaz)", "Golestan": "Esterabad",
+    "Markazi": "Sultanabad", "Mazandaran": "Sari", "Kermanshah": "Kirmanşah", "Kordestan": "Senendec", "Lorestan": "Hürremabad", "Zanjan": "Zencan",
+    "Ardebil": "Erdebil", "Bushehr": "Buşehr", "Hormozgan": "Bender Abbas", "Sistan and Baluchestan": "Dozdab", "North Khorasan": "Bucnurd",
+    "South Khorasan": "Bircand", "West Azarbaijan": "Urmiye", "Chahar Mahall and Bakhtiari": "Şehr-i Kürd", "Mumbai": "Bombay", "Chennai": "Madras",
+    "Koçin": "Cochin", "Puducherry": "Pondicherry", "Kanpur": "Cawnpore", "Odisha": "Orissa", "Uttarakhand": "Kumaon", "Himachal Pradesh": "Simla",
+    "Amaravati": "Guntur", "Srinagar": "Keşmir", "Arunachal Pradesh": "Assam Himalayası", "Andaman and Nicobar": "Port Blair",
+    "Dadra and Nagar Haveli and Daman and Diu": "Daman ve Diu", "Bhilai": "Durg", "Meghalaya": "Shillong", "Mizoram": "Lushai Tepeleri", "Nagaland": "Naga Tepeleri",
+    "İslamabad": "Ravalpindi", "Baluchistan": "Kuetta", "F.A.T.A.": "Vaziristan", "Gilgit-Baltistan": "Gilgit", "Azad Kashmir": "Mirpur",
+    "Yangon": "Rangoon", "Ho Chi Minh Kenti": "Saygon", "Đà Nẵng": "Tourane", "Guangzhou": "Kanton", "Shenyang": "Mukden", "Xi'an": "Sian", "Çongçing": "Chungking",
+    "Taipei": "Taihoku", "Kaohsiung": "Takao", "Taichung": "Taichū", "Hualien": "Karenkō", "Pingtung": "Heitō", "Taitung": "Taitō", "Nantou": "Nantō", "Zhongli": "Chūreki",
+    "Seul": "Keijō (Seul)", "Busan": "Fuzan (Busan)", "Pyongyang": "Heijō (Pyongyang)", "İncheon": "Jinsen", "Daegu": "Taikyū", "Ulan Batur": "Urga",
+    "Astana": "Akmolinsk", "Almatı": "Verniy", "Qaraghandy": "Karaganda", "Aqtöbe": "Aktyubinsk", "Atyrau": "Guryev", "Qostanay": "Kustanay",
+    "Qyzylorda": "Perovsk", "Mangghystau": "Fort Aleksandrovsk", "Zhambyl": "Aulie-Ata", "South Kazakhstan": "Çimkent", "East Kazakhstan": "Ust-Kamenogorsk",
+    "West Kazakhstan": "Uralsk", "North Kazakhstan": "Petropavlovsk", "Akmola": "Kökçetav", "Baykonur lease in Qyzylorda": "Tyuratam", "Almatı Bölgesi": "Yedisu",
+    "Taşkent Vilayeti": "Sırderya Oblastı", "Bukhoro": "Buhara Emirliği", "Khorezm": "Hive Hanlığı", "Ferghana": "Skobelev", "Andijon": "Andican",
+    "Kashkadarya": "Karşi", "Surkhandarya": "Termiz", "Jizzakh": "Cizzah", "Navoi": "Kermine", "Sirdaryo": "Gülistan", "Karakalpakstan": "Petroaleksandrovsk",
+    "Aşkabat": "Askhabad", "Mary": "Merv", "Chardzhou": "Çarcuy", "Tashauz": "Taşavuz", "Balkan": "Krasnovodsk", "Duşanbe": "Düşenbe", "Leninabad": "Hocent",
+    "Khatlon": "Kurgan-Tübe", "Gorno-Badakhshan": "Horog", "Bişkek": "Pişpek", "Jalal-Abad": "Celalabad", "Ysyk-Köl": "Przhevalsk", "Shirak": "Aleksandropol",
+    "Lori": "Alaverdi", "Syunik": "Zangezur", "Sheki": "Nuha", "Lankaran": "Lenkoran", "Goranboy": "Yelizavetpol", "Quba": "Kuba", "Abkhazia": "Sohum",
+    "Imereti": "Kutaisi", "Kakheti": "Telavi", "Samtskhe-Javakheti": "Ahıska", "Kinşasa": "Léopoldville", "Lubumbashi": "Élisabethville", "Orientale": "Stanleyville",
+    "Harare": "Salisbury", "Kabwe": "Broken Hill", "Chipata": "Fort Jameson", "Riyad": "Necd (Riyad)", "Cidde": "Cidde", "Medine": "Medine-i Münevvere",
+    "Kudüs": "Kudüs-i Şerif", "Hayfa": "Hayfa", "Amman": "Belka (Amman)", "Irbid": "Aclun", "Aden": "Aden (İngiliz)",
+}
+# ------------------------------------------------------------ 1939
+P1939 = dict(P1914)
+P1939.update({
+    "Sankt Petersburg": "Leningrad", "Leningrad": "Leningrad Oblastı", "Volgograd": "Stalingrad", "Yekaterinburg": "Sverdlovsk", "Nijniy Novgorod": "Gorki",
+    "Samara": "Kuybışev", "Tver": "Kalinin", "Kirov": "Kirov", "Krasnodar": "Krasnodar", "Stavropol": "Voroşilovsk", "Donets'k": "Stalino", "Luhans'k": "Voroşilovgrad",
+    "Dnipro": "Dnepropetrovsk", "Zaporizhzhya": "Zaporoje", "Kirovohrad": "Kirovograd", "L'viv": "Lwów", "Rivne": "Równe", "Brest": "Brześć", "Grodno": "Grodno",
+    "Kişinev": "Chişinău", "Tallinn": "Tallinn", "Vilnius": "Wilno", "Katowice": "Katowice", "Pomeranian": "Pomorze (Gdynia)", "Greater Poland": "Poznań",
+    "Kuyavian-Pomeranian": "Bydgoszcz", "Lesser Poland": "Kraków", "Subcarpathian": "Rzeszów", "Saarland": "Saarbrücken", "Bratislava": "Bratislava",
+    "Košický": "Kassa", "Prešov": "Prešov", "Nitriansky": "Nitra", "Banskobystrický": "Banská Bystrica", "Timis": "Timişoara", "Maramures": "Maramureş",
+    "Harghita": "Miercurea Ciuc", "Suceava": "Suceava", "Južno-Backi": "Novi Sad", "Zadarska": "Zara (İtalyan)", "Primorsko-Goranska": "Fiume (İtalyan)",
+    "Ljubljana": "Ljubljana", "Kocevje": "Kočevje", "Osjecko-Baranjska": "Osijek", "Thessalia": "Larisa", "Kriti": "Girit", "Anatoliki Makedonia kai Thraki": "Kavala",
+    "Bitola": "Bitolj", "Üsküp": "Skoplje", "İstanbul": "İstanbul", "Gaziantep": "Gaziantep", "Afyonkarahisar": "Afyon", "Diyarbakır": "Diyarbakır",
+    "Trablus": "Trablus (İtalyan)", "Khuzestan": "Huzistan", "Golestan": "Gorgan", "Markazi": "Erak", "Sistan and Baluchestan": "Zahidan", "West Azarbaijan": "Rızaiye",
+    "Çangçun": "Hsinking (Mançukuo)", "Ulan Batur": "Ulan Batur", "Astana": "Akmolinsk", "Almatı": "Alma-Ata", "Qyzylorda": "Kzıl-Orda", "Zhambyl": "Djambul",
+    "Mangghystau": "Fort Şevçenko", "Baykonur lease in Qyzylorda": "Tyuratam", "Taşkent Vilayeti": "Taşkent Oblastı", "Bukhoro": "Buhara", "Khorezm": "Ürgenç",
+    "Ferghana": "Fergana", "Karakalpakstan": "Nukus", "Aşkabat": "Aşkabat", "Duşanbe": "Stalinabad", "Leninabad": "Leninabad", "Bişkek": "Frunze",
+    "Shirak": "Leninakan", "Goranboy": "Kirovabad", "Riyad": "Riyad", "Medine": "Medine", "Kudüs": "Kudüs", "Amman": "Amman", "Irbid": "İrbid",
+    "Helsinki": "Helsinki", "Mbuji-Mayi": "Bakwanga",
+})
+# ------------------------------------------------------------ 1962
+P1962 = dict(P1939)
+P1962.update({
+    "Volgograd": "Volgograd", "Perm": "Perm", "Stavropol": "Stavropol", "Donets'k": "Donetsk", "Luhans'k": "Lugansk", "Khmel'nyts'kyy": "Hmelnitski",
+    "L'viv": "Lvov", "Rivne": "Rovno", "Brest": "Brest", "Kişinev": "Kişinev", "Vilnius": "Vilnius", "Klaipedos": "Klaipeda", "Lower Silesian": "Wrocław",
+    "Warmian-Masurian": "Olsztyn", "Lubusz": "Zielona Góra", "West Pomeranian": "Szczecin", "Pomeranian": "Gdańsk", "Podlachian": "Białystok",
+    "Niedersachsen": "Hannover", "Rheinland-Pfalz": "Mainz", "Sachsen-Anhalt": "Halle (DDR)", "Mecklenburg-Vorpommern": "Rostock (DDR)", "Sachsen": "Dresden (DDR)",
+    "Thüringen": "Erfurt (DDR)", "Jihomoravský": "Brno", "Moravskoslezský": "Ostrava", "Plzeňský": "Plzeň", "Královéhradecký": "Hradec Králové", "Ústecký": "Ústí nad Labem",
+    "Jihočeský": "České Budějovice", "Košický": "Košice", "Timis": "Timişoara", "Harghita": "Miercurea Ciuc", "Zadarska": "Zadar", "Primorsko-Goranska": "Rijeka",
+    "Bitola": "Bitola", "Üsküp": "Üsküp", "Thessalia": "Larisa", "Anatoliki Makedonia kai Thraki": "Kavala", "Trablus": "Trablus", "West Azarbaijan": "Rızaiye",
+    "Sistan and Baluchestan": "Zahidan", "Mumbai": "Bombay", "Chennai": "Madras", "Koçin": "Cochin", "Kanpur": "Kanpur", "Bhilai": "Bhilai", "Odisha": "Orissa",
+    "Uttarakhand": "Uttar Pradeş Tepeleri", "Himachal Pradesh": "Simla", "Arunachal Pradesh": "NEFA", "Meghalaya": "Shillong", "Mizoram": "Lushai Tepeleri",
+    "Nagaland": "Nagaland", "Puducherry": "Pondicherry", "Yangon": "Rangoon", "Ho Chi Minh Kenti": "Saygon", "Đà Nẵng": "Da Nang", "Shenyang": "Shenyang",
+    "Xi'an": "Xi'an", "Çongçing": "Çongçing", "Taipei": "Taipei", "Kaohsiung": "Kaohsiung", "Taichung": "Taichung", "Hualien": "Hualien", "Pingtung": "Pingtung",
+    "Taitung": "Taitung", "Nantou": "Nantou", "Zhongli": "Zhongli", "Seul": "Seul", "Busan": "Busan", "Pyongyang": "Pyongyang", "İncheon": "İncheon", "Daegu": "Daegu",
+    "Çangçun": "Çangçun", "Astana": "Tselinograd", "Duşanbe": "Duşanbe", "Mangghystau": "Fort Şevçenko", "Baykonur lease in Qyzylorda": "Baykonur",
+    "Kinşasa": "Léopoldville", "Lubumbashi": "Élisabethville", "Orientale": "Stanleyville", "Mbuji-Mayi": "Bakwanga", "Harare": "Salisbury",
+    "Kabwe": "Broken Hill", "Chipata": "Fort Jameson", "Şanlıurfa": "Urfa", "Afyonkarahisar": "Afyon", "Helsinki": "Helsinki", "Lefkoşa": "Lefkoşa",
+})
+# ------------------------------------------------------------ ortak pre (1380 + 1520)
+PRE = dict(ARAB)
+PRE.update({
+    "Ankara": "Engürü", "Diyarbakır": "Amid", "Şanlıurfa": "Ruha", "Gaziantep": "Ayıntab", "Afyonkarahisar": "Karahisar", "Yozgat": "Bozok", "Ağrı": "Bayezid",
+    "Denizli": "Ladik", "Atina": "Atina", "Kentriki Makedonia": "Selanik", "Thessalia": "Yenişehir", "Kriti": "Kandiye", "Peloponnisos": "Mora", "Stereá Elláda": "Eğriboz",
+    "Dytiki Makedonia": "Kozana", "Anatoliki Makedonia kai Thraki": "Serez", "Sofya": "Sofya", "Plovdiv": "Filibe", "Burgas": "Burgaz", "Stara Zagora": "Eski Zağra",
+    "Pleven": "Plevne", "Veliko Tarnovo": "Tırnova", "Južno-Backi": "Bács", "Raški": "Ras", "Zlatiborski": "Užice", "Branicevski": "Braničevo", "Zajecarski": "Zaječar",
+    "Üsküp": "Üsküp", "Bitola": "Manastır", "Shkodër": "İşkodra", "Tiran": "Kruje", "Korçë": "Görice", "Gjirokastër": "Ergiri", "Banja Luka": "Banaluka",
+    "Herzegovina-Neretva": "Hersek", "Zenica-Doboj": "Bobovac", "West Bosnia": "Jajce", "Zagreb": "Zágráb", "Zadarska": "Zara", "Primorsko-Goranska": "Fiume",
+    "Osjecko-Baranjska": "Eszék", "Sisacko-Moslavacka": "Sziszek", "Ljubljana": "Laibach", "Kocevje": "Gottschee", "Ilirska Bistrica": "Feistritz", "Budapeşte": "Buda",
+    "Pest": "Peşte", "Borsod-Abaúj-Zemplén": "Miskolc", "Hajdú-Bihar": "Debrecen", "Bács-Kiskun": "Kalocsa", "Somogy": "Kaposvár", "Dolj": "Craiova",
+    "Arges": "Curtea de Argeş", "Braila": "İbrail", "Tulcea": "Tulça", "Vâlcea": "Râmnic", "Timis": "Temeşvar", "Maramures": "Maramaroş", "Harghita": "Csík",
+    "Suceava": "Suçava", "Hîncesti": "Lapuşna", "Rîşcani": "Soroka", "Odessa": "Hacıbey", "Kherson": "Özü", "Mykolayiv": "Kılburun", "Zaporizhzhya": "Zaporoje Bozkırı",
+    "Dnipro": "Samar", "Donets'k": "Kalmius", "Luhans'k": "Vahşi Tarla", "Kirovohrad": "İngul", "Poltava": "Ltava", "Chernihiv": "Çernigov", "Zhytomyr": "Jitomir",
+    "Vinnytsya": "Vinnitsa", "Khmel'nyts'kyy": "Ploskirov", "Rivne": "Rovno", "L'viv": "Lwów", "Minsk": "Mensk", "Brest": "Berestye", "Grodno": "Gorodno",
+    "Tallinn": "Reval", "Ida-Viru": "Narva", "Pärnu": "Pernau", "Saare": "Ösel", "Vilnius": "Vilna", "Klaipedos": "Memel", "Ventspils": "Windau", "Rezeknes": "Rositten",
+    "Gulbene": "Schwanenburg", "Lower Silesian": "Breslau", "Katowice": "Oppeln", "Lubusz": "Lebus", "West Pomeranian": "Stettin", "Pomeranian": "Danzig",
+    "Greater Poland": "Poznań", "Kuyavian-Pomeranian": "Toruń", "Lesser Poland": "Kraków", "Subcarpathian": "Przemyśl", "Podlachian": "Drohiczyn", "Łódź": "Łęczyca",
+    "Münih": "München", "Essen": "Köln", "Sachsen": "Wittenberg", "Sachsen-Anhalt": "Magdeburg", "Thüringen": "Erfurt", "Niedersachsen": "Braunschweig",
+    "Mecklenburg-Vorpommern": "Schwerin", "Schleswig-Holstein": "Lübeck", "Rheinland-Pfalz": "Mainz", "Saarland": "Trier", "Jihomoravský": "Brünn",
+    "Moravskoslezský": "Olmütz", "Plzeňský": "Pilsen", "Královéhradecký": "Königgrätz", "Ústecký": "Leitmeritz", "Jihočeský": "Budweis", "Bratislava": "Pozsony",
+    "Košický": "Kassa", "Prešov": "Eperjes", "Nitriansky": "Nyitra", "Banskobystrický": "Besztercebánya", "Sankt Petersburg": "Oreşek", "Leningrad": "Novgorod",
+    "Kalmyk": "Hacı Tarhan", "Rostov-na-Donu": "Azak", "Krasnodar": "Kuban", "Stavropol": "Macar", "Orenburg": "Yayık", "Penza": "Mokşa", "Voronezh": "Vahşi Tarla",
+    "Kirov": "Vyatka", "Perm": "Büyük Perm", "Yekaterinburg": "Ural", "Çelyabinsk": "Başkurt Yurdu", "Tyumen": "Çimgi-Tura", "Arkhangel'sk": "Dvina", "Murmansk": "Kola",
+    "Karelia": "Korela", "Saratov": "Ukek", "Samara": "Samar", "Ufa": "Başkurt", "Tahran": "Rey", "Kerec": "Kazvin", "Khuzestan": "Hüveyze", "Golestan": "Esterabad",
+    "Markazi": "Kum", "Mazandaran": "Amul", "Semnan": "Simnan", "Kermanshah": "Kirmanşah", "Kordestan": "Erdelan", "Lorestan": "Hürremabad", "Zanjan": "Zencan",
+    "Ardebil": "Erdebil", "Bushehr": "Siraf", "Hormozgan": "Hürmüz", "Sistan and Baluchestan": "Sistan", "North Khorasan": "Esfarayin", "South Khorasan": "Kain",
+    "West Azarbaijan": "Urmiye", "Chahar Mahall and Bakhtiari": "Çaharmahal", "Meşhed": "Meşhed", "Hirat": "Herat", "Balkh": "Belh", "Baghlan": "Bağlan",
+    "Badakhshan": "Bedahşan", "Ghazni": "Gazne", "Farah": "Ferah", "Faryab": "Meymene", "Hilmand": "Zemindaver", "Nimroz": "Zarenc", "Ghor": "Gur", "Paktika": "Urgun",
+    "Wardak": "Verdek", "Sari Pul": "Sarpul", "Samarkand": "Semerkand", "Bukhoro": "Buhara", "Khorezm": "Ürgenç", "Karakalpakstan": "Vezir", "Ferghana": "Ahsikent",
+    "Andijon": "Endican", "Namangan": "Kasan", "Kashkadarya": "Keş (Şehrisebz)", "Surkhandarya": "Tirmiz", "Jizzakh": "Cizak", "Navoi": "Kermine", "Sirdaryo": "Seyhun",
+    "Taşkent Vilayeti": "Şaş", "Astana": "Sarıarka", "Almatı": "Almalık", "Almatı Bölgesi": "Yedisu", "Qaraghandy": "Ulytau", "Qyzylorda": "Sığnak",
+    "South Kazakhstan": "Yesi (Türkistan)", "Zhambyl": "Taraz", "Mangghystau": "Mangışlak", "Atyrau": "Saraycık", "West Kazakhstan": "Yayık", "Aqtöbe": "Irgiz",
+    "Qostanay": "Tobol", "North Kazakhstan": "İşim", "Pavlodar": "İrtiş", "East Kazakhstan": "Altay", "Akmola": "Kökşetau", "Baykonur lease in Qyzylorda": "Yengikent",
+    "Bişkek": "Pişpek", "Osh": "Oş", "Ysyk-Köl": "Isık Göl", "Naryn": "Narin", "Jalal-Abad": "Celalabad", "Aşkabat": "Nisa", "Mary": "Merv", "Chardzhou": "Amul",
+    "Tashauz": "Daşoğuz", "Balkan": "Abulhan", "Duşanbe": "Hisar", "Leninabad": "Hocent", "Khatlon": "Kulab", "Gorno-Badakhshan": "Bedahşan", "Ulan Batur": "Kerulen",
+    "Şanghay": "Songjiang", "Guangzhou": "Kanton", "Harbin": "Alçuka", "Çangçun": "Yehe", "Hong Kong": "Xin'an", "Urumçi": "Bişbalık", "Xizang": "Lhasa",
+    "Taipei": "Dayuan", "Seul": "Hanyang", "Busan": "Dongnae", "Tokyo": "Edo", "Yokohama": "Kamakura", "Osaka": "Settsu", "Kobe": "Hyogo", "Sapporo": "Ezo", "Nagoya": "Owari",
+    "Hiroşima": "Aki", "Fukuoka": "Hakata", "Sendai": "Mutsu", "Mumbai": "Mahim", "Chennai": "Mylapore", "Kalküta": "Gaur", "Bangalore": "Vijayanagar",
+    "Koçin": "Kochi", "Ahmedabad": "Anhilvara", "Jaipur": "Amber", "Kanpur": "Kannauj", "Patna": "Bihar", "Srinagar": "Keşmir", "Ladakh": "Leh", "Amaravati": "Kondavidu",
+    "Odisha": "Cuttack", "Cemşidpur": "Chota Nagpur", "Puducherry": "Gingee", "Assam": "Ahom", "Manipur": "Kangleipak", "Meghalaya": "Khasi", "Mizoram": "Lushai",
+    "Nagaland": "Naga", "Arunachal Pradesh": "Tawang", "Himachal Pradesh": "Kangra", "Uttarakhand": "Garhwal", "Bhilai": "Gondvana", "Faridabad": "Mewat",
+    "Ludhiana": "Sirhind", "Dadra and Nagar Haveli and Daman and Diu": "Daman", "Karaçi": "Thatta", "İslamabad": "Ravalpindi", "Baluchistan": "Kelat", "F.A.T.A.": "Hayber",
+    "Gilgit-Baltistan": "Gilgit", "Azad Kashmir": "Mirpur", "Ho Chi Minh Kenti": "Prey Nokor", "Hanoi": "Thang Long", "Đà Nẵng": "Çampa", "Manila": "Maynila",
+    "Bangkok": "Ayutthaya", "Trablus": "Trablusgarp", "Bingazi": "Berka", "Harare": "Büyük Zimbabve", "Bulawayo": "Butua", "Darüsselam": "Mzizima", "Lindi": "Kilwa",
+    "Kinşasa": "Nsundi", "Lubumbashi": "Luba", "Meksiko": "Tenochtitlan", "Lima": "Pachacamac", "Cusco": "Cusco (İnka)", "Bogotá": "Bacatá", "Guatemala": "Iximche",
+    "Riyad": "Yemame", "Medine": "Medine-i Münevvere", "Kudüs": "Kudüs-i Şerif", "Amman": "Belka", "Irbid": "Aclun", "Hayfa": "Hayfa", "Aden": "Aden", "Kahire": "Kahire",
+    "Dhi-Qar": "Müntefik", "As-Sulaymaniyah": "Şehrizor", "Maysan": "Meysan", "Al-Qādisiyyah": "Hille", "Al-Anbar": "Ane", "Wasit": "Vasıt",
+})
+P1520 = dict(PRE)
+P1520.update({"İstanbul": "Konstantiniyye", "Kahire": "Mısır (Kahire)", "Bağdat": "Bağdat (Safevi)", "Hormozgan": "Hürmüz (Portekiz)", "Maskat": "Maskat (Portekiz)", "Kâbil": "Kâbil (Babür)",
+              "Pekin": "Pekin", "Nankin": "Nankin", "Tientsin": "Tianjin"})
+P1380 = dict(PRE)
+P1380.update({"İstanbul": "Konstantinopolis", "Bursa": "Bursa (Osmanlı)", "Sofya": "Sredets", "Burgas": "Anhialos", "Stara Zagora": "Zağra", "Saraybosna": "Vrhbosna",
+              "Warmian-Masurian": "Marienburg", "Kuyavian-Pomeranian": "Toruń (Töton)", "Pomeranian": "Danzig (Töton)", "Kazan": "Bulgar", "Volgograd": "Saray Berke",
+              "Pekin": "Beiping", "Nankin": "Nankin (Başkent)", "Tientsin": "Zhigu", "Taipei": "Liuqiu", "Pyongyang": "Seogyeong", "İncheon": "Inju", "Haydarabad": "Gulbarga",
+              "Indore": "Dhar", "Goa": "Goa (Vijayanagar)", "Ahmedabad": "Anhilvara", "Hirat": "Herat (Kart)", "Maskat": "Kalhat", "Aqaba": "Ayla", "Bükreş": "Târgovişte",
+              "Erivan": "Revan", "Shirak": "Ani", "Goranboy": "Gence", "Ulan Batur": "Kerulen (Kuzey Yuan)"})
+
+# ------------------------------------------------------------ unvanlar
+T_MODERN = {}
+T_WW = {"def": "Harbiye Nazırı", "for": "Hariciye Nazırı", "int": "Dahiliye Nazırı", "fin": "Maliye Nazırı", "hlt": "Sıhhiye Nazırı", "spy": "İstihbarat Şefi"}
+T_WW1 = {"def": "Savaş Bakanı", "for": "Dışişleri Bakanı", "int": "İçişleri Bakanı", "fin": "Maliye Bakanı", "hlt": "Sağlık ve İaşe Bakanı", "spy": "İstihbarat Şefi"}
+T_PRE = {"def": "Serdar", "for": "Sadrazam", "int": "Şeyhülislam", "fin": "Başdefterdar", "hlt": "Hekimbaşı", "spy": "Çavuşbaşı", "amb": "Elçi"}
+TB_WW1 = {
+    "Turkey": T_WW,
+    "United Kingdom": {"def": "Savaş Bakanı", "for": "Dışişleri Bakanı", "int": "İçişleri Bakanı", "fin": "Hazine Şansölyesi", "hlt": "Yerel Yönetim Kurulu Başkanı", "spy": "Gizli Servis Şefi"},
+    "Germany": {"def": "Prusya Savaş Bakanı", "for": "Dışişleri Devlet Sekreteri", "int": "İçişleri Devlet Sekreteri", "fin": "Hazine Devlet Sekreteri", "hlt": "Ordu Sıhhiye Şefi", "spy": "IIIb Şubesi Şefi"},
+    "Russia": {"def": "Savaş Bakanı", "for": "Dışişleri Bakanı", "int": "İçişleri Bakanı", "fin": "Maliye Bakanı", "hlt": "Sıhhiye Başkomiseri", "spy": "Karşı İstihbarat Şefi"},
+    "Austria": {"def": "Ortak Savaş Bakanı", "for": "Ortak Dışişleri Bakanı", "int": "İçişleri Bakanı", "fin": "Ortak Maliye Bakanı", "hlt": "Sağlık Bakanı", "spy": "Evidenzbureau Şefi"},
+}
+TB_PRE = {
+    "Turkey": T_PRE,
+    "Spain": {"def": "Kastilya Konnetablı", "for": "Büyük Şansölye", "int": "Naip", "fin": "Hazine Sekreteri", "hlt": "Saray Hekimi", "spy": "Saray Sekreteri"},
+    "France": {"def": "Konnetabl", "for": "Şansölye", "int": "Naibe", "fin": "Hazine Süperintendanı", "hlt": "Kral Hekimi", "spy": "Kral Sekreteri"},
+    "United Kingdom": {"def": "Lord Yüksek Amiral", "for": "Lord Şansölye", "int": "Özel Mühür Lordu", "fin": "Lord Haznedar", "hlt": "Kral Hekimi", "spy": "Kral Sekreteri"},
+    "Germany": {"def": "Landsknecht Komutanı", "for": "Başşansölye", "int": "Seçici Prens", "fin": "Banker", "hlt": "Saray Hekimi", "spy": "Saray Sekreteri"},
+    "Iran": {"def": "Emirülümera", "for": "Vekil", "int": "Sadr", "fin": "Müstevfi", "hlt": "Hekimbaşı", "spy": "Korçubaşı"},
+    "Russia": {"def": "Voyvoda", "for": "Duma Boyarı", "int": "Metropolit", "fin": "Haznedar", "hlt": "Saray Hekimi", "spy": "Dyak"},
+    "Poland": {"def": "Hetman", "for": "Şansölye", "int": "Primas", "fin": "Haznedar", "hlt": "Kral Hekimi", "spy": "Kral Sekreteri"},
+    "Hungary": {"def": "Erdel Voyvodası", "for": "Şansölye", "int": "Başpiskopos", "fin": "Haznedar", "hlt": "Kral Hekimi", "spy": "Kral Sekreteri"},
+    "Egypt": {"def": "Atabekü'l-Asakir", "for": "Devadar", "int": "Kadı", "fin": "Nazırü'l-Hass", "hlt": "Reisü'l-Etıbba", "spy": "Berid Emiri"},
+    "Uzbekistan": {"def": "Emirülümera", "for": "Divan Begi", "int": "Şeyhülislam", "fin": "Müstevfi", "hlt": "Hekimbaşı", "spy": "Yasavul"},
+    "Kazakhstan": {"def": "Beylerbeyi", "for": "Vezir", "int": "Kadı", "fin": "Haznedar", "hlt": "Hekim", "spy": "Yasavul"},
+    "China": {"def": "Başkomutan", "for": "Başşansölye", "int": "Ayin Bakanı", "fin": "Gelir Bakanı", "hlt": "İmparatorluk Hekimi", "spy": "Jinyiwei Komutanı"},
+    "Japan": {"def": "Shugo", "for": "Kanrei", "int": "Shikken", "fin": "Mandokoro", "hlt": "Saray Hekimi", "spy": "Shinobi Başı"},
+    "Italy": {"def": "Kaptan-ı Derya", "for": "Doç", "int": "Onlar Konseyi Başkanı", "fin": "Prokürator", "hlt": "Hekim", "spy": "Onlar Konseyi"},
+    "India": {"def": "Sipahsalar", "for": "Vezir", "int": "Sadr", "fin": "Divan-ı Vizaret", "hlt": "Hekimbaşı", "spy": "Berid"},
+    "Serbia": {"def": "Voyvoda", "for": "Logotet", "int": "Patrik", "fin": "Haznedar", "hlt": "Hekim", "spy": "Kefalya"},
+    "Greece": {"def": "Megas Domestikos", "for": "Mesazon", "int": "Patrik", "fin": "Logotet", "hlt": "Hekim", "spy": "Drungarios"},
+}
+
+# ------------------------------------------------------------ gerçek kabineler
+C_WW1 = {
+    "Turkey": {"def": "Enver Paşa", "for": "Said Halim Paşa", "int": "Talat Paşa", "fin": "Cavid Bey", "hlt": "Besim Ömer Paşa", "spy": "Süleyman Askerî Bey"},
+    "Germany": {"def": "Erich von Falkenhayn", "for": "Gottlieb von Jagow", "int": "Clemens von Delbrück", "fin": "Hermann Kühn", "hlt": "Otto von Schjerning", "spy": "Walter Nicolai"},
+    "United Kingdom": {"def": "Lord Kitchener", "for": "Edward Grey", "int": "Reginald McKenna", "fin": "David Lloyd George", "hlt": "Herbert Samuel", "spy": "Mansfield Cumming"},
+    "France": {"def": "Alexandre Millerand", "for": "Théophile Delcassé", "int": "Louis Malvy", "fin": "Alexandre Ribot", "hlt": "Justin Godart", "spy": "Georges Ladoux"},
+    "Russia": {"def": "Vladimir Suhomlinov", "for": "Sergey Sazonov", "int": "Nikolay Maklakov", "fin": "Pyotr Bark", "hlt": "Aleksandr Oldenburgski", "spy": "Nikolay Batyuşin"},
+    "Austria": {"def": "Alexander von Krobatin", "for": "Leopold Berchtold", "int": "Karl von Heinold", "fin": "Leon Biliński", "spy": "Oskar Hranilović"},
+    "Italy": {"def": "Vittorio Zupelli", "for": "Sidney Sonnino", "int": "Antonio Salandra", "fin": "Paolo Carcano"},
+    "United States of America": {"def": "Lindley Garrison", "for": "William Jennings Bryan", "int": "Franklin K. Lane", "fin": "William McAdoo", "hlt": "Rupert Blue", "spy": "Ralph Van Deman"},
+    "Serbia": {"def": "Dušan Stefanović", "for": "Nikola Pašić", "int": "Ljubomir Jovanović", "fin": "Lazar Paču", "spy": "Dragutin Dimitrijević (Apis)"},
+    "Japan": {"def": "Oka Ichinosuke", "for": "Katō Takaaki", "int": "Ōkuma Shigenobu", "fin": "Wakatsuki Reijirō"},
+    "Bulgaria": {"def": "Kliment Boyadjiev", "for": "Vasil Radoslavov", "int": "Hristo Popov", "fin": "Dimitar Tonçev"},
+    "Romania": {"def": "Ion I. C. Brătianu", "for": "Emanoil Porumbaru", "int": "Vasile Mortun", "fin": "Emil Costinescu"},
+    "Greece": {"for": "Eleftherios Venizelos", "int": "Emmanouil Repoulis", "fin": "Alexandros Diomidis"},
+    "Belgium": {"def": "Charles de Broqueville", "for": "Julien Davignon", "int": "Paul Berryer", "fin": "Michel Levie"},
+}
+C_WW2 = {
+    "Germany": {"def": "Wilhelm Keitel", "for": "Joachim von Ribbentrop", "int": "Wilhelm Frick", "fin": "Lutz Schwerin von Krosigk", "hlt": "Leonardo Conti", "spy": "Wilhelm Canaris"},
+    "United Kingdom": {"def": "Leslie Hore-Belisha", "for": "Lord Halifax", "int": "John Anderson", "fin": "John Simon", "hlt": "Walter Elliot", "spy": "Stewart Menzies"},
+    "France": {"def": "Édouard Daladier", "for": "Georges Bonnet", "int": "Albert Sarraut", "fin": "Paul Reynaud", "hlt": "Marc Rucart", "spy": "Louis Rivet"},
+    "Russia": {"def": "Kliment Voroşilov", "for": "Vyaçeslav Molotov", "int": "Lavrenti Beriya", "fin": "Arseni Zverev", "hlt": "Georgi Miterev", "spy": "Pavel Fitin"},
+    "Italy": {"def": "Ubaldo Soddu", "for": "Galeazzo Ciano", "int": "Guido Buffarini Guidi", "fin": "Paolo Thaon di Revel", "spy": "Giacomo Carboni"},
+    "United States of America": {"def": "Harry Woodring", "for": "Cordell Hull", "int": "Harold Ickes", "fin": "Henry Morgenthau Jr.", "hlt": "Thomas Parran", "spy": "J. Edgar Hoover"},
+    "Japan": {"def": "Shunroku Hata", "for": "Kichisaburō Nomura", "int": "Naoshi Ohara", "fin": "Kazuo Aoki", "spy": "Kenji Doihara"},
+    "Poland": {"def": "Tadeusz Kasprzycki", "for": "Józef Beck", "int": "Felicjan Sławoj Składkowski", "fin": "Eugeniusz Kwiatkowski", "spy": "Tadeusz Pełczyński"},
+    "Turkey": {"def": "Naci Tınaz", "for": "Şükrü Saracoğlu", "int": "Faik Öztrak", "fin": "Fuat Ağralı", "hlt": "Hulusi Alataş", "spy": "Şükrü Âli Ögel"},
+    "China": {"def": "He Yingqin", "for": "Wang Chonghui", "fin": "H. H. Kung", "spy": "Dai Li"},
+    "Hungary": {"def": "Károly Bartha", "for": "István Csáky", "int": "Ferenc Keresztes-Fischer", "fin": "Lajos Reményi-Schneller"},
+    "Romania": {"def": "Ion Ilcuş", "for": "Grigore Gafencu", "fin": "Mitiţă Constantinescu"},
+    "Finland": {"def": "Juho Niukkanen", "for": "Eljas Erkko", "int": "Urho Kekkonen", "fin": "Väinö Tanner"},
+    "Spain": {"def": "José Enrique Varela", "for": "Juan Beigbeder", "int": "Ramón Serrano Suñer", "fin": "José Larraz"},
+    "Greece": {"def": "Nikolaos Papadimas", "for": "Ioannis Metaxas", "fin": "Andreas Apostolidis"},
+    "Serbia": {"def": "Milan Nedić", "for": "Aleksandar Cincar-Marković", "int": "Stanoje Mihaldžić", "fin": "Juraj Šutej"},
+    "Sweden": {"def": "Per Edvin Sköld", "for": "Rickard Sandler", "fin": "Ernst Wigforss"},
+    "Netherlands": {"def": "Adriaan Dijxhoorn", "for": "Eelco van Kleffens"},
+}
+C_CW = {
+    "United States of America": {"def": "Robert McNamara", "for": "Dean Rusk", "int": "Robert F. Kennedy", "fin": "C. Douglas Dillon", "hlt": "Anthony Celebrezze", "spy": "John McCone"},
+    "Russia": {"def": "Rodion Malinovski", "for": "Andrey Gromiko", "int": "Vadim Tikunov", "fin": "Vasili Garbuzov", "hlt": "Sergey Kuraşov", "spy": "Vladimir Semiçastnıy"},
+    "United Kingdom": {"def": "Peter Thorneycroft", "for": "Alec Douglas-Home", "int": "Henry Brooke", "fin": "Reginald Maudling", "hlt": "Enoch Powell", "spy": "Dick White"},
+    "France": {"def": "Pierre Messmer", "for": "Maurice Couve de Murville", "int": "Roger Frey", "fin": "Valéry Giscard d'Estaing", "hlt": "Raymond Marcellin", "spy": "Paul Jacquier"},
+    "Germany": {"def": "Franz Josef Strauß", "for": "Gerhard Schröder", "int": "Hermann Höcherl", "fin": "Heinz Starke", "hlt": "Elisabeth Schwarzhaupt|f", "spy": "Reinhard Gehlen"},
+    "China": {"def": "Lin Biao", "for": "Chen Yi", "int": "Xie Fuzhi", "fin": "Li Xiannian", "hlt": "Qian Xinzhong", "spy": "Kang Sheng"},
+    "Cuba": {"def": "Raúl Castro", "for": "Raúl Roa", "int": "Ramiro Valdés", "fin": "Ernesto Che Guevara", "spy": "Manuel Piñeiro"},
+    "Turkey": {"def": "İlhami Sancar", "for": "Feridun Cemal Erkin", "int": "Hıfzı Oğuz Bekata", "fin": "Ferid Melen", "hlt": "Yusuf Azizoğlu", "spy": "Fuat Doğu"},
+    "Italy": {"def": "Giulio Andreotti", "for": "Attilio Piccioni", "int": "Paolo Emilio Taviani", "fin": "Giuseppe Trabucchi", "hlt": "Angelo Raffaele Jervolino"},
+    "Japan": {"for": "Masayoshi Ōhira", "fin": "Kakuei Tanaka", "hlt": "Hirokichi Nadao"},
+    "India": {"def": "V. K. Krishna Menon", "for": "Jawaharlal Nehru", "int": "Lal Bahadur Shastri", "fin": "Morarji Desai", "hlt": "Sushila Nayar|f", "spy": "B. N. Mullik"},
+    "Egypt": {"def": "Abdülhakim Amir", "for": "Mahmud Fevzi", "int": "Zekeriya Muhyiddin", "spy": "Salah Nasr"},
+    "Israel": {"def": "David Ben-Gurion", "for": "Golda Meir|f", "fin": "Levi Eşkol", "spy": "Isser Harel"},
+    "Iran": {"for": "Abbas Aram", "spy": "Hasan Pakravan"},
+    "Greece": {"def": "Panagiotis Papaligouras", "for": "Evangelos Averoff"},
+}
+C_OTT = {
+    "Turkey": {"for": "Piri Mehmed Paşa", "def": "Çoban Mustafa Paşa", "int": "Zenbilli Ali Efendi", "hlt": "Ahi Çelebi", "spy": "Ferhad Paşa"},
+    "Spain": {"for": "Mercurino Gattinara", "fin": "Francisco de los Cobos", "def": "Íñigo Fernández de Velasco", "int": "Adrian of Utrecht"},
+    "France": {"for": "Antoine Duprat", "def": "Charles de Bourbon", "fin": "Jacques de Beaune", "int": "Louise de Savoie|f"},
+    "United Kingdom": {"for": "Thomas Wolsey", "def": "Charles Brandon", "fin": "Thomas Howard", "int": "Thomas More"},
+    "Germany": {"def": "Georg von Frundsberg", "for": "Albrecht von Brandenburg", "fin": "Jakob Fugger", "int": "Friedrich der Weise"},
+    "Iran": {"for": "Mirza Şah Hüseyin", "def": "Div Sultan Rumlu"},
+    "Russia": {"for": "İvan Şigona-Podjogin", "def": "Daniil Şçenya", "int": "Metropolit Varlaam"},
+    "Poland": {"for": "Krzysztof Szydłowiecki", "def": "Mikołaj Firlej", "fin": "Mikołaj Szydłowiecki", "int": "Jan Łaski"},
+    "Hungary": {"def": "János Zápolya", "for": "László Szalkai", "int": "Tamás Bakócz"},
+    "India": {"def": "Devlet Han Lodi"},
+    "Italy": {"for": "Andrea Gritti"},
+    "Portugal": {"def": "Diogo Lopes de Sequeira"},
+}
+C_TIM = {
+    "Turkey": {"for": "Çandarlı Kara Halil Hayreddin Paşa", "def": "Lala Şahin Paşa", "int": "Kara Timurtaş Paşa"},
+    "Uzbekistan": {"for": "Seyfeddin Barlas", "def": "Ömer Şeyh Mirza", "int": "Miranşah", "spy": "Çeku Barlas"},
+    "Kazakhstan": {"for": "Mamay", "def": "Edigü"},
+    "Egypt": {"def": "Berkuk"},
+    "Iran": {"def": "Şah Mansur", "for": "Zeynelabidin"},
+    "Russia": {"def": "Dmitri Bobrok-Volınski", "int": "Radonejli Sergius"},
+    "Hungary": {"for": "Miklós Garai", "int": "Bosnalı Elizabeth|f"},
+    "Poland": {"int": "Bosnalı Elizabeth|f"},
+    "Lithuania": {"def": "Kęstutis", "for": "Vytautas"},
+    "France": {"def": "Olivier de Clisson", "for": "Louis d'Anjou", "fin": "Jean le Mercier", "int": "Philippe le Hardi"},
+    "United Kingdom": {"def": "Thomas of Woodstock", "for": "John of Gaunt", "fin": "Thomas Brantingham", "int": "Simon Sudbury"},
+    "Germany": {"for": "Johann von Jenstein"},
+    "Italy": {"def": "Carlo Zeno", "for": "Andrea Contarini"},
+    "Spain": {"def": "Pedro González de Mendoza"},
+    "China": {"for": "Hu Weiyong", "def": "Xu Da", "int": "Li Shanchang"},
+    "India": {"for": "Cuna Şah Han-ı Cihan"},
+    "Japan": {"for": "Hosokawa Yoriyuki", "def": "Shiba Yoshimasa"},
+    "South Korea": {"def": "Yi Seong-gye", "for": "Choe Yeong"},
+    "Serbia": {"def": "Vuk Branković"},
+    "Bosnia and Herz.": {"def": "Hrvoje Vukčić"},
+    "Greece": {"for": "Demetrios Kydones", "def": "Manuel Palaiologos"},
+}
+
+data = {
+    "ww1": {"role_titles": T_WW1, "titles_by": TB_WW1, "prov_names": P1914, "cabinet": C_WW1},
+    "ww2": {"role_titles": T_WW1, "titles_by": {"Turkey": T_WW1}, "prov_names": P1939, "cabinet": C_WW2},
+    "cold": {"role_titles": {}, "prov_names": P1962, "cabinet": C_CW},
+    "pre": {"role_titles": T_PRE, "titles_by": TB_PRE, "prov_names": PRE, "cabinet": {}},
+    "ott1520": {"prov_names": P1520, "cabinet": C_OTT},
+    "tim1380": {"prov_names": P1380, "cabinet": C_TIM},
+}
+# doğrulama: eyalet adları gerçekten var mı
+w = json.load(open(os.path.join(root, "data/world.json")))
+names = set(p["name"] for p in w["provinces"])
+cn = set(c["name_en"] for c in w["countries"])
+bad = set()
+for era, t in data.items():
+    for k in t.get("prov_names", {}):
+        if k not in names:
+            bad.add((era, k))
+    for c in list(t.get("cabinet", {}).keys()) + list(t.get("titles_by", {}).keys()):
+        if c not in cn:
+            bad.add((era, "country:" + c))
+if bad:
+    print("UYARI, bulunamayan adlar:", sorted(bad))
+out = os.path.join(root, "data/era_names.json")
+json.dump(data, open(out, "w", encoding="utf-8"), ensure_ascii=False, separators=(",", ":"))
+print("yazıldı:", out, "boyut", os.path.getsize(out))
