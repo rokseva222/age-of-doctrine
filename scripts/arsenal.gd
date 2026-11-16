@@ -12,6 +12,48 @@ static func cat_name(k: String) -> String:
 	return String(cat_names_ovr.get(k, CAT_NAME[k]))
 
 
+# ------------------------------------------------------------ simgeler (çağa ve birliğe göre)
+const CAT_ICON := {"inf": "rifle", "tank": "tank", "afv": "afv", "arty": "arty", "air": "jet", "sub": "sub"}
+const CAT_ICON_FAM := {
+	"pre": {"inf": "u_azap", "tank": "u_sipahi", "afv": "u_akinci", "arty": "u_darbzen", "air": "jet", "sub": "u_galiot"},
+	"ww1": {"inf": "rifle", "tank": "u_mark_tank", "afv": "u_armored_car", "arty": "arty", "air": "biplane", "sub": "u_dreadnought"},
+	"ww2": {"inf": "rifle", "tank": "tank", "afv": "afv", "arty": "arty", "air": "bomber", "sub": "sub"},
+	"cold": {"inf": "rifle", "tank": "tank", "afv": "afv", "arty": "arty", "air": "jet", "sub": "u_nuclear_sub"},
+}
+## Birlik kimliğinden simge: önce birliğe özel, sonra çağın sınıf simgesi, en sonda modern sınıf simgesi (Icons.pick dosya yoksa yedeğe düşer)
+const ITEM_ICON := {
+	"i_azap": "u_azap", "i_jani": "era_ott1520", "i_jani2": "era_ott1520", "i_lands": "u_pikeman", "i_tercio": "u_pikeman", "i_swiss": "u_pikeman",
+	"i_pike": "u_pikeman", "i_halb": "u_pikeman", "i_arqfr": "u_arquebus", "i_tofang": "u_arquebus", "i_mingf": "u_ming_cannon", "i_mughal": "u_arquebus",
+	"i_longbow": "horse_archer", "i_bow2": "horse_archer", "i_archer": "u_crossbow", "i_kizil": "u_azap", "i_levy": "u_azap", "i_tribal": "u_azap",
+	"i_ming": "u_azap", "i_ashig": "u_pikeman", "i_sword": "u_azap", "i_guard": "u_azap", "i_firelance": "u_arquebus",
+	"t_sipahi": "u_sipahi", "t_kapikulu": "u_kapikulu", "t_knight": "u_knight", "t_gend": "u_knight", "t_reiter": "u_kapikulu", "t_hussar": "u_hussar",
+	"t_kizilc": "u_sipahi", "t_ming_c": "u_sipahi", "t_samurai": "u_sipahi", "t_boyar": "u_kapikulu", "t_eleph": "u_elephant", "t_tribe_c": "u_sipahi",
+	"t_cata": "u_knight", "t_mamluk": "u_mamluk", "t_timur": "u_kapikulu", "t_keshik": "u_kapikulu", "t_druzhina": "u_knight", "t_lith": "u_knight",
+	"a_akinci": "u_akinci", "a_deli": "u_akinci", "a_hussar_l": "u_hussar", "a_strad": "u_akinci", "a_horsearch": "era_tim1380", "a_tatar": "era_tim1380",
+	"a_ming_l": "u_akinci", "a_rajput": "u_mamluk", "a_turkmen": "era_tim1380", "a_camel": "caravan",
+	"y_catap": "u_trebuchet", "y_bombard": "bombard", "y_darb": "u_darbzen", "y_basil": "u_basilisk", "y_culv": "u_darbzen", "y_falc": "u_darbzen",
+	"y_rocket": "u_ming_cannon", "y_fo": "u_ming_cannon", "y_ram": "u_siege_tower", "y_trebu": "u_trebuchet",
+	"s_dhow": "u_galiot", "s_galley": "galley", "s_galley2": "galley", "s_cog": "u_galiot", "s_carrack": "u_galiot", "s_kalite": "galley",
+	"s_galleass": "galley", "s_galleon": "u_galiot", "s_junk": "u_galiot",
+}
+
+
+static func cat_icon(k: String, fam: String = "") -> String:
+	if fam == "":
+		fam = load("res://scripts/eras.gd").family()
+	var Ic = load("res://scripts/icons.gd")
+	var want: String = String(CAT_ICON_FAM.get(fam, {}).get(k, CAT_ICON[k]))
+	return Ic.pick(want, CAT_ICON[k])
+
+
+static func item_icon(id: String) -> String:
+	var Ic = load("res://scripts/icons.gd")
+	var cat: String = ITEMS[id][1] if ITEMS.has(id) else "inf"
+	if ITEM_ICON.has(id):
+		return Ic.pick(ITEM_ICON[id], cat_icon(cat))
+	return cat_icon(cat)
+
+
 const CAT_UNIT := {"inf": "1.000 kişilik set", "tank": "adet", "afv": "adet", "arty": "adet", "air": "adet", "sub": "adet"}
 const CAT_STEP := {"inf": 5, "tank": 10, "afv": 20, "arty": 10, "air": 4, "sub": 1}
 # veri tablosundaki ortalama (1.000 asker başına) ağırlıklı referans: güç hesabında normalizasyon

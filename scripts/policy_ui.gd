@@ -260,7 +260,7 @@ func _tab_buy() -> void:
 		var key2: String = k
 		if Arsenal.list_cat(key2).is_empty():
 			continue
-		var cb := TK.button(Arsenal.cat_name(key2), "gold" if cat == key2 else "ghost", CAT_ICON[key2], Vector2(0, 52), 14)
+		var cb := TK.button(Arsenal.cat_name(key2), "gold" if cat == key2 else "ghost", Arsenal.cat_icon(key2), Vector2(0, 52), 14)
 		cb.pressed.connect(func():
 			ui._click()
 			cat = key2
@@ -322,7 +322,7 @@ func _buy_policy(c) -> void:
 			continue
 		var lvl: float = c.pri.get(key, 1.0)
 		var name: String = ["Düşük", "Normal", "Yüksek"][0 if lvl < 0.8 else (1 if lvl < 1.6 else 2)]
-		var b := TK.button("%s: %s" % [Arsenal.cat_name(key), name], "ghost", CAT_ICON[key], Vector2(0, 52), 14)
+		var b := TK.button("%s: %s" % [Arsenal.cat_name(key), name], "ghost", Arsenal.cat_icon(key), Vector2(0, 52), 14)
 		b.pressed.connect(func():
 			ui._click()
 			var cur: float = c.pri.get(key, 1.0)
@@ -345,6 +345,12 @@ func _item_row(c, id: String, step: int) -> Control:
 	var h := HBoxContainer.new()
 	h.add_theme_constant_override("separation", 14)
 	pc.add_child(h)
+	var iiv := TK.IconView.new()
+	iiv.icon = Arsenal.item_icon(id)
+	iiv.color = Color.WHITE
+	iiv.custom_minimum_size = Vector2(44, 44)
+	iiv.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+	h.add_child(iiv)
 	h.add_child(_stars(Arsenal.tier_of(id)))
 	var v := VBoxContainer.new()
 	v.size_flags_horizontal = Control.SIZE_EXPAND_FILL
@@ -450,7 +456,7 @@ func _tab_inventory() -> void:
 		var hh := HBoxContainer.new()
 		hh.add_theme_constant_override("separation", 12)
 		var iv := TK.IconView.new()
-		iv.icon = CAT_ICON[row["cat"]]
+		iv.icon = Arsenal.cat_icon(row["cat"])
 		iv.color = Color.WHITE
 		iv.custom_minimum_size = Vector2(38, 38)
 		iv.size_flags_vertical = Control.SIZE_SHRINK_CENTER
@@ -464,7 +470,12 @@ func _tab_inventory() -> void:
 		for id in row["items"]:
 			var r := HBoxContainer.new()
 			r.add_theme_constant_override("separation", 12)
-			r.add_child(TK.spacer(38, 0))
+			var riv := TK.IconView.new()
+			riv.icon = Arsenal.item_icon(id)
+			riv.color = Color.WHITE
+			riv.custom_minimum_size = Vector2(34, 34)
+			riv.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+			r.add_child(riv)
 			r.add_child(_stars(Arsenal.tier_of(id)))
 			var nm := TK.t(Arsenal.name_of(id), "body", TK.TEXT)
 			nm.size_flags_horizontal = Control.SIZE_EXPAND_FILL
