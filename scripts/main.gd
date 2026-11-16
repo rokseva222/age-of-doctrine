@@ -1,6 +1,8 @@
 extends Node
 ## Oyun denetleyicisi: açılış → ana menü → ülke seçimi → oyun akışını yönetir; harita, arayüz ve ses arasında köprüdür.
 
+const Icons = preload("res://scripts/icons.gd")
+const SceneArt = preload("res://scripts/scene_art.gd")
 const TK = preload("res://scripts/theme_kit.gd")
 const GS = preload("res://scripts/game_state.gd")
 const MapView = preload("res://scripts/map_view.gd")
@@ -1014,10 +1016,10 @@ func _on_un_vote_card() -> void:
 		if r.get("ok", false):
 			ui.show_un_result(r)
 	ui.show_dialog("BM oylaması", body + "\n\nOyun, ilişkilerini etkiler.", [
-		{"text": "Lehte oy ver", "cb": func(): cast.call(1), "kind": "good"},
-		{"text": "Aleyhte oy ver", "cb": func(): cast.call(0), "kind": "danger"},
-		{"text": "Çekimser", "cb": func(): cast.call(-1)},
-	], "", "")
+		{"text": "Lehte oy ver", "cb": func(): cast.call(1), "kind": "good", "icon": Icons.pick("vote_yes", "check")},
+		{"text": "Aleyhte oy ver", "cb": func(): cast.call(0), "kind": "danger", "icon": Icons.pick("vote_no", "x")},
+		{"text": "Çekimser", "cb": func(): cast.call(-1), "icon": Icons.pick("vote_abstain", "")},
+	], SceneArt.un_scene(String(gs.un_pending.get("kind", ""))), "")
 
 
 func _on_alliance_proposal(from_country: int) -> void:

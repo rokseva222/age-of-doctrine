@@ -663,9 +663,9 @@ func show_province(pid: int, selected_army) -> void:
 			else:
 				_abtn("İttifak teklif et", "blue", "handshake", "alliance", p.owner)
 				if gs.has_passage(me, p.owner):
-					_abtn("Geçiş izni: %d hafta" % (int(gs.countries[p.owner].passage[me]) - gs.turn), "", "hourglass", "none", 0, false)
+					_abtn("Geçiş izni: %d hafta" % (int(gs.countries[p.owner].passage[me]) - gs.turn), "", Icons.pick("passage_grant", "hourglass"), "none", 0, false)
 				else:
-					_abtn("Geçiş izni iste", "", "flag", "ask_passage", p.owner)
+					_abtn("Geçiş izni iste", "", Icons.pick("passage_grant", "flag"), "ask_passage", p.owner)
 	if not oc.is_rebel:
 		_abtn("İlişkiler", "ghost", "handshake", "relations", p.owner)
 	if army != null and army.owner == me:
@@ -756,7 +756,7 @@ func show_dialog(title: String, body: String, buttons: Array, scene: String = ""
 		sh.body.add_child(SceneArt.make(scene, 150))
 	sh.add_text(body)
 	for bd in buttons:
-		sh.add_button(bd.text, bd.cb, bd.get("kind", ""), true, "", 160)
+		sh.add_button(bd.text, bd.cb, bd.get("kind", ""), true, String(bd.get("icon", "")), 160)
 	if sfx != null:
 		sfx.play("news")
 
@@ -1456,7 +1456,8 @@ func show_un_result(r: Dictionary) -> void:
 		return
 	var title: String = Loc.t("Önerge kabul edildi") if r.passed else Loc.t("Önerge reddedildi")
 	var sh = _open_sheet(title, 620, false, true, "Birleşmiş Milletler")
-	sh.body.add_child(UNArt.make(r, 210))
+	sh.body.add_child(SceneArt.make(SceneArt.un_scene(String(r.get("kind", ""))), 110))
+	sh.body.add_child(UNArt.make(r, 190))
 	sh.add_text(String(r.text))
 	sh.add_button("Tamam", func(): pass, "good" if r.passed else "", true, "", 170)
 	if sfx != null:

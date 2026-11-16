@@ -1,4 +1,5 @@
 extends RefCounted
+const Icons = preload("res://scripts/icons.gd")
 const Loc = preload("res://scripts/loc.gd")
 ## Politika paneli: bütçe, doktrin, isimli silah alımı, envanter, ticaret/ambargo ve cepheler.
 
@@ -429,9 +430,11 @@ func _tab_inventory() -> void:
 	content.add_child(_wrap("Hedef asker sayısı, savunma bütçesi ve savaş durumuna göre belirlenir; fark kendiliğinden askere alınır ve cephelere dağıtılır.", "small", TK.FAINT))
 	Macro._now = gs.turn
 	if Macro.mob_active(c):
+		content.add_child(SceneArt.make("mobilize", 110))
 		content.add_child(_wrap("Seferberlik sürüyor: %d hafta kaldı. Asker hedefi x1.4, işe alma hızı x2.5." % (c.mob_until - gs.turn), "body", TK.GREEN))
 	else:
-		var mb := TK.button("Seferberlik ilan et  (%s)" % Macro.money(Macro.mob_cost(c)), "danger", "sword", Vector2(0, 60), 16)
+		content.add_child(SceneArt.make("mobilize", 96))
+		var mb := TK.button("Seferberlik ilan et  (%s)" % Macro.money(Macro.mob_cost(c)), "danger", Icons.pick("mobilize", "sword"), Vector2(0, 60), 16)
 		mb.pressed.connect(func():
 			ui._click()
 			var er: String = Macro.mobilize(gs, c)

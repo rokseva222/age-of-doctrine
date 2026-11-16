@@ -7,8 +7,11 @@ const TK = preload("res://scripts/theme_kit.gd")
 const Pixel = preload("res://scripts/pixel_scenes.gd")
 
 const IMG_ALIAS := {"summit": "alliance", "nuke": "war", "embargo": "sanction"}
-const FIRE := ["assault", "barrage", "blitz", "naval", "air", "missile", "paradrop", "special", "landing", "war"]
-const SCAN := ["cyber", "spy"]
+## Dosya (jpg) varsa onun adı IMG_ALIAS ile, yoksa kodla çizilen sahne PX_ALIAS ile seçilir
+const PX_ALIAS := {"era_ww2": "blitz", "era_cw62": "missile", "era_alt": "spy", "era_modern": "missile", "era_story": "alliance",
+	"un_ceasefire": "peace", "un_sanction": "sanction", "un_aid": "trade", "un_probe": "spy"}
+const FIRE := ["era_ww1", "era_ww2", "crisis", "assault", "barrage", "blitz", "naval", "air", "missile", "paradrop", "special", "landing", "war"]
+const SCAN := ["cyber", "spy", "un_probe", "era_alt"]
 static var _tex_cache: Dictionary = {}
 
 var kind := "assault"
@@ -37,6 +40,25 @@ static func make(k: String, h: float = 150.0) -> Control:
 	return sc
 
 
+## BM önerge türü -> sahne
+static func un_scene(k: String) -> String:
+	match k:
+		"ceasefire", "peace_keep", "guarantee": return "un_ceasefire"
+		"sanction", "embargo", "attack": return "un_sanction"
+		"aid", "rebuild", "develop": return "un_aid"
+		"probe", "disarm": return "un_probe"
+	return "un_hall"
+
+
+## Dönem -> afiş sahnesi
+static func era_scene(id: String) -> String:
+	if id.begins_with("alt_"):
+		return "era_alt"
+	if ["ww1", "ww2", "cw62", "ott1520", "tim1380"].has(id):
+		return "era_" + id
+	return "era_modern"
+
+
 static func for_op(op: String) -> String:
 	match op:
 		"assault", "barrage", "cyber", "blitz", "air", "naval", "missile", "paradrop", "special", "landing":
@@ -63,7 +85,7 @@ func _draw() -> void:
 	if tx != null:
 		_draw_image(tx)
 	else:
-		var k: String = IMG_ALIAS.get(kind, kind)
+		var k: String = PX_ALIAS.get(kind, IMG_ALIAS.get(kind, kind))
 		_px.draw(self, k, t)
 	_draw_frame()
 

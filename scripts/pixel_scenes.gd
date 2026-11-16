@@ -46,6 +46,18 @@ const DOVE_DN := [
 	".wwwwww.",
 	"wwwwww..",
 ]
+const HORSEMAN := [
+	"..........ww..",
+	".........wwww.",
+	".........eeee.",
+	"........rrrr..",
+	"..mmmmmmrrmmm.",
+	".mmmmmmmmmmmmm",
+	".mmmmmmmmmmmmm",
+	".mm.mm...mm.mm",
+	".mm.mm...mm.mm",
+	".kk.kk...kk.kk",
+]
 const MAN := [
 	"..kkkk..",
 	".kkkkkk.",
@@ -108,6 +120,13 @@ func draw(ctrl: Control, kind: String, time: float) -> void:
 		"alliance": _alliance()
 		"war": _war()
 		"peace": _peace()
+		"era_ott1520": _horde(false)
+		"era_tim1380": _horde(true)
+		"era_ww1": _trench()
+		"un_hall": _hall()
+		"mobilize": _mobilize()
+		"border": _border()
+		"crisis": _crisis()
 		_: _assault()
 
 
@@ -645,3 +664,174 @@ func _peace() -> void:
 	R(dx - 10, dy + 7, 10, 2, "g")
 	R(dx - 10, dy + 5, 3, 2, "G")
 	R(dx - 5, dy + 9, 3, 2, "G")
+
+
+# ------------------------------------------------------------ yeni kipler: dönem, BM, seferberlik, sınır, kriz
+
+func _horse(x: float, y: float, flag: String) -> void:
+	var yo: int = 1 if (fr / 2) % 2 == 0 else 0
+	spr(HORSEMAN, x, y - yo)
+	R(x + 12, y - 8 - yo, 1, 9, "k")                       # mızrak
+	var wv: int = int(sin(t * 6.0 + x) * 1.5)
+	R(x + 13, y - 8 - yo, 6, 3, flag)                      # sancak
+	R(x + 17 + wv, y - 7 - yo, 2, 2, flag)
+
+
+## Osmanlı (timur=false: sıcak gün batımı, kubbe/minare, kızıl sancak) ve Timur (true: soğuk şafak, karlı dağ, çadır, mavi sancak)
+func _horde(timur: bool) -> void:
+	if timur:
+		sky(["n", "t", "c", "y"])
+		stars(14, int(gy * 0.5), 5.0)
+		hills(gy - 4, "l", 16, 0.035, 2.0)
+		hills(gy, "s", 11, 0.05, 4.0)
+		ground("H")
+		for i in 3:
+			var yx: float = pw * (0.16 + i * 0.3)
+			R(yx, gy - 5, 12, 5, "w")                      # yurt gövdesi
+			R(yx + 2, gy - 8, 8, 3, "w")
+			R(yx + 4, gy - 10, 4, 2, "e")
+			R(yx + 5, gy - 2, 2, 2, "k")
+			smoke(yx + 5, gy - 10, 3, "l", 12)
+	else:
+		sky(["p", "r", "o", "y"])
+		circ(pw * 0.72, gy - 6, 8, "y")
+		hills(gy, "p", 6, 0.07, 1.0)
+		ground("e")
+		for i in 4:                                         # kubbe + minare silüeti
+			var bx: float = pw * (0.08 + i * 0.26)
+			circ(bx, gy - 7, 7, "k")
+			R(bx - 7, gy - 7, 15, 8, "k")
+			R(bx + 9, gy - 20, 2, 21, "k")
+			R(bx + 9, gy - 23, 2, 3, "r")
+			R(bx + 8, gy - 12, 4, 1, "k")
+	for i in 5:
+		var hx: float = wrapx(11.0 + (i % 2) * 2.0, i * pw / 5.0, pw, 40.0)
+		var hy: float = gy + 4 + (i % 3) * 6
+		dust_trail(hx, hy + 9, 3)
+		_horse(hx, hy, "b" if timur else "r")
+	for i in 6:
+		var f: float = fposmod(t * 0.3 + i * 0.17, 1.0)
+		R(fposmod(i * 41.0 + t * 4.0, pw), gy + 2 + f * (ph - gy - 4), 2, 1, A("e", 0.5))
+
+
+func _trench() -> void:
+	sky(["d", "s", "l"])
+	hills(gy - 2, "d", 5, 0.08, 3.0)
+	ground("m")
+	for i in 5:                                            # şarapnel çukurları
+		R(pw * (0.07 + i * 0.2), gy + 3 + (i % 2) * 2, 10, 2, "k")
+	for x in range(0, pw, 9):                              # dikenli tel
+		R(x, gy - 4, 1, 6, "k")
+		R(x, gy - 3, 9, 1, "d")
+	R(0, gy + 11, pw, 9, "k")                              # siper hendeği
+	for x in range(0, pw, 6):
+		R(x, gy + 8, 4, 3, "m")                            # kum torbaları
+	for i in 6:
+		var sx: float = 8 + i * (pw / 6.0)
+		if (fr / 3 + i) % 6 != 0:
+			spr(SOLDIER_A if i % 2 == 0 else SOLDIER_B, sx, gy + 4, false, PAL, 2)
+	for i in 3:
+		var age: float = fposmod(t * 0.45 + i * 0.33, 1.0)
+		boom(pw * (0.2 + i * 0.3), gy - 6, age * 1.4)
+	for i in 4:
+		var lx: float = fposmod(t * 40.0 + i * 37.0, pw)
+		R(lx, gy + 9, 2, 1, "y")                           # tüfek izi
+
+
+func _hall() -> void:
+	R(0, 0, pw, ph, "n")
+	for y in range(0, ph, 3):
+		R(0, y, pw, 3, PAL.n.lerp(PAL.k, float(y) / ph))
+	var cx: int = pw / 2
+	circ(cx, int(ph * 0.28), 11, "b")                      # arma yerine soyut küre
+	circ(cx, int(ph * 0.28), 9, "c")
+	for k in range(-8, 9, 4):
+		R(cx - 9, int(ph * 0.28) + k, 19, 1, "b")
+	R(cx, int(ph * 0.28) - 9, 1, 19, "b")
+	for i in 3:
+		R(cx - 14 - i * 4, int(ph * 0.28) + 12 + i * 2, 29 + i * 8, 1, A("C", 0.25 - i * 0.07))
+	for row in 4:                                          # koltuk yarım daireleri
+		var n: int = 14 + row * 6
+		for i in n:
+			var a: float = PI * (0.08 + 0.84 * float(i) / (n - 1))
+			var rx: float = cx - cos(a) * (pw * (0.22 + row * 0.085))
+			var ry: float = ph * 0.97 - sin(a) * (ph * (0.22 + row * 0.1))
+			var on: bool = fposmod(sin(i * 3.7 + row * 5.1) * 91.7, 1.0) < 0.55
+			R(rx, ry, 3, 2, "y" if (on and (fr / 4 + i + row) % 9 != 0) else "s")
+	R(cx - 6, int(ph * 0.58), 12, 4, "m")                  # kürsü
+	R(cx - 5, int(ph * 0.58) - 1, 10, 1, "y")
+
+
+func _mobilize() -> void:
+	sky(["d", "r", "o", "y"])
+	circ(pw * 0.8, gy - 4, 6, "y")
+	hills(gy + 1, "d", 6, 0.06, 2.0)
+	for i in 5:                                            # şehir silüeti
+		var bx: float = 4 + i * 11
+		R(bx, gy - 6 - (i % 3) * 4, 9, 12 + (i % 3) * 4, "k")
+		if (fr / 6 + i) % 3 == 0:
+			R(bx + 2, gy - 3, 2, 2, "y")
+	ground("d")
+	R(0, gy + 8, pw, 8, "m")                               # yol
+	for i in 9:
+		var sx: float = wrapx(9.0, i * 22.0, pw, 20.0)
+		spr(SOLDIER_A if (fr + i) % 2 == 0 else SOLDIER_B, sx, gy + 4 + (i % 2) * 8, false, PAL, 2)
+	var wv: int = int(sin(t * 5.0) * 1.5)                  # kızıl bayrak
+	R(pw * 0.5, gy - 14, 1, 24, "k")
+	R(pw * 0.5 + 1, gy - 14, 12 + wv, 7, "r")
+	R(pw * 0.5 + 5, gy - 12, 3, 3, "y")
+	dust_trail(pw * 0.7, gy + 18, 4)
+
+
+func _border() -> void:
+	sky(["n", "s", "l", "y"])
+	hills(gy, "s", 8, 0.05, 6.0)
+	ground("H")
+	R(0, gy + 6, pw, 3, "m")                               # sınır yolu
+	var cx: int = pw / 2
+	for k in 8:                                            # çizgili bariyer
+		R(cx - 22 + k * 6, gy + 3 + (1 if (fr / 8) % 2 == 0 and k == 7 else 0), 3, 2, "r" if k % 2 == 0 else "w")
+	R(cx - 24, gy - 2, 2, 12, "k")
+	R(cx + 24, gy - 2, 2, 12, "k")
+	for side in 2:                                         # iki gözetleme kulesi
+		var tx: float = 10 + side * (pw - 30)
+		R(tx, gy - 14, 12, 4, "d")
+		R(tx + 1, gy - 10, 2, 16, "k")
+		R(tx + 9, gy - 10, 2, 16, "k")
+		var lit: bool = (fr / 5 + side) % 2 == 0
+		R(tx + 3, gy - 13, 6, 2, "y" if lit else "o")
+		if lit:
+			R(tx + (11 if side == 0 else -12), gy - 12, 12, 1, A("y", 0.4))
+	for i in 4:
+		spr(SOLDIER_A, cx - 46 + i * 9, gy + 9 + (i % 2) * 4, false, PAL, 2)
+		spr(SOLDIER_B, cx + 22 + i * 9, gy + 9 + (i % 2) * 4, true, PAL, 2)
+	for x in range(0, pw, 5):
+		R(x, gy + 11, 1, 3, "k")
+	R(0, gy + 12, pw, 1, "d")
+
+
+func _crisis() -> void:
+	sky(["k", "p", "r"])
+	stars(8, int(gy * 0.4), 9.0)
+	circ(pw * 0.3, int(gy * 0.35), 5, A("o", 0.45))
+	for i in 8:
+		var bx: float = i * (pw / 8.0)
+		var bh: int = 14 + int(fposmod(sin(i * 5.3) * 33.1, 1.0) * 22)
+		R(bx, gy - bh, pw / 8 - 1, bh + 8, "k")
+		for wy in range(gy - bh + 3, gy, 5):
+			if fposmod(sin(i * 7.0 + wy) * 55.5, 1.0) < 0.35 and (fr / 6 + wy) % 4 != 0:
+				R(bx + 3, wy, 2, 2, "y")
+	ground("k")
+	R(0, gy - 3, pw, 4, A("r", 0.45 + 0.15 * sin(t * 3.0)))
+	for i in [1, 3, 5, 7]:                                 # yanan çatılar (bina yüksekliğiyle aynı formül)
+		var bh: int = 14 + int(fposmod(sin(i * 5.3) * 33.1, 1.0) * 22)
+		var fx: float = i * (pw / 8.0) + 4
+		var fh: int = 3 + int(fposmod(t * 5.0 + i, 3.0))
+		R(fx, gy - bh - fh, 4, fh, "o")
+		R(fx + 1, gy - bh - fh - 2, 2, 3, "y")
+		smoke(fx + 2, gy - bh - 2, 5, "s", 40)
+	for i in 14:                                           # kül/kıvılcım
+		var f: float = fposmod(t * 0.25 + i * 0.13, 1.0)
+		R(fposmod(i * 23.0 + sin(t + i) * 4.0, pw), f * ph, 1, 1, A("o", 1.0 - f))
+	if sin(t * 1.7) > 0.93:
+		R(0, 0, pw, ph, A("w", 0.12))

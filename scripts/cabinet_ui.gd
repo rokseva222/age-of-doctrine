@@ -6,18 +6,30 @@ const TK = preload("res://scripts/theme_kit.gd")
 const Cabinet = preload("res://scripts/cabinet.gd")
 const Sil = preload("res://scripts/silhouette.gd")
 const Names = preload("res://scripts/names.gd")
+const SceneArt = preload("res://scripts/scene_art.gd")
 
 const STAT_ICON := {"mit": "shield", "g": "coins", "stab": "stability", "cyb": "hacker", "ind": "industry", "log": "truck", "tech": "flask",
 	"troops": "infantry", "unrest": "unrest", "aggr": "flag", "dev": "city", "nbstab": "spy", "elect": "ballot"}
 
 
 ## Pencereyi açar ve sheet nesnesini döndürür (closed sinyali beklenebilir).
+static func _scene_for(card: Dictionary, role: String) -> String:
+	var id: String = String(card.get("id", ""))
+	if id.begins_with("crisis_"):
+		return "crisis"
+	if id.contains("border"):
+		return "border"
+	return {"def": "assault", "for": "alliance", "fin": "trade", "int": "spy", "spy": "spy", "trd": "trade",
+		"amb": "alliance", "hlt": "crisis", "ele": "peace", "spt": "peace"}.get(role, "alliance")
+
+
 static func open(ui, gs, card: Dictionary, rng: RandomNumberGenerator, on_fatal: Callable):
 	var me = gs.countries[gs.player]
 	var role: String = card.role
 	var mn: Array = Cabinet.minister_of(me, role, gs.turn)
 	var title: String = Cabinet.ROLE_TITLE[role]
 	var sh = ui._open_sheet(card.get("title", "Kabine toplantısı"), 980, false, false, "%s  /  %s" % [Names.date_string(gs.turn), me.name])
+	sh.body.add_child(SceneArt.make(_scene_for(card, role), 96))      # üstte animasyonlu piksel-art afiş
 	var row := HBoxContainer.new()
 	row.add_theme_constant_override("separation", 26)
 	sh.body.add_child(row)
