@@ -4,6 +4,7 @@ extends RefCounted
 const TK = preload("res://scripts/theme_kit.gd")
 const Macro = preload("res://scripts/macro.gd")
 const Icons = preload("res://scripts/icons.gd")
+const Formables = preload("res://scripts/formables.gd")
 
 const FILTERS := ["Komşular", "Müttefikler", "Savaşta", "Tümü"]
 static var _filter := 0
@@ -118,6 +119,8 @@ static func _list(ui, gs) -> void:
 			ui._click()
 			_detail(ui, gs, cid))
 		box.add_child(rb)
+	if not Formables.available(gs).is_empty():
+		sh.add_button("Ülke formla", func(): ui.FormationUI.open(ui, gs), "gold", true, "flag", 170)
 	sh.add_button("Kapat", func(): pass, "ghost", true, "", 150)
 
 

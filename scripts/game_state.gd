@@ -3077,6 +3077,7 @@ func to_dict() -> Dictionary:
 			"aggr": c.aggression, "enemies": c.enemies, "truce": c.truce, "allies": c.allies, "rel": c.relation, "pass": c.passage,
 			"rebel": c.is_rebel, "born": c.born, "leader": c.leader, "sanc": c.sanction_until, "macro": Macro.to_dict(c), "pop": c.pop, "gdp": c.gdp,
 			"name_en": c.name_en, "a3": c.a3, "cont": c.continent, "tech": c.tech_set,
+			"fm": c.formed, "fs": c.flag_spec,
 		})
 	d["countries"] = cs
 	var arms: Array = []
@@ -3140,6 +3141,10 @@ func from_dict(d: Dictionary) -> bool:
 			c.color2 = Color(r.color2)
 			c.color3 = Color(r.color3)
 			c.flag_pattern = r.pattern
+		c.formed = str(r.get("fm", ""))
+		c.flag_spec = str(r.get("fs", ""))
+		if c.formed != "":
+			c.name = r.name
 		c.capital = r.capital
 		c.gold = r.gold
 		c.alive = r.alive

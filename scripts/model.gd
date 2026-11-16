@@ -60,6 +60,8 @@ class Country:
 	var color2 := Color.WHITE
 	var color3 := Color.WHITE
 	var flag_pattern := 0
+	var formed := ""                         # formlanan devletin kimliği (formables.json)
+	var flag_spec := ""                      # formlanınca geçerli bayrak tanımı
 	var capital := -1
 	var gold := 0.0
 	var is_player := false

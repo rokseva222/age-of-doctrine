@@ -10,6 +10,8 @@ const Carriers = preload("res://scripts/carriers.gd")
 const Missions = preload("res://scripts/missions.gd")
 const Emblem = preload("res://scripts/emblem.gd")
 const DiplomacyUI = preload("res://scripts/diplomacy_ui.gd")
+const FormationUI = preload("res://scripts/formation_ui.gd")
+const Formables = preload("res://scripts/formables.gd")
 const PolicyUI = preload("res://scripts/policy_ui.gd")
 const SceneArt = preload("res://scripts/scene_art.gd")
 const Sheet = preload("res://scripts/sheet.gd")
@@ -679,6 +681,8 @@ func show_province(pid: int, selected_army) -> void:
 					_abtn("Geçiş izni iste", "", Icons.pick("passage_grant", "flag"), "ask_passage", p.owner)
 	if not oc.is_rebel:
 		_abtn("Diplomasi", "blue", Icons.pick("diplomacy", "handshake"), "diplomacy", p.owner)
+	if p.owner == me and not Formables.available(gs).is_empty():
+		_abtn("Ülke formla", "gold", "flag", "form", 0)
 	if army != null and army.owner == me:
 		if selected_army == army:
 			if not army.path.is_empty():

@@ -17,7 +17,13 @@ static var _tex: Dictionary = {}           # iso -> Texture2D (gerçek bayrak g�
 
 
 ## Gerçek ülke bayrağı görseli (assets/flags, flag-icons, MIT). Tarihî dönem ve isyancı bayrakları kodla çizilir.
+static func clear_cache() -> void:
+	_cache.clear()
+
+
 static func _texture_for(c):
+	if c.flag_spec != "" and not c.is_rebel:
+		return null
 	if c.is_rebel or (not era_specs.is_empty() and era_specs.has(c.name_en)):
 		return null
 	var k: String = _key(c).to_lower()
@@ -162,6 +168,11 @@ static func _generated(c) -> Array:
 
 
 static func layers_for(c) -> Array:
+	if c.flag_spec != "" and not c.is_rebel:
+		var fk: String = "F:" + c.flag_spec
+		if not _cache.has(fk):
+			_cache[fk] = _parse(c.flag_spec)
+		return _cache[fk]
 	if not era_specs.is_empty() and era_specs.has(c.name_en) and not c.is_rebel:
 		var ek: String = "E:" + c.name_en
 		if not _cache.has(ek):

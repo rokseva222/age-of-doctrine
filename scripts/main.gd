@@ -801,6 +801,8 @@ func _on_ui_action(act: String, arg) -> void:
 			ui.show_relations(int(arg))
 		"diplomacy":
 			ui.DiplomacyUI.open(ui, gs, int(arg))
+		"form":
+			ui.FormationUI.open(ui, gs)
 		"focus_country":
 			var c = gs.countries[arg]
 			map.focus_country(arg)
