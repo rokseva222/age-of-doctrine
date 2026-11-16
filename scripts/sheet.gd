@@ -103,10 +103,23 @@ func _do_refit() -> void:
 	if not is_inside_tree() or scroll == null:
 		return
 	var vp := get_viewport_rect().size
+	_wrap_long_labels(body, panel.custom_minimum_size.x - 60.0)
 	var chrome: float = panel.get_combined_minimum_size().y - scroll.get_combined_minimum_size().y
 	var avail: float = maxf(120.0, vp.y - 24.0 - chrome)
 	var want: float = maxf(_tall_min, body.get_combined_minimum_size().y)
 	scroll.custom_minimum_size = Vector2(0, minf(want, avail))
+
+
+## Koruma: sarmalanmamış uzun bir yazı paneli ekrandan taşırmasın (gövdedeki tüm Label'lar taranır).
+static func _wrap_long_labels(n: Node, limit: float) -> void:
+	for ch in n.get_children():
+		if ch is Label and ch.autowrap_mode == TextServer.AUTOWRAP_OFF and ch.get_minimum_size().x > limit:
+			ch.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+			ch.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		elif ch is RichTextLabel and not ch.fit_content and ch.get_minimum_size().x > limit:
+			ch.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		if not (ch is ScrollContainer):
+			_wrap_long_labels(ch, limit)
 
 
 ## Başlığın soluna renkli ikon koyar (yeni ikon yoksa fallback kullanılır; ikisi de yoksa hiçbir şey eklemez).

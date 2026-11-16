@@ -187,7 +187,9 @@ static func open_settings(parent: Node, on_change: Callable, sfx = null) -> void
 			changed.call())
 	frefresh.call()
 	sh.body.add_child(frow)
-	sh.body.add_child(TK.t("Kapalı: tüm orduları görürsün. Orta: yalnızca topraklarına ve müttefiklerine yakın düşman ordularını görürsün. Tam: yalnızca kendi ve müttefik ordularını görürsün; düşman ancak senin topraklarına girince ya da ordunla aynı eyalete gelince görünür.", "small", TK.FAINT))
+	var fog_hint := TK.t("Kapalı: tüm orduları görürsün. Orta: yalnızca topraklarına ve müttefiklerine yakın düşman ordularını görürsün. Tam: yalnızca kendi ve müttefik ordularını görürsün; düşman ancak senin topraklarına girince ya da ordunla aynı eyalete gelince görünür.", "small", TK.FAINT)
+	fog_hint.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	sh.body.add_child(fog_hint)
 	sh.add_button("Emeği Geçenler", func(): open_credits(parent), "ghost", true, "", 220)
 	sh.add_button("Tamam", func(): pass, "gold", true, "check", 180)
 
