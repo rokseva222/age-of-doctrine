@@ -296,7 +296,7 @@ static func goal_reward(kind: String) -> int:
 ## Zafer ödülü. key: "free" / senaryo kimliği / çağ kimliği. Dönüş: kazanılan AP.
 static func on_victory(key: String, difficulty: int) -> int:
 	var base: int = WIN_FREE
-	if key == "ww1" or key == "ww2" or key == "cw62" or key == "indep":
+	if key == "ww1" or key == "ww2" or key == "cw62" or key == "indep" or key == "career":
 		base = WIN_ERA
 	elif key != "free" and key != "":
 		base = WIN_SCENARIO

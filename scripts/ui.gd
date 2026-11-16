@@ -20,6 +20,8 @@ const Goals = preload("res://scripts/goals.gd")
 const Objectives = preload("res://scripts/objectives.gd")
 const GrandOp = preload("res://scripts/grand_op.gd")
 const IndepUI = preload("res://scripts/independence_ui.gd")
+const CareerUI = preload("res://scripts/career_ui.gd")
+const Career = preload("res://scripts/career.gd")
 const Independence = preload("res://scripts/independence.gd")
 const Icons = preload("res://scripts/icons.gd")
 const Chokepoints = preload("res://scripts/chokepoints.gd")
@@ -60,6 +62,7 @@ var topbar: PanelContainer
 var ticker: Button
 var side: VBoxContainer
 var _side_btns: Array = []
+var career_btn: Button = null
 var card: PanelContainer
 var toast_panel: PanelContainer
 var toast_lbl: Label
@@ -442,13 +445,16 @@ func _build_side() -> void:
 	side.offset_top = BAR_H + TICK_H + 14
 	side.add_theme_constant_override("separation", 6)
 	root.add_child(side)
-	var defs := [["tank", "policy"], ["globe", "world"], ["swords", "wars"], ["handshake", "rel"], ["target", "capital"], ["map", "fit"]]
+	var defs := [["crown", "career"], ["tank", "policy"], ["globe", "world"], ["swords", "wars"], ["handshake", "rel"], ["target", "capital"], ["map", "fit"]]
 	for d in defs:
 		var b := TK.icon_button(d[0], 70, "")
 		b.add_theme_stylebox_override("normal", TK.box(Color(TK.PANEL.r, TK.PANEL.g, TK.PANEL.b, 0.96), TK.LINE, 3, 1, 1))
 		b.pressed.connect(_side_pressed.bind(d[1]))
 		side.add_child(b)
 		_side_btns.append(b)
+		if d[1] == "career":
+			career_btn = b
+			b.visible = false
 	get_viewport().size_changed.connect(_fit_side)
 	_fit_side.call_deferred()
 
@@ -468,7 +474,9 @@ func _fit_side() -> void:
 
 func _side_pressed(key: String) -> void:
 	_click()
-	if key == "policy":
+	if key == "career":
+		show_career()
+	elif key == "policy":
 		PolicyUI.open(self, gs, 0)
 	elif key == "world":
 		show_world_panel(0)
@@ -883,6 +891,7 @@ func show_pause_menu() -> void:
 		["Ayarlar", "", "gear", func(): Info.open_settings(root, func(): settings_changed.emit(), sfx)],
 		["Hedefler ve başarımlar", "", "trophy", func(): show_goals()],
 		["Hareket paneli", "", "flag", func(): show_indep()],
+		["Divan (Hikâye Modu)", "", "crown", func(): show_career()],
 		["Savaş Odası", "", "swords", func(): WarRoomUI.open(self)],
 		["Siyasi sistem", "", "gavel", func(): show_politics()],
 		["Meydan okuma durumu", "", "target", func(): show_daily()],
@@ -894,6 +903,8 @@ func show_pause_menu() -> void:
 	]
 	for it in items:
 		if it[0] == "Hareket paneli" and not Independence.active(gs):
+			continue
+		if it[0] == "Divan (Hikâye Modu)" and not Career.active(gs):
 			continue
 		if it[0] == "Meydan okuma durumu" and not Daily.active(gs):
 			continue
@@ -1148,6 +1159,19 @@ func show_relations(cid: int) -> void:
 
 
 # ------------------------------------------------------------------ Bağımsızlık Yolu paneli
+
+func show_career() -> void:
+	if gs == null or not Career.active(gs):
+		return
+	var sh = _open_sheet(gs.countries[gs.player].name, 880, true, true, "Hikâye Modu  /  Divan")
+	sh.set_icon("mode_story", "crown")
+	CareerUI.fill_panel(sh, gs, toast, func():
+		sh.close()
+		show_career(), func(pid: int):
+			hide_dialog()
+			action.emit("focus_city", pid))
+	sh.add_button("Kapat", func(): pass, "ghost", true, "", 150)
+
 
 func show_indep() -> void:
 	if gs == null or not Independence.active(gs):
@@ -1805,5 +1829,7 @@ func set_hud_visible(v: bool) -> void:
 	topbar.visible = v
 	ticker.visible = v
 	side.visible = v
+	if career_btn != null:
+		career_btn.visible = v and gs != null and Career.active(gs)
 	if not v:
 		card.visible = false

@@ -32,6 +32,8 @@ const Notifier = preload("res://scripts/notifier.gd")
 const Saves = preload("res://scripts/saves.gd")
 const AP = preload("res://scripts/ap.gd")
 const Independence = preload("res://scripts/independence.gd")
+const Career = preload("res://scripts/career.gd")
+const CareerUI = preload("res://scripts/career_ui.gd")
 const Daily = preload("res://scripts/daily.gd")
 const Politics = preload("res://scripts/politics.gd")
 const ApUi = preload("res://scripts/ap_ui.gd")
@@ -109,6 +111,7 @@ func _ready() -> void:
 	menu.play_pressed.connect(_to_select)
 	menu.era_chosen.connect(_start_era)
 	menu.indep_start.connect(_start_indep)
+	menu.career_era.connect(_career_pick_era)
 	menu.daily_start.connect(_start_daily)
 	menu.continue_pressed.connect(_on_continue)
 	menu.back_pressed.connect(_back_to_menu)
@@ -207,6 +210,7 @@ func _attach_gs(g) -> void:
 	gs.un_vote_card.connect(_on_un_vote_card)
 	gs.alliance_proposal.connect(_on_alliance_proposal)
 	gs.indep_card.connect(_on_indep_card)
+	gs.career_card.connect(_on_career_card)
 	gs.pol_card.connect(_on_pol_card)
 	gs.wroom_card.connect(_on_wroom_card)
 	selected_pid = -1
@@ -220,7 +224,7 @@ func _detach_gs() -> void:
 	playing = false
 	timer.stop()
 	if gs != null:
-		for pair in [[gs.news_posted, _on_news], [gs.state_changed, _on_state_changed], [gs.peace_proposal, _on_peace_proposal], [gs.game_over, _on_game_over], [gs.ally_call, _on_ally_call], [gs.un_vote_card, _on_un_vote_card], [gs.alliance_proposal, _on_alliance_proposal], [gs.indep_card, _on_indep_card], [gs.pol_card, _on_pol_card], [gs.wroom_card, _on_wroom_card]]:
+		for pair in [[gs.news_posted, _on_news], [gs.state_changed, _on_state_changed], [gs.peace_proposal, _on_peace_proposal], [gs.game_over, _on_game_over], [gs.ally_call, _on_ally_call], [gs.un_vote_card, _on_un_vote_card], [gs.alliance_proposal, _on_alliance_proposal], [gs.indep_card, _on_indep_card], [gs.career_card, _on_career_card], [gs.pol_card, _on_pol_card], [gs.wroom_card, _on_wroom_card]]:
 			if pair[0].is_connected(pair[1]):
 				pair[0].disconnect(pair[1])
 	ui.hide_dialog()
@@ -394,6 +398,7 @@ func _load_game(slot: int = 0) -> void:
 		AP.cur_key = "daily"
 	ui.toast("Oyun yüklendi: %s" % Names.date_string(gs.turn))
 	Independence.resume(gs)
+	Career.resume(gs)
 
 
 # ------------------------------------------------------------------ zaman
@@ -901,6 +906,76 @@ func _on_indep_card() -> void:
 			Independence.choose(gs, idx)
 			ui.refresh_top(), "kind": "good" if i == 0 else ""})
 	ui.show_dialog(String(pend.get("title", "")), String(pend.get("body", "")), btns, "", String(pend.get("icon", "")))
+
+
+# ------------------------------------------------------------------ Hikâye Modu (kariyer)
+
+## Çağ seçildi: o çağın dünyası kurulur (oyun başlamadan), sonra hükümdar/tımar/karakter seçimi
+func _career_pick_era(era_id: String) -> void:
+	_detach_gs()
+	var g = GS.new()
+	if era_id != "":
+		Eras.prepare(era_id)
+		g.new_world(world_rng.randi() % 1000000)
+		Eras.restructure(g, era_id)
+	else:
+		Eras.prepare("")
+		g.new_world(world_rng.randi() % 1000000)
+	_attach_gs(g)
+	_era_look(era_id)
+	CareerUI.open_setup(menu.root if "root" in menu else self, gs, era_id, func(p: Dictionary): _start_career(era_id, p), func(): pass)
+
+
+func _start_career(era_id: String, params: Dictionary) -> void:
+	map.set_highlight_country(-1)
+	ui.reset_news()
+	var host: int = int(gs.macro_idx.get(String(params.get("host_en", "")), -1))
+	if host < 0:
+		ui.toast("Hükümdar bulunamadı.")
+		return
+	gs.difficulty = Settings.difficulty
+	gs.start_game(host)
+	if era_id != "":
+		Eras.start(gs, era_id)
+		menu.set_era(era_id)
+	if not Career.begin(gs, params):
+		ui.toast("Tımar kurulamadı; başka bir hükümdar dene.")
+		return
+	AP.cur_key = "career"
+	map.repaint_all()
+	mode = "game"
+	playing = true
+	map.input_enabled = true
+	menu.hide_all()
+	ui.gs = gs
+	ui.set_hud_visible(true)
+	ui.refresh_top()
+	_apply_settings()
+	_update_insets()
+	var cap: int = gs.countries[gs.player].capital
+	map.focus_country(gs.player)
+	if cap >= 0:
+		selected_pid = cap
+		map.select_province(cap)
+		ui.show_province(cap, null)
+	sfx.play("horn", 0.6)
+	# açılış hikâyesi
+	var hc = gs.countries[host]
+	gs.career["pending"] = {"kind": "chapter", "idx": 0}
+	_on_career_card()
+
+
+func _on_career_card() -> void:
+	if gs == null or not Career.active(gs):
+		return
+	var spec: Dictionary = CareerUI.card_spec(gs, func():
+		ui.refresh_top()
+		if ui.has_method("refresh_card"):
+			ui.refresh_card())
+	if spec.is_empty():
+		return
+	_on_speed_changed(0)
+	ui.show_dialog(String(spec.title), String(spec.body), spec.buttons, String(spec.get("scene", "")), String(spec.get("icon", "")))
 
 
 ## Menüden Bağımsızlık Yolu başlatılır: yeni dünya, ayrılacak ülke ve hareketin kurulumu
