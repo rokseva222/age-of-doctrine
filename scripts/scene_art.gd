@@ -7,10 +7,17 @@ const TK = preload("res://scripts/theme_kit.gd")
 const Pixel = preload("res://scripts/pixel_scenes.gd")
 
 const IMG_ALIAS := {"summit": "alliance", "nuke": "war", "embargo": "sanction"}
+## Çağa göre sahne: "pre" ailesinde süvari/kadırga/bombard, WW1'de siper/çift kanat (kalanlar modern sahne)
+const ERA_ALIAS := {
+	"pre": {"assault": "pre_assault", "barrage": "pre_barrage", "naval": "pre_naval", "landing": "pre_landing", "spy": "pre_spy", "trade": "pre_trade",
+		"alliance": "pre_alliance", "war": "pre_war", "peace": "pre_peace", "sanction": "pre_sanction", "special": "pre_special", "mobilize": "pre_mobilize",
+		"border": "pre_border", "blitz": "pre_assault", "un_hall": "pre_court", "un_ceasefire": "pre_peace", "un_sanction": "pre_sanction", "un_aid": "pre_trade", "un_probe": "pre_spy"},
+	"ww1": {"assault": "ww1_assault", "air": "ww1_air", "blitz": "ww1_assault", "paradrop": "ww1_air"},
+}
 ## Dosya (jpg) varsa onun adı IMG_ALIAS ile, yoksa kodla çizilen sahne PX_ALIAS ile seçilir
 const PX_ALIAS := {"era_ww2": "blitz", "era_cw62": "missile", "era_alt": "spy", "era_modern": "missile", "era_story": "alliance",
 	"un_ceasefire": "peace", "un_sanction": "sanction", "un_aid": "trade", "un_probe": "spy"}
-const FIRE := ["era_ww1", "era_ww2", "crisis", "carrier", "assault", "barrage", "blitz", "naval", "air", "missile", "paradrop", "special", "landing", "war"]
+const FIRE := ["pre_assault", "pre_barrage", "pre_naval", "pre_war", "pre_siege", "pre_rebel", "pre_special", "ww1_assault", "ww1_air", "era_ww1", "era_ww2", "crisis", "carrier", "assault", "barrage", "blitz", "naval", "air", "missile", "paradrop", "special", "landing", "war"]
 const SCAN := ["cyber", "spy", "un_probe", "era_alt"]
 static var _tex_cache: Dictionary = {}
 
@@ -19,6 +26,12 @@ var t := 0.0
 var animate := true
 var _px = null
 var _acc := 0.0
+
+
+## Çağa göre çözülmüş sahne adı
+static func resolve(k: String) -> String:
+	var fam: String = load("res://scripts/eras.gd").family()
+	return String(ERA_ALIAS.get(fam, {}).get(k, k))
 
 
 static func _tex_for(k: String) -> Texture2D:
@@ -81,11 +94,12 @@ func _process(delta: float) -> void:
 
 
 func _draw() -> void:
-	var tx: Texture2D = _tex_for(kind)
+	var rk: String = resolve(kind)
+	var tx: Texture2D = _tex_for(rk)
 	if tx != null:
 		_draw_image(tx)
 	else:
-		var k: String = PX_ALIAS.get(kind, IMG_ALIAS.get(kind, kind))
+		var k: String = PX_ALIAS.get(rk, IMG_ALIAS.get(rk, rk))
 		_px.draw(self, k, t)
 	_draw_frame()
 

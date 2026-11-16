@@ -65,6 +65,39 @@ const JET := [
 	"....kkkk",
 	"......k.",
 ]
+const MUSKETEER := [".ww.", ".ww.", ".ee.", "rrrr", "rrkk", ".rr.", ".r.r", "k..k"]
+const MUSKETEER_B := [".ww.", ".ww.", ".ee.", "rrrr", "rrkk", ".rr.", "..rr", "..kk"]
+const PIKEMAN := ["..k.", ".ss.", ".ee.", "bbbb", "bbkk", ".bb.", ".b.b", "k..k"]
+const BIPLANE := [
+	"..kkkkkkkk..",
+	"kk....k.....",
+	"..kkkkkkkkk.",
+	"....k.k..kkk",
+	"...kkkkk....",
+]
+const CAMEL := [
+	"......mm....",
+	".....mmm....",
+	"..mmmmmm....",
+	".mmmmmmmmm..",
+	".mm.mm.mm.m.",
+	".mm.mm.mm.m.",
+	".kk.kk.kk.k.",
+]
+const SULTAN := [
+	"..wwww..",
+	".wwwwww.",
+	".weeeew.",
+	"..eeee..",
+	".rrrrrr.",
+	"rryyyyrr",
+	"rryyyyrr",
+	"rrrrrrrr",
+	"rrrrrrrr",
+	".rr..rr.",
+	".rr..rr.",
+	".kk..kk.",
+]
 const MAN := [
 	"..kkkk..",
 	".kkkkkk.",
@@ -135,6 +168,28 @@ func draw(ctrl: Control, kind: String, time: float) -> void:
 		"border": _border()
 		"crisis": _crisis()
 		"carrier": _carrier()
+		"pre_assault": _pre_assault()
+		"pre_barrage": _pre_barrage()
+		"pre_naval": _pre_naval()
+		"pre_landing": _pre_landing()
+		"pre_spy": _pre_spy()
+		"pre_trade": _pre_trade()
+		"pre_alliance": _pre_alliance()
+		"pre_war": _pre_war()
+		"pre_peace": _pre_peace()
+		"pre_sanction": _pre_sanction()
+		"pre_special": _pre_special()
+		"pre_mobilize": _pre_mobilize()
+		"pre_border": _pre_border()
+		"pre_court": _pre_court()
+		"pre_oath": _pre_oath()
+		"pre_fief": _pre_fief()
+		"pre_rebel": _pre_rebel()
+		"pre_camp": _pre_camp()
+		"pre_siege": _pre_siege()
+		"pre_tribute": _pre_tribute()
+		"ww1_assault": _trench()
+		"ww1_air": _ww1_air()
 		_: _assault()
 
 
@@ -900,3 +955,493 @@ func _carrier() -> void:
 	for i in 3:
 		var tr_: float = fposmod(t * 1.5 + i * 0.33, 1.0)
 		R(cx0 + 10 + i * 10, gy - 6 - tr_ * (gy - 8), 1, 2, "y")
+
+
+# ============================================================ çağ sahneleri: Osmanlı / Timur ("pre" ailesi)
+
+func domes(x: float, base: float, n: int = 3, k: String = "k") -> void:
+	for i in n:
+		var bx: float = x + i * 26
+		circ(bx, base - 7, 7, k)
+		R(bx - 7, base - 7, 15, 8, k)
+		R(bx + 9, base - 20, 2, 21, k)
+		R(bx + 9, base - 23, 2, 3, "r")
+
+
+func castle(x: float, base: float, w: int = 40, k: String = "s", broken: bool = false) -> void:
+	R(x, base - 14, w, 14, k)
+	for i in range(0, w, 6):
+		R(x + i, base - 17, 3, 3, k)
+	R(x - 4, base - 24, 8, 24, k)
+	R(x + w - 4, base - 24, 8, 24, k)
+	R(x - 4, base - 27, 3, 3, k)
+	R(x + 1, base - 27, 3, 3, k)
+	R(x + w - 4, base - 27, 3, 3, k)
+	R(x + w + 1, base - 27, 3, 3, k)
+	R(x + w / 2 - 3, base - 8, 6, 8, "k")                 # kapı
+	if broken:
+		R(x + w * 0.55, base - 14, 9, 9, "d")
+		for j in 5:
+			R(x + w * 0.5 + j * 3, base - 2 - (j % 2) * 2, 3, 2, "s")
+
+
+func horse_line(n: int, speed: float, y0: float, flag: String, scale2 := true) -> void:
+	for i in n:
+		var hx: float = wrapx(speed + (i % 2) * 2.0, i * pw / float(n), pw, 40.0)
+		var hy: float = y0 + (i % 3) * 5
+		dust_trail(hx, hy + 9, 3)
+		_horse(hx, hy, flag)
+
+
+func _pre_assault() -> void:
+	sky(["p", "r", "o", "y"])
+	circ(pw * 0.8, gy - 4, 7, "y")
+	hills(gy, "p", 7, 0.06, 1.0)
+	castle(pw * 0.62, gy + 1, 40, "d")
+	ground("e")
+	for row in range(gy + 3, ph, 4):
+		var x := -int(fposmod(t * 6.0, 8.0))
+		while x < pw:
+			R(x, row, 4, 1, A("m", 0.35))
+			x += 8
+	horse_line(5, 11.0, gy + 2, "r")
+	for i in 8:
+		var sx: float = wrapx(6.0 + (i % 2), i * pw / 8.0 + 6, pw)
+		spr(MUSKETEER if (fr + i) % 2 == 0 else MUSKETEER_B, sx, gy + 16 + (i % 3) * 3)
+		if (fr + i * 3) % 14 == 0:
+			R(sx + 4, gy + 18 + (i % 3) * 3, 3, 1, "y")
+			smoke(sx + 6, gy + 17, 2, "l", 8)
+
+
+func _pre_barrage() -> void:
+	sky(["n", "p", "r", "o"])
+	stars(8, int(gy * 0.4))
+	hills(gy + 2, "n", 8, 0.05, 2.0)
+	castle(pw * 0.66, gy + 2, 36, "s", true)
+	ground("d")
+	for i in 3:
+		var bx: float = pw * 0.05 + i * 30
+		var by: float = gy + 4 + (i % 2) * 7
+		R(bx, by + 4, 16, 3, "m")                          # kızak
+		R(bx + 2, by + 1, 14, 3, "e")                      # namlu
+		R(bx + 13, by, 4, 5, "e")
+		R(bx + 1, by + 7, 3, 3, "k")
+		R(bx + 12, by + 7, 3, 3, "k")
+		if (fr + i * 5) % 18 < 2:
+			muzzle(bx + 18, by + 2)
+			smoke(bx + 18, by, 4, "l", 14)
+	for i in 3:
+		var ph_: float = fposmod(t * 0.4 + i * 0.33, 1.0)
+		var sx: float = pw * 0.2 + ph_ * pw * 0.5
+		var sy: float = gy + 4 - sin(ph_ * PI) * ph * 0.45
+		R(sx, sy, 3, 3, "k")
+		if ph_ > 0.94:
+			boom(pw * 0.7, gy - 8, (ph_ - 0.94) * 12.0)
+
+
+func galley(x: float, y: float, k: String = "m", flip := false) -> void:
+	var L := 34
+	var o: float = x
+	R(o, y, L, 3, k)
+	R(o + 2, y + 3, L - 4, 1, "k")
+	for i in range(2, L - 2, 4):                           # kürekler
+		var dip: int = 1 if (fr / 2 + i) % 4 < 2 else 0
+		R(o + i, y + 3 + dip, 1, 3, "e")
+	R(o + L * 0.45, y - 16, 1, 16, "k")                    # direk
+	var sw: int = int(sin(t * 2.0 + x) * 1.0)
+	for j in 10:                                          # üçgen yelken
+		R(o + L * 0.45 + 1, y - 16 + j, 1 + j + sw, 1, "w")
+	R(o + (L - 2 if not flip else -2), y - 4, 2, 4, "r")   # sancak
+
+
+func _pre_naval() -> void:
+	sky(["k", "n", "t"], int(ph * 0.55))
+	stars(12, int(ph * 0.4))
+	circ(pw * 0.78, int(ph * 0.18), 4, "l")
+	waves(int(ph * 0.55), "n", "t", 2.5)
+	var by: int = int(ph * 0.55) + 2
+	galley(pw * 0.08 + sin(t * 0.5), by + 2, "m")
+	galley(pw * 0.56 + sin(t * 0.6 + 1), by + 10, "d")
+	for i in 2:
+		var sx: float = pw * (0.08 + i * 0.48) + 30
+		if (fr + i * 7) % 22 < 3:
+			muzzle(sx, by + 2 + i * 8)
+		var p_: float = fposmod(t * 0.45 + i * 0.5, 1.0)
+		var x: float = sx + 4 + p_ * pw * 0.3
+		var y: float = by - sin(p_ * PI) * ph * 0.3
+		R(x, y, 2, 2, "y")                                  # ateşli ok
+		R(x - 2, y + 1, 2, 1, A("o", 0.7))
+		if p_ > 0.92:
+			R(x, by + 4, 3, 2, A("o", 0.8))
+
+
+func _pre_landing() -> void:
+	sky(["p", "r", "o", "y"], int(ph * 0.42))
+	circ(pw * 0.7, int(ph * 0.42) - 1, 6, "y")
+	galley(pw * 0.06, int(ph * 0.42) - 2, "m")
+	galley(pw * 0.34, int(ph * 0.42) + 1, "m")
+	waves(int(ph * 0.42), "t", "C", 2.0)
+	ground("e", int(ph * 0.76))
+	R(0, int(ph * 0.76), pw, 2, "w")
+	for i in 10:
+		var sx: float = pw * 0.2 + i * 7 + sin(t * 1.5 + i) * 2
+		spr(MUSKETEER if (fr + i) % 2 == 0 else MUSKETEER_B, sx, int(ph * 0.76) - 6 + (i % 2) * 3)
+	castle(pw * 0.75, int(ph * 0.76) + 1, 30, "d")
+
+
+func _pre_spy() -> void:
+	sky(["k", "n", "d"], gy)
+	stars(10, int(gy * 0.5))
+	domes(pw * 0.15, gy - 6, 3, "d")
+	ground("k")
+	R(0, gy + 8, pw, 2, "d")
+	var lx: float = pw * 0.62
+	R(lx, gy - 18, 2, 26, "m")                             # fener direği
+	R(lx - 2, gy - 20, 6, 3, "y")
+	for s in 10:
+		R(lx - 5 - s, gy - 17 + s * 2, 10 + s * 2, 2, A("y", 0.2 - s * 0.015))
+	spr(HAT_MAN, lx - 22, gy - 6, false, {"k": PAL.k, "e": PAL.e, "d": PAL.d, "w": PAL.w, "r": PAL.r})
+	spr(SULTAN, lx + 8, gy - 6, true, {"w": PAL.w, "e": PAL.e, "r": PAL.d, "y": PAL.y, "k": PAL.k})
+	R(lx - 12 + (fr % 6) / 3, gy + 1, 5, 3, "y")             # mühürlü mektup
+	for i in 14:
+		var f: float = fposmod(i * 0.137 + t * 0.4, 1.0)
+		R(fposmod(i * 0.317, 1.0) * pw, f * ph, 1, 1, A("l", 0.3))
+
+
+func _pre_trade() -> void:
+	sky(["o", "y", "e"], gy)
+	circ(pw * 0.2, gy - 10, 9, A("y", 0.6))
+	hills(gy + 2, "e", 8, 0.04, 2.0)
+	domes(pw * 0.6, gy - 2, 2, "d")
+	ground("e", gy + 4)
+	R(0, gy + 10, pw, 3, "m")
+	for i in 4:
+		var cx: float = wrapx(3.0, i * 30.0, pw, 30.0)
+		spr(CAMEL, cx, gy + 2 + (i % 2))
+		R(cx + 3, gy + 1, 5, 3, "r")                        # yük
+		R(cx + 9, gy, 2, 3, "b")
+	for i in 6:
+		var f: float = fposmod(t * 0.25 + i * 0.17, 1.0)
+		R(fposmod(i * 37.0 + t * 3.0, pw), gy + 6 + f * 8, 2, 1, A("y", 0.4))
+
+
+func _pre_alliance() -> void:
+	sky(["o", "y", "e"], gy)
+	circ(pw * 0.5, gy - 8, 10, A("y", 0.5))
+	hills(gy + 2, "H", 7, 0.05, 3.0)
+	ground("h")
+	R(pw * 0.5 - 30, gy - 14, 60, 18, "w")                 # otağ
+	R(pw * 0.5 - 24, gy - 20, 48, 6, "w")
+	R(pw * 0.5 - 1, gy - 26, 2, 6, "y")
+	R(pw * 0.5 - 6, gy - 2, 12, 6, "k")
+	var fc := ["r", "g", "y", "b", "r", "g"]
+	for i in 6:
+		var fx: float = pw * (0.08 + i * 0.17)
+		R(fx, gy - 16, 1, 22, "k")
+		for s in 6:
+			R(fx + 1 + s, gy - 16 + int(sin(t * 3 + s * 0.6 + i) * 1.4), 1, 5, fc[i])
+	var bob: int = 1 if fr % 8 < 2 else 0
+	spr(SULTAN, pw * 0.5 - 26, gy - 12, false, PAL, 2)
+	spr(SULTAN, pw * 0.5 + 10, gy - 12, true, {"w": PAL.l, "e": PAL.e, "r": PAL.b, "y": PAL.y, "k": PAL.k}, 2)
+	R(pw * 0.5 - 2, gy + 1 + bob, 4, 6, "e")
+
+
+func _pre_war() -> void:
+	sky(["k", "p", "r"])
+	stars(6, int(gy * 0.4), 9.0)
+	castle(pw * 0.3, gy, 44, "k", true)
+	domes(pw * 0.62, gy, 2, "k")
+	ground("k")
+	R(0, gy - 3, pw, 4, A("r", 0.45 + 0.15 * sin(t * 3.0)))
+	for i in 4:
+		var fx: float = pw * (0.3 + i * 0.12)
+		var fh: int = 3 + int(fposmod(t * 5.0 + i, 3.0))
+		R(fx, gy - 16 - fh, 4, fh, "o")
+		R(fx + 1, gy - 18 - fh, 2, 3, "y")
+		smoke(fx + 2, gy - 18, 5, "s", 40)
+	horse_line(3, 8.0, gy + 4, "r")
+	if sin(t * 1.7) > 0.93:
+		R(0, 0, pw, ph, A("w", 0.12))
+
+
+func _pre_peace() -> void:
+	sky(["c", "C", "y", "o"])
+	circ(pw * 0.5, gy - 2, 8, "y")
+	cloud(wrapx(2.0, 10, pw), 10, "w")
+	hills(gy + 2, "g", 8, 0.045, 1.0)
+	ground("H", gy + 3)
+	domes(pw * 0.12, gy, 2, "e")
+	R(pw * 0.68, gy - 5, 12, 5, "w")                      # yurt
+	R(pw * 0.68 + 2, gy - 8, 8, 3, "w")
+	var dx: float = pw * 0.5 + sin(t * 0.6) * 18
+	var dy: float = 8 + sin(t * 1.2) * 3
+	spr(DOVE_UP if (fr / 2) % 2 == 0 else DOVE_DN, dx, dy, false, PAL, 2)
+
+
+func _pre_sanction() -> void:
+	sky(["d", "s", "l"], gy)
+	hills(gy + 1, "s", 6, 0.05, 2.0)
+	ground("e")
+	R(0, gy + 8, pw, 3, "m")
+	R(pw * 0.5 - 2, gy - 10, 4, 20, "k")                   # kapalı kapı/sur kapısı
+	R(pw * 0.5 - 14, gy - 18, 28, 8, "s")
+	R(pw * 0.5 - 16, gy - 10, 4, 20, "s")
+	R(pw * 0.5 + 12, gy - 10, 4, 20, "s")
+	R(pw * 0.5 - 12, gy - 10, 24, 18, "k")
+	for i in 3:
+		R(pw * 0.5 - 12 + i * 8, gy - 6 + (fr / 6 % 2), 2, 10, "r")   # zincir
+	for i in 3:
+		var cx: float = pw * 0.1 + i * 16 + sin(t * 0.8 + i)
+		spr(CAMEL, cx, gy + 2)
+	spr(MUSKETEER, pw * 0.5 + 18, gy + 2)
+
+
+func _pre_special() -> void:
+	sky(["k", "n", "d"], gy)
+	stars(12, int(gy * 0.5), 4.0)
+	castle(pw * 0.55, gy + 2, 40, "d")
+	ground("k")
+	for i in 3:                                            # merdivenler
+		var lx: float = pw * 0.56 + i * 12
+		R(lx, gy - 20, 1, 22, "e")
+		R(lx + 4, gy - 20, 1, 22, "e")
+		for j in range(0, 22, 4):
+			R(lx, gy - 20 + j, 5, 1, "e")
+		var cy: float = gy - fposmod(t * 6.0 + i * 7.0, 22.0)
+		R(lx + 1, cy, 3, 4, "r")
+	for i in 3:
+		var tx: float = pw * 0.1 + i * 14
+		spr(MUSKETEER_B, tx, gy + 4)
+		R(tx + 2, gy - 1, 1, 4, "m")
+		R(tx + 1, gy - 3 - (fr % 2), 3, 2, "o")             # meşale
+		R(tx + 2, gy - 5 - (fr % 2), 1, 2, "y")
+
+
+func _pre_mobilize() -> void:
+	sky(["d", "r", "o", "y"])
+	circ(pw * 0.8, gy - 4, 6, "y")
+	hills(gy + 1, "d", 6, 0.06, 2.0)
+	domes(pw * 0.05, gy - 2, 2, "k")
+	ground("d")
+	R(0, gy + 8, pw, 8, "m")
+	for i in 9:
+		var sx: float = wrapx(9.0, i * 22.0, pw, 20.0)
+		spr(MUSKETEER if (fr + i) % 2 == 0 else MUSKETEER_B, sx, gy + 4 + (i % 2) * 8, false, PAL, 2)
+	R(pw * 0.5, gy - 16, 1, 26, "k")                       # tuğ
+	circ(pw * 0.5, gy - 18, 2, "y")
+	for j in 6:
+		R(pw * 0.5 - 2 + (j % 3) + int(sin(t * 5 + j) * 1.5), gy - 15 + j, 1, 3, "k")
+	R(pw * 0.5 + 2, gy - 12, 10 + int(sin(t * 5.0) * 1.5), 6, "r")
+
+
+func _pre_border() -> void:
+	sky(["n", "s", "l", "y"])
+	hills(gy, "s", 8, 0.05, 6.0)
+	ground("H")
+	R(0, gy + 6, pw, 3, "m")
+	var cx: int = pw / 2
+	for k in 6:
+		R(cx - 1, gy - 20 + k * 2, 3, 1, "k" if k % 2 == 0 else "w")   # sınır taşı/direği
+	R(cx - 3, gy - 8, 7, 14, "s")
+	for side in 2:
+		var tx: float = 8 + side * (pw - 26)
+		R(tx, gy - 16, 12, 6, "d")
+		R(tx + 2, gy - 10, 8, 16, "s")
+		R(tx + 4, gy - 14, 4, 2, "y" if (fr / 5 + side) % 2 == 0 else "o")
+	for i in 3:
+		_horse(cx - 46 + i * 12, gy + 6 + (i % 2) * 3, "r")
+	for i in 3:
+		spr(PIKEMAN, cx + 22 + i * 9, gy + 9 + (i % 2) * 4, true, PAL, 2)
+
+
+## Saray / divan: hükümdar tahtta, iki yanda vezirler, şamdanlar (hikâye modu: huzura çıkma)
+func _pre_court() -> void:
+	R(0, 0, pw, ph, "n")
+	for y in range(0, ph, 3):
+		R(0, y, pw, 3, PAL.n.lerp(PAL.p, float(y) / ph * 0.6))
+	for i in 7:                                            # kemerler
+		var ax: float = i * (pw / 7.0) + 4
+		circ(ax + 6, int(ph * 0.22), 6, "p")
+		R(ax, int(ph * 0.22), 13, int(ph * 0.5), "p")
+		circ(ax + 6, int(ph * 0.22), 4, "n")
+		R(ax + 2, int(ph * 0.22), 9, int(ph * 0.5), "n")
+	R(0, int(ph * 0.72), pw, ph, "m")                      # halı/zemin
+	for x in range(0, pw, 8):
+		R(x, int(ph * 0.72) + 2, 4, 1, "r")
+	var tx: int = pw / 2
+	R(tx - 14, int(ph * 0.48), 28, 24, "y")                 # taht
+	R(tx - 12, int(ph * 0.5), 24, 20, "r")
+	spr(SULTAN, tx - 8, int(ph * 0.42), false, PAL, 2)
+	for side in 2:
+		var sx: float = tx - 44 + side * 70
+		spr(HAT_MAN, sx, int(ph * 0.52), side == 1, {"k": PAL.w, "e": PAL.e, "d": PAL.b, "w": PAL.w, "r": PAL.r}, 2)
+	for i in 2:                                            # şamdanlar
+		var cx: float = tx - 60 + i * 120
+		R(cx, int(ph * 0.4), 2, 26, "y")
+		R(cx - 1, int(ph * 0.36) - (fr % 2), 4, 4, "o")
+		R(cx, int(ph * 0.34) - (fr % 2), 2, 2, "y")
+	if (fr / 6) % 5 == 0:
+		R(0, 0, pw, ph, A("y", 0.05))
+
+
+## Yemin: diz çökmüş komutan, hükümdar elini uzatıyor, arkada sancaklar
+func _pre_oath() -> void:
+	sky(["o", "y", "e"], gy)
+	circ(pw * 0.5, gy - 10, 10, A("y", 0.5))
+	ground("h")
+	R(0, gy, pw, 3, "H")
+	var fc := ["r", "y", "r", "y", "r", "y"]
+	for i in 6:
+		var fx: float = pw * (0.06 + i * 0.17)
+		R(fx, gy - 18, 1, 24, "k")
+		for s in 6:
+			R(fx + 1 + s, gy - 18 + int(sin(t * 3 + s * 0.6 + i) * 1.4), 1, 5, fc[i])
+	spr(SULTAN, pw * 0.5 + 6, gy - 14, true, PAL, 2)
+	R(pw * 0.5 - 2, gy - 2 + (fr % 8) / 4, 8, 2, "e")      # uzanan el
+	# diz çökmüş komutan
+	var kx: float = pw * 0.5 - 28
+	R(kx, gy - 8, 6, 6, "k")
+	R(kx + 1, gy - 2, 4, 4, "e")
+	R(kx - 2, gy + 2, 10, 6, "b")
+	R(kx + 8, gy + 4, 6, 2, "b")
+	R(kx - 1, gy + 8, 4, 4, "k")
+	R(kx + 10, gy - 10, 1, 20, "k")                        # kılıç saplı
+	for i in 8:
+		var f: float = fposmod(i * 0.21 + t * 0.03, 1.0)
+		R(fposmod(i * 0.43, 1.0) * pw, ph * (1.0 - f), 1, 1, A("y", sin(f * PI) * 0.5))
+
+
+## Tımar: köy, tarla, değirmen; köylüler çalışıyor
+func _pre_fief() -> void:
+	sky(["c", "C", "y"])
+	circ(pw * 0.15, gy - 14, 7, "y")
+	cloud(wrapx(1.5, 20, pw), 8, "w")
+	hills(gy + 1, "g", 9, 0.045, 1.0)
+	ground("H", gy + 3)
+	for row in range(gy + 6, ph, 4):                       # tarla sıraları
+		var x := int(fposmod(row * 1.7, 8.0))
+		while x < pw * 0.5:
+			R(x, row, 5, 1, "e")
+			x += 8
+	for i in 3:                                            # evler
+		var hx: float = pw * 0.55 + i * 18
+		R(hx, gy - 5, 12, 8, "e")
+		R(hx - 1, gy - 8, 14, 3, "r")
+		R(hx + 4, gy - 1, 3, 4, "m")
+	R(pw * 0.86, gy - 20, 6, 24, "m")                      # değirmen
+	for j in 4:
+		var a: float = t * 1.5 + j * PI * 0.5
+		R(pw * 0.86 + 3 + cos(a) * 9, gy - 18 + sin(a) * 9, 2, 2, "w")
+		R(pw * 0.86 + 3 + cos(a) * 5, gy - 18 + sin(a) * 5, 2, 2, "w")
+	for i in 4:
+		var px: float = pw * 0.08 + i * 12
+		var bend: int = 1 if (fr / 3 + i) % 2 == 0 else 0
+		R(px, gy + 8 + bend, 3, 3, "e")
+		R(px, gy + 11 + bend, 3, 4, "m")
+	smoke(pw * 0.6, gy - 8, 3, "l", 12)
+
+
+## İsyan: yakılan ferman, kalabalık, kızıl sancak kaldırılıyor
+func _pre_rebel() -> void:
+	sky(["p", "r", "o"])
+	stars(5, int(gy * 0.3), 11.0)
+	domes(pw * 0.7, gy, 2, "k")
+	ground("d")
+	R(0, gy - 2, pw, 3, A("r", 0.4 + 0.15 * sin(t * 4.0)))
+	for i in 12:
+		var sx: float = pw * 0.05 + i * 7 + sin(t * 2 + i) * 1.5
+		spr(MUSKETEER_B if (fr + i) % 2 == 0 else MUSKETEER, sx, gy + 4 + (i % 2) * 4)
+		if i % 3 == 0:
+			R(sx + 1, gy - 2 - (fr % 2), 2, 3, "o")         # meşale
+	R(pw * 0.45, gy - 24, 1, 30, "k")
+	R(pw * 0.45 + 1, gy - 24, 12 + int(sin(t * 5.0) * 2), 7, "r")
+	boom(pw * 0.72, gy - 10, fposmod(t * 0.6, 1.4))
+	smoke(pw * 0.72, gy - 12, 5, "d", 30)
+
+
+## Ordugâh: çadırlar, ateş, nöbetçiler
+func _pre_camp() -> void:
+	sky(["k", "n", "p"])
+	stars(18, int(gy * 0.6), 2.0)
+	circ(pw * 0.85, int(gy * 0.25), 4, "l")
+	hills(gy + 1, "n", 6, 0.05, 5.0)
+	ground("d")
+	for i in 5:
+		var tx: float = pw * 0.06 + i * 22
+		var ty: float = gy + 2 + (i % 2) * 5
+		for j in 8:
+			R(tx + 7 - j, ty - 8 + j, j * 2 + 1, 1, "w" if i != 2 else "r")
+		R(tx + 6, ty - 2, 3, 2, "k")
+	var fx: float = pw * 0.5
+	R(fx - 3, gy + 10, 7, 2, "m")
+	R(fx - 1, gy + 6 + (fr % 2), 3, 4, "o")
+	R(fx, gy + 4 + (fr % 2), 1, 3, "y")
+	for s in 6:
+		R(fx - 8 - s, gy + 2 + s, 16 + s * 2, 1, A("o", 0.08))
+	spr(MUSKETEER, fx - 14, gy + 6)
+	spr(MUSKETEER_B, fx + 10, gy + 6, true)
+	R(pw * 0.85, gy - 18, 1, 24, "k")
+	circ(pw * 0.85, gy - 19, 2, "y")
+	R(pw * 0.85 + 2, gy - 15, 8 + int(sin(t * 4.0)), 5, "r")
+
+
+func _pre_siege() -> void:
+	sky(["d", "s", "l"])
+	hills(gy, "s", 6, 0.05, 1.5)
+	castle(pw * 0.62, gy + 2, 40, "s", true)
+	ground("m")
+	R(pw * 0.1, gy + 6, 18, 3, "m")                        # kuşatma kulesi
+	R(pw * 0.1 + 2, gy - 14, 12, 20, "m")
+	R(pw * 0.1 + 4, gy - 12, 8, 3, "k")
+	R(pw * 0.1 + 12, gy - 8 + int(fposmod(t * 3.0, 6.0)), 10, 1, "e")   # köprü
+	for i in 2:
+		var bx: float = pw * 0.33 + i * 20
+		R(bx, gy + 8, 14, 3, "m")
+		R(bx + 2, gy + 5, 12, 3, "e")
+		if (fr + i * 9) % 20 < 2:
+			muzzle(bx + 16, gy + 6)
+	boom(pw * 0.7, gy - 8, fposmod(t * 0.5, 1.5))
+	for i in 5:
+		spr(PIKEMAN, pw * 0.4 + i * 7, gy + 12 + (i % 2) * 3)
+
+
+func _pre_tribute() -> void:
+	sky(["o", "y", "e"], gy)
+	domes(pw * 0.1, gy - 2, 2, "d")
+	ground("e", gy + 2)
+	R(0, gy + 9, pw, 3, "m")
+	for i in 3:
+		var cx: float = wrapx(3.5, i * 28.0 + pw * 0.3, pw, 30.0)
+		spr(CAMEL, cx, gy + 2 + (i % 2))
+		R(cx + 3, gy, 6, 3, "y")                            # altın sandık
+		R(cx + 4, gy + 1, 4, 1, "o")
+	spr(SULTAN, pw * 0.72, gy - 6, true, PAL, 2)
+	for i in 6:
+		var f: float = fposmod(t * 0.35 + i * 0.16, 1.0)
+		R(pw * 0.5 + i * 4 + sin(t + i) * 3, gy + 4 - f * 16, 1, 1, A("y", 1.0 - f))
+
+
+# ============================================================ I. Dünya Savaşı: çift kanatlı uçaklar
+
+func _ww1_air() -> void:
+	sky(["s", "l", "y"], gy)
+	cloud(wrapx(2.0, 10, pw), 8, "w")
+	cloud(wrapx(1.3, pw * 0.5, pw), 16, "w")
+	hills(gy + 1, "h", 6, 0.05, 4.0)
+	ground("H")
+	R(0, gy + 6, pw, 2, "m")
+	for i in range(0, pw, 9):
+		R(i, gy + 3, 1, 5, "k")
+	for i in 3:
+		var fx: float = wrapx(14.0 + i * 2.0, i * pw / 3.0, pw, 30.0)
+		var fy: float = 6 + i * 9 + sin(t * 2.0 + i) * 2
+		spr(BIPLANE, fx, fy, false, {"k": PAL.k if i != 1 else PAL.r})
+		if (fr + i * 4) % 10 < 3:
+			R(fx + 12, fy + 2, 4, 1, "y")
+	var ex: float = wrapx(6.0, pw * 0.6, pw, 20.0)
+	spr(BIPLANE, ex, 14 + sin(t * 3.0) * 2, true, {"k": PAL.d})
+	smoke(ex + 4, 16, 4, "s", 10)
+	for i in 4:
+		var fa: float = fposmod(t * 0.9 + i * 0.25, 1.0)
+		if fa < 0.5:
+			circ(pw * (0.2 + i * 0.2), gy * (0.3 + fposmod(i * 0.3, 0.4)), 1 + int(fa * 4), A("k", 0.5 - fa))
