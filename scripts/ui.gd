@@ -1425,6 +1425,8 @@ func show_un_targets(kind: String) -> void:
 	content.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	content.add_theme_constant_override("separation", 0)
 	scroll.add_child(content)
+	if UN.targets(gs, kind).size() > 7:
+		sh.body.add_child(TK.search_field(content, "Ülke ara..."))
 	sh.body.add_child(scroll)
 	var list: Array = UN.targets(gs, kind)
 	var shown := 0
@@ -1526,6 +1528,7 @@ func show_world_panel(tab: int = 0) -> void:
 	content.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	content.add_theme_constant_override("separation", 0)
 	scroll.add_child(content)
+	sh.body.add_child(TK.search_field(content, "Ülke ara..."))
 	sh.body.add_child(scroll)
 	var state := {"tab": tab, "filter": 0, "render": Callable()}
 	var names := ["Ülkeler", "Savaşlar", "Haberler", "İttifaklar", "BM"]

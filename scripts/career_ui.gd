@@ -1,4 +1,5 @@
 extends RefCounted
+const PickButton = preload("res://scripts/pick_button.gd")
 const Minigames = preload("res://scripts/minigames.gd")
 ## Hikâye Modu arayüzü: çağ seçimi → hükümdar/tımar/karakter kurulumu → Divan paneli → hikâye kartları.
 
@@ -101,12 +102,14 @@ static func open_setup(parent: Node, gs, era_id: String, on_start: Callable, on_
 	search.clear_button_enabled = true
 	search.custom_minimum_size = Vector2(0, 52)
 	sh.body.add_child(search)
-	var host_ob := OptionButton.new()
+	var host_ob := PickButton.new()
+	host_ob.title = Loc.t("Hükümdar seç")
 	host_ob.custom_minimum_size = Vector2(0, 52)
 	sh.body.add_child(host_ob)
 	var fief_lbl := TK.t("Tımarın", "kicker", TK.GOLD)
 	sh.body.add_child(fief_lbl)
-	var fief_ob := OptionButton.new()
+	var fief_ob := PickButton.new()
+	fief_ob.title = Loc.t("Tımar seç")
 	fief_ob.custom_minimum_size = Vector2(0, 52)
 	sh.body.add_child(fief_ob)
 	var fief_hint := TK.t("", "small", TK.MUTED)

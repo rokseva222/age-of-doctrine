@@ -87,6 +87,7 @@ static func _list(ui, gs) -> void:
 	box.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	box.add_theme_constant_override("separation", 4)
 	sc.add_child(box)
+	sh.body.add_child(TK.search_field(box, "Ülke ara..."))
 	sh.body.add_child(sc)
 	var list: Array = _candidates(gs)
 	if list.is_empty():

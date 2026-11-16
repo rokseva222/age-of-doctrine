@@ -1,4 +1,5 @@
 extends RefCounted
+const PickButton = preload("res://scripts/pick_button.gd")
 ## Bağımsızlık Yolu arayüzü: kurulum sihirbazı + hareket paneli + rakip grup ekranı.
 
 const TK = preload("res://scripts/theme_kit.gd")
@@ -86,7 +87,8 @@ static func open_setup(parent: Node, on_start: Callable) -> void:
 	host_search.clear_button_enabled = true
 	host_search.custom_minimum_size = Vector2(0, 52)
 	sh.body.add_child(host_search)
-	var host := OptionButton.new()
+	var host := PickButton.new()
+	host.title = Loc.t("Ülke seç")
 	host.custom_minimum_size = Vector2(0, 52)
 	var fill_host := func(q: String):
 		var keep: String = String(p.host_en)
@@ -151,7 +153,7 @@ static func open_setup(parent: Node, on_start: Callable) -> void:
 			if k < ncity and v >= 0:
 				used.append(v)
 		for k in 3:
-			var ob: OptionButton = city_opts[k]
+			var ob = city_opts[k]
 			ob.visible = k < ncity
 			ob.clear()
 			var other: Array = []
@@ -188,7 +190,8 @@ static func open_setup(parent: Node, on_start: Callable) -> void:
 		crow.add_child(cb)
 	sh.body.add_child(crow)
 	for k2 in 3:
-		var ob3 := OptionButton.new()
+		var ob3 := PickButton.new()
+		ob3.title = Loc.t("Şehir seç")
 		ob3.custom_minimum_size = Vector2(0, 52)
 		var kk: int = k2
 		ob3.item_selected.connect(func(ix):
@@ -263,7 +266,8 @@ static func open_setup(parent: Node, on_start: Callable) -> void:
 	sh.body.add_child(colrow)
 	# ideoloji
 	sh.body.add_child(TK.t("İdeoloji (yabancı desteği belirler)", "kicker", TK.GOLD))
-	var ideo := OptionButton.new()
+	var ideo := PickButton.new()
+	ideo.title = Loc.t("İdeoloji")
 	ideo.custom_minimum_size = Vector2(0, 52)
 	for k in I.IDEOS:
 		ideo.add_item(I.ideo_name(k))

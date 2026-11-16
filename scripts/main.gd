@@ -66,6 +66,8 @@ var notifier: Node
 
 
 func _ready() -> void:
+	# kaydırmalı listelerde kaydırırken parmağın değdiği düğme basılmış sayılmasın
+	get_tree().node_added.connect(func(n: Node): if n is Button: TK.guard_if_scrolled.call_deferred(n))
 	Settings.load_all()
 	Settings.language = Loc.setup(Settings.language)
 	Settings.apply_display(get_tree())

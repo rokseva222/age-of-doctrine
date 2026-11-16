@@ -394,7 +394,7 @@ func _build_main() -> void:
 		_click()
 		Info.open_credits(root))
 	set_row.add_child(cr)
-	btns.add_child(set_row)
+	col.add_child(set_row)      # kaydırma alanının dışında: Ayarlar her ekranda görünür kalır
 	if not (OS.has_feature("mobile") or OS.has_feature("web")):
 		var q := TK.button("Çıkış", "ghost", "power", Vector2(0, 64), 21)
 		q.pressed.connect(func(): quit_pressed.emit())

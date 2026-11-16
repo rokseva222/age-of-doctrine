@@ -608,7 +608,89 @@ static func row_button(bg: Color = Color(0, 0, 0, 0), border: Color = LINE, h: f
 	b.add_theme_stylebox_override("pressed", line_box(PANEL_HI, LINE))
 	b.add_theme_stylebox_override("hover_pressed", line_box(PANEL_HI, LINE))
 	b.add_theme_stylebox_override("focus", StyleBoxEmpty.new())
+	_scroll_guard(b)
 	return b
+
+
+## Çok seçenekli listeler için arama kutusu: content'in doğrudan çocuklarını metnine göre süzer; liste yeniden kurulunca da uygulanır.
+static func search_field(content: Control, placeholder: String = "Ara...") -> LineEdit:
+	var le := LineEdit.new()
+	le.placeholder_text = Loc.t(placeholder)
+	le.clear_button_enabled = true
+	le.custom_minimum_size = Vector2(0, 52)
+	le.text_changed.connect(func(_t: String): _apply_filter(content, le.text))
+	content.child_order_changed.connect(func():
+		if is_instance_valid(le):
+			_apply_filter.call_deferred(content, le.text))
+	return le
+
+
+static func _apply_filter(content: Control, q: String) -> void:
+	if not is_instance_valid(content):
+		return
+	q = q.strip_edges().to_lower()
+	for ch in content.get_children():
+		if not (ch is CanvasItem):
+			continue
+		if q == "":
+			if ch.has_meta("sf_hid"):
+				ch.remove_meta("sf_hid")
+				ch.visible = true
+			continue
+		var hit: bool = _text_of(ch).to_lower().contains(q)
+		if hit and ch.has_meta("sf_hid"):
+			ch.remove_meta("sf_hid")
+			ch.visible = true
+		elif not hit and ch.visible:
+			ch.set_meta("sf_hid", true)
+			ch.visible = false
+
+
+static func _text_of(n: Node) -> String:
+	if n.has_meta("q"):
+		return String(n.get_meta("q"))
+	var t := ""
+	if n is Label:
+		t += (n as Label).text + " "
+	elif n is Button:
+		t += (n as Button).text + " "
+	for c in n.get_children():
+		t += _text_of(c)
+	return t
+
+
+## Bir ScrollContainer içindeki her düğmeye kaydırma koruması ekler (main.gd node_added ile çağırır).
+static func guard_if_scrolled(n: Node) -> void:
+	if not (n is Button) or not is_instance_valid(n) or n.has_meta("sg"):
+		return
+	var p: Node = n.get_parent()
+	while p != null:
+		if p is ScrollContainer:
+			_scroll_guard(n as Button)
+			return
+		p = p.get_parent()
+
+
+## Listede kaydırırken parmak bir satırın üstünde bırakılırsa satır "basılmış" sayılmasın.
+static func _scroll_guard(b: Button) -> void:
+	if b.has_meta("sg"):
+		return
+	b.set_meta("sg", true)
+	var st := {"p": Vector2.ZERO, "moved": false}
+	b.gui_input.connect(func(ev: InputEvent):
+		if ev is InputEventMouseButton and ev.button_index == MOUSE_BUTTON_LEFT:
+			if ev.pressed:
+				st.p = ev.global_position
+				st.moved = false
+			elif st.moved:
+				st.moved = false
+				b.get_viewport().set_input_as_handled()
+				b.disabled = true            # basılı kalma durumunu sıfırlar
+				b.set_deferred("disabled", false)
+		elif ev is InputEventMouseMotion and (ev.button_mask & MOUSE_BUTTON_MASK_LEFT) != 0:
+			var vs: Vector2 = b.get_viewport_rect().size
+			if ev.global_position.distance_to(st.p) > maxf(10.0, minf(vs.x, vs.y) * 0.016):
+				st.moved = true)
 
 
 static func row_select(b: Button, on: bool, accent: Color = PAPER) -> void:
