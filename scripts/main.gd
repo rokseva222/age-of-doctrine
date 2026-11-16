@@ -1005,7 +1005,7 @@ func _on_career_card() -> void:
 	var spec: Dictionary = CareerUI.card_spec(gs, func():
 		ui.refresh_top()
 		if ui.has_method("refresh_card"):
-			ui.refresh_card())
+			ui.refresh_card(), ui)
 	if spec.is_empty():
 		return
 	_on_speed_changed(0)

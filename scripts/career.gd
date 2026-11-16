@@ -759,7 +759,15 @@ const CARDS := [
 	{"id": "harvest", "t": "Bereketli Hasat", "scene": "pre_fief", "b": "Bu yıl hasat bol. Fazlayı ne yapalım?",
 		"c": [["Köylülere bırak", {"stab": 5, "renown": 2}], ["Hazineye sat", {"gold_w": 3.0}], ["Hükümdara gönder", {"favor": 8, "loyalty": 3}]]},
 	{"id": "duel", "t": "Düello Daveti", "scene": "pre_camp", "b": "Rakip bir bey seni ordugâhta herkesin önünde aşağıladı. Kılıç mı, sabır mı?",
-		"c": [["Düelloyu kabul et", {"renown": 9, "troops": -100, "favor": -3}], ["Sakin kal", {"renown": -3, "loyalty": 2}], ["Adamlarını üstüne sal", {"renown": 3, "favor": -10, "stab": -2}]]},
+		"c": [["Düelloyu kabul et", {}, {"game": "duel", "style": [1.5, 0.8, 1.0], "power": 1.0, "title": "Düello", "intro": "Ordugâh halka oldu. Kılıçlar çekildi.",
+				"win": {"renown": 12, "favor": 2}, "lose": {"renown": -4, "troops": -150, "favor": -3}, "draw": {"renown": 3}, "yield": {"renown": -8, "favor": -2},
+				"win_text": "Rakibin kılıcı elinden düştü. Ordugâh senin adını sayıyor.", "lose_text": "Yere düştün. Adamların seni ordugâhtan taşıdı."}],
+			["Sakin kal", {"renown": -3, "loyalty": 2}], ["Adamlarını üstüne sal", {"renown": 3, "favor": -10, "stab": -2}]]},
+	{"id": "champion", "t": "Meydan Okuma", "scene": "pre_siege", "b": "Kuşatma sırasında surların önünde düşman pehlivanı çıktı ve seni teke tek dövüşe çağırıyor. Askerler bakıyor.",
+		"c": [["Meydana çık", {}, {"game": "duel", "style": [1.1, 1.2, 1.1], "power": 1.1, "title": "Tek Dövüş", "intro": "Surların gölgesinde iki ordu seyrediyor.",
+				"win": {"renown": 14, "stab": 3, "troops": 300}, "lose": {"troops": -400, "renown": -6, "stab": -3}, "draw": {"renown": 2}, "yield": {"renown": -10, "troops": -200},
+				"win_text": "Pehlivan yere serildi. Surlardan ve saflardan ses yükseldi.", "lose_text": "Yenildin. Askerler moralini kaybetti."}],
+			["Reddet", {"renown": -5, "stab": -1}], ["Okçulara işaret et", {"renown": -2, "favor": 2}]]},
 	{"id": "tax", "t": "Vergi Memuru", "scene": "pre_tribute", "b": "Sarayın vergi memuru tımarından fazladan pay istiyor; rüşvet de kabul ediyor.",
 		"c": [["Fazlasını öde", {"gold_w": -2.0, "favor": 4}], ["Rüşvet ver", {"gold_w": -0.6, "loyalty": -2}], ["Kapıdan kov", {"favor": -8, "renown": 3, "stab": 2}]]},
 	{"id": "plague", "t": "Salgın", "scene": "pre_fief", "b": "Tımarında hastalık yayılıyor. Askerler de hasta düşüyor.",
@@ -819,6 +827,23 @@ static func choose(gs, idx: int) -> void:
 		if idx >= 0 and idx < ch.size():
 			apply_fx(gs, ch[idx][1])
 			_log(gs, "%s: %s" % [String(c.t), String(ch[idx][0])])
+	gs.career["pending"] = {}
+
+
+## Mini oyunlu seçim: sonuç "win" | "lose" | "draw" | "yield"
+static func choose_game(gs, idx: int, result: String) -> void:
+	var pend: Dictionary = gs.career.get("pending", {})
+	if pend.get("kind", "") == "card":
+		var c: Dictionary = pend.card
+		var ch: Array = c.c
+		if idx >= 0 and idx < ch.size() and ch[idx].size() > 2:
+			var g: Dictionary = ch[idx][2]
+			var fx: Dictionary = g.get(result, g.get("lose", {}))
+			apply_fx(gs, fx)
+			var tag: String = {"win": "kazandın", "lose": "yenildin", "draw": "berabere", "yield": "çekildin"}.get(result, result)
+			_log(gs, "%s: %s" % [String(c.t), tag])
+			if result == "win":
+				add(gs, "loyalty", 0.0)
 	gs.career["pending"] = {}
 
 

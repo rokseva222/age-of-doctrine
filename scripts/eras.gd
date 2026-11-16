@@ -323,10 +323,41 @@ static func prepare(id: String) -> void:
 	Names.start_year = int(e["start_year"])
 	Names.start_doy = int(e["start_doy"])
 	var fl: Dictionary = {}
+	fl = era_flag_table(id)
 	for n2 in DF:
 		if DF[n2].has("flag"):
 			fl[n2] = DF[n2]["flag"]
 	Flags.set_era_specs(fl)
+
+
+static var _flag_tab: Dictionary = {}
+
+
+## data/era_flags.json: çağ -> {ülke: bayrak tanımı}; alt_ çağlar base zincirinden miras alır.
+static func era_flag_table(id: String) -> Dictionary:
+	if _flag_tab.is_empty():
+		var f := FileAccess.open("res://data/era_flags.json", FileAccess.READ)
+		if f != null:
+			var v = JSON.parse_string(f.get_as_text())
+			f.close()
+			if typeof(v) == TYPE_DICTIONARY:
+				_flag_tab = v
+	var chain: Array = []
+	var cur := id
+	for i in 6:
+		chain.append(cur)
+		if EraExt.has_era(cur):
+			cur = String(EraExt.raw(cur).get("base", ""))
+			if cur == "":
+				break
+		else:
+			break
+	var out: Dictionary = {}
+	chain.reverse()
+	for e in chain:
+		if _flag_tab.has(e):
+			out.merge(_flag_tab[e], true)
+	return out
 
 
 static func clear() -> void:

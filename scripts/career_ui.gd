@@ -1,4 +1,5 @@
 extends RefCounted
+const Minigames = preload("res://scripts/minigames.gd")
 ## Hikâye Modu arayüzü: çağ seçimi → hükümdar/tımar/karakter kurulumu → Divan paneli → hikâye kartları.
 
 const TK = preload("res://scripts/theme_kit.gd")
@@ -383,7 +384,19 @@ static func _confirm(parent: Node, gs, a: Dictionary, toast: Callable, reopen: C
 
 # ------------------------------------------------------------ 4) hikâye kartları (main._on_career_card çağırır)
 ## Dönen sözlük: {title, body, scene, icon, buttons:[{text, cb, kind}]}
-static func card_spec(gs, after: Callable) -> Dictionary:
+static func _foe_name(gs, card_id: String) -> String:
+	if card_id == "champion":
+		return "Düşman pehlivanı"
+	for r in gs.career.get("rivals", []):
+		if bool(r.alive) and bool(r.hostile):
+			return String(r.n)
+	for r2 in gs.career.get("rivals", []):
+		if bool(r2.alive):
+			return String(r2.n)
+	return "Rakip Bey"
+
+
+static func card_spec(gs, after: Callable, ui = null) -> Dictionary:
 	var pend: Dictionary = gs.career.get("pending", {})
 	var kind: String = String(pend.get("kind", ""))
 	var nm: String = String(gs.career.name)
@@ -445,6 +458,16 @@ static func card_spec(gs, after: Callable) -> Dictionary:
 			var btns: Array = []
 			for i in c2.c.size():
 				var idx: int = i
-				btns.append({"text": String(c2.c[i][0]), "cb": func(): Career.choose(gs, idx); after.call(), "kind": "good" if i == 0 else ""})
+				if c2.c[i].size() > 2 and ui != null:
+					var g: Dictionary = (c2.c[i][2] as Dictionary).duplicate()
+					g["skill"] = clampf(float(gs.career.get("renown", 0.0)) / 100.0, 0.0, 1.0) * 0.8
+					g["player"] = nm
+					g["foe"] = _foe_name(gs, String(c2.id))
+					btns.append({"text": String(c2.c[i][0]), "icon": "swords", "kind": "danger", "cb": func():
+						Minigames.duel(ui, g, func(res: String, _info: Dictionary):
+							Career.choose_game(gs, idx, res)
+							after.call())})
+				else:
+					btns.append({"text": String(c2.c[i][0]), "cb": func(): Career.choose(gs, idx); after.call(), "kind": "good" if i == 0 else ""})
 			return {"title": String(c2.t), "body": String(c2.b), "scene": scene(String(c2.scene)), "icon": "", "buttons": btns}
 	return {}
