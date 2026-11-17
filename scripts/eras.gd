@@ -99,7 +99,8 @@ const SPLIT := {
 		[504, "France", "Germany", "own"],
 		[1071, "Romania", "Austria", "own"], [1072, "Romania", "Austria", "own"], [1075, "Romania", "Austria", "own"], [1081, "Romania", "Austria", "own"],
 		[1079, "Romania", "Austria", "own"], [1459, "Serbia", "Austria", "own"],
-		[32, "China", "United Kingdom", "own"], [31, "China", "United Kingdom", "own"]],
+		[32, "China", "United Kingdom", "own"], [31, "China", "United Kingdom", "own"],
+		[420, "Turkey", "Russia", "own"]],     # Kars Oblastı (Kars, Ardahan, Batum): 1878-1918 Rus toprağı
 }
 
 # dönem başkentleri: host (bugünkü ülke adı) -> başkent eyalet id'si
