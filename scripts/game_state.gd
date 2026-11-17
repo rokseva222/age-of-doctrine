@@ -230,7 +230,7 @@ func _shuffle(arr: Array) -> void:
 
 # ===================================================================== taarruz harekâtları
 
-const OP_ORDER := ["assault", "barrage", "naval", "air", "missile", "paradrop", "special", "cyber", "blitz"]
+const OP_ORDER := ["assault", "night", "armor", "siege", "encircle", "deception", "barrage", "naval", "air", "missile", "paradrop", "special", "cyber", "blitz"]
 const OPS := {
 	"assault": {"name": "Kara Taarruzu", "icon": "swords", "cost": 0.0, "att": 1.0, "dp": 1.0, "surv": 0.35,
 		"desc": "Standart birleşik silah taarruzu."},
@@ -250,6 +250,16 @@ const OPS := {
 		"desc": "Komuta ağını kör eder: savunma −%14."},
 	"landing": {"name": "Amfibi Çıkarma", "icon": "ship", "cost": 0.6, "att": 0.85, "dp": 1.1, "surv": 0.30,
 		"desc": "Deniz aşırı çıkarma: taarruz −15 yüzde, savunma +10 yüzde. Taşıma kapasitesi donanmanla sınırlı."},
+	"armor": {"name": "Zırh Hamlesi", "icon": "tank", "cost": 0.45, "att": 1.10, "dp": 0.94, "surv": 0.30,
+		"desc": "Tank mızrak ucuyla yarma: taarruz +%10, savunma −%6. WW2 ve modern çağda."},
+	"night": {"name": "Gece Baskını", "icon": "eye", "cost": 0.15, "att": 1.03, "dp": 0.93, "surv": 0.50,
+		"desc": "Karanlıkta sessiz yaklaşıp vurur: savunma −%7, taarruz +%3, kayıplar düşük. Her çağda."},
+	"siege": {"name": "Kuşatma Harekâtı", "icon": "castle", "cost": 0.40, "att": 0.90, "dp": 0.80, "surv": 0.55,
+		"desc": "Eyaleti sarıp ikmali keser, surları döver: savunma −%20, taarruz −%10; kayıplar düşük."},
+	"encircle": {"name": "Çevirme Harekâtı", "icon": "target", "cost": 0.60, "att": 1.05, "dp": 0.84, "surv": 0.40,
+		"desc": "İki kıskaç koluyla sarma: savunma −%16, taarruz +%5. En az 2 ordu gerekir."},
+	"deception": {"name": "Aldatma Harekâtı", "icon": "radar", "cost": 0.25, "att": 1.0, "dp": 0.88, "surv": 0.45,
+		"desc": "Sahte hazırlıkla savunmayı yanlış yere çeker: savunma −%12, kayıplar düşük. WW2 ve modern çağda."},
 	"blitz": {"name": "Yıldırım Taarruzu", "icon": "fast", "cost": 0.0, "att": 1.07, "dp": 1.0, "surv": 0.25,
 		"desc": "Taarruz +%12; yenilirsen sağ kalan yalnız %25."},
 }
@@ -387,6 +397,12 @@ func op_available(op: String, prov = null, army_list: Array = [], frac: float = 
 				return false
 		"blitz":
 			if fam == "ww1" or fam == "pre":
+				return false
+		"armor", "deception":
+			if fam == "ww1" or fam == "pre":
+				return false
+		"encircle":
+			if army_list.size() == 1:
 				return false
 	if op == "naval" and prov != null and not prov.coastal:
 		return false

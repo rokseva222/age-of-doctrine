@@ -17,7 +17,7 @@ const ERA_ALIAS := {
 ## Dosya (jpg) varsa onun adı IMG_ALIAS ile, yoksa kodla çizilen sahne PX_ALIAS ile seçilir
 const PX_ALIAS := {"era_ww2": "blitz", "era_cw62": "missile", "era_alt": "spy", "era_modern": "missile", "era_story": "alliance",
 	"un_ceasefire": "peace", "un_sanction": "sanction", "un_aid": "trade", "un_probe": "spy"}
-const FIRE := ["pre_assault", "pre_barrage", "pre_naval", "pre_war", "pre_siege", "pre_rebel", "pre_special", "ww1_assault", "ww1_air", "era_ww1", "era_ww2", "crisis", "carrier", "assault", "barrage", "blitz", "naval", "air", "missile", "paradrop", "special", "landing", "war"]
+const FIRE := ["armor", "siege", "pre_assault", "pre_barrage", "pre_naval", "pre_war", "pre_siege", "pre_rebel", "pre_special", "ww1_assault", "ww1_air", "era_ww1", "era_ww2", "crisis", "carrier", "assault", "barrage", "blitz", "naval", "air", "missile", "paradrop", "special", "landing", "war"]
 const SCAN := ["cyber", "spy", "un_probe", "era_alt"]
 static var _tex_cache: Dictionary = {}
 
@@ -74,7 +74,7 @@ static func era_scene(id: String) -> String:
 
 static func for_op(op: String) -> String:
 	match op:
-		"assault", "barrage", "cyber", "blitz", "air", "naval", "missile", "paradrop", "special", "landing":
+		"assault", "barrage", "cyber", "blitz", "air", "naval", "missile", "paradrop", "special", "landing", "armor", "night", "siege", "encircle", "deception":
 			return op
 	return "assault"
 

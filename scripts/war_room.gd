@@ -11,7 +11,7 @@ const MAX_PHASES := 6
 const REFUND := 0.15
 const PHASE_TIMEOUT := 30      # taarruz başladıktan sonra bu kadar hafta içinde fethedilmezse başarısız (kuşatma sürüyorsa uzar)
 const WAIT_LIMIT := 8          # para/ordu beklemesi bu süreyi aşarsa aşama başarısız
-const OP_ORDER := ["assault", "barrage", "air", "naval", "missile", "paradrop", "special", "cyber", "landing", "blitz"]
+const OP_ORDER := ["assault", "night", "armor", "siege", "encircle", "deception", "barrage", "air", "naval", "missile", "paradrop", "special", "cyber", "landing", "blitz"]
 
 
 static func _tr() -> bool:

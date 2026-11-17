@@ -168,6 +168,11 @@ func draw(ctrl: Control, kind: String, time: float) -> void:
 		"border": _border()
 		"crisis": _crisis()
 		"carrier": _carrier()
+		"armor": _armor()
+		"night": _night()
+		"siege": _siege()
+		"encircle": _encircle()
+		"deception": _deception()
 		"pre_assault": _pre_assault()
 		"pre_barrage": _pre_barrage()
 		"pre_naval": _pre_naval()
@@ -346,16 +351,26 @@ func _assault() -> void:
 		while x < pw:
 			R(x, row, 4, 1, "H")
 			x += 8
-	for i in 4:
-		var x: float = wrapx(5.0, i * pw / 4.0, pw)
-		var y: float = gy + 2 + (i % 2) * 7
-		dust_trail(x, y + 7)
-		spr(TANK, x, y)
-		if (fr + i * 4) % 12 == 0:
-			muzzle(x + 20, y + 1)
-	for i in 9:
-		var sx: float = wrapx(7.0 + (i % 2), i * pw / 9.0 + 10, pw)
-		spr(SOLDIER_A if (fr + i) % 2 == 0 else SOLDIER_B, sx, gy + 15 + (i % 3) * 3, false, PAL, 1)
+	# düşman hattı: bunkerler ve isabet alan noktalar
+	var cyc: float = fposmod(t * 0.2, 1.0)
+	for i in 3:
+		var bx: float = pw * 0.8 + (i % 2) * 6
+		var by: float = gy + 9 + i * 9
+		bunker(bx, by, clampf((cyc - 0.5 - i * 0.12) * 3.0, 0.0, 1.0))
+		var st: float = (cyc - 0.5 - i * 0.12) * 3.0
+		if st > 0.0 and st < 0.4:
+			boom(bx + 8, by - 5, st * 2.0)
+	for i in 3:
+		var x: float = wrapx(5.0, i * pw / 3.0, pw * 0.8)
+		var y: float = gy + 1 + i * 9
+		dust_trail(x, y + 15, 4)
+		spr(TANK, x, y, false, PAL, 2)
+		if (fr + i * 4) % 10 < 2:
+			muzzle(x + 40, y + 4)
+			R(x + 46, y + 5, 12, 1, A("y", 0.8))
+	for i in 7:
+		var sx: float = wrapx(7.0 + (i % 2), i * pw / 7.0 + 10, pw * 0.8)
+		spr(SOLDIER_A if (fr + i) % 2 == 0 else SOLDIER_B, sx, gy + 12 + (i % 3) * 6, false, PAL, 2)
 
 
 func _barrage() -> void:
@@ -1445,3 +1460,211 @@ func _ww1_air() -> void:
 		var fa: float = fposmod(t * 0.9 + i * 0.25, 1.0)
 		if fa < 0.5:
 			circ(pw * (0.2 + i * 0.2), gy * (0.3 + fposmod(i * 0.3, 0.4)), 1 + int(fa * 4), A("k", 0.5 - fa))
+
+
+# ------------------------------------------------------------ yeni harekât sahneleri (büyük, okunaklı)
+
+const GHOST := {"h": Color(0.58, 0.69, 0.76, 0.55), "H": Color(0.72, 0.8, 0.86, 0.55), "k": Color(0.58, 0.69, 0.76, 0.7), "d": Color(0.58, 0.69, 0.76, 0.5), "s": Color(0.8, 0.86, 0.9, 0.5)}
+const NIGHT_PAL := {"k": Color("0b0d1a"), "e": Color("73eff7"), "h": Color("1c2447"), "H": Color("2a3566"), "d": Color("0b0d1a"), ".": Color("0b0d1a")}
+
+
+func bunker(x: float, y: float, state: float) -> void:
+	# state 0..1: sağlam -> yıkık
+	if state < 0.6:
+		R(x, y - 6, 16, 6, "s")
+		R(x + 2, y - 9, 12, 3, "l")
+		R(x + 3, y - 4, 10, 2, "k")
+	else:
+		R(x, y - 3, 16, 3, "d")
+		for j in 4:
+			R(x + 2 + j * 4, y - 5 - (j % 2) * 2, 3, 2, "s")
+
+
+func tent(x: float, y: float, k: String = "d", fire := true) -> void:
+	for j in 7:
+		R(x + 6 - j, y - j, 2 * j + 1, 1, k)
+	R(x + 5, y - 3, 3, 3, "k")
+	if fire:
+		R(x + 15, y - 1, 3, 2, "o" if (fr % 4) < 2 else "y")
+		R(x + 16, y - 3, 1, 2, "y")
+
+
+func _armor() -> void:
+	sky(["n", "p", "r", "o"])
+	circ(pw * 0.8, gy - 2, 9, "y")
+	hills(gy + 2, "p", 8, 0.06, 2.0, t * 4)
+	ground("h")
+	for row in range(gy + 3, ph, 4):
+		var x := -int(fposmod(t * 40.0, 8.0))
+		while x < pw:
+			R(x, row, 5, 1, "H")
+			x += 8
+	var cyc: float = fposmod(t * 0.18, 1.0)
+	# düşman bunker hattı (sağda), zırhlılar yaklaştıkça yıkılır
+	for i in 4:
+		var bx: float = pw * 0.72 + i * 15
+		var by: float = gy + 8 + (i % 2) * 9
+		var st: float = clampf((cyc - 0.35 - i * 0.07) * 4.0, 0.0, 1.0)
+		bunker(bx, by, st)
+		if st > 0.0 and st < 0.4:
+			boom(bx + 8, by - 5, st * 2.0)
+	for i in 3:
+		var tx: float = pw * (0.04 + cyc * 0.28) + i * 30.0 - 4
+		var ty: float = gy + 1 + (i % 2) * 10 + (i / 2) * 4
+		dust_trail(tx, ty + 15, 5)
+		spr(TANK, tx, ty, false, PAL, 2)
+		if (fr + i * 3) % 8 < 2:
+			muzzle(tx + 40, ty + 4)
+			R(tx + 46, ty + 5, 14, 1, A("y", 0.8))
+	for i in 3:
+		R(pw * 0.06 + fposmod(t * 70.0 + i * 31, pw * 0.6), gy + 6 + i * 9, 6, 1, A("w", 0.35))
+
+
+func _night() -> void:
+	sky(["k", "n", "n"], gy)
+	stars(26, int(gy * 0.7), 5.0)
+	circ(pw * 0.14, 14, 7, "w")
+	circ(pw * 0.14 + 3, 12, 6, "n")
+	hills(gy + 1, "n", 8, 0.05, 4.0)
+	ground("k")
+	# gözetleme kulesi ve projektör
+	var tx: float = pw * 0.62
+	R(tx, gy - 22, 2, 22, "d")
+	R(tx - 5, gy - 28, 12, 6, "d")
+	var sw: float = sin(t * 0.8) * 0.5
+	for j in 22:
+		var bx: float = tx - 2 - j * (2.0 + sw * 2.2)
+		R(bx, gy - 26 + j * 1.2, 4 + j, 2, A("y", 0.10))
+	# düşman kampı
+	tent(pw * 0.7, gy + 6, "d")
+	tent(pw * 0.84, gy + 11, "s")
+	spr(SOLDIER_A, pw * 0.78, gy + 3, true, {"k": PAL.k, "e": PAL.e, "h": PAL.r, ".": PAL.k}, 2)
+	if (fr / 6) % 3 == 0:
+		R(pw * 0.78 + 2, gy - 6, 4, 1, "w")
+		R(pw * 0.78 + 4, gy - 5, 2, 1, "w")
+		R(pw * 0.78 + 2, gy - 4, 4, 1, "w")
+	# sızan birlik: sürünür, sonda baskın
+	var cyc: float = fposmod(t * 0.12, 1.0)
+	for i in 4:
+		var x: float = pw * 0.04 + cyc * pw * 0.52 + i * 12
+		var y: float = gy + 8 + (i % 2) * 6
+		spr(SOLDIER_A if (fr + i) % 2 == 0 else SOLDIER_B, x, y, false, NIGHT_PAL, 2)
+		R(x + 8, y + 1, 2, 1, "C")
+	if cyc > 0.9:
+		for i in 3:
+			muzzle(pw * 0.62 + i * 8, gy + 8 + i * 3)
+		R(0, 0, pw, ph, A("w", 0.06))
+
+
+func _siege() -> void:
+	sky(["d", "s", "l"], gy)
+	cloud(wrapx(2.0, 10, pw), 8, "w")
+	hills(gy + 1, "s", 6, 0.04, 2.0)
+	ground("H")
+	var cyc: float = fposmod(t * 0.35, 1.0)
+	castle(pw * 0.58, gy + 6, 56, "s", cyc > 0.6)
+	R(pw * 0.58 + 20, gy - 30, 2, 12, "k")
+	R(pw * 0.58 + 22, gy - 30, 9, 5 + int((fr % 8) / 4), "r")
+	# kuşatma topları ve çadırlar
+	for i in 2:
+		var hx: float = pw * 0.05 + i * 30
+		var hy: float = gy + 4 + i * 9
+		spr(HOWITZER, hx, hy, false, PAL, 2)
+		if (fr + i * 6) % 14 < 2:
+			muzzle(hx + 30, hy - 3)
+	for i in 3:
+		var ph_: float = fposmod(t * 0.45 + i * 0.33, 1.0)
+		var sx: float = pw * 0.16 + ph_ * pw * 0.42
+		var sy: float = gy - 4 - sin(ph_ * PI) * ph * 0.34
+		R(sx, sy, 3, 3, "y")
+		R(sx - 5, sy + 1, 4, 1, A("o", 0.6))
+		if ph_ > 0.92:
+			boom(pw * 0.58 + 8 + i * 14, gy - 6, (ph_ - 0.92) * 12.0)
+	tent(pw * 0.04, gy + 25, "r")
+	tent(pw * 0.24, gy + 28, "r", false)
+	# kuşatma halkası: kaleyi çevreleyen askerler
+	for i in 6:
+		var a: float = i / 5.0 * PI
+		var sx2: float = pw * 0.58 + 28 - cos(a) * 52
+		var sy2: float = gy + 12 + sin(a) * 22
+		spr(SOLDIER_A if (fr + i) % 2 == 0 else SOLDIER_B, sx2, sy2, false, PAL, 1)
+	smoke(pw * 0.58 + 40, gy - 14, 5, "d", 24)
+
+
+func arrow(x0: float, y0: float, x1: float, y1: float, cx: float, cy: float, u: float, k) -> void:
+	# ikinci derece Bezier boyunca ilerleyen, uçlu ok
+	var n := 26
+	for i in n:
+		var f: float = float(i) / n * u
+		var bx: float = (1 - f) * (1 - f) * x0 + 2 * (1 - f) * f * cx + f * f * x1
+		var by: float = (1 - f) * (1 - f) * y0 + 2 * (1 - f) * f * cy + f * f * y1
+		R(bx - 1, by - 1, 3, 3, k)
+	var e: float = u
+	var hx: float = (1 - e) * (1 - e) * x0 + 2 * (1 - e) * e * cx + e * e * x1
+	var hy: float = (1 - e) * (1 - e) * y0 + 2 * (1 - e) * e * cy + e * e * y1
+	circ(hx, hy, 4, k)
+	R(hx - 1, hy - 1, 3, 3, "w")
+
+
+func _encircle() -> void:
+	R(0, 0, pw, ph, "d")
+	for x in range(0, pw, 12):
+		R(x, 0, 1, ph, A("s", 0.22))
+	for y in range(0, ph, 12):
+		R(0, y, pw, 1, A("s", 0.22))
+	# nehir
+	for x in range(0, pw, 2):
+		R(x, ph * 0.5 + sin(x * 0.08) * 10, 2, 3, A("c", 0.35))
+	var cx: float = pw * 0.62
+	var cy: float = ph * 0.5
+	var cyc: float = fposmod(t * 0.22, 1.0)
+	var u: float = clampf(cyc * 1.6, 0.0, 1.0)
+	# hedef kasaba ve düşman birlikleri
+	R(cx - 6, cy - 5, 12, 10, "s")
+	R(cx - 4, cy - 7, 3, 3, "l")
+	R(cx + 2, cy - 7, 3, 3, "l")
+	for i in 6:
+		var a: float = i * TAU / 6.0
+		R(cx + cos(a) * 17 - 3, cy + sin(a) * 12 - 2, 6, 4, "r" if cyc < 0.85 or (fr % 4) < 2 else "k")
+	# iki kıskaç kolu
+	arrow(pw * 0.06, ph * 0.14, cx - 10, cy - 14, pw * 0.5, ph * 0.02, u, "c")
+	arrow(pw * 0.06, ph * 0.86, cx - 10, cy + 14, pw * 0.5, ph * 0.98, u, "c")
+	arrow(pw * 0.06, ph * 0.5, cx - 20, cy, pw * 0.3, ph * 0.5, clampf(cyc * 1.2, 0.0, 0.8), "b")
+	# halka kapanır
+	if cyc > 0.75:
+		var rr: int = 22 - int((cyc - 0.75) * 40.0)
+		for i in 40:
+			var a2: float = i * TAU / 40.0
+			R(cx + cos(a2) * maxi(rr, 12) * 1.2, cy + sin(a2) * maxi(rr, 12), 2, 2, A("y", 0.9))
+	smoke(cx, cy - 6, 4, "d", 16)
+
+
+func _deception() -> void:
+	sky(["n", "p", "r", "o"])
+	hills(gy + 2, "p", 7, 0.06, 3.0)
+	ground("h")
+	# sol: şişme/sahte tanklar ve telsiz direği (hayalet görünür, titrer)
+	var flick: bool = (fr / 3) % 4 != 0
+	for i in 3:
+		if flick or i != 1:
+			spr(TANK, pw * 0.05 + i * 26, gy + 3 + (i % 2) * 9, false, GHOST, 2)
+	R(pw * 0.34, gy - 26, 2, 28, "s")
+	R(pw * 0.34 - 4, gy - 26, 10, 1, "s")
+	for j in 3:
+		var rr: float = fposmod(t * 0.9 + j * 0.33, 1.0)
+		var r2: int = int(4 + rr * 22)
+		for q in 14:
+			var a: float = -0.9 + q * 0.14
+			R(pw * 0.34 + 1 + cos(a) * r2, gy - 26 + sin(a) * r2, 1, 1, A("C", (1.0 - rr) * 0.9))
+	# sağ: düşman gözcü bunkeri sahte tanklara bakıyor
+	bunker(pw * 0.8, gy + 10, 0.0)
+	R(pw * 0.8 + 7, gy - 4, 2, 2, "w")
+	if (fr / 4) % 3 == 0:
+		R(pw * 0.8 + 6, gy - 20, 3, 6, "r")
+		R(pw * 0.8 + 6, gy - 12, 3, 2, "r")
+	# gerçek birlik: gölgede kenardan dolanır
+	for i in 3:
+		var cyc: float = fposmod(t * 0.1 + i * 0.05, 1.0)
+		var x: float = pw * 0.3 + cyc * pw * 0.5
+		spr(TANK, x, gy + 22 + i * 3, false, {"h": Color("1c2447"), "H": Color("2a3566"), "k": Color("0b0d1a"), "d": Color("0b0d1a"), "s": Color("1c2447")}, 1)
+		R(x - 6, gy + 29 + i * 3, 6, 1, A("e", 0.4))
