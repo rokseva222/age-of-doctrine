@@ -783,8 +783,17 @@ const CARDS := [
 ]
 
 
+const PRE_ONLY := ["duel", "champion"]
+
+
 static func _draw_card(gs) -> void:
-	var c: Dictionary = CARDS[gs.rng.randi() % CARDS.size()]
+	# kılıç düellosu / pehlivan meydan okuması yalnızca erken çağlarda (modern/dünya savaşı çağında anlamsız)
+	var pool: Array = []
+	for cc in CARDS:
+		if PRE_ONLY.has(String(cc.id)) and Eras.family() != "pre":
+			continue
+		pool.append(cc)
+	var c: Dictionary = pool[gs.rng.randi() % pool.size()]
 	gs.career.next_card = gs.turn + CARD_CD + gs.rng.randi() % 4
 	gs.career["pending"] = {"kind": "card", "card": c}
 	gs.career_card.emit()
