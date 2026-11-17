@@ -17,6 +17,7 @@ const Chokepoints = preload("res://scripts/chokepoints.gd")
 const Daily = preload("res://scripts/daily.gd")
 const Politics = preload("res://scripts/politics.gd")
 const Faith = preload("res://scripts/faith.gd")
+const Currency = preload("res://scripts/currency.gd")
 const WarRoom = preload("res://scripts/war_room.gd")
 const Crises = preload("res://scripts/crises.gd")
 const Objectives = preload("res://scripts/objectives.gd")
@@ -142,6 +143,7 @@ func start_game(player_country: int) -> void:
 	if player >= 0:
 		countries[player].is_player = true
 	game_started = true
+	Currency.sync(self)
 	post_news("Yeni oyun: %s liderliğinde cihan hâkimiyeti yarışı başladı." % countries[player].name if player >= 0 else "Simülasyon başladı.", -1, "info")
 
 
@@ -917,7 +919,7 @@ func player_spy(target: int) -> String:
 		return "Casus ağı toparlanıyor: %d hafta sonra tekrar gönderebilirsin." % cd
 	var cost: float = spy_cost(target)
 	if me.gold < cost:
-		return "Yetersiz hazine: %d$ gerekiyor." % int(cost)
+		return "Yetersiz hazine: %s gerekiyor." % Macro.money(cost)
 	me.gold -= cost
 	spy_cd[target] = turn
 	var q := 1
@@ -930,7 +932,7 @@ func player_spy(target: int) -> String:
 		for a in armies.values():
 			if a.owner == target:
 				narm += 1
-		post_news("Casus raporu — %s: hazine %d$, haftalık gelir %d$, %d ordu, ~%d asker." % [t.name, int(t.gold), int(t.income), narm, int(t.troops)], t.capital, "info")
+		post_news("Casus raporu — %s: hazine %s, haftalık gelir %s, %d ordu, ~%d asker." % [t.name, Macro.money(t.gold), Macro.money(t.income), narm, int(t.troops)], t.capital, "info")
 		armies_changed.emit()
 		state_changed.emit()
 		return ""
@@ -1699,7 +1701,7 @@ func _ally_spoils(winner: int, loser: int) -> void:
 	me.gold += amt
 	wc.gold = maxf(0.0, wc.gold - amt * 0.5)
 	relation_add(player, winner, 8.0)
-	post_news("%s, ortak savaşın ganimetinden %s'e %d$ pay verdi." % [wc.name, me.name, int(amt)], wc.capital, "peace")
+	post_news("%s, ortak savaşın ganimetinden %s'e %s pay verdi." % [wc.name, me.name, Macro.money(amt)], wc.capital, "peace")
 
 
 func _send_home(arm) -> void:
@@ -1922,6 +1924,7 @@ func end_turn() -> void:
 			sea_campaign.erase(vid)
 	_coalition_tick()
 	Faith.tick(self)
+	Currency.sync(self)
 	if turn % 52 == 0 and not Eras.leader_chain_active(turn):
 		_leader_turnover()
 	_check_victory()
@@ -3434,6 +3437,7 @@ func from_dict(d: Dictionary) -> bool:
 	if player >= 0:
 		countries[player].is_player = true
 	refresh_stats()
+	Currency.sync(self)
 	Macro.prime(self)
 	return true
 

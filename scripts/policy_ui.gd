@@ -366,7 +366,7 @@ func _item_row(c, id: String, step: int) -> Control:
 	v.add_child(TK.t(sub, "small", TK.FAINT if why == "" else TK.RED_TEXT))
 	h.add_child(v)
 	var pr: float = Macro.price(c, id)
-	var pl := TK.t("$%s mn" % (str(snappedf(pr, 0.1)).replace(".", ",") if pr < 100.0 else str(int(pr))), "mono", TK.GOLD)
+	var pl := TK.t(Macro.money(pr), "mono", TK.GOLD)
 	pl.custom_minimum_size = Vector2(120, 0)
 	pl.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 	pl.vertical_alignment = VERTICAL_ALIGNMENT_CENTER

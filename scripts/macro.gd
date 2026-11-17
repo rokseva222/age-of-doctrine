@@ -8,6 +8,7 @@ const Politics = preload("res://scripts/politics.gd")
 const Crises = preload("res://scripts/crises.gd")
 const Carriers = preload("res://scripts/carriers.gd")
 const Loc = preload("res://scripts/loc.gd")
+const Currency = preload("res://scripts/currency.gd")
 
 const BUDGET_KEYS := ["mil", "ind", "cyber", "logi", "stab", "res"]
 static var pre_era := false   # ilk barut çağı ailesi (eras.gd ayarlar)
@@ -96,13 +97,18 @@ static func _dec(x: float) -> String:
 
 
 static func money(m: float) -> String:
+	m = Currency.conv(m)
 	var a := absf(m)
 	var s := "-" if m < 0.0 else ""
+	var pre := Currency.symbol_front()
+	var suf := Currency.suffix()
+	if a >= 1.0e9:
+		return "%s%s%s%s%s" % [s, pre, _dec(a / 1.0e9), " kdr" if Loc.lang == "tr" else " qa", suf]
 	if a >= 1.0e6:
-		return "%s$%s%s" % [s, _dec(a / 1.0e6), Loc.units["tr"]]
+		return "%s%s%s%s%s" % [s, pre, _dec(a / 1.0e6), Loc.units["tr"], suf]
 	if a >= 1000.0:
-		return "%s$%s%s" % [s, _dec(a / 1000.0), Loc.units["mr"]]
-	return "%s$%d%s" % [s, int(a), Loc.units["mn"]]
+		return "%s%s%s%s%s" % [s, pre, _dec(a / 1000.0), Loc.units["mr"], suf]
+	return "%s%s%s%s%s" % [s, pre, _dec(a), Loc.units["mn"], suf]
 
 
 static func num(n: float) -> String:

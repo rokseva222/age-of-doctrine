@@ -212,7 +212,7 @@ static func _detail(ui, gs, cid: int) -> void:
 	box.add_child(TK.spacer(0, 6))
 	box.add_child(TK.t("Anlaşmalar", "kicker", TK.BLUE))
 	if not gs.is_allied(me, cid):
-		box.add_child(_act_btn(ui, "Casus gönder (%d$)" % int(gs.spy_cost(cid)), "blue", "eye", func():
+		box.add_child(_act_btn(ui, "Casus gönder (%s)" % Macro.money(gs.spy_cost(cid)), "blue", "eye", func():
 			var es: String = gs.player_spy(cid)
 			ui.toast(es if es != "" else "Casus başarılı: %d hafta boyunca ordularını görüyorsun." % gs.SPY_WEEKS)
 			ui.refresh_top()

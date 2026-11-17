@@ -135,6 +135,9 @@ static func open_settings(parent: Node, on_change: Callable, sfx = null) -> void
 	sh.body.add_child(TK.toggle_row("Otomatik asker atama", Settings.auto_orders, func(on: bool):
 		Settings.auto_orders = on
 		changed.call(), "Bir turda hiç emir vermezsen, savaştaki boş ordular en uygun cephe hedeflerine kendiliğinden yönlendirilir. Kapalıyken ordular sen söyleyene dek yerinde bekler."))
+	sh.body.add_child(TK.toggle_row("Yerel para birimi", Settings.currency, func(on: bool):
+		Settings.currency = on
+		changed.call(), "Paralar, oynadığın ülkenin para biriminde (₺, €, £…) gösterilir; kurlar güncel piyasa verilerine dayanır ve zamanla oynar. Kapalıyken her şey dolar olarak görünür. Oyun dengesi değişmez."))
 	sh.body.add_child(TK.toggle_row("Bildirimler", Settings.notifications, func(on: bool):
 		Settings.notifications = on
 		changed.call(), "Telefonda, devam eden bir oyun varken 5 saatte bir \"ordun seni bekliyor\" hatırlatması gönderir. Oyun yoksa ya da bittiyse bildirim gelmez."))

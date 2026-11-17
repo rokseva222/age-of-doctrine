@@ -2,6 +2,7 @@ extends RefCounted
 ## Ültimatom: barış zamanında bir ülkeden talepte bulun (geçiş izni, haraç, sınır eyaleti).
 ## Kabul ederse talep yerine gelir; reddederse savaş başlar. Kabul ihtimali güç oranına göre değişir.
 
+const Macro = preload("res://scripts/macro.gd")
 const COOLDOWN := 8     # aynı ülkeye iki ültimatom arası hafta
 
 const KINDS := {
@@ -91,7 +92,7 @@ static func describe(gs, kind: String, target: int) -> String:
 		"passage":
 			return "%s, ordularının topraklarından 52 hafta geçmesine izin versin." % t.name
 		"tribute":
-			return "%s hazinesinin bir kısmını (%d$) bize ödesin." % [t.name, int(tribute_amount(gs, target))]
+			return "%s hazinesinin bir kısmını (%s) bize ödesin." % [t.name, Macro.money(tribute_amount(gs, target))]
 		"land":
 			var pid := border_province(gs, gs.player, target)
 			if pid < 0:
@@ -135,7 +136,7 @@ static func deliver(gs, kind: String, target: int) -> Dictionary:
 				var amt := tribute_amount(gs, target)
 				t.gold -= amt
 				c.gold += amt
-				txt = "%s ültimatomu kabul etti ve %d$ haraç ödedi." % [t.name, int(amt)]
+				txt = "%s ültimatomu kabul etti ve %s haraç ödedi." % [t.name, Macro.money(amt)]
 			"land":
 				var pid := border_province(gs, me, target)
 				if pid < 0:
