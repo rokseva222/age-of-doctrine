@@ -49,3 +49,16 @@ Kaynak: Eren Akgün, Taha, Emir Ali Ulusoy, Kemalist Halife, Furkancifci47. Duru
 13. **Hükümet/din değişikliği (Furkancifci47)** — rejim değişikliği ✅ (barış şartı), din 🔵 son sıra.
 14. **Geri bildirim** — Taha: "Oyun süper"; boğazlar özelliği beğenildi; "3.1 sürümü dehşet olacak" (beklenti yüksek). "Resmi tester olmayan arkadaşlar 17:00'ye kadar linkleri ve yönergeleri alacak" (kullanıcı).
 15. **Ordu hareket etmiyor** — ✅ mesajlar açıklandı (üstte).
+
+## Grup önerileri — 2. parça (17 Kasım, 15:18–15:27 ekran görüntüleri; son parça)
+Eren, "Önerilerinizi bir liste haline getirdim, üst gruba atacağım" dedi; Emir Ali "benim dediklerimi iyi not al, çok önemli" diye vurguladı.
+
+16. **Sandbox modu (Furkancifci47, Emir Ali; kullanıcı: "bunu kesinlikle getireceğiz")** — Bannerlord tarzı serbest mod: hile yapmak, serbestçe test/deneyim; seçimler oyunun gidişatını etkilesin. Emir: "öncelik bu". 🔵 yüksek öncelik.
+17. **Savaşta toprak alma tartışması** — Taha: savaş sırasında ordunun gerçek zamanlı toprak alması; Furkan: AoH3 gibi önce işgal sonra barışta alma daha iyi; Emir: işgal etmeden savaş puanı yettiği kadar alma "büyük hata" olabilir (dengeye dikkat), ayarlardan açılıp kapanabilsin; Furkan: %90 savaş skoruyla puan yetince alma. ❓ mevcut sistem: işgal + puanla barış. Karar: değiştirme.
+18. **Müttefikten toprak alma / sadakat ödülü (Emir Ali)** — Müttefikten toprak alırken onun topraklarını işgal etmek gerekmesin, puan yettiği kadar. Koalisyon savaşına ya da müttefik daveti ile katkı yapınca toprak (sınır yoksa para / teçhizat) ödülü. 🟡/🔵 (ittifak yardımı ödülü).
+19. **Agresif genişleme (Emir Ali)** — Dünya tepkisi/koalisyon zaten var ✅.
+20. **Savaş sisi + casus (Furkancifci47)** — Savaş sisi mevcut (ayarlardan Kapalı/Orta/Tam) ✅; "düşman ordusunu görmek hile olur, casus gelsin: ilişki/ittifak/savaş ekranına casus, tek turluk ordu ve para görme". 🔵 casus sistemi.
+21. **Senaryo oluşturucu (Eren)** — Toprakla oynama (eyalet sahipliği boyama), yıl ayarlama, çok seçenek. Mevcut: senaryo düzenleyici + AOD koduyla paylaşma (Eren içe aktarıp denemiş; toprak ayarı olmadığı için yarıda kalmış). Örnek: Suriye istilası senaryosu. 🔵 (toprak boyama + yıl).
+22. **Olaylar / "Zaman çizelgesi" (Eren, Emir)** — Başka bir oyundan örnek: yıl bazlı haber/olay çizelgesi ("Gelecek olayları simüle et"); Emir: Fatih Sultan Mehmet dönemi İstanbul'un fethinde gemileri karadan götürme olayı. 🔵 olay/hikâye içeriği.
+23. **Teslimiyet mantığı (Taha)** — "Biz veya karşı taraf teslim olsun". 🔵 (AI savaş yorgunluğu/teslim).
+24. **Silah miktarı + fiyat (Eren)**, **kabine maaş (Eren)**, **para birimi (Emir)** — 1. parçadaki 3, 4, 5. maddelerle aynı.
