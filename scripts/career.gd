@@ -783,16 +783,50 @@ const CARDS := [
 ]
 
 
+const MODERN_CARDS := [
+	{"id": "coup", "t": "Darbe Söylentisi", "scene": "spy", "b": "Subaylar arasında hükümete karşı bir darbe hazırlığı söylentisi dolaşıyor. Senden bilgi bekleniyor.",
+		"c": [["Hükümete bildir", {"favor": 12, "loyalty": 4, "renown": -3}], ["Sessiz kal", {"renown": 2, "favor": -4, "loyalty": -2}], ["Komplocularla görüş", {"renown": 5, "loyalty": -8, "favor": -6}]]},
+	{"id": "press", "t": "Basın Skandalı", "scene": "alliance", "b": "Bir gazete bölgendeki yolsuzluk iddialarını manşete taşıdı. Kamuoyu hesap soruyor.",
+		"c": [["Soruşturma aç", {"gold_w": -0.5, "stab": 2, "renown": 3}], ["Gazeteyi sustur", {"favor": 3, "renown": -5, "stab": -3}], ["Açıklama yap", {"renown": 2}]]},
+	{"id": "clash", "t": "Sınırda Çatışma", "scene": "border", "b": "Sınır karakoluna ateş açıldı; iki ülkenin devriyeleri karşı karşıya. Askerler talimat bekliyor.",
+		"c": [["Takviye gönder", {"troops": -200, "renown": 5, "stab": 1}], ["Diplomatik protesto", {"favor": 3, "renown": -1}], ["Görmezden gel", {"renown": -4, "stab": -2}]]},
+	{"id": "strike", "t": "Grev Dalgası", "scene": "trade", "b": "Limanlarda ve fabrikalarda grev başladı. Üretim durdu, işçiler seni bekliyor.",
+		"c": [["Taleplere uy", {"gold_w": -2.0, "stab": 4}], ["Güvenlik güçlerini gönder", {"stab": -4, "favor": 3, "renown": -2}], ["Arabulucu getir", {"gold_w": -0.6, "stab": 2, "renown": 2}]]},
+	{"id": "disaster", "t": "Doğal Afet", "scene": "trade", "b": "Bölgende deprem ve sel yaşandı. Yollar kapalı, binlerce kişi yardım bekliyor.",
+		"c": [["Askerî yardım seferberliği", {"troops": -150, "stab": 4, "renown": 4}], ["Bütçeyi kullan", {"gold_w": -2.5, "stab": 5, "renown": 3}], ["Merkezden yardım iste", {"favor": -2, "stab": 2}]]},
+	{"id": "invest", "t": "Yabancı Yatırım Teklifi", "scene": "trade", "b": "Yabancı bir şirket bölgene büyük bir liman ve fabrika yatırımı önerdi; karşılığında geniş imtiyaz istiyor.",
+		"c": [["Kabul et", {"gold_w": 4.0, "loyalty": -3, "favor": -2}], ["Şartlı kabul et", {"gold_w": 2.0, "favor": 2}], ["Reddet", {"renown": 2, "stab": 1}]]},
+	{"id": "defector", "t": "Sığınmacı Subay", "scene": "spy", "b": "Komşu ordunun bir subayı sana sığınıp gizli bilgiler vermek istiyor.",
+		"c": [["Sığınma ver", {"renown": 4, "favor": -6, "troops": 100}], ["İade et", {"favor": 6, "renown": -3}], ["Sorgula", {"favor": 3, "loyalty": -1}]]},
+	{"id": "visit", "t": "Müttefik Heyeti", "scene": "alliance", "b": "Müttefik bir ülkenin askerî heyeti bölgeni ziyaret etmek istiyor.",
+		"c": [["Ağırla", {"gold_w": -1.0, "renown": 4, "favor": 4}], ["Ortak tatbikat yap", {"troops": -100, "renown": 6, "stab": 1}], ["Geri çevir", {"renown": -2, "loyalty": 2}]]},
+	{"id": "pay", "t": "Maaşlar Gecikti", "scene": "assault", "b": "Maaşlar gecikti; bir birlik toplu olarak izin istemeye hazırlanıyor.",
+		"c": [["Maaşları öde", {"gold_w": -2.5}], ["İbret için cezalandır", {"troops": -200, "renown": 2, "stab": -2}], ["Bırak gitsinler", {"troops": -1200}]]},
+	{"id": "protest", "t": "Sokak Protestoları", "scene": "alliance", "b": "Başkentte ve bölgende kalabalıklar sokaklara döküldü; hayat pahalılığı ve yolsuzluk protesto ediliyor.",
+		"c": [["Dinle ve reform sözü ver", {"gold_w": -1.0, "stab": 3, "renown": 2}], ["Güvenlik güçlerini kullan", {"stab": -3, "favor": 4, "renown": -4}], ["Bekle", {"stab": -4}]]},
+	{"id": "rival", "t": "Rakip General", "scene": "alliance", "b": "Genelkurmayda terfi için bir rakibin seni hükümete karalıyor.",
+		"c": [["Kamuoyunda yanıt ver", {"renown": 3, "favor": -4}], ["Hükümete şikâyet et", {"favor": 5, "renown": -2}], ["Kanıt topla", {"gold_w": -0.5, "favor": 2, "renown": 2}]]},
+	{"id": "cyber", "t": "Siber Saldırı", "scene": "spy", "b": "Bölgenin elektrik ve haberleşme şebekesine siber saldırı yapıldı. Kaynağı belirsiz.",
+		"c": [["Karşı saldırı yap", {"gold_w": -1.5, "renown": 5}], ["Sistemleri kapat", {"gold_w": -0.5, "stab": -2}], ["Hükümete bildir", {"favor": 5}]], "modern_only": true},
+	{"id": "arms", "t": "Silah Tüccarı", "scene": "trade", "b": "Bir tüccar indirimli silah ve teçhizat satmak istiyor; kaynağı şüpheli.",
+		"c": [["Hepsini al", {"gold_w": -3.0, "troops": 500, "favor": -2}], ["Pazarlık et", {"gold_w": -1.5, "troops": 250}], ["Reddet", {"favor": 2, "renown": 1}]]},
+]
+
+
 const PRE_ONLY := ["duel", "champion"]
 
 
 static func _draw_card(gs) -> void:
 	# kılıç düellosu / pehlivan meydan okuması yalnızca erken çağlarda (modern/dünya savaşı çağında anlamsız)
+	var fam: String = Eras.family()
 	var pool: Array = []
-	for cc in CARDS:
-		if PRE_ONLY.has(String(cc.id)) and Eras.family() != "pre":
-			continue
-		pool.append(cc)
+	if fam == "pre":
+		pool = CARDS.duplicate()
+	else:
+		for cc in MODERN_CARDS:
+			if bool(cc.get("modern_only", false)) and fam != "":
+				continue
+			pool.append(cc)
 	var c: Dictionary = pool[gs.rng.randi() % pool.size()]
 	gs.career.next_card = gs.turn + CARD_CD + gs.rng.randi() % 4
 	gs.career["pending"] = {"kind": "card", "card": c}
