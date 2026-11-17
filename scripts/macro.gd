@@ -8,6 +8,7 @@ const Politics = preload("res://scripts/politics.gd")
 const Crises = preload("res://scripts/crises.gd")
 const Carriers = preload("res://scripts/carriers.gd")
 const Loc = preload("res://scripts/loc.gd")
+const Focus = preload("res://scripts/focus.gd")
 const Currency = preload("res://scripts/currency.gd")
 
 const BUDGET_KEYS := ["mil", "ind", "cyber", "logi", "stab", "res"]
@@ -451,6 +452,8 @@ static func calc(gs, c) -> Dictionary:
 	rev *= Crises.income_mult(gs, c)
 	rev *= Chokepoints.income_mult(c)
 	rev *= Politics.income_mult(gs, c)
+	if c.id == gs.player:
+		rev *= Focus.income_mult(gs)
 	if c.id != gs.player:
 		rev *= [0.85, 1.0, 1.2][clampi(gs.difficulty, 0, 2)]
 	var wages: float = c.troops * wage_week(c) * 1.0e-6

@@ -25,7 +25,10 @@ const SceneArt = preload("res://scripts/scene_art.gd")
 const Cabinet = preload("res://scripts/cabinet.gd")
 const Sil = preload("res://scripts/silhouette.gd")
 const Names = preload("res://scripts/names.gd")
-const TABS := [["Bütçe", "coins"], ["Silah Alımı", "tank"], ["Envanter", "shield"], ["Ticaret", "globe"], ["Cepheler", "swords"], ["İttifak", "handshake"], ["İstihbarat", "eye"], ["Kabine", "badge"]]
+const Focus = preload("res://scripts/focus.gd")
+var focus_sel := ""
+
+const TABS := [["Bütçe", "coins"], ["Silah Alımı", "tank"], ["Envanter", "shield"], ["Ticaret", "globe"], ["Cepheler", "swords"], ["İttifak", "handshake"], ["İstihbarat", "eye"], ["Kabine", "badge"], ["Odak", "target"]]
 const CAT_ICON := {"inf": "rifle", "tank": "tank", "afv": "afv", "arty": "arty", "air": "jet", "sub": "sub"}
 const TIER_COL := [Color("646c77"), Color("9aa2ad"), Color("5ba4e0"), Color("a98be0")]
 
@@ -97,6 +100,8 @@ func render() -> void:
 			_tab_intel()
 		7:
 			_tab_cabinet()
+		8:
+			_tab_focus()
 		_:
 			_tab_alliance()
 	ui.refresh_top()
@@ -1055,3 +1060,126 @@ func _alliance_create(c) -> void:
 		_draft = {}
 		render())
 	content.add_child(kb)
+
+
+# ------------------------------------------------------------------ odak ağacı
+
+func _tab_focus() -> void:
+	Focus.ensure(gs)
+	var fs: Dictionary = gs.focus
+	content.add_child(_wrap("Ulusal odak: aynı anda tek bir odak yürütürsün; haftalar sürer, bitince kalıcı bir etki verir. Dört dal var; ilerledikçe daha güçlü odaklar açılır. Bir odağa dokun, ayrıntısını gör ve başlat.", "small", TK.FAINT))
+	var cur := String(fs.cur)
+	if cur != "":
+		var box := VBoxContainer.new()
+		box.add_theme_constant_override("separation", 4)
+		box.add_child(_kick("YÜRÜYEN ODAK", TK.GOLD))
+		box.add_child(TK.t(Focus.nm(cur), "bodyb", TK.TEXT))
+		var tot: int = int(Focus.TREE[cur].weeks)
+		var left: int = int(fs.left)
+		var bar := ProgressBar.new()
+		bar.min_value = 0
+		bar.max_value = tot
+		bar.value = tot - left
+		bar.show_percentage = false
+		bar.custom_minimum_size = Vector2(0, 14)
+		box.add_child(bar)
+		box.add_child(_wrap("%d / %d hafta  —  %s" % [tot - left, tot, Focus.fx_text(cur)], "small", TK.MUTED))
+		var cb := TK.button("Odağı iptal et", "ghost", "x", Vector2(0, 44), 14)
+		cb.pressed.connect(func():
+			ui._click()
+			Focus.cancel(gs)
+			render())
+		box.add_child(cb)
+		content.add_child(box)
+		content.add_child(TK.hsep())
+	if focus_sel != "":
+		_focus_detail(focus_sel)
+		content.add_child(TK.hsep())
+	var cols := HBoxContainer.new()
+	cols.add_theme_constant_override("separation", 6)
+	content.add_child(cols)
+	for b in Focus.BRANCHES:
+		var col := VBoxContainer.new()
+		col.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		col.add_theme_constant_override("separation", 4)
+		var hd := HBoxContainer.new()
+		hd.add_theme_constant_override("separation", 6)
+		var ic := TK.IconView.new()
+		ic.icon = b.icon
+		ic.color = TK.GOLD
+		ic.custom_minimum_size = Vector2(22, 22)
+		hd.add_child(ic)
+		hd.add_child(TK.t(Focus.branch_name(b), "kicker", TK.GOLD))
+		col.add_child(hd)
+		var ids: Array = []
+		for id in Focus.TREE:
+			if Focus.TREE[id].b == b.id:
+				ids.append(id)
+		ids.sort_custom(func(x, y): return Focus.TREE[x].row < Focus.TREE[y].row or (Focus.TREE[x].row == Focus.TREE[y].row and x < y))
+		var last_row := -1
+		for id in ids:
+			var d: Dictionary = Focus.TREE[id]
+			if int(d.row) != last_row and last_row >= 0:
+				col.add_child(TK.t("│", "small", TK.FAINT))
+			last_row = int(d.row)
+			var done: bool = Focus.is_done(gs, id)
+			var running: bool = cur == id
+			var avail: bool = Focus.can_start(gs, id) == "" or (cur != "" and not done and _focus_reqs_ok(id))
+			var kind := "ghost"
+			var icn := ""
+			if done:
+				kind = "good"
+				icn = "check"
+			elif running:
+				kind = "gold"
+				icn = "hourglass"
+			elif not avail:
+				icn = "lock"
+			var fb := TK.button("%s\n%d hf" % [Focus.nm(id), int(d.weeks)] if Loc.lang == "tr" else "%s\n%d wk" % [Focus.nm(id), int(d.weeks)], kind, icn, Vector2(0, 74), 13)
+			fb.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+			fb.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+			if focus_sel == id:
+				TK.style_button(fb, "gold")
+			fb.pressed.connect(func():
+				ui._click()
+				focus_sel = id
+				render())
+			col.add_child(fb)
+		cols.add_child(col)
+
+
+func _focus_reqs_ok(id: String) -> bool:
+	for r in Focus.TREE[id].req:
+		if not Focus.is_done(gs, String(r)):
+			return false
+	return true
+
+
+func _focus_detail(id: String) -> void:
+	var d: Dictionary = Focus.TREE[id]
+	var v := VBoxContainer.new()
+	v.add_theme_constant_override("separation", 4)
+	v.add_child(TK.t(Focus.nm(id), "bodyb", TK.GOLD))
+	v.add_child(_wrap(Focus.desc(id), "small", TK.MUTED))
+	v.add_child(_wrap(Focus.fx_text(id), "small", TK.GREEN))
+	v.add_child(TK.t("%d hafta" % int(d.weeks) if Loc.lang == "tr" else "%d weeks" % int(d.weeks), "kicker", TK.FAINT))
+	if not (d.req as Array).is_empty():
+		var names: Array = []
+		for r in d.req:
+			names.append(("✓ " if Focus.is_done(gs, String(r)) else "") + Focus.nm(String(r)))
+		v.add_child(_wrap(("Önkoşul: " if Loc.lang == "tr" else "Requires: ") + ", ".join(names), "small", TK.FAINT))
+	var err := Focus.can_start(gs, id)
+	if Focus.is_done(gs, id):
+		v.add_child(TK.t("Tamamlandı", "bodyb", TK.GREEN))
+	elif err == "":
+		var sb := TK.button("Odağı başlat", "gold", "target", Vector2(0, 52), 16)
+		sb.pressed.connect(func():
+			ui._click()
+			var e := Focus.start(gs, id)
+			if e != "":
+				_toast(e)
+			render())
+		v.add_child(sb)
+	else:
+		v.add_child(_wrap(err, "small", TK.RED_TEXT))
+	content.add_child(v)

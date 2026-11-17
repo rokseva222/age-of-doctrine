@@ -17,6 +17,7 @@ const Chokepoints = preload("res://scripts/chokepoints.gd")
 const Daily = preload("res://scripts/daily.gd")
 const Politics = preload("res://scripts/politics.gd")
 const Faith = preload("res://scripts/faith.gd")
+const Focus = preload("res://scripts/focus.gd")
 const Currency = preload("res://scripts/currency.gd")
 const WarRoom = preload("res://scripts/war_room.gd")
 const Crises = preload("res://scripts/crises.gd")
@@ -599,6 +600,7 @@ func _fog_provinces() -> Dictionary:
 ## Casus: {ülke id: bu haftaya kadar ordularını görürüz}, {ülke id: yeniden casus gönderebileceğimiz hafta}
 var spy_until: Dictionary = {}
 var spy_cd: Dictionary = {}
+var focus: Dictionary = {}               # odak ağacı durumu (focus.gd)
 
 
 func spy_active(cid: int) -> bool:
@@ -1924,6 +1926,7 @@ func end_turn() -> void:
 			sea_campaign.erase(vid)
 	_coalition_tick()
 	Faith.tick(self)
+	Focus.tick(self)
 	Currency.sync(self)
 	if turn % 52 == 0 and not Eras.leader_chain_active(turn):
 		_leader_turnover()
@@ -3233,7 +3236,7 @@ func to_dict() -> Dictionary:
 		"v": 3, "seed": seed_value, "base": base_country_count,
 		"turn": turn, "player": player, "next_army_id": next_army_id, "victory": victory_declared,
 		"rng_state": rng.state, "rebel_names": rebel_name_count, "merc_names": merc_names, "stats": stats,
-		"difficulty": difficulty, "blocs": blocs, "next_bloc": next_bloc_id, "cold": cold, "sea_camp": sea_campaign.keys(), "crisis": crisis, "crisis_end": crisis_last_end, "scn": scn, "era": Eras.current, "nuke_cd": nuke_cd, "grand": grand, "chokes": chokes, "daily": daily, "pol": pol, "faith": faith, "wroom": wroom, "indep": indep, "career": career, "moment_p": moment_pending, "moment_f": moment_flags, "infamy": infamy, "un_cd": un_cd, "un_log": un_log, "aid": aid,
+		"difficulty": difficulty, "blocs": blocs, "next_bloc": next_bloc_id, "cold": cold, "sea_camp": sea_campaign.keys(), "crisis": crisis, "crisis_end": crisis_last_end, "scn": scn, "era": Eras.current, "nuke_cd": nuke_cd, "grand": grand, "chokes": chokes, "daily": daily, "pol": pol, "faith": faith, "focus": focus, "wroom": wroom, "indep": indep, "career": career, "moment_p": moment_pending, "moment_f": moment_flags, "infamy": infamy, "un_cd": un_cd, "un_log": un_log, "aid": aid,
 	}
 	var ps: Array = []
 	for p in provinces:
@@ -3392,6 +3395,7 @@ func from_dict(d: Dictionary) -> bool:
 	daily = d.get("daily", {}).duplicate(true)
 	pol = d.get("pol", {}).duplicate(true)
 	faith = d.get("faith", {}).duplicate(true)
+	focus = d.get("focus", {}).duplicate(true)
 	wroom = d.get("wroom", {}).duplicate(true)
 	Chokepoints.ensure(self)
 	Chokepoints.tick(self)
