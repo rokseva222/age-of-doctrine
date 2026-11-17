@@ -355,14 +355,14 @@ func _assault() -> void:
 	var cyc: float = fposmod(t * 0.2, 1.0)
 	for i in 3:
 		var bx: float = pw * 0.8 + (i % 2) * 6
-		var by: float = gy + 9 + i * 9
+		var by: float = gy + 8 + i * 6
 		bunker(bx, by, clampf((cyc - 0.5 - i * 0.12) * 3.0, 0.0, 1.0))
 		var st: float = (cyc - 0.5 - i * 0.12) * 3.0
 		if st > 0.0 and st < 0.4:
 			boom(bx + 8, by - 5, st * 2.0)
 	for i in 3:
 		var x: float = wrapx(5.0, i * pw / 3.0, pw * 0.8)
-		var y: float = gy + 1 + i * 9
+		var y: float = gy + 1 + i * 3
 		dust_trail(x, y + 15, 4)
 		spr(TANK, x, y, false, PAL, 2)
 		if (fr + i * 4) % 10 < 2:
@@ -370,7 +370,7 @@ func _assault() -> void:
 			R(x + 46, y + 5, 12, 1, A("y", 0.8))
 	for i in 7:
 		var sx: float = wrapx(7.0 + (i % 2), i * pw / 7.0 + 10, pw * 0.8)
-		spr(SOLDIER_A if (fr + i) % 2 == 0 else SOLDIER_B, sx, gy + 12 + (i % 3) * 6, false, PAL, 2)
+		spr(SOLDIER_A if (fr + i) % 2 == 0 else SOLDIER_B, sx, ph - 15 - (i % 3) * 3, false, PAL, 2)
 
 
 func _barrage() -> void:
@@ -714,7 +714,20 @@ func _war() -> void:
 	ground("k")
 	R(0, gy, pw, 2, "r")
 	for i in 2:
-		spr(TANK, wrapx(4.0, i * pw * 0.5, pw), gy + 4 + i * 4, false, {"h": PAL.k, "H": PAL.d, "k": PAL.k, "d": PAL.d, "s": PAL.s, ".": PAL.k})
+		var tx: float = wrapx(5.0, i * pw * 0.5, pw)
+		var ty: float = gy + 2 + i * 5
+		dust_trail(tx, ty + 15, 4)
+		spr(TANK, tx, ty, false, PAL, 2)
+		if (fr + i * 5) % 12 < 2:
+			muzzle(tx + 40, ty + 4)
+	for i in 2:                                            # bombardıman uçakları: bomba bırakır, siluet yanar
+		var jx: float = wrapx(14.0 + i * 3.0, i * pw * 0.45, pw, 40.0)
+		var jy: float = 8 + i * 9
+		spr(JET, jx, jy, false, {"k": PAL.l, ".": PAL.l}, 2)
+		var bf: float = fposmod(t * 0.7 + i * 0.5, 1.0)
+		R(jx + 6, jy + 6 + bf * (gy - jy - 6), 2, 3, "w")
+		if bf > 0.9:
+			boom(jx + 6, gy - 4, (bf - 0.9) * 10.0)
 	for i in 3:
 		R(pw * 0.15 + i * pw * 0.3 + sin(t * 2 + i), 4, 1, gy - 10, A("y", 0.14))
 
@@ -1503,14 +1516,14 @@ func _armor() -> void:
 	# düşman bunker hattı (sağda), zırhlılar yaklaştıkça yıkılır
 	for i in 4:
 		var bx: float = pw * 0.72 + i * 15
-		var by: float = gy + 8 + (i % 2) * 9
+		var by: float = gy + 8 + (i % 2) * 6
 		var st: float = clampf((cyc - 0.35 - i * 0.07) * 4.0, 0.0, 1.0)
 		bunker(bx, by, st)
 		if st > 0.0 and st < 0.4:
 			boom(bx + 8, by - 5, st * 2.0)
 	for i in 3:
 		var tx: float = pw * (0.04 + cyc * 0.28) + i * 30.0 - 4
-		var ty: float = gy + 1 + (i % 2) * 10 + (i / 2) * 4
+		var ty: float = gy + 1 + i * 3
 		dust_trail(tx, ty + 15, 5)
 		spr(TANK, tx, ty, false, PAL, 2)
 		if (fr + i * 3) % 8 < 2:
