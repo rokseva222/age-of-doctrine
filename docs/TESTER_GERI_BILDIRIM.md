@@ -62,3 +62,18 @@ Eren, "Önerilerinizi bir liste haline getirdim, üst gruba atacağım" dedi; Em
 22. **Olaylar / "Zaman çizelgesi" (Eren, Emir)** — Başka bir oyundan örnek: yıl bazlı haber/olay çizelgesi ("Gelecek olayları simüle et"); Emir: Fatih Sultan Mehmet dönemi İstanbul'un fethinde gemileri karadan götürme olayı. 🔵 olay/hikâye içeriği.
 23. **Teslimiyet mantığı (Taha)** — "Biz veya karşı taraf teslim olsun". 🔵 (AI savaş yorgunluğu/teslim).
 24. **Silah miktarı + fiyat (Eren)**, **kabine maaş (Eren)**, **para birimi (Emir)** — 1. parçadaki 3, 4, 5. maddelerle aynı.
+
+## 17:00 güncellemesi — yapılanlar (v1.1)
+- ✅ **Sandbox modu (16)** — Ayarlar > Sandbox modu; oyun menüsünde "Sandbox" paneli (hazine, asker, eyalet verme/alma, ülkeyi kat, savaş/barış, ilişki, dünya tepkisi).
+- ✅ **Casus (20)** — Diplomasi ekranından casus gönder: 4 hafta düşman ordusu/askeri görünür, rapor; başarısızlıkta ilişki bozulur.
+- ✅ **Teslimiyet (23)** — Oyuncu "Teslim ol" ile savaşı bitirebilir (işgal edilen eyaletler gider, hazinenin yarısı tazminat).
+- ✅ **Müttefik ganimeti (18)** — Ortak savaşta kazanan müttefik pay verir (para + ilişki).
+- ✅ **Senaryo editörü (21)** — Başlangıç yılı + eyalet devirleri (arayıp yeni sahibini seç, harita boyama); paylaşım kodu da taşır.
+- ✅ **Para birimi (5)** — Her ülke kendi parasıyla (₺/€/£/$…); gömülü güncel kurlar zamanla oynar; Ayarlar'da aç/kapa. Yalnızca gösterim; denge değişmez.
+- ✅ **Din sistemi** — Hristiyanlık/İslam/Dharmik yayılma, barış şartı "Din dayatma", eyalet kartında din etiketi.
+- ✅ **Barış şartları** — Rejim değişikliği, Din dayatma, Vasal devlet.
+- ✅ **Odak ağacı** — Politika > Odak: 4 dal x 5 odak (Ekonomi, Askeri, Diplomasi, İç Siyaset), önkoşullu, haftalar sürer, kalıcı etkiler.
+- ✅ **Harekât çeşitleri** — Gece Baskını, Zırh Hamlesi, Kuşatma, Çevirme, Aldatma (toplam 15) + her biri için yeni piksel sahne; taarruz/savaş sahneleri büyütüldü.
+- ✅ **Kabine maaşı** düşürüldü, **tüfek alım adımı** (20/100) ve **Slovenya** harita şekli düzeltildi.
+- 🔵 Gemini paketleri: tools/ICON_PROMPTS_13.md (yeni özellik simgeleri) ve _14.md (modern silah modelleri) — dosyalar gelince otomatik kullanılır.
+- ⏳ Sonraya: odak ağacında ülkeye özel dallar, olay çizelgesi (Fatih gemileri vb.), parlamento onayı, hikâye kampanyaları.
