@@ -6,6 +6,8 @@ const Macro = preload("res://scripts/macro.gd")
 const Emblem = preload("res://scripts/emblem.gd")
 const DataUtil = preload("res://scripts/data_util.gd")
 const Loc = preload("res://scripts/loc.gd")
+const Names = preload("res://scripts/names.gd")
+const Eras = preload("res://scripts/eras.gd")
 const Objectives = preload("res://scripts/objectives.gd")
 
 const KIND_ORDER := ["free", "real", "fiction", "user"]
@@ -202,8 +204,12 @@ static func is_user(id: String) -> bool:
 
 static func apply(gs, id: String) -> void:
 	var sc: Dictionary = get_sc(id)
+	if Eras.current == "":
+		Names.start_year = 2027
 	if sc.is_empty() or id == "free":
 		return
+	if sc.has("year") and Eras.current == "":
+		Names.start_year = clampi(int(sc["year"]), 1800, 2100)
 	apply_dict(gs, sc, false)
 	Objectives.begin(gs, sc)
 

@@ -6,6 +6,7 @@ const TK = preload("res://scripts/theme_kit.gd")
 const Sheet = preload("res://scripts/sheet.gd")
 const Loc = preload("res://scripts/loc.gd")
 const U = preload("res://scripts/user_scn.gd")
+const WorldData = preload("res://scripts/world_data.gd")
 
 const PAIR_KINDS := [["wars", "Savaşlar", "saldırgan", "hedef"], ["embargo", "Ambargolar", "uygulayan", "uygulanan"], ["cold", "Gerginlikler", "taraf", "taraf"]]
 const OBJ_LABELS := {
@@ -14,6 +15,8 @@ const OBJ_LABELS := {
 }
 
 var root: Node
+var _year_spin: SpinBox
+var _prov_idx: Array = []
 var on_done: Callable
 var d := {}          # düzenlenen senaryo (yayın biçiminde)
 var _sheet
@@ -144,10 +147,24 @@ func _build() -> void:
 	for pk in PAIR_KINDS:
 		var key: String = pk[0]
 		_section(key, pk[1], func(): _fill_pairs(key))
+	_section("transfer", "Eyalet devirleri (harita boyama)", _fill_transfer)
 	_section("blocs", "İttifaklar (bloklar)", _fill_blocs)
 	_section("mods", "Ülke ayarları", _fill_mods)
 	_section("events", "Hikâye olayları (zamanlı)", _fill_events)
 	_section("objs", "Hedefler", _fill_objs)
+	var ylb := HBoxContainer.new()
+	ylb.add_theme_constant_override("separation", 10)
+	var yll := TK.t("Başlangıç yılı (0 = 2027)", "body", TK.TEXT)
+	yll.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	ylb.add_child(yll)
+	_year_spin = SpinBox.new()
+	_year_spin.min_value = 0
+	_year_spin.max_value = 2100
+	_year_spin.step = 1
+	_year_spin.value = int(d.get("year", 0))
+	_year_spin.custom_minimum_size = Vector2(160, 52)
+	ylb.add_child(_year_spin)
+	_sheet.body.add_child(ylb)
 	var dlb := HBoxContainer.new()
 	dlb.add_theme_constant_override("separation", 10)
 	var dll := TK.t("Süre sınırı (hafta, 0 = yok)", "body", TK.TEXT)
@@ -217,6 +234,75 @@ func _fill_pairs(key: String) -> void:
 		d[key].append([_val(a), _val(b)])
 		_refill(key, func(): _fill_pairs(key)), "good"))
 	box.add_child(hb)
+
+
+func _prov_index() -> Array:
+	if _prov_idx.is_empty():
+		var w = WorldData.instance()
+		var owner_of := {}
+		for c in w.raw.get("countries", []):
+			for pid in c.get("provs", []):
+				owner_of[int(pid)] = {"en": String(c["name_en"]), "tr": String(c["name"])}
+		for p in w.raw.get("provinces", []):
+			var o: Dictionary = owner_of.get(int(p["id"]), {"en": "", "tr": ""})
+			_prov_idx.append({"id": int(p["id"]), "name": String(p.get("name", "")), "en": o["en"], "tr": o["tr"]})
+	return _prov_idx
+
+
+func _fill_transfer() -> void:
+	var box: VBoxContainer = _sections["transfer"]
+	if not d.has("transfer"):
+		d["transfer"] = []
+	var tip := TK.t(Loc.t("Bir eyaleti arayıp seç, yeni sahibini belirle: oyun başında o eyalet o ülkeye geçer. Haritayı istediğin gibi boyayabilirsin."), "small", TK.FAINT)
+	tip.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	box.add_child(tip)
+	for i in d["transfer"].size():
+		var t: Array = d["transfer"][i]
+		var idx: int = i
+		var nm: String = String(t[4]) if t.size() > 4 and String(t[4]) != "" else str(t[0])
+		box.add_child(_row_label("%s:  %s  →  %s" % [nm, U.country_label(String(t[1])), U.country_label(String(t[2]))], func():
+			d["transfer"].remove_at(idx)
+			_refill("transfer", _fill_transfer)))
+	var search := LineEdit.new()
+	search.placeholder_text = Loc.t("Eyalet ara (en az 2 harf)")
+	search.custom_minimum_size = Vector2(0, 52)
+	box.add_child(search)
+	var pick := OptionButton.new()
+	pick.custom_minimum_size = Vector2(0, 52)
+	pick.fit_to_longest_item = false
+	box.add_child(pick)
+	var to := _country_picker("Turkey")
+	box.add_child(to)
+	search.text_changed.connect(func(txt: String):
+		pick.clear()
+		var q: String = txt.strip_edges().to_lower()
+		if q.length() < 2:
+			return
+		var n := 0
+		for p in _prov_index():
+			if String(p["name"]).to_lower().contains(q):
+				pick.add_item("%s  (%s)" % [p["name"], p["tr"] if Loc.lang == "tr" else p["en"]])
+				pick.set_item_metadata(pick.item_count - 1, p)
+				n += 1
+				if n >= 40:
+					break)
+	box.add_child(_small_btn("Ekle", func():
+		if pick.item_count == 0:
+			_msg.text = Loc.t("Önce bir eyalet ara ve seç.")
+			return
+		var p: Dictionary = pick.get_item_metadata(pick.selected)
+		if String(p["en"]) == _val(to):
+			_msg.text = Loc.t("Eyalet zaten bu ülkede.")
+			return
+		for t in d["transfer"]:
+			if int(t[0]) == int(p["id"]):
+				_msg.text = Loc.t("Bu eyalet zaten listede.")
+				return
+		if d["transfer"].size() >= 80:
+			return
+		_msg.text = ""
+		d["transfer"].append([int(p["id"]), p["en"], _val(to), "own", p["name"]])
+		_refill("transfer", _fill_transfer), "good"))
 
 
 func _fill_blocs() -> void:
@@ -496,6 +582,13 @@ func _collect() -> Dictionary:
 	d["sub"] = _sub_edit.text.strip_edges()
 	d["intro"] = _intro_edit.text.strip_edges()
 	d["deadline"] = int(_dl_spin.value)
+	var yv: int = int(_year_spin.value)
+	if yv >= 1800:
+		d["year"] = yv
+	else:
+		d.erase("year")
+	if d.get("transfer", []).is_empty():
+		d.erase("transfer")
 	if d["deadline"] <= 0:
 		d.erase("deadline")
 	d["blurb"] = String(d.get("blurb", ""))

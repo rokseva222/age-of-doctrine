@@ -170,6 +170,20 @@ static func sanitize(d: Dictionary) -> Dictionary:
 	if sug.is_empty():
 		return {}
 	out["suggest"] = sug
+	var yr: int = int(d.get("year", 0)) if typeof(d.get("year", 0)) in [TYPE_INT, TYPE_FLOAT] else 0
+	if yr >= 1800 and yr <= 2100:
+		out["year"] = yr
+	var trs: Array = []
+	var raw_t = d.get("transfer", [])
+	if typeof(raw_t) == TYPE_ARRAY:
+		for t in raw_t:
+			if trs.size() >= 80 or typeof(t) != TYPE_ARRAY or t.size() < 3:
+				continue
+			if not (typeof(t[0]) in [TYPE_INT, TYPE_FLOAT]) or not valid_country(t[1]) or not valid_country(t[2]):
+				continue
+			trs.append([int(t[0]), t[1], t[2], "own", _s(t[4] if t.size() > 4 else "", 40)])
+	if not trs.is_empty():
+		out["transfer"] = trs
 	out["wars"] = _pairs(d.get("wars", []))
 	out["embargo"] = _pairs(d.get("embargo", []))
 	out["cold"] = _pairs(d.get("cold", []))

@@ -3284,7 +3284,7 @@ func to_dict() -> Dictionary:
 		"v": 3, "seed": seed_value, "base": base_country_count,
 		"turn": turn, "player": player, "next_army_id": next_army_id, "victory": victory_declared,
 		"rng_state": rng.state, "rebel_names": rebel_name_count, "merc_names": merc_names, "stats": stats,
-		"difficulty": difficulty, "blocs": blocs, "next_bloc": next_bloc_id, "cold": cold, "sea_camp": sea_campaign.keys(), "crisis": crisis, "crisis_end": crisis_last_end, "scn": scn, "era": Eras.current, "nuke_cd": nuke_cd, "grand": grand, "chokes": chokes, "daily": daily, "pol": pol, "faith": faith, "focus": focus, "wroom": wroom, "indep": indep, "career": career, "moment_p": moment_pending, "moment_f": moment_flags, "infamy": infamy, "un_cd": un_cd, "un_log": un_log, "aid": aid,
+		"difficulty": difficulty, "blocs": blocs, "next_bloc": next_bloc_id, "cold": cold, "sea_camp": sea_campaign.keys(), "crisis": crisis, "crisis_end": crisis_last_end, "scn": scn, "era": Eras.current, "nuke_cd": nuke_cd, "grand": grand, "chokes": chokes, "daily": daily, "pol": pol, "faith": faith, "focus": focus, "syear": Names.start_year, "wroom": wroom, "indep": indep, "career": career, "moment_p": moment_pending, "moment_f": moment_flags, "infamy": infamy, "un_cd": un_cd, "un_log": un_log, "aid": aid,
 	}
 	var ps: Array = []
 	for p in provinces:
@@ -3444,6 +3444,8 @@ func from_dict(d: Dictionary) -> bool:
 	pol = d.get("pol", {}).duplicate(true)
 	faith = d.get("faith", {}).duplicate(true)
 	focus = d.get("focus", {}).duplicate(true)
+	if era_id == "" and d.has("syear"):
+		Names.start_year = int(d["syear"])
 	wroom = d.get("wroom", {}).duplicate(true)
 	Chokepoints.ensure(self)
 	Chokepoints.tick(self)
