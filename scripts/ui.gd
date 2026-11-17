@@ -38,6 +38,7 @@ const GOAL_ICONS := {"t_turn": "hourglass", "t_move": "tank", "t_war": "war_decl
 	"a_ally": "alliance_shield", "a_elim": "skull", "a_un": "assembly_hall", "a_landing": "landing", "a_nuke": "radiation",
 	"a_year1": "calendar", "a_year10": "hourglass", "a_prov30": "five_stars"}
 const Faith = preload("res://scripts/faith.gd")
+const SandboxUI = preload("res://scripts/sandbox_ui.gd")
 const TERM_ICONS := {"reparations": ["reparations", "coins"], "disarm": ["disarm", "rifle"], "buffer": ["buffer_zone", "flag"], "regime": ["regime", "flag"], "faith": ["faith", "flag"]}
 
 ## BM önerge ikonları: [yeni ikon adı, yedek]
@@ -905,6 +906,7 @@ func show_pause_menu() -> void:
 		["Siyasi sistem", "", "gavel", func(): show_politics()],
 		["Meydan okuma durumu", "", "target", func(): show_daily()],
 		["Stratejik geçitler", "", "anchor", func(): show_chokes()],
+		["Sandbox", "purple", "gear", func(): SandboxUI.open(self, gs)],
 		["Mağaza", "", "coins", func(): shop_requested.emit()],
 		["Öğretici", "", "book", func(): tutorial_requested.emit()],
 		["Nasıl oynanır", "", "book", func(): Info.open_howto(root)],
@@ -916,6 +918,8 @@ func show_pause_menu() -> void:
 		if it[0] == "Divan (Hikâye Modu)" and not Career.active(gs):
 			continue
 		if it[0] == "Meydan okuma durumu" and not Daily.active(gs):
+			continue
+		if it[0] == "Sandbox" and not Settings.sandbox:
 			continue
 		if it[0] == "Savaş Odası" and (gs.player < 0 or gs.countries[gs.player].enemies.is_empty()) and not (gs.wroom is Dictionary and bool(gs.wroom.get("on", false))):
 			continue

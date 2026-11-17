@@ -25,6 +25,7 @@ static var streak := 0                # üst üste gün serisi
 static var streak_day := -1
 static var ach: Dictionary = {}       # açılan başarımlar/öğretici adımlar: id -> tur
 static var difficulty := 1            # 0 kolay, 1 normal, 2 zor
+static var sandbox := false            # sandbox modu: oyun menüsünde deneme araçları paneli
 static var currency := true           # para birimi: oyuncunun ülkesinin parası (kapalıysa dolar)
 static var fog := 0                   # savaş sisi: 0 kapalı (herkes görünür), 1 orta (yalnızca yakın ordular), 2 tam (yalnız kendi/müttefik)
 static var daily: Dictionary = {}     # Günlük Meydan Okuma kaydı (daily.gd)
@@ -79,6 +80,7 @@ static func load_all() -> void:
 	auto_orders = bool(cf.get_value("game", "auto_orders", auto_orders))
 	fog = clampi(int(cf.get_value("game", "fog", fog)), 0, 2)
 	currency = bool(cf.get_value("game", "currency", currency))
+	sandbox = bool(cf.get_value("game", "sandbox", sandbox))
 	notifications = bool(cf.get_value("game", "notifications", notifications))
 	language = str(cf.get_value("game", "language", language))
 	seen_howto = bool(cf.get_value("game", "seen_howto", seen_howto))
@@ -114,6 +116,7 @@ static func save_all() -> void:
 	cf.set_value("game", "auto_orders", auto_orders)
 	cf.set_value("game", "fog", fog)
 	cf.set_value("game", "currency", currency)
+	cf.set_value("game", "sandbox", sandbox)
 	cf.set_value("game", "notifications", notifications)
 	cf.set_value("game", "language", language)
 	cf.set_value("game", "seen_howto", seen_howto)

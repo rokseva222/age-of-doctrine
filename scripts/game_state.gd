@@ -1645,6 +1645,38 @@ func _fix_capital(cid: int) -> void:
 		provinces[best].dev = maxi(provinces[best].dev, 3)
 
 
+## Sandbox: eyaleti doğrudan verir (savaş/barış kuralları işlemez)
+func sandbox_give(pid: int, to: int) -> void:
+	var p = provinces[pid]
+	var from: int = p.owner
+	if from == to:
+		return
+	p.owner = to
+	p.controller = to
+	p.siege = 0
+	p.siege_by = -1
+	p.acquired = turn
+	p.unrest = 0
+	var was_cap: bool = p.is_capital
+	p.is_capital = false
+	if was_cap:
+		_fix_capital(from)
+	var a = armies.get(pid)
+	if a != null and a.owner != to and not is_allied(a.owner, to):
+		_send_home(a)
+	if not provinces.any(func(q): return q.owner == from):
+		_eliminate(countries[from])
+	refresh_stats()
+	province_changed.emit(pid)
+	state_changed.emit()
+
+
+func sandbox_annex_country(from: int, to: int) -> void:
+	for p in provinces.duplicate():
+		if p.owner == from:
+			sandbox_give(p.id, to)
+
+
 func finish_peace(w, winner: int, annex: Array, terms: Array = []) -> void:
 	var a: int = w.a
 	var b: int = w.b
