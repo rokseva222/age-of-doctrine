@@ -510,8 +510,10 @@ class NegView extends Control:
 		info_lbl.text = "Sen: %s  –  Karşı taraf: %s  →  %s (%+d)" % [NEG_MOVES[m], NEG_STANCE[stance], verdict, int(round(g))]
 		tell_lbl.text = ""
 		_refresh()
+		if not is_inside_tree():
+			return
 		await get_tree().create_timer(1.0).timeout
-		if phase != "anim":
+		if not is_inside_tree() or phase != "anim":
 			return
 		if deal >= 100.0:
 			_finish("win")
