@@ -211,7 +211,9 @@ func finish_splash() -> void:
 	tw.tween_property(splash, "modulate:a", 0.0, 0.4)
 	tw.tween_callback(func():
 		splash.visible = false
-		splash_done.emit())
+		splash_done.emit()
+		if DisplayServer.get_name() != "headless" and Settings.seen_update != Info.UPDATE_VER and Settings.seen_promo:
+			get_tree().create_timer(0.6).timeout.connect(func(): Info.open_whatsnew(root)))
 
 
 ## Tanıtım videosu (CapCut vb. ile yapılıp assets/brand/promo.ogv olarak eklenir): ilk açılışta bir kez oynar, dokununca geçilir.

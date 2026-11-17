@@ -18,6 +18,7 @@ static var ui_scale := 1.0
 static var ui_scale_custom := false   # kullanıcı kaydırıcıyı elle ayarladı mı (değilse ölçek cihaza göre her açılışta yeniden hesaplanır)
 static var seen_howto := false
 static var seen_promo := false
+static var seen_update := ""            # son görülen "Neler yeni" sürümü
 static var tut_done := false
 static var missions: Dictionary = {}  # günlük/haftalık görevler (missions.gd)
 static var xp := 0                    # Komutan Puanı
@@ -85,6 +86,7 @@ static func load_all() -> void:
 	language = str(cf.get_value("game", "language", language))
 	seen_howto = bool(cf.get_value("game", "seen_howto", seen_howto))
 	seen_promo = bool(cf.get_value("game", "seen_promo", seen_promo))
+	seen_update = str(cf.get_value("game", "seen_update", seen_update))
 	tut_done = bool(cf.get_value("game", "tut_done", tut_done))
 	difficulty = clampi(int(cf.get_value("game", "difficulty", difficulty)), 0, 2)
 	var a = cf.get_value("game", "ach", {})
@@ -121,6 +123,7 @@ static func save_all() -> void:
 	cf.set_value("game", "language", language)
 	cf.set_value("game", "seen_howto", seen_howto)
 	cf.set_value("game", "seen_promo", seen_promo)
+	cf.set_value("game", "seen_update", seen_update)
 	cf.set_value("game", "tut_done", tut_done)
 	cf.set_value("game", "difficulty", difficulty)
 	cf.set_value("game", "ach", ach)

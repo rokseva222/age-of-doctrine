@@ -137,7 +137,7 @@ static func open_settings(parent: Node, on_change: Callable, sfx = null) -> void
 		changed.call(), "Bir turda hiç emir vermezsen, savaştaki boş ordular en uygun cephe hedeflerine kendiliğinden yönlendirilir. Kapalıyken ordular sen söyleyene dek yerinde bekler."))
 	sh.body.add_child(TK.toggle_row("Yerel para birimi", Settings.currency, func(on: bool):
 		Settings.currency = on
-		changed.call(), "Paralar, oynadığın ülkenin para biriminde (₺, €, £…) gösterilir; kurlar güncel piyasa verilerine dayanır ve zamanla oynar. Kapalıyken her şey dolar olarak görünür. Oyun dengesi değişmez."))
+		changed.call(), "Paralar, oynadığın ülkenin para biriminde (TL, €, £…) gösterilir; kurlar güncel piyasa verilerine dayanır ve zamanla oynar. Kapalıyken her şey dolar olarak görünür. Oyun dengesi değişmez."))
 	sh.body.add_child(TK.toggle_row("Sandbox modu", Settings.sandbox, func(on: bool):
 		Settings.sandbox = on
 		changed.call(), "Oyun menüsüne \"Sandbox\" paneli ekler: hazine, asker, eyalet verme/alma, savaş ve barış gibi deneme araçları. Dengeyi bozar; öğrenmek ve denemek içindir."))
@@ -279,3 +279,29 @@ static func open_howto(parent: Node) -> void:
 			state.i += 1
 			nxt.text = TK.up("Başla" if state.i >= PAGES.size() - 1 else "İleri")
 			render.call())
+
+
+const UPDATE_VER := "1.2"
+const WHATS_NEW := [
+	["Odak ağacı", "Politika > Odak: Ekonomi, Askeri, Diplomasi, İç Siyaset ve ülkene özel ulusal dal. Odaklar haftalar sürer, kalıcı bonus verir."],
+	["5 yeni harekât", "Gece baskını, zırh hamlesi, kuşatma, çevirme ve aldatma harekâtı; yeni piksel animasyonlarla."],
+	["Din sistemi", "Hristiyanlık, İslam ve Dharmik inançlar komşuya yayılır; barış masasında din dayatabilirsin."],
+	["Yeni barış şartları", "Rejim değişikliği, din dayatma ve vasal devlet."],
+	["Casus ve teslimiyet", "Düşman ordusunu casusla gör; gerekirse teslim ol. Ortak savaşta müttefik ganimet payı verir."],
+	["Yerel para birimi", "Paralar ülkenin kendi para biriminde (TL, €, £…) görünür. Ayarlar'dan kapatabilirsin."],
+	["Sandbox modu", "Ayarlar'dan aç; oyun menüsünde deneme araçları paneli çıkar."],
+	["Senaryo editörü", "Başlangıç yılı ve eyalet boyama (devir) eklendi."],
+	["İyileştirmeler", "Slovenya haritası düzeldi, kabine maaşları ve tüfek alımı dengelendi, ordu hareket mesajları netleşti."],
+]
+
+
+static func open_whatsnew(parent: Node) -> void:
+	var sh = Sheet.open(parent, "Neler yeni", 760, true, true, "Sürüm " + UPDATE_VER)
+	for it in WHATS_NEW:
+		sh.body.add_child(TK.t(Loc.t(it[0]), "bodyb", TK.GOLD))
+		var d := TK.t(Loc.t(it[1]), "small", TK.MUTED)
+		d.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		sh.body.add_child(d)
+	Settings.seen_update = UPDATE_VER
+	Settings.save_all()
+	sh.add_button("Tamam", func(): pass, "gold", true, "check", 180)
