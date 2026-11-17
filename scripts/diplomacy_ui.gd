@@ -4,6 +4,7 @@ extends RefCounted
 const TK = preload("res://scripts/theme_kit.gd")
 const Macro = preload("res://scripts/macro.gd")
 const Icons = preload("res://scripts/icons.gd")
+const UltimatumUI = preload("res://scripts/ultimatum_ui.gd")
 const Formables = preload("res://scripts/formables.gd")
 
 const FILTERS := ["Komşular", "Müttefikler", "Savaşta", "Tümü"]
@@ -231,6 +232,7 @@ static func _detail(ui, gs, cid: int) -> void:
 				_detail(ui, gs, cid), sh, false))
 		var tl2: int = int(gs.countries[me].truce.get(cid, -1)) - gs.turn
 		if tl2 <= 0:
+			box.add_child(_act_btn(ui, "Ültimatom ver", "gold", "sword", func(): UltimatumUI.open(ui, gs, cid), sh))
 			box.add_child(_act_btn(ui, "Savaş ilan et", "danger", "sword", func(): ui.action.emit("war", cid), sh))
 	sh.add_button("Haritada göster", func(): ui.action.emit("rel_view", cid), "blue", true, "handshake", 230)
 	sh.add_button("Ülke özeti", func(): ui.show_relations(cid), "ghost", true, "", 170)
