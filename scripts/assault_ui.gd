@@ -6,6 +6,7 @@ const Loc = preload("res://scripts/loc.gd")
 const TK = preload("res://scripts/theme_kit.gd")
 const Macro = preload("res://scripts/macro.gd")
 const SceneArt = preload("res://scripts/scene_art.gd")
+const Icons = preload("res://scripts/icons.gd")
 
 
 static func open(ui, gs, pid: int, on_done: Callable) -> void:
@@ -184,7 +185,7 @@ static func _render(ui, gs, pid: int, near: Array, st: Dictionary, parts: Dictio
 		TK.row_select(b2, on2, TK.PAPER)
 		var h2 := TK.row_layout(b2, 12)
 		var ic := TK.IconView.new()
-		ic.icon = o.icon
+		ic.icon = Icons.pick("op_" + op, o.icon)
 		ic.color = TK.PAPER if on2 else TK.MUTED
 		ic.custom_minimum_size = Vector2(30, 30)
 		ic.size_flags_vertical = Control.SIZE_SHRINK_CENTER

@@ -69,6 +69,51 @@ const ITEM_ICON := {
 }
 
 
+## Modern birlikler: modele özel simge (dosya yoksa sınıf simgesine düşer; tools/ICON_PROMPTS_14.md)
+const MODERN_ICON := {
+	"t_m1a1": "m_abrams", "t_m1a2v2": "m_abrams", "t_m1a2": "m_abrams", "t_m48": "m_patton",
+	"t_m60": "m_patton", "t_m60t": "m_patton", "t_leo1": "m_leopard", "t_leo2a4": "m_leopard",
+	"t_leo2a7": "m_leopard", "t_t55": "m_t72", "t_t72": "m_t72", "t_t90m": "m_t72",
+	"t_t90s": "m_t72", "t_oplot": "m_t72", "t_pt91": "m_t72", "t_type59": "m_t72",
+	"t_t14": "m_t14", "t_type96": "m_type99", "t_type99": "m_type99", "t_type90": "m_type99",
+	"t_zulfiqar": "m_type99", "t_merkava": "m_merkava", "t_k1": "m_k2", "t_k2": "m_k2",
+	"t_type10": "m_k2", "t_altay": "m_k2", "t_arjun": "m_k2", "t_khalid": "m_k2",
+	"t_karrar": "m_k2", "t_leclerc": "m_leclerc", "t_ch2": "m_leclerc", "t_ch3": "m_leclerc",
+	"f_f35a": "m_f35", "f_kf21": "m_f35", "f_kaan": "m_f35", "f_f15ex": "m_f15",
+	"f_f14": "m_f15", "f_f16c": "m_f16", "f_f16v": "m_f16", "f_f18": "m_f16",
+	"f_jf17": "m_f16", "f_tejas": "m_f16", "f_fa50": "m_f16", "f_hurjet": "m_f16",
+	"f_su57": "m_su57", "f_j20": "m_su57", "f_su27": "m_su27", "f_su30": "m_su27",
+	"f_su35": "m_su27", "f_j16": "m_su27", "f_mig29": "m_su27", "f_j10c": "m_su27",
+	"f_rafale": "m_rafale", "f_m2000": "m_rafale", "f_typhoon": "m_rafale", "f_gripen": "m_rafale",
+	"f_tornado": "m_rafale", "f_ah64": "m_apache", "f_t129": "m_apache", "f_mi24": "m_apache",
+	"f_tb2": "m_tb2", "f_wingloong": "m_tb2", "f_heron": "m_tb2", "f_mohajer": "m_tb2",
+	"f_akinci": "m_tb2", "f_shahed": "m_kamikaze", "f_kizilelma": "m_kizilelma", "f_su25": "m_su25",
+	"f_mig21": "m_mig21", "f_j7": "m_mig21", "f_f4": "m_mig21", "f_f5": "m_mig21",
+	"y_himars": "m_himars", "y_m270": "m_himars", "y_pcl181": "m_himars", "y_chunmoo": "m_himars",
+	"y_tr300": "m_himars", "y_puls": "m_himars", "y_smerch": "m_himars", "y_pinaka": "m_himars",
+	"y_phl03": "m_himars", "y_grad": "m_grad", "y_fajr": "m_grad", "y_koksan": "m_grad",
+	"y_nk240": "m_grad", "y_pzh": "m_spg", "y_m109": "m_spg", "y_m109a7": "m_spg",
+	"y_k9": "m_spg", "y_2s19": "m_spg", "y_2s35": "m_spg", "y_plz05": "m_spg",
+	"y_firtina": "m_spg", "y_krab": "m_spg", "y_type99": "m_spg", "y_2s1": "m_spg",
+	"y_2s3": "m_spg", "y_type83": "m_spg", "y_dhanush": "m_spg", "y_caesar": "m_spg_wheeled",
+	"y_atmos": "m_spg_wheeled", "y_archer": "m_spg_wheeled", "y_sakarya": "m_spg_wheeled", "y_tos": "m_tos",
+	"a_bmp1": "m_bmp", "a_bmp2": "m_bmp", "a_bmp3": "m_bmp", "a_kurgan": "m_bmp",
+	"a_zbd04": "m_bmp", "a_k21": "m_bmp", "a_namer": "m_bmp", "a_eitan": "m_bmp",
+	"a_m2": "m_bradley", "a_ampv": "m_bradley", "a_ajax": "m_bradley", "a_warrior": "m_bradley",
+	"a_cv90": "m_bradley", "a_puma": "m_bradley", "a_marder": "m_bradley", "a_k200": "m_bradley",
+	"a_acv15": "m_bradley", "a_stryker": "m_wheeled", "a_boxer": "m_wheeled", "a_vbci": "m_wheeled",
+	"a_griffon": "m_wheeled", "a_patria": "m_wheeled", "a_kirpi": "m_wheeled", "a_tulpar": "m_wheeled",
+	"a_btr82": "m_wheeled", "a_zbl08": "m_wheeled", "a_type96": "m_wheeled", "a_m113": "m_apc_old",
+	"a_btr60": "m_apc_old", "a_fuchs": "m_apc_old", "a_vab": "m_apc_old", "a_wz551": "m_apc_old",
+	"s_los": "m_sub_nuke", "s_virginia": "m_sub_nuke", "s_astute": "m_sub_nuke", "s_trafalgar": "m_sub_nuke",
+	"s_yasen": "m_sub_nuke", "s_shang": "m_sub_nuke", "s_arihant": "m_sub_nuke", "s_barracuda": "m_sub_nuke",
+	"s_sang": "m_sub_diesel", "s_romeo": "m_sub_diesel", "s_ghadir": "m_sub_diesel", "s_song": "m_sub_diesel",
+	"s_yuan": "m_sub_diesel", "s_kilo": "m_sub_diesel", "s_lada": "m_sub_diesel", "s_type209": "m_sub_diesel",
+	"s_type214": "m_sub_diesel", "s_dolphin": "m_sub_diesel", "s_reis": "m_sub_diesel", "s_agosta": "m_sub_diesel",
+	"s_scorpene": "m_sub_diesel", "s_soryu": "m_sub_diesel", "s_ksss": "m_sub_diesel", "s_collins": "m_sub_diesel",
+}
+
+
 static func cat_icon(k: String, fam: String = "") -> String:
 	if fam == "":
 		fam = load("res://scripts/eras.gd").family()
@@ -82,6 +127,8 @@ static func item_icon(id: String) -> String:
 	var cat: String = ITEMS[id][1] if ITEMS.has(id) else "inf"
 	if ITEM_ICON.has(id):
 		return Ic.pick(ITEM_ICON[id], cat_icon(cat))
+	if MODERN_ICON.has(id) and load("res://scripts/eras.gd").family() == "":
+		return Ic.pick(MODERN_ICON[id], cat_icon(cat))
 	return cat_icon(cat)
 
 

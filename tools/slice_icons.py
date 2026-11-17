@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Tek görselde (ızgara) üretilmiş ikonları assets/icons/<ad>_c.png olarak keser.
-Kullanım: python3 tools/slice_icons.py sayfa.png [sütun] [satır] [--set=objects|pack2|pack3|pack4|pack5|pack6|pack7|pack8|pack9|pack10|pack11|pack12|all] [--start=N] [--mono] [--tiles]
+Kullanım: python3 tools/slice_icons.py sayfa.png [sütun] [satır] [--set=objects|pack2|pack3|pack4|pack5|pack6|pack7|pack8|pack9|pack10|pack11|pack12|pack13|pack14|all] [--start=N] [--mono] [--tiles]
  - İkonlar soldan sağa, yukarıdan aşağıya tools/ICON_PROMPTS.md'deki sırayla dizilmeli.
  - Düz magenta (#FF00FF) arka plan (veya şeffaf) otomatik şeffaflaştırılır; renkli ikon korunur.
  - --mono: renkleri beyaz tek renk glife çevirir ve <ad>.png yazar (oyun bunu duruma göre boyar).
@@ -19,13 +19,15 @@ PACK9 = ['carrier_strike', 'carrier_ready', 'carrier_refit', 'jet_launch', 'dipl
 PACK10 = ['u_azap', 'u_sipahi', 'u_akinci', 'u_kapikulu', 'u_darbzen', 'u_basilisk', 'u_galiot', 'u_hussar', 'u_elephant', 'u_trebuchet', 'u_siege_tower', 'u_crossbow', 'u_mamluk', 'u_knight', 'u_pikeman', 'u_arquebus', 'u_ming_cannon', 'u_siege_camp', 'u_castle', 'u_ladder', 'u_trench_mortar', 'u_zeppelin', 'u_gas_mask', 'u_dreadnought', 'u_mark_tank', 'u_biplane_bomber', 'u_mg_nest', 'u_armored_car', 'u_icbm_silo', 'u_spy_plane', 'u_nuclear_sub', 'u_helicopter']
 PACK11 = ['b_caravanserai', 'b_bazaar', 'b_shipyard', 'b_mint', 'b_treasury', 'b_granary', 'b_mine', 'b_aqueduct', 'b_bridge', 'b_lighthouse', 'b_wall', 'b_library', 'b_observatory', 'b_toll', 'b_corsair', 'b_spice', 'b_silk', 'b_horse_market', 'b_harvest', 'b_well', 'e_ration', 'e_shelter', 'e_telegraph', 'e_war_bond', 'e_poster', 'e_field_hospital', 'e_codebreak', 'e_convoy', 'e_hotline', 'e_fallout', 'e_space_race', 'e_blockade']
 PACK12 = ['w2_panzer', 'w2_sherman', 'w2_t34', 'w2_heavy_tank', 'w2_halftrack', 'w2_jeep', 'w2_flak88', 'w2_katyusha', 'w2_howitzer', 'w2_fighter', 'w2_stuka', 'w2_heavy_bomber', 'w2_zero', 'w2_uboat', 'w2_battleship', 'w2_landing_craft', 'w2_garand', 'w2_mp40', 'w2_mg42', 'w2_panzerfaust', 'w2_radar', 'w2_paratrooper', 'w2_torpedo', 'w2_mine', 'cw_mig', 'cw_t55', 'cw_b52', 'cw_polaris', 'cw_sam', 'cw_apc', 'cw_icbm', 'cw_spy_satellite']
+PACK13 = ['op_night', 'op_armor', 'op_siege', 'op_encircle', 'op_deception', 'vassal', 'surrender', 'spy_send', 'focus', 'focus_eco', 'focus_mil', 'focus_dip', 'focus_pol', 'faith_christian', 'faith_islam', 'faith_dharmic', 'faith_other', 'faith', 'regime', 'currency', 'sandbox', 'year', 'map_paint', 'transfer', 'tribute', 'release_state', 'embargo_ship', 'treaty_scroll', 'dove_peace', 'spy_net', 'intel_report', 'radiation_warn']
+PACK14 = ['m_abrams', 'm_patton', 'm_leopard', 'm_t72', 'm_t14', 'm_type99', 'm_merkava', 'm_k2', 'm_leclerc', 'm_f35', 'm_f15', 'm_f16', 'm_su57', 'm_su27', 'm_rafale', 'm_apache', 'm_tb2', 'm_kamikaze', 'm_kizilelma', 'm_su25', 'm_mig21', 'm_himars', 'm_grad', 'm_spg', 'm_spg_wheeled', 'm_tos', 'm_bmp', 'm_bradley', 'm_wheeled', 'm_apc_old', 'm_sub_nuke', 'm_sub_diesel']
 RAW60 = ['pt_raw_%02d' % i for i in range(60)]
 root = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..")
 src = open(os.path.join(root, "scripts/icons.gd")).read()
 allnames = re.findall(r'"([a-z0-9_]+)"', re.search(r'const NAMES := \[(.*?)\]', src, re.S).group(1))
 opts = {a.split("=")[0]: (a.split("=")[1] if "=" in a else True) for a in sys.argv[1:] if a.startswith("--")}
 args = [a for a in sys.argv[1:] if not a.startswith("--")]
-names = {"objects": OBJECTS, "pack2": PACK2, "pack3": PACK3, "pack4": PACK4, "pack5": PACK5, "pack6": PACK6, "pack7": PACK7, "pack8": PACK8, "pack9": PACK9, "pack10": PACK10, "pack11": PACK11, "pack12": PACK12, "raw60": RAW60}.get(opts.get("--set", "objects"), allnames)
+names = {"objects": OBJECTS, "pack2": PACK2, "pack3": PACK3, "pack4": PACK4, "pack5": PACK5, "pack6": PACK6, "pack7": PACK7, "pack8": PACK8, "pack9": PACK9, "pack10": PACK10, "pack11": PACK11, "pack12": PACK12, "pack13": PACK13, "pack14": PACK14, "raw60": RAW60}.get(opts.get("--set", "objects"), allnames)
 start = int(opts.get("--start", 0))
 mono = "--mono" in opts
 if "--tiles" in opts:
@@ -42,7 +44,7 @@ if "--tiles" in opts:
         if h > 40 and w > 40:
             boxes.append((sl[0].start, sl[1].start, sl[0].stop, sl[1].stop))
     boxes.sort(key=lambda b: (round((b[0] + b[2]) / 2 / 60), b[1]))
-    names = {"objects": OBJECTS, "pack2": PACK2, "pack3": PACK3, "pack4": PACK4, "pack5": PACK5, "pack6": PACK6, "pack7": PACK7, "pack8": PACK8, "pack9": PACK9, "pack10": PACK10, "pack11": PACK11, "pack12": PACK12, "raw60": RAW60}.get(opts.get("--set", "objects"), allnames)
+    names = {"objects": OBJECTS, "pack2": PACK2, "pack3": PACK3, "pack4": PACK4, "pack5": PACK5, "pack6": PACK6, "pack7": PACK7, "pack8": PACK8, "pack9": PACK9, "pack10": PACK10, "pack11": PACK11, "pack12": PACK12, "pack13": PACK13, "pack14": PACK14, "raw60": RAW60}.get(opts.get("--set", "objects"), allnames)
     out = os.path.join(root, "assets/icons"); os.makedirs(out, exist_ok=True)
     cnt = 0
     for name, (y0, x0, y1, x1) in zip(names[int(opts.get("--start", 0)):], boxes):

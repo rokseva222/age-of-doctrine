@@ -1105,7 +1105,7 @@ func _tab_focus() -> void:
 		var hd := HBoxContainer.new()
 		hd.add_theme_constant_override("separation", 6)
 		var ic := TK.IconView.new()
-		ic.icon = b.icon
+		ic.icon = Icons.pick("focus_" + String(b.id), b.icon)
 		ic.color = TK.GOLD
 		ic.custom_minimum_size = Vector2(22, 22)
 		hd.add_child(ic)
