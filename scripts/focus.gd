@@ -9,11 +9,12 @@ const BRANCHES := [
 	{"id": "mil", "tr": "Askeri", "en": "Military", "icon": "swords"},
 	{"id": "dip", "tr": "Diplomasi", "en": "Diplomacy", "icon": "handshake"},
 	{"id": "pol", "tr": "İç Siyaset", "en": "Home Front", "icon": "stability"},
+	{"id": "nat", "tr": "Ulusal", "en": "National", "icon": "flag"},
 ]
 
 ## fx anahtarları: gold (haftalık gelir x), fund (savunma fonu, gelir x), income (+% kalıcı gelir), stab, ind, logi, cyber (anlık puan),
 ## att, def, recruit (+% kalıcı çarpan), rel (tüm ülkelerle ilişki), infamy (dünya tepkisi)
-const TREE := {
+const BASE_TREE := {
 	"e1": {"b": "eco", "row": 0, "weeks": 6, "req": [], "tr": "Sanayi Seferberliği", "en": "Industrial Mobilization",
 		"dtr": "Fabrikalar savaş ve barış üretimine yönlendirilir.", "den": "Factories are put on a production footing.",
 		"fx": {"ind": 8, "income": 3}},
@@ -76,6 +77,93 @@ const TREE := {
 		"fx": {"stab": 8, "income": 5, "att": 3, "def": 3}},
 }
 
+
+## Ülkeye özel ulusal dal (yalnızca ilgili ülke görür): ad TR/EN, açıklama TR/EN, etkiler, hafta, önkoşul (aynı ülkenin kaçıncı odağı)
+const NAT := {
+	"Turkey": [
+		["Millî Savunma Sanayii", "National Defense Industry", "Yerli silah üretimi savunma fonunu ve orduyu güçlendirir.", "Domestic arms production boosts the defense fund and the army.", {"fund": 6, "att": 3}, 8, []],
+		["Boğazlar ve Enerji Koridoru", "Straits and Energy Corridor", "Boğazların ve boru hatlarının kontrolü gelir getirir.", "Control of the straits and pipelines brings revenue.", {"income": 4, "rel": 3}, 8, []],
+		["Yüzyılın Atılımı", "Leap of the Century", "Sanayi, ordu ve halk birlikte yükselir.", "Industry, army and people rise together.", {"income": 4, "recruit": 10, "def": 3}, 12, [0, 1]],
+	],
+	"United States of America": [
+		["Küresel Güç Projeksiyonu", "Global Power Projection", "Her okyanusta üs, her kıtada müttefik.", "Bases in every ocean, allies on every continent.", {"att": 4, "fund": 6}, 8, []],
+		["Dolar Hegemonyası", "Dollar Hegemony", "Rezerv para ayrıcalığı kasayı doldurur.", "The reserve-currency privilege fills the treasury.", {"income": 5, "gold": 4}, 8, []],
+		["Dünya Polisi", "World Policeman", "Caydırıcılık ve ittifak ağı zirvede.", "Deterrence and the alliance network at their peak.", {"rel": 4, "def": 4, "att": 2}, 12, [0, 1]],
+	],
+	"China": [
+		["Kuşak ve Yol", "Belt and Road", "Altyapı diplomasisiyle ticaret ve nüfuz.", "Trade and influence through infrastructure diplomacy.", {"income": 5, "rel": 3}, 8, []],
+		["Ordu Modernizasyonu", "Army Modernization", "Halk ordusu teknolojiyle yenilenir.", "The people's army is renewed with technology.", {"att": 4, "def": 3, "fund": 5}, 8, []],
+		["Üretim Devi", "Manufacturing Giant", "Dünyanın fabrikası tam kapasite.", "The world's factory at full capacity.", {"ind": 12, "income": 4}, 12, [0, 1]],
+	],
+	"Russia": [
+		["Stratejik Derinlik", "Strategic Depth", "Uçsuz bucaksız topraklar en iyi savunma.", "Vast lands are the best defense.", {"def": 7}, 8, []],
+		["Enerji Silahı", "Energy Weapon", "Gaz ve petrol kozu kasayı doldurur.", "Gas and oil leverage fills the treasury.", {"gold": 5, "income": 3}, 8, []],
+		["Seferberlik Doktrini", "Mobilization Doctrine", "Kitlesel yedek ordu hazırlığı.", "Mass reserve army preparation.", {"recruit": 20, "att": 3}, 12, [0, 1]],
+	],
+	"India": [
+		["Sanayi Atılımı", "Industrial Leap", "Üretim ve istihdam hızla artar.", "Manufacturing and jobs grow fast.", {"ind": 10, "income": 4}, 8, []],
+		["Dijital Hindistan", "Digital India", "Yazılım ve siber kapasite yükselir.", "Software and cyber capacity rise.", {"cyber": 12, "income": 3}, 8, []],
+		["Nüfus Gücü", "Demographic Power", "Genç nüfus ordu ve ekonomiyi besler.", "A young population feeds army and economy.", {"recruit": 20, "stab": 3}, 12, [0, 1]],
+	],
+	"Germany": [
+		["Mühendislik Mükemmelliği", "Engineering Excellence", "Hassas üretimde dünya lideri.", "World leader in precision manufacturing.", {"ind": 12, "income": 4}, 8, []],
+		["Avrupa Lokomotifi", "Engine of Europe", "Avrupa'nın ekonomik merkezi, diplomasi kolaylaşır.", "Europe's economic hub; diplomacy gets easier.", {"rel": 6, "income": 3}, 8, []],
+		["Yeniden Silahlanma", "Rearmament", "Ordu hızla modernleşir.", "The army modernizes quickly.", {"att": 3, "def": 4, "fund": 6}, 12, [0, 1]],
+	],
+	"France": [
+		["Nükleer Caydırıcılık", "Nuclear Deterrent", "Bağımsız caydırıcı güvenlik verir.", "An independent deterrent brings security.", {"def": 6, "stab": 3}, 8, []],
+		["Frankofoni", "Francophonie", "Dil ve kültür bağları nüfuz kurar.", "Language and cultural ties build influence.", {"rel": 6}, 8, []],
+		["Havacılık ve Lüks", "Aerospace and Luxury", "Yüksek katma değerli ihracat.", "High-value exports.", {"income": 5, "ind": 5}, 12, [0, 1]],
+	],
+	"United Kingdom": [
+		["Deniz Egemenliği", "Naval Supremacy", "Donanma geleneği orduya güç katar.", "The naval tradition adds strength to the army.", {"att": 3, "def": 3}, 8, []],
+		["Şehir Finans Merkezi", "The City", "Finans merkezi nakit akıtır.", "The financial center pours in cash.", {"gold": 6, "income": 3}, 8, []],
+		["Ortak Servet", "Commonwealth Ties", "Eski bağlar diplomaside kazanç sağlar.", "Old ties pay off in diplomacy.", {"rel": 6, "infamy": 6}, 12, [0, 1]],
+	],
+	"Japan": [
+		["Teknoloji Devi", "Technology Giant", "Robotik ve elektronikte öncü.", "A pioneer in robotics and electronics.", {"ind": 10, "income": 4}, 8, []],
+		["Savunma Reformu", "Defense Reform", "Öz savunma güçleri genişler.", "The self-defense forces expand.", {"att": 4, "def": 4}, 8, []],
+		["Adalar Savunması", "Island Defense", "Kıyı ve ada savunması sağlamlaşır.", "Coastal and island defenses harden.", {"def": 6, "stab": 3}, 12, [0, 1]],
+	],
+	"Iran": [
+		["Direniş Ekseni", "Axis of Resistance", "Bölgesel vekil ağı caydırıcılık sağlar.", "The regional proxy network deters.", {"def": 5, "rel": 2}, 8, []],
+		["Füze Programı", "Missile Program", "Balistik füze kapasitesi genişler.", "Ballistic missile capacity expands.", {"att": 5, "fund": 4}, 8, []],
+		["Ekonomik Direnç", "Economic Resilience", "Yaptırımlara karşı kendi kendine yeterlik.", "Self-sufficiency against sanctions.", {"income": 5, "stab": 4}, 12, [0, 1]],
+	],
+	"Israel": [
+		["Teknoloji Ordusu", "Start-up Army", "Ordu ve teknoloji sektörü iç içe.", "Army and tech sector intertwine.", {"att": 4, "cyber": 12}, 8, []],
+		["Demir Kubbe", "Iron Dome", "Çok katmanlı hava savunması.", "Layered air defense.", {"def": 7}, 8, []],
+		["Hızlı Seferberlik", "Rapid Mobilization", "Yedekler birkaç günde hazır.", "Reserves ready within days.", {"recruit": 20, "att": 3}, 12, [0, 1]],
+	],
+}
+const NAT_ISO := {"Turkey": "tr", "United States of America": "us", "China": "cn", "Russia": "ru", "India": "in", "Germany": "de", "France": "fr", "United Kingdom": "gb", "Japan": "jp", "Iran": "ir", "Israel": "il"}
+
+
+static var TREE: Dictionary = _build_tree()
+
+
+static func _build_tree() -> Dictionary:
+	var t: Dictionary = BASE_TREE.duplicate(true)
+	for cn in NAT:
+		var iso: String = NAT_ISO[cn]
+		var arr: Array = NAT[cn]
+		for i in arr.size():
+			var a: Array = arr[i]
+			var req: Array = []
+			for r in a[6]:
+				req.append("n_%s%d" % [iso, int(r) + 1])
+			t["n_%s%d" % [iso, i + 1]] = {"b": "nat", "row": 0 if a[6].is_empty() else 1, "weeks": a[5], "req": req, "tr": a[0], "en": a[1], "dtr": a[2], "den": a[3], "fx": a[4], "only": cn}
+	return t
+
+
+## Bu oyuncu için görünen odak mı? (ulusal dal yalnızca ilgili ülkede)
+static func visible_for(gs, id: String) -> bool:
+	var d: Dictionary = TREE[id]
+	if not d.has("only"):
+		return true
+	return gs.player >= 0 and String(gs.countries[gs.player].name_en) == String(d.only)
+
+
 const FX_NAME := {
 	"gold": ["Hazineye nakit", "Treasury cash"], "fund": ["Savunma fonu", "Defense fund"], "income": ["Gelir", "Income"],
 	"stab": ["İstikrar", "Stability"], "ind": ["Sanayi", "Industry"], "logi": ["Lojistik", "Logistics"], "cyber": ["Siber", "Cyber"],
@@ -102,6 +190,10 @@ static func branch_name(b: Dictionary) -> String:
 	return _t(b.tr, b.en)
 
 
+static func has_national(gs) -> bool:
+	return gs.player >= 0 and NAT.has(String(gs.countries[gs.player].name_en))
+
+
 static func ensure(gs) -> void:
 	if not (gs.focus is Dictionary) or gs.focus.is_empty():
 		gs.focus = {"done": [], "cur": "", "left": 0}
@@ -116,6 +208,8 @@ static func can_start(gs, id: String) -> String:
 	ensure(gs)
 	if gs.player < 0:
 		return _t("Oyuncu yok.", "No player.")
+	if not visible_for(gs, id):
+		return _t("Bu odak ülkene ait değil.", "This focus is not for your country.")
 	if is_done(gs, id):
 		return _t("Zaten tamamlandı.", "Already completed.")
 	if String(gs.focus.cur) != "":

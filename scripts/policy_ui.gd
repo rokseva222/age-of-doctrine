@@ -1099,6 +1099,8 @@ func _tab_focus() -> void:
 	cols.add_theme_constant_override("separation", 6)
 	content.add_child(cols)
 	for b in Focus.BRANCHES:
+		if b.id == "nat" and not Focus.has_national(gs):
+			continue
 		var col := VBoxContainer.new()
 		col.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		col.add_theme_constant_override("separation", 4)
@@ -1113,7 +1115,7 @@ func _tab_focus() -> void:
 		col.add_child(hd)
 		var ids: Array = []
 		for id in Focus.TREE:
-			if Focus.TREE[id].b == b.id:
+			if Focus.TREE[id].b == b.id and Focus.visible_for(gs, id):
 				ids.append(id)
 		ids.sort_custom(func(x, y): return Focus.TREE[x].row < Focus.TREE[y].row or (Focus.TREE[x].row == Focus.TREE[y].row and x < y))
 		var last_row := -1
