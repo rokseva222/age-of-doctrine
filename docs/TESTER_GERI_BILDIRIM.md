@@ -30,3 +30,22 @@ Durum: ✅ yapıldı · 🔧 sırada · 💡 öneri/tartışılacak · ❓ soru 
 - **"Ordu hareket etmiyor" (Eren, Taha, isyan modu)** — Hata değil, belirsiz mesaj: siyasi harekette (1 eyalet) çevre eyaletler ana ülkenin ve ateşkes sürüyor; savaş yokken girilemez. Savaşta da savaşta olmadığın üçüncü ülkelerin toprağı kapalı. **Yapıldı:** engel mesajı artık nedenini ve çözümü söylüyor (ateşkes süresi / savaş-ittifak-geçiş izni), hareket başlangıcında ipucu haberi eklendi. Sırada: haritada kapalı komşuları görsel olarak işaretlemek.
 
 - **Barış şartları (AoH3 gibi)** — Soru: toprak, para, hükümet değişikliği, din değişikliği, fethedilen devleti geri bırakma (kukla/serbest bırakma), koalisyon var mı? Mevcut: toprak (eyalet seçimi), savaş tazminatı, silahsızlandırma, tampon bölge, dünya tepkisi → koalisyon. **Yapıldı:** rejim değişikliği şartı (7 puan). **Yok / sırada:** din/kültür dayatma, yenilenen devleti kukla ya da bağımsız olarak geri kurma (vasallaştırma ile birlikte yapılabilir).
+
+## Grup önerileri — 1. parça (17 Kasım, 15:12–15:18 ekran görüntüleri)
+Kaynak: Eren Akgün, Taha, Emir Ali Ulusoy, Kemalist Halife, Furkancifci47. Durum: ✅ yapıldı · 🟡 17:00'ye alınabilir (küçük) · 🔵 sonraki sürüm (büyük) · ❓ karar gerek
+
+1. **Ültimatom / vasallaştırma (Taha)** — ✅ ültimatom (toprak, haraç, geçiş izni; reddedilirse savaş). 🔵 vasallaştırma.
+2. **Teçhizat satın alırken "tier" yerine tank/top görselleri (Eren, 7 pixel-art tank görseli yolladı)** — Her silah modeline ayrı görsel (modele göre değişen). 🟡/🔵 görseller Eren'den alınıp ekipman ekranına bağlanabilir; lisans/kendi çizimi olduğunu Eren teyit etti ("kendim yaptım").
+3. **Silah satın alma miktarı (Eren)** — Tüfekte tek seferde 25 yerine 100; buna bağlı fiyat düzeni, belki küçük ucuzlatma. 🟡 (denge testi gerekir).
+4. **Kabine fiyatları (Eren)** — 200 milyona bakan çok pahalı; tek seferlik para yerine maaş olarak ülke gelirinden düşsün. Ayrıca "ucuzlatalım" (kullanıcı kararı). 🟡 ucuzlatma / 🔵 maaş sistemi.
+5. **Para birimi sistemi (Emir Ali)** — Her ülke kendi para birimiyle (ör. Türkiye TL), kurlar artıp azalsın (1 dolar = 50 TL gibi). Ayarlardan aç/kapa. Bugün test edilir, dengeliyse bu güncellemeye, değilse 2. güncellemeye (kullanıcı kararı). ❓ Emir'in notu: sadece gruptakilere ücretsiz olsun.
+6. **Gelir dengesi (Emir Ali)** — Türkiye çok vergi alıyor; ÇİN/ABD/Rusya/Hindistan'dan sonra en yüksek gelir Türkiye'de olsun. ❓ denge ve gerçekçilik.
+7. **Eventler (Taha)** — Oyuna daha çok event gelsin. 🔵
+8. **Odak ağacı (Taha)** — HoI4 tarzı odak ağacı; mobilde yok, "belki bir ilk olur". Emir: "Focus'lu 1. Dünya Savaşı" senaryosu. 🔵 büyük.
+9. **Asiler / devirme (Taha)** — İşgal edilen yerde halk isyanı zaten var; "bizi devirmeye çalışan asiler" istiyor. 🟡 mevcutla ilişkilendir (rejim darbe/isyan kartı), ❓ ayrıntı.
+10. **Meclis onayı (Kemalist Halife)** — Meclisin onaylamadığı eylemde istikrar, güven, seçim etkisi, propagandaya inanç düşebilir. Eren: demokrasiyi değiştirip sıkıyönetim ilan edebilmek. 🟡 savaş ilanı için onay ya da ceza (kullanıcıya sorulmuştu).
+11. **Yabancı ülkenin isyancılarına savaş ilan etme (Eren)** — 🔵 (isyancı gruplara destek/savaş).
+12. **Hikâye modu (Emir Ali, Eren)** — Toplam 3 hikâye olsun, ortak fikirleşip 1-2 yenisi; ör. Kurtuluş Savaşı (Mondros'tan Lozan'a, Samsun'a çıkış), oyun sonunu değiştiren tercihli hikâye. Mevcut: kariyer modu gibi tek hikâye. 🔵
+13. **Hükümet/din değişikliği (Furkancifci47)** — rejim değişikliği ✅ (barış şartı), din 🔵 son sıra.
+14. **Geri bildirim** — Taha: "Oyun süper"; boğazlar özelliği beğenildi; "3.1 sürümü dehşet olacak" (beklenti yüksek). "Resmi tester olmayan arkadaşlar 17:00'ye kadar linkleri ve yönergeleri alacak" (kullanıcı).
+15. **Ordu hareket etmiyor** — ✅ mesajlar açıklandı (üstte).
