@@ -1477,6 +1477,7 @@ const PEACE_TERMS := {
 	"reparations": {"name": "Savaş tazminatı", "desc": "Yenilenin kasasının yarısı sana geçer, istikrarı düşer.", "cost": 6},
 	"disarm": {"name": "Silahsızlandırma", "desc": "Yenilenin orduları yarıya iner.", "cost": 8},
 	"buffer": {"name": "Tampon bölge", "desc": "Ateşkes 26 yerine 78 hafta sürer; iki taraf da saldıramaz.", "cost": 5},
+	"regime": {"name": "Rejim değişikliği", "desc": "Yenilenin yönetim biçimi seninkine döner; istikrarı düşer.", "cost": 7},
 }
 
 
@@ -1493,6 +1494,12 @@ func _apply_terms(winner: int, loser: int, terms: Array) -> String:
 			if arm.owner == loser:
 				arm.size = maxi(1, int(arm.size * 0.5))
 		parts.append("silahsızlandırma")
+	if terms.has("regime"):
+		var wr: String = Politics.regime(self, winner)
+		var lr: String = Politics.regime(self, loser)
+		pol.reg[str(loser)] = wr
+		countries[loser].stability = clampf(countries[loser].stability - 8.0, 5.0, 100.0)
+		parts.append("rejim değişikliği" if lr != wr else "yönetim tasfiyesi")
 	if terms.has("buffer"):
 		countries[winner].truce[loser] = turn + 78
 		countries[loser].truce[winner] = turn + 78

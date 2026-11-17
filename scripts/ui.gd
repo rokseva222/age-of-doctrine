@@ -37,7 +37,7 @@ const GOAL_ICONS := {"t_turn": "hourglass", "t_move": "tank", "t_war": "war_decl
 	"a_cap10": "medal_bronze", "a_cap50": "medal_silver", "a_cap150": "medal_gold", "a_battle50": "general", "a_peace5": "handshake",
 	"a_ally": "alliance_shield", "a_elim": "skull", "a_un": "assembly_hall", "a_landing": "landing", "a_nuke": "radiation",
 	"a_year1": "calendar", "a_year10": "hourglass", "a_prov30": "five_stars"}
-const TERM_ICONS := {"reparations": ["reparations", "coins"], "disarm": ["disarm", "rifle"], "buffer": ["buffer_zone", "flag"]}
+const TERM_ICONS := {"reparations": ["reparations", "coins"], "disarm": ["disarm", "rifle"], "buffer": ["buffer_zone", "flag"], "regime": ["regime", "flag"]}
 
 ## BM önerge ikonları: [yeni ikon adı, yedek]
 const UN_ICONS := {"ceasefire": ["ceasefire", "dove"], "rebuild": ["rebuild", "home"], "aid": ["aid", "coins"], "peace_keep": ["un_peacekeeper", "shield"],
