@@ -61,7 +61,7 @@ func _build() -> void:
 	sh.body.add_child(scroll)
 	for i in TABS.size():
 		var idx := i
-		var tb := TK.button(TABS[i][0], "ghost", TABS[i][1], Vector2(0, 56), 15)
+		var tb := TK.button(TABS[i][0], "ghost", Icons.pick("focus", "target") if TABS[i][0] == "Odak" else TABS[i][1], Vector2(0, 56), 15)
 		tb.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		tb.pressed.connect(func():
 			ui._click()

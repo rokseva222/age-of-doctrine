@@ -212,14 +212,14 @@ static func _detail(ui, gs, cid: int) -> void:
 	box.add_child(TK.spacer(0, 6))
 	box.add_child(TK.t("Anlaşmalar", "kicker", TK.BLUE))
 	if not gs.is_allied(me, cid):
-		box.add_child(_act_btn(ui, "Casus gönder (%s)" % Macro.money(gs.spy_cost(cid)), "blue", "eye", func():
+		box.add_child(_act_btn(ui, "Casus gönder (%s)" % Macro.money(gs.spy_cost(cid)), "blue", Icons.pick("spy_send", "eye"), func():
 			var es: String = gs.player_spy(cid)
 			ui.toast(es if es != "" else "Casus başarılı: %d hafta boyunca ordularını görüyorsun." % gs.SPY_WEEKS)
 			ui.refresh_top()
 			_detail(ui, gs, cid), sh, false))
 	if war:
 		box.add_child(_act_btn(ui, "Barış teklif et", "good", "handshake", func(): ui.action.emit("peace", cid), sh))
-		box.add_child(_act_btn(ui, "Teslim ol", "danger", "x", func():
+		box.add_child(_act_btn(ui, "Teslim ol", "danger", Icons.pick("surrender", "x"), func():
 			ui.show_dialog("Teslim olmak istiyor musun?", "İşgal edilen eyaletlerin (başkent hariç) %s'e geçer, hazinenin yarısı tazminat olarak gider ve savaş biter." % c.name,
 				[{"text": "Vazgeç", "cb": func(): pass, "kind": "ghost"},
 				{"text": "Teslim ol", "kind": "danger", "cb": func():

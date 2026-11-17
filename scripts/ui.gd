@@ -906,7 +906,7 @@ func show_pause_menu() -> void:
 		["Siyasi sistem", "", "gavel", func(): show_politics()],
 		["Meydan okuma durumu", "", "target", func(): show_daily()],
 		["Stratejik geçitler", "", "anchor", func(): show_chokes()],
-		["Sandbox", "purple", "gear", func(): SandboxUI.open(self, gs)],
+		["Sandbox", "purple", Icons.pick("sandbox", "gear"), func(): SandboxUI.open(self, gs)],
 		["Mağaza", "", "coins", func(): shop_requested.emit()],
 		["Öğretici", "", "book", func(): tutorial_requested.emit()],
 		["Nasıl oynanır", "", "book", func(): Info.open_howto(root)],
