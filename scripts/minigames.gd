@@ -5,6 +5,7 @@ extends RefCounted
 
 const TK = preload("res://scripts/theme_kit.gd")
 const PS = preload("res://scripts/pixel_scenes.gd")
+const SceneArt = preload("res://scripts/scene_art.gd")
 
 const MOVES := ["Kes", "Siper", "Hamle"]
 const MOVE_HELP := ["Doğrudan vuruş. Hamle'yi ezer, Siper'e takılır.", "Kapanıp bekle. Kes'i karşılar, Hamle'ye yenilir.", "Aldatma ve yan vuruş. Siper'i bozar, Kes'e yakalanır."]
@@ -321,6 +322,236 @@ class DuelView extends Control:
 			ui.set_modal(null)
 			queue_free()
 			cb.call(outcome, info))
+		end_box.add_child(b)
+		end_box.visible = true
+
+
+# ------------------------------------------------------------------ Müzakere (modern / dünya savaşı çağları)
+const NEG_MOVES := ["Baskı yap", "Taviz ver", "Gerekçe sun"]
+const NEG_STANCE := ["Sert", "Esnek", "Aceleci"]
+const NEG_TELLS := ["Çenesi sıkılı, ellerini masaya bastırıyor; geri adım atacak gibi değil.", "Rahat; kâğıtlarına bakmadan dinliyor, itiraz etmiyor.", "Saatine bakıp duruyor; bir an önce bir sonuç almak istiyor."]
+const NEG_HELP := ["Yük bindir. Esnek karşıya iyi gelir, sert karşıda ters teper.", "Geri adım at. Sert karşıyı yumuşatır, esneğe boşuna taviz olur.", "Mantıklı gerekçe sun. Aceleci karşıyı ikna eder."]
+# satır: hamle, sütun: rakibin duruşu (Sert, Esnek, Aceleci)
+const NEG_GAIN := [[-14.0, 16.0, 4.0], [12.0, -4.0, -8.0], [2.0, 6.0, 14.0]]
+const NEG_ROUNDS := 6
+
+
+## Müzakere masası: 6 turda anlaşma ölçeğini 75'in üstüne çıkar.
+## spec: {title, intro, scene, style:[sert,esnek,aceleci], skill, win_text, lose_text, draw_text, yield_text}
+static func negotiate(ui, spec: Dictionary, cb: Callable) -> void:
+	if ui.speed_idx != 0:
+		ui.set_speed(0)
+		ui.speed_changed.emit(0)
+	var ov := NegView.new()
+	ov.setup(ui, spec, cb)
+	ui.root.add_child(ov)
+	ui.set_modal(ov)
+
+
+class NegView extends Control:
+	var ui
+	var spec: Dictionary
+	var cb: Callable
+	var meter: ProgressBar
+	var meter_lbl: Label
+	var tell_lbl: Label
+	var info_lbl: Label
+	var btns: Array = []
+	var walk_btn: Button
+	var end_box: VBoxContainer
+	var deal := 50.0
+	var rnd := 1
+	var stance := 0
+	var skill := 0.3
+	var phase := "choose"
+	var rng := RandomNumberGenerator.new()
+	var last_move := -1
+
+	func setup(ui_, spec_: Dictionary, cb_: Callable) -> void:
+		ui = ui_
+		spec = spec_
+		cb = cb_
+		skill = clampf(float(spec.get("skill", 0.3)), 0.0, 1.0)
+		rng.randomize()
+		set_anchors_preset(Control.PRESET_FULL_RECT)
+		mouse_filter = Control.MOUSE_FILTER_STOP
+		var dim := ColorRect.new()
+		dim.color = Color(0.02, 0.02, 0.04, 1.0)
+		dim.set_anchors_preset(Control.PRESET_FULL_RECT)
+		add_child(dim)
+		var vb := VBoxContainer.new()
+		vb.set_anchors_preset(Control.PRESET_FULL_RECT)
+		vb.offset_left = 14
+		vb.offset_right = -14
+		vb.offset_top = 10
+		vb.offset_bottom = -10
+		vb.add_theme_constant_override("separation", 8)
+		add_child(vb)
+		var title := TK.t(String(spec.get("title", "Müzakere")), "h3", TK.TEXT)
+		title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		vb.add_child(title)
+		var art = SceneArt.make(String(spec.get("scene", "alliance")), 0.0)
+		art.size_flags_vertical = Control.SIZE_SHRINK_BEGIN
+		art.custom_minimum_size = Vector2(0, 300)
+		vb.add_child(art)
+		var gap := Control.new()
+		gap.size_flags_vertical = Control.SIZE_EXPAND_FILL
+		vb.add_child(gap)
+		var intro := TK.t(String(spec.get("intro", "Masaya oturdunuz. Karşı tarafın duruşunu oku, doğru hamleyi seç.")), "small", TK.MUTED)
+		intro.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		intro.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		vb.add_child(intro)
+		meter_lbl = TK.t("", "bodyb", TK.TEXT)
+		meter_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		vb.add_child(meter_lbl)
+		meter = ProgressBar.new()
+		meter.min_value = 0.0
+		meter.max_value = 100.0
+		meter.show_percentage = false
+		meter.custom_minimum_size = Vector2(0, 26)
+		var fill := StyleBoxFlat.new()
+		fill.bg_color = Color(0.85, 0.7, 0.25)
+		fill.set_corner_radius_all(6)
+		var back := StyleBoxFlat.new()
+		back.bg_color = Color(0.16, 0.17, 0.22)
+		back.set_corner_radius_all(6)
+		meter.add_theme_stylebox_override("fill", fill)
+		meter.add_theme_stylebox_override("background", back)
+		vb.add_child(meter)
+		tell_lbl = TK.t("", "bodyb", TK.GOLD)
+		tell_lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		tell_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		vb.add_child(tell_lbl)
+		info_lbl = TK.t("", "small", TK.MUTED)
+		info_lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		info_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		vb.add_child(info_lbl)
+		var row := HBoxContainer.new()
+		row.add_theme_constant_override("separation", 8)
+		vb.add_child(row)
+		for i in 3:
+			var idx: int = i
+			var b := TK.button("%s  [%d]" % [NEG_MOVES[i], i + 1], ["danger", "blue", "gold"][i], ["sword", "handshake", "book"][i], Vector2(0, 72), 18)
+			b.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+			b.tooltip_text = String(NEG_HELP[i])
+			b.pressed.connect(func(): _pick(idx))
+			row.add_child(b)
+			btns.append(b)
+		var help := TK.t("Baskı → esnek karşıya. Taviz → sert karşıya. Gerekçe → aceleci karşıya.", "small", TK.FAINT)
+		help.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		help.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		vb.add_child(help)
+		walk_btn = TK.button("Masadan kalk", "ghost", "", Vector2(0, 52), 15)
+		walk_btn.pressed.connect(func(): _finish("yield"))
+		vb.add_child(walk_btn)
+		end_box = VBoxContainer.new()
+		end_box.visible = false
+		vb.add_child(end_box)
+		_begin_round()
+
+	func _input(e: InputEvent) -> void:
+		if not (e is InputEventKey) or not e.pressed or e.echo:
+			return
+		var k: int = e.keycode
+		if phase == "choose":
+			var m: int = -1
+			if k in [KEY_1, KEY_KP_1, KEY_A, KEY_LEFT]:
+				m = 0
+			elif k in [KEY_2, KEY_KP_2, KEY_S, KEY_DOWN]:
+				m = 1
+			elif k in [KEY_3, KEY_KP_3, KEY_D, KEY_RIGHT]:
+				m = 2
+			if m >= 0:
+				get_viewport().set_input_as_handled()
+				_pick(m)
+		elif phase == "end" and k in [KEY_SPACE, KEY_ENTER, KEY_KP_ENTER]:
+			get_viewport().set_input_as_handled()
+			if end_box.get_child_count() > 0:
+				(end_box.get_child(0) as Button).emit_signal("pressed")
+
+	func _refresh() -> void:
+		meter.value = deal
+		meter_lbl.text = "Anlaşma ölçeği: %d   (Tur %d / %d)" % [int(round(deal)), rnd, NEG_ROUNDS]
+
+	func _begin_round() -> void:
+		phase = "choose"
+		var st: Array = spec.get("style", [1.0, 1.0, 1.0])
+		var w: Array = [float(st[0]), float(st[1]), float(st[2])]
+		if last_move >= 0:
+			w[(last_move + 1) % 3] += 0.8      # karşı taraf oyuncunun son hamlesine uyum sağlar
+		var tot: float = w[0] + w[1] + w[2]
+		var r: float = rng.randf() * tot
+		stance = 2
+		for i in 3:
+			if r < w[i]:
+				stance = i
+				break
+			r -= w[i]
+		var acc: float = clampf(0.55 + skill * 0.3, 0.45, 0.88)
+		var shown: int = stance if rng.randf() < acc else (stance + 1 + rng.randi() % 2) % 3
+		tell_lbl.text = "Karşı tarafı izle: " + String(NEG_TELLS[shown])
+		info_lbl.text = ""
+		for b in btns:
+			b.disabled = false
+		_refresh()
+
+	func _pick(m: int) -> void:
+		if phase != "choose":
+			return
+		phase = "anim"
+		last_move = m
+		for b in btns:
+			b.disabled = true
+		var g: float = float(NEG_GAIN[m][stance])
+		if g > 0.0:
+			g *= 1.0 + skill * 0.2
+		deal = clampf(deal + g, 0.0, 100.0)
+		var s = ui.sfx
+		if s != null:
+			s.play("paper" if g >= 0.0 else "error", 0.5)
+		var verdict: String = "karşı taraf ikna oldu" if g >= 10.0 else ("küçük bir ilerleme" if g > 0.0 else "masa gerildi")
+		info_lbl.text = "Sen: %s  –  Karşı taraf: %s  →  %s (%+d)" % [NEG_MOVES[m], NEG_STANCE[stance], verdict, int(round(g))]
+		tell_lbl.text = ""
+		_refresh()
+		await get_tree().create_timer(1.0).timeout
+		if phase != "anim":
+			return
+		if deal >= 100.0:
+			_finish("win")
+		elif deal <= 0.0:
+			_finish("lose")
+		elif rnd >= NEG_ROUNDS:
+			_finish("win" if deal >= 75.0 else ("lose" if deal <= 25.0 else "draw"))
+		else:
+			rnd += 1
+			_begin_round()
+
+	func _finish(r: String) -> void:
+		if phase == "end":
+			return
+		phase = "end"
+		for b in btns:
+			b.disabled = true
+		walk_btn.visible = false
+		tell_lbl.text = ""
+		var txt: String
+		match r:
+			"win":
+				txt = String(spec.get("win_text", "Karşı taraf şartlarını kabul etti. Anlaşma imzalandı."))
+			"lose":
+				txt = String(spec.get("lose_text", "Görüşmeler çöktü. Karşı taraf masayı terk etti."))
+			"draw":
+				txt = String(spec.get("draw_text", "Taraflar kesin bir sonuca varamadı; görüşmeler ertelendi."))
+			_:
+				txt = String(spec.get("yield_text", "Masadan kalktın; bu itibarına zarar verdi."))
+		meter_lbl.text = {"win": "ANLAŞMA", "lose": "ÇÖKTÜ", "draw": "ERTELENDİ", "yield": "MASADAN KALKTIN"}[r]
+		info_lbl.text = txt
+		var b := TK.button("Devam", "good" if r == "win" else "", "", Vector2(0, 64), 18)
+		b.pressed.connect(func():
+			var info := {"deal": deal, "rounds": rnd}
+			ui.set_modal(null)
+			queue_free()
+			cb.call(r, info))
 		end_box.add_child(b)
 		end_box.visible = true
 

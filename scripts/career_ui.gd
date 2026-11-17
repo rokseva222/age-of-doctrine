@@ -466,10 +466,16 @@ static func card_spec(gs, after: Callable, ui = null) -> Dictionary:
 					g["skill"] = clampf(float(gs.career.get("renown", 0.0)) / 100.0, 0.0, 1.0) * 0.8
 					g["player"] = nm
 					g["foe"] = _foe_name(gs, String(c2.id))
-					btns.append({"text": String(c2.c[i][0]), "icon": "swords", "kind": "danger", "cb": func():
-						Minigames.duel(ui, g, func(res: String, _info: Dictionary):
-							Career.choose_game(gs, idx, res)
-							after.call())})
+					if String(g.get("game", "duel")) == "negotiate":
+						btns.append({"text": String(c2.c[i][0]), "icon": Icons.pick("handshake", "alliance"), "kind": "gold", "cb": func():
+							Minigames.negotiate(ui, g, func(res: String, _info: Dictionary):
+								Career.choose_game(gs, idx, res)
+								after.call())})
+					else:
+						btns.append({"text": String(c2.c[i][0]), "icon": "swords", "kind": "danger", "cb": func():
+							Minigames.duel(ui, g, func(res: String, _info: Dictionary):
+								Career.choose_game(gs, idx, res)
+								after.call())})
 				else:
 					btns.append({"text": String(c2.c[i][0]), "cb": func(): Career.choose(gs, idx); after.call(), "kind": "good" if i == 0 else ""})
 			return {"title": String(c2.t), "body": String(c2.b), "scene": scene(String(c2.scene)), "icon": "", "buttons": btns}
