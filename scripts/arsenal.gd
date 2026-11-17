@@ -86,7 +86,7 @@ static func item_icon(id: String) -> String:
 
 
 const CAT_UNIT := {"inf": "1.000 kişilik set", "tank": "adet", "afv": "adet", "arty": "adet", "air": "adet", "sub": "adet"}
-const CAT_STEP := {"inf": 5, "tank": 10, "afv": 20, "arty": 10, "air": 4, "sub": 1}
+const CAT_STEP := {"inf": 20, "tank": 10, "afv": 20, "arty": 10, "air": 4, "sub": 1}
 # veri tablosundaki ortalama (1.000 asker başına) ağırlıklı referans: güç hesabında normalizasyon
 const CAT_REF := {"tank": 10.0, "afv": 24.0, "arty": 4.5}
 

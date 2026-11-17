@@ -37,7 +37,8 @@ const GOAL_ICONS := {"t_turn": "hourglass", "t_move": "tank", "t_war": "war_decl
 	"a_cap10": "medal_bronze", "a_cap50": "medal_silver", "a_cap150": "medal_gold", "a_battle50": "general", "a_peace5": "handshake",
 	"a_ally": "alliance_shield", "a_elim": "skull", "a_un": "assembly_hall", "a_landing": "landing", "a_nuke": "radiation",
 	"a_year1": "calendar", "a_year10": "hourglass", "a_prov30": "five_stars"}
-const TERM_ICONS := {"reparations": ["reparations", "coins"], "disarm": ["disarm", "rifle"], "buffer": ["buffer_zone", "flag"], "regime": ["regime", "flag"]}
+const Faith = preload("res://scripts/faith.gd")
+const TERM_ICONS := {"reparations": ["reparations", "coins"], "disarm": ["disarm", "rifle"], "buffer": ["buffer_zone", "flag"], "regime": ["regime", "flag"], "faith": ["faith", "flag"]}
 
 ## BM önerge ikonları: [yeni ikon adı, yedek]
 const UN_ICONS := {"ceasefire": ["ceasefire", "dove"], "rebuild": ["rebuild", "home"], "aid": ["aid", "coins"], "peace_keep": ["un_peacekeeper", "shield"],
@@ -621,6 +622,7 @@ func show_province(pid: int, selected_army) -> void:
 	if p.controller != p.owner and p.controller >= 0:
 		var cc = gs.countries[p.controller]
 		_card_tags.add_child(_tag(("İsyancı: " if cc.is_rebel else "İşgal: ") + cc.name, TK.PURPLE if cc.is_rebel else TK.ORANGE))
+	_card_tags.add_child(_tag(Faith.name_of(Faith.of(gs, pid)), TK.FAINT))
 	_card_tags.visible = _card_tags.get_child_count() > 0
 	_card_stat("Nüfus", "%.1fM" % p.pop, TK.TEXT, true)
 	_card_stat("Gelir", Macro.money(p.rev()) + Loc.t("/hf"), TK.GOLD)

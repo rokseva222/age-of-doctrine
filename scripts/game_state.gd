@@ -16,6 +16,7 @@ const EraMoments = preload("res://scripts/era_moments.gd")
 const Chokepoints = preload("res://scripts/chokepoints.gd")
 const Daily = preload("res://scripts/daily.gd")
 const Politics = preload("res://scripts/politics.gd")
+const Faith = preload("res://scripts/faith.gd")
 const WarRoom = preload("res://scripts/war_room.gd")
 const Crises = preload("res://scripts/crises.gd")
 const Objectives = preload("res://scripts/objectives.gd")
@@ -64,6 +65,7 @@ var player_acted := false                # bu turda oyuncu emir verdi mi
 var auto_idle := false                   # emir verilmezse boştaki ordulara otomatik görev (ayar)
 var infamy_warned := false
 var infamy := 0.0                        # dünya tepkisi (0-100): fetihle artar, zamanla söner; yüksekse koalisyon kurulur
+var faith: Dictionary = {}               # eyalet inancı {pid(str): kod} (faith.gd)
 var indep: Dictionary = {}               # Bağımsızlık Yolu kipi durumu (independence.gd)
 var career: Dictionary = {}              # Hikâye Modu (kariyer) durumu (career.gd)
 var moment_pending: Dictionary = {}      # bekleyen tarihî an kartı (era_moments.gd)
@@ -592,18 +594,27 @@ func _fog_provinces() -> Dictionary:
 	return _fog_vis
 
 
-## Ordu oyuncuya görünür mü? (kendi, müttefik ve sis kapalıyken hepsi)
+## Casus: {ülke id: bu haftaya kadar ordularını görürüz}, {ülke id: yeniden casus gönderebileceğimiz hafta}
+var spy_until: Dictionary = {}
+var spy_cd: Dictionary = {}
+
+
+func spy_active(cid: int) -> bool:
+	return int(spy_until.get(cid, -1)) >= turn
+
+
+## Ordu oyuncuya görünür mü? (kendi, müttefik, casusla gözetlenen ve sis kapalıyken hepsi)
 func army_visible(a) -> bool:
 	if Settings.fog == 0 or player < 0:
 		return true
-	if a.owner == player or is_allied(player, a.owner):
+	if a.owner == player or is_allied(player, a.owner) or spy_active(a.owner):
 		return true
 	return _fog_provinces().has(a.prov)
 
 
 ## Savaş sisi açıkken yabancı ülkenin asker sayısı gösterilmez (orta: yalnızca komşular ve müttefikler)
 func troops_known(cid: int) -> bool:
-	if Settings.fog == 0 or player < 0 or cid == player or is_allied(player, cid):
+	if Settings.fog == 0 or player < 0 or cid == player or is_allied(player, cid) or spy_active(cid):
 		return true
 	if Settings.fog == 1:
 		return neighbor_countries(player).has(cid)
@@ -882,6 +893,67 @@ func _maybe_side_call(a: int, b: int) -> void:
 	side_cd = turn + 40
 	pending_proposal = true
 	side_call.emit(a, b)
+
+
+const SPY_COOLDOWN := 6
+const SPY_WEEKS := 4
+
+
+func spy_cost(target: int) -> float:
+	var me = countries[player]
+	return maxf(10.0, maxf(me.income, 1.0) * 1.5)
+
+
+## Casus gönder: başarılıysa hedefin ordularını 4 hafta görürsün ve hazine/gelir/asker bilgisi gelir.
+func player_spy(target: int) -> String:
+	var t = countries[target]
+	var me = countries[player]
+	if target == player or not t.alive or t.is_rebel:
+		return "Geçersiz hedef."
+	if is_allied(player, target):
+		return "Müttefikini gözetlemene gerek yok; ordularını zaten görürsün."
+	var cd: int = int(spy_cd.get(target, -999)) + SPY_COOLDOWN - turn
+	if cd > 0:
+		return "Casus ağı toparlanıyor: %d hafta sonra tekrar gönderebilirsin." % cd
+	var cost: float = spy_cost(target)
+	if me.gold < cost:
+		return "Yetersiz hazine: %d$ gerekiyor." % int(cost)
+	me.gold -= cost
+	spy_cd[target] = turn
+	var q := 1
+	if me.cab.has("spy"):
+		q = int(me.cab["spy"].get("q", 1))
+	var chance: float = clampf(0.5 + 0.15 * float(q) + (me.cyber * 0.001 if "cyber" in me else 0.0), 0.35, 0.92)
+	if rng.randf() < chance:
+		spy_until[target] = turn + SPY_WEEKS
+		var narm := 0
+		for a in armies.values():
+			if a.owner == target:
+				narm += 1
+		post_news("Casus raporu — %s: hazine %d$, haftalık gelir %d$, %d ordu, ~%d asker." % [t.name, int(t.gold), int(t.income), narm, int(t.troops)], t.capital, "info")
+		armies_changed.emit()
+		state_changed.emit()
+		return ""
+	relation_add(player, target, -15.0)
+	if rng.randf() < 0.4:
+		relation_add(player, target, -10.0)
+		post_news("%s casus yakaladı! %s ile ilişkiler bozuldu." % [t.name, me.name], t.capital, "war")
+		return "Casusun yakalandı; ilişkiler bozuldu."
+	return "Casus görevi başarısız oldu; bilgi alınamadı."
+
+
+## Oyuncu teslim olur: işgal edilen eyaletler (başkent hariç) karşı tarafa geçer, kasanın yarısı tazminat gider, savaş biter.
+func player_surrender(foe: int) -> String:
+	var w = get_war(player, foe)
+	if w == null:
+		return "Bu ülkeyle savaşta değilsin."
+	var annex: Array = []
+	for p in provinces:
+		if p.owner == player and p.controller == foe and not p.is_capital:
+			annex.append(p.id)
+	finish_peace(w, foe, annex, ["reparations"])
+	post_news("%s, %s karşısında teslim oldu." % [countries[player].name, countries[foe].name], -1, "peace")
+	return ""
 
 
 ## choice: 0 = a'nın yanında (b'ye savaş), 1 = b'nin yanında (a'ya savaş), 2 = tarafsız.
@@ -1478,6 +1550,7 @@ const PEACE_TERMS := {
 	"disarm": {"name": "Silahsızlandırma", "desc": "Yenilenin orduları yarıya iner.", "cost": 8},
 	"buffer": {"name": "Tampon bölge", "desc": "Ateşkes 26 yerine 78 hafta sürer; iki taraf da saldıramaz.", "cost": 5},
 	"regime": {"name": "Rejim değişikliği", "desc": "Yenilenin yönetim biçimi seninkine döner; istikrarı düşer.", "cost": 7},
+	"faith": {"name": "Din dayatma", "desc": "Yenilenin eyaletleri senin inancına geçer; istikrarı düşer.", "cost": 6},
 }
 
 
@@ -1500,6 +1573,9 @@ func _apply_terms(winner: int, loser: int, terms: Array) -> String:
 		pol.reg[str(loser)] = wr
 		countries[loser].stability = clampf(countries[loser].stability - 8.0, 5.0, 100.0)
 		parts.append("rejim değişikliği" if lr != wr else "yönetim tasfiyesi")
+	if terms.has("faith"):
+		Faith.impose(self, winner, loser)
+		parts.append("din dayatma")
 	if terms.has("buffer"):
 		countries[winner].truce[loser] = turn + 78
 		countries[loser].truce[winner] = turn + 78
@@ -1590,6 +1666,8 @@ func finish_peace(w, winner: int, annex: Array, terms: Array = []) -> void:
 		var tl: String = _apply_terms(winner, w.other(winner), terms)
 		if tl != "":
 			post_news("Barış şartları: %s, %s'e şunları dayattı: %s." % [countries[winner].name, countries[w.other(winner)].name, tl], -1, "peace")
+	if winner >= 0 and winner != player and player >= 0 and not (a == player or b == player):
+		_ally_spoils(winner, w.other(winner))
 	var na: String = countries[a].name
 	var nb: String = countries[b].name
 	if a == player or b == player:
@@ -1608,6 +1686,20 @@ func finish_peace(w, winner: int, annex: Array, terms: Array = []) -> void:
 	_check_elimination()
 	refresh_stats()
 	state_changed.emit()
+
+
+## Müttefikimiz bir savaşı kazandığında ve biz de aynı düşmana karşı savaşmışsak ganimet payı (para) ve ilişki artışı gelir.
+func _ally_spoils(winner: int, loser: int) -> void:
+	var me = countries[player]
+	if not is_allied(player, winner) or not me.enemies.has(loser):
+		return
+	var wc = countries[winner]
+	var amt: float = maxf(me.income, 1.0) * 5.0
+	amt = minf(amt, maxf(wc.gold, 0.0) * 0.5 + maxf(me.income, 1.0))
+	me.gold += amt
+	wc.gold = maxf(0.0, wc.gold - amt * 0.5)
+	relation_add(player, winner, 8.0)
+	post_news("%s, ortak savaşın ganimetinden %s'e %d$ pay verdi." % [wc.name, me.name, int(amt)], wc.capital, "peace")
 
 
 func _send_home(arm) -> void:
@@ -1829,6 +1921,7 @@ func end_turn() -> void:
 		if vid >= countries.size() or not countries[vid].alive or not at_war(player, vid):
 			sea_campaign.erase(vid)
 	_coalition_tick()
+	Faith.tick(self)
 	if turn % 52 == 0 and not Eras.leader_chain_active(turn):
 		_leader_turnover()
 	_check_victory()
@@ -3137,7 +3230,7 @@ func to_dict() -> Dictionary:
 		"v": 3, "seed": seed_value, "base": base_country_count,
 		"turn": turn, "player": player, "next_army_id": next_army_id, "victory": victory_declared,
 		"rng_state": rng.state, "rebel_names": rebel_name_count, "merc_names": merc_names, "stats": stats,
-		"difficulty": difficulty, "blocs": blocs, "next_bloc": next_bloc_id, "cold": cold, "sea_camp": sea_campaign.keys(), "crisis": crisis, "crisis_end": crisis_last_end, "scn": scn, "era": Eras.current, "nuke_cd": nuke_cd, "grand": grand, "chokes": chokes, "daily": daily, "pol": pol, "wroom": wroom, "indep": indep, "career": career, "moment_p": moment_pending, "moment_f": moment_flags, "infamy": infamy, "un_cd": un_cd, "un_log": un_log, "aid": aid,
+		"difficulty": difficulty, "blocs": blocs, "next_bloc": next_bloc_id, "cold": cold, "sea_camp": sea_campaign.keys(), "crisis": crisis, "crisis_end": crisis_last_end, "scn": scn, "era": Eras.current, "nuke_cd": nuke_cd, "grand": grand, "chokes": chokes, "daily": daily, "pol": pol, "faith": faith, "wroom": wroom, "indep": indep, "career": career, "moment_p": moment_pending, "moment_f": moment_flags, "infamy": infamy, "un_cd": un_cd, "un_log": un_log, "aid": aid,
 	}
 	var ps: Array = []
 	for p in provinces:
@@ -3295,6 +3388,7 @@ func from_dict(d: Dictionary) -> bool:
 	chokes = d.get("chokes", {}).duplicate(true)
 	daily = d.get("daily", {}).duplicate(true)
 	pol = d.get("pol", {}).duplicate(true)
+	faith = d.get("faith", {}).duplicate(true)
 	wroom = d.get("wroom", {}).duplicate(true)
 	Chokepoints.ensure(self)
 	Chokepoints.tick(self)

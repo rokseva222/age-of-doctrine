@@ -665,6 +665,8 @@ static func price(c, id: String) -> float:
 	var p: float = Arsenal.cost_of(id)
 	if Arsenal.origin_of(id) == c.name_en:
 		p *= 1.0 - 0.25 * c.industry / 100.0
+	if Arsenal.cat_of(id) == "inf":
+		p *= 0.85          # tüfek: toplu alım (+20 / +100) ve küçük indirim (tester önerisi)
 	return p
 
 
