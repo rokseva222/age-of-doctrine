@@ -2320,7 +2320,7 @@ func player_order_move(a, target: int, count: int = 0) -> String:
 		return ""
 	var path := path_to(player, a.prov, target)
 	if path.is_empty():
-		return "Oraya ulaşamazsın (geçiş izni yok ya da yol yok)."
+		return move_block_reason(a, target)
 	if count > 0 and count < a.size:
 		# gönderilen müfreze varış yerinde elle kalır; kalanlar otomatikte. Aynı turda başka hedeflere de bölünebilir.
 		var queued: int = _queue_split(a, clampi(count, 1, a.size - 1), path, "", true)
@@ -2339,6 +2339,28 @@ func player_order_move(a, target: int, count: int = 0) -> String:
 	stats.orders += 1
 	armies_changed.emit()
 	return ""
+
+
+## Ordu neden hedefe gidemiyor? Oyuncuya yolun neden kapalı olduğunu ve ne yapabileceğini söyler.
+func move_block_reason(a, target: int) -> String:
+	# hedef (ya da yoldaki ilk kapalı komşu) kime ait?
+	var blocker := -1
+	var o: int = provinces[target].owner
+	if o >= 0 and o != player and not can_enter(player, target):
+		blocker = o
+	else:
+		for nb in provinces[a.prov].neighbors:
+			var no: int = provinces[nb].owner
+			if no >= 0 and no != player and not can_enter(player, nb):
+				blocker = no
+				break
+	if blocker < 0:
+		return "Oraya ulaşamazsın (geçiş izni yok ya da yol yok)."
+	var bc = countries[blocker]
+	var tl: int = int(countries[player].truce.get(blocker, -1)) - turn
+	if tl > 0:
+		return "%s ile ateşkesin sürüyor (%d hafta): savaş ilan etmeden topraklarına giremezsin." % [bc.name, tl]
+	return "%s topraklarına girmek için savaş ilan et, ittifak kur ya da geçiş izni al." % bc.name
 
 
 func player_cancel_move(a) -> void:

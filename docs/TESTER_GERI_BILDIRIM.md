@@ -26,3 +26,5 @@ Durum: ✅ yapıldı · 🔧 sırada · 💡 öneri/tartışılacak · ❓ soru 
 - ❓ Cumhuriyetlerde meclis onayı var mı? → Yok; rejim türleri, seçimler, kabine kararları, darbe uyarıları var
 
 ## Yeni gelenler (grupta toplananlar)
+
+- **"Ordu hareket etmiyor" (Eren, Taha, isyan modu)** — Hata değil, belirsiz mesaj: siyasi harekette (1 eyalet) çevre eyaletler ana ülkenin ve ateşkes sürüyor; savaş yokken girilemez. Savaşta da savaşta olmadığın üçüncü ülkelerin toprağı kapalı. **Yapıldı:** engel mesajı artık nedenini ve çözümü söylüyor (ateşkes süresi / savaş-ittifak-geçiş izni), hareket başlangıcında ipucu haberi eklendi. Sırada: haritada kapalı komşuları görsel olarak işaretlemek.

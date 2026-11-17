@@ -286,6 +286,8 @@ static func begin(gs, params: Dictionary) -> bool:
 	var intro_tr := "%s doğdu: %s topraklarında bağımsızlık için yola çıktı. Yol uzun; destek, para ve zaman gerekecek." % [f.name, gs.countries[host].name]
 	var intro_en := "%s is born: it sets out for independence in the lands of %s. The road is long; it will take support, money and time." % [f.name, gs.countries[host].name]
 	gs.post_news(intro_tr if _tr() else intro_en, f.capital, "war_player")
+	if method != "uprising":
+		gs.post_news(Loc.t("Ateşkes sürerken ordun eyaletinden çıkamaz: ana ülkenin topraklarına girmek için önce ayaklanmayı başlat."), f.capital, "war_player")
 	if method == "uprising":
 		gs.indep["grace"] = gs.turn + GRACE_WEEKS
 		gs.post_news(Loc.t("Güvenlik güçleri toparlanıyor: ilçelerde örgütlenmek için 6 haftan var."), f.capital, "war_player")
