@@ -125,11 +125,13 @@ static func cat_icon(k: String, fam: String = "") -> String:
 static func item_icon(id: String) -> String:
 	var Ic = load("res://scripts/icons.gd")
 	var cat: String = ITEMS[id][1] if ITEMS.has(id) else "inf"
+	var fb: String = cat_icon(cat)
 	if ITEM_ICON.has(id):
-		return Ic.pick(ITEM_ICON[id], cat_icon(cat))
-	if MODERN_ICON.has(id) and load("res://scripts/eras.gd").family() == "":
-		return Ic.pick(MODERN_ICON[id], cat_icon(cat))
-	return cat_icon(cat)
+		fb = Ic.pick(ITEM_ICON[id], fb)
+	elif MODERN_ICON.has(id) and load("res://scripts/eras.gd").family() == "":
+		fb = Ic.pick(MODERN_ICON[id], fb)
+	# her modele özel simge (assets/icons/x_<id>_c.png) varsa o kullanılır
+	return Ic.pick("x_" + id, fb)
 
 
 const CAT_UNIT := {"inf": "1.000 kişilik set", "tank": "adet", "afv": "adet", "arty": "adet", "air": "adet", "sub": "adet"}
