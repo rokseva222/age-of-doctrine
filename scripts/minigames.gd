@@ -390,13 +390,10 @@ class NegView extends Control:
 		var title := TK.t(String(spec.get("title", "Müzakere")), "h3", TK.TEXT)
 		title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		vb.add_child(title)
-		var art = SceneArt.make(String(spec.get("scene", "alliance")), 0.0)
-		art.size_flags_vertical = Control.SIZE_SHRINK_BEGIN
-		art.custom_minimum_size = Vector2(0, 300)
+		var art = SceneArt.make(String(spec.get("scene", "talks")), 0.0)
+		art.size_flags_vertical = Control.SIZE_EXPAND_FILL
+		art.custom_minimum_size = Vector2(0, 430)
 		vb.add_child(art)
-		var gap := Control.new()
-		gap.size_flags_vertical = Control.SIZE_EXPAND_FILL
-		vb.add_child(gap)
 		var intro := TK.t(String(spec.get("intro", "Masaya oturdunuz. Karşı tarafın duruşunu oku, doğru hamleyi seç.")), "small", TK.MUTED)
 		intro.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		intro.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER

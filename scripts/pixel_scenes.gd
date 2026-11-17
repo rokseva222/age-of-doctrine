@@ -158,6 +158,7 @@ func draw(ctrl: Control, kind: String, time: float) -> void:
 		"sanction": _sanction()
 		"trade": _trade()
 		"alliance": _alliance()
+		"talks": _talks()
 		"war": _war()
 		"peace": _peace()
 		"era_ott1520": _horde(false)
@@ -851,6 +852,45 @@ func _hall() -> void:
 			R(rx, ry, 3, 2, "y" if (on and (fr / 4 + i + row) % 9 != 0) else "s")
 	R(cx - 6, int(ph * 0.58), 12, 4, "m")                  # kürsü
 	R(cx - 5, int(ph * 0.58) - 1, 10, 1, "y")
+
+
+func _talks() -> void:
+	R(0, 0, pw, ph, "n")
+	for y in range(0, ph, 3):
+		R(0, y, pw, 3, PAL.n.lerp(PAL.k, float(y) / ph * 0.6))
+	var cx: int = pw / 2
+	var fl: int = int(ph * 0.58)
+	R(cx - 16, 8, 32, 24, "k")                             # pencere
+	R(cx - 14, 10, 28, 20, "c")
+	R(cx - 1, 10, 2, 20, "k")
+	R(cx - 14, 19, 28, 1, "k")
+	for side in 2:                                         # iki devletin bayrağı
+		var fx: int = cx + (-1 if side == 0 else 1) * int(minf(pw * 0.32, 150.0))
+		R(fx, 6, 1, fl - 4, "k")
+		var wv: int = int(sin(t * 3.0 + side) * 1.5)
+		R(fx + 1, 6, 15 + wv, 9, "r" if side == 0 else "b")
+		R(fx + 6, 8, 4, 5, "w")
+	R(0, fl, pw, ph - fl, "d")                             # zemin
+	R(0, fl, pw, 1, "k")
+	var hw: int = mini(int(pw * 0.3), 170)
+	for i in 3:                                            # heyetler: masanın iki yanında
+		var bob: int = -1 if (fr / 5 + i) % 4 == 0 else 0
+		spr(MAN, cx - hw + 14 + i * 36, fl - 20 + bob, false, PAL, 3)
+		spr(HAT_MAN, cx + hw - 38 - i * 36, fl - 20 + bob, true, PAL, 3)
+	R(cx - hw, fl + 6, hw * 2, 8, "m")                     # uzun müzakere masası
+	R(cx - hw, fl + 6, hw * 2, 1, "y")
+	R(cx - hw + 4, fl + 14, 3, 14, "k")
+	R(cx + hw - 7, fl + 14, 3, 14, "k")
+	R(cx - 3, fl + 14, 6, 10, "k")
+	for i in 5:                                            # evraklar
+		R(cx - hw + 12 + i * (hw * 2 - 30) / 4, fl + 4, 7, 2, "w")
+	R(cx - 2, fl + 3, 4, 3, "y")                           # tarafsız su sürahisi
+	var lit: bool = (fr / 9) % 6 != 0                      # sarkıt lamba hafif titrer
+	R(cx, 0, 1, 10, "k")
+	R(cx - 4, 10, 9, 3, "y" if lit else "o")
+	if lit:
+		R(cx - 14, 13, 29, 2, A("y", 0.18))
+		R(cx - 20, 15, 41, 2, A("y", 0.1))
 
 
 func _mobilize() -> void:

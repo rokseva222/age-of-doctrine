@@ -784,13 +784,13 @@ const CARDS := [
 
 
 const MODERN_CARDS := [
-	{"id": "talks", "t": "Müzakere Masası", "scene": "alliance", "b": "Komşu ülkenin heyeti sınır ve ticaret konusunda seninle masaya oturmak istiyor. Hükümet sonucu bekliyor.",
-		"c": [["Masaya otur", {}, {"game": "negotiate", "style": [1.2, 1.0, 1.0], "title": "Müzakere Masası", "scene": "alliance", "intro": "Heyetler karşılıklı oturdu. Karşı tarafın duruşunu oku, doğru hamleyi seç.",
+	{"id": "talks", "t": "Müzakere Masası", "scene": "talks", "b": "Komşu ülkenin heyeti sınır ve ticaret konusunda seninle masaya oturmak istiyor. Hükümet sonucu bekliyor.",
+		"c": [["Masaya otur", {}, {"game": "negotiate", "style": [1.2, 1.0, 1.0], "title": "Müzakere Masası", "scene": "talks", "intro": "Heyetler karşılıklı oturdu. Karşı tarafın duruşunu oku, doğru hamleyi seç.",
 				"win": {"renown": 10, "favor": 5, "gold_w": 3.0, "stab": 2}, "lose": {"renown": -4, "favor": -4, "stab": -2}, "draw": {"renown": 2, "favor": 1}, "yield": {"renown": -6, "favor": -3},
 				"win_text": "Sınır ve ticaret anlaşması imzalandı. Hükümet seni tebrik etti.", "lose_text": "Görüşmeler çöktü. Karşı taraf basına sert bir açıklama yaptı."}],
 			["Yetkili bir vekil gönder", {"renown": 1, "favor": 1}], ["Görüşmeyi reddet", {"renown": -3, "favor": -3}]]},
 	{"id": "hostages", "t": "Esir Takası Pazarlığı", "scene": "spy", "b": "Karşı taraf esir ettiği askerlerinizi karşılığında bir bölgeyi boşaltmanı istiyor. Aracı bir ülke masayı kurdu.",
-		"c": [["Pazarlığa otur", {}, {"game": "negotiate", "style": [1.0, 0.8, 1.3], "title": "Esir Takası", "scene": "spy", "skill_bonus": 0.1, "intro": "Aracı ülkenin diplomatları iki tarafı oturttu. Süre kısıtlı; her hamle önemli.",
+		"c": [["Pazarlığa otur", {}, {"game": "negotiate", "style": [1.0, 0.8, 1.3], "title": "Esir Takası", "scene": "talks", "skill_bonus": 0.1, "intro": "Aracı ülkenin diplomatları iki tarafı oturttu. Süre kısıtlı; her hamle önemli.",
 				"win": {"troops": 400, "renown": 8, "favor": 4}, "lose": {"renown": -6, "stab": -3, "troops": -100}, "draw": {"troops": 150, "renown": 1}, "yield": {"renown": -8, "stab": -2},
 				"win_text": "Esirler ek taviz verilmeden geri döndü. Askerler seni alkışlıyor.", "lose_text": "Takas çöktü; esirler yurda dönemedi."}],
 			["Şartları olduğu gibi kabul et", {"troops": 250, "renown": -4, "favor": -3}], ["Esirleri kaderine bırak", {"renown": -8, "stab": -3}]]},
