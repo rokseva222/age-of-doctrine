@@ -462,7 +462,7 @@ static func _base_minister(c, role: String, turn: int = 0) -> Array:
 
 const APPOINT := ["def", "for", "int", "fin", "hlt", "spy"]
 const Q_NAME := ["Acemi", "Kıdemli", "Usta"]
-const Q_COST := [0.15, 0.7, 2.2]               # haftalık net gelirin katı
+const Q_COST := [0.08, 0.35, 1.0]               # haftalık net gelirin katı
 const ROLE_FX := {
 	"def": ["Ordu mevcudu büyümez", "Ordu mevcudu yavaş büyür", "Ordu mevcudu hızla büyür"],
 	"for": ["Komşular değişmez", "Komşular yavaşça yumuşar", "Komşular belirgin biçimde yumuşar"],
