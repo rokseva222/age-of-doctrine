@@ -1570,6 +1570,7 @@ const PEACE_TERMS := {
 	"disarm": {"name": "Silahsızlandırma", "desc": "Yenilenin orduları yarıya iner.", "cost": 8},
 	"buffer": {"name": "Tampon bölge", "desc": "Ateşkes 26 yerine 78 hafta sürer; iki taraf da saldıramaz.", "cost": 5},
 	"regime": {"name": "Rejim değişikliği", "desc": "Yenilenin yönetim biçimi seninkine döner; istikrarı düşer.", "cost": 7},
+	"vassal": {"name": "Vasal devlet", "desc": "Yenilen sana bağlanır: ittifak kurulur, kasasının dörtte biri sana geçer, 52 hafta birbirinize saldıramazsınız.", "cost": 10},
 	"faith": {"name": "Din dayatma", "desc": "Yenilenin eyaletleri senin inancına geçer; istikrarı düşer.", "cost": 6},
 }
 
@@ -1593,6 +1594,16 @@ func _apply_terms(winner: int, loser: int, terms: Array) -> String:
 		pol.reg[str(loser)] = wr
 		countries[loser].stability = clampf(countries[loser].stability - 8.0, 5.0, 100.0)
 		parts.append("rejim değişikliği" if lr != wr else "yönetim tasfiyesi")
+	if terms.has("vassal"):
+		var tb: float = maxf(0.0, countries[loser].gold * 0.25)
+		countries[loser].gold -= tb
+		countries[winner].gold += tb
+		if not is_allied(winner, loser):
+			make_alliance(winner, loser)
+		relation_add(winner, loser, 25.0)
+		countries[winner].truce[loser] = turn + 52
+		countries[loser].truce[winner] = turn + 52
+		parts.append("vasal devlet")
 	if terms.has("faith"):
 		Faith.impose(self, winner, loser)
 		parts.append("din dayatma")

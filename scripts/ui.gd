@@ -39,7 +39,7 @@ const GOAL_ICONS := {"t_turn": "hourglass", "t_move": "tank", "t_war": "war_decl
 	"a_year1": "calendar", "a_year10": "hourglass", "a_prov30": "five_stars"}
 const Faith = preload("res://scripts/faith.gd")
 const SandboxUI = preload("res://scripts/sandbox_ui.gd")
-const TERM_ICONS := {"reparations": ["reparations", "coins"], "disarm": ["disarm", "rifle"], "buffer": ["buffer_zone", "flag"], "regime": ["regime", "flag"], "faith": ["faith", "flag"]}
+const TERM_ICONS := {"reparations": ["reparations", "coins"], "disarm": ["disarm", "rifle"], "buffer": ["buffer_zone", "flag"], "regime": ["regime", "flag"], "faith": ["faith", "flag"], "vassal": ["handshake", "flag"]}
 
 ## BM önerge ikonları: [yeni ikon adı, yedek]
 const UN_ICONS := {"ceasefire": ["ceasefire", "dove"], "rebuild": ["rebuild", "home"], "aid": ["aid", "coins"], "peace_keep": ["un_peacekeeper", "shield"],
