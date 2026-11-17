@@ -82,7 +82,7 @@ static func rate(cur: String = "") -> float:
 	var base: float = RATES.get(cur, 1.0)
 	if cur == "USD":
 		return 1.0
-	var h := hash(cur)
+	var h := absi(hash(cur))
 	var ph := float(h % 628) / 100.0
 	var amp := 0.015 + float((h >> 8) % 20) / 1000.0     # %1,5 – %3,5
 	return base * (1.0 + amp * sin(float(turn) * 0.045 + ph) + amp * 0.4 * sin(float(turn) * 0.13 + ph * 2.0))

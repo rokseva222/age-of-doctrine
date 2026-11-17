@@ -104,7 +104,7 @@ static func money(m: float) -> String:
 	var pre := Currency.symbol_front()
 	var suf := Currency.suffix()
 	if a >= 1.0e9:
-		return "%s%s%s%s%s" % [s, pre, _dec(a / 1.0e9), " kdr" if Loc.lang == "tr" else " qa", suf]
+		return "%s%s%s%s%s" % [s, pre, _dec(a / 1.0e9), " kdr" if Loc.lang == "tr" else "Q", suf]
 	if a >= 1.0e6:
 		return "%s%s%s%s%s" % [s, pre, _dec(a / 1.0e6), Loc.units["tr"], suf]
 	if a >= 1000.0:
