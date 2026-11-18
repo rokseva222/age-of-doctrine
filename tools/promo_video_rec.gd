@@ -1,5 +1,14 @@
 extends SceneTree
 var main
+var hide_dialogs := false
+func _tick() -> void:
+	if hide_dialogs and main != null:
+		var m = main.ui._modal
+		if m != null and is_instance_valid(m):
+			m.visible = false
+			m.queue_free()
+			main.ui._modal = null
+		main.ui.toast_panel.visible = false
 func _wait(s: float) -> void:
 	await create_timer(s).timeout
 func _shot(path: String) -> void:
@@ -19,6 +28,8 @@ func _init() -> void:
 	main.menu.finish_splash()
 	await _wait(0.6)
 	main.ui.toast_panel.visible = false
+	hide_dialogs = clip != "form"
+	process_frame.connect(_tick)
 	match clip:
 		"ott":
 			main.menu.hide()
@@ -40,7 +51,7 @@ func _init() -> void:
 			await _wait(1.5)
 			for i in 70:
 				if main.ui.is_dialog_open(): main.ui.hide_dialog()
-				main._do_turn(); main.ui.hide_info(); main.ui.set_hud_visible(false); main.ui.toast_panel.visible = false
+				main._do_turn(); _tick(); main.ui.hide_info(); main.ui.set_hud_visible(false); main.ui.toast_panel.visible = false
 				main.map.hud.queue_redraw()
 				await _wait(0.22)
 		"ww2":
@@ -58,7 +69,29 @@ func _init() -> void:
 			await _wait(1.0)
 			for i in 60:
 				if main.ui.is_dialog_open(): main.ui.hide_dialog()
-				main._do_turn(); main.ui.hide_info(); main.ui.set_hud_visible(false); main.ui.toast_panel.visible = false
+				main._do_turn(); _tick(); main.ui.hide_info(); main.ui.set_hud_visible(false); main.ui.toast_panel.visible = false
+				main.map.hud.queue_redraw()
+				await _wait(0.22)
+		"modern":
+			main._to_select()
+			await _wait(0.5)
+			var tid := -1
+			for c in main.gs.countries:
+				if c.name_en == "Turkey": tid = c.id
+			main._on_start_requested(tid)
+			await _wait(1.0)
+			main.ui.hide_dialog()
+			var gs = main.gs
+			gs.countries[gs.player].auto_cmd = true
+			main.ui.hide_info(); main.ui.set_hud_visible(false)
+			main.map.hud.show_armies = true
+			for c in gs.countries:
+				if c.name_en in ["Georgia", "Armenia", "Syria"]:
+					gs.player_declare_war(c.id)
+			main.map.focus_country(gs.player)
+			await _wait(1.5)
+			for i in 70:
+				main._do_turn(); _tick(); main.ui.hide_info(); main.ui.set_hud_visible(false)
 				main.map.hud.queue_redraw()
 				await _wait(0.22)
 		"form":
