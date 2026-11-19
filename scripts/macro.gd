@@ -5,6 +5,7 @@ extends RefCounted
 const Arsenal = preload("res://scripts/arsenal.gd")
 const Chokepoints = preload("res://scripts/chokepoints.gd")
 const Politics = preload("res://scripts/politics.gd")
+const Names = preload("res://scripts/names.gd")
 const Propaganda = preload("res://scripts/propaganda.gd")
 const Crises = preload("res://scripts/crises.gd")
 const Carriers = preload("res://scripts/carriers.gd")
@@ -883,8 +884,15 @@ static func _war_ops(gs) -> void:
 			_cyber_op(gs, cb, ca)
 
 
-static func _cyber_op(gs, atk, dfn) -> void:
+## Siber saldırılar ancak 1960 sonrasında var olur (kullanıcı senaryoları 1914 vb. yıllarda başlayabilir).
+static func cyber_age(gs) -> bool:
 	if era_on:
+		return false
+	return Names.start_year + gs.turn / 52 >= 1960
+
+
+static func _cyber_op(gs, atk, dfn) -> void:
+	if not cyber_age(gs):
 		return
 	if atk.is_rebel or dfn.is_rebel:
 		return

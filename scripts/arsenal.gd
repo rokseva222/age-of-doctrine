@@ -9,6 +9,8 @@ static var cat_names_ovr: Dictionary = {}
 
 
 static func cat_name(k: String) -> String:
+	if cat_custom.has(k):
+		return String(cat_custom[k])
 	return String(cat_names_ovr.get(k, CAT_NAME[k]))
 
 
@@ -475,6 +477,10 @@ static func _resolve(id: String) -> Variant:
 
 
 static func set_era(id: String) -> void:
+	name_ovr = {}
+	cost_mult = {}
+	pow_mult = {}
+	cat_custom = {}
 	_cat_cache.clear()
 	era = id
 	key = ""
@@ -502,7 +508,34 @@ static func set_era(id: String) -> void:
 	cat_names_ovr = e.get("cat_names", {})
 
 
+## Senaryo düzenleyicisinin değişiklikleri: silah adı, maliyet/güç çarpanı, sınıf adı
+static var name_ovr: Dictionary = {}
+static var cost_mult: Dictionary = {}
+static var pow_mult: Dictionary = {}
+static var cat_custom: Dictionary = {}
+
+
+static func set_overrides(weapons: Dictionary, cats: Dictionary) -> void:
+	name_ovr = {}
+	cost_mult = {}
+	pow_mult = {}
+	for id in weapons:
+		var w: Dictionary = weapons[id]
+		if w.has("name") and String(w["name"]).strip_edges() != "":
+			name_ovr[id] = String(w["name"]).strip_edges()
+		if w.has("cost"):
+			cost_mult[id] = clampf(float(w["cost"]), 0.1, 10.0)
+		if w.has("pow"):
+			pow_mult[id] = clampf(float(w["pow"]), 0.2, 5.0)
+	cat_custom = {}
+	for k in cats:
+		if String(cats[k]).strip_edges() != "":
+			cat_custom[k] = String(cats[k]).strip_edges()
+
+
 static func name_of(id: String) -> String:
+	if name_ovr.has(id):
+		return name_ovr[id]
 	return ITEMS[id][0] if ITEMS.has(id) else id
 
 
@@ -519,7 +552,7 @@ static func tier_of(id: String) -> int:
 
 
 static func cost_of(id: String) -> float:
-	return ITEMS[id][4]
+	return ITEMS[id][4] * float(cost_mult.get(id, 1.0))
 
 
 static func buyable(id: String) -> bool:
@@ -527,6 +560,10 @@ static func buyable(id: String) -> bool:
 
 
 static func power_of(id: String) -> float:
+	return _base_power(id) * float(pow_mult.get(id, 1.0))
+
+
+static func _base_power(id: String) -> float:
 	if POW_OVR.has(id):
 		return POW_OVR[id]
 	var t: int = ITEMS[id][3]

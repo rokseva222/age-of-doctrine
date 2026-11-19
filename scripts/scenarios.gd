@@ -2,6 +2,8 @@ extends RefCounted
 ## Senaryolar: gerçek dünya krizleri ve kurgusal modern senaryolar.
 ## Ülke adları world.json'daki name_en alanıdır. Kurgusal gruplar tamamen uydurmadır; gerçek örgüt/sembol kullanılmaz.
 
+const Cabinet = preload("res://scripts/cabinet.gd")
+const Arsenal = preload("res://scripts/arsenal.gd")
 const Macro = preload("res://scripts/macro.gd")
 const Emblem = preload("res://scripts/emblem.gd")
 const DataUtil = preload("res://scripts/data_util.gd")
@@ -222,7 +224,13 @@ static func apply_dict(gs, sc: Dictionary, force_ally_first: bool) -> void:
 
 static func _apply_dict(gs, sc: Dictionary, force_ally_first: bool) -> void:
 	var idx: Dictionary = gs.macro_idx
+	gs.custom_ovr = {"weapons": sc.get("weapons", {}), "cats": sc.get("cats", {})}
+	Arsenal.set_overrides(gs.custom_ovr["weapons"], gs.custom_ovr["cats"])
 	_transfers(gs, sc, idx)
+	_custom_states(gs, sc)
+	idx = gs.macro_idx
+	_garrisons(gs, sc, idx)
+	_cab_names(gs, sc)
 	if sc.get("ally_first", false) or force_ally_first:
 		_blocs(gs, sc, idx)
 		_wars(gs, sc, idx)
@@ -300,6 +308,85 @@ static func _blocs(gs, sc: Dictionary, idx: Dictionary) -> void:
 			gs.bloc_add(bid, ids[i])
 
 
+## Sıfırdan yeni devletler: {key, name, leader, colors, flag, pids, capital, troops, tech, aggression, doctrine, gold_mult, war, play, week}
+static func _custom_states(gs, sc: Dictionary) -> void:
+	var k := 0
+	for spec in sc.get("custom", []):
+		if int(spec.get("week", 0)) <= 0:
+			make_custom(gs, spec, k)
+		k += 1
+
+
+## Tek bir özel devleti kurar (başlangıçta ya da zamanlı doğuşta). Yeni devletin id'sini döndürür (-1: kurulamadı)
+static func make_custom(gs, spec: Dictionary, k: int) -> int:
+	var pids: Array = []
+	for q in spec.get("pids", []):
+		var pi: int = int(q)
+		if pi >= 0 and pi < gs.provinces.size() and gs.provinces[pi].owner >= 0 and gs.countries[gs.provinces[pi].owner].alive:
+			pids.append(pi)
+	if pids.is_empty():
+		return -1
+	var from: Array = []
+	for pi2 in pids:
+		var oen: String = gs.countries[gs.provinces[pi2].owner].name_en
+		var found := false
+		for fr in from:
+			if fr[0] == oen:
+				found = true
+		if not found:
+			from.append([oen, 1])
+	var sp: Dictionary = (spec as Dictionary).duplicate(true)
+	sp["pids"] = pids
+	sp["from"] = from
+	sp["key"] = "custom_%d" % k
+	sp["name"] = String(spec.get("name", "Yeni Devlet"))
+	sp["defect"] = true
+	var fid: int = gs.create_faction(sp)
+	if fid >= 0:
+		if bool(spec.get("play", false)) and int(spec.get("week", 0)) <= 0:
+			gs.scn_play = fid
+		if int(spec.get("week", 0)) > 0:
+			gs.post_news("%s bağımsızlığını ilan etti." % gs.countries[fid].name, gs.countries[fid].capital, "event")
+	return fid
+
+
+## Oyuncunun kabinesi: {rol: ad}
+static func _cab_names(gs, sc: Dictionary) -> void:
+	var names: Dictionary = sc.get("cab_names", {})
+	var pl: int = gs.scn_play if gs.scn_play >= 0 else gs.player
+	if names.is_empty() or pl < 0:
+		return
+	var c = gs.countries[pl]
+	if c.cab.is_empty():
+		Cabinet.init_cabinet(c, gs.turn)
+	for role in names:
+		if c.cab.has(role) and String(names[role]).strip_edges() != "":
+			c.cab[role].n = String(names[role]).strip_edges()
+			c.cab[role].real = true
+
+
+## Birlik yerleştirme: [eyalet id, sahip, asker sayısı] — o eyaletteki ordunun büyüklüğünü ayarlar (yoksa yaratır)
+static func _garrisons(gs, sc: Dictionary, idx: Dictionary) -> void:
+	for g in sc.get("garrison", []):
+		var cid: int = int(idx.get(String(g[1]), -1))
+		var pid: int = int(g[0])
+		if cid < 0 or pid < 0 or pid >= gs.provinces.size():
+			continue
+		var p = gs.provinces[pid]
+		if p.owner != cid and p.controller != cid:
+			continue
+		var n: int = int(g[2])
+		var ex = gs.armies.get(pid)
+		if ex != null and ex.owner == cid:
+			if n <= 0:
+				gs.armies.erase(pid)
+			else:
+				ex.size = n
+		elif ex == null and n > 0:
+			gs._spawn_army(cid, pid, n)
+	gs.refresh_stats()
+
+
 ## Eyalet aktarımı: [eyalet id|ad, bugünkü sahip, yeni sahip, "own"|"occ"]
 static func _transfers(gs, sc: Dictionary, idx: Dictionary) -> void:
 	var moved := false
@@ -351,19 +438,37 @@ static func _modifiers(gs, sc: Dictionary, idx: Dictionary) -> void:
 			gs.countries[ci].color = Color(String(r["color"]))
 		if r.has("leader"):
 			gs.countries[ci].leader = String(r["leader"])
+		if r.has("flag"):
+			gs.countries[ci].flag_spec = String(r["flag"])
+		if r.has("color2"):
+			gs.countries[ci].color2 = Color(String(r["color2"]))
+		if r.has("color3"):
+			gs.countries[ci].color3 = Color(String(r["color3"]))
+	for n5 in sc.get("tech", {}):
+		var c5: int = int(idx.get(n5, -1))
+		if c5 >= 0:
+			gs.countries[c5].tech_set = clampf(float(sc["tech"][n5]), 0.0, 1.0)
+			gs.countries[c5].tech = gs.countries[c5].tech_set
+	for n6 in sc.get("inv", {}):
+		var c6: int = int(idx.get(n6, -1))
+		if c6 < 0:
+			continue
+		for wid in sc["inv"][n6]:
+			if Arsenal.ITEMS.has(wid):
+				gs.countries[c6].inv[wid] = maxi(0, int(sc["inv"][n6][wid]))
 	for n2 in sc.get("troops_mult", {}):
 		var c2: int = int(idx.get(n2, -1))
 		if c2 < 0:
 			continue
-		var m2: float = clampf(float(sc["troops_mult"][n2]), 0.3, 3.0)
+		var m2: float = clampf(float(sc["troops_mult"][n2]), 0.1, 5.0)
 		gs.countries[c2].base_troops = int(gs.countries[c2].base_troops * m2)
 		for a in gs.armies.values():
 			if a.owner == c2:
-				a.size = maxi(500, int(a.size * m2))
+				a.size = maxi(100, int(a.size * m2))
 	for n3 in sc.get("treasury_mult", {}):
 		var c3: int = int(idx.get(n3, -1))
 		if c3 >= 0:
-			gs.countries[c3].gold *= clampf(float(sc["treasury_mult"][n3]), 0.2, 4.0)
+			gs.countries[c3].gold *= clampf(float(sc["treasury_mult"][n3]), 0.0, 10.0)
 	for n4 in sc.get("stability", {}):
 		var c4: int = int(idx.get(n4, -1))
 		if c4 >= 0:

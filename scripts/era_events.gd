@@ -100,10 +100,69 @@ static func apply_fx(gs, f: Array) -> void:
 
 
 static func _apply(gs, f: Array) -> void:
+	if String(f[0]) == "cabinet" and gs.player >= 0:     # oyuncunun kabinesinde bakan değişir: f[2] = "rol|yeni ad"
+		var cp: PackedStringArray = String(f[2]).split("|")
+		var pc = gs.countries[gs.player]
+		if cp.size() == 2 and pc.cab.has(cp[0]) and cp[1].strip_edges() != "":
+			pc.cab[cp[0]].n = cp[1].strip_edges()
+			pc.cab[cp[0]].real = true
+		return
 	var a: int = _id(gs, String(f[1]))
 	if a < 0 or not gs.countries[a].alive:
 		return
+	if String(f[0]) == "cede":
+		# hikâye modu: zamanlı toprak devri. f[3] = eyalet id listesi ya da "all" (ülkenin tamamı)
+		var to: int = _id(gs, String(f[2]))
+		if to < 0 or to == a or not gs.countries[to].alive:
+			return
+		var ids: Array = []
+		if typeof(f[3]) == TYPE_ARRAY:
+			for q in f[3]:
+				ids.append(int(q))
+		else:
+			for p in gs.provinces:
+				if p.owner == a:
+					ids.append(p.id)
+		var n := 0
+		for pid in ids:
+			if pid >= 0 and pid < gs.provinces.size() and gs.provinces[pid].owner == a:
+				gs.sandbox_give(pid, to)
+				gs.provinces[pid].core = to
+				gs.provinces[pid].home = to
+				n += 1
+		if n > 0:
+			gs.post_news("%s: %d eyalet %s'e devredildi." % [gs.countries[a].name, n, gs.countries[to].name], -1, "info")
+		return
 	match String(f[0]):
+		"break":
+			var bb: int = _id(gs, String(f[2]))
+			if bb >= 0 and gs.countries[bb].alive:
+				gs.break_alliance(a, bb)
+		"vassal":     # f[1] efendi, f[2] vasal olur
+			var bv: int = _id(gs, String(f[2]))
+			if bv >= 0 and gs.countries[bv].alive and bv != a:
+				gs.make_vassal(bv, a)
+		"free":       # f[1] vasal serbest kalır
+			gs.release_vassal(a, true)
+		"embargo":
+			var be: int = _id(gs, String(f[2]))
+			if be >= 0 and gs.countries[be].alive and not gs.countries[a].embargo.has(be):
+				gs.countries[a].embargo.append(be)
+				gs.countries[be].embargo.append(a)
+		"leader":
+			gs.countries[a].leader = String(f[2])
+		"cabinet":   # f[2] = "rol|yeni ad" (yalnız oyuncunun kabinesi)
+			if a == gs.player:
+				var cp: PackedStringArray = String(f[2]).split("|")
+				var cc = gs.countries[a]
+				if cp.size() == 2 and cc.cab.has(cp[0]) and cp[1].strip_edges() != "":
+					cc.cab[cp[0]].n = cp[1].strip_edges()
+					cc.cab[cp[0]].real = true
+		"rename":
+			gs.countries[a].name = String(f[2])
+		"xtech":
+			gs.countries[a].tech_set = clampf(maxf(gs.countries[a].tech_set, gs.countries[a].tech) + float(f[2]) / 100.0, 0.0, 1.0)
+			gs.countries[a].tech = gs.countries[a].tech_set
 		"stab":
 			if a != gs.player:
 				gs.countries[a].stability = clampf(gs.countries[a].stability + float(f[2]), 5.0, 100.0)

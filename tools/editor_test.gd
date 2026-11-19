@@ -19,7 +19,7 @@ func _init() -> void:
 	ck("sanitize ad", fin.get("name") == "Deneme Krizi")
 	ck("sanitize geçersiz savaş atıldı", fin.get("wars", []).size() == 1)
 	ck("sanitize 1 üyeli blok atıldı", fin.get("blocs", []).size() == 1)
-	ck("sanitize çarpan sıkıştırıldı", fin.get("troops_mult", {}).get("Greece") == 2.0)
+	ck("sanitize çarpan sıkıştırıldı", fin.get("troops_mult", {}).get("Greece") == 5.0)
 	ck("sanitize bilinmeyen hedef atıldı", fin["objectives"]["*"].size() == 2)
 	ck("en bloğu hedefler", fin["en"]["objectives"].size() == 2)
 	var code := U.export_code(fin)

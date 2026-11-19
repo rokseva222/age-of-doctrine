@@ -722,6 +722,28 @@ static func pick(gs, last_turn: int, recent: Array, rng: RandomNumberGenerator, 
 	return pool[pool.size() - 1][0]
 
 
+## Senaryo düzenleyicisinde yazılmış kabine olayı: süresi gelmiş ve henüz sorulmamış ilk kart ({} yoksa).
+## Kart biçimi: {turn, role, who, role_text, q, o: [{t, r, e}]}; e: g, stab, cyb, ind, log, tech, troops, unrest, aggr, dev
+static func scn_card(gs) -> Dictionary:
+	if gs.scn.is_empty() or gs.player < 0:
+		return {}
+	var evs: Array = (gs.scn.get("src", {}) as Dictionary).get("cab_events", [])
+	for i in evs.size():
+		var key := "cab%d" % i
+		var e: Dictionary = evs[i]
+		if gs.scn.fired.has(key) or gs.turn - int(gs.scn.start) < int(e.get("turn", 0)):
+			continue
+		gs.scn.fired[key] = true
+		var opts: Array = []
+		for o in e.get("o", []):
+			opts.append({"t": String(o.get("t", "Tamam")), "r": String(o.get("r", "")), "e": (o.get("e", {}) as Dictionary).duplicate()})
+		if opts.is_empty():
+			opts.append({"t": "Tamam", "r": "", "e": {}})
+		return {"id": "scn_cab_%d" % i, "role": String(e.get("role", "def")), "who": String(e.get("who", "")), "role_text": String(e.get("role_text", "")),
+			"q": String(e.get("q", "")), "o": opts, "title": String(e.get("title", "Kabine toplantısı"))}
+	return {}
+
+
 ## Takvimle gelen kart (seçim) varsa onu döndürür.
 static func scheduled(gs) -> Dictionary:
 	_nb_name = ""

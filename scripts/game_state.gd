@@ -6,6 +6,7 @@ const Model = preload("res://scripts/model.gd")
 const Settings = preload("res://scripts/settings.gd")
 const Names = preload("res://scripts/names.gd")
 const WorldData = preload("res://scripts/world_data.gd")
+const Arsenal = preload("res://scripts/arsenal.gd")
 const Macro = preload("res://scripts/macro.gd")
 const Propaganda = preload("res://scripts/propaganda.gd")
 const Emblem = preload("res://scripts/emblem.gd")
@@ -93,6 +94,8 @@ var sea_campaign: Dictionary = {}     # oyuncunun denizden başlattığı sefer:
 var crisis: Dictionary = {}            # aktif dünya krizi (crises.gd)
 var crisis_pending: Dictionary = {}    # oyuncuya sorulacak kriz kartı
 var crisis_last_end := -999
+var scn_play := -1                    # senaryo: oyuncunun başlayacağı özel devlet (-1: seçtiği ülke)
+var custom_ovr: Dictionary = {}       # senaryo düzenleyicisi: {"weapons": {...}, "cats": {...}} (kayda girer)
 var scn: Dictionary = {}               # senaryo/çağ hedefleri ve olayları (objectives.gd)
 var stats := {"wars": 0, "captures": 0, "battles": 0, "peaces": 0, "eliminated": 0, "rebels": 0, "independence": 0, "alliances": 0, "p_wars": 0, "p_alliances": 0, "p_peaces": 0, "p_battles": 0, "p_captures": 0, "p_eliminated": 0, "orders": 0, "un_passed": 0, "landings": 0, "nukes": 0}
 var base_country_count := 0
@@ -148,6 +151,16 @@ func start_game(player_country: int) -> void:
 	game_started = true
 	Currency.sync(self)
 	post_news("Yeni oyun: %s liderliğinde cihan hâkimiyeti yarışı başladı." % countries[player].name if player >= 0 else "Simülasyon başladı.", -1, "info")
+
+
+func switch_player(cid: int) -> void:
+	if cid < 0 or cid >= countries.size():
+		return
+	if player >= 0:
+		countries[player].is_player = false
+	player = cid
+	countries[cid].is_player = true
+	Currency.sync(self)
 
 
 func _init_armies() -> void:
@@ -1119,7 +1132,8 @@ func create_faction(spec: Dictionary) -> int:
 	var f := Model.Country.new()
 	f.id = countries.size()
 	f.name = spec["name"]
-	f.name_en = "faction_%d" % f.id
+	f.name_en = String(spec.get("key", "faction_%d" % f.id))
+	f.name_en = f.name_en if f.name_en != "" else "faction_%d" % f.id
 	f.a3 = "XXX"
 	f.continent = countries[from_cids[0]].continent
 	var cols: Array = spec.get("colors", ["333a44", "e3a92b", "ece6d6"])
@@ -1127,13 +1141,19 @@ func create_faction(spec: Dictionary) -> int:
 	f.color2 = Color(cols[1])
 	f.color3 = Color(cols[2])
 	f.flag_pattern = int(spec.get("pattern", 2))
+	f.flag_spec = String(spec.get("flag", ""))
+	f.iso = ""
+	if spec.has("pop_mult"):
+		pass
 	f.aggression = float(spec.get("aggression", 0.9))
 	f.born = turn
 	var best: int = picks[0]
+	if spec.has("capital") and picks.has(int(spec["capital"])):
+		best = int(spec["capital"])
 	var troops: int = int(spec.get("troops", 30000))
 	for pid in picks:
 		var p = provinces[pid]
-		if p.pop > provinces[best].pop:
+		if p.pop > provinces[best].pop and not spec.has("capital"):
 			best = pid
 		f.pop += p.pop
 		f.gdp += p.gdp
@@ -1172,10 +1192,11 @@ func create_faction(spec: Dictionary) -> int:
 	for pid in picks:
 		_spawn_army(f.id, pid, each)
 	refresh_stats()
-	f.gold = f.income * 8.0
-	for cid2 in from_cids:
-		declare_war(f.id, cid2, true)
-		_call_allies_of(cid2, f.id)
+	f.gold = f.income * 8.0 * float(spec.get("gold_mult", 1.0))
+	if bool(spec.get("war", true)):
+		for cid2 in from_cids:
+			declare_war(f.id, cid2, true)
+			_call_allies_of(cid2, f.id)
 	Macro.prime(self)
 	return f.id
 
@@ -3569,7 +3590,7 @@ func to_dict() -> Dictionary:
 		"v": 3, "seed": seed_value, "base": base_country_count,
 		"turn": turn, "player": player, "next_army_id": next_army_id, "victory": victory_declared,
 		"rng_state": rng.state, "rebel_names": rebel_name_count, "merc_names": merc_names, "stats": stats,
-		"difficulty": difficulty, "blocs": blocs, "next_bloc": next_bloc_id, "cold": cold, "sea_camp": sea_campaign.keys(), "crisis": crisis, "crisis_end": crisis_last_end, "scn": scn, "era": Eras.current, "nuke_cd": nuke_cd, "grand": grand, "chokes": chokes, "daily": daily, "pol": pol, "faith": faith, "focus": focus, "syear": Names.start_year, "wroom": wroom, "indep": indep, "career": career, "moment_p": moment_pending, "moment_f": moment_flags, "infamy": infamy, "un_cd": un_cd, "un_log": un_log, "aid": aid, "vassals": vassals,
+		"difficulty": difficulty, "blocs": blocs, "next_bloc": next_bloc_id, "cold": cold, "sea_camp": sea_campaign.keys(), "crisis": crisis, "crisis_end": crisis_last_end, "scn": scn, "era": Eras.current, "nuke_cd": nuke_cd, "grand": grand, "chokes": chokes, "daily": daily, "pol": pol, "faith": faith, "focus": focus, "syear": Names.start_year, "wroom": wroom, "indep": indep, "career": career, "moment_p": moment_pending, "moment_f": moment_flags, "infamy": infamy, "un_cd": un_cd, "un_log": un_log, "aid": aid, "vassals": vassals, "custom_ovr": custom_ovr,
 	}
 	var ps: Array = []
 	for p in provinces:
@@ -3748,6 +3769,8 @@ func from_dict(d: Dictionary) -> bool:
 	infamy = float(d.get("infamy", 0.0))
 	un_cd = d.get("un_cd", {}).duplicate()
 	aid = d.get("aid", {"cd": {}, "good": {}}).duplicate(true)
+	custom_ovr = d.get("custom_ovr", {}).duplicate(true)
+	Arsenal.set_overrides(custom_ovr.get("weapons", {}), custom_ovr.get("cats", {}))
 	vassals = {}
 	var vsv: Dictionary = d.get("vassals", {})
 	for k in vsv:

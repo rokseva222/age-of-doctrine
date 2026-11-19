@@ -2,6 +2,7 @@ extends RefCounted
 ## Bayrak çizici: flag_db.gd'deki kısa tanımları vektör olarak çizer (görsel dosya yok).
 
 const DB = preload("res://scripts/flag_db.gd")
+const Icons = preload("res://scripts/icons.gd")
 
 const COL := {
 	"w": "ffffff", "k": "141414", "r": "ce1126", "b": "0b3d91", "n": "002b7f", "l": "5bb5e8", "g": "009a44",
@@ -111,9 +112,28 @@ static func _parse(spec: String) -> Array:
 				layers.append({"t": "O", "w": float(args[1]), "p": Vector2(float(args[2]), float(args[3])), "r": float(args[4]), "col": _color(args[0])})
 			"G":
 				layers.append({"t": "G", "r": Rect2(float(args[0]), float(args[1]), float(args[2]) - float(args[0]), float(args[3]) - float(args[1])), "cols": int(args[4]), "rows": int(args[5]), "sr": float(args[6]), "col": _color(args[7])})
+			"M":   # hilal: M:renk,x,y,r,dönüş(derece; 0 = ağız sağa bakar)
+				var mc := Vector2(float(args[1]), float(args[2]))
+				var mr := float(args[3])
+				var mrot := deg_to_rad(float(args[4])) if args.size() > 4 else 0.0
+				var outer := _circle_poly(mc, mr, 40)
+				var inner := _circle_poly(mc + Vector2(cos(mrot) / ASPECT, sin(mrot)) * mr * 0.3, mr * 0.8, 40)
+				layers.append({"t": "P", "polys": Geometry2D.clip_polygons(outer, inner), "col": _color(args[0])})
+			"Y":   # sembol (simge kitaplığından): Y:renk,ad,x,y,boyut
+				if args.size() >= 5:
+					layers.append({"t": "Y", "name": args[1], "p": Vector2(float(args[2]), float(args[3])), "r": float(args[4]), "col": _color(args[0])})
 			"UJ":
 				layers.append({"t": "UJ", "r": Rect2(float(args[0]), float(args[1]), float(args[2]) - float(args[0]), float(args[3]) - float(args[1]))})
 	return layers
+
+
+## Daire çokgeni (bayrak oranında yuvarlak görünsün diye x ekseni ASPECT'e bölünür)
+static func _circle_poly(c: Vector2, r: float, n: int) -> PackedVector2Array:
+	var out := PackedVector2Array()
+	for i in n:
+		var a := TAU * float(i) / float(n)
+		out.append(Vector2(c.x + cos(a) * r / ASPECT, c.y + sin(a) * r))
+	return out
 
 
 ## Kalın çizgiyi (bayrak oranında) çokgene çevirir; koordinatlar yine 0..1.
@@ -255,6 +275,10 @@ static func _draw_layers(ci: CanvasItem, rect: Rect2, layers: Array) -> void:
 						var fy: float = (iy + 0.5) / L.rows
 						var p := Vector2(gr.position.x + gr.size.x * fx, gr.position.y + gr.size.y * fy)
 						ci.draw_colored_polygon(_star(o + p * sz, L.sr * sz.y, 5, -90.0), L.col)
+			"Y":
+				var ys: float = L.r * sz.y
+				var yc: Vector2 = o + L.p * sz
+				Icons.draw(ci, String(L.name), Rect2(yc - Vector2(ys, ys) * 0.5, Vector2(ys, ys)), L.col)
 			"UJ":
 				_draw_uj(ci, Rect2(o + L.r.position * sz, L.r.size * sz))
 

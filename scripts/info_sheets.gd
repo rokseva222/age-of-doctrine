@@ -281,17 +281,16 @@ static func open_howto(parent: Node) -> void:
 			render.call())
 
 
-const UPDATE_VER := "1.2"
+const UPDATE_VER := "1.2.3"
 const WHATS_NEW := [
-	["Odak ağacı", "Politika > Odak: Ekonomi, Askeri, Diplomasi, İç Siyaset ve ülkene özel ulusal dal. Odaklar haftalar sürer, kalıcı bonus verir."],
-	["5 yeni harekât", "Gece baskını, zırh hamlesi, kuşatma, çevirme ve aldatma harekâtı; yeni piksel animasyonlarla."],
-	["Din sistemi", "Hristiyanlık, İslam ve Dharmik inançlar komşuya yayılır; barış masasında din dayatabilirsin."],
-	["Yeni barış şartları", "Rejim değişikliği, din dayatma ve vasal devlet."],
-	["Casus ve teslimiyet", "Düşman ordusunu casusla gör; gerekirse teslim ol. Ortak savaşta müttefik ganimet payı verir."],
-	["Yerel para birimi", "Paralar ülkenin kendi para biriminde (TL, €, £…) görünür. Ayarlar'dan kapatabilirsin."],
-	["Sandbox modu", "Ayarlar'dan aç; oyun menüsünde deneme araçları paneli çıkar."],
-	["Senaryo editörü", "Başlangıç yılı ve eyalet boyama (devir) eklendi."],
-	["İyileştirmeler", "Slovenya haritası düzeldi, kabine maaşları ve tüfek alımı dengelendi, ordu hareket mesajları netleşti."],
+	["Gelir binaları", "Eyalete çiftlik, maden, petrol tesisi veya matbaa kur: haftalık gelir artar. İnşaat 8 hafta sürer."],
+	["Halk ve propaganda", "Politika > Halk: hükümete güven, propaganda yöntemleri (söylem, gazete, afiş). Güven düşerse isyan riski artar."],
+	["Vasal devletler", "Barışta vasal şartı, haraç, vasalı ilhak etme/serbest bırakma. Dünya Savaşı sömürgeleri artık vasal."],
+	["Daha akıllı yapay zekâ", "Komşuyla bütünleşik sınırlar çizer, boğaz ve deniz aşırı hedeflere çıkarma yapar, adalar için savaşa girer."],
+	["Senaryo editörü: sıfırdan oyun", "7 sayfalı sihirbaz: yeni devlet kur, bayrak tasarla (hilal, kılıç, yıldız…), ülke adı/lider/renk değiştir, silah ve birlik adlarını düzenle, zamanlı olaylar ve haberler yaz."],
+	["Kabine olayları", "Belirli haftada seçtiğin bakan kapıdan girer, senin yazdığın soruyu sorar; cevapların sonuçlarını ve etkilerini sen belirlersin. Bakan adları da düzenlenebilir."],
+	["Zamanlı devirler", "Olay ile eyalet devri, vasal yapma, ambargo, lider/ülke adı değişimi, teknoloji ve ordu değişimi."],
+	["İyileştirmeler", "Kuşatma süreleri kısaldı, siber savaş 1960 öncesi kapalı."],
 ]
 
 

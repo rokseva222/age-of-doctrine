@@ -15,7 +15,7 @@ const STREAK_PEACE := 4
 ## Oyun başında çağrılır (oyuncu seçildikten sonra). def: senaryo ya da çağ sözlüğü.
 static func begin(gs, def: Dictionary, with_src: bool = true) -> void:
 	gs.scn = {"id": String(def.get("id", "")), "start": gs.turn, "done": {}, "fired": {}, "streak": {}, "cap": {}, "over": false}
-	if with_src and (def.has("objectives") or def.has("events") or def.has("deadline")):
+	if with_src and (def.has("objectives") or def.has("events") or def.has("deadline") or def.has("custom") or def.has("cab_events")):
 		gs.scn["src"] = def.duplicate(true)
 	for o in list(gs):
 		if String(o.get("type", "")) == "own_capital":
@@ -174,6 +174,13 @@ static func tick(gs) -> void:
 			txt = DataUtil.loc_text(txt, String(s["en"]["events"][str(i)]))
 		if txt != "":
 			gs.post_news(txt, -1, "event")
+	var cu: Array = s.get("custom", [])
+	for k in cu.size():
+		var ck := "c%d" % k
+		var wk: int = int(cu[k].get("week", 0))
+		if wk > 0 and not gs.scn.fired.has(ck) and gs.turn - int(gs.scn.start) >= wk:
+			gs.scn.fired[ck] = true
+			load("res://scripts/scenarios.gd").make_custom(gs, cu[k], k)
 	if not gs.countries[gs.player].alive:
 		return
 	# hedefler

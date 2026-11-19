@@ -6,6 +6,7 @@ const Icons = preload("res://scripts/icons.gd")
 const SceneArt = preload("res://scripts/scene_art.gd")
 const TK = preload("res://scripts/theme_kit.gd")
 const GS = preload("res://scripts/game_state.gd")
+const ScenarioEditor = preload("res://scripts/scenario_editor.gd")
 const MapView = preload("res://scripts/map_view.gd")
 const UI = preload("res://scripts/ui.gd")
 const Menu = preload("res://scripts/menu.gd")
@@ -101,6 +102,7 @@ func _ready() -> void:
 	drift_timer.timeout.connect(_drift_step)
 	add_child(drift_timer)
 	map.tapped.connect(_on_map_tapped)
+	ScenarioEditor.pick_hook = _begin_map_pick
 	map.choke_tapped.connect(_on_choke_tapped)
 	ui.speed_changed.connect(_on_speed_changed)
 	ui.step_requested.connect(_on_step)
@@ -311,6 +313,10 @@ func _on_start_requested(cid: int) -> void:
 		Eras.start(gs, Eras.current)
 	else:
 		Scenarios.apply(gs, menu.scenario_id)
+	if gs.scn_play >= 0:
+		gs.switch_player(gs.scn_play)
+		cid = gs.player
+		gs.scn_play = -1
 	map.repaint_all()
 	mode = "game"
 	playing = true
@@ -463,6 +469,12 @@ func _cabinet_turn() -> void:
 		await _show_card(ccard)
 		if not playing:
 			return
+	# 0b) senaryo düzenleyicisinde yazılmış kabine olayı (ayardan bağımsız: hikâyenin parçası)
+	var scn_card: Dictionary = Cabinet.scn_card(gs)
+	if not scn_card.is_empty():
+		await _show_card(scn_card)
+		if not playing:
+			return
 	# 1) takvimli olay: seçim
 	if Settings.cabinet:
 		var sched: Dictionary = Cabinet.scheduled(gs)
@@ -613,7 +625,71 @@ func _on_choke_tapped(id: String) -> void:
 	ui.show_chokes(id)
 
 
+## Senaryo editöründen "Haritadan il seç": editör pencereleri gizlenir, dokunulan iller toplanır, "Bitti" ile geri dönülür.
+var _pick_cb := Callable()
+var _pick_ids: Array = []
+var _pick_bar: Control
+var _pick_lbl: Label
+var _pick_hidden: Array = []
+
+
+func _begin_map_pick(cb: Callable) -> void:
+	_pick_cb = cb
+	_pick_ids = []
+	_pick_hidden = []
+	for c in menu.root.get_children():
+		if c is Control and c.visible and c.has_method("close"):
+			c.visible = false
+			_pick_hidden.append(c)
+	_pick_bar = PanelContainer.new()
+	_pick_bar.set_anchors_and_offsets_preset(Control.PRESET_CENTER_TOP)
+	_pick_bar.position.y = 16
+	var hb := HBoxContainer.new()
+	hb.add_theme_constant_override("separation", 12)
+	_pick_lbl = TK.t("", "body", TK.GOLD)
+	hb.add_child(_pick_lbl)
+	var done := TK.button("Bitti", "gold", "check", Vector2(150, 56), 18)
+	done.pressed.connect(_end_map_pick)
+	hb.add_child(done)
+	_pick_bar.add_child(hb)
+	menu.root.add_child(_pick_bar)
+	_pick_bar.set_anchors_and_offsets_preset(Control.PRESET_CENTER_TOP, Control.PRESET_MODE_MINSIZE)
+	_pick_bar.position.y = 16
+	_pick_refresh()
+	map.input_enabled = true
+	map.animate_to(map.world_rect().get_center(), map.min_zoom * 1.25, 0.6)
+
+
+func _pick_refresh() -> void:
+	_pick_lbl.text = "%s: %d %s" % [Loc.t("Haritadan il seç — dokunarak ekle/çıkar"), _pick_ids.size(), Loc.t("il")]
+
+
+func _end_map_pick() -> void:
+	var cb := _pick_cb
+	var got := _pick_ids.duplicate()
+	_pick_cb = Callable()
+	if _pick_bar != null:
+		_pick_bar.queue_free()
+		_pick_bar = null
+	map.select_province(-1)
+	for c in _pick_hidden:
+		if is_instance_valid(c):
+			c.visible = true
+	_pick_hidden = []
+	if cb.is_valid():
+		cb.call(got)
+
+
 func _on_map_tapped(pid: int) -> void:
+	if _pick_cb.is_valid():
+		if pid >= 0:
+			if _pick_ids.has(pid):
+				_pick_ids.erase(pid)
+			else:
+				_pick_ids.append(pid)
+			map.select_province(pid)
+			_pick_refresh()
+		return
 	if mode == "select":
 		if pid >= 0:
 			sfx.play("tap")

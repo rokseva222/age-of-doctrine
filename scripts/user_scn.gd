@@ -9,8 +9,12 @@ const Loc = preload("res://scripts/loc.gd")
 const DIR := "user://scenarios"
 const CODE_PREFIX := "AOD1."
 const MAX_ITEMS := 40
-const MAX_EVENTS := 20
-const FX_TYPES := ["war", "peace", "ally", "xstab", "xgold", "xtroops"]
+const MAX_EVENTS := 40
+const MAX_TRANSFER := 400
+const MAX_CUSTOM := 8
+const HEX := "#0123456789abcdefABCDEF"
+const MAX_GARRISON := 60
+const FX_TYPES := ["war", "peace", "ally", "xstab", "xgold", "xtroops", "cede", "break", "vassal", "embargo", "free", "leader", "rename", "xtech", "cabinet"]
 const OBJ_TYPES := ["survive", "own_provinces", "alliances", "no_war", "cease_war", "stability", "eliminate", "gdp_share", "bloc_members"]
 
 static var _countries: Array = []
@@ -25,10 +29,17 @@ static func countries() -> Array:
 	var lang_tr: bool = Loc.lang == "tr"
 	var out: Array = _countries.duplicate()
 	out.sort_custom(func(a, b): return (a["tr"] if lang_tr else a["en"]) < (b["tr"] if lang_tr else b["en"]))
+	for k in extra_names.keys():
+		out.append({"en": k, "tr": String(extra_names[k])})
 	return out
 
 
+static var extra_names: Dictionary = {}    # custom_N -> ad (düzenleyici doldurur)
+
+
 static func country_label(en: String) -> String:
+	if en.begins_with("custom_"):
+		return String(extra_names.get(en, en))
 	if Loc.lang != "tr":
 		return en
 	for c in countries():
@@ -40,6 +51,8 @@ static func country_label(en: String) -> String:
 static func valid_country(en) -> bool:
 	if typeof(en) != TYPE_STRING:
 		return false
+	if en.begins_with("custom_") and en.substr(7).is_valid_int() and int(en.substr(7)) < MAX_CUSTOM:
+		return true
 	for c in countries():
 		if c["en"] == en:
 			return true
@@ -103,14 +116,14 @@ static func export_code(d: Dictionary) -> String:
 ## Kodu çöz → temizlenmiş senaryo (yeni id ile) ya da {} (geçersizse)
 static func import_code(code: String) -> Dictionary:
 	code = code.strip_edges()
-	if not code.begins_with(CODE_PREFIX) or code.length() > 60000:
+	if not code.begins_with(CODE_PREFIX) or code.length() > 240000:
 		return {}
 	var rest: String = code.substr(CODE_PREFIX.length())
 	var dot: int = rest.find(".")
 	if dot < 1:
 		return {}
 	var size: int = int(rest.substr(0, dot))
-	if size < 10 or size > 200000:
+	if size < 10 or size > 700000:
 		return {}
 	var b64: String = rest.substr(dot + 1).replace("-", "+").replace("_", "/")
 	var packed: PackedByteArray = Marshalls.base64_to_raw(b64)
@@ -155,6 +168,169 @@ static func _num_map(m, lo: float, hi: float) -> Dictionary:
 	return out
 
 
+static func _hex(v, fallback: String = "#555555") -> String:
+	var t: String = _s(v, 9)
+	if t.length() < 4 or t.length() > 9 or not t.begins_with("#"):
+		return fallback
+	for ch in t:
+		if not HEX.contains(ch):
+			return fallback
+	return t
+
+
+static func _flag(v) -> String:
+	var t: String = _s(v, 600)
+	for ch in t:
+		if not (ch.is_valid_identifier() or "0123456789|:,.#*-_ ".contains(ch) or ch.to_lower() != ch.to_upper()):
+			return ""
+	return t
+
+
+## Yeni devletler, silah/sınıf adları, envanter, teknoloji, ülke adı-bayrak değişimleri
+static func _sanitize_custom(d: Dictionary) -> Dictionary:
+	var out := {}
+	var cs: Array = []
+	var raw_c = d.get("custom", [])
+	if typeof(raw_c) == TYPE_ARRAY:
+		for c in raw_c:
+			if cs.size() >= MAX_CUSTOM or typeof(c) != TYPE_DICTIONARY:
+				continue
+			var pids: Array = []
+			var rp = c.get("pids", [])
+			if typeof(rp) == TYPE_ARRAY:
+				for q in rp:
+					if typeof(q) in [TYPE_INT, TYPE_FLOAT] and pids.size() < 300:
+						pids.append(int(q))
+			if pids.is_empty():
+				continue
+			var e := {"name": _s(c.get("name", ""), 40), "leader": _s(c.get("leader", ""), 40), "pids": pids,
+				"colors": [_hex((c.get("colors", []) as Array)[0] if typeof(c.get("colors", [])) == TYPE_ARRAY and (c.get("colors", []) as Array).size() > 0 else ""),
+					_hex((c.get("colors", []) as Array)[1] if typeof(c.get("colors", [])) == TYPE_ARRAY and (c.get("colors", []) as Array).size() > 1 else ""),
+					_hex((c.get("colors", []) as Array)[2] if typeof(c.get("colors", [])) == TYPE_ARRAY and (c.get("colors", []) as Array).size() > 2 else "")],
+				"flag": _flag(c.get("flag", "")),
+				"troops": clampi(int(c.get("troops", 30000)), 1000, 5000000),
+				"tech": clampf(float(c.get("tech", 0.5)), 0.0, 1.0),
+				"aggression": clampf(float(c.get("aggression", 0.5)), 0.0, 1.0),
+				"doctrine": clampi(int(c.get("doctrine", 0)), 0, 9),
+				"gold_mult": clampf(float(c.get("gold_mult", 1.0)), 0.0, 10.0),
+				"war": bool(c.get("war", false)), "play": bool(c.get("play", false)), "week": clampi(int(c.get("week", 0)), 0, 1000)}
+			if c.has("capital"):
+				e["capital"] = int(c["capital"])
+			if e["name"] == "":
+				e["name"] = "Yeni Devlet"
+			cs.append(e)
+	if not cs.is_empty():
+		out["custom"] = cs
+	var wp := {}
+	var rw = d.get("weapons", {})
+	if typeof(rw) == TYPE_DICTIONARY:
+		for id in rw.keys():
+			if wp.size() >= 120 or typeof(rw[id]) != TYPE_DICTIONARY or not String(id).is_valid_identifier():
+				continue
+			var w := {}
+			if rw[id].has("name"):
+				w["name"] = _s(rw[id]["name"], 40)
+			if rw[id].has("cost"):
+				w["cost"] = clampf(float(rw[id]["cost"]), 0.1, 10.0)
+			if rw[id].has("pow"):
+				w["pow"] = clampf(float(rw[id]["pow"]), 0.2, 5.0)
+			if not w.is_empty():
+				wp[String(id)] = w
+	if not wp.is_empty():
+		out["weapons"] = wp
+	var ct := {}
+	var rc = d.get("cats", {})
+	if typeof(rc) == TYPE_DICTIONARY:
+		for k in ["inf", "tank", "afv", "arty", "air", "sub"]:
+			if rc.has(k) and _s(rc[k], 30) != "":
+				ct[k] = _s(rc[k], 30)
+	if not ct.is_empty():
+		out["cats"] = ct
+	var inv := {}
+	var ri = d.get("inv", {})
+	if typeof(ri) == TYPE_DICTIONARY:
+		for cn in ri.keys():
+			if inv.size() >= 30 or not valid_country(cn) or typeof(ri[cn]) != TYPE_DICTIONARY:
+				continue
+			var m := {}
+			for wid in ri[cn].keys():
+				if m.size() < 60 and String(wid).is_valid_identifier() and typeof(ri[cn][wid]) in [TYPE_INT, TYPE_FLOAT]:
+					m[String(wid)] = clampi(int(ri[cn][wid]), 0, 1000000)
+			if not m.is_empty():
+				inv[cn] = m
+	if not inv.is_empty():
+		out["inv"] = inv
+	var tm := _num_map(d.get("tech", {}), 0.0, 1.0)
+	if not tm.is_empty():
+		out["tech"] = tm
+	var dm := _num_map(d.get("doctrine", {}), 0.0, 9.0)
+	if not dm.is_empty():
+		for k in dm.keys():
+			dm[k] = int(dm[k])
+		out["doctrine"] = dm
+	var cn := {}
+	var rcn = d.get("cab_names", {})
+	if typeof(rcn) == TYPE_DICTIONARY:
+		for role in ["def", "for", "int", "fin", "hlt", "spy"]:
+			if rcn.has(role) and _s(rcn[role], 40) != "":
+				cn[role] = _s(rcn[role], 40)
+	if not cn.is_empty():
+		out["cab_names"] = cn
+	var cev: Array = []
+	var rce = d.get("cab_events", [])
+	if typeof(rce) == TYPE_ARRAY:
+		for e in rce:
+			if cev.size() >= 30 or typeof(e) != TYPE_DICTIONARY or _s(e.get("q", ""), 500) == "":
+				continue
+			var opts: Array = []
+			var ro = e.get("o", [])
+			if typeof(ro) == TYPE_ARRAY:
+				for o in ro:
+					if opts.size() >= 4 or typeof(o) != TYPE_DICTIONARY or _s(o.get("t", ""), 40) == "":
+						continue
+					var eff := {}
+					var re = o.get("e", {})
+					if typeof(re) == TYPE_DICTIONARY:
+						for k in ["g", "stab", "cyb", "ind", "log", "tech", "troops", "unrest", "aggr", "dev"]:
+							if re.has(k) and typeof(re[k]) in [TYPE_INT, TYPE_FLOAT]:
+								eff[k] = clampf(float(re[k]), -10.0, 10.0)
+					opts.append({"t": _s(o["t"], 40), "r": _s(o.get("r", ""), 300), "e": eff})
+			if opts.is_empty():
+				continue
+			var role2: String = String(e.get("role", "def"))
+			if not ["def", "for", "int", "fin", "hlt", "spy"].has(role2):
+				role2 = "def"
+			cev.append({"turn": clampi(int(e.get("turn", 1)), 0, 1000), "role": role2, "who": _s(e.get("who", ""), 40), "role_text": _s(e.get("role_text", ""), 40),
+				"q": _s(e["q"], 500), "o": opts})
+		cev.sort_custom(func(a, b): return int(a["turn"]) < int(b["turn"]))
+	if not cev.is_empty():
+		out["cab_events"] = cev
+	var rn := {}
+	var rr = d.get("rename", {})
+	if typeof(rr) == TYPE_DICTIONARY:
+		for cn2 in rr.keys():
+			if rn.size() >= 40 or not valid_country(cn2) or typeof(rr[cn2]) != TYPE_DICTIONARY:
+				continue
+			var r := {}
+			if _s(rr[cn2].get("name", ""), 40) != "":
+				r["name"] = _s(rr[cn2]["name"], 40)
+			if _s(rr[cn2].get("leader", ""), 40) != "":
+				r["leader"] = _s(rr[cn2]["leader"], 40)
+			if rr[cn2].has("color"):
+				r["color"] = _hex(rr[cn2]["color"])
+			if rr[cn2].has("color2"):
+				r["color2"] = _hex(rr[cn2]["color2"])
+			if rr[cn2].has("color3"):
+				r["color3"] = _hex(rr[cn2]["color3"])
+			if _flag(rr[cn2].get("flag", "")) != "":
+				r["flag"] = _flag(rr[cn2]["flag"])
+			if not r.is_empty():
+				rn[cn2] = r
+	if not rn.is_empty():
+		out["rename"] = rn
+	return out
+
+
 static func sanitize(d: Dictionary) -> Dictionary:
 	var out := {"id": new_id(), "kind": "user"}
 	out["name"] = _s(d.get("name", ""), 40)
@@ -177,13 +353,25 @@ static func sanitize(d: Dictionary) -> Dictionary:
 	var raw_t = d.get("transfer", [])
 	if typeof(raw_t) == TYPE_ARRAY:
 		for t in raw_t:
-			if trs.size() >= 80 or typeof(t) != TYPE_ARRAY or t.size() < 3:
+			if trs.size() >= MAX_TRANSFER or typeof(t) != TYPE_ARRAY or t.size() < 3:
 				continue
 			if not (typeof(t[0]) in [TYPE_INT, TYPE_FLOAT]) or not valid_country(t[1]) or not valid_country(t[2]):
 				continue
 			trs.append([int(t[0]), t[1], t[2], "own", _s(t[4] if t.size() > 4 else "", 40)])
 	if not trs.is_empty():
 		out["transfer"] = trs
+	var gars: Array = []
+	var raw_g = d.get("garrison", [])
+	if typeof(raw_g) == TYPE_ARRAY:
+		for g in raw_g:
+			if gars.size() >= MAX_GARRISON or typeof(g) != TYPE_ARRAY or g.size() < 3:
+				continue
+			if not (typeof(g[0]) in [TYPE_INT, TYPE_FLOAT]) or not valid_country(g[1]) or not (typeof(g[2]) in [TYPE_INT, TYPE_FLOAT]):
+				continue
+			gars.append([int(g[0]), g[1], clampi(int(g[2]), 0, 5000000), _s(g[3] if g.size() > 3 else "", 40)])
+	if not gars.is_empty():
+		out["garrison"] = gars
+	out.merge(_sanitize_custom(d))
 	out["wars"] = _pairs(d.get("wars", []))
 	out["embargo"] = _pairs(d.get("embargo", []))
 	out["cold"] = _pairs(d.get("cold", []))
@@ -200,13 +388,13 @@ static func sanitize(d: Dictionary) -> Dictionary:
 			if mem.size() >= 2 and _s(b.get("name", ""), 40) != "":
 				blocs.append({"name": _s(b["name"], 40), "members": mem})
 	out["blocs"] = blocs
-	var tm := _num_map(d.get("troops_mult", {}), 0.5, 2.0)
+	var tm := _num_map(d.get("troops_mult", {}), 0.1, 5.0)
 	if not tm.is_empty():
 		out["troops_mult"] = tm
-	var gm := _num_map(d.get("treasury_mult", {}), 0.3, 3.0)
+	var gm := _num_map(d.get("treasury_mult", {}), 0.0, 10.0)
 	if not gm.is_empty():
 		out["treasury_mult"] = gm
-	var sm := _num_map(d.get("stability", {}), -40.0, 20.0)
+	var sm := _num_map(d.get("stability", {}), -60.0, 40.0)
 	if not sm.is_empty():
 		out["stability"] = sm
 	var objs: Array = []
@@ -255,13 +443,34 @@ static func sanitize(d: Dictionary) -> Dictionary:
 					if typeof(f) != TYPE_ARRAY or f.size() < 2 or fxs.size() >= 3:
 						continue
 					var ft: String = String(f[0])
+					if ft == "cabinet":
+						if f.size() >= 3 and String(f[2]).contains("|") and _s(f[2], 60) != "":
+							fxs.append([ft, "*", _s(f[2], 60)])
+						continue
 					if not FX_TYPES.has(ft) or not valid_country(f[1]):
 						continue
-					if ft in ["war", "peace", "ally"]:
+					if ft == "cede":
+						if f.size() >= 4 and valid_country(f[2]) and f[1] != f[2]:
+							var cp = f[3]
+							if typeof(cp) == TYPE_ARRAY:
+								var ids: Array = []
+								for q in cp:
+									if typeof(q) in [TYPE_INT, TYPE_FLOAT] and ids.size() < 200:
+										ids.append(int(q))
+								if not ids.is_empty():
+									fxs.append([ft, f[1], f[2], ids])
+							elif String(cp) == "all":
+								fxs.append([ft, f[1], f[2], "all"])
+					elif ft in ["war", "peace", "ally", "break", "vassal", "embargo"]:
 						if f.size() >= 3 and valid_country(f[2]) and f[1] != f[2]:
 							fxs.append([ft, f[1], f[2]])
+					elif ft == "free":
+						fxs.append([ft, f[1]])
+					elif ft in ["leader", "rename", "cabinet"]:
+						if f.size() >= 3 and _s(f[2], 40) != "":
+							fxs.append([ft, f[1], _s(f[2], 40)])
 					elif f.size() >= 3:
-						var lim := 30.0 if ft == "xstab" else (20.0 if ft == "xgold" else 60.0)
+						var lim := 60.0 if ft == "xstab" else (40.0 if ft == "xgold" else (50.0 if ft == "xtech" else 90.0))
 						fxs.append([ft, f[1], clampf(float(f[2]), -lim, lim)])
 			if txt == "" and fxs.is_empty():
 				continue

@@ -28,6 +28,10 @@ static func open(ui, gs, card: Dictionary, rng: RandomNumberGenerator, on_fatal:
 	var role: String = card.role
 	var mn: Array = Cabinet.minister_of(me, role, gs.turn)
 	var title: String = Cabinet.role_title(role)
+	if String(card.get("who", "")) != "":
+		mn = [String(card["who"]), mn[1]]
+	if String(card.get("role_text", "")) != "":
+		title = String(card["role_text"])
 	var sh = ui._open_sheet(card.get("title", "Kabine toplantısı"), 980, false, false, "%s  /  %s" % [Names.date_string(gs.turn), me.name])
 	sh.body.add_child(SceneArt.make(_scene_for(card, role), 96))      # üstte animasyonlu piksel-art afiş
 	var row := HBoxContainer.new()
