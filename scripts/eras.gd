@@ -85,17 +85,17 @@ const ABSORB := {
 
 # eyalet düzeyinde aktarım: [eyalet adı, bugünkü ülke, hedef host, "own" (mülkiyet) | "occ" (işgal)]
 const SPLIT := {
-	"ww2": [["L'viv", "Ukraine", "Poland", "own"], ["Rivne", "Ukraine", "Poland", "own"], [1385, "Belarus", "Poland", "own"], [1387, "Belarus", "Poland", "own"],
+	"ww2": [[689, "Ukraine", "Poland", "own"], [683, "Ukraine", "Poland", "own"], [1385, "Belarus", "Poland", "own"], [1387, "Belarus", "Poland", "own"],
 		[788, "Poland", "Germany", "own"], [790, "Poland", "Germany", "own"], [791, "Poland", "Germany", "own"], [792, "Poland", "Germany", "own"],
 		[5, "China", "Japan", "own"], [6, "China", "Japan", "own"], [7, "China", "Japan", "own"], [2, "China", "Japan", "own"],
 		[18, "China", "Japan", "occ"], [17, "China", "Japan", "occ"], [16, "China", "Japan", "occ"], [15, "China", "Japan", "occ"],
 		[13, "China", "Japan", "occ"], [14, "China", "Japan", "occ"], [26, "China", "Japan", "occ"],
 		[32, "China", "United Kingdom", "own"], [31, "China", "United Kingdom", "own"]],
-	"ww1": [["Greater Poland", "Poland", "Germany", "own"], ["Pomeranian", "Poland", "Germany", "own"], ["Lower Silesian", "Poland", "Germany", "own"],
-		["Warmian-Masurian", "Poland", "Germany", "own"], [785, "Poland", "Germany", "own"], [791, "Poland", "Germany", "own"], [792, "Poland", "Germany", "own"],
+	"ww1": [[798, "Poland", "Germany", "own"], [794, "Poland", "Germany", "own"], [788, "Poland", "Germany", "own"],
+		[790, "Poland", "Germany", "own"], [785, "Poland", "Germany", "own"], [791, "Poland", "Germany", "own"], [792, "Poland", "Germany", "own"],
 		[797, "Poland", "Germany", "own"], ["Łódź", "Poland", "Russia", "own"], [795, "Poland", "Russia", "own"], [789, "Poland", "Russia", "own"],
-		["Lublin", "Poland", "Russia", "own"], ["Lesser Poland", "Poland", "Austria", "own"], [787, "Poland", "Austria", "own"],
-		["L'viv", "Ukraine", "Austria", "own"], ["Bozen", "Italy", "Austria", "own"],
+		["Lublin", "Poland", "Russia", "own"], [786, "Poland", "Austria", "own"], [787, "Poland", "Austria", "own"],
+		[689, "Ukraine", "Austria", "own"], ["Bozen", "Italy", "Austria", "own"],
 		[504, "France", "Germany", "own"],
 		[1071, "Romania", "Austria", "own"], [1072, "Romania", "Austria", "own"], [1075, "Romania", "Austria", "own"], [1081, "Romania", "Austria", "own"],
 		[1079, "Romania", "Austria", "own"], [1459, "Serbia", "Austria", "own"],
