@@ -830,7 +830,7 @@ const RELATION_TIERS := [
 	{"max": 75, "name": "Dostça"},
 	{"max": 101, "name": "Çok dostça"},
 ]
-const RELATION_ALLIANCE_MIN := 75.0  ## İttifak teklifi için gereken minimum ilişki puanı
+const RELATION_ALLIANCE_MIN := 65.0  ## İttifak teklifi için gereken minimum ilişki puanı
 
 
 func relation_of(a: int, b: int) -> float:
@@ -867,9 +867,9 @@ func _relation_decay() -> void:
 			var r: float = c.relation[other_id]
 			if absf(r - 50.0) < 0.5:
 				continue
-			var step := 1.0 if r < 50.0 else -1.0
-			# savaştaki veya müttefik olan ülkeler nötre sürüklenmesin
-			if at_war(c.id, other_id):
+			var step := 0.25 if r < 50.0 else -0.25      # haftada çeyrek puan: bir elçi/hediye aylarca etkili kalır (eskiden 1 puan: 4-5 haftada sıfırlanıyordu)
+			# savaştaki ülkeler ve müttefikler (dostluk tarafı) nötre sürüklenmesin
+			if at_war(c.id, other_id) or (r > 50.0 and is_allied(c.id, other_id)):
 				continue
 			r += step
 			c.relation[other_id] = r
@@ -1667,6 +1667,8 @@ func ai_accepts_alliance(ai: int, other: int) -> bool:
 		chance = 0.85
 	elif neighbor_countries(ai).has(other):
 		chance = 0.40
+	if other == player:
+		chance = minf(0.95, chance + 0.2)     # test oyuncuları ittifakı çok zor buldu: oyuncuya teklifte bonus
 	return rng.randf() < chance
 
 
@@ -1691,9 +1693,9 @@ func player_propose_alliance(target: int) -> String:
 
 ## İlişki geliştirme eylemleri: altın karşılığı puan; her biri hedef başına bekleme süresine tabidir.
 const DIPLO_ACTS := {
-	"envoy": {"name": "Elçi gönder", "mul": 0.25, "rel": 5.0, "cd": 4, "gift": 0.0, "icon": "diplomacy"},
-	"gift": {"name": "Hediye gönder", "mul": 1.0, "rel": 12.0, "cd": 8, "gift": 0.6, "icon": "gift"},
-	"pact": {"name": "Ticaret ve kültür anlaşması", "mul": 3.0, "rel": 24.0, "cd": 16, "gift": 0.4, "icon": "improve_rel"},
+	"envoy": {"name": "Elçi gönder", "mul": 0.12, "rel": 5.0, "cd": 4, "gift": 0.0, "icon": "diplomacy"},
+	"gift": {"name": "Hediye gönder", "mul": 0.6, "rel": 12.0, "cd": 8, "gift": 0.6, "icon": "gift"},
+	"pact": {"name": "Ticaret ve kültür anlaşması", "mul": 1.8, "rel": 24.0, "cd": 16, "gift": 0.4, "icon": "improve_rel"},
 }
 
 
@@ -2874,17 +2876,55 @@ func _check_victory() -> void:
 
 # ===================================================================== oyuncu eylemleri
 
+## Düşman elindeki hedefe dost limandan deniz yoluyla çıkarma rotası: ordudan, hedefe deniz bağlantılı en yakın dost/kendi eyaletine kara yolu + hedef. Yoksa [].
+func _landing_route(a, target: int) -> Array:
+	var tp = provinces[target]
+	var hostile: bool = at_war(player, tp.owner) or (tp.controller >= 0 and at_war(player, tp.controller))
+	if not hostile or not tp.coastal:
+		return []
+	if tp.sea_links.has(a.prov):
+		return [target]
+	var best: Array = []
+	for port in tp.sea_links:
+		if not friendly_port(player, port):
+			continue
+		var pth := path_to(player, a.prov, port)
+		if pth.is_empty():
+			continue
+		if best.is_empty() or pth.size() < best.size():
+			best = pth
+	if best.is_empty():
+		return []
+	best.append(target)
+	return best
+
+
 func player_order_move(a, target: int, count: int = 0) -> String:
 	if a.owner != player:
 		return "Bu ordu senin değil."
 	if a.prov == target:
 		return ""
 	var path := path_to(player, a.prov, target)
+	var land_op := ""
 	if path.is_empty():
-		return move_block_reason(a, target)
+		# düşman elindeki ada/kıyıya: dost limandan deniz yoluyla amfibi çıkarma (Taarruz menüsüne girmeden, ordu seçip dokunmak yeter)
+		path = _landing_route(a, target)
+		if path.is_empty():
+			return move_block_reason(a, target)
+		land_op = "landing"
+		var lcost: float = op_cost("landing")
+		if countries[player].gold < lcost:
+			return "Kasa yetersiz: çıkarma bedeli %s." % Macro.money(lcost)
+		if landing_cap(player) < 1:
+			return "Çıkarma kapasiten yok."
+		countries[player].gold -= lcost
+		stats.landings += 1
+		sea_campaign[(provinces[target].controller if provinces[target].controller >= 0 else provinces[target].owner)] = true
+		if count <= 0 or count > landing_cap(player):
+			count = mini(a.size, landing_cap(player))
 	if count > 0 and count < a.size:
 		# gönderilen müfreze varış yerinde elle kalır; kalanlar otomatikte. Aynı turda başka hedeflere de bölünebilir.
-		var queued: int = _queue_split(a, clampi(count, 1, a.size - 1), path, "", true)
+		var queued: int = _queue_split(a, clampi(count, 1, a.size - 1), path, land_op, true)
 		if queued <= 0:
 			return "Bu orduda dağıtılacak asker kalmadı (tek turda en fazla 4 gruba bölünür)."
 		a.path.clear()
@@ -2896,6 +2936,8 @@ func player_order_move(a, target: int, count: int = 0) -> String:
 		a.path = path
 		a.leaving = true
 		a.hold = true
+		if land_op != "":
+			a.op = land_op
 	player_acted = true
 	stats.orders += 1
 	armies_changed.emit()
@@ -3190,7 +3232,9 @@ func war_load() -> float:
 func _ai_war_decision(c) -> void:
 	if c.is_rebel or turn < 5 or c.enemies.size() >= 2 or vassals.has(c.id):
 		return
-	var chance: float = 0.006 + c.aggression * 0.013
+	var chance: float = (0.006 + c.aggression * 0.013) * Settings.war_aggr
+	if chance <= 0.0:
+		return
 	if c.enemies.size() == 1:
 		chance *= 0.3
 	var wl := war_load()

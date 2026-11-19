@@ -169,6 +169,12 @@ static func open_settings(parent: Node, on_change: Callable, sfx = null) -> void
 	refresh.call()
 	sh.body.add_child(drow)
 	sh.body.add_child(TK.t("Zorluk yeni başlayan oyunlarda geçerlidir.", "small", TK.FAINT))
+	sh.body.add_child(TK.slider_row("Savaş saldırganlığı", Settings.war_aggr, func(v: float):
+		Settings.war_aggr = v
+		changed.call(), 0.0, 1.0, 0.05))
+	var wa_hint := TK.t("Yapay zekâ ülkelerinin birbirine ve sana savaş açma isteği. %100 normal, %0 hiçbir ülke kendiliğinden savaş açmaz. Devam eden oyunda da hemen etkili olur; senaryo düzenleyicideki ülke bazlı saldırganlık bunun üstüne çarpılır.", "small", TK.FAINT)
+	wa_hint.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	sh.body.add_child(wa_hint)
 	var frow := HBoxContainer.new()
 	frow.add_theme_constant_override("separation", 8)
 	var fl := TK.t("Savaş sisi", "body")
@@ -281,8 +287,11 @@ static func open_howto(parent: Node) -> void:
 			render.call())
 
 
-const UPDATE_VER := "1.2.8"
+const UPDATE_VER := "1.2.9"
 const WHATS_NEW := [
+	["Savaş saldırganlığı", "Ayarlar'dan yapay zekânın savaş açma isteğini %0–100 arasında ayarla; normal oyunda da çalışır."],
+	["Denize çıkarma", "Ordu seçip düşman adasına (Rodos, Girit…) dokunmak artık doğrudan amfibi çıkarma başlatır."],
+	["Diplomasi", "Elçi, hediye ve anlaşma ucuzladı; ilişki artık çok daha yavaş geri düşer. İttifak eşiği 75'ten 65'e indi."],
 	["Doğu Almanya", "Soğuk Savaş senaryolarında Almanya artık ikiye bölünmüş: Batı Almanya ve Varşova Paktı'nda Doğu Almanya (Doğu Berlin başkent)."],
 	["Nükleer platformlar", "Füze silosu, bombardıman uçağı ya da denizaltıyla nükleer saldırı: her platformun kaybı, riski ve bekleme süresi farklı."],
 	["Haritada donanma", "Denizaltı ve uçak gemisi rozetleri artık haritada, kıyı eyaletlerinin yanında görünür."],

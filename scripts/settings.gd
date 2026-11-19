@@ -25,6 +25,7 @@ static var xp := 0                    # Komutan Puanı
 static var streak := 0                # üst üste gün serisi
 static var streak_day := -1
 static var ach: Dictionary = {}       # açılan başarımlar/öğretici adımlar: id -> tur
+static var war_aggr := 1.0             # yapay zekânın savaş açma isteği çarpanı (0 = hiç savaş açmaz, 1 = normal)
 static var difficulty := 1            # 0 kolay, 1 normal, 2 zor
 static var sandbox := false            # sandbox modu: oyun menüsünde deneme araçları paneli
 static var currency := true           # para birimi: oyuncunun ülkesinin parası (kapalıysa dolar)
@@ -89,6 +90,7 @@ static func load_all() -> void:
 	seen_update = str(cf.get_value("game", "seen_update", seen_update))
 	tut_done = bool(cf.get_value("game", "tut_done", tut_done))
 	difficulty = clampi(int(cf.get_value("game", "difficulty", difficulty)), 0, 2)
+	war_aggr = clampf(float(cf.get_value("game", "war_aggr", war_aggr)), 0.0, 1.0)
 	var a = cf.get_value("game", "ach", {})
 	ach = a.duplicate() if a is Dictionary else {}
 	var mm = cf.get_value("game", "missions", {})
@@ -126,6 +128,7 @@ static func save_all() -> void:
 	cf.set_value("game", "seen_update", seen_update)
 	cf.set_value("game", "tut_done", tut_done)
 	cf.set_value("game", "difficulty", difficulty)
+	cf.set_value("game", "war_aggr", war_aggr)
 	cf.set_value("game", "ach", ach)
 	cf.set_value("game", "missions", missions)
 	cf.set_value("game", "xp", xp)
