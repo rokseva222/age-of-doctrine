@@ -4,6 +4,7 @@ const Settings = preload("res://scripts/settings.gd")
 ## "~" ile başlayan yorumlu olanlar yaklaşık değerdir. Zamanla ±%3 yavaş dalgalanır (deterministik).
 
 static var code := "USD"
+static var era_fam := ""            # tarihî çağ ailesi: "" = modern, "pre" = altın, diğerleri USD
 static var turn := 0
 
 const RATES := {
@@ -72,6 +73,8 @@ static func sync(gs) -> void:
 
 
 static func active() -> String:
+	if era_fam != "":
+		return "GOLD" if era_fam == "pre" else "USD"     # tarihî çağda yerel para kuru anlamsız: eski çağda altın, yakın çağda dolar
 	return code if Settings.currency else "USD"
 
 
@@ -80,7 +83,7 @@ static func rate(cur: String = "") -> float:
 	if cur == "":
 		cur = active()
 	var base: float = RATES.get(cur, 1.0)
-	if cur == "USD":
+	if cur == "USD" or cur == "GOLD":
 		return 1.0
 	var h := absi(hash(cur))
 	var ph := float(h % 628) / 100.0
@@ -98,4 +101,6 @@ static func symbol_front() -> String:
 
 
 static func suffix() -> String:
+	if active() == "GOLD":
+		return " altın"
 	return "" if SYMBOL.has(active()) else " " + active()

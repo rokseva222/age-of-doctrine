@@ -523,7 +523,7 @@ static func weekly(gs) -> void:
 			c.gold = 0.0
 		_deliver(gs, c)
 		if slot % 2 == 0:
-			_recruit(gs, c, 2.0)
+			_recruit(gs, c, 6.0 * (0.6 + float(c.budget["mil"]) / 25.0))     # haftalık asker alımı bütçe payına bağlı (%10 pay ≈ 3x eski hız)
 		if slot % 3 == 0:
 			_procure(gs, c, 3)
 		if c.id != gs.player and (gs.turn + c.id) % 8 == 0:

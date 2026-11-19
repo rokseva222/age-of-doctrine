@@ -1,5 +1,6 @@
 extends CanvasLayer
 const Loc = preload("res://scripts/loc.gd")
+const Eras = preload("res://scripts/eras.gd")
 const UNArt = preload("res://scripts/un_art.gd")
 ## Oyun içi arayüz (HUD): durum şeridi, haber bülteni, yan düğmeler, eyalet dosyası, Dünya paneli, barış masası, duraklatma menüsü.
 ## Görsel dil: grafit paneller, krem birincil eylem, tek kırmızı vurgu. Ayrıntı için theme_kit.gd.
@@ -69,6 +70,7 @@ var ticker: Button
 var side: VBoxContainer
 var _side_btns: Array = []
 var career_btn: Button = null
+var _tick_tag: Label = null
 var card: PanelContainer
 var toast_panel: PanelContainer
 var toast_lbl: Label
@@ -344,6 +346,9 @@ func set_speed(idx: int) -> void:
 func refresh_top() -> void:
 	if gs == null or gs.player < 0:
 		return
+	if _tick_tag != null:
+		var tf: String = Eras.family() if Eras.current != "" else ""
+		_tick_tag.text = TK.up(Loc.t({"pre": "Vakanüvis", "ww1": "Cephe Gazetesi", "ww2": "Savaş Bülteni"}.get(tf, "Cihan Bülteni")))
 	var c = gs.countries[gs.player]
 	_flag_top.set_country(c)
 	_name_lbl.text = TK.up(c.name)
@@ -379,6 +384,7 @@ func _build_ticker() -> void:
 	var tag := PanelContainer.new()
 	tag.add_theme_stylebox_override("panel", TK.box(TK.RED, Color(0, 0, 0, 0), 0, 0, 0, Vector4(18, 0, 18, 0)))
 	var tl := TK.t("Cihan Bülteni", "kicker", Color.WHITE)
+	_tick_tag = tl
 	tl.add_theme_color_override("font_color", Color.WHITE)
 	tl.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 	tag.add_child(tl)
@@ -696,6 +702,8 @@ func show_province(pid: int, selected_army) -> void:
 			_abtn("%s inşa ediliyor: %d hafta" % [Model.BLD[p.bld_wip].name, maxi(1, p.bld_until - gs.turn)], "", "hourglass", "none", 0, false)
 		else:
 			_abtn("Bina kur (gelir)", "gold", Icons.pick("build", "coins"), "build", pid)
+	if p.owner == me and p.controller == me and Faith.of(gs, pid) != Faith.state_faith(gs, me):
+		_abtn("İnancı değiştir (%s)" % Macro.money(gs.faith_convert_cost(pid)), "", "book", "convert_faith", pid)
 	if p.owner == me and not Formables.available(gs).is_empty():
 		_abtn("Ülke formla", "gold", "flag", "form", 0)
 	if army != null and army.owner == me:
@@ -796,7 +804,7 @@ func show_deal_dialog(w, winner: int, options: Array, on_confirm: Callable, on_w
 	var loser: int = w.other(winner)
 	var sh = _open_sheet("Barış Masası", 700, true, true, "Müzakere")
 	sh.on_cancel = func(): gs.cancel_proposal()
-	sh.add_text("%s ile barış görüşmesi. Savaş puanın: %d. Almak istediğin işgal ettiğin eyaletleri seç (maliyet puandan düşer); seçmediklerin geri verilir." % [gs.countries[loser].name, budget], 22, TK.MUTED)
+	sh.add_text("%s ile barış görüşmesi. Savaş puanın: %d. Almak istediğin eyaletleri seç (maliyet puandan düşer; işgal etmediğin ama sınırındaki eyaletler 1,5 kat puana alınır); seçmediklerin geri verilir." % [gs.countries[loser].name, budget], 22, TK.MUTED)
 	var rows: Array = []
 	var spent_lbl := TK.t("", "value", TK.GREEN)
 	var confirm := TK.button("Anlaşmayı imzala", "gold", "check", Vector2(260, 60))
@@ -823,7 +831,7 @@ func show_deal_dialog(w, winner: int, options: Array, on_confirm: Callable, on_w
 		tick.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 		tick.modulate.a = 0.0
 		hb.add_child(tick)
-		var nl := TK.t(pr.title() + ("  *" if pr.is_capital else ""), "bodyb", TK.TEXT)
+		var nl := TK.t(pr.title() + ("  *" if pr.is_capital else "") + ("  ·  " + Loc.t("işgal edilmedi") if o.get("free", false) else ""), "bodyb", TK.TEXT)
 		nl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		nl.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 		hb.add_child(nl)
@@ -835,8 +843,8 @@ func show_deal_dialog(w, winner: int, options: Array, on_confirm: Callable, on_w
 			tick.modulate.a = 1.0 if on else 0.0
 			recompute.call())
 		sh.body.add_child(b)
-		rows.append({"btn": b, "cost": o.cost, "pid": o.pid, "tick": tick})
-	var sorted_rows := rows.filter(func(r): return not r.has("term"))
+		rows.append({"btn": b, "cost": o.cost, "pid": o.pid, "tick": tick, "free": o.get("free", false)})
+	var sorted_rows := rows.filter(func(r): return not r.has("term") and not r["free"])
 	sorted_rows.sort_custom(func(x, y): return x.cost > y.cost)
 	var left := budget
 	for r in sorted_rows:

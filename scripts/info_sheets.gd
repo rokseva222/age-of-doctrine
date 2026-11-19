@@ -281,16 +281,15 @@ static func open_howto(parent: Node) -> void:
 			render.call())
 
 
-const UPDATE_VER := "1.2.3"
+const UPDATE_VER := "1.2.4"
 const WHATS_NEW := [
-	["Gelir binaları", "Eyalete çiftlik, maden, petrol tesisi veya matbaa kur: haftalık gelir artar. İnşaat 8 hafta sürer."],
-	["Halk ve propaganda", "Politika > Halk: hükümete güven, propaganda yöntemleri (söylem, gazete, afiş). Güven düşerse isyan riski artar."],
-	["Vasal devletler", "Barışta vasal şartı, haraç, vasalı ilhak etme/serbest bırakma. Dünya Savaşı sömürgeleri artık vasal."],
-	["Daha akıllı yapay zekâ", "Komşuyla bütünleşik sınırlar çizer, boğaz ve deniz aşırı hedeflere çıkarma yapar, adalar için savaşa girer."],
-	["Senaryo editörü: sıfırdan oyun", "7 sayfalı sihirbaz: yeni devlet kur, bayrak tasarla (hilal, kılıç, yıldız…), ülke adı/lider/renk değiştir, silah ve birlik adlarını düzenle, zamanlı olaylar ve haberler yaz."],
-	["Kabine olayları", "Belirli haftada seçtiğin bakan kapıdan girer, senin yazdığın soruyu sorar; cevapların sonuçlarını ve etkilerini sen belirlersin. Bakan adları da düzenlenebilir."],
-	["Zamanlı devirler", "Olay ile eyalet devri, vasal yapma, ambargo, lider/ülke adı değişimi, teknoloji ve ordu değişimi."],
-	["İyileştirmeler", "Kuşatma süreleri kısaldı, siber savaş 1960 öncesi kapalı."],
+	["Yeni dünya renkleri", "Ülke renkleri artık yumuşak ve soylu: Rusya açık mavi, Ukrayna sarı, Türkiye kırmızı… komşular birbirinden ayrışır."],
+	["Dönemine uygun hikâye", "Osmanlı ve diğer eski çağlarda artık kravatlı bakanlar yok: kaftanlı, sarıklı vezirler; ulufe, veba, haraç gibi dönem olayları."],
+	["Hikâye modu (Kariyer)", "Vasalken kabine olayı yok; yeni dönem görevleri, düello, rehine şehzade, sel gibi 10 yeni olay."],
+	["Barışta eyalet al", "İşgal etmediğin sınır eyaletlerini de savaş puanıyla alabilirsin; savaş puanı artık asker yenince hızla artar."],
+	["İnanç dönüştürme", "Halkı devlet inancına döndür: barışta da yapılabilir."],
+	["Daha hızlı asker toplama", "Haftalık asker artışı artık askerî bütçene bağlı."],
+	["Çeviriler", "Yeni metinlerin tamamı İngilizce olarak eklendi."],
 ]
 
 

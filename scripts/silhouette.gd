@@ -8,6 +8,8 @@ extends Control
 
 const TK = preload("res://scripts/theme_kit.gd")
 const Icons = preload("res://scripts/icons.gd")
+const Eras = preload("res://scripts/eras.gd")
+const Macro = preload("res://scripts/macro.gd")
 
 const ROLE_ICON := {"def": "shield_star", "for": "globe", "int": "badge", "fin": "coins", "hlt": "med", "spy": "eye", "amb": "embassy", "pm": "crown", "trd": "money_bag", "spt": "trophy", "ele": "ballot"}
 
@@ -67,7 +69,7 @@ static func _count(culture: String, kind: String) -> int:
 
 
 func _portrait_tex() -> Texture2D:
-	if culture == "":
+	if culture == "" or style == "pre":
 		return null
 	var kind := "o" if role == "def" else ("f" if female else "m")
 	var cnt := _count(culture, kind)
@@ -78,6 +80,8 @@ func _portrait_tex() -> Texture2D:
 
 
 static func style_for(c) -> String:
+	if Macro.era_on and Eras.family() == "pre":
+		return "pre"                 # eski çağ: kaftan + sarık/kalpak, kravat yok
 	var n: String = c.name_en
 	if n in ["United States of America"]:
 		return "us"
@@ -162,7 +166,7 @@ func _draw() -> void:
 			draw_set_transform(Vector2.ZERO, 0.0, Vector2.ONE)
 		_badge()
 		return
-	var hat_cap: bool = role == "def" and style not in ["ru", "me"]
+	var hat_cap: bool = role == "def" and style not in ["ru", "me", "pre"]
 	# --- saç / arka katman
 	if style == "me":
 		_ghutra_back()
@@ -189,6 +193,14 @@ func _draw() -> void:
 				draw_circle(_t(Vector2(50, by2)), 1.4 * _s, Color(0.85, 0.7, 0.3, 0.8))
 		"me":
 			_poly([[41, 80], [50, 98], [59, 80]], PAPER.darkened(0.1))
+		"pre":
+			# kaftan: kürk yaka + altın şerit + kuşak
+			_poly([[38, 80], [50, 104], [62, 80], [66, 86], [50, 112], [34, 86]], Color(0.5, 0.18, 0.16))
+			_poly([[41, 80], [50, 98], [59, 80]], PAPER.darkened(0.25))
+			draw_line(_t(Vector2(50, 98)), _t(Vector2(50, 120)), Color(0.86, 0.7, 0.28, 0.9), 1.6 * _s)
+			draw_line(_t(Vector2(38, 80)), _t(Vector2(50, 104)), Color(0.86, 0.7, 0.28, 0.9), 1.3 * _s)
+			draw_line(_t(Vector2(62, 80)), _t(Vector2(50, 104)), Color(0.86, 0.7, 0.28, 0.9), 1.3 * _s)
+			_poly([[4, 112], [96, 112], [96, 120], [4, 120]], Color(0.86, 0.7, 0.28, 0.35))
 		_:
 			_poly([[41, 80], [50, 102], [59, 80]], PAPER)
 			var tc := Color(0.82, 0.2, 0.15) if style == "us" else (Color(0.2, 0.36, 0.68) if style == "eu" else Color(0.9, 0.7, 0.2))
@@ -198,7 +210,7 @@ func _draw() -> void:
 				for i in 3:
 					draw_line(_t(Vector2(43 + i * 5.5, 82)), _t(Vector2(41 + i * 6.5, 100)), Color(0.95, 0.75, 0.2, 0.85), 1.6 * _s)
 	# --- apolet (savunma)
-	if role == "def":
+	if role == "def" and style != "pre":
 		for sx in [0, 1]:
 			var x0: float = 14.0 if sx == 0 else 70.0
 			_poly([[x0, 90], [x0 + 16, 86], [x0 + 16, 94], [x0, 98]], HAIR.lightened(0.05))
@@ -217,6 +229,8 @@ func _draw() -> void:
 	draw_arc(_t(Vector2(hx, 48)), ry * _s * 0.92, deg_to_rad(215), deg_to_rad(325), 18, Color(1, 1, 1, 0.14), 1.4 * _s, true)
 	# --- başlık / saç
 	match style:
+		"pre":
+			_turban()
 		"ru":
 			_ushanka()
 		"me":
@@ -269,6 +283,24 @@ func _ushanka() -> void:
 		st.append(_t(v))
 	draw_colored_polygon(st, Color(0.84, 0.2, 0.15))
 	draw_arc(_t(Vector2(50, 30)), 21.0 * _s, deg_to_rad(205), deg_to_rad(335), 16, Color(1, 1, 1, 0.16), 1.4 * _s, true)
+
+
+## Eski çağ başlığı: sarık (vezir/defterdar) ya da kalpak + sorguç (komutan)
+func _turban() -> void:
+	if role == "def":
+		var felt := Color(0.55, 0.12, 0.12)
+		_poly_p(_ell(50, 30, 17, 15), felt)
+		_poly([[32, 38], [68, 38], [70, 44], [30, 44]], PAPER.darkened(0.1))
+		_poly([[50, 18], [53, 6], [56, 14], [58, 4], [54, 20]], Color(0.86, 0.7, 0.28))
+		draw_circle(_t(Vector2(50, 40)), 2.4 * _s, Color(0.86, 0.7, 0.28))
+	else:
+		var cloth := PAPER.darkened(0.05) if role != "fin" else Color(0.55, 0.62, 0.78)
+		_poly_p(_ell(50, 32, 21, 15), cloth)
+		_poly_p(_ell(50, 28, 17, 11), cloth.lightened(0.08))
+		_poly([[30, 38], [70, 38], [71, 44], [29, 44]], cloth.darkened(0.2))
+		for i in 4:
+			draw_arc(_t(Vector2(50, 38)), (13.0 + i * 3.0) * _s, deg_to_rad(200), deg_to_rad(340), 14, Color(0, 0, 0, 0.14), 1.2 * _s, true)
+		draw_circle(_t(Vector2(50, 40)), 2.0 * _s, Color(0.78, 0.2, 0.2))
 
 
 func _star(cx: float, cy: float, ro: float, ri: float) -> Array:

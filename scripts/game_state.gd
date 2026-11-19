@@ -306,6 +306,31 @@ func player_build(pid: int, kind: String) -> String:
 	return ""
 
 
+## Oyuncu: kendi eyaletinin halkını devlet inancına döndür (barışta da yapılır; para + hafif huzursuzluk).
+func faith_convert_cost(pid: int) -> float:
+	return maxf(10.0, provinces[pid].base_rev() * 9.0)
+
+
+func player_convert_faith(pid: int) -> String:
+	var p = provinces[pid]
+	if p.owner != player or p.controller != player:
+		return "Yalnızca kendi eyaletinin inancı değiştirilir."
+	var me = countries[player]
+	var sf: String = Faith.state_faith(self, player)
+	if Faith.of(self, pid) == sf:
+		return "Halk zaten devlet inancında."
+	var cost: float = faith_convert_cost(pid)
+	if me.gold < cost:
+		return "Kasa yetmiyor."
+	me.gold -= cost
+	faith[str(pid)] = sf
+	me.stability = clampf(me.stability - 1.0, 5.0, 100.0)
+	p.unrest = mini(p.unrest + 1, 5)
+	post_news("%s halkı %s inancına döndürüldü." % [p.name, Faith.NAME_TR[sf]], pid, "info")
+	state_changed.emit()
+	return ""
+
+
 func _process_buildings() -> void:
 	for p in provinces:
 		if p.bld_wip != "" and turn >= p.bld_until:
@@ -1822,12 +1847,29 @@ func _apply_terms(winner: int, loser: int, terms: Array) -> String:
 	return ", ".join(parts)
 
 
-func peace_options(w, winner: int) -> Array:
+## Barış masasında alınabilecek eyaletler. include_free: işgal edilmemiş ama kazananın topraklarına komşu eyaletler de
+## (1,5 kat puanla) alınabilir: puanın yettiği kadar toprak alınır.
+func peace_options(w, winner: int, include_free: bool = false) -> Array:
 	var loser: int = w.other(winner)
 	var out: Array = []
 	for p in provinces:
-		if p.owner == loser and p.controller == winner:
-			out.append({"pid": p.id, "cost": p.peace_cost()})
+		if p.owner != loser:
+			continue
+		if p.controller == winner:
+			out.append({"pid": p.id, "cost": p.peace_cost(), "free": false})
+		elif include_free and not p.is_capital:
+			var near := false
+			for nb in p.neighbors:
+				if provinces[nb].owner == winner or provinces[nb].controller == winner:
+					near = true
+					break
+			if not near:
+				for nb2 in p.sea_links:
+					if provinces[nb2].owner == winner or provinces[nb2].controller == winner:
+						near = true
+						break
+			if near:
+				out.append({"pid": p.id, "cost": int(ceil(p.peace_cost() * 1.5)), "free": true})
 	return out
 
 
@@ -2471,7 +2513,7 @@ func _battle(att, def, dest: int) -> void:
 		_record_battle(p, att.owner, def.owner, att_size, def_size, loss, def_size - int(def_size * 0.35), true, op_id)
 		_commander_xp(att, def_size)
 		if w != null:
-			w.add(att.owner, 1 + int(def_size / 5000.0))
+			w.add(att.owner, 1 + int(def_size / 2500.0))
 		if att_size + def_size >= 12000 or att.owner == player or def.owner == player:
 			post_news(Names.big_battle(rng, att_name, def_name, p.name), dest, "battle")
 	else:
@@ -2488,7 +2530,7 @@ func _battle(att, def, dest: int) -> void:
 		else:
 			att.size = survivors
 		if w != null:
-			w.add(def.owner, 1 + int(att_size / 5000.0))
+			w.add(def.owner, 1 + int(att_size / 2500.0))
 		if att_size + def_size >= 12000 or att.owner == player or def.owner == player:
 			post_news(Names.big_battle(rng, def_name, att_name, p.name), dest, "battle")
 

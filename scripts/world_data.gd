@@ -3,6 +3,7 @@ extends RefCounted
 ## Geometri tüm oyunlar için paylaşılır; oyun durumu (sahiplik vb.) her yeni oyunda taze nesnelerle kurulur.
 
 const Model = preload("res://scripts/model.gd")
+const CC = preload("res://scripts/country_colors.gd")
 const PATH := "res://data/world.json"
 const GRID := 24.0
 const MITER_MAX := 2.5
@@ -421,37 +422,53 @@ func _color_countries(gs) -> void:
 			var o2: int = gs.provinces[q].owner
 			if o2 != p.owner:
 				adj[p.owner][o2] = true
+	# 1) çıpa ülkeler: kimlik rengi aynen
+	var col: Array = []
+	col.resize(n)
+	for i in n:
+		col[i] = null
+		if CC.ANCHORS.has(gs.countries[i].name_en):
+			col[i] = CC.ident(gs.countries[i].name_en)
+	# 2) kalanlar: en çok komşusu olandan başla; kimlik tonuna yakın ama komşulardan ayırt edilebilir ton seç
 	var order: Array = range(n)
 	order.sort_custom(func(a, b): return adj[a].size() > adj[b].size() or (adj[a].size() == adj[b].size() and a < b))
-	var pick: Array = []
-	pick.resize(n)
-	pick.fill(-1)
 	var use: Array = []
-	use.resize(PALETTE.size())
+	use.resize(CC.MUTED.size())
 	use.fill(0)
 	for i in order:
-		var bad: Dictionary = {}
-		for j in adj[i]:
-			if pick[j] >= 0:
-				bad[pick[j]] = true
-		var best := -1
-		for k in PALETTE.size():
-			if bad.has(k):
-				continue
-			if best < 0 or use[k] < use[best]:
-				best = k
-		if best < 0:
-			best = 0
-			for k in PALETTE.size():
-				if use[k] < use[best]:
-					best = k
-		pick[i] = best
-		use[best] += 1
+		if col[i] != null:
+			continue
+		var base: Color = CC.ident(gs.countries[i].name_en)
+		var has_id: bool = base.a > 0.0
+		var cands: Array = []
+		if has_id:
+			for dh in [0.0, 0.03, -0.03, 0.06, -0.06, 0.1, -0.1, 0.15, -0.15, 0.22, -0.22, 0.32, -0.32, 0.45, 0.5]:
+				for dv in [0.0, -0.12, 0.1]:
+					for ds in [0.0, -0.15]:
+						cands.append(Color.from_hsv(fposmod(base.h + dh, 1.0), clampf(base.s + ds, 0.28, 0.65), clampf(base.v + dv, 0.5, 0.86)))
+		else:
+			for k in CC.MUTED.size():
+				var h: Array = CC.MUTED[k]
+				cands.append(Color.from_hsv(float(h[0]) / 360.0, h[1], h[2]))
+				cands.append(Color.from_hsv(fposmod(float(h[0]) / 360.0 + 0.04, 1.0), h[1], clampf(h[2] - 0.12, 0.5, 0.86)))
+		var best: Color = cands[0]
+		var best_score := -1e9
+		for cand in cands:
+			var md := 9.0
+			for j in adj[i]:
+				if col[j] != null:
+					md = minf(md, CC.dist(cand, col[j]))
+			var score: float = minf(md, 0.62) * 12.0
+			if has_id:
+				score -= CC.dist(cand, base) * 4.0
+			if score > best_score:
+				best_score = score
+				best = cand
+		col[i] = best
 	for i in n:
-		var h: Array = PALETTE[pick[i]]
-		gs.countries[i].color = Color.from_hsv(float(h[0]) / 360.0, h[1], h[2])
-		gs.countries[i].color2 = gs.countries[i].color.darkened(0.4)
-		gs.countries[i].color3 = gs.countries[i].color.lightened(0.3)
+		gs.countries[i].color = col[i]
+		gs.countries[i].color2 = col[i].darkened(0.4)
+		gs.countries[i].color3 = col[i].lightened(0.3)
 
 
 # ------------------------------------------------------------------ dokunma

@@ -14,6 +14,7 @@ const Scenarios = preload("res://scripts/scenarios.gd")
 const EraLeaders = preload("res://scripts/era_leaders.gd")
 const EraEvents = preload("res://scripts/era_events.gd")
 const Loc = preload("res://scripts/loc.gd")
+const Currency = preload("res://scripts/currency.gd")
 const DataUtil = preload("res://scripts/data_util.gd")
 const EraExt = preload("res://scripts/era_ext.gd")
 const Objectives = preload("res://scripts/objectives.gd")
@@ -338,6 +339,7 @@ static func field(key: String, default = null, id: String = ""):
 
 static func prepare(id: String) -> void:
 	current = id
+	Currency.era_fam = family(id)
 	var e: Dictionary = get_era(id)
 	if e.is_empty():
 		clear()
@@ -392,6 +394,7 @@ static func era_flag_table(id: String) -> Dictionary:
 
 static func clear() -> void:
 	current = ""
+	Currency.era_fam = ""
 	Arsenal.set_era("")
 	Macro.era_on = false
 	Macro.pre_era = false

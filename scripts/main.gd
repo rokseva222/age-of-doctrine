@@ -462,6 +462,8 @@ func _cabinet_turn() -> void:
 		return
 	if not gs.countries[gs.player].alive:
 		return
+	if Career.active(gs) and Career.state(gs) in ["vassal", "rebel"]:
+		return          # hikâye modunda komutansın: kabine, kriz ve seçim toplantıları yok; olayları Divan kartları getirir
 	# 0) dünya krizi kartı (kabine ayarından bağımsız: kısa bir karar)
 	if not gs.crisis_pending.is_empty():
 		var ccard: Dictionary = gs.crisis_pending
@@ -897,6 +899,15 @@ func _on_ui_action(act: String, arg) -> void:
 					_refresh_selection(), "kind": ""},
 				{"text": "Vazgeç", "cb": func(): pass},
 			])
+		"convert_faith":
+			var fc: float = gs.faith_convert_cost(arg)
+			ui.show_dialog("İnancı yay: %s" % gs.provinces[arg].name, "Halkı devlet inancına döndürmek %s tutar. İstikrar hafifçe düşer, eyalette kısa süreli huzursuzluk olur. Barışta da yapılabilir." % Macro.money(fc), [
+				{"text": "Döndür (%s)" % Macro.money(fc), "cb": func():
+					var ef: String = gs.player_convert_faith(arg)
+					ui.toast(ef if ef != "" else "Halk devlet inancına döndürüldü.")
+					_refresh_selection(), "kind": "gold" if gs.countries[gs.player].gold >= fc else ""},
+				{"text": "Vazgeç", "cb": func(): pass},
+			])
 		"build":
 			var bp = gs.provinces[arg]
 			var opts: Array = []
@@ -948,7 +959,7 @@ func _player_peace(enemy: int) -> void:
 
 func _open_deal(w, _from_player_request: bool) -> void:
 	_on_speed_changed(0)
-	var options: Array = gs.peace_options(w, gs.player)
+	var options: Array = gs.peace_options(w, gs.player, true)
 	if options.is_empty():
 		ui.show_dialog("Barış", "İşgal ettiğin eyalet yok; beraberlik barışı yapılacak.", [
 			{"text": "Beraberlik barışı", "cb": func(): gs.finish_peace(w, -1, []), "kind": "good"},

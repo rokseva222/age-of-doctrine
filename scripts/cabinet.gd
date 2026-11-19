@@ -23,6 +23,13 @@ static var _loaded := false
 #   aggr  komşu/düşman yapay zekâ saldırganlığı  dev  başkentte kalkınma
 # Seçenek: {"t": düğme, "e": etkiler, "r": sonuç metni, "fatal": {"p": taban, "k": istikrar etkisi, "text": ...}}
 # Cümleler: {m} bakan  {nb} komşu  {en} düşman/komşu  {c} ülke  {cap} başkent
+const PreCards = preload("res://scripts/cabinet_pre.gd")
+## Çağa göre elenen modern kartlar (ww1/ww2/soğuk savaş döneminde çıkmaz)
+const NO_ERA := {
+	"ww1": ["d_cyber", "d_nuke", "i_press", "s_cyberhit", "f_leak", "a_leak", "r_leak", "h_pharma", "fn_mega", "t_crates", "t_arms", "t_tea", "s_cup", "s_games", "f_spy", "i_terror"],
+	"ww2": ["d_cyber", "i_press", "s_cyberhit", "f_leak", "a_leak", "r_leak", "fn_mega", "t_crates", "t_arms", "t_tea", "s_cup", "s_games"],
+	"cold": ["d_cyber", "i_press", "s_cyberhit", "f_leak", "a_leak", "r_leak", "fn_mega", "t_crates", "t_arms", "t_tea"],
+}
 const CARDS := [
 	# ------------------------------------------------------------ SAVUNMA
 	{"id": "d_drill", "role": "def", "w": 1.0, "war": 0,
@@ -691,10 +698,15 @@ static func pick(gs, last_turn: int, recent: Array, rng: RandomNumberGenerator, 
 	var at_war: bool = not c.enemies.is_empty()
 	var pool: Array = []
 	var tot := 0.0
-	for card in CARDS:
+	var fam: String = Eras_.family() if Macro.era_on else ""
+	var cards: Array = PreCards.CARDS if fam == "pre" else CARDS
+	var banned: Array = NO_ERA.get(fam, [])
+	for card in cards:
 		if recent.has(card.id) or card.get("sched", false):
 			continue
 		if Macro.era_on and (card.id == "d_cyber" or card.id == "i_press" or card.id == "s_cyberhit"):
+			continue
+		if banned.has(card.id):
 			continue
 		if card.has("yr"):
 			var ym: Array = Names.year_month(gs.turn)
