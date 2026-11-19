@@ -271,13 +271,9 @@ static func person(culture: String, key: String, female: bool) -> String:
 
 static func is_female(key: String, chance: float = 0.22) -> bool:
 	var fam := _fam()
-	if fam == "pre":
-		return false
-	if fam == "ww1":
-		chance *= 0.15
-	elif fam == "ww2":
-		chance *= 0.3
-	elif fam == "cold":
+	if fam == "pre" or fam == "ww1" or fam == "ww2":
+		return false                 # dönem siluetlerinde kadın portresi yok; tarihî olarak da nadir
+	if fam == "cold":
 		chance *= 0.5
 	var rng := RandomNumberGenerator.new()
 	rng.seed = hash("g:" + key)
