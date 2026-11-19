@@ -803,6 +803,24 @@ func _on_ui_action(act: String, arg) -> void:
 			ui.show_relations(int(arg))
 		"diplomacy":
 			ui.DiplomacyUI.open(ui, gs, int(arg))
+		"annex_vassal":
+			var vc = gs.countries[arg]
+			var left: int = int(gs.vassals[arg].since) + gs.VASSAL_ANNEX_MIN - gs.turn
+			ui.show_dialog("Vasalı ilhak et", "%s tüm eyaletleriyle sana katılsın mı? Bedel: %s. Vasal ilişkisi sona erer, yeni topraklarda bir süre huzursuzluk olabilir.%s" % [vc.name, Macro.money(gs.vassal_annex_cost(arg)), ("\n(Henüz %d hafta bekle.)" % left) if left > 0 else ""], [
+				{"text": "İlhak et", "cb": func():
+					var ea: String = gs.player_annex_vassal(arg)
+					ui.toast(ea if ea != "" else "%s ilhak edildi." % vc.name)
+					_refresh_selection(), "kind": "danger"},
+				{"text": "Vazgeç", "cb": func(): pass},
+			])
+		"release_vassal":
+			var vr = gs.countries[arg]
+			ui.show_dialog("Vasalı serbest bırak", "%s bağımsız olsun mu? Sana minnet duyar, ama haraç ödemeyi bırakır." % vr.name, [
+				{"text": "Serbest bırak", "cb": func():
+					gs.player_release_vassal(arg)
+					_refresh_selection(), "kind": ""},
+				{"text": "Vazgeç", "cb": func(): pass},
+			])
 		"build":
 			var bp = gs.provinces[arg]
 			var opts: Array = []

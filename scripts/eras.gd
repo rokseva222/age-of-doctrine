@@ -38,21 +38,21 @@ const ABSORB := {
 	"ww2": {
 		"Germany": ["Austria", "Czechia"],
 		"Russia": ["Ukraine", "Belarus", "Georgia", "Armenia", "Azerbaijan", "Kazakhstan", "Uzbekistan", "Turkmenistan", "Tajikistan", "Kyrgyzstan"],
-		"United Kingdom": ["India", "Pakistan", "Bangladesh", "Sri Lanka", "Myanmar", "Malaysia", "Singapore", "Brunei", "Sudan", "S. Sudan", "Kenya", "Uganda",
-			"Tanzania", "Nigeria", "Ghana", "Sierra Leone", "Gambia", "Zambia", "Zimbabwe", "Malawi", "Botswana", "Lesotho", "eSwatini", "Somaliland", "Cyprus",
+		"United Kingdom": ["Singapore", "Brunei", "S. Sudan", "Uganda",
+			"Tanzania", "Ghana", "Sierra Leone", "Gambia", "Zambia", "Zimbabwe", "Malawi", "Botswana", "Lesotho", "eSwatini", "Somaliland", "Cyprus",
 			"N. Cyprus", "Malta", "Jamaica", "Bahamas", "Barbados", "Belize", "Guyana", "Trinidad and Tobago", "Fiji", "Palestine", "Israel", "Jordan", "Kuwait",
 			"Bahrain", "Qatar", "United Arab Emirates", "Maldives", "Antigua and Barb.", "Dominica", "Grenada", "Saint Lucia", "St. Kitts and Nevis",
 			"St. Vin. and Gren.", "Solomon Is.", "Tonga", "Mauritius", "Seychelles", "Kiribati", "Tuvalu"],
 		"Australia": ["Papua New Guinea"], "South Africa": ["Namibia"], "New Zealand": ["Samoa"],
-		"France": ["Algeria", "Tunisia", "Morocco", "Mauritania", "Mali", "Niger", "Chad", "Senegal", "Guinea", "Côte d'Ivoire", "Burkina Faso", "Benin", "Gabon",
-			"Congo", "Central African Rep.", "Cameroon", "Togo", "Madagascar", "Comoros", "Djibouti", "Vietnam", "Laos", "Cambodia", "Syria", "Lebanon", "Vanuatu"],
-		"Italy": ["Libya", "Eritrea", "Ethiopia", "Somalia", "Albania"],
-		"Japan": ["South Korea", "North Korea", "Taiwan", "Palau", "Micronesia", "Marshall Is.", "Nauru"],
-		"Netherlands": ["Indonesia", "Suriname"],
-		"Belgium": ["Dem. Rep. Congo", "Rwanda", "Burundi"],
-		"Portugal": ["Angola", "Mozambique", "Guinea-Bissau", "Cabo Verde", "São Tomé and Principe", "Timor-Leste"],
+		"France": ["Mauritania", "Mali", "Niger", "Chad", "Senegal", "Guinea", "Côte d'Ivoire", "Burkina Faso", "Benin", "Gabon",
+			"Congo", "Central African Rep.", "Cameroon", "Togo", "Comoros", "Djibouti", "Vanuatu"],
+		"Italy": ["Eritrea", "Somalia", "Albania"],
+		"Japan": ["Palau", "Micronesia", "Marshall Is.", "Nauru"],
+		"Netherlands": ["Suriname"],
+		"Belgium": ["Rwanda", "Burundi"],
+		"Portugal": ["Guinea-Bissau", "Cabo Verde", "São Tomé and Principe", "Timor-Leste"],
 		"Spain": ["W. Sahara", "Eq. Guinea"],
-		"United States of America": ["Philippines"],
+		"United States of America": [],
 		"Denmark": ["Greenland"],
 		"Romania": ["Moldova"],
 		"Serbia": ["Croatia", "Slovenia", "Bosnia and Herz.", "Montenegro", "North Macedonia", "Kosovo"],
@@ -63,24 +63,46 @@ const ABSORB := {
 		"Turkey": ["Syria", "Iraq", "Lebanon", "Jordan", "Palestine", "Israel", "Yemen"],
 		"Russia": ["Poland", "Ukraine", "Belarus", "Estonia", "Latvia", "Lithuania", "Finland", "Moldova", "Georgia", "Armenia", "Azerbaijan", "Kazakhstan", "Uzbekistan",
 			"Turkmenistan", "Tajikistan", "Kyrgyzstan"],
-		"United Kingdom": ["Ireland", "India", "Pakistan", "Bangladesh", "Sri Lanka", "Myanmar", "Malaysia", "Singapore", "Brunei", "Egypt", "Sudan", "S. Sudan",
-			"Kenya", "Uganda", "Nigeria", "Ghana", "Sierra Leone", "Gambia", "Zambia", "Zimbabwe", "Malawi", "Botswana", "Lesotho", "eSwatini", "Somaliland",
+		"United Kingdom": ["Ireland", "Singapore", "Brunei", "S. Sudan",
+			"Kenya", "Uganda", "Ghana", "Sierra Leone", "Gambia", "Zambia", "Zimbabwe", "Malawi", "Botswana", "Lesotho", "eSwatini", "Somaliland",
 			"Cyprus", "N. Cyprus", "Malta", "Jamaica", "Bahamas", "Barbados", "Belize", "Guyana", "Trinidad and Tobago", "Fiji", "Kuwait", "Bahrain", "Qatar",
 			"United Arab Emirates", "Maldives", "Antigua and Barb.", "Dominica", "Grenada", "Saint Lucia", "St. Kitts and Nevis", "St. Vin. and Gren.",
 			"Solomon Is.", "Tonga", "Mauritius", "Seychelles", "Kiribati", "Tuvalu"],
 		"Australia": ["Papua New Guinea"], "New Zealand": ["Samoa"],
-		"France": ["Algeria", "Tunisia", "Morocco", "Mauritania", "Mali", "Niger", "Chad", "Senegal", "Guinea", "Côte d'Ivoire", "Burkina Faso", "Benin", "Gabon",
-			"Congo", "Central African Rep.", "Madagascar", "Comoros", "Djibouti", "Vietnam", "Laos", "Cambodia", "Vanuatu"],
-		"Italy": ["Libya", "Eritrea", "Somalia"],
-		"Japan": ["South Korea", "North Korea", "Taiwan", "Palau", "Micronesia", "Marshall Is."],
-		"Netherlands": ["Indonesia", "Suriname"],
-		"Belgium": ["Dem. Rep. Congo"],
-		"Portugal": ["Angola", "Mozambique", "Guinea-Bissau", "Cabo Verde", "São Tomé and Principe", "Timor-Leste"],
+		"France": ["Mauritania", "Mali", "Niger", "Chad", "Senegal", "Guinea", "Côte d'Ivoire", "Burkina Faso", "Benin", "Gabon",
+			"Congo", "Central African Rep.", "Comoros", "Djibouti", "Vanuatu"],
+		"Italy": ["Eritrea", "Somalia"],
+		"Japan": ["Palau", "Micronesia", "Marshall Is."],
+		"Netherlands": ["Suriname"],
+		"Belgium": [],
+		"Portugal": ["Guinea-Bissau", "Cabo Verde", "São Tomé and Principe", "Timor-Leste"],
 		"Spain": ["W. Sahara", "Eq. Guinea"],
-		"United States of America": ["Philippines"],
+		"United States of America": [],
 		"Denmark": ["Greenland", "Iceland"],
 		"Serbia": ["North Macedonia", "Kosovo"],
 	},
+}
+
+# bağımlı ülkeler: [vasal (name_en), efendi (name_en)] — dönem başında vasal ilişkisi kurulur (haraç, ortak savaş, ilhak/serbest bırakma)
+const VASSALS := {
+	"ww2": [
+		["India", "United Kingdom"], ["Pakistan", "United Kingdom"], ["Bangladesh", "United Kingdom"], ["Sri Lanka", "United Kingdom"],
+		["Myanmar", "United Kingdom"], ["Malaysia", "United Kingdom"], ["Nigeria", "United Kingdom"], ["Kenya", "United Kingdom"],
+		["Sudan", "United Kingdom"], ["Algeria", "France"], ["Tunisia", "France"], ["Morocco", "France"],
+		["Vietnam", "France"], ["Laos", "France"], ["Cambodia", "France"], ["Syria", "France"],
+		["Lebanon", "France"], ["Madagascar", "France"], ["Indonesia", "Netherlands"], ["Dem. Rep. Congo", "Belgium"],
+		["Libya", "Italy"], ["Ethiopia", "Italy"], ["South Korea", "Japan"], ["North Korea", "Japan"],
+		["Taiwan", "Japan"], ["Angola", "Portugal"], ["Mozambique", "Portugal"], ["Philippines", "United States of America"],
+	],
+	"ww1": [
+		["India", "United Kingdom"], ["Pakistan", "United Kingdom"], ["Bangladesh", "United Kingdom"], ["Sri Lanka", "United Kingdom"],
+		["Myanmar", "United Kingdom"], ["Malaysia", "United Kingdom"], ["Egypt", "United Kingdom"], ["Nigeria", "United Kingdom"],
+		["Sudan", "United Kingdom"], ["Algeria", "France"], ["Tunisia", "France"], ["Morocco", "France"],
+		["Vietnam", "France"], ["Laos", "France"], ["Cambodia", "France"], ["Madagascar", "France"],
+		["Indonesia", "Netherlands"], ["Dem. Rep. Congo", "Belgium"], ["Libya", "Italy"], ["South Korea", "Japan"],
+		["North Korea", "Japan"], ["Taiwan", "Japan"], ["Angola", "Portugal"], ["Mozambique", "Portugal"],
+		["Philippines", "United States of America"],
+	],
 }
 
 # eyalet düzeyinde aktarım: [eyalet adı, bugünkü ülke, hedef host, "own" (mülkiyet) | "occ" (işgal)]
@@ -536,6 +558,11 @@ static func start(gs, id: String) -> void:
 		if a >= 0 and b >= 0:
 			gs.countries[a].truce[b] = gs.turn + int(t[2])
 			gs.countries[b].truce[a] = gs.turn + int(t[2])
+	for v in VASSALS.get(id, []):
+		var vi: int = int(idx.get(v[0], -1))
+		var li: int = int(idx.get(v[1], -1))
+		if vi >= 0 and li >= 0 and gs.countries[vi].alive and gs.countries[li].alive:
+			gs.make_vassal(vi, li, true)
 	EraMoments.start(gs, id, Names.year_month(gs.turn))
 
 

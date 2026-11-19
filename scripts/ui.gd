@@ -618,7 +618,7 @@ func show_province(pid: int, selected_army) -> void:
 	if p.owner == me:
 		_card_tags.add_child(_tag("Senin", TK.GREEN))
 	elif allied:
-		_card_tags.add_child(_tag("Müttefik", TK.BLUE))
+		_card_tags.add_child(_tag("Vasalın" if gs.lord_of(p.owner) == me else "Müttefik", TK.GOLD if gs.lord_of(p.owner) == me else TK.BLUE))
 	elif gs.at_war(me, p.owner):
 		_card_tags.add_child(_tag("Savaşta", TK.RED))
 	if p.controller != p.owner and p.controller >= 0:
@@ -676,13 +676,17 @@ func show_province(pid: int, selected_army) -> void:
 				if not gs.aid_join_foes(p.owner).is_empty():
 					_abtn("Savaşına katıl", "danger", "swords", "aid_join", p.owner)
 				_abtn("Mali yardım gönder", "gold", "coins", "aid_gold", p.owner)
-				_abtn("İttifakı boz", "ghost", "x", "break_alliance", p.owner)
+				if gs.lord_of(p.owner) != me and gs.lord_of(me) != p.owner:
+					_abtn("İttifakı boz", "ghost", "x", "break_alliance", p.owner)
 			else:
 				_abtn("İttifak teklif et", "blue", "handshake", "alliance", p.owner)
 				if gs.has_passage(me, p.owner):
 					_abtn("Geçiş izni: %d hafta" % (int(gs.countries[p.owner].passage[me]) - gs.turn), "", Icons.pick("passage_grant", "hourglass"), "none", 0, false)
 				else:
 					_abtn("Geçiş izni iste", "", Icons.pick("passage_grant", "flag"), "ask_passage", p.owner)
+	if p.owner != me and gs.lord_of(p.owner) == me:
+		_abtn("Vasalı ilhak et", "gold", "flag", "annex_vassal", p.owner)
+		_abtn("Vasalı serbest bırak", "ghost", "x", "release_vassal", p.owner)
 	if not oc.is_rebel:
 		_abtn("Diplomasi", "blue", Icons.pick("diplomacy", "handshake"), "diplomacy", p.owner)
 	if p.owner == me and p.controller == me:

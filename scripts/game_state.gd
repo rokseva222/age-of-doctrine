@@ -80,6 +80,7 @@ var chokes: Dictionary = {}              # stratejik geçitler: {id: {mode, ctrl
 var grand: Dictionary = {}               # Büyük Harekât: {cd, ops, done, last}
 var nuke_cd := 0                         # bir sonraki nükleer saldırı turu
 const AI_MAX_ALLIES := 6               # yalnız yapay zekâ için yumuşak sınır; oyuncuda sınır yok
+var vassals: Dictionary = {}     # vasal ülke id -> {"lord": efendi id, "since": tur}
 var aid: Dictionary = {"cd": {}, "good": {}}   # müttefik yardımı: bekleme süreleri / minnet (müttefik -> tur)
 var un_cd: Dictionary = {}               # BM önerge bekleme süreleri (önerge -> tur)
 var un_log: Array = []                   # son BM kararları
@@ -758,6 +759,17 @@ func neighbor_countries(cid: int) -> Array:
 	return seen.keys()
 
 
+## Kara sınırı olmayan ama deniz bağlantısıyla (boğaz, kanal, ada) erişilebilen komşu ülkeler.
+func sea_neighbor_countries(cid: int) -> Array:
+	var seen: Dictionary = {}
+	for pid in countries[cid].owned_ids:
+		for sl in provinces[pid].sea_links:
+			var o: int = provinces[sl].owner
+			if o != cid and o >= 0:
+				seen[o] = true
+	return seen.keys()
+
+
 func alive_count() -> int:
 	var n := 0
 	for c in countries:
@@ -1205,6 +1217,106 @@ func _alliance_decay() -> void:
 				break_alliance(c.id, a)
 
 
+# ------------------------------------------------------------ vasal sistemi
+
+const VASSAL_TRIBUTE := 0.12        # vasalın gelirinin efendiye giden payı
+const VASSAL_ANNEX_MIN := 26        # ilhak için en az hafta
+
+func lord_of(v: int) -> int:
+	return int(vassals[v].lord) if vassals.has(v) else -1
+
+
+func vassals_of(l: int) -> Array:
+	var out: Array = []
+	for v in vassals:
+		if int(vassals[v].lord) == l:
+			out.append(int(v))
+	return out
+
+
+## v ülkesini l'nin vasalı yapar: ittifak, haraç, ortak savaş. quiet: haber/ilişki yazma (dönem kurulumu).
+func make_vassal(v: int, l: int, quiet: bool = false) -> void:
+	if v == l or vassals.has(v) or vassals.has(l) or not countries[v].alive or not countries[l].alive:
+		return
+	vassals[v] = {"lord": l, "since": turn}
+	if not is_allied(v, l):
+		make_alliance(v, l)
+	if not quiet:
+		relation_add(v, l, 10.0)
+		post_news("%s, %s'in vasalı oldu." % [countries[v].name, countries[l].name], countries[v].capital, "alliance")
+	state_changed.emit()
+
+
+func release_vassal(v: int, friendly: bool = true) -> void:
+	if not vassals.has(v):
+		return
+	var l: int = lord_of(v)
+	vassals.erase(v)
+	if friendly:
+		relation_add(v, l, 20.0)
+		post_news("%s artık %s'in vasalı değil, bağımsızlığını kazandı." % [countries[v].name, countries[l].name], countries[v].capital, "info")
+	else:
+		relation_add(v, l, -35.0)
+		post_news("%s, %s'in egemenliğini reddetti: bağımsızlık ilan edildi!" % [countries[v].name, countries[l].name], countries[v].capital, "war")
+		break_alliance(v, l)
+	state_changed.emit()
+
+
+func vassal_annex_cost(v: int) -> float:
+	var c = countries[v]
+	return maxf(10.0, c.income * 6.0 + float(c.prov_owned) * 2.0)
+
+
+func player_annex_vassal(v: int) -> String:
+	if lord_of(v) != player:
+		return "Bu devlet senin vasalın değil."
+	if turn - int(vassals[v].since) < VASSAL_ANNEX_MIN:
+		return "Vasalı ilhak etmek için en az %d hafta geçmeli." % VASSAL_ANNEX_MIN
+	var cost: float = vassal_annex_cost(v)
+	var me = countries[player]
+	if me.gold < cost:
+		return "Kasa yetmiyor (%s gerekir)." % Macro.money(cost)
+	me.gold -= cost
+	var name: String = countries[v].name
+	vassals.erase(v)
+	sandbox_annex_country(v, player)
+	post_news("%s, %s'e ilhak edildi." % [name, me.name], me.capital, "info")
+	return ""
+
+
+func player_release_vassal(v: int) -> String:
+	if lord_of(v) != player:
+		return "Bu devlet senin vasalın değil."
+	release_vassal(v, true)
+	return ""
+
+
+func _vassal_tick() -> void:
+	if vassals.is_empty():
+		return
+	for v in vassals.keys():
+		var vc = countries[v]
+		var lc = countries[lord_of(v)]
+		if not vc.alive or not lc.alive:
+			vassals.erase(v)
+			continue
+		# haraç
+		var tr: float = maxf(0.0, float(vc.fin.get("rev", vc.income))) * VASSAL_TRIBUTE
+		tr = minf(tr, maxf(0.0, vc.gold))
+		vc.gold -= tr
+		lc.gold += tr
+		# efendinin savaşları vasalın da savaşı
+		for e in lc.enemies.duplicate():
+			if not vc.enemies.has(e) and countries[e].alive and not is_allied(v, e) and e != v:
+				declare_war(v, e, true)
+		# bağımsızlık isyanı: efendi zayıfsa
+		if (turn - int(vassals[v].since)) % 26 == 25 and v != player:
+			var weak: float = (1.0 if lc.stability < 35.0 else 0.0) + (1.0 if lc.enemies.size() >= 2 else 0.0) + (0.5 if lc.gold <= 0.0 else 0.0)
+			if rng.randf() < 0.04 + 0.12 * weak:
+				release_vassal(v, false)
+				declare_war(v, lc.id)
+
+
 func make_alliance(a: int, b: int) -> void:
 	if is_allied(a, b):
 		return
@@ -1232,6 +1344,8 @@ func make_alliance(a: int, b: int) -> void:
 func break_alliance(a: int, b: int) -> void:
 	if not is_allied(a, b):
 		return
+	if lord_of(a) == b or lord_of(b) == a:
+		return        # vasal-efendi bağı ancak serbest bırakma / isyanla çözülür
 	countries[a].allies.erase(b)
 	countries[b].allies.erase(a)
 	relation_add(a, b, -15.0)
@@ -1476,6 +1590,8 @@ func player_improve_relations(target: int, kind: String) -> String:
 func player_break_alliance(target: int) -> String:
 	if not is_allied(player, target):
 		return "Müttefik değilsiniz."
+	if lord_of(player) == target or lord_of(target) == player:
+		return "Vasal bağı ittifak gibi bozulmaz."
 	break_alliance(player, target)
 	return ""
 
@@ -1639,7 +1755,7 @@ const PEACE_TERMS := {
 	"disarm": {"name": "Silahsızlandırma", "desc": "Yenilenin orduları yarıya iner.", "cost": 8},
 	"buffer": {"name": "Tampon bölge", "desc": "Ateşkes 26 yerine 78 hafta sürer; iki taraf da saldıramaz.", "cost": 5},
 	"regime": {"name": "Rejim değişikliği", "desc": "Yenilenin yönetim biçimi seninkine döner; istikrarı düşer.", "cost": 7},
-	"vassal": {"name": "Vasal devlet", "desc": "Yenilen sana bağlanır: ittifak kurulur, kasasının dörtte biri sana geçer, 52 hafta birbirinize saldıramazsınız.", "cost": 10},
+	"vassal": {"name": "Vasal devlet", "desc": "Yenilen sana bağlanır: gerçek bir vasal olur. Her hafta gelirinin %12'sini haraç öder, savaşlarına katılır; istersen sonra ilhak edebilir ya da serbest bırakabilirsin. Kasasının dörtte biri hemen sana geçer.", "cost": 10},
 	"faith": {"name": "Din dayatma", "desc": "Yenilenin eyaletleri senin inancına geçer; istikrarı düşer.", "cost": 6},
 }
 
@@ -1667,7 +1783,9 @@ func _apply_terms(winner: int, loser: int, terms: Array) -> String:
 		var tb: float = maxf(0.0, countries[loser].gold * 0.25)
 		countries[loser].gold -= tb
 		countries[winner].gold += tb
-		if not is_allied(winner, loser):
+		if not vassals.has(loser) and not vassals.has(winner):
+			make_vassal(loser, winner)
+		elif not is_allied(winner, loser):
 			make_alliance(winner, loser)
 		relation_add(winner, loser, 25.0)
 		countries[winner].truce[loser] = turn + 52
@@ -1694,17 +1812,46 @@ func peace_options(w, winner: int) -> Array:
 
 func _ai_choose_annex(w, winner: int) -> Array:
 	var opts := peace_options(w, winner)
-	opts.sort_custom(func(x, y): return x.cost > y.cost)
 	var budget: int = w.score_of(winner)
 	var loser: int = w.other(winner)
 	var cap := maxi(3, int(countries[loser].prov_owned * 0.5))
 	var picked: Array = []
-	for o in opts:
-		if picked.size() >= cap:
+	var chosen: Dictionary = {}
+	# sınırı bütün tutacak şekilde, her seferinde kazananın topraklarıyla en çok komşu olan eyaleti al
+	while picked.size() < cap and not opts.is_empty():
+		var bi := -1
+		var bs := -1.0
+		for i in opts.size():
+			var o: Dictionary = opts[i]
+			if o.cost > budget:
+				continue
+			var q = provinces[o.pid]
+			var mine := 0
+			for nb in q.neighbors:
+				var no: int = provinces[nb].owner
+				if no == winner or chosen.has(nb):
+					mine += 1
+			var sc: float = float(mine) * 3.0 - float(q.neighbors.size()) * 0.5 + float(o.cost) * 0.05
+			if q.home == winner:
+				sc += 4.0
+			if q.is_capital:
+				sc += 1.5
+			if mine == 0 and not picked.is_empty():
+				sc -= 6.0
+			if mine == 0 and picked.is_empty():
+				sc -= 3.0       # bitişik olmayan tek eyalet (ekzklav) pek istenmez
+			if sc > bs:
+				bs = sc
+				bi = i
+		if bi < 0:
 			break
-		if o.cost <= budget:
-			picked.append(o.pid)
-			budget -= o.cost
+		var pick: Dictionary = opts[bi]
+		opts.remove_at(bi)
+		if bs < -2.0 and not picked.is_empty():
+			break
+		picked.append(pick.pid)
+		chosen[pick.pid] = true
+		budget -= pick.cost
 	return picked
 
 
@@ -2043,6 +2190,7 @@ func end_turn() -> void:
 	t = _tp("stats_unrest", t)
 	_check_rebels()
 	Macro.weekly(self)
+	_vassal_tick()
 	Cabinet.weekly(self)
 	_war_diplomacy()
 	t = _tp("econ_dipl", t)
@@ -2491,6 +2639,9 @@ func _check_elimination() -> void:
 
 
 func _eliminate(c) -> void:
+	vassals.erase(c.id)
+	for vv in vassals_of(c.id):
+		vassals.erase(vv)
 	if player >= 0 and c.enemies.has(player):
 		stats.p_eliminated += 1
 	for p in provinces:
@@ -2873,7 +3024,7 @@ func war_load() -> float:
 
 
 func _ai_war_decision(c) -> void:
-	if c.is_rebel or turn < 5 or c.enemies.size() >= 2:
+	if c.is_rebel or turn < 5 or c.enemies.size() >= 2 or vassals.has(c.id):
 		return
 	var chance: float = 0.006 + c.aggression * 0.013
 	if c.enemies.size() == 1:
@@ -2886,7 +3037,13 @@ func _ai_war_decision(c) -> void:
 	var my_power := power_of(c)
 	var best := -1
 	var best_ratio := 0.0
-	for oid in neighbor_countries(c.id):
+	var land_nb: Array = neighbor_countries(c.id)
+	var cands: Array = land_nb.duplicate()
+	if c.aggression > 0.45:
+		for so in sea_neighbor_countries(c.id):
+			if not cands.has(so):
+				cands.append(so)
+	for oid in cands:
 		var o = countries[oid]
 		if not o.alive or c.enemies.has(oid) or o.is_rebel or is_allied(c.id, oid):
 			continue
@@ -2902,6 +3059,13 @@ func _ai_war_decision(c) -> void:
 			ratio *= 1.3
 		if oid == player:
 			ratio *= [0.7, 0.9, 1.2][clampi(difficulty, 0, 2)]
+		if not land_nb.has(oid):
+			ratio *= 0.55       # deniz aşırı sefer: ancak belirgin üstünlükle
+		var claims := 0         # devlet gibi düşünür: eski toprağını geri isteyen komşuya saldırır
+		for cid2 in o.owned_ids:
+			if provinces[cid2].home == c.id:
+				claims += 1
+		ratio *= 1.0 + 0.06 * minf(float(claims), 10.0)
 		if ratio > best_ratio:
 			best_ratio = ratio
 			best = oid
@@ -2941,6 +3105,17 @@ func _ai_target_ok(cid: int, pid: int, a) -> bool:
 	return true
 
 
+## Kendi eyaletlerince çevrili (>=2 kendi komşusu olan) düşman eyaleti: cepheyi düzleştirir, kazanımı parçalı bırakmaz.
+func _ai_compact_ok(cid: int, pid: int, a) -> bool:
+	if not _ai_target_ok(cid, pid, a):
+		return false
+	var mine := 0
+	for nb in provinces[pid].neighbors:
+		if provinces[nb].controller == cid:
+			mine += 1
+	return mine >= 2 or provinces[pid].is_capital or provinces[pid].home == cid
+
+
 func _ai_orders(c) -> int:
 	var n := 0
 	if c.enemies.is_empty():
@@ -2958,7 +3133,9 @@ func _ai_orders(c) -> int:
 				break
 		var path: Array = []
 		if not skip:
-			path = path_nearest(cid, a.prov, func(pid): return _ai_target_ok(cid, pid, arm))
+			path = path_nearest(cid, a.prov, func(pid): return _ai_compact_ok(cid, pid, arm), 5)      # önce bütünlüğü bozmayan hedef
+			if path.is_empty():
+				path = path_nearest(cid, a.prov, func(pid): return _ai_target_ok(cid, pid, arm))
 			if path.is_empty():
 				failed.append([_pn_prev, a.size])
 		if not path.is_empty():
@@ -2966,7 +3143,7 @@ func _ai_orders(c) -> int:
 			n += 1
 		elif _ai_try_landing(cid, arm):
 			n += 1
-		elif cid == player and not sea_campaign.is_empty() and _campaign_shuttle(cid, arm):
+		elif ((cid == player and not sea_campaign.is_empty()) or (cid != player and _sea_only_foe(cid))) and _campaign_shuttle(cid, arm):
 			n += 1
 		elif not _ai_threatened(cid, a.prov, true):
 			# saldırı yok: iç bölgedeki ordu en yakın tehdit altındaki boş cephe eyaletine kayar
@@ -2978,11 +3155,23 @@ func _ai_orders(c) -> int:
 
 
 ## Yapay zekâ amfibi çıkarması: kara hedefi yoksa deniz bağlantılı zayıf düşman eyaletine müfreze çıkarır.
+## Yapay zekâ: savaştaki düşmanlardan hiçbirine kara yoluyla ulaşamıyorsa (boğaz/ada) true.
+func _sea_only_foe(cid: int) -> bool:
+	var c = countries[cid]
+	if c.enemies.is_empty():
+		return false
+	var land := neighbor_countries(cid)
+	for e in c.enemies:
+		if land.has(e):
+			return false
+	return true
+
+
 func _ai_try_landing(cid: int, a) -> bool:
 	var camp: bool = cid == player
 	if camp and sea_campaign.is_empty():
 		return false      # oyuncu için yalnızca kendi başlattığı deniz seferi sürer; yapay zekâ ada saldırısı başlatmaz
-	if a.size < (3000 if camp else 6000) or a.merc != "" or rng.randf() > (0.6 if camp else 0.2):
+	if a.size < (3000 if camp else 6000) or a.merc != "" or rng.randf() > (0.6 if camp else (0.5 if _sea_only_foe(cid) else 0.2)):
 		return false
 	for q in provinces[a.prov].sea_links:
 		if not _ai_target_ok(cid, q, a):
@@ -3015,7 +3204,7 @@ func _campaign_shuttle(cid: int, a) -> bool:
 		if pid == arm.prov or provinces[pid].controller != cid:
 			return false
 		for q in provinces[pid].sea_links:
-			if sea_campaign.has(_holder(q)) and at_war(cid, _holder(q)) and _ai_target_ok(cid, q, arm):
+			if (sea_campaign.has(_holder(q)) or cid != player) and at_war(cid, _holder(q)) and _ai_target_ok(cid, q, arm):
 				return true
 		return false)
 	if pth.is_empty() or pth.size() > 9:
@@ -3380,7 +3569,7 @@ func to_dict() -> Dictionary:
 		"v": 3, "seed": seed_value, "base": base_country_count,
 		"turn": turn, "player": player, "next_army_id": next_army_id, "victory": victory_declared,
 		"rng_state": rng.state, "rebel_names": rebel_name_count, "merc_names": merc_names, "stats": stats,
-		"difficulty": difficulty, "blocs": blocs, "next_bloc": next_bloc_id, "cold": cold, "sea_camp": sea_campaign.keys(), "crisis": crisis, "crisis_end": crisis_last_end, "scn": scn, "era": Eras.current, "nuke_cd": nuke_cd, "grand": grand, "chokes": chokes, "daily": daily, "pol": pol, "faith": faith, "focus": focus, "syear": Names.start_year, "wroom": wroom, "indep": indep, "career": career, "moment_p": moment_pending, "moment_f": moment_flags, "infamy": infamy, "un_cd": un_cd, "un_log": un_log, "aid": aid,
+		"difficulty": difficulty, "blocs": blocs, "next_bloc": next_bloc_id, "cold": cold, "sea_camp": sea_campaign.keys(), "crisis": crisis, "crisis_end": crisis_last_end, "scn": scn, "era": Eras.current, "nuke_cd": nuke_cd, "grand": grand, "chokes": chokes, "daily": daily, "pol": pol, "faith": faith, "focus": focus, "syear": Names.start_year, "wroom": wroom, "indep": indep, "career": career, "moment_p": moment_pending, "moment_f": moment_flags, "infamy": infamy, "un_cd": un_cd, "un_log": un_log, "aid": aid, "vassals": vassals,
 	}
 	var ps: Array = []
 	for p in provinces:
@@ -3559,6 +3748,10 @@ func from_dict(d: Dictionary) -> bool:
 	infamy = float(d.get("infamy", 0.0))
 	un_cd = d.get("un_cd", {}).duplicate()
 	aid = d.get("aid", {"cd": {}, "good": {}}).duplicate(true)
+	vassals = {}
+	var vsv: Dictionary = d.get("vassals", {})
+	for k in vsv:
+		vassals[int(k)] = {"lord": int(vsv[k].lord), "since": int(vsv[k].since)}
 	un_log = d.get("un_log", []).duplicate(true)
 	un_pending = {}
 	turn = d.turn
