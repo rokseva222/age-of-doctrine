@@ -508,6 +508,8 @@ static func weekly(gs) -> void:
 		build_idx(gs)
 	if gs.turn % 26 == 1:
 		build_trade(gs)
+	if gs.turn % 52 == 26:
+		annual_growth(gs)
 	for c in gs.countries:
 		if not c.alive:
 			continue
@@ -544,6 +546,29 @@ static func weekly(gs) -> void:
 			ai_policy(gs, c)
 	_blockades(gs)
 	_war_ops(gs)
+
+
+## Yıllık büyüme: yoksul ülkeler daha hızlı büyür (yakınsama), savaştaki ülkeler durağanlaşır, istikrarsızlar yavaşlar.
+## Böylece yapay zekâ ülkeleri zamanla güçlenir/zayıflar; asker tabanı gelirle birlikte hafifçe artar.
+static func annual_growth(gs) -> void:
+	for c in gs.countries:
+		if not c.alive or c.is_rebel or c.owned_ids.is_empty():
+			continue
+		var pc: float = c.gdp / maxf(c.pop, 0.01)
+		var scale: float = 12000.0 if era_on else 60000.0
+		var catch_up: float = 1.0 - clampf(pc / scale, 0.0, 1.0)
+		var rate: float = 0.010 + 0.030 * catch_up + (c.stability - 50.0) / 100.0 * 0.010
+		if not c.enemies.is_empty():
+			rate *= 0.2
+		rate = clampf(rate, 0.0, 0.045)
+		if rate <= 0.0:
+			continue
+		for pid in c.owned_ids:
+			var p = gs.provinces[pid]
+			p.gdp *= 1.0 + rate
+		c.gdp *= 1.0 + rate
+		if c.base_troops > 0 and c.id != gs.player:
+			c.base_troops = int(c.base_troops * (1.0 + rate * 0.6))
 
 
 static func _trade(gs, c) -> void:

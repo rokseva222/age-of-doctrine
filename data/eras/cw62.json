@@ -1240,7 +1240,7 @@
   "Liechtenstein": {
    "name": "Doğu Almanya",
    "color": "b8584a",
-   "flag": "H:k,#dd0000,#ffce00",
+   "flag": "I:ddr|H:k,#dd0000,#ffce00",
    "leader": "Devlet Konseyi Başkanı|Walter Ulbricht",
    "gdp": 38,
    "mil": {

@@ -25,7 +25,17 @@ static func clear_cache() -> void:
 static func _texture_for(c):
 	if c.flag_spec != "" and not c.is_rebel:
 		return null
-	if c.is_rebel or (not era_specs.is_empty() and era_specs.has(c.name_en)):
+	if not c.is_rebel and not era_specs.is_empty() and era_specs.has(c.name_en):
+		# "I:ad|..." -> assets/flags/era_<ad>.png (kullanıcının getirdiği görsel); yoksa kalan katmanlar çizilir
+		var sp: String = str(era_specs[c.name_en])
+		if sp.begins_with("I:"):
+			var nm := sp.substr(2).split("|")[0]
+			var ep := "res://assets/flags/era_%s.png" % nm
+			if not _tex.has(ep):
+				_tex[ep] = load(ep) if ResourceLoader.exists(ep) else null
+			return _tex[ep]
+		return null
+	if c.is_rebel:
 		return null
 	var k: String = _key(c).to_lower()
 	if k.length() != 2:

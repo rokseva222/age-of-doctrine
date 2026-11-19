@@ -281,7 +281,7 @@ static func open_howto(parent: Node) -> void:
 			render.call())
 
 
-const UPDATE_VER := "1.2.7"
+const UPDATE_VER := "1.2.8"
 const WHATS_NEW := [
 	["Doğu Almanya", "Soğuk Savaş senaryolarında Almanya artık ikiye bölünmüş: Batı Almanya ve Varşova Paktı'nda Doğu Almanya (Doğu Berlin başkent)."],
 	["Nükleer platformlar", "Füze silosu, bombardıman uçağı ya da denizaltıyla nükleer saldırı: her platformun kaybı, riski ve bekleme süresi farklı."],
@@ -289,6 +289,7 @@ const WHATS_NEW := [
 	["Hikâye: maiyet ve tımar siyaseti", "Komutan, kâtip, casus ve hekimi maiyetine al; tımarını vergi, asker ya da kalkınma yönünde yönet."],
 	["Devlet başkanı portreleri", "İlişkiler ekranında devlet başkanı: dönemine ve bölgesine göre yeni yüzsüz siluetler."],
 	["Yeni ikonlar", "Gelir binaları, birlik sınıfları, krizler, nükleer platformlar, boğazlar ve Hikâye Modu için yeni ikonlar."],
+	["Ekonomik büyüme", "Ülkeler yılda bir büyür: yoksullar daha hızlı, savaştakiler yavaş. Yapay zekâ ülkelerinin orduları gelirle birlikte artar; dünya artık durağan değil."],
 	["Dengeler", "Türkiye daha güçlü; Avrupa'da isyanlar azaldı (bölge başına en çok 3 isyan)."],
 ]
 

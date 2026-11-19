@@ -36,6 +36,20 @@ func _init() -> void:
 	print("FRG alive=", g.alive, " name=", g.name, " provs=", cnt.get(gid, 0), " capital=", g.capital, " bloc=", g.bloc)
 	for c in main.gs.countries:
 		if c.name_en == "Switzerland": print("CH provs=", cnt.get(c.id, 0))
+	var Fl = load("res://scripts/flags.gd")
+	var cv := Control.new()
+	cv.size = Vector2(1280, 800)
+	cv.z_index = 100
+	main.add_child(cv)
+	cv.draw.connect(func():
+		cv.draw_rect(Rect2(0, 0, 1280, 800), Color(0.1, 0.1, 0.12))
+		Fl.draw(cv, Rect2(120, 150, 480, 300), d)
+		Fl.draw(cv, Rect2(680, 150, 480, 300), g)
+		Fl.draw(cv, Rect2(120, 520, 96, 60), d))
+	cv.queue_redraw()
+	await create_timer(0.5).timeout
+	await _shot(out + "/ddrflag.png")
+	cv.queue_free()
 	main.map.focus_country(gid)
 	await create_timer(1.0).timeout
 	await _shot(out + "/germany.png")
