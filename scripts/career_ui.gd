@@ -247,12 +247,17 @@ static func fill_panel(sh, gs, toast: Callable, reopen: Callable, focus: Callabl
 	tv.add_child(TK.t(st_txt, "small", TK.MUTED))
 	hr.add_child(tv)
 	var ch: Array = Career.CHAPTERS[clampi(int(s.chapter), 0, 4)]
-	hr.add_child(TK.stamp(String(ch[0]).split(":")[0], TK.GOLD))
+	hr.add_child(TK.stamp(Loc.t(String(ch[0]).split(":")[0]), TK.GOLD))
 	sh.body.add_child(hr)
 	sh.body.add_child(_bar("İtibar", float(s.renown), TK.GOLD))
 	if st == "vassal":
 		sh.body.add_child(_bar("Hükümdar gözü", float(s.favor), TK.GREEN))
 		sh.body.add_child(_bar("Sadakat", float(s.loyalty), TK.BLUE))
+	var comps: Array = s.get("companions", [])
+	var cl := ""
+	for cm in comps:
+		cl += ("   /   " if cl != "" else "") + "%s %s" % [Loc.t(Career.COMP_NAME[String(cm.role)]), String(cm.name)]
+	sh.body.add_child(TK.t(Loc.t("Maiyet: %s") % (cl if cl != "" else Loc.t("henüz kimse yok")), "small", TK.MUTED))
 	var mis: String = Career.mission_text(gs)
 	sh.body.add_child(TK.hsep())
 	if mis != "":
@@ -415,14 +420,14 @@ static func card_spec(gs, after: Callable, ui = null) -> Dictionary:
 		"mission":
 			var m: Dictionary = pend.m
 			return {"title": "Hükümdar emri: %s" % Loc.t(String(m.t)), "body": "%s, %s sana emir gönderdi:\n\n%s\n\nSüre: %d hafta. Başarı itibar ve gözde getirir; başarısızlık gözden düşürür." % [nm, sovn, String(m.text), int(m.until) - gs.turn],
-				"scene": scene(String(m.scene)), "icon": "scroll", "buttons": [{"text": "Emredersiniz", "cb": done, "kind": "good"}]}
+				"scene": scene(String(m.scene)), "icon": "st_decree", "buttons": [{"text": "Emredersiniz", "cb": done, "kind": "good"}]}
 		"mission_done":
 			var m2: Dictionary = pend.m
 			return {"title": "Görev tamamlandı", "body": "%s görevi başarıyla bitti. Saray memnun: itibar +%d, hükümdar gözü +%d, ödül hazineye yattı." % [Loc.t(String(m2.t)), int(m2.renown), int(m2.favor)],
 				"scene": scene("pre_tribute"), "icon": "medal", "buttons": [{"text": "Şanlı olsun", "cb": done, "kind": "good"}]}
 		"call_to_arms":
 			return {"title": "Savaşa çağrı", "body": "%s sefere çıkıyor ve bütün beylerini bayrak altına çağırıyor. Katılırsan hükümdarın düşmanları senin de düşmanın olur; katılmazsan sarayda hain diye anılırsın." % sovn,
-				"scene": scene("pre_mobilize"), "icon": "sword", "buttons": [
+				"scene": scene("pre_mobilize"), "icon": "st_standard", "buttons": [
 					{"text": "Bayrak altına koş", "cb": func(): Career.answer_call(gs, true); after.call(), "kind": "good"},
 					{"text": "Tımarımda kalırım", "cb": func(): Career.answer_call(gs, false); after.call(), "kind": "danger"}]}
 		"summons":
@@ -438,24 +443,24 @@ static func card_spec(gs, after: Callable, ui = null) -> Dictionary:
 					{"text": "Teslim ol", "cb": func(): Career.answer_arrest(gs, false); after.call(), "kind": ""}]}
 		"slander":
 			return {"title": "Sarayda dedikodu", "body": "%s hükümdarın kulağına fısıldıyor: '%s gizlice ordu topluyor.' Gözden düştün." % [String(pend.r), nm],
-				"scene": scene("pre_spy"), "icon": "spy", "buttons": [{"text": "Hesabını soracağım", "cb": done, "kind": ""}]}
+				"scene": scene("pre_spy"), "icon": "st_spy", "buttons": [{"text": "Hesabını soracağım", "cb": done, "kind": ""}]}
 		"oath":
 			var c = gs.countries[int(pend.cid)]
 			return {"title": "Yemin edildi", "body": "%s, %s hükümdarının önünde diz çöktü ve biat etti. Yeni sancaklar tımarında dalgalanıyor." % [nm, c.name],
 				"scene": scene("pre_oath"), "icon": "handshake", "buttons": [{"text": "Devam", "cb": done, "kind": "good"}]}
 		"rebel":
 			return {"title": "İsyan!", "body": "Ferman yakıldı, kızıl sancak kaldırıldı. %s artık bir asi: %s bütün ordusuyla geliyor. Tımar halkı silaha sarıldı." % [nm, sovn],
-				"scene": scene("pre_rebel"), "icon": "uprising_banner", "buttons": [{"text": "Ya devlet ya ölüm", "cb": done, "kind": "danger"}]}
+				"scene": scene("pre_rebel"), "icon": "st_rebel", "buttons": [{"text": "Ya devlet ya ölüm", "cb": done, "kind": "danger"}]}
 		"rebel_peace":
 			return {"title": "Barış", "body": "Eski hükümdar seninle barış yaptı. Artık Divan'dan devletini ilan edebilirsin.",
 				"scene": scene("pre_peace"), "icon": "dove", "buttons": [{"text": "Devletimi ilan et", "cb": func(): gs.career.state = "rebel"; Career.do_action(gs, "declare"); after.call(), "kind": "good"},
 					{"text": "Sonra", "cb": func(): gs.career["pending"] = {}; gs.career.state = "independent"; after.call(), "kind": ""}]}
 		"independent":
 			return {"title": "Yeni bir devlet", "body": "%s kuruldu. %s artık kimsenin vasalı değil. Bir yıl ayakta kal ve en az 6 eyalet tut: hanedanın tarihe geçsin." % [gs.countries[gs.player].name, nm],
-				"scene": scene("pre_oath"), "icon": "founding_scroll", "buttons": [{"text": "Devam", "cb": done, "kind": "good"}]}
+				"scene": scene("pre_oath"), "icon": "st_decree", "buttons": [{"text": "Devam", "cb": done, "kind": "good"}]}
 		"throne":
 			return {"title": "Tahta çıktın", "body": "%s, %s tahtına oturdu. Dün hizmet ettiğin saray bugün senin. Hikâye burada bitmiyor: artık bir imparatorluğu yönetiyorsun." % [nm, gs.countries[gs.player].name],
-				"scene": scene("pre_court"), "icon": "crown", "buttons": [{"text": "Uzun yaşa", "cb": done, "kind": "good"}]}
+				"scene": scene("pre_court"), "icon": "st_crown", "buttons": [{"text": "Uzun yaşa", "cb": done, "kind": "good"}]}
 		"card":
 			var c2: Dictionary = pend.card
 			var btns: Array = []

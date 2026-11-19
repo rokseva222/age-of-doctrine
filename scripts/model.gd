@@ -2,10 +2,10 @@ extends RefCounted
 ## Veri modeli: eyalet, ülke, ordu, savaş.
 
 const BLD := {
-	"farm": {"name": "Tarım çiftliği", "bonus": 0.25, "mult": 8.0, "icon": "wheat", "info": "Gelir +%25"},
-	"mine": {"name": "Maden ocağı", "bonus": 0.40, "mult": 12.0, "icon": "pickaxe", "info": "Gelir +%40"},
-	"oil": {"name": "Petrol tesisi", "bonus": 0.55, "mult": 16.0, "icon": "oil", "info": "Gelir +%55"},
-	"press": {"name": "Kağıt fabrikası ve matbaa", "bonus": 0.20, "mult": 7.0, "icon": "book", "info": "Gelir +%20, huzursuzluğu azaltır"},
+	"farm": {"name": "Tarım çiftliği", "bonus": 0.25, "mult": 8.0, "icon": "bld_farm", "info": "Gelir +%25"},
+	"mine": {"name": "Maden ocağı", "bonus": 0.40, "mult": 12.0, "icon": "bld_mine", "info": "Gelir +%40"},
+	"oil": {"name": "Petrol tesisi", "bonus": 0.55, "mult": 16.0, "icon": "bld_oil", "info": "Gelir +%55"},
+	"press": {"name": "Kağıt fabrikası ve matbaa", "bonus": 0.20, "mult": 7.0, "icon": "bld_press", "info": "Gelir +%20, huzursuzluğu azaltır"},
 }
 const BLD_WEEKS := 8
 

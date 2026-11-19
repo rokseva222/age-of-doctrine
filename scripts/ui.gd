@@ -29,6 +29,7 @@ const CareerUI = preload("res://scripts/career_ui.gd")
 const Career = preload("res://scripts/career.gd")
 const Independence = preload("res://scripts/independence.gd")
 const Icons = preload("res://scripts/icons.gd")
+const Sil = preload("res://scripts/silhouette.gd")
 const Chokepoints = preload("res://scripts/chokepoints.gd")
 const Daily = preload("res://scripts/daily.gd")
 const Politics = preload("res://scripts/politics.gd")
@@ -669,7 +670,7 @@ func show_province(pid: int, selected_army) -> void:
 			_abtn("Kimyasal saldırı" if gas_left <= 0 else "Kimyasal: %d hafta bekle" % gas_left, "danger", "gas", "gas", pid, gas_left <= 0)
 		if gs.player_has_nukes() and (gs.at_war(me, p.owner) or (p.controller >= 0 and gs.at_war(me, p.controller))):
 			var nuke_left: int = gs.nuke_cd - gs.turn
-			_abtn("Nükleer saldırı" if nuke_left <= 0 else "Nükleer: %d hafta bekle" % nuke_left, "danger", "nuke", "nuke", pid, nuke_left <= 0)
+			_abtn("Nükleer saldırı" if nuke_left <= 0 else "Nükleer: %d hafta bekle" % nuke_left, "danger", "nk_blast", "nuke", pid, nuke_left <= 0)
 		if gs.at_war(me, p.owner):
 			_abtn("Barış teklif et", "good", "handshake", "peace", p.owner)
 		elif not allied:
@@ -1117,6 +1118,16 @@ func show_relations(cid: int) -> void:
 	fl.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 	head.add_child(fl)
 	var ld: Array = Macro.leader_of(c)
+	if ld[1] != "":
+		var hp = Sil.new()
+		hp.style = Sil.style_for(c)
+		hp.culture = Sil.culture_for(c)
+		hp.seed_name = String(ld[1])
+		hp.role = "pm"
+		hp.tint = c.color
+		hp.custom_minimum_size = Vector2(66, 78)
+		hp.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+		head.add_child(hp)
 	var info := VBoxContainer.new()
 	info.add_theme_constant_override("separation", 0)
 	if ld[1] != "":
@@ -1331,8 +1342,15 @@ func show_chokes(only: String = "") -> void:
 		var mode: String = String(st.get("mode", "open"))
 		var head := HBoxContainer.new()
 		head.add_theme_constant_override("separation", 12)
+		var chi := TK.IconView.new()
+		chi.icon = Icons.pick("chk_" + id, "anchor")
+		chi.color = Color.WHITE
+		chi.custom_minimum_size = Vector2(52, 52)
+		chi.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+		head.add_child(chi)
 		var nm := TK.t(Chokepoints.name_of(id), "caps", TK.TEXT)
 		nm.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		nm.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 		head.add_child(nm)
 		var who: String = gs.countries[ctrl].name if ctrl >= 0 else Loc.t("Kimse")
 		head.add_child(TK.t(who, "body", TK.GOLD if ctrl == gs.player else TK.MUTED))

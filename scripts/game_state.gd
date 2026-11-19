@@ -430,7 +430,20 @@ func player_gas(pid: int) -> String:
 
 
 ## Nükleer saldırı: hedef eyaletteki ordu büyük ölçüde yok olur, ama küresel tepki ağır olur.
-func player_nuke(pid: int) -> String:
+## Nükleer platformlar: silo (füze, %80 kayıp, tam yaptırım), bomber (hava savunmasına takılabilir, %65), sub (denizaltı: kıyı eyaleti, gizli, %70, daha az yaptırım)
+func nuke_platforms(pid: int) -> Array:
+	var out: Array = ["silo"]
+	if player < 0:
+		return out
+	var me = countries[player]
+	if me.air_pow > 0.0:
+		out.append("bomber")
+	if me.naval_pow >= 1.0 and provinces[pid].coastal:
+		out.append("sub")
+	return out
+
+
+func player_nuke(pid: int, platform: String = "silo") -> String:
 	if not player_has_nukes():
 		return "Nükleer silahın yok."
 	if nuke_cd > turn:
@@ -440,24 +453,47 @@ func player_nuke(pid: int) -> String:
 	if tgt < 0 or not at_war(player, tgt):
 		return "Nükleer saldırı için hedefle savaşta olmalısın."
 	var me = countries[player]
+	if not nuke_platforms(pid).has(platform):
+		return "Bu platform kullanılamıyor."
+	var kill_f := 0.8
+	var inf_add := 40.0
+	var ally_p := 0.5
+	var cd_w := 26
+	if platform == "bomber":
+		# bombardıman uçağı: hedefin hava gücü yüksekse düşürülebilir
+		var foe = countries[tgt]
+		var ok_p: float = clampf(0.62 + (me.air_pow - foe.air_pow) / maxf(1.0, me.air_pow + foe.air_pow) * 0.5, 0.25, 0.92)
+		if rng.randf() > ok_p:
+			nuke_cd = turn + 8
+			post_news("Nükleer yüklü bombardıman uçağın %s üzerinde düşürüldü!" % p.name, pid, "war_player")
+			state_changed.emit()
+			return "Bombardıman uçağı düşürüldü; saldırı başarısız (%d hafta bekle)." % 8
+		kill_f = 0.65
+		inf_add = 30.0
+		cd_w = 18
+	elif platform == "sub":
+		kill_f = 0.7
+		inf_add = 25.0
+		ally_p = 0.25
+		cd_w = 22
 	var d = armies.get(pid)
 	var killed := 0
 	if d != null and d.owner != player:
-		killed = int(d.size * 0.8)
+		killed = int(d.size * kill_f)
 		d.size = maxi(1, d.size - killed)
 	p.defense = 0
 	p.bld = ""
 	p.bld_wip = ""
 	p.dev = maxi(0, p.dev - 2)
 	p.unrest = 12
-	p.pop *= 0.8
-	nuke_cd = turn + 26
+	p.pop *= (1.0 - 0.25 * kill_f)
+	nuke_cd = turn + cd_w
 	stats.nukes += 1
-	infamy = minf(100.0, infamy + 40.0)
+	infamy = minf(100.0, infamy + inf_add)
 	me.stability = clampf(me.stability - 10.0, 5.0, 100.0)
 	me.sanction_until = turn + 26
 	for al in countries[tgt].allies.duplicate():
-		if al != player and rng.randf() < 0.5:
+		if al != player and rng.randf() < ally_p:
 			declare_war(al, player, true)
 	for c in countries:
 		if c.alive and not c.is_rebel and c.id != player and not is_allied(c.id, player):
@@ -3538,6 +3574,11 @@ func _process_unrest() -> void:
 	for c in countries:
 		if c.alive and c.is_rebel:
 			rebels_active += 1
+	var reb_by_cont := {}          # kıta başına aktif isyan alanı: bir bölge aynı anda sadece birkaç isyan görsün
+	for p0 in provinces:
+		if p0.owner >= 0 and p0.controller >= 0 and p0.controller != p0.owner and countries[p0.controller].is_rebel:
+			var k0: String = String(countries[p0.owner].continent)
+			reb_by_cont[k0] = int(reb_by_cont.get(k0, 0)) + 1
 	for c in countries:
 		if not c.alive or c.is_rebel or c.prov_owned <= 18:
 			continue
@@ -3567,9 +3608,11 @@ func _process_unrest() -> void:
 				p.unrest += 1
 		else:
 			p.unrest = maxi(0, p.unrest - 1)
-		if p.unrest >= 12 and rebels_active < 8 and rng.randf() < (0.07 if p.owner == player else 0.14) * (1.45 - tr / 100.0):
+		var kc: String = String(oc.continent)
+		if p.unrest >= 12 and rebels_active < 6 and int(reb_by_cont.get(kc, 0)) < 3 and rng.randf() < (0.07 if p.owner == player else 0.09) * (1.45 - tr / 100.0):
 			if _spawn_rebels(p):
 				rebels_active += 1
+				reb_by_cont[kc] = int(reb_by_cont.get(kc, 0)) + 1
 
 
 func _spawn_rebels(p) -> bool:

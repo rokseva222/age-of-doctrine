@@ -281,17 +281,15 @@ static func open_howto(parent: Node) -> void:
 			render.call())
 
 
-const UPDATE_VER := "1.2.6"
+const UPDATE_VER := "1.2.7"
 const WHATS_NEW := [
-	["Kimyasal saldırı", "Savaştaki düşman eyaletine gaz saldırısı: ordunun ~%45'i erir, ama dünya tepkisi artar. Hava gücün olmalı (I. Dünya Savaşı'nda topçuyla)."],
-	["Denizaltı ablukası", "Denizaltı ve donanma üstünlüğü düşmanın deniz ticaretini keser, gelirini en fazla %12 düşürür. Envanter sekmesinde sınıf katkıları görünür."],
-	["Asimilasyon", "Fethettiğin eyaleti parayla hemen öz toprağına kat: huzursuzluk biter. Barışta da yapılabilir."],
-	["Sadık vasallar", "Vasal artık gelirinin %20'sini haraç öder ve sana asla isyan etmez ya da saldırmaz."],
-	["Dönem bakan portreleri", "Osmanlı, Avrupa, Asya, Afrika ve Amerika (1380/1520), Birinci ve İkinci Dünya Savaşı, Soğuk Savaş için bölgeye göre yeni bakan siluetleri: sarık, fes, bikorn, fötr, Mao ceketi…"],
-	["Yeni dünya renkleri", "Ülke renkleri artık yumuşak ve soylu: Rusya açık mavi, Ukrayna sarı, Türkiye kırmızı… komşular birbirinden ayrışır."],
-	["Dönemine uygun hikâye", "Osmanlı ve diğer eski çağlarda artık kravatlı bakanlar yok: kaftanlı, sarıklı vezirler; ulufe, veba, haraç gibi dönem olayları."],
-	["Barışta eyalet al", "İşgal etmediğin sınır eyaletlerini de savaş puanıyla alabilirsin; savaş puanı artık asker yenince hızla artar."],
-	["İnanç dönüştürme", "Halkı devlet inancına döndür: barışta da yapılabilir."],
+	["Doğu Almanya", "Soğuk Savaş senaryolarında Almanya artık ikiye bölünmüş: Batı Almanya ve Varşova Paktı'nda Doğu Almanya (Doğu Berlin başkent)."],
+	["Nükleer platformlar", "Füze silosu, bombardıman uçağı ya da denizaltıyla nükleer saldırı: her platformun kaybı, riski ve bekleme süresi farklı."],
+	["Haritada donanma", "Denizaltı ve uçak gemisi rozetleri artık haritada, kıyı eyaletlerinin yanında görünür."],
+	["Hikâye: maiyet ve tımar siyaseti", "Komutan, kâtip, casus ve hekimi maiyetine al; tımarını vergi, asker ya da kalkınma yönünde yönet."],
+	["Devlet başkanı portreleri", "İlişkiler ekranında devlet başkanı: dönemine ve bölgesine göre yeni yüzsüz siluetler."],
+	["Yeni ikonlar", "Gelir binaları, birlik sınıfları, krizler, nükleer platformlar, boğazlar ve Hikâye Modu için yeni ikonlar."],
+	["Dengeler", "Türkiye daha güçlü; Avrupa'da isyanlar azaldı (bölge başına en çok 3 isyan)."],
 ]
 
 

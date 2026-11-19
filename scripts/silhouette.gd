@@ -79,6 +79,11 @@ func _portrait_tex() -> Texture2D:
 	if culture == "":
 		return null
 	var fam: String = Eras.family() if Macro.era_on else ""
+	if role == "pm":
+		var hl: Array = PSets.head(fam, culture)
+		if not hl.is_empty():
+			return Icons._texture(hl[absi(hash(seed_name + role)) % hl.size()])[0]
+		return null
 	if fam != "" and not (fam == "cold" and female):
 		var k := "o" if role == "def" else ("h" if role == "hlt" else ("s" if role == "spy" else "m"))
 		var names: Array = PSets.pool(fam, culture, k)

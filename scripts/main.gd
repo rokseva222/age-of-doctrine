@@ -782,15 +782,20 @@ func _on_ui_action(act: String, arg) -> void:
 						_refresh_selection()}])
 		"nuke":
 			var np: int = int(arg)
-			ui.show_dialog("Nükleer saldırı", "%s eyaletine nükleer silah kullanılacak. Hedef ordusunun %%80'i yok olur, ama istikrarın düşer, 26 hafta yaptırım gelir ve hedefin müttefikleri sana savaş açabilir. Emin misin?" % gs.provinces[np].name, [
-				{"text": "Vazgeç", "cb": func(): pass, "kind": "ghost"},
-				{"text": "Saldır", "kind": "danger", "cb": func():
-					var er: String = gs.player_nuke(np)
-					if er != "":
-						ui.toast(er)
-					else:
-						sfx.play("drumroll", 0.9)
-						_refresh_selection()}])
+			var plats: Array = gs.nuke_platforms(np)
+			var nb: Array = [{"text": "Vazgeç", "cb": func(): pass, "kind": "ghost"}]
+			var fire := func(pl: String):
+				var er: String = gs.player_nuke(np, pl)
+				if er != "":
+					ui.toast(er)
+				else:
+					sfx.play("drumroll", 0.9)
+				_refresh_selection()
+			var pname := {"silo": "Füze silosu", "bomber": "Bombardıman", "sub": "Denizaltı"}
+			for pl in plats:
+				var pls: String = pl
+				nb.append({"text": pname[pls], "icon": "nk_" + pls, "kind": "danger", "cb": func(): fire.call(pls)})
+			ui.show_dialog("Nükleer saldırı", "%s eyaletine nükleer silah kullanılacak.\n\nFüze silosu: %%80 kayıp, kesin isabet.\nBombardıman: %%65 kayıp, hedefin hava gücü uçağı düşürebilir, bekleme kısa.\nDenizaltı: kıyı eyaleti, %%70 kayıp, gizli: yaptırım ve müttefik tepkisi daha az.\n\nİstikrarın düşer, 26 hafta yaptırım gelir ve hedefin müttefikleri sana savaş açabilir." % gs.provinces[np].name, nb)
 		"move_army":
 			if selected_army != null and selected_army.owner == gs.player:
 				var arm = selected_army

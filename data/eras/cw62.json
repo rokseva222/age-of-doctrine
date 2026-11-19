@@ -962,34 +962,42 @@
  },
  "split": [
   [
+   [
+    1829
+   ],
+   "Liechtenstein",
+   "Switzerland",
+   "own"
+  ],
+  [
    442,
    "Germany",
-   "Russia",
-   "occ"
+   "Liechtenstein",
+   "own"
   ],
   [
    "Brandenburg",
    "Germany",
-   "Russia",
-   "occ"
+   "Liechtenstein",
+   "own"
   ],
   [
    451,
    "Germany",
-   "Russia",
-   "occ"
+   "Liechtenstein",
+   "own"
   ],
   [
    455,
    "Germany",
-   "Russia",
-   "occ"
+   "Liechtenstein",
+   "own"
   ],
   [
    456,
    "Germany",
-   "Russia",
-   "occ"
+   "Liechtenstein",
+   "own"
   ],
   [
    32,
@@ -1002,12 +1010,20 @@
    "China",
    "United Kingdom",
    "own"
+  ],
+  [
+   457,
+   "Germany",
+   "Liechtenstein",
+   "own"
   ]
  ],
  "capital": {
   "Turkey": 423,
   "Russia": 257,
-  "Brazil": 184
+  "Brazil": 184,
+  "Germany": 448,
+  "Liechtenstein": 457
  },
  "defs": {
   "United States of America": {
@@ -1071,7 +1087,7 @@
    "name": "Batı Almanya",
    "color": "5d6068",
    "leader": "Şansölye|Konrad Adenauer",
-   "gdp": 350,
+   "gdp": 330,
    "mil": {
     "personnel": 400000,
     "tank": 2000,
@@ -1220,6 +1236,21 @@
     "air": 500,
     "sub": 8
    }
+  },
+  "Liechtenstein": {
+   "name": "Doğu Almanya",
+   "color": "b8584a",
+   "flag": "H:k,#dd0000,#ffce00",
+   "leader": "Devlet Konseyi Başkanı|Walter Ulbricht",
+   "gdp": 38,
+   "mil": {
+    "personnel": 120000,
+    "tank": 1500,
+    "afv": 1200,
+    "arty": 1000,
+    "air": 300,
+    "sub": 0
+   }
   }
  },
  "setup": {
@@ -1261,7 +1292,8 @@
      "Hungary",
      "Romania",
      "Bulgaria",
-     "Albania"
+     "Albania",
+     "Liechtenstein"
     ],
     "emblem": {
      "shape": 4,
@@ -1527,6 +1559,13 @@
      1969,
      6,
      "Cumhurbaşkanı|Georges Pompidou"
+    ]
+   ],
+   "Liechtenstein": [
+    [
+     1971,
+     5,
+     "Genel Sekreter|Erich Honecker"
     ]
    ]
   }

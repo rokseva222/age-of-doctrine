@@ -12,16 +12,16 @@ const MIN_STABILITY := 45.0     # oyuncunun istikrarı bunun altındaysa kriz ba
 
 # inc: gelir kaybı (şiddet 1.0'da), stab: haftalık istikrar kaybı, dur: [en az, en çok] hafta, eras: hangi dönemlerde ("" = modern)
 const KINDS := {
-	"pandemic": {"name": "Küresel Salgın", "icon": "virus", "inc": 0.08, "stab": 0.25, "dur": [10, 16], "eras": ["", "ww1", "ww2", "pre"], "role": "hlt",
+	"pandemic": {"name": "Küresel Salgın", "icon": "cr_plague", "inc": 0.08, "stab": 0.25, "dur": [10, 16], "eras": ["", "ww1", "ww2", "pre"], "role": "hlt",
 		"names": {"ww1": "İspanyol Gribi", "ww2": "Salgın Hastalık", "pre": "Veba Salgını"},
 		"q": "Efendim, ülkeye bir salgın giriyor ve tüm dünyada yayılıyor. Sağlık sistemi zorlanacak. Ne yapalım?"},
-	"crash": {"name": "Küresel Mali Çöküş", "icon": "debt", "inc": 0.09, "stab": 0.22, "dur": [12, 18], "eras": ["", "ww1", "ww2"], "role": "fin",
+	"crash": {"name": "Küresel Mali Çöküş", "icon": "cr_crash", "inc": 0.09, "stab": 0.22, "dur": [12, 18], "eras": ["", "ww1", "ww2"], "role": "fin",
 		"names": {"ww1": "Mali Panik", "ww2": "Büyük Buhran Artçısı"},
 		"q": "Efendim, borsalar çöküyor ve bankalar sallanıyor. Kriz tüm dünyayı sarıyor. Hazine ne yapsın?"},
-	"famine": {"name": "Kıtlık ve Gıda Krizi", "icon": "wheat", "inc": 0.06, "stab": 0.30, "dur": [10, 15], "eras": ["", "ww1", "ww2", "pre"], "role": "int",
+	"famine": {"name": "Kıtlık ve Gıda Krizi", "icon": "cr_famine", "inc": 0.06, "stab": 0.30, "dur": [10, 15], "eras": ["", "ww1", "ww2", "pre"], "role": "int",
 		"names": {},
 		"q": "Efendim, kuraklık ve nakliye sorunları gıda fiyatlarını uçurdu. Halk ekmek kuyruğunda. Ne yapalım?"},
-	"energy": {"name": "Enerji Şoku", "icon": "oil", "inc": 0.07, "stab": 0.18, "dur": [10, 14], "eras": ["", "ww2"], "role": "fin",
+	"energy": {"name": "Enerji Şoku", "icon": "bld_oil", "inc": 0.07, "stab": 0.18, "dur": [10, 14], "eras": ["", "ww2"], "role": "fin",
 		"names": {"ww2": "Yakıt Kıtlığı"},
 		"q": "Efendim, petrol fiyatları fırladı; sanayi ve ulaşım zorlanıyor. Ne yapalım?"},
 }

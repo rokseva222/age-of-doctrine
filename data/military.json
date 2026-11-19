@@ -98,12 +98,12 @@
    "sub": 8
   },
   "Turkey": {
-   "personnel": 425000,
-   "tank": 2203,
-   "afv": 9323,
-   "arty": 1356,
-   "air": 1408,
-   "sub": 12
+   "personnel": 600000,
+   "tank": 2800,
+   "afv": 10500,
+   "arty": 2400,
+   "air": 1700,
+   "sub": 14
   },
   "Indonesia": {
    "personnel": 400000,

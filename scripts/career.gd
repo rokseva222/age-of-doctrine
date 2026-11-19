@@ -390,22 +390,61 @@ static func actions(gs) -> Array:
 	var out: Array = []
 	var inc: float = maxf(mc.income, 1.0)
 	if st == "vassal":
-		out.append({"id": "gift", "t": "Hediye gönder", "d": "Hazineden %s: hükümdarın gözünde yüksel." % Macro.money(inc * 3.0), "icon": "gift", "scene": "pre_tribute", "cd": cd_left(gs, "gift"), "ok": mc.gold >= inc * 3.0})
-		out.append({"id": "ask_fief", "t": "Tımar iste", "d": "Huzura çık, komşu bir eyalet iste (itibar ve hükümdar gözü gerekir).", "icon": "castle", "scene": "pre_court", "cd": cd_left(gs, "ask_fief"), "ok": float(gs.career.favor) >= 35.0 and float(gs.career.renown) >= 20.0})
+		out.append({"id": "gift", "t": "Hediye gönder", "d": "Hazineden %s: hükümdarın gözünde yüksel." % Macro.money(inc * 3.0), "icon": "st_caravan", "scene": "pre_tribute", "cd": cd_left(gs, "gift"), "ok": mc.gold >= inc * 3.0})
+		out.append({"id": "ask_fief", "t": "Tımar iste", "d": "Huzura çık, komşu bir eyalet iste (itibar ve hükümdar gözü gerekir).", "icon": "st_fort", "scene": "pre_court", "cd": cd_left(gs, "ask_fief"), "ok": float(gs.career.favor) >= 35.0 and float(gs.career.renown) >= 20.0})
 		out.append({"id": "ask_gold", "t": "Hazineden yardım iste", "d": "Hükümdar gözünden harcayıp altın al.", "icon": "coins", "scene": "pre_court", "cd": cd_left(gs, "ask_gold"), "ok": float(gs.career.favor) >= 15.0})
-		out.append({"id": "feast", "t": "Ziyafet ver", "d": "Beylere ziyafet: itibar artar, hazine azalır.", "icon": "b_bazaar", "scene": "pre_camp", "cd": cd_left(gs, "feast"), "ok": mc.gold >= inc * 2.0})
-		out.append({"id": "intrigue", "t": "Entrika", "d": "Rakip bir beyi sarayda karala. Yakalanırsan bedeli ağır.", "icon": "spy", "scene": "pre_spy", "cd": cd_left(gs, "intrigue"), "ok": true})
+		out.append({"id": "feast", "t": "Ziyafet ver", "d": "Beylere ziyafet: itibar artar, hazine azalır.", "icon": "st_divan", "scene": "pre_camp", "cd": cd_left(gs, "feast"), "ok": mc.gold >= inc * 2.0})
+		out.append({"id": "intrigue", "t": "Entrika", "d": "Rakip bir beyi sarayda karala. Yakalanırsan bedeli ağır.", "icon": "st_spy", "scene": "pre_spy", "cd": cd_left(gs, "intrigue"), "ok": true})
 		out.append({"id": "tribute_toggle", "t": ("Haracı kes" if bool(gs.career.tribute) else "Haracı yeniden öde"), "d": "Haraç gelirinin %%%d'i. Kesersen sadakat her hafta erir." % int(TRIBUTE_RATE * 100), "icon": "debt", "scene": "pre_tribute", "cd": 0, "ok": true})
 		out.append({"id": "oath", "t": "Başka hükümdara yemin et", "d": "Komşu bir devlete bağlan; eski hükümdar bunu ihanet sayar.", "icon": "handshake", "scene": "pre_oath", "cd": cd_left(gs, "oath"), "ok": _oath_targets(gs).size() > 0})
-		out.append({"id": "ask_indep", "t": "Devlet kurma talebi", "d": "Barışçıl ayrılık: çok yüksek itibar ve hükümdar gözü gerekir.", "icon": "founding_scroll", "scene": "pre_court", "cd": cd_left(gs, "ask_indep"), "ok": float(gs.career.renown) >= 70.0 and float(gs.career.favor) >= 60.0})
-		out.append({"id": "rebel", "t": "İsyan bayrağı aç", "d": "Hükümdara savaş ilan et. Geri dönüş yok.", "icon": "uprising_banner", "scene": "pre_rebel", "cd": 0, "ok": mc.troops >= 3000})
+		out.append({"id": "ask_indep", "t": "Devlet kurma talebi", "d": "Barışçıl ayrılık: çok yüksek itibar ve hükümdar gözü gerekir.", "icon": "st_decree", "scene": "pre_court", "cd": cd_left(gs, "ask_indep"), "ok": float(gs.career.renown) >= 70.0 and float(gs.career.favor) >= 60.0})
+		out.append({"id": "rebel", "t": "İsyan bayrağı aç", "d": "Hükümdara savaş ilan et. Geri dönüş yok.", "icon": "st_rebel", "scene": "pre_rebel", "cd": 0, "ok": mc.troops >= 3000})
 	elif st == "rebel":
 		out.append({"id": "oath", "t": "Bir hükümdarın himayesine gir", "d": "Komşu bir devlete biat et: o seni korur, eski hükümdar barışa zorlanır.", "icon": "handshake", "scene": "pre_oath", "cd": cd_left(gs, "oath"), "ok": _oath_targets(gs).size() > 0})
-		out.append({"id": "declare", "t": "Devletini ilan et", "d": "İsyanı bitir, bağımsız bir devlet ol: hükümdarla barış şartı.", "icon": "founding_scroll", "scene": "pre_oath", "cd": 0, "ok": sov(gs) != null and not gs.at_war(mc.id, int(gs.career.host))})
-		out.append({"id": "throne", "t": "Tahta çık", "d": "Hükümdarın başkentini ele geçirdiysen tahtı sen alırsın.", "icon": "crown", "scene": "pre_court", "cd": 0, "ok": _holds_capital(gs)})
+		out.append({"id": "declare", "t": "Devletini ilan et", "d": "İsyanı bitir, bağımsız bir devlet ol: hükümdarla barış şartı.", "icon": "st_decree", "scene": "pre_oath", "cd": 0, "ok": sov(gs) != null and not gs.at_war(mc.id, int(gs.career.host))})
+		out.append({"id": "throne", "t": "Tahta çık", "d": "Hükümdarın başkentini ele geçirdiysen tahtı sen alırsın.", "icon": "st_crown", "scene": "pre_court", "cd": 0, "ok": _holds_capital(gs)})
 	elif st == "independent":
 		out.append({"id": "oath", "t": "Bir hükümdara yemin et", "d": "Devletini bir büyük gücün himayesine ver.", "icon": "handshake", "scene": "pre_oath", "cd": cd_left(gs, "oath"), "ok": _oath_targets(gs).size() > 0})
+	# tımar siyaseti ve maiyet: her aşamada
+	var pol: String = String(gs.career.get("policy", "balanced"))
+	out.append({"id": "policy", "t": Loc.t("Tımar siyaseti: %s") % Loc.t(POLICY_NAME[pol]), "d": POLICY_DESC[pol], "icon": "st_divan", "scene": "pre_court", "cd": cd_left(gs, "policy"), "ok": true})
+	var comps: Array = gs.career.get("companions", [])
+	if comps.size() < 4:
+		for role in COMP_ROLES:
+			if _has_comp(gs, role):
+				continue
+			out.append({"id": "hire_" + role, "t": Loc.t("Maiyete al: %s") % Loc.t(COMP_NAME[role]), "d": Loc.t("%s  (bedel: %s)") % [Loc.t(COMP_DESC[role]), Macro.money(inc * 3.0)], "icon": COMP_ICON[role], "scene": "pre_camp", "cd": 0, "ok": mc.gold >= inc * 3.0})
 	return out
+
+
+const POLICY_ORDER := ["balanced", "tax", "army", "dev"]
+const POLICY_NAME := {"balanced": "Dengeli", "tax": "Vergi", "army": "Asker", "dev": "Kalkınma"}
+const POLICY_DESC := {
+	"balanced": "Ne ağır vergi ne zorlama: düzen korunur.",
+	"tax": "Hazineye haftalık %25 ek gelir; halk huzursuzlaşır (istikrar düşer).",
+	"army": "Maiyet tabanı %30 büyür ve savaşta daha sert vurur; hazine haftada %15 eksilir.",
+	"dev": "Hazine haftada %20 eksilir; istikrar yükselir, tımar zamanla gelişir.",
+}
+const COMP_ROLES := ["komutan", "katip", "casus", "hekim"]
+const COMP_NAME := {"komutan": "Komutan", "katip": "Kâtip", "casus": "Casus", "hekim": "Hekim"}
+const COMP_ICON := {"komutan": "st_standard", "katip": "st_scribe", "casus": "st_spy", "hekim": "st_hekim"}
+const COMP_DESC := {
+	"komutan": "Savaşta ordun %5 daha güçlü vurur, maiyet büyür.",
+	"katip": "Hazineye haftalık %4 ek gelir.",
+	"casus": "Hükümdar gözü yavaşça yükselir; entrikalarda yakalanma riski azalır.",
+	"hekim": "İstikrar yavaşça yükselir.",
+}
+
+
+static func _has_comp(gs, role: String) -> bool:
+	for c in gs.career.get("companions", []):
+		if String(c.role) == role:
+			return true
+	return false
+
+
+static func comp_count(gs, role: String) -> int:
+	return 1 if _has_comp(gs, role) else 0
 
 
 static func _holds_capital(gs) -> bool:
@@ -510,6 +549,26 @@ static func do_action(gs, id: String, arg: int = -1) -> String:
 				return Loc.t("Başkent elinde değil.")
 			take_throne(gs)
 			return ""
+		"policy":
+			var cur: int = POLICY_ORDER.find(String(gs.career.get("policy", "balanced")))
+			var nxt: String = POLICY_ORDER[(cur + 1) % POLICY_ORDER.size()]
+			gs.career["policy"] = nxt
+			gs.career.cd["policy"] = gs.turn + 4
+			_log(gs, "Tımar siyaseti: %s." % POLICY_NAME[nxt])
+			return ""
+	if id.begins_with("hire_"):
+		var role: String = id.substr(5)
+		if not COMP_ROLES.has(role) or _has_comp(gs, role):
+			return Loc.t("Bilinmeyen eylem.")
+		if mc.gold < inc * 3.0:
+			return Loc.t("Hazine yetersiz.")
+		mc.gold -= inc * 3.0
+		var cname: String = NameGen.person(NameGen.culture_of(gs.countries[int(gs.career.host)]), "comp|%s|%d" % [role, gs.rng.randi()], false)
+		var lst: Array = gs.career.get("companions", [])
+		lst.append({"role": role, "name": cname, "week": gs.turn})
+		gs.career["companions"] = lst
+		_log(gs, "%s maiyete katıldı: %s." % [COMP_NAME[role], cname])
+		return ""
 	return Loc.t("Bilinmeyen eylem.")
 
 
@@ -667,8 +726,13 @@ static func tick(gs) -> void:
 		return
 	var st := state(gs)
 	var hc = sov(gs)
+	_policy_tick(gs, mc)
 	# maiyet: tımar halkı maiyeti tabanın altına düşürmez (rütbeyle taban büyür)
 	var floor_: int = int(float(gs.career.get("retinue", 4000)) * (1.0 + 0.2 * float(gs.career.rank)) * (1.0 + 0.25 * float(mc.owned_ids.size() - 1)))
+	if String(gs.career.get("policy", "balanced")) == "army":
+		floor_ = int(floor_ * 1.3)
+	if _has_comp(gs, "komutan"):
+		floor_ = int(floor_ * 1.1)
 	if mc.troops < floor_:
 		gs.place_recruits(mc, mini(floor_ - mc.troops, maxi(150, int(floor_ * 0.04))))
 		gs.refresh_stats()
@@ -735,6 +799,29 @@ static func tick(gs) -> void:
 	if caps > last:
 		add(gs, "renown", 2.5 * (caps - last))
 	gs.career.flags["caps"] = caps
+
+
+static func _policy_tick(gs, mc) -> void:
+	var inc: float = maxf(mc.income, 0.0)
+	match String(gs.career.get("policy", "balanced")):
+		"tax":
+			mc.gold += inc * 0.25
+			mc.stability = maxf(15.0, mc.stability - 0.35)
+		"army":
+			mc.gold = maxf(0.0, mc.gold - inc * 0.15)
+		"dev":
+			mc.gold = maxf(0.0, mc.gold - inc * 0.20)
+			mc.stability = minf(100.0, mc.stability + 0.3)
+			if (gs.turn - int(gs.career.get("start_turn", 0))) % 26 == 25:
+				for pid in mc.owned_ids:
+					var p = gs.provinces[pid]
+					p.dev = mini(p.dev + 1, 5)
+	if _has_comp(gs, "katip"):
+		mc.gold += inc * 0.04
+	if _has_comp(gs, "hekim"):
+		mc.stability = minf(100.0, mc.stability + 0.12)
+	if _has_comp(gs, "casus") and state(gs) == "vassal":
+		add(gs, "favor", 0.12)
 
 
 static func _rival_tick(gs) -> void:
@@ -981,5 +1068,5 @@ static func war_mod(gs, att, def) -> float:
 	if not active(gs):
 		return 1.0
 	if att.id == gs.player:
-		return 1.0 + float(gs.career.get("att", 0.0)) + float(gs.career.rank) * 0.03
+		return 1.0 + float(gs.career.get("att", 0.0)) + float(gs.career.rank) * 0.03 + (0.05 if _has_comp(gs, "komutan") else 0.0) + (0.04 if String(gs.career.get("policy", "balanced")) == "army" else 0.0)
 	return 1.0

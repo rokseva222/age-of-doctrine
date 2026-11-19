@@ -132,6 +132,7 @@ func _draw() -> void:
 	# --- ordular
 	if show_armies:
 		_draw_armies(gs, z, screen, font_b)
+		_draw_fleets(gs, z, screen)
 
 	# --- fetih nabızları
 	for pl in map.pulses:
@@ -483,6 +484,48 @@ func _draw_one_path(gs, a, route: Array) -> void:
 	var d := (last - prev).normalized()
 	var n := Vector2(-d.y, d.x)
 	draw_colored_polygon(PackedVector2Array([last + d * 4, last - d * 12 + n * 8, last - d * 12 - n * 8]), col)
+
+
+var _fleet_pid: Dictionary = {}
+
+
+## Donanma/denizaltı rozetleri: kıyı eyaletinin yanında, oyuncu + savaştakiler + müttefikler (z>=7: herkes)
+func _draw_fleets(gs, z: float, screen: Rect2) -> void:
+	if z < 1.6:
+		return
+	var me: int = gs.player
+	var sc := clampf(z / 2.6, 0.72, 1.0)
+	for c in gs.countries:
+		if not c.alive or c.is_rebel or c.naval_pow < 1.0 or c.owned_ids.is_empty():
+			continue
+		var show: bool = c.id == me or z >= 7.0 or (me >= 0 and (gs.at_war(me, c.id) or gs.is_allied(me, c.id)))
+		if not show:
+			continue
+		var pid: int = int(_fleet_pid.get(c.id, -1))
+		if pid < 0 or gs.provinces[pid].owner != c.id:
+			pid = -1
+			if c.capital >= 0 and gs.provinces[c.capital].coastal and gs.provinces[c.capital].owner == c.id:
+				pid = c.capital
+			else:
+				for q in c.owned_ids:
+					if gs.provinces[q].coastal:
+						pid = q
+						break
+			_fleet_pid[c.id] = pid
+		if pid < 0:
+			continue
+		var sp: Vector2 = map.world_to_screen(gs.provinces[pid].label_pos) + Vector2(-14.0 * sc, 34.0 * sc)
+		
+		if not screen.has_point(sp):
+			continue
+		var hostile: bool = me >= 0 and c.id != me and gs.at_war(me, c.id)
+		var rad := 15.0 * sc
+		draw_circle(sp, rad + 2.0, TK.PAPER if c.id == me else (TK.RED if hostile else c.color.lightened(0.1)))
+		var tex_name := "uc_carrier" if c.carriers > 0 and c.naval_pow < 3.0 else "uc_sub"
+		Icons.draw(self, tex_name, Rect2(sp - Vector2(rad, rad), Vector2(rad * 2.0, rad * 2.0)), Color.WHITE)
+		if z >= 2.6:
+			var f2: Font = TK.mono(true, 0)
+			draw_string(f2, sp + Vector2(rad + 3.0, 5.0), str(int(c.naval_pow)), HORIZONTAL_ALIGNMENT_LEFT, -1, int(round(13.0 * sc)), Color.WHITE)
 
 
 func _draw_armies(gs, z: float, screen: Rect2, font: Font) -> void:

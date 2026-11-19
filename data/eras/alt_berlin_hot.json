@@ -77,7 +77,8 @@
      "Hungary",
      "Romania",
      "Bulgaria",
-     "Albania"
+     "Albania",
+     "Liechtenstein"
     ],
     "emblem": {
      "shape": 4,
@@ -96,6 +97,10 @@
    ],
    [
     "Poland",
+    "Germany"
+   ],
+   [
+    "Liechtenstein",
     "Germany"
    ]
   ],

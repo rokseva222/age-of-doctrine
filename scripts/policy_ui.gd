@@ -444,14 +444,26 @@ func _tab_inventory() -> void:
 		["Deniz gücü", Macro.num(c.naval_pow)],
 	]))
 	var rt: Dictionary = c.ratios
-	content.add_child(_stat_row([
-		["Piyade", "%d%%" % int(100.0 * float(rt.get("inf", 0.0)))],
-		["Tank", "%d%%" % int(100.0 * float(rt.get("tank", 0.0)))],
-		["Zırhlı", "%d%%" % int(100.0 * float(rt.get("afv", 0.0)))],
-		["Topçu", "%d%%" % int(100.0 * float(rt.get("arty", 0.0)))],
-		["Hava", "%d%%" % int(100.0 * float(rt.get("air", 0.0)))],
-		["Denizaltı", "%d%%" % int(100.0 * float(rt.get("sub", 0.0)))],
-	]))
+	var crow := HBoxContainer.new()
+	crow.add_theme_constant_override("separation", 6)
+	for pr in [["Piyade", "inf", "uc_inf"], ["Tank", "tank", "uc_tank"], ["Zırhlı", "afv", "uc_afv"], ["Topçu", "arty", "uc_arty"], ["Hava", "air", "uc_jet"], ["Denizaltı", "sub", "uc_sub"]]:
+		var cell := VBoxContainer.new()
+		cell.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		cell.add_theme_constant_override("separation", 2)
+		var iv := TK.IconView.new()
+		iv.icon = Icons.pick(String(pr[2]), "shield")
+		iv.color = Color.WHITE
+		iv.custom_minimum_size = Vector2(48, 48)
+		iv.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
+		cell.add_child(iv)
+		var pt := TK.t("%d%%" % int(100.0 * float(rt.get(String(pr[1]), 0.0))), "bodyb", TK.GOLD)
+		pt.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		cell.add_child(pt)
+		var pn := TK.t(String(pr[0]), "small", TK.MUTED)
+		pn.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		cell.add_child(pn)
+		crow.add_child(cell)
+	content.add_child(crow)
 	content.add_child(_wrap("Her sınıfın savaşa katkısı farklıdır. Piyade sayıyı ve kalıcılığı belirler; tank %45, zırhlı araç %30, topçu %25 oranında kara donanımına (savaş çarpanı) katılır. Hava gücü hava üstünlüğüyle her çarpışmayı ±%22 etkiler ve kimyasal saldırıyı açar. Denizaltı ve donanma çıkarma kapasitesini artırır, düşman deniz ticaretini ablukaya alıp gelirini en fazla %12 düşürür. Nükleer silah ayrı bir stratejik hamledir.", "body", TK.MUTED))
 	_carrier_row(c)
 	content.add_child(_wrap("Hedef asker sayısı, savunma bütçesi ve savaş durumuna göre belirlenir; fark kendiliğinden askere alınır ve cephelere dağıtılır.", "small", TK.FAINT))

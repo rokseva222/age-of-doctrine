@@ -65,3 +65,45 @@ static func _pick_set(fam: String, c: String) -> Dictionary:
 				return {"m": _r("cw", [1, 5]), "o": _r("cw", [3]), "h": [], "s": []}
 			return {"m": _r("cw", [1]), "o": _r("cw", [3]), "h": [], "s": []}
 	return {}
+
+
+## Devlet başkanı büstleri (yüzsüz sticker): fam "" = modern. Boş dönerse çağıran kod çizimine döner.
+static func head(fam: String, c: String) -> Array:
+	var islam := c in ["turk", "lev", "gulf", "pers"]
+	match fam:
+		"pre":
+			if islam: return _r("hs_isl", [1, 2, 3, 4, 6])
+			return _hs("hs_eu", "hs_ea", "hs_af", c)
+		"ww1":
+			if islam: return _r("hs_ww", [3])
+			if c == "easia": return _r("hs_ww", [4])
+			if c == "slav": return _r("hs_ww", [1, 5])
+			return _r("hs_ww", [6, 3, 1])
+		"ww2":
+			if c == "easia": return _r("hs_ww", [4, 3])
+			if c == "slav": return _r("hs_ww", [5, 3])
+			if c in ["west", "latam"]: return _r("hs_ww", [2, 3])
+			return _r("hs_ww", [3, 2])
+		"cold":
+			if c == "slav": return _r("hs_cw", [5, 1])
+			if c in ["west", "latam"]: return _r("hs_cw", [1])
+			if c in ["easia", "seasia"]: return _r("hs_cw", [2])
+			if islam: return _r("hs_cw", [4])
+			if c == "afr": return _r("hs_cw", [6, 3])
+			return _r("hs_cw", [3, 1])
+		"":
+			if c in ["gulf", "lev", "pers"]: return _r("hs_md", [2])
+			if c == "easia": return _r("hs_md", [3])
+			if c == "afr": return _r("hs_md", [4])
+			if c == "latam": return _r("hs_md", [5])
+			if c in ["sasia", "seasia"]: return _r("hs_md", [6])
+			return _r("hs_md", [1])
+	return []
+
+
+static func _hs(eu: String, ea: String, af: String, c: String) -> Array:
+	if c in ["west", "slav"]: return _r(eu, [1, 2, 3, 5, 6])
+	if c == "easia": return _r(ea, [1, 2, 3, 4, 5, 6])
+	if c == "sasia": return _r(af, [3, 5])
+	if c == "afr": return _r(af, [1, 4, 6])
+	return _r(af, [2, 6, 1])

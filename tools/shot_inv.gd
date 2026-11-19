@@ -8,11 +8,11 @@ func _init() -> void:
 	get_root().add_child(main)
 	await create_timer(3.8).timeout
 	load("res://scripts/settings.gd").seen_howto = true
-	load("res://scripts/settings.gd").seen_update = "1.2.6"
+	load("res://scripts/settings.gd").seen_update = "1.2.7"
 	main.menu.finish_splash()
 	await create_timer(1.0).timeout
 	load("res://scripts/settings.gd").seen_howto = true
-	load("res://scripts/settings.gd").seen_update = "1.2.6"
+	load("res://scripts/settings.gd").seen_update = "1.2.7"
 	main._to_select()
 	await create_timer(1.0).timeout
 	var cid: int = main.gs.macro_idx.get("Turkey", 0)
