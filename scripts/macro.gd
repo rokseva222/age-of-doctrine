@@ -455,6 +455,7 @@ static func calc(gs, c) -> Dictionary:
 	rev *= Chokepoints.income_mult(c)
 	rev *= Politics.income_mult(gs, c)
 	rev *= Propaganda.income_mult(c)
+	rev *= blockade_mult(gs, c)
 	if c.id == gs.player:
 		rev *= Focus.income_mult(gs)
 	if c.id != gs.player:
@@ -478,6 +479,19 @@ static func calc(gs, c) -> Dictionary:
 	var short: float = need
 	return {"rev": rev, "wages": wages, "upkeep": upkeep, "pots": pots, "forced": forced,
 		"fund_in": fund_in, "short": short, "covered": covered, "net": pots["res"] - short, "trade": c.trade_income}
+
+
+## Denizaltı ablukası: düşman donanması/denizaltısı senden güçlüyse deniz ticaretin ve gelirin düşer (en fazla %12).
+static func blockade_mult(gs, c) -> float:
+	var worst := 0.0
+	for e in c.enemies:
+		var o = gs.countries[e]
+		if not o.alive or o.is_rebel or o.naval_pow <= c.naval_pow:
+			continue
+		var share: float = (o.naval_pow - c.naval_pow) / (o.naval_pow + c.naval_pow + 1.0)
+		var st: float = minf(1.0, float(o.ratios.get("sub", 0.0)))
+		worst = maxf(worst, share * st)
+	return 1.0 - 0.12 * worst
 
 
 static func net_income(gs, c) -> float:

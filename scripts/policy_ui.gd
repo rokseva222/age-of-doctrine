@@ -443,6 +443,16 @@ func _tab_inventory() -> void:
 		["Hava gücü", Macro.num(c.air_pow)],
 		["Deniz gücü", Macro.num(c.naval_pow)],
 	]))
+	var rt: Dictionary = c.ratios
+	content.add_child(_stat_row([
+		["Piyade", "%d%%" % int(100.0 * float(rt.get("inf", 0.0)))],
+		["Tank", "%d%%" % int(100.0 * float(rt.get("tank", 0.0)))],
+		["Zırhlı", "%d%%" % int(100.0 * float(rt.get("afv", 0.0)))],
+		["Topçu", "%d%%" % int(100.0 * float(rt.get("arty", 0.0)))],
+		["Hava", "%d%%" % int(100.0 * float(rt.get("air", 0.0)))],
+		["Denizaltı", "%d%%" % int(100.0 * float(rt.get("sub", 0.0)))],
+	]))
+	content.add_child(_wrap("Her sınıfın savaşa katkısı farklıdır. Piyade sayıyı ve kalıcılığı belirler; tank %45, zırhlı araç %30, topçu %25 oranında kara donanımına (savaş çarpanı) katılır. Hava gücü hava üstünlüğüyle her çarpışmayı ±%22 etkiler ve kimyasal saldırıyı açar. Denizaltı ve donanma çıkarma kapasitesini artırır, düşman deniz ticaretini ablukaya alıp gelirini en fazla %12 düşürür. Nükleer silah ayrı bir stratejik hamledir.", "body", TK.MUTED))
 	_carrier_row(c)
 	content.add_child(_wrap("Hedef asker sayısı, savunma bütçesi ve savaş durumuna göre belirlenir; fark kendiliğinden askere alınır ve cephelere dağıtılır.", "small", TK.FAINT))
 	Macro._now = gs.turn

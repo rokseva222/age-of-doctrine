@@ -664,6 +664,9 @@ func show_province(pid: int, selected_army) -> void:
 		if Carriers.count(gs.countries[me]) > 0 and p.coastal and (gs.at_war(me, p.owner) or (p.controller >= 0 and gs.at_war(me, p.controller))):
 			var car_left: int = gs.countries[me].carrier_cd - gs.turn
 			_abtn("Uçak gemisi saldırısı" if car_left <= 0 else "Uçak gemisi: %d hafta bekle" % car_left, "danger", Icons.pick("carrier_strike", "ship"), "carrier", pid, car_left <= 0)
+		if gs.player_has_gas() and (gs.at_war(me, p.owner) or (p.controller >= 0 and gs.at_war(me, p.controller))):
+			var gas_left: int = gs.gas_cd - gs.turn
+			_abtn("Kimyasal saldırı" if gas_left <= 0 else "Kimyasal: %d hafta bekle" % gas_left, "danger", "gas", "gas", pid, gas_left <= 0)
 		if gs.player_has_nukes() and (gs.at_war(me, p.owner) or (p.controller >= 0 and gs.at_war(me, p.controller))):
 			var nuke_left: int = gs.nuke_cd - gs.turn
 			_abtn("Nükleer saldırı" if nuke_left <= 0 else "Nükleer: %d hafta bekle" % nuke_left, "danger", "nuke", "nuke", pid, nuke_left <= 0)
@@ -704,6 +707,8 @@ func show_province(pid: int, selected_army) -> void:
 			_abtn("Bina kur (gelir)", "gold", Icons.pick("build", "coins"), "build", pid)
 	if p.owner == me and p.controller == me and Faith.of(gs, pid) != Faith.state_faith(gs, me):
 		_abtn("İnancı değiştir (%s)" % Macro.money(gs.faith_convert_cost(pid)), "", "book", "convert_faith", pid)
+	if p.owner == me and p.controller == me and p.core != me:
+		_abtn("Asimile et (%s)" % Macro.money(gs.assimilate_cost(pid)), "", "users", "assimilate", pid)
 	if p.owner == me and not Formables.available(gs).is_empty():
 		_abtn("Ülke formla", "gold", "flag", "form", 0)
 	if army != null and army.owner == me:

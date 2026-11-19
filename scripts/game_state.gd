@@ -79,6 +79,7 @@ var pol: Dictionary = {}                 # siyasi sistem durumu (politics.gd): r
 var daily: Dictionary = {}               # Günlük Meydan Okuma durumu (daily.gd)
 var chokes: Dictionary = {}              # stratejik geçitler: {id: {mode, ctrl, cd}} (chokepoints.gd)
 var grand: Dictionary = {}               # Büyük Harekât: {cd, ops, done, last}
+var gas_cd := 0                          # bir sonraki kimyasal saldırı turu
 var nuke_cd := 0                         # bir sonraki nükleer saldırı turu
 const AI_MAX_ALLIES := 6               # yalnız yapay zekâ için yumuşak sınır; oyuncuda sınır yok
 var vassals: Dictionary = {}     # vasal ülke id -> {"lord": efendi id, "since": tur}
@@ -311,6 +312,31 @@ func faith_convert_cost(pid: int) -> float:
 	return maxf(10.0, provinces[pid].base_rev() * 9.0)
 
 
+func assimilate_cost(pid: int) -> float:
+	return maxf(12.0, provinces[pid].base_rev() * 12.0)
+
+
+## Fethedilen eyaleti hemen asimile eder: öz topraklarına katılır, huzursuzluk biter (barışta da yapılabilir).
+func player_assimilate(pid: int) -> String:
+	var p = provinces[pid]
+	if p.owner != player or p.controller != player:
+		return "Yalnızca kendi eyaletin asimile edilir."
+	if p.core == player:
+		return "Bu eyalet zaten öz toprağın."
+	var cost: float = assimilate_cost(pid)
+	var me = countries[player]
+	if me.gold < cost:
+		return "Kasa yetmiyor."
+	me.gold -= cost
+	p.core = player
+	p.unrest = 0
+	me.stability = clampf(me.stability - 1.0, 5.0, 100.0)
+	post_news("%s halkı asimile edildi; eyalet artık öz topraklarımızdan sayılıyor." % p.name, pid, "info")
+	province_changed.emit(pid)
+	state_changed.emit()
+	return ""
+
+
 func player_convert_faith(pid: int) -> String:
 	var p = provinces[pid]
 	if p.owner != player or p.controller != player:
@@ -362,6 +388,45 @@ func player_has_nukes() -> bool:
 	if owners is Array:
 		return owners.has(nm)
 	return NUCLEAR.has(nm)
+
+
+## Kimyasal (gaz) saldırı: topçu/uçakla; ordunun ~%45'i erir, ama dünya tepkisi büyür. Nükleerden hafif, sık kullanılabilir.
+func player_has_gas() -> bool:
+	if player < 0:
+		return false
+	var fam: String = Eras.family()
+	if fam == "pre":
+		return false
+	return fam == "ww1" or countries[player].air_pow > 0.0
+
+
+func player_gas(pid: int) -> String:
+	if not player_has_gas():
+		return "Kimyasal silahın yok."
+	if gas_cd > turn:
+		return "Kimyasal stok hazır değil (%d hafta)." % (gas_cd - turn)
+	var p = provinces[pid]
+	var tgt: int = p.owner if at_war(player, p.owner) else p.controller
+	if tgt < 0 or not at_war(player, tgt):
+		return "Kimyasal saldırı için hedefle savaşta olmalısın."
+	var me = countries[player]
+	var d = armies.get(pid)
+	var killed := 0
+	if d != null and d.owner != player:
+		killed = int(d.size * 0.45)
+		d.size = maxi(1, d.size - killed)
+	p.unrest = maxi(p.unrest, 7)
+	p.pop *= 0.94
+	gas_cd = turn + 8
+	infamy = minf(100.0, infamy + 18.0)
+	me.stability = clampf(me.stability - 4.0, 5.0, 100.0)
+	for c in countries:
+		if c.alive and not c.is_rebel and c.id != player and not is_allied(c.id, player):
+			c.aggression = minf(1.0, c.aggression + 0.02)
+	post_news("KİMYASAL SALDIRI! %s, %s eyaletinde zehirli gaz kullandı; dünya kamuoyu tepkili." % [me.name, p.name], pid, "war_player")
+	province_changed.emit(pid)
+	state_changed.emit()
+	return ""
 
 
 ## Nükleer saldırı: hedef eyaletteki ordu büyük ölçüde yok olur, ama küresel tepki ağır olur.
@@ -1265,7 +1330,7 @@ func _alliance_decay() -> void:
 
 # ------------------------------------------------------------ vasal sistemi
 
-const VASSAL_TRIBUTE := 0.12        # vasalın gelirinin efendiye giden payı
+const VASSAL_TRIBUTE := 0.20        # vasalın gelirinin efendiye giden payı
 const VASSAL_ANNEX_MIN := 26        # ilhak için en az hafta
 
 func lord_of(v: int) -> int:
@@ -1356,7 +1421,7 @@ func _vassal_tick() -> void:
 			if not vc.enemies.has(e) and countries[e].alive and not is_allied(v, e) and e != v:
 				declare_war(v, e, true)
 		# bağımsızlık isyanı: efendi zayıfsa
-		if (turn - int(vassals[v].since)) % 26 == 25 and v != player:
+		if (turn - int(vassals[v].since)) % 26 == 25 and v != player and lc.id != player:     # oyuncunun vasalı asla isyan/saldırı yapmaz
 			var weak: float = (1.0 if lc.stability < 35.0 else 0.0) + (1.0 if lc.enemies.size() >= 2 else 0.0) + (0.5 if lc.gold <= 0.0 else 0.0)
 			if rng.randf() < 0.04 + 0.12 * weak:
 				release_vassal(v, false)
@@ -1801,7 +1866,7 @@ const PEACE_TERMS := {
 	"disarm": {"name": "Silahsızlandırma", "desc": "Yenilenin orduları yarıya iner.", "cost": 8},
 	"buffer": {"name": "Tampon bölge", "desc": "Ateşkes 26 yerine 78 hafta sürer; iki taraf da saldıramaz.", "cost": 5},
 	"regime": {"name": "Rejim değişikliği", "desc": "Yenilenin yönetim biçimi seninkine döner; istikrarı düşer.", "cost": 7},
-	"vassal": {"name": "Vasal devlet", "desc": "Yenilen sana bağlanır: gerçek bir vasal olur. Her hafta gelirinin %12'sini haraç öder, savaşlarına katılır; istersen sonra ilhak edebilir ya da serbest bırakabilirsin. Kasasının dörtte biri hemen sana geçer.", "cost": 10},
+	"vassal": {"name": "Vasal devlet", "desc": "Yenilen sana bağlanır: gerçek bir vasal olur. Her hafta gelirinin %20'sini haraç öder, sana asla saldırmaz, savaşlarına katılır; istersen sonra ilhak edebilir ya da serbest bırakabilirsin. Kasasının dörtte biri hemen sana geçer.", "cost": 10},
 	"faith": {"name": "Din dayatma", "desc": "Yenilenin eyaletleri senin inancına geçer; istikrarı düşer.", "cost": 6},
 }
 
@@ -3632,7 +3697,7 @@ func to_dict() -> Dictionary:
 		"v": 3, "seed": seed_value, "base": base_country_count,
 		"turn": turn, "player": player, "next_army_id": next_army_id, "victory": victory_declared,
 		"rng_state": rng.state, "rebel_names": rebel_name_count, "merc_names": merc_names, "stats": stats,
-		"difficulty": difficulty, "blocs": blocs, "next_bloc": next_bloc_id, "cold": cold, "sea_camp": sea_campaign.keys(), "crisis": crisis, "crisis_end": crisis_last_end, "scn": scn, "era": Eras.current, "nuke_cd": nuke_cd, "grand": grand, "chokes": chokes, "daily": daily, "pol": pol, "faith": faith, "focus": focus, "syear": Names.start_year, "wroom": wroom, "indep": indep, "career": career, "moment_p": moment_pending, "moment_f": moment_flags, "infamy": infamy, "un_cd": un_cd, "un_log": un_log, "aid": aid, "vassals": vassals, "custom_ovr": custom_ovr,
+		"difficulty": difficulty, "blocs": blocs, "next_bloc": next_bloc_id, "cold": cold, "sea_camp": sea_campaign.keys(), "crisis": crisis, "crisis_end": crisis_last_end, "scn": scn, "era": Eras.current, "nuke_cd": nuke_cd, "gas_cd": gas_cd, "grand": grand, "chokes": chokes, "daily": daily, "pol": pol, "faith": faith, "focus": focus, "syear": Names.start_year, "wroom": wroom, "indep": indep, "career": career, "moment_p": moment_pending, "moment_f": moment_flags, "infamy": infamy, "un_cd": un_cd, "un_log": un_log, "aid": aid, "vassals": vassals, "custom_ovr": custom_ovr,
 	}
 	var ps: Array = []
 	for p in provinces:
@@ -3793,6 +3858,7 @@ func from_dict(d: Dictionary) -> bool:
 	scn = d.get("scn", {}).duplicate(true)
 	crisis_pending = {}
 	nuke_cd = int(d.get("nuke_cd", 0))
+	gas_cd = int(d.get("gas_cd", 0))
 	grand = d.get("grand", {}).duplicate(true)
 	chokes = d.get("chokes", {}).duplicate(true)
 	daily = d.get("daily", {}).duplicate(true)

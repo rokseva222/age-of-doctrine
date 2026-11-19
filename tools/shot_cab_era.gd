@@ -13,7 +13,7 @@ func _init() -> void:
 	main.menu.finish_splash()
 	await create_timer(1.0).timeout
 	load("res://scripts/settings.gd").seen_howto = true
-	load("res://scripts/settings.gd").seen_update = "1.2.5"
+	load("res://scripts/settings.gd").seen_update = "1.2.6"
 	var eid: String = OS.get_environment("ERA")
 	main._start_era(eid)
 	await create_timer(1.5).timeout

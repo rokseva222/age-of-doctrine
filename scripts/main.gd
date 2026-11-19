@@ -769,6 +769,17 @@ func _on_ui_action(act: String, arg) -> void:
 					_refresh_selection()
 					var body: String = "Hedef: %s.\n%s" % [gs.provinces[cp].name, ("Düşman %s asker kaybetti." % Macro.num(cr.killed)) if cr.killed > 0 else "Hedefte ordu yoktu; sahil tesisleri vuruldu."]
 					ui.show_dialog("Harekât tamamlandı", body, [{"text": "Tamam", "cb": func(): pass, "kind": "good"}], "carrier", "")}], "carrier", "")
+		"gas":
+			var gp: int = int(arg)
+			ui.show_dialog("Kimyasal saldırı", "%s eyaletinde zehirli gaz kullanılacak. Hedef ordusunun yaklaşık %%45'i kaybolur, ama istikrarın düşer ve dünya tepkisi artar. 8 hafta tekrar kullanılamaz." % gs.provinces[gp].name, [
+				{"text": "Vazgeç", "cb": func(): pass, "kind": "ghost"},
+				{"text": "Saldır", "kind": "danger", "cb": func():
+					var eg: String = gs.player_gas(gp)
+					if eg != "":
+						ui.toast(eg)
+					else:
+						sfx.play("drumroll", 0.9)
+						_refresh_selection()}])
 		"nuke":
 			var np: int = int(arg)
 			ui.show_dialog("Nükleer saldırı", "%s eyaletine nükleer silah kullanılacak. Hedef ordusunun %%80'i yok olur, ama istikrarın düşer, 26 hafta yaptırım gelir ve hedefin müttefikleri sana savaş açabilir. Emin misin?" % gs.provinces[np].name, [
@@ -897,6 +908,15 @@ func _on_ui_action(act: String, arg) -> void:
 				{"text": "Serbest bırak", "cb": func():
 					gs.player_release_vassal(arg)
 					_refresh_selection(), "kind": ""},
+				{"text": "Vazgeç", "cb": func(): pass},
+			])
+		"assimilate":
+			var ac: float = gs.assimilate_cost(arg)
+			ui.show_dialog("Asimile et: %s" % gs.provinces[arg].name, "Fethedilen halkı kendi kimliğine katmak %s tutar. Eyalet öz toprağın olur, huzursuzluk biter; istikrar hafifçe düşer. Barışta da yapılabilir." % Macro.money(ac), [
+				{"text": "Asimile et (%s)" % Macro.money(ac), "cb": func():
+					var ea: String = gs.player_assimilate(arg)
+					ui.toast(ea if ea != "" else "Halk asimile edildi.")
+					_refresh_selection(), "kind": "gold" if gs.countries[gs.player].gold >= ac else ""},
 				{"text": "Vazgeç", "cb": func(): pass},
 			])
 		"convert_faith":

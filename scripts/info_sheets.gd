@@ -281,16 +281,17 @@ static func open_howto(parent: Node) -> void:
 			render.call())
 
 
-const UPDATE_VER := "1.2.5"
+const UPDATE_VER := "1.2.6"
 const WHATS_NEW := [
+	["Kimyasal saldırı", "Savaştaki düşman eyaletine gaz saldırısı: ordunun ~%45'i erir, ama dünya tepkisi artar. Hava gücün olmalı (I. Dünya Savaşı'nda topçuyla)."],
+	["Denizaltı ablukası", "Denizaltı ve donanma üstünlüğü düşmanın deniz ticaretini keser, gelirini en fazla %12 düşürür. Envanter sekmesinde sınıf katkıları görünür."],
+	["Asimilasyon", "Fethettiğin eyaleti parayla hemen öz toprağına kat: huzursuzluk biter. Barışta da yapılabilir."],
+	["Sadık vasallar", "Vasal artık gelirinin %20'sini haraç öder ve sana asla isyan etmez ya da saldırmaz."],
 	["Dönem bakan portreleri", "Osmanlı, Avrupa, Asya, Afrika ve Amerika (1380/1520), Birinci ve İkinci Dünya Savaşı, Soğuk Savaş için bölgeye göre yeni bakan siluetleri: sarık, fes, bikorn, fötr, Mao ceketi…"],
 	["Yeni dünya renkleri", "Ülke renkleri artık yumuşak ve soylu: Rusya açık mavi, Ukrayna sarı, Türkiye kırmızı… komşular birbirinden ayrışır."],
 	["Dönemine uygun hikâye", "Osmanlı ve diğer eski çağlarda artık kravatlı bakanlar yok: kaftanlı, sarıklı vezirler; ulufe, veba, haraç gibi dönem olayları."],
-	["Hikâye modu (Kariyer)", "Vasalken kabine olayı yok; yeni dönem görevleri, düello, rehine şehzade, sel gibi 10 yeni olay."],
 	["Barışta eyalet al", "İşgal etmediğin sınır eyaletlerini de savaş puanıyla alabilirsin; savaş puanı artık asker yenince hızla artar."],
 	["İnanç dönüştürme", "Halkı devlet inancına döndür: barışta da yapılabilir."],
-	["Daha hızlı asker toplama", "Haftalık asker artışı artık askerî bütçene bağlı."],
-	["Çeviriler", "Yeni metinlerin tamamı İngilizce olarak eklendi."],
 ]
 
 
