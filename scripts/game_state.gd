@@ -7,6 +7,7 @@ const Settings = preload("res://scripts/settings.gd")
 const Names = preload("res://scripts/names.gd")
 const WorldData = preload("res://scripts/world_data.gd")
 const Macro = preload("res://scripts/macro.gd")
+const Propaganda = preload("res://scripts/propaganda.gd")
 const Emblem = preload("res://scripts/emblem.gd")
 const Eras = preload("res://scripts/eras.gd")
 const GrandOp = preload("res://scripts/grand_op.gd")
@@ -270,6 +271,44 @@ const OPS := {
 const NUCLEAR := ["United States of America", "Russia", "United Kingdom", "France", "China", "India", "Pakistan", "Israel", "North Korea"]
 
 
+func player_build(pid: int, kind: String) -> String:
+	var p = provinces[pid]
+	if not Model.BLD.has(kind):
+		return "Bilinmeyen bina."
+	if p.owner != player or p.controller != player:
+		return "Yalnızca kendi kontrolündeki eyalete bina kurulur."
+	if p.bld != "" or p.bld_wip != "":
+		return "Bu eyalette zaten bir bina var ya da yapılıyor."
+	if p.siege > 0:
+		return "Kuşatma altında inşaat yapılamaz."
+	var cost: float = p.bld_cost(kind)
+	var me = countries[player]
+	if me.gold < cost:
+		return "Kasa yetmiyor."
+	me.gold -= cost
+	p.bld_wip = kind
+	p.bld_until = turn + Model.BLD_WEEKS
+	state_changed.emit()
+	return ""
+
+
+func _process_buildings() -> void:
+	for p in provinces:
+		if p.bld_wip != "" and turn >= p.bld_until:
+			if p.owner == player and p.controller == player:
+				p.bld = p.bld_wip
+				post_news("%s eyaletinde %s tamamlandı." % [p.name, Model.BLD[p.bld].name], p.id, "info")
+			p.bld_wip = ""
+		if p.bld == "press" and p.unrest > 0 and p.owner >= 0 and p.controller == p.owner and (turn + p.id) % 2 == 0:
+			p.unrest -= 1
+
+
+func player_set_propaganda(mode: String) -> void:
+	if Propaganda.MODES.has(mode):
+		countries[player].prop = mode
+		state_changed.emit()
+
+
 func player_has_nukes() -> bool:
 	if player < 0:
 		return false
@@ -303,6 +342,8 @@ func player_nuke(pid: int) -> String:
 		killed = int(d.size * 0.8)
 		d.size = maxi(1, d.size - killed)
 	p.defense = 0
+	p.bld = ""
+	p.bld_wip = ""
 	p.dev = maxi(0, p.dev - 2)
 	p.unrest = 12
 	p.pop *= 0.8
@@ -1997,6 +2038,7 @@ func end_turn() -> void:
 	_relation_decay()
 	_passage_expire()
 	_process_unrest()
+	_process_buildings()
 	refresh_stats()
 	t = _tp("stats_unrest", t)
 	_check_rebels()
@@ -2393,7 +2435,7 @@ func _process_sieges() -> void:
 		if p.siege_by != a.owner:
 			p.siege_by = a.owner
 			p.siege = 0
-		var sg: int = 1 + (1 if a.size >= 300000 else 0)
+		var sg: int = 1 + (1 if a.size >= 60000 else 0) + (1 if a.size >= 250000 else 0)
 		if guard_left > 0 and p.owner == player and player >= 0 and countries[player].prov_owned <= SMALL_NATION and (turn + p.id) % 2 == 0:
 			sg = 0     # küçük oyuncu devleti: ilk haftalarda kuşatmalar yarı hızda ilerler
 		p.siege += sg
@@ -3198,14 +3240,17 @@ func _process_unrest() -> void:
 			restless = true
 		var g = armies.get(p.id)
 		var garrisoned: bool = g != null and g.owner == p.owner
+		var tr: float = oc.trust
 		if garrisoned:
 			p.unrest = maxi(0, p.unrest - 2)
 		elif restless:
-			if (turn + p.id) % 3 != 0:      # fetih sonrası huzursuzluk daha yavaş birikir (test: isyan sıklığı çok fazlaydı)
+			if (turn + p.id) % 3 != 0 and not (tr >= 70.0 and (turn + p.id) % 2 == 0):      # fetih sonrası huzursuzluk daha yavaş birikir; güvenen halk daha da yavaş
+				p.unrest += 1
+			if tr < 25.0 and (turn + p.id) % 4 == 0:
 				p.unrest += 1
 		else:
 			p.unrest = maxi(0, p.unrest - 1)
-		if p.unrest >= 12 and rebels_active < 8 and rng.randf() < (0.07 if p.owner == player else 0.14):
+		if p.unrest >= 12 and rebels_active < 8 and rng.randf() < (0.07 if p.owner == player else 0.14) * (1.45 - tr / 100.0):
 			if _spawn_rebels(p):
 				rebels_active += 1
 
@@ -3339,7 +3384,7 @@ func to_dict() -> Dictionary:
 	}
 	var ps: Array = []
 	for p in provinces:
-		ps.append([p.owner, p.controller, p.siege, p.siege_by, p.dev, p.is_capital, p.core, p.unrest, p.acquired, p.pop, p.defense, p.gdp])
+		ps.append([p.owner, p.controller, p.siege, p.siege_by, p.dev, p.is_capital, p.core, p.unrest, p.acquired, p.pop, p.defense, p.gdp, p.bld, p.bld_wip, p.bld_until])
 	d["provinces"] = ps
 	var cs: Array = []
 	for c in countries:
@@ -3399,6 +3444,13 @@ func from_dict(d: Dictionary) -> bool:
 		p.defense = r[10]
 		if r.size() > 11:
 			p.gdp = r[11]
+		p.bld = ""
+		p.bld_wip = ""
+		p.bld_until = 0
+		if r.size() > 14:
+			p.bld = str(r[12])
+			p.bld_wip = str(r[13])
+			p.bld_until = int(r[14])
 	var cs: Array = d.countries
 	while countries.size() < cs.size():
 		var nc := Model.Country.new()

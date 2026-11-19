@@ -1,6 +1,7 @@
 extends Node
 ## Oyun denetleyicisi: açılış → ana menü → ülke seçimi → oyun akışını yönetir; harita, arayüz ve ses arasında köprüdür.
 
+const Model = preload("res://scripts/model.gd")
 const Icons = preload("res://scripts/icons.gd")
 const SceneArt = preload("res://scripts/scene_art.gd")
 const TK = preload("res://scripts/theme_kit.gd")
@@ -802,6 +803,18 @@ func _on_ui_action(act: String, arg) -> void:
 			ui.show_relations(int(arg))
 		"diplomacy":
 			ui.DiplomacyUI.open(ui, gs, int(arg))
+		"build":
+			var bp = gs.provinces[arg]
+			var opts: Array = []
+			for k in ["farm", "mine", "oil", "press"]:
+				var bk: String = k
+				var bc: float = bp.bld_cost(bk)
+				opts.append({"text": "%s — %s (%s)" % [Model.BLD[bk].name, Macro.money(bc), Model.BLD[bk].info], "cb": func():
+					var eb: String = gs.player_build(arg, bk)
+					ui.toast(eb if eb != "" else "%s inşaatı başladı (%d hafta)." % [Model.BLD[bk].name, Model.BLD_WEEKS])
+					_refresh_selection(), "kind": "gold" if gs.countries[gs.player].gold >= bc else ""})
+			opts.append({"text": "Vazgeç", "cb": func(): pass})
+			ui.show_dialog("Bina kur: %s" % bp.name, "Bu eyalette haftalık vergi gelirini artıran bir bina kur. İnşaat %d hafta sürer; eyalet fetihle el değiştirirse bina yeni sahibe geçer." % Model.BLD_WEEKS, opts)
 		"form":
 			ui.FormationUI.open(ui, gs)
 		"focus_country":

@@ -6,6 +6,7 @@ const UNArt = preload("res://scripts/un_art.gd")
 
 const TK = preload("res://scripts/theme_kit.gd")
 const Macro = preload("res://scripts/macro.gd")
+const Model = preload("res://scripts/model.gd")
 const Carriers = preload("res://scripts/carriers.gd")
 const Missions = preload("res://scripts/missions.gd")
 const Emblem = preload("res://scripts/emblem.gd")
@@ -684,6 +685,13 @@ func show_province(pid: int, selected_army) -> void:
 					_abtn("Geçiş izni iste", "", Icons.pick("passage_grant", "flag"), "ask_passage", p.owner)
 	if not oc.is_rebel:
 		_abtn("Diplomasi", "blue", Icons.pick("diplomacy", "handshake"), "diplomacy", p.owner)
+	if p.owner == me and p.controller == me:
+		if p.bld != "":
+			_abtn("%s: %s" % [Model.BLD[p.bld].name, Model.BLD[p.bld].info], "", "coins", "none", 0, false)
+		elif p.bld_wip != "":
+			_abtn("%s inşa ediliyor: %d hafta" % [Model.BLD[p.bld_wip].name, maxi(1, p.bld_until - gs.turn)], "", "hourglass", "none", 0, false)
+		else:
+			_abtn("Bina kur (gelir)", "gold", Icons.pick("build", "coins"), "build", pid)
 	if p.owner == me and not Formables.available(gs).is_empty():
 		_abtn("Ülke formla", "gold", "flag", "form", 0)
 	if army != null and army.owner == me:

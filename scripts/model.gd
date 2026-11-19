@@ -1,6 +1,15 @@
 extends RefCounted
 ## Veri modeli: eyalet, ülke, ordu, savaş.
 
+const BLD := {
+	"farm": {"name": "Tarım çiftliği", "bonus": 0.25, "mult": 8.0, "icon": "wheat", "info": "Gelir +%25"},
+	"mine": {"name": "Maden ocağı", "bonus": 0.40, "mult": 12.0, "icon": "pickaxe", "info": "Gelir +%40"},
+	"oil": {"name": "Petrol tesisi", "bonus": 0.55, "mult": 16.0, "icon": "oil", "info": "Gelir +%55"},
+	"press": {"name": "Kağıt fabrikası ve matbaa", "bonus": 0.20, "mult": 7.0, "icon": "book", "info": "Gelir +%20, huzursuzluğu azaltır"},
+}
+const BLD_WEEKS := 8
+
+
 class Province:
 	var id := 0
 	var name := ""
@@ -28,18 +37,27 @@ class Province:
 	var unrest := 0
 	var acquired := 0
 	var home := -1                           # başlangıç sahibi
+	var bld := ""                            # tamamlanmış gelir binası ("farm","mine","oil","press"; boş = yok)
+	var bld_wip := ""                        # inşaat halindeki bina
+	var bld_until := 0                       # inşaatın biteceği tur
 
 	func income() -> int:
 		return 1 + dev + int(sqrt(maxf(pop, 0.0)) * 0.6)
 
 	func rev() -> float:
-		return gdp * 0.17 / 52.0                # haftalık devlet geliri, milyon $
+		return gdp * 0.17 / 52.0 * (1.0 + BLD.get(bld, {}).get("bonus", 0.0))   # haftalık devlet geliri, milyon $
+
+	func base_rev() -> float:
+		return gdp * 0.17 / 52.0
+
+	func bld_cost(kind: String) -> float:
+		return maxf(12.0, base_rev() * float(BLD[kind].mult)) * (1.0 + 0.4 * float(is_capital))
 
 	func value() -> int:
 		return 1 + int(dev * 0.5) + (4 if is_capital else 0) + (1 if pop >= 25.0 else 0)
 
 	func siege_needed() -> int:
-		return 6 + defense * 2 + (3 if is_capital else 0) + (1 if pop >= 6.0 else 0) + (1 if pop >= 30.0 else 0)
+		return 4 + int(defense * 1.5) + (2 if is_capital else 0) + (1 if pop >= 6.0 else 0) + (1 if pop >= 30.0 else 0)
 
 	func peace_cost() -> int:
 		return value() * 6
@@ -134,6 +152,8 @@ class Country:
 	var cab: Dictionary = {}                 # oyuncunun kabinesi: rol -> {n,f,q,until,real,why}
 	var elect_turn := -1                     # sonraki seçim turu (oyuncu)
 	var buffs: Dictionary = {}   # tarihî an/karar etkileri: {"att": [çarpan, bitiş_turu], "def": ..., "recruit": ...}
+	var trust := 60.0                        # hükümete güven 0..100 (propaganda.gd)
+	var prop := ""                           # seçili propaganda yöntemi ("", oral, press, poster)
 	var tech_set := -1.0                     # >=0 ise teknoloji düzeyi sabitlenir (senaryo grupları)
 
 

@@ -5,6 +5,7 @@ extends RefCounted
 const Arsenal = preload("res://scripts/arsenal.gd")
 const Chokepoints = preload("res://scripts/chokepoints.gd")
 const Politics = preload("res://scripts/politics.gd")
+const Propaganda = preload("res://scripts/propaganda.gd")
 const Crises = preload("res://scripts/crises.gd")
 const Carriers = preload("res://scripts/carriers.gd")
 const Loc = preload("res://scripts/loc.gd")
@@ -452,6 +453,7 @@ static func calc(gs, c) -> Dictionary:
 	rev *= Crises.income_mult(gs, c)
 	rev *= Chokepoints.income_mult(c)
 	rev *= Politics.income_mult(gs, c)
+	rev *= Propaganda.income_mult(c)
 	if c.id == gs.player:
 		rev *= Focus.income_mult(gs)
 	if c.id != gs.player:
@@ -509,6 +511,8 @@ static func weekly(gs) -> void:
 		c.fin = f
 		c.gold += f["pots"]["res"] - f["short"]
 		c.fund += f["fund_in"]
+		Propaganda.weekly(gs, c, f["rev"])
+		c.stability = clampf(c.stability + Propaganda.stability_delta(c), 3.0, 100.0)
 		_invest(gs, c, f)
 		c.gold_delta = f["net"]
 		if c.gold < 0.0:
@@ -985,7 +989,7 @@ static func to_dict(c) -> Dictionary:
 	return {"budget": c.budget, "doctrine": c.doctrine, "dturn": c.doctrine_turn, "industry": c.industry, "cyber": c.cyber,
 		"logistics": c.logistics, "stability": c.stability, "capacity": c.capacity, "tech": c.tech, "bloc": c.bloc,
 		"inv": c.inv, "orders": c.orders, "auto_buy": c.auto_buy, "auto_cmd": c.auto_cmd, "pri": c.pri, "base": c.base_troops,
-		"fund": c.fund, "embargo": c.embargo, "fronts": c.fronts, "tblock": c.trade_block, "alliance": c.alliance, "leader": c.leader, "carriers": c.carriers, "car_x": c.carrier_extra, "car_cd": c.carrier_cd, "covert": c.covert_cd, "cab": c.cab, "elect": c.elect_turn, "mob": c.mob_until, "mobcd": c.mob_cd, "buffs": c.buffs}
+		"fund": c.fund, "embargo": c.embargo, "fronts": c.fronts, "tblock": c.trade_block, "alliance": c.alliance, "leader": c.leader, "carriers": c.carriers, "car_x": c.carrier_extra, "car_cd": c.carrier_cd, "covert": c.covert_cd, "cab": c.cab, "elect": c.elect_turn, "mob": c.mob_until, "mobcd": c.mob_cd, "buffs": c.buffs, "trust": c.trust, "prop": c.prop}
 
 
 static func from_dict(c, d: Dictionary) -> void:
@@ -999,6 +1003,8 @@ static func from_dict(c, d: Dictionary) -> void:
 	c.cyber = d.get("cyber", 20.0)
 	c.logistics = d.get("logistics", 50.0)
 	c.stability = d.get("stability", 70.0)
+	c.trust = float(d.get("trust", 60.0))
+	c.prop = str(d.get("prop", ""))
 	c.capacity = d.get("capacity", 0.5)
 	c.tech = d.get("tech", 0.5)
 	c.bloc = d.get("bloc", "us")

@@ -26,9 +26,10 @@ const Cabinet = preload("res://scripts/cabinet.gd")
 const Sil = preload("res://scripts/silhouette.gd")
 const Names = preload("res://scripts/names.gd")
 const Focus = preload("res://scripts/focus.gd")
+const Propaganda = preload("res://scripts/propaganda.gd")
 var focus_sel := ""
 
-const TABS := [["Bütçe", "coins"], ["Silah Alımı", "tank"], ["Envanter", "shield"], ["Ticaret", "globe"], ["Cepheler", "swords"], ["İttifak", "handshake"], ["İstihbarat", "eye"], ["Kabine", "badge"], ["Odak", "target"]]
+const TABS := [["Bütçe", "coins"], ["Silah Alımı", "tank"], ["Envanter", "shield"], ["Ticaret", "globe"], ["Cepheler", "swords"], ["İttifak", "handshake"], ["İstihbarat", "eye"], ["Kabine", "badge"], ["Odak", "target"], ["Halk", "flag"]]
 const CAT_ICON := {"inf": "rifle", "tank": "tank", "afv": "afv", "arty": "arty", "air": "jet", "sub": "sub"}
 const TIER_COL := [Color("646c77"), Color("9aa2ad"), Color("5ba4e0"), Color("a98be0")]
 
@@ -48,8 +49,9 @@ func _pl():
 func _build() -> void:
 	var c = _pl()
 	sh = ui._open_sheet("Politika", 1020, false, true, "Genel Kurmay  /  " + c.name)
-	var tabs := HBoxContainer.new()
-	tabs.add_theme_constant_override("separation", 6)
+	var tabs := HFlowContainer.new()
+	tabs.add_theme_constant_override("h_separation", 6)
+	tabs.add_theme_constant_override("v_separation", 6)
 	sh.body.add_child(tabs)
 	var scroll := ScrollContainer.new()
 	scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
@@ -63,6 +65,7 @@ func _build() -> void:
 		var idx := i
 		var tb := TK.button(TABS[i][0], "ghost", Icons.pick("focus", "target") if TABS[i][0] == "Odak" else TABS[i][1], Vector2(0, 56), 15)
 		tb.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		tb.custom_minimum_size = Vector2(150, 56)
 		tb.pressed.connect(func():
 			ui._click()
 			tab = idx
@@ -102,6 +105,8 @@ func render() -> void:
 			_tab_cabinet()
 		8:
 			_tab_focus()
+		9:
+			_tab_people()
 		_:
 			_tab_alliance()
 	ui.refresh_top()
@@ -490,6 +495,46 @@ func _tab_inventory() -> void:
 
 
 # ------------------------------------------------------------------ 7) istihbarat
+
+func _tab_people() -> void:
+	var c = _pl()
+	var f: Dictionary = c.fin if not c.fin.is_empty() else Macro.calc(gs, c)
+	var cost: float = Propaganda.weekly_cost(c, f["rev"])
+	var tr: float = c.trust
+	content.add_child(_kick("Hükümete güven"))
+	content.add_child(_stat_row([
+		["Güven", "%%%d" % int(tr), TK.GREEN if tr >= 60.0 else (TK.ORANGE if tr >= 35.0 else TK.RED_TEXT)],
+		["Durum", Propaganda.label(tr)],
+		["Hedef düzey", "%%%d" % int(Propaganda.target(gs, c))],
+		["Propaganda gideri", Macro.money(cost) + "/hf" if cost > 0.0 else "—", TK.GOLD],
+	]))
+	content.add_child(_wrap("Güven; halkın kararlara, vergiye ve yasalara ne kadar uyduğunu belirler. Yüksek güven istikrarı ve vergi gelirini artırır, işgal edilmiş eyaletlerde huzursuzluğu yavaşlatır, isyan çıkma ihtimalini düşürür. Düşük güvende ise tam tersi olur. Güven kendiliğinden istikrarına doğru kayar; savaş ve yaptırım onu düşürür. Propaganda onu yukarı iter, ama her yöntemin gücü halkın şu anki güvenine bağlıdır.", "small", TK.FAINT))
+	content.add_child(TK.hsep())
+	content.add_child(_kick("Propaganda yöntemi"))
+	for m in Propaganda.ORDER:
+		var mode: String = m
+		var info: Dictionary = Propaganda.MODES[mode]
+		var sel: bool = c.prop == mode
+		var row := HBoxContainer.new()
+		row.add_theme_constant_override("separation", 12)
+		var tv := VBoxContainer.new()
+		tv.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		tv.add_theme_constant_override("separation", 0)
+		tv.add_child(TK.t(info.name, "bodyb", TK.GOLD if sel else TK.TEXT))
+		tv.add_child(_wrap(info.info, "small", TK.MUTED))
+		if mode != "":
+			tv.add_child(_wrap("Haftalık gider: gelirin %%%.1f'i (%s)  ·  şu anki etki: güven +%.2f / hafta" % [float(info.cost) * 100.0, Macro.money(f["rev"] * float(info.cost)), Propaganda.gain(mode, tr)], "small", TK.FAINT))
+		row.add_child(tv)
+		var b := TK.button("Seçili" if sel else "Seç", "gold" if sel else "ghost", "check" if sel else "", Vector2(150, 52), 15)
+		b.disabled = sel
+		b.pressed.connect(func():
+			ui._click()
+			gs.player_set_propaganda(mode)
+			render())
+		row.add_child(b)
+		content.add_child(TK.hsep())
+		content.add_child(row)
+
 
 func _tab_cabinet() -> void:
 	var c = _pl()
