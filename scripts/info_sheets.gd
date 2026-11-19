@@ -281,8 +281,9 @@ static func open_howto(parent: Node) -> void:
 			render.call())
 
 
-const UPDATE_VER := "1.2.4"
+const UPDATE_VER := "1.2.5"
 const WHATS_NEW := [
+	["Dönem bakan portreleri", "Osmanlı, Avrupa, Asya, Afrika ve Amerika (1380/1520), Birinci ve İkinci Dünya Savaşı, Soğuk Savaş için bölgeye göre yeni bakan siluetleri: sarık, fes, bikorn, fötr, Mao ceketi…"],
 	["Yeni dünya renkleri", "Ülke renkleri artık yumuşak ve soylu: Rusya açık mavi, Ukrayna sarı, Türkiye kırmızı… komşular birbirinden ayrışır."],
 	["Dönemine uygun hikâye", "Osmanlı ve diğer eski çağlarda artık kravatlı bakanlar yok: kaftanlı, sarıklı vezirler; ulufe, veba, haraç gibi dönem olayları."],
 	["Hikâye modu (Kariyer)", "Vasalken kabine olayı yok; yeni dönem görevleri, düello, rehine şehzade, sel gibi 10 yeni olay."],

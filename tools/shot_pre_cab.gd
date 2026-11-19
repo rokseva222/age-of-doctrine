@@ -13,7 +13,7 @@ func _init() -> void:
 	main.menu.finish_splash()
 	await create_timer(1.0).timeout
 	load("res://scripts/settings.gd").seen_howto = true
-	load("res://scripts/settings.gd").seen_update = "1.2.4"
+	load("res://scripts/settings.gd").seen_update = "1.2.5"
 	main._start_era("ott1520")
 	await create_timer(1.5).timeout
 	var cid: int = main.menu._sel

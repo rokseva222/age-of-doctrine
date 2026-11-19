@@ -10,6 +10,7 @@ const TK = preload("res://scripts/theme_kit.gd")
 const Icons = preload("res://scripts/icons.gd")
 const Eras = preload("res://scripts/eras.gd")
 const Macro = preload("res://scripts/macro.gd")
+const PSets = preload("res://scripts/portrait_sets.gd")
 
 const ROLE_ICON := {"def": "shield_star", "for": "globe", "int": "badge", "fin": "coins", "hlt": "med", "spy": "eye", "amb": "embassy", "pm": "crown", "trd": "money_bag", "spt": "trophy", "ele": "ballot"}
 
@@ -44,6 +45,12 @@ const SEASIA_SET := ["Indonesia", "Malaysia", "Brunei", "Thailand", "Laos", "Cam
 ## Ülkenin portre kültürü (12 gruptan biri). Doku yoksa çağıran eski kod çizimine döner.
 static func culture_for(c) -> String:
 	var n: String = c.name_en
+	if Macro.era_on:
+		var fam: String = Eras.family()
+		if n == "Turkey" and (fam == "pre" or fam == "ww1"):
+			return "turk"            # Osmanlı: kaftan/fes siluetleri
+		if n == "Japan" and (fam == "ww1" or fam == "ww2"):
+			return "easia"
 	if n in W_SET: return "west"
 	if n in SLAV_SET: return "slav"
 	if n in TURK_SET: return "turk"
@@ -69,7 +76,18 @@ static func _count(culture: String, kind: String) -> int:
 
 
 func _portrait_tex() -> Texture2D:
-	if culture == "" or style == "pre":
+	if culture == "":
+		return null
+	var fam: String = Eras.family() if Macro.era_on else ""
+	if fam != "" and not (fam == "cold" and female):
+		var k := "o" if role == "def" else ("h" if role == "hlt" else ("s" if role == "spy" else "m"))
+		var names: Array = PSets.pool(fam, culture, k)
+		if not names.is_empty():
+			var nm: String = names[absi(hash(seed_name + role)) % names.size()]
+			return Icons._texture(nm)[0]
+		if fam != "cold":
+			return null
+	if style == "pre":
 		return null
 	var kind := "o" if role == "def" else ("f" if female else "m")
 	var cnt := _count(culture, kind)
