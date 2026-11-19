@@ -16,6 +16,7 @@ static func cat_name(k: String) -> String:
 
 # ------------------------------------------------------------ simgeler (çağa ve birliğe göre)
 const CAT_ICON := {"inf": "rifle", "tank": "tank", "afv": "afv", "arty": "arty", "air": "jet", "sub": "sub"}
+const UC_ICON := {"inf": "uc_inf", "tank": "uc_tank", "afv": "uc_afv", "arty": "uc_arty", "air": "uc_jet", "sub": "uc_sub"}
 const CAT_ICON_FAM := {
 	"pre": {"inf": "u_azap", "tank": "u_sipahi", "afv": "u_akinci", "arty": "u_darbzen", "air": "jet", "sub": "u_galiot"},
 	"ww1": {"inf": "w2_garand", "tank": "u_mark_tank", "afv": "u_armored_car", "arty": "w2_howitzer", "air": "biplane", "sub": "u_dreadnought"},
@@ -121,6 +122,8 @@ static func cat_icon(k: String, fam: String = "") -> String:
 		fam = load("res://scripts/eras.gd").family()
 	var Ic = load("res://scripts/icons.gd")
 	var want: String = String(CAT_ICON_FAM.get(fam, {}).get(k, CAT_ICON[k]))
+	if fam == "":
+		want = String(UC_ICON.get(k, want))     # modern çağ: sınıf rozetleriyle aynı simgeler (kullanıcının getirdiği uc_* seti)
 	return Ic.pick(want, CAT_ICON[k])
 
 
