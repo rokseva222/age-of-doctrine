@@ -11,7 +11,7 @@ const SHADER_OCEAN = preload("res://shaders/ocean.gdshader")
 signal tapped(pid: int)
 signal choke_tapped(id: String)
 
-const LUT_W := 2048
+const LUT_W := 4096
 
 var gs = null
 var wd = null

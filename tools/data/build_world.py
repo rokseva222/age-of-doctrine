@@ -462,6 +462,8 @@ def main():
                 "area": sum(ustat[u][0] for u in mem), "a3": units[main_u]["a3"],
             })
     log("eyalet sayısı", len(provs), "ülke", len(order))
+    if os.environ.get("NE_MEMBERS"):
+        json.dump({str(pr["id"]): pr["members"] for pr in provs}, open(os.environ["NE_MEMBERS"], "w"))
 
     # ---- halkalar: kalacak halkalar
     prov_rings = collections.defaultdict(list)   # pid -> [(ids, outer)]

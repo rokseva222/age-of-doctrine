@@ -734,6 +734,18 @@ func can_enter(cid: int, pid: int) -> bool:
 	return o == cid or at_war(cid, o) or is_allied(cid, o) or has_passage(cid, o)
 
 
+## Dost deniz nakliyesi: kendi/müttefik elindeki iki kıyı eyaleti arasında deniz bağlantısı varsa ordu gemiyle geçer (adadan anakaraya, ada-ada).
+func friendly_port(cid: int, pid: int) -> bool:
+	var p = provinces[pid]
+	if p.controller == cid or p.owner == cid:
+		return true
+	return is_allied(cid, p.controller) or is_allied(cid, p.owner)
+
+
+func sea_move_ok(cid: int, from: int, to: int) -> bool:
+	return provinces[from].sea_links.has(to) and friendly_port(cid, from) and friendly_port(cid, to)
+
+
 ## host ülkesinin topraklarından geçiş izni var mı (müttefiklere izin zaten otomatik)
 func has_passage(guest: int, host: int) -> bool:
 	if guest < 0 or host < 0 or guest == host:
@@ -818,6 +830,13 @@ func path_to(cid: int, from: int, to: int) -> Array:
 			if nb == to:
 				return _build_path(prev, from, to)
 			q.append(nb)
+		for nb2 in provinces[cur].sea_links:
+			if prev[nb2] != -2 or not sea_move_ok(cid, cur, nb2):
+				continue
+			prev[nb2] = cur
+			if nb2 == to:
+				return _build_path(prev, from, to)
+			q.append(nb2)
 	return []
 
 
@@ -853,6 +872,15 @@ func path_nearest(cid: int, from: int, pred: Callable, max_depth: int = -1) -> A
 			if blk != null and at_war(cid, blk.owner):
 				continue     # düşman yığınının içinden geçilmez (intihar saldırısı)
 			q.append(nb)
+		for nb2 in provinces[cur].sea_links:
+			if prev[nb2] != -2 or not sea_move_ok(cid, cur, nb2):
+				continue
+			prev[nb2] = cur
+			if max_depth > 0:
+				depth[nb2] = depth[cur] + 1
+			if pred.call(nb2):
+				return _build_path(prev, from, nb2)
+			q.append(nb2)
 	return []
 
 
@@ -1787,6 +1815,17 @@ func _send_home(arm) -> void:
 					dest = nb
 					break
 			q.append(nb)
+		if dest < 0:
+			for nb2 in provinces[cur].sea_links:
+				if prev[nb2] != -2 or not sea_move_ok(arm.owner, cur, nb2):
+					continue
+				prev[nb2] = cur
+				if provinces[nb2].owner == arm.owner and provinces[nb2].controller == arm.owner:
+					var ex3 = armies.get(nb2)
+					if ex3 == null or (ex3.owner == arm.owner and ex3.size + arm.size <= MAX_MERGE):
+						dest = nb2
+						break
+				q.append(nb2)
 	armies.erase(from)
 	arm.path.clear()
 	arm.leaving = false
@@ -2123,8 +2162,8 @@ func _step_army(a) -> void:
 	if not a.leaving and is_sieging(a):
 		return
 	var nxt: int = a.path[0]
-	var sea_hop: bool = a.op == "landing" and provinces[a.prov].sea_links.has(nxt)
-	if (not provinces[a.prov].neighbors.has(nxt) and not sea_hop) or not can_enter(a.owner, nxt):
+	var sea_hop: bool = provinces[a.prov].sea_links.has(nxt) and (a.op == "landing" or sea_move_ok(a.owner, a.prov, nxt))
+	if (not provinces[a.prov].neighbors.has(nxt) and not sea_hop) or not (can_enter(a.owner, nxt) or (sea_hop and a.op != "landing")):
 		a.path.clear()
 		a.leaving = false
 		return
@@ -2135,9 +2174,9 @@ func _step_army(a) -> void:
 	var guard := 0
 	while not a.path.is_empty() and guard < 4:
 		var fr = armies.get(hop)
-		if fr != null and fr.owner == a.owner and fr != a:
+		if fr != null and fr != a and (fr.owner == a.owner or not at_war(a.owner, fr.owner)):
 			var nn: int = a.path[0]
-			if provinces[hop].neighbors.has(nn) and can_enter(a.owner, nn):
+			if (provinces[hop].neighbors.has(nn) and can_enter(a.owner, nn)) or sea_move_ok(a.owner, hop, nn):
 				a.path.pop_front()
 				hop = nn
 				guard += 1
@@ -3151,8 +3190,8 @@ func _process_unrest() -> void:
 	for p in provinces:
 		if p.owner < 0 or countries[p.owner].is_rebel or p.controller != p.owner:
 			continue
-		if p.owner != p.core and turn - p.acquired > 45:
-			p.core = p.owner  # zamanla sindirilir
+		if p.owner != p.core and turn - p.acquired > 32:
+			p.core = p.owner  # zamanla sindirilir (asimilasyon)
 		var oc = countries[p.owner]
 		var restless: bool = p.owner != p.core
 		if not restless and oc.gold <= 0.0 and rng.randf() < 0.3:
@@ -3162,10 +3201,11 @@ func _process_unrest() -> void:
 		if garrisoned:
 			p.unrest = maxi(0, p.unrest - 2)
 		elif restless:
-			p.unrest += 1
+			if (turn + p.id) % 3 != 0:      # fetih sonrası huzursuzluk daha yavaş birikir (test: isyan sıklığı çok fazlaydı)
+				p.unrest += 1
 		else:
 			p.unrest = maxi(0, p.unrest - 1)
-		if p.unrest >= 12 and rebels_active < 8 and rng.randf() < (0.16 if p.owner == player else 0.3):
+		if p.unrest >= 12 and rebels_active < 8 and rng.randf() < (0.07 if p.owner == player else 0.14):
 			if _spawn_rebels(p):
 				rebels_active += 1
 

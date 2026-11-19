@@ -60,8 +60,8 @@ const ABSORB := {
 	"ww1": {
 		"Germany": ["Tanzania", "Cameroon", "Togo", "Namibia", "Rwanda", "Burundi", "Nauru"],
 		"Austria": ["Hungary", "Czechia", "Slovakia", "Slovenia", "Croatia", "Bosnia and Herz."],
-		"Turkey": ["Syria", "Iraq", "Lebanon", "Jordan", "Palestine", "Israel", "Saudi Arabia", "Yemen"],
-		"Russia": ["Ukraine", "Belarus", "Estonia", "Latvia", "Lithuania", "Finland", "Moldova", "Georgia", "Armenia", "Azerbaijan", "Kazakhstan", "Uzbekistan",
+		"Turkey": ["Syria", "Iraq", "Lebanon", "Jordan", "Palestine", "Israel", "Yemen"],
+		"Russia": ["Poland", "Ukraine", "Belarus", "Estonia", "Latvia", "Lithuania", "Finland", "Moldova", "Georgia", "Armenia", "Azerbaijan", "Kazakhstan", "Uzbekistan",
 			"Turkmenistan", "Tajikistan", "Kyrgyzstan"],
 		"United Kingdom": ["Ireland", "India", "Pakistan", "Bangladesh", "Sri Lanka", "Myanmar", "Malaysia", "Singapore", "Brunei", "Egypt", "Sudan", "S. Sudan",
 			"Kenya", "Uganda", "Nigeria", "Ghana", "Sierra Leone", "Gambia", "Zambia", "Zimbabwe", "Malawi", "Botswana", "Lesotho", "eSwatini", "Somaliland",
@@ -85,18 +85,24 @@ const ABSORB := {
 
 # eyalet düzeyinde aktarım: [eyalet adı, bugünkü ülke, hedef host, "own" (mülkiyet) | "occ" (işgal)]
 const SPLIT := {
-	"ww2": [[689, "Ukraine", "Poland", "own"], [683, "Ukraine", "Poland", "own"], [1385, "Belarus", "Poland", "own"], [1387, "Belarus", "Poland", "own"],
+	"ww2": [[[228], "Russia", "Germany", "own"],      # Kaliningrad = Doğu Prusya (Königsberg)
+		[[2127], "Ukraine", "Hungary", "own"], [[2125], "Ukraine", "Romania", "own"],
+		[689, "Ukraine", "Poland", "own"], [683, "Ukraine", "Poland", "own"], [[2126], "Ukraine", "Poland", "own"], [1385, "Belarus", "Poland", "own"], [1387, "Belarus", "Poland", "own"],
 		[788, "Poland", "Germany", "own"], [790, "Poland", "Germany", "own"], [791, "Poland", "Germany", "own"], [792, "Poland", "Germany", "own"],
 		[5, "China", "Japan", "own"], [6, "China", "Japan", "own"], [7, "China", "Japan", "own"], [2, "China", "Japan", "own"],
 		[18, "China", "Japan", "occ"], [17, "China", "Japan", "occ"], [16, "China", "Japan", "occ"], [15, "China", "Japan", "occ"],
 		[13, "China", "Japan", "occ"], [14, "China", "Japan", "occ"], [26, "China", "Japan", "occ"],
 		[32, "China", "United Kingdom", "own"], [31, "China", "United Kingdom", "own"]],
-	"ww1": [[798, "Poland", "Germany", "own"], [794, "Poland", "Germany", "own"], [788, "Poland", "Germany", "own"],
+	"ww1": [[[2195], "Poland", "Russia", "own"], [[228], "Russia", "Germany", "own"],
+		[[2123], "Ukraine", "Austria", "own"], [[2125], "Ukraine", "Austria", "own"], [[2126], "Ukraine", "Austria", "own"],
+		[835, "Saudi Arabia", "Turkey", "own"], [836, "Saudi Arabia", "Turkey", "own"], [834, "Saudi Arabia", "Turkey", "own"],
+		[840, "Saudi Arabia", "Turkey", "own"], [832, "Saudi Arabia", "Turkey", "own"], [833, "Saudi Arabia", "Turkey", "own"],
+		[798, "Poland", "Germany", "own"], [794, "Poland", "Germany", "own"], [788, "Poland", "Germany", "own"],
 		[790, "Poland", "Germany", "own"], [785, "Poland", "Germany", "own"], [791, "Poland", "Germany", "own"], [792, "Poland", "Germany", "own"],
 		[797, "Poland", "Germany", "own"], ["Łódź", "Poland", "Russia", "own"], [795, "Poland", "Russia", "own"], [789, "Poland", "Russia", "own"],
 		["Lublin", "Poland", "Russia", "own"], [786, "Poland", "Austria", "own"], [787, "Poland", "Austria", "own"],
 		[689, "Ukraine", "Austria", "own"], ["Bozen", "Italy", "Austria", "own"],
-		[504, "France", "Germany", "own"],
+		[[504], "France", "Germany", "own"],
 		[1071, "Romania", "Austria", "own"], [1072, "Romania", "Austria", "own"], [1075, "Romania", "Austria", "own"], [1081, "Romania", "Austria", "own"],
 		[1079, "Romania", "Austria", "own"], [1459, "Serbia", "Austria", "own"],
 		[32, "China", "United Kingdom", "own"], [31, "China", "United Kingdom", "own"],
@@ -198,6 +204,7 @@ const DEFS := {
 		"Australia": {"name": "Avustralya", "color": "e6a2b5", "leader": "Başbakan|Joseph Cook", "gdp": 15, "mil": {"personnel": 5000, "tank": 0, "afv": 0, "arty": 50, "air": 0, "sub": 2}},
 		"New Zealand": {"name": "Yeni Zelanda", "color": "e6a2b5", "leader": "Başbakan|William Massey", "gdp": 3, "mil": {"personnel": 3000, "tank": 0, "afv": 0, "arty": 20, "air": 0, "sub": 0}},
 		"South Africa": {"name": "Güney Afrika", "color": "cf8aa0", "leader": "Başbakan|Louis Botha", "gdp": 6, "mil": {"personnel": 8000, "tank": 0, "afv": 0, "arty": 40, "air": 0, "sub": 0}},
+		"Saudi Arabia": {"name": "Necid Emirliği", "color": "98b070", "leader": "Emir|Abdülaziz bin Suud", "gdp": 1, "mil": {"personnel": 15000, "tank": 0, "afv": 0, "arty": 10, "air": 0, "sub": 0}},
 		"Iran": {"name": "Pers Devleti", "color": "b0a070", "leader": "Şah|Ahmed Şah Kaçar", "gdp": 4, "mil": {"personnel": 30000, "tank": 0, "afv": 0, "arty": 50, "air": 0, "sub": 0}},
 		"Switzerland": {"name": "İsviçre", "color": "c07a7a", "leader": "Federal Konsey|Başkanı", "gdp": 8, "mil": {"personnel": 250000, "tank": 0, "afv": 0, "arty": 400, "air": 10, "sub": 0}},
 		"Thailand": {"name": "Siyam", "color": "a67a9a", "leader": "Kral|Vajiravudh", "gdp": 3, "mil": {"personnel": 50000, "tank": 0, "afv": 0, "arty": 100, "air": 0, "sub": 0}},
@@ -400,7 +407,14 @@ static func restructure(gs, id: String) -> void:
 			continue
 		var hit := false
 		for p in gs.provinces:
-			var match_: bool = (p.id == int(s[0])) if typeof(s[0]) == TYPE_INT else (p.name == s[0])
+			var gp: int = p.grp if p.grp >= 0 else p.id
+			var match_: bool
+			if typeof(s[0]) == TYPE_ARRAY:      # [id]: yalnız o parça (bölünmüş eyaletin tek bir ilçe grubu)
+				match_ = p.id == int(s[0][0])
+			elif typeof(s[0]) == TYPE_INT:
+				match_ = gp == int(s[0])         # eski eyalet id'si: parçalarının hepsi
+			else:
+				match_ = gs.provinces[gp].name == s[0]
 			if orig[p.id] == src and match_ and not moved.has(p.id):
 				hit = true
 				moved[p.id] = true

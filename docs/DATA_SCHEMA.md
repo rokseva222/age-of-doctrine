@@ -117,3 +117,8 @@ Ek alanlar:
 - `"setup"`: `blocs`, `wars`, `truce`, `intro` ile birlikte senaryo alanları da yazılabilir: `cold`, `embargo`, `troops_mult`, `treasury_mult`, `stability`, `transfer`, `cyber`…
 - `"inherit_until": [yıl, ay]` ve `"inherit_exclude": ["metin parçası"]` — base çağın gerçek olayları ayrışma tarihine kadar akar; hariç tutulan metinler atlanır (`inherit_exclude: []` tüm olayları miras alır).
 - `"icon"`, `"mood"`, `"nukes"`, `"carriers"` yoksa ext base'inden okunur.
+
+## world.json: bölünmüş eyaletler (1.2.2)
+- `provinces[i].par`: bu eyaletin türediği eski (1.2.1) eyalet id'si. Eski 1834 eyaletin ana parçası eski id'yi ve adını korur (`par == id`); yeni parçalar 1834'ten büyük id alır.
+- Çağ `SPLIT` girdilerinde `int` id/ad, eski eyaletin **tüm parçalarını** taşır; `[id]` (tek elemanlı dizi) yalnız o parçayı taşır.
+- Yeniden üretim: `tools/data/build_world.py` (NE_MEMBERS ile üyeleri döker) iki kez (taban ve ince ağ) + `tools/data/split_world.py`.

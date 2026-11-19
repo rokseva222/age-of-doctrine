@@ -291,6 +291,7 @@ func populate(gs) -> void:
 		for q in p.sea:
 			pp.sea_links.append(int(q))
 		pp.landmass = p.lm
+		pp.grp = int(p.get("par", p.id))
 		pp.owner = p.c
 		pp.controller = p.c
 		pp.core = p.c

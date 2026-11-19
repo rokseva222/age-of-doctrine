@@ -21,6 +21,7 @@ class Province:
 	var siege := 0
 	var siege_by := -1
 	var landmass := 0
+	var grp := -1                            # bölünmüş eyaletlerde ana (eski) eyalet id'si; çağ/senaryo kodu parçaları birlikte taşır
 	var is_capital := false
 	var coastal := false
 	var core := -1
