@@ -6,6 +6,7 @@ const TK = preload("res://scripts/theme_kit.gd")
 const Sheet = preload("res://scripts/sheet.gd")
 const Loc = preload("res://scripts/loc.gd")
 const Flags = preload("res://scripts/flags.gd")
+const Icons = preload("res://scripts/icons.gd")
 
 # tür -> [ad, [[anahtar, etiket, min, max, adım, varsayılan], ...], renk sayısı]
 const TYPES := {
@@ -28,6 +29,21 @@ const TYPES := {
 const SYMBOLS := [["sword", "Kılıç"], ["swords", "Çapraz kılıçlar"], ["star", "Yıldız"], ["crown", "Taç"], ["shield", "Kalkan"], ["anchor", "Çapa"], ["castle", "Kale"],
 	["wheat", "Buğday"], ["flame", "Alev"], ["globe", "Küre"], ["plane", "Uçak"], ["tank", "Tank"], ["bolt", "Şimşek"], ["target", "Hedef"], ["handshake", "El sıkışma"],
 	["skull", "Kafatası"], ["trophy", "Kupa"], ["factory", "Fabrika"]]
+
+## Bayrak amblemi seti (assets/icons/fl_<ad>.png, beyaz siluet; renge boyanır). Dosyası olanlar listelenir; hiçbiri yoksa eski simgeler.
+const EMBLEMS := [["hammer_sickle", "Orak ve çekiç"], ["hammer", "Çekiç"], ["sickle", "Orak"], ["star5", "Yıldız"], ["crescent", "Hilal"], ["crescent_star", "Hilal ve yıldız"],
+	["eagle", "Kartal"], ["eagle2", "Çift başlı kartal"], ["lion", "Aslan"], ["crown", "Taç"], ["sword", "Kılıç"], ["swords", "Çapraz kılıçlar"], ["shield", "Kalkan"], ["anchor", "Çapa"],
+	["wheat", "Buğday başağı"], ["laurel", "Defne çelengi"], ["olive", "Zeytin dalı"], ["gear", "Çark"], ["sun", "Güneş"], ["dragon", "Ejderha"], ["wolf", "Bozkurt"], ["bear", "Ayı"],
+	["fist", "Yumruk"], ["tower", "Kule"], ["trident", "Üç dişli mızrak"], ["torch", "Meşale"], ["book", "Kitap"], ["oak", "Meşe yaprağı"], ["cross", "Haç"], ["lily", "Zambak"]]
+
+
+static func _symbol_set() -> Array:
+	var out: Array = []
+	for e in EMBLEMS:
+		if Icons.pick("fl_" + String(e[0]), "") != "":
+			out.append(["fl_" + String(e[0]), e[1]])
+	return out if not out.is_empty() else SYMBOLS
+
 
 const PRESETS := [
 	["Düz", [["R", ["#c8102e"], {"x0": 0.0, "y0": 0.0, "x1": 1.0, "y1": 1.0}]]],
@@ -303,17 +319,31 @@ func _refresh() -> void:
 			hb.add_child(vl)
 			box.add_child(hb)
 		if t == "Y":
-			var ob := OptionButton.new()
-			ob.custom_minimum_size = Vector2(0, 46)
 			var cur: String = String(l[2].get("icon", "star"))
-			for k in SYMBOLS.size():
-				ob.add_item(Loc.t(SYMBOLS[k][1]))
-				if SYMBOLS[k][0] == cur:
-					ob.select(k)
-			ob.item_selected.connect(func(k: int):
-				layers[idx][2]["icon"] = SYMBOLS[k][0]
-				_preview.spec = to_spec(layers)
-				_preview.queue_redraw())
-			box.add_child(ob)
+			var syms: Array = _symbol_set()
+			var grid := GridContainer.new()
+			grid.columns = 5
+			grid.add_theme_constant_override("h_separation", 6)
+			grid.add_theme_constant_override("v_separation", 6)
+			for k in syms.size():
+				var sname: String = syms[k][0]
+				var bt := Button.new()
+				bt.custom_minimum_size = Vector2(0, 76)
+				bt.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+				bt.tooltip_text = Loc.t(syms[k][1])
+				TK.style_button(bt, "gold" if sname == cur else "ghost")
+				var iv := TK.IconView.new()
+				iv.icon = sname
+				iv.color = Color(0.08, 0.08, 0.1) if sname == cur else Color(0.93, 0.93, 0.9)
+				iv.mouse_filter = Control.MOUSE_FILTER_IGNORE
+				iv.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT, Control.PRESET_MODE_MINSIZE, 12)
+				bt.add_child(iv)
+				bt.pressed.connect(func():
+					layers[idx][2]["icon"] = sname
+					_preview.spec = to_spec(layers)
+					_preview.queue_redraw()
+					_refresh())
+				grid.add_child(bt)
+			box.add_child(grid)
 		_list.add_child(box)
 		_list.add_child(HSeparator.new())

@@ -1693,9 +1693,9 @@ func player_propose_alliance(target: int) -> String:
 
 ## İlişki geliştirme eylemleri: altın karşılığı puan; her biri hedef başına bekleme süresine tabidir.
 const DIPLO_ACTS := {
-	"envoy": {"name": "Elçi gönder", "mul": 0.12, "rel": 5.0, "cd": 4, "gift": 0.0, "icon": "diplomacy"},
-	"gift": {"name": "Hediye gönder", "mul": 0.6, "rel": 12.0, "cd": 8, "gift": 0.6, "icon": "gift"},
-	"pact": {"name": "Ticaret ve kültür anlaşması", "mul": 1.8, "rel": 24.0, "cd": 16, "gift": 0.4, "icon": "improve_rel"},
+	"envoy": {"name": "Elçi gönder", "mul": 0.05, "rel": 8.0, "cd": 2, "gift": 0.0, "icon": "diplomacy"},
+	"gift": {"name": "Hediye gönder", "mul": 0.3, "rel": 18.0, "cd": 4, "gift": 0.6, "icon": "gift"},
+	"pact": {"name": "Ticaret ve kültür anlaşması", "mul": 0.9, "rel": 32.0, "cd": 8, "gift": 0.4, "icon": "improve_rel"},
 }
 
 

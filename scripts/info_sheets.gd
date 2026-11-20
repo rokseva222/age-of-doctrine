@@ -287,11 +287,11 @@ static func open_howto(parent: Node) -> void:
 			render.call())
 
 
-const UPDATE_VER := "1.2.9"
+const UPDATE_VER := "1.2.10"
 const WHATS_NEW := [
 	["Savaş saldırganlığı", "Ayarlar'dan yapay zekânın savaş açma isteğini %0–100 arasında ayarla; normal oyunda da çalışır."],
 	["Denize çıkarma", "Ordu seçip düşman adasına (Rodos, Girit…) dokunmak artık doğrudan amfibi çıkarma başlatır."],
-	["Diplomasi", "Elçi, hediye ve anlaşma ucuzladı; ilişki artık çok daha yavaş geri düşer. İttifak eşiği 75'ten 65'e indi."],
+	["Diplomasi", "Elçi, hediye ve anlaşma çok ucuzladı, bekleme süreleri yarıya indi, kazanılan ilişki puanı arttı ve ilişki çok daha yavaş geri düşüyor. İttifak eşiği 75'ten 65'e indi."],
 	["Doğu Almanya", "Soğuk Savaş senaryolarında Almanya artık ikiye bölünmüş: Batı Almanya ve Varşova Paktı'nda Doğu Almanya (Doğu Berlin başkent)."],
 	["Nükleer platformlar", "Füze silosu, bombardıman uçağı ya da denizaltıyla nükleer saldırı: her platformun kaybı, riski ve bekleme süresi farklı."],
 	["Haritada donanma", "Denizaltı ve uçak gemisi rozetleri artık haritada, kıyı eyaletlerinin yanında görünür."],
