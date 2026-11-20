@@ -877,7 +877,7 @@ func show_wing(w) -> void:
 	if w.xp >= 6.0:
 		_card_tags.add_child(_tag(FleetExt.rank_name(w.xp), TK.GOLD))
 	if w.stance == "defend":
-		_card_tags.add_child(_tag("Savun", TK.BLUE))
+		_card_tags.add_child(_tag("Savunma", TK.BLUE))
 	_card_tags.visible = _card_tags.get_child_count() > 0
 	_card_stat("Uçak", "%d" % Air.disp(w), TK.TEXT, true)
 	_card_stat("Menzil", "%d km" % Air.range_km(w.kind), TK.TEXT)

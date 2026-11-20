@@ -12,7 +12,7 @@ const XP_MAX := 60.0
 
 # ------------------------------------------------------------------ duruş
 const STANCES := ["attack", "defend", "avoid"]
-const STANCE_TR := {"attack": "Saldır", "defend": "Savun", "avoid": "Çekil"}
+const STANCE_TR := {"attack": "Saldırı", "defend": "Savunma", "avoid": "Çekil"}
 const STANCE_HINT := {
 	"attack": "Düşman filosunu arar; yapay zekâ komutu açıksa hedef seçer.",
 	"defend": "Bulunduğu denizi tutar, kendi limanında %10 güçlü savaşır; kendiliğinden saldırıya gitmez.",

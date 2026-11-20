@@ -13,7 +13,7 @@ const FlagEditor = preload("res://scripts/flag_editor.gd")
 
 const MAX_BUTTONS := 4
 const STANCES := ["attack", "defend"]
-const STANCE_TR := {"attack": "Saldır", "defend": "Savun"}
+const STANCE_TR := {"attack": "Saldırı", "defend": "Savunma"}
 const STANCE_HINT := {
 	"attack": "Menzilindeki düşman uçaklarını ve hedefleri arar; hava üstünlüğü için en güçlü ayardır.",
 	"defend": "Üssünün üstünde kalır: düşman saldırılarını %20 daha güçlü önler ama dışarıdaki orduya destek vermez.",
