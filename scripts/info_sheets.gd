@@ -297,29 +297,6 @@ static func open_howto(parent: Node) -> void:
 const UPDATE_VER := "1.2.35"
 const WHATS_NEW := [
 	["Tarihî dönem bayrakları", "1299–1520 çağlarında Osmanlı, Bizans, Memlük, Timur, Yuan, Ming, Safevî, Kutsal Roma, Fransa, İngiltere, Polonya, Litvanya, Venedik, Macaristan ve Moskova artık dönemin sancaklarıyla görünüyor. 1962'de Malaya bayrağı eklendi."],
-	["Çağa özel donanma", "Donanma artık çağa göre farklı: 1299–1520 senaryolarında yelkenli filolar (Kogge, Karaka, Kalyon) ve kürekli Kadırga filoları savaşır; denizaltı ve uçak gemisi yoktur, kadırgalar gizli değildir ve asker taşıyabilir. 1914'te dretnot, kruvazör, muhrip ve U-botları; 1939'da zırhlı, uçak gemisi ve denizaltılar; Soğuk Savaş ve günümüzde füzeli muhrip, firkateyn, nükleer denizaltı. Hava filosu yalnızca hava teknolojisi olan ülkelerde kurulur."],
-	["Filo menüsü", "Duraklatma menüsünde Savaş Odası ve Siyasi sistemin yanına Deniz filoları ve Hava filoları sayfaları geldi: haritadaki rozetleri tek dokunuşla gizle/göster, tüm filolarını listeden seç ve haritada git. Harita artık kalabalık olmasın diye düğme eklemiyor."],
-	["Hava filoları", "Artık hava kuvvetlerin filolar halinde haritada: avcı, bombardıman, İHA, nakliye ve keşif kanatları üslerinden görev yapar. Bombardıman kanatlarıyla menzildeki düşman eyaletlerini vur, avcılarla hava üstünlüğü kazan (karadaki savaşa bonus), nakliye kanatlarıyla orduyu uçur ya da paraşütle indir. Kanatlara ad ver ve bayrak tasarla."],
-	["Filoya ad ve bayrak", "Her filoya ad ver, kendi bayrağını tasarla; Filo komutanlığında gemi sınıflarını (muhrip, kruvazör, denizaltı modelleri...), rütbeyi ve ikmal durumunu gör. Duruş (saldır/savun/çekil), eşlik ve filo bölme eklendi."],
-	["Daha gerçekçi deniz savaşı", "Limandan uzak filolar zayıflar (ikmal). Yapay zekâ çıkarma konvoyları denizde vurulabilir. Hazar ve Kuzey Buz Denizi eklendi; yeni savaş gemileri inşa edebilirsin."],
-	["Deniz filoları", "Haritada artık aktif donanmalar var: muharebe, nakliye, denizaltı ve uçak gemisi filoları denizde gezer, çarpışır, abluka yapar, kıyıyı bombalar. Ordunu gemiye bindirip denizden çıkarma yapabilirsin."],
-	["Tarihe uygun sömürge adları", "1914 ve 1939 senaryolarında Britanya Hindistanı, Fransız Cezayiri, Fransız Çinhindisi gibi dönemin gerçek adları görünür. Hindistan ve Kore tek devlet olarak başlar."],
-	["Soğuk Savaş haritası temizlendi", "1962 haritasında bugünün mikro devletleri (hayalet ülkeler) kaldırıldı; toprakları o dönemin gerçek sahiplerine bağlandı."],
-	["Eski çağlarda anakronizm temizliği", "1380 ve 1520 çağlarından petrol binası, borsa, siber/istihbarat etiketleri ve modern protesto/darbe haberleri çıkarıldı; ünvanlar ve isimler dönemine uygun."],
-	["Dönem bayrakları", "Sömürgeler artık metropolün bayrağını taşıyor (Fransız Cezayiri → Fransa, Britanya Hindistanı → Britanya...). 1914, 1939 ve 1962 senaryolarında İran, Afganistan, Libya, İspanya, Romanya gibi 20 ülke dönemin gerçek bayrağıyla geliyor."],
-	["1962'de iki Vietnam", "1962 senaryosunda Vietnam artık Kuzey (Hanoi) ve Güney (Saygon) olarak ikiye ayrılıyor; ayrıca Kanada, Kongo, Suriye, Kamboçya, Laos gibi ülkeler dönemin bayraklarıyla geliyor."],
-	["Dönemlere uygun inançlar", "Dönem modlarında inançlar bugünkü nüfusa göre başlıyor: Kuzey Kıbrıs, Özbekistan, Bosna ve Kosova gibi Müslüman bölgeler artık yanlışlıkla Hristiyan görünmüyor."],
-	["Dönem adları 13 dilde", "Sömürge ve dönem devlet adları (Fransız Cezayiri, Britanya Hindistanı, Yukarı Volta, Vietnam Cumhuriyeti...) ile eski unvanlar (Genel Vali, Hidiv, Yüksek Komiser) artık 13 dilde; 1962'de Seylan, Birmanya, Tanganyika gibi dönemin gerçek adları kullanılıyor."],
-	["Toplu işlemler ve yeni seçenekler", "Eyalet kartındaki Toplu işlemler ile tüm eyaletlere bina, asimile ve din dönüşümü tek dokunuşla yapılır. Ülke Formla'da gereken eyaletler haritada gösterilir. Kıbrıs, Jamaika, Mauritius gibi adalara çıkarma düzeltildi. Politika'da Faşist rejim ve Monarşi seçenekleri geldi; 1914/1939 Almanya gibi çok düşmanla başlayanlara savaş fonu verilir."],
-	["İki yeni tarihî senaryo", "Osmanlı'nın Kuruluşu (1299, Söğüt'ten Bursa'ya) ve İstanbul'un Fethi (1453, surların önünde) çağları eklendi. Evlilik teklifi hikaye modunda artık bir kez kabul edilince tekrar gelmez."],
-	["Deniz ve gaz harekâtı", "Çıkarmada donanma üstünlüğü artık avantaj sağlıyor, güçlü düşman donanması çıkarma filonu denizde vurabiliyor. Kimyasal saldırı uçakla da yapılabiliyor. Dinler ve rejimler için yeni simgeler geldi."],
-	["İlişki bozma ve savaş şartı", "Diplomaside protesto, karalama ve sınır kışkırtmasıyla ilişkileri düşürebilirsin. Savaş ilan etmek için ilişki en çok 20 olmalı (Ayarlar'dan kapatılabilir)."],
-	["Ticaret anlaşmaları", "Dost ülkelerle ticaret anlaşması imzala: iki taraf da her hafta kazanır. Savaş, ambargo ya da bozulan ilişki anlaşmayı bitirir."],
-	["Sipariş etkisi görünür", "Silah siparişlerinde teslimatta ordu gücüne katkı yazıyor; büyük ordularda sipariş adımları ölçekleniyor."],
-	["Savaşsız Dünya Savaşları", "Ayarlardan 1. ve 2. Dünya Savaşı senaryolarını savaş başlamadan, ittifaklar ve gerginlikle başlatabilirsin. Koddan içe aktarma da daha dayanıklı."],
-	["Sandbox'a yeni araçlar", "Sandbox modunda dünya barışı, ittifak, savaş çıkarma, olay tetikleme, asker yerleştirme, başkent taşıma, isyan çıkarma ve daha fazlası."],
-	["3B kılıç düellosu", "Hikaye modundaki Meydan Okuma artık gerçek zamanlı 3B bir düello: rakibin kılıç yönünü oku, doğru siperi al, kusursuz siperde karşı vuruşla bitir."],
-	["Grup adları çevrildi", "Milis, isyancı, paralı asker ve gizli hücre adları Türkçe dışındaki dillerde artık İngilizce üretiliyor."],
 ]
 
 
