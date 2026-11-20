@@ -593,6 +593,9 @@ func _open_scenarios() -> void:
 			hb.add_child(stp)
 		b.add_child(hb)
 		b.custom_minimum_size = Vector2(0, 150 if kd != "free" else 138)
+		var min_h: float = 150.0 if kd != "free" else 138.0
+		tv.minimum_size_changed.connect(func():
+			b.custom_minimum_size.y = maxf(min_h, tv.get_combined_minimum_size().y + 36.0))
 		b.pressed.connect(func():
 			_click()
 			set_scenario(sid)
@@ -662,6 +665,9 @@ func _open_eras() -> void:
 			hb.add_child(lk2)
 		b.add_child(hb)
 		b.custom_minimum_size = Vector2(0, 176)
+		# uzun tanıtım metni (İngilizce/Arapça) kartın dışına taşmasın: kart içeriğe göre uzar
+		tv.minimum_size_changed.connect(func():
+			b.custom_minimum_size.y = maxf(176.0, tv.get_combined_minimum_size().y + 36.0))
 		var ename: String = e["name"]
 		b.pressed.connect(func():
 			_click()
