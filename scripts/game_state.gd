@@ -1365,8 +1365,15 @@ func _alliance_decay() -> void:
 		if not c.alive:
 			continue
 		for a in c.allies.duplicate():
-			if a > c.id and rng.randf() < 0.003:
-				break_alliance(c.id, a)
+			if a > c.id and rng.randf() < (0.0008 if Eras.current != "" else 0.003):
+				# ortak düşmana karşı savaşan müttefikler savaş sürerken ayrılmaz (Entente/Mihver dağılmasın)
+				var shared := false
+				for e in c.enemies:
+					if countries[a].enemies.has(e):
+						shared = true
+						break
+				if not shared:
+					break_alliance(c.id, a)
 
 
 # ------------------------------------------------------------ vasal sistemi
