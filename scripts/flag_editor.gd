@@ -34,7 +34,9 @@ const SYMBOLS := [["sword", "Kılıç"], ["swords", "Çapraz kılıçlar"], ["st
 const EMBLEMS := [["hammer_sickle", "Orak ve çekiç"], ["hammer", "Çekiç"], ["sickle", "Orak"], ["star5", "Yıldız"], ["crescent", "Hilal"], ["crescent_star", "Hilal ve yıldız"],
 	["eagle", "Kartal"], ["eagle2", "Çift başlı kartal"], ["lion", "Aslan"], ["crown", "Taç"], ["sword", "Kılıç"], ["swords", "Çapraz kılıçlar"], ["shield", "Kalkan"], ["anchor", "Çapa"],
 	["wheat", "Buğday başağı"], ["laurel", "Defne çelengi"], ["olive", "Zeytin dalı"], ["gear", "Çark"], ["sun", "Güneş"], ["dragon", "Ejderha"], ["wolf", "Bozkurt"], ["bear", "Ayı"],
-	["fist", "Yumruk"], ["tower", "Kule"], ["trident", "Üç dişli mızrak"], ["torch", "Meşale"], ["book", "Kitap"], ["oak", "Meşe yaprağı"], ["cross", "Haç"], ["lily", "Zambak"]]
+	["fist", "Yumruk"], ["tower", "Kule"], ["trident", "Üç dişli mızrak"], ["torch", "Meşale"], ["book", "Kitap"], ["oak", "Meşe yaprağı"], ["cross", "Haç"], ["lily", "Zambak"],
+	["star6", "Altı köşeli yıldız"], ["star8", "Sekiz köşeli yıldız"], ["maple", "Akçaağaç yaprağı"], ["palm", "Palmiye"], ["cedar", "Sedir"], ["rose", "Gül"], ["horse", "At"], ["falcon", "Şahin"],
+	["elephant", "Fil"], ["snake", "Yılan"], ["axe", "Balta"], ["spear", "Mızrak"], ["helmet", "Miğfer"], ["globe", "Küre"], ["mountain", "Dağ"]]
 
 
 static func _symbol_set() -> Array:

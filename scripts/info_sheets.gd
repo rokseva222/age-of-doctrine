@@ -287,8 +287,9 @@ static func open_howto(parent: Node) -> void:
 			render.call())
 
 
-const UPDATE_VER := "1.2.10"
+const UPDATE_VER := "1.2.11"
 const WHATS_NEW := [
+	["Bayrak ve ittifak amblemleri", "Bayrak ve ittifak düzenleyicide 45 yeni siluet amblem: orak-çekiç, hilal, kartallar, aslan, taç, defne, ejderha, bozkurt ve daha fazlası."],
 	["Savaş saldırganlığı", "Ayarlar'dan yapay zekânın savaş açma isteğini %0–100 arasında ayarla; normal oyunda da çalışır."],
 	["Denize çıkarma", "Ordu seçip düşman adasına (Rodos, Girit…) dokunmak artık doğrudan amfibi çıkarma başlatır."],
 	["Diplomasi", "Elçi, hediye ve anlaşma çok ucuzladı, bekleme süreleri yarıya indi, kazanılan ilişki puanı arttı ve ilişki çok daha yavaş geri düşüyor. İttifak eşiği 75'ten 65'e indi."],

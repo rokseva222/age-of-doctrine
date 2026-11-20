@@ -10,6 +10,22 @@ names = sys.argv[2].split(",")
 want = len(names)
 pref = "fl"
 im = Image.open(src).convert("RGB"); a = np.array(im).astype(int); H, W, _ = a.shape
+if len(sys.argv) > 3 and sys.argv[3] == "grid":
+    # 3x5 sabit ızgara: parçalı amblemler (güneş ışınları, kitap) tek parça kalır
+    out = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "assets", "icons")
+    cw, ch = W / 5.0, H / 3.0
+    for i, nm in enumerate(names):
+        r, c = divmod(i, 5)
+        x0, x1, y0, y1 = int(c * cw), int((c + 1) * cw), int(r * ch), int((r + 1) * ch)
+        lum = a[y0:y1, x0:x1].mean(axis=2)
+        alpha = (np.clip((255 - lum) / 200.0, 0, 1) * 255).astype(np.uint8)
+        ys, xs = np.where(alpha > 40)
+        alpha = alpha[ys.min():ys.max() + 1, xs.min():xs.max() + 1]
+        t = Image.fromarray(np.dstack([np.full(alpha.shape + (3,), 255, np.uint8), alpha]), "RGBA")
+        w, h = t.size; s = max(w, h) + 8
+        sq = Image.new("RGBA", (s, s), (0, 0, 0, 0)); sq.paste(t, ((s - w) // 2, (s - h) // 2))
+        sq.resize((256, 256), Image.LANCZOS).save(os.path.join(out, "fl_%s.png" % nm))
+    print("grid", len(names), "adet"); sys.exit(0)
 bg = (a.min(axis=2) >= 243)          # beyaz zemin
 # zemin = kenardan ulaşılan beyaz bölge
 seen = np.zeros((H, W), bool); dq = deque()

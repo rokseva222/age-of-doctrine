@@ -6,14 +6,18 @@ const Icons = preload("res://scripts/icons.gd")
 
 const SHAPES := ["Daire", "Kalkan", "Altıgen", "Elmas", "Sekizgen", "Rozet", "Güneş", "Kare"]
 const INNERS := ["Düz", "İç çerçeve", "İç daire"]
-const SYMBOLS := ["star", "sword", "swords", "shield", "crown", "globe", "anchor", "plane", "bolt", "flame", "castle", "wheat", "tank", "handshake", "target", "skull", "trophy", "factory"]
+const SYMBOLS := ["fl_hammer_sickle", "fl_star5", "fl_crescent_star", "fl_eagle", "fl_eagle2", "fl_lion", "fl_crown", "fl_sword", "fl_swords", "fl_shield", "fl_anchor", "fl_wheat", "fl_laurel", "fl_olive", "fl_gear", "fl_sun", "fl_dragon", "fl_wolf", "fl_bear", "fl_fist", "fl_tower", "fl_trident", "fl_torch", "fl_book", "fl_oak", "fl_cross", "fl_lily", "fl_hammer", "fl_sickle", "fl_crescent", "fl_star6", "fl_star8", "fl_maple", "fl_palm", "fl_cedar", "fl_rose", "fl_horse", "fl_falcon", "fl_elephant", "fl_snake", "fl_axe", "fl_spear", "fl_helmet", "fl_globe", "fl_mountain"]
+## Yapay zekâ ittifakları için tarafsız semboller (ideolojik/dinî olanlar yok)
+const RANDOM_SYMBOLS := ["fl_star5", "fl_eagle", "fl_lion", "fl_crown", "fl_sword", "fl_swords", "fl_shield", "fl_anchor", "fl_wheat", "fl_laurel", "fl_olive", "fl_gear", "fl_sun", "fl_wolf", "fl_bear", "fl_tower", "fl_trident", "fl_torch", "fl_oak", "fl_star8", "fl_maple", "fl_palm", "fl_cedar", "fl_rose", "fl_horse", "fl_falcon", "fl_elephant", "fl_axe", "fl_spear", "fl_helmet", "fl_globe", "fl_mountain"]
+## Eski kayıtlı/hazır amblemlerdeki simge adları yeni siluetlere yönlenir
+const LEGACY := {"star": "fl_star5", "sword": "fl_sword", "swords": "fl_swords", "shield": "fl_shield", "crown": "fl_crown", "anchor": "fl_anchor", "wheat": "fl_wheat", "flame": "fl_torch", "castle": "fl_tower", "globe": "fl_sun", "bolt": "fl_gear", "factory": "fl_gear", "skull": "fl_wolf"}
 const PALETTE := ["e5482f", "e58a3a", "e3a92b", "5db86e", "2f8f83", "5ba4e0", "2f4f9a", "a98be0", "b0486e", "ece6d6", "9aa2ad", "20262e", "0b0e12"]
 
 var emblem: Dictionary = {}
 
 
 static func default_emblem() -> Dictionary:
-	return {"shape": 1, "inner": 1, "symbol": "star", "c1": "2f4f9a", "c2": "ece6d6", "c3": "2f4f9a"}
+	return {"shape": 1, "inner": 1, "symbol": "fl_star5", "c1": "2f4f9a", "c2": "ece6d6", "c3": "2f4f9a"}
 
 
 static func random_emblem(rng: RandomNumberGenerator, base: Color = Color.WHITE) -> Dictionary:
@@ -22,7 +26,7 @@ static func random_emblem(rng: RandomNumberGenerator, base: Color = Color.WHITE)
 	if base != Color.WHITE:
 		c1 = base.darkened(0.25).to_html(false)
 	return {"shape": rng.randi_range(0, SHAPES.size() - 1), "inner": rng.randi_range(0, 2),
-		"symbol": SYMBOLS[rng.randi_range(0, SYMBOLS.size() - 1)], "c1": c1, "c2": c2, "c3": c1}
+		"symbol": RANDOM_SYMBOLS[rng.randi_range(0, RANDOM_SYMBOLS.size() - 1)], "c1": c1, "c2": c2, "c3": c1}
 
 
 static func _poly(shape: int, c: Vector2, r: float) -> PackedVector2Array:
@@ -80,7 +84,8 @@ static func draw_in(ci: CanvasItem, rect: Rect2, e: Dictionary, alpha: float = 1
 		ci.draw_circle(c, ir * 0.82, c1)
 	else:
 		ci.draw_colored_polygon(_poly(shape, c, ir), c1)
-	var sym: String = e.get("symbol", "star")
+	var sym: String = e.get("symbol", "fl_star5")
+	sym = LEGACY.get(sym, sym)
 	var isz: float = s * (0.46 if inner != 0 else 0.5)
 	var col := c2 if inner != 0 else c2
 	Icons.draw(ci, sym, Rect2(c - Vector2(isz, isz) * 0.5, Vector2(isz, isz)), col, 2.6)
