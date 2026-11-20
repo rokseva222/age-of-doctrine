@@ -22,12 +22,15 @@ const AppointUI = preload("res://scripts/appoint_ui.gd")
 const TurnUI = preload("res://scripts/turn_ui.gd")
 const Sfx = preload("res://scripts/sfx.gd")
 const Loc = preload("res://scripts/loc.gd")
+const Chokepoints = preload("res://scripts/chokepoints.gd")
 const UN = preload("res://scripts/un.gd")
 const Macro = preload("res://scripts/macro.gd")
 const Carriers = preload("res://scripts/carriers.gd")
 const Fleets = preload("res://scripts/fleets.gd")
 const Seas = preload("res://scripts/seas.gd")
 const FleetUI = preload("res://scripts/fleet_ui.gd")
+const Air = preload("res://scripts/air.gd")
+const AirUI = preload("res://scripts/air_ui.gd")
 const Missions = preload("res://scripts/missions.gd")
 const Names = preload("res://scripts/names.gd")
 const Settings = preload("res://scripts/settings.gd")
@@ -60,6 +63,7 @@ var turn_busy := false
 var selected_pid := -1
 var selected_army = null
 var selected_fleet = null
+var selected_wing = null
 var tutorial = null
 var _cab_last := -99
 var _cab_recent: Array = []
@@ -112,6 +116,7 @@ func _ready() -> void:
 	ScenarioEditor.preview_hook = _begin_map_preview
 	map.choke_tapped.connect(_on_choke_tapped)
 	map.fleet_tapped.connect(_on_fleet_tapped)
+	map.wing_tapped.connect(_on_wing_tapped)
 	map.sea_tapped.connect(_on_sea_tapped)
 	ui.speed_changed.connect(_on_speed_changed)
 	ui.step_requested.connect(_on_step)
@@ -235,6 +240,8 @@ func _attach_gs(g) -> void:
 	selected_army = null
 	selected_fleet = null
 	ui.sel_fleet = null
+	selected_wing = null
+	ui.sel_wing = null
 	ui.set_speed(0)
 	speed_idx = 0
 	menu.reset_world()
@@ -624,10 +631,14 @@ func _check_goals() -> void:
 func _refresh_selection() -> void:
 	if selected_fleet != null and not gs.fleets.has(selected_fleet.id):
 		_clear_fleet_sel()
+	if selected_wing != null and not gs.wings.has(selected_wing.id):
+		_clear_wing_sel()
 	if selected_pid >= 0 and mode == "game":
 		ui.show_province(selected_pid, selected_army)
 	elif selected_fleet != null and mode == "game":
 		ui.show_fleet(selected_fleet)
+	elif selected_wing != null and mode == "game":
+		ui.show_wing(selected_wing)
 	map.hud.queue_redraw()
 
 
@@ -635,9 +646,49 @@ func _clear_fleet_sel() -> void:
 	selected_fleet = null
 	ui.sel_fleet = null
 	map.set_selected_fleet(null)
+	_clear_wing_sel()
+
+
+func _clear_wing_sel() -> void:
+	selected_wing = null
+	ui.sel_wing = null
+	map.set_selected_wing(null)
+
+
+func _select_wing(w) -> void:
+	_clear_fleet_sel()
+	selected_wing = w
+	ui.sel_wing = w
+	selected_army = null
+	map.set_selected_army(null)
+	map.set_selected_wing(w)
+	selected_pid = -1
+	map.select_province(-1)
+	ui.show_wing(w)
+
+
+func _wing_done() -> void:
+	_refresh_selection()
+	map.hud.queue_redraw()
+
+
+func _on_wing_tapped(wid: int) -> void:
+	if mode != "game" or ui.is_dialog_open():
+		return
+	var w = gs.wings.get(wid)
+	if w == null:
+		return
+	sfx.play("tap")
+	if w.owner == gs.player:
+		_select_wing(w)
+	else:
+		selected_pid = -1
+		map.select_province(-1)
+		ui.show_wing(w)
 
 
 func _select_fleet(f) -> void:
+	_clear_wing_sel()
 	selected_fleet = f
 	ui.sel_fleet = f
 	selected_army = null
@@ -673,7 +724,10 @@ func _on_fleet_tapped(fid: int) -> void:
 
 ## Filo seçiliyken denize dokunmak: hedef bölge
 func _on_sea_tapped(zone: String) -> void:
-	if mode != "game" or ui.is_dialog_open() or selected_fleet == null:
+	if mode != "game" or ui.is_dialog_open():
+		return
+	if selected_fleet == null:
+		_sea_summary(zone)
 		return
 	var f = selected_fleet
 	var err: String = Fleets.order_move(gs, f.id, zone)
@@ -687,6 +741,38 @@ func _on_sea_tapped(zone: String) -> void:
 	else:
 		ui.toast("Filo yola çıktı: %s (%d hafta)." % [Seas.name_tr(zone), int(ceil(float(f.path.size()) / float(Fleets.SPEED.get(f.kind, 2))))])
 	_refresh_selection()
+
+
+## Filo seçili değilken denize dokunmak: bölge özeti (kimin kaç filosu var, geçit, kıyı limanları)
+func _sea_summary(zone: String) -> void:
+	if gs == null or gs.player < 0:
+		return
+	var me: int = gs.player
+	var mine := 0
+	var allied := 0
+	var foes := 0
+	var ctx: Dictionary = Fleets.vis_ctx(gs)
+	for f in Fleets.at_zone(gs, zone):
+		if f.owner == me:
+			mine += 1
+		elif not Fleets.visible(gs, ctx, f):
+			continue
+		elif gs.at_war(me, f.owner):
+			foes += 1
+		else:
+			allied += 1
+	var txt: String = "%s: %s" % [Seas.name_of(zone), Loc.t("senin %d, dost %d, düşman %d filo") % [mine, allied, foes]]
+	var gates: Array = []
+	for nb in Seas.neighbors(zone):
+		var g: String = Seas.gate_of(zone, String(nb))
+		if g != "" and not gates.has(g):
+			gates.append(g)
+	if not gates.is_empty():
+		var names: Array = []
+		for g2 in gates:
+			names.append(Chokepoints.name_of(g2))
+		txt += "  |  " + ", ".join(names)
+	ui.toast(txt)
 
 
 func _on_news(text: String, prov: int, kind: String) -> void:
@@ -1035,6 +1121,16 @@ func _on_ui_action(act: String, arg) -> void:
 		"fleet_debark":
 			if selected_fleet != null:
 				FleetUI.debark(ui, gs, selected_fleet, _fleet_done, int(arg))
+		"fleet_manage":
+			if selected_fleet != null:
+				FleetUI.manage(ui, gs, selected_fleet, _fleet_done)
+		"fleet_attack":
+			if selected_fleet != null:
+				var tf = gs.fleets.get(int(arg))
+				if tf != null:
+					_on_sea_tapped(tf.zone)
+					if not selected_fleet.path.is_empty():
+						ui.toast("Filo düşman filosuna saldırıya geçti: %s." % Seas.name_of(tf.zone))
 		"fleet_merge":
 			if selected_fleet != null:
 				var me_err: String = Fleets.merge(gs, selected_fleet.id)
@@ -1056,6 +1152,31 @@ func _on_ui_action(act: String, arg) -> void:
 					ui.toast("Bu kıyıya ulaşılamıyor: yolda kapalı bir boğaz/kanal var.")
 				else:
 					_on_sea_tapped(best_z)
+		"wing_manage":
+			if selected_wing != null:
+				AirUI.manage(ui, gs, selected_wing, _wing_done)
+		"wing_strike_menu":
+			if selected_wing != null:
+				AirUI.strike(ui, gs, selected_wing, _wing_done)
+		"wing_strike":
+			if selected_wing != null:
+				AirUI.strike(ui, gs, selected_wing, _wing_done, int(arg))
+		"wing_rebase_menu":
+			if selected_wing != null:
+				AirUI.rebase(ui, gs, selected_wing, _wing_done)
+		"wing_rebase":
+			if selected_wing != null:
+				AirUI.rebase(ui, gs, selected_wing, _wing_done, int(arg))
+		"wing_lift":
+			if selected_wing != null:
+				AirUI.lift(ui, gs, selected_wing, _wing_done)
+		"wing_lift_from":
+			if selected_wing != null:
+				AirUI.lift_dest(ui, gs, selected_wing, int(arg), _wing_done)
+		"wing_deselect":
+			_clear_wing_sel()
+			selected_pid = -1
+			ui.hide_info()
 		"fleet_deselect":
 			_clear_fleet_sel()
 			selected_pid = -1

@@ -33,6 +33,8 @@ const Sil = preload("res://scripts/silhouette.gd")
 const Chokepoints = preload("res://scripts/chokepoints.gd")
 const Daily = preload("res://scripts/daily.gd")
 const Fleets = preload("res://scripts/fleets.gd")
+const FleetExt = preload("res://scripts/fleet_ext.gd")
+const Air = preload("res://scripts/air.gd")
 const Seas = preload("res://scripts/seas.gd")
 const Politics = preload("res://scripts/politics.gd")
 const WarRoomUI = preload("res://scripts/war_room_ui.gd")
@@ -56,6 +58,7 @@ const TICK_H := 52.0
 const PADX := 8
 
 var form_view_on := false
+var sel_wing = null                  # seçili hava kanadı (eyalet kartında saldırı/üs düğmeleri gösterilir)
 var sel_fleet = null                 # seçili filo (eyalet kartında filo eylemleri gösterilir)
 signal speed_changed(idx: int)
 signal step_requested()
@@ -674,6 +677,17 @@ func show_province(pid: int, selected_army) -> void:
 				_abtn("Kıyı bombardımanı" if bl <= 0 else "Bombardıman: %d hafta bekle" % bl, "danger", Icons.pick("bombard", "ship"), "fleet_bombard", pid, bl <= 0)
 			if sel_fleet.cargo > 0 and Fleets.debark_check(gs, sel_fleet, pid) == "":
 				_abtn("Karaya çıkar", "danger", Icons.pick("landing", "swords"), "fleet_debark", pid)
+	if sel_wing != null and gs.wings.has(sel_wing.id) and sel_wing.owner == me:
+		var sw = sel_wing
+		var hostile_p: bool = gs._holder(pid) >= 0 and gs.at_war(me, gs._holder(pid))
+		if (sw.kind == "bomber" or sw.kind == "drone") and hostile_p and Air.in_range(gs, sw, pid):
+			var wl: int = sw.cd - gs.turn
+			_abtn("Hava saldırısı" if wl <= 0 else "Hava saldırısı: %d hafta bekle" % wl, "danger", Icons.pick("airstrike", "jet"), "wing_strike", pid, wl <= 0)
+		if Air.rebase_check(gs, sw, pid) == "":
+			_abtn("Kanat bu üsse konuşlansın", "gold", Icons.pick("airbase", "plane"), "wing_rebase", pid)
+		if sw.kind == "transport" and Air.in_range(gs, sw, pid):
+			if gs.armies.has(pid) and gs.armies[pid].owner == me:
+				_abtn("Bu ordu uçurulsun", "blue", Icons.pick("paratrooper", "users"), "wing_lift_from", pid)
 	if p.owner == me and p.controller == me and army != null and army.owner == me and p.coastal and not Seas.coast_zones(gs, pid).is_empty():
 		_abtn("Gemiye bin", "blue", Icons.pick("cargo_ship", "ship"), "embark", pid)
 	if moving:
@@ -756,10 +770,10 @@ func show_fleet(f) -> void:
 	_card_pid = -1
 	card.visible = true
 	var oc = gs.countries[f.owner]
-	_card_flag.set_country(oc)
+	_card_flag.set_spec(f.flag, oc)
 	_card_rule.color = oc.color.lightened(0.05) if oc.color.get_luminance() > 0.12 else TK.PAPER
-	_card_title.text = TK.up(Fleets.kind_name(f.kind))
-	_card_kicker.text = TK.up("%s  /  %s" % [oc.name, Seas.name_tr(f.zone)])
+	_card_title.text = TK.up(Fleets.display_name(gs, f))
+	_card_kicker.text = TK.up("%s  /  %s  /  %s" % [oc.name, Loc.t(Fleets.kind_name(f.kind)), Seas.name_of(f.zone)])
 	_clear(_card_tags)
 	_clear(_card_stats)
 	_clear(_card_actions)
@@ -773,9 +787,22 @@ func show_fleet(f) -> void:
 		_card_tags.add_child(_tag("Abluka görevinde", TK.ORANGE))
 	if f.kind == "sub":
 		_card_tags.add_child(_tag("Gizli", TK.PURPLE))
+	if f.xp >= 6.0:
+		_card_tags.add_child(_tag(FleetExt.rank_name(f.xp), TK.GOLD))
+	if f.stance != "attack":
+		_card_tags.add_child(_tag(FleetExt.STANCE_TR[f.stance], TK.BLUE))
+	if f.escort >= 0 and gs.fleets.has(f.escort):
+		_card_tags.add_child(_tag("Eşlik görevinde", TK.GREEN))
+	if f.tgt >= 0 and f.kind == "transport":
+		_card_tags.add_child(_tag("Çıkarma konvoyu", TK.RED))
 	_card_tags.visible = _card_tags.get_child_count() > 0
 	_card_stat("Güç", "%d" % Fleets.disp(f), TK.TEXT, true)
 	_card_stat("Hız", "%d bölge/hf" % int(Fleets.SPEED.get(f.kind, 2)), TK.TEXT)
+	if f.kind != "transport" and (mine or gs.is_allied(me, f.owner)):
+		var sh_: int = Fleets.supply_hops(gs, f)
+		_card_stat("İkmal", FleetExt.supply_label(sh_), TK.GREEN if sh_ <= 2 else (TK.ORANGE if sh_ <= 4 else TK.RED))
+	if FleetExt.ship_total(gs, f) > 0 and f.kind != "transport":
+		_card_stat("Gemi", "%d" % FleetExt.ship_total(gs, f), TK.TEXT)
 	if f.cargo > 0:
 		_card_stat("Asker", Macro.num(f.cargo), TK.GOLD)
 	var hint: String = {
@@ -795,6 +822,7 @@ func show_fleet(f) -> void:
 	_card_hint.visible = hint != ""
 	if mine:
 		_abtn("Hareket", "gold", "play", "fleet_move", f.id)
+		_abtn("Komutanlık", "blue", Icons.pick("flag", "flag"), "fleet_manage", f.id)
 		if not f.path.is_empty() or f.mission != "":
 			_abtn("Durdur", "", "pause", "fleet_stop", f.id)
 		if f.kind != "transport" and not Fleets.blockade_candidates(gs, me).is_empty():
@@ -818,6 +846,63 @@ func show_fleet(f) -> void:
 				_abtn("Birleştir", "", "plus", "fleet_merge", f.id)
 				break
 		_abtn("Seçimi bırak", "ghost", "x", "fleet_deselect", f.id)
+	elif sel_fleet != null and gs.fleets.has(sel_fleet.id) and sel_fleet.owner == me and gs.at_war(me, f.owner) and sel_fleet.kind != "transport":
+		_abtn("Seçili filo saldırsın", "danger", Icons.pick("bombard", "ship"), "fleet_attack", f.id)
+	_card_actions.visible = _card_actions.get_child_count() > 0
+
+
+## Hava kanadı kartı: filo kartının benzeri
+func show_wing(w) -> void:
+	if gs == null or w == null or gs.player < 0 or not gs.wings.has(w.id):
+		hide_info()
+		return
+	var me: int = gs.player
+	var mine: bool = w.owner == me
+	_card_pid = -1
+	card.visible = true
+	var oc = gs.countries[w.owner]
+	_card_flag.set_spec(w.flag, oc)
+	_card_rule.color = oc.color.lightened(0.05) if oc.color.get_luminance() > 0.12 else TK.PAPER
+	_card_title.text = TK.up(Air.display_name(gs, w))
+	_card_kicker.text = TK.up("%s  /  %s  /  %s" % [oc.name, Loc.t(Air.kind_name(w.kind)), gs.provinces[w.base].name])
+	_clear(_card_tags)
+	_clear(_card_stats)
+	_clear(_card_actions)
+	if mine:
+		_card_tags.add_child(_tag("Senin", TK.GREEN))
+	elif gs.is_allied(me, w.owner):
+		_card_tags.add_child(_tag("Müttefik", TK.BLUE))
+	elif gs.at_war(me, w.owner):
+		_card_tags.add_child(_tag("Savaşta", TK.RED))
+	if w.xp >= 6.0:
+		_card_tags.add_child(_tag(FleetExt.rank_name(w.xp), TK.GOLD))
+	if w.stance == "defend":
+		_card_tags.add_child(_tag("Savun", TK.BLUE))
+	_card_tags.visible = _card_tags.get_child_count() > 0
+	_card_stat("Uçak", "%d" % Air.disp(w), TK.TEXT, true)
+	_card_stat("Menzil", "%d km" % Air.range_km(w.kind), TK.TEXT)
+	if mine:
+		_card_stat("Hazırlık", Loc.t("Hazır") if w.cd <= gs.turn else "%d hf" % (w.cd - gs.turn), TK.GREEN if w.cd <= gs.turn else TK.ORANGE)
+	var hint: String = String(Air.KIND_HINT.get(w.kind, ""))
+	if mine:
+		if w.kind == "bomber" or w.kind == "drone":
+			hint += "\nSaldırı için menzil çemberi içindeki düşman eyaletine dokun."
+		elif w.kind == "transport":
+			hint += "\nBir ordunu seçip hava köprüsü kur."
+		else:
+			hint += "\nAvcı ve keşif kanatları menzilinde otomatik görev yapar."
+	_card_hint.text = hint
+	_card_hint.visible = hint != ""
+	if mine:
+		if w.kind == "bomber" or w.kind == "drone":
+			var wl2: int = w.cd - gs.turn
+			_abtn("Saldırı" if wl2 <= 0 else "Saldırı: %d hafta bekle" % wl2, "danger", Icons.pick("airstrike", "jet"), "wing_strike_menu", w.id, wl2 <= 0 and not Air.targets(gs, w).is_empty())
+		if w.kind == "transport":
+			var tl: int = w.cd - gs.turn
+			_abtn("Hava köprüsü" if tl <= 0 else "Hava köprüsü: %d hafta bekle" % tl, "gold", Icons.pick("paratrooper", "plane"), "wing_lift", w.id, tl <= 0)
+		_abtn("Üs değiştir", "", Icons.pick("airbase", "plane"), "wing_rebase_menu", w.id)
+		_abtn("Komutanlık", "blue", Icons.pick("flag", "flag"), "wing_manage", w.id)
+		_abtn("Seçimi bırak", "ghost", "x", "wing_deselect", w.id)
 	_card_actions.visible = _card_actions.get_child_count() > 0
 
 

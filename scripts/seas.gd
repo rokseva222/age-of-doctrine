@@ -44,6 +44,8 @@ const ZONES := [
 	["pac_e", "Doğu Pasifik", "Eastern Pacific", [[8.0, -100.0, 12.0, 8.0], [20.0, -108.0, 5.0, 5.0], [-2.0, -82.0, 3.0, 4.0], [12.0, -88.0, 4.0, 3.0], [6.0, -80.0, 3.0, 3.0]]],
 	["pac_se", "Güneydoğu Pasifik", "Southeast Pacific", [[-30.0, -90.0, 12.0, 10.0], [-12.0, -79.0, 3.0, 5.0], [-42.0, -76.0, 4.0, 6.0], [-20.0, -75.0, 4.0, 6.0]]],
 	["pac_sw", "Güneybatı Pasifik", "Southwest Pacific", [[-20.0, 165.0, 12.0, 10.0], [-28.0, 154.0, 4.0, 6.0], [-6.0, 152.0, 6.0, 4.0], [-41.0, 174.0, 3.0, 4.0]]],
+	["arctic", "Kuzey Buz Denizi", "Arctic Ocean", [[77.0, 70.0, 30.0, 3.5], [77.0, -100.0, 25.0, 4.0], [73.0, 160.0, 20.0, 2.5], [72.0, -150.0, 12.0, 2.5], [79.0, -10.0, 12.0, 2.5]]],
+	["caspian", "Hazar Denizi", "Caspian Sea", [[43.5, 50.0, 2.6, 3.5], [39.5, 51.5, 2.4, 2.5]]],
 ]
 
 ## Komşuluk: [a, b, geçit ("" = açık)]
@@ -67,7 +69,10 @@ const EDGES := [
 	["ecs", "japan_sea", ""], ["ecs", "pac_nw", ""], ["japan_sea", "pac_nw", ""],
 	["pac_nw", "pac_ne", ""], ["pac_nw", "pac_sw", ""],
 	["pac_ne", "pac_e", ""], ["pac_e", "pac_se", ""], ["pac_se", "pac_sw", ""],
+	["arctic", "nor_sea", ""], ["arctic", "atl_n", ""], ["arctic", "pac_ne", ""], ["arctic", "pac_nw", ""],
 ]
+## Kapalı göl bölgeleri: grafikte kenarı yok; yalnız kıyı devletlerinin yerel filoları (Hazar filosu)
+const LAKES := ["caspian"]
 
 static var _built := false
 static var _zone: Dictionary = {}       # id -> {id, tr, en, pos, anchors, adj: Array, gate: {komşu: geçit}}
@@ -115,6 +120,10 @@ static func _build() -> void:
 static func ids() -> Array:
 	_build()
 	return _ids
+
+
+static func is_lake(id: String) -> bool:
+	return LAKES.has(id)
 
 
 static func has(id: String) -> bool:
@@ -358,7 +367,7 @@ static func home_port(gs, cid: int) -> Array:
 	var bd := 1e18
 	for pid in c.owned_ids:
 		var p = gs.provinces[pid]
-		if p.controller != cid or not _coast.has(pid):
+		if p.controller != cid or not _coast.has(pid) or is_lake(String(_coast[pid][0])):
 			continue
 		var d: float = p.label_pos.distance_squared_to(ref)
 		if d < bd:

@@ -470,7 +470,7 @@ static func calc(gs, c) -> Dictionary:
 	if c.id != gs.player:
 		rev *= [0.85, 1.0, 1.2][clampi(gs.difficulty, 0, 2)]
 	var wages: float = c.troops * wage_week(c) * 1.0e-6
-	var upkeep: float = c.equip_value * 0.0015 + Carriers.upkeep(c)
+	var upkeep: float = c.equip_value * 0.0015 + Carriers.upkeep(c) + Carriers.ship_upkeep(c)
 	var pots: Dictionary = {}
 	for k in BUDGET_KEYS:
 		pots[k] = rev * float(c.budget[k]) / 100.0
@@ -1097,7 +1097,7 @@ static func to_dict(c) -> Dictionary:
 	return {"budget": c.budget, "doctrine": c.doctrine, "dturn": c.doctrine_turn, "industry": c.industry, "cyber": c.cyber,
 		"logistics": c.logistics, "stability": c.stability, "capacity": c.capacity, "tech": c.tech, "bloc": c.bloc,
 		"inv": c.inv, "orders": c.orders, "auto_buy": c.auto_buy, "auto_cmd": c.auto_cmd, "pri": c.pri, "base": c.base_troops,
-		"fund": c.fund, "embargo": c.embargo, "fronts": c.fronts, "tblock": c.trade_block, "alliance": c.alliance, "leader": c.leader, "carriers": c.carriers, "car_x": c.carrier_extra, "car_cd": c.carrier_cd, "covert": c.covert_cd, "cab": c.cab, "elect": c.elect_turn, "mob": c.mob_until, "mobcd": c.mob_cd, "buffs": c.buffs, "trust": c.trust, "prop": c.prop}
+		"fund": c.fund, "embargo": c.embargo, "fronts": c.fronts, "tblock": c.trade_block, "alliance": c.alliance, "leader": c.leader, "carriers": c.carriers, "car_x": c.carrier_extra, "shx": c.ship_extra, "car_cd": c.carrier_cd, "covert": c.covert_cd, "cab": c.cab, "elect": c.elect_turn, "mob": c.mob_until, "mobcd": c.mob_cd, "buffs": c.buffs, "trust": c.trust, "prop": c.prop}
 
 
 static func from_dict(c, d: Dictionary) -> void:
@@ -1105,6 +1105,7 @@ static func from_dict(c, d: Dictionary) -> void:
 	c.doctrine = d.get("doctrine", 0)
 	c.carriers = int(d.get("carriers", -1))
 	c.carrier_extra = int(d.get("car_x", 0))
+	c.ship_extra = int(d.get("shx", 0))
 	c.carrier_cd = int(d.get("car_cd", -1))
 	c.doctrine_turn = d.get("dturn", -99)
 	c.industry = d.get("industry", 55.0)

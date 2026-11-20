@@ -12,6 +12,7 @@ const SHADER_OCEAN = preload("res://shaders/ocean.gdshader")
 signal tapped(pid: int)
 signal choke_tapped(id: String)
 signal fleet_tapped(fid: int)
+signal wing_tapped(wid: int)
 signal sea_tapped(zone: String)
 
 const LUT_W := 4096
@@ -36,6 +37,7 @@ var fit_zoom := 1.0
 var selected_prov := -1
 var selected_army = null
 var selected_fleet = null
+var selected_wing = null
 var highlight_country := -1
 var form_set: Dictionary = {}          # boş değil: Ülke Formla görünümü (hedef eyaletler: yeşil sende, turuncu alınacak)
 var rel_country := -1                  # >=0: ilişki görünümü (seçili ülke sarı, müttefik mavi, savaş kırmızı, ateşkes mor)
@@ -178,6 +180,7 @@ func bind(game_state) -> void:
 	selected_prov = -1
 	selected_army = null
 	selected_fleet = null
+	selected_wing = null
 	highlight_country = -1
 	rel_country = -1
 	form_set = {}
@@ -325,6 +328,11 @@ func set_selected_army(a) -> void:
 
 func set_selected_fleet(f) -> void:
 	selected_fleet = f
+	hud.queue_redraw()
+
+
+func set_selected_wing(w) -> void:
+	selected_wing = w
 	hud.queue_redraw()
 
 
@@ -505,7 +513,7 @@ func _process(delta: float) -> void:
 			if army_anim[k].t >= 1.0:
 				army_anim.erase(k)
 		redraw = true
-	if selected_prov >= 0 or selected_army != null or selected_fleet != null:
+	if selected_prov >= 0 or selected_army != null or selected_fleet != null or selected_wing != null:
 		hud.top.queue_redraw()    # seçili eyalet nabzı: yalnızca hafif üst katman
 	if redraw:
 		hud.queue_redraw()
@@ -710,6 +718,10 @@ func _handle_tap(screen_pos: Vector2) -> void:
 			choke_tapped.emit(cid)
 			return
 	if hud != null:
+		var wid: int = hud.wing_at(screen_pos)
+		if wid >= 0:
+			wing_tapped.emit(wid)
+			return
 		var fid: int = hud.fleet_at(screen_pos)
 		if fid >= 0:
 			fleet_tapped.emit(fid)

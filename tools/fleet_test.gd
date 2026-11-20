@@ -95,7 +95,7 @@ func _init() -> void:
 	# ------------------------------------------------------------ bölgeler
 	var g0 = make("")
 	Seas.ensure_coast(g0)
-	ck("bölge sayısı 24-34 (%d)" % Seas.count(), Seas.count() >= 24 and Seas.count() <= 34)
+	ck("bölge sayısı 24-40 (%d)" % Seas.count(), Seas.count() >= 24 and Seas.count() <= 40)
 	var land_bad := 0
 	var conn_bad := 0
 	for id in Seas.ids():
@@ -103,6 +103,8 @@ func _init() -> void:
 			land_bad += 1
 			print("  merkez karada: ", id)
 		for id2 in Seas.ids():
+			if Seas.is_lake(id) or Seas.is_lake(id2):
+				continue
 			if Seas.hops(id, id2) >= 99:
 				conn_bad += 1
 	ck("bölge merkezleri denizde", land_bad == 0)

@@ -149,6 +149,7 @@ class Country:
 	var naval_pow := 0.0
 	var carriers := -1                       # uçak gemisi grubu sayısı (-1: henüz hesaplanmadı)
 	var carrier_extra := 0                   # oyuncunun satın aldıkları (bakım gideri)
+	var ship_extra := 0                      # oyuncunun inşa ettirdiği muharebe gemisi grupları (bakım gideri)
 	var carrier_cd := -1                     # uçak gemisi saldırısı bekleme turu
 	var ratios: Dictionary = {}
 	var equip_value := 0.0
@@ -205,6 +206,28 @@ class Fleet:
 	var seen := -1               # bu tura kadar açığa çıkmış (denizaltı ateş edince)
 	var mission := ""            # "" | "blockade"
 	var born := 0
+	var name := ""               # oyuncunun verdiği ad ("" = varsayılan "N. Muharebe Filosu")
+	var flag := ""               # filo bayrağı (flags.gd tanım dizgesi; "" = ülke bayrağı)
+	var xp := 0.0                # muharebe tecrübesi (rütbe: Acemi/Tecrübeli/Elit/Efsane)
+	var stance := "attack"       # attack | defend | avoid
+	var escort := -1             # eşlik edilen nakliye/filo kimliği (-1 yok)
+	var tgt := -1                # YZ çıkarma hedefi (eyalet) ya da -2: dönüyor
+
+
+class Wing:
+	var id := 0
+	var owner := 0
+	var base := -1               # üs eyaleti
+	var kind := "fighter"        # fighter | bomber | drone | transport | recon
+	var size := 1.0              # uçak sayısı (ülkenin hava gücünden türetilir)
+	var cd := 0                  # yeniden kullanılabileceği tur
+	var xp := 0.0
+	var stance := "attack"       # attack | defend
+	var name := ""
+	var flag := ""
+	var born := 0
+	var tgt := -1                # son saldırı hedefi (çizim için)
+	var tgt_turn := -99          # son saldırı turu
 
 
 class War:

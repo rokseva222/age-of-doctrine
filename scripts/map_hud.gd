@@ -12,6 +12,8 @@ const Chokepoints = preload("res://scripts/chokepoints.gd")
 const Districts = preload("res://scripts/districts.gd")
 const Seas = preload("res://scripts/seas.gd")
 const Fleets = preload("res://scripts/fleets.gd")
+const FleetFlag = preload("res://scripts/fleet_flag.gd")
+const Air = preload("res://scripts/air.gd")
 
 var map = null
 var fast := false            # kamera hareket ederken: yazı çizgileri (outline) atlanır, durunca tam çizilir
@@ -19,6 +21,8 @@ var top: Control = null      # her karede yenilenen hafif üst katman (seçim na
 var sel_army_rect := Rect2()
 var sel_fleet_rect := Rect2()
 var fleet_rects: Dictionary = {}   # filo id -> dokunma dikdörtgeni (ekran)
+var sel_wing_rect := Rect2()
+var wing_rects: Dictionary = {}    # hava kanadı id -> dokunma dikdörtgeni (ekran)
 var show_seas := true
 var show_country_names := true
 var show_province_names := true
@@ -54,6 +58,9 @@ class TopLayer extends Control:
 		if hud.map.selected_fleet != null and hud.sel_fleet_rect.size.x > 0.0:
 			var pulse2 := 0.5 + 0.5 * sin(hud.map.anim_time * 6.0)
 			draw_rect(hud.sel_fleet_rect.grow(4.0 + pulse2 * 2.0), Color(TK.PAPER.r, TK.PAPER.g, TK.PAPER.b, 0.9), false, 2.0)
+		if hud.map.selected_wing != null and hud.sel_wing_rect.size.x > 0.0:
+			var pulse3 := 0.5 + 0.5 * sin(hud.map.anim_time * 6.0)
+			draw_rect(hud.sel_wing_rect.grow(4.0 + pulse3 * 2.0), Color(TK.PAPER.r, TK.PAPER.g, TK.PAPER.b, 0.9), false, 2.0)
 		if hud.map.selected_army != null and hud.sel_army_rect.size.x > 0.0:
 			var pulse := 0.5 + 0.5 * sin(hud.map.anim_time * 6.0)
 			draw_rect(hud.sel_army_rect.grow(4.0 + pulse * 2.0), Color(TK.PAPER.r, TK.PAPER.g, TK.PAPER.b, 0.9), false, 2.0)
@@ -144,17 +151,21 @@ func _draw() -> void:
 
 	sel_army_rect = Rect2()
 	sel_fleet_rect = Rect2()
+	sel_wing_rect = Rect2()
+	wing_rects.clear()
 	if top != null:
 		top.queue_redraw()
 
 	# --- emir yolları
 	_draw_paths(gs)
 	_draw_fleet_paths(gs)
+	_draw_wing_overlay(gs, z)
 
 	# --- ordular
 	if show_armies:
 		_draw_armies(gs, z, screen, font_b)
 		_draw_fleets(gs, z, screen)
+		_draw_wings(gs, z, screen)
 
 	# --- fetih nabızları
 	for pl in map.pulses:
@@ -578,11 +589,29 @@ func _draw_fleets(gs, z: float, screen: Rect2) -> void:
 			if ma != mb:
 				return ma > mb
 			return a.size > b.size)
-		var n: int = lst.size()
+		# kalabalık: yakınlaştırma düşükken yabancı filolar sahibine göre yığılır (dokununca en güçlüsü seçilir)
+		var entries: Array = []       # {f, k}
+		var stack_foreign: bool = lst.size() > 3 and z < 3.4
+		var stacks: Dictionary = {}
+		for f0 in lst:
+			if stack_foreign and f0.owner != me:
+				var key: int = f0.owner
+				if stacks.has(key):
+					var en: Dictionary = stacks[key]
+					en.k += 1
+					en.tot += f0.size
+					continue
+				var en2 := {"f": f0, "k": 1, "tot": f0.size}
+				stacks[key] = en2
+				entries.append(en2)
+			else:
+				entries.append({"f": f0, "k": 1, "tot": f0.size})
+		var n: int = entries.size()
 		var per_row := 3
-		var row_h: float = h + (16.0 * sc if _any_cargo(lst) else 4.0 * sc)
+		var row_h: float = h + (16.0 * sc if _any_cargo(lst) else 4.0 * sc) + 6.0 * sc
 		for i in n:
-			var f = lst[i]
+			var en3: Dictionary = entries[i]
+			var f = en3.f
 			var row: int = i / per_row
 			var col: int = i % per_row
 			var cols_in_row: int = mini(per_row, n - row * per_row)
@@ -596,9 +625,24 @@ func _draw_fleets(gs, z: float, screen: Rect2) -> void:
 			var ic: String = Icons.pick(Fleets.kind_icon(f.kind), Fleets.kind_icon_fallback(f.kind))
 			var isz: float = h - 6.0 * sc
 			Icons.draw(self, ic, Rect2(rect.position + Vector2(9.0 * sc, 3.0 * sc), Vector2(isz, isz)), Color.WHITE)
-			var txt: String = Macro.compact(float(Fleets.disp(f)))
+			var tot_sz: float = float(en3.tot)
+			var txt: String = Macro.compact(float(maxi(1, int(round(tot_sz)))))
 			draw_string(font2, rect.position + Vector2(9.0 * sc + isz + 3.0 * sc, h * 0.5 + fs * 0.36), txt, HORIZONTAL_ALIGNMENT_LEFT, w - isz - 14.0 * sc, fs, Color.WHITE)
-			if f.cargo > 0:
+			# filo bayrağı: tasarlanmış bayrak (ya da ülke bayrağı) küçük flama olarak rozetin sol üstünde
+			if f.owner == me or f.flag != "":
+				var fr := Rect2(rect.position + Vector2(2.0, -9.0 * sc), Vector2(21.0 * sc, 14.0 * sc))
+				FleetFlag.draw_on(self, fr, f.flag, c)
+			if int(en3.k) > 1:
+				var kr := Rect2(Vector2(rect.end.x - 20.0 * sc, rect.position.y - 8.0 * sc), Vector2(22.0 * sc, 14.0 * sc))
+				draw_rect(kr, edge)
+				draw_string(font2, kr.position + Vector2(3.0 * sc, 11.0 * sc), "x%d" % int(en3.k), HORIZONTAL_ALIGNMENT_LEFT, kr.size.x, int(round(11.0 * sc)), Color.BLACK)
+			elif z >= 3.2 and f.owner == me and f.name != "":
+				var nm: String = f.name
+				var nfs := int(round(11.0 * sc))
+				var ts := font2.get_string_size(nm, HORIZONTAL_ALIGNMENT_LEFT, -1, nfs)
+				draw_string_outline(font2, Vector2(rect.get_center().x - ts.x * 0.5, rect.position.y - 11.0 * sc), nm, HORIZONTAL_ALIGNMENT_LEFT, -1, nfs, 3, Color(0.02, 0.07, 0.14, 0.9))
+				draw_string(font2, Vector2(rect.get_center().x - ts.x * 0.5, rect.position.y - 11.0 * sc), nm, HORIZONTAL_ALIGNMENT_LEFT, -1, nfs, Color(0.95, 0.95, 0.9))
+			if f.cargo > 0 and int(en3.k) == 1:
 				var cr := Rect2(Vector2(rect.position.x + 2.0, rect.end.y + 1.0), Vector2(w - 4.0, 14.0 * sc))
 				draw_rect(cr, Color(0.08, 0.1, 0.13, 0.92))
 				draw_rect(cr, edge, false, 1.0)
@@ -606,12 +650,149 @@ func _draw_fleets(gs, z: float, screen: Rect2) -> void:
 				draw_string(font2, cr.position + Vector2(cr.size.y + 4.0, cr.size.y * 0.5 + cfs * 0.36), Macro.compact(float(f.cargo)), HORIZONTAL_ALIGNMENT_LEFT, cr.size.x - cr.size.y - 6.0, cfs, Color.WHITE)
 			if f.kind == "sub" and f.owner != me and f.seen >= gs.turn:
 				draw_circle(rect.end - Vector2(4.0, h - 4.0), 4.0 * sc, TK.RED)
+			if f.owner == me and f.stance == "defend":
+				draw_circle(rect.end - Vector2(5.0 * sc, 5.0 * sc), 3.0 * sc, TK.BLUE)
+			elif f.owner == me and f.stance == "avoid":
+				draw_circle(rect.end - Vector2(5.0 * sc, 5.0 * sc), 3.0 * sc, TK.ORANGE)
 			var hit := rect
 			if hit.size.y < 52.0:
 				hit = hit.grow_individual(0.0, (52.0 - hit.size.y) * 0.5, 0.0, (52.0 - hit.size.y) * 0.5)
 			fleet_rects[f.id] = hit
 			if f == map.selected_fleet:
 				sel_fleet_rect = rect
+
+
+# ------------------------------------------------------------------ hava kanatları
+
+## Seçili kanadın menzil çemberi ve son saldırı çizgileri
+func _draw_wing_overlay(gs, z: float) -> void:
+	var me: int = gs.player
+	var sw = map.selected_wing
+	if sw != null and gs.wings.has(sw.id) and sw.base >= 0:
+		var c0: Vector2 = map.world_to_screen(gs.provinces[sw.base].label_pos)
+		var rad: float = Air.range_px(sw.kind) * map.zoom
+		draw_arc(c0, rad, 0.0, TAU, 96, Color(0, 0, 0, 0.45), 4.0, true)
+		draw_arc(c0, rad, 0.0, TAU, 96, Color(TK.PAPER.r, TK.PAPER.g, TK.PAPER.b, 0.85), 2.0, true)
+		if sw.kind == "bomber" or sw.kind == "drone":
+			for pid in Air.targets(gs, sw):
+				draw_circle(map.world_to_screen(gs.provinces[pid].label_pos), 6.0, Color(1.0, 0.35, 0.3, 0.55))
+	for w in gs.wings.values():
+		if w.tgt < 0 or gs.turn - w.tgt_turn > 1:
+			continue
+		if w.owner != me and not Air.visible(gs, w):
+			continue
+		var a: Vector2 = map.world_to_screen(gs.provinces[w.base].label_pos)
+		var b: Vector2 = map.world_to_screen(gs.provinces[w.tgt].label_pos)
+		var col := Color(1.0, 0.45, 0.35, 0.9) if w.owner == me or gs.at_war(me, w.owner) else Color(0.7, 0.85, 1.0, 0.8)
+		draw_dashed_line(a, b, Color(0, 0, 0, 0.5), 5.0, 8.0)
+		draw_dashed_line(a, b, col, 3.0, 8.0)
+		draw_circle(b, 7.0, Color(col.r, col.g, col.b, 0.6))
+
+
+## Hava kanadı rozetleri: üs eyaletinin üstünde; oyuncununki seçilebilir. Yabancılar sahibine göre yığılır.
+func _draw_wings(gs, z: float, screen: Rect2) -> void:
+	if gs.wings.is_empty() or z < 1.7:
+		return
+	var me: int = gs.player
+	var by_base: Dictionary = {}
+	for w in gs.wings.values():
+		var mine: bool = w.owner == me
+		if not mine:
+			var near: bool = me >= 0 and (gs.at_war(me, w.owner) or gs.is_allied(me, w.owner))
+			if not near and z < 7.0:
+				continue
+			if not Air.visible(gs, w):
+				continue
+		if not by_base.has(w.base):
+			by_base[w.base] = []
+		by_base[w.base].append(w)
+	var sc := clampf(z / 2.6, 0.78, 1.05)
+	var bw := 62.0 * sc
+	var bh := 30.0 * sc
+	var gap := 6.0 * sc
+	var font2: Font = TK.mono(true, 0)
+	var fs := int(round(14.0 * sc))
+	for pid in by_base:
+		var lst: Array = by_base[pid]
+		var base: Vector2 = map.world_to_screen(gs.provinces[pid].label_pos) + Vector2(0, -34.0 * sc)
+		if not screen.grow(80.0).has_point(base):
+			continue
+		lst.sort_custom(func(a, b):
+			var ma: int = 1 if a.owner == me else 0
+			var mb: int = 1 if b.owner == me else 0
+			if ma != mb:
+				return ma > mb
+			return a.size > b.size)
+		var entries: Array = []
+		var stacks: Dictionary = {}
+		for w0 in lst:
+			if w0.owner != me and lst.size() > 2:
+				if stacks.has(w0.owner):
+					stacks[w0.owner].k += 1
+					stacks[w0.owner].tot += w0.size
+					continue
+				var en := {"w": w0, "k": 1, "tot": w0.size}
+				stacks[w0.owner] = en
+				entries.append(en)
+			else:
+				entries.append({"w": w0, "k": 1, "tot": w0.size})
+		var n: int = entries.size()
+		var per_row := 3
+		for i in n:
+			var en2: Dictionary = entries[i]
+			var w = en2.w
+			var row: int = i / per_row
+			var col_i: int = i % per_row
+			var cols_in_row: int = mini(per_row, n - row * per_row)
+			var cx: float = base.x + (float(col_i) - float(cols_in_row - 1) * 0.5) * (bw + gap)
+			var cy: float = base.y - float(row) * (bh + gap + 8.0 * sc)
+			var rect := Rect2(Vector2(cx - bw * 0.5, cy - bh * 0.5), Vector2(bw, bh))
+			var oc = gs.countries[w.owner]
+			var hostile: bool = me >= 0 and w.owner != me and gs.at_war(me, w.owner)
+			var edge: Color = TK.PAPER if w.owner == me else (TK.RED if hostile else oc.color.lightened(0.1))
+			draw_style_box(_banner_box(edge, 2.0 if w.owner == me else 1.5), rect)
+			draw_rect(Rect2(rect.position + Vector2(2.5, 2.5) * sc, Vector2(4.0 * sc, bh - 5.0 * sc)), oc.color.lightened(0.05))
+			var ic: String = Icons.pick(Air.kind_icon(w.kind), "jet")
+			var isz: float = bh - 6.0 * sc
+			Icons.draw(self, ic, Rect2(rect.position + Vector2(9.0 * sc, 3.0 * sc), Vector2(isz, isz)), Color.WHITE)
+			var txt: String = str(maxi(1, int(round(float(en2.tot)))))
+			draw_string(font2, rect.position + Vector2(9.0 * sc + isz + 3.0 * sc, bh * 0.5 + fs * 0.36), txt, HORIZONTAL_ALIGNMENT_LEFT, bw - isz - 14.0 * sc, fs, Color.WHITE)
+			if w.owner == me or w.flag != "":
+				FleetFlag.draw_on(self, Rect2(rect.position + Vector2(2.0, -9.0 * sc), Vector2(21.0 * sc, 14.0 * sc)), w.flag, oc)
+			if int(en2.k) > 1:
+				var kr := Rect2(Vector2(rect.end.x - 20.0 * sc, rect.position.y - 8.0 * sc), Vector2(22.0 * sc, 14.0 * sc))
+				draw_rect(kr, edge)
+				draw_string(font2, kr.position + Vector2(3.0 * sc, 11.0 * sc), "x%d" % int(en2.k), HORIZONTAL_ALIGNMENT_LEFT, kr.size.x, int(round(11.0 * sc)), Color.BLACK)
+			elif z >= 3.2 and w.owner == me and w.name != "":
+				var nm: String = w.name
+				var nfs := int(round(11.0 * sc))
+				var ts := font2.get_string_size(nm, HORIZONTAL_ALIGNMENT_LEFT, -1, nfs)
+				draw_string_outline(font2, Vector2(rect.get_center().x - ts.x * 0.5, rect.position.y - 11.0 * sc), nm, HORIZONTAL_ALIGNMENT_LEFT, -1, nfs, 3, Color(0.02, 0.07, 0.14, 0.9))
+				draw_string(font2, Vector2(rect.get_center().x - ts.x * 0.5, rect.position.y - 11.0 * sc), nm, HORIZONTAL_ALIGNMENT_LEFT, -1, nfs, Color(0.95, 0.95, 0.9))
+			if w.owner == me:
+				if w.cd > gs.turn:
+					draw_circle(rect.end - Vector2(5.0 * sc, bh - 5.0 * sc), 3.5 * sc, TK.ORANGE)
+				if w.stance == "defend":
+					draw_circle(rect.end - Vector2(5.0 * sc, 5.0 * sc), 3.0 * sc, TK.BLUE)
+			var hit := rect
+			if hit.size.y < 52.0:
+				hit = hit.grow_individual(0.0, (52.0 - hit.size.y) * 0.5, 0.0, (52.0 - hit.size.y) * 0.5)
+			wing_rects[w.id] = hit
+			if w == map.selected_wing:
+				sel_wing_rect = rect
+
+
+func wing_at(screen_pos: Vector2) -> int:
+	var best := -1
+	var bd := 1e18
+	for wid in wing_rects:
+		var r: Rect2 = wing_rects[wid]
+		if r.has_point(screen_pos):
+			var d: float = r.get_center().distance_squared_to(screen_pos)
+			if d < bd:
+				bd = d
+				best = wid
+	return best
 
 
 func _any_cargo(lst: Array) -> bool:

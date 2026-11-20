@@ -8,8 +8,8 @@ const Macro = preload("res://scripts/macro.gd")
 const Fleets = preload("res://scripts/fleets.gd")
 
 const START := {
-	"": {"United States": 11, "China": 3, "United Kingdom": 2, "France": 1, "India": 2, "Italy": 2, "Japan": 2, "Russia": 1, "Spain": 1, "Turkey": 1, "Thailand": 1},
-	"ww2": {"United States": 7, "United Kingdom": 7, "Japan": 8, "France": 1},
+	"": {"United States of America": 11, "China": 3, "United Kingdom": 2, "France": 1, "India": 2, "Italy": 2, "Japan": 2, "Russia": 1, "Spain": 1, "Turkey": 1, "Thailand": 1},
+	"ww2": {"United States of America": 7, "United Kingdom": 7, "Japan": 8, "France": 1},
 	"ww1": {},
 }
 const MAX_OWNED := 8
@@ -38,6 +38,50 @@ static func cost(c) -> float:
 
 static func upkeep(c) -> float:
 	return float(c.carrier_extra) * cost(c) * 0.004
+
+
+## Muharebe gemisi grubu (yüzey filosuna +1.2 güç): yaklaşık 2 gemi
+const SHIP_MAX := 24
+const SHIP_POWER := 1.2
+
+
+static func ship_cost(c) -> float:
+	return clampf(c.income * 3.0, 700.0, 3500.0)
+
+
+static func ship_upkeep(c) -> float:
+	return float(c.ship_extra) * ship_cost(c) * 0.003
+
+
+static func can_build_ship(gs, c) -> String:
+	if Eras.family() == "pre" and c.tech < 0.1:
+		return "Gemi inşası için teknoloji yetersiz."
+	if not c.alive or c.is_rebel or Fleets.Seas.home_port(gs, c.id)[1] == "":
+		return "Gemi inşa edecek bir limanın yok."
+	if c.ship_extra >= SHIP_MAX:
+		return "Daha fazla gemi grubu işletemezsin."
+	if c.gold < ship_cost(c):
+		return "Kasa yetersiz: %s gerekir." % Macro.money(ship_cost(c))
+	return ""
+
+
+static func build_ship(gs) -> String:
+	var c = gs.countries[gs.player]
+	var err := can_build_ship(gs, c)
+	if err != "":
+		return err
+	Fleets.ensure(gs)
+	c.gold -= ship_cost(c)
+	c.ship_extra += 1
+	var home: String = String(Fleets.Seas.home_port(gs, c.id)[1])
+	var f = Fleets._port_fleet(gs, Fleets.fleets_of(gs, c.id), "surface", home)
+	if f != null:
+		f.size += SHIP_POWER
+	else:
+		Fleets.new_fleet(gs, c.id, home, "surface", SHIP_POWER)
+	gs.post_news("%s yeni savaş gemileri denize indirdi." % c.name, c.capital, "event_player", "ship")
+	gs.state_changed.emit()
+	return ""
 
 
 static func can_buy(gs, c) -> String:

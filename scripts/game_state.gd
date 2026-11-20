@@ -28,6 +28,7 @@ const UN = preload("res://scripts/un.gd")
 const Cabinet = preload("res://scripts/cabinet.gd")
 const Militias = preload("res://scripts/militias.gd")
 const Fleets = preload("res://scripts/fleets.gd")
+const Air = preload("res://scripts/air.gd")
 
 signal news_posted(text: String, prov: int, kind: String)
 signal province_changed(pid: int)
@@ -64,6 +65,9 @@ var armies: Dictionary = {}
 var fleets: Dictionary = {}              # deniz filoları: id -> Model.Fleet (fleets.gd)
 var next_fleet_id := 1
 var fleets_ready := false                # filolar envanterden türetildi mi (tembel kurulum)
+var wings: Dictionary = {}               # hava filoları: id -> Model.Wing (air.gd)
+var next_wing_id := 1
+var wings_ready := false
 var wars: Array = []
 var news_log: Array = []
 var turn := 0
@@ -130,6 +134,7 @@ func new_world(seed_val: int, _ncountries: int = 0) -> void:
 	world = WorldData.instance()
 	world.populate(self)
 	Fleets.reset(self)
+	Air.reset(self)
 	if Eras.current != "":
 		EraNames.apply(self, Eras.current)
 	if player >= 0:
@@ -187,6 +192,7 @@ func switch_player(cid: int) -> void:
 func _init_armies() -> void:
 	armies.clear()
 	Fleets.reset(self)
+	Air.reset(self)
 	next_army_id = 1
 	refresh_stats()
 	Macro.build_idx(self)
@@ -2631,6 +2637,7 @@ func end_turn() -> void:
 	_move_armies()
 	_merc_tick()
 	Fleets.tick(self)
+	Air.tick(self)
 	t = _tp("move", t)
 	_process_sieges()
 	t = _tp("siege", t)
@@ -2962,6 +2969,9 @@ func _battle(att, def, dest: int) -> void:
 	var gm: Vector2 = Independence.war_mod(self, att, def, dest)
 	ap *= gm.x * Career.war_mod(self, att, def)
 	dp *= gm.y
+	var asup: float = Air.superiority(self, dest, att.owner, def.owner)      # hava üstünlüğü (avcı kanatları)
+	ap *= 1.0 + 0.12 * asup
+	dp *= 1.0 - 0.12 * asup
 	if guard_left > 0 and def.owner == player and player >= 0 and countries[player].prov_owned <= SMALL_NATION:
 		dp *= 1.0 + 0.7 * float(guard_left) / GUARD_WEEKS
 	var w = get_war(att.owner, def.owner)
@@ -3799,6 +3809,12 @@ func _ai_try_landing(cid: int, a) -> bool:
 		var d = armies.get(q)
 		if d != null and d.size > n * 0.8:
 			continue
+		if not camp:
+			var er: int = Fleets.ai_embark(self, cid, a, q, clampi(n, 1, a.size - 1))
+			if er == 1:
+				return true
+			if er == 2:
+				return false
 		a.sp_size = clampi(n, 1, a.size - 1)
 		a.sp_path = [q]
 		a.sp_op = "landing"
@@ -4197,6 +4213,9 @@ func to_dict() -> Dictionary:
 	Fleets.ensure(self)
 	d["fleets"] = Fleets.to_array(self)
 	d["next_fleet"] = next_fleet_id
+	Air.ensure(self)
+	d["wings"] = Air.to_array(self)
+	d["next_wing"] = next_wing_id
 	var ps: Array = []
 	for p in provinces:
 		ps.append([p.owner, p.controller, p.siege, p.siege_by, p.dev, p.is_capital, p.core, p.unrest, p.acquired, p.pop, p.defense, p.gdp, p.bld, p.bld_wip, p.bld_until])
@@ -4427,6 +4446,13 @@ func from_dict(d: Dictionary) -> bool:
 		Fleets.from_array(self, d["fleets"])
 	else:
 		Fleets.ensure(self)     # eski kayıt: filoları envanterden yeniden türet
+	wings = {}
+	next_wing_id = int(d.get("next_wing", 1))
+	wings_ready = false
+	if d.has("wings"):
+		Air.from_array(self, d["wings"])
+	else:
+		Air.ensure(self)
 	return true
 
 

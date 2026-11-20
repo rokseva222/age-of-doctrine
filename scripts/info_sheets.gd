@@ -293,8 +293,11 @@ static func open_howto(parent: Node) -> void:
 			render.call())
 
 
-const UPDATE_VER := "1.2.30"
+const UPDATE_VER := "1.2.31"
 const WHATS_NEW := [
+	["Hava filoları", "Artık hava kuvvetlerin filolar halinde haritada: avcı, bombardıman, İHA, nakliye ve keşif kanatları üslerinden görev yapar. Bombardıman kanatlarıyla menzildeki düşman eyaletlerini vur, avcılarla hava üstünlüğü kazan (karadaki savaşa bonus), nakliye kanatlarıyla orduyu uçur ya da paraşütle indir. Kanatlara ad ver ve bayrak tasarla."],
+	["Filoya ad ve bayrak", "Her filoya ad ver, kendi bayrağını tasarla; Filo komutanlığında gemi sınıflarını (muhrip, kruvazör, denizaltı modelleri...), rütbeyi ve ikmal durumunu gör. Duruş (saldır/savun/çekil), eşlik ve filo bölme eklendi."],
+	["Daha gerçekçi deniz savaşı", "Limandan uzak filolar zayıflar (ikmal). Yapay zekâ çıkarma konvoyları denizde vurulabilir. Hazar ve Kuzey Buz Denizi eklendi; yeni savaş gemileri inşa edebilirsin."],
 	["Deniz filoları", "Haritada artık aktif donanmalar var: muharebe, nakliye, denizaltı ve uçak gemisi filoları denizde gezer, çarpışır, abluka yapar, kıyıyı bombalar. Ordunu gemiye bindirip denizden çıkarma yapabilirsin."],
 	["Tarihe uygun sömürge adları", "1914 ve 1939 senaryolarında Britanya Hindistanı, Fransız Cezayiri, Fransız Çinhindisi gibi dönemin gerçek adları görünür. Hindistan ve Kore tek devlet olarak başlar."],
 	["Soğuk Savaş haritası temizlendi", "1962 haritasında bugünün mikro devletleri (hayalet ülkeler) kaldırıldı; toprakları o dönemin gerçek sahiplerine bağlandı."],

@@ -435,6 +435,33 @@ func _carrier_row(c) -> void:
 		render())
 	content.add_child(b)
 	content.add_child(TK.spacer(0, 6))
+	# muharebe gemisi inşası (yüzey filosunu güçlendirir)
+	var h2 := HBoxContainer.new()
+	h2.add_theme_constant_override("separation", 12)
+	var iv2 := TK.IconView.new()
+	iv2.icon = Icons.pick("uc_ship", "ship")
+	iv2.color = Color.WHITE
+	iv2.custom_minimum_size = Vector2(38, 38)
+	iv2.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+	h2.add_child(iv2)
+	var nm2 := TK.t("Muharebe gemileri", "caps", TK.TEXT)
+	nm2.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	h2.add_child(nm2)
+	h2.add_child(TK.t("+%d" % c.ship_extra, "value", TK.TEXT))
+	content.add_child(h2)
+	content.add_child(_wrap("Muhrip, firkateyn ve kruvazörlerden oluşan yeni bir grup inşa et: limandaki muharebe filosuna katılır, denizde ve kıyı bombardımanında güç verir. Bakım gideri vardır.", "small", TK.FAINT))
+	var err2: String = Carriers.can_build_ship(gs, c)
+	var b2 := TK.button("İnşa et: %s" % Macro.money(Carriers.ship_cost(c)), "gold", Icons.pick("uc_ship", "ship"), Vector2(0, 56), 15)
+	b2.disabled = err2 != "" and not err2.begins_with("Kasa")
+	b2.pressed.connect(func():
+		var e3: String = Carriers.build_ship(gs)
+		if e3 != "":
+			ui.toast(e3)
+		else:
+			ui.toast("Yeni savaş gemileri denize indirildi.")
+		render())
+	content.add_child(b2)
+	content.add_child(TK.spacer(0, 6))
 
 
 func _tab_inventory() -> void:

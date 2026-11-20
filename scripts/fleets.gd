@@ -12,7 +12,9 @@ const Seas = preload("res://scripts/seas.gd")
 const Macro = preload("res://scripts/macro.gd")
 const Arsenal = preload("res://scripts/arsenal.gd")
 const Settings = preload("res://scripts/settings.gd")
+const Loc = preload("res://scripts/loc.gd")
 const Chokepoints = preload("res://scripts/chokepoints.gd")
+const Ext = preload("res://scripts/fleet_ext.gd")
 
 const KINDS := ["surface", "sub", "carrier", "transport"]
 const KIND_TR := {"surface": "Muharebe filosu", "sub": "Denizaltı filosu", "carrier": "Uçak gemisi grubu", "transport": "Nakliye filosu"}
@@ -66,7 +68,35 @@ static func kind_icon_fallback(kind: String) -> String:
 
 
 static func cp(f) -> float:
-	return f.size * float(KIND_CP.get(f.kind, 1.0))
+	return f.size * float(KIND_CP.get(f.kind, 1.0)) * Ext.rank_mult(f.xp)
+
+
+## Bu turun ikmal çarpanları (filo id -> çarpan); tick başında hesaplanır
+static var _sup: Dictionary = {}
+
+
+static func sup_of(f) -> float:
+	return float(_sup.get(f.id, 1.0))
+
+
+## Sahibin dost + müttefik liman bölgeleri
+static func port_zones(gs, cid: int) -> Dictionary:
+	return Seas.ports_of(gs, cid, true)
+
+
+static func supply_hops(gs, f) -> int:
+	return Ext.port_hops(f, port_zones(gs, f.owner))
+
+
+static func _calc_supply(gs) -> void:
+	_sup = {}
+	var cache: Dictionary = {}
+	for f in gs.fleets.values():
+		if f.kind == "transport":
+			continue
+		if not cache.has(f.owner):
+			cache[f.owner] = port_zones(gs, f.owner)
+		_sup[f.id] = Ext.supply_mult_for(f.kind, Ext.port_hops(f, cache[f.owner]))
 
 
 static func disp(f) -> int:
@@ -150,7 +180,7 @@ static func sub_target(c) -> float:
 static func surface_target(c) -> float:
 	if not qualifies(c):
 		return 0.0
-	return maxf(1.0, SURFACE_RATIO * sub_target(c) + 2.0 * float(maxi(c.carriers, 0)))
+	return maxf(1.0, SURFACE_RATIO * sub_target(c) + 2.0 * float(maxi(c.carriers, 0))) + 1.2 * float(maxi(c.ship_extra, 0))
 
 
 # ------------------------------------------------------------------ kurulum / eşitleme
@@ -192,7 +222,7 @@ static func _alt_zone(gs, cid: int, home: String) -> String:
 
 static func _port_fleet(gs, owner_list: Array, kind: String, zone: String):
 	for f in owner_list:
-		if f.kind == kind and f.zone == zone and f.path.is_empty() and f.cargo == 0:
+		if f.kind == kind and f.zone == zone and f.path.is_empty() and f.cargo == 0 and not Seas.is_lake(zone):
 			return f
 	return null
 
@@ -200,14 +230,14 @@ static func _port_fleet(gs, owner_list: Array, kind: String, zone: String):
 static func _sum_kind(lst: Array, kind: String) -> float:
 	var s := 0.0
 	for f in lst:
-		if f.kind == kind:
+		if f.kind == kind and not Seas.is_lake(f.zone):
 			s += f.size
 	return s
 
 
 static func _scale_kind(gs, lst: Array, kind: String, factor: float) -> void:
 	for f in lst.duplicate():
-		if f.kind != kind:
+		if f.kind != kind or Seas.is_lake(f.zone):
 			continue
 		f.size *= factor
 		if f.size < MIN_SIZE:
@@ -382,11 +412,16 @@ static func tick(gs) -> void:
 	for c in gs.countries:
 		if c.alive and not c.is_rebel and (qualifies(c) or by_owner.has(c.id)):
 			sync_country(gs, c, by_owner)
+	_calc_supply(gs)
+	_lake_flotillas(gs)
 	var idx: Dictionary = _index(gs)
 	_ai_orders(gs, idx)
+	_stance_orders(gs, idx)
+	_escort_orders(gs)
 	_move(gs)
 	idx = _index(gs)
 	_combat(gs, idx)
+	_convoy_arrivals(gs)
 	idx = _index(gs)
 	_ai_actions(gs, idx)
 	_merge_ai(gs, idx)
@@ -411,7 +446,11 @@ static func _move(gs) -> void:
 	for f in gs.fleets.values():
 		if f.path.is_empty():
 			continue
-		var steps: int = int(SPEED.get(f.kind, 2))
+		var steps: int = 1 if f.tgt >= 0 else int(SPEED.get(f.kind, 2))
+		if f.escort >= 0:
+			var et = gs.fleets.get(f.escort)
+			if et != null and et.tgt >= 0:
+				steps = 1
 		while steps > 0 and not f.path.is_empty():
 			var nxt: String = f.path[0]
 			if not Seas.neighbors(f.zone).has(nxt) or not Seas.edge_ok(gs, f.owner, f.zone, nxt):
@@ -453,13 +492,26 @@ static func _side_power(gs, side: Array, foe: Array) -> float:
 		if f.kind == "carrier":
 			has_carrier = true
 	var p := 0.0
+	var hv: float = Ext.heavy_share()
+	var ports_cache: Dictionary = {}
 	for f in side:
-		var base: float = cp(f)
+		var base: float = cp(f) * sup_of(f)
 		if base <= 0.0:
 			continue
+		if f.stance == "defend":
+			if not ports_cache.has(f.owner):
+				ports_cache[f.owner] = port_zones(gs, f.owner)
+			if ports_cache[f.owner].has(f.zone):
+				base *= Ext.DEFEND_BONUS
 		var m := 0.0
 		for k in mix:
 			var mk: float = float(MATRIX[f.kind].get(k, 1.0))
+			if f.kind == "surface":
+				# ağır gemiler (zırhlı/kruvazör) yüzeye ve uçak gemisine, hafif gemiler (muhrip/firkateyn) denizaltıya karşı üstün
+				if k == "sub":
+					mk += 0.35 * (1.0 - hv) - 0.1
+				elif k == "surface" or k == "carrier":
+					mk += 0.25 * hv - 0.05
 			if f.kind == "surface" and k == "sub" and has_carrier:
 				mk += ASW_BONUS
 			m += float(mix[k]) / tot * mk
@@ -547,6 +599,10 @@ static func _combat(gs, idx: Dictionary) -> void:
 				var rb: Dictionary = _hit(gs, fb, phi_b)
 				for g in fa + fb:
 					g.seen = gs.turn + 1
+				for g in fa:
+					g.xp = minf(Ext.XP_MAX, g.xp + 1.0 + float(rb.lost) * 0.06)
+				for g in fb:
+					g.xp = minf(Ext.XP_MAX, g.xp + 1.0 + float(ra.lost) * 0.06)
 				touched[a] = true
 				touched[b] = true
 				gs.stats["sea_battles"] = int(gs.stats.get("sea_battles", 0)) + 1
@@ -659,7 +715,7 @@ static func _set_path(gs, f, dest: String) -> bool:
 
 static func _ai_orders(gs, idx: Dictionary) -> void:
 	for f in gs.fleets.values():
-		if f.kind == "transport" or not f.path.is_empty():
+		if f.kind == "transport" or not f.path.is_empty() or f.stance == "defend" or f.escort >= 0 or Seas.is_lake(f.zone):
 			continue
 		if not _ai_controls(gs, f):
 			continue
@@ -785,6 +841,7 @@ static func _merge_ai(gs, idx: Dictionary) -> void:
 			g.sort_custom(func(a, b): return a.size > b.size)
 			var keep = g[0]
 			for i in range(1, g.size()):
+				keep.xp = (keep.xp * keep.size + g[i].xp * g[i].size) / maxf(keep.size + g[i].size, 0.001)
 				keep.size += g[i].size
 				gs.fleets.erase(g[i].id)
 
@@ -969,6 +1026,7 @@ static func merge(gs, fid: int) -> String:
 	for g in at_zone(gs, f.zone):
 		if g == f or g.owner != f.owner or g.kind != f.kind:
 			continue
+		f.xp = (f.xp * f.size + g.xp * g.size) / maxf(f.size + g.size, 0.001)
 		f.size += g.size
 		f.cargo += g.cargo
 		if g.cargo_lvl > f.cargo_lvl:
@@ -1304,12 +1362,340 @@ static func intercept_loss(gs, army, from_pid: int, to_pid: int) -> int:
 	return lost
 
 
+# ------------------------------------------------------------------ Hazar flotillası (kapalı göl)
+
+## Kıyısı olan ülkelere küçük yerel filo: kapalı gölde diğer kıyı devletleriyle çarpışır, kıyıyı bombalar.
+static func _lake_flotillas(gs) -> void:
+	for lake in Seas.LAKES:
+		var ports_by_owner: Dictionary = {}
+		for pid in Seas.provs_of(gs, lake):
+			var p = gs.provinces[pid]
+			var h: int = p.controller if p.controller >= 0 else p.owner
+			if h >= 0:
+				ports_by_owner[h] = int(ports_by_owner.get(h, 0)) + 1
+		var have: Dictionary = {}
+		for f in gs.fleets.values().duplicate():
+			if f.zone != lake:
+				continue
+			var c = gs.countries[f.owner]
+			if not ports_by_owner.has(f.owner) or not qualifies(c):
+				gs.fleets.erase(f.id)
+				continue
+			var tgt: float = clampf(0.5 + 0.05 * surface_target(c), 0.5, 3.0)
+			f.size = minf(tgt, f.size + maxf(0.05, tgt * 0.05)) if f.size < tgt else maxf(tgt, f.size - 0.05)
+			have[f.owner] = true
+		for o in ports_by_owner:
+			if have.has(o) or o < 0 or o >= gs.countries.size():
+				continue
+			var co = gs.countries[o]
+			if qualifies(co) and not co.is_rebel:
+				var nf = new_fleet(gs, o, lake, "surface", clampf(0.5 + 0.05 * surface_target(co), 0.5, 3.0))
+				nf.name = ""
+
+
+# ------------------------------------------------------------------ duruş / eşlik
+
+## Çekil duruşundaki filolar: bulunduğu denizde düşman güçlüyse en yakın dost limana çekilir.
+static func _stance_orders(gs, idx: Dictionary) -> void:
+	for f in gs.fleets.values():
+		if f.stance != "avoid" or f.kind == "transport" or Seas.is_lake(f.zone):
+			continue
+		var ports: Dictionary = port_zones(gs, f.owner)
+		if ports.has(f.zone):
+			continue
+		var foe: float = _enemy_power_in(gs, idx, f.zone, f.owner)
+		if foe <= 0.0:
+			continue
+		var own: float = _friend_power_in(gs, idx, f.zone, f.owner)
+		if foe < own * Ext.AVOID_RATIO:
+			continue
+		var best := ""
+		var bh := 99
+		for z in ports:
+			var h: int = Seas.hops(f.zone, z)
+			if h < bh:
+				bh = h
+				best = z
+		if best != "" and _set_path(gs, f, best):
+			f.mission = ""
+			if f.owner == gs.player:
+				gs.post_news("%s düşman filosundan çekiliyor: %s limanına dönüyor." % [display_name(gs, f), Seas.name_tr(best)], -1, "war_player", "ship")
+
+
+## Eşlik: eşlik eden filo, eşlik edilen filonun yolunu izler (aynı hızda hareket eder).
+static func _escort_orders(gs) -> void:
+	for f in gs.fleets.values():
+		if f.escort < 0:
+			continue
+		var t = gs.fleets.get(f.escort)
+		if t == null or t.owner != f.owner or t == f:
+			f.escort = -1
+			continue
+		if f.zone != t.zone:
+			var p: Array = Seas.path(gs, f.owner, f.zone, t.zone)
+			if p.is_empty():
+				f.escort = -1
+				continue
+			f.path = p
+		else:
+			f.path = t.path.duplicate()
+
+
+# ------------------------------------------------------------------ ad / bayrak / duruş / bölme (oyuncu eylemleri)
+
+static func default_name(gs, f) -> String:
+	return Ext.ordinal_name(gs, f)
+
+
+## Varsayılan ad (çevrilmiş): "N. Muharebe Filosu"
+static func default_display(gs, f) -> String:
+	return Loc.t(Ext.ordinal_tpl(f) % Ext.ordinal_k(gs, f))
+
+
+## Gösterilecek ad (özel ad ya da çevrilmiş varsayılan ad)
+static func display_name(gs, f) -> String:
+	return f.name if f.name != "" else default_display(gs, f)
+
+
+static func rename(gs, fid: int, nm: String) -> String:
+	var f = _mine(gs, fid)
+	if f == null:
+		return "Bu filo senin değil."
+	f.name = nm.strip_edges().left(28)
+	gs.armies_changed.emit()
+	return ""
+
+
+static func set_flag(gs, fid: int, spec: String) -> String:
+	var f = _mine(gs, fid)
+	if f == null:
+		return "Bu filo senin değil."
+	f.flag = spec
+	gs.armies_changed.emit()
+	return ""
+
+
+static func set_stance(gs, fid: int, st: String) -> String:
+	var f = _mine(gs, fid)
+	if f == null:
+		return "Bu filo senin değil."
+	if not Ext.STANCES.has(st):
+		return ""
+	f.stance = st
+	if st == "defend":
+		f.path.clear()
+		f.mission = ""
+	gs.armies_changed.emit()
+	return ""
+
+
+## Eşlik edilebilecek filolar: aynı bölgedeki kendi nakliye/diğer filoların (kendisi hariç)
+static func escort_candidates(gs, f) -> Array:
+	var out: Array = []
+	for g in at_zone(gs, f.zone):
+		if g != f and g.owner == f.owner and g.escort != f.id and (g.kind == "transport" or g.cargo > 0 or g.kind == "carrier"):
+			out.append(g)
+	return out
+
+
+static func set_escort(gs, fid: int, target: int) -> String:
+	var f = _mine(gs, fid)
+	if f == null:
+		return "Bu filo senin değil."
+	if target < 0:
+		f.escort = -1
+		gs.armies_changed.emit()
+		return ""
+	var t = gs.fleets.get(target)
+	if t == null or t.owner != f.owner or t == f:
+		return "Eşlik edilecek filo bulunamadı."
+	if f.kind == "transport":
+		return "Nakliye filosu eşlik edemez."
+	f.escort = target
+	f.hold = true
+	gs.player_acted = true
+	gs.armies_changed.emit()
+	return ""
+
+
+## Filoyu böler: yeni filo oran (0.1..0.9) kadarını alır. Yeni filoyu döndürür (başarısızsa null).
+static func split(gs, fid: int, frac: float):
+	var f = _mine(gs, fid)
+	if f == null:
+		return null
+	if fleets_of(gs, f.owner).size() >= 12:
+		return null
+	var part: float = f.size * clampf(frac, 0.1, 0.9)
+	if f.kind == "carrier":
+		part = float(maxi(1, int(round(f.size * frac))))
+		if f.size < 2.0 or part >= f.size:
+			return null
+	elif part < MIN_SIZE * 2.0 or f.size - part < MIN_SIZE:
+		return null
+	var nf = new_fleet(gs, f.owner, f.zone, f.kind, part)
+	f.size -= part
+	nf.xp = f.xp
+	nf.stance = f.stance
+	nf.flag = f.flag
+	nf.hold = true
+	nf.mission = ""
+	if f.cargo > 0:
+		var take: int = int(float(f.cargo) * part / (part + f.size))
+		nf.cargo = take
+		nf.cargo_lvl = f.cargo_lvl
+		nf.cargo_name = f.cargo_name
+		nf.cargo_wins = f.cargo_wins
+		f.cargo -= take
+	gs.player_acted = true
+	gs.armies_changed.emit()
+	return nf
+
+
+# ------------------------------------------------------------------ yapay zekâ çıkarma konvoyu
+
+const AI_CONVOY_MAX := 3
+
+## 1 = konvoy kuruldu, 0 = filo sistemi kullanılamadı (eski soyut çıkarma çalışsın), 2 = meşgul (bu hedefi atla)
+static func ai_embark(gs, cid: int, a, q: int, n: int) -> int:
+	if not enabled or not gs.fleets_ready or cid == gs.player:
+		return 0
+	var p = gs.provinces[a.prov]
+	if not p.coastal or p.controller != cid or a.size - n < 1:
+		return 0
+	var route: Array = route_zones(gs, a.prov, q)
+	if route.is_empty():
+		return 0
+	var busy := 0
+	for g in gs.fleets.values():
+		if g.owner == cid and g.tgt != -1:
+			busy += 1
+	if busy >= AI_CONVOY_MAX:
+		return 2
+	# güvenli mi: rotadaki düşman gücü, rota boyunca/yakında olan dost güçten fazlaysa konvoy beklemeye alınır
+	var foe := 0.0
+	var mine := 0.0
+	for z in route:
+		for g in at_zone(gs, String(z)):
+			if g.kind == "transport":
+				continue
+			if gs.at_war(cid, g.owner):
+				foe += cp(g)
+			elif g.owner == cid or gs.is_allied(cid, g.owner):
+				mine += cp(g)
+	var esc_p := 0.0
+	for g2 in fleets_of(gs, cid):
+		if g2.kind == "surface" and g2.cargo == 0 and g2.escort < 0 and not Seas.is_lake(g2.zone) and Seas.hops(g2.zone, String(route[0])) <= 4:
+			esc_p = maxf(esc_p, cp(g2))
+	if foe > 0.0 and foe > (mine + esc_p) * 0.9:
+		return 2
+	var tf = new_fleet(gs, cid, String(route[0]), "transport", maxf(1.0, ceil(float(n) / 6000.0)))
+	tf.cargo = n
+	tf.tgt = q
+	tf.path = route.slice(1)
+	a.size -= n
+	# en yakın yüzey filosu eşlik eder
+	var best = null
+	var bh := 5
+	for g in fleets_of(gs, cid):
+		if g.kind != "surface" or g.cargo > 0 or g.escort >= 0 or Seas.is_lake(g.zone):
+			continue
+		var h: int = Seas.hops(g.zone, tf.zone)
+		if h < bh:
+			bh = h
+			best = g
+	if best != null:
+		best.escort = tf.id
+	if gs.provinces[q].owner == gs.player or gs.provinces[q].controller == gs.player:
+		gs.post_news("%s çıkarma konvoyu denize açıldı; hedef: %s yönü. Filonla durdur!" % [_cname(gs, cid), gs.provinces[q].name], q, "war_player", "ship")
+	return 1
+
+
+## Varış kontrolü: yapay zekâ konvoyları hedefe ulaşınca çıkarma yapar; hedef geçersizse en yakın dost limana boşaltır.
+static func _convoy_arrivals(gs) -> void:
+	for f in gs.fleets.values().duplicate():
+		if f.tgt == -1 or not gs.fleets.has(f.id) or f.kind != "transport" or not f.path.is_empty():
+			continue
+		if f.cargo <= 0:
+			gs.fleets.erase(f.id)
+			continue
+		if f.tgt >= 0 and not Seas.coast_zones(gs, f.tgt).has(f.zone):
+			# yol (düşman teması ya da kapanma yüzünden) kesildi: hedef kıyıya yeniden rota
+			var best: Array = []
+			for zc in Seas.coast_zones(gs, f.tgt):
+				var pth: Array = Seas.path(gs, f.owner, f.zone, String(zc))
+				if not pth.is_empty() and (best.is_empty() or pth.size() < best.size()):
+					best = pth
+			if best.is_empty():
+				f.tgt = -2
+			else:
+				f.path = best
+				continue
+		if f.tgt >= 0:
+			var q: int = f.tgt
+			var ok: bool = Seas.coast_zones(gs, q).has(f.zone) and _holder_hostile(gs, f.owner, q)
+			var occ = gs.armies.get(q)
+			if occ != null and occ.owner != f.owner and not gs.at_war(f.owner, occ.owner):
+				ok = false
+			if ok:
+				_ai_land(gs, f, q)
+				continue
+			# hedef geçersiz: eve dön
+			f.tgt = -2
+		if f.tgt == -2:
+			_unload_friendly(gs, f)
+
+
+static func _ai_land(gs, f, q: int) -> void:
+	var a := Model.Army.new()
+	a.id = gs.next_army_id
+	gs.next_army_id += 1
+	a.owner = f.owner
+	a.prov = -1
+	a.size = f.cargo
+	a.op = "landing"
+	var holder: int = gs._holder(q)
+	if holder >= 0:
+		gs.sea_campaign[holder] = true
+	gs.stats["landings"] = int(gs.stats.get("landings", 0)) + 1
+	var n: int = f.cargo
+	f.cargo = 0
+	gs.fleets.erase(f.id)
+	gs.post_news("%s ordusu %s kıyısına denizden çıkarma yaptı." % [_cname(gs, a.owner), gs.provinces[q].name], q, "war_player" if holder == gs.player else "war", "landing")
+	gs._enter(a, q)
+	if n > 0:
+		gs.refresh_stats()
+
+
+## Konvoy güvenli bir dost limana (bulunduğu denize bitişik) boşaltır; yoksa eve yönelir.
+static func _unload_friendly(gs, f) -> void:
+	for pid in Seas.provs_of(gs, f.zone):
+		var p = gs.provinces[pid]
+		if p.controller != f.owner:
+			continue
+		var ex = gs.armies.get(pid)
+		if ex != null and ex.owner == f.owner:
+			ex.size += f.cargo
+		elif ex == null:
+			gs._spawn_army(f.owner, pid, f.cargo)
+		else:
+			continue
+		f.cargo = 0
+		gs.fleets.erase(f.id)
+		gs.refresh_stats()
+		return
+	var hp: Array = Seas.home_port(gs, f.owner)
+	if String(hp[1]) != "" and String(hp[1]) != f.zone and _set_path(gs, f, String(hp[1])):
+		return
+	f.cargo = 0
+	gs.fleets.erase(f.id)
+
+
 # ------------------------------------------------------------------ kayıt
 
 static func to_array(gs) -> Array:
 	var out: Array = []
 	for f in gs.fleets.values():
-		out.append([f.id, f.owner, f.zone, f.kind, f.size, f.path, f.hold, f.cargo, f.cargo_lvl, f.cargo_name, f.cargo_wins, f.cd, f.seen, f.mission, f.born])
+		out.append([f.id, f.owner, f.zone, f.kind, f.size, f.path, f.hold, f.cargo, f.cargo_lvl, f.cargo_name, f.cargo_wins, f.cd, f.seen, f.mission, f.born, f.name, f.flag, f.xp, f.stance, f.escort, f.tgt])
 	return out
 
 
@@ -1335,6 +1721,13 @@ static func from_array(gs, arr: Array) -> void:
 		f.seen = int(r[12])
 		f.mission = String(r[13])
 		f.born = int(r[14])
+		if r.size() >= 21:
+			f.name = String(r[15])
+			f.flag = String(r[16])
+			f.xp = float(r[17])
+			f.stance = String(r[18])
+			f.escort = int(r[19])
+			f.tgt = int(r[20])
 		if not Seas.has(f.zone) or f.owner < 0 or f.owner >= gs.countries.size() or not KINDS.has(f.kind) or f.size <= 0.0:
 			continue
 		gs.fleets[f.id] = f

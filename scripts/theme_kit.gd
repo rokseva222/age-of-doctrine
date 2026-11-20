@@ -504,13 +504,24 @@ class IconView extends Control:
 class FlagView extends Control:
 	var country = null
 	var radius := 2.0
+	var spec := ""           # özel bayrak tanımı (filo bayrağı); boşsa ülke bayrağı
 
 	func set_country(c) -> void:
 		country = c
+		spec = ""
+		queue_redraw()
+
+	func set_spec(sp: String, c) -> void:
+		country = c
+		spec = sp
 		queue_redraw()
 
 	func _draw() -> void:
 		if country == null:
+			return
+		if spec != "":
+			Flags._draw_layers(self, Rect2(Vector2.ZERO, size), Flags._parse(spec))
+			draw_rect(Rect2(Vector2.ZERO, size), Color(0, 0, 0, 0.5), false, 1.0)
 			return
 		Flags.draw(self, Rect2(Vector2.ZERO, size), country, radius)
 		draw_rect(Rect2(Vector2.ZERO, size), Color(0, 0, 0, 0.5), false, 1.0)

@@ -5,6 +5,11 @@ const Fleets = preload("res://scripts/fleets.gd")
 const Seas = preload("res://scripts/seas.gd")
 const Macro = preload("res://scripts/macro.gd")
 const Icons = preload("res://scripts/icons.gd")
+const TK = preload("res://scripts/theme_kit.gd")
+const Loc = preload("res://scripts/loc.gd")
+const Ext = preload("res://scripts/fleet_ext.gd")
+const FleetFlag = preload("res://scripts/fleet_flag.gd")
+const FlagEditor = preload("res://scripts/flag_editor.gd")
 
 const MAX_BUTTONS := 4
 
@@ -150,3 +155,180 @@ static func _do_debark(ui, gs, f, pid: int, done: Callable) -> void:
 		return
 	ui.toast("Ordu %s kıyısına çıkarıldı." % gs.provinces[pid].name)
 	done.call(null)
+
+
+# ------------------------------------------------------------------ filo komutanlığı (ad, bayrak, gemiler, duruş, eşlik, bölme)
+
+static func _ship_icon(kind: String) -> String:
+	match kind:
+		"sub":
+			return Icons.pick("uc_sub", "sub")
+		"carrier":
+			return Icons.pick("uc_carrier", "ship")
+		"transport":
+			return Icons.pick("cargo_ship", "ship")
+		"air":
+			return Icons.pick("uc_jet", "jet")
+	return Icons.pick("uc_ship", "ship")
+
+
+static func _sbtn(ui, sh, text: String, icon: String, kind: String, cb: Callable) -> void:
+	var b := TK.button(text, kind, icon, Vector2(0, 72), 17)
+	b.pressed.connect(func():
+		ui._click()
+		cb.call())
+	sh.body.add_child(b)
+
+
+static func manage(ui, gs, f, done: Callable) -> void:
+	if f == null or not gs.fleets.has(f.id) or f.owner != gs.player:
+		return
+	var fid: int = f.id
+	var oc = gs.countries[f.owner]
+	var sh = ui._open_sheet("Filo komutanlığı", 780, true, true, Loc.t(Fleets.kind_name(f.kind)) + "  /  " + Seas.name_of(f.zone))
+	# başlık: bayrak + ad
+	var head := HBoxContainer.new()
+	head.add_theme_constant_override("separation", 18)
+	var fv := FleetFlag.new()
+	fv.spec = f.flag
+	fv.country = oc
+	fv.custom_minimum_size = Vector2(168, 112)
+	head.add_child(fv)
+	var col := VBoxContainer.new()
+	col.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	col.add_theme_constant_override("separation", 8)
+	var le := LineEdit.new()
+	le.text = Fleets.display_name(gs, f)
+	le.placeholder_text = Loc.t("Filo adı")
+	le.max_length = 28
+	le.custom_minimum_size = Vector2(0, 64)
+	le.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	col.add_child(le)
+	var save_name := func():
+		var nm: String = le.text.strip_edges()
+		var dflt: String = Fleets.default_display(gs, f)
+		Fleets.rename(gs, fid, "" if nm == "" or nm == dflt else nm)
+		ui.toast(Loc.t("Filo adı kaydedildi."))
+		done.call(null)
+		manage(ui, gs, gs.fleets[fid], done)
+	le.text_submitted.connect(func(_t): save_name.call())
+	var nb := TK.button("Adı kaydet", "", Icons.pick("check", "flag"), Vector2(0, 60), 16)
+	nb.pressed.connect(func():
+		ui._click()
+		save_name.call())
+	col.add_child(nb)
+	head.add_child(col)
+	sh.body.add_child(head)
+	# rütbe
+	var rl := TK.t("Rütbe: %s  (tecrübe %d)" % [Ext.rank_name(f.xp), int(f.xp)], "body", TK.GOLD)
+	rl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	sh.body.add_child(rl)
+	var nxt: float = Ext.xp_to_next(f.xp)
+	if nxt > 0.0:
+		sh.body.add_child(TK.t("Sonraki rütbe için %d" % int(ceil(nxt)), "small", TK.FAINT))
+	var rh := TK.t(Loc.t("Muharebe ve torpido saldırıları filoya tecrübe kazandırır; rütbe yükseldikçe filo daha güçlü savaşır."), "small", TK.FAINT)
+	rh.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	sh.body.add_child(rh)
+	# gemiler
+	sh.body.add_child(TK.hsep())
+	var ships: Array = Ext.ships(gs, f)
+	sh.body.add_child(TK.t(Loc.t("Filodaki gemiler") + "  (%d)" % Ext.ship_total(gs, f), "kicker", TK.GOLD))
+	for sp in ships:
+		var row := HBoxContainer.new()
+		row.add_theme_constant_override("separation", 12)
+		var iv := TK.IconView.new()
+		iv.icon = _ship_icon(String(sp[3]))
+		iv.color = TK.PAPER
+		iv.stroke = 2.0
+		iv.custom_minimum_size = Vector2(34, 34)
+		iv.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		row.add_child(iv)
+		var nm: Label = TK.t(Loc.t(String(sp[1])), "body", TK.TEXT)
+		nm.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		nm.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		row.add_child(nm)
+		row.add_child(TK.t("x%d" % int(sp[2]), "value", TK.GOLD))
+		sh.body.add_child(row)
+	# durum
+	sh.body.add_child(TK.hsep())
+	var hops: int = Fleets.supply_hops(gs, f)
+	var sup: float = Ext.supply_mult_for(f.kind, hops)
+	var stats := "%s: %d    %s: %s%s    %s: %d" % [Loc.t("Güç"), Fleets.disp(f), Loc.t("İkmal"), Loc.t(Ext.supply_label(hops)), (" (x%.2f)" % sup) if sup < 0.995 else "", Loc.t("Hız"), int(Fleets.SPEED.get(f.kind, 2))]
+	if f.cargo > 0:
+		stats += "    %s: %s" % [Loc.t("Asker"), Macro.num(f.cargo)]
+	var sl := TK.t(stats, "body", TK.TEXT)
+	sl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	sh.body.add_child(sl)
+	if hops > 2:
+		var wl := TK.t(Loc.t("Limandan uzak: ikmal zayıf, filo gücünün bir kısmını kaybediyor. Dost bir limana yaklaştır."), "small", TK.ORANGE)
+		wl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		sh.body.add_child(wl)
+	# duruş
+	sh.body.add_child(TK.hsep())
+	sh.body.add_child(TK.t(Loc.t("Duruş"), "kicker", TK.GOLD))
+	var srow := HBoxContainer.new()
+	srow.add_theme_constant_override("separation", 10)
+	for st in Ext.STANCES:
+		var sb := TK.button(String(Ext.STANCE_TR[st]), "gold" if f.stance == st else "", "", Vector2(0, 64), 16)
+		sb.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		var stn: String = st
+		sb.pressed.connect(func():
+			ui._click()
+			Fleets.set_stance(gs, fid, stn)
+			done.call(null)
+			manage(ui, gs, gs.fleets[fid], done))
+		srow.add_child(sb)
+	sh.body.add_child(srow)
+	var hl := TK.t(Loc.t(String(Ext.STANCE_HINT[f.stance])), "small", TK.FAINT)
+	hl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	sh.body.add_child(hl)
+	# eylemler
+	sh.body.add_child(TK.hsep())
+	_sbtn(ui, sh, "Bayrak tasarla", Icons.pick("flag", "flag"), "blue", func():
+		FlagEditor.open(ui.root, f.flag, func(spec: String):
+			Fleets.set_flag(gs, fid, spec)
+			ui.toast(Loc.t("Filo bayrağı kaydedildi."))
+			done.call(null)
+			if gs.fleets.has(fid):
+				manage(ui, gs, gs.fleets[fid], done)))
+	if f.flag != "":
+		_sbtn(ui, sh, "Ülke bayrağına dön", Icons.pick("x", "x"), "ghost", func():
+			Fleets.set_flag(gs, fid, "")
+			done.call(null)
+			manage(ui, gs, gs.fleets[fid], done))
+	_sbtn(ui, sh, "Filoyu böl", Icons.pick("plus", "plus"), "", func():
+		split_dialog(ui, gs, f, done))
+	if f.escort >= 0 and gs.fleets.has(f.escort):
+		_sbtn(ui, sh, "Eşliği bırak", Icons.pick("x", "x"), "ghost", func():
+			Fleets.set_escort(gs, fid, -1)
+			done.call(null)
+			manage(ui, gs, gs.fleets[fid], done))
+	elif f.kind != "transport":
+		var cands: Array = Fleets.escort_candidates(gs, f)
+		for i in mini(3, cands.size()):
+			var tg = cands[i]
+			var tid: int = tg.id
+			_sbtn(ui, sh, Loc.t("Eşlik et: %s") % Fleets.display_name(gs, tg), Icons.pick("shield", "shield"), "", func():
+				var err: String = Fleets.set_escort(gs, fid, tid)
+				if err != "":
+					ui.toast(err)
+					return
+				ui.toast(Loc.t("Filo eşlik görevinde: hedef filoyu izler ve korur."))
+				done.call(null)
+				manage(ui, gs, gs.fleets[fid], done))
+	sh.add_button("Kapat", func(): done.call(null), "", true, "x", 160)
+
+
+static func split_dialog(ui, gs, f, done: Callable) -> void:
+	var fid: int = f.id
+	var btns: Array = [_cancel()]
+	for pct in [25, 50, 75]:
+		var fr: float = float(pct) / 100.0
+		btns.append({"text": Loc.t("Filonun %s kadarını ayır") % Loc.pct(pct), "kind": "", "icon": Icons.pick("plus", "plus"), "cb": func():
+			var nf = Fleets.split(gs, fid, fr)
+			if nf == null:
+				ui.toast(Loc.t("Filo bölünemiyor: çok küçük ya da filo sayısı sınırda."))
+				return
+			ui.toast(Loc.t("Filo bölündü: yeni filo oluşturuldu."))
+			done.call(nf)})
+	ui.show_dialog("Filoyu böl", "Filonun seçtiğin kadarı yeni bir filo olarak ayrılır; ayrı görev verebilirsin. Uçak gemisi gruplarında en az 2 gemi gerekir.", btns, "carrier", "")
