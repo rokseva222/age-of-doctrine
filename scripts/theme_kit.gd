@@ -407,6 +407,25 @@ static func stamp(text: String, col: Color) -> PanelContainer:
 	return p
 
 
+## Simgeli etiket (inanç, rejim vb.)
+static func stamp_icon(text: String, col: Color, icon: String) -> PanelContainer:
+	var p := PanelContainer.new()
+	p.add_theme_stylebox_override("panel", box(Color(col.r, col.g, col.b, 0.10), col, 2, 2, 0, Vector4(7, 1, 9, 1)))
+	var h := HBoxContainer.new()
+	h.add_theme_constant_override("separation", 6)
+	var iv := IconView.new()
+	iv.custom_minimum_size = Vector2(26, 26)
+	iv.color = col.lightened(0.22)
+	iv.set_icon(icon)
+	h.add_child(iv)
+	var l := t(text, "kicker", col.lightened(0.18))
+	l.add_theme_color_override("font_color", col.lightened(0.22))
+	l.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+	h.add_child(l)
+	p.add_child(h)
+	return p
+
+
 static func flag_rect(c, size: Vector2) -> FlagView:
 	var f := FlagView.new()
 	f.custom_minimum_size = size

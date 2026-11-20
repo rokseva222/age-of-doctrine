@@ -1,6 +1,7 @@
 extends Node
 ## Oyun denetleyicisi: açılış → ana menü → ülke seçimi → oyun akışını yönetir; harita, arayüz ve ses arasında köprüdür.
 
+const Formables = preload("res://scripts/formables.gd")
 const Model = preload("res://scripts/model.gd")
 const Icons = preload("res://scripts/icons.gd")
 const SceneArt = preload("res://scripts/scene_art.gd")
@@ -1034,6 +1035,25 @@ func _on_ui_action(act: String, arg) -> void:
 					_refresh_selection(), "kind": "gold" if gs.countries[gs.player].gold >= fc else ""},
 				{"text": "Vazgeç", "cb": func(): pass},
 			])
+		"bulk":
+			_open_bulk_dialog()
+		"form_view":
+			if String(arg) == "" or String(arg) == "off":
+				map.set_form_view({})
+				ui.form_view_on = false
+				ui.toast("Form görünümü kapatıldı.")
+			else:
+				for fd in Formables.all():
+					if fd.id == String(arg):
+						var tp: Dictionary = Formables.target_provinces(gs, fd)
+						map.set_form_view(tp)
+						ui.form_view_on = true
+						var need := 0
+						for q in tp:
+							if gs.provinces[q].owner != gs.player:
+								need += 1
+						ui.toast("%s: yeşil sende, turuncu alınacak yerler (%d eyalet). Kapatmak için eyalet kartındaki düğmeyi kullan." % [fd.name, need])
+				_refresh_selection()
 		"build":
 			var bp = gs.provinces[arg]
 			var opts: Array = []
@@ -1059,6 +1079,38 @@ func _on_ui_action(act: String, arg) -> void:
 						break
 			if target >= 0:
 				_select(target)
+
+
+## Toplu işlemler: tüm eyaletlere bina / asimile / din dönüştürme (kasa yettiği kadar, kârlı eyaletten başlayarak).
+func _open_bulk_dialog() -> void:
+	var pre: bool = Macro.era_on and Eras.family() == "pre"
+	var opts: Array = []
+	for k in ["farm", "mine", "oil", "press"]:
+		var bk: String = k
+		var pv: Dictionary = gs.bulk_preview("build", bk)
+		if pv.n > 0:
+			var btxt: String = ("Tüm eyaletlere %s: %d yer, %s" % [Model.bld_name(bk, pre), pv.n, Macro.money(pv.cost)]) if pv.afford >= pv.n else ("Tüm eyaletlere %s: %d/%d yer (kasa yettiği kadar), %s" % [Model.bld_name(bk, pre), pv.afford, pv.n, Macro.money(pv.cost)])
+			opts.append({"text": btxt, "cb": func():
+				var d: int = gs.player_bulk("build", bk)
+				ui.toast("%d eyalette %s inşaatı başladı." % [d, Model.bld_name(bk, pre)] if d > 0 else "Kasa yetmiyor.")
+				_refresh_selection(), "kind": "gold" if pv.afford > 0 else ""})
+	var pa: Dictionary = gs.bulk_preview("assimilate")
+	if pa.n > 0:
+		opts.append({"text": "Hepsini asimile et: %d eyalet, %s" % [pa.n, Macro.money(pa.cost)], "cb": func():
+			var d2: int = gs.player_bulk("assimilate")
+			ui.toast("%d eyalet asimile edildi." % d2 if d2 > 0 else "Kasa yetmiyor.")
+			_refresh_selection(), "kind": "gold" if pa.afford > 0 else ""})
+	var pf: Dictionary = gs.bulk_preview("faith")
+	if pf.n > 0:
+		opts.append({"text": "Hepsinin inancını değiştir: %d eyalet, %s" % [pf.n, Macro.money(pf.cost)], "cb": func():
+			var d3: int = gs.player_bulk("faith")
+			ui.toast("%d eyaletin inancı değişti." % d3 if d3 > 0 else "Kasa yetmiyor.")
+			_refresh_selection(), "kind": "gold" if pf.afford > 0 else ""})
+	if opts.is_empty():
+		ui.toast("Toplu yapılacak bir işlem yok.")
+		return
+	opts.append({"text": "Vazgeç", "cb": func(): pass})
+	ui.show_dialog("Toplu işlemler", "Kasa yettiği kadar, geliri en yüksek eyaletten başlayarak uygulanır. Yalnızca kendi kontrolündeki eyaletler etkilenir.", opts)
 
 
 func _toast_result(err: String, ok_text: String) -> void:

@@ -5,6 +5,7 @@ const Loc = preload("res://scripts/loc.gd")
 
 const TK = preload("res://scripts/theme_kit.gd")
 const Macro = preload("res://scripts/macro.gd")
+const Settings = preload("res://scripts/settings.gd")
 const Flags = preload("res://scripts/flags.gd")
 const Icons = preload("res://scripts/icons.gd")
 const Chokepoints = preload("res://scripts/chokepoints.gd")
@@ -78,16 +79,23 @@ func _draw() -> void:
 	var font_b: Font = TK.map_font(true)
 	var font_m: Font = TK.map_font(false)
 
-	# --- deniz bağlantıları
+	# --- deniz bağlantıları (uzak görünümde yalnızca seçili eyaletinkiler: binlerce kesikli çizgi telefonda kasma yapıyordu)
 	if z >= 1.0:
-		for p in gs.provinces:
-			for nb in p.sea_links:
-				if nb > p.id:
-					var a: Vector2 = map.world_to_screen(p.label_pos)
-					var b: Vector2 = map.world_to_screen(gs.provinces[nb].label_pos)
-					if screen.has_point(a) or screen.has_point(b):
-						var related: bool = p.id == map.selected_prov or nb == map.selected_prov
-						draw_dashed_line(a, b, Color(1, 1, 1, 0.55 if related else 0.18), 1.6 if related else 1.0, 7.0)
+		var all_links: bool = z >= 3.0 and Settings.smooth
+		var sel: int = map.selected_prov
+		if all_links:
+			for p in gs.provinces:
+				for nb in p.sea_links:
+					if nb > p.id:
+						var a: Vector2 = map.world_to_screen(p.label_pos)
+						var b: Vector2 = map.world_to_screen(gs.provinces[nb].label_pos)
+						if screen.has_point(a) or screen.has_point(b):
+							var related: bool = p.id == sel or nb == sel
+							draw_dashed_line(a, b, Color(1, 1, 1, 0.55 if related else 0.18), 1.6 if related else 1.0, 7.0)
+		elif sel >= 0 and sel < gs.provinces.size():
+			var ps = gs.provinces[sel]
+			for nb2 in ps.sea_links:
+				draw_dashed_line(map.world_to_screen(ps.label_pos), map.world_to_screen(gs.provinces[nb2].label_pos), Color(1, 1, 1, 0.55), 1.6, 7.0)
 
 	# --- ülke adları
 	if show_country_names:

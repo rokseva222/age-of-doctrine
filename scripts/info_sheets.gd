@@ -287,7 +287,7 @@ static func open_howto(parent: Node) -> void:
 			render.call())
 
 
-const UPDATE_VER := "1.2.23"
+const UPDATE_VER := "1.2.24"
 const WHATS_NEW := [
 	["Tarihe uygun sömürge adları", "1914 ve 1939 senaryolarında Britanya Hindistanı, Fransız Cezayiri, Fransız Çinhindisi gibi dönemin gerçek adları görünür. Hindistan ve Kore tek devlet olarak başlar."],
 	["Soğuk Savaş haritası temizlendi", "1962 haritasında bugünün mikro devletleri (hayalet ülkeler) kaldırıldı; toprakları o dönemin gerçek sahiplerine bağlandı."],
@@ -296,6 +296,7 @@ const WHATS_NEW := [
 	["1962'de iki Vietnam", "1962 senaryosunda Vietnam artık Kuzey (Hanoi) ve Güney (Saygon) olarak ikiye ayrılıyor; ayrıca Kanada, Kongo, Suriye, Kamboçya, Laos gibi ülkeler dönemin bayraklarıyla geliyor."],
 	["Dönemlere uygun inançlar", "Dönem modlarında inançlar bugünkü nüfusa göre başlıyor: Kuzey Kıbrıs, Özbekistan, Bosna ve Kosova gibi Müslüman bölgeler artık yanlışlıkla Hristiyan görünmüyor."],
 	["Dönem adları 13 dilde", "Sömürge ve dönem devlet adları (Fransız Cezayiri, Britanya Hindistanı, Yukarı Volta, Vietnam Cumhuriyeti...) ile eski unvanlar (Genel Vali, Hidiv, Yüksek Komiser) artık 13 dilde; 1962'de Seylan, Birmanya, Tanganyika gibi dönemin gerçek adları kullanılıyor."],
+	["Toplu işlemler ve yeni seçenekler", "Eyalet kartındaki Toplu işlemler ile tüm eyaletlere bina, asimile ve din dönüşümü tek dokunuşla yapılır. Ülke Formla'da gereken eyaletler haritada gösterilir. Kıbrıs, Jamaika, Mauritius gibi adalara çıkarma düzeltildi. Politika'da Faşist rejim ve Monarşi seçenekleri geldi; 1914/1939 Almanya gibi çok düşmanla başlayanlara savaş fonu verilir."],
 	["Grup adları çevrildi", "Milis, isyancı, paralı asker ve gizli hücre adları Türkçe dışındaki dillerde artık İngilizce üretiliyor."],
 ]
 

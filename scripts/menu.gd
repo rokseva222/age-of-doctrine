@@ -798,6 +798,15 @@ func _populate_list() -> void:
 
 func _difficulty_of(cid: int) -> Array:
 	var r: int = _rank.get(cid, 99)
+	# dönem senaryosunda başlangıçta çok düşmanı olan ülke (Almanya 1914/1939) en az "Zor"
+	if gs != null and cid >= 0 and cid < gs.countries.size() and Macro.era_on and Eras.current != "":
+		var nm: String = gs.countries[cid].name_en
+		var foes := 0
+		for w in (Eras._t("setup", Eras.current) as Dictionary).get("wars", []):
+			if w[0] == nm or w[1] == nm:
+				foes += 1
+		if foes >= 3:
+			return [3, "Zor"] if foes < 6 else [4, "Çok zor"]
 	if r < 12:
 		return [1, "Kolay"]
 	if r < 60:

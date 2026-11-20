@@ -53,6 +53,7 @@ const BAR_H := 80.0
 const TICK_H := 52.0
 const PADX := 8
 
+var form_view_on := false
 signal speed_changed(idx: int)
 signal step_requested()
 signal action(name: String, arg)
@@ -631,7 +632,8 @@ func show_province(pid: int, selected_army) -> void:
 	if p.controller != p.owner and p.controller >= 0:
 		var cc = gs.countries[p.controller]
 		_card_tags.add_child(_tag(("İsyancı: " if cc.is_rebel else "İşgal: ") + cc.name, TK.PURPLE if cc.is_rebel else TK.ORANGE))
-	_card_tags.add_child(_tag(Faith.name_of(Faith.of(gs, pid)), TK.FAINT))
+	var fk: String = Faith.of(gs, pid)
+	_card_tags.add_child(TK.stamp_icon(Faith.name_of(fk), TK.FAINT, Faith.icon(fk)))
 	_card_tags.visible = _card_tags.get_child_count() > 0
 	_card_stat("Nüfus", "%.1fM" % p.pop, TK.TEXT, true)
 	_card_stat("Gelir", Macro.money(p.rev()) + Loc.t("/hf"), TK.GOLD)
@@ -706,12 +708,16 @@ func show_province(pid: int, selected_army) -> void:
 			_abtn("%s inşa ediliyor: %d hafta" % [Model.bld_name(p.bld_wip, Macro.era_on and Eras.family() == "pre"), maxi(1, p.bld_until - gs.turn)], "", "hourglass", "none", 0, false)
 		else:
 			_abtn("Bina kur (gelir)", "gold", Icons.pick("build", "coins"), "build", pid)
+	if p.owner == me:
+		_abtn("Toplu işlemler", "gold", Icons.pick("build", "coins"), "bulk", pid)
 	if p.owner == me and p.controller == me and Faith.of(gs, pid) != Faith.state_faith(gs, me):
 		_abtn("İnancı değiştir (%s)" % Macro.money(gs.faith_convert_cost(pid)), "", "book", "convert_faith", pid)
 	if p.owner == me and p.controller == me and p.core != me:
 		_abtn("Asimile et (%s)" % Macro.money(gs.assimilate_cost(pid)), "", "users", "assimilate", pid)
 	if p.owner == me and not Formables.available(gs).is_empty():
 		_abtn("Ülke formla", "gold", "flag", "form", 0)
+	if form_view_on:
+		_abtn("Form görünümünü kapat", "ghost", "x", "form_view", "off")
 	if army != null and army.owner == me:
 		if selected_army == army:
 			if not army.path.is_empty():
@@ -1251,7 +1257,16 @@ func show_politics() -> void:
 	var r: String = Politics.regime(gs, gs.player)
 	var sh = _open_sheet("Siyasi sistem", 820, true, true, c.name)
 	sh.set_icon("politics", "gavel")
-	sh.body.add_child(TK.t(Politics.name_of(r), "h2", TK.GOLD))
+	var rh := HBoxContainer.new()
+	rh.add_theme_constant_override("separation", 14)
+	var riv := TK.IconView.new()
+	riv.custom_minimum_size = Vector2(64, 64)
+	riv.set_icon(Politics.icon(r))
+	rh.add_child(riv)
+	var rl := TK.t(Politics.name_of(r), "h2", TK.GOLD)
+	rl.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+	rh.add_child(rl)
+	sh.body.add_child(rh)
 	var dl := TK.t(Politics.desc_of(r), "body", TK.MUTED)
 	dl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	sh.body.add_child(dl)
@@ -1265,6 +1280,8 @@ func show_politics() -> void:
 	var p: float = Politics.coup_risk(gs, gs.player)
 	rows.append([Loc.t("Darbe / kriz riski"), Politics.risk_label(p)])
 	rows.append([Loc.t("İstikrar"), "%d" % int(c.stability)])
+	rows.append([Loc.t("Devlet inancı"), Faith.name_of(Faith.state_faith(gs, gs.player))])
+	rows.append([Loc.t("Dini birlik"), Loc.pct(int(round(Faith.unity(gs, gs.player) * 100.0)))])
 	if Politics.martial_on(gs, gs.player):
 		rows.append([Loc.t("Sıkıyönetim"), Loc.t("%d hafta kaldı") % (int(gs.pol.martial[str(gs.player)]) - gs.turn)])
 	for rw in rows:
@@ -1278,7 +1295,7 @@ func show_politics() -> void:
 	sh.body.add_child(TK.t("Siyasi eylemler", "kicker", TK.GOLD))
 	for a in Politics.actions(gs):
 		var act: Dictionary = a
-		var b := TK.button(String(act.label), "" if bool(act.ok) else "ghost", Icons.pick({"democratize": "democratize", "centralize": "power_tower", "martial": "martial_law"}.get(String(act.id), ""), ""), Vector2(0, 58), 19)
+		var b := TK.button(String(act.label), "" if bool(act.ok) else "ghost", Icons.pick("regime_" + Politics.target_of(String(act.id)), Icons.pick({"democratize": "democratize", "centralize": "power_tower", "martial": "martial_law"}.get(String(act.id), ""), "regime")), Vector2(0, 58), 19)
 		b.disabled = not bool(act.ok)
 		var aid: String = String(act.id)
 		b.pressed.connect(func():

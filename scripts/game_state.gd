@@ -155,6 +155,19 @@ func start_game(player_country: int) -> void:
 	post_news("Yeni oyun: %s liderliğinde cihan hâkimiyeti yarışı başladı." % countries[player].name if player >= 0 else "Simülasyon başladı.", -1, "info")
 
 
+## Dönem senaryosunda savaşın içinde başlayan ülke (1914/1939 Almanya gibi) çok düşmana karşı tek başına kalır:
+## düşman sayısı kadar haftalık gelir "savaş fonu" olarak hazineye eklenir (en çok 6 düşman).
+func war_chest_relief() -> void:
+	if player < 0 or not Macro.era_on:
+		return
+	var me = countries[player]
+	var n: int = me.enemies.size()
+	if n < 3:
+		return
+	me.gold += maxf(me.income, 1.0) * 4.0 * float(mini(n, 6))
+	me.stability = minf(100.0, me.stability + 4.0)
+
+
 func switch_player(cid: int) -> void:
 	if cid < 0 or cid >= countries.size():
 		return
@@ -304,13 +317,15 @@ func player_build(pid: int, kind: String) -> String:
 	me.gold -= cost
 	p.bld_wip = kind
 	p.bld_until = turn + Model.BLD_WEEKS
-	state_changed.emit()
+	if not _quiet:
+		state_changed.emit()
 	return ""
 
 
 ## Oyuncu: kendi eyaletinin halkını devlet inancına döndür (barışta da yapılır; para + hafif huzursuzluk).
 func faith_convert_cost(pid: int) -> float:
-	return maxf(10.0, provinces[pid].base_rev() * 9.0)
+	var same_fam: bool = Faith.family_of(Faith.of(self, pid)) == Faith.family_of(Faith.state_faith(self, player)) if player >= 0 else false
+	return maxf(10.0, provinces[pid].base_rev() * (5.0 if same_fam else 9.0))   # mezhep geçişi ucuz, din değişimi pahalı
 
 
 func assimilate_cost(pid: int) -> float:
@@ -332,10 +347,87 @@ func player_assimilate(pid: int) -> String:
 	p.core = player
 	p.unrest = 0
 	me.stability = clampf(me.stability - 1.0, 5.0, 100.0)
-	post_news("%s halkı asimile edildi; eyalet artık öz topraklarımızdan sayılıyor." % p.name, pid, "info")
-	province_changed.emit(pid)
-	state_changed.emit()
+	if not _quiet:
+		post_news("%s halkı asimile edildi; eyalet artık öz topraklarımızdan sayılıyor." % p.name, pid, "info")
+		province_changed.emit(pid)
+		state_changed.emit()
 	return ""
+
+
+## Toplu işlem sırasında haber/sinyal yağmurunu keser.
+var _quiet := false
+
+
+func _bulk_pids(kind: String, bkind: String = "") -> Array:
+	var out: Array = []
+	var me := player
+	for p in provinces:
+		if p.owner != me or p.controller != me:
+			continue
+		match kind:
+			"build":
+				if p.bld == "" and p.bld_wip == "" and p.siege <= 0:
+					out.append(p.id)
+			"assimilate":
+				if p.core != me:
+					out.append(p.id)
+			"faith":
+				if Faith.of(self, p.id) != Faith.state_faith(self, me):
+					out.append(p.id)
+	# en kârlı eyaletler önce
+	out.sort_custom(func(a, b): return provinces[a].base_rev() > provinces[b].base_rev())
+	return out
+
+
+func _bulk_cost_one(kind: String, pid: int, bkind: String) -> float:
+	match kind:
+		"build": return provinces[pid].bld_cost(bkind)
+		"assimilate": return assimilate_cost(pid)
+		_: return faith_convert_cost(pid)
+
+
+## Toplu işlem özeti: {n: uygun eyalet, cost: hepsinin toplam bedeli, afford: kasa yettiği kadarı}
+func bulk_preview(kind: String, bkind: String = "") -> Dictionary:
+	var ids: Array = _bulk_pids(kind, bkind)
+	var total := 0.0
+	var afford := 0
+	var left: float = countries[player].gold
+	for pid in ids:
+		var c: float = _bulk_cost_one(kind, pid, bkind)
+		total += c
+		if left >= c:
+			left -= c
+			afford += 1
+	return {"n": ids.size(), "cost": total, "afford": afford}
+
+
+## Kasa yettiği kadar (kârlı eyaletten başlayarak) uygular; yapılan sayıyı döndürür.
+func player_bulk(kind: String, bkind: String = "") -> int:
+	var done := 0
+	var spent := 0.0
+	_quiet = true
+	for pid in _bulk_pids(kind, bkind):
+		var c: float = _bulk_cost_one(kind, pid, bkind)
+		if countries[player].gold < c:
+			continue
+		var err := ""
+		match kind:
+			"build": err = player_build(pid, bkind)
+			"assimilate": err = player_assimilate(pid)
+			"faith": err = player_convert_faith(pid)
+		if err == "":
+			done += 1
+			spent += c
+	_quiet = false
+	if done > 0:
+		if kind == "build":
+			post_news("Toplu işlem: %d eyalette bina inşaatı başlatıldı (%s)." % [done, Macro.money(spent)], -1, "info")
+		elif kind == "assimilate":
+			post_news("Toplu işlem: %d eyalet asimile edildi (%s)." % [done, Macro.money(spent)], -1, "info")
+		else:
+			post_news("Toplu işlem: %d eyaletin inancı değiştirildi (%s)." % [done, Macro.money(spent)], -1, "info")
+		state_changed.emit()
+	return done
 
 
 func player_convert_faith(pid: int) -> String:
@@ -351,10 +443,12 @@ func player_convert_faith(pid: int) -> String:
 		return "Kasa yetmiyor."
 	me.gold -= cost
 	faith[str(pid)] = sf
+	Faith.invalidate()
 	me.stability = clampf(me.stability - 1.0, 5.0, 100.0)
 	p.unrest = mini(p.unrest + 1, 5)
-	post_news("%s halkı %s inancına döndürüldü." % [p.name, Faith.NAME_TR[sf]], pid, "info")
-	state_changed.emit()
+	if not _quiet:
+		post_news("%s halkı %s inancına döndürüldü." % [p.name, Faith.FAITHS[sf][1]], pid, "info")
+		state_changed.emit()
 	return ""
 
 
@@ -1689,6 +1783,7 @@ func ai_accepts_alliance(ai: int, other: int) -> bool:
 		chance = 0.40
 	if other == player:
 		chance = minf(0.95, chance + 0.2)     # test oyuncuları ittifakı çok zor buldu: oyuncuya teklifte bonus
+		chance = minf(0.95, chance + clampf((relation_of(ai, other) - RELATION_ALLIANCE_MIN) / 35.0, 0.0, 1.0) * 0.25)  # ilişki ne kadar iyiyse o kadar kolay
 	return rng.randf() < chance
 
 

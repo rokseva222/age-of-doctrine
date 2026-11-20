@@ -49,6 +49,19 @@ static func progress(gs, f: Dictionary) -> Dictionary:
 	return {"have": have, "total": total, "need": need, "ok": total > 0 and have >= need}
 
 
+## Formun hedef eyaletleri {pid: true} (haritada gösterim için).
+static func target_provinces(gs, f: Dictionary) -> Dictionary:
+	var ids := {}
+	for c in gs.countries:
+		if (f.lands as Array).has(c.name_en) and not c.is_rebel:
+			ids[c.id] = true
+	var out := {}
+	for p in gs.provinces:
+		if ids.has(p.home):
+			out[p.id] = true
+	return out
+
+
 ## Formu uygular; hata metni ("" = başarılı).
 static func form(gs, f: Dictionary) -> String:
 	if not available(gs).has(f):

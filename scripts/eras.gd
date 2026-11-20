@@ -438,7 +438,7 @@ static func restructure(gs, id: String) -> void:
 	# inanç, eyaletin BUGÜNKÜ sahibine göre atanır (Sovyet'e katılan Özbekistan hâlâ Müslüman, Kuzey Kıbrıs Türk-Müslüman)
 	load("res://scripts/faith.gd").ensure(gs)
 	if family() == "pre":
-		gs.faith["1801"] = "christian"      # Kuzey Kıbrıs'a Türk yerleşimi 1571 sonrası; 1380/1520'de Hristiyan
+		gs.faith["1801"] = "orthodox"      # Kuzey Kıbrıs'a Türk yerleşimi 1571 sonrası; 1380/1520'de Hristiyan
 	var orig: Array = []           # eyalet -> bugünkü sahibi
 	for p in gs.provinces:
 		orig.append(p.owner)
@@ -608,6 +608,7 @@ static func start(gs, id: String) -> void:
 		if vi >= 0 and li >= 0 and gs.countries[vi].alive and gs.countries[li].alive:
 			gs.make_vassal(vi, li, true)
 	EraMoments.start(gs, id, Names.year_month(gs.turn))
+	gs.war_chest_relief()
 
 
 

@@ -33,6 +33,7 @@ var fit_zoom := 1.0
 var selected_prov := -1
 var selected_army = null
 var highlight_country := -1
+var form_set: Dictionary = {}          # boş değil: Ülke Formla görünümü (hedef eyaletler: yeşil sende, turuncu alınacak)
 var rel_country := -1                  # >=0: ilişki görünümü (seçili ülke sarı, müttefik mavi, savaş kırmızı, ateşkes mor)
 var input_enabled := true
 var ui_insets := Vector4(0, 0, 0, 0)      # sol, üst, sağ, alt (arayüzün kapladığı alan)
@@ -174,6 +175,7 @@ func bind(game_state) -> void:
 	selected_army = null
 	highlight_country = -1
 	rel_country = -1
+	form_set = {}
 	pulses.clear()
 	army_anim.clear()
 	_army_prev.clear()
@@ -223,6 +225,21 @@ func _rel_fill(cid: int) -> Color:
 	return Color(0.17, 0.20, 0.25)
 
 
+func _form_fill(p) -> Color:
+	if form_set.has(p.id):
+		return Color(0.25, 0.68, 0.38) if p.owner == gs.player else Color(0.93, 0.52, 0.16)
+	return Color(0.20, 0.30, 0.22) if p.owner == gs.player else Color(0.13, 0.16, 0.20)
+
+
+func set_form_view(ids: Dictionary) -> void:
+	form_set = ids
+	if not ids.is_empty():
+		rel_country = -1
+		highlight_country = -1
+	repaint_all()
+	hud.queue_redraw()
+
+
 func set_relation_view(cid: int) -> void:
 	rel_country = cid
 	repaint_all()
@@ -231,12 +248,12 @@ func set_relation_view(cid: int) -> void:
 
 func _write_lut(p) -> void:
 	var x: int = p.id
-	_lut_img.set_pixel(x, 0, _country_fill(p.owner))
+	_lut_img.set_pixel(x, 0, _form_fill(p) if not form_set.is_empty() else _country_fill(p.owner))
 	var stripe := Color(0, 0, 0, 0)
 	if p.controller != p.owner and p.controller >= 0:
 		stripe = gs.countries[p.controller].color
 		stripe.a = 1.0
-		if highlight_country >= 0 or rel_country >= 0:
+		if highlight_country >= 0 or rel_country >= 0 or not form_set.is_empty():
 			stripe.a = 0.0
 	_lut_img.set_pixel(x, 1, stripe)
 	var packed: int = p.owner + 1
@@ -260,7 +277,7 @@ func _on_province_changed(pid: int) -> void:
 
 
 func _on_state_changed() -> void:
-	if rel_country >= 0:
+	if rel_country >= 0 or not form_set.is_empty():
 		repaint_all()
 	hud.queue_redraw()
 

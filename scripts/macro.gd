@@ -4,6 +4,7 @@ extends RefCounted
 
 const Arsenal = preload("res://scripts/arsenal.gd")
 const Chokepoints = preload("res://scripts/chokepoints.gd")
+const Faith = preload("res://scripts/faith.gd")
 const Politics = preload("res://scripts/politics.gd")
 const Names = preload("res://scripts/names.gd")
 const Propaganda = preload("res://scripts/propaganda.gd")
@@ -460,6 +461,7 @@ static func calc(gs, c) -> Dictionary:
 	rev *= Crises.income_mult(gs, c)
 	rev *= Chokepoints.income_mult(c)
 	rev *= Politics.income_mult(gs, c)
+	rev *= Faith.income_mult(gs, c)
 	rev *= Propaganda.income_mult(c)
 	rev *= blockade_mult(gs, c)
 	if c.id == gs.player:

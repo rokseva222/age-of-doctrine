@@ -62,6 +62,12 @@ static func open(ui, gs) -> void:
 				ui.refresh_top()
 				ui.hide_dialog())
 		v.add_child(b)
+		var mb := TK.button("Haritada göster", "blue", "map", Vector2(0, 46), 15)
+		mb.pressed.connect(func():
+			ui._click()
+			ui.hide_dialog()
+			ui.action.emit("form_view", fd.id))
+		v.add_child(mb)
 		box.add_child(pnl)
 	sh.add_button("Kapat", func(): pass, "ghost", true, "", 150)
 

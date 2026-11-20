@@ -351,7 +351,40 @@ func populate(gs) -> void:
 	for b in raw.borders:
 		if int(b.b) < 0:
 			gs.provinces[b.a].coastal = true
+	_fix_island_coasts(gs)
 	_color_countries(gs)
+
+
+## Küçük adalarda (≤12 eyalet) her eyalet kıyıdır: Kıbrıs/Larnaka-Gazimağusa, Jamaika, Mauritius, Brunei... denizden çıkarma yapılabilsin.
+## Kıyı bayrağı olmayan eyalet, aynı adadaki komşusunun deniz bağlantılarını devralır (karşılıklı).
+static func _fix_island_coasts(gs) -> void:
+	var cnt: Dictionary = {}
+	for p in gs.provinces:
+		cnt[p.landmass] = int(cnt.get(p.landmass, 0)) + 1
+	for p in gs.provinces:
+		if p.coastal or p.landmass == 0 or int(cnt[p.landmass]) > 12:
+			continue
+		var donor = null
+		for q in p.neighbors:
+			var pq = gs.provinces[q]
+			if pq.landmass == p.landmass and not pq.sea_links.is_empty():
+				donor = pq
+				break
+		if donor == null:
+			for pq2 in gs.provinces:
+				if pq2.landmass == p.landmass and pq2.id != p.id and not pq2.sea_links.is_empty():
+					donor = pq2
+					break
+		if donor == null:
+			continue
+		p.coastal = true
+		for l in donor.sea_links:
+			if gs.provinces[l].landmass == p.landmass:
+				continue
+			if not p.sea_links.has(l):
+				p.sea_links.append(l)
+			if not gs.provinces[l].sea_links.has(p.id):
+				gs.provinces[l].sea_links.append(p.id)
 
 
 func _country_label(cc, plist: Array, gs) -> void:
