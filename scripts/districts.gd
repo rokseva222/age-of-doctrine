@@ -373,6 +373,8 @@ static func tick(gs) -> void:
 					p *= 0.5
 				if ph == 0 and String(s.get("method", "uprising")) != "uprising":
 					p *= 0.5
+				if ph >= 3 and not gs.at_war(gs.player, int(s.get("host", -1))):
+					p = 0.0     # bağımsızlık ilan edildi ve merkezle savaş yok: barışta ilçe geri alınmaz
 				if gs.rng.randf() < p:
 					e.st = 0
 					e.g = 0
@@ -410,7 +412,7 @@ static func _check_flip(gs, pid: int) -> void:
 		gs.refresh_stats()
 		gs.post_news(Loc.t("%s halkın direnişiyle kurtarıldı." % p.title()), pid, "war_player")
 		dz[key] = 0
-	elif p.owner == me and ctl <= FLIP_DOWN:
+	elif p.owner == me and ctl <= FLIP_DOWN and (int(s.get("phase", 0)) < 3 or gs.at_war(me, host)):
 		dz[key] = int(dz.get(key, 0)) + 1
 		if int(dz[key]) >= 4:
 			_flip(gs, pid, host)

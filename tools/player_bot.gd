@@ -53,7 +53,12 @@ func _on_peace(w, from_country: int, kind: String) -> void:
 				gs.cancel_proposal()
 				return
 			# kaybediyorsan ya da talep küçükse kabul; hâlâ güçlüysen reddet
-			if annex2.size() <= 1 or me.troops < foe.troops * 0.8 or me.prov_owned <= 3:
+			var takes_cap := false
+			for pid in annex2:
+				if gs.provinces[pid].is_capital:
+					takes_cap = true
+			var small: bool = annex2.size() <= maxi(1, int(me.prov_owned * 0.25))
+			if not takes_cap and annex2.size() < me.prov_owned and (small or me.troops < foe.troops * 0.5):
 				gs.finish_peace(w, from_country, annex2)
 				n("barış_kaybeden")
 			else:

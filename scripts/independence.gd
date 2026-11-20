@@ -967,6 +967,22 @@ static func tick(gs) -> void:
 		gs.declare_war(gs.player, int(s.host), true)
 		gs._call_allies_of(int(s.host), gs.player)
 		_war_news(gs)
+	# uluslararası arabuluculuk: yaygın tanınma / BM üyeliği sonrası merkez savaşı sonsuza dek sürmez (Kosova, Bangladeş örnekleri)
+	if ph >= 3 and gs.turn >= int(s.get("med_cd", 0)):
+		var hostc: int = int(s.host)
+		if gs.at_war(gs.player, hostc):
+			var in_ph: int = gs.turn - int(s.phase_turn)
+			var pressure: bool = ph == 4 and in_ph >= 8
+			if ph == 3 and in_ph >= 30 and (s.recog as Array).size() >= 10 and float(s.legit) >= 60.0:
+				pressure = true
+			if pressure:
+				var wm = gs.get_war(gs.player, hostc)
+				if wm != null:
+					gs.finish_peace(wm, -1, [])
+					f.truce[hostc] = gs.turn + 52
+					gs.countries[hostc].truce[gs.player] = gs.turn + 52
+					s["med_cd"] = gs.turn + 26
+					gs.post_news(("Uluslararası baskı sonuç verdi: %s ile merkez arasında ateşkes sağlandı." % f.name) if _tr() else ("International pressure worked: a ceasefire was reached between %s and the center." % f.name), f.capital, "war_player")
 	Districts.tick(gs)
 	_check_phase(gs)
 
