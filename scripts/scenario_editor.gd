@@ -1782,14 +1782,18 @@ func _import_dialog() -> void:
 	sh.add_button("Yapıştır", func():
 		te.text = DisplayServer.clipboard_get(), "", false)
 	sh.add_button("İçe aktar", func():
-		var imp := U.import_code(te.text)
+		var impx := U.import_code_ex(te.text)
+		var imp: Dictionary = impx["d"]
 		if imp.is_empty():
-			res.text = Loc.t("Kod geçersiz ya da bozuk.")
+			res.text = Loc.t(String(impx["err"]))
 			return
 		if String(imp.get("blurb", "")) == "":
 			imp["blurb"] = Loc.t("Senin hazırladığın senaryo.")
 		var fin := U.finalize(imp)
-		if U.save(fin):
+		if not U.save(fin):
+			res.text = Loc.t("Senaryo kaydedilemedi.")
+			return
+		if true:
 			sh.close()
 			_sheet.close()
 			on_done.call(String(fin["id"])), "gold", false)

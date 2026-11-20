@@ -157,29 +157,73 @@ static func export_code(d: Dictionary) -> String:
 	return "%s%d.%s" % [CODE_PREFIX, raw.size(), Marshalls.raw_to_base64(packed).replace("+", "-").replace("/", "_")]
 
 
-## Kodu çöz → temizlenmiş senaryo (yeni id ile) ya da {} (geçersizse)
-static func import_code(code: String) -> Dictionary:
-	code = code.strip_edges()
-	if not code.begins_with(CODE_PREFIX) or code.length() > 240000:
-		return {}
+## Yapıştırılan metinden kodu ayıklar: önüne/arkasına yazı, satır sonları, boşluklar, görünmez karakterler,
+## sohbet uygulamalarının eklediği kesme işaretleri olsa da çalışır.
+static func extract_code(text: String, skip_ws: bool = true) -> String:
+	var at: int = text.find(CODE_PREFIX)
+	if at < 0:
+		at = text.to_upper().find(CODE_PREFIX.to_upper())
+	if at < 0:
+		return ""
+	var out := ""
+	var i: int = at
+	var n: int = text.length()
+	while i < n:
+		var ch: String = text[i]
+		if ch.unicode_at(0) < 128 and (ch.is_valid_identifier() or "0123456789-_+/=.".contains(ch)) and ch != " ":
+			out += ch
+		elif ch == "\n" or ch == "\r" or ch == "\t" or ch == " " or ch == "\u200b" or ch == "\u200c" or ch == "\u200d" or ch == "\ufeff" or ch == "\u00a0" or ch == "\u2060" or ch == "\u00ad":
+			if not skip_ws:
+				break
+			# kesme/boşluk: atla, kodun devamı olabilir
+		else:
+			break
+		i += 1
+	return CODE_PREFIX + out.substr(CODE_PREFIX.length()) if out.to_upper().begins_with(CODE_PREFIX.to_upper()) else ""
+
+
+## Kodu çöz → {"d": senaryo ({} = olmadı), "err": hata nedeni (Türkçe anahtar)}
+static func import_code_ex(text: String) -> Dictionary:
+	var r1: Dictionary = _import_one(extract_code(text, true))
+	if not (r1["d"] as Dictionary).is_empty():
+		return r1
+	# boşluklarla kesilmiş değil de arkasına yazı eklenmiş olabilir: ilk parçayı dene
+	var r2: Dictionary = _import_one(extract_code(text, false))
+	return r2 if not (r2["d"] as Dictionary).is_empty() else r1
+
+
+static func _import_one(code: String) -> Dictionary:
+	if code == "":
+		return {"d": {}, "err": "Kodda AOD1 öneki bulunamadı. Kodun tamamını kopyaladığından emin ol."}
+	if code.length() > 240000:
+		return {"d": {}, "err": "Kod çok uzun."}
 	var rest: String = code.substr(CODE_PREFIX.length())
 	var dot: int = rest.find(".")
 	if dot < 1:
-		return {}
+		return {"d": {}, "err": "Kod eksik görünüyor (kopyalama kesilmiş olabilir)."}
 	var size: int = int(rest.substr(0, dot))
 	if size < 10 or size > 700000:
-		return {}
-	var b64: String = rest.substr(dot + 1).replace("-", "+").replace("_", "/")
+		return {"d": {}, "err": "Kod geçersiz ya da bozuk."}
+	var b64: String = rest.substr(dot + 1).replace("-", "+").replace("_", "/").replace(".", "")
+	while b64.length() % 4 != 0:
+		b64 += "="
 	var packed: PackedByteArray = Marshalls.base64_to_raw(b64)
 	if packed.is_empty():
-		return {}
+		return {"d": {}, "err": "Kod eksik görünüyor (kopyalama kesilmiş olabilir)."}
 	var raw: PackedByteArray = packed.decompress(size, FileAccess.COMPRESSION_DEFLATE)
 	if raw.size() != size:
-		return {}
+		return {"d": {}, "err": "Kod eksik görünüyor (kopyalama kesilmiş olabilir)."}
 	var d = JSON.parse_string(raw.get_string_from_utf8())
 	if not (d is Dictionary):
-		return {}
-	return sanitize(d)
+		return {"d": {}, "err": "Kod geçersiz ya da bozuk."}
+	var clean: Dictionary = sanitize(d)
+	if clean.is_empty():
+		return {"d": {}, "err": "Bu senaryo bu sürümde açılamıyor (ad ya da önerilen ülke geçersiz)."}
+	return {"d": clean, "err": ""}
+
+
+static func import_code(code: String) -> Dictionary:
+	return import_code_ex(code)["d"]
 
 
 # ------------------------------------------------------------------ temizleme (dışarıdan gelen veriye güvenme)

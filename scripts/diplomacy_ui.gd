@@ -2,6 +2,7 @@ extends RefCounted
 ## Diplomasi ekranı: ülkelerle ilişki kademeleri, ilişki geliştirme (elçi / hediye / anlaşma), ittifak, geçiş izni, barış.
 
 const TK = preload("res://scripts/theme_kit.gd")
+const Settings = preload("res://scripts/settings.gd")
 const Macro = preload("res://scripts/macro.gd")
 const Icons = preload("res://scripts/icons.gd")
 const UltimatumUI = preload("res://scripts/ultimatum_ui.gd")
@@ -209,8 +210,61 @@ static func _detail(ui, gs, cid: int) -> void:
 			_detail(ui, gs, cid))
 		box.add_child(rb)
 
+	if not war and not gs.is_allied(me, cid):
+		box.add_child(TK.spacer(0, 6))
+		box.add_child(TK.t("İlişkileri boz", "kicker", TK.RED_TEXT))
+		for kind2 in gs.PROVOKE_ACTS.keys():
+			var pk: String = kind2
+			var pact: Dictionary = gs.PROVOKE_ACTS[pk]
+			var pleft: int = gs.provoke_left(pk, cid)
+			var pcost: float = gs.provoke_cost(pk)
+			var prb := TK.row_button(Color(0, 0, 0, 0), TK.LINE, 64)
+			var phb := TK.row_layout(prb, 12)
+			var pic: TK.IconView = TK.IconView.new()
+			pic.icon = Icons.pick(pact.icon, "sword")
+			pic.color = Color.WHITE
+			pic.custom_minimum_size = Vector2(40, 40)
+			pic.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+			phb.add_child(pic)
+			var ptv := VBoxContainer.new()
+			ptv.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+			ptv.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+			ptv.add_theme_constant_override("separation", 0)
+			ptv.add_child(TK.t(pact.name, "bodyb", TK.TEXT))
+			var psub := "%d ilişki   /   %s" % [int(pact.rel), Macro.money(pcost)]
+			if pleft > 0:
+				psub = "%d hafta sonra tekrar" % pleft
+			var psb := TK.t(psub, "small", TK.MUTED)
+			psb.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+			ptv.add_child(psb)
+			phb.add_child(ptv)
+			TK.ignore_mouse(phb)
+			prb.disabled = pleft > 0
+			prb.pressed.connect(func():
+				ui._click()
+				var pe: String = gs.player_worsen_relations(cid, pk)
+				ui.toast(pe if pe != "" else "%s: ilişkiler bozuldu." % c.name)
+				ui.refresh_top()
+				_detail(ui, gs, cid))
+			box.add_child(prb)
+		box.add_child(TK.t("Savaş ilan edebilmek için ilişkilerin en çok %d olmalı." % int(gs.WAR_REL_MAX), "small", TK.FAINT))
 	box.add_child(TK.spacer(0, 6))
 	box.add_child(TK.t("Anlaşmalar", "kicker", TK.BLUE))
+	if not war:
+		if gs.trade.has(cid):
+			box.add_child(_act_btn(ui, "Ticaret anlaşmasını bitir (+%s / hafta)" % Macro.money(gs.trade_gain(cid)), "ghost", "x", func():
+				gs.player_cancel_trade(cid)
+				_detail(ui, gs, cid), sh, false))
+		else:
+			var tcost: float = gs.trade_cost()
+			var tb := TK.button("Ticaret anlaşması imzala (%s)" % Macro.money(tcost), "gold", Icons.pick("improve_rel", "handshake"), Vector2(0, 56), 17)
+			tb.pressed.connect(func():
+				ui._click()
+				var te: String = gs.player_sign_trade(cid)
+				ui.toast(te if te != "" else "Ticaret anlaşması imzalandı: iki taraf da haftalık kazanır.")
+				ui.refresh_top()
+				_detail(ui, gs, cid))
+			box.add_child(tb)
 	if not gs.is_allied(me, cid):
 		box.add_child(_act_btn(ui, "Casus gönder (%s)" % Macro.money(gs.spy_cost(cid)), "blue", Icons.pick("spy_send", "eye"), func():
 			var es: String = gs.player_spy(cid)
@@ -246,7 +300,7 @@ static func _detail(ui, gs, cid: int) -> void:
 		var tl2: int = int(gs.countries[me].truce.get(cid, -1)) - gs.turn
 		if tl2 <= 0:
 			box.add_child(_act_btn(ui, "Ültimatom ver", "gold", "sword", func(): UltimatumUI.open(ui, gs, cid), sh))
-			box.add_child(_act_btn(ui, "Savaş ilan et", "danger", "sword", func(): ui.action.emit("war", cid), sh))
+			box.add_child(_act_btn(ui, "Savaş ilan et" if not (Settings.war_gate and r > gs.WAR_REL_MAX) else "Savaş ilan et  (ilişki en çok %d gerek)" % int(gs.WAR_REL_MAX), "danger", "sword", func(): ui.action.emit("war", cid), sh))
 	sh.add_button("Haritada göster", func(): ui.action.emit("rel_view", cid), "blue", true, "handshake", 230)
 	sh.add_button("Ülke özeti", func(): ui.show_relations(cid), "ghost", true, "", 170)
 	sh.add_button("Liste", func(): _list(ui, gs), "ghost", true, "", 130)

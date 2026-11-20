@@ -5,6 +5,7 @@ extends RefCounted
 ## Harita aynı eyalet verisini kullanır; dönemin devletleri bugünkü ülkelerin eyaletleri birleştirilerek kurulur.
 ## Lider isimleri yalnızca metindir (fotoğraf/sembol yok).
 
+const Settings = preload("res://scripts/settings.gd")
 const Macro = preload("res://scripts/macro.gd")
 const Names = preload("res://scripts/names.gd")
 const Flags = preload("res://scripts/flags.gd")
@@ -548,6 +549,10 @@ static func restructure(gs, id: String) -> void:
 				gs.provinces[oc2.capital].is_capital = false
 			oc2.capital = cpid
 			gs.provinces[cpid].is_capital = true
+	# başkenti başka devlete geçmiş (ör. Karadağ yuvası Anadolu Beylikleri'ne çevrildi, başkent Podgorica) canlı devletlere yeni başkent seç
+	for fc in gs.countries:
+		if fc.alive and not fc.is_rebel:
+			gs._fix_capital(fc.id)
 	# 5) güç ve ordular yeniden kurulur
 	gs.refresh_stats()
 	for c2 in gs.countries:
@@ -588,6 +593,8 @@ static func start(gs, id: String) -> void:
 		intro = DataUtil.loc_text(intro, String(EraExt.raw(id)["en"]["setup_intro"]))
 	var sc: Dictionary = (st as Dictionary).duplicate(true)
 	sc["intro"] = intro
+	if Settings.era_peace and ["ww1", "ww2"].has(family(id)):
+		sc["wars"] = []   # "Savaşsız başla": tarihî savaşlar ayarla kapatıldıysa dünya barışta açılır
 	sc["no_call"] = family(id) == "ww2"   # 1939: İtalya/Japonya/Slovakya Polonya-Britanya savaşına otomatik girmez
 	Scenarios.apply_dict(gs, sc, true)
 	var odef: Dictionary = {"id": id}

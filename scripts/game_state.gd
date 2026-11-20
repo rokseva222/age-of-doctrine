@@ -83,6 +83,7 @@ var gas_cd := 0                          # bir sonraki kimyasal saldırı turu
 var nuke_cd := 0                         # bir sonraki nükleer saldırı turu
 const AI_MAX_ALLIES := 6               # yalnız yapay zekâ için yumuşak sınır; oyuncuda sınır yok
 var vassals: Dictionary = {}     # vasal ülke id -> {"lord": efendi id, "since": tur}
+var trade: Array = []                   # oyuncunun ticaret anlaşması ortakları (ülke id)
 var aid: Dictionary = {"cd": {}, "good": {}}   # müttefik yardımı: bekleme süreleri / minnet (müttefik -> tur)
 var un_cd: Dictionary = {}               # BM önerge bekleme süreleri (önerge -> tur)
 var un_log: Array = []                   # son BM kararları
@@ -2177,6 +2178,145 @@ func _fix_capital(cid: int) -> void:
 		provinces[best].dev = maxi(provinces[best].dev, 3)
 
 
+# ------------------------------------------------------------ ilişki bozma, savaş şartı, ticaret anlaşması
+
+## İlişkileri bozan eylemler (oyuncu): savaş ilanı için ilişkiyi %20 altına indirmenin yolu.
+const PROVOKE_ACTS := {
+	"protest": {"name": "Protesto notası", "mul": 0.02, "rel": -10.0, "cd": 2, "infamy": 0.0, "icon": "megaphone"},
+	"smear": {"name": "Karalama kampanyası", "mul": 0.05, "rel": -20.0, "cd": 4, "infamy": 1.0, "icon": "megaphone"},
+	"border": {"name": "Sınır kışkırtması", "mul": 0.08, "rel": -30.0, "cd": 8, "infamy": 3.0, "icon": "sword"},
+}
+const WAR_REL_MAX := 20.0
+const TRADE_MAX := 4
+
+
+func provoke_cost(kind: String) -> float:
+	return aid_gold_cost() * float(PROVOKE_ACTS[kind].mul)
+
+
+func provoke_left(kind: String, target: int) -> int:
+	return _aid_left("x" + kind.left(2), target)
+
+
+func player_worsen_relations(target: int, kind: String) -> String:
+	if not PROVOKE_ACTS.has(kind) or target < 0 or target >= countries.size() or target == player:
+		return "Geçersiz eylem."
+	var t = countries[target]
+	if t.is_rebel or not t.alive:
+		return "Geçerli bir hedef yok."
+	if is_allied(player, target):
+		return "Müttefikle ilişki bozulamaz; önce ittifakı boz."
+	var left := provoke_left(kind, target)
+	if left > 0:
+		return "%s için %d hafta bekle." % [t.name, left]
+	if relation_of(player, target) <= 2.0:
+		return "İlişkiler zaten en dipte."
+	var act: Dictionary = PROVOKE_ACTS[kind]
+	var cost := provoke_cost(kind)
+	var me = countries[player]
+	if me.gold < cost:
+		return "Kasa yetmiyor (%s gerekli)." % Macro.money(cost)
+	me.gold -= cost
+	relation_add(player, target, float(act.rel))
+	if float(act.infamy) > 0.0:
+		infamy = minf(100.0, infamy + float(act.infamy))
+	trade.erase(target)
+	_aid_set("x" + kind.left(2), target, int(act.cd))
+	state_changed.emit()
+	return ""
+
+
+## Arayüzden savaş ilanı: ilişki en çok %20 olmalı (öğretici, sandbox, müttefikin düşmanı ve isyancılar hariç).
+func war_gate_error(target: int) -> String:
+	if not Settings.war_gate or Settings.sandbox or setup_mode or not Settings.tut_done:
+		return ""
+	if target < 0 or target >= countries.size() or countries[target].is_rebel:
+		return ""
+	if at_war(player, target) or is_allied(player, target):
+		return ""
+	for al in countries[player].allies:
+		if at_war(al, target):
+			return ""       # müttefikin düşmanı: ilişki şartı aranmaz
+	var r: float = relation_of(player, target)
+	if r <= WAR_REL_MAX:
+		return ""
+	return "Savaş ilan etmek için ilişkiler en çok %d olmalı (şu an %d). Diplomasi ekranından protesto, karalama ya da sınır kışkırtmasıyla ilişkileri düşür." % [int(WAR_REL_MAX), int(r)]
+
+
+func trade_cost() -> float:
+	return aid_gold_cost() * 1.2
+
+
+## ticaret anlaşmasından haftalık kazanç (her iki taraf)
+func trade_gain(partner: int) -> float:
+	var me = countries[player]
+	var o = countries[partner]
+	return minf(0.05 * minf(maxf(me.income, 1.0), maxf(o.income, 1.0)), 0.15 * maxf(me.income, 1.0))
+
+
+func trade_total() -> float:
+	var t := 0.0
+	for pid in trade:
+		t += trade_gain(pid)
+	return t
+
+
+func player_sign_trade(target: int) -> String:
+	if target < 0 or target >= countries.size() or target == player:
+		return "Geçersiz hedef."
+	var t = countries[target]
+	if t.is_rebel or not t.alive:
+		return "Geçerli bir hedef yok."
+	if trade.has(target):
+		return "Zaten ticaret anlaşmanız var."
+	if trade.size() >= TRADE_MAX:
+		return "En fazla %d ticaret anlaşması yapabilirsin." % TRADE_MAX
+	if at_war(player, target):
+		return "Savaştayken ticaret yapılmaz."
+	var me = countries[player]
+	if me.embargo.has(target) or t.embargo.has(player):
+		return "Ambargo sürerken ticaret yapılmaz."
+	if relation_of(player, target) < 40.0:
+		return "%s ile ilişkiler ticaret için yetersiz (en az 40)." % t.name
+	var cost := trade_cost()
+	if me.gold < cost:
+		return "Kasa yetmiyor (%s gerekli)." % Macro.money(cost)
+	me.gold -= cost
+	trade.append(target)
+	relation_add(player, target, 5.0)
+	state_changed.emit()
+	return ""
+
+
+func player_cancel_trade(target: int) -> void:
+	trade.erase(target)
+	state_changed.emit()
+
+
+func _trade_tick() -> void:
+	if trade.is_empty() or player < 0:
+		return
+	var me = countries[player]
+	for pid in trade.duplicate():
+		var o = countries[pid]
+		var why := ""
+		if not o.alive:
+			why = "ülke ortadan kalktı"
+		elif at_war(player, pid):
+			why = "savaş çıktı"
+		elif me.embargo.has(pid) or o.embargo.has(player):
+			why = "ambargo"
+		elif relation_of(player, pid) < 25.0:
+			why = "ilişkiler bozuldu"
+		if why != "":
+			trade.erase(pid)
+			post_news("%s ile ticaret anlaşması sona erdi." % o.name, me.capital, "info")
+			continue
+		var g := trade_gain(pid)
+		me.gold += g
+		o.gold += g
+
+
 ## Sandbox: eyaleti doğrudan verir (savaş/barış kuralları işlemez)
 func sandbox_give(pid: int, to: int) -> void:
 	var p = provinces[pid]
@@ -2519,6 +2659,7 @@ func end_turn() -> void:
 			sea_campaign.erase(vid)
 	_coalition_tick()
 	Faith.tick(self)
+	_trade_tick()
 	Focus.tick(self)
 	Currency.sync(self)
 	if turn % 52 == 0 and not Eras.leader_chain_active(turn):
@@ -4035,7 +4176,7 @@ func to_dict() -> Dictionary:
 		"v": 3, "seed": seed_value, "base": base_country_count,
 		"turn": turn, "player": player, "next_army_id": next_army_id, "victory": victory_declared,
 		"rng_state": rng.state, "rebel_names": rebel_name_count, "merc_names": merc_names, "stats": stats,
-		"difficulty": difficulty, "blocs": blocs, "next_bloc": next_bloc_id, "cold": cold, "sea_camp": sea_campaign.keys(), "crisis": crisis, "crisis_end": crisis_last_end, "scn": scn, "era": Eras.current, "nuke_cd": nuke_cd, "gas_cd": gas_cd, "grand": grand, "chokes": chokes, "daily": daily, "pol": pol, "faith": faith, "focus": focus, "syear": Names.start_year, "wroom": wroom, "indep": indep, "career": career, "moment_p": moment_pending, "moment_f": moment_flags, "infamy": infamy, "un_cd": un_cd, "un_log": un_log, "aid": aid, "vassals": vassals, "custom_ovr": custom_ovr,
+		"difficulty": difficulty, "blocs": blocs, "next_bloc": next_bloc_id, "cold": cold, "sea_camp": sea_campaign.keys(), "crisis": crisis, "crisis_end": crisis_last_end, "scn": scn, "era": Eras.current, "nuke_cd": nuke_cd, "gas_cd": gas_cd, "grand": grand, "chokes": chokes, "daily": daily, "pol": pol, "faith": faith, "focus": focus, "syear": Names.start_year, "wroom": wroom, "indep": indep, "career": career, "moment_p": moment_pending, "moment_f": moment_flags, "infamy": infamy, "un_cd": un_cd, "un_log": un_log, "aid": aid, "trade": trade, "vassals": vassals, "custom_ovr": custom_ovr,
 	}
 	var ps: Array = []
 	for p in provinces:
@@ -4216,6 +4357,7 @@ func from_dict(d: Dictionary) -> bool:
 	infamy = float(d.get("infamy", 0.0))
 	un_cd = d.get("un_cd", {}).duplicate()
 	aid = d.get("aid", {"cd": {}, "good": {}}).duplicate(true)
+	trade = (d.get("trade", []) as Array).duplicate()
 	custom_ovr = d.get("custom_ovr", {}).duplicate(true)
 	Arsenal.set_overrides(custom_ovr.get("weapons", {}), custom_ovr.get("cats", {}))
 	vassals = {}

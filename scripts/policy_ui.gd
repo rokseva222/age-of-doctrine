@@ -349,7 +349,8 @@ func _buy_policy(c) -> void:
 	content.add_child(_wrap("Öncelik, bir kategorinin eksik donanımına ne kadar pay ayrılacağını belirler. Hava-Kara doktrini uçak alımını, Asimetrik doktrin top/roketatarı öne çıkarır.", "small", TK.FAINT))
 
 
-func _item_row(c, id: String, step: int) -> Control:
+func _item_row(c, id: String, step0: int) -> Control:
+	var step: int = step0 * Macro.step_scale(c, Arsenal.cat_of(id))
 	var why: String = Macro.availability(gs, c, id)
 	var pc := PanelContainer.new()
 	pc.add_theme_stylebox_override("panel", TK.line_box(Color(0, 0, 0, 0), TK.LINE))
@@ -375,6 +376,8 @@ func _item_row(c, id: String, step: int) -> Control:
 	if why != "":
 		sub = why
 	v.add_child(TK.t(sub, "small", TK.FAINT if why == "" else TK.RED_TEXT))
+	if why == "":
+		v.add_child(TK.t(Macro.effect_text(c, id, step * 5), "small", TK.GOLD))
 	h.add_child(v)
 	var pr: float = Macro.price(c, id)
 	var pl := TK.t(Macro.money(pr), "mono", TK.GOLD)

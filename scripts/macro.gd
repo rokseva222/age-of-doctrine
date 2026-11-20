@@ -722,6 +722,53 @@ static func availability(gs, c, id: String) -> String:
 	return ""
 
 
+## Büyük ordulu ülkelerde +10 tank gibi küçük adımlar hissedilmez: kara/hava siparişlerinin adımı ordu büyüklüğüyle ölçeklenir.
+static func step_scale(c, cat: String) -> int:
+	if cat == "sub":
+		return 1
+	var kt: float = maxf(float(maxi(c.troops, int(c.base_troops * 0.6))), 3000.0) / 1000.0
+	var s: float = kt / 50.0
+	var out := 1
+	for n in [2, 5, 10, 20, 50, 100]:
+		if s >= float(n):
+			out = n
+	return out
+
+
+## Siparişin teslimatta ordu gücüne etkisi (arayüz için): {"kind": "land"|"air"|"sea"|"inf", "pct": yüzde}
+static func effect_of(c, id: String, qty: int) -> Dictionary:
+	var cat: String = Arsenal.cat_of(id)
+	var old_inv: Dictionary = c.inv.duplicate()
+	recalc(c)
+	var b_land: float = c.eq_land
+	var b_air: float = c.air_pow
+	var b_sea: float = c.naval_pow
+	c.inv[id] = int(c.inv.get(id, 0)) + qty
+	recalc(c)
+	var a_land: float = c.eq_land
+	var a_air: float = c.air_pow
+	var a_sea: float = c.naval_pow
+	c.inv = old_inv
+	recalc(c)
+	if cat == "air":
+		return {"kind": "air", "pct": (a_air - b_air) / maxf(b_air, 1.0) * 100.0}
+	if cat == "sub":
+		return {"kind": "sea", "pct": (a_sea - b_sea) / maxf(b_sea, 1.0) * 100.0}
+	return {"kind": "inf" if cat == "inf" else "land", "pct": (a_land - b_land) / maxf(b_land, 0.1) * 100.0}
+
+
+static func effect_text(c, id: String, qty: int) -> String:
+	var e: Dictionary = effect_of(c, id, qty)
+	var p: float = float(e["pct"])
+	var ps: String = (("%+.2f%%" if absf(p) < 1.0 else "%+.1f%%") % p).replace(".", ",")
+	match String(e["kind"]):
+		"air":
+			return "+%d için teslimatta hava gücü %s" % [qty, ps]
+		"sea":
+			return "+%d için teslimatta deniz gücü %s" % [qty, ps]
+	return "+%d için teslimatta kara gücü %s" % [qty, ps]
+
+
 static func price(c, id: String) -> float:
 	var p: float = Arsenal.cost_of(id)
 	if Arsenal.origin_of(id) == c.name_en:

@@ -935,7 +935,9 @@ func _on_ui_action(act: String, arg) -> void:
 				gs.player_cancel_move(selected_army)
 				ui.show_province(arg, selected_army)
 		"war":
-			var err: String = gs.player_declare_war(arg)
+			var err: String = gs.war_gate_error(arg)
+			if err == "":
+				err = gs.player_declare_war(arg)
 			if err != "":
 				ui.toast(err)
 				sfx.play("error")
