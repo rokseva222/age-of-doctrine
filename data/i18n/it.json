@@ -4107,7 +4107,9 @@
   "Soğuk Savaş haritası temizlendi": "Mappa della Guerra Fredda ripulita",
   "1962 haritasında bugünün mikro devletleri (hayalet ülkeler) kaldırıldı; toprakları o dönemin gerçek sahiplerine bağlandı.": "I microstati odierni (paesi fantasma) sono stati rimossi dalla mappa del 1962; le loro terre passano ai veri proprietari dell'epoca.",
   "Eski çağlarda anakronizm temizliği": "Anacronismi rimossi dalle epoche antiche",
-  "1380 ve 1520 çağlarından petrol binası, borsa, siber/istihbarat etiketleri ve modern protesto/darbe haberleri çıkarıldı; ünvanlar ve isimler dönemine uygun.": "Edifici petroliferi, borsa, etichette cyber/intelligence e notizie moderne di proteste/colpi di stato rimossi dalle epoche 1380 e 1520; titoli e nomi adatti al periodo."
+  "1380 ve 1520 çağlarından petrol binası, borsa, siber/istihbarat etiketleri ve modern protesto/darbe haberleri çıkarıldı; ünvanlar ve isimler dönemine uygun.": "Edifici petroliferi, borsa, etichette cyber/intelligence e notizie moderne di proteste/colpi di stato rimossi dalle epoche 1380 e 1520; titoli e nomi adatti al periodo.",
+  "Dönem bayrakları": "Bandiere d'epoca",
+  "Sömürgeler artık metropolün bayrağını taşıyor (Fransız Cezayiri → Fransa, Britanya Hindistanı → Britanya...). Eski çağ bayraklarının eksikleri bundan sonraki sürümlerde tamamlanacak.": "Le colonie ora usano la bandiera della madrepatria (Algeria francese → Francia, India britannica → Gran Bretagna…). Le bandiere storiche mancanti arriveranno nelle prossime versioni."
  },
  "months": [
   "gennaio",

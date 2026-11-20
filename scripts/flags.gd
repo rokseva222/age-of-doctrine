@@ -26,20 +26,36 @@ static func _texture_for(c):
 	if c.flag_spec != "" and not c.is_rebel:
 		return null
 	if not c.is_rebel and not era_specs.is_empty() and era_specs.has(c.name_en):
-		# "I:ad|..." -> assets/flags/era_<ad>.png (kullanıcının getirdiği görsel); yoksa kalan katmanlar çizilir
+		# "I:ad|..." -> assets/flags/era_<ad>.png (kullanıcının getirdiği görsel); yoksa kalan katmanlar, o da yoksa bugünkü bayrak
+		# "A:xx" -> xx ülkesinin bayrağı (sömürge: metropolün bayrağı)
 		var sp: String = str(era_specs[c.name_en])
+		if sp.begins_with("A:"):
+			return _iso_tex(sp.substr(2).to_lower())
 		if sp.begins_with("I:"):
-			var nm := sp.substr(2).split("|")[0]
-			var ep := "res://assets/flags/era_%s.png" % nm
+			var parts := sp.substr(2).split("|")
+			var ep := "res://assets/flags/era_%s.png" % parts[0]
 			if not _tex.has(ep):
 				_tex[ep] = load(ep) if ResourceLoader.exists(ep) else null
-			return _tex[ep]
-		return null
+			if _tex[ep] != null or parts.size() > 1:
+				return _tex[ep]
+		else:
+			return null
 	if c.is_rebel:
 		return null
 	var k: String = _key(c).to_lower()
 	if k.length() != 2:
 		return null
+	if _tex.has(k):
+		return _tex[k]
+	return _iso_tex(k)
+
+
+## "A:xx" ya da katmansız "I:ad" tanımı: çizilecek vektör katmanı yok (görsel ya da bugünkü bayrak kullanılır)
+static func _img_spec_bare(sp: String) -> bool:
+	return sp.begins_with("A:") or (sp.begins_with("I:") and not sp.contains("|"))
+
+
+static func _iso_tex(k: String):
 	if _tex.has(k):
 		return _tex[k]
 	var t = null
@@ -203,7 +219,7 @@ static func layers_for(c) -> Array:
 		if not _cache.has(fk):
 			_cache[fk] = _parse(c.flag_spec)
 		return _cache[fk]
-	if not era_specs.is_empty() and era_specs.has(c.name_en) and not c.is_rebel:
+	if not era_specs.is_empty() and era_specs.has(c.name_en) and not c.is_rebel and not _img_spec_bare(str(era_specs[c.name_en])):
 		var ek: String = "E:" + c.name_en
 		if not _cache.has(ek):
 			_cache[ek] = _parse(era_specs[c.name_en])

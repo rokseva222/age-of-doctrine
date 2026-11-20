@@ -4107,7 +4107,9 @@
   "Soğuk Savaş haritası temizlendi": "냉전 지도 정리",
   "1962 haritasında bugünün mikro devletleri (hayalet ülkeler) kaldırıldı; toprakları o dönemin gerçek sahiplerine bağlandı.": "1962년 지도에서 오늘날의 초소국(유령 국가)을 제거하고, 그 영토를 당시의 실제 주인에게 귀속시켰습니다.",
   "Eski çağlarda anakronizm temizliği": "옛 시대의 시대착오 요소 정리",
-  "1380 ve 1520 çağlarından petrol binası, borsa, siber/istihbarat etiketleri ve modern protesto/darbe haberleri çıkarıldı; ünvanlar ve isimler dönemine uygun.": "1380·1520년 시대에서 석유 건물, 증권시장, 사이버/정보 표기, 현대식 시위·쿠데타 뉴스를 제거했고, 직함과 이름도 시대에 맞췄습니다."
+  "1380 ve 1520 çağlarından petrol binası, borsa, siber/istihbarat etiketleri ve modern protesto/darbe haberleri çıkarıldı; ünvanlar ve isimler dönemine uygun.": "1380·1520년 시대에서 석유 건물, 증권시장, 사이버/정보 표기, 현대식 시위·쿠데타 뉴스를 제거했고, 직함과 이름도 시대에 맞췄습니다.",
+  "Dönem bayrakları": "시대별 국기",
+  "Sömürgeler artık metropolün bayrağını taşıyor (Fransız Cezayiri → Fransa, Britanya Hindistanı → Britanya...). Eski çağ bayraklarının eksikleri bundan sonraki sürümlerde tamamlanacak.": "식민지가 이제 종주국의 국기를 사용합니다(프랑스령 알제리 → 프랑스, 영국령 인도 → 영국 등). 아직 없는 역사 국기는 이후 버전에서 추가됩니다."
  },
  "months": [
   "1월",

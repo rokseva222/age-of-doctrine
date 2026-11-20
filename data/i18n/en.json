@@ -3920,7 +3920,9 @@
   "Soğuk Savaş haritası temizlendi": "Cold War map cleaned up",
   "1962 haritasında bugünün mikro devletleri (hayalet ülkeler) kaldırıldı; toprakları o dönemin gerçek sahiplerine bağlandı.": "Today's micro-states (ghost countries) were removed from the 1962 map; their land now belongs to the real owners of the time.",
   "Eski çağlarda anakronizm temizliği": "Anachronism cleanup in old eras",
-  "1380 ve 1520 çağlarından petrol binası, borsa, siber/istihbarat etiketleri ve modern protesto/darbe haberleri çıkarıldı; ünvanlar ve isimler dönemine uygun.": "Oil buildings, stock markets, cyber/intelligence labels and modern protest/coup news were removed from the 1380 and 1520 eras; titles and names fit the period."
+  "1380 ve 1520 çağlarından petrol binası, borsa, siber/istihbarat etiketleri ve modern protesto/darbe haberleri çıkarıldı; ünvanlar ve isimler dönemine uygun.": "Oil buildings, stock markets, cyber/intelligence labels and modern protest/coup news were removed from the 1380 and 1520 eras; titles and names fit the period.",
+  "Dönem bayrakları": "Period flags",
+  "Sömürgeler artık metropolün bayrağını taşıyor (Fransız Cezayiri → Fransa, Britanya Hindistanı → Britanya...). Eski çağ bayraklarının eksikleri bundan sonraki sürümlerde tamamlanacak.": "Colonies now fly their ruler's flag (French Algeria → France, British India → Britain…). Missing historical flags will be completed in upcoming versions."
  },
  "months": [
   "January",
