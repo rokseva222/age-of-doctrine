@@ -51,6 +51,12 @@ static func _prepare_pre(gs) -> void:
 			var np: int = int(ceil(_gdp_share(gs) * 100.0 * 1.25)) + 1
 			_bump_text(gs, o, str(int(o.pct)), str(np))
 			o["pct"] = np
+		elif t == "cease_war":
+			var cj: int = _cid(gs, String(o.get("with", "")))
+			if cj >= 0 and not gs.at_war(gs.player, cj):
+				gs.scn.pre[oid] = true       # savaş başlamadan 'barışı koru' hedefi: 52 hafta sürdürülür
+		elif t == "stability" and pc.stability >= float(o.n):
+			gs.scn.pre[oid] = true
 		elif HOLD_TYPES.has(t) and _met(gs, o):
 			gs.scn.pre[oid] = true
 	# _met akış sayaçlarını (cease_war/stability) etkilemiş olabilir: sıfırla

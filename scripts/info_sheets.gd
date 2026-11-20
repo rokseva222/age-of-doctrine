@@ -287,23 +287,13 @@ static func open_howto(parent: Node) -> void:
 			render.call())
 
 
-const UPDATE_VER := "1.2.14"
+const UPDATE_VER := "1.2.15"
 const WHATS_NEW := [
-	["Ordu emirleri ve geçiş izni", "Yolu müttefik ya da tarafsız ordu tıkarsa ordun bekler (8 hafta sonra emir iptal olur); denizaşırı hedeflerde nedeni açıkça yazılır. Geçiş izni daha kolay (ilişki 30+) ve 39 hafta sürer; bitmeden 3 hafta önce uyarı gelir."],
-	["Tarihe uygun dönemler", "Dönem başlangıçlarında henüz icat edilmemiş silahlar yok (1914'te tank, 1939'da Panther yok). 200'den fazla ülkeye gerçek lider atandı ve 60'tan fazla yeni tarihî olay eklendi: Tannenberg'den Saygon'un düşüşüne."],
-	["Senaryo editöründe dönemler", "Senaryo oluştururken oyundaki tüm dönemlerden birini seçebilirsin: I. ve II. Dünya Savaşı, Soğuk Savaş, Osmanlı ve Timur çağları, alternatif tarihler. Devirleri o dönemin devletleriyle yapar, «Haritada önizle» ile sonucu görürsün."],
-	["Bayrak ve ittifak amblemleri", "Bayrak ve ittifak düzenleyicide 45 yeni siluet amblem: orak-çekiç, hilal, kartallar, aslan, taç, defne, ejderha, bozkurt ve daha fazlası."],
-	["Savaş saldırganlığı", "Ayarlar'dan yapay zekânın savaş açma isteğini %0–100 arasında ayarla; normal oyunda da çalışır."],
-	["Denize çıkarma", "Ordu seçip düşman adasına (Rodos, Girit…) dokunmak artık doğrudan amfibi çıkarma başlatır."],
-	["Diplomasi", "Elçi, hediye ve anlaşma çok ucuzladı, bekleme süreleri yarıya indi, kazanılan ilişki puanı arttı ve ilişki çok daha yavaş geri düşüyor. İttifak eşiği 75'ten 65'e indi."],
-	["Doğu Almanya", "Soğuk Savaş senaryolarında Almanya artık ikiye bölünmüş: Batı Almanya ve Varşova Paktı'nda Doğu Almanya (Doğu Berlin başkent)."],
-	["Nükleer platformlar", "Füze silosu, bombardıman uçağı ya da denizaltıyla nükleer saldırı: her platformun kaybı, riski ve bekleme süresi farklı."],
-	["Haritada donanma", "Denizaltı ve uçak gemisi rozetleri artık haritada, kıyı eyaletlerinin yanında görünür."],
-	["Hikâye: maiyet ve tımar siyaseti", "Komutan, kâtip, casus ve hekimi maiyetine al; tımarını vergi, asker ya da kalkınma yönünde yönet."],
-	["Devlet başkanı portreleri", "İlişkiler ekranında devlet başkanı: dönemine ve bölgesine göre yeni yüzsüz siluetler."],
-	["Yeni ikonlar", "Gelir binaları, birlik sınıfları, krizler, nükleer platformlar, boğazlar ve Hikâye Modu için yeni ikonlar."],
-	["Ekonomik büyüme", "Ülkeler yılda bir büyür: yoksullar daha hızlı, savaştakiler yavaş. Yapay zekâ ülkelerinin orduları gelirle birlikte artar; dünya artık durağan değil."],
-	["Dengeler", "Türkiye daha güçlü; Avrupa'da isyanlar azaldı (bölge başına en çok 3 isyan)."],
+	["Gerçek oyuncu testi", "Yapay zekâ botları gerçek oyuncu gibi bütün modlarda binlerce tur oynatıldı: savaş bütçesi, barış teklifleri, kabine ve BM kararları. Çıkan dengesizlikler düzeltildi."],
+	["Dönem başlangıçları", "1939 başlangıcında ittifak zinciri artık savaşları yanlışlıkla büyütmüyor; «Hitler ölü» senaryosunda Polonya ilk haftalarda düşmüyor."],
+	["Hedefler", "Başlangıçta zaten sağlanmış hedefler (savaşı önle, istikrar, başkenti koru) artık 1. haftada değil, 52 hafta sürdürülünce zafer sayılır."],
+	["Bağımsızlık Modu", "Bağımsızlıktan sonra anavatan barış zamanında toprak geri alamaz; uluslararası arabuluculuk ateşkes sağlayabilir ve 1. aşamadan çıkış yolu açıldı."],
+	["Savaş ipucu", "Savaş ilan edilince bütçen düşükse Politika ekranına yönlendiren bir uyarı çıkar."],
 ]
 
 

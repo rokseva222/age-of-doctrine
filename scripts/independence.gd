@@ -1011,7 +1011,8 @@ static func _check_phase(gs) -> void:
 	var age: int = gs.turn - int(s.phase_turn)
 	if ph == 1:
 		var need: int = maxi(3, int(s.start_n) + 1)
-		if ((held(gs) >= need and age >= 8) or (age >= 26 and held(gs) >= int(s.start_n))) and Districts.local_ok(gs):
+		var mediation: bool = age >= 40 and held(gs) >= 1 and float(s.support) >= 80.0 and float(s.legit) >= 60.0   # halk ve dünya kamuoyu arkasındaysa arabulucular masaya çağırır
+		if (((held(gs) >= need and age >= 8) or (age >= 26 and held(gs) >= int(s.start_n))) and Districts.local_ok(gs)) or mediation:
 			s.phase = 2
 			s.phase_turn = gs.turn
 			gs.post_news(("Çatışma yeni bir aşamaya girdi: arabulucular %s ile merkezi masaya çağırıyor." % f.name) if _tr() else ("The conflict enters a new stage: mediators call %s and the center to the table." % f.name), f.capital, "war_player")

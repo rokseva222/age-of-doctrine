@@ -70,7 +70,7 @@ func _init() -> void:
 			_check(gs)
 	var ms: int = Time.get_ticks_msec() - t0
 	# kayıt-yükleme
-	var p := "user://fp_%s.dat" % id
+	var p := "user://fp_%s_%d_%d.dat" % [id, pi, OS.get_process_id()]
 	var ok_save: bool = gs.save_to(p)
 	var g2 = GS.new()
 	var ok_load: bool = g2.load_from(p)

@@ -51,7 +51,7 @@ func _init() -> void:
 			print("  düşmanlar: ", en, " ist=", int(pc.stability))
 			print("  savaşta_merkez=", gs.at_war(gs.player, int(gs.indep.host)), " faz=", gs.indep.phase, " med_cd=", gs.indep.get("med_cd", -1), " faz_tur=", gs.indep.phase_turn)
 			print("  t=%d eyalet=%d/%d asker=%d altın=%.0f gelir=%.1f destek=%d meşru=%d | merkez asker=%d eyalet=%d" % [gs.turn, I.held(gs), pc.prov_owned, pc.troops, pc.gold, pc.income, int(gs.indep.support), int(gs.indep.legit), hc.troops, hc.prov_owned])
-		if OS.get_cmdline_user_args().size() > 3 and t >= 84 and t <= 92:
+		if OS.get_cmdline_user_args().size() > 3 and t >= int(OS.get_cmdline_user_args()[4] if OS.get_cmdline_user_args().size() > 4 else 84) and t <= int(OS.get_cmdline_user_args()[4] if OS.get_cmdline_user_args().size() > 4 else 84) + 8:
 			for nn in gs.news_log.slice(maxi(0, gs.news_log.size() - 6)):
 				print("   haber t=", gs.turn, ": ", String(nn.text).substr(0, 120))
 		var ph: int = int(gs.indep.phase)
