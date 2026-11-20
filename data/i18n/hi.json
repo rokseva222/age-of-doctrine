@@ -4231,7 +4231,18 @@
   "Üst siper  [W]": "ऊपरी बचाव  [W]",
   "Sağ siper  [D]": "दायाँ बचाव  [D]",
   "3B kılıç düellosu": "3D तलवार द्वंद्व",
-  "Hikaye modundaki Meydan Okuma artık gerçek zamanlı 3B bir düello: rakibin kılıç yönünü oku, doğru siperi al, kusursuz siperde karşı vuruşla bitir.": "कहानी मोड की चुनौती अब रियल-टाइम 3D द्वंद्व है: प्रतिद्वंद्वी की तलवार की दिशा पढ़ो, सही बचाव लो और बेहतरीन बचाव के बाद जवाबी वार से खत्म करो।"
+  "Hikaye modundaki Meydan Okuma artık gerçek zamanlı 3B bir düello: rakibin kılıç yönünü oku, doğru siperi al, kusursuz siperde karşı vuruşla bitir.": "कहानी मोड की चुनौती अब रियल-टाइम 3D द्वंद्व है: प्रतिद्वंद्वी की तलवार की दिशा पढ़ो, सही बचाव लो और बेहतरीन बचाव के बाद जवाबी वार से खत्म करो।",
+  "Dünya barışı (tüm savaşları bitir)": "विश्व शांति (सभी युद्ध खत्म करें)",
+  "Tüm komşularla ittifak kur": "सभी पड़ोसियों से गठबंधन करें",
+  "Komşular arasında savaş çıkar": "पड़ोसियों के बीच युद्ध भड़काएँ",
+  "Rastgele olay tetikle": "एक यादृच्छिक घटना शुरू करें",
+  "Rastgele 5 olay tetikle": "5 यादृच्छिक घटनाएँ शुरू करें",
+  "Nükleer bekleme süresini sıfırla": "परमाणु प्रतीक्षा समय रीसेट करें",
+  "Tüm eyaletlerim gelişim +2": "मेरे सभी प्रांतों का विकास +2",
+  "Bu eyalete 20.000 asker yerleştir": "इस प्रांत में 20,000 सैनिक तैनात करें",
+  "Başkenti bu eyalete taşı": "राजधानी को इस प्रांत में ले जाएँ",
+  "Bu ülkenin ordusunu yarıya indir": "इस देश की सेना आधी करें",
+  "Bu eyalette isyan çıkar": "इस प्रांत में विद्रोह भड़काएँ"
  },
  "months": [
   "जनवरी",

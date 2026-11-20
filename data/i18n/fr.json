@@ -4230,7 +4230,18 @@
   "Üst siper  [W]": "Parade haute  [W]",
   "Sağ siper  [D]": "Parade droite  [D]",
   "3B kılıç düellosu": "Duel à l'épée en 3D",
-  "Hikaye modundaki Meydan Okuma artık gerçek zamanlı 3B bir düello: rakibin kılıç yönünü oku, doğru siperi al, kusursuz siperde karşı vuruşla bitir.": "Le Défi du mode histoire est désormais un duel 3D en temps réel : lis la direction de l'épée adverse, prends la bonne garde et termine par une contre-attaque après une parade parfaite."
+  "Hikaye modundaki Meydan Okuma artık gerçek zamanlı 3B bir düello: rakibin kılıç yönünü oku, doğru siperi al, kusursuz siperde karşı vuruşla bitir.": "Le Défi du mode histoire est désormais un duel 3D en temps réel : lis la direction de l'épée adverse, prends la bonne garde et termine par une contre-attaque après une parade parfaite.",
+  "Dünya barışı (tüm savaşları bitir)": "Paix mondiale (terminer toutes les guerres)",
+  "Tüm komşularla ittifak kur": "S'allier à tous les voisins",
+  "Komşular arasında savaş çıkar": "Déclencher des guerres entre voisins",
+  "Rastgele olay tetikle": "Déclencher un événement aléatoire",
+  "Rastgele 5 olay tetikle": "Déclencher 5 événements aléatoires",
+  "Nükleer bekleme süresini sıfırla": "Réinitialiser le délai nucléaire",
+  "Tüm eyaletlerim gelişim +2": "Développement +2 dans toutes mes provinces",
+  "Bu eyalete 20.000 asker yerleştir": "Placer 20 000 soldats dans cette province",
+  "Başkenti bu eyalete taşı": "Déplacer la capitale vers cette province",
+  "Bu ülkenin ordusunu yarıya indir": "Réduire de moitié l'armée de ce pays",
+  "Bu eyalette isyan çıkar": "Déclencher une rébellion dans cette province"
  },
  "months": [
   "janvier",

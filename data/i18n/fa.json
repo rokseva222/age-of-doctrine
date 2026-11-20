@@ -4231,7 +4231,18 @@
   "Üst siper  [W]": "سپر بالا  [W]",
   "Sağ siper  [D]": "سپر راست  [D]",
   "3B kılıç düellosu": "دوئل شمشیر سه‌بعدی",
-  "Hikaye modundaki Meydan Okuma artık gerçek zamanlı 3B bir düello: rakibin kılıç yönünü oku, doğru siperi al, kusursuz siperde karşı vuruşla bitir.": "چالش در حالت داستان اکنون یک دوئل سه‌بعدی بی‌درنگ است: جهت شمشیر حریف را بخوان، سپر درست را بگیر و پس از سپر بی‌نقص با ضدحمله کار را تمام کن."
+  "Hikaye modundaki Meydan Okuma artık gerçek zamanlı 3B bir düello: rakibin kılıç yönünü oku, doğru siperi al, kusursuz siperde karşı vuruşla bitir.": "چالش در حالت داستان اکنون یک دوئل سه‌بعدی بی‌درنگ است: جهت شمشیر حریف را بخوان، سپر درست را بگیر و پس از سپر بی‌نقص با ضدحمله کار را تمام کن.",
+  "Dünya barışı (tüm savaşları bitir)": "صلح جهانی (پایان همه جنگ‌ها)",
+  "Tüm komşularla ittifak kur": "اتحاد با همه همسایگان",
+  "Komşular arasında savaş çıkar": "شروع جنگ میان همسایگان",
+  "Rastgele olay tetikle": "فعال‌سازی رویداد تصادفی",
+  "Rastgele 5 olay tetikle": "فعال‌سازی ۵ رویداد تصادفی",
+  "Nükleer bekleme süresini sıfırla": "بازنشانی زمان انتظار هسته‌ای",
+  "Tüm eyaletlerim gelişim +2": "توسعه همه استان‌های من +۲",
+  "Bu eyalete 20.000 asker yerleştir": "استقرار ۲۰٬۰۰۰ سرباز در این استان",
+  "Başkenti bu eyalete taşı": "انتقال پایتخت به این استان",
+  "Bu ülkenin ordusunu yarıya indir": "نصف کردن ارتش این کشور",
+  "Bu eyalette isyan çıkar": "شروع شورش در این استان"
  },
  "months": [
   "ژانویه",

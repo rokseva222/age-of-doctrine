@@ -4231,7 +4231,18 @@
   "Üst siper  [W]": "حماية علوية  [W]",
   "Sağ siper  [D]": "حماية يمين  [D]",
   "3B kılıç düellosu": "مبارزة سيوف ثلاثية الأبعاد",
-  "Hikaye modundaki Meydan Okuma artık gerçek zamanlı 3B bir düello: rakibin kılıç yönünü oku, doğru siperi al, kusursuz siperde karşı vuruşla bitir.": "أصبح التحدي في وضع القصة مبارزة ثلاثية الأبعاد في الزمن الحقيقي: اقرأ اتجاه سيف الخصم، وخذ الحماية الصحيحة، وأنهِ بضربة مضادة بعد صدّ مثالي."
+  "Hikaye modundaki Meydan Okuma artık gerçek zamanlı 3B bir düello: rakibin kılıç yönünü oku, doğru siperi al, kusursuz siperde karşı vuruşla bitir.": "أصبح التحدي في وضع القصة مبارزة ثلاثية الأبعاد في الزمن الحقيقي: اقرأ اتجاه سيف الخصم، وخذ الحماية الصحيحة، وأنهِ بضربة مضادة بعد صدّ مثالي.",
+  "Dünya barışı (tüm savaşları bitir)": "سلام عالمي (إنهاء كل الحروب)",
+  "Tüm komşularla ittifak kur": "تحالف مع كل الجيران",
+  "Komşular arasında savaş çıkar": "إشعال حروب بين الجيران",
+  "Rastgele olay tetikle": "تفعيل حدث عشوائي",
+  "Rastgele 5 olay tetikle": "تفعيل 5 أحداث عشوائية",
+  "Nükleer bekleme süresini sıfırla": "إعادة ضبط مهلة السلاح النووي",
+  "Tüm eyaletlerim gelişim +2": "تطوير كل مقاطعاتي +2",
+  "Bu eyalete 20.000 asker yerleştir": "وضع 20,000 جندي في هذه المقاطعة",
+  "Başkenti bu eyalete taşı": "نقل العاصمة إلى هذه المقاطعة",
+  "Bu ülkenin ordusunu yarıya indir": "خفض جيش هذه الدولة إلى النصف",
+  "Bu eyalette isyan çıkar": "إشعال تمرد في هذه المقاطعة"
  },
  "months": [
   "يناير",

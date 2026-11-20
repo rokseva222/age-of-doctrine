@@ -4231,7 +4231,18 @@
   "Üst siper  [W]": "상단 방어  [W]",
   "Sağ siper  [D]": "우측 방어  [D]",
   "3B kılıç düellosu": "3D 검 결투",
-  "Hikaye modundaki Meydan Okuma artık gerçek zamanlı 3B bir düello: rakibin kılıç yönünü oku, doğru siperi al, kusursuz siperde karşı vuruşla bitir.": "스토리 모드의 도전은 이제 실시간 3D 결투입니다. 상대 검의 방향을 읽고 올바르게 막은 뒤, 완벽한 방어 후 반격으로 끝내세요."
+  "Hikaye modundaki Meydan Okuma artık gerçek zamanlı 3B bir düello: rakibin kılıç yönünü oku, doğru siperi al, kusursuz siperde karşı vuruşla bitir.": "스토리 모드의 도전은 이제 실시간 3D 결투입니다. 상대 검의 방향을 읽고 올바르게 막은 뒤, 완벽한 방어 후 반격으로 끝내세요.",
+  "Dünya barışı (tüm savaşları bitir)": "세계 평화 (모든 전쟁 종료)",
+  "Tüm komşularla ittifak kur": "모든 이웃과 동맹",
+  "Komşular arasında savaş çıkar": "이웃 나라 간 전쟁 일으키기",
+  "Rastgele olay tetikle": "무작위 이벤트 발생",
+  "Rastgele 5 olay tetikle": "무작위 이벤트 5회 발생",
+  "Nükleer bekleme süresini sıfırla": "핵 대기시간 초기화",
+  "Tüm eyaletlerim gelişim +2": "내 모든 주 발전 +2",
+  "Bu eyalete 20.000 asker yerleştir": "이 주에 병력 20,000명 배치",
+  "Başkenti bu eyalete taşı": "수도를 이 주로 이전",
+  "Bu ülkenin ordusunu yarıya indir": "이 나라의 군대를 절반으로",
+  "Bu eyalette isyan çıkar": "이 주에서 반란 일으키기"
  },
  "months": [
   "1월",

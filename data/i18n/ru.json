@@ -4231,7 +4231,18 @@
   "Üst siper  [W]": "Защита сверху  [W]",
   "Sağ siper  [D]": "Защита справа  [D]",
   "3B kılıç düellosu": "3D-дуэль на мечах",
-  "Hikaye modundaki Meydan Okuma artık gerçek zamanlı 3B bir düello: rakibin kılıç yönünü oku, doğru siperi al, kusursuz siperde karşı vuruşla bitir.": "Вызов в режиме истории теперь стал 3D-дуэлью в реальном времени: читай направление меча врага, выбери правильную защиту и закончи контрударом после идеального парирования."
+  "Hikaye modundaki Meydan Okuma artık gerçek zamanlı 3B bir düello: rakibin kılıç yönünü oku, doğru siperi al, kusursuz siperde karşı vuruşla bitir.": "Вызов в режиме истории теперь стал 3D-дуэлью в реальном времени: читай направление меча врага, выбери правильную защиту и закончи контрударом после идеального парирования.",
+  "Dünya barışı (tüm savaşları bitir)": "Мир во всём мире (закончить все войны)",
+  "Tüm komşularla ittifak kur": "Союз со всеми соседями",
+  "Komşular arasında savaş çıkar": "Развязать войны между соседями",
+  "Rastgele olay tetikle": "Запустить случайное событие",
+  "Rastgele 5 olay tetikle": "Запустить 5 случайных событий",
+  "Nükleer bekleme süresini sıfırla": "Сбросить задержку ядерного удара",
+  "Tüm eyaletlerim gelişim +2": "Развитие всех моих провинций +2",
+  "Bu eyalete 20.000 asker yerleştir": "Разместить 20 000 солдат в этой провинции",
+  "Başkenti bu eyalete taşı": "Перенести столицу в эту провинцию",
+  "Bu ülkenin ordusunu yarıya indir": "Сократить армию этой страны вдвое",
+  "Bu eyalette isyan çıkar": "Поднять мятеж в этой провинции"
  },
  "months": [
   "января",

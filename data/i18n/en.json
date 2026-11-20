@@ -4044,7 +4044,18 @@
   "Üst siper  [W]": "Guard high  [W]",
   "Sağ siper  [D]": "Guard right  [D]",
   "3B kılıç düellosu": "3D sword duel",
-  "Hikaye modundaki Meydan Okuma artık gerçek zamanlı 3B bir düello: rakibin kılıç yönünü oku, doğru siperi al, kusursuz siperde karşı vuruşla bitir.": "The Challenge in story mode is now a real-time 3D duel: read the foe's sword direction, take the right guard, and finish with a counter-strike after a perfect parry."
+  "Hikaye modundaki Meydan Okuma artık gerçek zamanlı 3B bir düello: rakibin kılıç yönünü oku, doğru siperi al, kusursuz siperde karşı vuruşla bitir.": "The Challenge in story mode is now a real-time 3D duel: read the foe's sword direction, take the right guard, and finish with a counter-strike after a perfect parry.",
+  "Dünya barışı (tüm savaşları bitir)": "World peace (end all wars)",
+  "Tüm komşularla ittifak kur": "Ally with all neighbors",
+  "Komşular arasında savaş çıkar": "Start wars between neighbors",
+  "Rastgele olay tetikle": "Trigger a random event",
+  "Rastgele 5 olay tetikle": "Trigger 5 random events",
+  "Nükleer bekleme süresini sıfırla": "Reset nuclear cooldown",
+  "Tüm eyaletlerim gelişim +2": "All my provinces development +2",
+  "Bu eyalete 20.000 asker yerleştir": "Place 20,000 troops in this province",
+  "Başkenti bu eyalete taşı": "Move the capital to this province",
+  "Bu ülkenin ordusunu yarıya indir": "Halve this country's army",
+  "Bu eyalette isyan çıkar": "Start a rebellion in this province"
  },
  "months": [
   "January",

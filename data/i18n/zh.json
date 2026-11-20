@@ -4231,7 +4231,18 @@
   "Üst siper  [W]": "上格挡  [W]",
   "Sağ siper  [D]": "右格挡  [D]",
   "3B kılıç düellosu": "3D剑术决斗",
-  "Hikaye modundaki Meydan Okuma artık gerçek zamanlı 3B bir düello: rakibin kılıç yönünü oku, doğru siperi al, kusursuz siperde karşı vuruşla bitir.": "故事模式中的挑战现在是实时3D决斗：看清对手剑的方向，选对格挡，完美格挡后用反击收尾。"
+  "Hikaye modundaki Meydan Okuma artık gerçek zamanlı 3B bir düello: rakibin kılıç yönünü oku, doğru siperi al, kusursuz siperde karşı vuruşla bitir.": "故事模式中的挑战现在是实时3D决斗：看清对手剑的方向，选对格挡，完美格挡后用反击收尾。",
+  "Dünya barışı (tüm savaşları bitir)": "世界和平(结束所有战争)",
+  "Tüm komşularla ittifak kur": "与所有邻国结盟",
+  "Komşular arasında savaş çıkar": "引发邻国之间的战争",
+  "Rastgele olay tetikle": "触发随机事件",
+  "Rastgele 5 olay tetikle": "触发5个随机事件",
+  "Nükleer bekleme süresini sıfırla": "重置核打击冷却",
+  "Tüm eyaletlerim gelişim +2": "我所有省份发展 +2",
+  "Bu eyalete 20.000 asker yerleştir": "在此省份部署2万士兵",
+  "Başkenti bu eyalete taşı": "将首都迁至此省",
+  "Bu ülkenin ordusunu yarıya indir": "将该国军队减半",
+  "Bu eyalette isyan çıkar": "在此省份引发叛乱"
  },
  "months": [
   "1月",

@@ -4231,7 +4231,18 @@
   "Üst siper  [W]": "上を防ぐ  [W]",
   "Sağ siper  [D]": "右を防ぐ  [D]",
   "3B kılıç düellosu": "3D剣の決闘",
-  "Hikaye modundaki Meydan Okuma artık gerçek zamanlı 3B bir düello: rakibin kılıç yönünü oku, doğru siperi al, kusursuz siperde karşı vuruşla bitir.": "ストーリーモードの挑戦はリアルタイム3D決闘になりました。相手の剣の方向を読み、正しく防ぎ、完璧な受けの後に反撃で決めましょう。"
+  "Hikaye modundaki Meydan Okuma artık gerçek zamanlı 3B bir düello: rakibin kılıç yönünü oku, doğru siperi al, kusursuz siperde karşı vuruşla bitir.": "ストーリーモードの挑戦はリアルタイム3D決闘になりました。相手の剣の方向を読み、正しく防ぎ、完璧な受けの後に反撃で決めましょう。",
+  "Dünya barışı (tüm savaşları bitir)": "世界平和(全ての戦争を終結)",
+  "Tüm komşularla ittifak kur": "全ての隣国と同盟",
+  "Komşular arasında savaş çıkar": "隣国同士の戦争を起こす",
+  "Rastgele olay tetikle": "ランダムイベントを発生",
+  "Rastgele 5 olay tetikle": "ランダムイベントを5回発生",
+  "Nükleer bekleme süresini sıfırla": "核の待機時間をリセット",
+  "Tüm eyaletlerim gelişim +2": "全ての自領の発展 +2",
+  "Bu eyalete 20.000 asker yerleştir": "この州に2万の兵を配置",
+  "Başkenti bu eyalete taşı": "首都をこの州に移す",
+  "Bu ülkenin ordusunu yarıya indir": "この国の軍を半減",
+  "Bu eyalette isyan çıkar": "この州で反乱を起こす"
  },
  "months": [
   "1月",

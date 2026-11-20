@@ -54,6 +54,52 @@ static func open(ui, gs) -> void:
 			if w.involves(gs.player):
 				gs.finish_peace(w, -1, [])
 		gs.state_changed.emit())
+	_h(sh, "Dünya")
+	_b(ui, sh, "Dünya barışı (tüm savaşları bitir)", "handshake", func():
+		for w in gs.wars.duplicate():
+			gs.finish_peace(w, -1, [])
+		gs.state_changed.emit())
+	_b(ui, sh, "Tüm komşularla ittifak kur", "handshake", func():
+		var seen := {}
+		for q in gs.provinces:
+			if q.owner != gs.player:
+				continue
+			for nb in q.neighbors:
+				var o: int = gs.provinces[nb].owner
+				if o != gs.player and o >= 0 and not seen.has(o) and gs.countries[o].alive and not gs.countries[o].is_rebel and not gs.at_war(gs.player, o):
+					seen[o] = true
+					gs.make_alliance(gs.player, o)
+		gs.state_changed.emit())
+	_b(ui, sh, "Komşular arasında savaş çıkar", "swords", func():
+		var pairs: Array = []
+		for q in gs.provinces:
+			for nb in q.neighbors:
+				var a: int = q.owner
+				var b: int = gs.provinces[nb].owner
+				if a != b and a >= 0 and b >= 0 and a != gs.player and b != gs.player and a < b and gs.countries[a].alive and gs.countries[b].alive and not gs.countries[a].is_rebel and not gs.countries[b].is_rebel and not gs.at_war(a, b):
+					pairs.append([a, b])
+		pairs.shuffle()
+		var n := 0
+		for pr in pairs:
+			if n >= 4:
+				break
+			if not gs.at_war(pr[0], pr[1]) and gs.declare_war(pr[0], pr[1]):
+				n += 1
+		gs.state_changed.emit())
+	_b(ui, sh, "Rastgele olay tetikle", "news", func():
+		gs._random_event())
+	_b(ui, sh, "Rastgele 5 olay tetikle", "news", func():
+		for i in 5:
+			gs._random_event())
+	_h(sh, "Ordu")
+	_b(ui, sh, "Nükleer bekleme süresini sıfırla", "bomb", func():
+		gs.nuke_cd = 0)
+	_b(ui, sh, "Tüm eyaletlerim gelişim +2", "factory", func():
+		for q in gs.provinces:
+			if q.owner == gs.player:
+				q.dev = mini(q.dev + 2, 9)
+				q.defense = mini(q.defense + 2, 9)
+		gs.state_changed.emit())
 	_h(sh, "Eyalet:  " + tgt_txt)
 	if pid >= 0:
 		var pn: String = gs.provinces[pid].name
@@ -77,6 +123,31 @@ static func open(ui, gs) -> void:
 				gs.provinces[pid].dev = mini(gs.provinces[pid].dev + 2, 9)
 				gs.provinces[pid].defense = mini(gs.provinces[pid].defense + 2, 9)
 				gs.province_changed.emit(pid))
+		if sel_owner == gs.player:
+			_b(ui, sh, "Bu eyalete 20.000 asker yerleştir", "swords", func():
+				gs._spawn_army(gs.player, pid, 20000)
+				gs.refresh_stats()
+				gs.armies_changed.emit())
+			if not gs.provinces[pid].is_capital:
+				_b(ui, sh, "Başkenti bu eyalete taşı", "crown", func():
+					var old: int = c.capital
+					if old >= 0:
+						gs.provinces[old].is_capital = false
+					c.capital = pid
+					gs.provinces[pid].is_capital = true
+					gs.province_changed.emit(pid)
+					gs.state_changed.emit())
+		else:
+			_b(ui, sh, "Bu ülkenin ordusunu yarıya indir", "shield", func():
+				for a in gs.armies.values():
+					if a.owner == sel_owner:
+						a.size = maxi(100, a.size / 2)
+				gs.refresh_stats()
+				gs.armies_changed.emit())
+		_b(ui, sh, "Bu eyalette isyan çıkar", "flag", func():
+			gs.provinces[pid].unrest = 20
+			gs._spawn_rebels(gs.provinces[pid])
+			gs.state_changed.emit())
 	sh.add_button("Kapat", func(): pass, "", true, "x", 160)
 
 

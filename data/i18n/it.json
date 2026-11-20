@@ -4231,7 +4231,18 @@
   "Üst siper  [W]": "Guardia alta  [W]",
   "Sağ siper  [D]": "Guardia destra  [D]",
   "3B kılıç düellosu": "Duello di spada in 3D",
-  "Hikaye modundaki Meydan Okuma artık gerçek zamanlı 3B bir düello: rakibin kılıç yönünü oku, doğru siperi al, kusursuz siperde karşı vuruşla bitir.": "La Sfida della modalità storia è ora un duello 3D in tempo reale: leggi la direzione della spada avversaria, prendi la guardia giusta e chiudi con un contrattacco dopo una parata perfetta."
+  "Hikaye modundaki Meydan Okuma artık gerçek zamanlı 3B bir düello: rakibin kılıç yönünü oku, doğru siperi al, kusursuz siperde karşı vuruşla bitir.": "La Sfida della modalità storia è ora un duello 3D in tempo reale: leggi la direzione della spada avversaria, prendi la guardia giusta e chiudi con un contrattacco dopo una parata perfetta.",
+  "Dünya barışı (tüm savaşları bitir)": "Pace mondiale (chiudi tutte le guerre)",
+  "Tüm komşularla ittifak kur": "Allearsi con tutti i vicini",
+  "Komşular arasında savaş çıkar": "Scatenare guerre tra vicini",
+  "Rastgele olay tetikle": "Attivare un evento casuale",
+  "Rastgele 5 olay tetikle": "Attivare 5 eventi casuali",
+  "Nükleer bekleme süresini sıfırla": "Azzera il tempo di attesa nucleare",
+  "Tüm eyaletlerim gelişim +2": "Sviluppo +2 in tutte le mie province",
+  "Bu eyalete 20.000 asker yerleştir": "Schierare 20.000 soldati in questa provincia",
+  "Başkenti bu eyalete taşı": "Spostare la capitale in questa provincia",
+  "Bu ülkenin ordusunu yarıya indir": "Dimezzare l'esercito di questo paese",
+  "Bu eyalette isyan çıkar": "Scatenare una ribellione in questa provincia"
  },
  "months": [
   "gennaio",

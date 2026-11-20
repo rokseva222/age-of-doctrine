@@ -4230,7 +4230,18 @@
   "Üst siper  [W]": "Oben decken  [W]",
   "Sağ siper  [D]": "Rechts decken  [D]",
   "3B kılıç düellosu": "3D-Schwertduell",
-  "Hikaye modundaki Meydan Okuma artık gerçek zamanlı 3B bir düello: rakibin kılıç yönünü oku, doğru siperi al, kusursuz siperde karşı vuruşla bitir.": "Die Herausforderung im Story-Modus ist jetzt ein 3D-Echtzeitduell: Lies die Schwertrichtung des Gegners, decke richtig und beende mit einem Konter nach perfekter Parade."
+  "Hikaye modundaki Meydan Okuma artık gerçek zamanlı 3B bir düello: rakibin kılıç yönünü oku, doğru siperi al, kusursuz siperde karşı vuruşla bitir.": "Die Herausforderung im Story-Modus ist jetzt ein 3D-Echtzeitduell: Lies die Schwertrichtung des Gegners, decke richtig und beende mit einem Konter nach perfekter Parade.",
+  "Dünya barışı (tüm savaşları bitir)": "Weltfrieden (alle Kriege beenden)",
+  "Tüm komşularla ittifak kur": "Mit allen Nachbarn verbünden",
+  "Komşular arasında savaş çıkar": "Kriege zwischen Nachbarn auslösen",
+  "Rastgele olay tetikle": "Zufallsereignis auslösen",
+  "Rastgele 5 olay tetikle": "5 Zufallsereignisse auslösen",
+  "Nükleer bekleme süresini sıfırla": "Nuklear-Abklingzeit zurücksetzen",
+  "Tüm eyaletlerim gelişim +2": "Entwicklung aller meiner Provinzen +2",
+  "Bu eyalete 20.000 asker yerleştir": "20.000 Soldaten in dieser Provinz stationieren",
+  "Başkenti bu eyalete taşı": "Hauptstadt in diese Provinz verlegen",
+  "Bu ülkenin ordusunu yarıya indir": "Armee dieses Landes halbieren",
+  "Bu eyalette isyan çıkar": "Aufstand in dieser Provinz auslösen"
  },
  "months": [
   "Januar",
