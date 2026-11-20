@@ -14,6 +14,7 @@ func _init() -> void:
 	var a := OS.get_cmdline_user_args()
 	var kind: String = a[0]; var id: String = a[1]; var pi: int = int(a[2]); var turns: int = int(a[3])
 	var provoke: bool = a.size() > 4 and a[4] == "aktif"
+	var pasif: bool = a.size() > 4 and a[4] == "pasif"
 	var sug: Array = []
 	if kind == "era":
 		Eras.prepare(id)
@@ -27,7 +28,7 @@ func _init() -> void:
 	var nm: String = sug[pi % sug.size()] if not sug.is_empty() else "Turkey"
 	var me: int = int(gs.macro_idx.get(nm, 0))
 	var oc := {"t": ""}
-	gs.game_over.connect(func(v, t): oc.t = ("ZAFER: " if v else "YENİLGİ: ") + t)
+	gs.game_over.connect(func(v, t): oc.t = ("ZAFER@%d: " % gs.turn if v else "YENİLGİ@%d: " % gs.turn) + t)
 	gs.start_game(me)
 	if kind == "era":
 		Eras.start(gs, id)
@@ -53,6 +54,8 @@ func _init() -> void:
 						bestn = n
 			if bestn >= 0:
 				gs.declare_war(gs.player, bestn)
+		if not pasif and pl.alive:
+			_competent(gs, pl)
 		gs.end_turn()
 		if not pl.alive:
 			if died < 0: died = t
@@ -132,3 +135,21 @@ func _snap(gs, pl) -> String:
 	for e in pl.enemies:
 		en += "%s(%dk) " % [gs.countries[e].name_en, gs.countries[e].troops / 1000]
 	return "t=%d eyalet=%d/%d asker=%dk altın=%.0f ist=%.0f savaş: %s" % [gs.turn, held, pl.prov_owned, pl.troops / 1000, pl.gold, pl.stability, en]
+
+## Yetkin oyuncu: savaşta savaş bütçesi, seferberlik, müttefik yardımı, kaybederken barış denemesi
+func _competent(gs, pl) -> void:
+	var Macro = preload("res://scripts/macro.gd")
+	var at_war: bool = not pl.enemies.is_empty()
+	var want: String = "war" if at_war else "peace"
+	if pl.gold < pl.income * 1.5 and not at_war: want = "peace"
+	if JSON.stringify(pl.budget) != JSON.stringify(Macro.PRESETS[want]):
+		pl.budget = Macro.PRESETS[want].duplicate()
+	if at_war:
+		if pl.gold > Macro.mob_cost(pl) * 1.5 and not Macro.mob_active(pl) and pl.mob_cd <= gs.turn:
+			Macro.mobilize(gs, pl)
+		if gs.turn % 6 == 0:
+			gs.player_request_aid_all()
+		if gs.turn % 4 == 0:
+			for e in pl.enemies.duplicate():
+				if gs.countries[e].is_rebel: continue
+				gs.player_request_peace(e)

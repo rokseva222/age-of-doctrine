@@ -1112,6 +1112,8 @@ func declare_war(a: int, b: int, joined: bool = false) -> bool:
 	if not joined:
 		if b == player:
 			post_news(Names.war_on_player(rng, na), countries[a].capital, "war_player")
+			if float(countries[b].budget.get("mil", 0)) < 25.0 and not countries[a].is_rebel:
+				post_news("Savaş başladı: Politika ekranından savunma payını artırıp seferberlik ilan etmeyi düşün.", -1, "info")
 		elif a == player:
 			post_news(Names.war_by_player(rng, nb), countries[b].capital, "war_player")
 		else:

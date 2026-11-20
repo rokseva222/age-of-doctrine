@@ -265,6 +265,15 @@ static func _apply_dict(gs, sc: Dictionary, force_ally_first: bool) -> void:
 			gs.countries[cid3].budget = Macro.PRESETS["war"].duplicate()
 		elif cid3 >= 0:
 			gs.countries[cid3].budget = Macro.PRESETS["war"].duplicate()
+	# savaşın içinde başlayan oyuncu barış bütçesiyle değil savaş bütçesiyle başlar (Politika ekranından değiştirilebilir)
+	if gs.player >= 0 and gs.player < gs.countries.size():
+		var pc = gs.countries[gs.player]
+		var hot := false
+		for e in pc.enemies:
+			if not gs.countries[e].is_rebel:
+				hot = true
+		if hot:
+			pc.budget = Macro.PRESETS["war"].duplicate()
 	for n4 in sc.get("cyber_budget", []):
 		var cid4: int = int(idx.get(n4, -1))
 		if cid4 >= 0:
