@@ -293,8 +293,9 @@ static func open_howto(parent: Node) -> void:
 			render.call())
 
 
-const UPDATE_VER := "1.2.29"
+const UPDATE_VER := "1.2.30"
 const WHATS_NEW := [
+	["Deniz filoları", "Haritada artık aktif donanmalar var: muharebe, nakliye, denizaltı ve uçak gemisi filoları denizde gezer, çarpışır, abluka yapar, kıyıyı bombalar. Ordunu gemiye bindirip denizden çıkarma yapabilirsin."],
 	["Tarihe uygun sömürge adları", "1914 ve 1939 senaryolarında Britanya Hindistanı, Fransız Cezayiri, Fransız Çinhindisi gibi dönemin gerçek adları görünür. Hindistan ve Kore tek devlet olarak başlar."],
 	["Soğuk Savaş haritası temizlendi", "1962 haritasında bugünün mikro devletleri (hayalet ülkeler) kaldırıldı; toprakları o dönemin gerçek sahiplerine bağlandı."],
 	["Eski çağlarda anakronizm temizliği", "1380 ve 1520 çağlarından petrol binası, borsa, siber/istihbarat etiketleri ve modern protesto/darbe haberleri çıkarıldı; ünvanlar ve isimler dönemine uygun."],

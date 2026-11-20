@@ -153,6 +153,7 @@ class Country:
 	var ratios: Dictionary = {}
 	var equip_value := 0.0
 	var blockade := 0.0
+	var fleet_block := 0.0                   # filo ablukası baskısı 0..0.7 (her tur yeniden hesaplanır, kaydedilmez)
 	var sanction_until := -1                 # BM yaptırımı bitiş turu (gelir -%25)
 	var partners: Array = []
 	var fin: Dictionary = {}                 # son haftalık mali tablo (arayüz için)
@@ -186,6 +187,24 @@ class Army:
 	var cmd_lvl := 0             # komutan seviyesi (0 = komutansız); her seviye +%5 saldırı/savunma
 	var cmd_name := ""
 	var cmd_wins := 0
+
+
+class Fleet:
+	var id := 0
+	var owner := 0
+	var zone := ""               # deniz bölgesi kimliği (seas.gd)
+	var kind := "surface"        # surface | sub | carrier | transport
+	var size := 1.0              # güç (sub: deniz gücü birimi; carrier: grup sayısı; surface: güç; transport: gemi sayısı)
+	var path: Array = []         # gidilecek bölge kimlikleri
+	var hold := false            # oyuncu elle komuta etti: otomatik komut dokunmaz
+	var cargo := 0               # denizde taşınan asker
+	var cargo_lvl := 0           # taşınan ordunun komutanı
+	var cargo_name := ""
+	var cargo_wins := 0
+	var cd := 0                  # bombardıman/torpido yeniden kullanılabileceği tur
+	var seen := -1               # bu tura kadar açığa çıkmış (denizaltı ateş edince)
+	var mission := ""            # "" | "blockade"
+	var born := 0
 
 
 class War:

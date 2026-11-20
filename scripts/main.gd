@@ -25,6 +25,9 @@ const Loc = preload("res://scripts/loc.gd")
 const UN = preload("res://scripts/un.gd")
 const Macro = preload("res://scripts/macro.gd")
 const Carriers = preload("res://scripts/carriers.gd")
+const Fleets = preload("res://scripts/fleets.gd")
+const Seas = preload("res://scripts/seas.gd")
+const FleetUI = preload("res://scripts/fleet_ui.gd")
 const Missions = preload("res://scripts/missions.gd")
 const Names = preload("res://scripts/names.gd")
 const Settings = preload("res://scripts/settings.gd")
@@ -56,6 +59,7 @@ var speed_idx := 0
 var turn_busy := false
 var selected_pid := -1
 var selected_army = null
+var selected_fleet = null
 var tutorial = null
 var _cab_last := -99
 var _cab_recent: Array = []
@@ -107,6 +111,8 @@ func _ready() -> void:
 	ScenarioEditor.pick_hook = _begin_map_pick
 	ScenarioEditor.preview_hook = _begin_map_preview
 	map.choke_tapped.connect(_on_choke_tapped)
+	map.fleet_tapped.connect(_on_fleet_tapped)
+	map.sea_tapped.connect(_on_sea_tapped)
 	ui.speed_changed.connect(_on_speed_changed)
 	ui.step_requested.connect(_on_step)
 	ui.action.connect(_on_ui_action)
@@ -227,6 +233,8 @@ func _attach_gs(g) -> void:
 	gs.wroom_card.connect(_on_wroom_card)
 	selected_pid = -1
 	selected_army = null
+	selected_fleet = null
+	ui.sel_fleet = null
 	ui.set_speed(0)
 	speed_idx = 0
 	menu.reset_world()
@@ -614,9 +622,71 @@ func _check_goals() -> void:
 
 
 func _refresh_selection() -> void:
+	if selected_fleet != null and not gs.fleets.has(selected_fleet.id):
+		_clear_fleet_sel()
 	if selected_pid >= 0 and mode == "game":
 		ui.show_province(selected_pid, selected_army)
+	elif selected_fleet != null and mode == "game":
+		ui.show_fleet(selected_fleet)
 	map.hud.queue_redraw()
+
+
+func _clear_fleet_sel() -> void:
+	selected_fleet = null
+	ui.sel_fleet = null
+	map.set_selected_fleet(null)
+
+
+func _select_fleet(f) -> void:
+	selected_fleet = f
+	ui.sel_fleet = f
+	selected_army = null
+	map.set_selected_army(null)
+	map.set_selected_fleet(f)
+	selected_pid = -1
+	map.select_province(-1)
+	ui.show_fleet(f)
+
+
+func _fleet_done(nf = null) -> void:
+	if nf != null and gs.fleets.has(nf.id):
+		_select_fleet(nf)
+	_refresh_selection()
+	map.hud.queue_redraw()
+
+
+func _on_fleet_tapped(fid: int) -> void:
+	if mode != "game" or ui.is_dialog_open():
+		return
+	var f = gs.fleets.get(fid)
+	if f == null:
+		return
+	sfx.play("tap")
+	if f.owner == gs.player:
+		_select_fleet(f)
+	else:
+		# yabancı filo: yalnızca bilgi kartı (seçili filo varsa korunur)
+		selected_pid = -1
+		map.select_province(-1)
+		ui.show_fleet(f)
+
+
+## Filo seçiliyken denize dokunmak: hedef bölge
+func _on_sea_tapped(zone: String) -> void:
+	if mode != "game" or ui.is_dialog_open() or selected_fleet == null:
+		return
+	var f = selected_fleet
+	var err: String = Fleets.order_move(gs, f.id, zone)
+	if err != "":
+		ui.toast(err)
+		sfx.play("error")
+		return
+	sfx.play("order")
+	if f.path.is_empty():
+		ui.toast("Filo zaten bu denizde.")
+	else:
+		ui.toast("Filo yola çıktı: %s (%d hafta)." % [Seas.name_tr(zone), int(ceil(float(f.path.size()) / float(Fleets.SPEED.get(f.kind, 2))))])
+	_refresh_selection()
 
 
 func _on_news(text: String, prov: int, kind: String) -> void:
@@ -804,6 +874,7 @@ func _on_map_tapped(pid: int) -> void:
 	if pid < 0:
 		selected_pid = -1
 		selected_army = null
+		_clear_fleet_sel()
 		map.select_province(-1)
 		map.set_selected_army(null)
 		ui.hide_info()
@@ -837,12 +908,14 @@ func _on_ui_action(act: String, arg) -> void:
 		"close_card":
 			selected_pid = -1
 			selected_army = null
+			_clear_fleet_sel()
 			map.select_province(-1)
 			map.set_selected_army(null)
 			ui.hide_info()
 		"select_army":
 			var a = gs.armies.get(arg)
 			if a != null and a.owner == gs.player:
+				_clear_fleet_sel()
 				selected_army = a
 				map.set_selected_army(a)
 				ui.show_province(arg, a)
@@ -926,6 +999,67 @@ func _on_ui_action(act: String, arg) -> void:
 					SendUI.open(ui, gs, arm, dest, go)
 				else:
 					go.call(0)
+		"fleet_move":
+			ui.toast("Gidilecek denize dokun (ya da bir kıyı eyaletine dokunup 'Filo bu kıyıya yönelsin' de).")
+		"fleet_stop":
+			if selected_fleet != null:
+				Fleets.stop(gs, selected_fleet.id)
+				_refresh_selection()
+		"fleet_blockade":
+			if selected_fleet != null:
+				var be: String = Fleets.blockade(gs, selected_fleet.id)
+				if be != "":
+					ui.toast(be)
+					sfx.play("error")
+				else:
+					ui.toast("Filo abluka görevine çıktı: düşman limanlarının bulunduğu denize gidiyor.")
+					sfx.play("order")
+				_refresh_selection()
+		"fleet_bombard_menu":
+			if selected_fleet != null:
+				FleetUI.bombard(ui, gs, selected_fleet, _fleet_done)
+		"fleet_bombard":
+			if selected_fleet != null:
+				FleetUI.bombard(ui, gs, selected_fleet, _fleet_done, int(arg))
+		"fleet_torpedo":
+			if selected_fleet != null:
+				FleetUI.torpedo(ui, gs, selected_fleet, _fleet_done)
+		"fleet_embark":
+			if selected_fleet != null:
+				FleetUI.fleet_embark(ui, gs, selected_fleet, _fleet_done)
+		"embark":
+			FleetUI.embark(ui, gs, int(arg), _fleet_done)
+		"fleet_debark_menu":
+			if selected_fleet != null:
+				FleetUI.debark(ui, gs, selected_fleet, _fleet_done)
+		"fleet_debark":
+			if selected_fleet != null:
+				FleetUI.debark(ui, gs, selected_fleet, _fleet_done, int(arg))
+		"fleet_merge":
+			if selected_fleet != null:
+				var me_err: String = Fleets.merge(gs, selected_fleet.id)
+				if me_err != "":
+					ui.toast(me_err)
+				else:
+					ui.toast("Filolar birleştirildi.")
+				_refresh_selection()
+		"fleet_to_coast":
+			if selected_fleet != null:
+				var best_z := ""
+				var best_n := 99
+				for zc in Seas.coast_zones(gs, int(arg)):
+					var pth: Array = Seas.path(gs, selected_fleet.owner, selected_fleet.zone, String(zc))
+					if pth.size() < best_n:
+						best_n = pth.size()
+						best_z = String(zc)
+				if best_z == "":
+					ui.toast("Bu kıyıya ulaşılamıyor: yolda kapalı bir boğaz/kanal var.")
+				else:
+					_on_sea_tapped(best_z)
+		"fleet_deselect":
+			_clear_fleet_sel()
+			selected_pid = -1
+			ui.hide_info()
 		"deselect":
 			selected_army = null
 			map.set_selected_army(null)

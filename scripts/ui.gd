@@ -32,6 +32,8 @@ const Icons = preload("res://scripts/icons.gd")
 const Sil = preload("res://scripts/silhouette.gd")
 const Chokepoints = preload("res://scripts/chokepoints.gd")
 const Daily = preload("res://scripts/daily.gd")
+const Fleets = preload("res://scripts/fleets.gd")
+const Seas = preload("res://scripts/seas.gd")
 const Politics = preload("res://scripts/politics.gd")
 const WarRoomUI = preload("res://scripts/war_room_ui.gd")
 
@@ -54,6 +56,7 @@ const TICK_H := 52.0
 const PADX := 8
 
 var form_view_on := false
+var sel_fleet = null                 # seçili filo (eyalet kartında filo eylemleri gösterilir)
 signal speed_changed(idx: int)
 signal step_requested()
 signal action(name: String, arg)
@@ -650,14 +653,29 @@ func show_province(pid: int, selected_army) -> void:
 		hint += ("   /   " if hint != "" else "") + "Kuşatma %d/%d" % [p.siege, p.siege_needed()]
 	if p.owner == me and p.unrest >= 6 and p.controller == me:
 		hint += ("   /   " if hint != "" else "") + "Huzursuzluk %d/12: ordu bulundur!" % p.unrest
+	var fleet_mode: bool = sel_fleet != null and gs.fleets.has(sel_fleet.id) and sel_fleet.owner == me and selected_army == null
 	var moving: bool = selected_army != null and selected_army.owner == me and selected_army.prov != pid
 	if selected_army != null:
 		if moving:
 			hint = "Seçili ordu: %s asker, %s. Aşağıdaki düğmeyle yolla; ordunun yalnızca bir kısmını (%%25 / %%50 / %%75) da gönderip kalanını başka yere sevk edebilirsin." % [Macro.num(selected_army.size), gs.provinces[selected_army.prov].name]
 		else:
 			hint = "Ordu seçili (%s asker). Gidilecek eyalete dokun, sonra emri onayla." % Macro.num(selected_army.size)
+	if fleet_mode:
+		hint += ("\n" if hint != "" else "") + "Seçili filo: %s (güç %d), %s." % [Fleets.kind_name(sel_fleet.kind), Fleets.disp(sel_fleet), Seas.name_tr(sel_fleet.zone)]
 	_card_hint.text = hint
 	_card_hint.visible = hint != ""
+	if fleet_mode:
+		var czs: Array = Seas.coast_zones(gs, pid)
+		if not czs.is_empty() and not czs.has(sel_fleet.zone):
+			_abtn("Filo bu kıyıya yönelsin", "gold", Icons.pick("uc_ship", "ship"), "fleet_to_coast", pid)
+		if czs.has(sel_fleet.zone):
+			if Fleets.bombard_targets(gs, sel_fleet).has(pid):
+				var bl: int = sel_fleet.cd - gs.turn
+				_abtn("Kıyı bombardımanı" if bl <= 0 else "Bombardıman: %d hafta bekle" % bl, "danger", Icons.pick("bombard", "ship"), "fleet_bombard", pid, bl <= 0)
+			if sel_fleet.cargo > 0 and Fleets.debark_check(gs, sel_fleet, pid) == "":
+				_abtn("Karaya çıkar", "danger", Icons.pick("landing", "swords"), "fleet_debark", pid)
+	if p.owner == me and p.controller == me and army != null and army.owner == me and p.coastal and not Seas.coast_zones(gs, pid).is_empty():
+		_abtn("Gemiye bin", "blue", Icons.pick("cargo_ship", "ship"), "embark", pid)
 	if moving:
 		_abtn("Yolla / böl: oran seç" if selected_army.size >= 200 else "Ordu buraya yürüsün", "gold", "play", "move_army", pid)
 		_abtn("Seçimi bırak", "ghost", "x", "deselect", pid)
@@ -725,6 +743,81 @@ func show_province(pid: int, selected_army) -> void:
 			_abtn("Seçimi bırak", "ghost", "x", "deselect", pid)
 		else:
 			_abtn("Ordu seç", "gold", "flag", "select_army", pid)
+	_card_actions.visible = _card_actions.get_child_count() > 0
+
+
+## Filo kartı: ordu panelinin benzeri (alt kart); oyuncunun filosunda eylem düğmeleri
+func show_fleet(f) -> void:
+	if gs == null or f == null or gs.player < 0 or not gs.fleets.has(f.id):
+		hide_info()
+		return
+	var me: int = gs.player
+	var mine: bool = f.owner == me
+	_card_pid = -1
+	card.visible = true
+	var oc = gs.countries[f.owner]
+	_card_flag.set_country(oc)
+	_card_rule.color = oc.color.lightened(0.05) if oc.color.get_luminance() > 0.12 else TK.PAPER
+	_card_title.text = TK.up(Fleets.kind_name(f.kind))
+	_card_kicker.text = TK.up("%s  /  %s" % [oc.name, Seas.name_tr(f.zone)])
+	_clear(_card_tags)
+	_clear(_card_stats)
+	_clear(_card_actions)
+	if mine:
+		_card_tags.add_child(_tag("Senin", TK.GREEN))
+	elif gs.is_allied(me, f.owner):
+		_card_tags.add_child(_tag("Müttefik", TK.BLUE))
+	elif gs.at_war(me, f.owner):
+		_card_tags.add_child(_tag("Savaşta", TK.RED))
+	if f.mission == "blockade":
+		_card_tags.add_child(_tag("Abluka görevinde", TK.ORANGE))
+	if f.kind == "sub":
+		_card_tags.add_child(_tag("Gizli", TK.PURPLE))
+	_card_tags.visible = _card_tags.get_child_count() > 0
+	_card_stat("Güç", "%d" % Fleets.disp(f), TK.TEXT, true)
+	_card_stat("Hız", "%d bölge/hf" % int(Fleets.SPEED.get(f.kind, 2)), TK.TEXT)
+	if f.cargo > 0:
+		_card_stat("Asker", Macro.num(f.cargo), TK.GOLD)
+	var hint: String = {
+		"surface": "Yüzey gemileri: kıyıyı bombalar, denizaltıya karşı zayıftır; uçak gemisiyle birlikte denizaltıyı avlar.",
+		"sub": "Denizaltılar: yavaş ama gizli; yüzey gemilerine ve nakliyeye karşı güçlüdür. Ateş edince bir süre açığa çıkar.",
+		"carrier": "Uçak gemisi grubu: hava gücü getirir; yanında muharebe filosu yoksa zayıftır.",
+		"transport": "Nakliye filosu: ordu taşır ama silahsızdır; korumasız kalırsa düşman filosuna batar.",
+	}.get(f.kind, "")
+	if mine:
+		if not f.path.is_empty():
+			hint += "\nHedef: %s (%d hafta)." % [Seas.name_tr(String(f.path.back())), int(ceil(float(f.path.size()) / float(Fleets.SPEED.get(f.kind, 2))))]
+		else:
+			hint += "\nHareket için gidilecek denize (ya da kıyı eyaletine) dokun."
+		if f.cd > gs.turn:
+			hint += "\nSaldırı için hazırlanıyor: %d hafta." % (f.cd - gs.turn)
+	_card_hint.text = hint
+	_card_hint.visible = hint != ""
+	if mine:
+		_abtn("Hareket", "gold", "play", "fleet_move", f.id)
+		if not f.path.is_empty() or f.mission != "":
+			_abtn("Durdur", "", "pause", "fleet_stop", f.id)
+		if f.kind != "transport" and not Fleets.blockade_candidates(gs, me).is_empty():
+			_abtn("Abluka", "danger", Icons.pick("blockade", "anchor"), "fleet_blockade", f.id)
+		if f.kind == "surface" or f.kind == "carrier":
+			var bl: int = f.cd - gs.turn
+			_abtn("Kıyı bombardımanı" if bl <= 0 else "Bombardıman: %d hafta bekle" % bl, "danger", Icons.pick("bombard", "ship"), "fleet_bombard_menu", f.id, bl <= 0 and not Fleets.bombard_targets(gs, f).is_empty())
+		if f.kind == "sub":
+			var tl: int = f.cd - gs.turn
+			var has_t := false
+			for g in Fleets.at_zone(gs, f.zone):
+				if g.owner != me and gs.at_war(me, g.owner):
+					has_t = true
+			_abtn("Torpido" if tl <= 0 else "Torpido: %d hafta bekle" % tl, "danger", Icons.pick("w2_torpedo", "sub"), "fleet_torpedo", f.id, tl <= 0 and has_t)
+		if f.kind != "sub":
+			_abtn("Ordu bindir", "blue", Icons.pick("cargo_ship", "ship"), "fleet_embark", f.id)
+		if f.cargo > 0:
+			_abtn("Karaya çıkar", "danger", Icons.pick("landing", "swords"), "fleet_debark_menu", f.id)
+		for g2 in Fleets.at_zone(gs, f.zone):
+			if g2 != f and g2.owner == me and g2.kind == f.kind:
+				_abtn("Birleştir", "", "plus", "fleet_merge", f.id)
+				break
+		_abtn("Seçimi bırak", "ghost", "x", "fleet_deselect", f.id)
 	_card_actions.visible = _card_actions.get_child_count() > 0
 
 

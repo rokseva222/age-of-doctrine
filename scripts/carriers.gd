@@ -5,6 +5,7 @@ extends RefCounted
 
 const Eras = preload("res://scripts/eras.gd")
 const Macro = preload("res://scripts/macro.gd")
+const Fleets = preload("res://scripts/fleets.gd")
 
 const START := {
 	"": {"United States": 11, "China": 3, "United Kingdom": 2, "France": 1, "India": 2, "Italy": 2, "Japan": 2, "Russia": 1, "Spain": 1, "Turkey": 1, "Thailand": 1},
@@ -60,6 +61,8 @@ static func buy(gs) -> String:
 	c.carriers = count(c) + 1
 	c.carrier_extra += 1
 	Macro.recalc(c)
+	Fleets.ensure(gs)
+	Fleets.sync_country(gs, c, {})      # yeni grup limanda filo olarak belirir
 	gs.post_news("%s yeni bir uçak gemisi grubu devreye aldı." % c.name, c.capital, "event_player", "ship")
 	gs.state_changed.emit()
 	return ""

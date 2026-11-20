@@ -27,6 +27,7 @@ const Objectives = preload("res://scripts/objectives.gd")
 const UN = preload("res://scripts/un.gd")
 const Cabinet = preload("res://scripts/cabinet.gd")
 const Militias = preload("res://scripts/militias.gd")
+const Fleets = preload("res://scripts/fleets.gd")
 
 signal news_posted(text: String, prov: int, kind: String)
 signal province_changed(pid: int)
@@ -60,6 +61,9 @@ var world = null
 var provinces: Array = []
 var countries: Array = []
 var armies: Dictionary = {}
+var fleets: Dictionary = {}              # deniz filoları: id -> Model.Fleet (fleets.gd)
+var next_fleet_id := 1
+var fleets_ready := false                # filolar envanterden türetildi mi (tembel kurulum)
 var wars: Array = []
 var news_log: Array = []
 var turn := 0
@@ -125,6 +129,7 @@ func new_world(seed_val: int, _ncountries: int = 0) -> void:
 	rng.seed = seed_val
 	world = WorldData.instance()
 	world.populate(self)
+	Fleets.reset(self)
 	if Eras.current != "":
 		EraNames.apply(self, Eras.current)
 	if player >= 0:
@@ -181,6 +186,7 @@ func switch_player(cid: int) -> void:
 
 func _init_armies() -> void:
 	armies.clear()
+	Fleets.reset(self)
 	next_army_id = 1
 	refresh_stats()
 	Macro.build_idx(self)
@@ -864,6 +870,9 @@ func refresh_stats() -> void:
 			countries[p.controller].income += p.rev() * 0.5
 	for a in armies.values():
 		countries[a.owner].troops += a.size
+	for f in fleets.values():
+		if f.cargo > 0:
+			countries[f.owner].troops += f.cargo      # denizdeki asker de ülkenin askeri sayılır
 
 
 func net_income(c) -> float:
@@ -2621,6 +2630,7 @@ func end_turn() -> void:
 	t = _tp("ai", t)
 	_move_armies()
 	_merc_tick()
+	Fleets.tick(self)
 	t = _tp("move", t)
 	_process_sieges()
 	t = _tp("siege", t)
@@ -2860,6 +2870,12 @@ func _step_army(a) -> void:
 
 ## Denizde konvoy: hedefin sahibinin donanması (özellikle denizaltı) çıkarma filosundan güçlüyse asker kaybedilir (en fazla %18).
 func _sea_intercept(a, target: int) -> void:
+	# filolar varsa: rotadaki bölgelerdeki düşman filoları vurur (filo yoksa eski, naval_pow temelli hesap çalışır)
+	var fl: int = Fleets.intercept_loss(self, a, a.prov, target)
+	if fl >= 0:
+		if fl > 0 and a.owner == player:
+			post_news("Çıkarma filomuz denizde düşman donanması tarafından vuruldu: %d asker kaybedildi." % fl, a.prov, "war_player")
+		return
 	var tp = provinces[target]
 	var foe: int = tp.controller if tp.controller >= 0 else tp.owner
 	if foe < 0 or foe == a.owner or not at_war(a.owner, foe):
@@ -4178,6 +4194,9 @@ func to_dict() -> Dictionary:
 		"rng_state": rng.state, "rebel_names": rebel_name_count, "merc_names": merc_names, "stats": stats,
 		"difficulty": difficulty, "blocs": blocs, "next_bloc": next_bloc_id, "cold": cold, "sea_camp": sea_campaign.keys(), "crisis": crisis, "crisis_end": crisis_last_end, "scn": scn, "era": Eras.current, "nuke_cd": nuke_cd, "gas_cd": gas_cd, "grand": grand, "chokes": chokes, "daily": daily, "pol": pol, "faith": faith, "focus": focus, "syear": Names.start_year, "wroom": wroom, "indep": indep, "career": career, "moment_p": moment_pending, "moment_f": moment_flags, "infamy": infamy, "un_cd": un_cd, "un_log": un_log, "aid": aid, "trade": trade, "vassals": vassals, "custom_ovr": custom_ovr,
 	}
+	Fleets.ensure(self)
+	d["fleets"] = Fleets.to_array(self)
+	d["next_fleet"] = next_fleet_id
 	var ps: Array = []
 	for p in provinces:
 		ps.append([p.owner, p.controller, p.siege, p.siege_by, p.dev, p.is_capital, p.core, p.unrest, p.acquired, p.pop, p.defense, p.gdp, p.bld, p.bld_wip, p.bld_until])
@@ -4401,6 +4420,13 @@ func from_dict(d: Dictionary) -> bool:
 	refresh_stats()
 	Currency.sync(self)
 	Macro.prime(self)
+	fleets = {}
+	next_fleet_id = int(d.get("next_fleet", 1))
+	fleets_ready = false
+	if d.has("fleets"):
+		Fleets.from_array(self, d["fleets"])
+	else:
+		Fleets.ensure(self)     # eski kayıt: filoları envanterden yeniden türet
 	return true
 
 

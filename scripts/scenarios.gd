@@ -280,6 +280,7 @@ static func _apply_dict(gs, sc: Dictionary, force_ally_first: bool) -> void:
 			Macro.set_budget(gs.countries[cid4], "cyber", 22)
 	_modifiers(gs, sc, idx)
 	Macro.prime(gs)
+	gs.fleets_ready = false       # senaryo envanteri/uçak gemilerini değiştirmiş olabilir: filolar yeniden türetilir
 	gs.post_news(sc.get("intro", ""), -1, "war")
 	gs.armies_changed.emit()
 	gs.state_changed.emit()

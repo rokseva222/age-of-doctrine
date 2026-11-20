@@ -464,6 +464,7 @@ static func calc(gs, c) -> Dictionary:
 	rev *= Faith.income_mult(gs, c)
 	rev *= Propaganda.income_mult(c)
 	rev *= blockade_mult(gs, c)
+	rev *= 1.0 - 0.10 * c.fleet_block      # filo ablukası (fleets.gd): kıyı bölgelerinde üstün düşman donanması
 	if c.id == gs.player:
 		rev *= Focus.income_mult(gs)
 	if c.id != gs.player:
@@ -621,6 +622,11 @@ static func _blockades(gs) -> void:
 		var rb: float = 1.0 - ra
 		b.blockade = minf(0.8, b.blockade + 0.5 * ra * minf(1.0, a.naval_pow / 6.0))
 		a.blockade = minf(0.8, a.blockade + 0.5 * rb * minf(1.0, b.naval_pow / 6.0))
+	# filolar varsa: soyut abluka yarıya iner, bölgesel filo baskısı eklenir (fleets.gd)
+	if not gs.fleets.is_empty():
+		for c2 in gs.countries:
+			if c2.fleet_block > 0.0 or c2.blockade > 0.0:
+				c2.blockade = minf(0.8, 0.5 * c2.blockade + c2.fleet_block)
 
 
 # ===================================================================== askerlik

@@ -10,11 +10,16 @@ const Flags = preload("res://scripts/flags.gd")
 const Icons = preload("res://scripts/icons.gd")
 const Chokepoints = preload("res://scripts/chokepoints.gd")
 const Districts = preload("res://scripts/districts.gd")
+const Seas = preload("res://scripts/seas.gd")
+const Fleets = preload("res://scripts/fleets.gd")
 
 var map = null
 var fast := false            # kamera hareket ederken: yazı çizgileri (outline) atlanır, durunca tam çizilir
 var top: Control = null      # her karede yenilenen hafif üst katman (seçim nabzı)
 var sel_army_rect := Rect2()
+var sel_fleet_rect := Rect2()
+var fleet_rects: Dictionary = {}   # filo id -> dokunma dikdörtgeni (ekran)
+var show_seas := true
 var show_country_names := true
 var show_province_names := true
 var show_armies := true
@@ -46,6 +51,9 @@ class TopLayer extends Control:
 			return
 		if hud.map.selected_prov >= 0:
 			hud._draw_selection(hud.map.gs, hud.map.selected_prov, self)
+		if hud.map.selected_fleet != null and hud.sel_fleet_rect.size.x > 0.0:
+			var pulse2 := 0.5 + 0.5 * sin(hud.map.anim_time * 6.0)
+			draw_rect(hud.sel_fleet_rect.grow(4.0 + pulse2 * 2.0), Color(TK.PAPER.r, TK.PAPER.g, TK.PAPER.b, 0.9), false, 2.0)
 		if hud.map.selected_army != null and hud.sel_army_rect.size.x > 0.0:
 			var pulse := 0.5 + 0.5 * sin(hud.map.anim_time * 6.0)
 			draw_rect(hud.sel_army_rect.grow(4.0 + pulse * 2.0), Color(TK.PAPER.r, TK.PAPER.g, TK.PAPER.b, 0.9), false, 2.0)
@@ -101,6 +109,10 @@ func _draw() -> void:
 	if show_country_names:
 		_draw_country_names(gs, z, screen, font_b)
 
+	# --- deniz bölgesi adları (yakınlaştırmaya göre soluk)
+	if show_seas:
+		_draw_seas(gs, z, screen, font_m)
+
 	# --- eyalet adları
 	if show_province_names and z >= 2.6:
 		_draw_province_names(gs, z, screen, font_m)
@@ -131,11 +143,13 @@ func _draw() -> void:
 			draw_rect(Rect2(r.position, Vector2(w * fr, 6)), gs.countries[p.siege_by].color.lightened(0.15))
 
 	sel_army_rect = Rect2()
+	sel_fleet_rect = Rect2()
 	if top != null:
 		top.queue_redraw()
 
 	# --- emir yolları
 	_draw_paths(gs)
+	_draw_fleet_paths(gs)
 
 	# --- ordular
 	if show_armies:
@@ -499,8 +513,155 @@ func _draw_one_path(gs, a, route: Array) -> void:
 var _fleet_pid: Dictionary = {}
 
 
-## Donanma/denizaltı rozetleri: kıyı eyaletinin yanında, oyuncu + savaştakiler + müttefikler (z>=7: herkes)
+## Deniz bölgesi adları: haritada kıyıdan uzak denizlerin üzerine soluk yazılır (z büyüdükçe daha da solar)
+func _draw_seas(gs, z: float, screen: Rect2, font: Font) -> void:
+	if z < 1.1:
+		return
+	var alpha := clampf((z - 1.1) / 1.3, 0.0, 1.0) * lerpf(0.62, 0.22, clampf((z - 3.5) / 5.0, 0.0, 1.0))
+	if alpha < 0.03:
+		return
+	var fs := int(clampf(9.0 + z * 2.4, 11.0, 22.0))
+	var busy: Dictionary = {}
+	for f in gs.fleets.values():
+		busy[f.zone] = true
+	for id in Seas.ids():
+		var sp: Vector2 = map.world_to_screen(Seas.pos(id)) - Vector2(0, 30.0 * clampf(z / 2.6, 0.78, 1.05) if busy.has(id) else 0.0)
+		if not screen.has_point(sp):
+			continue
+		var nm: String = TK.up(Seas.name_of(id))
+		var ts := font.get_string_size(nm, HORIZONTAL_ALIGNMENT_LEFT, -1, fs)
+		var p := sp - Vector2(ts.x * 0.5, -ts.y * 0.3)
+		if not fast:
+			draw_string_outline(font, p, nm, HORIZONTAL_ALIGNMENT_LEFT, -1, fs, 3, Color(0.02, 0.07, 0.14, alpha * 0.9))
+		draw_string(font, p, nm, HORIZONTAL_ALIGNMENT_LEFT, -1, fs, Color(0.66, 0.82, 0.97, alpha))
+
+
+func _fleet_edge(gs, f) -> Color:
+	var me: int = gs.player
+	if f.owner == me:
+		return TK.PAPER
+	if me >= 0 and gs.at_war(me, f.owner):
+		return TK.RED
+	return gs.countries[f.owner].color.lightened(0.1)
+
+
+## Filo rozetleri: her bölgenin merkezinde sıralı; oyuncununki seçilebilir. Dokunma alanları fleet_rects içinde (>= 44 dp).
 func _draw_fleets(gs, z: float, screen: Rect2) -> void:
+	fleet_rects.clear()
+	if gs.fleets.is_empty():
+		_draw_fleets_legacy(gs, z, screen)
+		return
+	var ctx: Dictionary = Fleets.vis_ctx(gs)
+	var by_zone: Dictionary = {}
+	for f in gs.fleets.values():
+		if not Fleets.visible(gs, ctx, f):
+			continue
+		if not by_zone.has(f.zone):
+			by_zone[f.zone] = []
+		by_zone[f.zone].append(f)
+	var me: int = gs.player
+	var sc := clampf(z / 2.6, 0.78, 1.05)
+	var w := 62.0 * sc
+	var h := 32.0 * sc
+	var gap := 6.0 * sc
+	var font2: Font = TK.mono(true, 0)
+	var fs := int(round(15.0 * sc))
+	var cfs := int(round(13.0 * sc))
+	for zid in by_zone:
+		var lst: Array = by_zone[zid]
+		var base: Vector2 = map.world_to_screen(Seas.pos(zid)) + Vector2(0, h * 0.35)
+		if not screen.grow(80.0).has_point(base):
+			continue
+		lst.sort_custom(func(a, b):
+			var ma: int = 1 if a.owner == me else 0
+			var mb: int = 1 if b.owner == me else 0
+			if ma != mb:
+				return ma > mb
+			return a.size > b.size)
+		var n: int = lst.size()
+		var per_row := 3
+		var row_h: float = h + (16.0 * sc if _any_cargo(lst) else 4.0 * sc)
+		for i in n:
+			var f = lst[i]
+			var row: int = i / per_row
+			var col: int = i % per_row
+			var cols_in_row: int = mini(per_row, n - row * per_row)
+			var cx: float = base.x + (float(col) - float(cols_in_row - 1) * 0.5) * (w + gap)
+			var cy: float = base.y + float(row) * row_h
+			var rect := Rect2(Vector2(cx - w * 0.5, cy - h * 0.5), Vector2(w, h))
+			var c = gs.countries[f.owner]
+			var edge: Color = _fleet_edge(gs, f)
+			draw_style_box(_banner_box(edge, 2.0 if f.owner == me else 1.5), rect)
+			draw_rect(Rect2(rect.position + Vector2(2.5, 2.5) * sc, Vector2(4.0 * sc, h - 5.0 * sc)), c.color.lightened(0.05))
+			var ic: String = Icons.pick(Fleets.kind_icon(f.kind), Fleets.kind_icon_fallback(f.kind))
+			var isz: float = h - 6.0 * sc
+			Icons.draw(self, ic, Rect2(rect.position + Vector2(9.0 * sc, 3.0 * sc), Vector2(isz, isz)), Color.WHITE)
+			var txt: String = Macro.compact(float(Fleets.disp(f)))
+			draw_string(font2, rect.position + Vector2(9.0 * sc + isz + 3.0 * sc, h * 0.5 + fs * 0.36), txt, HORIZONTAL_ALIGNMENT_LEFT, w - isz - 14.0 * sc, fs, Color.WHITE)
+			if f.cargo > 0:
+				var cr := Rect2(Vector2(rect.position.x + 2.0, rect.end.y + 1.0), Vector2(w - 4.0, 14.0 * sc))
+				draw_rect(cr, Color(0.08, 0.1, 0.13, 0.92))
+				draw_rect(cr, edge, false, 1.0)
+				Icons.draw(self, Icons.pick("uc_inf", "users"), Rect2(cr.position + Vector2(2.0, 0.0), Vector2(cr.size.y, cr.size.y)), Color.WHITE)
+				draw_string(font2, cr.position + Vector2(cr.size.y + 4.0, cr.size.y * 0.5 + cfs * 0.36), Macro.compact(float(f.cargo)), HORIZONTAL_ALIGNMENT_LEFT, cr.size.x - cr.size.y - 6.0, cfs, Color.WHITE)
+			if f.kind == "sub" and f.owner != me and f.seen >= gs.turn:
+				draw_circle(rect.end - Vector2(4.0, h - 4.0), 4.0 * sc, TK.RED)
+			var hit := rect
+			if hit.size.y < 52.0:
+				hit = hit.grow_individual(0.0, (52.0 - hit.size.y) * 0.5, 0.0, (52.0 - hit.size.y) * 0.5)
+			fleet_rects[f.id] = hit
+			if f == map.selected_fleet:
+				sel_fleet_rect = rect
+
+
+func _any_cargo(lst: Array) -> bool:
+	for f in lst:
+		if f.cargo > 0:
+			return true
+	return false
+
+
+## Dokunulan filonun kimliği (-1: yok)
+func fleet_at(screen_pos: Vector2) -> int:
+	var best := -1
+	var bd := 1e18
+	for fid in fleet_rects:
+		var r: Rect2 = fleet_rects[fid]
+		if r.has_point(screen_pos):
+			var d: float = r.get_center().distance_squared_to(screen_pos)
+			if d < bd:
+				bd = d
+				best = fid
+	return best
+
+
+## Hareket yolları: oyuncunun yolda olan filoları ve seçili filo
+func _draw_fleet_paths(gs) -> void:
+	if gs.fleets.is_empty():
+		return
+	var me: int = gs.player
+	for f in gs.fleets.values():
+		if f.path.is_empty() or (f.owner != me and f != map.selected_fleet):
+			continue
+		var pts := PackedVector2Array()
+		pts.append(map.world_to_screen(Seas.pos(f.zone)))
+		for zid in f.path:
+			pts.append(map.world_to_screen(Seas.pos(String(zid))))
+		var col := Color(TK.PAPER.r, TK.PAPER.g, TK.PAPER.b, 0.95) if f == map.selected_fleet else Color(0.75, 0.9, 1.0, 0.75)
+		if f.mission == "blockade":
+			col = Color(1.0, 0.55, 0.45, 0.95)
+		for i in pts.size() - 1:
+			draw_dashed_line(pts[i], pts[i + 1], Color(0, 0, 0, 0.5), 5.0, 9.0)
+			draw_dashed_line(pts[i], pts[i + 1], col, 3.0, 9.0)
+		var last := pts[pts.size() - 1]
+		var prev := pts[pts.size() - 2]
+		var d := (last - prev).normalized()
+		var n := Vector2(-d.y, d.x)
+		draw_colored_polygon(PackedVector2Array([last + d * 4, last - d * 12 + n * 8, last - d * 12 - n * 8]), col)
+
+
+## Donanma/denizaltı rozetleri: kıyı eyaletinin yanında, oyuncu + savaştakiler + müttefikler (z>=7: herkes)
+func _draw_fleets_legacy(gs, z: float, screen: Rect2) -> void:
 	if z < 1.6:
 		return
 	var me: int = gs.player
