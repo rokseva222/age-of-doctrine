@@ -4693,7 +4693,9 @@
   "Kadırgalar: kürekle yürür, kıyıya yakın savaşır; yelkenlilere ve nakliyeye karşı güçlüdür, asker taşıyabilir.": "桨帆战船：靠划桨航行，在近岸作战；克制帆船与运输船，并可运送军队。",
   "Muharebeler filoya tecrübe kazandırır; rütbe yükseldikçe filo daha güçlü savaşır.": "战斗为舰队积累经验；军衔越高，舰队战斗力越强。",
   "Çağa özel donanma": "随时代变化的海军",
-  "Donanma artık çağa göre farklı: 1299–1520 senaryolarında yelkenli filolar (Kogge, Karaka, Kalyon) ve kürekli Kadırga filoları savaşır; denizaltı ve uçak gemisi yoktur, kadırgalar gizli değildir ve asker taşıyabilir. 1914'te dretnot, kruvazör, muhrip ve U-botları; 1939'da zırhlı, uçak gemisi ve denizaltılar; Soğuk Savaş ve günümüzde füzeli muhrip, firkateyn, nükleer denizaltı. Hava filosu yalnızca hava teknolojisi olan ülkelerde kurulur.": "海军现在随时代而异：在1299–1520年的剧本中，帆船舰队（柯克船、卡拉克帆船、盖伦帆船）与桨帆战船舰队作战；没有潜艇和航母，桨帆战船不隐蔽且可运兵。1914年有无畏舰、巡洋舰、驱逐舰和U型潜艇；1939年有战列舰、航母和潜艇；冷战与当代有导弹驱逐舰、护卫舰和核潜艇。只有拥有航空技术的国家才会组建航空联队。"
+  "Donanma artık çağa göre farklı: 1299–1520 senaryolarında yelkenli filolar (Kogge, Karaka, Kalyon) ve kürekli Kadırga filoları savaşır; denizaltı ve uçak gemisi yoktur, kadırgalar gizli değildir ve asker taşıyabilir. 1914'te dretnot, kruvazör, muhrip ve U-botları; 1939'da zırhlı, uçak gemisi ve denizaltılar; Soğuk Savaş ve günümüzde füzeli muhrip, firkateyn, nükleer denizaltı. Hava filosu yalnızca hava teknolojisi olan ülkelerde kurulur.": "海军现在随时代而异：在1299–1520年的剧本中，帆船舰队（柯克船、卡拉克帆船、盖伦帆船）与桨帆战船舰队作战；没有潜艇和航母，桨帆战船不隐蔽且可运兵。1914年有无畏舰、巡洋舰、驱逐舰和U型潜艇；1939年有战列舰、航母和潜艇；冷战与当代有导弹驱逐舰、护卫舰和核潜艇。只有拥有航空技术的国家才会组建航空联队。",
+  "Tarihî dönem bayrakları": "时代旗帜",
+  "1299–1520 çağlarında Osmanlı, Bizans, Memlük, Timur, Yuan, Ming, Safevî, Kutsal Roma, Fransa, İngiltere, Polonya, Litvanya, Venedik, Macaristan ve Moskova artık dönemin sancaklarıyla görünüyor. 1962'de Malaya bayrağı eklendi.": "在1299–1520年的时代中，奥斯曼、拜占庭、马穆鲁克、帖木儿、元、明、萨法维、神圣罗马帝国、法国、英格兰、波兰、立陶宛、威尼斯、匈牙利和莫斯科现在使用当时的旗帜。新增了1962年的马来亚旗帜。"
  },
  "months": [
   "1月",

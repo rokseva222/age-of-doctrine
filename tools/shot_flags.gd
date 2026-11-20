@@ -1,26 +1,26 @@
 extends SceneTree
-const TK = preload("res://scripts/theme_kit.gd")
-const GS = preload("res://scripts/game_state.gd")
+## Dönem bayrakları ekran görüntüsü (ülke seçimi). Çıktı: /tmp/flag_shots/
+const Info = preload("res://scripts/info_sheets.gd")
 func _init() -> void:
-	var gs = GS.new()
-	gs.new_world(21)
-	var root := ColorRect.new()
-	root.color = Color(0.1, 0.11, 0.13)
-	root.size = Vector2(1280, 720)
-	get_root().add_child(root)
-	var g := GridContainer.new()
-	g.columns = 10
-	g.position = Vector2(20, 20)
-	g.add_theme_constant_override("h_separation", 14)
-	g.add_theme_constant_override("v_separation", 14)
-	root.add_child(g)
-	var n := 0
-	for c in gs.countries:
-		if c.is_rebel or c.iso == "": continue
-		if n >= 50: break
-		g.add_child(TK.flag_rect(c, Vector2(110, 73)))
-		n += 1
-	await create_timer(0.6).timeout
-	await RenderingServer.frame_post_draw
-	get_root().get_viewport().get_texture().get_image().save_png("/tmp/flags_test.png")
+	var St = load("res://scripts/settings.gd")
+	St.seen_update = Info.UPDATE_VER
+	St.seen_promo = true
+	St.tut_done = true
+	St.seen_howto = true
+	var main = load("res://main.tscn").instantiate()
+	get_root().add_child(main)
+	DirAccess.make_dir_recursive_absolute("/tmp/flag_shots")
+	await create_timer(2.5).timeout
+	main.menu.finish_splash()
+	await create_timer(1.5).timeout
+	for era in ["ott1453", "ott1520"]:
+		main._start_era(era)
+		await create_timer(3.0).timeout
+		for i in 4:
+			main.ui.hide_dialog()
+			await create_timer(0.4).timeout
+		await RenderingServer.frame_post_draw
+		get_root().get_viewport().get_texture().get_image().save_png("/tmp/flag_shots/%s_secim.png" % era)
+		main._back_to_menu()
+		await create_timer(1.5).timeout
 	quit()
