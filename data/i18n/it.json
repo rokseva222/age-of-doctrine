@@ -4163,7 +4163,9 @@
   "İtalyan Libyası": "Libia italiana",
   "Kartta eyaletin sahibi, nüfusu, geliri ve savunması yazar; başkent yıldızlıdır. Eyaletler sana gelir getirir, kaybettikçe gelirin düşer.": "La scheda mostra proprietario, popolazione, reddito e difesa della provincia; la capitale ha una stella. Le tue province ti danno reddito, e perdendole perdi reddito.",
   "Dönem adları 13 dilde": "Nomi d'epoca in 13 lingue",
-  "Sömürge ve dönem devlet adları (Fransız Cezayiri, Britanya Hindistanı, Yukarı Volta, Vietnam Cumhuriyeti...) ile eski unvanlar (Genel Vali, Hidiv, Yüksek Komiser) artık 13 dilde; 1962'de Seylan, Birmanya, Tanganyika gibi dönemin gerçek adları kullanılıyor.": "I nomi di colonie e Stati d'epoca (Algeria francese, India britannica, Alto Volta, Repubblica del Vietnam…) e i vecchi titoli (governatore generale, kedivè, alto commissario) compaiono ora in 13 lingue; lo scenario 1962 usa nomi reali come Ceylon, Birmania e Tanganica."
+  "Sömürge ve dönem devlet adları (Fransız Cezayiri, Britanya Hindistanı, Yukarı Volta, Vietnam Cumhuriyeti...) ile eski unvanlar (Genel Vali, Hidiv, Yüksek Komiser) artık 13 dilde; 1962'de Seylan, Birmanya, Tanganyika gibi dönemin gerçek adları kullanılıyor.": "I nomi di colonie e Stati d'epoca (Algeria francese, India britannica, Alto Volta, Repubblica del Vietnam…) e i vecchi titoli (governatore generale, kedivè, alto commissario) compaiono ora in 13 lingue; lo scenario 1962 usa nomi reali come Ceylon, Birmania e Tanganica.",
+  "Grup adları çevrildi": "Nomi dei gruppi tradotti",
+  "Milis, isyancı, paralı asker ve gizli hücre adları Türkçe dışındaki dillerde artık İngilizce üretiliyor.": "I nomi di milizie, ribelli, mercenari e cellule ora vengono generati in inglese quando il gioco non è in turco."
  },
  "months": [
   "gennaio",

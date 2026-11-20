@@ -4163,7 +4163,9 @@
   "İtalyan Libyası": "イタリア領リビア",
   "Kartta eyaletin sahibi, nüfusu, geliri ve savunması yazar; başkent yıldızlıdır. Eyaletler sana gelir getirir, kaybettikçe gelirin düşer.": "カードには州の所有者、人口、収入、防御が表示されます。首都には星があります。自国の州は収入をもたらし、失えば収入も失います。",
   "Dönem adları 13 dilde": "時代の名称を13言語で",
-  "Sömürge ve dönem devlet adları (Fransız Cezayiri, Britanya Hindistanı, Yukarı Volta, Vietnam Cumhuriyeti...) ile eski unvanlar (Genel Vali, Hidiv, Yüksek Komiser) artık 13 dilde; 1962'de Seylan, Birmanya, Tanganyika gibi dönemin gerçek adları kullanılıyor.": "植民地や当時の国名（仏領アルジェリア、英領インド、オートボルタ、ベトナム共和国など）と古い称号（総督、ヘディーヴ、高等弁務官）が13言語で表示されます。1962年シナリオではセイロン、ビルマ、タンガニーカなど当時の実名を使います。"
+  "Sömürge ve dönem devlet adları (Fransız Cezayiri, Britanya Hindistanı, Yukarı Volta, Vietnam Cumhuriyeti...) ile eski unvanlar (Genel Vali, Hidiv, Yüksek Komiser) artık 13 dilde; 1962'de Seylan, Birmanya, Tanganyika gibi dönemin gerçek adları kullanılıyor.": "植民地や当時の国名（仏領アルジェリア、英領インド、オートボルタ、ベトナム共和国など）と古い称号（総督、ヘディーヴ、高等弁務官）が13言語で表示されます。1962年シナリオではセイロン、ビルマ、タンガニーカなど当時の実名を使います。",
+  "Grup adları çevrildi": "グループ名の翻訳",
+  "Milis, isyancı, paralı asker ve gizli hücre adları Türkçe dışındaki dillerde artık İngilizce üretiliyor.": "トルコ語以外の言語では、民兵・反乱軍・傭兵・秘密組織の名称が英語で生成されるようになりました。"
  },
  "months": [
   "1月",

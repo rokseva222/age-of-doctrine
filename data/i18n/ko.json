@@ -4163,7 +4163,9 @@
   "İtalyan Libyası": "이탈리아령 리비아",
   "Kartta eyaletin sahibi, nüfusu, geliri ve savunması yazar; başkent yıldızlıdır. Eyaletler sana gelir getirir, kaybettikçe gelirin düşer.": "카드에는 지방의 소유자, 인구, 수입, 방어가 표시됩니다. 수도에는 별이 있습니다. 당신의 지방은 수입을 가져다주고, 잃으면 수입도 잃습니다.",
   "Dönem adları 13 dilde": "시대 명칭 13개 언어 지원",
-  "Sömürge ve dönem devlet adları (Fransız Cezayiri, Britanya Hindistanı, Yukarı Volta, Vietnam Cumhuriyeti...) ile eski unvanlar (Genel Vali, Hidiv, Yüksek Komiser) artık 13 dilde; 1962'de Seylan, Birmanya, Tanganyika gibi dönemin gerçek adları kullanılıyor.": "식민지와 당시 국가 이름(프랑스령 알제리, 영국령 인도, 오트볼타, 베트남 공화국 등)과 옛 직함(총독, 케디브, 고등판무관)이 이제 13개 언어로 표시됩니다. 1962 시나리오는 실론, 버마, 탕가니카 같은 당시의 실제 이름을 사용합니다."
+  "Sömürge ve dönem devlet adları (Fransız Cezayiri, Britanya Hindistanı, Yukarı Volta, Vietnam Cumhuriyeti...) ile eski unvanlar (Genel Vali, Hidiv, Yüksek Komiser) artık 13 dilde; 1962'de Seylan, Birmanya, Tanganyika gibi dönemin gerçek adları kullanılıyor.": "식민지와 당시 국가 이름(프랑스령 알제리, 영국령 인도, 오트볼타, 베트남 공화국 등)과 옛 직함(총독, 케디브, 고등판무관)이 이제 13개 언어로 표시됩니다. 1962 시나리오는 실론, 버마, 탕가니카 같은 당시의 실제 이름을 사용합니다.",
+  "Grup adları çevrildi": "그룹 이름 번역",
+  "Milis, isyancı, paralı asker ve gizli hücre adları Türkçe dışındaki dillerde artık İngilizce üretiliyor.": "게임이 터키어가 아닐 때 민병대, 반군, 용병, 비밀 조직의 이름이 영어로 생성됩니다."
  },
  "months": [
   "1월",

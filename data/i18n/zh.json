@@ -4163,7 +4163,9 @@
   "İtalyan Libyası": "意属利比亚",
   "Kartta eyaletin sahibi, nüfusu, geliri ve savunması yazar; başkent yıldızlıdır. Eyaletler sana gelir getirir, kaybettikçe gelirin düşer.": "卡片显示该省的所有者、人口、收入和防御；首都带有星标。你的省份为你带来收入，失去它们就失去收入。",
   "Dönem adları 13 dilde": "时代名称支持13种语言",
-  "Sömürge ve dönem devlet adları (Fransız Cezayiri, Britanya Hindistanı, Yukarı Volta, Vietnam Cumhuriyeti...) ile eski unvanlar (Genel Vali, Hidiv, Yüksek Komiser) artık 13 dilde; 1962'de Seylan, Birmanya, Tanganyika gibi dönemin gerçek adları kullanılıyor.": "殖民地和当时的国家名称（法属阿尔及利亚、英属印度、上沃尔特、越南共和国等）以及旧头衔（总督、赫迪夫、高级专员）现在以13种语言显示；1962剧本使用锡兰、缅甸、坦噶尼喀等当时的真实名称。"
+  "Sömürge ve dönem devlet adları (Fransız Cezayiri, Britanya Hindistanı, Yukarı Volta, Vietnam Cumhuriyeti...) ile eski unvanlar (Genel Vali, Hidiv, Yüksek Komiser) artık 13 dilde; 1962'de Seylan, Birmanya, Tanganyika gibi dönemin gerçek adları kullanılıyor.": "殖民地和当时的国家名称（法属阿尔及利亚、英属印度、上沃尔特、越南共和国等）以及旧头衔（总督、赫迪夫、高级专员）现在以13种语言显示；1962剧本使用锡兰、缅甸、坦噶尼喀等当时的真实名称。",
+  "Grup adları çevrildi": "团体名称已翻译",
+  "Milis, isyancı, paralı asker ve gizli hücre adları Türkçe dışındaki dillerde artık İngilizce üretiliyor.": "当游戏语言不是土耳其语时，民兵、叛军、雇佣兵和秘密小组的名称现在以英文生成。"
  },
  "months": [
   "1月",

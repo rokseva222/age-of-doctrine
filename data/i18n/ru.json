@@ -4163,7 +4163,9 @@
   "İtalyan Libyası": "Итальянская Ливия",
   "Kartta eyaletin sahibi, nüfusu, geliri ve savunması yazar; başkent yıldızlıdır. Eyaletler sana gelir getirir, kaybettikçe gelirin düşer.": "Карточка показывает владельца, население, доход и оборону провинции; у столицы есть звезда. Ваши провинции приносят доход, и вы теряете его, теряя их.",
   "Dönem adları 13 dilde": "Названия эпох на 13 языках",
-  "Sömürge ve dönem devlet adları (Fransız Cezayiri, Britanya Hindistanı, Yukarı Volta, Vietnam Cumhuriyeti...) ile eski unvanlar (Genel Vali, Hidiv, Yüksek Komiser) artık 13 dilde; 1962'de Seylan, Birmanya, Tanganyika gibi dönemin gerçek adları kullanılıyor.": "Названия колоний и государств той эпохи (Французский Алжир, Британская Индия, Верхняя Вольта, Республика Вьетнам…) и старые титулы (генерал-губернатор, хедив, верховный комиссар) теперь отображаются на 13 языках; в сценарии 1962 года используются настоящие названия: Цейлон, Бирма, Танганьика."
+  "Sömürge ve dönem devlet adları (Fransız Cezayiri, Britanya Hindistanı, Yukarı Volta, Vietnam Cumhuriyeti...) ile eski unvanlar (Genel Vali, Hidiv, Yüksek Komiser) artık 13 dilde; 1962'de Seylan, Birmanya, Tanganyika gibi dönemin gerçek adları kullanılıyor.": "Названия колоний и государств той эпохи (Французский Алжир, Британская Индия, Верхняя Вольта, Республика Вьетнам…) и старые титулы (генерал-губернатор, хедив, верховный комиссар) теперь отображаются на 13 языках; в сценарии 1962 года используются настоящие названия: Цейлон, Бирма, Танганьика.",
+  "Grup adları çevrildi": "Названия групп переведены",
+  "Milis, isyancı, paralı asker ve gizli hücre adları Türkçe dışındaki dillerde artık İngilizce üretiliyor.": "Названия ополчений, повстанцев, наёмников и ячеек теперь создаются на английском, если игра не на турецком."
  },
  "months": [
   "января",
