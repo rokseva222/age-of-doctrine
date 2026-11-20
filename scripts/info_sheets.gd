@@ -287,12 +287,14 @@ static func open_howto(parent: Node) -> void:
 			render.call())
 
 
-const UPDATE_VER := "1.2.20"
+const UPDATE_VER := "1.2.21"
 const WHATS_NEW := [
 	["Tarihe uygun sömürge adları", "1914 ve 1939 senaryolarında Britanya Hindistanı, Fransız Cezayiri, Fransız Çinhindisi gibi dönemin gerçek adları görünür. Hindistan ve Kore tek devlet olarak başlar."],
 	["Soğuk Savaş haritası temizlendi", "1962 haritasında bugünün mikro devletleri (hayalet ülkeler) kaldırıldı; toprakları o dönemin gerçek sahiplerine bağlandı."],
 	["Eski çağlarda anakronizm temizliği", "1380 ve 1520 çağlarından petrol binası, borsa, siber/istihbarat etiketleri ve modern protesto/darbe haberleri çıkarıldı; ünvanlar ve isimler dönemine uygun."],
 	["Dönem bayrakları", "Sömürgeler artık metropolün bayrağını taşıyor (Fransız Cezayiri → Fransa, Britanya Hindistanı → Britanya...). 1914, 1939 ve 1962 senaryolarında İran, Afganistan, Libya, İspanya, Romanya gibi 20 ülke dönemin gerçek bayrağıyla geliyor."],
+	["1962'de iki Vietnam", "1962 senaryosunda Vietnam artık Kuzey (Hanoi) ve Güney (Saygon) olarak ikiye ayrılıyor; ayrıca Kanada, Kongo, Suriye, Kamboçya, Laos gibi ülkeler dönemin bayraklarıyla geliyor."],
+	["Dönemlere uygun inançlar", "Dönem modlarında inançlar bugünkü nüfusa göre başlıyor: Kuzey Kıbrıs, Özbekistan, Bosna ve Kosova gibi Müslüman bölgeler artık yanlışlıkla Hristiyan görünmüyor."],
 ]
 
 
