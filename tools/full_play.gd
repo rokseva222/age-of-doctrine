@@ -7,11 +7,13 @@ const Obj = preload("res://scripts/objectives.gd")
 const Names = preload("res://scripts/names.gd")
 var issues: Dictionary = {}
 var last_snap := ""
+var trace := ""
 func bad(k: String) -> void:
 	issues[k] = int(issues.get(k, 0)) + 1
 func _init() -> void:
 	var a := OS.get_cmdline_user_args()
 	var kind: String = a[0]; var id: String = a[1]; var pi: int = int(a[2]); var turns: int = int(a[3])
+	var provoke: bool = a.size() > 4 and a[4] == "aktif"
 	var sug: Array = []
 	if kind == "era":
 		Eras.prepare(id)
@@ -40,7 +42,7 @@ func _init() -> void:
 	var prov0: int = pl.prov_owned
 	var died := -1
 	for t in turns:
-		if t == 4 and pl.alive:
+		if provoke and t == 4 and pl.alive:
 			# oyuncu bir komşuya savaş açar
 			var nbs: Array = gs.neighbor_countries(gs.player)
 			var bestn := -1
@@ -56,6 +58,9 @@ func _init() -> void:
 			if died < 0: died = t
 			if oc.t != "" or t > died + 3: break
 		minprov = mini(minprov, pl.prov_owned); maxprov = maxi(maxprov, pl.prov_owned)
+		last_snap = _snap(gs, pl)
+		if t % 13 == 0:
+			trace += "\n      " + _snap(gs, pl)
 		if t % 4 == 0:
 			_check(gs)
 	var ms: int = Time.get_ticks_msec() - t0
@@ -83,6 +88,7 @@ func _init() -> void:
 	var iss := ""
 	for k in issues: iss += "\n      ! %s ×%d" % [k, issues[k]]
 	if died >= 0: print("   ÖLÜM ÖNCESİ: ", last_snap)
+	if died >= 0 or oc.t.begins_with("YEN"): print("   İZ:", trace)
 	print("SONUC %-16s %-24s tur=%3d %5dms/tur=%d | eyalet %d→%d (min %d max %d) savaş %d→%d ölüm=%d%s | %s%s" % [id, nm, gs.turn, ms, ms / maxi(gs.turn, 1), prov0, pl.prov_owned, minprov, maxprov, w0, gs.wars.size(), died, objs, String(oc.t).substr(0, 70), iss])
 	quit()
 func _check(gs) -> void:
@@ -117,3 +123,12 @@ func _check(gs) -> void:
 		var tx: String = String(n.text)
 		if tx == "" or tx.contains("%s") or tx.contains("%d") or tx.contains("null") or tx.contains("<null>") or tx.contains("{"):
 			bad("haber metni bozuk: " + tx.substr(0, 60))
+
+func _snap(gs, pl) -> String:
+	var held := 0
+	for p in gs.provinces:
+		if p.owner == gs.player and p.controller == gs.player: held += 1
+	var en := ""
+	for e in pl.enemies:
+		en += "%s(%dk) " % [gs.countries[e].name_en, gs.countries[e].troops / 1000]
+	return "t=%d eyalet=%d/%d asker=%dk altın=%.0f ist=%.0f savaş: %s" % [gs.turn, held, pl.prov_owned, pl.troops / 1000, pl.gold, pl.stability, en]

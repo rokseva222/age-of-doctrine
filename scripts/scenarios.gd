@@ -277,6 +277,7 @@ static func _apply_dict(gs, sc: Dictionary, force_ally_first: bool) -> void:
 
 
 static func _wars(gs, sc: Dictionary, idx: Dictionary) -> void:
+	gs.setup_no_call = bool(sc.get("no_call", false))
 	for w in sc.get("wars", []):
 		var a: int = int(idx.get(w[0], -1))
 		var b: int = int(idx.get(w[1], -1))
@@ -284,6 +285,7 @@ static func _wars(gs, sc: Dictionary, idx: Dictionary) -> void:
 			gs.declare_war(a, b, false)
 			gs.deploy_front(a)
 			gs.deploy_front(b)
+	gs.setup_no_call = false
 
 
 static func _blocs(gs, sc: Dictionary, idx: Dictionary) -> void:

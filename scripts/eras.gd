@@ -246,7 +246,7 @@ const SETUP := {
 				"emblem": {"shape": 4, "inner": 1, "symbol": "bolt", "c1": "5d6068", "c2": "ece6d6", "c3": "e5482f"}},
 		],
 		"wars": [["Germany", "Poland"], ["United Kingdom", "Germany"], ["France", "Germany"], ["Australia", "Germany"], ["New Zealand", "Germany"],
-			["Canada", "Germany"], ["South Africa", "Germany"], ["Japan", "China"]],
+			["Canada", "Germany"], ["South Africa", "Germany"], ["Japan", "China"], ["Slovakia", "Poland"]],
 		"truce": [["Germany", "Russia", 90]],
 		"intro": "1 Eylül 1939: Alman orduları Polonya sınırını aştı. Britanya ve Fransa savaşa girdi; Uzakdoğu'da Japonya Çin'le savaşıyor.",
 	},
@@ -551,6 +551,7 @@ static func start(gs, id: String) -> void:
 		intro = DataUtil.loc_text(intro, String(EraExt.raw(id)["en"]["setup_intro"]))
 	var sc: Dictionary = (st as Dictionary).duplicate(true)
 	sc["intro"] = intro
+	sc["no_call"] = family(id) == "ww2"   # 1939: İtalya/Japonya/Slovakya Polonya-Britanya savaşına otomatik girmez
 	Scenarios.apply_dict(gs, sc, true)
 	var odef: Dictionary = {"id": id}
 	if EraExt.has_era(id) and EraExt.raw(id).has("objectives"):

@@ -108,12 +108,15 @@ static func tick(gs, era: String, prev_ym: Array, ym: Array) -> void:
 	if EraExt.has_era(era) and EraExt.raw(era).has("inherit_until"):
 		pool = pool.duplicate()
 		pool.append_array(_inherited(era))
+	var fam: String = EraExt.family(era) if EraExt.has_era(era) else era
 	for e in pool:
 		if e["era"] != era or int(e["y"]) * 12 + int(e["m"]) - 1 != key:
 			continue
 		var cap := -1
+		gs.setup_no_call = fam == "ww2"   # olaydaki savaşlar açıkça yazılı; Mihver üyeleri otomatik sürüklenmesin
 		for f in e["fx"]:
 			_apply(gs, f)
+		gs.setup_no_call = false
 		gs.post_news(String(e["t"]), cap, "event")
 
 

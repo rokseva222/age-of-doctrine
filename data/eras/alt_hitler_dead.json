@@ -80,10 +80,6 @@
   ],
   "wars": [
    [
-    "Germany",
-    "Poland"
-   ],
-   [
     "United Kingdom",
     "Germany"
    ],
@@ -117,6 +113,11 @@
     "Germany",
     "Russia",
     90
+   ],
+   [
+    "Germany",
+    "Poland",
+    20
    ]
   ],
   "intro": "Eylül 1939: Hitler suikastta öldü. Generaller yönetimi ele geçirdi; Polonya'daki harekât durdu ama kapılar henüz kapanmadı.",

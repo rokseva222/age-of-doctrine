@@ -1084,6 +1084,9 @@ func path_nearest(cid: int, from: int, pred: Callable, max_depth: int = -1) -> A
 
 # ===================================================================== savaş / barış
 
+var setup_no_call := false   # çağ kurulumunda yalnızca listelenen savaşlar başlar; ittifaklar otomatik çağrılmaz
+
+
 func declare_war(a: int, b: int, joined: bool = false) -> bool:
 	if a == b or not countries[a].alive or not countries[b].alive:
 		return false
@@ -1113,8 +1116,9 @@ func declare_war(a: int, b: int, joined: bool = false) -> bool:
 			post_news(Names.war_by_player(rng, nb), countries[b].capital, "war_player")
 		else:
 			post_news(Names.war_declared(rng, na, nb), countries[a].capital, "war")
-		_call_allies(a, b)
-		_maybe_side_call(a, b)
+		if not setup_no_call:
+			_call_allies(a, b)
+			_maybe_side_call(a, b)
 	return true
 
 
