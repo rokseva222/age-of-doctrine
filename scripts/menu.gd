@@ -637,6 +637,8 @@ func _open_eras() -> void:
 		eic.icon = {"ww1": "helmet_ww1", "ww2": "helmet_ww2"}.get(eid, str(EraExt.field(eid, "icon", "helmet")) if EraExt.has_era(eid) else "helmet")
 		if AP.unlock_id_for_era(eid).begins_with("pack_"):
 			eic.icon = Icons.pick("alt_history", eic.icon)
+		if eid == "ott1299" or eid == "ott1453":
+			eic.icon = Icons.pick("era_" + eid, eic.icon)
 		eic.color = Color.WHITE
 		eic.custom_minimum_size = Vector2(54, 54)
 		eic.size_flags_vertical = Control.SIZE_SHRINK_CENTER
