@@ -43,7 +43,9 @@
   "Egypt": "I:ww1_egypt",
   "Afghanistan": "I:ww1_afghanistan",
   "Mongolia": "I:ww1_mongolia",
-  "Ethiopia": "I:ww1_ethiopia"
+  "Ethiopia": "I:ww1_ethiopia",
+  "Oman": "I:cw_oman",
+  "United States of America": "I:ww_usa48"
  },
  "ww2": {
   "United Kingdom": "UJ:0,0,1,1",
@@ -91,7 +93,9 @@
   "Kenya": "A:gb",
   "Ethiopia": "I:ww_italy|V:#009246,#ffffff,#ce2b37|R:.38,.3,.62,.7,#c8102e|C:.5,.5,.08,#ffffff",
   "Afghanistan": "I:ww2_afghanistan",
-  "Yemen": "I:ww2_yemen"
+  "Yemen": "I:ww2_yemen",
+  "Oman": "I:cw_oman",
+  "United States of America": "I:ww_usa48"
  },
  "cw62": {
   "Russia": "R:0,0,1,1,#cc0000|S:.14,.2,.09,#ffd700|P:#ffd700,.07,.38,.22,.34,.22,.4,.07,.42",
@@ -112,7 +116,19 @@
   "Burkina Faso": "I:cw62_upper_volta",
   "Tanzania": "I:cw62_tanganyika",
   "Sudan": "I:cw62_sudan",
-  "Iraq": "I:cw62_iraq"
+  "Iraq": "I:cw62_iraq",
+  "Canada": "I:cw62_canada",
+  "Dem. Rep. Congo": "I:cw62_congo",
+  "Myanmar": "I:cw62_myanmar",
+  "Malaysia": "I:cw62_malaya",
+  "Syria": "I:cw62_syria",
+  "Cambodia": "I:cw62_cambodia",
+  "Laos": "I:cw62_laos",
+  "Rwanda": "I:cw62_rwanda",
+  "Sri Lanka": "I:cw62_ceylon",
+  "Mali": "I:cw62_mali",
+  "Mauritania": "I:cw62_mauritania",
+  "Oman": "I:cw_oman"
  },
  "ott1520": {
   "Turkey": "R:0,0,1,1,#c8102e|C:0.42,.5,0.22,#ffffff|C:0.49,.5,0.19,#c8102e|S:.62,.5,.07,#ffffff",

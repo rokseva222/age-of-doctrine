@@ -523,6 +523,8 @@ static func restructure(gs, id: String) -> void:
 		c.name = d3["name"]
 		c.color = Color(d3["color"])
 		c.leader = d3.get("leader", "")
+		if d3.has("origin"):
+			c.origin_en = String(d3["origin"])       # kültür (isim/siluet/kabine) için asıl halk
 	# sömürge/himaye adları: dönemin gerçek adı (Fransız Cezayiri, Britanya Hindistanı ...)
 	var CN: Dictionary = _colony_names(id)
 	for cn_en in CN:

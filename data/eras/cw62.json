@@ -931,7 +931,6 @@
    "Guyana",
    "Fiji",
    "Singapore",
-   "Brunei",
    "Botswana",
    "Lesotho",
    "eSwatini",
@@ -1011,6 +1010,24 @@
  },
  "split": [
   [
+   1789,
+   "Brunei",
+   "United Kingdom",
+   "own"
+  ],
+  [
+   1790,
+   "Brunei",
+   "United Kingdom",
+   "own"
+  ],
+  [
+   1791,
+   "Brunei",
+   "United Kingdom",
+   "own"
+  ],
+  [
    [
     1829
    ],
@@ -1065,6 +1082,66 @@
    "Germany",
    "Liechtenstein",
    "own"
+  ],
+  [
+   389,
+   "Vietnam",
+   "Brunei",
+   "own"
+  ],
+  [
+   390,
+   "Vietnam",
+   "Brunei",
+   "own"
+  ],
+  [
+   391,
+   "Vietnam",
+   "Brunei",
+   "own"
+  ],
+  [
+   392,
+   "Vietnam",
+   "Brunei",
+   "own"
+  ],
+  [
+   393,
+   "Vietnam",
+   "Brunei",
+   "own"
+  ],
+  [
+   398,
+   "Vietnam",
+   "Brunei",
+   "own"
+  ],
+  [
+   401,
+   "Vietnam",
+   "Brunei",
+   "own"
+  ],
+  [
+   402,
+   "Vietnam",
+   "Brunei",
+   "own"
+  ],
+  [
+   403,
+   "Vietnam",
+   "Brunei",
+   "own"
+  ],
+  [
+   404,
+   "Vietnam",
+   "Brunei",
+   "own"
   ]
  ],
  "capital": {
@@ -1072,7 +1149,9 @@
   "Russia": 257,
   "Brazil": 184,
   "Germany": 448,
-  "Liechtenstein": 457
+  "Liechtenstein": 457,
+  "Brunei": 401,
+  "Vietnam": 408
  },
  "defs": {
   "United States of America": {
@@ -1298,6 +1377,37 @@
     "afv": 1200,
     "arty": 1000,
     "air": 300,
+    "sub": 0
+   }
+  },
+  "Brunei": {
+   "name": "Vietnam Cumhuriyeti (Güney)",
+   "color": "c9a227",
+   "flag": "I:cw62_south_vietnam|R:0,0,1,1,#f4c430",
+   "leader": "Devlet Başkanı|Ngô Đình Diệm",
+   "gdp": 5,
+   "origin": "Vietnam",
+   "mil": {
+    "personnel": 150000,
+    "tank": 120,
+    "afv": 350,
+    "arty": 400,
+    "air": 70,
+    "sub": 0
+   }
+  },
+  "Vietnam": {
+   "name": "Vietnam Demokratik Cumhuriyeti (Kuzey)",
+   "color": "b53a2e",
+   "flag": "R:0,0,1,1,#da251d|S:.5,.5,.2,#ffff00",
+   "leader": "Devlet Başkanı|Ho Şi Minh",
+   "gdp": 4,
+   "mil": {
+    "personnel": 250000,
+    "tank": 100,
+    "afv": 250,
+    "arty": 800,
+    "air": 50,
     "sub": 0
    }
   }
