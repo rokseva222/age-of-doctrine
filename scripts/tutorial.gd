@@ -11,7 +11,7 @@ const Settings = preload("res://scripts/settings.gd")
 const STEPS := [
 	{"t": "Hoş geldin, komutan", "b": "Bu kısa rehber oyunun temelini öğretir. İstediğin adımı «Geç» ile atlayabilirsin; eylem adımları sen yapınca kendiliğinden ilerler.", "need": "", "hl": ""},
 	{"t": "Haritayı tanı", "b": "Haritayı parmağınla sürükle, iki parmakla yakınlaştır. Şimdi herhangi bir eyalete dokun.", "need": "tap", "hl": ""},
-	{"t": "Eyalet kartı", "b": "Kartta eyaletin sahibi, nüfusu, geliri ve savunması yazar; başkent yıldızlıdır. Eyaletlerin sana gelir getirir, kaybettikçe gelirin düşer.", "need": "", "hl": ""},
+	{"t": "Eyalet kartı", "b": "Kartta eyaletin sahibi, nüfusu, geliri ve savunması yazar; başkent yıldızlıdır. Eyaletler sana gelir getirir, kaybettikçe gelirin düşer.", "need": "", "hl": ""},
 	{"t": "Üst çubuk", "b": "Kasa (para), asker, eyalet sayısı ve tarih burada. Her tur bir haftadır: gelir her hafta kasana eklenir, ordu ve harcamalar düşer.", "need": "", "hl": "topbar"},
 	{"t": "Ordunu seç", "b": "Kendi eyaletine dokun ve kartta «Ordu seç» düğmesine bas. Ordular harita üzerinde asker sayısıyla görünür.", "need": "army", "hl": ""},
 	{"t": "Ordu hareketi", "b": "Komşu bir eyalete dokun ve «Ordu buraya yürüsün» de. Elle gönderdiğin ordu varışta bekler; emir vermediğin ordular, ayardaysa, otomatik savaşır.", "need": "order", "hl": ""},

@@ -26,7 +26,8 @@ func _init() -> void:
 	gs.new_world(4242 + pi)
 	if kind == "era":
 		Eras.restructure(gs, id)
-	var nm: String = sug[pi % sug.size()] if not sug.is_empty() else "Turkey"
+	var FREE_ROSTER := ["Turkey", "Brazil", "Japan", "Nigeria", "France", "India", "Poland", "Egypt", "Mexico", "Australia", "Iran", "Argentina", "Indonesia", "Spain", "South Africa", "Ukraine"]
+	var nm: String = sug[pi % sug.size()] if not sug.is_empty() else FREE_ROSTER[pi % FREE_ROSTER.size()]
 	var me: int = int(gs.macro_idx.get(nm, 0))
 	var oc := {"t": ""}
 	gs.game_over.connect(func(v, t): oc.t = ("ZAFER@%d: " % gs.turn if v else "YENİLGİ@%d: " % gs.turn) + t)

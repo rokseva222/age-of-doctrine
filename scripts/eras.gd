@@ -231,7 +231,7 @@ const DEFS := {
 		"South Africa": {"name": "Güney Afrika", "color": "cf8aa0", "leader": "Başbakan|Louis Botha", "gdp": 6, "mil": {"personnel": 8000, "tank": 0, "afv": 0, "arty": 40, "air": 0, "sub": 0}},
 		"Saudi Arabia": {"name": "Necid Emirliği", "color": "98b070", "leader": "Emir|Abdülaziz bin Suud", "gdp": 1, "mil": {"personnel": 15000, "tank": 0, "afv": 0, "arty": 10, "air": 0, "sub": 0}},
 		"Iran": {"name": "Pers Devleti", "color": "b0a070", "leader": "Şah|Ahmed Şah Kaçar", "gdp": 4, "mil": {"personnel": 30000, "tank": 0, "afv": 0, "arty": 50, "air": 0, "sub": 0}},
-		"Switzerland": {"name": "İsviçre", "color": "c07a7a", "leader": "Federal Konsey|Başkanı", "gdp": 8, "mil": {"personnel": 250000, "tank": 0, "afv": 0, "arty": 400, "air": 10, "sub": 0}},
+		"Switzerland": {"name": "İsviçre", "color": "c07a7a", "leader": "Federal Konsey Başkanı|Arthur Hoffmann", "gdp": 8, "mil": {"personnel": 250000, "tank": 0, "afv": 0, "arty": 400, "air": 10, "sub": 0}},
 		"Thailand": {"name": "Siyam", "color": "a67a9a", "leader": "Kral|Vajiravudh", "gdp": 3, "mil": {"personnel": 50000, "tank": 0, "afv": 0, "arty": 100, "air": 0, "sub": 0}},
 		"Brazil": {"name": "Brezilya", "color": "5aa070", "leader": "Başkan|Hermes da Fonseca", "gdp": 20, "mil": {"personnel": 60000, "tank": 0, "afv": 0, "arty": 100, "air": 5, "sub": 0}},
 		"Argentina": {"name": "Arjantin", "color": "7ab0d0", "leader": "Başkan|Victorino de la Plaza", "gdp": 25, "mil": {"personnel": 40000, "tank": 0, "afv": 0, "arty": 100, "air": 5, "sub": 0}},
