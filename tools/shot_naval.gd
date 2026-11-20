@@ -28,9 +28,9 @@ func _init() -> void:
 		St2.seen_update = Info.UPDATE_VER
 		St2.tut_done = true
 		main._on_start_requested(me)
-		await create_timer(7.0).timeout
+		await create_timer(13.0).timeout
 		var gs = main.gs
-		for i in 8:
+		for i in 10:
 			main.ui.hide_dialog()
 			await create_timer(0.5).timeout
 		Fleets.ensure(gs)
