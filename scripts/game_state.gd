@@ -2640,6 +2640,7 @@ func end_turn() -> void:
 	Air.tick(self)
 	t = _tp("move", t)
 	_process_sieges()
+	Air.fix_bases(self)
 	t = _tp("siege", t)
 	refresh_stats()
 	_check_elimination()

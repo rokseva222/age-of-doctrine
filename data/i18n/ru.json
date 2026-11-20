@@ -4671,7 +4671,16 @@
   "Bir ordunu seçip hava köprüsü kur.": "Выбери одну из своих армий, чтобы организовать воздушный мост.",
   "Avcı ve keşif kanatları menzilinde otomatik görev yapar.": "Истребительные и разведывательные авиакрылья действуют в своей зоне автоматически.",
   "Taarruz helikopteri": "Ударный вертолёт",
-  "Hava saldırısı: düşman kaybı %s asker; kayıp uçak %d; düşürülen düşman avcısı %d.": "Воздушный удар: враг потерял %s солдат; наши потери — %d самолётов; сбито вражеских истребителей: %d."
+  "Hava saldırısı: düşman kaybı %s asker; kayıp uçak %d; düşürülen düşman avcısı %d.": "Воздушный удар: враг потерял %s солдат; наши потери — %d самолётов; сбито вражеских истребителей: %d.",
+  "Harita katmanı": "Слой карты",
+  "Haritada kalabalık olursa kapat; filolar çalışmaya devam eder, yalnız rozetler gizlenir.": "Отключите, если карта перегружена: флоты продолжают действовать, скрываются только значки.",
+  "Henüz filon yok.": "У вас пока нет флотов.",
+  "Henüz hava kanadın yok.": "У вас пока нет авиакрыльев.",
+  "Filolarım": "Мои флоты",
+  "Filo menüsü": "Меню флотов",
+  "Duraklatma menüsünde Savaş Odası ve Siyasi sistemin yanına Deniz filoları ve Hava filoları sayfaları geldi: haritadaki rozetleri tek dokunuşla gizle/göster, tüm filolarını listeden seç ve haritada git. Harita artık kalabalık olmasın diye düğme eklemiyor.": "В Меню игры рядом со страницами Штаб войны и Политическая система появились страницы Морские флоты и Авиакрылья: скрывайте и показывайте значки на карте одним касанием, выбирайте любой из своих флотов в списке и переходите к нему на карте. Чтобы карта не загромождалась, кнопки на ней больше не добавляются.",
+  "Deniz ve hava filoları": "Морские флоты и авиакрылья",
+  "Denizdeki filoya ya da bir üssün üstündeki hava kanadına dokunup seç; sonra denize, kendi eyaletine ya da düşman eyaletine dokunarak emir ver. Filoya ad ver, bayrak tasarla; komutanlıktan gemi ve uçak sınıflarını, rütbeyi gör. Haritada kalabalık olursa Duraklatma menüsü > Deniz filoları / Hava filoları sayfasından rozetleri gizle.": "Коснитесь флота в море или авиакрыла над базой, чтобы выбрать его; затем отдавайте приказы, коснувшись моря, своей провинции или вражеской провинции. Дайте флоту название и создайте флаг; в Командовании флотом смотрите классы кораблей и самолётов, а также звание. Если карта перегружена, скройте значки на странице Меню игры > Морские флоты / Авиакрылья."
  },
  "months": [
   "января",

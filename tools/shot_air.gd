@@ -63,6 +63,20 @@ func _init() -> void:
 		await create_timer(0.8).timeout
 		await _shot(out + "/03_komutanlik_avci.png")
 		main.ui.hide_dialog()
+	main.ui.show_pause_menu()
+	await create_timer(0.8).timeout
+	await _shot(out + "/04_menu.png")
+	main.ui.hide_dialog()
+	await create_timer(0.3).timeout
+	var FP = load("res://scripts/fleet_panel.gd")
+	FP.open(main.ui, gs, true)
+	await create_timer(0.8).timeout
+	await _shot(out + "/05_hava_panel.png")
+	main.ui.hide_dialog()
+	await create_timer(0.3).timeout
+	FP.open(main.ui, gs, false)
+	await create_timer(0.8).timeout
+	await _shot(out + "/06_deniz_panel.png")
 	quit()
 
 func _shot(path: String) -> void:

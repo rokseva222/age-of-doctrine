@@ -4671,7 +4671,16 @@
   "Bir ordunu seçip hava köprüsü kur.": "اختر أحد جيوشك لإقامة جسر جوي.",
   "Avcı ve keşif kanatları menzilinde otomatik görev yapar.": "تعمل أجنحة المقاتلات والاستطلاع تلقائيًا ضمن مداها.",
   "Taarruz helikopteri": "مروحية هجومية",
-  "Hava saldırısı: düşman kaybı %s asker; kayıp uçak %d; düşürülen düşman avcısı %d.": "غارة جوية: خسر العدو %s جندي؛ فقدنا %d طائرة؛ أُسقطت %d مقاتلة معادية."
+  "Hava saldırısı: düşman kaybı %s asker; kayıp uçak %d; düşürülen düşman avcısı %d.": "غارة جوية: خسر العدو %s جندي؛ فقدنا %d طائرة؛ أُسقطت %d مقاتلة معادية.",
+  "Harita katmanı": "طبقة الخريطة",
+  "Haritada kalabalık olursa kapat; filolar çalışmaya devam eder, yalnız rozetler gizlenir.": "أوقفه إذا ازدحمت الخريطة؛ تستمر الأساطيل في العمل وتُخفى الشارات فقط.",
+  "Henüz filon yok.": "ليس لديك أساطيل بعد.",
+  "Henüz hava kanadın yok.": "ليس لديك أجنحة جوية بعد.",
+  "Filolarım": "أساطيلي",
+  "Filo menüsü": "قائمة الأساطيل",
+  "Duraklatma menüsünde Savaş Odası ve Siyasi sistemin yanına Deniz filoları ve Hava filoları sayfaları geldi: haritadaki rozetleri tek dokunuşla gizle/göster, tüm filolarını listeden seç ve haritada git. Harita artık kalabalık olmasın diye düğme eklemiyor.": "في قائمة اللعبة ظهرت صفحتا الأساطيل البحرية والأجنحة الجوية بجوار غرفة الحرب والنظام السياسي: أخفِ الشارات على الخريطة أو أظهرها بلمسة واحدة، واختر أي أسطول من القائمة وانتقل إليه على الخريطة. لم تعد الخريطة تضيف أزراراً حتى لا تزدحم.",
+  "Deniz ve hava filoları": "الأساطيل البحرية والأجنحة الجوية",
+  "Denizdeki filoya ya da bir üssün üstündeki hava kanadına dokunup seç; sonra denize, kendi eyaletine ya da düşman eyaletine dokunarak emir ver. Filoya ad ver, bayrak tasarla; komutanlıktan gemi ve uçak sınıflarını, rütbeyi gör. Haritada kalabalık olursa Duraklatma menüsü > Deniz filoları / Hava filoları sayfasından rozetleri gizle.": "المس الأسطول في البحر أو الجناح الجوي فوق قاعدة لتحديده؛ ثم أصدر الأوامر بلمس البحر أو مقاطعتك أو مقاطعة العدو. سمِّ الأسطول وصمّم له علماً؛ وشاهد فئات السفن والطائرات والرتبة في قيادة الأسطول. إذا ازدحمت الخريطة فأخفِ الشارات من صفحة قائمة اللعبة > الأساطيل البحرية / الأجنحة الجوية."
  },
  "months": [
   "يناير",

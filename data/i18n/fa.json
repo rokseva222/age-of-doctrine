@@ -4671,7 +4671,16 @@
   "Bir ordunu seçip hava köprüsü kur.": "یکی از ارتش‌هایت را انتخاب کن و پل هوایی برپا کن.",
   "Avcı ve keşif kanatları menzilinde otomatik görev yapar.": "گردان‌های شکاری و شناسایی در برد خود خودکار عمل می‌کنند.",
   "Taarruz helikopteri": "بالگرد تهاجمی",
-  "Hava saldırısı: düşman kaybı %s asker; kayıp uçak %d; düşürülen düşman avcısı %d.": "حمله هوایی: دشمن %s سرباز از دست داد؛ %d هواپیمای ما از دست رفت؛ %d جنگنده دشمن سرنگون شد."
+  "Hava saldırısı: düşman kaybı %s asker; kayıp uçak %d; düşürülen düşman avcısı %d.": "حمله هوایی: دشمن %s سرباز از دست داد؛ %d هواپیمای ما از دست رفت؛ %d جنگنده دشمن سرنگون شد.",
+  "Harita katmanı": "لایه نقشه",
+  "Haritada kalabalık olursa kapat; filolar çalışmaya devam eder, yalnız rozetler gizlenir.": "اگر نقشه شلوغ شد خاموشش کن؛ ناوگان‌ها به کار ادامه می‌دهند و فقط نشان‌ها پنهان می‌شوند.",
+  "Henüz filon yok.": "هنوز ناوگانی نداری.",
+  "Henüz hava kanadın yok.": "هنوز گردان هوایی نداری.",
+  "Filolarım": "ناوگان‌های من",
+  "Filo menüsü": "منوی ناوگان",
+  "Duraklatma menüsünde Savaş Odası ve Siyasi sistemin yanına Deniz filoları ve Hava filoları sayfaları geldi: haritadaki rozetleri tek dokunuşla gizle/göster, tüm filolarını listeden seç ve haritada git. Harita artık kalabalık olmasın diye düğme eklemiyor.": "در منوی بازی، صفحه‌های ناوگان‌های دریایی و گردان‌های هوایی کنار اتاق جنگ و نظام سیاسی آمده‌اند: نشان‌های روی نقشه را با یک لمس پنهان یا نمایان کن، همهٔ ناوگان‌هایت را از فهرست انتخاب کن و روی نقشه به سراغشان برو. نقشه دیگر دکمه‌ای اضافه نمی‌کند تا شلوغ نشود.",
+  "Deniz ve hava filoları": "ناوگان‌های دریایی و گردان‌های هوایی",
+  "Denizdeki filoya ya da bir üssün üstündeki hava kanadına dokunup seç; sonra denize, kendi eyaletine ya da düşman eyaletine dokunarak emir ver. Filoya ad ver, bayrak tasarla; komutanlıktan gemi ve uçak sınıflarını, rütbeyi gör. Haritada kalabalık olursa Duraklatma menüsü > Deniz filoları / Hava filoları sayfasından rozetleri gizle.": "ناوگانی را که در دریاست یا گردان هوایی را که بالای یک پایگاه است لمس کن تا انتخاب شود؛ سپس با لمس یک دریا، استان خودت یا استان دشمن فرمان بده. برای ناوگان نام بگذار و پرچم طراحی کن؛ در فرماندهی ناوگان رده‌های کشتی و هواپیما و درجه را ببین. اگر نقشه شلوغ شد، نشان‌ها را از صفحهٔ منوی بازی > ناوگان‌های دریایی / گردان‌های هوایی پنهان کن."
  },
  "months": [
   "ژانویه",

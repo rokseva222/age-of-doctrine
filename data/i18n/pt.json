@@ -4670,7 +4670,16 @@
   "Bir ordunu seçip hava köprüsü kur.": "Escolha um dos seus exércitos para montar uma ponte aérea.",
   "Avcı ve keşif kanatları menzilinde otomatik görev yapar.": "As alas de caça e de reconhecimento atuam automaticamente dentro do seu alcance.",
   "Taarruz helikopteri": "Helicóptero de ataque",
-  "Hava saldırısı: düşman kaybı %s asker; kayıp uçak %d; düşürülen düşman avcısı %d.": "Ataque aéreo: o inimigo perdeu %s soldados; perdemos %d aeronaves; caças inimigos abatidos: %d."
+  "Hava saldırısı: düşman kaybı %s asker; kayıp uçak %d; düşürülen düşman avcısı %d.": "Ataque aéreo: o inimigo perdeu %s soldados; perdemos %d aeronaves; caças inimigos abatidos: %d.",
+  "Harita katmanı": "Camada do mapa",
+  "Haritada kalabalık olursa kapat; filolar çalışmaya devam eder, yalnız rozetler gizlenir.": "Desative se o mapa ficar cheio; as frotas continuam atuando, só os emblemas ficam ocultos.",
+  "Henüz filon yok.": "Você ainda não tem frotas.",
+  "Henüz hava kanadın yok.": "Você ainda não tem alas aéreas.",
+  "Filolarım": "Minhas frotas",
+  "Filo menüsü": "Menu de frotas",
+  "Duraklatma menüsünde Savaş Odası ve Siyasi sistemin yanına Deniz filoları ve Hava filoları sayfaları geldi: haritadaki rozetleri tek dokunuşla gizle/göster, tüm filolarını listeden seç ve haritada git. Harita artık kalabalık olmasın diye düğme eklemiyor.": "No Menu do jogo, as páginas Frotas navais e Alas aéreas agora ficam ao lado de Sala de Guerra e Sistema político: oculte ou mostre as insígnias do mapa com um toque, escolha qualquer uma das suas frotas na lista e vá até ela no mapa. O mapa não adiciona mais botões, para não ficar sobrecarregado.",
+  "Deniz ve hava filoları": "Frotas navais e alas aéreas",
+  "Denizdeki filoya ya da bir üssün üstündeki hava kanadına dokunup seç; sonra denize, kendi eyaletine ya da düşman eyaletine dokunarak emir ver. Filoya ad ver, bayrak tasarla; komutanlıktan gemi ve uçak sınıflarını, rütbeyi gör. Haritada kalabalık olursa Duraklatma menüsü > Deniz filoları / Hava filoları sayfasından rozetleri gizle.": "Toque numa frota no mar ou numa ala aérea sobre uma base para selecioná-la; depois dê ordens tocando num mar, na sua própria província ou numa província inimiga. Dê um nome à frota e desenhe uma bandeira; veja no Comando da frota as classes de navios e aeronaves e a patente. Se o mapa ficar cheio, oculte as insígnias na página Menu do jogo > Frotas navais / Alas aéreas."
  },
  "months": [
   "janeiro",

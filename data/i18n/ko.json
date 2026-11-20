@@ -4671,7 +4671,16 @@
   "Bir ordunu seçip hava köprüsü kur.": "군대를 하나 골라 공중 다리를 놓으세요.",
   "Avcı ve keşif kanatları menzilinde otomatik görev yapar.": "전투기와 정찰 항공단은 사거리 안에서 자동으로 임무를 수행한다.",
   "Taarruz helikopteri": "공격 헬리콥터",
-  "Hava saldırısı: düşman kaybı %s asker; kayıp uçak %d; düşürülen düşman avcısı %d.": "공습: 적 병력 %s명 손실, 아군 항공기 %d대 손실, 적 전투기 %d대 격추."
+  "Hava saldırısı: düşman kaybı %s asker; kayıp uçak %d; düşürülen düşman avcısı %d.": "공습: 적 병력 %s명 손실, 아군 항공기 %d대 손실, 적 전투기 %d대 격추.",
+  "Harita katmanı": "지도 레이어",
+  "Haritada kalabalık olursa kapat; filolar çalışmaya devam eder, yalnız rozetler gizlenir.": "지도가 복잡하면 끄세요. 함대는 계속 작동하며 배지만 숨겨집니다.",
+  "Henüz filon yok.": "아직 함대가 없습니다.",
+  "Henüz hava kanadın yok.": "아직 항공단이 없습니다.",
+  "Filolarım": "내 함대",
+  "Filo menüsü": "함대 메뉴",
+  "Duraklatma menüsünde Savaş Odası ve Siyasi sistemin yanına Deniz filoları ve Hava filoları sayfaları geldi: haritadaki rozetleri tek dokunuşla gizle/göster, tüm filolarını listeden seç ve haritada git. Harita artık kalabalık olmasın diye düğme eklemiyor.": "게임 메뉴의 작전실과 정치 체제 옆에 해군 함대와 항공단 페이지가 추가되었습니다. 지도의 문장을 한 번 탭으로 숨기거나 표시하고, 내 함대를 목록에서 골라 지도에서 바로 이동하세요. 지도가 복잡해지지 않도록 이제 지도에는 버튼이 추가되지 않습니다.",
+  "Deniz ve hava filoları": "해군 함대와 항공단",
+  "Denizdeki filoya ya da bir üssün üstündeki hava kanadına dokunup seç; sonra denize, kendi eyaletine ya da düşman eyaletine dokunarak emir ver. Filoya ad ver, bayrak tasarla; komutanlıktan gemi ve uçak sınıflarını, rütbeyi gör. Haritada kalabalık olursa Duraklatma menüsü > Deniz filoları / Hava filoları sayfasından rozetleri gizle.": "바다 위의 함대나 기지 위의 항공단을 탭해 선택한 뒤, 바다, 자국 지방, 적 지방을 탭해 명령을 내리세요. 함대에 이름을 붙이고 깃발을 디자인할 수 있으며, 함대 지휘부에서 함선과 항공기 종류, 계급을 확인할 수 있습니다. 지도가 복잡해지면 게임 메뉴 > 해군 함대 / 항공단 페이지에서 문장을 숨기세요."
  },
  "months": [
   "1월",

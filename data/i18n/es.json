@@ -4670,7 +4670,16 @@
   "Bir ordunu seçip hava köprüsü kur.": "Elige uno de tus ejércitos para establecer un puente aéreo.",
   "Avcı ve keşif kanatları menzilinde otomatik görev yapar.": "Las alas de caza y de reconocimiento actúan automáticamente dentro de su alcance.",
   "Taarruz helikopteri": "Helicóptero de ataque",
-  "Hava saldırısı: düşman kaybı %s asker; kayıp uçak %d; düşürülen düşman avcısı %d.": "Ataque aéreo: el enemigo perdió %s soldados; perdimos %d aviones; cazas enemigos derribados %d."
+  "Hava saldırısı: düşman kaybı %s asker; kayıp uçak %d; düşürülen düşman avcısı %d.": "Ataque aéreo: el enemigo perdió %s soldados; perdimos %d aviones; cazas enemigos derribados %d.",
+  "Harita katmanı": "Capa del mapa",
+  "Haritada kalabalık olursa kapat; filolar çalışmaya devam eder, yalnız rozetler gizlenir.": "Desactívalo si el mapa se satura; las flotas siguen operando, solo se ocultan las insignias.",
+  "Henüz filon yok.": "Aún no tienes flotas.",
+  "Henüz hava kanadın yok.": "Aún no tienes alas aéreas.",
+  "Filolarım": "Mis flotas",
+  "Filo menüsü": "Menú de flotas",
+  "Duraklatma menüsünde Savaş Odası ve Siyasi sistemin yanına Deniz filoları ve Hava filoları sayfaları geldi: haritadaki rozetleri tek dokunuşla gizle/göster, tüm filolarını listeden seç ve haritada git. Harita artık kalabalık olmasın diye düğme eklemiyor.": "En el Menú del juego, las páginas Flotas navales y Alas aéreas ya están junto a Sala de guerra y Sistema político: oculta o muestra las insignias del mapa con un toque, elige cualquiera de tus flotas en la lista y ve a ella en el mapa. El mapa ya no añade botones para que no se sature.",
+  "Deniz ve hava filoları": "Flotas navales y alas aéreas",
+  "Denizdeki filoya ya da bir üssün üstündeki hava kanadına dokunup seç; sonra denize, kendi eyaletine ya da düşman eyaletine dokunarak emir ver. Filoya ad ver, bayrak tasarla; komutanlıktan gemi ve uçak sınıflarını, rütbeyi gör. Haritada kalabalık olursa Duraklatma menüsü > Deniz filoları / Hava filoları sayfasından rozetleri gizle.": "Toca una flota en el mar o un ala aérea sobre una base para seleccionarla; luego da órdenes tocando un mar, tu propia provincia o una provincia enemiga. Pon nombre a la flota y diseña una bandera; consulta en el Mando de flota las clases de buques y aviones y el rango. Si el mapa se llena, oculta las insignias desde la página Menú del juego > Flotas navales / Alas aéreas."
  },
  "months": [
   "enero",

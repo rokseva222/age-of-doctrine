@@ -4670,7 +4670,16 @@
   "Bir ordunu seçip hava köprüsü kur.": "Wähle eine deiner Armeen aus, um eine Luftbrücke einzurichten.",
   "Avcı ve keşif kanatları menzilinde otomatik görev yapar.": "Jagd- und Aufklärungsgruppen sind in ihrer Reichweite automatisch im Einsatz.",
   "Taarruz helikopteri": "Kampfhubschrauber",
-  "Hava saldırısı: düşman kaybı %s asker; kayıp uçak %d; düşürülen düşman avcısı %d.": "Luftangriff: Feind verlor %s Soldaten; eigene Flugzeuge verloren %d; abgeschossene feindliche Jäger %d."
+  "Hava saldırısı: düşman kaybı %s asker; kayıp uçak %d; düşürülen düşman avcısı %d.": "Luftangriff: Feind verlor %s Soldaten; eigene Flugzeuge verloren %d; abgeschossene feindliche Jäger %d.",
+  "Harita katmanı": "Kartenebene",
+  "Haritada kalabalık olursa kapat; filolar çalışmaya devam eder, yalnız rozetler gizlenir.": "Ausschalten, wenn die Karte überladen wirkt; die Flotten arbeiten weiter, nur die Abzeichen werden ausgeblendet.",
+  "Henüz filon yok.": "Du hast noch keine Flotten.",
+  "Henüz hava kanadın yok.": "Du hast noch keine Luftgruppen.",
+  "Filolarım": "Meine Flotten",
+  "Filo menüsü": "Flottenmenü",
+  "Duraklatma menüsünde Savaş Odası ve Siyasi sistemin yanına Deniz filoları ve Hava filoları sayfaları geldi: haritadaki rozetleri tek dokunuşla gizle/göster, tüm filolarını listeden seç ve haritada git. Harita artık kalabalık olmasın diye düğme eklemiyor.": "Im Spielmenü stehen neben Kriegsraum und Politisches System jetzt die Seiten Seeflotten und Luftgruppen: Blende die Abzeichen auf der Karte mit einem Tipp aus oder ein, wähle alle deine Flotten aus der Liste und spring auf der Karte zu ihnen. Die Karte fügt keine Schaltflächen mehr hinzu, damit sie übersichtlich bleibt.",
+  "Deniz ve hava filoları": "See- und Luftflotten",
+  "Denizdeki filoya ya da bir üssün üstündeki hava kanadına dokunup seç; sonra denize, kendi eyaletine ya da düşman eyaletine dokunarak emir ver. Filoya ad ver, bayrak tasarla; komutanlıktan gemi ve uçak sınıflarını, rütbeyi gör. Haritada kalabalık olursa Duraklatma menüsü > Deniz filoları / Hava filoları sayfasından rozetleri gizle.": "Tippe auf eine Flotte auf See oder eine Luftgruppe über einem Stützpunkt, um sie auszuwählen; gib dann Befehle, indem du auf ein Meer, deine eigene Provinz oder eine feindliche Provinz tippst. Gib der Flotte einen Namen und entwirf eine Flagge; sieh dir im Flottenkommando Schiffs- und Flugzeugklassen sowie den Rang an. Wird die Karte zu voll, blende die Abzeichen auf der Seite Spielmenü > Seeflotten / Luftgruppen aus."
  },
  "months": [
   "Januar",

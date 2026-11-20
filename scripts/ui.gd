@@ -35,6 +35,7 @@ const Daily = preload("res://scripts/daily.gd")
 const Fleets = preload("res://scripts/fleets.gd")
 const FleetExt = preload("res://scripts/fleet_ext.gd")
 const Air = preload("res://scripts/air.gd")
+const FleetPanel = preload("res://scripts/fleet_panel.gd")
 const Seas = preload("res://scripts/seas.gd")
 const Politics = preload("res://scripts/politics.gd")
 const WarRoomUI = preload("res://scripts/war_room_ui.gd")
@@ -1114,6 +1115,8 @@ func show_pause_menu() -> void:
 		["Divan (Hikâye Modu)", "", "crown", func(): show_career()],
 		["Savaş Odası", "", "swords", func(): WarRoomUI.open(self)],
 		["Siyasi sistem", "", "gavel", func(): show_politics()],
+		["Deniz filoları", "", Icons.pick("uc_ship", "ship"), func(): FleetPanel.open(self, gs, false)],
+		["Hava filoları", "", Icons.pick("uc_jet", "jet"), func(): FleetPanel.open(self, gs, true)],
 		["Meydan okuma durumu", "", "target", func(): show_daily()],
 		["Stratejik geçitler", "", "anchor", func(): show_chokes()],
 		["Sandbox", "purple", Icons.pick("sandbox", "gear"), func(): SandboxUI.open(self, gs)],

@@ -169,6 +169,14 @@ func _apply_settings() -> void:
 	map.hud.show_country_names = Settings.country_names and not bare
 	map.hud.show_province_names = Settings.province_names and not bare
 	map.hud.show_armies = Settings.armies and mode == "game"
+	map.hud.show_navy = Settings.navy
+	map.hud.show_air = Settings.air
+	if not Settings.navy and selected_fleet != null:
+		_clear_fleet_sel()
+		ui.hide_info()
+	if not Settings.air and selected_wing != null:
+		_clear_wing_sel()
+		ui.hide_info()
 	map.set_quality(Settings.smooth)
 	map.hud.queue_redraw()
 	menu.continue_btn.visible = Saves.any()
@@ -1173,6 +1181,18 @@ func _on_ui_action(act: String, arg) -> void:
 		"wing_lift_from":
 			if selected_wing != null:
 				AirUI.lift_dest(ui, gs, selected_wing, int(arg), _wing_done)
+		"fleet_focus":
+			var ff = gs.fleets.get(int(arg))
+			if ff != null:
+				map.animate_to(map._center_offset(Seas.pos(ff.zone), maxf(map.zoom, 2.2)), maxf(map.zoom, 2.2))
+				if ff.owner == gs.player and Settings.navy:
+					_select_fleet(ff)
+		"wing_focus":
+			var ww = gs.wings.get(int(arg))
+			if ww != null:
+				map.animate_to(map._center_offset(gs.provinces[ww.base].label_pos, maxf(map.zoom, 2.4)), maxf(map.zoom, 2.4))
+				if ww.owner == gs.player and Settings.air:
+					_select_wing(ww)
 		"wing_deselect":
 			_clear_wing_sel()
 			selected_pid = -1

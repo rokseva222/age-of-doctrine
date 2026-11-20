@@ -593,7 +593,7 @@ static func lift_dests(gs, w, src_pid: int) -> Array:
 
 
 static func lift_check(gs, w, src: int, dst: int) -> String:
-	if w == null or w.owner != gs.player or w.kind != "transport":
+	if w == null or w.kind != "transport":
 		return "Bu kanat hava nakliyesi yapamaz."
 	if w.cd > gs.turn:
 		return "Kanat hazırlanıyor (%d hafta)." % (w.cd - gs.turn)
@@ -666,8 +666,9 @@ static func airlift(gs, wid: int, src: int, dst: int) -> String:
 	w.tgt_turn = gs.turn
 	gs.stats["airlifts"] = int(gs.stats.get("airlifts", 0)) + 1
 	gs._enter(army, dst)
-	gs.post_news("%s hava köprüsüyle %s eyaletine %s asker taşıdı." % [gs.countries[me].name, gs.provinces[dst].name, Macro.num(n)], dst, "war_player", "jet")
-	gs.player_acted = true
+	gs.post_news("%s hava köprüsüyle %s eyaletine %s asker taşıdı." % [gs.countries[me].name, gs.provinces[dst].name, Macro.num(n)], dst, "war_player" if me == gs.player else "ops", "jet")
+	if me == gs.player:
+		gs.player_acted = true
 	gs.refresh_stats()
 	gs.province_changed.emit(dst)
 	gs.province_changed.emit(src)
@@ -723,6 +724,25 @@ static func tick(gs) -> void:
 	_ai(gs)
 
 
+## Üssü ele geçirilen kanatları en yakın dost eyalete taşır (kuşatma sonuçlarından sonra da çağrılır)
+static func fix_bases(gs) -> void:
+	if not enabled or gs.wings.is_empty():
+		return
+	for w in gs.wings.values().duplicate():
+		if w.base >= 0 and gs.provinces[w.base].controller == w.owner:
+			continue
+		var c = gs.countries[w.owner] if w.owner >= 0 and w.owner < gs.countries.size() else null
+		if c == null or not c.alive:
+			gs.wings.erase(w.id)
+			continue
+		var nb: int = nearest_base(gs, c, w.base)
+		if nb < 0:
+			gs.wings.erase(w.id)
+			continue
+		w.base = nb
+		w.cd = maxi(w.cd, gs.turn + 1)
+
+
 static func _controls(gs, w) -> bool:
 	if w.owner != gs.player:
 		return true
@@ -733,6 +753,9 @@ static func _ai(gs) -> void:
 	var rr := _rng(gs, 991)
 	for w in gs.wings.values().duplicate():
 		if not gs.wings.has(w.id) or w.cd > gs.turn or w.stance == "defend":
+			continue
+		if w.kind == "transport":
+			_ai_lift(gs, w, rr)
 			continue
 		if w.kind != "bomber" and w.kind != "drone":
 			continue
@@ -759,6 +782,32 @@ static func _ai(gs) -> void:
 		if best >= 0:
 			resolve_strike(gs, w, best)
 			w.cd = gs.turn + STRIKE_CD + 1
+
+
+## Yapay zekâ hava köprüsü: arkadaki büyük bir orduyu en yakın dost cephe eyaletine uçurur (paraşüt yok)
+static func _ai_lift(gs, w, rr: RandomNumberGenerator) -> void:
+	if w.cd > gs.turn or not _controls(gs, w) or rr.randf() > 0.3:
+		return
+	var c = gs.countries[w.owner]
+	if c.enemies.is_empty():
+		return
+	for src in lift_sources(gs, w):
+		var a = gs.armies[src]
+		if a.size < 4000 or a.op != "":
+			continue
+		var p = gs.provinces[src]
+		var front := false
+		for nb in p.neighbors:
+			var q = gs.provinces[nb]
+			if q.controller != w.owner and q.controller >= 0 and gs.at_war(w.owner, q.controller):
+				front = true
+		if front:
+			continue
+		for dst in lift_dests(gs, w, src):
+			if gs.provinces[dst].controller == w.owner:
+				airlift(gs, w.id, src, dst)
+				return
+		return
 
 
 # ------------------------------------------------------------------ kayıt

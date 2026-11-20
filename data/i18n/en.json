@@ -4447,7 +4447,16 @@
   "Bir ordunu seçip hava köprüsü kur.": "Select one of your armies to set up an air bridge.",
   "Avcı ve keşif kanatları menzilinde otomatik görev yapar.": "Fighter and recon wings operate automatically within their range.",
   "Taarruz helikopteri": "Attack helicopter",
-  "Hava saldırısı: düşman kaybı %s asker; kayıp uçak %d; düşürülen düşman avcısı %d.": "Air strike: enemy lost %s troops; our aircraft lost %d; enemy fighters shot down %d."
+  "Hava saldırısı: düşman kaybı %s asker; kayıp uçak %d; düşürülen düşman avcısı %d.": "Air strike: enemy lost %s troops; our aircraft lost %d; enemy fighters shot down %d.",
+  "Harita katmanı": "Map layer",
+  "Haritada kalabalık olursa kapat; filolar çalışmaya devam eder, yalnız rozetler gizlenir.": "Turn off if the map gets crowded; fleets keep working, only the badges are hidden.",
+  "Henüz filon yok.": "You have no fleets yet.",
+  "Henüz hava kanadın yok.": "You have no air wings yet.",
+  "Filolarım": "My fleets",
+  "Filo menüsü": "Fleet menu",
+  "Duraklatma menüsünde Savaş Odası ve Siyasi sistemin yanına Deniz filoları ve Hava filoları sayfaları geldi: haritadaki rozetleri tek dokunuşla gizle/göster, tüm filolarını listeden seç ve haritada git. Harita artık kalabalık olmasın diye düğme eklemiyor.": "In the Game menu, Naval fleets and Air wings pages now sit next to War Room and Political system: hide or show the map badges with one tap, pick any of your fleets from the list and go to it on the map. The map no longer adds buttons, so it stays uncluttered.",
+  "Deniz ve hava filoları": "Naval fleets and air wings",
+  "Denizdeki filoya ya da bir üssün üstündeki hava kanadına dokunup seç; sonra denize, kendi eyaletine ya da düşman eyaletine dokunarak emir ver. Filoya ad ver, bayrak tasarla; komutanlıktan gemi ve uçak sınıflarını, rütbeyi gör. Haritada kalabalık olursa Duraklatma menüsü > Deniz filoları / Hava filoları sayfasından rozetleri gizle.": "Tap a fleet at sea or an air wing over a base to select it; then give orders by tapping a sea, your own province or an enemy province. Name the fleet and design a flag; see ship and aircraft classes and rank in Fleet command. If the map gets crowded, hide the badges from Game menu > Naval fleets / Air wings page."
  },
  "months": [
   "January",

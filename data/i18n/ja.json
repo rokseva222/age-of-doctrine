@@ -4671,7 +4671,16 @@
   "Bir ordunu seçip hava köprüsü kur.": "軍を1つ選んで空の架け橋を築こう。",
   "Avcı ve keşif kanatları menzilinde otomatik görev yapar.": "戦闘機航空団と偵察航空団は射程内で自動的に任務を行う。",
   "Taarruz helikopteri": "攻撃ヘリコプター",
-  "Hava saldırısı: düşman kaybı %s asker; kayıp uçak %d; düşürülen düşman avcısı %d.": "空爆：敵は%s人の兵を失い、自軍は%d機を喪失、敵戦闘機%d機を撃墜。"
+  "Hava saldırısı: düşman kaybı %s asker; kayıp uçak %d; düşürülen düşman avcısı %d.": "空爆：敵は%s人の兵を失い、自軍は%d機を喪失、敵戦闘機%d機を撃墜。",
+  "Harita katmanı": "マップレイヤー",
+  "Haritada kalabalık olursa kapat; filolar çalışmaya devam eder, yalnız rozetler gizlenir.": "マップが混雑する場合はオフに。艦隊は動き続け、バッジだけが非表示になります。",
+  "Henüz filon yok.": "まだ艦隊がありません。",
+  "Henüz hava kanadın yok.": "まだ航空団がありません。",
+  "Filolarım": "自軍の艦隊",
+  "Filo menüsü": "艦隊メニュー",
+  "Duraklatma menüsünde Savaş Odası ve Siyasi sistemin yanına Deniz filoları ve Hava filoları sayfaları geldi: haritadaki rozetleri tek dokunuşla gizle/göster, tüm filolarını listeden seç ve haritada git. Harita artık kalabalık olmasın diye düğme eklemiyor.": "ゲームメニューに、作戦室と政治体制の隣へ海軍艦隊と航空団のページが加わりました。マップ上の紋章はワンタップで非表示・表示を切り替えられ、自軍の艦隊を一覧から選んでマップ上で移動先へ飛べます。マップが混み合わないよう、ボタンはもう追加されません。",
+  "Deniz ve hava filoları": "海軍艦隊と航空団",
+  "Denizdeki filoya ya da bir üssün üstündeki hava kanadına dokunup seç; sonra denize, kendi eyaletine ya da düşman eyaletine dokunarak emir ver. Filoya ad ver, bayrak tasarla; komutanlıktan gemi ve uçak sınıflarını, rütbeyi gör. Haritada kalabalık olursa Duraklatma menüsü > Deniz filoları / Hava filoları sayfasından rozetleri gizle.": "海上の艦隊、または基地の上にある航空団をタップして選択し、海・自国の州・敵の州をタップして命令を出します。艦隊に名前を付け、旗をデザインできます。艦隊司令部で艦艇と航空機の種別、階級を確認できます。マップが混み合ったら、ゲームメニュー > 海軍艦隊 / 航空団のページから紋章を非表示にしてください。"
  },
  "months": [
   "1月",

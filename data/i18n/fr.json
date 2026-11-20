@@ -4670,7 +4670,16 @@
   "Bir ordunu seçip hava köprüsü kur.": "Choisis l'une de tes armées pour établir un pont aérien.",
   "Avcı ve keşif kanatları menzilinde otomatik görev yapar.": "Les groupes de chasse et de reconnaissance agissent automatiquement dans leur rayon.",
   "Taarruz helikopteri": "Hélicoptère d'attaque",
-  "Hava saldırısı: düşman kaybı %s asker; kayıp uçak %d; düşürülen düşman avcısı %d.": "Frappe aérienne : l'ennemi perd %s soldats ; nous perdons %d avions ; chasseurs ennemis abattus : %d."
+  "Hava saldırısı: düşman kaybı %s asker; kayıp uçak %d; düşürülen düşman avcısı %d.": "Frappe aérienne : l'ennemi perd %s soldats ; nous perdons %d avions ; chasseurs ennemis abattus : %d.",
+  "Harita katmanı": "Calque de carte",
+  "Haritada kalabalık olursa kapat; filolar çalışmaya devam eder, yalnız rozetler gizlenir.": "Désactive si la carte est chargée ; les flottes continuent d'agir, seuls les badges sont masqués.",
+  "Henüz filon yok.": "Tu n'as pas encore de flottes.",
+  "Henüz hava kanadın yok.": "Tu n'as pas encore de groupes aériens.",
+  "Filolarım": "Mes flottes",
+  "Filo menüsü": "Menu des flottes",
+  "Duraklatma menüsünde Savaş Odası ve Siyasi sistemin yanına Deniz filoları ve Hava filoları sayfaları geldi: haritadaki rozetleri tek dokunuşla gizle/göster, tüm filolarını listeden seç ve haritada git. Harita artık kalabalık olmasın diye düğme eklemiyor.": "Dans le Menu du jeu, les pages Flottes navales et Groupes aériens se trouvent désormais à côté de Salle de guerre et Système politique : masquez ou affichez les insignes de la carte d'une simple touche, choisissez n'importe laquelle de vos flottes dans la liste et rendez-vous-y sur la carte. La carte n'ajoute plus de boutons, pour ne pas être encombrée.",
+  "Deniz ve hava filoları": "Flottes navales et groupes aériens",
+  "Denizdeki filoya ya da bir üssün üstündeki hava kanadına dokunup seç; sonra denize, kendi eyaletine ya da düşman eyaletine dokunarak emir ver. Filoya ad ver, bayrak tasarla; komutanlıktan gemi ve uçak sınıflarını, rütbeyi gör. Haritada kalabalık olursa Duraklatma menüsü > Deniz filoları / Hava filoları sayfasından rozetleri gizle.": "Touchez une flotte en mer ou un groupe aérien au-dessus d'une base pour la sélectionner ; donnez ensuite des ordres en touchant une mer, votre propre province ou une province ennemie. Donnez un nom à la flotte et dessinez un drapeau ; consultez dans le Commandement de la flotte les classes de navires et d'avions ainsi que le grade. Si la carte devient trop chargée, masquez les insignes depuis la page Menu du jeu > Flottes navales / Groupes aériens."
  },
  "months": [
   "janvier",

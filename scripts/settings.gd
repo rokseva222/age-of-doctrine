@@ -8,6 +8,8 @@ static var sfx := 0.6
 static var country_names := true
 static var province_names := true
 static var armies := true
+static var navy := true       # deniz filosu rozetleri (duraklatma menüsünden)
+static var air := true        # hava filosu rozetleri
 static var autosave := true
 static var cabinet := true            # kabine/danışman kartları
 static var notifications := true       # 5 saatte bir "ordun seni bekliyor" bildirimi (Android)
@@ -73,6 +75,8 @@ static func load_all() -> void:
 	country_names = bool(cf.get_value("view", "country_names", country_names))
 	province_names = bool(cf.get_value("view", "province_names", province_names))
 	armies = bool(cf.get_value("view", "armies", armies))
+	navy = bool(cf.get_value("view", "navy", navy))
+	air = bool(cf.get_value("view", "air", air))
 	smooth = bool(cf.get_value("view", "smooth", smooth))
 	# sürüm 2: varsayılan ölçek küçüldü; eski kayıtlı (otomatik) değer bir kez yeni varsayılana çekilir
 	# sürüm 3: yalnızca elle ayarlanmış ölçek saklanır; otomatik hesaplanan eski değerler (kurulumda yanlış DPI ile kaydedilmiş olabilir) atılır
@@ -115,6 +119,8 @@ static func save_all() -> void:
 	cf.set_value("view", "country_names", country_names)
 	cf.set_value("view", "province_names", province_names)
 	cf.set_value("view", "armies", armies)
+	cf.set_value("view", "navy", navy)
+	cf.set_value("view", "air", air)
 	cf.set_value("view", "smooth", smooth)
 	cf.set_value("view", "ui_scale", ui_scale)
 	cf.set_value("view", "ui_scale_custom", ui_scale_custom)

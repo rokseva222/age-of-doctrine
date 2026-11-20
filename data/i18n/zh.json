@@ -4671,7 +4671,16 @@
   "Bir ordunu seçip hava köprüsü kur.": "选择你的一支军队来建立空中桥梁。",
   "Avcı ve keşif kanatları menzilinde otomatik görev yapar.": "战斗机联队和侦察联队会在射程内自动执行任务。",
   "Taarruz helikopteri": "攻击直升机",
-  "Hava saldırısı: düşman kaybı %s asker; kayıp uçak %d; düşürülen düşman avcısı %d.": "空袭：敌军损失%s名士兵，我方损失%d架飞机，击落敌战斗机%d架。"
+  "Hava saldırısı: düşman kaybı %s asker; kayıp uçak %d; düşürülen düşman avcısı %d.": "空袭：敌军损失%s名士兵，我方损失%d架飞机，击落敌战斗机%d架。",
+  "Harita katmanı": "地图图层",
+  "Haritada kalabalık olursa kapat; filolar çalışmaya devam eder, yalnız rozetler gizlenir.": "地图拥挤时可关闭；舰队照常运作，只是隐藏标记。",
+  "Henüz filon yok.": "你还没有舰队。",
+  "Henüz hava kanadın yok.": "你还没有空军联队。",
+  "Filolarım": "我的舰队",
+  "Filo menüsü": "舰队菜单",
+  "Duraklatma menüsünde Savaş Odası ve Siyasi sistemin yanına Deniz filoları ve Hava filoları sayfaları geldi: haritadaki rozetleri tek dokunuşla gizle/göster, tüm filolarını listeden seç ve haritada git. Harita artık kalabalık olmasın diye düğme eklemiyor.": "游戏菜单中，海军舰队和空军联队页面现已加入作战室和政治体制旁边：一键隐藏或显示地图上的徽章，从列表中选择你的任意舰队并在地图上前往。为避免地图拥挤，地图上不再添加按钮。",
+  "Deniz ve hava filoları": "海军舰队与空军联队",
+  "Denizdeki filoya ya da bir üssün üstündeki hava kanadına dokunup seç; sonra denize, kendi eyaletine ya da düşman eyaletine dokunarak emir ver. Filoya ad ver, bayrak tasarla; komutanlıktan gemi ve uçak sınıflarını, rütbeyi gör. Haritada kalabalık olursa Duraklatma menüsü > Deniz filoları / Hava filoları sayfasından rozetleri gizle.": "点击海上的舰队或基地上方的联队即可选中；然后点击海洋、自己的省份或敌方省份下达命令。可以为舰队命名并设计旗帜；在舰队指挥部查看舰艇和飞机的类别以及军衔。如果地图太拥挤，请在游戏菜单 > 海军舰队 / 空军联队页面隐藏徽章。"
  },
  "months": [
   "1月",

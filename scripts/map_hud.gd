@@ -27,6 +27,8 @@ var show_seas := true
 var show_country_names := true
 var show_province_names := true
 var show_armies := true
+var show_navy := true
+var show_air := true
 var show_chokes := true
 const CHOKE_R := 13.0
 const NAME_ALPHA := 0.5          # ülke adları yarı saydam: harita renkleri üstünden okunur
@@ -158,14 +160,18 @@ func _draw() -> void:
 
 	# --- emir yolları
 	_draw_paths(gs)
-	_draw_fleet_paths(gs)
-	_draw_wing_overlay(gs, z)
+	if show_navy:
+		_draw_fleet_paths(gs)
+	if show_air:
+		_draw_wing_overlay(gs, z)
 
 	# --- ordular
 	if show_armies:
 		_draw_armies(gs, z, screen, font_b)
-		_draw_fleets(gs, z, screen)
-		_draw_wings(gs, z, screen)
+		if show_navy:
+			_draw_fleets(gs, z, screen)
+		if show_air:
+			_draw_wings(gs, z, screen)
 
 	# --- fetih nabızları
 	for pl in map.pulses:

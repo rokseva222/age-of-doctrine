@@ -217,6 +217,7 @@ const PAGES := [
 	{"icon": "swords", "title": "Asker topla", "text": "Kendi eyaletinde 'Asker +10' ya da '+30' ile ordu kur. Gelirin eyaletlerden gelir; ordunun bakım gideri vardır, altının eksiye düşmesin."},
 	{"icon": "flag", "title": "Tur tabanlı oyun", "text": "Zaman kendiliğinden akmaz. Hazır olunca sağ üstteki 'Turu geç' düğmesine bas: bir hafta geçer, ardından Cihan Bülteni dünyada olanları ve harp raporunu gösterir."},
 	{"icon": "swords", "title": "Taarruz harekâtı", "text": "Savaştığın bir ülkenin eyaletine dokun, 'Taarruz' de. Yakındaki ordularını seç, harekât türünü belirle (kara taarruzu, topçu ve hava hazırlığı, siber harp, yıldırım), tahmini üstünlüğü gör ve emri ver. Sonucu Turu geç sonrası raporda görürsün."},
+	{"icon": "ship", "title": "Deniz ve hava filoları", "text": "Denizdeki filoya ya da bir üssün üstündeki hava kanadına dokunup seç; sonra denize, kendi eyaletine ya da düşman eyaletine dokunarak emir ver. Filoya ad ver, bayrak tasarla; komutanlıktan gemi ve uçak sınıflarını, rütbeyi gör. Haritada kalabalık olursa Duraklatma menüsü > Deniz filoları / Hava filoları sayfasından rozetleri gizle."},
 	{"icon": "recruit", "title": "Asker gönderme ve paralı asker", "text": "Ordu seçip hedefe dokununca kaç askerin yola çıkacağını kaydırıcıyla (%25 / %50 / %75 / %100) seçersin; kalanlar yerinde bekler. Taarruzda da aynı oran vardır. Politika > Cepheler'den süreli paralı birlik kiralayabilirsin. Bir turda emir vermezsen savaştaki boş ordular otomatik görev alabilir (Ayarlar'dan kapatılır)."},
 	{"icon": "handshake", "title": "Savaş, barış, ittifak", "text": "Kuşatma ve zaferler savaş puanı kazandırır. Barış masasında puanınla eyalet alırsın. Müttefikler birlikte savaşır; ateşkes süresince saldıramazsın."},
 	{"icon": "users", "title": "Kabine kartları", "text": "Zaman zaman bir bakan karşına çıkıp karar sorar. Seçeneklerin yanındaki simgeler hangi alanı etkileyeceğini gösterir (yönü gizlidir); ☠ işareti oyunu bitirebilecek riskli bir seçimdir. Bir bakan görevden ayrılınca (istifa, skandal, seçim) 3 aday gelir: ucuz-acemi, orta-kıdemli, pahalı-usta; sen seçersin. Kabine sekmesinden bakanı değiştirebilirsin. Ayrıca nişe kartlar çıkar: seçim gecesi, şüpheli tüccarın kasası (kumar), Dünya Kupası/Olimpiyat, muhbir. Ayarlardan kapatılabilir."},
@@ -293,8 +294,9 @@ static func open_howto(parent: Node) -> void:
 			render.call())
 
 
-const UPDATE_VER := "1.2.31"
+const UPDATE_VER := "1.2.32"
 const WHATS_NEW := [
+	["Filo menüsü", "Duraklatma menüsünde Savaş Odası ve Siyasi sistemin yanına Deniz filoları ve Hava filoları sayfaları geldi: haritadaki rozetleri tek dokunuşla gizle/göster, tüm filolarını listeden seç ve haritada git. Harita artık kalabalık olmasın diye düğme eklemiyor."],
 	["Hava filoları", "Artık hava kuvvetlerin filolar halinde haritada: avcı, bombardıman, İHA, nakliye ve keşif kanatları üslerinden görev yapar. Bombardıman kanatlarıyla menzildeki düşman eyaletlerini vur, avcılarla hava üstünlüğü kazan (karadaki savaşa bonus), nakliye kanatlarıyla orduyu uçur ya da paraşütle indir. Kanatlara ad ver ve bayrak tasarla."],
 	["Filoya ad ve bayrak", "Her filoya ad ver, kendi bayrağını tasarla; Filo komutanlığında gemi sınıflarını (muhrip, kruvazör, denizaltı modelleri...), rütbeyi ve ikmal durumunu gör. Duruş (saldır/savun/çekil), eşlik ve filo bölme eklendi."],
 	["Daha gerçekçi deniz savaşı", "Limandan uzak filolar zayıflar (ikmal). Yapay zekâ çıkarma konvoyları denizde vurulabilir. Hazar ve Kuzey Buz Denizi eklendi; yeni savaş gemileri inşa edebilirsin."],

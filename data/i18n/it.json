@@ -4671,7 +4671,16 @@
   "Bir ordunu seçip hava köprüsü kur.": "Seleziona uno dei tuoi eserciti per creare un ponte aereo.",
   "Avcı ve keşif kanatları menzilinde otomatik görev yapar.": "Le ali da caccia e di ricognizione agiscono automaticamente nel loro raggio.",
   "Taarruz helikopteri": "Elicottero d'attacco",
-  "Hava saldırısı: düşman kaybı %s asker; kayıp uçak %d; düşürülen düşman avcısı %d.": "Attacco aereo: il nemico perde %s soldati; perdiamo %d aerei; caccia nemici abbattuti: %d."
+  "Hava saldırısı: düşman kaybı %s asker; kayıp uçak %d; düşürülen düşman avcısı %d.": "Attacco aereo: il nemico perde %s soldati; perdiamo %d aerei; caccia nemici abbattuti: %d.",
+  "Harita katmanı": "Livello mappa",
+  "Haritada kalabalık olursa kapat; filolar çalışmaya devam eder, yalnız rozetler gizlenir.": "Disattiva se la mappa è affollata; le flotte continuano a operare, si nascondono solo i badge.",
+  "Henüz filon yok.": "Non hai ancora flotte.",
+  "Henüz hava kanadın yok.": "Non hai ancora ali aeree.",
+  "Filolarım": "Le mie flotte",
+  "Filo menüsü": "Menu delle flotte",
+  "Duraklatma menüsünde Savaş Odası ve Siyasi sistemin yanına Deniz filoları ve Hava filoları sayfaları geldi: haritadaki rozetleri tek dokunuşla gizle/göster, tüm filolarını listeden seç ve haritada git. Harita artık kalabalık olmasın diye düğme eklemiyor.": "Nel Menu di gioco, le pagine Flotte navali e Ali aeree sono ora accanto a Sala operativa e Sistema politico: nascondi o mostra gli stemmi sulla mappa con un solo tocco, scegli dall'elenco una qualsiasi delle tue flotte e raggiungila sulla mappa. La mappa non aggiunge più pulsanti, così non si affolla.",
+  "Deniz ve hava filoları": "Flotte navali e ali aeree",
+  "Denizdeki filoya ya da bir üssün üstündeki hava kanadına dokunup seç; sonra denize, kendi eyaletine ya da düşman eyaletine dokunarak emir ver. Filoya ad ver, bayrak tasarla; komutanlıktan gemi ve uçak sınıflarını, rütbeyi gör. Haritada kalabalık olursa Duraklatma menüsü > Deniz filoları / Hava filoları sayfasından rozetleri gizle.": "Tocca una flotta in mare o un'ala aerea sopra una base per selezionarla; poi dai ordini toccando un mare, una tua provincia o una provincia nemica. Dai un nome alla flotta e disegna una bandiera; nel Comando della flotta vedi le classi di navi e aerei e il grado. Se la mappa si affolla, nascondi gli stemmi dalla pagina Menu di gioco > Flotte navali / Ali aeree."
  },
  "months": [
   "gennaio",
