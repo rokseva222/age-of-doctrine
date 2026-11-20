@@ -166,12 +166,19 @@ class View extends Control:
 	var strike_btn: Button
 	var yield_btn: Button
 	var end_box: VBoxContainer
+	var yield_armed := false
+	var _yield_token := 0
 	var swing_p := 0.0         # rakip vuruş animasyonu
 	var my_swing := 0.0        # oyuncu vuruş animasyonu
 	var shake := 0.0
 	var stagger := 0.0
 	var my_guard := 1
 	var finished := false
+	var _svc: SubViewportContainer
+	var _q_time := 0.0
+	var _q_frames := 0
+	var _q_done := false
+	var _done := false          # sonuç geri çağrısı tek sefer
 	var tilt := [66.0, 0.0, -66.0]   # ekranda sol / üst / sağ için kılıç eğimi (derece, z ekseni)
 
 	func _input(e: InputEvent) -> void:
@@ -214,10 +221,24 @@ class View extends Control:
 		vb.offset_bottom = -10
 		vb.add_theme_constant_override("separation", 8)
 		add_child(vb)
+		# Üst satır: köşede "Meydanı terk et" (alttaki Vur! düğmesine yanlışlıkla basılmasın; iki dokunuşla onaylanır), ortada başlık
+		var head := HBoxContainer.new()
+		head.layout_direction = Control.LAYOUT_DIRECTION_LTR
+		head.add_theme_constant_override("separation", 10)
+		vb.add_child(head)
+		yield_btn = TK.button("Meydanı terk et", "ghost", "", Vector2(300, 72), 13)
+		yield_btn.pressed.connect(_yield_pressed)
+		head.add_child(yield_btn)
 		var title := TK.t(String(spec.get("title", "Düello")), "h3", TK.TEXT)
 		title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-		vb.add_child(title)
+		title.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		title.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+		head.add_child(title)
+		var head_pad := Control.new()
+		head_pad.custom_minimum_size = Vector2(300, 0)
+		head.add_child(head_pad)
 		var bars := HBoxContainer.new()
+		bars.layout_direction = Control.LAYOUT_DIRECTION_LTR
 		bars.add_theme_constant_override("separation", 14)
 		vb.add_child(bars)
 		php_bar = _bar(Color(0.30, 0.65, 0.40))
@@ -232,11 +253,15 @@ class View extends Control:
 		vb.add_child(holder)
 		var svc := SubViewportContainer.new()
 		svc.stretch = true
+		_svc = svc
+		# telefon için hafif: MSAA yok, gölge yok, tek ışık; kare süresi uzarsa 3B yarı çözünürlüğe düşer (bkz. _adapt_quality)
 		svc.set_anchors_preset(Control.PRESET_FULL_RECT)
 		holder.add_child(svc)
 		svp = SubViewport.new()
 		svp.own_world_3d = true
-		svp.msaa_3d = Viewport.MSAA_2X
+		svp.msaa_3d = Viewport.MSAA_DISABLED
+		svp.screen_space_aa = Viewport.SCREEN_SPACE_AA_DISABLED
+		svp.render_target_update_mode = SubViewport.UPDATE_WHEN_VISIBLE
 		svc.add_child(svp)
 		_build_world()
 		arrow_lbl = TK.t("", "h1", Color(1.0, 0.35, 0.25))
@@ -250,31 +275,38 @@ class View extends Control:
 		banner_lbl = TK.t(String(spec.get("intro", "Kılıçlar çekildi.")), "bodyb", TK.GOLD)
 		banner_lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		banner_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-		banner_lbl.set_anchors_preset(Control.PRESET_BOTTOM_WIDE)
-		banner_lbl.offset_bottom = -6
+		banner_lbl.anchor_left = 0.0
+		banner_lbl.anchor_right = 1.0
+		banner_lbl.anchor_top = 1.0
+		banner_lbl.anchor_bottom = 1.0
+		banner_lbl.offset_left = 12
+		banner_lbl.offset_right = -12
+		banner_lbl.offset_top = -10
+		banner_lbl.offset_bottom = -10
+		banner_lbl.grow_vertical = Control.GROW_DIRECTION_BEGIN   # etiket kendi yüksekliğiyle yukarı doğru büyür (alt kenara yaslı)
 		banner_lbl.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		holder.add_child(banner_lbl)
 		msg_lbl = TK.t("", "small", TK.MUTED)
 		msg_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		msg_lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		msg_lbl.custom_minimum_size = Vector2(0, 52)
+		msg_lbl.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 		vb.add_child(msg_lbl)
 		var row := HBoxContainer.new()
+		row.layout_direction = Control.LAYOUT_DIRECTION_LTR   # sağdan sola dillerde de "sol siper" solda, "sağ siper" sağda kalsın
 		row.add_theme_constant_override("separation", 8)
 		vb.add_child(row)
 		for i in 3:
 			var idx: int = i
-			var b := TK.button("%s  [%s]" % [GUARDS[i], ["A", "W", "D"][i]], "blue", "shield", Vector2(0, 72), 17)
+			var b := TK.button("%s  [%s]" % [GUARDS[i], ["A", "W", "D"][i]], "blue", "shield", Vector2(0, 104), 17)
 			b.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 			b.pressed.connect(func(): _guard(idx))
 			row.add_child(b)
 			guard_btns.append(b)
-		strike_btn = TK.button("Vur!  [Boşluk]", "danger", "sword", Vector2(0, 72), 20)
+		strike_btn = TK.button("Vur!  [Boşluk]", "danger", "sword", Vector2(0, 92), 20)
 		strike_btn.pressed.connect(_strike)
 		strike_btn.disabled = true
 		vb.add_child(strike_btn)
-		yield_btn = TK.button("Meydanı terk et", "ghost", "", Vector2(0, 52), 15)
-		yield_btn.pressed.connect(func(): _finish("yield"))
-		vb.add_child(yield_btn)
 		end_box = VBoxContainer.new()
 		end_box.visible = false
 		vb.add_child(end_box)
@@ -329,7 +361,7 @@ class View extends Control:
 		pivot.position = Vector3(0.0, 1.25, 0.35)
 		root.add_child(pivot)
 		var blade := BoxMesh.new()
-		blade.size = Vector3(0.11, 1.3, 0.03)
+		blade.size = Vector3(0.15, 1.3, 0.04)
 		var bi := _mesh(pivot, blade, Vector3(0, 0.7, 0), _mat(blade_col, 0.0, 0.25))
 		var hilt := BoxMesh.new()
 		hilt.size = Vector3(0.3, 0.05, 0.05)
@@ -371,6 +403,10 @@ class View extends Control:
 		foe = f[0]
 		foe_sword = f[1]
 		foe_blade = f[2]
+		var fm: StandardMaterial3D = foe_blade.material_override
+		fm.emission_enabled = true          # her karede aç/kapa yapmak StandardMaterial3D shader'ını yeniden derletir (mobilde takılma); yalnız enerji değişir
+		fm.emission = Color(1.0, 0.25, 0.2)
+		fm.emission_energy_multiplier = 0.0
 		foe.position = Vector3(0, 0, -0.1)
 		foe.scale = Vector3(1.2, 1.2, 1.2)
 		foe.rotation_degrees.y = 180.0
@@ -390,6 +426,8 @@ class View extends Control:
 		cam.fov = 58
 		world.add_child(cam)
 		cam.current = true
+		svp.size_changed.connect(_fit_cam)
+		_fit_cam.call_deferred()
 
 	# ------------------------------------------------------------ girdi
 	func _guard(d: int) -> void:
@@ -407,6 +445,7 @@ class View extends Control:
 	func _process(dt: float) -> void:
 		if finished:
 			return
+		_adapt_quality(dt)
 		core.update(dt)
 		for ev in core.events:
 			_on_event(String(ev[0]), ev[1])
@@ -449,8 +488,6 @@ class View extends Control:
 		foe_sword.rotation_degrees = Vector3(foe_x, 0, foe_z)
 		foe.rotation_degrees.x = -14.0 * stagger
 		var m: StandardMaterial3D = foe_blade.material_override
-		m.emission_enabled = glow > 0.05
-		m.emission = Color(1.0, 0.25, 0.2)
 		m.emission_energy_multiplier = glow * 2.5
 		# oyuncu kılıcı: seçili siper yönüne yatar; vuruşta öne savrulur
 		var mz: float = float(tilt[my_guard]) * 0.9
@@ -501,7 +538,10 @@ class View extends Control:
 		for b in guard_btns:
 			b.disabled = true
 		strike_btn.disabled = true
-		yield_btn.visible = false
+		yield_btn.disabled = true
+		yield_btn.modulate.a = 0.0
+		yield_btn.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		yield_armed = false
 		arrow_lbl.text = ""
 		var txt: String
 		match r:
@@ -515,11 +555,89 @@ class View extends Control:
 				txt = String(spec.get("yield_text", "Meydanı terk ettin; bunu herkes gördü."))
 		banner_lbl.text = {"win": "ZAFER", "lose": "YENİLGİ", "draw": "BERABERE", "yield": "ÇEKİLDİN"}[r]
 		msg_lbl.text = txt
-		var b := TK.button("Devam", "good" if r == "win" else "", "", Vector2(0, 64), 18)
+		var b := TK.button("Devam", "good" if r == "win" else "", "", Vector2(0, 104), 18)
 		b.pressed.connect(func():
+			if _done:
+				return
+			_done = true
 			var info := {"hp": core.php, "foe_hp": core.ohp, "rounds": 0}
 			ui.set_modal(null)
 			queue_free()
 			cb.call(r, info))
 		end_box.add_child(b)
 		end_box.visible = true
+
+	# ------------------------------------------------------------ çıkış: geri tuşu / Meydanı terk et
+	func _yield_pressed() -> void:
+		if finished:
+			return
+		if not yield_armed:
+			_arm_yield()
+		else:
+			_finish("yield")
+
+	func _arm_yield() -> void:
+		yield_armed = true
+		_yield_token += 1
+		var tok := _yield_token
+		yield_btn.text = TK.up("Onaylamak için dokun")
+		TK.style_button(yield_btn, "danger")
+		get_tree().create_timer(2.5).timeout.connect(func():
+			if is_instance_valid(self) and not finished and yield_armed and tok == _yield_token:
+				yield_armed = false
+				yield_btn.text = TK.up("Meydanı terk et")
+				TK.style_button(yield_btn, "ghost"))
+
+	## ui.hide_dialog() (Android geri tuşu / Esc) bunu çağırır: ilk basış çekilmeyi onay ister, ikincisi çekilir;
+	## sonuç ekranındayken "Devam"a basar. hide_dialog() sonda _modal'ı boşalttığı için düello sürerken modal kaydı yeniden yazılır.
+	func close() -> void:
+		if finished:
+			# sonuç ekranında geri = Devam. Geri çağrısı yeni pencere açabilir; hide_dialog() sonda _modal'ı boşalttığı için
+			# Devam kare sonuna ertelenir (yeni pencerenin modal kaydı ezilmesin).
+			if not _done:
+				_press_end.call_deferred()
+			return
+		_yield_pressed()
+		if ui != null:
+			ui.set_modal.call_deferred(self)    # düello sürüyor/sonuç bekliyor: modal kaydı geri yazılır
+
+	func _press_end() -> void:
+		if _done or not is_instance_valid(self) or end_box.get_child_count() == 0:
+			return
+		(end_box.get_child(0) as Button).emit_signal("pressed")
+
+	func _exit_tree() -> void:
+		# başka bir pencere bizi sildiyse (ui._open_sheet) hikâye akışı takılı kalmasın: çekilmiş say
+		if _done or finished or not cb.is_valid():
+			return
+		finished = true
+		_done = true
+		var info := {"hp": core.php, "foe_hp": core.ohp, "rounds": 0}
+		cb.call_deferred("yield", info)
+
+	## Zayıf cihazda (ort. kare süresi > 26 ms) 3B alanı yarı çözünürlükte çizilir; bir kez karar verilir.
+	func _adapt_quality(dt: float) -> void:
+		if _q_done:
+			return
+		_q_frames += 1
+		if _q_frames <= 20:      # açılış/gölgelendirici derleme karelerini sayma
+			return
+		_q_time += dt
+		if _q_frames >= 110:
+			_q_done = true
+			if _q_time / 90.0 > 0.026 and _svc != null:
+				_svc.stretch_shrink = 2
+
+	## Dikey/dar ekranda yatay görüş açısı sabit tutulur: yoksa rakibin yana yatan kılıcı kadraj dışında kalır.
+	func _fit_cam() -> void:
+		if cam == null or not is_instance_valid(cam):
+			return
+		var sz := Vector2(svp.size)
+		if sz.y <= 0.0:
+			return
+		if sz.x / sz.y < 1.4:
+			cam.keep_aspect = Camera3D.KEEP_WIDTH
+			cam.fov = 82.0
+		else:
+			cam.keep_aspect = Camera3D.KEEP_HEIGHT
+			cam.fov = 58.0

@@ -157,7 +157,7 @@ static func _h(sh, text: String) -> void:
 
 
 static func _b(ui, sh, text: String, icon: String, cb: Callable) -> void:
-	var b := TK.button(text, "", icon, Vector2(0, 54), 17)
+	var b := TK.button(text, "", icon, Vector2(0, 88), 17)
 	b.pressed.connect(func():
 		ui._click()
 		cb.call()

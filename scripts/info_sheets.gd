@@ -138,6 +138,12 @@ static func open_settings(parent: Node, on_change: Callable, sfx = null) -> void
 	sh.body.add_child(TK.toggle_row("Yerel para birimi", Settings.currency, func(on: bool):
 		Settings.currency = on
 		changed.call(), "Paralar, oynadığın ülkenin para biriminde (TL, €, £…) gösterilir; kurlar güncel piyasa verilerine dayanır ve zamanla oynar. Kapalıyken her şey dolar olarak görünür. Oyun dengesi değişmez."))
+	sh.body.add_child(TK.toggle_row("Savaş için ilişki şartı", Settings.war_gate, func(on: bool):
+		Settings.war_gate = on
+		changed.call(), "Açıkken savaş ilan edebilmek için hedef ülkeyle ilişkin en çok 20 olmalı; önce Diplomasi ekranından protesto, karalama ya da sınır kışkırtmasıyla ilişkileri düşürürsün. Müttefikinin düşmanına her zaman savaş açabilirsin."))
+	sh.body.add_child(TK.toggle_row("Dünya Savaşları savaşsız başlasın", Settings.era_peace, func(on: bool):
+		Settings.era_peace = on
+		changed.call(), "Açıkken 1. ve 2. Dünya Savaşı senaryoları savaş başlamadan, ittifaklar ve gerginlikle açılır; savaşı yapay zekâ ya da sen çıkarırsın (saldırganlık ayarı da etkiler). Yeni başlayan senaryolarda geçerlidir."))
 	sh.body.add_child(TK.toggle_row("Sandbox modu", Settings.sandbox, func(on: bool):
 		Settings.sandbox = on
 		changed.call(), "Oyun menüsüne \"Sandbox\" paneli ekler: hazine, asker, eyalet verme/alma, savaş ve barış gibi deneme araçları. Dengeyi bozar; öğrenmek ve denemek içindir."))
@@ -306,7 +312,7 @@ const WHATS_NEW := [
 
 
 static func open_whatsnew(parent: Node) -> void:
-	var sh = Sheet.open(parent, "Neler yeni", 760, true, true, "Sürüm " + UPDATE_VER)
+	var sh = Sheet.open(parent, "Neler yeni", 760, true, true, Loc.t("Sürüm ").strip_edges() + " " + UPDATE_VER)
 	for it in WHATS_NEW:
 		sh.body.add_child(TK.t(Loc.t(it[0]), "bodyb", TK.GOLD))
 		var d := TK.t(Loc.t(it[1]), "small", TK.MUTED)
