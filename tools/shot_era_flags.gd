@@ -4,9 +4,9 @@ const GS = preload("res://scripts/game_state.gd")
 const Eras = preload("res://scripts/eras.gd")
 func _init() -> void:
 	var gs = GS.new()
-	Eras.prepare("ww1")
+	Eras.prepare("cw62")
 	gs.new_world(21)
-	Eras.restructure(gs, "ww1")
+	Eras.restructure(gs, "cw62")
 	var root := ColorRect.new()
 	root.color = Color(0.1, 0.11, 0.13)
 	root.size = Vector2(1280, 720)
@@ -17,7 +17,7 @@ func _init() -> void:
 	g.add_theme_constant_override("h_separation", 14)
 	g.add_theme_constant_override("v_separation", 24)
 	root.add_child(g)
-	for nm in ["United Kingdom","India","Algeria","Egypt","Libya","South Korea","Indonesia","Dem. Rep. Congo","Philippines","Mongolia","Italy","Japan"]:
+	for nm in ["Iran","Afghanistan","Libya","Yemen","Ethiopia","Romania","Bulgaria","Spain","South Africa","Burkina Faso","Tanzania","Sudan","Iraq","Egypt","China","Cuba"]:
 		for c in gs.countries:
 			if c.name_en == nm:
 				var v := VBoxContainer.new()
