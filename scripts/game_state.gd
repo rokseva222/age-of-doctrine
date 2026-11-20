@@ -383,7 +383,8 @@ func player_has_nukes() -> bool:
 		return false
 	if fam == "ww2":
 		var ym: Array = Names.year_month(turn)
-		return nm == "United States of America" and int(ym[0]) * 12 + int(ym[1]) - 1 >= 1945 * 12 + 6
+		var ymk: int = int(ym[0]) * 12 + int(ym[1]) - 1
+		return (nm == "United States of America" and ymk >= 1945 * 12 + 6) or (nm == "Russia" and ymk >= 1949 * 12 + 8) or (nm == "United Kingdom" and ymk >= 1952 * 12 + 9)
 	var owners = Eras.field("nukes", null)
 	if owners is Array:
 		return owners.has(nm)
@@ -945,7 +946,7 @@ func has_passage(guest: int, host: int) -> bool:
 	return int(countries[host].passage.get(guest, -1)) > turn
 
 
-## Oyuncu bir ülkeden geçiş izni ister: 26 hafta geçerli. İlişki ne kadar iyiyse kabul olasılığı o kadar yüksek.
+## Oyuncu bir ülkeden geçiş izni ister: 39 hafta geçerli. İlişki ne kadar iyiyse kabul olasılığı o kadar yüksek.
 func player_request_passage(target: int) -> String:
 	var t = countries[target]
 	if t.is_rebel or not t.alive:
@@ -964,14 +965,14 @@ func player_request_passage(target: int) -> String:
 		if is_allied(target, e):
 			return "%s, düşmanın %s ile müttefik olduğu için izin vermedi." % [t.name, countries[e].name]
 	var rel: float = relation_of(target, player)
-	if rel < 40.0:
+	if rel < 30.0:
 		return "%s: İlişkiler çok kötü (%s); geçiş izni vermiyor." % [t.name, relation_tier_name(target, player)]
-	var chance: float = clampf((rel - 25.0) / 50.0, 0.1, 0.95)
+	var chance: float = clampf((rel - 20.0) / 45.0, 0.15, 0.95)
 	if rng.randf() >= chance:
 		return "%s geçiş iznini reddetti." % t.name
-	t.passage[player] = turn + 26
+	t.passage[player] = turn + 39
 	relation_add(player, target, -3.0)   # küçük bir bedel: topraklarından ordu geçmesi gerginlik yaratır
-	post_news("%s, %s ordularına 26 haftalık geçiş izni verdi." % [t.name, countries[player].name], t.capital, "info")
+	post_news("%s, %s ordularına 39 haftalık geçiş izni verdi." % [t.name, countries[player].name], t.capital, "info")
 	state_changed.emit()
 	return ""
 
@@ -980,6 +981,10 @@ func player_request_passage(target: int) -> String:
 func _passage_expire() -> void:
 	for arm in armies.values().duplicate():
 		var p2 = provinces[arm.prov]
+		if arm.owner == player and p2.owner >= 0 and p2.owner != player and p2.controller == p2.owner and has_passage(player, p2.owner) and not is_allied(player, p2.owner) and not at_war(player, p2.owner):
+			var left: int = int(countries[p2.owner].passage[player]) - turn
+			if left == 3:
+				post_news("%s topraklarındaki ordumuzun geçiş izni 3 hafta sonra bitiyor; izni yenile ya da orduyu çek." % countries[p2.owner].name, arm.prov, "war_player")
 		if p2.owner >= 0 and p2.owner != arm.owner and not at_war(arm.owner, p2.owner) and not is_allied(arm.owner, p2.owner) and not has_passage(arm.owner, p2.owner):
 			if p2.controller == arm.owner:
 				continue
@@ -2453,6 +2458,8 @@ func _launch_detachment(a, n_req: int, path: Array, op: String, hold: bool) -> v
 	_step_army(d)
 	if armies.get(origin) == d:
 		a.size += d.size          # yerinde kaldı (yol kapandı ya da yenildi): geri katıl
+		if a.owner == player:
+			post_news("Müfreze yola çıkamadı: yol kapalı ya da hedefte yabancı ordu var. Asker ana orduya geri katıldı.", origin, "war_player")
 	armies[origin] = a
 	armies_changed.emit()
 
@@ -2523,10 +2530,13 @@ func _step_army(a) -> void:
 		a.path.clear()
 		a.leaving = false
 		return
+	var full: Array = a.path.duplicate()
 	a.path.pop_front()
 	a.leaving = false
-	# dost orduların bulunduğu ara eyaletlerden geçip ilerle (yığılmayı önler)
+	# dost/tarafsız orduların bulunduğu ara eyaletlerden geçip ilerle (yığılmayı önler)
 	var hop: int = nxt
+	var trail: Array = [nxt]                  # geçilen eyaletler
+	var rests: Array = [a.path.duplicate()]   # her eyaletten sonra kalan yol
 	var guard := 0
 	while not a.path.is_empty() and guard < 4:
 		var fr = armies.get(hop)
@@ -2536,11 +2546,53 @@ func _step_army(a) -> void:
 				a.path.pop_front()
 				hop = nn
 				guard += 1
+				trail.append(hop)
+				rests.append(a.path.duplicate())
 				continue
 		break
+	# durak: varılan eyalette durulabiliyorsa orası; savaşmadığımız yabancı ordu varsa geriye doğru durulabilen son eyalet
+	# (ara noktada başka orduyla birleşmek istenmez: boş eyalet ya da yolun sonu aranır)
+	var si: int = trail.size() - 1
+	while si >= 0 and not ((armies.get(trail[si]) == null or rests[si].is_empty()) and _can_stop(a, trail[si])):
+		si -= 1
+	if si < 0:
+		# hiçbir noktada duramıyor (tarafsız/müttefik ordu yolu tıkıyor): oyuncunun emri korunur, ordu bir sonraki tur yeniden dener
+		if a.owner == player:
+			var since: int = int(_wait_since.get(a.id, turn))
+			_wait_since[a.id] = since
+			if turn - since >= 8:
+				_wait_since.erase(a.id)
+				a.path.clear()
+				post_news("Ordumuz %s yönündeki yolu 8 hafta bekledi; yol açılmadığı için emir iptal edildi." % provinces[trail[0]].name, a.prov, "war_player")
+				return
+			a.path = full
+			var wl: int = int(_wait_news.get(a.id, -99))
+			if turn - wl >= 6:
+				_wait_news[a.id] = turn
+				post_news("Ordumuz %s yönünde bekliyor: yolu %s ordusu tıkıyor; boşalınca ilerleyecek." % [provinces[trail[0]].name, countries[armies[trail[0]].owner].name if armies.has(trail[0]) else "dost"], a.prov, "war_player")
+		else:
+			a.path.clear()
+		return
+	_wait_since.erase(a.id)
+	hop = trail[si]
+	a.path = rests[si]
 	_enter(a, hop)
 	if a.path.is_empty():
 		a.op = ""
+
+
+var _wait_since: Dictionary = {}      # ordu id -> beklemeye başlanan tur
+var _wait_news: Dictionary = {}       # ordu id -> son "yol tıkalı" haberinin turu
+
+
+## Ordu bu eyalette durabilir mi? (boş; kendi ordusu [birleşir]; ya da savaştığımız ordu [muharebe]). Savaşmadığımız yabancı ordunun olduğu eyalette durulamaz.
+func _can_stop(a, prov: int) -> bool:
+	var d = armies.get(prov)
+	if d == null or d == a:
+		return true
+	if d.owner == a.owner:
+		return d.size + a.size <= MAX_MERGE and (a.merc != "") == (d.merc != "")
+	return at_war(a.owner, d.owner)
 
 
 func _enter(a, dest: int) -> void:
@@ -2904,6 +2956,9 @@ func player_order_move(a, target: int, count: int = 0) -> String:
 		return "Bu ordu senin değil."
 	if a.prov == target:
 		return ""
+	var occ = armies.get(target)
+	if occ != null and occ.owner != player and not at_war(player, occ.owner):
+		return "Hedef eyalette %s ordusu duruyor; savaşmadığın bir ülkenin ordusuyla aynı eyalete girilemez. Komşu bir eyalete yönlendir." % countries[occ.owner].name
 	var path := path_to(player, a.prov, target)
 	var land_op := ""
 	if path.is_empty():
@@ -2958,12 +3013,29 @@ func move_block_reason(a, target: int) -> String:
 				blocker = no
 				break
 	if blocker < 0:
-		return "Oraya ulaşamazsın (geçiş izni yok ya da yol yok)."
+		if not _land_connected(a.prov, target):
+			return "Hedef denizaşırı: kara yolu yok. Ordunu kıyıdan gemiyle çıkarmak için savaştığın bir ülkenin kıyı eyaletini seç (çıkarma), ya da deniz geçişine izinli bir rota gerekir."
+		return "Oraya ulaşamazsın (yolda kapalı bir geçit ya da geçiş izni yok)."
 	var bc = countries[blocker]
 	var tl: int = int(countries[player].truce.get(blocker, -1)) - turn
 	if tl > 0:
 		return "%s ile ateşkesin sürüyor (%d hafta): savaş ilan etmeden topraklarına giremezsin." % [bc.name, tl]
 	return "%s topraklarına girmek için savaş ilan et, ittifak kur ya da geçiş izni al." % bc.name
+
+
+## Mülkiyete bakmadan, yalnızca komşuluk (kara) bağlantısı var mı?
+func _land_connected(from: int, to: int) -> bool:
+	var seen: Dictionary = {from: true}
+	var q: Array = [from]
+	while not q.is_empty():
+		var c: int = q.pop_front()
+		if c == to:
+			return true
+		for nb in provinces[c].neighbors:
+			if not seen.has(nb):
+				seen[nb] = true
+				q.append(nb)
+	return false
 
 
 func player_cancel_move(a) -> void:

@@ -215,9 +215,11 @@ static func init_country(gs, c) -> void:
 			var n: int = int(round(counts[cat] * w[t]))
 			var iid: String = ids[t]
 			var tt := t
-			while Arsenal.NEW_ITEMS.has(iid) and tt > 0:
+			while (Arsenal.NEW_ITEMS.has(iid) or Arsenal.GATE.get(iid, 0) > 0) and tt > 0:
 				tt -= 1
 				iid = ids[tt]
+			if Arsenal.GATE.get(iid, 0) > 0:
+				continue    # dönemin başında henüz geliştirilmemiş silah envantere girmez (örn. 1914'te tank yok)
 			if n > 0:
 				c.inv[iid] = int(c.inv.get(iid, 0)) + n
 	c.orders = []

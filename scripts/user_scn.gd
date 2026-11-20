@@ -393,8 +393,8 @@ static func sanitize(d: Dictionary) -> Dictionary:
 	if valid_era(d.get("era", "")):
 		out["era"] = String(d["era"])
 	var yr: int = int(d.get("year", 0)) if typeof(d.get("year", 0)) in [TYPE_INT, TYPE_FLOAT] and not out.has("era") else 0
-	if yr >= 1800 and yr <= 2100:
-		out["year"] = yr
+	if yr >= 1 and yr <= 2100:
+		out["year"] = maxi(yr, 2024)   # modern harita 2024 öncesi için kurulu değil (silah/kabine uyumsuz olur)
 	var trs: Array = []
 	var raw_t = d.get("transfer", [])
 	if typeof(raw_t) == TYPE_ARRAY:

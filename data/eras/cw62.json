@@ -1128,7 +1128,7 @@
   "Turkey": {
    "name": "Türkiye",
    "color": "c8444a",
-   "leader": "Başbakan|Cemal Gürsel",
+   "leader": "Cumhurbaşkanı|Cemal Gürsel",
    "gdp": 60,
    "mil": {
     "personnel": 480000,
@@ -1485,6 +1485,200 @@
      -12
     ]
    ]
+  },
+  {
+   "y": 1963,
+   "m": 6,
+   "t": "Moskova-Washington 'kırmızı telefon' hattı kuruldu: Küba krizinin dersi, kazara savaşı önlemek.",
+   "fx": [
+    [
+     "stab",
+     "United States of America",
+     1
+    ],
+    [
+     "stab",
+     "Russia",
+     1
+    ]
+   ]
+  },
+  {
+   "y": 1963,
+   "m": 11,
+   "t": "John F. Kennedy Dallas'ta suikasta uğradı; Lyndon Johnson başkan oldu.",
+   "fx": [
+    [
+     "stab",
+     "United States of America",
+     -4
+    ]
+   ]
+  },
+  {
+   "y": 1964,
+   "m": 8,
+   "t": "Tonkin Körfezi Olayı: ABD Kongresi, Vietnam'da askeri müdahaleye yeşil ışık yaktı.",
+   "fx": []
+  },
+  {
+   "y": 1964,
+   "m": 10,
+   "t": "Çin ilk atom bombasını patlattı; nükleer kulübün beşinci üyesi oldu.",
+   "fx": [
+    [
+     "stab",
+     "China",
+     4
+    ]
+   ]
+  },
+  {
+   "y": 1965,
+   "m": 3,
+   "t": "ABD Vietnam'a ilk muharip kara birliklerini gönderdi; savaş tırmanıyor.",
+   "fx": [
+    [
+     "stab",
+     "United States of America",
+     -2
+    ]
+   ]
+  },
+  {
+   "y": 1966,
+   "m": 5,
+   "t": "Çin'de Kültür Devrimi başladı: Mao'nun çağrısıyla ülke kaosa sürükleniyor.",
+   "fx": [
+    [
+     "stab",
+     "China",
+     -8
+    ]
+   ]
+  },
+  {
+   "y": 1967,
+   "m": 4,
+   "t": "Yunanistan'da albaylar darbesi: ülke askeri cunta yönetimine girdi.",
+   "fx": [
+    [
+     "stab",
+     "Greece",
+     -12
+    ]
+   ]
+  },
+  {
+   "y": 1968,
+   "m": 1,
+   "t": "Tet Taarruzu: Kuzey Vietnam ve Vietkong güneydeki şehirlere saldırdı; Amerikan kamuoyu savaştan şüphe etmeye başladı.",
+   "fx": [
+    [
+     "stab",
+     "United States of America",
+     -3
+    ]
+   ]
+  },
+  {
+   "y": 1968,
+   "m": 5,
+   "t": "Mayıs 68: Fransa'da öğrenci ayaklanması ve genel grev de Gaulle'ü sarstı.",
+   "fx": [
+    [
+     "stab",
+     "France",
+     -6
+    ]
+   ]
+  },
+  {
+   "y": 1969,
+   "m": 7,
+   "t": "Apollo 11: insanlık Ay'a ayak bastı; uzay yarışında ABD öne geçti.",
+   "fx": [
+    [
+     "stab",
+     "United States of America",
+     3
+    ]
+   ]
+  },
+  {
+   "y": 1971,
+   "m": 12,
+   "t": "Bangladeş Kurtuluş Savaşı: Hindistan Doğu Pakistan'a girdi; Hint-Pakistan savaşı başladı.",
+   "fx": [
+    [
+     "war",
+     "India",
+     "Pakistan"
+    ]
+   ]
+  },
+  {
+   "y": 1972,
+   "m": 2,
+   "t": "Nixon Pekin'de Mao ile görüştü: Soğuk Savaş'ın dengesi değişiyor.",
+   "fx": [
+    [
+     "stab",
+     "China",
+     2
+    ]
+   ]
+  },
+  {
+   "y": 1973,
+   "m": 10,
+   "t": "Yom Kippur Savaşı: Mısır ve Suriye İsrail'e sürpriz bir saldırı düzenledi.",
+   "fx": [
+    [
+     "war",
+     "Egypt",
+     "Israel"
+    ],
+    [
+     "war",
+     "Syria",
+     "Israel"
+    ]
+   ]
+  },
+  {
+   "y": 1973,
+   "m": 10,
+   "t": "OPEC petrol ambargosu: petrol fiyatları birkaç haftada katlandı; dünya ekonomisi sarsıldı.",
+   "fx": [
+    [
+     "stab",
+     "United States of America",
+     -2
+    ],
+    [
+     "stab",
+     "Japan",
+     -3
+    ],
+    [
+     "stab",
+     "Germany",
+     -2
+    ]
+   ]
+  },
+  {
+   "y": 1975,
+   "m": 4,
+   "t": "Saygon düştü: Vietnam Savaşı Kuzey'in zaferiyle sona erdi.",
+   "fx": [
+    [
+     "stab",
+     "United States of America",
+     -3
+    ]
+   ]
   }
  ],
  "leaders": {
@@ -1608,7 +1802,22 @@
    "6": "The India-Pakistan war ends as the UN steps in.",
    "7": "Six-Day War: Israel moves against Egypt, Syria and Jordan.",
    "8": "The Six-Day War ends in a ceasefire.",
-   "9": "Warsaw Pact forces entered Czechoslovakia."
+   "9": "Warsaw Pact forces entered Czechoslovakia.",
+   "10": "The Moscow-Washington 'hotline' was set up: the lesson of the Cuban crisis was to prevent accidental war.",
+   "11": "John F. Kennedy was assassinated in Dallas; Lyndon Johnson became president.",
+   "12": "Gulf of Tonkin incident: the US Congress gave the green light to military intervention in Vietnam.",
+   "13": "China detonated its first atomic bomb and became the fifth member of the nuclear club.",
+   "14": "The US sent its first combat ground troops to Vietnam; the war is escalating.",
+   "15": "The Cultural Revolution began in China: at Mao's call the country is sliding into chaos.",
+   "16": "Colonels' coup in Greece: the country passed under military junta rule.",
+   "17": "Tet Offensive: North Vietnam and the Viet Cong struck cities across the south; American opinion began to doubt the war.",
+   "18": "May 1968: a student uprising and general strike in France shook de Gaulle.",
+   "19": "Apollo 11: humanity set foot on the Moon; the US pulled ahead in the space race.",
+   "20": "Bangladesh Liberation War: India entered East Pakistan; the Indo-Pakistani war began.",
+   "21": "Nixon met Mao in Beijing: the balance of the Cold War is shifting.",
+   "22": "Yom Kippur War: Egypt and Syria launched a surprise attack on Israel.",
+   "23": "OPEC oil embargo: oil prices multiplied within weeks; the world economy was shaken.",
+   "24": "Saigon fell: the Vietnam War ended in a Northern victory."
   },
   "objectives": {
    "c1": "Stay alive for two years",

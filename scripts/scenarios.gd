@@ -211,7 +211,7 @@ static func apply(gs, id: String) -> void:
 	if sc.is_empty() or id == "free":
 		return
 	if sc.has("year") and Eras.current == "":
-		Names.start_year = clampi(int(sc["year"]), 1800, 2100)
+		Names.start_year = clampi(int(sc["year"]), 2024, 2100)
 	apply_dict(gs, sc, false)
 	Objectives.begin(gs, sc)
 

@@ -97,6 +97,30 @@ const CHAIN := {
 }
 
 
+## Başlangıç liderleri (DEFS'te lideri olmayan ülkeler için): data/era_leaders_start.json {çağ: {ülke: "Unvan|İsim"}}
+static var _start: Dictionary = {}
+static var _start_ok := false
+
+
+static func start_of(era: String, name_en: String) -> String:
+	if not _start_ok:
+		_start_ok = true
+		var f := FileAccess.open("res://data/era_leaders_start.json", FileAccess.READ)
+		if f != null:
+			var j = JSON.parse_string(f.get_as_text())
+			f.close()
+			if typeof(j) == TYPE_DICTIONARY:
+				_start = j
+	var src: String = EraExt.leaders_src(era)
+	var cands: Array = [src, era, String(EraExt.raw(era).get("base", "")) if EraExt.has_era(era) else ""]
+	for k in cands:
+		if k == "cold":
+			k = "cw62"
+		if _start.has(k):
+			return String((_start[k] as Dictionary).get(name_en, ""))
+	return ""
+
+
 ## Tarihî zincir bu turda hâlâ geçerli mi? (rastgele değişim bu sürede kapalı)
 static func chain_active(era: String, year: int) -> bool:
 	return era != "" and horizon_of(era) > 0 and year < horizon_of(era)

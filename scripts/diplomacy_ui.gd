@@ -241,7 +241,7 @@ static func _detail(ui, gs, cid: int) -> void:
 		if not gs.has_passage(me, cid):
 			box.add_child(_act_btn(ui, "Geçiş izni iste", "", Icons.pick("passage_grant", "flag"), func():
 				var e3: String = gs.player_request_passage(cid)
-				ui.toast(e3 if e3 != "" else "Geçiş izni verildi (26 hafta).")
+				ui.toast(e3 if e3 != "" else "Geçiş izni verildi (39 hafta).")
 				_detail(ui, gs, cid), sh, false))
 		var tl2: int = int(gs.countries[me].truce.get(cid, -1)) - gs.turn
 		if tl2 <= 0:

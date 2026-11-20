@@ -142,7 +142,7 @@ const WW2 := {
 	"gate": {"i_g43": 190, "i_stg44": 230, "i_ppsh": 60, "i_sten": 40, "i_garand": 70, "i_carbine": 110, "i_type100": 110,
 		"t_pz4": 20, "t_panther": 200, "t_tiger": 150, "t_t34": 40, "t_kv1": 60, "t_t3485": 215, "t_is2": 230, "t_crus": 30, "t_crom": 200,
 		"t_sherman": 120, "t_pershing": 270, "t_chihan": 90, "a_sdkfz251": 10, "a_m8": 140, "y_nebel": 40, "y_katyusha": 90,
-		"f_fw190": 90, "f_me262": 270, "f_yak9": 100, "f_la7": 210, "f_spit": 60, "f_spit2": 150, "f_p47": 140, "f_p51": 150, "f_zero": 10,
+		"f_fw190": 90, "f_me262": 270, "f_yak9": 100, "f_la7": 210, "f_spit": 60, "f_spit2": 150, "f_p47": 180, "f_p51": 190, "f_zero": 45,
 		"s_ix": 180, "s_gato": 120},
 }
 
@@ -257,9 +257,9 @@ const WW1 := {
 	"tech": {"Germany": 0.6, "United Kingdom": 0.55, "France": 0.5, "Russia": 0.25, "Austria": 0.3, "Turkey": 0.15, "United States of America": 0.5,
 		"Japan": 0.3, "Italy": 0.3},
 	"new": [],
-	"gate": {"t_mk1": 110, "t_schn": 130, "t_mk4": 150, "t_mk5": 190, "t_ft17": 160, "t_a7v": 190, "i_mg1718": 60, "i_mp18": 190,
-		"i_lewis": 30, "i_chauchat": 60, "i_berthier": 130, "f_dr1": 120, "f_d7": 190, "f_spad": 90, "f_spad13": 150, "f_pup": 90,
-		"f_camel": 140, "f_fokker": 20, "s_u151": 120, "y_bertha": 0, "y_155": 70, "y_60pdr": 60},
+	"gate": {"t_mk1": 110, "t_schn": 130, "t_mk4": 150, "t_mk5": 200, "t_ft17": 160, "t_a7v": 190, "i_mg1718": 60, "i_mp18": 190,
+		"i_lewis": 40, "i_chauchat": 60, "i_berthier": 130, "f_dr1": 140, "f_d7": 190, "f_spad": 90, "f_spad13": 150, "f_pup": 90,
+		"f_camel": 150, "f_fokker": 45, "s_u151": 100, "f_us": 40, "y_bertha": 0, "y_155": 70, "y_60pdr": 60},
 }
 
 const DATA := {"ww1": WW1, "ww2": WW2}

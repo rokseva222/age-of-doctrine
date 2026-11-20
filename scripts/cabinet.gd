@@ -79,7 +79,7 @@ const CARDS := [
 	 "o": [
 		{"t": "Af ilan et", "e": {"stab": 2, "troops": -0.01}, "r": "Firariler affedildi; bir kısmı geri döndü."},
 		{"t": "Sıkı ceza", "e": {"stab": -3, "troops": 0.02}, "r": "Disiplin sertleşti; ordu toparlandı ama halk huzursuz."},
-		{"t": "Moral kampanyası", "e": {"g": -0.5, "stab": 1, "troops": 0.01}, "r": "Gazete, radyo ve şarkılarla cephede moral yükseltildi."}]},
+		{"t": "Moral kampanyası", "e": {"g": -0.5, "stab": 1, "troops": 0.01}, "r": "Gazete, afiş ve şarkılarla cephede moral yükseltildi."}]},
 	{"id": "d_nuke", "role": "def", "w": 0.5, "war": 0,
 	 "q": "Gizli bir ileri silah programı için bilim insanları kaynak bekliyor. Yakalanırsak yaptırım gelebilir.",
 	 "o": [

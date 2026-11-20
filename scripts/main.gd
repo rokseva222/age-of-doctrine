@@ -944,7 +944,7 @@ func _on_ui_action(act: String, arg) -> void:
 			_refresh_selection()
 		"ask_passage":
 			var pe: String = gs.player_request_passage(arg)
-			ui.toast(pe if pe != "" else "Geçiş izni verildi (26 hafta).")
+			ui.toast(pe if pe != "" else "Geçiş izni verildi (39 hafta).")
 			sfx.play("peace" if pe == "" else "error", 0.7)
 			_refresh_selection()
 		"ask_aid":

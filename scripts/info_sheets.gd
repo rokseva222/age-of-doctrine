@@ -287,8 +287,10 @@ static func open_howto(parent: Node) -> void:
 			render.call())
 
 
-const UPDATE_VER := "1.2.13"
+const UPDATE_VER := "1.2.14"
 const WHATS_NEW := [
+	["Ordu emirleri ve geçiş izni", "Yolu müttefik ya da tarafsız ordu tıkarsa ordun bekler (8 hafta sonra emir iptal olur); denizaşırı hedeflerde nedeni açıkça yazılır. Geçiş izni daha kolay (ilişki 30+) ve 39 hafta sürer; bitmeden 3 hafta önce uyarı gelir."],
+	["Tarihe uygun dönemler", "Dönem başlangıçlarında henüz icat edilmemiş silahlar yok (1914'te tank, 1939'da Panther yok). 200'den fazla ülkeye gerçek lider atandı ve 60'tan fazla yeni tarihî olay eklendi: Tannenberg'den Saygon'un düşüşüne."],
 	["Senaryo editöründe dönemler", "Senaryo oluştururken oyundaki tüm dönemlerden birini seçebilirsin: I. ve II. Dünya Savaşı, Soğuk Savaş, Osmanlı ve Timur çağları, alternatif tarihler. Devirleri o dönemin devletleriyle yapar, «Haritada önizle» ile sonucu görürsün."],
 	["Bayrak ve ittifak amblemleri", "Bayrak ve ittifak düzenleyicide 45 yeni siluet amblem: orak-çekiç, hilal, kartallar, aslan, taç, defne, ejderha, bozkurt ve daha fazlası."],
 	["Savaş saldırganlığı", "Ayarlar'dan yapay zekânın savaş açma isteğini %0–100 arasında ayarla; normal oyunda da çalışır."],

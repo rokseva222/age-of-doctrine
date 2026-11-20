@@ -113,15 +113,29 @@ func _run(era: String, seed_val: int, norders: int, turns: int, mode: int) -> vo
 		var gold0: float = me.gold
 		var err: String = gs.player_order_move(a, tgt, cnt)
 		var tp = gs.provinces[tgt]
-		var rec := {"aid": a.id, "from": a.prov, "to": tgt, "cnt": cnt, "err": err, "pre_hops": pre_path.size(),
+		var rec := {"aid": a.id, "from": a.prov, "to": tgt, "cnt": cnt, "err": err, "pre_hops": pre_path.size(), "pre_path": pre_path,
 			"geo": _bfs_free(gs, a.prov, tgt), "owner_to": tp.owner, "tgt_state": ("savaş" if (tp.owner >= 0 and gs.at_war(pid, tp.owner)) else ("kendi" if tp.owner == pid else ("müttefik" if gs.is_allied(pid, tp.owner) else ("ateşkes" if int(me.truce.get(tp.owner, -1)) > gs.turn else ("izinli" if gs.has_passage(pid, tp.owner) else "tarafsız"))))),
 			"landing": a.op == "landing" or me.gold < gold0 - 1.0, "coastal": tp.coastal, "first_path": (a.path[0] if not a.path.is_empty() else -1)}
 		orders.append(rec)
 	# sürdür
 	var progress := {}
-	for o in orders: progress[o.aid] = {"moved_turn": -1, "reached": false}
+	for o in orders:
+		progress[o.aid] = {"moved_turn": -1, "reached": false}
+		o["trace"] = []
+		o["auto"] = me.auto_cmd
+		o["occ"] = []
+		for pp in o.pre_path:
+			var oa = gs.armies.get(pp)
+			o["occ"].append([pp, (oa.owner if oa != null else -1), (oa.size if oa != null else 0)])
+		var a0 = _find(gs, o.aid)
+		if a0 != null:
+			o["trace"].append([a0.prov, a0.path.size(), a0.hold, a0.leaving, a0.sp_size])
 	for t in turns:
 		gs.end_turn()
+		for o in orders:
+			if o.err == "" and o["trace"].size() < 5:
+				var ax = _find(gs, o.aid)
+				o["trace"].append([ax.prov, ax.path.size(), ax.hold, ax.leaving, ax.sp_size] if ax != null else "yok")
 		for o in orders:
 			if o.err != "": continue
 			var cur = _find(gs, o.aid)

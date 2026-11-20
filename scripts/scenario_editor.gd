@@ -287,6 +287,7 @@ func _build() -> void:
 	_year_spin.custom_minimum_size = Vector2(160, 52)
 	ylb.add_child(_year_spin)
 	pb.add_child(ylb)
+	pb.add_child(TK.t("Modern harita 2024 ve sonrası için kurulu; geçmiş yıllar için yukarıdan bir dönem seç (silahlar ve kabine o döneme uyar).", "small", TK.FAINT))
 	var dlb := HBoxContainer.new()
 	dlb.add_theme_constant_override("separation", 10)
 	var dll := TK.t("Süre sınırı (hafta, 0 = yok)", "body", TK.TEXT)
@@ -1699,8 +1700,8 @@ func _collect() -> Dictionary:
 	d["intro"] = _intro_edit.text.strip_edges()
 	d["deadline"] = int(_dl_spin.value)
 	var yv: int = int(_year_spin.value)
-	if yv >= 1800 and String(d.get("era", "")) == "":
-		d["year"] = yv
+	if yv >= 1 and String(d.get("era", "")) == "":
+		d["year"] = maxi(yv, 2024)
 	else:
 		d.erase("year")
 	if d.get("transfer", []).is_empty():

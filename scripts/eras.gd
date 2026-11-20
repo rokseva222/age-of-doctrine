@@ -254,7 +254,7 @@ const SETUP := {
 		"blocs": [
 			{"name": "İtilaf Devletleri", "members": ["United Kingdom", "France", "Russia", "Serbia", "Belgium", "Japan", "Canada", "Australia", "New Zealand", "South Africa"],
 				"emblem": {"shape": 5, "inner": 1, "symbol": "shield", "c1": "2f4f9a", "c2": "ece6d6", "c3": "2f4f9a"}},
-			{"name": "Merkezi Güçler", "members": ["Germany", "Austria", "Turkey", "Bulgaria"],
+			{"name": "Merkezi Güçler", "members": ["Germany", "Austria", "Turkey"],
 				"emblem": {"shape": 4, "inner": 1, "symbol": "crown", "c1": "6d6f78", "c2": "e3a92b", "c3": "e3a92b"}},
 		],
 		"wars": [["Austria", "Serbia"], ["Germany", "Russia"], ["Germany", "France"], ["Germany", "Belgium"], ["United Kingdom", "Germany"],
@@ -498,6 +498,9 @@ static func restructure(gs, id: String) -> void:
 		c.name = d3["name"]
 		c.color = Color(d3["color"])
 		c.leader = d3.get("leader", "")
+	for c4 in gs.countries:
+		if c4.alive and c4.leader == "":
+			c4.leader = EraLeaders.start_of(id, c4.name_en)
 	var CAP: Dictionary = _t("capital", id)
 	for cap_name in CAP:
 		var ccid: int = int(idx.get(cap_name, -1))
@@ -599,6 +602,8 @@ static func leaders_tick(gs) -> void:
 ## Eski kayıtlar için: dönemin başlangıç lideri + o tarihe kadarki tarihî değişimler.
 static func leader_at(id: String, name_en: String, turn: int) -> String:
 	var cur: String = String((_t("defs", id) as Dictionary).get(name_en, {}).get("leader", ""))
+	if cur == "":
+		cur = EraLeaders.start_of(id, name_en)
 	var ym: Array = Names.year_month(turn)
 	var key: int = int(ym[0]) * 12 + int(ym[1]) - 1
 	for e in EraLeaders.chain_of(id).get(name_en, []):
