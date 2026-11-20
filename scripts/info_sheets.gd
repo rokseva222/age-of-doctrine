@@ -287,7 +287,7 @@ static func open_howto(parent: Node) -> void:
 			render.call())
 
 
-const UPDATE_VER := "1.2.25"
+const UPDATE_VER := "1.2.27"
 const WHATS_NEW := [
 	["Tarihe uygun sömürge adları", "1914 ve 1939 senaryolarında Britanya Hindistanı, Fransız Cezayiri, Fransız Çinhindisi gibi dönemin gerçek adları görünür. Hindistan ve Kore tek devlet olarak başlar."],
 	["Soğuk Savaş haritası temizlendi", "1962 haritasında bugünün mikro devletleri (hayalet ülkeler) kaldırıldı; toprakları o dönemin gerçek sahiplerine bağlandı."],
@@ -299,6 +299,7 @@ const WHATS_NEW := [
 	["Toplu işlemler ve yeni seçenekler", "Eyalet kartındaki Toplu işlemler ile tüm eyaletlere bina, asimile ve din dönüşümü tek dokunuşla yapılır. Ülke Formla'da gereken eyaletler haritada gösterilir. Kıbrıs, Jamaika, Mauritius gibi adalara çıkarma düzeltildi. Politika'da Faşist rejim ve Monarşi seçenekleri geldi; 1914/1939 Almanya gibi çok düşmanla başlayanlara savaş fonu verilir."],
 	["İki yeni tarihî senaryo", "Osmanlı'nın Kuruluşu (1299, Söğüt'ten Bursa'ya) ve İstanbul'un Fethi (1453, surların önünde) çağları eklendi. Evlilik teklifi hikaye modunda artık bir kez kabul edilince tekrar gelmez."],
 	["Deniz ve gaz harekâtı", "Çıkarmada donanma üstünlüğü artık avantaj sağlıyor, güçlü düşman donanması çıkarma filonu denizde vurabiliyor. Kimyasal saldırı uçakla da yapılabiliyor. Dinler ve rejimler için yeni simgeler geldi."],
+	["3B kılıç düellosu", "Hikaye modundaki Meydan Okuma artık gerçek zamanlı 3B bir düello: rakibin kılıç yönünü oku, doğru siperi al, kusursuz siperde karşı vuruşla bitir."],
 	["Grup adları çevrildi", "Milis, isyancı, paralı asker ve gizli hücre adları Türkçe dışındaki dillerde artık İngilizce üretiliyor."],
 ]
 

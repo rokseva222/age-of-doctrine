@@ -851,7 +851,7 @@ const CARDS := [
 				"win_text": "Rakibin kılıcı elinden düştü. Ordugâh senin adını sayıyor.", "lose_text": "Yere düştün. Adamların seni ordugâhtan taşıdı."}],
 			["Sakin kal", {"renown": -3, "loyalty": 2}], ["Adamlarını üstüne sal", {"renown": 3, "favor": -10, "stab": -2}]]},
 	{"id": "champion", "t": "Meydan Okuma", "scene": "pre_siege", "b": "Kuşatma sırasında surların önünde düşman pehlivanı çıktı ve seni teke tek dövüşe çağırıyor. Askerler bakıyor.",
-		"c": [["Meydana çık", {}, {"game": "duel", "style": [1.1, 1.2, 1.1], "power": 1.1, "title": "Tek Dövüş", "intro": "Surların gölgesinde iki ordu seyrediyor.",
+		"c": [["Meydana çık", {}, {"game": "sword3d", "style": [1.1, 1.2, 1.1], "power": 1.1, "title": "Tek Dövüş", "intro": "Surların gölgesinde iki ordu seyrediyor.",
 				"win": {"renown": 14, "stab": 3, "troops": 300}, "lose": {"troops": -400, "renown": -6, "stab": -3}, "draw": {"renown": 2}, "yield": {"renown": -10, "troops": -200},
 				"win_text": "Pehlivan yere serildi. Surlardan ve saflardan ses yükseldi.", "lose_text": "Yenildin. Askerler moralini kaybetti."}],
 			["Reddet", {"renown": -5, "stab": -1}], ["Okçulara işaret et", {"renown": -2, "favor": 2}]]},

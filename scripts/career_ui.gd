@@ -1,6 +1,7 @@
 extends RefCounted
 const PickButton = preload("res://scripts/pick_button.gd")
 const Minigames = preload("res://scripts/minigames.gd")
+const SwordDuel = preload("res://scripts/sword_duel.gd")
 ## Hikâye Modu arayüzü: çağ seçimi → hükümdar/tımar/karakter kurulumu → Divan paneli → hikâye kartları.
 
 const TK = preload("res://scripts/theme_kit.gd")
@@ -471,7 +472,12 @@ static func card_spec(gs, after: Callable, ui = null) -> Dictionary:
 					g["skill"] = clampf(float(gs.career.get("renown", 0.0)) / 100.0, 0.0, 1.0) * 0.8
 					g["player"] = nm
 					g["foe"] = _foe_name(gs, String(c2.id))
-					if String(g.get("game", "duel")) == "negotiate":
+					if String(g.get("game", "duel")) == "sword3d":
+						btns.append({"text": String(c2.c[i][0]), "icon": "swords", "kind": "danger", "cb": func():
+							SwordDuel.open(ui, g, func(res: String, _info: Dictionary):
+								Career.choose_game(gs, idx, res)
+								after.call())})
+					elif String(g.get("game", "duel")) == "negotiate":
 						btns.append({"text": String(c2.c[i][0]), "icon": Icons.pick("handshake", "alliance"), "kind": "gold", "cb": func():
 							Minigames.negotiate(ui, g, func(res: String, _info: Dictionary):
 								Career.choose_game(gs, idx, res)
