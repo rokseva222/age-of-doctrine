@@ -163,6 +163,7 @@ const FIELD_RATIO := 1.0
 const WAGE_COMP := 0.6
 
 static func init_country(gs, c) -> void:
+	_now = gs.turn   # önceki oyundan kalan tur sayacı yeni dünyayı etkilemesin
 	_load()
 	var gdp_pc: float = c.gdp / maxf(c.pop, 0.01)
 	c.capacity = pow(clampf(gdp_pc / (12000.0 if era_on else 60000.0), 0.08, 1.0), 0.6)

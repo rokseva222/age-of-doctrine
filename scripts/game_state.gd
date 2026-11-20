@@ -113,6 +113,7 @@ var cold: Array = []             # soğuk savaş çiftleri: yalnızca siber oper
 # ===================================================================== kurulum
 
 func new_world(seed_val: int, _ncountries: int = 0) -> void:
+	Chokepoints._mult.clear()   # önceki oyunun boğaz çarpanı yeni dünyaya taşınmasın
 	news_log.clear()
 	pending_proposal = false
 	un_pending = {}
@@ -3753,6 +3754,7 @@ func _spawn_rebels(p) -> bool:
 		faction.id = countries.size()
 		faction.is_rebel = true
 		faction.name = Militias.unique(Militias.make(countries[owner_id], rng, "rebel"), rebel_name_count)
+		faction.name_en = faction.name
 		faction.color = Color.from_hsv(rng.randf(), 0.6, 0.42)
 		faction.color2 = Color(0.12, 0.12, 0.14)
 		faction.color3 = Color(0.8, 0.12, 0.12)
