@@ -10,6 +10,8 @@ const Chokepoints = preload("res://scripts/chokepoints.gd")
 
 const STREAK_STAB := 4
 const STREAK_PEACE := 4
+const HOLD_WEEKS := 52          # oyun başında zaten sağlanan 'elde tut' hedefleri bu kadar hafta sürdürülünce tamamlanır
+const HOLD_TYPES := ["own_capital", "own_province", "hold_choke", "stability", "cease_war"]
 
 
 ## Oyun başında çağrılır (oyuncu seçildikten sonra). def: senaryo ya da çağ sözlüğü.
@@ -22,6 +24,47 @@ static func begin(gs, def: Dictionary, with_src: bool = true) -> void:
 			var ci: int = int(gs.macro_idx.get(String(o.get("country", "")), -1))
 			if ci >= 0:
 				gs.scn.cap[String(o.country)] = gs.countries[ci].capital
+	_prepare_pre(gs)
+
+
+## Oyun başında zaten sağlanan hedefler anında zafer vermesin:
+## büyüme hedefleri (eyalet/müttefik/GSYH payı) başlangıç değerinin biraz üstüne çıkarılır, 'elde tut' hedefleri 52 hafta sürdürülmelidir.
+static func _prepare_pre(gs) -> void:
+	gs.scn["pre"] = {}
+	if gs.player < 0:
+		return
+	var pc = gs.countries[gs.player]
+	for o in list(gs):
+		if not (o is Dictionary) or not is_required(o):
+			continue
+		var oid: String = String(o.get("id", ""))
+		var t: String = String(o.get("type", ""))
+		if t == "own_provinces" and pc.prov_owned >= int(o.n):
+			var nn: int = pc.prov_owned + maxi(3, int(ceil(pc.prov_owned * 0.2)))
+			_bump_text(gs, o, str(int(o.n)), str(nn))
+			o["n"] = nn
+		elif t == "alliances" and pc.allies.size() >= int(o.n):
+			var na: int = pc.allies.size() + 2
+			_bump_text(gs, o, str(int(o.n)), str(na))
+			o["n"] = na
+		elif t == "gdp_share" and _gdp_share(gs) * 100.0 >= float(o.pct):
+			var np: int = int(ceil(_gdp_share(gs) * 100.0 * 1.25)) + 1
+			_bump_text(gs, o, str(int(o.pct)), str(np))
+			o["pct"] = np
+		elif HOLD_TYPES.has(t) and _met(gs, o):
+			gs.scn.pre[oid] = true
+	# _met akış sayaçlarını (cease_war/stability) etkilemiş olabilir: sıfırla
+	gs.scn.streak = {}
+
+
+static func _bump_text(gs, o: Dictionary, old: String, nw: String) -> void:
+	o["text"] = String(o.get("text", "")).replace(old, nw)
+	var s: Dictionary = src(gs)
+	if s.has("en") and (s["en"] as Dictionary).has("objectives"):
+		var m: Dictionary = s["en"]["objectives"]
+		var id: String = String(o.get("id", ""))
+		if m.has(id):
+			m[id] = String(m[id]).replace(old, nw)
 
 
 static func src(gs) -> Dictionary:
@@ -80,6 +123,8 @@ static func progress(gs, o: Dictionary) -> String:
 	if gs.player < 0:
 		return ""
 	var pc = gs.countries[gs.player]
+	if gs.scn.get("pre", {}).has(String(o.get("id", ""))):
+		return "%d/%d" % [mini(int(gs.scn.streak.get("hold_" + String(o.get("id", "")), 0)), HOLD_WEEKS), HOLD_WEEKS]
 	match String(o.get("type", "")):
 		"own_provinces":
 			return "%d/%d" % [pc.prov_owned, int(o.n)]
@@ -189,7 +234,14 @@ static func tick(gs) -> void:
 	var req_done := 0
 	for o in objs:
 		var oid: String = String(o.get("id", ""))
-		if not gs.scn.done.has(oid) and _met(gs, o):
+		var met_now: bool = false
+		if not gs.scn.done.has(oid):
+			met_now = _met(gs, o)
+			if gs.scn.get("pre", {}).has(oid):
+				var hk := "hold_" + oid
+				gs.scn.streak[hk] = (int(gs.scn.streak.get(hk, 0)) + 1) if met_now else 0
+				met_now = int(gs.scn.streak[hk]) >= HOLD_WEEKS
+		if not gs.scn.done.has(oid) and met_now:
 			gs.scn.done[oid] = gs.turn
 			gs.post_news(Loc.t("Hedef tamamlandı: %s") % text_of(gs, o), -1, "event")
 			gs.objective_done.emit(oid)

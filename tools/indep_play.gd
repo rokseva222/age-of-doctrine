@@ -31,6 +31,9 @@ func _init() -> void:
 		var pc = gs.countries[gs.player]
 		pc.budget = Macro.PRESETS["war" if not pc.enemies.is_empty() else "peace"].duplicate()
 		gs.end_turn()
+		if OS.get_cmdline_user_args().size() > 3 and t % 5 == 0:
+			var hc = gs.countries[int(gs.indep.host)]
+			print("  t=%d eyalet=%d/%d asker=%d altın=%.0f gelir=%.1f destek=%d meşru=%d | merkez asker=%d eyalet=%d" % [gs.turn, I.held(gs), pc.prov_owned, pc.troops, pc.gold, pc.income, int(gs.indep.support), int(gs.indep.legit), hc.troops, hc.prov_owned])
 		var ph: int = int(gs.indep.phase)
 		if not phase_turn.has(ph): phase_turn[ph] = gs.turn
 		if not gs.countries[gs.player].alive:

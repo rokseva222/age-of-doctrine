@@ -5,6 +5,7 @@ const Eras = preload("res://scripts/eras.gd")
 const SC = preload("res://scripts/scenarios.gd")
 const Obj = preload("res://scripts/objectives.gd")
 const Names = preload("res://scripts/names.gd")
+const PlayerBot = preload("res://tools/player_bot.gd")
 var issues: Dictionary = {}
 var last_snap := ""
 var trace := ""
@@ -36,6 +37,7 @@ func _init() -> void:
 		SC.apply(gs, id)
 	var pl = gs.countries[gs.player]
 	pl.auto_cmd = true
+	var bot = PlayerBot.new(gs, 4242 + pi, a.size() > 4 and a[4] == "fetih")
 	var t0 := Time.get_ticks_msec()
 	var w0: int = gs.wars.size()
 	var minprov: int = pl.prov_owned
@@ -55,7 +57,7 @@ func _init() -> void:
 			if bestn >= 0:
 				gs.declare_war(gs.player, bestn)
 		if not pasif and pl.alive:
-			_competent(gs, pl)
+			bot.act()
 		gs.end_turn()
 		if not pl.alive:
 			if died < 0: died = t
@@ -89,6 +91,7 @@ func _init() -> void:
 			if Obj.is_done(gs, o): done += 1
 		objs = " hedef=%d/%d" % [done, lst.size()]
 	var iss := ""
+	objs += " bot=" + JSON.stringify(bot.log)
 	for k in issues: iss += "\n      ! %s ×%d" % [k, issues[k]]
 	if died >= 0: print("   ÖLÜM ÖNCESİ: ", last_snap)
 	if died >= 0 or oc.t.begins_with("YEN"): print("   İZ:", trace)
