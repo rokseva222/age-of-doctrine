@@ -235,6 +235,9 @@ func _line(placeholder: String, maxlen: int, text: String) -> LineEdit:
 
 
 func _build() -> void:
+	_pages = []
+	_page = 0
+	_sections = {}
 	_sheet = Sheet.open(root, "Senaryo oluştur", 900, true, true, "Kendi senaryon")
 	U.era = String(d.get("era", ""))
 	_sheet.closed.connect(func(): U.era = "")
@@ -259,10 +262,8 @@ func _build() -> void:
 	era_fl.add_theme_constant_override("v_separation", 8)
 	var cur_era: String = String(d.get("era", ""))
 	var era_opts: Array = [["", "Dünya 2027"]]
-	for eid in U.ERAS_OK:
-		var ed: Dictionary = Eras.get_era(eid)
-		if not ed.is_empty():
-			era_opts.append([eid, String(ed["name"])])
+	for ed in Eras.all():
+		era_opts.append([String(ed["id"]), String(ed["name"])])
 	for eo in era_opts:
 		var eid2: String = eo[0]
 		var locked: bool = eid2 != "" and not AP.era_unlocked(eid2)

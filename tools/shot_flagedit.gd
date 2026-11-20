@@ -8,7 +8,7 @@ func _init() -> void:
 	await create_timer(3.8).timeout
 	var St = load("res://scripts/settings.gd")
 	St.seen_howto = true
-	St.seen_update = "1.2.12"
+	St.seen_update = "1.2.13"
 	main.menu.finish_splash()
 	await create_timer(0.8).timeout
 	FE.open(main.menu.root, "R:#c8102e,0,0,1,1|Y:#ffffff,swords,0.5,0.5,0.45", func(sp): pass)

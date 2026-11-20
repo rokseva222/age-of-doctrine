@@ -16,7 +16,7 @@ func _init() -> void:
 	var St = load("res://scripts/settings.gd")
 	St.load_all(); St.language = "tr"
 	St.seen_howto = true
-	St.seen_update = "1.2.12"
+	St.seen_update = "1.2.13"
 	var main = load("res://main.tscn").instantiate()
 	get_root().add_child(main)
 	await create_timer(3.8).timeout
@@ -36,6 +36,12 @@ func _init() -> void:
 	print("ww2 düğmesi: ", btn != null)
 	btn.pressed.emit()
 	await create_timer(0.8).timeout
+	var ed2 = main.menu.root.get_children().back()
+	var lbls: Array = []
+	for l in ed2.find_children("*", "Label", true, false):
+		if l.text.contains("/ "):
+			lbls.append(l.text)
+	print("sayfa etiketi: ", lbls.slice(0, 2))
 	await _shot(out + "/02_editor_ww2.png")
 	# kaydedilmiş bir senaryo gibi: Almanya'nın bir ilini Polonya'ya devret
 	var info: Dictionary = U.era_info("ww2")

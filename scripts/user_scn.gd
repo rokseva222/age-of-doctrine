@@ -20,8 +20,14 @@ const OBJ_TYPES := ["survive", "own_provinces", "alliances", "no_war", "cease_wa
 static var _countries: Array = []
 
 
-## Senaryo çağları (düzenleyicide seçilebilen): "" = Dünya 2027
-const ERAS_OK := ["ww1", "ww2", "cw62"]
+## Senaryo çağları: oyundaki bütün dönemler (tarihî savaşlar, alternatif tarihler, Hikâye Modu çağları); "" = Dünya 2027
+static func valid_era(id) -> bool:
+	if typeof(id) != TYPE_STRING or id == "":
+		return false
+	var Eras = load("res://scripts/eras.gd")
+	return not Eras.get_era(id).is_empty()
+
+
 static var era := ""                      # düzenleyici açıkken: düzenlenen senaryonun çağı
 static var _era_cache: Dictionary = {}
 
@@ -384,7 +390,7 @@ static func sanitize(d: Dictionary) -> Dictionary:
 	if sug.is_empty():
 		return {}
 	out["suggest"] = sug
-	if typeof(d.get("era", "")) == TYPE_STRING and ERAS_OK.has(String(d.get("era", ""))):
+	if valid_era(d.get("era", "")):
 		out["era"] = String(d["era"])
 	var yr: int = int(d.get("year", 0)) if typeof(d.get("year", 0)) in [TYPE_INT, TYPE_FLOAT] and not out.has("era") else 0
 	if yr >= 1800 and yr <= 2100:

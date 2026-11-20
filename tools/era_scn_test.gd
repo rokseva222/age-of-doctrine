@@ -46,5 +46,12 @@ func _init() -> void:
 	# bozuk çağ reddedilir
 	var bad := U.sanitize({"name": "x", "suggest": ["Turkey"], "era": "ww9"})
 	ck("bilinmeyen çağ yok sayılır", not bad.has("era"))
+	# bütün çağlar: ülke listesi kurulabiliyor mu, il sahipleri var mı
+	for e in Eras.all():
+		var inf: Dictionary = U.era_info(String(e["id"]))
+		var ok: bool = inf["countries"].size() > 8 and inf["provs"].size() > 500
+		ck("çağ %s: %d ülke, %d il" % [e["id"], inf["countries"].size(), inf["provs"].size()], ok)
+		ck("çağ %s geçerli" % e["id"], U.valid_era(e["id"]))
+	ck("Eras durumu geri yüklendi (son)", Eras.current == "")
 	print("HATA SAYISI=", fails)
 	quit()
