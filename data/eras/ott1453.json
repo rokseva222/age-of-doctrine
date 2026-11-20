@@ -71,7 +71,7 @@
   "Kyrgyzstan": {
    "name": "Moğulistan Hanlığı",
    "color": "8a6a4a",
-   "leader": "Han|Kamer ed-Din",
+   "leader": "Han|II. Esen Buka",
    "gdp": 4,
    "mil": {
     "personnel": 30000,
@@ -85,7 +85,7 @@
   "Mongolia": {
    "name": "Kuzey Yuan (Moğollar)",
    "color": "8f6a3a",
-   "leader": "Han|Uskhal Han",
+   "leader": "Han|Esen Taişi (Oyrat)",
    "gdp": 4,
    "mil": {
     "personnel": 50000,
@@ -141,7 +141,7 @@
   "Georgia": {
    "name": "Gürcü Krallığı",
    "color": "a05a7a",
-   "leader": "Kral|VII. Bagrat",
+   "leader": "Kral|VIII. Giorgi",
    "gdp": 5,
    "mil": {
     "personnel": 25000,
@@ -169,7 +169,7 @@
   "Sri Lanka": {
    "name": "Vijayanagara İmparatorluğu",
    "color": "c05a2a",
-   "leader": "İmparator|I. Harihara",
+   "leader": "İmparator|Mallikarjuna Raya",
    "gdp": 25,
    "mil": {
     "personnel": 80000,
@@ -183,7 +183,7 @@
   "Nepal": {
    "name": "Bahmanî Sultanlığı",
    "color": "7a5a9a",
-   "leader": "Sultan|II. Muhammed Şah",
+   "leader": "Sultan|II. Alâeddin Ahmed Şah",
    "gdp": 20,
    "mil": {
     "personnel": 50000,
@@ -211,7 +211,7 @@
   "Bangladesh": {
    "name": "Bengal Sultanlığı (İlyas Şahî)",
    "color": "7a9a3a",
-   "leader": "Sultan|İskender Şah",
+   "leader": "Sultan|Nasırüddin Mahmud Şah",
    "gdp": 15,
    "mil": {
     "personnel": 40000,
@@ -279,7 +279,7 @@
    }
   },
   "Montenegro": {
-   "name": "Anadolu Beylikleri (Candar, Dulkadir, Trabzon)",
+   "name": "Anadolu Beylikleri (Candar, Trabzon, Dulkadir, Ak Koyunlu)",
    "color": "a06a4a",
    "leader": "Bey|İsmail Candaroğlu",
    "gdp": 5,
@@ -293,7 +293,7 @@
    }
   },
   "Greece": {
-   "name": "Bizans İmparatorluğu (Son Günler)",
+   "name": "Bizans İmparatorluğu ve Mora Despotluğu",
    "color": "7a4a9a",
    "leader": "İmparator|XI. Konstantinos Palaiologos",
    "gdp": 5,
@@ -337,7 +337,7 @@
   "Yemen": {
    "name": "Resûlî Yemen",
    "color": "6a9a6a",
-   "leader": "Sultan|El-Eşref II. İsmail",
+   "leader": "Sultan|Resûlî Hanedanı",
    "gdp": 4,
    "mil": {
     "personnel": 15000,
@@ -449,7 +449,7 @@
   "Andorra": {
    "name": "Aragon Tacı",
    "color": "d05a5a",
-   "leader": "Kral|IV. Pedro",
+   "leader": "Kral|V. Alfonso",
    "gdp": 16,
    "mil": {
     "personnel": 25000,
@@ -489,9 +489,9 @@
    }
   },
   "Malta": {
-   "name": "Napoli Krallığı (Anjou)",
+   "name": "Napoli Krallığı (Aragon)",
    "color": "5a7aa0",
-   "leader": "Kraliçe|I. Giovanna",
+   "leader": "Kral|I. Alfonso",
    "gdp": 10,
    "mil": {
     "personnel": 15000,
@@ -505,7 +505,7 @@
   "Belgium": {
    "name": "Burgonya ve Flandre",
    "color": "8f6bb0",
-   "leader": "Dük|Cesur Philippe",
+   "leader": "Dük|İyi Philippe",
    "gdp": 18,
    "mil": {
     "personnel": 18000,
@@ -645,7 +645,7 @@
   "Romania": {
    "name": "Eflak ve Boğdan",
    "color": "b0a05a",
-   "leader": "Voyvoda|I. Mircea",
+   "leader": "Voyvoda|II. Vladislav (Eflak)",
    "gdp": 5,
    "mil": {
     "personnel": 20000,
@@ -685,7 +685,7 @@
    }
   },
   "Bosnia and Herz.": {
-   "name": "Bosna Krallığı",
+   "name": "Bosna Krallığı ve Hersek",
    "color": "a0507a",
    "leader": "Kral|Stefan Toma",
    "gdp": 4,
@@ -699,9 +699,9 @@
    }
   },
   "Albania": {
-   "name": "Arnavut Beylikleri",
+   "name": "Arnavut Lezhë Birliği ve Zeta",
    "color": "a03a3a",
-   "leader": "Prens|Karl Thopia",
+   "leader": "Prens|İskender Bey (Gjergj Kastrioti)",
    "gdp": 3,
    "mil": {
     "personnel": 10000,
@@ -715,7 +715,7 @@
   "Morocco": {
    "name": "Merînîler",
    "color": "6a8a4a",
-   "leader": "Sultan|Ebu'l-Abbas Ahmed",
+   "leader": "Sultan|II. Abdülhak",
    "gdp": 8,
    "mil": {
     "personnel": 30000,
@@ -729,7 +729,7 @@
   "Algeria": {
    "name": "Abdülvâdîler (Tlemsen)",
    "color": "d05a3a",
-   "leader": "Sultan|Ebu Hammu II",
+   "leader": "Sultan|Abdülvâdî Hanedanı",
    "gdp": 4,
    "mil": {
     "personnel": 15000,
@@ -743,7 +743,7 @@
   "Tunisia": {
    "name": "Hafsîler",
    "color": "8a9a5a",
-   "leader": "Sultan|II. Ebu'l-Abbas",
+   "leader": "Sultan|Ebu Amr Osman",
    "gdp": 5,
    "mil": {
     "personnel": 18000,
@@ -783,7 +783,7 @@
    }
   },
   "South Korea": {
-   "name": "Goryeo Krallığı",
+   "name": "Joseon Krallığı",
    "color": "c8c8d0",
    "leader": "Kral|Danjong",
    "gdp": 10,
@@ -825,7 +825,7 @@
    }
   },
   "Vietnam": {
-   "name": "Dai Viet (Tran)",
+   "name": "Dai Viet (Lê)",
    "color": "b0903a",
    "leader": "İmparator|Le Nhan Tong",
    "gdp": 10,
@@ -867,9 +867,9 @@
    }
   },
   "Malaysia": {
-   "name": "Malay Sultanlıkları",
+   "name": "Malakka Sultanlığı",
    "color": "5aa08a",
-   "leader": "Raja|Parameswara",
+   "leader": "Sultan|Muzaffer Şah",
    "gdp": 6,
    "mil": {
     "personnel": 15000,
@@ -897,7 +897,7 @@
   "Indonesia": {
    "name": "Majapahit İmparatorluğu",
    "color": "a07a3a",
-   "leader": "Maharaja|Hayam Wuruk",
+   "leader": "Maharaja|Majapahit Hanedanı",
    "gdp": 18,
    "mil": {
     "personnel": 50000,
@@ -1023,7 +1023,7 @@
   "Mali": {
    "name": "Mali İmparatorluğu",
    "color": "c0a05a",
-   "leader": "Mansa|II. Mari Cata",
+   "leader": "Mansa|Keita Hanedanı",
    "gdp": 8,
    "mil": {
     "personnel": 40000,
@@ -1149,7 +1149,7 @@
   "Mexico": {
    "name": "Mexica Şehir Devletleri",
    "color": "3a8a5a",
-   "leader": "Tlatoani|Acamapichtli Hanedanı",
+   "leader": "Tlatoani|I. Moctezuma",
    "gdp": 6,
    "mil": {
     "personnel": 40000,
@@ -1177,7 +1177,7 @@
   "Peru": {
    "name": "İnka Şefliği (Cusco)",
    "color": "c05a3a",
-   "leader": "Sapa Inka|Inti Roca Hanedanı",
+   "leader": "Sapa Inka|Pachacuti",
    "gdp": 6,
    "mil": {
     "personnel": 30000,
@@ -1267,7 +1267,7 @@
   "Greece": 423,
   "Egypt": 378,
   "Iran": 477,
-  "Azerbaijan": 766,
+  "Azerbaijan": 459,
   "Sri Lanka": 59,
   "Nepal": 66,
   "Bhutan": 1,
@@ -1374,15 +1374,9 @@
    "own"
   ],
   [
-   1309,
-   "Greece",
+   1076,
+   "Romania",
    "Turkey",
-   "own"
-  ],
-  [
-   1311,
-   "Greece",
-   "Italy",
    "own"
   ],
   [
@@ -1407,6 +1401,102 @@
    1720,
    "North Macedonia",
    "Turkey",
+   "own"
+  ],
+  [
+   1666,
+   "Albania",
+   "Turkey",
+   "own"
+  ],
+  [
+   1311,
+   "Greece",
+   "Italy",
+   "own"
+  ],
+  [
+   1309,
+   "Greece",
+   "Italy",
+   "own"
+  ],
+  [
+   439,
+   "Turkey",
+   "Montenegro",
+   "own"
+  ],
+  [
+   1773,
+   "Montenegro",
+   "Bosnia and Herz.",
+   "own"
+  ],
+  [
+   1774,
+   "Montenegro",
+   "Bosnia and Herz.",
+   "own"
+  ],
+  [
+   1775,
+   "Montenegro",
+   "Albania",
+   "own"
+  ],
+  [
+   458,
+   "Iran",
+   "Azerbaijan",
+   "own"
+  ],
+  [
+   459,
+   "Iran",
+   "Azerbaijan",
+   "own"
+  ],
+  [
+   472,
+   "Iran",
+   "Azerbaijan",
+   "own"
+  ],
+  [
+   474,
+   "Iran",
+   "Azerbaijan",
+   "own"
+  ],
+  [
+   1459,
+   "Serbia",
+   "Hungary",
+   "own"
+  ],
+  [
+   1071,
+   "Romania",
+   "Hungary",
+   "own"
+  ],
+  [
+   1072,
+   "Romania",
+   "Hungary",
+   "own"
+  ],
+  [
+   1075,
+   "Romania",
+   "Hungary",
+   "own"
+  ],
+  [
+   1081,
+   "Romania",
+   "Hungary",
    "own"
   ],
   [
@@ -1470,12 +1560,6 @@
    "own"
   ],
   [
-   439,
-   "Turkey",
-   "Azerbaijan",
-   "own"
-  ],
-  [
    421,
    "Turkey",
    "Egypt",
@@ -1485,24 +1569,6 @@
    422,
    "Turkey",
    "Egypt",
-   "own"
-  ],
-  [
-   1773,
-   "Montenegro",
-   "Serbia",
-   "own"
-  ],
-  [
-   1774,
-   "Montenegro",
-   "Serbia",
-   "own"
-  ],
-  [
-   1775,
-   "Montenegro",
-   "Serbia",
    "own"
   ],
   [
@@ -2110,13 +2176,17 @@
    [
     "Turkey",
     "Greece"
+   ],
+   [
+    "France",
+    "United Kingdom"
    ]
   ],
   "truce": [
    [
     "Turkey",
     "Hungary",
-    156
+    80
    ],
    [
     "Turkey",
@@ -2164,7 +2234,7 @@
   {
    "y": 1453,
    "m": 7,
-   "t": "Castillon Muharebesi: Yüzyıl Savaşları sona erdi; Fransa İngilizleri kıta Avrupası'ndan kovdu.",
+   "t": "17 Temmuz'da Castillon Muharebesi: Fransız topçusu İngiliz ordusunu bozguna uğrattı; Yüzyıl Savaşları'nın son büyük çarpışması kazanıldı.",
    "fx": [
     [
      "stab",
@@ -2179,9 +2249,21 @@
    ]
   },
   {
+   "y": 1453,
+   "m": 10,
+   "t": "19 Ekim: Bordeaux teslim oldu; İngilizler Calais dışında kıta Avrupası'ndan atıldı ve Yüzyıl Savaşları sona erdi.",
+   "fx": [
+    [
+     "peace",
+     "France",
+     "United Kingdom"
+    ]
+   ]
+  },
+  {
    "y": 1455,
-   "m": 8,
-   "t": "Gutenberg İncili basıldı: matbaa Avrupa'da hızla yayılıyor.",
+   "m": 3,
+   "t": "Gutenberg'in 42 satırlık İncili tamamlandı: matbaa Avrupa'da hızla yayılıyor.",
    "fx": [
     [
      "stab",
@@ -2192,8 +2274,20 @@
   },
   {
    "y": 1456,
+   "m": 6,
+   "t": "4 Haziran: Osmanlı ordusu Atina'yı aldı; Floransalı Acciaiuoli Dükalığı'nın son kalesi Akropolis 1458'de teslim olacak.",
+   "fx": [
+    [
+     "stab",
+     "Italy",
+     -3
+    ]
+   ]
+  },
+  {
+   "y": 1456,
    "m": 7,
-   "t": "Belgrad Kuşatması: Hunyadi János Fatih'in ordusunu Tuna kıyısında durdurdu.",
+   "t": "Belgrad Kuşatması: Hunyadi János ve Capistrano'lu Giovanni Fatih'in ordusunu Tuna kıyısında durdurdu (4-22 Temmuz).",
    "fx": [
     [
      "war",
@@ -2210,7 +2304,7 @@
   {
    "y": 1456,
    "m": 8,
-   "t": "Hunyadi János salgında öldü; Macar savunması başsız kaldı.",
+   "t": "11 Ağustos: Hunyadi János kamptaki salgında öldü; Macar savunması başsız kaldı.",
    "fx": [
     [
      "stab",
@@ -2222,7 +2316,7 @@
   {
    "y": 1459,
    "m": 6,
-   "t": "Sırp Despotluğu'nun başkenti Smederevo düştü; Sırbistan Osmanlı eyaleti oldu.",
+   "t": "20 Haziran: Sırp Despotluğu'nun başkenti Smederevo teslim oldu; Sırbistan Osmanlı eyaleti oldu.",
    "fx": [
     [
      "war",
@@ -2239,7 +2333,7 @@
   {
    "y": 1460,
    "m": 5,
-   "t": "Mora Despotluğu fethedildi; Palaiologos hanedanı Yunanistan'dan silindi.",
+   "t": "29 Mayıs: Mistra teslim oldu; Mora Despotluğu Osmanlı'ya geçti (son kale Salmenikon 1461'de düştü). Palaiologos hanedanının son kolu İtalya'ya kaçtı.",
    "fx": [
     [
      "stab",
@@ -2251,7 +2345,7 @@
   {
    "y": 1461,
    "m": 8,
-   "t": "Trabzon Rum İmparatorluğu teslim oldu; Candaroğulları da son buldu.",
+   "t": "Yaz 1461: Sinop teslim olunca Candaroğulları son buldu; 15 Ağustos'ta Trabzon Rum İmparatorluğu da teslim oldu.",
    "fx": [
     [
      "stab",
@@ -2262,8 +2356,20 @@
   },
   {
    "y": 1464,
+   "m": 6,
+   "t": "Karaman Beyi II. İbrahim öldü; oğulları arasındaki taht kavgası Osmanlı'ya kapıyı açıyor.",
+   "fx": [
+    [
+     "stab",
+     "North Macedonia",
+     -18
+    ]
+   ]
+  },
+  {
+   "y": 1464,
    "m": 8,
-   "t": "Papa II. Pius haçlı seferi için Ancona'da bekliyor ama hastalanıp öldü; ordu dağıldı.",
+   "t": "14 Ağustos: II. Pius, haçlı ordusunu toplamaya çalıştığı Ancona'da öldü; sefer dağıldı.",
    "fx": [
     [
      "stab",
@@ -2275,12 +2381,12 @@
   {
    "y": 1468,
    "m": 6,
-   "t": "Karaman Beyi II. İbrahim öldü; oğulları arasında taht kavgası Osmanlı'ya kapıyı açıyor.",
+   "t": "Konya Osmanlı'ya katıldı: Karamanoğulları'nın merkezi elden gitti.",
    "fx": [
     [
      "stab",
      "North Macedonia",
-     -18
+     -12
     ]
    ]
   }
@@ -2367,15 +2473,18 @@
   "setup_intro": "April 1453: Sultan Mehmed II marched from Edirne and besieged Constantinople. The city trusts its double walls and the chained Golden Horn, but Ottoman cannon and fleet will decide the fate of walls and harbour.",
   "events": {
    "0": "29 May: Constantinople has fallen. Sultan Mehmed II broke the walls with cannon fire; Constantine XI died on the ramparts as the last emperor. A thousand years of the Eastern Roman Empire come to an end.",
-   "1": "Battle of Castillon: the Hundred Years' War is over; France has driven the English from the continent.",
-   "2": "The Gutenberg Bible is printed: the printing press spreads fast across Europe.",
-   "3": "Siege of Belgrade: John Hunyadi stops Mehmed's army on the Danube.",
-   "4": "John Hunyadi dies in an epidemic; Hungary's defence is left without a head.",
-   "5": "Smederevo, the capital of the Serbian Despotate, falls; Serbia becomes an Ottoman province.",
-   "6": "The Despotate of the Morea is conquered; the Palaiologos dynasty vanishes from Greece.",
-   "7": "The Empire of Trebizond surrenders; the Candaroğlu beylik also comes to an end.",
-   "8": "Pope Pius II waits in Ancona for a crusade but falls ill and dies; the army disperses.",
-   "9": "Karaman Bey Ibrahim II dies; a succession fight among his sons opens the door for the Ottomans."
+   "1": "Battle of Castillon (17 July): French artillery routs the English army, the last great battle of the Hundred Years' War.",
+   "2": "19 October: Bordeaux surrenders; the English are driven from the continent except Calais and the Hundred Years' War ends.",
+   "3": "The 42-line Gutenberg Bible is completed: the printing press spreads fast across Europe.",
+   "4": "4 June: the Ottoman army takes Athens; the Acropolis, last stronghold of the Florentine Acciaiuoli duchy, will surrender in 1458.",
+   "5": "Siege of Belgrade: John Hunyadi and John of Capistrano stop Mehmed's army on the Danube (4-22 July).",
+   "6": "11 August: John Hunyadi dies in the plague that broke out in the camp; Hungary's defence is left without a head.",
+   "7": "20 June: Smederevo, capital of the Serbian Despotate, surrenders; Serbia becomes an Ottoman province.",
+   "8": "29 May: Mystras surrenders and the Despotate of the Morea passes to the Ottomans (the last fortress, Salmenikon, falls in 1461). The last Palaiologoi flee to Italy.",
+   "9": "Summer 1461: Sinope surrenders and the Candar beylik comes to an end; on 15 August the Empire of Trebizond surrenders too.",
+   "10": "Karaman Bey Ibrahim II dies; a succession fight among his sons opens the door for the Ottomans.",
+   "11": "14 August: Pope Pius II dies at Ancona while trying to gather the crusading army; the expedition collapses.",
+   "12": "Konya is annexed by the Ottomans: the Karamanid heartland is lost."
   },
   "objectives": {
    "o1": "Survive two years",
