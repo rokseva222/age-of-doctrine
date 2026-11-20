@@ -16,7 +16,7 @@ func _init() -> void:
 			tr_id = c.id
 	var St = load("res://scripts/settings.gd")
 	St.seen_howto = true
-	St.seen_update = "1.2.11"
+	St.seen_update = "1.2.12"
 	main._on_start_requested(tr_id)
 	await create_timer(1.5).timeout
 	var gs = main.gs

@@ -20,14 +20,52 @@ const OBJ_TYPES := ["survive", "own_provinces", "alliances", "no_war", "cease_wa
 static var _countries: Array = []
 
 
-## [{en, name}] — ada göre sıralı (Türkçe ad; İngilizce arayüzde İngilizce ad)
-static func countries() -> Array:
+## Senaryo çağları (düzenleyicide seçilebilen): "" = Dünya 2027
+const ERAS_OK := ["ww1", "ww2", "cw62"]
+static var era := ""                      # düzenleyici açıkken: düzenlenen senaryonun çağı
+static var _era_cache: Dictionary = {}
+
+
+## Çağın yeniden kurulmuş geçici dünyası: {"countries": [{en, tr}], "provs": [{id, name, en, tr}], "owner_en": {pid: en}}
+static func era_info(eid: String) -> Dictionary:
+	if _era_cache.has(eid):
+		return _era_cache[eid]
+	var Eras = load("res://scripts/eras.gd")
+	var GS = load("res://scripts/game_state.gd")
+	var prev: String = Eras.current
+	Eras.prepare(eid)
+	var g = GS.new()
+	g.new_world(7)
+	Eras.restructure(g, eid)
+	var info := {"countries": [], "provs": []}
+	for c in g.countries:
+		if c.alive and not c.is_rebel:
+			info["countries"].append({"en": String(c.name_en), "tr": String(c.name)})
+	for p in g.provinces:
+		var o = g.countries[p.owner] if p.owner >= 0 else null
+		info["provs"].append({"id": int(p.id), "name": String(p.name), "en": String(o.name_en) if o != null else "", "tr": String(o.name) if o != null else ""})
+	if prev != "":
+		Eras.prepare(prev)
+	else:
+		Eras.clear()
+	_era_cache[eid] = info
+	return info
+
+
+## Tüm (2027) ülke adları: doğrulama için; çağdan bağımsız
+static func _base_countries() -> Array:
 	if _countries.is_empty():
 		var w = WorldData.instance()
 		for c in w.raw.get("countries", []):
 			_countries.append({"en": String(c["name_en"]), "tr": String(c["name"])})
+	return _countries
+
+
+## [{en, name}] — ada göre sıralı (Türkçe ad; İngilizce arayüzde İngilizce ad). Düzenleyici bir çağdaysa o çağın ülkeleri.
+static func countries() -> Array:
+	var base: Array = era_info(era)["countries"] if era != "" else _base_countries()
 	var lang_tr: bool = Loc.lang == "tr"
-	var out: Array = _countries.duplicate()
+	var out: Array = base.duplicate()
 	out.sort_custom(func(a, b): return (a["tr"] if lang_tr else a["en"]) < (b["tr"] if lang_tr else b["en"]))
 	for k in extra_names.keys():
 		out.append({"en": k, "tr": String(extra_names[k])})
@@ -53,7 +91,7 @@ static func valid_country(en) -> bool:
 		return false
 	if en.begins_with("custom_") and en.substr(7).is_valid_int() and int(en.substr(7)) < MAX_CUSTOM:
 		return true
-	for c in countries():
+	for c in _base_countries():
 		if c["en"] == en:
 			return true
 	return false
@@ -346,7 +384,9 @@ static func sanitize(d: Dictionary) -> Dictionary:
 	if sug.is_empty():
 		return {}
 	out["suggest"] = sug
-	var yr: int = int(d.get("year", 0)) if typeof(d.get("year", 0)) in [TYPE_INT, TYPE_FLOAT] else 0
+	if typeof(d.get("era", "")) == TYPE_STRING and ERAS_OK.has(String(d.get("era", ""))):
+		out["era"] = String(d["era"])
+	var yr: int = int(d.get("year", 0)) if typeof(d.get("year", 0)) in [TYPE_INT, TYPE_FLOAT] and not out.has("era") else 0
 	if yr >= 1800 and yr <= 2100:
 		out["year"] = yr
 	var trs: Array = []

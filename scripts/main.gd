@@ -7,6 +7,7 @@ const SceneArt = preload("res://scripts/scene_art.gd")
 const TK = preload("res://scripts/theme_kit.gd")
 const GS = preload("res://scripts/game_state.gd")
 const ScenarioEditor = preload("res://scripts/scenario_editor.gd")
+const UserScn = preload("res://scripts/user_scn.gd")
 const MapView = preload("res://scripts/map_view.gd")
 const UI = preload("res://scripts/ui.gd")
 const Menu = preload("res://scripts/menu.gd")
@@ -103,6 +104,7 @@ func _ready() -> void:
 	add_child(drift_timer)
 	map.tapped.connect(_on_map_tapped)
 	ScenarioEditor.pick_hook = _begin_map_pick
+	ScenarioEditor.preview_hook = _begin_map_preview
 	map.choke_tapped.connect(_on_choke_tapped)
 	ui.speed_changed.connect(_on_speed_changed)
 	ui.step_requested.connect(_on_step)
@@ -115,7 +117,8 @@ func _ready() -> void:
 	ui.save_requested.connect(func(): SlotsUI.open(ui.root, "save", _save_game, ui._click))
 	menu.splash_done.connect(_on_splash_done)
 	menu.play_pressed.connect(_to_select)
-	menu.era_chosen.connect(_start_era)
+	menu.era_chosen.connect(func(id: String): _start_era(id))
+	menu.scenario_era.connect(func(sid: String, era: String): _start_era(era, sid))
 	menu.indep_start.connect(_start_indep)
 	menu.career_era.connect(_career_pick_era)
 	menu.daily_start.connect(_start_daily)
@@ -276,7 +279,7 @@ func _to_select() -> void:
 	map.animate_to(map.world_rect().get_center(), map.min_zoom * 1.25, 0.8)
 
 
-func _start_era(id: String) -> void:
+func _start_era(id: String, scn: String = "") -> void:
 	_detach_gs()
 	Eras.prepare(id)
 	var g = GS.new()
@@ -284,6 +287,8 @@ func _start_era(id: String) -> void:
 	Eras.restructure(g, id)
 	_attach_gs(g)
 	menu.set_era(id)
+	if scn != "":
+		menu.set_era_scn(scn)
 	_era_look(id)
 	map.repaint_all()
 	_to_select()
@@ -311,6 +316,8 @@ func _on_start_requested(cid: int) -> void:
 	gs.start_game(cid)
 	if Eras.current != "":
 		Eras.start(gs, Eras.current)
+		if menu.era_scn != "":
+			Scenarios.apply(gs, menu.era_scn)     # dönemin üstüne kullanıcı senaryosu
 	else:
 		Scenarios.apply(gs, menu.scenario_id)
 	if gs.scn_play >= 0:
@@ -635,14 +642,105 @@ var _pick_lbl: Label
 var _pick_hidden: Array = []
 
 
-func _begin_map_pick(cb: Callable) -> void:
-	_pick_cb = cb
-	_pick_ids = []
-	_pick_hidden = []
+## Düzenleyici için geçici dünya: çağ (ve istenirse senaryo düzenlemeleri) uygulanmış halde haritaya bağlanır
+var _scn_view_gs = null
+var _prev_bar: Control = null
+var _prev_cb := Callable()
+var _prev_menu_vis := false
+
+
+func _scn_world_bind(era: String, sc: Dictionary) -> bool:
+	if era == "" and sc.is_empty():
+		return false
+	var prev: String = Eras.current
+	if era != "":
+		Eras.prepare(era)
+	else:
+		Eras.clear()
+	var g = GS.new()
+	g.new_world(7)
+	if era != "":
+		Eras.restructure(g, era)
+	if not sc.is_empty():
+		Scenarios.apply_dict(g, sc, false)
+	if prev != "":
+		Eras.prepare(prev)
+	else:
+		Eras.clear()
+	_scn_view_gs = g
+	map.bind(g)
+	_era_look(era)
+	map.repaint_all()
+	return true
+
+
+func _scn_world_unbind() -> void:
+	if _scn_view_gs == null:
+		return
+	_scn_view_gs = null
+	map.bind(gs)
+	_era_look(Eras.current)
+	map.repaint_all()
+
+
+func _hide_editor_sheets() -> Array:
+	var hid: Array = []
 	for c in menu.root.get_children():
 		if c is Control and c.visible and c.has_method("close"):
 			c.visible = false
-			_pick_hidden.append(c)
+			hid.append(c)
+	return hid
+
+
+## Başlangıç haritası önizlemesi: dönem + yapılan devirler/yeni devletler uygulanmış harita
+func _begin_map_preview(sc: Dictionary, cb: Callable) -> void:
+	_prev_cb = cb
+	_pick_hidden = _hide_editor_sheets()
+	_prev_menu_vis = menu.main_panel.visible
+	menu.main_panel.visible = false
+	_scn_world_bind(String(sc.get("era", "")), sc)
+	_prev_bar = PanelContainer.new()
+	var hb := HBoxContainer.new()
+	hb.add_theme_constant_override("separation", 12)
+	hb.add_child(TK.t(Loc.t("Önizleme: başlangıç haritası (sonradan olacak devirler hariç)"), "body", TK.GOLD))
+	var back := TK.button("Düzenlemeye dön", "gold", "check", Vector2(230, 56), 18)
+	back.pressed.connect(_end_map_preview)
+	hb.add_child(back)
+	_prev_bar.add_child(hb)
+	menu.root.add_child(_prev_bar)
+	_prev_bar.set_anchors_and_offsets_preset(Control.PRESET_CENTER_TOP, Control.PRESET_MODE_MINSIZE)
+	_prev_bar.position.y = 16
+	map.input_enabled = true
+	map.select_province(-1)
+	var tr_list: Array = sc.get("transfer", [])
+	if not tr_list.is_empty():
+		map.focus_province(int(tr_list[0][0]), map.min_zoom * 3.0)     # ilk devrin olduğu bölgeye yakınlaş
+	else:
+		map.animate_to(map.world_rect().get_center(), map.min_zoom * 1.25, 0.6)
+
+
+func _end_map_preview() -> void:
+	var cb := _prev_cb
+	_prev_cb = Callable()
+	if _prev_bar != null:
+		_prev_bar.queue_free()
+		_prev_bar = null
+	_scn_world_unbind()
+	menu.main_panel.visible = _prev_menu_vis
+	for c in _pick_hidden:
+		if is_instance_valid(c):
+			c.visible = true
+	_pick_hidden = []
+	if cb.is_valid():
+		cb.call()
+
+
+func _begin_map_pick(cb: Callable) -> void:
+	_pick_cb = cb
+	_pick_ids = []
+	_pick_hidden = _hide_editor_sheets()
+	if UserScn.era != "":
+		_scn_world_bind(UserScn.era, {})
 	_pick_bar = PanelContainer.new()
 	_pick_bar.set_anchors_and_offsets_preset(Control.PRESET_CENTER_TOP)
 	_pick_bar.position.y = 16
@@ -674,6 +772,7 @@ func _end_map_pick() -> void:
 		_pick_bar.queue_free()
 		_pick_bar = null
 	map.select_province(-1)
+	_scn_world_unbind()
 	for c in _pick_hidden:
 		if is_instance_valid(c):
 			c.visible = true
@@ -683,6 +782,8 @@ func _end_map_pick() -> void:
 
 
 func _on_map_tapped(pid: int) -> void:
+	if _prev_bar != null:
+		return
 	if _pick_cb.is_valid():
 		if pid >= 0:
 			if _pick_ids.has(pid):

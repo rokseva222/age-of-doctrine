@@ -287,8 +287,9 @@ static func open_howto(parent: Node) -> void:
 			render.call())
 
 
-const UPDATE_VER := "1.2.11"
+const UPDATE_VER := "1.2.12"
 const WHATS_NEW := [
+	["Senaryo editöründe dönemler", "Senaryo oluştururken I. Dünya Savaşı, II. Dünya Savaşı ya da Soğuk Savaş haritasını seçebilir, devirleri o dönemin devletleriyle yapabilir ve «Haritada önizle» ile sonucu görebilirsin."],
 	["Bayrak ve ittifak amblemleri", "Bayrak ve ittifak düzenleyicide 45 yeni siluet amblem: orak-çekiç, hilal, kartallar, aslan, taç, defne, ejderha, bozkurt ve daha fazlası."],
 	["Savaş saldırganlığı", "Ayarlar'dan yapay zekânın savaş açma isteğini %0–100 arasında ayarla; normal oyunda da çalışır."],
 	["Denize çıkarma", "Ordu seçip düşman adasına (Rodos, Girit…) dokunmak artık doğrudan amfibi çıkarma başlatır."],

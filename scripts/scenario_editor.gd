@@ -11,6 +11,8 @@ const Arsenal = preload("res://scripts/arsenal.gd")
 const FlagEditor = preload("res://scripts/flag_editor.gd")
 const Macro = preload("res://scripts/macro.gd")
 const Cabinet = preload("res://scripts/cabinet.gd")
+const Eras = preload("res://scripts/eras.gd")
+const AP = preload("res://scripts/ap.gd")
 
 const PAIR_KINDS := [["wars", "Savaşlar", "saldırgan", "hedef"], ["embargo", "Ambargolar", "uygulayan", "uygulanan"], ["cold", "Gerginlikler", "taraf", "taraf"]]
 const OBJ_LABELS := {
@@ -56,6 +58,27 @@ func _start(existing: Dictionary) -> void:
 			d["events"] = []
 		if not d.has("objectives") or not d["objectives"].has("*"):
 			d["objectives"] = {"*": []}
+	_build()
+
+
+## Çağ değişince düzenleyici yeni ülke listesiyle yeniden kurulur (girilen metinler korunur)
+func _set_era(id: String) -> void:
+	if id == String(d.get("era", "")):
+		return
+	d["name"] = _name_edit.text.strip_edges()
+	d["sub"] = _sub_edit.text.strip_edges()
+	d["intro"] = _intro_edit.text.strip_edges()
+	d["deadline"] = int(_dl_spin.value)
+	if id == "":
+		d.erase("era")
+	else:
+		d["era"] = id
+		d.erase("year")
+	# o çağda olmayan (başka devlete katılmış) ülkeler bu çağın listesinde yoktur; eski devirler/birlikler çağa uymayabilir
+	d["transfer"] = []
+	d["garrison"] = []
+	_prov_idx = []
+	_sheet.close()
 	_build()
 
 
@@ -213,6 +236,8 @@ func _line(placeholder: String, maxlen: int, text: String) -> LineEdit:
 
 func _build() -> void:
 	_sheet = Sheet.open(root, "Senaryo oluştur", 900, true, true, "Kendi senaryon")
+	U.era = String(d.get("era", ""))
+	_sheet.closed.connect(func(): U.era = "")
 	U.extra_names = {}
 	var ci := 0
 	for cu in d.get("custom", []):
@@ -228,6 +253,25 @@ func _build() -> void:
 	pb.add_child(_sub_edit)
 	_intro_edit = _line("Hikâyenin girişi: oyun başında okunacak haber metni", 400, String(d.get("intro", "")))
 	pb.add_child(_intro_edit)
+	pb.add_child(_head("Dönem (harita)"))
+	var era_fl := HFlowContainer.new()
+	era_fl.add_theme_constant_override("h_separation", 8)
+	era_fl.add_theme_constant_override("v_separation", 8)
+	var cur_era: String = String(d.get("era", ""))
+	var era_opts: Array = [["", "Dünya 2027"]]
+	for eid in U.ERAS_OK:
+		var ed: Dictionary = Eras.get_era(eid)
+		if not ed.is_empty():
+			era_opts.append([eid, String(ed["name"])])
+	for eo in era_opts:
+		var eid2: String = eo[0]
+		var locked: bool = eid2 != "" and not AP.era_unlocked(eid2)
+		var eb := TK.button(String(eo[1]) + ("  (" + Loc.t("kilitli") + ")" if locked else ""), "gold" if cur_era == eid2 else "ghost", "", Vector2(0, 52), 16)
+		eb.disabled = locked
+		eb.pressed.connect(func(): _set_era(eid2))
+		era_fl.add_child(eb)
+	pb.add_child(era_fl)
+	pb.add_child(TK.t("Dönem seçersen harita o dönemin devletleriyle açılır; dönemin tarihî savaşları ve ittifakları geçerli kalır, senin düzenlemelerin üstüne eklenir. Dönem değişince eyalet devirleri ve birlikler sıfırlanır.", "small", TK.FAINT))
 	var ylb := HBoxContainer.new()
 	ylb.add_theme_constant_override("separation", 10)
 	var yll := TK.t("Başlangıç yılı (0 = 2027)", "body", TK.TEXT)
@@ -238,6 +282,7 @@ func _build() -> void:
 	_year_spin.max_value = 2100
 	_year_spin.step = 1
 	_year_spin.value = int(d.get("year", 0))
+	_year_spin.editable = String(d.get("era", "")) == ""
 	_year_spin.custom_minimum_size = Vector2(160, 52)
 	ylb.add_child(_year_spin)
 	pb.add_child(ylb)
@@ -344,6 +389,9 @@ func _fill_pairs(key: String) -> void:
 
 
 func _prov_index() -> Array:
+	if _prov_idx.is_empty() and String(d.get("era", "")) != "":
+		for p in U.era_info(String(d["era"]))["provs"]:
+			_prov_idx.append(p)
 	if _prov_idx.is_empty():
 		var w = WorldData.instance()
 		var owner_of := {}
@@ -356,6 +404,7 @@ func _prov_index() -> Array:
 	return _prov_idx
 
 
+static var preview_hook := Callable()    # main.gd: (sc, geri_çağrı) başlangıç haritası önizlemesi
 static var pick_hook := Callable()     # main.gd: harita seçim modunu açar (cb(pids), bitince geri çağırır)
 
 
@@ -406,10 +455,24 @@ func _add_transfer(src: String, dst: String, pids: Array, week: int, whole: bool
 	_refill("events", _fill_events)
 
 
+## Yaptığın düzenlemelerin (devirler, yeni devletler) başlangıç haritasındaki halini haritada göster
+func _preview() -> void:
+	var tmp: Dictionary = d.duplicate(true)
+	tmp["name"] = _name_edit.text.strip_edges() if _name_edit.text.strip_edges() != "" else "Önizleme"
+	var sc: Dictionary = U.sanitize(tmp)
+	if sc.is_empty() or not preview_hook.is_valid():
+		_msg.text = Loc.t("Önizleme açılamadı.")
+		return
+	_sheet.visible = false
+	preview_hook.call(sc, func(): _sheet.visible = true)
+
+
 func _fill_transfer() -> void:
 	var box: VBoxContainer = _sections["transfer"]
 	if not d.has("transfer"):
 		d["transfer"] = []
+	if preview_hook.is_valid():
+		box.add_child(_small_btn("Haritada önizle (düzenlemelerle)", _preview, "blue"))
 	var tip := TK.t(Loc.t("Haritayı istediğin gibi boya: bir ülkenin tamamını ya da seçtiğin illeri başka bir ülkeye ver. Hafta 0 = oyun başında; sonrası olursa o haftada, hikâye olayı olarak gerçekleşir."), "small", TK.FAINT)
 	tip.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	box.add_child(tip)
@@ -1635,7 +1698,7 @@ func _collect() -> Dictionary:
 	d["intro"] = _intro_edit.text.strip_edges()
 	d["deadline"] = int(_dl_spin.value)
 	var yv: int = int(_year_spin.value)
-	if yv >= 1800:
+	if yv >= 1800 and String(d.get("era", "")) == "":
 		d["year"] = yv
 	else:
 		d.erase("year")

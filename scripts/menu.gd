@@ -27,6 +27,7 @@ const INTRO_PATH := "res://assets/brand/rok_intro.ogv"
 signal splash_done()
 signal play_pressed()
 signal era_chosen(id: String)
+signal scenario_era(sid: String, era: String)     # çağlı kullanıcı senaryosu seçildi: dünya o çağa kurulur
 signal indep_start(params: Dictionary)
 signal career_era(era_id: String)
 signal daily_start(cfg: Dictionary)
@@ -74,6 +75,7 @@ var _toast_panel: PanelContainer
 var _toast_lbl: Label
 var _toast_tw: Tween
 var era_id := ""
+var era_scn := ""      # çağın üstüne uygulanacak kullanıcı senaryosu
 
 
 func _ready() -> void:
@@ -673,8 +675,16 @@ func _open_eras() -> void:
 	sh.add_button("Kapat", func(): pass, "", true, "", 160)
 
 
+func set_era_scn(sid: String) -> void:
+	era_scn = sid
+	var sc: Dictionary = Scenarios.get_sc(sid)
+	if _scn_btn != null and not sc.is_empty():
+		_scn_btn.text = TK.up("%s  /  %s" % [sc["name"], Eras.get_era(era_id).get("name", "")])
+
+
 func set_era(id: String) -> void:
 	era_id = id
+	era_scn = ""
 	scenario_id = "free"
 	var e: Dictionary = Eras.get_era(id)
 	if _scn_btn != null:
@@ -703,6 +713,14 @@ func _apply_suggest(suggest: Array) -> void:
 func set_scenario(sid: String) -> void:
 	if not AP.scenario_unlocked(sid):
 		sid = "free"
+	var sc0e: Dictionary = Scenarios.get_sc(sid)
+	var sc_era: String = String(sc0e.get("era", ""))
+	if sc_era != "":
+		if not AP.era_unlocked(sc_era):
+			sid = "free"
+		else:
+			scenario_era.emit(sid, sc_era)
+			return
 	scenario_id = sid
 	var sc: Dictionary = Scenarios.get_sc(sid)
 	_scn_btn.text = TK.up(sc["name"])
@@ -933,6 +951,8 @@ func show_select(g) -> void:
 	_on_search("")
 	if era_id != "":
 		var sg: Array = Eras.get_era(era_id)["suggest"]
+		if era_scn != "" and not Scenarios.get_sc(era_scn).is_empty():
+			sg = Scenarios.get_sc(era_scn)["suggest"]
 		_apply_suggest(sg)
 		if _sel < 0:
 			_select_first(sg)
@@ -956,6 +976,7 @@ func reset_world() -> void:
 	_list_gs = null
 	scenario_id = "free"
 	era_id = ""
+	era_scn = ""
 	if _scn_btn != null:
 		_scn_btn.disabled = false
 		_scn_btn.text = TK.up("Dünya 2027")
