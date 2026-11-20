@@ -363,7 +363,7 @@ func _process_buildings() -> void:
 		if p.bld_wip != "" and turn >= p.bld_until:
 			if p.owner == player and p.controller == player:
 				p.bld = p.bld_wip
-				post_news("%s eyaletinde %s tamamlandı." % [p.name, Model.BLD[p.bld].name], p.id, "info")
+				post_news("%s eyaletinde %s tamamlandı." % [p.name, Model.bld_name(p.bld, Macro.era_on and Eras.family() == "pre")], p.id, "info")
 			p.bld_wip = ""
 		if p.bld == "press" and p.unrest > 0 and p.owner >= 0 and p.controller == p.owner and (turn + p.id) % 2 == 0:
 			p.unrest -= 1

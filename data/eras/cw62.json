@@ -938,14 +938,30 @@
    "Gambia",
    "Seychelles",
    "Mauritius",
-   "Cyprus"
+   "Cyprus",
+   "Qatar",
+   "Bahrain",
+   "United Arab Emirates",
+   "Maldives",
+   "Solomon Is.",
+   "Barbados",
+   "Saint Lucia",
+   "Grenada",
+   "St. Vin. and Gren.",
+   "Antigua and Barb.",
+   "Dominica",
+   "St. Kitts and Nevis",
+   "Kiribati",
+   "Tuvalu",
+   "Tonga"
   ],
   "Portugal": [
    "Angola",
    "Mozambique",
    "Guinea-Bissau",
    "Cabo Verde",
-   "Timor-Leste"
+   "Timor-Leste",
+   "São Tomé and Principe"
   ],
   "France": [
    "Djibouti",
@@ -958,6 +974,39 @@
   "Spain": [
    "Eq. Guinea",
    "W. Sahara"
+  ],
+  "Somalia": [
+   "Somaliland"
+  ],
+  "Cyprus": [
+   "N. Cyprus"
+  ],
+  "Jordan": [
+   "Palestine"
+  ],
+  "South Africa": [
+   "Namibia"
+  ],
+  "Australia": [
+   "Papua New Guinea",
+   "Nauru"
+  ],
+  "United States of America": [
+   "Micronesia",
+   "Marshall Is.",
+   "Palau"
+  ],
+  "Denmark": [
+   "Greenland"
+  ],
+  "Sudan": [
+   "S. Sudan"
+  ],
+  "Ethiopia": [
+   "Eritrea"
+  ],
+  "Pakistan": [
+   "Bangladesh"
   ]
  },
  "split": [

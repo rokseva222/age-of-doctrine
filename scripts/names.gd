@@ -1,5 +1,23 @@
 extends RefCounted
 const Loc = preload("res://scripts/loc.gd")
+const Eras = preload("res://scripts/eras.gd")
+const Macro = preload("res://scripts/macro.gd")
+
+## Eski çağda (Timur 1380, Osmanlı 1520) görünmemesi gereken modern kavramların dönem karşılıkları (şablon -> şablon)
+const PRE_TEXT := {
+	"Borsalar uçuşta! %s hazinesi %s kazandı.": "Kervan yolları canlandı! %s hazinesi %s kazandı.",
+	"%s eyaletinde petrol rezervi keşfedildi. (%s)": "%s eyaletinde zengin tuz ve zift kaynağı bulundu. (%s)",
+	"{c}: hükümet karşıtı gösteriler {p} eyaletinde şiddetlendi.": "{c}: {p} eyaletinde yönetime karşı halk kıpırdanması büyüdü.",
+	"Darbe girişimi! {c} yönetimi güçlükle kontrolü korudu.": "Saray darbesi girişimi! {c} yönetimi güçlükle kontrolü korudu.",
+	"{c} başkentinde silah sesleri: darbe girişimi bastırıldı.": "{c} başkentinde kılıç sesleri: saray darbesi girişimi bastırıldı.",
+	"{c} bilim insanları teknolojik atılım duyurdu!": "{c} âlimleri ve ustaları önemli bir buluş duyurdu!",
+}
+
+
+static func era_text(s):
+	if typeof(s) == TYPE_STRING and Macro.era_on and Eras.family() == "pre" and PRE_TEXT.has(s):
+		return PRE_TEXT[s]
+	return s
 ## Kurgusal isim üretimi ve "Cihan Bülteni" haber şablonları.
 ## Not: Ülke/eyalet isimlerine ek getirmemek için (X'e, X'ı...) şablonlar ek almayan kalıplarla yazıldı.
 
@@ -15,7 +33,7 @@ const PROV_END := ["a", "en", "os", "ar", "ik", "ova", "grad", "pol", "ton", "bu
 
 
 static func pick(arr: Array, rng: RandomNumberGenerator):
-	return arr[rng.randi_range(0, arr.size() - 1)]
+	return era_text(arr[rng.randi_range(0, arr.size() - 1)])
 
 
 static func country_name(rng: RandomNumberGenerator, used: Dictionary) -> String:

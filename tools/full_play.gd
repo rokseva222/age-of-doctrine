@@ -37,6 +37,7 @@ func _init() -> void:
 		SC.apply(gs, id)
 	var pl = gs.countries[gs.player]
 	pl.auto_cmd = true
+	var dump_news: String = OS.get_environment("NEWS_DUMP")
 	var bot = PlayerBot.new(gs, 4242 + pi, a.size() > 4 and a[4] == "fetih")
 	var t0 := Time.get_ticks_msec()
 	var w0: int = gs.wars.size()
@@ -95,6 +96,11 @@ func _init() -> void:
 	for k in issues: iss += "\n      ! %s ×%d" % [k, issues[k]]
 	if died >= 0: print("   ÖLÜM ÖNCESİ: ", last_snap)
 	if died >= 0 or oc.t.begins_with("YEN"): print("   İZ:", trace)
+	if dump_news != "":
+		var f := FileAccess.open(dump_news, FileAccess.WRITE)
+		for n in gs.news_log:
+			f.store_line(String(n.get("text", "")))
+		f.close()
 	print("SONUC %-16s %-24s tur=%3d %5dms/tur=%d | eyalet %d→%d (min %d max %d) savaş %d→%d ölüm=%d%s | %s%s" % [id, nm, gs.turn, ms, ms / maxi(gs.turn, 1), prov0, pl.prov_owned, minprov, maxprov, w0, gs.wars.size(), died, objs, String(oc.t).substr(0, 70), iss])
 	quit()
 func _check(gs) -> void:

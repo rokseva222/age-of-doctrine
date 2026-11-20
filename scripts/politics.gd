@@ -251,7 +251,9 @@ static func _ai_coup(gs, c) -> void:
 			if w != null:
 				gs.finish_peace(w, -1, [])
 	if _close_to_player(gs, c) or gs.rng.randf() < 0.3:
-		gs.post_news((("DARBE: %s'de ordu yönetime el koydu; yeni lider %s." if _tr() else "COUP: the army seized power in %s; new leader %s.") % [c.name, nm]), c.capital, "event")
+		var pre_e: bool = Macro.era_on and Eras.family() == "pre"
+		var cm: String = ("SARAY DARBESİ: %s'de hanedan içi darbe; yeni hükümdar %s." if pre_e else "DARBE: %s'de ordu yönetime el koydu; yeni lider %s.") if _tr() else ("PALACE COUP: a coup inside the %s court; new ruler %s." if pre_e else "COUP: the army seized power in %s; new leader %s.")
+		gs.post_news(cm % [c.name, nm], c.capital, "event")
 
 
 # ------------------------------------------------------------------ oyuncu uyarı kartları

@@ -701,9 +701,9 @@ func show_province(pid: int, selected_army) -> void:
 		_abtn("Diplomasi", "blue", Icons.pick("diplomacy", "handshake"), "diplomacy", p.owner)
 	if p.owner == me and p.controller == me:
 		if p.bld != "":
-			_abtn("%s: %s" % [Model.BLD[p.bld].name, Model.BLD[p.bld].info], "", "coins", "none", 0, false)
+			_abtn("%s: %s" % [Model.bld_name(p.bld, Macro.era_on and Eras.family() == "pre"), Model.BLD[p.bld].info], "", "coins", "none", 0, false)
 		elif p.bld_wip != "":
-			_abtn("%s inşa ediliyor: %d hafta" % [Model.BLD[p.bld_wip].name, maxi(1, p.bld_until - gs.turn)], "", "hourglass", "none", 0, false)
+			_abtn("%s inşa ediliyor: %d hafta" % [Model.bld_name(p.bld_wip, Macro.era_on and Eras.family() == "pre"), maxi(1, p.bld_until - gs.turn)], "", "hourglass", "none", 0, false)
 		else:
 			_abtn("Bina kur (gelir)", "gold", Icons.pick("build", "coins"), "build", pid)
 	if p.owner == me and p.controller == me and Faith.of(gs, pid) != Faith.state_faith(gs, me):

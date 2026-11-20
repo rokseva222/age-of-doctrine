@@ -623,7 +623,7 @@ func _tab_cabinet() -> void:
 
 func _tab_intel() -> void:
 	var c = _pl()
-	content.add_child(_wrap("Gizli harekâtlar savaş ilan etmeden rakibi zayıflatır. Başarı şansı siber gücüne ve teknolojine bağlıdır; yakalanırsan iç siyaset ve ilişkiler zarar görür. Her hedefte ajanların kısa süre saklanması gerekir.", "small", TK.FAINT))
+	content.add_child(_wrap(("Gizli harekâtlar savaş ilan etmeden rakibi zayıflatır. Başarı şansı istihbarat gücüne ve teknolojine bağlıdır; yakalanırsan iç siyaset ve ilişkiler zarar görür. Her hedefte ajanların kısa süre saklanması gerekir." if (Macro.pre_era or Macro.intel_era) else "Gizli harekâtlar savaş ilan etmeden rakibi zayıflatır. Başarı şansı siber gücüne ve teknolojine bağlıdır; yakalanırsan iç siyaset ve ilişkiler zarar görür. Her hedefte ajanların kısa süre saklanması gerekir."), "small", TK.FAINT))
 	var cands: Array = []
 	var seen := {}
 	for j in c.enemies:
@@ -651,7 +651,7 @@ func _tab_intel() -> void:
 		nm.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		nm.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 		h.add_child(nm)
-		h.add_child(TK.t("istikrar %d  siber %d" % [int(o.stability), int(o.cyber)], "mono", TK.MUTED))
+		h.add_child(TK.t(("istikrar %d  istihbarat %d" if (Macro.pre_era or Macro.intel_era) else "istikrar %d  siber %d") % [int(o.stability), int(o.cyber)], "mono", TK.MUTED))
 		if c.enemies.has(j):
 			h.add_child(TK.stamp("Savaş", TK.RED))
 		content.add_child(h)
@@ -824,7 +824,7 @@ func _tab_fronts() -> void:
 			["Düşman askeri", Macro.num(o.troops), TK.RED_TEXT],
 			["Donanım", "x%.2f" % o.eq_land],
 			["Hava", Macro.num(o.air_pow)],
-			["Siber", "%d" % int(o.cyber)],
+			[Macro.budget_name("cyber"), "%d" % int(o.cyber)],
 		]))
 		var hb := HFlowContainer.new()
 		hb.add_theme_constant_override("h_separation", 8)
@@ -840,7 +840,7 @@ func _tab_fronts() -> void:
 			hb.add_child(b)
 		var cf: String = Macro.cyber_focus(c, e)
 		var order: Array = ["auto", "industry", "logistics", "trade", "finance", "off"]
-		var cb := TK.button("Siber: " + Macro.CYBER_NAMES[cf], "", "bolt", Vector2(240, 52), 15)
+		var cb := TK.button(("Siber: " if not (Macro.pre_era or Macro.intel_era) else "İstihbarat: ") + Macro.CYBER_NAMES[cf], "", "bolt", Vector2(240, 52), 15)
 		cb.pressed.connect(func():
 			ui._click()
 			var nx: String = order[(order.find(cf) + 1) % order.size()]

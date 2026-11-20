@@ -14,6 +14,7 @@ const Focus = preload("res://scripts/focus.gd")
 const Currency = preload("res://scripts/currency.gd")
 
 const BUDGET_KEYS := ["mil", "ind", "cyber", "logi", "stab", "res"]
+static var intel_era := false  # WW1/WW2/Soğuk Savaş: "siber" yerine istihbarat
 static var pre_era := false   # ilk barut çağı ailesi (eras.gd ayarlar)
 
 
@@ -21,6 +22,8 @@ static var pre_era := false   # ilk barut çağı ailesi (eras.gd ayarlar)
 static func budget_name(key: String) -> String:
 	if key == "cyber" and pre_era:
 		return "Casusluk"
+	if key == "cyber" and intel_era:
+		return "İstihbarat"
 	return String(BUDGET_NAMES[key])
 
 

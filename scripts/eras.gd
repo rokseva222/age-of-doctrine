@@ -37,6 +37,7 @@ const LIST := [
 # host (bugünkü ülkenin name_en'i) -> birleştirilen bugünkü ülkeler (tüm eyaletleriyle)
 const ABSORB := {
 	"ww2": {
+		"India": ["Pakistan", "Bangladesh"], "South Korea": ["North Korea"],
 		"Germany": ["Austria", "Czechia"],
 		"Russia": ["Ukraine", "Belarus", "Georgia", "Armenia", "Azerbaijan", "Kazakhstan", "Uzbekistan", "Turkmenistan", "Tajikistan", "Kyrgyzstan"],
 		"United Kingdom": ["Singapore", "Brunei", "S. Sudan", "Uganda",
@@ -59,6 +60,7 @@ const ABSORB := {
 		"Serbia": ["Croatia", "Slovenia", "Bosnia and Herz.", "Montenegro", "North Macedonia", "Kosovo"],
 	},
 	"ww1": {
+		"India": ["Pakistan", "Bangladesh"], "South Korea": ["North Korea"],
 		"Germany": ["Tanzania", "Cameroon", "Togo", "Namibia", "Rwanda", "Burundi", "Nauru"],
 		"Austria": ["Hungary", "Czechia", "Slovakia", "Slovenia", "Croatia", "Bosnia and Herz."],
 		"Turkey": ["Syria", "Iraq", "Lebanon", "Jordan", "Palestine", "Israel", "Yemen"],
@@ -87,21 +89,21 @@ const ABSORB := {
 # bağımlı ülkeler: [vasal (name_en), efendi (name_en)] — dönem başında vasal ilişkisi kurulur (haraç, ortak savaş, ilhak/serbest bırakma)
 const VASSALS := {
 	"ww2": [
-		["India", "United Kingdom"], ["Pakistan", "United Kingdom"], ["Bangladesh", "United Kingdom"], ["Sri Lanka", "United Kingdom"],
+		["India", "United Kingdom"], ["Sri Lanka", "United Kingdom"],
 		["Myanmar", "United Kingdom"], ["Malaysia", "United Kingdom"], ["Nigeria", "United Kingdom"], ["Kenya", "United Kingdom"],
 		["Sudan", "United Kingdom"], ["Algeria", "France"], ["Tunisia", "France"], ["Morocco", "France"],
 		["Vietnam", "France"], ["Laos", "France"], ["Cambodia", "France"], ["Syria", "France"],
 		["Lebanon", "France"], ["Madagascar", "France"], ["Indonesia", "Netherlands"], ["Dem. Rep. Congo", "Belgium"],
-		["Libya", "Italy"], ["Ethiopia", "Italy"], ["South Korea", "Japan"], ["North Korea", "Japan"],
+		["Libya", "Italy"], ["Ethiopia", "Italy"], ["South Korea", "Japan"],
 		["Taiwan", "Japan"], ["Angola", "Portugal"], ["Mozambique", "Portugal"], ["Philippines", "United States of America"],
 	],
 	"ww1": [
-		["India", "United Kingdom"], ["Pakistan", "United Kingdom"], ["Bangladesh", "United Kingdom"], ["Sri Lanka", "United Kingdom"],
+		["India", "United Kingdom"], ["Sri Lanka", "United Kingdom"],
 		["Myanmar", "United Kingdom"], ["Malaysia", "United Kingdom"], ["Egypt", "United Kingdom"], ["Nigeria", "United Kingdom"],
 		["Sudan", "United Kingdom"], ["Algeria", "France"], ["Tunisia", "France"], ["Morocco", "France"],
 		["Vietnam", "France"], ["Laos", "France"], ["Cambodia", "France"], ["Madagascar", "France"],
 		["Indonesia", "Netherlands"], ["Dem. Rep. Congo", "Belgium"], ["Libya", "Italy"], ["South Korea", "Japan"],
-		["North Korea", "Japan"], ["Taiwan", "Japan"], ["Angola", "Portugal"], ["Mozambique", "Portugal"],
+		["Taiwan", "Japan"], ["Angola", "Portugal"], ["Mozambique", "Portugal"],
 		["Philippines", "United States of America"],
 	],
 }
@@ -288,6 +290,27 @@ static func get_era(id: String) -> Dictionary:
 
 
 ## Tablo erişimi: önce JSON çağı (ve base zinciri), sonra yerleşik sabitler
+static var _cn_data: Dictionary = {}
+
+
+## Dönem sömürge adları: data/era_colony_names.json  { "ww1": {name_en: ad}, "ww2": {...} } (alt_* çağlar base'inden miras alır)
+static func _colony_names(id: String) -> Dictionary:
+	if _cn_data.is_empty():
+		var j = JSON.parse_string(FileAccess.get_file_as_string("res://data/era_colony_names.json"))
+		_cn_data = j if j is Dictionary else {"_": {}}
+	var cur := id
+	for i in 6:
+		if _cn_data.has(cur):
+			return _cn_data[cur]
+		if EraExt.has_era(cur):
+			cur = String(EraExt.raw(cur).get("base", ""))
+			if cur == "":
+				break
+		else:
+			break
+	return {}
+
+
 static func _t(key: String, id: String):
 	var cur := id
 	for i in 6:
@@ -347,6 +370,7 @@ static func prepare(id: String) -> void:
 	Arsenal.set_era(id)
 	Macro.era_on = true
 	Macro.pre_era = family(id) == "pre"
+	Macro.intel_era = family(id) in ["ww1", "ww2", "cold"]
 	var mil: Dictionary = {}
 	var DF: Dictionary = _t("defs", id)
 	for n in DF:
@@ -398,6 +422,7 @@ static func clear() -> void:
 	Arsenal.set_era("")
 	Macro.era_on = false
 	Macro.pre_era = false
+	Macro.intel_era = false
 	Macro.era_mil = {}
 	Names.start_year = 2027
 	Names.start_doy = 0
@@ -498,6 +523,12 @@ static func restructure(gs, id: String) -> void:
 		c.name = d3["name"]
 		c.color = Color(d3["color"])
 		c.leader = d3.get("leader", "")
+	# sömürge/himaye adları: dönemin gerçek adı (Fransız Cezayiri, Britanya Hindistanı ...)
+	var CN: Dictionary = _colony_names(id)
+	for cn_en in CN:
+		var ccn: int = int(idx.get(cn_en, -1))
+		if ccn >= 0 and not DEFS_ID.has(cn_en):
+			gs.countries[ccn].name = String(CN[cn_en])
 	for c4 in gs.countries:
 		if c4.alive and c4.leader == "":
 			c4.leader = EraLeaders.start_of(id, c4.name_en)

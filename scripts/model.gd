@@ -8,6 +8,14 @@ const BLD := {
 	"press": {"name": "Kağıt fabrikası ve matbaa", "bonus": 0.20, "mult": 7.0, "icon": "bld_press", "info": "Gelir +%20, huzursuzluğu azaltır"},
 }
 const BLD_WEEKS := 8
+## Eski çağda (pre) petrol tesisi / matbaa yok: dönem adları
+const BLD_PRE_NAME := {"oil": "Neft ocağı", "press": "Kâğıt atölyesi ve medrese"}
+
+
+static func bld_name(kind: String, pre: bool = false) -> String:
+	if pre and BLD_PRE_NAME.has(kind):
+		return String(BLD_PRE_NAME[kind])
+	return String(BLD[kind].name)
 
 
 class Province:
