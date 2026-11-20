@@ -4350,7 +4350,15 @@
   "Savaş için ilişki şartı": "Requisito de relações para guerra",
   "Açıkken savaş ilan edebilmek için hedef ülkeyle ilişkin en çok 20 olmalı; önce Diplomasi ekranından protesto, karalama ya da sınır kışkırtmasıyla ilişkileri düşürürsün. Müttefikinin düşmanına her zaman savaş açabilirsin.": "Quando ativado, para declarar guerra suas relações com o alvo devem ser no máximo 20; primeiro reduza-as na tela de Diplomacia com nota de protesto, campanha de difamação ou provocação de fronteira. Você sempre pode declarar guerra ao inimigo do seu aliado.",
   "Dünya Savaşları savaşsız başlasın": "As Guerras Mundiais começam sem guerra",
-  "Açıkken 1. ve 2. Dünya Savaşı senaryoları savaş başlamadan, ittifaklar ve gerginlikle açılır; savaşı yapay zekâ ya da sen çıkarırsın (saldırganlık ayarı da etkiler). Yeni başlayan senaryolarda geçerlidir.": "Quando ativado, os cenários da Primeira e da Segunda Guerra Mundial começam antes de a guerra estourar, com alianças e tensão; a IA ou você inicia a guerra (a configuração de agressividade também influencia). Vale para cenários recém-iniciados."
+  "Açıkken 1. ve 2. Dünya Savaşı senaryoları savaş başlamadan, ittifaklar ve gerginlikle açılır; savaşı yapay zekâ ya da sen çıkarırsın (saldırganlık ayarı da etkiler). Yeni başlayan senaryolarda geçerlidir.": "Quando ativado, os cenários da Primeira e da Segunda Guerra Mundial começam antes de a guerra estourar, com alianças e tensão; a IA ou você inicia a guerra (a configuração de agressividade também influencia). Vale para cenários recém-iniciados.",
+  "İlişki bozma ve savaş şartı": "Piorar relações e requisito de guerra",
+  "Diplomaside protesto, karalama ve sınır kışkırtmasıyla ilişkileri düşürebilirsin. Savaş ilan etmek için ilişki en çok 20 olmalı (Ayarlar'dan kapatılabilir).": "Reduza as relações em Diplomacia com nota de protesto, campanha de difamação ou provocação de fronteira. Declarar guerra exige relações de no máximo 20 (pode ser desativado nas Configurações).",
+  "Ticaret anlaşmaları": "Acordos comerciais",
+  "Dost ülkelerle ticaret anlaşması imzala: iki taraf da her hafta kazanır. Savaş, ambargo ya da bozulan ilişki anlaşmayı bitirir.": "Assine acordos comerciais com países amigos: ambos os lados ganham toda semana. Guerra, embargo ou piora nas relações encerram o acordo.",
+  "Sipariş etkisi görünür": "Impacto dos pedidos visível",
+  "Silah siparişlerinde teslimatta ordu gücüne katkı yazıyor; büyük ordularda sipariş adımları ölçekleniyor.": "Os pedidos de armas agora mostram sua contribuição à força do exército na entrega; os passos de pedido escalam em exércitos grandes.",
+  "Savaşsız Dünya Savaşları": "Guerras Mundiais sem guerra",
+  "Ayarlardan 1. ve 2. Dünya Savaşı senaryolarını savaş başlamadan, ittifaklar ve gerginlikle başlatabilirsin. Koddan içe aktarma da daha dayanıklı.": "Nas Configurações você pode iniciar os cenários das duas guerras mundiais antes de a guerra estourar, com alianças e tensão. A importação por código também ficou mais robusta."
  },
  "months": [
   "janeiro",

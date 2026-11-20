@@ -4351,7 +4351,15 @@
   "Savaş için ilişki şartı": "开战的关系条件",
   "Açıkken savaş ilan edebilmek için hedef ülkeyle ilişkin en çok 20 olmalı; önce Diplomasi ekranından protesto, karalama ya da sınır kışkırtmasıyla ilişkileri düşürürsün. Müttefikinin düşmanına her zaman savaş açabilirsin.": "开启后,宣战需要与目标国的关系不高于 20;请先在外交界面通过抗议照会、抹黑运动或边境挑衅降低关系。对盟友的敌人随时可以宣战。",
   "Dünya Savaşları savaşsız başlasın": "世界大战无战争开局",
-  "Açıkken 1. ve 2. Dünya Savaşı senaryoları savaş başlamadan, ittifaklar ve gerginlikle açılır; savaşı yapay zekâ ya da sen çıkarırsın (saldırganlık ayarı da etkiler). Yeni başlayan senaryolarda geçerlidir.": "开启后,第一次和第二次世界大战剧本会在战争爆发前开局,带有同盟与紧张局势;战争由 AI 或你来引发(侵略性设置也会影响)。对新开始的剧本生效。"
+  "Açıkken 1. ve 2. Dünya Savaşı senaryoları savaş başlamadan, ittifaklar ve gerginlikle açılır; savaşı yapay zekâ ya da sen çıkarırsın (saldırganlık ayarı da etkiler). Yeni başlayan senaryolarda geçerlidir.": "开启后,第一次和第二次世界大战剧本会在战争爆发前开局,带有同盟与紧张局势;战争由 AI 或你来引发(侵略性设置也会影响)。对新开始的剧本生效。",
+  "İlişki bozma ve savaş şartı": "恶化关系与宣战条件",
+  "Diplomaside protesto, karalama ve sınır kışkırtmasıyla ilişkileri düşürebilirsin. Savaş ilan etmek için ilişki en çok 20 olmalı (Ayarlar'dan kapatılabilir).": "在外交中可用抗议照会、抹黑运动或边境挑衅降低关系。宣战需要关系不高于 20(可在设置中关闭)。",
+  "Ticaret anlaşmaları": "贸易协定",
+  "Dost ülkelerle ticaret anlaşması imzala: iki taraf da her hafta kazanır. Savaş, ambargo ya da bozulan ilişki anlaşmayı bitirir.": "与友好国家签订贸易协定,双方每周都有收益。战争、禁运或关系恶化会终止协定。",
+  "Sipariş etkisi görünür": "订单效果可见",
+  "Silah siparişlerinde teslimatta ordu gücüne katkı yazıyor; büyük ordularda sipariş adımları ölçekleniyor.": "武器订单现在会显示交付后对军力的贡献;大型军队的订购步长会相应放大。",
+  "Savaşsız Dünya Savaşları": "无战争开局的世界大战",
+  "Ayarlardan 1. ve 2. Dünya Savaşı senaryolarını savaş başlamadan, ittifaklar ve gerginlikle başlatabilirsin. Koddan içe aktarma da daha dayanıklı.": "在设置中可让第一次和第二次世界大战剧本在战争爆发前开局,带有同盟与紧张局势。通过代码导入也更稳健了。"
  },
  "months": [
   "1月",

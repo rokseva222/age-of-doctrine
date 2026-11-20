@@ -4126,7 +4126,15 @@
   "Savaş için ilişki şartı": "Relations required for war",
   "Açıkken savaş ilan edebilmek için hedef ülkeyle ilişkin en çok 20 olmalı; önce Diplomasi ekranından protesto, karalama ya da sınır kışkırtmasıyla ilişkileri düşürürsün. Müttefikinin düşmanına her zaman savaş açabilirsin.": "When on, to declare war your relations with the target must be at most 20; first lower them from the Diplomacy screen with a protest note, smear campaign or border provocation. You can always declare war on your ally's enemy.",
   "Dünya Savaşları savaşsız başlasın": "World Wars start without war",
-  "Açıkken 1. ve 2. Dünya Savaşı senaryoları savaş başlamadan, ittifaklar ve gerginlikle açılır; savaşı yapay zekâ ya da sen çıkarırsın (saldırganlık ayarı da etkiler). Yeni başlayan senaryolarda geçerlidir.": "When on, the World War I and II scenarios open before the war breaks out, with alliances and tension; the AI or you will start the war (the aggression setting also matters). Applies to newly started scenarios."
+  "Açıkken 1. ve 2. Dünya Savaşı senaryoları savaş başlamadan, ittifaklar ve gerginlikle açılır; savaşı yapay zekâ ya da sen çıkarırsın (saldırganlık ayarı da etkiler). Yeni başlayan senaryolarda geçerlidir.": "When on, the World War I and II scenarios open before the war breaks out, with alliances and tension; the AI or you will start the war (the aggression setting also matters). Applies to newly started scenarios.",
+  "İlişki bozma ve savaş şartı": "Worsen relations and war requirement",
+  "Diplomaside protesto, karalama ve sınır kışkırtmasıyla ilişkileri düşürebilirsin. Savaş ilan etmek için ilişki en çok 20 olmalı (Ayarlar'dan kapatılabilir).": "Lower relations in Diplomacy with a protest note, smear campaign or border provocation. Declaring war needs relations of at most 20 (can be turned off in Settings).",
+  "Ticaret anlaşmaları": "Trade agreements",
+  "Dost ülkelerle ticaret anlaşması imzala: iki taraf da her hafta kazanır. Savaş, ambargo ya da bozulan ilişki anlaşmayı bitirir.": "Sign trade agreements with friendly countries: both sides earn every week. War, embargo or worsening relations end the deal.",
+  "Sipariş etkisi görünür": "Visible order impact",
+  "Silah siparişlerinde teslimatta ordu gücüne katkı yazıyor; büyük ordularda sipariş adımları ölçekleniyor.": "Weapon orders now show their contribution to army strength on delivery; order steps scale with large armies.",
+  "Savaşsız Dünya Savaşları": "World Wars without war",
+  "Ayarlardan 1. ve 2. Dünya Savaşı senaryolarını savaş başlamadan, ittifaklar ve gerginlikle başlatabilirsin. Koddan içe aktarma da daha dayanıklı.": "In Settings you can start the World War I and II scenarios before the war breaks out, with alliances and tension. Importing scenarios from code is also more robust."
  },
  "months": [
   "January",

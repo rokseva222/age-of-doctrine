@@ -168,13 +168,14 @@ EV53 = [ev(e[0], e[1], e[2], e[3]) for e in EV53]
 OB53 = {
     "*": [obj("o1", "survive", "İki yıl ayakta kal", turns=104), obj("o2", "alliances", "2 müttefik edin", n=2)],
     "Turkey": [obj("t1", "own_capital", "Konstantinopolis'i fethet", country="Greece"), obj("t2", "own_provinces", "Devleti büyüt: 70 eyalete ulaş", n=70, required=False),
-               obj("t3", "eliminate", "Sırp Despotluğu'nu ilhak et", country="Serbia", required=False)],
+               obj("t3", "eliminate", "Sırp Despotluğu'nu ilhak et", country="Serbia", required=False),
+               obj("t4", "eliminate", "Bizans'ı tamamen sona erdir (Mora dahil)", country="Greece")],
     "Greece": [obj("g1", "survive", "Kuşatmaya dayan: 26 hafta ayakta kal", turns=26), obj("g2", "alliances", "Venedik veya Papalık ile ittifak kur", n=1)],
-    "Hungary": [obj("h1", "alliances", "2 müttefik edin", n=2), obj("h2", "stability", "İstikrarı 50 üzerinde tut", n=50, required=False)],
+    "Hungary": [obj("h1", "alliances", "3 müttefik edin", n=3), obj("h2", "stability", "İstikrarı 50 üzerinde tut", n=50), obj("h3", "survive", "Osmanlı'ya karşı üç yıl ayakta kal", turns=156)],
     "North Macedonia": [obj("k1", "own_provinces", "Karaman'ı büyüt: 12 eyalete ulaş", n=12)],
 }
 OB53_EN = {"o1": "Survive two years", "o2": "Make 2 allies", "t1": "Conquer Constantinople", "t2": "Grow the state: reach 70 provinces", "t3": "Annex the Serbian Despotate",
-           "g1": "Withstand the siege: stay alive for 26 weeks", "g2": "Ally with Venice or the Papacy", "h1": "Make 2 allies", "h2": "Keep stability above 50", "k1": "Expand Karaman: reach 12 provinces"}
+           "g1": "Withstand the siege: stay alive for 26 weeks", "g2": "Ally with Venice or the Papacy", "t4": "End Byzantium entirely (Morea included)", "h1": "Make 3 allies", "h2": "Keep stability above 50", "h3": "Withstand the Ottomans for three years", "k1": "Expand Karaman: reach 12 provinces"}
 ERAS.append({
     "id": "ott1453", "name": "İstanbul'un Fethi", "sub": "Nisan 1453 – Surların Önünde", "base": "tim1380", "family": "pre", "icon": "crown", "mood": "war",
     "start_year": 1453, "start_doy": 96,

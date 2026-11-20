@@ -4351,7 +4351,15 @@
   "Savaş için ilişki şartı": "युद्ध के लिए संबंध शर्त",
   "Açıkken savaş ilan edebilmek için hedef ülkeyle ilişkin en çok 20 olmalı; önce Diplomasi ekranından protesto, karalama ya da sınır kışkırtmasıyla ilişkileri düşürürsün. Müttefikinin düşmanına her zaman savaş açabilirsin.": "चालू होने पर युद्ध घोषित करने के लिए लक्ष्य देश से संबंध अधिकतम 20 होने चाहिए; पहले कूटनीति स्क्रीन से विरोध नोट, बदनामी अभियान या सीमा उकसावे से उन्हें घटाएँ। सहयोगी के दुश्मन पर आप हमेशा युद्ध घोषित कर सकते हैं।",
   "Dünya Savaşları savaşsız başlasın": "विश्व युद्ध बिना युद्ध के शुरू हों",
-  "Açıkken 1. ve 2. Dünya Savaşı senaryoları savaş başlamadan, ittifaklar ve gerginlikle açılır; savaşı yapay zekâ ya da sen çıkarırsın (saldırganlık ayarı da etkiler). Yeni başlayan senaryolarda geçerlidir.": "चालू होने पर प्रथम और द्वितीय विश्व युद्ध के परिदृश्य युद्ध शुरू होने से पहले गठबंधनों और तनाव के साथ खुलते हैं; युद्ध AI या आप शुरू करते हैं (आक्रामकता सेटिंग भी असर डालती है)। नए शुरू किए परिदृश्यों पर लागू।"
+  "Açıkken 1. ve 2. Dünya Savaşı senaryoları savaş başlamadan, ittifaklar ve gerginlikle açılır; savaşı yapay zekâ ya da sen çıkarırsın (saldırganlık ayarı da etkiler). Yeni başlayan senaryolarda geçerlidir.": "चालू होने पर प्रथम और द्वितीय विश्व युद्ध के परिदृश्य युद्ध शुरू होने से पहले गठबंधनों और तनाव के साथ खुलते हैं; युद्ध AI या आप शुरू करते हैं (आक्रामकता सेटिंग भी असर डालती है)। नए शुरू किए परिदृश्यों पर लागू।",
+  "İlişki bozma ve savaş şartı": "संबंध बिगाड़ना और युद्ध की शर्त",
+  "Diplomaside protesto, karalama ve sınır kışkırtmasıyla ilişkileri düşürebilirsin. Savaş ilan etmek için ilişki en çok 20 olmalı (Ayarlar'dan kapatılabilir).": "कूटनीति में विरोध नोट, बदनामी अभियान या सीमा उकसावे से संबंध घटाएँ। युद्ध घोषित करने के लिए संबंध अधिकतम 20 होने चाहिए (सेटिंग्स से बंद किया जा सकता है)।",
+  "Ticaret anlaşmaları": "व्यापार समझौते",
+  "Dost ülkelerle ticaret anlaşması imzala: iki taraf da her hafta kazanır. Savaş, ambargo ya da bozulan ilişki anlaşmayı bitirir.": "मित्र देशों से व्यापार समझौते करें: दोनों पक्षों को हर सप्ताह लाभ होता है। युद्ध, प्रतिबंध या बिगड़ते संबंध समझौता खत्म कर देते हैं।",
+  "Sipariş etkisi görünür": "ऑर्डर का असर दिखता है",
+  "Silah siparişlerinde teslimatta ordu gücüne katkı yazıyor; büyük ordularda sipariş adımları ölçekleniyor.": "हथियार ऑर्डर अब डिलीवरी पर सेना की शक्ति में अपना योगदान दिखाते हैं; बड़ी सेनाओं में ऑर्डर के चरण बढ़ जाते हैं।",
+  "Savaşsız Dünya Savaşları": "बिना युद्ध के विश्व युद्ध",
+  "Ayarlardan 1. ve 2. Dünya Savaşı senaryolarını savaş başlamadan, ittifaklar ve gerginlikle başlatabilirsin. Koddan içe aktarma da daha dayanıklı.": "सेटिंग्स में आप प्रथम और द्वितीय विश्व युद्ध के परिदृश्य युद्ध शुरू होने से पहले, गठबंधनों और तनाव के साथ शुरू कर सकते हैं। कोड से आयात भी अधिक मज़बूत हुआ है।"
  },
  "months": [
   "जनवरी",

@@ -4351,7 +4351,15 @@
   "Savaş için ilişki şartı": "Условие отношений для войны",
   "Açıkken savaş ilan edebilmek için hedef ülkeyle ilişkin en çok 20 olmalı; önce Diplomasi ekranından protesto, karalama ya da sınır kışkırtmasıyla ilişkileri düşürürsün. Müttefikinin düşmanına her zaman savaş açabilirsin.": "Когда включено, для объявления войны отношения с целью должны быть не выше 20; сначала снизь их на экране дипломатии нотой протеста, клеветнической кампанией или пограничной провокацией. Врагу своего союзника можно объявить войну всегда.",
   "Dünya Savaşları savaşsız başlasın": "Мировые войны начинаются без войны",
-  "Açıkken 1. ve 2. Dünya Savaşı senaryoları savaş başlamadan, ittifaklar ve gerginlikle açılır; savaşı yapay zekâ ya da sen çıkarırsın (saldırganlık ayarı da etkiler). Yeni başlayan senaryolarda geçerlidir.": "Когда включено, сценарии Первой и Второй мировых войн начинаются до начала войны — с союзами и напряжением; войну развязывает ИИ или ты (влияет и настройка агрессивности). Действует для вновь начатых сценариев."
+  "Açıkken 1. ve 2. Dünya Savaşı senaryoları savaş başlamadan, ittifaklar ve gerginlikle açılır; savaşı yapay zekâ ya da sen çıkarırsın (saldırganlık ayarı da etkiler). Yeni başlayan senaryolarda geçerlidir.": "Когда включено, сценарии Первой и Второй мировых войн начинаются до начала войны — с союзами и напряжением; войну развязывает ИИ или ты (влияет и настройка агрессивности). Действует для вновь начатых сценариев.",
+  "İlişki bozma ve savaş şartı": "Ухудшение отношений и условие войны",
+  "Diplomaside protesto, karalama ve sınır kışkırtmasıyla ilişkileri düşürebilirsin. Savaş ilan etmek için ilişki en çok 20 olmalı (Ayarlar'dan kapatılabilir).": "Снижай отношения в дипломатии нотой протеста, клеветнической кампанией или пограничной провокацией. Для объявления войны отношения должны быть не выше 20 (можно отключить в настройках).",
+  "Ticaret anlaşmaları": "Торговые соглашения",
+  "Dost ülkelerle ticaret anlaşması imzala: iki taraf da her hafta kazanır. Savaş, ambargo ya da bozulan ilişki anlaşmayı bitirir.": "Подписывай торговые соглашения с дружественными странами: обе стороны получают доход каждую неделю. Война, эмбарго или ухудшение отношений прекращают соглашение.",
+  "Sipariş etkisi görünür": "Эффект заказов виден",
+  "Silah siparişlerinde teslimatta ordu gücüne katkı yazıyor; büyük ordularda sipariş adımları ölçekleniyor.": "Заказы оружия теперь показывают вклад в мощь армии при поставке; шаги заказа масштабируются для больших армий.",
+  "Savaşsız Dünya Savaşları": "Мировые войны без войны",
+  "Ayarlardan 1. ve 2. Dünya Savaşı senaryolarını savaş başlamadan, ittifaklar ve gerginlikle başlatabilirsin. Koddan içe aktarma da daha dayanıklı.": "В настройках можно начать сценарии Первой и Второй мировых войн до начала войны — с союзами и напряжением. Импорт по коду тоже стал надёжнее."
  },
  "months": [
   "января",

@@ -4351,7 +4351,15 @@
   "Savaş için ilişki şartı": "開戦の関係条件",
   "Açıkken savaş ilan edebilmek için hedef ülkeyle ilişkin en çok 20 olmalı; önce Diplomasi ekranından protesto, karalama ya da sınır kışkırtmasıyla ilişkileri düşürürsün. Müttefikinin düşmanına her zaman savaş açabilirsin.": "オンの場合、宣戦するには相手国との関係値が20以下である必要があります。まず外交画面で抗議文書・中傷キャンペーン・国境挑発を使って下げてください。同盟国の敵にはいつでも宣戦できます。",
   "Dünya Savaşları savaşsız başlasın": "世界大戦を開戦前から始める",
-  "Açıkken 1. ve 2. Dünya Savaşı senaryoları savaş başlamadan, ittifaklar ve gerginlikle açılır; savaşı yapay zekâ ya da sen çıkarırsın (saldırganlık ayarı da etkiler). Yeni başlayan senaryolarda geçerlidir.": "オンの場合、第一次・第二次世界大戦のシナリオは開戦前、同盟と緊張状態から始まります。戦争はAIまたはあなたが引き起こします(攻撃性の設定も影響)。新しく始めるシナリオに適用されます。"
+  "Açıkken 1. ve 2. Dünya Savaşı senaryoları savaş başlamadan, ittifaklar ve gerginlikle açılır; savaşı yapay zekâ ya da sen çıkarırsın (saldırganlık ayarı da etkiler). Yeni başlayan senaryolarda geçerlidir.": "オンの場合、第一次・第二次世界大戦のシナリオは開戦前、同盟と緊張状態から始まります。戦争はAIまたはあなたが引き起こします(攻撃性の設定も影響)。新しく始めるシナリオに適用されます。",
+  "İlişki bozma ve savaş şartı": "関係悪化と開戦条件",
+  "Diplomaside protesto, karalama ve sınır kışkırtmasıyla ilişkileri düşürebilirsin. Savaş ilan etmek için ilişki en çok 20 olmalı (Ayarlar'dan kapatılabilir).": "外交で抗議文書・中傷キャンペーン・国境挑発により関係を下げられます。宣戦には関係値20以下が必要です(設定でオフにできます)。",
+  "Ticaret anlaşmaları": "貿易協定",
+  "Dost ülkelerle ticaret anlaşması imzala: iki taraf da her hafta kazanır. Savaş, ambargo ya da bozulan ilişki anlaşmayı bitirir.": "友好国と貿易協定を結ぶと、双方が毎週利益を得ます。戦争・禁輸・関係悪化で協定は終了します。",
+  "Sipariş etkisi görünür": "発注の効果が見える",
+  "Silah siparişlerinde teslimatta ordu gücüne katkı yazıyor; büyük ordularda sipariş adımları ölçekleniyor.": "武器の発注に、納入時の軍の戦力への貢献が表示されます。大軍では発注の単位が拡大します。",
+  "Savaşsız Dünya Savaşları": "戦争前から始める世界大戦",
+  "Ayarlardan 1. ve 2. Dünya Savaşı senaryolarını savaş başlamadan, ittifaklar ve gerginlikle başlatabilirsin. Koddan içe aktarma da daha dayanıklı.": "設定で、第一次・第二次世界大戦のシナリオを開戦前の同盟と緊張状態から始められます。コードからのインポートも堅牢になりました。"
  },
  "months": [
   "1月",

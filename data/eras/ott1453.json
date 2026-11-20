@@ -2426,6 +2426,12 @@
     "text": "Sırp Despotluğu'nu ilhak et",
     "country": "Serbia",
     "required": false
+   },
+   {
+    "id": "t4",
+    "type": "eliminate",
+    "text": "Bizans'ı tamamen sona erdir (Mora dahil)",
+    "country": "Greece"
    }
   ],
   "Greece": [
@@ -2446,15 +2452,20 @@
    {
     "id": "h1",
     "type": "alliances",
-    "text": "2 müttefik edin",
-    "n": 2
+    "text": "3 müttefik edin",
+    "n": 3
    },
    {
     "id": "h2",
     "type": "stability",
     "text": "İstikrarı 50 üzerinde tut",
-    "n": 50,
-    "required": false
+    "n": 50
+   },
+   {
+    "id": "h3",
+    "type": "survive",
+    "text": "Osmanlı'ya karşı üç yıl ayakta kal",
+    "turns": 156
    }
   ],
   "North Macedonia": [
@@ -2494,8 +2505,10 @@
    "t3": "Annex the Serbian Despotate",
    "g1": "Withstand the siege: stay alive for 26 weeks",
    "g2": "Ally with Venice or the Papacy",
-   "h1": "Make 2 allies",
+   "t4": "End Byzantium entirely (Morea included)",
+   "h1": "Make 3 allies",
    "h2": "Keep stability above 50",
+   "h3": "Withstand the Ottomans for three years",
    "k1": "Expand Karaman: reach 12 provinces"
   }
  }

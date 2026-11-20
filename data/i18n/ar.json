@@ -4351,7 +4351,15 @@
   "Savaş için ilişki şartı": "شرط العلاقات للحرب",
   "Açıkken savaş ilan edebilmek için hedef ülkeyle ilişkin en çok 20 olmalı; önce Diplomasi ekranından protesto, karalama ya da sınır kışkırtmasıyla ilişkileri düşürürsün. Müttefikinin düşmanına her zaman savaş açabilirsin.": "عند التفعيل، لإعلان الحرب يجب ألا تزيد علاقتك بالدولة المستهدفة عن 20؛ اخفضها أولاً من شاشة الدبلوماسية بمذكرة احتجاج أو حملة تشويه أو استفزاز حدودي. يمكنك دائماً إعلان الحرب على عدو حليفك.",
   "Dünya Savaşları savaşsız başlasın": "تبدأ الحربان العالميتان دون حرب",
-  "Açıkken 1. ve 2. Dünya Savaşı senaryoları savaş başlamadan, ittifaklar ve gerginlikle açılır; savaşı yapay zekâ ya da sen çıkarırsın (saldırganlık ayarı da etkiler). Yeni başlayan senaryolarda geçerlidir.": "عند التفعيل تبدأ سيناريوهات الحربين العالميتين الأولى والثانية قبل اندلاع الحرب، مع التحالفات والتوتر؛ ويشعل الحرب الذكاء الاصطناعي أو أنت (ويؤثر إعداد العدوانية أيضاً). ينطبق على السيناريوهات الجديدة."
+  "Açıkken 1. ve 2. Dünya Savaşı senaryoları savaş başlamadan, ittifaklar ve gerginlikle açılır; savaşı yapay zekâ ya da sen çıkarırsın (saldırganlık ayarı da etkiler). Yeni başlayan senaryolarda geçerlidir.": "عند التفعيل تبدأ سيناريوهات الحربين العالميتين الأولى والثانية قبل اندلاع الحرب، مع التحالفات والتوتر؛ ويشعل الحرب الذكاء الاصطناعي أو أنت (ويؤثر إعداد العدوانية أيضاً). ينطبق على السيناريوهات الجديدة.",
+  "İlişki bozma ve savaş şartı": "تدهور العلاقات وشرط الحرب",
+  "Diplomaside protesto, karalama ve sınır kışkırtmasıyla ilişkileri düşürebilirsin. Savaş ilan etmek için ilişki en çok 20 olmalı (Ayarlar'dan kapatılabilir).": "اخفض العلاقات في الدبلوماسية بمذكرة احتجاج أو حملة تشويه أو استفزاز حدودي. إعلان الحرب يتطلب علاقات لا تزيد عن 20 (يمكن إيقافه من الإعدادات).",
+  "Ticaret anlaşmaları": "اتفاقيات التجارة",
+  "Dost ülkelerle ticaret anlaşması imzala: iki taraf da her hafta kazanır. Savaş, ambargo ya da bozulan ilişki anlaşmayı bitirir.": "وقّع اتفاقيات تجارة مع الدول الصديقة: يربح الطرفان كل أسبوع. الحرب أو الحظر أو تدهور العلاقات تنهي الاتفاق.",
+  "Sipariş etkisi görünür": "أثر الطلبات ظاهر",
+  "Silah siparişlerinde teslimatta ordu gücüne katkı yazıyor; büyük ordularda sipariş adımları ölçekleniyor.": "تعرض طلبات الأسلحة الآن مساهمتها في قوة الجيش عند التسليم، وتتدرج خطوات الطلب مع الجيوش الكبيرة.",
+  "Savaşsız Dünya Savaşları": "الحربان العالميتان دون حرب",
+  "Ayarlardan 1. ve 2. Dünya Savaşı senaryolarını savaş başlamadan, ittifaklar ve gerginlikle başlatabilirsin. Koddan içe aktarma da daha dayanıklı.": "من الإعدادات يمكنك بدء سيناريوهات الحربين العالميتين قبل اندلاع الحرب، مع التحالفات والتوتر. كما أصبح الاستيراد من الكود أكثر متانة."
  },
  "months": [
   "يناير",

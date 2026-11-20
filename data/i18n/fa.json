@@ -4351,7 +4351,15 @@
   "Savaş için ilişki şartı": "شرط رابطه برای جنگ",
   "Açıkken savaş ilan edebilmek için hedef ülkeyle ilişkin en çok 20 olmalı; önce Diplomasi ekranından protesto, karalama ya da sınır kışkırtmasıyla ilişkileri düşürürsün. Müttefikinin düşmanına her zaman savaş açabilirsin.": "در صورت فعال بودن، برای اعلام جنگ رابطه‌ات با کشور هدف باید حداکثر 20 باشد؛ ابتدا از صفحه دیپلماسی با یادداشت اعتراض، کارزار تخریب یا تحریک مرزی آن را پایین بیاور. همیشه می‌توانی به دشمن متحدت اعلام جنگ کنی.",
   "Dünya Savaşları savaşsız başlasın": "جنگ‌های جهانی بدون جنگ شروع شوند",
-  "Açıkken 1. ve 2. Dünya Savaşı senaryoları savaş başlamadan, ittifaklar ve gerginlikle açılır; savaşı yapay zekâ ya da sen çıkarırsın (saldırganlık ayarı da etkiler). Yeni başlayan senaryolarda geçerlidir.": "در صورت فعال بودن، سناریوهای جنگ جهانی اول و دوم پیش از شروع جنگ با اتحادها و تنش آغاز می‌شوند؛ جنگ را هوش مصنوعی یا خودت راه می‌اندازی (تنظیم تهاجم هم اثر دارد). برای سناریوهای تازه‌شروع‌شده اعمال می‌شود."
+  "Açıkken 1. ve 2. Dünya Savaşı senaryoları savaş başlamadan, ittifaklar ve gerginlikle açılır; savaşı yapay zekâ ya da sen çıkarırsın (saldırganlık ayarı da etkiler). Yeni başlayan senaryolarda geçerlidir.": "در صورت فعال بودن، سناریوهای جنگ جهانی اول و دوم پیش از شروع جنگ با اتحادها و تنش آغاز می‌شوند؛ جنگ را هوش مصنوعی یا خودت راه می‌اندازی (تنظیم تهاجم هم اثر دارد). برای سناریوهای تازه‌شروع‌شده اعمال می‌شود.",
+  "İlişki bozma ve savaş şartı": "تیره کردن روابط و شرط جنگ",
+  "Diplomaside protesto, karalama ve sınır kışkırtmasıyla ilişkileri düşürebilirsin. Savaş ilan etmek için ilişki en çok 20 olmalı (Ayarlar'dan kapatılabilir).": "در دیپلماسی با یادداشت اعتراض، کارزار تخریب یا تحریک مرزی روابط را پایین بیاور. اعلام جنگ به رابطه حداکثر 20 نیاز دارد (از تنظیمات قابل خاموش شدن است).",
+  "Ticaret anlaşmaları": "قراردادهای تجاری",
+  "Dost ülkelerle ticaret anlaşması imzala: iki taraf da her hafta kazanır. Savaş, ambargo ya da bozulan ilişki anlaşmayı bitirir.": "با کشورهای دوست قرارداد تجاری امضا کن: هر دو طرف هر هفته سود می‌برند. جنگ، تحریم یا بدتر شدن روابط قرارداد را پایان می‌دهد.",
+  "Sipariş etkisi görünür": "اثر سفارش‌ها قابل مشاهده",
+  "Silah siparişlerinde teslimatta ordu gücüne katkı yazıyor; büyük ordularda sipariş adımları ölçekleniyor.": "سفارش‌های سلاح اکنون سهمشان در قدرت ارتش هنگام تحویل را نشان می‌دهند؛ گام‌های سفارش در ارتش‌های بزرگ مقیاس می‌شود.",
+  "Savaşsız Dünya Savaşları": "جنگ‌های جهانی بدون جنگ",
+  "Ayarlardan 1. ve 2. Dünya Savaşı senaryolarını savaş başlamadan, ittifaklar ve gerginlikle başlatabilirsin. Koddan içe aktarma da daha dayanıklı.": "از تنظیمات می‌توانی سناریوهای جنگ جهانی اول و دوم را پیش از شروع جنگ با اتحادها و تنش آغاز کنی. درون‌ریزی از کد هم مطمئن‌تر شد."
  },
  "months": [
   "ژانویه",

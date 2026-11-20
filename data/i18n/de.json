@@ -4350,7 +4350,15 @@
   "Savaş için ilişki şartı": "Beziehungsvoraussetzung für Krieg",
   "Açıkken savaş ilan edebilmek için hedef ülkeyle ilişkin en çok 20 olmalı; önce Diplomasi ekranından protesto, karalama ya da sınır kışkırtmasıyla ilişkileri düşürürsün. Müttefikinin düşmanına her zaman savaş açabilirsin.": "Wenn aktiv, müssen die Beziehungen zum Ziel für eine Kriegserklärung höchstens 20 betragen; senke sie zuerst im Diplomatie-Bildschirm mit Protestnote, Verleumdungskampagne oder Grenzprovokation. Dem Feind deines Verbündeten kannst du immer den Krieg erklären.",
   "Dünya Savaşları savaşsız başlasın": "Weltkriege ohne Krieg beginnen",
-  "Açıkken 1. ve 2. Dünya Savaşı senaryoları savaş başlamadan, ittifaklar ve gerginlikle açılır; savaşı yapay zekâ ya da sen çıkarırsın (saldırganlık ayarı da etkiler). Yeni başlayan senaryolarda geçerlidir.": "Wenn aktiv, beginnen die Szenarien des Ersten und Zweiten Weltkriegs vor Kriegsausbruch mit Bündnissen und Spannungen; den Krieg löst die KI oder du aus (die Aggressionseinstellung wirkt mit). Gilt für neu gestartete Szenarien."
+  "Açıkken 1. ve 2. Dünya Savaşı senaryoları savaş başlamadan, ittifaklar ve gerginlikle açılır; savaşı yapay zekâ ya da sen çıkarırsın (saldırganlık ayarı da etkiler). Yeni başlayan senaryolarda geçerlidir.": "Wenn aktiv, beginnen die Szenarien des Ersten und Zweiten Weltkriegs vor Kriegsausbruch mit Bündnissen und Spannungen; den Krieg löst die KI oder du aus (die Aggressionseinstellung wirkt mit). Gilt für neu gestartete Szenarien.",
+  "İlişki bozma ve savaş şartı": "Beziehungen verschlechtern und Kriegsvoraussetzung",
+  "Diplomaside protesto, karalama ve sınır kışkırtmasıyla ilişkileri düşürebilirsin. Savaş ilan etmek için ilişki en çok 20 olmalı (Ayarlar'dan kapatılabilir).": "Senke die Beziehungen in der Diplomatie mit Protestnote, Verleumdungskampagne oder Grenzprovokation. Für eine Kriegserklärung dürfen sie höchstens 20 betragen (in den Einstellungen abschaltbar).",
+  "Ticaret anlaşmaları": "Handelsabkommen",
+  "Dost ülkelerle ticaret anlaşması imzala: iki taraf da her hafta kazanır. Savaş, ambargo ya da bozulan ilişki anlaşmayı bitirir.": "Schließe Handelsabkommen mit befreundeten Ländern: Beide Seiten verdienen jede Woche. Krieg, Embargo oder schlechtere Beziehungen beenden das Abkommen.",
+  "Sipariş etkisi görünür": "Sichtbare Bestellwirkung",
+  "Silah siparişlerinde teslimatta ordu gücüne katkı yazıyor; büyük ordularda sipariş adımları ölçekleniyor.": "Waffenbestellungen zeigen jetzt ihren Beitrag zur Armeestärke bei Lieferung; die Bestellschritte skalieren bei großen Armeen.",
+  "Savaşsız Dünya Savaşları": "Weltkriege ohne Krieg",
+  "Ayarlardan 1. ve 2. Dünya Savaşı senaryolarını savaş başlamadan, ittifaklar ve gerginlikle başlatabilirsin. Koddan içe aktarma da daha dayanıklı.": "In den Einstellungen kannst du die Szenarien des Ersten und Zweiten Weltkriegs vor Kriegsausbruch mit Bündnissen und Spannungen starten. Der Import per Code ist außerdem robuster."
  },
  "months": [
   "Januar",
