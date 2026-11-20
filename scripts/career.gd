@@ -944,6 +944,16 @@ static func _draw_card(gs) -> void:
 			if bool(cc.get("modern_only", false)) and fam != "":
 				continue
 			pool.append(cc)
+	# evlilik teklifi: bir kez kabul edilince bir daha gelmez; reddedilirse bir süre (52 hafta) gelmez
+	var married: bool = bool(gs.career.get("married", false))
+	var mcd: int = int(gs.career.get("marriage_cd", 0))
+	var pool2: Array = []
+	for cc2 in pool:
+		if String(cc2.get("id", "")) == "marriage" and (married or gs.turn < mcd):
+			continue
+		pool2.append(cc2)
+	if not pool2.is_empty():
+		pool = pool2
 	var c: Dictionary = pool[gs.rng.randi() % pool.size()]
 	gs.career.next_card = gs.turn + CARD_CD + gs.rng.randi() % 4
 	gs.career["pending"] = {"kind": "card", "card": c}
@@ -987,6 +997,11 @@ static func choose(gs, idx: int) -> void:
 		if idx >= 0 and idx < ch.size():
 			apply_fx(gs, ch[idx][1])
 			_log(gs, "%s: %s" % [String(c.t), String(ch[idx][0])])
+			if String(c.get("id", "")) == "marriage":
+				if idx == 0:
+					gs.career["married"] = true
+				else:
+					gs.career["marriage_cd"] = gs.turn + 52
 	gs.career["pending"] = {}
 
 

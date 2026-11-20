@@ -4204,7 +4204,17 @@
   "Sömürge yönetimi": "Administración colonial",
   "Feodal krallık": "Reino feudal",
   "Devlet inancı": "Fe del Estado",
-  "Dini birlik": "Unidad religiosa"
+  "Dini birlik": "Unidad religiosa",
+  "Topçuyla saldır": "Atacar con artillería",
+  "Uçakla saldır (düşürülebilir)": "Atacar con aviones (pueden derribarlos)",
+  "%s eyaletinde zehirli gaz kullanılacak. Hedef ordusunun yaklaşık %%45'i kaybolur (uçakla %%55, ama uçak düşürülebilir); istikrarın düşer ve dünya tepkisi artar. 8 hafta tekrar kullanılamaz.": "Se usará gas venenoso en %s. El ejército objetivo pierde cerca del 45%% (55%% con aviones, que pueden ser derribados); tu estabilidad baja y crece la reacción mundial. No se puede repetir durante 8 semanas.",
+  "Gaz yüklü uçağımız %s üzerinde düşürüldü!": "¡Nuestro avión cargado de gas fue derribado sobre %s!",
+  "Uçak düşürüldü; saldırı başarısız (4 hafta bekle).": "El avión fue derribado; el ataque fracasó (espera 4 semanas).",
+  "Çıkarma filomuz denizde %s donanması tarafından vuruldu: %d asker kaybedildi.": "Nuestra flota de desembarco fue atacada en el mar por la armada de %s: %d soldados perdidos.",
+  "İki yeni tarihî senaryo": "Dos nuevos escenarios históricos",
+  "Osmanlı'nın Kuruluşu (1299, Söğüt'ten Bursa'ya) ve İstanbul'un Fethi (1453, surların önünde) çağları eklendi. Evlilik teklifi hikaye modunda artık bir kez kabul edilince tekrar gelmez.": "Se añadieron dos eras: El ascenso de los otomanos (1299, de Söğüt a Bursa) y La caída de Constantinopla (1453, ante las murallas). En el modo historia, la propuesta de matrimonio ya no se repite una vez aceptada.",
+  "Deniz ve gaz harekâtı": "Operaciones navales y de gas",
+  "Çıkarmada donanma üstünlüğü artık avantaj sağlıyor, güçlü düşman donanması çıkarma filonu denizde vurabiliyor. Kimyasal saldırı uçakla da yapılabiliyor. Dinler ve rejimler için yeni simgeler geldi.": "La superioridad naval ahora da ventaja en los desembarcos, y una armada enemiga fuerte puede atacar tu flota de desembarco en el mar. Los ataques químicos también pueden hacerse con aviones. Nuevos iconos para religiones y regímenes."
  },
  "months": [
   "enero",

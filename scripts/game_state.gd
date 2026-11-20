@@ -496,7 +496,15 @@ func player_has_gas() -> bool:
 	return fam == "ww1" or countries[player].air_pow > 0.0
 
 
-func player_gas(pid: int) -> String:
+## Gaz platformları: "artillery" (topçu, her zaman) ve "air" (uçakla; hava savunmasına takılabilir ama daha geniş etki).
+func gas_platforms() -> Array:
+	var out: Array = ["artillery"]
+	if player >= 0 and Eras.family() != "ww1" and countries[player].air_pow > 0.0:
+		out.append("air")
+	return out
+
+
+func player_gas(pid: int, platform: String = "artillery") -> String:
 	if not player_has_gas():
 		return "Kimyasal silahın yok."
 	if gas_cd > turn:
@@ -508,8 +516,20 @@ func player_gas(pid: int) -> String:
 	var me = countries[player]
 	var d = armies.get(pid)
 	var killed := 0
+	var kill_g := 0.45
+	if platform == "air":
+		if not gas_platforms().has("air"):
+			return "Bu platform kullanılamıyor."
+		var foe_g = countries[tgt]
+		var ok_g: float = clampf(0.66 + (me.air_pow - foe_g.air_pow) / maxf(1.0, me.air_pow + foe_g.air_pow) * 0.5, 0.3, 0.93)
+		if rng.randf() > ok_g:
+			gas_cd = turn + 4
+			post_news("Gaz yüklü uçağımız %s üzerinde düşürüldü!" % p.name, pid, "war_player")
+			state_changed.emit()
+			return "Uçak düşürüldü; saldırı başarısız (4 hafta bekle)."
+		kill_g = 0.55
 	if d != null and d.owner != player:
-		killed = int(d.size * 0.45)
+		killed = int(d.size * kill_g)
 		d.size = maxi(1, d.size - killed)
 	p.unrest = maxi(p.unrest, 7)
 	p.pop *= 0.94
@@ -657,7 +677,11 @@ func op_effect(op: String, att_id: int, def_id: int) -> Dictionary:
 		var k2: float = clampf(0.45 + 0.4 * (a2 - b2) / (a2 + b2 + 1.0), 0.2, 1.0)
 		return {"att": o.att, "dp": 1.0 - (1.0 - o.dp) * k2}
 	if op == "landing":
-		return {"att": o.att + minf(0.2, 0.04 * maxi(countries[att_id].carriers, 0)), "dp": o.dp}
+		# donanma üstünlüğü: kıyıyı denizden destekleyen taraf çıkarmada avantajlıdır; zayıf donanma savunmayı güçlendirir
+		var na: float = countries[att_id].naval_pow
+		var nb: float = countries[def_id].naval_pow if def_id >= 0 else 0.0
+		var nshare: float = (na - nb) / (na + nb + 1.0)
+		return {"att": o.att + minf(0.2, 0.04 * maxi(countries[att_id].carriers, 0)) + 0.12 * nshare, "dp": o.dp}
 	return {"att": o.att, "dp": o.dp}
 
 
@@ -2686,9 +2710,32 @@ func _step_army(a) -> void:
 	_wait_since.erase(a.id)
 	hop = trail[si]
 	a.path = rests[si]
+	if a.op == "landing" and provinces[a.prov].sea_links.has(trail[0]) and not provinces[a.prov].neighbors.has(trail[0]):
+		_sea_intercept(a, hop)
 	_enter(a, hop)
 	if a.path.is_empty():
 		a.op = ""
+
+
+## Denizde konvoy: hedefin sahibinin donanması (özellikle denizaltı) çıkarma filosundan güçlüyse asker kaybedilir (en fazla %18).
+func _sea_intercept(a, target: int) -> void:
+	var tp = provinces[target]
+	var foe: int = tp.controller if tp.controller >= 0 else tp.owner
+	if foe < 0 or foe == a.owner or not at_war(a.owner, foe):
+		return
+	var me = countries[a.owner]
+	var o = countries[foe]
+	var edge: float = (o.naval_pow - me.naval_pow) / (o.naval_pow + me.naval_pow + 1.0)
+	if edge <= 0.0:
+		return
+	var sub: float = minf(1.0, float(o.ratios.get("sub", 0.0)))
+	var frac: float = minf(0.18, 0.04 + 0.14 * edge * (0.6 + 0.4 * sub))
+	var lost: int = int(a.size * frac)
+	if lost < 1 or a.size - lost < 1:
+		return
+	a.size -= lost
+	if a.owner == player:
+		post_news("Çıkarma filomuz denizde %s donanması tarafından vuruldu: %d asker kaybedildi." % [o.name, lost], a.prov, "war_player")
 
 
 var _wait_since: Dictionary = {}      # ordu id -> beklemeye başlanan tur

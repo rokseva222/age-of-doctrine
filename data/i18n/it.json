@@ -4205,7 +4205,17 @@
   "Sömürge yönetimi": "Amministrazione coloniale",
   "Feodal krallık": "Regno feudale",
   "Devlet inancı": "Fede di Stato",
-  "Dini birlik": "Unità religiosa"
+  "Dini birlik": "Unità religiosa",
+  "Topçuyla saldır": "Attacca con l'artiglieria",
+  "Uçakla saldır (düşürülebilir)": "Attacca con aerei (possono essere abbattuti)",
+  "%s eyaletinde zehirli gaz kullanılacak. Hedef ordusunun yaklaşık %%45'i kaybolur (uçakla %%55, ama uçak düşürülebilir); istikrarın düşer ve dünya tepkisi artar. 8 hafta tekrar kullanılamaz.": "A %s verrà usato gas velenoso. Circa il 45%% dell'esercito bersaglio va perso (55%% con gli aerei, che però possono essere abbattuti); la tua stabilità cala e cresce la reazione mondiale. Non riutilizzabile per 8 settimane.",
+  "Gaz yüklü uçağımız %s üzerinde düşürüldü!": "Il nostro aereo carico di gas è stato abbattuto su %s!",
+  "Uçak düşürüldü; saldırı başarısız (4 hafta bekle).": "L'aereo è stato abbattuto; l'attacco è fallito (attendi 4 settimane).",
+  "Çıkarma filomuz denizde %s donanması tarafından vuruldu: %d asker kaybedildi.": "La nostra flotta da sbarco è stata colpita in mare dalla marina di %s: persi %d soldati.",
+  "İki yeni tarihî senaryo": "Due nuovi scenari storici",
+  "Osmanlı'nın Kuruluşu (1299, Söğüt'ten Bursa'ya) ve İstanbul'un Fethi (1453, surların önünde) çağları eklendi. Evlilik teklifi hikaye modunda artık bir kez kabul edilince tekrar gelmez.": "Sono state aggiunte due epoche: L'ascesa degli Ottomani (1299, da Söğüt a Bursa) e La caduta di Costantinopoli (1453, davanti alle mura). In modalità storia la proposta di matrimonio non torna più dopo averla accettata.",
+  "Deniz ve gaz harekâtı": "Operazioni navali e a gas",
+  "Çıkarmada donanma üstünlüğü artık avantaj sağlıyor, güçlü düşman donanması çıkarma filonu denizde vurabiliyor. Kimyasal saldırı uçakla da yapılabiliyor. Dinler ve rejimler için yeni simgeler geldi.": "La superiorità navale ora dà un vantaggio negli sbarchi e una forte marina nemica può colpire la tua flotta da sbarco in mare. Gli attacchi chimici possono essere fatti anche con aerei. Nuove icone per fedi e regimi."
  },
  "months": [
   "gennaio",

@@ -145,7 +145,7 @@ static func _era_adjust(code: String, n: String, continent: String) -> String:
 			code = "hindu"
 		if code == "judaism":
 			code = "sunni"
-		if Eras.current == "tim1380" and code == "shia" and n in ["Iran", "Azerbaijan"]:
+		if ["tim1380", "ott1299", "ott1453"].has(Eras.current) and code == "shia" and n in ["Iran", "Azerbaijan"]:
 			code = "sunni"
 		if continent in ["North America", "South America", "Oceania"]:
 			code = "animism"

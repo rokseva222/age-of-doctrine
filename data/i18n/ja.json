@@ -4205,7 +4205,17 @@
   "Sömürge yönetimi": "植民地統治",
   "Feodal krallık": "封建王国",
   "Devlet inancı": "国教",
-  "Dini birlik": "宗教的結束"
+  "Dini birlik": "宗教的結束",
+  "Topçuyla saldır": "砲兵で攻撃",
+  "Uçakla saldır (düşürülebilir)": "航空機で攻撃（撃墜の恐れあり）",
+  "%s eyaletinde zehirli gaz kullanılacak. Hedef ordusunun yaklaşık %%45'i kaybolur (uçakla %%55, ama uçak düşürülebilir); istikrarın düşer ve dünya tepkisi artar. 8 hafta tekrar kullanılamaz.": "%sで毒ガスを使用します。標的軍の約45%%が失われます（航空機なら55%%、ただし撃墜される恐れあり）。安定度が下がり、世界の反発が強まります。8週間は再使用できません。",
+  "Gaz yüklü uçağımız %s üzerinde düşürüldü!": "毒ガスを積んだ我が機が%s上空で撃墜された！",
+  "Uçak düşürüldü; saldırı başarısız (4 hafta bekle).": "航空機が撃墜され、攻撃は失敗した（4週間待機）。",
+  "Çıkarma filomuz denizde %s donanması tarafından vuruldu: %d asker kaybedildi.": "上陸船団が海上で%s海軍の攻撃を受け、兵%d人を失った。",
+  "İki yeni tarihî senaryo": "新しい歴史シナリオ2つ",
+  "Osmanlı'nın Kuruluşu (1299, Söğüt'ten Bursa'ya) ve İstanbul'un Fethi (1453, surların önünde) çağları eklendi. Evlilik teklifi hikaye modunda artık bir kez kabul edilince tekrar gelmez.": "2つの時代を追加しました：オスマン帝国の興り（1299年、ソユットからブルサへ）とコンスタンティノープル陥落（1453年、城壁の前）。ストーリーモードでは、結婚の申し出は一度受け入れると再び来なくなります。",
+  "Deniz ve gaz harekâtı": "海軍とガス作戦",
+  "Çıkarmada donanma üstünlüğü artık avantaj sağlıyor, güçlü düşman donanması çıkarma filonu denizde vurabiliyor. Kimyasal saldırı uçakla da yapılabiliyor. Dinler ve rejimler için yeni simgeler geldi.": "上陸では海軍の優勢が有利に働き、強力な敵海軍は海上で上陸艦隊を攻撃できます。化学攻撃は航空機でも実行できます。信仰と体制の新しいアイコンを追加しました。"
  },
  "months": [
   "1月",

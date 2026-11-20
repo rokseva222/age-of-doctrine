@@ -4205,7 +4205,17 @@
   "Sömürge yönetimi": "اداره استعماری",
   "Feodal krallık": "پادشاهی فئودالی",
   "Devlet inancı": "دین دولت",
-  "Dini birlik": "وحدت دینی"
+  "Dini birlik": "وحدت دینی",
+  "Topçuyla saldır": "حمله با توپخانه",
+  "Uçakla saldır (düşürülebilir)": "حمله با هواپیما (ممکن است سرنگون شود)",
+  "%s eyaletinde zehirli gaz kullanılacak. Hedef ordusunun yaklaşık %%45'i kaybolur (uçakla %%55, ama uçak düşürülebilir); istikrarın düşer ve dünya tepkisi artar. 8 hafta tekrar kullanılamaz.": "در %s گاز سمی به کار می‌رود. حدود ۴۵٪ ارتش هدف از بین می‌رود (با هواپیما ۵۵٪، اما هواپیما ممکن است سرنگون شود)؛ ثبات تو کاهش می‌یابد و واکنش جهانی بیشتر می‌شود. ۸ هفته قابل استفادهٔ مجدد نیست.",
+  "Gaz yüklü uçağımız %s üzerinde düşürüldü!": "هواپیمای حامل گاز ما بر فراز %s سرنگون شد!",
+  "Uçak düşürüldü; saldırı başarısız (4 hafta bekle).": "هواپیما سرنگون شد؛ حمله ناکام ماند (۴ هفته صبر کن).",
+  "Çıkarma filomuz denizde %s donanması tarafından vuruldu: %d asker kaybedildi.": "ناوگان پیاده‌سازی ما در دریا از سوی نیروی دریایی %s ضربه خورد: %d سرباز از دست رفت.",
+  "İki yeni tarihî senaryo": "دو سناریوی تاریخی جدید",
+  "Osmanlı'nın Kuruluşu (1299, Söğüt'ten Bursa'ya) ve İstanbul'un Fethi (1453, surların önünde) çağları eklendi. Evlilik teklifi hikaye modunda artık bir kez kabul edilince tekrar gelmez.": "دو دوره افزوده شد: ظهور عثمانیان (۱۲۹۹، از سوگوت تا بورسا) و سقوط قسطنطنیه (۱۴۵۳، پای باروها). در حالت داستان پس از پذیرفتن یک پیشنهاد ازدواج، پیشنهاد دیگری نمی‌آید.",
+  "Deniz ve gaz harekâtı": "عملیات دریایی و گاز",
+  "Çıkarmada donanma üstünlüğü artık avantaj sağlıyor, güçlü düşman donanması çıkarma filonu denizde vurabiliyor. Kimyasal saldırı uçakla da yapılabiliyor. Dinler ve rejimler için yeni simgeler geldi.": "برتری دریایی اکنون در عملیات پیاده‌سازی مزیت می‌دهد و نیروی دریایی قوی دشمن می‌تواند ناوگان پیاده‌سازی تو را در دریا بزند. حملهٔ شیمیایی را می‌توان با هواپیما هم انجام داد. نمادهای تازه برای ادیان و رژیم‌ها اضافه شد."
  },
  "months": [
   "ژانویه",

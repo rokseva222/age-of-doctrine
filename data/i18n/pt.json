@@ -4204,7 +4204,17 @@
   "Sömürge yönetimi": "Administração colonial",
   "Feodal krallık": "Reino feudal",
   "Devlet inancı": "Fé do Estado",
-  "Dini birlik": "Unidade religiosa"
+  "Dini birlik": "Unidade religiosa",
+  "Topçuyla saldır": "Atacar com artilharia",
+  "Uçakla saldır (düşürülebilir)": "Atacar com aviões (podem ser abatidos)",
+  "%s eyaletinde zehirli gaz kullanılacak. Hedef ordusunun yaklaşık %%45'i kaybolur (uçakla %%55, ama uçak düşürülebilir); istikrarın düşer ve dünya tepkisi artar. 8 hafta tekrar kullanılamaz.": "Gás venenoso será usado em %s. Cerca de 45%% do exército-alvo é perdido (55%% por aviões, que podem ser abatidos); sua estabilidade cai e a reação mundial aumenta. Indisponível por 8 semanas.",
+  "Gaz yüklü uçağımız %s üzerinde düşürüldü!": "Nosso avião carregado de gás foi abatido sobre %s!",
+  "Uçak düşürüldü; saldırı başarısız (4 hafta bekle).": "O avião foi abatido; o ataque falhou (aguarde 4 semanas).",
+  "Çıkarma filomuz denizde %s donanması tarafından vuruldu: %d asker kaybedildi.": "Nossa frota de desembarque foi atingida no mar pela marinha de %s: %d soldados perdidos.",
+  "İki yeni tarihî senaryo": "Dois novos cenários históricos",
+  "Osmanlı'nın Kuruluşu (1299, Söğüt'ten Bursa'ya) ve İstanbul'un Fethi (1453, surların önünde) çağları eklendi. Evlilik teklifi hikaye modunda artık bir kez kabul edilince tekrar gelmez.": "Duas eras foram adicionadas: A Ascensão dos Otomanos (1299, de Söğüt a Bursa) e A Queda de Constantinopla (1453, diante das muralhas). No modo história, a proposta de casamento não volta depois de aceita.",
+  "Deniz ve gaz harekâtı": "Operações navais e de gás",
+  "Çıkarmada donanma üstünlüğü artık avantaj sağlıyor, güçlü düşman donanması çıkarma filonu denizde vurabiliyor. Kimyasal saldırı uçakla da yapılabiliyor. Dinler ve rejimler için yeni simgeler geldi.": "A superioridade naval agora dá vantagem nos desembarques, e uma marinha inimiga forte pode atingir sua frota de desembarque no mar. Ataques químicos também podem ser feitos por aviões. Novos ícones para religiões e regimes."
  },
  "months": [
   "janeiro",

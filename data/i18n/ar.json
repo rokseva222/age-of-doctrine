@@ -4205,7 +4205,17 @@
   "Sömürge yönetimi": "إدارة استعمارية",
   "Feodal krallık": "مملكة إقطاعية",
   "Devlet inancı": "عقيدة الدولة",
-  "Dini birlik": "الوحدة الدينية"
+  "Dini birlik": "الوحدة الدينية",
+  "Topçuyla saldır": "الهجوم بالمدفعية",
+  "Uçakla saldır (düşürülebilir)": "الهجوم بالطائرات (قد تُسقَط)",
+  "%s eyaletinde zehirli gaz kullanılacak. Hedef ordusunun yaklaşık %%45'i kaybolur (uçakla %%55, ama uçak düşürülebilir); istikrarın düşer ve dünya tepkisi artar. 8 hafta tekrar kullanılamaz.": "سيُستخدم الغاز السام في إقليم %s. يخسر جيش الهدف نحو 45%% (55%% بالطائرات، لكن قد تُسقَط الطائرة)؛ ينخفض استقرارك ويزداد رد الفعل العالمي. لا يمكن إعادة الاستخدام قبل 8 أسابيع.",
+  "Gaz yüklü uçağımız %s üzerinde düşürüldü!": "أُسقطت طائرتنا المحمّلة بالغاز فوق %s!",
+  "Uçak düşürüldü; saldırı başarısız (4 hafta bekle).": "أُسقطت الطائرة؛ فشل الهجوم (انتظر 4 أسابيع).",
+  "Çıkarma filomuz denizde %s donanması tarafından vuruldu: %d asker kaybedildi.": "تعرّض أسطول الإنزال لدينا لضربة في البحر من أسطول %s: خسرنا %d جنديًا.",
+  "İki yeni tarihî senaryo": "سيناريوهان تاريخيان جديدان",
+  "Osmanlı'nın Kuruluşu (1299, Söğüt'ten Bursa'ya) ve İstanbul'un Fethi (1453, surların önünde) çağları eklendi. Evlilik teklifi hikaye modunda artık bir kez kabul edilince tekrar gelmez.": "أُضيف عصران: نشأة العثمانيين (1299، من سوغوت إلى بورصة) وسقوط القسطنطينية (1453، أمام الأسوار). في وضع القصة لم يعد عرض الزواج يتكرر بعد قبوله مرة واحدة.",
+  "Deniz ve gaz harekâtı": "العمليات البحرية والغاز",
+  "Çıkarmada donanma üstünlüğü artık avantaj sağlıyor, güçlü düşman donanması çıkarma filonu denizde vurabiliyor. Kimyasal saldırı uçakla da yapılabiliyor. Dinler ve rejimler için yeni simgeler geldi.": "أصبح التفوق البحري يمنح أفضلية في الإنزال، ويمكن لأسطول عدو قوي ضرب أسطول الإنزال في البحر. كما يمكن تنفيذ الهجوم الكيميائي بالطائرات. وأُضيفت رموز جديدة للأديان وأنظمة الحكم."
  },
  "months": [
   "يناير",

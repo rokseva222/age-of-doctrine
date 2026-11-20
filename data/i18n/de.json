@@ -4204,7 +4204,17 @@
   "Sömürge yönetimi": "Kolonialverwaltung",
   "Feodal krallık": "Feudalreich",
   "Devlet inancı": "Staatsreligion",
-  "Dini birlik": "Religiöse Einheit"
+  "Dini birlik": "Religiöse Einheit",
+  "Topçuyla saldır": "Mit Artillerie angreifen",
+  "Uçakla saldır (düşürülebilir)": "Mit Flugzeugen angreifen (Abschuss möglich)",
+  "%s eyaletinde zehirli gaz kullanılacak. Hedef ordusunun yaklaşık %%45'i kaybolur (uçakla %%55, ama uçak düşürülebilir); istikrarın düşer ve dünya tepkisi artar. 8 hafta tekrar kullanılamaz.": "In %s wird Giftgas eingesetzt. Etwa 45%% der Zielarmee gehen verloren (55%% per Flugzeug, das aber abgeschossen werden kann); deine Stabilität sinkt und die Weltreaktion wächst. 8 Wochen lang nicht erneut nutzbar.",
+  "Gaz yüklü uçağımız %s üzerinde düşürüldü!": "Unser Gasflugzeug wurde über %s abgeschossen!",
+  "Uçak düşürüldü; saldırı başarısız (4 hafta bekle).": "Das Flugzeug wurde abgeschossen; der Angriff ist gescheitert (4 Wochen warten).",
+  "Çıkarma filomuz denizde %s donanması tarafından vuruldu: %d asker kaybedildi.": "Unsere Landungsflotte wurde auf See von der Marine von %s getroffen: %d Soldaten verloren.",
+  "İki yeni tarihî senaryo": "Zwei neue historische Szenarien",
+  "Osmanlı'nın Kuruluşu (1299, Söğüt'ten Bursa'ya) ve İstanbul'un Fethi (1453, surların önünde) çağları eklendi. Evlilik teklifi hikaye modunda artık bir kez kabul edilince tekrar gelmez.": "Zwei Epochen kamen hinzu: Aufstieg der Osmanen (1299, von Söğüt nach Bursa) und Der Fall Konstantinopels (1453, vor den Mauern). Im Story-Modus kommt ein Heiratsantrag nach der Annahme nicht mehr wieder.",
+  "Deniz ve gaz harekâtı": "See- und Gasoperationen",
+  "Çıkarmada donanma üstünlüğü artık avantaj sağlıyor, güçlü düşman donanması çıkarma filonu denizde vurabiliyor. Kimyasal saldırı uçakla da yapılabiliyor. Dinler ve rejimler için yeni simgeler geldi.": "Seeüberlegenheit bringt bei Landungen jetzt einen Vorteil, und eine starke feindliche Marine kann deine Landungsflotte auf See treffen. Chemische Angriffe sind auch per Flugzeug möglich. Neue Symbole für Glaubensrichtungen und Regime."
  },
  "months": [
   "Januar",

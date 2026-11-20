@@ -4205,7 +4205,17 @@
   "Sömürge yönetimi": "Колониальное управление",
   "Feodal krallık": "Феодальное королевство",
   "Devlet inancı": "Государственная вера",
-  "Dini birlik": "Религиозное единство"
+  "Dini birlik": "Религиозное единство",
+  "Topçuyla saldır": "Атаковать артиллерией",
+  "Uçakla saldır (düşürülebilir)": "Атаковать с воздуха (самолёт могут сбить)",
+  "%s eyaletinde zehirli gaz kullanılacak. Hedef ordusunun yaklaşık %%45'i kaybolur (uçakla %%55, ama uçak düşürülebilir); istikrarın düşer ve dünya tepkisi artar. 8 hafta tekrar kullanılamaz.": "В провинции %s будет применён отравляющий газ. Армия цели теряет около 45%% (55%% с самолётов, но самолёт могут сбить); стабильность падает, мировая реакция растёт. Недоступно ещё 8 недель.",
+  "Gaz yüklü uçağımız %s üzerinde düşürüldü!": "Наш самолёт с газом сбит над %s!",
+  "Uçak düşürüldü; saldırı başarısız (4 hafta bekle).": "Самолёт сбит; атака провалена (ждите 4 недели).",
+  "Çıkarma filomuz denizde %s donanması tarafından vuruldu: %d asker kaybedildi.": "Наш десантный флот был атакован в море флотом %s: потеряно %d солдат.",
+  "İki yeni tarihî senaryo": "Два новых исторических сценария",
+  "Osmanlı'nın Kuruluşu (1299, Söğüt'ten Bursa'ya) ve İstanbul'un Fethi (1453, surların önünde) çağları eklendi. Evlilik teklifi hikaye modunda artık bir kez kabul edilince tekrar gelmez.": "Добавлены две эпохи: Возвышение османов (1299, от Сёгюта до Бурсы) и Падение Константинополя (1453, перед стенами). В режиме истории предложение о браке больше не повторяется после согласия.",
+  "Deniz ve gaz harekâtı": "Морские и газовые операции",
+  "Çıkarmada donanma üstünlüğü artık avantaj sağlıyor, güçlü düşman donanması çıkarma filonu denizde vurabiliyor. Kimyasal saldırı uçakla da yapılabiliyor. Dinler ve rejimler için yeni simgeler geldi.": "Превосходство на море теперь даёт преимущество при высадке, а сильный флот противника может поразить ваш десантный флот в море. Химическую атаку можно провести и с самолётов. Добавлены новые значки для вер и режимов."
  },
  "months": [
   "января",

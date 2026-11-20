@@ -873,15 +873,20 @@ func _on_ui_action(act: String, arg) -> void:
 					ui.show_dialog("Harekât tamamlandı", body, [{"text": "Tamam", "cb": func(): pass, "kind": "good"}], "carrier", "")}], "carrier", "")
 		"gas":
 			var gp: int = int(arg)
-			ui.show_dialog("Kimyasal saldırı", "%s eyaletinde zehirli gaz kullanılacak. Hedef ordusunun yaklaşık %%45'i kaybolur, ama istikrarın düşer ve dünya tepkisi artar. 8 hafta tekrar kullanılamaz." % gs.provinces[gp].name, [
-				{"text": "Vazgeç", "cb": func(): pass, "kind": "ghost"},
-				{"text": "Saldır", "kind": "danger", "cb": func():
-					var eg: String = gs.player_gas(gp)
-					if eg != "":
-						ui.toast(eg)
-					else:
-						sfx.play("drumroll", 0.9)
-						_refresh_selection()}])
+			var gplats: Array = gs.gas_platforms()
+			var gb: Array = [{"text": "Vazgeç", "cb": func(): pass, "kind": "ghost"}]
+			var gfire := func(pl: String):
+				var eg: String = gs.player_gas(gp, pl)
+				if eg != "":
+					ui.toast(eg)
+					sfx.play("error")
+				else:
+					sfx.play("drumroll", 0.9)
+				_refresh_selection()
+			gb.append({"text": "Topçuyla saldır", "kind": "danger", "cb": func(): gfire.call("artillery")})
+			if gplats.has("air"):
+				gb.append({"text": "Uçakla saldır (düşürülebilir)", "kind": "danger", "cb": func(): gfire.call("air")})
+			ui.show_dialog("Kimyasal saldırı", "%s eyaletinde zehirli gaz kullanılacak. Hedef ordusunun yaklaşık %%45'i kaybolur (uçakla %%55, ama uçak düşürülebilir); istikrarın düşer ve dünya tepkisi artar. 8 hafta tekrar kullanılamaz." % gs.provinces[gp].name, gb)
 		"nuke":
 			var np: int = int(arg)
 			var plats: Array = gs.nuke_platforms(np)

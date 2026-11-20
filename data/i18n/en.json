@@ -4018,7 +4018,17 @@
   "Sömürge yönetimi": "Colonial administration",
   "Feodal krallık": "Feudal kingdom",
   "Devlet inancı": "State faith",
-  "Dini birlik": "Religious unity"
+  "Dini birlik": "Religious unity",
+  "Topçuyla saldır": "Attack with artillery",
+  "Uçakla saldır (düşürülebilir)": "Attack by aircraft (can be shot down)",
+  "%s eyaletinde zehirli gaz kullanılacak. Hedef ordusunun yaklaşık %%45'i kaybolur (uçakla %%55, ama uçak düşürülebilir); istikrarın düşer ve dünya tepkisi artar. 8 hafta tekrar kullanılamaz.": "Poison gas will be used in %s. About 45%% of the target army is lost (55%% by aircraft, but the aircraft can be shot down); your stability drops and world reaction grows. Unavailable again for 8 weeks.",
+  "Gaz yüklü uçağımız %s üzerinde düşürüldü!": "Our gas-laden aircraft was shot down over %s!",
+  "Uçak düşürüldü; saldırı başarısız (4 hafta bekle).": "The aircraft was shot down; the attack failed (wait 4 weeks).",
+  "Çıkarma filomuz denizde %s donanması tarafından vuruldu: %d asker kaybedildi.": "Our landing fleet was hit at sea by the %s navy: %d troops lost.",
+  "İki yeni tarihî senaryo": "Two new historical scenarios",
+  "Osmanlı'nın Kuruluşu (1299, Söğüt'ten Bursa'ya) ve İstanbul'un Fethi (1453, surların önünde) çağları eklendi. Evlilik teklifi hikaye modunda artık bir kez kabul edilince tekrar gelmez.": "Two eras were added: Rise of the Ottomans (1299, from Söğüt to Bursa) and The Fall of Constantinople (1453, before the walls). In story mode, a marriage proposal no longer comes again once you have accepted one.",
+  "Deniz ve gaz harekâtı": "Naval and gas operations",
+  "Çıkarmada donanma üstünlüğü artık avantaj sağlıyor, güçlü düşman donanması çıkarma filonu denizde vurabiliyor. Kimyasal saldırı uçakla da yapılabiliyor. Dinler ve rejimler için yeni simgeler geldi.": "Naval superiority now gives an advantage in landings, and a strong enemy navy can hit your landing fleet at sea. Chemical attacks can also be carried out by aircraft. New icons were added for faiths and regimes."
  },
  "months": [
   "January",

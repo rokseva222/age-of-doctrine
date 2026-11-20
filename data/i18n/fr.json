@@ -4204,7 +4204,17 @@
   "Sömürge yönetimi": "Administration coloniale",
   "Feodal krallık": "Royaume féodal",
   "Devlet inancı": "Religion d'État",
-  "Dini birlik": "Unité religieuse"
+  "Dini birlik": "Unité religieuse",
+  "Topçuyla saldır": "Attaquer à l'artillerie",
+  "Uçakla saldır (düşürülebilir)": "Attaquer par avion (risque d'être abattu)",
+  "%s eyaletinde zehirli gaz kullanılacak. Hedef ordusunun yaklaşık %%45'i kaybolur (uçakla %%55, ama uçak düşürülebilir); istikrarın düşer ve dünya tepkisi artar. 8 hafta tekrar kullanılamaz.": "Du gaz toxique sera utilisé à %s. Environ 45 %% de l'armée cible est perdue (55 %% par avion, mais l'appareil peut être abattu) ; votre stabilité baisse et la réaction mondiale grandit. Indisponible pendant 8 semaines.",
+  "Gaz yüklü uçağımız %s üzerinde düşürüldü!": "Notre avion chargé de gaz a été abattu au-dessus de %s !",
+  "Uçak düşürüldü; saldırı başarısız (4 hafta bekle).": "L'avion a été abattu ; l'attaque a échoué (attendez 4 semaines).",
+  "Çıkarma filomuz denizde %s donanması tarafından vuruldu: %d asker kaybedildi.": "Notre flotte de débarquement a été frappée en mer par la marine de %s : %d soldats perdus.",
+  "İki yeni tarihî senaryo": "Deux nouveaux scénarios historiques",
+  "Osmanlı'nın Kuruluşu (1299, Söğüt'ten Bursa'ya) ve İstanbul'un Fethi (1453, surların önünde) çağları eklendi. Evlilik teklifi hikaye modunda artık bir kez kabul edilince tekrar gelmez.": "Deux époques ont été ajoutées : L'essor des Ottomans (1299, de Söğüt à Bursa) et La chute de Constantinople (1453, devant les murailles). En mode histoire, une demande en mariage ne revient plus une fois acceptée.",
+  "Deniz ve gaz harekâtı": "Opérations navales et gaz",
+  "Çıkarmada donanma üstünlüğü artık avantaj sağlıyor, güçlü düşman donanması çıkarma filonu denizde vurabiliyor. Kimyasal saldırı uçakla da yapılabiliyor. Dinler ve rejimler için yeni simgeler geldi.": "La supériorité navale donne désormais un avantage lors des débarquements, et une forte marine ennemie peut frapper ta flotte de débarquement en mer. Les attaques chimiques peuvent aussi se faire par avion. De nouvelles icônes pour les religions et les régimes."
  },
  "months": [
   "janvier",

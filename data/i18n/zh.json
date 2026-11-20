@@ -4205,7 +4205,17 @@
   "Sömürge yönetimi": "殖民统治",
   "Feodal krallık": "封建王国",
   "Devlet inancı": "国教",
-  "Dini birlik": "宗教统一"
+  "Dini birlik": "宗教统一",
+  "Topçuyla saldır": "用炮兵攻击",
+  "Uçakla saldır (düşürülebilir)": "用飞机攻击（可能被击落）",
+  "%s eyaletinde zehirli gaz kullanılacak. Hedef ordusunun yaklaşık %%45'i kaybolur (uçakla %%55, ama uçak düşürülebilir); istikrarın düşer ve dünya tepkisi artar. 8 hafta tekrar kullanılamaz.": "将在%s使用毒气。目标军队约损失45%%（飞机投放为55%%，但飞机可能被击落）；你的稳定度下降，世界反应加剧。8周内无法再次使用。",
+  "Gaz yüklü uçağımız %s üzerinde düşürüldü!": "我方运载毒气的飞机在%s上空被击落！",
+  "Uçak düşürüldü; saldırı başarısız (4 hafta bekle).": "飞机被击落，攻击失败（等待4周）。",
+  "Çıkarma filomuz denizde %s donanması tarafından vuruldu: %d asker kaybedildi.": "我方登陆舰队在海上遭%s海军袭击，损失%d名士兵。",
+  "İki yeni tarihî senaryo": "两个新的历史剧本",
+  "Osmanlı'nın Kuruluşu (1299, Söğüt'ten Bursa'ya) ve İstanbul'un Fethi (1453, surların önünde) çağları eklendi. Evlilik teklifi hikaye modunda artık bir kez kabul edilince tekrar gelmez.": "新增两个时代：奥斯曼崛起（1299年，从索于特到布尔萨）与君士坦丁堡陷落（1453年，城墙之前）。故事模式中，接受一次婚约后不再重复出现求婚。",
+  "Deniz ve gaz harekâtı": "海军与毒气行动",
+  "Çıkarmada donanma üstünlüğü artık avantaj sağlıyor, güçlü düşman donanması çıkarma filonu denizde vurabiliyor. Kimyasal saldırı uçakla da yapılabiliyor. Dinler ve rejimler için yeni simgeler geldi.": "海军优势现在会在登陆中带来优势，强大的敌方海军可在海上袭击你的登陆舰队。毒气攻击也可由飞机实施。新增宗教与政体图标。"
  },
  "months": [
   "1月",

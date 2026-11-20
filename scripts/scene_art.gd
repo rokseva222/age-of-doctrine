@@ -67,6 +67,8 @@ static func un_scene(k: String) -> String:
 static func era_scene(id: String) -> String:
 	if id.begins_with("alt_"):
 		return "era_alt"
+	if id == "ott1299" or id == "ott1453":
+		return "era_ott1520"
 	if ["ww1", "ww2", "cw62", "ott1520", "tim1380"].has(id):
 		return "era_" + id
 	return "era_modern"
