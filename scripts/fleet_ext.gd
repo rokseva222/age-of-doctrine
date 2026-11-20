@@ -5,6 +5,7 @@ extends RefCounted
 const Seas = preload("res://scripts/seas.gd")
 const Eras = preload("res://scripts/eras.gd")
 const Arsenal = preload("res://scripts/arsenal.gd")
+const Icons = preload("res://scripts/icons.gd")
 
 # ------------------------------------------------------------------ rütbe (tecrübe)
 const RANKS := [[0.0, "Acemi", 1.0], [6.0, "Tecrübeli", 1.06], [16.0, "Elit", 1.13], [36.0, "Efsane", 1.22]]
@@ -24,14 +25,37 @@ const AVOID_RATIO := 1.15
 # ------------------------------------------------------------------ gemi sınıfları
 # [anahtar, Türkçe ad, ağırlık, ağır(1)/hafif(0)]
 const SURFACE := {
-	"pre": [["galleon", "Kalyon", 3.0, 1], ["carrack", "Karaka", 3.0, 1], ["galley", "Kadırga", 5.0, 0]],
+	"pre": [["galleon", "Kalyon", 3.0, 1], ["carrack", "Karaka", 3.0, 1], ["galley", "Kadırga", 5.0, 0]],   # 1520 (yelkenli çağı)
 	"ww1": [["dreadnought", "Dretnot", 2.0, 1], ["cruiser", "Kruvazör", 3.0, 1], ["destroyer", "Muhrip", 6.0, 0], ["torpedo_boat", "Torpido botu", 4.0, 0]],
 	"ww2": [["battleship", "Zırhlı", 1.5, 1], ["heavy_cruiser", "Ağır kruvazör", 2.5, 1], ["light_cruiser", "Hafif kruvazör", 3.0, 1], ["destroyer", "Muhrip", 7.0, 0], ["escort", "Eskort muhribi", 4.0, 0]],
 	"cold": [["cruiser", "Kruvazör", 2.0, 1], ["destroyer", "Muhrip", 6.0, 0], ["frigate", "Firkateyn", 6.0, 0], ["missile_boat", "Füze botu", 3.0, 0]],
 	"": [["cruiser", "Kruvazör", 1.5, 1], ["destroyer", "Muhrip", 5.0, 0], ["frigate", "Firkateyn", 6.0, 0], ["corvette", "Korvet", 4.0, 0], ["patrol", "Karakol botu", 2.5, 0]],
 }
+# eski çağların yelkenli filosu çağa göre: 1299/1380 Kogge + kadırga, 1453 Karaka + Kogge + kadırga, 1520 Kalyon + Karaka + kadırga
+const SURFACE_PRE := {
+	"ott1299": [["cog", "Kogge", 4.0, 1], ["galley", "Kadırga", 5.0, 0], ["fusta", "Fusta", 3.0, 0]],
+	"tim1380": [["cog", "Kogge", 4.0, 1], ["galley", "Kadırga", 5.0, 0], ["fusta", "Fusta", 3.0, 0]],
+	"ott1453": [["carrack", "Karaka", 3.0, 1], ["cog", "Kogge", 3.0, 1], ["galley", "Kadırga", 5.0, 0]],
+	"ott1520": [["galleon", "Kalyon", 3.0, 1], ["carrack", "Karaka", 3.0, 1], ["galley", "Kadırga", 5.0, 0]],
+}
 const CARRIER_NAME := {"pre": "Amiral gemisi", "ww1": "Uçak gemisi", "ww2": "Uçak gemisi", "cold": "Uçak gemisi", "": "Uçak gemisi"}
-const SUB_FALLBACK := {"pre": "Galiot", "ww1": "Denizaltı", "ww2": "U-botu / denizaltı", "cold": "Denizaltı", "": "Denizaltı"}
+const SUB_FALLBACK := {"pre": "Kadırga", "ww1": "Denizaltı", "ww2": "U-botu / denizaltı", "cold": "Denizaltı", "": "Denizaltı"}
+
+
+## Çağın gemi tablosu (eski çağlarda çağ kimliğine göre)
+static func surface_table() -> Array:
+	var fam: String = family()
+	if fam == "pre":
+		var id: String = Eras.current
+		if SURFACE_PRE.has(id):
+			return SURFACE_PRE[id]
+		return SURFACE_PRE["ott1453"]
+	return SURFACE[fam]
+
+
+## Gerçek denizaltı (gizli, torpido atar, asker taşıyamaz) mı? Eski çağlarda "sub" türü kürekli (kadırga) filodur.
+static func undersea(kind: String) -> bool:
+	return kind == "sub" and family() != "pre"
 
 
 static func family() -> String:
@@ -121,12 +145,12 @@ static func ships(gs, f) -> Array:
 	var out: Array = []
 	match f.kind:
 		"surface":
-			for r in _alloc(SURFACE[fam], surface_count(f.size)):
+			for r in _alloc(surface_table(), surface_count(f.size)):
 				out.append([r[0], r[1], r[2], "surface"])
 		"carrier":
 			var n: int = maxi(1, int(round(f.size)))
 			out.append(["carrier", CARRIER_NAME[fam], n, "carrier"])
-			var esc: Array = SURFACE[fam]
+			var esc: Array = surface_table()
 			var heavy: Array = []
 			var light: Array = []
 			for e in esc:
@@ -190,6 +214,14 @@ static func ship_total(gs, f) -> int:
 
 # ------------------------------------------------------------------ ad
 const KIND_TPL := {"surface": "%d. Muharebe Filosu", "sub": "%d. Denizaltı Filosu", "carrier": "%d. Uçak Gemisi Grubu", "transport": "%d. Nakliye Filosu"}
+const KIND_TPL_PRE := {"surface": "%d. Yelkenli Filo", "sub": "%d. Kadırga Filosu", "carrier": "%d. Amiral Filosu", "transport": "%d. Nakliye Filosu"}
+const KIND_NAME := {"surface": "Muharebe filosu", "sub": "Denizaltı filosu", "carrier": "Uçak gemisi grubu", "transport": "Nakliye filosu"}
+const KIND_NAME_PRE := {"surface": "Yelkenli filo", "sub": "Kadırga filosu", "carrier": "Amiral filosu", "transport": "Nakliye filosu"}
+
+
+static func kind_name(kind: String) -> String:
+	var t: Dictionary = KIND_NAME_PRE if family() == "pre" else KIND_NAME
+	return String(t.get(kind, kind))
 
 
 static func ordinal_k(gs, f) -> int:
@@ -201,7 +233,8 @@ static func ordinal_k(gs, f) -> int:
 
 
 static func ordinal_tpl(f) -> String:
-	return String(KIND_TPL.get(f.kind, "%d. Filo"))
+	var t: Dictionary = KIND_TPL_PRE if family() == "pre" else KIND_TPL
+	return String(t.get(f.kind, "%d. Filo"))
 
 
 static func ordinal_name(gs, f) -> String:
@@ -243,3 +276,73 @@ static func supply_label(hops: int) -> String:
 	if hops <= 4:
 		return "Uzak"
 	return "Kritik"
+
+
+# ------------------------------------------------------------------ çağa göre simgeler
+# Beklenen özel simge dosyaları: assets/icons/uc_<anahtar>_c.png (lacivert daire + krem siluet, uc_ship ile aynı stil).
+# Dosya yoksa eski renkli simge, o da yoksa türün genel simgesi kullanılır.
+const FLEET_KEY := {
+	"pre": {"surface": "", "sub": "galley", "carrier": "galleon", "transport": "cog"},
+	"ww1": {"surface": "dreadnought", "sub": "uboat", "carrier": "dreadnought", "transport": "transport"},
+	"ww2": {"surface": "battleship", "sub": "uboat", "carrier": "carrier", "transport": "transport"},
+	"cold": {"surface": "destroyer", "sub": "sub_diesel", "carrier": "carrier", "transport": "transport"},
+	"": {"surface": "destroyer", "sub": "sub_nuclear", "carrier": "carrier", "transport": "transport"},
+}
+const LEGACY_ICON := {"galley": "galley", "dreadnought": "u_dreadnought", "battleship": "w2_battleship"}
+const GENERIC_ICON := {"sub": "uc_sub", "carrier": "uc_carrier", "transport": "cargo_ship", "surface": "uc_ship", "air": "uc_jet"}
+
+
+## Filonun simge anahtarı (çağ + tür)
+static func fleet_key(kind: String) -> String:
+	var fam: String = family()
+	if fam == "pre" and kind == "surface":
+		var row: Array = surface_table()
+		return String(row[0][0])
+	return String(FLEET_KEY[fam].get(kind, ""))
+
+
+## Sınıf anahtarından simge adı (varlık yoksa yedek zinciri)
+static func icon_for_key(key: String, kind: String) -> String:
+	var gen: String = String(GENERIC_ICON.get(kind, "uc_ship"))
+	if key == "":
+		return gen
+	var k: String = key.trim_suffix("_esc")
+	if Icons.pick("uc_" + k, "") != "":
+		return "uc_" + k
+	var l: String = String(LEGACY_ICON.get(k, ""))
+	if l != "" and Icons.pick(l, "") != "":
+		return l
+	return gen
+
+
+static func fleet_icon(kind: String) -> String:
+	return icon_for_key(fleet_key(kind), kind)
+
+
+## Gemi satırı (ships() çıktısı) için simge: kadırga/kogge gibi eski çağ modelleri adına göre
+static func row_icon(row: Array) -> String:
+	var kind: String = String(row[3])
+	if kind == "air":
+		return "uc_jet"
+	var key: String = String(row[0])
+	if kind == "sub":
+		if family() == "pre":
+			key = pre_key_for_name(String(row[1]))
+		else:
+			key = fleet_key("sub")
+	elif kind == "transport":
+		key = "landing_ship" if key == "landing_ship" else fleet_key("transport")
+	return icon_for_key(key, kind)
+
+
+static func pre_key_for_name(nm: String) -> String:
+	var n: String = nm.to_lower()
+	if n.find("kogge") >= 0 or n.find("kog") >= 0:
+		return "cog"
+	if n.find("karaka") >= 0:
+		return "carrack"
+	if n.find("kalyon") >= 0 or n.find("galyon") >= 0 or n.find("kalite") >= 0 or n.find("galyas") >= 0:
+		return "galleon"
+	if n.find("cunk") >= 0:
+		return "junk"
+	return "galley"

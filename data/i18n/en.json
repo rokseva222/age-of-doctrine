@@ -4456,7 +4456,20 @@
   "Filo menüsü": "Fleet menu",
   "Duraklatma menüsünde Savaş Odası ve Siyasi sistemin yanına Deniz filoları ve Hava filoları sayfaları geldi: haritadaki rozetleri tek dokunuşla gizle/göster, tüm filolarını listeden seç ve haritada git. Harita artık kalabalık olmasın diye düğme eklemiyor.": "In the Game menu, Naval fleets and Air wings pages now sit next to War Room and Political system: hide or show the map badges with one tap, pick any of your fleets from the list and go to it on the map. The map no longer adds buttons, so it stays uncluttered.",
   "Deniz ve hava filoları": "Naval fleets and air wings",
-  "Denizdeki filoya ya da bir üssün üstündeki hava kanadına dokunup seç; sonra denize, kendi eyaletine ya da düşman eyaletine dokunarak emir ver. Filoya ad ver, bayrak tasarla; komutanlıktan gemi ve uçak sınıflarını, rütbeyi gör. Haritada kalabalık olursa Duraklatma menüsü > Deniz filoları / Hava filoları sayfasından rozetleri gizle.": "Tap a fleet at sea or an air wing over a base to select it; then give orders by tapping a sea, your own province or an enemy province. Name the fleet and design a flag; see ship and aircraft classes and rank in Fleet command. If the map gets crowded, hide the badges from Game menu > Naval fleets / Air wings page."
+  "Denizdeki filoya ya da bir üssün üstündeki hava kanadına dokunup seç; sonra denize, kendi eyaletine ya da düşman eyaletine dokunarak emir ver. Filoya ad ver, bayrak tasarla; komutanlıktan gemi ve uçak sınıflarını, rütbeyi gör. Haritada kalabalık olursa Duraklatma menüsü > Deniz filoları / Hava filoları sayfasından rozetleri gizle.": "Tap a fleet at sea or an air wing over a base to select it; then give orders by tapping a sea, your own province or an enemy province. Name the fleet and design a flag; see ship and aircraft classes and rank in Fleet command. If the map gets crowded, hide the badges from Game menu > Naval fleets / Air wings page.",
+  "Yelkenli filo": "Sailing fleet",
+  "Kadırga filosu": "Galley fleet",
+  "Amiral filosu": "Admiral's fleet",
+  "%d. Yelkenli Filo": "Sailing Fleet #%d",
+  "%d. Kadırga Filosu": "Galley Fleet #%d",
+  "%d. Amiral Filosu": "Admiral's Fleet #%d",
+  "Kogge": "Cog",
+  "Fusta": "Fusta",
+  "Yelkenli gemiler: açık denizde güçlüdür, kıyıyı bombalar; kürekli kadırgalara karşı rüzgâra bağımlıdır.": "Sailing ships: strong on the open sea, they shell the coast; against oared galleys they depend on the wind.",
+  "Kadırgalar: kürekle yürür, kıyıya yakın savaşır; yelkenlilere ve nakliyeye karşı güçlüdür, asker taşıyabilir.": "Galleys: rowed, they fight near the coast; strong against sailing ships and transports, and can carry troops.",
+  "Muharebeler filoya tecrübe kazandırır; rütbe yükseldikçe filo daha güçlü savaşır.": "Battles give the fleet experience; the higher the rank, the stronger the fleet fights.",
+  "Çağa özel donanma": "Era-specific navies",
+  "Donanma artık çağa göre farklı: 1299–1520 senaryolarında yelkenli filolar (Kogge, Karaka, Kalyon) ve kürekli Kadırga filoları savaşır; denizaltı ve uçak gemisi yoktur, kadırgalar gizli değildir ve asker taşıyabilir. 1914'te dretnot, kruvazör, muhrip ve U-botları; 1939'da zırhlı, uçak gemisi ve denizaltılar; Soğuk Savaş ve günümüzde füzeli muhrip, firkateyn, nükleer denizaltı. Hava filosu yalnızca hava teknolojisi olan ülkelerde kurulur.": "The navy now differs by era: in the 1299–1520 scenarios sailing fleets (cog, carrack, galleon) and oared galley fleets fight; there are no submarines or carriers, galleys are not hidden and can carry troops. 1914 brings dreadnoughts, cruisers, destroyers and U-boats; 1939 battleships, carriers and submarines; the Cold War and today missile destroyers, frigates and nuclear submarines. Air wings exist only for countries with air technology."
  },
  "months": [
   "January",

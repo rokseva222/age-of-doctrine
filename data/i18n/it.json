@@ -4680,7 +4680,20 @@
   "Filo menüsü": "Menu delle flotte",
   "Duraklatma menüsünde Savaş Odası ve Siyasi sistemin yanına Deniz filoları ve Hava filoları sayfaları geldi: haritadaki rozetleri tek dokunuşla gizle/göster, tüm filolarını listeden seç ve haritada git. Harita artık kalabalık olmasın diye düğme eklemiyor.": "Nel Menu di gioco, le pagine Flotte navali e Ali aeree sono ora accanto a Sala operativa e Sistema politico: nascondi o mostra gli stemmi sulla mappa con un solo tocco, scegli dall'elenco una qualsiasi delle tue flotte e raggiungila sulla mappa. La mappa non aggiunge più pulsanti, così non si affolla.",
   "Deniz ve hava filoları": "Flotte navali e ali aeree",
-  "Denizdeki filoya ya da bir üssün üstündeki hava kanadına dokunup seç; sonra denize, kendi eyaletine ya da düşman eyaletine dokunarak emir ver. Filoya ad ver, bayrak tasarla; komutanlıktan gemi ve uçak sınıflarını, rütbeyi gör. Haritada kalabalık olursa Duraklatma menüsü > Deniz filoları / Hava filoları sayfasından rozetleri gizle.": "Tocca una flotta in mare o un'ala aerea sopra una base per selezionarla; poi dai ordini toccando un mare, una tua provincia o una provincia nemica. Dai un nome alla flotta e disegna una bandiera; nel Comando della flotta vedi le classi di navi e aerei e il grado. Se la mappa si affolla, nascondi gli stemmi dalla pagina Menu di gioco > Flotte navali / Ali aeree."
+  "Denizdeki filoya ya da bir üssün üstündeki hava kanadına dokunup seç; sonra denize, kendi eyaletine ya da düşman eyaletine dokunarak emir ver. Filoya ad ver, bayrak tasarla; komutanlıktan gemi ve uçak sınıflarını, rütbeyi gör. Haritada kalabalık olursa Duraklatma menüsü > Deniz filoları / Hava filoları sayfasından rozetleri gizle.": "Tocca una flotta in mare o un'ala aerea sopra una base per selezionarla; poi dai ordini toccando un mare, una tua provincia o una provincia nemica. Dai un nome alla flotta e disegna una bandiera; nel Comando della flotta vedi le classi di navi e aerei e il grado. Se la mappa si affolla, nascondi gli stemmi dalla pagina Menu di gioco > Flotte navali / Ali aeree.",
+  "Yelkenli filo": "Flotta a vela",
+  "Kadırga filosu": "Flotta di galee",
+  "Amiral filosu": "Flotta dell'ammiraglio",
+  "%d. Yelkenli Filo": "%d° Flotta a vela",
+  "%d. Kadırga Filosu": "%d° Flotta di galee",
+  "%d. Amiral Filosu": "%d° Flotta dell'ammiraglio",
+  "Kogge": "Cocca",
+  "Fusta": "Fusta",
+  "Yelkenli gemiler: açık denizde güçlüdür, kıyıyı bombalar; kürekli kadırgalara karşı rüzgâra bağımlıdır.": "Navi a vela: forti in mare aperto, bombardano la costa; contro le galee a remi dipendono dal vento.",
+  "Kadırgalar: kürekle yürür, kıyıya yakın savaşır; yelkenlilere ve nakliyeye karşı güçlüdür, asker taşıyabilir.": "Galee: a remi, combattono vicino alla costa; forti contro navi a vela e trasporti, possono imbarcare truppe.",
+  "Muharebeler filoya tecrübe kazandırır; rütbe yükseldikçe filo daha güçlü savaşır.": "Le battaglie danno esperienza alla flotta; più alto è il grado, più forte combatte.",
+  "Çağa özel donanma": "Marine specifiche per epoca",
+  "Donanma artık çağa göre farklı: 1299–1520 senaryolarında yelkenli filolar (Kogge, Karaka, Kalyon) ve kürekli Kadırga filoları savaşır; denizaltı ve uçak gemisi yoktur, kadırgalar gizli değildir ve asker taşıyabilir. 1914'te dretnot, kruvazör, muhrip ve U-botları; 1939'da zırhlı, uçak gemisi ve denizaltılar; Soğuk Savaş ve günümüzde füzeli muhrip, firkateyn, nükleer denizaltı. Hava filosu yalnızca hava teknolojisi olan ülkelerde kurulur.": "La marina ora cambia secondo l'epoca: negli scenari 1299–1520 combattono flotte a vela (cocca, caracca, galeone) e flotte di galee a remi; niente sommergibili né portaerei, le galee non sono nascoste e possono trasportare truppe. Il 1914 porta dreadnought, incrociatori, cacciatorpediniere e U-Boot; il 1939 corazzate, portaerei e sommergibili; la Guerra fredda e oggi cacciatorpediniere lanciamissili, fregate e sommergibili nucleari. Le ali aeree esistono solo per i paesi con tecnologia aerea."
  },
  "months": [
   "gennaio",

@@ -79,7 +79,7 @@ static func embark(ui, gs, pid: int, done: Callable) -> void:
 	var zs: Array = Seas.coast_zones(gs, pid)
 	var added := 0
 	for f in Fleets.fleets_of(gs, gs.player):
-		if f.kind == "sub" or not zs.has(f.zone) or added >= 2 or Fleets.cargo_cap(gs, f) - f.cargo < 500:
+		if Ext.undersea(f.kind) or not zs.has(f.zone) or added >= 2 or Fleets.cargo_cap(gs, f) - f.cargo < 500:
 			continue
 		var fid: int = f.id
 		btns.append({"text": "Filoya bin: %s" % Fleets.kind_name(f.kind), "kind": "", "icon": Icons.pick(Fleets.kind_icon(f.kind), "ship"), "cb": func(): _do_embark(ui, gs, pid, 0, fid, done)})
@@ -159,17 +159,8 @@ static func _do_debark(ui, gs, f, pid: int, done: Callable) -> void:
 
 # ------------------------------------------------------------------ filo komutanlığı (ad, bayrak, gemiler, duruş, eşlik, bölme)
 
-static func _ship_icon(kind: String) -> String:
-	match kind:
-		"sub":
-			return Icons.pick("uc_sub", "sub")
-		"carrier":
-			return Icons.pick("uc_carrier", "ship")
-		"transport":
-			return Icons.pick("cargo_ship", "ship")
-		"air":
-			return Icons.pick("uc_jet", "jet")
-	return Icons.pick("uc_ship", "ship")
+static func _ship_icon(row: Array) -> String:
+	return Icons.pick(Ext.row_icon(row), "ship")
 
 
 static func _sbtn(ui, sh, text: String, icon: String, kind: String, cb: Callable) -> void:
@@ -226,7 +217,7 @@ static func manage(ui, gs, f, done: Callable) -> void:
 	var nxt: float = Ext.xp_to_next(f.xp)
 	if nxt > 0.0:
 		sh.body.add_child(TK.t("Sonraki rütbe için %d" % int(ceil(nxt)), "small", TK.FAINT))
-	var rh := TK.t(Loc.t("Muharebe ve torpido saldırıları filoya tecrübe kazandırır; rütbe yükseldikçe filo daha güçlü savaşır."), "small", TK.FAINT)
+	var rh := TK.t(Loc.t("Muharebe ve torpido saldırıları filoya tecrübe kazandırır; rütbe yükseldikçe filo daha güçlü savaşır." if Ext.family() != "pre" else "Muharebeler filoya tecrübe kazandırır; rütbe yükseldikçe filo daha güçlü savaşır."), "small", TK.FAINT)
 	rh.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	sh.body.add_child(rh)
 	# gemiler
@@ -237,7 +228,7 @@ static func manage(ui, gs, f, done: Callable) -> void:
 		var row := HBoxContainer.new()
 		row.add_theme_constant_override("separation", 12)
 		var iv := TK.IconView.new()
-		iv.icon = _ship_icon(String(sp[3]))
+		iv.icon = _ship_icon(sp)
 		iv.color = TK.PAPER
 		iv.stroke = 2.0
 		iv.custom_minimum_size = Vector2(34, 34)

@@ -4680,7 +4680,20 @@
   "Filo menüsü": "함대 메뉴",
   "Duraklatma menüsünde Savaş Odası ve Siyasi sistemin yanına Deniz filoları ve Hava filoları sayfaları geldi: haritadaki rozetleri tek dokunuşla gizle/göster, tüm filolarını listeden seç ve haritada git. Harita artık kalabalık olmasın diye düğme eklemiyor.": "게임 메뉴의 작전실과 정치 체제 옆에 해군 함대와 항공단 페이지가 추가되었습니다. 지도의 문장을 한 번 탭으로 숨기거나 표시하고, 내 함대를 목록에서 골라 지도에서 바로 이동하세요. 지도가 복잡해지지 않도록 이제 지도에는 버튼이 추가되지 않습니다.",
   "Deniz ve hava filoları": "해군 함대와 항공단",
-  "Denizdeki filoya ya da bir üssün üstündeki hava kanadına dokunup seç; sonra denize, kendi eyaletine ya da düşman eyaletine dokunarak emir ver. Filoya ad ver, bayrak tasarla; komutanlıktan gemi ve uçak sınıflarını, rütbeyi gör. Haritada kalabalık olursa Duraklatma menüsü > Deniz filoları / Hava filoları sayfasından rozetleri gizle.": "바다 위의 함대나 기지 위의 항공단을 탭해 선택한 뒤, 바다, 자국 지방, 적 지방을 탭해 명령을 내리세요. 함대에 이름을 붙이고 깃발을 디자인할 수 있으며, 함대 지휘부에서 함선과 항공기 종류, 계급을 확인할 수 있습니다. 지도가 복잡해지면 게임 메뉴 > 해군 함대 / 항공단 페이지에서 문장을 숨기세요."
+  "Denizdeki filoya ya da bir üssün üstündeki hava kanadına dokunup seç; sonra denize, kendi eyaletine ya da düşman eyaletine dokunarak emir ver. Filoya ad ver, bayrak tasarla; komutanlıktan gemi ve uçak sınıflarını, rütbeyi gör. Haritada kalabalık olursa Duraklatma menüsü > Deniz filoları / Hava filoları sayfasından rozetleri gizle.": "바다 위의 함대나 기지 위의 항공단을 탭해 선택한 뒤, 바다, 자국 지방, 적 지방을 탭해 명령을 내리세요. 함대에 이름을 붙이고 깃발을 디자인할 수 있으며, 함대 지휘부에서 함선과 항공기 종류, 계급을 확인할 수 있습니다. 지도가 복잡해지면 게임 메뉴 > 해군 함대 / 항공단 페이지에서 문장을 숨기세요.",
+  "Yelkenli filo": "범선 함대",
+  "Kadırga filosu": "갤리 함대",
+  "Amiral filosu": "제독 함대",
+  "%d. Yelkenli Filo": "제%d 범선 함대",
+  "%d. Kadırga Filosu": "제%d 갤리 함대",
+  "%d. Amiral Filosu": "제%d 제독 함대",
+  "Kogge": "코그선",
+  "Fusta": "푸스타",
+  "Yelkenli gemiler: açık denizde güçlüdür, kıyıyı bombalar; kürekli kadırgalara karşı rüzgâra bağımlıdır.": "범선: 외해에서 강하고 해안을 포격한다. 노 젓는 갤리선에 맞서면 바람에 좌우된다.",
+  "Kadırgalar: kürekle yürür, kıyıya yakın savaşır; yelkenlilere ve nakliyeye karşı güçlüdür, asker taşıyabilir.": "갤리선: 노로 움직이며 해안 근처에서 싸운다. 범선과 수송선에 강하고 병력을 실을 수 있다.",
+  "Muharebeler filoya tecrübe kazandırır; rütbe yükseldikçe filo daha güçlü savaşır.": "전투는 함대에 경험을 준다. 계급이 높을수록 함대가 더 강하게 싸운다.",
+  "Çağa özel donanma": "시대별 해군",
+  "Donanma artık çağa göre farklı: 1299–1520 senaryolarında yelkenli filolar (Kogge, Karaka, Kalyon) ve kürekli Kadırga filoları savaşır; denizaltı ve uçak gemisi yoktur, kadırgalar gizli değildir ve asker taşıyabilir. 1914'te dretnot, kruvazör, muhrip ve U-botları; 1939'da zırhlı, uçak gemisi ve denizaltılar; Soğuk Savaş ve günümüzde füzeli muhrip, firkateyn, nükleer denizaltı. Hava filosu yalnızca hava teknolojisi olan ülkelerde kurulur.": "해군이 이제 시대에 따라 달라집니다. 1299~1520 시나리오에서는 범선 함대(코그선, 캐랙, 갤리온)와 노 젓는 갤리 함대가 싸우며, 잠수함과 항공모함은 없고 갤리선은 숨지 않으며 병력을 실을 수 있습니다. 1914년에는 드레드노트, 순양함, 구축함, U보트, 1939년에는 전함, 항공모함, 잠수함, 냉전과 현대에는 미사일 구축함, 프리깃, 핵잠수함이 등장합니다. 항공 편대는 항공 기술이 있는 나라에만 편성됩니다."
  },
  "months": [
   "1월",

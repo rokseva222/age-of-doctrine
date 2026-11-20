@@ -4679,7 +4679,20 @@
   "Filo menüsü": "Flottenmenü",
   "Duraklatma menüsünde Savaş Odası ve Siyasi sistemin yanına Deniz filoları ve Hava filoları sayfaları geldi: haritadaki rozetleri tek dokunuşla gizle/göster, tüm filolarını listeden seç ve haritada git. Harita artık kalabalık olmasın diye düğme eklemiyor.": "Im Spielmenü stehen neben Kriegsraum und Politisches System jetzt die Seiten Seeflotten und Luftgruppen: Blende die Abzeichen auf der Karte mit einem Tipp aus oder ein, wähle alle deine Flotten aus der Liste und spring auf der Karte zu ihnen. Die Karte fügt keine Schaltflächen mehr hinzu, damit sie übersichtlich bleibt.",
   "Deniz ve hava filoları": "See- und Luftflotten",
-  "Denizdeki filoya ya da bir üssün üstündeki hava kanadına dokunup seç; sonra denize, kendi eyaletine ya da düşman eyaletine dokunarak emir ver. Filoya ad ver, bayrak tasarla; komutanlıktan gemi ve uçak sınıflarını, rütbeyi gör. Haritada kalabalık olursa Duraklatma menüsü > Deniz filoları / Hava filoları sayfasından rozetleri gizle.": "Tippe auf eine Flotte auf See oder eine Luftgruppe über einem Stützpunkt, um sie auszuwählen; gib dann Befehle, indem du auf ein Meer, deine eigene Provinz oder eine feindliche Provinz tippst. Gib der Flotte einen Namen und entwirf eine Flagge; sieh dir im Flottenkommando Schiffs- und Flugzeugklassen sowie den Rang an. Wird die Karte zu voll, blende die Abzeichen auf der Seite Spielmenü > Seeflotten / Luftgruppen aus."
+  "Denizdeki filoya ya da bir üssün üstündeki hava kanadına dokunup seç; sonra denize, kendi eyaletine ya da düşman eyaletine dokunarak emir ver. Filoya ad ver, bayrak tasarla; komutanlıktan gemi ve uçak sınıflarını, rütbeyi gör. Haritada kalabalık olursa Duraklatma menüsü > Deniz filoları / Hava filoları sayfasından rozetleri gizle.": "Tippe auf eine Flotte auf See oder eine Luftgruppe über einem Stützpunkt, um sie auszuwählen; gib dann Befehle, indem du auf ein Meer, deine eigene Provinz oder eine feindliche Provinz tippst. Gib der Flotte einen Namen und entwirf eine Flagge; sieh dir im Flottenkommando Schiffs- und Flugzeugklassen sowie den Rang an. Wird die Karte zu voll, blende die Abzeichen auf der Seite Spielmenü > Seeflotten / Luftgruppen aus.",
+  "Yelkenli filo": "Segelflotte",
+  "Kadırga filosu": "Galeerenflotte",
+  "Amiral filosu": "Admiralsflotte",
+  "%d. Yelkenli Filo": "%d. Segelflotte",
+  "%d. Kadırga Filosu": "%d. Galeerenflotte",
+  "%d. Amiral Filosu": "%d. Admiralsflotte",
+  "Kogge": "Kogge",
+  "Fusta": "Fusta",
+  "Yelkenli gemiler: açık denizde güçlüdür, kıyıyı bombalar; kürekli kadırgalara karşı rüzgâra bağımlıdır.": "Segelschiffe: stark auf offener See, beschießen die Küste; gegen Ruderkriegsschiffe vom Wind abhängig.",
+  "Kadırgalar: kürekle yürür, kıyıya yakın savaşır; yelkenlilere ve nakliyeye karşı güçlüdür, asker taşıyabilir.": "Galeeren: gerudert, kämpfen küstennah; stark gegen Segelschiffe und Transporter und können Truppen befördern.",
+  "Muharebeler filoya tecrübe kazandırır; rütbe yükseldikçe filo daha güçlü savaşır.": "Gefechte bringen der Flotte Erfahrung; je höher der Rang, desto stärker kämpft die Flotte.",
+  "Çağa özel donanma": "Epochenspezifische Marinen",
+  "Donanma artık çağa göre farklı: 1299–1520 senaryolarında yelkenli filolar (Kogge, Karaka, Kalyon) ve kürekli Kadırga filoları savaşır; denizaltı ve uçak gemisi yoktur, kadırgalar gizli değildir ve asker taşıyabilir. 1914'te dretnot, kruvazör, muhrip ve U-botları; 1939'da zırhlı, uçak gemisi ve denizaltılar; Soğuk Savaş ve günümüzde füzeli muhrip, firkateyn, nükleer denizaltı. Hava filosu yalnızca hava teknolojisi olan ülkelerde kurulur.": "Die Marine unterscheidet sich jetzt nach Epoche: In den Szenarien 1299–1520 kämpfen Segelflotten (Kogge, Kraake, Galeone) und Galeerenflotten; es gibt keine U-Boote und Flugzeugträger, Galeeren sind nicht verborgen und können Truppen tragen. 1914 bringt Dreadnoughts, Kreuzer, Zerstörer und U-Boote; 1939 Schlachtschiffe, Träger und U-Boote; Kalter Krieg und heute Raketenzerstörer, Fregatten und Atom-U-Boote. Luftgeschwader gibt es nur für Länder mit Lufttechnologie."
  },
  "months": [
   "Januar",

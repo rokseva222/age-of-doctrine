@@ -4680,7 +4680,20 @@
   "Filo menüsü": "बेड़ा मेनू",
   "Duraklatma menüsünde Savaş Odası ve Siyasi sistemin yanına Deniz filoları ve Hava filoları sayfaları geldi: haritadaki rozetleri tek dokunuşla gizle/göster, tüm filolarını listeden seç ve haritada git. Harita artık kalabalık olmasın diye düğme eklemiyor.": "खेल मेनू में वॉर रूम और राजनीतिक प्रणाली के बगल में अब नौसैनिक बेड़े और वायु विंग के पन्ने आ गए हैं: नक्शे के प्रतीक चिह्न एक टैप में छिपाएँ या दिखाएँ, सूची से अपना कोई भी बेड़ा चुनें और नक्शे पर उसके पास जाएँ। नक्शा भीड़ न हो, इसलिए अब उसमें बटन नहीं जोड़े जाते।",
   "Deniz ve hava filoları": "नौसैनिक बेड़े और वायु विंग",
-  "Denizdeki filoya ya da bir üssün üstündeki hava kanadına dokunup seç; sonra denize, kendi eyaletine ya da düşman eyaletine dokunarak emir ver. Filoya ad ver, bayrak tasarla; komutanlıktan gemi ve uçak sınıflarını, rütbeyi gör. Haritada kalabalık olursa Duraklatma menüsü > Deniz filoları / Hava filoları sayfasından rozetleri gizle.": "समुद्र में मौजूद बेड़े को या किसी अड्डे के ऊपर के वायु विंग को टैप करके चुनें; फिर किसी समुद्र, अपने प्रांत या दुश्मन के प्रांत को टैप करके आदेश दें। बेड़े को नाम दें, झंडा डिज़ाइन करें; बेड़ा कमान में जहाज़ों और विमानों की श्रेणियाँ और रैंक देखें। नक्शे पर भीड़ हो जाए तो खेल मेनू > नौसैनिक बेड़े / वायु विंग पन्ने से प्रतीक चिह्न छिपा दें।"
+  "Denizdeki filoya ya da bir üssün üstündeki hava kanadına dokunup seç; sonra denize, kendi eyaletine ya da düşman eyaletine dokunarak emir ver. Filoya ad ver, bayrak tasarla; komutanlıktan gemi ve uçak sınıflarını, rütbeyi gör. Haritada kalabalık olursa Duraklatma menüsü > Deniz filoları / Hava filoları sayfasından rozetleri gizle.": "समुद्र में मौजूद बेड़े को या किसी अड्डे के ऊपर के वायु विंग को टैप करके चुनें; फिर किसी समुद्र, अपने प्रांत या दुश्मन के प्रांत को टैप करके आदेश दें। बेड़े को नाम दें, झंडा डिज़ाइन करें; बेड़ा कमान में जहाज़ों और विमानों की श्रेणियाँ और रैंक देखें। नक्शे पर भीड़ हो जाए तो खेल मेनू > नौसैनिक बेड़े / वायु विंग पन्ने से प्रतीक चिह्न छिपा दें।",
+  "Yelkenli filo": "पाल वाला बेड़ा",
+  "Kadırga filosu": "गैली बेड़ा",
+  "Amiral filosu": "एडमिरल का बेड़ा",
+  "%d. Yelkenli Filo": "%d. पाल बेड़ा",
+  "%d. Kadırga Filosu": "%d. गैली बेड़ा",
+  "%d. Amiral Filosu": "%d. एडमिरल बेड़ा",
+  "Kogge": "कॉग",
+  "Fusta": "फ़ुस्ता",
+  "Yelkenli gemiler: açık denizde güçlüdür, kıyıyı bombalar; kürekli kadırgalara karşı rüzgâra bağımlıdır.": "पालदार जहाज़: खुले समुद्र में मज़बूत, तट पर गोलाबारी करते हैं; चप्पू वाली गैलियों के सामने हवा पर निर्भर रहते हैं।",
+  "Kadırgalar: kürekle yürür, kıyıya yakın savaşır; yelkenlilere ve nakliyeye karşı güçlüdür, asker taşıyabilir.": "गैलियाँ: चप्पुओं से चलती हैं, तट के पास लड़ती हैं; पालदार जहाज़ों और परिवहन के विरुद्ध मज़बूत, और सैनिक ले जा सकती हैं।",
+  "Muharebeler filoya tecrübe kazandırır; rütbe yükseldikçe filo daha güçlü savaşır.": "लड़ाइयाँ बेड़े को अनुभव देती हैं; रैंक जितनी ऊँची, बेड़ा उतना मज़बूत लड़ता है।",
+  "Çağa özel donanma": "युग के अनुसार नौसेना",
+  "Donanma artık çağa göre farklı: 1299–1520 senaryolarında yelkenli filolar (Kogge, Karaka, Kalyon) ve kürekli Kadırga filoları savaşır; denizaltı ve uçak gemisi yoktur, kadırgalar gizli değildir ve asker taşıyabilir. 1914'te dretnot, kruvazör, muhrip ve U-botları; 1939'da zırhlı, uçak gemisi ve denizaltılar; Soğuk Savaş ve günümüzde füzeli muhrip, firkateyn, nükleer denizaltı. Hava filosu yalnızca hava teknolojisi olan ülkelerde kurulur.": "नौसेना अब युग के अनुसार अलग है: 1299–1520 के परिदृश्यों में पालदार बेड़े (कॉग, कैरेक, गैलियन) और चप्पू वाले गैली बेड़े लड़ते हैं; पनडुब्बी और विमानवाहक नहीं हैं, गैलियाँ छिपी नहीं होतीं और सैनिक ले जा सकती हैं। 1914 में ड्रेडनॉट, क्रूज़र, विध्वंसक और यू-बोट; 1939 में युद्धपोत, विमानवाहक और पनडुब्बियाँ; शीत युद्ध और आज मिसाइल विध्वंसक, फ्रिगेट और परमाणु पनडुब्बियाँ। हवाई दस्ते केवल वायु-तकनीक वाले देशों में होते हैं।"
  },
  "months": [
   "जनवरी",

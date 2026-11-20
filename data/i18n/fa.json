@@ -4680,7 +4680,20 @@
   "Filo menüsü": "منوی ناوگان",
   "Duraklatma menüsünde Savaş Odası ve Siyasi sistemin yanına Deniz filoları ve Hava filoları sayfaları geldi: haritadaki rozetleri tek dokunuşla gizle/göster, tüm filolarını listeden seç ve haritada git. Harita artık kalabalık olmasın diye düğme eklemiyor.": "در منوی بازی، صفحه‌های ناوگان‌های دریایی و گردان‌های هوایی کنار اتاق جنگ و نظام سیاسی آمده‌اند: نشان‌های روی نقشه را با یک لمس پنهان یا نمایان کن، همهٔ ناوگان‌هایت را از فهرست انتخاب کن و روی نقشه به سراغشان برو. نقشه دیگر دکمه‌ای اضافه نمی‌کند تا شلوغ نشود.",
   "Deniz ve hava filoları": "ناوگان‌های دریایی و گردان‌های هوایی",
-  "Denizdeki filoya ya da bir üssün üstündeki hava kanadına dokunup seç; sonra denize, kendi eyaletine ya da düşman eyaletine dokunarak emir ver. Filoya ad ver, bayrak tasarla; komutanlıktan gemi ve uçak sınıflarını, rütbeyi gör. Haritada kalabalık olursa Duraklatma menüsü > Deniz filoları / Hava filoları sayfasından rozetleri gizle.": "ناوگانی را که در دریاست یا گردان هوایی را که بالای یک پایگاه است لمس کن تا انتخاب شود؛ سپس با لمس یک دریا، استان خودت یا استان دشمن فرمان بده. برای ناوگان نام بگذار و پرچم طراحی کن؛ در فرماندهی ناوگان رده‌های کشتی و هواپیما و درجه را ببین. اگر نقشه شلوغ شد، نشان‌ها را از صفحهٔ منوی بازی > ناوگان‌های دریایی / گردان‌های هوایی پنهان کن."
+  "Denizdeki filoya ya da bir üssün üstündeki hava kanadına dokunup seç; sonra denize, kendi eyaletine ya da düşman eyaletine dokunarak emir ver. Filoya ad ver, bayrak tasarla; komutanlıktan gemi ve uçak sınıflarını, rütbeyi gör. Haritada kalabalık olursa Duraklatma menüsü > Deniz filoları / Hava filoları sayfasından rozetleri gizle.": "ناوگانی را که در دریاست یا گردان هوایی را که بالای یک پایگاه است لمس کن تا انتخاب شود؛ سپس با لمس یک دریا، استان خودت یا استان دشمن فرمان بده. برای ناوگان نام بگذار و پرچم طراحی کن؛ در فرماندهی ناوگان رده‌های کشتی و هواپیما و درجه را ببین. اگر نقشه شلوغ شد، نشان‌ها را از صفحهٔ منوی بازی > ناوگان‌های دریایی / گردان‌های هوایی پنهان کن.",
+  "Yelkenli filo": "ناوگان بادبانی",
+  "Kadırga filosu": "ناوگان گالی",
+  "Amiral filosu": "ناوگان دریاسالار",
+  "%d. Yelkenli Filo": "ناوگان بادبانی %d",
+  "%d. Kadırga Filosu": "ناوگان گالی %d",
+  "%d. Amiral Filosu": "ناوگان دریاسالار %d",
+  "Kogge": "کوگ",
+  "Fusta": "فوستا",
+  "Yelkenli gemiler: açık denizde güçlüdür, kıyıyı bombalar; kürekli kadırgalara karşı rüzgâra bağımlıdır.": "کشتی‌های بادبانی: در دریای آزاد قوی‌اند و ساحل را گلوله‌باران می‌کنند؛ در برابر گالی‌های پاروئی به باد وابسته‌اند.",
+  "Kadırgalar: kürekle yürür, kıyıya yakın savaşır; yelkenlilere ve nakliyeye karşı güçlüdür, asker taşıyabilir.": "گالی‌ها: با پارو حرکت می‌کنند و نزدیک ساحل می‌جنگند؛ در برابر کشتی‌های بادبانی و ترابری قوی‌اند و می‌توانند سرباز ببرند.",
+  "Muharebeler filoya tecrübe kazandırır; rütbe yükseldikçe filo daha güçlü savaşır.": "نبردها به ناوگان تجربه می‌دهند؛ هرچه درجه بالاتر باشد ناوگان قوی‌تر می‌جنگد.",
+  "Çağa özel donanma": "نیروی دریایی هر دوره",
+  "Donanma artık çağa göre farklı: 1299–1520 senaryolarında yelkenli filolar (Kogge, Karaka, Kalyon) ve kürekli Kadırga filoları savaşır; denizaltı ve uçak gemisi yoktur, kadırgalar gizli değildir ve asker taşıyabilir. 1914'te dretnot, kruvazör, muhrip ve U-botları; 1939'da zırhlı, uçak gemisi ve denizaltılar; Soğuk Savaş ve günümüzde füzeli muhrip, firkateyn, nükleer denizaltı. Hava filosu yalnızca hava teknolojisi olan ülkelerde kurulur.": "نیروی دریایی اکنون بسته به دوره فرق می‌کند: در سناریوهای ۱۲۹۹ تا ۱۵۲۰ ناوگان‌های بادبانی (کوگ، کاراک، گالیون) و گالی‌های پاروئی می‌جنگند؛ زیردریایی و ناو هواپیمابر وجود ندارد، گالی‌ها پنهان نیستند و می‌توانند سرباز ببرند. ۱۹۱۴ دریدنات، رزمناو، ناوشکن و یوبوت می‌آورد؛ ۱۹۳۹ ناو جنگی، هواپیمابر و زیردریایی؛ جنگ سرد و امروز ناوشکن موشکی، ناوچه و زیردریایی هسته‌ای. گردان هوایی فقط برای کشورهای دارای فناوری هوایی ساخته می‌شود."
  },
  "months": [
   "ژانویه",

@@ -8,6 +8,7 @@ const Macro = preload("res://scripts/macro.gd")
 const Settings = preload("res://scripts/settings.gd")
 const Flags = preload("res://scripts/flags.gd")
 const Icons = preload("res://scripts/icons.gd")
+const FleetExt = preload("res://scripts/fleet_ext.gd")
 const Chokepoints = preload("res://scripts/chokepoints.gd")
 const Districts = preload("res://scripts/districts.gd")
 const Seas = preload("res://scripts/seas.gd")
@@ -654,7 +655,7 @@ func _draw_fleets(gs, z: float, screen: Rect2) -> void:
 				draw_rect(cr, edge, false, 1.0)
 				Icons.draw(self, Icons.pick("uc_inf", "users"), Rect2(cr.position + Vector2(2.0, 0.0), Vector2(cr.size.y, cr.size.y)), Color.WHITE)
 				draw_string(font2, cr.position + Vector2(cr.size.y + 4.0, cr.size.y * 0.5 + cfs * 0.36), Macro.compact(float(f.cargo)), HORIZONTAL_ALIGNMENT_LEFT, cr.size.x - cr.size.y - 6.0, cfs, Color.WHITE)
-			if f.kind == "sub" and f.owner != me and f.seen >= gs.turn:
+			if FleetExt.undersea(f.kind) and f.owner != me and f.seen >= gs.turn:
 				draw_circle(rect.end - Vector2(4.0, h - 4.0), 4.0 * sc, TK.RED)
 			if f.owner == me and f.stance == "defend":
 				draw_circle(rect.end - Vector2(5.0 * sc, 5.0 * sc), 3.0 * sc, TK.BLUE)
@@ -879,7 +880,7 @@ func _draw_fleets_legacy(gs, z: float, screen: Rect2) -> void:
 		var hostile: bool = me >= 0 and c.id != me and gs.at_war(me, c.id)
 		var rad := 15.0 * sc
 		draw_circle(sp, rad + 2.0, TK.PAPER if c.id == me else (TK.RED if hostile else c.color.lightened(0.1)))
-		var tex_name := "uc_carrier" if c.carriers > 0 and c.naval_pow < 3.0 else "uc_sub"
+		var tex_name: String = FleetExt.fleet_icon("carrier") if c.carriers > 0 and c.naval_pow < 3.0 else FleetExt.fleet_icon("sub")
 		Icons.draw(self, tex_name, Rect2(sp - Vector2(rad, rad), Vector2(rad * 2.0, rad * 2.0)), Color.WHITE)
 		if z >= 2.6:
 			var f2: Font = TK.mono(true, 0)

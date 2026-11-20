@@ -4680,7 +4680,20 @@
   "Filo menüsü": "Меню флотов",
   "Duraklatma menüsünde Savaş Odası ve Siyasi sistemin yanına Deniz filoları ve Hava filoları sayfaları geldi: haritadaki rozetleri tek dokunuşla gizle/göster, tüm filolarını listeden seç ve haritada git. Harita artık kalabalık olmasın diye düğme eklemiyor.": "В Меню игры рядом со страницами Штаб войны и Политическая система появились страницы Морские флоты и Авиакрылья: скрывайте и показывайте значки на карте одним касанием, выбирайте любой из своих флотов в списке и переходите к нему на карте. Чтобы карта не загромождалась, кнопки на ней больше не добавляются.",
   "Deniz ve hava filoları": "Морские флоты и авиакрылья",
-  "Denizdeki filoya ya da bir üssün üstündeki hava kanadına dokunup seç; sonra denize, kendi eyaletine ya da düşman eyaletine dokunarak emir ver. Filoya ad ver, bayrak tasarla; komutanlıktan gemi ve uçak sınıflarını, rütbeyi gör. Haritada kalabalık olursa Duraklatma menüsü > Deniz filoları / Hava filoları sayfasından rozetleri gizle.": "Коснитесь флота в море или авиакрыла над базой, чтобы выбрать его; затем отдавайте приказы, коснувшись моря, своей провинции или вражеской провинции. Дайте флоту название и создайте флаг; в Командовании флотом смотрите классы кораблей и самолётов, а также звание. Если карта перегружена, скройте значки на странице Меню игры > Морские флоты / Авиакрылья."
+  "Denizdeki filoya ya da bir üssün üstündeki hava kanadına dokunup seç; sonra denize, kendi eyaletine ya da düşman eyaletine dokunarak emir ver. Filoya ad ver, bayrak tasarla; komutanlıktan gemi ve uçak sınıflarını, rütbeyi gör. Haritada kalabalık olursa Duraklatma menüsü > Deniz filoları / Hava filoları sayfasından rozetleri gizle.": "Коснитесь флота в море или авиакрыла над базой, чтобы выбрать его; затем отдавайте приказы, коснувшись моря, своей провинции или вражеской провинции. Дайте флоту название и создайте флаг; в Командовании флотом смотрите классы кораблей и самолётов, а также звание. Если карта перегружена, скройте значки на странице Меню игры > Морские флоты / Авиакрылья.",
+  "Yelkenli filo": "Парусный флот",
+  "Kadırga filosu": "Галерный флот",
+  "Amiral filosu": "Флот адмирала",
+  "%d. Yelkenli Filo": "%d-й парусный флот",
+  "%d. Kadırga Filosu": "%d-й галерный флот",
+  "%d. Amiral Filosu": "%d-й флот адмирала",
+  "Kogge": "Когг",
+  "Fusta": "Фуста",
+  "Yelkenli gemiler: açık denizde güçlüdür, kıyıyı bombalar; kürekli kadırgalara karşı rüzgâra bağımlıdır.": "Парусные корабли: сильны в открытом море, обстреливают берег; против гребных галер зависят от ветра.",
+  "Kadırgalar: kürekle yürür, kıyıya yakın savaşır; yelkenlilere ve nakliyeye karşı güçlüdür, asker taşıyabilir.": "Галеры: идут на веслах, воюют у берега; сильны против парусников и транспортов, могут перевозить войска.",
+  "Muharebeler filoya tecrübe kazandırır; rütbe yükseldikçe filo daha güçlü savaşır.": "Сражения дают флоту опыт; чем выше ранг, тем сильнее флот.",
+  "Çağa özel donanma": "Флоты по эпохам",
+  "Donanma artık çağa göre farklı: 1299–1520 senaryolarında yelkenli filolar (Kogge, Karaka, Kalyon) ve kürekli Kadırga filoları savaşır; denizaltı ve uçak gemisi yoktur, kadırgalar gizli değildir ve asker taşıyabilir. 1914'te dretnot, kruvazör, muhrip ve U-botları; 1939'da zırhlı, uçak gemisi ve denizaltılar; Soğuk Savaş ve günümüzde füzeli muhrip, firkateyn, nükleer denizaltı. Hava filosu yalnızca hava teknolojisi olan ülkelerde kurulur.": "Флот теперь зависит от эпохи: в сценариях 1299–1520 сражаются парусные флоты (когг, каракка, галеон) и флоты гребных галер; подводных лодок и авианосцев нет, галеры не скрыты и могут перевозить войска. 1914 приносит дредноуты, крейсеры, эсминцы и U-boot; 1939 — линкоры, авианосцы и подлодки; холодная война и наши дни — ракетные эсминцы, фрегаты и атомные подлодки. Авиакрылья есть только у стран с авиационными технологиями."
  },
  "months": [
   "января",

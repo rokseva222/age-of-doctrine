@@ -34,7 +34,7 @@ static func open(ui, gs, air: bool) -> void:
 			rows.append([w.id, Air.display_name(gs, w), "%s  /  %s" % [Loc.t(Air.kind_name(w.kind)), gs.provinces[w.base].name], "%d" % Air.disp(w), Icons.pick(Air.kind_icon(w.kind), "jet"), int(w.xp)])
 	else:
 		for f in Fleets.fleets_of(gs, me):
-			rows.append([f.id, Fleets.display_name(gs, f), "%s  /  %s" % [Loc.t(Fleets.kind_name(f.kind)), Loc.t(Seas.name_tr(f.zone))], "%d" % FleetExt.ship_total(gs, f), Icons.pick(_kind_icon(f.kind), "ship"), int(f.xp)])
+			rows.append([f.id, Fleets.display_name(gs, f), "%s  /  %s" % [Loc.t(Fleets.kind_name(f.kind)), Loc.t(Seas.name_tr(f.zone))], "%d" % FleetExt.ship_total(gs, f), Icons.pick(Fleets.kind_icon(f.kind), "ship"), int(f.xp)])
 	if rows.is_empty():
 		var e := TK.t("Henüz filon yok." if not air else "Henüz hava kanadın yok.", "body", TK.MUTED)
 		sh.body.add_child(e)
@@ -66,14 +66,3 @@ static func open(ui, gs, air: bool) -> void:
 			ui.action.emit("wing_focus" if air else "fleet_focus", id))
 		sh.body.add_child(b)
 	sh.add_button("Kapat", func(): pass, "", true, "x", 160)
-
-
-static func _kind_icon(kind: String) -> String:
-	match kind:
-		"sub":
-			return "uc_sub"
-		"carrier":
-			return "uc_carrier"
-		"transport":
-			return "cargo_ship"
-	return "uc_ship"

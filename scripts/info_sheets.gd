@@ -294,8 +294,9 @@ static func open_howto(parent: Node) -> void:
 			render.call())
 
 
-const UPDATE_VER := "1.2.32"
+const UPDATE_VER := "1.2.33"
 const WHATS_NEW := [
+	["Çağa özel donanma", "Donanma artık çağa göre farklı: 1299–1520 senaryolarında yelkenli filolar (Kogge, Karaka, Kalyon) ve kürekli Kadırga filoları savaşır; denizaltı ve uçak gemisi yoktur, kadırgalar gizli değildir ve asker taşıyabilir. 1914'te dretnot, kruvazör, muhrip ve U-botları; 1939'da zırhlı, uçak gemisi ve denizaltılar; Soğuk Savaş ve günümüzde füzeli muhrip, firkateyn, nükleer denizaltı. Hava filosu yalnızca hava teknolojisi olan ülkelerde kurulur."],
 	["Filo menüsü", "Duraklatma menüsünde Savaş Odası ve Siyasi sistemin yanına Deniz filoları ve Hava filoları sayfaları geldi: haritadaki rozetleri tek dokunuşla gizle/göster, tüm filolarını listeden seç ve haritada git. Harita artık kalabalık olmasın diye düğme eklemiyor."],
 	["Hava filoları", "Artık hava kuvvetlerin filolar halinde haritada: avcı, bombardıman, İHA, nakliye ve keşif kanatları üslerinden görev yapar. Bombardıman kanatlarıyla menzildeki düşman eyaletlerini vur, avcılarla hava üstünlüğü kazan (karadaki savaşa bonus), nakliye kanatlarıyla orduyu uçur ya da paraşütle indir. Kanatlara ad ver ve bayrak tasarla."],
 	["Filoya ad ve bayrak", "Her filoya ad ver, kendi bayrağını tasarla; Filo komutanlığında gemi sınıflarını (muhrip, kruvazör, denizaltı modelleri...), rütbeyi ve ikmal durumunu gör. Duruş (saldır/savun/çekil), eşlik ve filo bölme eklendi."],

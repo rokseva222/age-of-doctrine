@@ -4680,7 +4680,20 @@
   "Filo menüsü": "قائمة الأساطيل",
   "Duraklatma menüsünde Savaş Odası ve Siyasi sistemin yanına Deniz filoları ve Hava filoları sayfaları geldi: haritadaki rozetleri tek dokunuşla gizle/göster, tüm filolarını listeden seç ve haritada git. Harita artık kalabalık olmasın diye düğme eklemiyor.": "في قائمة اللعبة ظهرت صفحتا الأساطيل البحرية والأجنحة الجوية بجوار غرفة الحرب والنظام السياسي: أخفِ الشارات على الخريطة أو أظهرها بلمسة واحدة، واختر أي أسطول من القائمة وانتقل إليه على الخريطة. لم تعد الخريطة تضيف أزراراً حتى لا تزدحم.",
   "Deniz ve hava filoları": "الأساطيل البحرية والأجنحة الجوية",
-  "Denizdeki filoya ya da bir üssün üstündeki hava kanadına dokunup seç; sonra denize, kendi eyaletine ya da düşman eyaletine dokunarak emir ver. Filoya ad ver, bayrak tasarla; komutanlıktan gemi ve uçak sınıflarını, rütbeyi gör. Haritada kalabalık olursa Duraklatma menüsü > Deniz filoları / Hava filoları sayfasından rozetleri gizle.": "المس الأسطول في البحر أو الجناح الجوي فوق قاعدة لتحديده؛ ثم أصدر الأوامر بلمس البحر أو مقاطعتك أو مقاطعة العدو. سمِّ الأسطول وصمّم له علماً؛ وشاهد فئات السفن والطائرات والرتبة في قيادة الأسطول. إذا ازدحمت الخريطة فأخفِ الشارات من صفحة قائمة اللعبة > الأساطيل البحرية / الأجنحة الجوية."
+  "Denizdeki filoya ya da bir üssün üstündeki hava kanadına dokunup seç; sonra denize, kendi eyaletine ya da düşman eyaletine dokunarak emir ver. Filoya ad ver, bayrak tasarla; komutanlıktan gemi ve uçak sınıflarını, rütbeyi gör. Haritada kalabalık olursa Duraklatma menüsü > Deniz filoları / Hava filoları sayfasından rozetleri gizle.": "المس الأسطول في البحر أو الجناح الجوي فوق قاعدة لتحديده؛ ثم أصدر الأوامر بلمس البحر أو مقاطعتك أو مقاطعة العدو. سمِّ الأسطول وصمّم له علماً؛ وشاهد فئات السفن والطائرات والرتبة في قيادة الأسطول. إذا ازدحمت الخريطة فأخفِ الشارات من صفحة قائمة اللعبة > الأساطيل البحرية / الأجنحة الجوية.",
+  "Yelkenli filo": "أسطول شراعي",
+  "Kadırga filosu": "أسطول القوادس",
+  "Amiral filosu": "أسطول الأدميرال",
+  "%d. Yelkenli Filo": "الأسطول الشراعي رقم %d",
+  "%d. Kadırga Filosu": "أسطول القوادس رقم %d",
+  "%d. Amiral Filosu": "أسطول الأدميرال رقم %d",
+  "Kogge": "كوغ",
+  "Fusta": "فوستا",
+  "Yelkenli gemiler: açık denizde güçlüdür, kıyıyı bombalar; kürekli kadırgalara karşı rüzgâra bağımlıdır.": "السفن الشراعية: قوية في عرض البحر وتقصف الساحل؛ وأمام القوادس المجدّفة تعتمد على الريح.",
+  "Kadırgalar: kürekle yürür, kıyıya yakın savaşır; yelkenlilere ve nakliyeye karşı güçlüdür, asker taşıyabilir.": "القوادس: تُجدَّف وتقاتل قرب الساحل؛ قوية ضد السفن الشراعية وسفن النقل ويمكنها نقل الجنود.",
+  "Muharebeler filoya tecrübe kazandırır; rütbe yükseldikçe filo daha güçlü savaşır.": "تمنح المعارك الأسطول خبرة؛ وكلما ارتفعت الرتبة قاتل الأسطول بقوة أكبر.",
+  "Çağa özel donanma": "أساطيل حسب العصر",
+  "Donanma artık çağa göre farklı: 1299–1520 senaryolarında yelkenli filolar (Kogge, Karaka, Kalyon) ve kürekli Kadırga filoları savaşır; denizaltı ve uçak gemisi yoktur, kadırgalar gizli değildir ve asker taşıyabilir. 1914'te dretnot, kruvazör, muhrip ve U-botları; 1939'da zırhlı, uçak gemisi ve denizaltılar; Soğuk Savaş ve günümüzde füzeli muhrip, firkateyn, nükleer denizaltı. Hava filosu yalnızca hava teknolojisi olan ülkelerde kurulur.": "يختلف الأسطول الآن حسب العصر: في سيناريوهات 1299–1520 تقاتل أساطيل شراعية (كوغ، كاراك، غليون) وأساطيل قوادس مجدّفة؛ لا غواصات ولا حاملات طائرات، والقوادس غير مخفية ويمكنها نقل الجنود. يجلب 1914 البوارج والطرّادات والمدمّرات والغواصات الألمانية؛ و1939 البوارج وحاملات الطائرات والغواصات؛ والحرب الباردة واليوم المدمّرات الصاروخية والفرقاطات والغواصات النووية. لا توجد أجنحة جوية إلا للدول ذات التقنية الجوية."
  },
  "months": [
   "يناير",

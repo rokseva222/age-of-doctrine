@@ -786,7 +786,7 @@ func show_fleet(f) -> void:
 		_card_tags.add_child(_tag("Savaşta", TK.RED))
 	if f.mission == "blockade":
 		_card_tags.add_child(_tag("Abluka görevinde", TK.ORANGE))
-	if f.kind == "sub":
+	if FleetExt.undersea(f.kind):
 		_card_tags.add_child(_tag("Gizli", TK.PURPLE))
 	if f.xp >= 6.0:
 		_card_tags.add_child(_tag(FleetExt.rank_name(f.xp), TK.GOLD))
@@ -806,9 +806,10 @@ func show_fleet(f) -> void:
 		_card_stat("Gemi", "%d" % FleetExt.ship_total(gs, f), TK.TEXT)
 	if f.cargo > 0:
 		_card_stat("Asker", Macro.num(f.cargo), TK.GOLD)
+	var pre: bool = FleetExt.family() == "pre"
 	var hint: String = {
-		"surface": "Yüzey gemileri: kıyıyı bombalar, denizaltıya karşı zayıftır; uçak gemisiyle birlikte denizaltıyı avlar.",
-		"sub": "Denizaltılar: yavaş ama gizli; yüzey gemilerine ve nakliyeye karşı güçlüdür. Ateş edince bir süre açığa çıkar.",
+		"surface": "Yelkenli gemiler: açık denizde güçlüdür, kıyıyı bombalar; kürekli kadırgalara karşı rüzgâra bağımlıdır." if pre else "Yüzey gemileri: kıyıyı bombalar, denizaltıya karşı zayıftır; uçak gemisiyle birlikte denizaltıyı avlar.",
+		"sub": "Kadırgalar: kürekle yürür, kıyıya yakın savaşır; yelkenlilere ve nakliyeye karşı güçlüdür, asker taşıyabilir." if pre else "Denizaltılar: yavaş ama gizli; yüzey gemilerine ve nakliyeye karşı güçlüdür. Ateş edince bir süre açığa çıkar.",
 		"carrier": "Uçak gemisi grubu: hava gücü getirir; yanında muharebe filosu yoksa zayıftır.",
 		"transport": "Nakliye filosu: ordu taşır ama silahsızdır; korumasız kalırsa düşman filosuna batar.",
 	}.get(f.kind, "")
@@ -828,17 +829,17 @@ func show_fleet(f) -> void:
 			_abtn("Durdur", "", "pause", "fleet_stop", f.id)
 		if f.kind != "transport" and not Fleets.blockade_candidates(gs, me).is_empty():
 			_abtn("Abluka", "danger", Icons.pick("blockade", "anchor"), "fleet_blockade", f.id)
-		if f.kind == "surface" or f.kind == "carrier":
+		if f.kind == "surface" or f.kind == "carrier" or (f.kind == "sub" and not FleetExt.undersea("sub")):
 			var bl: int = f.cd - gs.turn
 			_abtn("Kıyı bombardımanı" if bl <= 0 else "Bombardıman: %d hafta bekle" % bl, "danger", Icons.pick("bombard", "ship"), "fleet_bombard_menu", f.id, bl <= 0 and not Fleets.bombard_targets(gs, f).is_empty())
-		if f.kind == "sub":
+		if FleetExt.undersea(f.kind):
 			var tl: int = f.cd - gs.turn
 			var has_t := false
 			for g in Fleets.at_zone(gs, f.zone):
 				if g.owner != me and gs.at_war(me, g.owner):
 					has_t = true
 			_abtn("Torpido" if tl <= 0 else "Torpido: %d hafta bekle" % tl, "danger", Icons.pick("w2_torpedo", "sub"), "fleet_torpedo", f.id, tl <= 0 and has_t)
-		if f.kind != "sub":
+		if not FleetExt.undersea(f.kind):
 			_abtn("Ordu bindir", "blue", Icons.pick("cargo_ship", "ship"), "fleet_embark", f.id)
 		if f.cargo > 0:
 			_abtn("Karaya çıkar", "danger", Icons.pick("landing", "swords"), "fleet_debark_menu", f.id)

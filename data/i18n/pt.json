@@ -4679,7 +4679,20 @@
   "Filo menüsü": "Menu de frotas",
   "Duraklatma menüsünde Savaş Odası ve Siyasi sistemin yanına Deniz filoları ve Hava filoları sayfaları geldi: haritadaki rozetleri tek dokunuşla gizle/göster, tüm filolarını listeden seç ve haritada git. Harita artık kalabalık olmasın diye düğme eklemiyor.": "No Menu do jogo, as páginas Frotas navais e Alas aéreas agora ficam ao lado de Sala de Guerra e Sistema político: oculte ou mostre as insígnias do mapa com um toque, escolha qualquer uma das suas frotas na lista e vá até ela no mapa. O mapa não adiciona mais botões, para não ficar sobrecarregado.",
   "Deniz ve hava filoları": "Frotas navais e alas aéreas",
-  "Denizdeki filoya ya da bir üssün üstündeki hava kanadına dokunup seç; sonra denize, kendi eyaletine ya da düşman eyaletine dokunarak emir ver. Filoya ad ver, bayrak tasarla; komutanlıktan gemi ve uçak sınıflarını, rütbeyi gör. Haritada kalabalık olursa Duraklatma menüsü > Deniz filoları / Hava filoları sayfasından rozetleri gizle.": "Toque numa frota no mar ou numa ala aérea sobre uma base para selecioná-la; depois dê ordens tocando num mar, na sua própria província ou numa província inimiga. Dê um nome à frota e desenhe uma bandeira; veja no Comando da frota as classes de navios e aeronaves e a patente. Se o mapa ficar cheio, oculte as insígnias na página Menu do jogo > Frotas navais / Alas aéreas."
+  "Denizdeki filoya ya da bir üssün üstündeki hava kanadına dokunup seç; sonra denize, kendi eyaletine ya da düşman eyaletine dokunarak emir ver. Filoya ad ver, bayrak tasarla; komutanlıktan gemi ve uçak sınıflarını, rütbeyi gör. Haritada kalabalık olursa Duraklatma menüsü > Deniz filoları / Hava filoları sayfasından rozetleri gizle.": "Toque numa frota no mar ou numa ala aérea sobre uma base para selecioná-la; depois dê ordens tocando num mar, na sua própria província ou numa província inimiga. Dê um nome à frota e desenhe uma bandeira; veja no Comando da frota as classes de navios e aeronaves e a patente. Se o mapa ficar cheio, oculte as insígnias na página Menu do jogo > Frotas navais / Alas aéreas.",
+  "Yelkenli filo": "Frota à vela",
+  "Kadırga filosu": "Frota de galés",
+  "Amiral filosu": "Frota do almirante",
+  "%d. Yelkenli Filo": "%dª Frota à vela",
+  "%d. Kadırga Filosu": "%dª Frota de galés",
+  "%d. Amiral Filosu": "%dª Frota do almirante",
+  "Kogge": "Cog",
+  "Fusta": "Fusta",
+  "Yelkenli gemiler: açık denizde güçlüdür, kıyıyı bombalar; kürekli kadırgalara karşı rüzgâra bağımlıdır.": "Navios à vela: fortes em mar aberto, bombardeiam a costa; contra galés a remos dependem do vento.",
+  "Kadırgalar: kürekle yürür, kıyıya yakın savaşır; yelkenlilere ve nakliyeye karşı güçlüdür, asker taşıyabilir.": "Galés: movidas a remo, combatem perto da costa; fortes contra navios à vela e transportes, e podem levar tropas.",
+  "Muharebeler filoya tecrübe kazandırır; rütbe yükseldikçe filo daha güçlü savaşır.": "As batalhas dão experiência à frota; quanto mais alto o posto, mais forte ela luta.",
+  "Çağa özel donanma": "Marinhas por época",
+  "Donanma artık çağa göre farklı: 1299–1520 senaryolarında yelkenli filolar (Kogge, Karaka, Kalyon) ve kürekli Kadırga filoları savaşır; denizaltı ve uçak gemisi yoktur, kadırgalar gizli değildir ve asker taşıyabilir. 1914'te dretnot, kruvazör, muhrip ve U-botları; 1939'da zırhlı, uçak gemisi ve denizaltılar; Soğuk Savaş ve günümüzde füzeli muhrip, firkateyn, nükleer denizaltı. Hava filosu yalnızca hava teknolojisi olan ülkelerde kurulur.": "A marinha agora muda conforme a época: nos cenários 1299–1520 lutam frotas à vela (cog, carraca, galeão) e frotas de galés a remos; não há submarinos nem porta-aviões, as galés não são ocultas e podem levar tropas. 1914 traz encouraçados, cruzadores, contratorpedeiros e U-boats; 1939 couraçados, porta-aviões e submarinos; a Guerra Fria e hoje, destróieres lança-mísseis, fragatas e submarinos nucleares. As alas aéreas só existem em países com tecnologia aérea."
  },
  "months": [
   "janeiro",

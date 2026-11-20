@@ -4680,7 +4680,20 @@
   "Filo menüsü": "艦隊メニュー",
   "Duraklatma menüsünde Savaş Odası ve Siyasi sistemin yanına Deniz filoları ve Hava filoları sayfaları geldi: haritadaki rozetleri tek dokunuşla gizle/göster, tüm filolarını listeden seç ve haritada git. Harita artık kalabalık olmasın diye düğme eklemiyor.": "ゲームメニューに、作戦室と政治体制の隣へ海軍艦隊と航空団のページが加わりました。マップ上の紋章はワンタップで非表示・表示を切り替えられ、自軍の艦隊を一覧から選んでマップ上で移動先へ飛べます。マップが混み合わないよう、ボタンはもう追加されません。",
   "Deniz ve hava filoları": "海軍艦隊と航空団",
-  "Denizdeki filoya ya da bir üssün üstündeki hava kanadına dokunup seç; sonra denize, kendi eyaletine ya da düşman eyaletine dokunarak emir ver. Filoya ad ver, bayrak tasarla; komutanlıktan gemi ve uçak sınıflarını, rütbeyi gör. Haritada kalabalık olursa Duraklatma menüsü > Deniz filoları / Hava filoları sayfasından rozetleri gizle.": "海上の艦隊、または基地の上にある航空団をタップして選択し、海・自国の州・敵の州をタップして命令を出します。艦隊に名前を付け、旗をデザインできます。艦隊司令部で艦艇と航空機の種別、階級を確認できます。マップが混み合ったら、ゲームメニュー > 海軍艦隊 / 航空団のページから紋章を非表示にしてください。"
+  "Denizdeki filoya ya da bir üssün üstündeki hava kanadına dokunup seç; sonra denize, kendi eyaletine ya da düşman eyaletine dokunarak emir ver. Filoya ad ver, bayrak tasarla; komutanlıktan gemi ve uçak sınıflarını, rütbeyi gör. Haritada kalabalık olursa Duraklatma menüsü > Deniz filoları / Hava filoları sayfasından rozetleri gizle.": "海上の艦隊、または基地の上にある航空団をタップして選択し、海・自国の州・敵の州をタップして命令を出します。艦隊に名前を付け、旗をデザインできます。艦隊司令部で艦艇と航空機の種別、階級を確認できます。マップが混み合ったら、ゲームメニュー > 海軍艦隊 / 航空団のページから紋章を非表示にしてください。",
+  "Yelkenli filo": "帆走艦隊",
+  "Kadırga filosu": "ガレー艦隊",
+  "Amiral filosu": "提督艦隊",
+  "%d. Yelkenli Filo": "第%d帆走艦隊",
+  "%d. Kadırga Filosu": "第%dガレー艦隊",
+  "%d. Amiral Filosu": "第%d提督艦隊",
+  "Kogge": "コグ船",
+  "Fusta": "フスタ",
+  "Yelkenli gemiler: açık denizde güçlüdür, kıyıyı bombalar; kürekli kadırgalara karşı rüzgâra bağımlıdır.": "帆船：外洋に強く沿岸を砲撃する。櫂で漕ぐガレー船に対しては風に左右される。",
+  "Kadırgalar: kürekle yürür, kıyıya yakın savaşır; yelkenlilere ve nakliyeye karşı güçlüdür, asker taşıyabilir.": "ガレー船：櫂で進み沿岸近くで戦う。帆船と輸送船に強く、兵を運べる。",
+  "Muharebeler filoya tecrübe kazandırır; rütbe yükseldikçe filo daha güçlü savaşır.": "戦闘で艦隊は経験を積む。階級が上がるほど艦隊は強く戦う。",
+  "Çağa özel donanma": "時代ごとの海軍",
+  "Donanma artık çağa göre farklı: 1299–1520 senaryolarında yelkenli filolar (Kogge, Karaka, Kalyon) ve kürekli Kadırga filoları savaşır; denizaltı ve uçak gemisi yoktur, kadırgalar gizli değildir ve asker taşıyabilir. 1914'te dretnot, kruvazör, muhrip ve U-botları; 1939'da zırhlı, uçak gemisi ve denizaltılar; Soğuk Savaş ve günümüzde füzeli muhrip, firkateyn, nükleer denizaltı. Hava filosu yalnızca hava teknolojisi olan ülkelerde kurulur.": "海軍は時代によって変わります。1299〜1520のシナリオでは帆走艦隊（コグ船、キャラック、ガレオン）と櫂のガレー艦隊が戦い、潜水艦と空母はなく、ガレーは隠れず兵を運べます。1914年はドレッドノート、巡洋艦、駆逐艦、Uボート、1939年は戦艦、空母、潜水艦、冷戦と現代はミサイル駆逐艦、フリゲート、原子力潜水艦。航空隊は航空技術を持つ国にのみ編成されます。"
  },
  "months": [
   "1月",

@@ -46,24 +46,16 @@ static var _news_left := 0     # bu turda yazılabilecek (oyuncuyu ilgilendirmey
 # ------------------------------------------------------------------ yardımcılar
 
 static func kind_name(kind: String) -> String:
-	return String(KIND_TR.get(kind, kind))
+	return Ext.kind_name(kind)
 
 
 static func kind_icon(kind: String) -> String:
-	match kind:
-		"sub":
-			return "uc_sub"
-		"carrier":
-			return "uc_carrier"
-		"transport":
-			return "cargo_ship"
-	return "uc_ship"
+	return Ext.fleet_icon(kind)
 
 
 static func kind_icon_fallback(kind: String) -> String:
-	match kind:
-		"sub":
-			return "sub"
+	if kind == "sub" and Ext.undersea(kind):
+		return "sub"
 	return "ship"
 
 
@@ -370,7 +362,7 @@ static func vis_ctx(gs) -> Dictionary:
 	for f in gs.fleets.values():
 		if f.owner == me or gs.is_allied(me, f.owner):
 			ctx.any[f.zone] = true
-			if f.kind != "sub":
+			if not Ext.undersea(f.kind):
 				ctx.asw[f.zone] = true
 	var ports: Dictionary = Seas.ports_of(gs, me, true)
 	for z in ports:
@@ -386,7 +378,7 @@ static func visible(gs, ctx: Dictionary, f) -> bool:
 	var me: int = int(ctx.me)
 	if me < 0 or f.owner == me or gs.is_allied(me, f.owner) or gs.spy_active(f.owner):
 		return true
-	if f.kind == "sub":
+	if Ext.undersea(f.kind):
 		return ctx.asw.has(f.zone) or f.seen >= gs.turn
 	var fog: int = int(ctx.fog)
 	if fog == 0:
@@ -809,11 +801,11 @@ static func _ai_actions(gs, idx: Dictionary) -> void:
 		var c = gs.countries[f.owner]
 		if c.enemies.is_empty():
 			continue
-		if f.kind == "sub":
+		if Ext.undersea(f.kind):
 			var tgt = _best_torpedo_target(gs, f, idx)
 			if tgt != null and rr.randf() < 0.7:
 				_torpedo_apply(gs, f, tgt, idx)
-		elif f.kind == "surface" or f.kind == "carrier":
+		elif f.kind == "surface" or f.kind == "carrier" or f.kind == "sub":
 			var pid: int = _best_bombard_target(gs, f)
 			if pid >= 0:
 				bombard_apply(gs, f, pid, true)
@@ -1121,7 +1113,7 @@ static func player_torpedo(gs, fid: int, target_id: int = -1) -> Dictionary:
 	if f == null:
 		res.err = "Bu filo senin değil."
 		return res
-	if f.kind != "sub":
+	if not Ext.undersea(f.kind):
 		res.err = "Torpido yalnız denizaltı filosuyla atılır."
 		return res
 	if f.cd > gs.turn:
@@ -1174,7 +1166,7 @@ static func embark(gs, pid: int, count: int = 0, fid: int = -1) -> String:
 	var f = null
 	if fid >= 0:
 		f = gs.fleets.get(fid)
-		if f == null or f.owner != me or f.kind == "sub":
+		if f == null or f.owner != me or Ext.undersea(f.kind):
 			return "Bu filoya asker bindirilemez."
 		if not zs.has(f.zone):
 			return "Filo bu limana bitişik denizde olmalı."
