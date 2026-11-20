@@ -4,6 +4,21 @@ extends RefCounted
 ## Tamamen uydurmadır; gerçek örgüt, şirket ya da hareket adı kullanılmaz.
 
 const Sil = preload("res://scripts/silhouette.gd")
+const Eras = preload("res://scripts/eras.gd")
+const Macro = preload("res://scripts/macro.gd")
+
+# Eski çağ (Osmanlı 1520, Timur 1380): "şirket/hizmetleri" yok; bölük, alay, ocak, sancak
+const PRE_POOL := {"a": ["Kara Kartal", "Demir Kılıç", "Kızıl Atlı", "Bozkurt", "Çelik Yay", "Gümüş Kalkan", "Altın Mızrak", "Kara Şahin", "Yeşil Sancak", "Dağ Aslanı", "Tuna Kurdu", "Kervan Muhafızı", "Akıncı", "Yörük", "Tuğ"],
+	"b": ["Ordusu", "Ayaklanması", "Sancağı", "Bayrağı", "Hareketi"]}
+const PRE_TYPE := {
+	"rebel": ["Ordusu", "Ayaklanması", "Sancağı", "Bayrağı"],
+	"merc": ["Bölüğü", "Alayı", "Ocağı", "Sancağı", "Cemaati"],
+	"cell": ["Cemiyeti", "Kardeşliği", "Gizli Ocağı", "Derneği"],
+}
+const WW_TYPE := {
+	"merc": ["Gönüllü Taburu", "Müfrezesi", "Lejyonu", "Komando Müfrezesi", "Taburu"],
+	"cell": ["Komitesi", "Hücresi", "Yeraltı Ağı", "Gölge Cephesi"],
+}
 
 # a: niteleyici / yer, b: simge (hayvan, doğa, nesne). Sonra tür eki gelir.
 const POOLS := {
@@ -61,13 +76,22 @@ static func _pool(c) -> Dictionary:
 	return POOLS.get(cul, POOLS["west"])
 
 
+static func _fam() -> String:
+	return Eras.family() if Macro.era_on else ""
+
+
 static func make(c, rng: RandomNumberGenerator, kind: String) -> String:
+	var fam: String = _fam()
+	if fam == "pre":
+		var a0: String = PRE_POOL["a"][rng.randi_range(0, PRE_POOL["a"].size() - 1)]
+		var t0: Array = PRE_TYPE[kind]
+		return "%s %s" % [a0, t0[rng.randi_range(0, t0.size() - 1)]]
 	var p: Dictionary = _pool(c)
 	var a: String = p["a"][rng.randi_range(0, p["a"].size() - 1)]
 	var b: String = p["b"][rng.randi_range(0, p["b"].size() - 1)]
 	if kind == "rebel":
 		return "%s %s" % [a, b]
-	var t: Array = TYPE[kind]
+	var t: Array = WW_TYPE[kind] if (fam == "ww1" or fam == "ww2") and WW_TYPE.has(kind) else TYPE[kind]
 	# paralı şirket ve gizli hücre: simge + tür ("Çelik Kılıç Güvenlik Hizmetleri")
 	return "%s %s" % [a, t[rng.randi_range(0, t.size() - 1)]]
 

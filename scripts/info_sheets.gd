@@ -287,13 +287,11 @@ static func open_howto(parent: Node) -> void:
 			render.call())
 
 
-const UPDATE_VER := "1.2.15"
+const UPDATE_VER := "1.2.16"
 const WHATS_NEW := [
-	["Gerçek oyuncu testi", "Yapay zekâ botları gerçek oyuncu gibi bütün modlarda binlerce tur oynatıldı: savaş bütçesi, barış teklifleri, kabine ve BM kararları. Çıkan dengesizlikler düzeltildi."],
-	["Dönem başlangıçları", "1939 başlangıcında ittifak zinciri artık savaşları yanlışlıkla büyütmüyor; «Hitler ölü» senaryosunda Polonya ilk haftalarda düşmüyor."],
-	["Hedefler", "Başlangıçta zaten sağlanmış hedefler (savaşı önle, istikrar, başkenti koru) artık 1. haftada değil, 52 hafta sürdürülünce zafer sayılır."],
-	["Bağımsızlık Modu", "Bağımsızlıktan sonra anavatan barış zamanında toprak geri alamaz; uluslararası arabuluculuk ateşkes sağlayabilir ve 1. aşamadan çıkış yolu açıldı."],
-	["Savaş ipucu", "Savaş ilan edilince bütçen düşükse Politika ekranına yönlendiren bir uyarı çıkar."],
+	["Hikâye çökmeleri düzeldi", "«İsyan bayrağı aç» ve «Başka hükümdara yemin et → Vazgeç» artık oyunu çökertmiyor."],
+	["Hikâye'de dönemine uygun kabine", "Osmanlı tımarında bakanların isim ve siluetleri artık Osmanlı kültüründen; Hint görünümlü bakanlar kalktı."],
+	["Paralı birlikler", "Gönüllü çete / özel harekât şirketi adları kalktı: Osmanlı çağında azap, sekban ve ağır süvari alayı; savaşlarda müfreze ve komando; şirketler yalnız modern çağda. Simgeler de döneme göre."],
 ]
 
 

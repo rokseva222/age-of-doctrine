@@ -45,6 +45,8 @@ const SEASIA_SET := ["Indonesia", "Malaysia", "Brunei", "Thailand", "Laos", "Cam
 ## Ülkenin portre kültürü (12 gruptan biri). Doku yoksa çağıran eski kod çizimine döner.
 static func culture_for(c) -> String:
 	var n: String = c.name_en
+	if c.get("origin_en") != null and String(c.origin_en) != "" and n.begins_with("faction_"):
+		n = String(c.origin_en)      # fief/isyancı: köken ülkenin kültürü
 	if Macro.era_on:
 		var fam: String = Eras.family()
 		if n == "Turkey" and (fam == "pre" or fam == "ww1"):
@@ -106,6 +108,8 @@ static func style_for(c) -> String:
 	if Macro.era_on and Eras.family() == "pre":
 		return "pre"                 # eski çağ: kaftan + sarık/kalpak, kravat yok
 	var n: String = c.name_en
+	if c.get("origin_en") != null and String(c.origin_en) != "" and n.begins_with("faction_"):
+		n = String(c.origin_en)
 	if n in ["United States of America"]:
 		return "us"
 	if n in ["Russia", "Belarus"]:

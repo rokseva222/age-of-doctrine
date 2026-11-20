@@ -224,6 +224,8 @@ static func _fam() -> String:
 
 static func culture_of(c) -> String:
 	var n: String = c.name_en
+	if c.get("origin_en") != null and String(c.origin_en) != "" and n.begins_with("faction_"):
+		n = String(c.origin_en)
 	if _fam() == "pre" and PRE_CULT.has(n):
 		return PRE_CULT[n]
 	if CULTURE_OF.has(n):

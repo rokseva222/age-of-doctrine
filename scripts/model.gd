@@ -72,6 +72,7 @@ class Country:
 	var iso := ""
 	var name := ""
 	var name_en := ""
+	var origin_en := ""          # fief/isyancı devletin çıktığı ülke (kültür: isim, siluet, kabine)
 	var continent := ""
 	var pop := 0.0                           # milyon
 	var gdp := 0.0                           # milyon USD

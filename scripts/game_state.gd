@@ -1274,6 +1274,7 @@ func create_faction(spec: Dictionary) -> int:
 	f.name_en = f.name_en if f.name_en != "" else "faction_%d" % f.id
 	f.a3 = "XXX"
 	f.continent = countries[from_cids[0]].continent
+	f.origin_en = String(countries[from_cids[0]].origin_en if countries[from_cids[0]].origin_en != "" else countries[from_cids[0]].name_en)
 	var cols: Array = spec.get("colors", ["333a44", "e3a92b", "ece6d6"])
 	f.color = Color(cols[0])
 	f.color2 = Color(cols[1])
@@ -3154,7 +3155,7 @@ func player_covert(target: int, kind: String) -> Dictionary:
 # ===================================================================== paralı askerler
 
 const MERC_TIERS := [
-	{"id": "band", "name": "Gönüllü Çete", "pct": 0.025, "lo": 2000, "hi": 15000, "cost": 1.4, "weeks": 13,
+	{"id": "band", "name": "Gönüllü Birlik", "pct": 0.025, "lo": 2000, "hi": 15000, "cost": 1.4, "weeks": 13,
 		"desc": "Ucuz ve kalabalık; kısa sözleşme."},
 	{"id": "pro", "name": "Profesyonel Birlik", "pct": 0.06, "lo": 5000, "hi": 35000, "cost": 4.0, "weeks": 26,
 		"desc": "Eğitimli, dengeli maliyet."},
@@ -3163,12 +3164,31 @@ const MERC_TIERS := [
 ]
 
 
+## Dönemin paralı kademe adı ve simgesi (eski çağda azap/sekban, savaşlarda komando; şirket yalnız modern)
+const MERC_ERA := {
+	"pre": {"names": ["Gönüllü Azaplar", "Sekban Bölüğü", "Kiralık Ağır Süvari Alayı"], "icons": ["u_azap", "u_arquebus", "u_knight"]},
+	"ww1": {"names": ["Gönüllü Müfreze", "Profesyonel Birlik", "Yabancı Lejyon Taburu"], "icons": ["recruit", "helmet_ww1", "rifle"]},
+	"ww2": {"names": ["Gönüllü Birlik", "Profesyonel Birlik", "Özel Komando Birliği"], "icons": ["recruit", "helmet_ww2", "w2_paratrooper"]},
+	"cold": {"names": ["Gönüllü Birlik", "Profesyonel Birlik", "Paralı Komando Grubu"], "icons": ["recruit", "helmet", "special_forces"]},
+}
+
+
+func merc_era_info(tier: int) -> Dictionary:
+	var fam: String = Eras.family() if Macro.era_on else ""
+	tier = clampi(tier, 0, MERC_TIERS.size() - 1)
+	if MERC_ERA.has(fam):
+		var e: Dictionary = MERC_ERA[fam]
+		return {"name": String(e.names[tier]), "icon": String(e.icons[tier])}
+	return {"name": String(MERC_TIERS[tier].name), "icon": String(["recruit", "helmet", "special_forces"][tier])}
+
+
 func merc_offer(c, tier: int) -> Dictionary:
 	tier = clampi(tier, 0, MERC_TIERS.size() - 1)
 	var t: Dictionary = MERC_TIERS[tier]
 	var n: int = clampi(int(c.base_troops * t.pct), t.lo, t.hi)
 	var unit: float = Cabinet._income_unit(self, c)
-	return {"n": n, "cost": unit * t.cost, "weeks": t.weeks, "name": t.name, "desc": t.desc}
+	var ei: Dictionary = merc_era_info(tier)
+	return {"n": n, "cost": unit * t.cost, "weeks": t.weeks, "name": ei.name, "desc": t.desc, "icon": ei.icon}
 
 
 ## Paralı birlik kiralar: boş bir eyalete (öncelik cephe/başkent) yerleşir. Dönen: {err, name, prov, n}
@@ -3884,7 +3904,7 @@ func to_dict() -> Dictionary:
 			"pattern": c.flag_pattern, "capital": c.capital, "gold": c.gold, "alive": c.alive,
 			"aggr": c.aggression, "enemies": c.enemies, "truce": c.truce, "allies": c.allies, "rel": c.relation, "pass": c.passage,
 			"rebel": c.is_rebel, "born": c.born, "leader": c.leader, "sanc": c.sanction_until, "macro": Macro.to_dict(c), "pop": c.pop, "gdp": c.gdp,
-			"name_en": c.name_en, "a3": c.a3, "cont": c.continent, "tech": c.tech_set,
+			"name_en": c.name_en, "a3": c.a3, "cont": c.continent, "tech": c.tech_set, "orig": c.origin_en,
 			"fm": c.formed, "fs": c.flag_spec,
 		})
 	d["countries"] = cs
@@ -3980,6 +4000,7 @@ func from_dict(d: Dictionary) -> bool:
 			c.name_en = str(r.get("name_en", c.name_en))
 			c.a3 = str(r.get("a3", c.a3))
 			c.continent = str(r.get("cont", c.continent))
+			c.origin_en = str(r.get("orig", ""))
 			c.tech_set = float(r.get("tech", c.tech_set))
 		if i >= base_country_count or era_id != "":
 			c.pop = r.get("pop", 0.0)

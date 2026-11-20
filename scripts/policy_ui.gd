@@ -5,6 +5,7 @@ const Loc = preload("res://scripts/loc.gd")
 
 const TK = preload("res://scripts/theme_kit.gd")
 const Macro = preload("res://scripts/macro.gd")
+const Eras = preload("res://scripts/eras.gd")
 const Carriers = preload("res://scripts/carriers.gd")
 const Arsenal = preload("res://scripts/arsenal.gd")
 const Emblem = preload("res://scripts/emblem.gd")
@@ -752,7 +753,8 @@ func _tab_trade() -> void:
 
 func _merc_section(c) -> void:
 	content.add_child(_kick("Paralı asker"))
-	content.add_child(_wrap("Özel şirketlerden süreli birlik kirala: ücret peşin ödenir, birlik boş bir cephe/başkent eyaletine yerleşir, sözleşme bitince dağılır. Adı ülkeni kültürüne göre rastgele gelir.", "small", TK.MUTED))
+	var pre_e: bool = Macro.era_on and Eras.family() == "pre"
+	content.add_child(_wrap("Kiralık bölüklerden süreli birlik tut: ücret peşin ödenir, birlik boş bir cephe/başkent eyaletine yerleşir, sözleşme bitince dağılır." if pre_e else "Özel şirketlerden süreli birlik kirala: ücret peşin ödenir, birlik boş bir cephe/başkent eyaletine yerleşir, sözleşme bitince dağılır. Adı ülkeni kültürüne göre rastgele gelir.", "small", TK.MUTED))
 	for i in gs.MERC_TIERS.size():
 		var ti: int = i
 		var o: Dictionary = gs.merc_offer(c, ti)
@@ -760,7 +762,7 @@ func _merc_section(c) -> void:
 		var h := HBoxContainer.new()
 		h.add_theme_constant_override("separation", 14)
 		var ic := TK.IconView.new()
-		ic.icon = ["recruit", "helmet", "special_forces"][ti]
+		ic.icon = String(o.icon)
 		ic.color = TK.PAPER
 		ic.custom_minimum_size = Vector2(44, 44)
 		ic.size_flags_vertical = Control.SIZE_SHRINK_CENTER
