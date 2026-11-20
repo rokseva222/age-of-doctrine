@@ -1216,8 +1216,10 @@ func show_career() -> void:
 		return
 	var sh = _open_sheet(gs.countries[gs.player].name, 880, true, true, "Hikâye Modu  /  Divan")
 	sh.set_icon("mode_story", "crown")
+	var sh_ref: Array = [sh]    # kapanıp silinmiş panel lambda'da 'freed' hatası vermesin
 	CareerUI.fill_panel(sh, gs, toast, func():
-		sh.close()
+		if is_instance_valid(sh_ref[0]):
+			sh_ref[0].close()
 		show_career(), func(pid: int):
 			hide_dialog()
 			action.emit("focus_city", pid))
@@ -1229,8 +1231,10 @@ func show_indep() -> void:
 		return
 	var sh = _open_sheet(gs.countries[gs.player].name, 860, true, true, "Bağımsızlık Yolu")
 	sh.set_icon("founding_scroll", "flag")
+	var sh_ref: Array = [sh]    # kapanıp silinmiş panel lambda'da 'freed' hatası vermesin
 	IndepUI.fill_panel(sh, gs, toast, func():
-		sh.close()
+		if is_instance_valid(sh_ref[0]):
+			sh_ref[0].close()
 		show_indep(), func(pid: int):
 			hide_dialog()
 			action.emit("focus_city", pid))
