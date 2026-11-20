@@ -435,6 +435,10 @@ static func restructure(gs, id: String) -> void:
 	var idx: Dictionary = {}
 	for c in gs.countries:
 		idx[c.name_en] = c.id
+	# inanç, eyaletin BUGÜNKÜ sahibine göre atanır (Sovyet'e katılan Özbekistan hâlâ Müslüman, Kuzey Kıbrıs Türk-Müslüman)
+	load("res://scripts/faith.gd").ensure(gs)
+	if family() == "pre":
+		gs.faith["1801"] = "christian"      # Kuzey Kıbrıs'a Türk yerleşimi 1571 sonrası; 1380/1520'de Hristiyan
 	var orig: Array = []           # eyalet -> bugünkü sahibi
 	for p in gs.provinces:
 		orig.append(p.owner)

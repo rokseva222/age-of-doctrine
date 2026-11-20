@@ -157,6 +157,8 @@ func _label(text: String, pos: Vector2, size: int, font: Font, col: Color, outli
 func _draw_country_names(gs, z: float, screen: Rect2, font: Font) -> void:
 	var items: Array = []
 	for cid in map.country_labels:
+		if cid < 0 or cid >= gs.countries.size():
+			continue                    # dünya değişirken eski gs'ye ait etiket
 		var c = gs.countries[cid]
 		if not c.alive:
 			continue
