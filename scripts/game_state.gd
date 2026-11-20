@@ -3365,6 +3365,8 @@ func _ai_war_decision(c) -> void:
 			continue
 		if oid == player and turn < 14:
 			continue
+		if oid == player and Career.active(self) and Career.state(self) == "vassal" and c.id != int(career.host):
+			continue          # hükümdarın himayesindeki tımara yabancı devlet saldırmaz
 		var their_power := power_of(o)
 		for al in o.allies:
 			their_power += power_of(countries[al]) * 0.25

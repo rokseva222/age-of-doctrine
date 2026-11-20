@@ -155,7 +155,7 @@ static func pick_fiefs(gs, host: int) -> Array:
 	pops.sort()
 	var big: float = pops[int(pops.size() * 0.9)] if pops.size() > 3 else 1e9     # en kalabalık %10: büyük şehir, tımar olmaz
 	for pid in hc.owned_ids:
-		if pid == hc.capital or gs.provinces[pid].controller != host or gs.provinces[pid].pop >= big:
+		if pid == hc.capital or gs.provinces[pid].controller != host or gs.provinces[pid].pop > big:
 			continue
 		var border := false
 		for nb in gs.provinces[pid].neighbors:

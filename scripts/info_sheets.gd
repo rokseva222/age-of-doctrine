@@ -287,8 +287,9 @@ static func open_howto(parent: Node) -> void:
 			render.call())
 
 
-const UPDATE_VER := "1.2.16"
+const UPDATE_VER := "1.2.17"
 const WHATS_NEW := [
+	["Hikâye: tımar artık güvende", "Hükümdarın himayesindeki tımara yabancı devletler savaş açmıyor; ilk haftalarda tımarını kaybedip hikâyenin bitmesi sorunu giderildi. Rusya, Çin gibi büyük ülkelerde de Hikâye başlatılabiliyor."],
 	["Hikâye çökmeleri düzeldi", "«İsyan bayrağı aç» ve «Başka hükümdara yemin et → Vazgeç» artık oyunu çökertmiyor."],
 	["Hikâye'de dönemine uygun kabine", "Osmanlı tımarında bakanların isim ve siluetleri artık Osmanlı kültüründen; Hint görünümlü bakanlar kalktı."],
 	["Paralı birlikler", "Gönüllü çete / özel harekât şirketi adları kalktı: Osmanlı çağında azap, sekban ve ağır süvari alayı; savaşlarda müfreze ve komando; şirketler yalnız modern çağda. Simgeler de döneme göre."],
