@@ -4242,7 +4242,9 @@
   "Bu eyalete 20.000 asker yerleştir": "이 주에 병력 20,000명 배치",
   "Başkenti bu eyalete taşı": "수도를 이 주로 이전",
   "Bu ülkenin ordusunu yarıya indir": "이 나라의 군대를 절반으로",
-  "Bu eyalette isyan çıkar": "이 주에서 반란 일으키기"
+  "Bu eyalette isyan çıkar": "이 주에서 반란 일으키기",
+  "Sandbox'a yeni araçlar": "샌드박스 새 도구",
+  "Sandbox modunda dünya barışı, ittifak, savaş çıkarma, olay tetikleme, asker yerleştirme, başkent taşıma, isyan çıkarma ve daha fazlası.": "샌드박스 모드에 세계 평화, 동맹, 전쟁 일으키기, 이벤트 발생, 병력 배치, 수도 이전, 반란 등이 추가되었습니다."
  },
  "months": [
   "1월",

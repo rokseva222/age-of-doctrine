@@ -4242,7 +4242,9 @@
   "Bu eyalete 20.000 asker yerleştir": "在此省份部署2万士兵",
   "Başkenti bu eyalete taşı": "将首都迁至此省",
   "Bu ülkenin ordusunu yarıya indir": "将该国军队减半",
-  "Bu eyalette isyan çıkar": "在此省份引发叛乱"
+  "Bu eyalette isyan çıkar": "在此省份引发叛乱",
+  "Sandbox'a yeni araçlar": "沙盒新工具",
+  "Sandbox modunda dünya barışı, ittifak, savaş çıkarma, olay tetikleme, asker yerleştirme, başkent taşıma, isyan çıkarma ve daha fazlası.": "沙盒模式新增世界和平、结盟、引发战争、触发事件、部署士兵、迁都、引发叛乱等功能。"
  },
  "months": [
   "1月",

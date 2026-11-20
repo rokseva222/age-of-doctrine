@@ -4242,7 +4242,9 @@
   "Bu eyalete 20.000 asker yerleştir": "وضع 20,000 جندي في هذه المقاطعة",
   "Başkenti bu eyalete taşı": "نقل العاصمة إلى هذه المقاطعة",
   "Bu ülkenin ordusunu yarıya indir": "خفض جيش هذه الدولة إلى النصف",
-  "Bu eyalette isyan çıkar": "إشعال تمرد في هذه المقاطعة"
+  "Bu eyalette isyan çıkar": "إشعال تمرد في هذه المقاطعة",
+  "Sandbox'a yeni araçlar": "أدوات جديدة في وضع الصندوق الرملي",
+  "Sandbox modunda dünya barışı, ittifak, savaş çıkarma, olay tetikleme, asker yerleştirme, başkent taşıma, isyan çıkarma ve daha fazlası.": "يضيف وضع الصندوق الرملي السلام العالمي والتحالفات وإشعال الحروب وتفعيل الأحداث ووضع الجنود ونقل العاصمة وإشعال التمرد والمزيد."
  },
  "months": [
   "يناير",

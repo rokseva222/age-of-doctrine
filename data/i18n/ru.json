@@ -4242,7 +4242,9 @@
   "Bu eyalete 20.000 asker yerleştir": "Разместить 20 000 солдат в этой провинции",
   "Başkenti bu eyalete taşı": "Перенести столицу в эту провинцию",
   "Bu ülkenin ordusunu yarıya indir": "Сократить армию этой страны вдвое",
-  "Bu eyalette isyan çıkar": "Поднять мятеж в этой провинции"
+  "Bu eyalette isyan çıkar": "Поднять мятеж в этой провинции",
+  "Sandbox'a yeni araçlar": "Новые инструменты песочницы",
+  "Sandbox modunda dünya barışı, ittifak, savaş çıkarma, olay tetikleme, asker yerleştirme, başkent taşıma, isyan çıkarma ve daha fazlası.": "В песочнице появились мир во всём мире, союзы, развязывание войн, события, размещение войск, перенос столицы, мятежи и многое другое."
  },
  "months": [
   "января",

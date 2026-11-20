@@ -4241,7 +4241,9 @@
   "Bu eyalete 20.000 asker yerleştir": "20.000 Soldaten in dieser Provinz stationieren",
   "Başkenti bu eyalete taşı": "Hauptstadt in diese Provinz verlegen",
   "Bu ülkenin ordusunu yarıya indir": "Armee dieses Landes halbieren",
-  "Bu eyalette isyan çıkar": "Aufstand in dieser Provinz auslösen"
+  "Bu eyalette isyan çıkar": "Aufstand in dieser Provinz auslösen",
+  "Sandbox'a yeni araçlar": "Neue Sandbox-Werkzeuge",
+  "Sandbox modunda dünya barışı, ittifak, savaş çıkarma, olay tetikleme, asker yerleştirme, başkent taşıma, isyan çıkarma ve daha fazlası.": "Der Sandbox-Modus bietet jetzt Weltfrieden, Bündnisse, Kriegsauslösung, Ereignisse, Truppenplatzierung, Hauptstadtverlegung, Aufstände und mehr."
  },
  "months": [
   "Januar",

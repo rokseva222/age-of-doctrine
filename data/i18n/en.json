@@ -4055,7 +4055,9 @@
   "Bu eyalete 20.000 asker yerleştir": "Place 20,000 troops in this province",
   "Başkenti bu eyalete taşı": "Move the capital to this province",
   "Bu ülkenin ordusunu yarıya indir": "Halve this country's army",
-  "Bu eyalette isyan çıkar": "Start a rebellion in this province"
+  "Bu eyalette isyan çıkar": "Start a rebellion in this province",
+  "Sandbox'a yeni araçlar": "New Sandbox tools",
+  "Sandbox modunda dünya barışı, ittifak, savaş çıkarma, olay tetikleme, asker yerleştirme, başkent taşıma, isyan çıkarma ve daha fazlası.": "Sandbox mode adds world peace, alliances, starting wars, triggering events, placing troops, moving the capital, starting rebellions and more."
  },
  "months": [
   "January",

@@ -4242,7 +4242,9 @@
   "Bu eyalete 20.000 asker yerleştir": "この州に2万の兵を配置",
   "Başkenti bu eyalete taşı": "首都をこの州に移す",
   "Bu ülkenin ordusunu yarıya indir": "この国の軍を半減",
-  "Bu eyalette isyan çıkar": "この州で反乱を起こす"
+  "Bu eyalette isyan çıkar": "この州で反乱を起こす",
+  "Sandbox'a yeni araçlar": "サンドボックスの新ツール",
+  "Sandbox modunda dünya barışı, ittifak, savaş çıkarma, olay tetikleme, asker yerleştirme, başkent taşıma, isyan çıkarma ve daha fazlası.": "サンドボックスに世界平和、同盟、戦争の勃発、イベント発生、兵の配置、首都移転、反乱などが加わりました。"
  },
  "months": [
   "1月",
