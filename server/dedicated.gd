@@ -26,6 +26,7 @@ func _init() -> void:
 	var url: String = _arg("master", "")
 	if url != "":
 		master.url = url
+	await process_frame
 	var cfg := {"name": _arg("name", "Sunucu"), "era": _arg("era", ""), "port": int(_arg("port", "47320")), "round_secs": float(_arg("secs", "120")),
 		"max": int(_arg("max", "6")), "pass": _arg("pass", ""), "ver": _arg("ver", "")}
 	if not net.host(cfg):

@@ -5,6 +5,7 @@ const TK = preload("res://scripts/theme_kit.gd")
 const Sheet = preload("res://scripts/sheet.gd")
 const Loc = preload("res://scripts/loc.gd")
 const Net = preload("res://scripts/net.gd")
+const Settings = preload("res://scripts/settings.gd")
 const Eras = preload("res://scripts/eras.gd")
 
 const REGIONS := ["TR", "EU", "US", "AS", "SA", "AF", "OC"]
@@ -79,6 +80,16 @@ static func browser(main) -> void:
 	var top := HBoxContainer.new()
 	top.add_theme_constant_override("separation", 10)
 	sh.body.add_child(top)
+	var nick := LineEdit.new()
+	nick.placeholder_text = Loc.t("Oyuncu adın")
+	nick.text = Settings.player_name
+	nick.max_length = 20
+	nick.custom_minimum_size = Vector2(0, 56)
+	nick.text_changed.connect(func(t: String):
+		Settings.player_name = t.strip_edges()
+		Settings.save_all())
+	sh.body.add_child(nick)
+	sh.body.move_child(nick, 0)
 	var code := LineEdit.new()
 	code.placeholder_text = Loc.t("Kod ya da IP")
 	code.custom_minimum_size = Vector2(0, 60)
@@ -146,10 +157,12 @@ static func browser(main) -> void:
 				net.ping(String(e.ip), int(e.port))
 	refresh.pressed.connect(func():
 		master.fetch())
-	master.list_ready.connect(func(arr: Array):
+	var on_list := func(arr: Array):
 		state.net = arr
-		render.call())
-	master.failed.connect(func(_m: String): render.call())
+		render.call()
+	var on_fail := func(_m: String): render.call()
+	master.list_ready.connect(on_list)
+	master.failed.connect(on_fail)
 	net.lan_scan_start()
 	master.fetch()
 	var tm := Timer.new()
@@ -157,7 +170,12 @@ static func browser(main) -> void:
 	tm.autostart = true
 	tm.timeout.connect(func(): render.call())
 	sh.add_child(tm)
-	sh.closed.connect(func(): net.lan_scan_stop())
+	sh.closed.connect(func():
+		net.lan_scan_stop()
+		if master.list_ready.is_connected(on_list):
+			master.list_ready.disconnect(on_list)
+		if master.failed.is_connected(on_fail):
+			master.failed.disconnect(on_fail))
 	render.call()
 	sh.add_button("Geri", func(): pass, "ghost", true, "", 170)
 
@@ -175,6 +193,16 @@ static func host_form(main) -> void:
 	pw.placeholder_text = Loc.t("Şifre (boş = herkese açık)")
 	pw.custom_minimum_size = Vector2(0, 60)
 	sh.body.add_child(pw)
+	# dünya / çağ
+	sh.body.add_child(TK.t("Dünya", "kicker"))
+	var era_ob := OptionButton.new()
+	era_ob.custom_minimum_size = Vector2(0, 60)
+	era_ob.add_item(Loc.t("Dünya 2027"))
+	era_ob.set_item_metadata(0, "")
+	for e in Eras.all():
+		era_ob.add_item(Loc.t(String(e["name"])))
+		era_ob.set_item_metadata(era_ob.item_count - 1, String(e["id"]))
+	sh.body.add_child(era_ob)
 	# tur süresi
 	sh.body.add_child(TK.t("Tur süresi", "kicker"))
 	var secs_row := HFlowContainer.new()
@@ -216,11 +244,11 @@ static func host_form(main) -> void:
 				TK.style_button(c, "")
 			TK.style_button(b3, "gold"))
 		reg_row.add_child(b3)
-	var note := TK.t("Dünya ve senaryo, oda kurulunca lobide seçilir. Telefonda oda kurarsan oyun bitene kadar uygulamayı açık tut; kalıcı oda için sunucu programını bir bilgisayarda çalıştır.", "small", TK.FAINT)
+	var note := TK.t("Telefonda oda kurarsan oyun bitene kadar uygulamayı açık tut; kalıcı oda için sunucu programını bir bilgisayarda çalıştır.", "small", TK.FAINT)
 	note.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	sh.body.add_child(note)
 	sh.add_button("Oda kur", func():
-		main.online_host({"name": nm.text.strip_edges(), "pass": pw.text, "round_secs": float(st.secs), "max": int(st.max), "region": String(st.region)}), "gold", true, "play", 220)
+		main.online_host({"name": nm.text.strip_edges(), "era": String(era_ob.get_item_metadata(era_ob.selected)), "pass": pw.text, "round_secs": float(st.secs), "max": int(st.max), "region": String(st.region)}), "gold", true, "play", 220)
 	sh.add_button("Vazgeç", func(): pass, "ghost", true, "", 170)
 
 
@@ -249,9 +277,7 @@ static func lobby(main) -> Control:
 		var me_host := false
 		for id in net.players:
 			var p: Dictionary = net.players[id]
-			var cn := ""
-			if int(p.cid) >= 0 and main.gs != null and int(p.cid) < main.gs.countries.size():
-				cn = main.gs.countries[int(p.cid)].name
+			var cn: String = String(p.get("cname", ""))
 			list.add_child(TK.t("%s%s   %s" % [p.name, "  ★" if bool(p.host) else "", cn if cn != "" else Loc.t("(ülke seçmedi)")], "bodyb", TK.TEXT))
 			if bool(p.host) and int(id) == multiplayer_id(net):
 				me_host = true

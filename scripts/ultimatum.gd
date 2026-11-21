@@ -3,6 +3,7 @@ extends RefCounted
 ## Kabul ederse talep yerine gelir; reddederse savaş başlar. Kabul ihtimali güç oranına göre değişir.
 
 const Macro = preload("res://scripts/macro.gd")
+const Cmd = preload("res://scripts/cmd.gd")
 const COOLDOWN := 8     # aynı ülkeye iki ültimatom arası hafta
 
 const KINDS := {
@@ -118,6 +119,7 @@ static func available(gs, kind: String, target: int) -> bool:
 
 ## Ültimatomu ilet. {ok, accepted, text}
 static func deliver(gs, kind: String, target: int) -> Dictionary:
+	var _cmd := Cmd.Scope.new(gs, "Ultimatum.deliver", [kind, target])
 	var why := blocked(gs, target)
 	if why != "":
 		return {"ok": false, "text": why}

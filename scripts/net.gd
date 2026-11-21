@@ -9,6 +9,7 @@ const Room = preload("res://scripts/net_room.gd")
 const GS = preload("res://scripts/game_state.gd")
 const Mp = preload("res://scripts/mp.gd")
 const Eras = preload("res://scripts/eras.gd")
+const Settings = preload("res://scripts/settings.gd")
 
 const PROTO := 1
 const DEFAULT_PORT := 47320
@@ -22,6 +23,7 @@ signal status_changed()
 signal disconnected()
 signal error(msg: String)
 signal chat(from_cid: int, text: String)
+signal over(text: String)
 
 # ---- ortak durum
 var is_server := false
@@ -39,8 +41,10 @@ var gs_server = null
 var _round_timer := 0.0
 var _lan_udp: PacketPeerUDP = null
 var _lan_t := 0.0
+var _st_t := 0.0
 var _world_seed := 0
 var _server_logs: Array = []
+var _seats: Dictionary = {}                # token -> {"cid", "cname"} (bağlantısı kopan oyuncu geri dönünce koltuğunu alır)
 
 # ---- ping (UDP sorgu: sunucu port+1'de dinler)
 var _q_srv: UDPServer = null
@@ -59,31 +63,66 @@ func _ready() -> void:
 	multiplayer.peer_disconnected.connect(_on_peer_disconnected)
 	multiplayer.connected_to_server.connect(func():
 		connected = true
-		rpc_id(1, "srv_hello", PROTO, Settings_name()))
+		rpc_id(1, "srv_hello", PROTO, Settings_name(), my_token()))
 	multiplayer.connection_failed.connect(func():
 		connected = false
-		error.emit("Sunucuya bağlanılamadı."))
+		error.emit("Sunucuya bağlanılamadı.")
+		disconnected.emit())
 	multiplayer.server_disconnected.connect(func():
 		connected = false
 		started = false
 		disconnected.emit())
 
 
+static func my_token() -> String:
+	if Settings.net_token == "":
+		Settings.net_token = "%08x%08x" % [randi(), randi()]
+		Settings.save_all()
+	return Settings.net_token
+
+
 static func Settings_name() -> String:
-	var S = load("res://scripts/settings.gd")
-	var n: String = String(S.get("player_name")) if "player_name" in S else ""
+	var n: String = Settings.player_name
 	return n if n != "" else "Oyuncu"
+
+
+# ======================================================================= yardımcılar
+
+## Sunucu → eş. Eş yerel sunucu oyuncusu (kimlik 1) ise doğrudan çağrılır.
+func _to(pid: int, method: String, args: Array = []) -> void:
+	if pid == 1 and is_server:
+		callv(method, args)
+	else:
+		var full: Array = [pid, method]
+		full.append_array(args)
+		callv("rpc_id", full)
+
+
+## İstemci → sunucu (sunucu oyuncusuysa doğrudan çağrı).
+func to_server(method: String, args: Array = []) -> void:
+	if is_server:
+		callv(method, args)
+	else:
+		var full: Array = [1, method]
+		full.append_array(args)
+		callv("rpc_id", full)
+
+
+func _sender() -> int:
+	var s: int = multiplayer.get_remote_sender_id()
+	return 1 if s == 0 else s
 
 
 # ======================================================================= sunucu
 
 ## Sunucuyu açar. cfg: {name, era, scenario, max, pass, round_secs, port}
 func host(cfg: Dictionary) -> bool:
+	var local_player: bool = bool(cfg.get("local", false))
 	var port: int = int(cfg.get("port", DEFAULT_PORT))
 	var peer := ENetMultiplayerPeer.new()
 	var err: int = peer.create_server(port, int(cfg.get("max", MAX_PLAYERS)))
 	if err != OK:
-		error.emit("Sunucu açılamadı (port %d)." % port)
+		error.emit("Sunucu açılamadı.")
 		return false
 	multiplayer.multiplayer_peer = peer
 	is_server = true
@@ -97,6 +136,10 @@ func host(cfg: Dictionary) -> bool:
 	_lan_udp.set_dest_address("255.255.255.255", LAN_PORT)
 	_q_srv = UDPServer.new()
 	_q_srv.listen(port + 1)
+	info["seed"] = _world_seed
+	players = {}
+	if local_player:
+		players[1] = {"name": Settings_name(), "cid": -1, "host": true, "pass_ok": true}
 	return true
 
 
@@ -115,19 +158,35 @@ func _on_peer_disconnected(id: int) -> void:
 
 
 @rpc("any_peer", "call_remote", "reliable")
-func srv_hello(proto: int, pname: String) -> void:
+func srv_hello(proto: int, pname: String, token: String = "") -> void:
 	if not is_server:
 		return
-	var id: int = multiplayer.get_remote_sender_id()
+	var id: int = _sender()
 	if proto != PROTO:
-		rpc_id(id, "cli_denied", "Sürüm uyuşmazlığı: sunucu ve oyun aynı sürümde olmalı.")
+		_to(id, "cli_denied", ["Sürüm uyuşmazlığı: sunucu ve oyun aynı sürümde olmalı."])
+		return
+	if started and token != "" and _seats.has(token):
+		# oyun sürüyor: bu cihazın eski koltuğuna geri dön
+		var seat: Dictionary = _seats[token]
+		for q in players.keys():
+			if String(players[q].get("token", "")) == token:
+				players.erase(q)
+		players[id] = {"name": pname.left(24), "cid": int(seat.cid), "cname": String(seat.cname), "host": false, "pass_ok": true, "token": token}
+		room.set_afk(int(seat.cid), false)
+		_send_state(id, "cli_start")
+		_push_lobby()
+		_push_status()
 		return
 	if players.size() >= int(info.max):
-		rpc_id(id, "cli_denied", "Sunucu dolu.")
+		_to(id, "cli_denied", ["Sunucu dolu."])
 		return
-	players[id] = {"name": pname.left(24), "cid": -1, "host": players.is_empty(), "pass_ok": String(info.pass) == ""}
+	var any_host := false
+	for q in players.values():
+		if bool(q.host):
+			any_host = true
+	players[id] = {"name": pname.left(24), "cid": -1, "host": not any_host, "pass_ok": String(info.pass) == "", "token": token}
 	if String(info.pass) != "":
-		rpc_id(id, "cli_need_pass")
+		_to(id, "cli_need_pass")
 	else:
 		_push_lobby()
 
@@ -136,28 +195,31 @@ func srv_hello(proto: int, pname: String) -> void:
 func srv_pass(pw: String) -> void:
 	if not is_server:
 		return
-	var id: int = multiplayer.get_remote_sender_id()
+	var id: int = _sender()
 	if not players.has(id):
 		return
 	if pw == String(info.pass):
 		players[id].pass_ok = true
 		_push_lobby()
 	else:
-		rpc_id(id, "cli_denied", "Şifre yanlış.")
+		_to(id, "cli_denied", ["Şifre yanlış."])
 
 
 ## Kurucu (ilk bağlanan) dünyayı sunucuda kurar: çağ + seçili ülkeler başlatılınca.
 @rpc("any_peer", "call_remote", "reliable")
-func srv_pick(cid: int) -> void:
+func srv_pick(cid: int, cname: String = "") -> void:
 	if not is_server or started:
 		return
-	var id: int = multiplayer.get_remote_sender_id()
+	var id: int = _sender()
 	if not players.has(id) or not bool(players[id].pass_ok):
 		return
 	for p in players.values():
 		if int(p.cid) == cid:
 			return
 	players[id].cid = cid
+	players[id]["cname"] = cname.left(40)
+	if String(players[id].get("token", "")) != "":
+		_seats[String(players[id].token)] = {"cid": cid, "cname": cname.left(40)}
 	_push_lobby()
 
 
@@ -165,7 +227,7 @@ func srv_pick(cid: int) -> void:
 func srv_start() -> void:
 	if not is_server or started:
 		return
-	var id: int = multiplayer.get_remote_sender_id()
+	var id: int = _sender()
 	if not players.has(id) or not bool(players[id].host):
 		return
 	var picks: Array = []
@@ -173,7 +235,7 @@ func srv_start() -> void:
 		if int(p.cid) >= 0:
 			picks.append(int(p.cid))
 	if picks.size() < 1:
-		rpc_id(id, "cli_denied", "En az bir oyuncu ülke seçmeli.")
+		_to(id, "cli_denied", ["En az bir oyuncu ülke seçmeli."])
 		return
 	_build_world(picks)
 	started = true
@@ -204,7 +266,7 @@ func _build_world(picks: Array) -> void:
 func _send_state(pid: int, method: String) -> void:
 	var d: Dictionary = gs_server.to_dict()
 	var raw: PackedByteArray = var_to_bytes(d).compress(FileAccess.COMPRESSION_GZIP)
-	rpc_id(pid, method, raw, int(players[pid].cid), room.waiting_for(), String(info.era))
+	_to(pid, method, [raw, int(players[pid].cid), room.waiting_for(), String(info.era)])
 
 
 ## İstemci: bu turun komutlarını yollar. ready=true ise "turu bitirdim".
@@ -212,7 +274,7 @@ func _send_state(pid: int, method: String) -> void:
 func srv_submit(list: Array, is_ready: bool) -> void:
 	if not is_server or not started:
 		return
-	var id: int = multiplayer.get_remote_sender_id()
+	var id: int = _sender()
 	var p: Dictionary = players.get(id, {})
 	if p.is_empty() or int(p.cid) < 0:
 		return
@@ -227,10 +289,10 @@ func srv_submit(list: Array, is_ready: bool) -> void:
 func srv_chat(text: String) -> void:
 	if not is_server:
 		return
-	var id: int = multiplayer.get_remote_sender_id()
+	var id: int = _sender()
 	var cid: int = int(players.get(id, {}).get("cid", -1))
 	for pid in players:
-		rpc_id(pid, "cli_chat", cid, text.left(200))
+		_to(pid, "cli_chat", [cid, text.left(200)])
 
 
 func _check_round() -> void:
@@ -247,24 +309,24 @@ func _run_round() -> void:
 		_send_state(pid, "cli_round")
 	if String(r.get("over", "")) != "":
 		for pid in players:
-			rpc_id(pid, "cli_over", String(r.over))
+			_to(pid, "cli_over", [String(r.over)])
 
 
 func _push_lobby() -> void:
 	var list: Array = []
 	for pid in players:
 		var p: Dictionary = players[pid]
-		list.append({"id": pid, "name": p.name, "cid": p.cid, "host": p.host})
+		list.append({"id": pid, "name": p.name, "cid": p.cid, "host": p.host, "cname": String(p.get("cname", ""))})
 	for pid in players:
 		if bool(players[pid].pass_ok):
-			rpc_id(pid, "cli_lobby", info, list, started, pid)
+			_to(pid, "cli_lobby", [info, list, started, pid])
 	lobby_changed.emit()
 
 
 func _push_status() -> void:
 	var w: Array = room.waiting_for() if room != null else []
 	for pid in players:
-		rpc_id(pid, "cli_status", w, _round_timer)
+		_to(pid, "cli_status", [w, _round_timer])
 
 
 ## Bir sunucuya ping atar (sonuç pings["ip:port"] içinde, ms). Yanıt gelmezse 2 sn sonra -1.
@@ -308,6 +370,10 @@ func _poll_ping() -> void:
 func _process(delta: float) -> void:
 	_poll_ping()
 	if is_server:
+		_st_t += delta
+		if _st_t >= 2.0 and started and room != null:
+			_st_t = 0.0
+			_push_status()
 		_lan_t += delta
 		if _lan_t >= 1.0 and _lan_udp != null:
 			_lan_t = 0.0
@@ -333,7 +399,13 @@ func _process(delta: float) -> void:
 
 # ======================================================================= istemci
 
+var last_addr := ""
+var last_port := DEFAULT_PORT
+
+
 func join(addr: String, port: int = DEFAULT_PORT) -> bool:
+	last_addr = addr
+	last_port = port
 	var peer := ENetMultiplayerPeer.new()
 	var err: int = peer.create_client(addr, port)
 	if err != OK:
@@ -428,7 +500,7 @@ func cli_chat(cid: int, text: String) -> void:
 
 @rpc("authority", "call_remote", "reliable")
 func cli_over(text: String) -> void:
-	error.emit(text)
+	over.emit(text)
 
 
 func _apply_state(raw: PackedByteArray, cid: int, wait: Array, era: String) -> void:

@@ -9,6 +9,7 @@ const Loc = preload("res://scripts/loc.gd")
 const Eras = preload("res://scripts/eras.gd")
 const NameGen = preload("res://scripts/name_gen.gd")
 const Macro = preload("res://scripts/macro.gd")
+const Cmd = preload("res://scripts/cmd.gd")
 
 const REGIMES := ["democracy", "constitutional", "monarchy", "authoritarian", "communist", "junta", "fascist", "theocracy", "colonial", "feudal"]
 const NAME_TR := {"democracy": "Demokrasi", "monarchy": "Monarşi", "authoritarian": "Otoriter yönetim", "communist": "Tek parti (komünist)", "junta": "Askerî yönetim", "fascist": "Faşist rejim", "constitutional": "Meşruti monarşi", "theocracy": "Teokrasi", "colonial": "Sömürge yönetimi", "feudal": "Feodal krallık"}
@@ -307,6 +308,7 @@ static func _player_card(gs, c, r: String) -> void:
 
 ## Oyuncunun seçimi. Dönüş: sonuç metni
 static func choose(gs, idx: int) -> String:
+	var _cmd := Cmd.Scope.new(gs, "Politics.choose", [idx])
 	ensure(gs)
 	var pend: Dictionary = gs.pol.pending
 	if pend.is_empty():
@@ -459,6 +461,7 @@ static func actions(gs) -> Array:
 
 
 static func do_action(gs, id: String) -> String:
+	var _cmd := Cmd.Scope.new(gs, "Politics.do_action", [id])
 	ensure(gs)
 	var c = gs.countries[gs.player]
 	var key: String = str(gs.player)

@@ -15,6 +15,7 @@ const Settings = preload("res://scripts/settings.gd")
 const Loc = preload("res://scripts/loc.gd")
 const Chokepoints = preload("res://scripts/chokepoints.gd")
 const Ext = preload("res://scripts/fleet_ext.gd")
+const Cmd = preload("res://scripts/cmd.gd")
 
 const KINDS := ["surface", "sub", "carrier", "transport"]
 const KIND_TR := {"surface": "Muharebe filosu", "sub": "Denizaltı filosu", "carrier": "Uçak gemisi grubu", "transport": "Nakliye filosu"}
@@ -978,6 +979,7 @@ static func _mine(gs, fid: int):
 
 
 static func order_move(gs, fid: int, dest: String) -> String:
+	var _cmd := Cmd.Scope.new(gs, "Fleets.order_move", [fid, dest])
 	var f = _mine(gs, fid)
 	if f == null:
 		return "Bu filo senin değil."
@@ -1000,6 +1002,7 @@ static func order_move(gs, fid: int, dest: String) -> String:
 
 
 static func stop(gs, fid: int) -> String:
+	var _cmd := Cmd.Scope.new(gs, "Fleets.stop", [fid])
 	var f = _mine(gs, fid)
 	if f == null:
 		return "Bu filo senin değil."
@@ -1011,6 +1014,7 @@ static func stop(gs, fid: int) -> String:
 
 ## Aynı bölgedeki aynı türdeki kendi filolarını seçilene katar
 static func merge(gs, fid: int) -> String:
+	var _cmd := Cmd.Scope.new(gs, "Fleets.merge", [fid])
 	var f = _mine(gs, fid)
 	if f == null:
 		return "Bu filo senin değil."
@@ -1047,6 +1051,7 @@ static func blockade_candidates(gs, cid: int) -> Array:
 
 ## Abluka: en yakın savaştaki düşman limanı bölgesine gider ve orada abluka görevi alır
 static func blockade(gs, fid: int) -> String:
+	var _cmd := Cmd.Scope.new(gs, "Fleets.blockade", [fid])
 	var f = _mine(gs, fid)
 	if f == null:
 		return "Bu filo senin değil."
@@ -1081,6 +1086,7 @@ static func blockade(gs, fid: int) -> String:
 
 ## Oyuncu bombardımanı: {"err", "killed"}
 static func player_bombard(gs, fid: int, pid: int) -> Dictionary:
+	var _cmd := Cmd.Scope.new(gs, "Fleets.player_bombard", [fid, pid])
 	var res := {"err": "", "killed": 0}
 	var f = _mine(gs, fid)
 	if f == null:
@@ -1108,6 +1114,7 @@ static func player_bombard(gs, fid: int, pid: int) -> Dictionary:
 
 ## Oyuncu torpidosu: {"err", "hit", "cargo"}
 static func player_torpedo(gs, fid: int, target_id: int = -1) -> Dictionary:
+	var _cmd := Cmd.Scope.new(gs, "Fleets.player_torpedo", [fid, target_id])
 	var res := {"err": "", "hit": 0.0, "cargo": 0}
 	var f = _mine(gs, fid)
 	if f == null:
@@ -1147,6 +1154,7 @@ static func cargo_cap(gs, f) -> int:
 
 ## Ordu limandaki kendi ordusunu bir filoya (fid >= 0) ya da otomatik nakliye filosuna bindirir.
 static func embark(gs, pid: int, count: int = 0, fid: int = -1) -> String:
+	var _cmd := Cmd.Scope.new(gs, "Fleets.embark", [pid, count, fid])
 	var me: int = gs.player
 	var a = gs.armies.get(pid)
 	if a == null or a.owner != me:
@@ -1231,6 +1239,7 @@ static func debark_targets(gs, f) -> Array:
 
 ## Filodaki askeri hedef kıyı eyaletine çıkarır (mevcut çıkarma kuralları: savunma, landing_cap, harekât bedeli).
 static func debark(gs, fid: int, pid: int) -> String:
+	var _cmd := Cmd.Scope.new(gs, "Fleets.debark", [fid, pid])
 	var f = gs.fleets.get(fid)
 	var err: String = debark_check(gs, f, pid)
 	if err != "":
@@ -1450,6 +1459,7 @@ static func display_name(gs, f) -> String:
 
 
 static func rename(gs, fid: int, nm: String) -> String:
+	var _cmd := Cmd.Scope.new(gs, "Fleets.rename", [fid, nm])
 	var f = _mine(gs, fid)
 	if f == null:
 		return "Bu filo senin değil."
@@ -1459,6 +1469,7 @@ static func rename(gs, fid: int, nm: String) -> String:
 
 
 static func set_flag(gs, fid: int, spec: String) -> String:
+	var _cmd := Cmd.Scope.new(gs, "Fleets.set_flag", [fid, spec])
 	var f = _mine(gs, fid)
 	if f == null:
 		return "Bu filo senin değil."
@@ -1468,6 +1479,7 @@ static func set_flag(gs, fid: int, spec: String) -> String:
 
 
 static func set_stance(gs, fid: int, st: String) -> String:
+	var _cmd := Cmd.Scope.new(gs, "Fleets.set_stance", [fid, st])
 	var f = _mine(gs, fid)
 	if f == null:
 		return "Bu filo senin değil."
@@ -1491,6 +1503,7 @@ static func escort_candidates(gs, f) -> Array:
 
 
 static func set_escort(gs, fid: int, target: int) -> String:
+	var _cmd := Cmd.Scope.new(gs, "Fleets.set_escort", [fid, target])
 	var f = _mine(gs, fid)
 	if f == null:
 		return "Bu filo senin değil."
@@ -1512,6 +1525,7 @@ static func set_escort(gs, fid: int, target: int) -> String:
 
 ## Filoyu böler: yeni filo oran (0.1..0.9) kadarını alır. Yeni filoyu döndürür (başarısızsa null).
 static func split(gs, fid: int, frac: float):
+	var _cmd := Cmd.Scope.new(gs, "Fleets.split", [fid, frac])
 	var f = _mine(gs, fid)
 	if f == null:
 		return null

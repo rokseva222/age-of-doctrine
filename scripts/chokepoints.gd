@@ -7,6 +7,7 @@ extends RefCounted
 ## Etki, haftalık gelir çarpanı olarak Macro.calc içinde uygulanır (Chokepoints.income_mult).
 
 const Loc = preload("res://scripts/loc.gd")
+const Cmd = preload("res://scripts/cmd.gd")
 
 const MODES := ["open", "toll", "enemy", "all"]
 const MODE_TR := {"open": "Serbest geçiş", "toll": "Geçiş ücreti", "enemy": "Düşmana kapalı", "all": "Herkese kapalı"}
@@ -218,6 +219,7 @@ static func _ai(gs, id: String, st: Dictionary, cc, v: int) -> void:
 
 ## Oyuncu bir geçidin modunu değiştirir. Dönüş: "" = tamam, aksi hâlde Türkçe hata (Loc.t ile çevrilir)
 static func set_mode(gs, id: String, mode: String) -> String:
+	var _cmd := Cmd.Scope.new(gs, "Chokepoints.set_mode", [id, mode])
 	ensure(gs)
 	if not MODES.has(mode):
 		return "Geçersiz mod."

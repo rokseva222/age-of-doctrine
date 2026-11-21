@@ -5,6 +5,7 @@ extends RefCounted
 const Eras = preload("res://scripts/eras.gd")
 const Macro = preload("res://scripts/macro.gd")
 const Names = preload("res://scripts/names.gd")
+const Cmd = preload("res://scripts/cmd.gd")
 
 const ORDER := ["ceasefire", "rebuild", "aid", "peace_keep", "develop", "guarantee", "sanction", "embargo", "probe", "disarm", "attack"]
 const FRIENDLY := ["rebuild", "aid", "peace_keep", "develop", "guarantee"]
@@ -155,6 +156,7 @@ static func vote(gs, kind: String, proposer: int, target: int, w = null, forced:
 ## Önergeyi verir: bedel/bekleme kontrolü (yalnızca oyuncu için), oylama ve uygulama.
 ## target: ateşkesse savaşın dizini (gs.wars), diğerlerinde ülke kimliği.
 static func propose(gs, kind: String, proposer: int, target: int, forced: Dictionary = {}) -> Dictionary:
+	var _cmd := Cmd.Scope.new(gs, "UN.propose", [kind, proposer, target, forced])
 	var res := {"ok": false, "passed": false, "text": "", "yes": 0, "no": 0, "abstain": 0, "kind": kind, "proposer": proposer, "target": target,
 		"pv": int(forced.get(gs.player, -2)), "mine": proposer == gs.player}
 	if not available(gs):
@@ -364,6 +366,7 @@ static func weekly(gs) -> void:
 
 ## Oyuncunun beklemedeki önergeye oyu: 1 lehte, 0 aleyhte, -1 çekimser. Sonucu döndürür (propose ile aynı biçim).
 static func player_vote(gs, v: int) -> Dictionary:
+	var _cmd := Cmd.Scope.new(gs, "UN.player_vote", [v])
 	var p: Dictionary = gs.un_pending
 	gs.un_pending = {}
 	if p.is_empty():

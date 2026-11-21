@@ -29,6 +29,7 @@ const Cabinet = preload("res://scripts/cabinet.gd")
 const Militias = preload("res://scripts/militias.gd")
 const Fleets = preload("res://scripts/fleets.gd")
 const Air = preload("res://scripts/air.gd")
+const Cmd = preload("res://scripts/cmd.gd")
 
 signal news_posted(text: String, prov: int, kind: String)
 signal province_changed(pid: int)
@@ -74,6 +75,9 @@ var turn := 0
 var player := -1
 var humans: Array = []                   # çok oyunculu (aynı telefon / online): insan ülke kimlikleri; boşsa tek oyunculu
 var hs_i := 0                            # sırası gelen insanın humans içindeki indeksi
+var cmd_log = null                       # online istemcide oyuncu emirlerinin kaydı (Array); null = kayıt kapalı (cmd.gd)
+var cmd_replay := false                  # sunucu komutu yeniden oynatırken true (kayıt alınmaz)
+var cmd_depth := 0                       # iç içe emir çağrılarında yalnızca en dıştakini kaydetmek için
 var next_army_id := 1
 var player_acted := false                # bu turda oyuncu emir verdi mi
 var auto_idle := false                   # emir verilmezse boştaki ordulara otomatik görev (ayar)
@@ -326,6 +330,7 @@ const NUCLEAR := ["United States of America", "Russia", "United Kingdom", "Franc
 
 
 func player_build(pid: int, kind: String) -> String:
+	var _cmd := Cmd.Scope.new(self, "player_build", [pid, kind])
 	var p = provinces[pid]
 	if not Model.BLD.has(kind):
 		return "Bilinmeyen bina."
@@ -359,6 +364,7 @@ func assimilate_cost(pid: int) -> float:
 
 ## Fethedilen eyaleti hemen asimile eder: öz topraklarına katılır, huzursuzluk biter (barışta da yapılabilir).
 func player_assimilate(pid: int) -> String:
+	var _cmd := Cmd.Scope.new(self, "player_assimilate", [pid])
 	var p = provinces[pid]
 	if p.owner != player or p.controller != player:
 		return "Yalnızca kendi eyaletin asimile edilir."
@@ -428,6 +434,7 @@ func bulk_preview(kind: String, bkind: String = "") -> Dictionary:
 
 ## Kasa yettiği kadar (kârlı eyaletten başlayarak) uygular; yapılan sayıyı döndürür.
 func player_bulk(kind: String, bkind: String = "") -> int:
+	var _cmd := Cmd.Scope.new(self, "player_bulk", [kind, bkind])
 	var done := 0
 	var spent := 0.0
 	_quiet = true
@@ -456,6 +463,7 @@ func player_bulk(kind: String, bkind: String = "") -> int:
 
 
 func player_convert_faith(pid: int) -> String:
+	var _cmd := Cmd.Scope.new(self, "player_convert_faith", [pid])
 	var p = provinces[pid]
 	if p.owner != player or p.controller != player:
 		return "Yalnızca kendi eyaletinin inancı değiştirilir."
@@ -489,6 +497,7 @@ func _process_buildings() -> void:
 
 
 func player_set_propaganda(mode: String) -> void:
+	var _cmd := Cmd.Scope.new(self, "player_set_propaganda", [mode])
 	if Propaganda.MODES.has(mode):
 		countries[player].prop = mode
 		state_changed.emit()
@@ -530,6 +539,7 @@ func gas_platforms() -> Array:
 
 
 func player_gas(pid: int, platform: String = "artillery") -> String:
+	var _cmd := Cmd.Scope.new(self, "player_gas", [pid, platform])
 	if not player_has_gas():
 		return "Kimyasal silahın yok."
 	if gas_cd > turn:
@@ -585,6 +595,7 @@ func nuke_platforms(pid: int) -> Array:
 
 
 func player_nuke(pid: int, platform: String = "silo") -> String:
+	var _cmd := Cmd.Scope.new(self, "player_nuke", [pid, platform])
 	if not player_has_nukes():
 		return "Nükleer silahın yok."
 	if nuke_cd > turn:
@@ -765,6 +776,7 @@ func assault_estimate(pid: int, army_list: Array, op: String, frac: float = 1.0)
 
 
 func player_launch_assault(pid: int, ids: Array, op: String, frac: float = 1.0) -> Dictionary:
+	var _cmd := Cmd.Scope.new(self, "player_launch_assault", [pid, ids, op, frac])
 	var res := {"err": "", "n": 0, "eta": 0}
 	if player < 0 or not OPS.has(op):
 		res.err = "Geçersiz harekât."
@@ -1095,6 +1107,7 @@ func has_passage(guest: int, host: int) -> bool:
 
 ## Oyuncu bir ülkeden geçiş izni ister: 39 hafta geçerli. İlişki ne kadar iyiyse kabul olasılığı o kadar yüksek.
 func player_request_passage(target: int) -> String:
+	var _cmd := Cmd.Scope.new(self, "player_request_passage", [target])
 	var t = countries[target]
 	if t.is_rebel or not t.alive:
 		return "Geçerli bir hedef yok."
@@ -1304,6 +1317,7 @@ func spy_cost(target: int) -> float:
 
 ## Casus gönder: başarılıysa hedefin ordularını 4 hafta görürsün ve hazine/gelir/asker bilgisi gelir.
 func player_spy(target: int) -> String:
+	var _cmd := Cmd.Scope.new(self, "player_spy", [target])
 	var t = countries[target]
 	var me = countries[player]
 	if target == player or not t.alive or t.is_rebel:
@@ -1342,6 +1356,7 @@ func player_spy(target: int) -> String:
 
 ## Oyuncu teslim olur: işgal edilen eyaletler (başkent hariç) karşı tarafa geçer, kasanın yarısı tazminat gider, savaş biter.
 func player_surrender(foe: int) -> String:
+	var _cmd := Cmd.Scope.new(self, "player_surrender", [foe])
 	var w = get_war(player, foe)
 	if w == null:
 		return "Bu ülkeyle savaşta değilsin."
@@ -1356,6 +1371,7 @@ func player_surrender(foe: int) -> String:
 
 ## choice: 0 = a'nın yanında (b'ye savaş), 1 = b'nin yanında (a'ya savaş), 2 = tarafsız.
 func player_choose_side(a: int, b: int, choice: int) -> String:
+	var _cmd := Cmd.Scope.new(self, "player_choose_side", [a, b, choice])
 	pending_proposal = false
 	var me = countries[player]
 	if choice == 2:
@@ -1583,6 +1599,7 @@ func vassal_annex_cost(v: int) -> float:
 
 
 func player_annex_vassal(v: int) -> String:
+	var _cmd := Cmd.Scope.new(self, "player_annex_vassal", [v])
 	if lord_of(v) != player:
 		return "Bu devlet senin vasalın değil."
 	if turn - int(vassals[v].since) < VASSAL_ANNEX_MIN:
@@ -1600,6 +1617,7 @@ func player_annex_vassal(v: int) -> String:
 
 
 func player_release_vassal(v: int) -> String:
+	var _cmd := Cmd.Scope.new(self, "player_release_vassal", [v])
 	if lord_of(v) != player:
 		return "Bu devlet senin vasalın değil."
 	release_vassal(v, true)
@@ -1779,6 +1797,7 @@ func bloc_accepts(target: int, bid: int) -> String:
 
 
 func player_found_bloc(bname: String, emblem: Dictionary) -> String:
+	var _cmd := Cmd.Scope.new(self, "player_found_bloc", [bname, emblem])
 	if countries[player].alliance >= 0:
 		return "Zaten bir ittifaktasın."
 	bname = bname.strip_edges()
@@ -1793,6 +1812,7 @@ func player_found_bloc(bname: String, emblem: Dictionary) -> String:
 
 
 func player_invite(target: int) -> String:
+	var _cmd := Cmd.Scope.new(self, "player_invite", [target])
 	var bid: int = countries[player].alliance
 	if bid < 0:
 		return "Önce bir ittifak kur."
@@ -1842,6 +1862,7 @@ func ai_accepts_alliance(ai: int, other: int) -> bool:
 
 
 func player_propose_alliance(target: int) -> String:
+	var _cmd := Cmd.Scope.new(self, "player_propose_alliance", [target])
 	var t = countries[target]
 	if t.is_rebel:
 		return "İsyancılarla ittifak kurulmaz."
@@ -1877,6 +1898,7 @@ func diplo_left(kind: String, target: int) -> int:
 
 
 func player_improve_relations(target: int, kind: String) -> String:
+	var _cmd := Cmd.Scope.new(self, "player_improve_relations", [target, kind])
 	if not DIPLO_ACTS.has(kind) or target < 0 or target == player:
 		return "Geçersiz eylem."
 	var t = countries[target]
@@ -1906,6 +1928,7 @@ func player_improve_relations(target: int, kind: String) -> String:
 
 
 func player_break_alliance(target: int) -> String:
+	var _cmd := Cmd.Scope.new(self, "player_break_alliance", [target])
 	if not is_allied(player, target):
 		return "Müttefik değilsiniz."
 	if lord_of(player) == target or lord_of(target) == player:
@@ -1953,6 +1976,7 @@ func aid_request_chance(ally: int, foe: int) -> float:
 
 ## Savaştayken tek bir müttefikten yardım iste: {ok, text}
 func player_request_aid(ally: int) -> Dictionary:
+	var _cmd := Cmd.Scope.new(self, "player_request_aid", [ally])
 	if not is_allied(player, ally) or not countries[ally].alive:
 		return {"ok": false, "text": "Müttefik değilsiniz."}
 	if countries[player].enemies.is_empty():
@@ -1977,6 +2001,7 @@ func player_request_aid(ally: int) -> Dictionary:
 
 ## Tüm müttefiklerden yardım iste: {ok(joined count), text}
 func player_request_aid_all() -> Dictionary:
+	var _cmd := Cmd.Scope.new(self, "player_request_aid_all", [])
 	var joined := 0
 	var n_all: int = countries[player].allies.size()
 	for a in countries[player].allies.duplicate():
@@ -2002,6 +2027,7 @@ func aid_join_foes(ally: int) -> Array:
 
 ## Müttefikin savaşına katıl (en güçlü düşmanına savaş aç): hata metni ya da "".
 func player_aid_join(ally: int) -> String:
+	var _cmd := Cmd.Scope.new(self, "player_aid_join", [ally])
 	if not is_allied(player, ally):
 		return "Müttefik değilsiniz."
 	var foes := aid_join_foes(ally)
@@ -2019,6 +2045,7 @@ func aid_gold_cost() -> float:
 
 ## Müttefike mali yardım: hata metni ya da "".
 func player_aid_gold(ally: int) -> String:
+	var _cmd := Cmd.Scope.new(self, "player_aid_gold", [ally])
 	if not is_allied(player, ally):
 		return "Müttefik değilsiniz."
 	var left := _aid_left("g", ally)
@@ -2040,6 +2067,7 @@ func player_aid_gold(ally: int) -> String:
 
 
 func player_join_war(foe: int) -> void:
+	var _cmd := Cmd.Scope.new(self, "player_join_war", [foe])
 	pending_proposal = false
 	declare_war(player, foe, true)
 	state_changed.emit()
@@ -2230,6 +2258,7 @@ func provoke_left(kind: String, target: int) -> int:
 
 
 func player_worsen_relations(target: int, kind: String) -> String:
+	var _cmd := Cmd.Scope.new(self, "player_worsen_relations", [target, kind])
 	if not PROVOKE_ACTS.has(kind) or target < 0 or target >= countries.size() or target == player:
 		return "Geçersiz eylem."
 	var t = countries[target]
@@ -2293,6 +2322,7 @@ func trade_total() -> float:
 
 
 func player_sign_trade(target: int) -> String:
+	var _cmd := Cmd.Scope.new(self, "player_sign_trade", [target])
 	if target < 0 or target >= countries.size() or target == player:
 		return "Geçersiz hedef."
 	var t = countries[target]
@@ -2320,6 +2350,7 @@ func player_sign_trade(target: int) -> String:
 
 
 func player_cancel_trade(target: int) -> void:
+	var _cmd := Cmd.Scope.new(self, "player_cancel_trade", [target])
 	trade.erase(target)
 	state_changed.emit()
 
@@ -2381,6 +2412,7 @@ func sandbox_annex_country(from: int, to: int) -> void:
 
 
 func finish_peace(w, winner: int, annex: Array, terms: Array = []) -> void:
+	var _cmd := Cmd.Scope.new(self, "finish_peace", [w, winner, annex, terms])
 	var a: int = w.a
 	var b: int = w.b
 	var changed: Array = []
@@ -2543,6 +2575,7 @@ func _ai_wants_peace(ai: int, w) -> bool:
 
 
 func player_request_peace(enemy: int) -> Dictionary:
+	var _cmd := Cmd.Scope.new(self, "player_request_peace", [enemy])
 	var w = get_war(player, enemy)
 	if w == null:
 		return {"ok": false, "text": "Bu ülkeyle savaşta değilsin."}
@@ -3297,6 +3330,7 @@ func _landing_route(a, target: int) -> Array:
 
 
 func player_order_move(a, target: int, count: int = 0) -> String:
+	var _cmd := Cmd.Scope.new(self, "player_order_move", [a, target, count])
 	if a.owner != player:
 		return "Bu ordu senin değil."
 	if a.prov == target:
@@ -3384,6 +3418,7 @@ func _land_connected(from: int, to: int) -> bool:
 
 
 func player_cancel_move(a) -> void:
+	var _cmd := Cmd.Scope.new(self, "player_cancel_move", [a])
 	a.path.clear()
 	a.leaving = false
 	a.sp_size = 0
@@ -3393,6 +3428,7 @@ func player_cancel_move(a) -> void:
 
 
 func player_declare_war(target: int) -> String:
+	var _cmd := Cmd.Scope.new(self, "player_declare_war", [target])
 	if target < 0 or target >= countries.size():
 		return "Geçersiz hedef."
 	if target == player or not countries[target].alive:
@@ -3431,6 +3467,7 @@ func covert_chance(me, o, kind: String) -> float:
 
 ## oyuncunun gizli harekâtı: {ok, text}
 func player_covert(target: int, kind: String) -> Dictionary:
+	var _cmd := Cmd.Scope.new(self, "player_covert", [target, kind])
 	var me = countries[player]
 	var o = countries[target]
 	if target == player or not o.alive or not COVERT.has(kind):
@@ -3523,6 +3560,7 @@ func merc_offer(c, tier: int) -> Dictionary:
 
 ## Paralı birlik kiralar: boş bir eyalete (öncelik cephe/başkent) yerleşir. Dönen: {err, name, prov, n}
 func hire_merc(cid: int, tier: int, pay: bool = true) -> Dictionary:
+	var _cmd := Cmd.Scope.new(self, "hire_merc", [cid, tier, pay])
 	tier = clampi(tier, 0, MERC_TIERS.size() - 1)
 	var c = countries[cid]
 	var res := {"err": "", "name": "", "prov": -1, "n": 0}

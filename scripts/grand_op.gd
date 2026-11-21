@@ -7,6 +7,7 @@ extends RefCounted
 const Loc = preload("res://scripts/loc.gd")
 const Macro = preload("res://scripts/macro.gd")
 const Eras = preload("res://scripts/eras.gd")
+const Cmd = preload("res://scripts/cmd.gd")
 
 const COOLDOWN := 26                # hafta
 const DURATION := 3                 # hafta (başlangıç → sonuç)
@@ -241,6 +242,7 @@ static func _text(kind: String, op: Dictionary, extra: Dictionary = {}) -> Strin
 
 ## Başlatır. Dönüş: {"err": "", ...}
 static func launch(gs, tgt: int, op_name: String) -> Dictionary:
+	var _cmd := Cmd.Scope.new(gs, "GrandOp.launch", [tgt, op_name])
 	var err: String = check(gs, tgt)
 	if err != "":
 		return {"err": err}

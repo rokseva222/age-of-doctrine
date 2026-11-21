@@ -5,6 +5,8 @@ extends RefCounted
 const GS = preload("res://scripts/game_state.gd")
 const Cmd = preload("res://scripts/cmd.gd")
 const Mp = preload("res://scripts/mp.gd")
+const FleetsM = preload("res://scripts/fleets.gd")
+const AirM = preload("res://scripts/air.gd")
 
 var gs = null
 var cmds: Dictionary = {}       # cid -> bekleyen komutlar (Array)
@@ -20,6 +22,8 @@ func setup(g, picks: Array) -> void:
 	gs.humans = picks.duplicate()
 	gs.hs_i = 0
 	gs.cmd_log = null
+	FleetsM.ensure(gs)       # filo/uçak kimlikleri ilk görüntüden önce sabitlensin (istemciler aynı kimlikleri görsün)
+	AirM.ensure(gs)
 	for h in picks:
 		gs.countries[h].is_player = true
 		cmds[h] = []

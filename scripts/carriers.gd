@@ -6,6 +6,7 @@ extends RefCounted
 const Eras = preload("res://scripts/eras.gd")
 const Macro = preload("res://scripts/macro.gd")
 const Fleets = preload("res://scripts/fleets.gd")
+const Cmd = preload("res://scripts/cmd.gd")
 
 const START := {
 	"": {"United States of America": 11, "China": 3, "United Kingdom": 2, "France": 1, "India": 2, "Italy": 2, "Japan": 2, "Russia": 1, "Spain": 1, "Turkey": 1, "Thailand": 1},
@@ -66,6 +67,7 @@ static func can_build_ship(gs, c) -> String:
 
 
 static func build_ship(gs) -> String:
+	var _cmd := Cmd.Scope.new(gs, "Carriers.build_ship", [])
 	var c = gs.countries[gs.player]
 	var err := can_build_ship(gs, c)
 	if err != "":
@@ -97,6 +99,7 @@ static func can_buy(gs, c) -> String:
 
 
 static func buy(gs) -> String:
+	var _cmd := Cmd.Scope.new(gs, "Carriers.buy", [])
 	var c = gs.countries[gs.player]
 	var err := can_buy(gs, c)
 	if err != "":
@@ -118,6 +121,7 @@ static func strike_cost(c) -> float:
 
 ## Oyuncu uçak gemisi saldırısı: kıyı eyaletindeki düşman ordusunu vurur. Dönüş: {err, killed}
 static func strike(gs, pid: int) -> Dictionary:
+	var _cmd := Cmd.Scope.new(gs, "Carriers.strike", [pid])
 	var res := {"err": "", "killed": 0}
 	var c = gs.countries[gs.player]
 	var p = gs.provinces[pid]

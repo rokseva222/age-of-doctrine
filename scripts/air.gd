@@ -9,6 +9,7 @@ const Arsenal = preload("res://scripts/arsenal.gd")
 const Settings = preload("res://scripts/settings.gd")
 const Loc = preload("res://scripts/loc.gd")
 const Ext = preload("res://scripts/fleet_ext.gd")
+const Cmd = preload("res://scripts/cmd.gd")
 
 const KINDS := ["fighter", "bomber", "drone", "transport", "recon"]
 const KIND_TR := {"fighter": "Avcı filosu", "bomber": "Bombardıman filosu", "drone": "İHA filosu", "transport": "Hava nakliye filosu", "recon": "Keşif ve erken uyarı filosu"}
@@ -492,6 +493,7 @@ static func resolve_strike(gs, w, pid: int, quiet: bool = false) -> Dictionary:
 
 ## Oyuncu: bir kanadı hedefe yolla
 static func player_strike(gs, wid: int, pid: int) -> Dictionary:
+	var _cmd := Cmd.Scope.new(gs, "Air.player_strike", [wid, pid])
 	var w = gs.wings.get(wid)
 	var res := {"err": "", "killed": 0, "lost": 0.0, "down": 0.0}
 	if w == null or w.owner != gs.player:
@@ -534,6 +536,7 @@ static func rebase_check(gs, w, pid: int) -> String:
 
 
 static func rebase(gs, wid: int, pid: int) -> String:
+	var _cmd := Cmd.Scope.new(gs, "Air.rebase", [wid, pid])
 	var w = gs.wings.get(wid)
 	var e: String = rebase_check(gs, w, pid)
 	if e != "":
@@ -615,6 +618,7 @@ static func lift_check(gs, w, src: int, dst: int) -> String:
 
 ## Ordunun bir kısmını (kapasite kadar) hedefe uçurur. Dönüş hata metni ("" = tamam)
 static func airlift(gs, wid: int, src: int, dst: int) -> String:
+	var _cmd := Cmd.Scope.new(gs, "Air.airlift", [wid, src, dst])
 	var w = gs.wings.get(wid)
 	var e: String = lift_check(gs, w, src, dst)
 	if e != "":
@@ -871,6 +875,7 @@ static func _mine(gs, wid: int):
 
 
 static func rename(gs, wid: int, nm: String) -> String:
+	var _cmd := Cmd.Scope.new(gs, "Air.rename", [wid, nm])
 	var w = _mine(gs, wid)
 	if w == null:
 		return "Bu kanat senin değil."
@@ -880,6 +885,7 @@ static func rename(gs, wid: int, nm: String) -> String:
 
 
 static func set_flag(gs, wid: int, spec: String) -> String:
+	var _cmd := Cmd.Scope.new(gs, "Air.set_flag", [wid, spec])
 	var w = _mine(gs, wid)
 	if w == null:
 		return "Bu kanat senin değil."
@@ -889,6 +895,7 @@ static func set_flag(gs, wid: int, spec: String) -> String:
 
 
 static func set_stance(gs, wid: int, st: String) -> String:
+	var _cmd := Cmd.Scope.new(gs, "Air.set_stance", [wid, st])
 	var w = _mine(gs, wid)
 	if w == null:
 		return "Bu kanat senin değil."

@@ -50,6 +50,10 @@ const Politics = preload("res://scripts/politics.gd")
 const ApUi = preload("res://scripts/ap_ui.gd")
 const SlotsUI = preload("res://scripts/slots_ui.gd")
 const Mp = preload("res://scripts/mp.gd")
+const NetS = preload("res://scripts/net.gd")
+const NetMaster = preload("res://scripts/net_master.gd")
+const OnlineUI = preload("res://scripts/online_ui.gd")
+const Cmd = preload("res://scripts/cmd.gd")
 const MpUI = preload("res://scripts/mp_ui.gd")
 const FOCUS_ZOOM := 3.4
 
@@ -67,6 +71,14 @@ var selected_army = null
 var selected_fleet = null
 var selected_wing = null
 var tutorial = null
+var net = null                  # online ağ düğümü (/root/AodNet)
+var master = null               # ana liste istemcisi
+var online := false             # online oyunda mıyız
+var online_picking := false     # lobi için ülke seçiyoruz
+var _lobby_sheet = null
+var _sync_timer: Timer = null
+var _wait_ov = null
+var _online_before: Dictionary = {}
 var mp_n := 0                   # çok oyunculu kurulumda oyuncu sayısı (0 = normal oyun)
 var mp_picks: Array = []        # şu ana kadar seçilen ülkeler
 var mp_before: Dictionary = {}  # tur başı özetleri {ülke: snapshot}
@@ -329,6 +341,13 @@ func _start_era(id: String, scn: String = "") -> void:
 
 
 func _back_to_menu() -> void:
+	if online_picking:
+		online_picking = false
+		menu.set_online_pick(false)
+		menu.hide_all()
+		if _lobby_sheet != null and is_instance_valid(_lobby_sheet):
+			_lobby_sheet.visible = true
+		return
 	_mp_reset()
 	if Eras.current != "":
 		_new_world()
@@ -344,6 +363,9 @@ func _on_preview_country(cid: int) -> void:
 
 
 func _on_start_requested(cid: int) -> void:
+	if online_picking:
+		_online_pick_done(cid)
+		return
 	var mp_start: Array = []
 	if mp_n > 0:
 		if mp_picks.has(cid):
@@ -494,6 +516,9 @@ func _on_speed_changed(_idx: int) -> void:
 func _on_step() -> void:
 	if turn_busy or not playing or mode != "game" or ui.is_dialog_open():
 		return
+	if online:
+		_online_step()
+		return
 	turn_busy = true
 	if Mp.active(gs):
 		var rs: Dictionary = Mp.finish_seat(gs)
@@ -619,6 +644,251 @@ func _show_card(card: Dictionary) -> void:
 		gs.game_over.emit(false, fatal_text)
 
 
+
+# ------------------------------------------------------------------ online (sunucu tabanlı)
+
+func get_net():
+	if net == null:
+		net = NetS.new()
+		net.name = "AodNet"
+		get_tree().root.add_child(net)
+		net.error.connect(func(m: String):
+			menu.toast(Loc.t(m))
+			if online:
+				ui.toast(Loc.t(m)))
+		net.lobby_changed.connect(_online_lobby_changed)
+		net.game_started.connect(_online_begin)
+		net.round_done.connect(_online_round)
+		net.status_changed.connect(_online_status)
+		net.disconnected.connect(_online_lost)
+		net.over.connect(_online_over)
+	return net
+
+
+func get_master():
+	if master == null:
+		master = NetMaster.new()
+		add_child(master)
+	return master
+
+
+func online_host(cfg: Dictionary) -> void:
+	var n = get_net()
+	cfg["local"] = true
+	cfg["ver"] = Info.UPDATE_VER
+	if not n.host(cfg):
+		return
+	if String(cfg.get("pass", "")) == "":
+		get_master().announce({"name": cfg.name, "era": cfg.era, "players": 1, "max": cfg.max, "port": n.info.port, "pass": false, "ver": Info.UPDATE_VER, "region": cfg.get("region", "")})
+	_online_open_lobby()
+
+
+func online_join(ip: String, port: int) -> void:
+	var n = get_net()
+	if n.join(ip, port):
+		menu.toast(Loc.t("Bağlanılıyor..."))
+		_online_open_lobby()
+
+
+func _online_open_lobby() -> void:
+	if _lobby_sheet != null and is_instance_valid(_lobby_sheet):
+		_lobby_sheet.queue_free()
+	_lobby_sheet = OnlineUI.lobby(self)
+
+
+func _online_lobby_changed() -> void:
+	if net != null and net.is_server and master != null:
+		master._hb_info["players"] = net.players.size()
+
+
+## Lobiden ülke seçimi: aynı ülke seçim ekranı, ama "Başla" sunucuya seçimi gönderir.
+func online_pick_country() -> void:
+	var n = get_net()
+	online_picking = true
+	if _lobby_sheet != null and is_instance_valid(_lobby_sheet):
+		_lobby_sheet.visible = false
+	_detach_gs()
+	Eras.prepare(String(n.info.get("era", ""))) if String(n.info.get("era", "")) != "" else Eras.clear()
+	var g = GS.new()
+	g.new_world(int(n.info.get("seed", 0)))
+	if String(n.info.get("era", "")) != "":
+		Eras.restructure(g, String(n.info.era))
+	_attach_gs(g)
+	if String(n.info.get("era", "")) != "":
+		menu.set_era(String(n.info.era))
+		_era_look(String(n.info.era))
+	map.repaint_all()
+	mode = "select"
+	_apply_settings()
+	map.input_enabled = true
+	_update_insets()
+	menu.show_select(gs)
+	menu.set_pick_header(0, 0)
+	menu.set_online_pick(true)
+
+
+func _online_pick_done(cid: int) -> void:
+	online_picking = false
+	menu.set_online_pick(false)
+	menu.hide_all()
+	map.set_highlight_country(-1)
+	get_net().to_server("srv_pick", [cid, gs.countries[cid].name])
+	if _lobby_sheet != null and is_instance_valid(_lobby_sheet):
+		_lobby_sheet.visible = true
+
+
+func online_leave() -> void:
+	if net != null:
+		net.leave()
+	if master != null:
+		master.stop_announce()
+	online = false
+	if _sync_timer != null:
+		_sync_timer.stop()
+	_wait_free()
+	if mode == "game":
+		_go_main_menu()
+
+
+func _online_over(text: String) -> void:
+	_wait_free()
+	turn_busy = false
+	if online:
+		sfx.play("win")
+		ui.show_dialog("ZAFER!", text, [{"text": "Ana menü", "cb": func(): online_leave(), "kind": "good"}])
+
+
+var _reconnects := 0
+
+func _online_lost() -> void:
+	if online and _reconnects < 10 and net != null and net.last_addr != "":
+		_reconnects += 1
+		ui.toast(Loc.t("Bağlantı koptu, yeniden bağlanılıyor..."))
+		await get_tree().create_timer(3.0).timeout
+		if online and net != null:
+			net.join(net.last_addr, net.last_port)
+		return
+	menu.toast(Loc.t("Sunucu bağlantısı koptu."))
+	if online:
+		ui.toast(Loc.t("Sunucu bağlantısı koptu."))
+		online = false
+		_wait_free()
+		_go_main_menu()
+
+
+func _wait_free() -> void:
+	if _wait_ov != null and is_instance_valid(_wait_ov):
+		_wait_ov.queue_free()
+	_wait_ov = null
+
+
+## Sunucudan gelen durumu oyuna yerleştirir (başlangıç ve her tur sonu).
+func _online_swap(g, cid: int) -> void:
+	var keep: int = selected_pid
+	_detach_gs()
+	_attach_gs(g)
+	g.cmd_log = []
+	g.cmd_depth = 0
+	Cmd.rec_gs = g
+	g.switch_player(cid)
+	mode = "game"
+	playing = true
+	map.input_enabled = true
+	menu.hide_all()
+	ui.set_hud_visible(true)
+	ui.refresh_top()
+	_apply_settings()
+	_update_insets()
+	_era_look(Eras.current)
+	map.repaint_all()
+	if keep >= 0 and keep < g.provinces.size():
+		selected_pid = keep
+		map.select_province(keep)
+		ui.show_province(keep, null)
+
+
+func _online_begin(cid: int) -> void:
+	if _lobby_sheet != null and is_instance_valid(_lobby_sheet):
+		_lobby_sheet.queue_free()
+	_lobby_sheet = null
+	online = true
+	_reconnects = 0
+	turn_busy = false
+	_wait_free()
+	mp_n = 0
+	selected_pid = -1
+	if _sync_timer == null:
+		_sync_timer = Timer.new()
+		_sync_timer.wait_time = 8.0
+		_sync_timer.timeout.connect(func():
+			# planlanan emirleri düzenli olarak sunucuya yolla: süre dolarsa kaybolmasın
+			if online and not turn_busy and gs != null and not gs.cmd_log.is_empty():
+				net.to_server("srv_submit", [gs.cmd_log.duplicate(true), false]))
+		add_child(_sync_timer)
+	_sync_timer.start()
+	_online_swap(net.gs_client, cid)
+	map.focus_country(cid)
+	var cap: int = gs.countries[cid].capital
+	if cap >= 0:
+		selected_pid = cap
+		map.select_province(cap)
+		ui.show_province(cap, null)
+	sfx.play("horn", 0.6)
+	ui.toast(Loc.t("Online oyun başladı. Emirlerini ver, sonra «Turu geç»e bas; herkes hazır olunca tur işlenir."))
+
+
+## Online «Turu geç»: emirler sunucuya gider, diğer oyuncular beklenir.
+func _online_step() -> void:
+	turn_busy = true
+	sfx.play("stamp", 0.8)
+	_online_before = TurnUI.snapshot(gs)
+	net.to_server("srv_submit", [gs.cmd_log.duplicate(true), true])
+	_wait_free()
+	_wait_ov = TurnUI.loading(ui.root, gs.turn + 1)
+	_wait_ov.set_step(0.4, Loc.t("Diğer oyuncular bekleniyor..."))
+	_online_status()
+
+
+var _warned_turn := -1
+var _sync_t := 0.0
+
+func _online_status() -> void:
+	if net == null:
+		return
+	if online and not turn_busy and net.deadline_left > 0.0 and net.deadline_left <= 15.0 and _warned_turn != gs.turn:
+		_warned_turn = gs.turn
+		ui.toast(Loc.t("Tur bitmek üzere: %d sn") % int(net.deadline_left))
+	if _wait_ov == null or not is_instance_valid(_wait_ov):
+		return
+	var names: Array = []
+	for c in net.waiting:
+		if int(c) >= 0 and int(c) < gs.countries.size():
+			names.append(gs.countries[int(c)].name)
+	var txt: String = Loc.t("Diğer oyuncular bekleniyor...")
+	if not names.is_empty():
+		txt = Loc.t("Bekleniyor: %s") % ", ".join(names)
+	_wait_ov.set_step(0.4, txt)
+
+
+func _online_round(_inf: Dictionary) -> void:
+	var cid: int = net.my_cid
+	_wait_free()
+	_online_swap(net.gs_client, cid)
+	if not gs.countries[cid].alive:
+		playing = false
+		ui.show_dialog("Yenilgi", Loc.t("%s devleti yıkıldı. Cihan Bülteni sana başsağlığı diliyor.") % gs.countries[cid].name, [
+			{"text": "Ana menü", "cb": func(): online_leave(), "kind": "good"}])
+		turn_busy = false
+		return
+	var rep = TurnUI.build_report(ui, gs, _online_before, func(pid: int):
+		map.focus_province(pid, FOCUS_ZOOM)
+		_select(pid))
+	ui.set_modal(rep)
+	sfx.play("news", 0.9)
+	await rep.closed
+	turn_busy = false
+
+
 # ------------------------------------------------------------------ çok oyunculu (aynı telefon)
 
 func _on_multi_menu() -> void:
@@ -627,7 +897,7 @@ func _on_multi_menu() -> void:
 			mp_n = n
 			mp_picks = []
 			_to_select()),
-		func(): menu.toast("Online mod yapım aşamasında."))
+		func(): OnlineUI.browser(self))
 
 
 func _mp_reset() -> void:
@@ -740,7 +1010,7 @@ func _track_missions() -> String:
 
 
 func _check_goals() -> void:
-	if Mp.active(gs):
+	if Mp.active(gs) or online:
 		return
 	var fresh: Array = Goals.check(gs)
 	var msg := _track_missions()

@@ -24,6 +24,7 @@ static var _loaded := false
 # Seçenek: {"t": düğme, "e": etkiler, "r": sonuç metni, "fatal": {"p": taban, "k": istikrar etkisi, "text": ...}}
 # Cümleler: {m} bakan  {nb} komşu  {en} düşman/komşu  {c} ülke  {cap} başkent
 const PreCards = preload("res://scripts/cabinet_pre.gd")
+const Cmd = preload("res://scripts/cmd.gd")
 ## Çağa göre elenen modern kartlar (ww1/ww2/soğuk savaş döneminde çıkmaz)
 const NO_ERA := {
 	"ww1": ["d_cyber", "d_nuke", "i_press", "s_cyberhit", "f_leak", "a_leak", "r_leak", "h_pharma", "fn_mega", "t_crates", "t_arms", "t_tea", "s_cup", "s_games", "f_spy", "i_terror"],
@@ -548,6 +549,7 @@ static func candidates(gs, role: String) -> Array:
 
 
 static func appoint(gs, role: String, cand: Dictionary) -> void:
+	var _cmd := Cmd.Scope.new(gs, "Cabinet.appoint", [role, cand])
 	var c = gs.countries[gs.player]
 	c.gold = maxf(0.0, c.gold - float(cand.cost))
 	var term: int = 52 * (3 + absi(hash(cand.n)) % 3)
@@ -557,6 +559,7 @@ static func appoint(gs, role: String, cand: Dictionary) -> void:
 
 ## Bakanı görevden alır; istikrar bedeli. Sonraki kabine toplantısında yerine aday gelir.
 static func dismiss(gs, role: String) -> void:
+	var _cmd := Cmd.Scope.new(gs, "Cabinet.dismiss", [role])
 	var c = gs.countries[gs.player]
 	if not c.cab.has(role):
 		return

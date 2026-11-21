@@ -13,6 +13,7 @@ const Carriers = preload("res://scripts/carriers.gd")
 const Loc = preload("res://scripts/loc.gd")
 const Focus = preload("res://scripts/focus.gd")
 const Currency = preload("res://scripts/currency.gd")
+const Cmd = preload("res://scripts/cmd.gd")
 
 const BUDGET_KEYS := ["mil", "ind", "cyber", "logi", "stab", "res"]
 static var intel_era := false  # WW1/WW2/Soğuk Savaş: "siber" yerine istihbarat
@@ -376,6 +377,7 @@ static func cyber_focus(c, enemy: int) -> String:
 
 
 static func set_front(c, enemy: int, key: String, val: String) -> void:
+	var _cmd := Cmd.Scope.new(Cmd.rec_gs, "Macro.set_front", [c, enemy, key, val])
 	if not c.fronts.has(enemy):
 		c.fronts[enemy] = {"stance": "attack", "cyber": "auto"}
 	c.fronts[enemy][key] = val
@@ -384,6 +386,7 @@ static func set_front(c, enemy: int, key: String, val: String) -> void:
 # ===================================================================== bütçe / doktrin
 
 static func set_budget(c, key: String, val: int) -> void:
+	var _cmd := Cmd.Scope.new(Cmd.rec_gs, "Macro.set_budget", [c, key, val])
 	val = clampi(val, 0, 70)
 	var others: Array = []
 	var sum_o := 0
@@ -415,6 +418,7 @@ static func doctrine_cost(gs, c) -> float:
 
 
 static func set_doctrine(gs, c, idx: int) -> String:
+	var _cmd := Cmd.Scope.new(gs, "Macro.set_doctrine", [c, idx])
 	if idx == c.doctrine:
 		return ""
 	if gs.turn - c.doctrine_turn < DOCTRINE_COOLDOWN:
@@ -649,6 +653,7 @@ static func mob_cost(c) -> float:
 ## Seferberlik: büyük bir bedel karşılığı nüfusun bir kısmı derhal silah altına alınır; 26 hafta boyunca asker hedefi x1.4,
 ## işe alma hızı x2.5, nüfus tavanı %6 olur. İstikrar düşer. 78 hafta bekleme süresi.
 static func mobilize(gs, c) -> String:
+	var _cmd := Cmd.Scope.new(gs, "Macro.mobilize", [c])
 	if mob_active(c):
 		return "Seferberlik zaten sürüyor (%d hafta kaldı)." % (c.mob_until - gs.turn)
 	if c.mob_cd > gs.turn:
@@ -796,6 +801,7 @@ static func available_funds(c) -> float:
 
 
 static func buy(gs, c, id: String, qty: int) -> String:
+	var _cmd := Cmd.Scope.new(gs, "Macro.buy", [c, id, qty])
 	ensure(gs, c)
 	var why: String = availability(gs, c, id)
 	if why != "":

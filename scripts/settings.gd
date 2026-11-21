@@ -5,6 +5,8 @@ const PATH := "user://settings.cfg"
 
 static var music := 0.5
 static var sfx := 0.6
+static var net_token := ""                    # online yeniden bağlanma kimliği (rastgele, bu cihaza özel)
+static var player_name := ""                  # online oyuncu adı
 static var country_names := true
 static var province_names := true
 static var armies := true
@@ -72,6 +74,8 @@ static func load_all() -> void:
 		return
 	music = float(cf.get_value("audio", "music", music))
 	sfx = float(cf.get_value("audio", "sfx", sfx))
+	player_name = String(cf.get_value("net", "name", player_name))
+	net_token = String(cf.get_value("net", "token", net_token))
 	country_names = bool(cf.get_value("view", "country_names", country_names))
 	province_names = bool(cf.get_value("view", "province_names", province_names))
 	armies = bool(cf.get_value("view", "armies", armies))
@@ -116,6 +120,8 @@ static func save_all() -> void:
 	var cf := ConfigFile.new()
 	cf.set_value("audio", "music", music)
 	cf.set_value("audio", "sfx", sfx)
+	cf.set_value("net", "name", player_name)
+	cf.set_value("net", "token", net_token)
 	cf.set_value("view", "country_names", country_names)
 	cf.set_value("view", "province_names", province_names)
 	cf.set_value("view", "armies", armies)

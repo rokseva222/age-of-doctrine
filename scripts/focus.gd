@@ -3,6 +3,7 @@ extends RefCounted
 ## Dört dal: Ekonomi, Askeri, Diplomasi, İç Siyaset. Önkoşullar ağaç gibi açılır. Durum: gs.focus {"done": [], "cur": "", "left": 0}
 
 const Loc = preload("res://scripts/loc.gd")
+const Cmd = preload("res://scripts/cmd.gd")
 
 const BRANCHES := [
 	{"id": "eco", "tr": "Ekonomi", "en": "Economy", "icon": "coins"},
@@ -221,6 +222,7 @@ static func can_start(gs, id: String) -> String:
 
 
 static func start(gs, id: String) -> String:
+	var _cmd := Cmd.Scope.new(gs, "Focus.start", [id])
 	var err := can_start(gs, id)
 	if err != "":
 		return err
@@ -231,6 +233,7 @@ static func start(gs, id: String) -> String:
 
 
 static func cancel(gs) -> void:
+	var _cmd := Cmd.Scope.new(gs, "Focus.cancel", [])
 	ensure(gs)
 	gs.focus.cur = ""
 	gs.focus.left = 0

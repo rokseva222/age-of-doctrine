@@ -77,6 +77,7 @@ var _toast_lbl: Label
 var _toast_tw: Tween
 var era_id := ""
 var era_scn := ""      # çağın üstüne uygulanacak kullanıcı senaryosu
+var _online_pick := false
 var _sel_kicker: Label
 var _sel_title: Label
 
@@ -900,7 +901,7 @@ func select_country(cid: int) -> void:
 		stats.add_child(m)
 	_sel_box.add_child(stats)
 	_go_btn.disabled = false
-	_go_btn.text = TK.up("%s ile başla" % c.name)
+	_go_btn.text = TK.up(Loc.t("%s ülkesini seç") % c.name) if _online_pick else TK.up("%s ile başla" % c.name)
 	if _go_btn.get_parent() != null:
 		_go_btn.get_parent().remove_child(_go_btn)
 	_sel_box.add_child(_go_btn)
@@ -999,6 +1000,16 @@ func reset_pick() -> void:
 	for r in _rows:
 		TK.row_select(r.btn, false, TK.PAPER)
 		r.btn.add_theme_stylebox_override("normal", TK.line_box(Color(0, 0, 0, 0), TK.LINE))
+
+
+## Online lobi seçimi: "Başla" yerine "Bu ülkeyi seç".
+func set_online_pick(on: bool) -> void:
+	_online_pick = on
+	if _sel_title != null and on:
+		_sel_kicker.text = TK.up("Online")
+		_sel_title.text = Loc.t("Ülkeni seç")
+	elif _sel_title != null:
+		_sel_kicker.text = TK.up("Yeni oyun")
 
 
 func hide_all() -> void:

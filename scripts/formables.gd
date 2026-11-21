@@ -4,6 +4,7 @@ extends RefCounted
 
 const Eras = preload("res://scripts/eras.gd")
 const Flags = preload("res://scripts/flags.gd")
+const Cmd = preload("res://scripts/cmd.gd")
 
 static var _data: Array = []
 
@@ -64,6 +65,7 @@ static func target_provinces(gs, f: Dictionary) -> Dictionary:
 
 ## Formu uygular; hata metni ("" = başarılı).
 static func form(gs, f: Dictionary) -> String:
+	var _cmd := Cmd.Scope.new(gs, "Formables.form", [f])
 	if not available(gs).has(f):
 		return "Bu ülkeyi şu an formlayamazsın."
 	var pr: Dictionary = progress(gs, f)
