@@ -20,6 +20,7 @@ func _client_copy(server_gs, cid: int):
 	var g = GS.new()
 	g.new_world(int(d2.get("seed", 0)))
 	chk(g.from_dict(d2), "istemci from_dict")
+	g.net_humans = g.humans.duplicate()
 	g.humans = []
 	g.switch_player(cid)
 	g.cmd_log = []
@@ -121,11 +122,29 @@ func _init() -> void:
 	var t1: int = g.turn
 	room.process_round()
 	chk(g.turn == t1 + 1, "AFK ile tur")
+	# insanlar arası teklif: istemci teklif eder → sunucuda bekler → karşı istemci kabul eder → müttefik
+	room.set_afk(ids[2], false)
+	var ca = _client_copy(g, ids[0])
+	var msg: String = ca.player_propose_alliance(ids[1])
+	chk(ca.offers.size() == 1 and not ca.is_allied(ids[0], ids[1]), "istemci tarafı teklif yerel kabul etmedi: %s" % msg)
+	room.submit(ids[0], ca.cmd_log)
+	for h in ids:
+		room.set_ready(h, true)
+	room.process_round()
+	chk(g.offers.size() == 1 and not g.is_allied(ids[0], ids[1]), "sunucuda teklif bekliyor")
+	var cb = _client_copy(g, ids[1])
+	chk(cb.offers_for(ids[1]).size() == 1, "alıcı istemci teklifi gördü")
+	cb.respond_offer(int(cb.offers_for(ids[1])[0].id), true)
+	room.submit(ids[1], cb.cmd_log)
+	for h in ids:
+		room.set_ready(h, true)
+	var rr2: Dictionary = room.process_round()
+	chk(g.is_allied(ids[0], ids[1]) and g.offers.is_empty(), "kabul sunucuda ittifak kurdu (red=%d)" % int(rr2.rejected))
 	# 5 tur daha stabil
 	for i in 5:
 		for h in ids:
 			room.set_ready(h, true)
 		room.process_round()
-	chk(g.turn == t1 + 6, "ardışık turlar")
+	chk(g.turn == t1 + 8, "ardışık turlar")
 	print("HATA SAYISI=", bad)
 	quit()

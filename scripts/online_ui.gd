@@ -258,6 +258,9 @@ static func lobby(main) -> Control:
 	var sh = Sheet.open(main.menu.root, "Lobi", 760, true, false, "Online")
 	var codelbl := TK.t("", "small", TK.MUTED)
 	sh.body.add_child(codelbl)
+	var netlbl := TK.t("", "small", TK.MUTED)
+	netlbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	sh.body.add_child(netlbl)
 	var list := VBoxContainer.new()
 	list.add_theme_constant_override("separation", 6)
 	sh.body.add_child(list)
@@ -265,12 +268,25 @@ static func lobby(main) -> Control:
 	sh.body.add_child(pick)
 	var start := TK.button("Oyunu başlat", "", "play", Vector2(0, 64), 18)
 	sh.body.add_child(start)
+	sh.body.add_child(TK.t("Sohbet", "kicker"))
+	chat_box(net, sh.body, 150.0)
 	var render := func():
 		if net.info.has("need_pass"):
 			codelbl.text = Loc.t("Şifre gerekli.")
 			return
 		var code: String = code_of(local_ip(), int(net.info.get("port", 0))) if net.is_server else ""
 		codelbl.text = ("%s: %s   ·   %s" % [Loc.t("Kod"), code, local_ip()]) if net.is_server else String(net.info.get("name", ""))
+		netlbl.visible = net.is_server
+		if net.is_server:
+			var port: int = int(net.info.get("port", 0))
+			if net.upnp_state == "ok" and net.upnp_ip != "":
+				netlbl.text = "%s: %s" % [Loc.t("İnternet kodu"), code_of(net.upnp_ip, port)]
+			elif net.upnp_state == "trying":
+				netlbl.text = Loc.t("Port açılıyor...")
+			elif net.upnp_state == "fail":
+				netlbl.text = Loc.t("Port otomatik açılamadı: internetten katılım için yönlendiricide UDP %d ve %d portlarını aç.") % [port, port + 1]
+			else:
+				netlbl.text = ""
 		for ch in list.get_children():
 			list.remove_child(ch)
 			ch.queue_free()
@@ -288,6 +304,51 @@ static func lobby(main) -> Control:
 	render.call()
 	sh.add_button("Ayrıl", func(): main.online_leave(), "ghost", true, "", 170)
 	return sh
+
+
+## Sohbet kutusu: kayan mesaj listesi + yazma satırı. container içine eklenir; sinyali kapanınca bağı koparır.
+static func chat_box(net, container: Control, height: float = 240.0) -> void:
+	var scroll := ScrollContainer.new()
+	scroll.custom_minimum_size = Vector2(0, height)
+	scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	var log := VBoxContainer.new()
+	log.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	log.add_theme_constant_override("separation", 4)
+	scroll.add_child(log)
+	container.add_child(scroll)
+	var add_line := func(nm: String, text: String):
+		var l := TK.t("%s: %s" % [nm, text], "small", TK.TEXT)
+		l.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		l.custom_minimum_size = Vector2(300, 0)
+		log.add_child(l)
+		await scroll.get_tree().process_frame
+		scroll.scroll_vertical = int(scroll.get_v_scroll_bar().max_value)
+	for m in net.chat_log:
+		add_line.call(String(m.name), String(m.text))
+	var row := HBoxContainer.new()
+	row.add_theme_constant_override("separation", 8)
+	var le := LineEdit.new()
+	le.placeholder_text = Loc.t("Mesaj yaz...")
+	le.max_length = 200
+	le.custom_minimum_size = Vector2(0, 56)
+	le.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	var send := func():
+		var t: String = le.text.strip_edges()
+		if t == "":
+			return
+		le.text = ""
+		net.to_server("srv_chat", [t])
+	le.text_submitted.connect(func(_t): send.call())
+	row.add_child(le)
+	var sb := TK.button("Gönder", "gold", "", Vector2(130, 56), 18)
+	sb.pressed.connect(func(): send.call())
+	row.add_child(sb)
+	container.add_child(row)
+	var on_chat := func(_cid: int, pn: String, t: String): add_line.call(pn, t)
+	net.chat.connect(on_chat)
+	scroll.tree_exiting.connect(func():
+		if net.chat.is_connected(on_chat):
+			net.chat.disconnect(on_chat))
 
 
 static func multiplayer_id(net) -> int:

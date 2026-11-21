@@ -4757,8 +4757,21 @@
   "Bağlantı kurulamadı.": "تعذّر الاتصال.",
   "Sunucu açılamadı.": "تعذّر فتح الخادم.",
   "Online çok oyunculu (beta)": "اللعب الجماعي عبر الإنترنت (تجريبي)",
-  "«Çok Oyunculu → Online»: sunucu listesi (ping ve konumla), kodla katıl, aynı Wi-Fi'da LAN oyunu ve oda kur. Herkes kendi telefonundan oynar; turlar eş zamanlıdır: herkes «Turu geç» deyince (ya da süre dolunca) tur işlenir. Bağlantısı kopan oyuncunun ülkesini yapay zekâ devralır. Beta: insanlar arası ittifak teklifleri henüz otomatik sonuçlanır; kalıcı sunucu için ayrı bir sunucu programı vardır.": "«متعدد اللاعبين ← أونلاين»: قائمة خوادم (مع زمن الاستجابة والمنطقة)، الانضمام بالرمز، لعب الشبكة المحلية على نفس الواي فاي، وإنشاء غرفة. يلعب كل شخص على هاتفه؛ الأدوار متزامنة: يُعالج الدور عندما يضغط الجميع «إنهاء الدور» (أو ينتهي الوقت). إذا انقطع لاعب يتولى الذكاء الاصطناعي دولته. تجريبي: عروض التحالف بين البشر تُحسم تلقائيًا حتى الآن؛ ويوجد برنامج خادم منفصل للخوادم الدائمة.",
-  "Bağlantı koptu, yeniden bağlanılıyor...": "انقطع الاتصال، جارٍ إعادة الاتصال..."
+  "Bağlantı koptu, yeniden bağlanılıyor...": "انقطع الاتصال، جارٍ إعادة الاتصال...",
+  "İnternet kodu": "رمز الإنترنت",
+  "Port açılıyor...": "جارٍ فتح المنفذ...",
+  "Port otomatik açılamadı: internetten katılım için yönlendiricide UDP %d ve %d portlarını aç.": "تعذّر فتح المنفذ تلقائيًا: للانضمام عبر الإنترنت، وجّه منفذَي UDP رقم %d و%d في الراوتر.",
+  "%s sana ittifak teklif ediyor. Kabul edersen iki devlet müttefik olur.": "%s يعرض عليك تحالفًا. إذا قبلت، تصبح الدولتان حليفتين.",
+  "%s seninle barış istiyor. Kabul edersen savaş beraberlikle biter.": "%s يريد السلام معك. إذا قبلت، تنتهي الحرب بالتعادل.",
+  "Kabul": "قبول",
+  "%s: Bekleyen bir teklifin zaten var.": "%s: لديك عرض معلّق بالفعل.",
+  "%s oyuncusuna teklif iletildi; yanıtı gelince haber verilir.": "تم إرسال العرض إلى لاعب %s؛ سيُبلَّغ بردّه.",
+  "%s, %s devletinin ittifak teklifini reddetti.": "%s رفضت عرض التحالف من %s.",
+  "%s, %s devletinin barış teklifini reddetti.": "%s رفضت عرض السلام من %s.",
+  "%s ve %s barış imzaladı.": "%s و%s وقّعتا السلام.",
+  "Sohbet": "الدردشة",
+  "Mesaj yaz...": "اكتب رسالة...",
+  "«Çok Oyunculu → Online»: sunucu listesi (ping ve konumla), kodla katıl, aynı Wi-Fi'da LAN oyunu ve oda kur; oda kurunca yönlendiricide port kendiliğinden açılır. Herkes kendi telefonundan oynar; turlar eş zamanlıdır: herkes «Turu geç» deyince (ya da süre dolunca) tur işlenir. Oyun menüsünde sohbet var; insanlar arası ittifak ve barış teklifleri karşı oyuncunun onayına gider. Bağlantısı kopan oyuncunun ülkesini yapay zekâ devralır. Beta: kalıcı sunucu için ayrı bir sunucu programı vardır.": "«اللعب الجماعي ← أونلاين»: قائمة خوادم (مع الاستجابة والمنطقة)، الانضمام بالرمز، لعبة LAN على نفس الواي فاي وإنشاء غرفة؛ يُفتح منفذ الراوتر تلقائيًا عند الاستضافة. يلعب كل شخص على هاتفه؛ الأدوار متزامنة: تُعالَج الجولة عندما يضغط الجميع «إنهاء الدور» (أو ينتهي الوقت). توجد دردشة في قائمة اللعبة؛ وتُرسل عروض التحالف والسلام بين البشر إلى اللاعب الآخر للموافقة. إذا انقطع لاعب يتولى الذكاء الاصطناعي دولته. تجريبي: يوجد برنامج خادم منفصل للخوادم الدائمة."
  },
  "months": [
   "يناير",

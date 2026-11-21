@@ -4757,8 +4757,21 @@
   "Bağlantı kurulamadı.": "कनेक्ट नहीं हो सका।",
   "Sunucu açılamadı.": "सर्वर नहीं खुल सका।",
   "Online çok oyunculu (beta)": "ऑनलाइन मल्टीप्लेयर (बीटा)",
-  "«Çok Oyunculu → Online»: sunucu listesi (ping ve konumla), kodla katıl, aynı Wi-Fi'da LAN oyunu ve oda kur. Herkes kendi telefonundan oynar; turlar eş zamanlıdır: herkes «Turu geç» deyince (ya da süre dolunca) tur işlenir. Bağlantısı kopan oyuncunun ülkesini yapay zekâ devralır. Beta: insanlar arası ittifak teklifleri henüz otomatik sonuçlanır; kalıcı sunucu için ayrı bir sunucu programı vardır.": "«मल्टीप्लेयर → ऑनलाइन»: सर्वर सूची (पिंग और क्षेत्र के साथ), कोड से जुड़ना, उसी Wi-Fi पर LAN गेम और कमरा बनाना। हर कोई अपने फ़ोन पर खेलता है; बारियाँ एक साथ चलती हैं: सब «बारी ख़त्म» दबाएँ (या समय पूरा हो) तो बारी प्रोसेस होती है। कोई खिलाड़ी कट जाए तो AI उसका देश संभालता है। बीटा: इंसानों के बीच गठबंधन प्रस्ताव अभी अपने-आप तय होते हैं; स्थायी सर्वर के लिए अलग सर्वर प्रोग्राम है।",
-  "Bağlantı koptu, yeniden bağlanılıyor...": "कनेक्शन टूट गया, दोबारा जुड़ रहे हैं..."
+  "Bağlantı koptu, yeniden bağlanılıyor...": "कनेक्शन टूट गया, दोबारा जुड़ रहे हैं...",
+  "İnternet kodu": "इंटरनेट कोड",
+  "Port açılıyor...": "पोर्ट खोला जा रहा है...",
+  "Port otomatik açılamadı: internetten katılım için yönlendiricide UDP %d ve %d portlarını aç.": "पोर्ट अपने-आप नहीं खुल सका: इंटरनेट से जुड़ने के लिए राउटर में UDP पोर्ट %d और %d फ़ॉरवर्ड करें।",
+  "%s sana ittifak teklif ediyor. Kabul edersen iki devlet müttefik olur.": "%s आपको गठबंधन का प्रस्ताव दे रहा है। स्वीकार करने पर दोनों राज्य सहयोगी बन जाएँगे।",
+  "%s seninle barış istiyor. Kabul edersen savaş beraberlikle biter.": "%s आपसे शांति चाहता है। स्वीकार करने पर युद्ध बराबरी पर खत्म होगा।",
+  "Kabul": "स्वीकार करें",
+  "%s: Bekleyen bir teklifin zaten var.": "%s: आपका एक प्रस्ताव पहले से लंबित है।",
+  "%s oyuncusuna teklif iletildi; yanıtı gelince haber verilir.": "प्रस्ताव %s के खिलाड़ी को भेज दिया गया; उसका उत्तर आने पर बताया जाएगा।",
+  "%s, %s devletinin ittifak teklifini reddetti.": "%s ने %s का गठबंधन प्रस्ताव ठुकरा दिया।",
+  "%s, %s devletinin barış teklifini reddetti.": "%s ने %s का शांति प्रस्ताव ठुकरा दिया।",
+  "%s ve %s barış imzaladı.": "%s और %s ने शांति पर हस्ताक्षर किए।",
+  "Sohbet": "चैट",
+  "Mesaj yaz...": "संदेश लिखें...",
+  "«Çok Oyunculu → Online»: sunucu listesi (ping ve konumla), kodla katıl, aynı Wi-Fi'da LAN oyunu ve oda kur; oda kurunca yönlendiricide port kendiliğinden açılır. Herkes kendi telefonundan oynar; turlar eş zamanlıdır: herkes «Turu geç» deyince (ya da süre dolunca) tur işlenir. Oyun menüsünde sohbet var; insanlar arası ittifak ve barış teklifleri karşı oyuncunun onayına gider. Bağlantısı kopan oyuncunun ülkesini yapay zekâ devralır. Beta: kalıcı sunucu için ayrı bir sunucu programı vardır.": "«मल्टीप्लेयर → ऑनलाइन»: सर्वर सूची (पिंग और क्षेत्र के साथ), कोड से जुड़ें, उसी Wi-Fi पर LAN गेम और कमरा बनाएँ; कमरा बनाने पर राउटर का पोर्ट अपने-आप खुल जाता है। हर कोई अपने फ़ोन पर खेलता है; टर्न एक साथ चलते हैं: सब «टर्न खत्म» दबाएँ (या समय पूरा हो) तो टर्न प्रोसेस होता है। गेम मेनू में चैट है; इंसानों के बीच गठबंधन और शांति प्रस्ताव दूसरे खिलाड़ी की मंज़ूरी के लिए जाते हैं। कोई खिलाड़ी कटे तो उसका देश AI सँभालता है। बीटा: स्थायी सर्वर के लिए अलग सर्वर प्रोग्राम है।"
  },
  "months": [
   "जनवरी",

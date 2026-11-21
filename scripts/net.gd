@@ -22,7 +22,7 @@ signal round_done(info: Dictionary)
 signal status_changed()
 signal disconnected()
 signal error(msg: String)
-signal chat(from_cid: int, text: String)
+signal chat(from_cid: int, pname: String, text: String)
 signal over(text: String)
 
 # ---- ortak durum
@@ -33,6 +33,7 @@ var players: Dictionary = {}               # peer_id -> {"name":, "cid": -1, "ho
 var my_cid := -1
 var started := false
 var waiting: Array = []                    # henüz hazır olmayan ülke kimlikleri
+var chat_log: Array = []                   # [{cid, name, text}] (son 60 mesaj)
 var deadline_left := 0.0                   # tur bitimine kalan saniye (-1 = sınırsız)
 
 # ---- sunucu
@@ -44,6 +45,11 @@ var _lan_t := 0.0
 var _st_t := 0.0
 var _world_seed := 0
 var _server_logs: Array = []
+var upnp_state := ""                       # "", "trying", "ok", "fail"
+var upnp_ip := ""                          # UPnP ile öğrenilen dış IP
+var _upnp: UPNP = null
+var _upnp_thread: Thread = null
+var _upnp_port := 0
 var _seats: Dictionary = {}                # token -> {"cid", "cname"} (bağlantısı kopan oyuncu geri dönünce koltuğunu alır)
 
 # ---- ping (UDP sorgu: sunucu port+1'de dinler)
@@ -140,7 +146,64 @@ func host(cfg: Dictionary) -> bool:
 	players = {}
 	if local_player:
 		players[1] = {"name": Settings_name(), "cid": -1, "host": true, "pass_ok": true}
+	if bool(cfg.get("upnp", false)):
+		_upnp_open(port)
 	return true
+
+
+## Yönlendiricide UPnP ile portu açar (NAT arkasındaki telefon/PC odası internetten erişilebilsin). Ayrı iş parçacığında çalışır.
+func _upnp_open(port: int) -> void:
+	upnp_state = "trying"
+	upnp_ip = ""
+	_upnp_port = port
+	_upnp_thread = Thread.new()
+	_upnp_thread.start(_upnp_work.bind(port))
+
+
+func _upnp_work(port: int) -> void:
+	var u := UPNP.new()
+	var ok := false
+	var ip := ""
+	if u.discover(2000, 2, "InternetGatewayDevice") == UPNP.UPNP_RESULT_SUCCESS:
+		var gw = u.get_gateway()
+		if gw != null and gw.is_valid_gateway():
+			var a: int = u.add_port_mapping(port, port, "Age of Doctrine", "UDP", 0)
+			var b: int = u.add_port_mapping(port + 1, port + 1, "Age of Doctrine ping", "UDP", 0)
+			if a == UPNP.UPNP_RESULT_SUCCESS:
+				ok = true
+				ip = u.query_external_address()
+	call_deferred("_upnp_done", u, ok, ip)
+
+
+func _upnp_done(u: UPNP, ok: bool, ip: String) -> void:
+	if _upnp_thread != null:
+		_upnp_thread.wait_to_finish()
+		_upnp_thread = null
+	if not is_server:
+		_upnp_close_map(u)
+		return
+	_upnp = u
+	upnp_state = "ok" if ok else "fail"
+	upnp_ip = ip if ok else ""
+	lobby_changed.emit()
+
+
+func _upnp_close_map(u: UPNP) -> void:
+	if u == null:
+		return
+	if _upnp_port > 0:
+		u.delete_port_mapping(_upnp_port, "UDP")
+		u.delete_port_mapping(_upnp_port + 1, "UDP")
+
+
+## Sunucunun dışarıdan görünen adresi: UPnP varsa dış IP, yoksa yerel IP (çağıran verir).
+func public_ip() -> String:
+	return upnp_ip
+
+
+func _exit_tree() -> void:
+	if is_server and _upnp != null:
+		_upnp_close_map(_upnp)
 
 
 func _on_peer_connected(id: int) -> void:
@@ -291,8 +354,12 @@ func srv_chat(text: String) -> void:
 		return
 	var id: int = _sender()
 	var cid: int = int(players.get(id, {}).get("cid", -1))
+	var pn: String = String(players.get(id, {}).get("name", ""))
+	var t: String = text.strip_edges().left(200)
+	if t == "":
+		return
 	for pid in players:
-		_to(pid, "cli_chat", [cid, text.left(200)])
+		_to(pid, "cli_chat", [cid, pn, t])
 
 
 func _check_round() -> void:
@@ -426,6 +493,15 @@ func leave() -> void:
 	room = null
 	gs_server = null
 	players = {}
+	chat_log = []
+	if _upnp_thread != null:
+		_upnp_thread.wait_to_finish()
+		_upnp_thread = null
+	if _upnp != null:
+		_upnp_close_map(_upnp)
+		_upnp = null
+	upnp_state = ""
+	upnp_ip = ""
 	if _lan_udp != null:
 		_lan_udp.close()
 		_lan_udp = null
@@ -494,8 +570,11 @@ func cli_status(wait: Array, left: float) -> void:
 
 
 @rpc("authority", "call_remote", "reliable")
-func cli_chat(cid: int, text: String) -> void:
-	chat.emit(cid, text)
+func cli_chat(cid: int, pname: String, text: String) -> void:
+	chat_log.append({"cid": cid, "name": pname, "text": text})
+	if chat_log.size() > 60:
+		chat_log = chat_log.slice(chat_log.size() - 60)
+	chat.emit(cid, pname, text)
 
 
 @rpc("authority", "call_remote", "reliable")
@@ -512,6 +591,7 @@ func _apply_state(raw: PackedByteArray, cid: int, wait: Array, era: String) -> v
 	var g = GS.new()
 	g.new_world(int(d.get("seed", 0)))
 	g.from_dict(d)
+	g.net_humans = g.humans.duplicate()
 	g.humans = []
 	my_cid = cid
 	waiting = wait

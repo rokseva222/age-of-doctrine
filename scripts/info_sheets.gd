@@ -294,9 +294,9 @@ static func open_howto(parent: Node) -> void:
 			render.call())
 
 
-const UPDATE_VER := "1.2.38"
+const UPDATE_VER := "1.2.39"
 const WHATS_NEW := [
-	["Online çok oyunculu (beta)", "«Çok Oyunculu → Online»: sunucu listesi (ping ve konumla), kodla katıl, aynı Wi-Fi'da LAN oyunu ve oda kur. Herkes kendi telefonundan oynar; turlar eş zamanlıdır: herkes «Turu geç» deyince (ya da süre dolunca) tur işlenir. Bağlantısı kopan oyuncunun ülkesini yapay zekâ devralır. Beta: insanlar arası ittifak teklifleri henüz otomatik sonuçlanır; kalıcı sunucu için ayrı bir sunucu programı vardır."],
+	["Online çok oyunculu (beta)", "«Çok Oyunculu → Online»: sunucu listesi (ping ve konumla), kodla katıl, aynı Wi-Fi'da LAN oyunu ve oda kur; oda kurunca yönlendiricide port kendiliğinden açılır. Herkes kendi telefonundan oynar; turlar eş zamanlıdır: herkes «Turu geç» deyince (ya da süre dolunca) tur işlenir. Oyun menüsünde sohbet var; insanlar arası ittifak ve barış teklifleri karşı oyuncunun onayına gider. Bağlantısı kopan oyuncunun ülkesini yapay zekâ devralır. Beta: kalıcı sunucu için ayrı bir sunucu programı vardır."],
 	["Çok oyunculu: aynı telefonda", "Ana menüde «Çok Oyunculu → Aynı Telefon»: 2–6 kişi aynı telefonda sırayla oynar. Her oyuncu kendi ülkesini seçer, hamlesini yapınca «Telefonu devret» perdesi gelir; herkes kendi tur raporunu görür. Son ayakta kalan ya da dünyanın %55'ini alan kazanır. Kayıt/devam desteklenir; bu modda AOD Puanı ve görev ilerlemesi sayılmaz."],
 	["Dost ülkeler saldırmaz", "Yapay zekâ artık ilişkisi yüksek (dostça) ülkelere kolay savaş açmıyor: ilişki yükseldikçe saldırı ihtimali azalır, ittifak düzeyindeki dostlara neredeyse hiç saldırmaz."],
 	["Tarihî dönem bayrakları", "1299–1520 çağlarında Osmanlı, Bizans, Memlük, Timur, Yuan, Ming, Safevî, Kutsal Roma, Fransa, İngiltere, Polonya, Litvanya, Venedik, Macaristan ve Moskova artık dönemin sancaklarıyla görünüyor. 1962'de Malaya bayrağı eklendi."],

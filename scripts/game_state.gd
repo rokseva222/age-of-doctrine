@@ -74,6 +74,9 @@ var news_log: Array = []
 var turn := 0
 var player := -1
 var humans: Array = []                   # çok oyunculu (aynı telefon / online): insan ülke kimlikleri; boşsa tek oyunculu
+var offers: Array = []                   # insanlar arası bekleyen teklifler: {id, kind ("alliance"|"peace"), from, to, turn}
+var next_offer_id := 1
+var net_humans: Array = []               # online istemcide: sunucudaki insan ülkeler (yerel kopya tek oyunculu gibi davranır)
 var hs_i := 0                            # sırası gelen insanın humans içindeki indeksi
 var cmd_log = null                       # online istemcide oyuncu emirlerinin kaydı (Array); null = kayıt kapalı (cmd.gd)
 var cmd_replay := false                  # sunucu komutu yeniden oynatırken true (kayıt alınmaz)
@@ -203,6 +206,84 @@ func is_multi() -> bool:
 ## Sırası gelmemiş başka bir insanın ülkesi mi? (Ona gelen teklifler/çağrılar o sıra gelene kadar bekletilmez, yok sayılır.)
 func is_other_human(cid: int) -> bool:
 	return humans.size() > 1 and cid != player and humans.has(cid)
+
+
+## Hedef, benden başka bir insan oyuncu mu? (Çok oyunculu: teklifler yapay zekâ yerine onun onayına gider.)
+func is_human_target(t: int) -> bool:
+	if t == player:
+		return false
+	if humans.size() > 1 and humans.has(t):
+		return true
+	return net_humans.size() > 1 and net_humans.has(t)
+
+
+const OFFER_TTL := 3
+
+
+func _make_offer(kind: String, target: int) -> String:
+	for o in offers:
+		if o.kind == kind and int(o.from) == player and int(o.to) == target:
+			return "%s: Bekleyen bir teklifin zaten var." % countries[target].name
+	offers.append({"id": next_offer_id, "kind": kind, "from": player, "to": target, "turn": turn})
+	next_offer_id += 1
+	state_changed.emit()
+	return "%s oyuncusuna teklif iletildi; yanıtı gelince haber verilir." % countries[target].name
+
+
+## Bana gelen bekleyen teklifler.
+func offers_for(cid: int) -> Array:
+	var r: Array = []
+	for o in offers:
+		if int(o.to) == cid:
+			r.append(o)
+	return r
+
+
+## Gelen bir teklifi kabul et / reddet (komut katmanında kaydedilir).
+func respond_offer(oid: int, accept: bool) -> String:
+	var _cmd := Cmd.Scope.new(self, "respond_offer", [oid, accept])
+	var idx := -1
+	for i in offers.size():
+		if int(offers[i].id) == oid:
+			idx = i
+	if idx < 0:
+		return ""
+	var o: Dictionary = offers[idx]
+	if int(o.to) != player:
+		return ""
+	offers.remove_at(idx)
+	var a: int = int(o.from)
+	var b: int = int(o.to)
+	if not countries[a].alive or not countries[b].alive:
+		return ""
+	var kind: String = String(o.kind)
+	if not accept:
+		relation_add(a, b, -4.0)
+		if kind == "alliance":
+			post_news("%s, %s devletinin ittifak teklifini reddetti." % [countries[b].name, countries[a].name], countries[b].capital, "alliance")
+		else:
+			post_news("%s, %s devletinin barış teklifini reddetti." % [countries[b].name, countries[a].name], countries[b].capital, "peace")
+		return ""
+	if kind == "alliance":
+		if at_war(a, b) or is_allied(a, b):
+			return ""
+		make_alliance(a, b)
+	elif kind == "peace":
+		var w = get_war(a, b)
+		if w == null:
+			return ""
+		finish_peace(w, -1, [])
+		post_news("%s ve %s barış imzaladı." % [countries[a].name, countries[b].name], countries[b].capital, "peace")
+	state_changed.emit()
+	return ""
+
+
+func _expire_offers() -> void:
+	var keep: Array = []
+	for o in offers:
+		if turn - int(o.turn) <= OFFER_TTL and countries[int(o.from)].alive and countries[int(o.to)].alive:
+			keep.append(o)
+	offers = keep
 
 
 func _init_armies() -> void:
@@ -1873,6 +1954,8 @@ func player_propose_alliance(target: int) -> String:
 	if int(countries[player].alliance_req_turn.get(target, -1)) == turn:
 		return "%s: Bu tur zaten bir teklif götürdün, gelecek tura kadar beklemelisin." % t.name
 	countries[player].alliance_req_turn[target] = turn
+	if is_human_target(target):
+		return _make_offer("alliance", target)
 	if relation_of(player, target) < RELATION_ALLIANCE_MIN:
 		return "%s: İlişkiler henüz yeterince iyi değil (%s). Önce ilişkileri geliştir." % [t.name, relation_tier_name(player, target)]
 	if ai_accepts_alliance(target, player):
@@ -2584,6 +2667,8 @@ func player_request_peace(enemy: int) -> Dictionary:
 	if int(countries[player].peace_req_turn.get(enemy, -1)) == turn:
 		return {"ok": false, "text": "%s: Bu tur zaten bir teklif götürdün, gelecek tura kadar beklemelisin." % countries[enemy].name}
 	countries[player].peace_req_turn[enemy] = turn
+	if is_human_target(enemy):
+		return {"ok": false, "text": _make_offer("peace", enemy)}
 	var dur: int = turn - w.start
 	var mine: int = w.score_of(player)
 	var theirs: int = w.score_of(enemy)
@@ -2672,6 +2757,7 @@ func _tp(name: String, t0: int) -> int:
 
 func end_turn() -> void:
 	turn += 1
+	_expire_offers()
 	if guard_left > 0:
 		guard_left -= 1
 	turn_battles.clear()
@@ -2705,7 +2791,14 @@ func end_turn() -> void:
 	_check_rebels()
 	Macro.weekly(self)
 	_vassal_tick()
-	Cabinet.weekly(self)
+	if player < 0 and humans.size() > 1:
+		# online (sunucu): her insan oyuncunun kabine etkisi kendi ülkesi için işlenir
+		for h in humans:
+			player = h
+			Cabinet.weekly(self)
+		player = -1
+	else:
+		Cabinet.weekly(self)
 	_war_diplomacy()
 	t = _tp("econ_dipl", t)
 	if rng.randf() < 0.45:
@@ -4268,7 +4361,7 @@ func _rebel_independence(c) -> void:
 func to_dict() -> Dictionary:
 	var d: Dictionary = {
 		"v": 3, "seed": seed_value, "base": base_country_count,
-		"turn": turn, "player": player, "humans": humans, "hs_i": hs_i, "next_army_id": next_army_id, "victory": victory_declared,
+		"turn": turn, "player": player, "humans": humans, "hs_i": hs_i, "offers": offers.duplicate(true), "next_offer_id": next_offer_id, "next_army_id": next_army_id, "victory": victory_declared,
 		"rng_state": rng.state, "rebel_names": rebel_name_count, "merc_names": merc_names, "stats": stats,
 		"difficulty": difficulty, "blocs": blocs, "next_bloc": next_bloc_id, "cold": cold, "sea_camp": sea_campaign.keys(), "crisis": crisis, "crisis_end": crisis_last_end, "scn": scn, "era": Eras.current, "nuke_cd": nuke_cd, "gas_cd": gas_cd, "grand": grand, "chokes": chokes, "daily": daily, "pol": pol, "faith": faith, "focus": focus, "syear": Names.start_year, "wroom": wroom, "indep": indep, "career": career, "moment_p": moment_pending, "moment_f": moment_flags, "infamy": infamy, "un_cd": un_cd, "un_log": un_log, "aid": aid, "trade": trade, "vassals": vassals, "custom_ovr": custom_ovr,
 	}
@@ -4505,6 +4598,10 @@ func from_dict(d: Dictionary) -> bool:
 			humans.append(hid)
 			countries[hid].is_player = true
 	hs_i = clampi(int(d.get("hs_i", 0)), 0, maxi(humans.size() - 1, 0))
+	offers = []
+	for o in d.get("offers", []):
+		offers.append({"id": int(o.id), "kind": String(o.kind), "from": int(o.from), "to": int(o.to), "turn": int(o.turn)})
+	next_offer_id = int(d.get("next_offer_id", 1))
 	refresh_stats()
 	Currency.sync(self)
 	Macro.prime(self)

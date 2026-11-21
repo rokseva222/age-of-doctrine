@@ -25,6 +25,7 @@ godot --headless --path . -s server/dedicated.gd -- \
 | `--pass` | Şifre (boş = herkese açık) |
 | `--master` | Ana liste adresi (boş = listede görünmez; kodla katılınır) |
 | `--region` | Listede görünen konum (TR, EU, US …) |
+| `--upnp` | `1` yazarsan yönlendiricide UDP portu (ve port+1) otomatik açılır (evdeki PC için) |
 
 İlk bağlanan oyuncu **kurucu** olur; ülkeler seçilince «Oyunu başlat»a basar.
 

@@ -140,6 +140,7 @@ func _ready() -> void:
 	ui.action.connect(_on_ui_action)
 	ui.settings_changed.connect(_apply_settings)
 	ui.main_menu_requested.connect(_go_main_menu)
+	ui.chat_requested.connect(_open_chat)
 	ui.tutorial_requested.connect(_start_tutorial)
 	ui.shop_requested.connect(func(): ApUi.open(ui.root, ui.toast))
 	ui.load_requested.connect(func(): SlotsUI.open(ui.root, "load", _load_game, ui._click))
@@ -581,6 +582,49 @@ func _on_step() -> void:
 
 
 ## Bülten kapandıktan sonra, ayar açıksa ve sıra gelmişse bir kabine kartı göster.
+## Başka bir oyuncudan gelen ittifak/barış tekliflerini sırayla gösterir (aynı telefon ve online).
+func _offers_turn() -> void:
+	if mode != "game" or gs == null or gs.player < 0:
+		return
+	for o in gs.offers_for(gs.player).duplicate():
+		if mode != "game" or gs == null:
+			return
+		var from_name: String = gs.countries[int(o.from)].name
+		var title: String = "İttifak teklifi" if String(o.kind) == "alliance" else "Barış teklifi"
+		var body: String = (Loc.t("%s sana ittifak teklif ediyor. Kabul edersen iki devlet müttefik olur.") if String(o.kind) == "alliance" else Loc.t("%s seninle barış istiyor. Kabul edersen savaş beraberlikle biter.")) % from_name
+		var holder := {"done": false}
+		var oid: int = int(o.id)
+		ui.show_dialog(title, body, [
+			{"text": "Kabul", "cb": func():
+				gs.respond_offer(oid, true)
+				ui.refresh_top()
+				map.repaint_all()
+				holder.done = true, "kind": "good"},
+			{"text": "Reddet", "cb": func():
+				gs.respond_offer(oid, false)
+				holder.done = true},
+		])
+		while not holder.done and mode == "game" and gs != null:
+			await get_tree().create_timer(0.1).timeout
+
+
+## Online: boşalan bakanlıklar için atama kararı (rastgele kart ve kriz kartları online'da yok).
+func _online_cabinet() -> void:
+	if mode != "game" or gs == null or gs.player < 0 or not gs.countries[gs.player].alive:
+		return
+	for role in Cabinet.vacancies(gs):
+		if not Settings.cabinet:
+			Cabinet.appoint(gs, role, Cabinet.candidates(gs, role)[1])
+			continue
+		var sh = AppointUI.open(ui, gs, role)
+		ui.set_modal(sh)
+		sfx.play("paper", 0.8)
+		await sh.closed
+		ui.refresh_top()
+		if mode != "game" or not playing:
+			return
+
+
 func _cabinet_turn() -> void:
 	if mode != "game" or not playing or gs == null or gs.player < 0:
 		return
@@ -662,6 +706,7 @@ func get_net():
 		net.status_changed.connect(_online_status)
 		net.disconnected.connect(_online_lost)
 		net.over.connect(_online_over)
+		net.chat.connect(_on_net_chat)
 	return net
 
 
@@ -676,6 +721,7 @@ func online_host(cfg: Dictionary) -> void:
 	var n = get_net()
 	cfg["local"] = true
 	cfg["ver"] = Info.UPDATE_VER
+	cfg["upnp"] = true
 	if not n.host(cfg):
 		return
 	if String(cfg.get("pass", "")) == "":
@@ -737,12 +783,25 @@ func _online_pick_done(cid: int) -> void:
 		_lobby_sheet.visible = true
 
 
+func _open_chat() -> void:
+	if net == null or not online:
+		return
+	var sh = ui._open_sheet("Sohbet", 640, false, true, "Online")
+	OnlineUI.chat_box(net, sh.body, 320.0)
+
+
+func _on_net_chat(_cid: int, pn: String, text: String) -> void:
+	if online and mode == "game" and not ui.is_dialog_open():
+		ui.toast("%s: %s" % [pn, text])
+
+
 func online_leave() -> void:
 	if net != null:
 		net.leave()
 	if master != null:
 		master.stop_announce()
 	online = false
+	ui.online_mode = false
 	if _sync_timer != null:
 		_sync_timer.stop()
 	_wait_free()
@@ -772,6 +831,7 @@ func _online_lost() -> void:
 	if online:
 		ui.toast(Loc.t("Sunucu bağlantısı koptu."))
 		online = false
+		ui.online_mode = false
 		_wait_free()
 		_go_main_menu()
 
@@ -812,6 +872,7 @@ func _online_begin(cid: int) -> void:
 		_lobby_sheet.queue_free()
 	_lobby_sheet = null
 	online = true
+	ui.online_mode = true
 	_reconnects = 0
 	turn_busy = false
 	_wait_free()
@@ -886,6 +947,8 @@ func _online_round(_inf: Dictionary) -> void:
 	ui.set_modal(rep)
 	sfx.play("news", 0.9)
 	await rep.closed
+	await _offers_turn()
+	await _online_cabinet()
 	turn_busy = false
 
 
@@ -933,7 +996,10 @@ func _mp_pass(cid: int, with_report: bool, snap: Dictionary = {}) -> void:
 	MpUI.pass_screen(ui.root, gs, cid, func(): holder.done = true)
 	while not holder.done and mode == "game" and gs != null:
 		await get_tree().create_timer(0.1).timeout
-	if mode != "game" or gs == null or not with_report:
+	if mode != "game" or gs == null:
+		return
+	if not with_report:
+		await _offers_turn()
 		return
 	var before: Dictionary = snap if not snap.is_empty() else mp_before.get(cid, TurnUI.snapshot(gs))
 	var rep = TurnUI.build_report(ui, gs, before, func(pid: int):
@@ -942,6 +1008,7 @@ func _mp_pass(cid: int, with_report: bool, snap: Dictionary = {}) -> void:
 	ui.set_modal(rep)
 	sfx.play("news", 0.9)
 	await rep.closed
+	await _offers_turn()
 	await _cabinet_turn()
 
 

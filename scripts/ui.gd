@@ -66,6 +66,8 @@ signal step_requested()
 signal action(name: String, arg)
 signal settings_changed()
 signal main_menu_requested()
+signal chat_requested()
+var online_mode := false
 signal load_requested()
 signal save_requested()
 
@@ -1121,6 +1123,7 @@ func show_pause_menu() -> void:
 		["Meydan okuma durumu", "", "target", func(): show_daily()],
 		["Stratejik geçitler", "", "anchor", func(): show_chokes()],
 		["Sandbox", "purple", Icons.pick("sandbox", "gear"), func(): SandboxUI.open(self, gs)],
+		["Sohbet", "", "diplomacy", func(): chat_requested.emit()],
 		["Mağaza", "", "coins", func(): shop_requested.emit()],
 		["Öğretici", "", "book", func(): tutorial_requested.emit()],
 		["Nasıl oynanır", "", "book", func(): Info.open_howto(root)],
@@ -1134,6 +1137,8 @@ func show_pause_menu() -> void:
 		if it[0] == "Meydan okuma durumu" and not Daily.active(gs):
 			continue
 		if it[0] == "Sandbox" and not Settings.sandbox:
+			continue
+		if it[0] == "Sohbet" and not online_mode:
 			continue
 		if it[0] == "Savaş Odası" and (gs.player < 0 or gs.countries[gs.player].enemies.is_empty()) and not (gs.wroom is Dictionary and bool(gs.wroom.get("on", false))):
 			continue

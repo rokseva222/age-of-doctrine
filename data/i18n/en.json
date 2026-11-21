@@ -4533,8 +4533,21 @@
   "Bağlantı kurulamadı.": "Could not connect.",
   "Sunucu açılamadı.": "Could not open the server.",
   "Online çok oyunculu (beta)": "Online multiplayer (beta)",
-  "«Çok Oyunculu → Online»: sunucu listesi (ping ve konumla), kodla katıl, aynı Wi-Fi'da LAN oyunu ve oda kur. Herkes kendi telefonundan oynar; turlar eş zamanlıdır: herkes «Turu geç» deyince (ya da süre dolunca) tur işlenir. Bağlantısı kopan oyuncunun ülkesini yapay zekâ devralır. Beta: insanlar arası ittifak teklifleri henüz otomatik sonuçlanır; kalıcı sunucu için ayrı bir sunucu programı vardır.": "«Multiplayer → Online»: server list (with ping and region), join by code, LAN game on the same Wi-Fi, and create room. Everyone plays on their own phone; turns are simultaneous: the turn is processed when everyone presses «End turn» (or time runs out). If a player disconnects, the AI takes over their country. Beta: alliance offers between humans still resolve automatically; there is a separate server program for permanent servers.",
-  "Bağlantı koptu, yeniden bağlanılıyor...": "Connection lost, reconnecting..."
+  "Bağlantı koptu, yeniden bağlanılıyor...": "Connection lost, reconnecting...",
+  "İnternet kodu": "Internet code",
+  "Port açılıyor...": "Opening port...",
+  "Port otomatik açılamadı: internetten katılım için yönlendiricide UDP %d ve %d portlarını aç.": "Couldn't open the port automatically: to allow joining over the internet, forward UDP ports %d and %d on your router.",
+  "%s sana ittifak teklif ediyor. Kabul edersen iki devlet müttefik olur.": "%s is offering you an alliance. If you accept, the two states become allies.",
+  "%s seninle barış istiyor. Kabul edersen savaş beraberlikle biter.": "%s wants peace with you. If you accept, the war ends in a draw.",
+  "Kabul": "Accept",
+  "%s: Bekleyen bir teklifin zaten var.": "%s: You already have a pending offer.",
+  "%s oyuncusuna teklif iletildi; yanıtı gelince haber verilir.": "Offer delivered to the player of %s; you'll be told when they answer.",
+  "%s, %s devletinin ittifak teklifini reddetti.": "%s rejected the alliance offer from %s.",
+  "%s, %s devletinin barış teklifini reddetti.": "%s rejected the peace offer from %s.",
+  "%s ve %s barış imzaladı.": "%s and %s signed peace.",
+  "Sohbet": "Chat",
+  "Mesaj yaz...": "Type a message...",
+  "«Çok Oyunculu → Online»: sunucu listesi (ping ve konumla), kodla katıl, aynı Wi-Fi'da LAN oyunu ve oda kur; oda kurunca yönlendiricide port kendiliğinden açılır. Herkes kendi telefonundan oynar; turlar eş zamanlıdır: herkes «Turu geç» deyince (ya da süre dolunca) tur işlenir. Oyun menüsünde sohbet var; insanlar arası ittifak ve barış teklifleri karşı oyuncunun onayına gider. Bağlantısı kopan oyuncunun ülkesini yapay zekâ devralır. Beta: kalıcı sunucu için ayrı bir sunucu programı vardır.": "«Multiplayer → Online»: server list (with ping and region), join by code, LAN game on the same Wi-Fi, and create a room; the router port opens automatically when you host. Everyone plays on their own phone; turns are simultaneous: the turn is processed when everyone taps «End turn» (or time runs out). There is chat in the game menu; alliance and peace offers between humans go to the other player for approval. If a player disconnects, AI takes over their country. Beta: a separate server program exists for permanent servers."
  },
  "months": [
   "January",
