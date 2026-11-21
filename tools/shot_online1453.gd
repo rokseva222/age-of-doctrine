@@ -8,14 +8,14 @@ func _shot(name: String) -> void:
 func _init() -> void:
 	var St = load("res://scripts/settings.gd")
 	var Loc = load("res://scripts/loc.gd")
-	St.load_all(); St.language = "tr"; St.ui_scale = 1.4; St.seen_howto = true; St.seen_promo = true; St.tut_done = true; St.sfx = 0.0
+	St.load_all(); St.language = "tr"; St.ui_scale_custom = true; St.ui_scale = 1.4; St.seen_howto = true; St.seen_promo = true; St.tut_done = true; St.sfx = 0.0
 	St.seen_update = load("res://scripts/info_sheets.gd").UPDATE_VER
 	St.player_name = "Fatih"
 	St.save_all()
 	main = load("res://main.tscn").instantiate()
 	get_root().add_child(main)
 	Loc.apply("tr")
-	St.ui_scale = 1.4; St.language = "tr"; St.apply_display(self)
+	St.ui_scale_custom = true; St.ui_scale = 1.4; St.language = "tr"; St.apply_display(self)
 	DirAccess.make_dir_recursive_absolute(out)
 	await create_timer(2.0).timeout
 	main.menu.finish_splash()
@@ -41,7 +41,7 @@ func _init() -> void:
 	main._on_start_requested(int(main.gs.macro_idx.get("Turkey", 0)))
 	await create_timer(1.0).timeout
 	main.get_net().to_server("srv_chat", ["Toplar hazır. Sabaha surlar yok."])
-	await create_timer(1.5).timeout
+	await create_timer(7.5).timeout
 	await _shot("3_lobi_dolu")
 	main.get_net().to_server("srv_start")
 	await create_timer(6.0).timeout
