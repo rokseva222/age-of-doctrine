@@ -34,6 +34,10 @@ func _init() -> void:
 	await create_timer(1.5).timeout
 	await _shot("1_tarayici")
 	main.menu.root.get_children().back().close()
+	main.OnlineUI.host_form(main)
+	await create_timer(0.8).timeout
+	await _shot("1b_oda_kur")
+	main.menu.root.get_children().back().close()
 	main.online_join("127.0.0.1", 47397)
 	await create_timer(2.0).timeout
 	await _shot("2_lobi")
