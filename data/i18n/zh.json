@@ -4774,7 +4774,11 @@
   "«Çok Oyunculu → Online»: sunucu listesi (ping ve konumla), kodla katıl, aynı Wi-Fi'da LAN oyunu ve oda kur; oda kurunca yönlendiricide port kendiliğinden açılır. Herkes kendi telefonundan oynar; turlar eş zamanlıdır: herkes «Turu geç» deyince (ya da süre dolunca) tur işlenir. Oyun menüsünde sohbet var; insanlar arası ittifak ve barış teklifleri karşı oyuncunun onayına gider. Bağlantısı kopan oyuncunun ülkesini yapay zekâ devralır. Beta: kalıcı sunucu için ayrı bir sunucu programı vardır.": "「多人 → 在线」：服务器列表（含延迟和地区）、凭代码加入、同一 Wi-Fi 的局域网对战和创建房间；创建房间时路由器端口会自动开放。每个人用自己的手机游玩，回合同时进行：所有人点击「结束回合」（或时间到）后处理回合。游戏菜单里有聊天；人类玩家之间的结盟和议和提议会交给对方玩家确认。玩家断线时，其国家由 AI 接管。测试版：常驻服务器另有独立的服务器程序。",
   "Online: savaş sisi ve kartlar": "在线：战争迷雾与卡牌",
   "Oda kurarken savaş sisi seçilebilir (Kapalı/Orta/Tam): görmemen gereken ordular sunucudan sana hiç gönderilmez. Online'da dünya krizi kararı ve rastgele kabine kartları da çalışır; tur geçirmek görev ilerlemesine sayılır. Sunucu listesi, topluluğun sabit sunucularını da gösterir.": "创建房间时可选择战争迷雾（关闭/中等/完全）：你不该看到的军队，服务器根本不会发给你。世界危机决策和随机内阁卡牌现在也可在线使用；推进回合会计入任务进度。服务器列表也会显示社区的固定服务器。",
-  "Liste sunucusu adresi (isteğe bağlı)": "列表服务器地址（可选）"
+  "Liste sunucusu adresi (isteğe bağlı)": "列表服务器地址（可选）",
+  "Online: senaryolu odalar": "在线：剧本房间",
+  "Oda kurarken hazır senaryolardan biri seçilebilir (Ukrayna, Kore, Napolyon…). Katılan herkes aynı senaryo durumuyla başlar.": "创建房间时可选择现成剧本（乌克兰、朝鲜、拿破仑…）。所有加入者都从相同的剧本状态开始。",
+  "Çok oyunculu: haberler ve güvenlik": "多人：新闻与安全",
+  "Savaş ve fetih haberleri artık her oyuncunun bakış açısından gelir: «Rusya'ya savaş açtın» yalnızca hedef oyuncuya özel gösterilir, diğerleri üçüncü şahıs haber görür. Sunucu geçersiz veya hileli komutları reddeder.": "战争与征服新闻现在按每位玩家的视角送达：「你对俄罗斯宣战」只显示给被针对的玩家，其他人看到第三人称新闻。服务器会拒绝无效或作弊的命令。"
  },
  "months": [
   "1月",

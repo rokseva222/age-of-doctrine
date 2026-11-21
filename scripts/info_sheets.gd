@@ -294,8 +294,10 @@ static func open_howto(parent: Node) -> void:
 			render.call())
 
 
-const UPDATE_VER := "1.2.41"
+const UPDATE_VER := "1.2.42"
 const WHATS_NEW := [
+	["Online: senaryolu odalar", "Oda kurarken hazır senaryolardan biri seçilebilir (Ukrayna, Kore, Napolyon…). Katılan herkes aynı senaryo durumuyla başlar."],
+	["Çok oyunculu: haberler ve güvenlik", "Savaş ve fetih haberleri artık her oyuncunun bakış açısından gelir: «Rusya'ya savaş açtın» yalnızca hedef oyuncuya özel gösterilir, diğerleri üçüncü şahıs haber görür. Sunucu geçersiz veya hileli komutları reddeder."],
 	["Online: savaş sisi ve kartlar", "Oda kurarken savaş sisi seçilebilir (Kapalı/Orta/Tam): görmemen gereken ordular sunucudan sana hiç gönderilmez. Online'da dünya krizi kararı ve rastgele kabine kartları da çalışır; tur geçirmek görev ilerlemesine sayılır. Sunucu listesi, topluluğun sabit sunucularını da gösterir."],
 	["Online çok oyunculu (beta)", "«Çok Oyunculu → Online»: sunucu listesi (ping ve konumla), kodla katıl, aynı Wi-Fi'da LAN oyunu ve oda kur; oda kurunca yönlendiricide port kendiliğinden açılır. Herkes kendi telefonundan oynar; turlar eş zamanlıdır: herkes «Turu geç» deyince (ya da süre dolunca) tur işlenir. Oyun menüsünde sohbet var; insanlar arası ittifak ve barış teklifleri karşı oyuncunun onayına gider. Bağlantısı kopan oyuncunun ülkesini yapay zekâ devralır. Beta: kalıcı sunucu için ayrı bir sunucu programı vardır."],
 	["Çok oyunculu: aynı telefonda", "Ana menüde «Çok Oyunculu → Aynı Telefon»: 2–6 kişi aynı telefonda sırayla oynar. Her oyuncu kendi ülkesini seçer, hamlesini yapınca «Telefonu devret» perdesi gelir; herkes kendi tur raporunu görür. Son ayakta kalan ya da dünyanın %55'ini alan kazanır. Kayıt/devam desteklenir; bu modda AOD Puanı ve görev ilerlemesi sayılmaz."],
