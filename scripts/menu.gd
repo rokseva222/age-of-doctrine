@@ -481,12 +481,18 @@ func _build_select() -> void:
 	tv.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	tv.add_theme_constant_override("separation", -6)
 	_sel_kicker = TK.t("Yeni oyun", "kicker")
+	_sel_kicker.clip_text = true
+	_sel_kicker.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
 	tv.add_child(_sel_kicker)
 	_sel_title = TK.t("Ülkeni seç", "h3", TK.TEXT)
+	_sel_title.clip_text = true
+	_sel_title.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
 	tv.add_child(_sel_title)
 	head.add_child(tv)
 	v.add_child(head)
 	_scn_btn = TK.button("Dünya 2027", "", "book", Vector2(0, 60), 16)
+	_scn_btn.clip_text = true
+	_scn_btn.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
 	_scn_btn.pressed.connect(func():
 		_click()
 		_open_scenarios())
@@ -525,6 +531,8 @@ func _build_select() -> void:
 	_sel_card.visible = false
 	_go_btn = TK.button("Başla", "gold", "play", Vector2(0, 72), 23)
 	_go_btn.disabled = true
+	_go_btn.clip_text = true
+	_go_btn.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
 	_go_btn.pressed.connect(func():
 		if _sel >= 0:
 			_click()
@@ -532,15 +540,8 @@ func _build_select() -> void:
 
 
 func _open_scenarios() -> void:
-	var sh = Sheet.open(root, "Senaryo seç", 980, false, true, "Oyun kipi")
-	var scroll := ScrollContainer.new()
-	scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
-	scroll.custom_minimum_size = Vector2(0, clampf(get_viewport().get_visible_rect().size.y * 0.58, 240.0, 540.0))
-	var box := VBoxContainer.new()
-	box.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	box.add_theme_constant_override("separation", 0)
-	scroll.add_child(box)
-	sh.body.add_child(scroll)
+	var sh = Sheet.open(root, "Senaryo seç", 980, true, true, "Oyun kipi")
+	var box: VBoxContainer = TK.searchable_list(sh, "Senaryo ara...")
 	var kinds := {"free": ["SERBEST", TK.PAPER], "real": ["GERÇEK KRİZ", TK.RED_TEXT], "fiction": ["KURGUSAL", TK.PURPLE], "user": ["SENİN SENARYON", TK.GREEN]}
 	var last_kind := ""
 	for sc in Scenarios.all():
@@ -551,10 +552,12 @@ func _open_scenarios() -> void:
 			hm.add_theme_constant_override("margin_top", 14)
 			hm.add_theme_constant_override("margin_bottom", 6)
 			hm.add_child(hl)
+			hm.set_meta("q", "")
 			box.add_child(hm)
 			last_kind = kd
 		var sid: String = sc["id"]
 		var b := TK.row_button(Color(0, 0, 0, 0), TK.LINE, 0)
+		b.set_meta("q", (String(sc["name"]) + " " + String(sc["sub"]) + " " + String(sc["blurb"]) + " " + Loc.t(kinds[kd][0])).to_lower())
 		var hb := HBoxContainer.new()
 		hb.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 		hb.offset_left = 0
@@ -616,15 +619,14 @@ func _after_editor(id: String) -> void:
 
 
 func _open_eras() -> void:
-	var sh = Sheet.open(root, "Tarihî savaşlar", 900, false, true, "Oyun kipi")
+	var sh = Sheet.open(root, "Tarihî savaşlar", 900, true, true, "Oyun kipi")
 	sh.set_icon("what_if", "")
-	var box := VBoxContainer.new()
-	box.add_theme_constant_override("separation", 0)
-	sh.body.add_child(box)
-	box.add_child(TK.t("Ayrı bir oyun kipi: dönemin imparatorlukları, silahları, ittifakları ve renkleri. Senaryolardan bağımsızdır.", "small", TK.MUTED))
+	sh.body.add_child(TK.t("Ayrı bir oyun kipi: dönemin imparatorlukları, silahları, ittifakları ve renkleri. Senaryolardan bağımsızdır.", "small", TK.MUTED))
+	var box: VBoxContainer = TK.searchable_list(sh, "Savaş ara...")
 	for e in Eras.all():
 		var eid: String = e["id"]
 		var b := TK.row_button(Color(0, 0, 0, 0), TK.LINE, 0)
+		b.set_meta("q", (String(e["name"]) + " " + String(e["sub"]) + " " + String(e["blurb"])).to_lower())
 		var hb := HBoxContainer.new()
 		hb.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 		hb.offset_right = -12
@@ -923,11 +925,18 @@ func toast(msg: String) -> void:
 		_toast_panel.offset_left = -300
 		_toast_panel.offset_right = 300
 		_toast_panel.grow_horizontal = Control.GROW_DIRECTION_BOTH
+		_toast_panel.grow_vertical = Control.GROW_DIRECTION_BEGIN
 		_toast_panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		_toast_lbl = TK.t("", "body", TK.TEXT)
 		_toast_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		_toast_lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		_toast_panel.add_child(_toast_lbl)
 		root.add_child(_toast_panel)
+	var tmaxw: float = maxf(root.get_viewport_rect().size.x - 140.0, 320.0)
+	var tf: Font = _toast_lbl.get_theme_font("font")
+	var tfs: int = _toast_lbl.get_theme_font_size("font_size")
+	var tww: float = tf.get_string_size(msg, HORIZONTAL_ALIGNMENT_LEFT, -1, tfs).x + 6.0 if tf != null else tmaxw
+	_toast_lbl.custom_minimum_size = Vector2(minf(tww, minf(tmaxw, 900.0)), 0)
 	_toast_lbl.text = msg
 	_toast_panel.modulate = Color(1, 1, 1, 1)
 	_toast_panel.visible = true

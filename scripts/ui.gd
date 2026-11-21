@@ -928,6 +928,14 @@ func _build_toast() -> void:
 
 
 func toast(text: String) -> void:
+	# uzun bildirimler ekranı aşmasın: en fazla ekran genişliğine yakın bir genişlikte satır sarar
+	var maxw: float = maxf(root.get_viewport_rect().size.x - 140.0, 320.0)
+	toast_lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	toast_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	var tf: Font = toast_lbl.get_theme_font("font")
+	var tfs: int = toast_lbl.get_theme_font_size("font_size")
+	var tw: float = tf.get_string_size(text, HORIZONTAL_ALIGNMENT_LEFT, -1, tfs).x + 6.0 if tf != null else maxw
+	toast_lbl.custom_minimum_size = Vector2(minf(tw, maxw), 0)
 	toast_lbl.text = text
 	toast_panel.reset_size()
 	if _toast_tween != null and _toast_tween.is_valid():

@@ -289,6 +289,8 @@ func _on_created(result: int, code: int, _h: PackedStringArray, body: PackedByte
 		create_failed.emit("ver", String(j.get("server_ver", "")))
 	elif code == 429:
 		create_failed.emit("limit", "")
+	elif code == 503 and j is Dictionary and String(j.get("err", "")) == "update":
+		create_failed.emit("update", "")
 	elif code == 503:
 		create_failed.emit("full", "")
 	else:

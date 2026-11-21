@@ -12,6 +12,7 @@ var gs = null
 var cmds: Dictionary = {}       # cid -> bekleyen komutlar (Array)
 var ready: Dictionary = {}      # cid -> bool
 var afk: Dictionary = {}        # cid -> bool (yapay zekâ devraldı)
+var missed: Dictionary = {}     # cid -> üst üste kaçırılan tur sayısı
 var last_report: Dictionary = {}
 var rng := RandomNumberGenerator.new()
 
@@ -66,6 +67,15 @@ func all_ready() -> bool:
 		if not bool(ready.get(h, false)):
 			return false
 	return any
+
+
+## Yaşayan ve yapay zekâ devralmamış insan sayısı.
+func active_count() -> int:
+	var n := 0
+	for h in gs.humans:
+		if gs.countries[h].alive and not bool(afk.get(h, false)):
+			n += 1
+	return n
 
 
 func waiting_for() -> Array:

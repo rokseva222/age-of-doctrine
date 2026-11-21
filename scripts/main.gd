@@ -54,6 +54,7 @@ const Mp = preload("res://scripts/mp.gd")
 const NetS = preload("res://scripts/net.gd")
 const NetMaster = preload("res://scripts/net_master.gd")
 const OnlineUI = preload("res://scripts/online_ui.gd")
+const OnlineHud = preload("res://scripts/online_hud.gd")
 const Cmd = preload("res://scripts/cmd.gd")
 const MpUI = preload("res://scripts/mp_ui.gd")
 const FOCUS_ZOOM := 3.4
@@ -79,6 +80,7 @@ var online_picking := false     # lobi için ülke seçiyoruz
 var _lobby_sheet = null
 var _sync_timer: Timer = null
 var _wait_ov = null
+var _hud = null                 # online oyuncu şeridi (bayraklar, geri sayım, olay akışı)
 var _online_before: Dictionary = {}
 var mp_n := 0                   # çok oyunculu kurulumda oyuncu sayısı (0 = normal oyun)
 var mp_picks: Array = []        # şu ana kadar seçilen ülkeler
@@ -140,7 +142,7 @@ func _ready() -> void:
 	ui.step_requested.connect(_on_step)
 	ui.action.connect(_on_ui_action)
 	ui.settings_changed.connect(_apply_settings)
-	ui.main_menu_requested.connect(_go_main_menu)
+	ui.main_menu_requested.connect(_menu_pressed)
 	ui.chat_requested.connect(_open_chat)
 	ui.tutorial_requested.connect(_start_tutorial)
 	ui.shop_requested.connect(func(): ApUi.open(ui.root, ui.toast))
@@ -443,9 +445,19 @@ func reload_for_language() -> void:
 	get_tree().reload_current_scene()
 
 
-func _go_main_menu() -> void:
+## Oyun içi «Ana menü»: online odadaysak önce odadan ayrılmayı onaylatır (menüde beklerken tur akıp oyuncuyu geri çekiyordu).
+func _menu_pressed() -> void:
+	if online and net != null:
+		ui.show_dialog("Odadan ayrılıyor musun?", Loc.t("Ayrılırsan ülkeni yapay zekâ yönetir. Aynı odaya daha sonra tekrar katılıp ülkeni geri alabilirsin."), [
+			{"text": "Odadan ayrıl", "cb": func(): online_leave(), "kind": "danger"},
+			{"text": "Vazgeç", "cb": func(): pass}])
+		return
+	_go_main_menu()
+
+
+func _go_main_menu(no_save: bool = false) -> void:
 	_mp_reset()
-	if mode == "game" and gs.game_started and gs.player >= 0 and gs.countries[gs.player].alive and Settings.autosave:
+	if not no_save and mode == "game" and gs.game_started and gs.player >= 0 and gs.countries[gs.player].alive and Settings.autosave:
 		Saves.write(gs, 0, Eras.current)
 	_detach_gs()
 	ui.set_hud_visible(false)
@@ -739,6 +751,7 @@ func get_net():
 		net.disconnected.connect(_online_lost)
 		net.over.connect(_online_over)
 		net.chat.connect(_on_net_chat)
+		net.note.connect(_online_note)
 	return net
 
 
@@ -779,7 +792,12 @@ func online_host_remote(cfg: Dictionary) -> void:
 		st.done = true
 		match code:
 			"ver":
-				menu.toast(Loc.t("Sunucu sürümü %s. Oyunu güncelle.") % msg)
+				if _ver_older(msg, Info.UPDATE_VER):
+					menu.toast(Loc.t("Sunucu yeni sürüme geçiyor, birkaç dakika sonra tekrar dene."))
+				else:
+					menu.toast(Loc.t("Sunucu sürümü %s. Oyunu güncelle.") % msg)
+			"update":
+				menu.toast(Loc.t("Sunucu güncelleniyor, 1-2 dakika sonra tekrar dene."))
 			"full":
 				menu.toast(Loc.t("Sunucu dolu, biraz sonra tekrar dene."))
 			"limit":
@@ -790,6 +808,18 @@ func online_host_remote(cfg: Dictionary) -> void:
 	m.created.connect(ok_cb, CONNECT_ONE_SHOT)
 	m.create_failed.connect(fail_cb, CONNECT_ONE_SHOT)
 	m.create_room(req)
+
+
+## "1.2.46" < "1.2.47" mi?
+func _ver_older(a: String, b: String) -> bool:
+	var x: PackedStringArray = a.split(".")
+	var y: PackedStringArray = b.split(".")
+	for i in maxi(x.size(), y.size()):
+		var u: int = int(x[i]) if i < x.size() else 0
+		var v: int = int(y[i]) if i < y.size() else 0
+		if u != v:
+			return u < v
+	return false
 
 
 func online_join(ip: String, port: int) -> void:
@@ -889,12 +919,26 @@ func online_leave() -> void:
 	if _sync_timer != null:
 		_sync_timer.stop()
 	_wait_free()
+	_hud_free()
 	if _lobby_sheet != null and is_instance_valid(_lobby_sheet):
 		_lobby_sheet.queue_free()
 	_lobby_sheet = null
 	map.set_highlight_country(-1)
 	if mode == "select" or mode == "game":
-		_go_main_menu()
+		_go_main_menu(true)
+
+
+func _hud_free() -> void:
+	if _hud != null and is_instance_valid(_hud):
+		_hud.queue_free()
+	_hud = null
+
+
+func _online_note(kind: String, cid: int, text: String) -> void:
+	if online and _hud != null and is_instance_valid(_hud):
+		_hud.add_note(kind, cid, text)
+		if kind == "ready" and cid == net.my_cid:
+			return
 
 
 func _online_over(text: String) -> void:
@@ -924,7 +968,8 @@ func _online_lost() -> void:
 		online = false
 		ui.online_mode = false
 		_wait_free()
-		_go_main_menu()
+		_hud_free()
+		_go_main_menu(true)
 
 
 func _wait_free() -> void:
@@ -981,6 +1026,10 @@ func _online_begin(cid: int) -> void:
 	_sync_timer.start()
 	_online_swap(net.gs_client, cid)
 	_online_turn_seen = gs.turn
+	_hud_free()
+	_hud = OnlineHud.new()
+	ui.root.add_child(_hud)
+	_hud.setup(net, ui.BAR_H + ui.TICK_H)
 	map.focus_country(cid)
 	var cap: int = gs.countries[cid].capital
 	if cap >= 0:
@@ -1009,6 +1058,8 @@ var _sync_t := 0.0
 func _online_status() -> void:
 	if net == null:
 		return
+	if _hud != null and is_instance_valid(_hud):
+		_hud.refresh()
 	if online and not turn_busy and net.deadline_left > 0.0 and net.deadline_left <= 15.0 and _warned_turn != gs.turn:
 		_warned_turn = gs.turn
 		ui.toast(Loc.t("Tur bitmek üzere: %d sn") % int(net.deadline_left))
@@ -1028,6 +1079,8 @@ func _online_round(_inf: Dictionary) -> void:
 	var cid: int = net.my_cid
 	_wait_free()
 	_online_swap(net.gs_client, cid)
+	if _hud != null and is_instance_valid(_hud):
+		_hud.refresh()
 	if not gs.countries[cid].alive:
 		playing = false
 		ui.show_dialog("Yenilgi", Loc.t("%s devleti yıkıldı. Cihan Bülteni sana başsağlığı diliyor.") % gs.countries[cid].name, [

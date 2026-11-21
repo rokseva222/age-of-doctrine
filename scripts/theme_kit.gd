@@ -655,6 +655,33 @@ static func search_field(content: Control, placeholder: String = "Ara...") -> Li
 	return le
 
 
+## Aranabilir, kaydırılabilir liste (Bağımsızlık Yolu'ndaki seçici gibi): üstte arama kutusu, altında tek ScrollContainer.
+## Satırlar dönen kutuya eklenir. Arama anahtarı için satıra set_meta("q", "metin"); başlık satırlarına set_meta("q", "") verilir.
+static func searchable_list(sh, placeholder: String = "Ara...", height_ratio: float = 0.58) -> VBoxContainer:
+	var box := VBoxContainer.new()
+	box.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	box.add_theme_constant_override("separation", 0)
+	var sf := search_field(box, placeholder)
+	sh.body.add_child(sf)
+	var empty := t("Sonuç yok", "small", FAINT)
+	empty.visible = false
+	sh.body.add_child(empty)
+	var sc := ScrollContainer.new()
+	sc.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	sc.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	var vh: float = sh.get_viewport_rect().size.y if sh.is_inside_tree() else 720.0
+	sc.custom_minimum_size = Vector2(0, clampf(vh * height_ratio, 240.0, 560.0))
+	sc.add_child(box)
+	sh.body.add_child(sc)
+	sf.text_changed.connect(func(_t: String):
+		var any := false
+		for ch in box.get_children():
+			if ch is CanvasItem and ch.visible and not (ch.has_meta("q") and String(ch.get_meta("q")) == ""):
+				any = true
+		empty.visible = sf.text.strip_edges() != "" and not any)
+	return box
+
+
 static func _apply_filter(content, q: String) -> void:
 	if not is_instance_valid(content):
 		return

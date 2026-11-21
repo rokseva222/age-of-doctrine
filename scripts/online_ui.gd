@@ -8,6 +8,7 @@ const Net = preload("res://scripts/net.gd")
 const Settings = preload("res://scripts/settings.gd")
 const Eras = preload("res://scripts/eras.gd")
 const Scenarios = preload("res://scripts/scenarios.gd")
+const PickButton = preload("res://scripts/pick_button.gd")
 
 const REGIONS := ["TR", "EU", "US", "AS", "SA", "AF", "OC"]
 
@@ -153,6 +154,8 @@ static func browser(main) -> void:
 			var mx: int = int(pinfo.get("max", e.max))
 			var txt := "%s  ·  %s  ·  %d/%d  ·  %s  ·  %s%s" % [e.name, era, pl, mx, ptxt, String(e.get("region", "")), "  🔒" if bool(e.get("pass", false)) else ""]
 			var b := TK.button(txt, "", "", Vector2(0, 64), 15)
+			b.clip_text = true
+			b.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
 			b.pressed.connect(func():
 				sh.close()
 				main.online_join(String(e.ip), int(e.port)))
@@ -213,7 +216,8 @@ static func host_form(main) -> void:
 	sh.body.add_child(pw)
 	# dünya / çağ
 	sh.body.add_child(TK.t("Dünya", "kicker"))
-	var era_ob := OptionButton.new()
+	var era_ob := PickButton.new()
+	era_ob.title = Loc.t("Dünya / senaryo")
 	era_ob.custom_minimum_size = Vector2(0, 60)
 	era_ob.add_item(Loc.t("Dünya 2027"))
 	era_ob.set_item_metadata(0, "")
@@ -363,7 +367,10 @@ static func lobby(main) -> Control:
 		for id in net.players:
 			var p: Dictionary = net.players[id]
 			var cn: String = String(p.get("cname", ""))
-			list.add_child(TK.t("%s%s   %s" % [p.name, "  ★" if bool(p.host) else "", cn if cn != "" else Loc.t("(ülke seçmedi)")], "bodyb", TK.TEXT))
+			var pl := TK.t("%s%s   %s" % [p.name, "  ★" if bool(p.host) else "", cn if cn != "" else Loc.t("(ülke seçmedi)")], "bodyb", TK.TEXT)
+			pl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+			pl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+			list.add_child(pl)
 			if bool(p.host) and int(id) == multiplayer_id(net):
 				me_host = true
 		start.visible = me_host

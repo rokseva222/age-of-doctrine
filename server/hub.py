@@ -21,6 +21,7 @@ servers = {}            # token -> duyuru kaydı (odalar kendini bildirir)
 rooms = {}              # port -> {"proc","ip","t","name"}
 lock = threading.Lock()
 A = None
+updating = False        # güncelleme sürerken yeni oda açılmaz
 SAFE = re.compile(r"^[a-z0-9_]{0,24}$")
 
 
@@ -73,6 +74,8 @@ def create_room(b, ip):
     if sv and str(b.get("ver", "")) != sv:
         return 409, {"err": "ver", "server_ver": sv}
     reap()
+    if updating:
+        return 503, {"err": "update"}
     with lock:
         if len(rooms) >= A.max_rooms:
             return 503, {"err": "dolu"}
@@ -168,6 +171,57 @@ class H(BaseHTTPRequestHandler):
         self._send(404, {"err": "yok"})
 
 
+def git(*a, timeout=120):
+    return subprocess.run(["git", "-C", A.project] + list(a), capture_output=True, text=True, timeout=timeout)
+
+
+def updater():
+    """Depoda yeni sürüm varsa (ve oda yokken) çeker; hub.py değiştiyse kendini yeniden başlatır.
+    Böylece yeni uygulama sürümü yayınlanınca sunucu da birkaç dakika içinde aynı sürüme geçer."""
+    global updating
+    hub_file = os.path.abspath(__file__)
+    try:
+        h0 = open(hub_file, "rb").read()
+    except Exception:
+        h0 = b""
+    while True:
+        time.sleep(150)
+        try:
+            if A.no_update or not os.path.isdir(os.path.join(A.project, ".git")):
+                continue
+            git("fetch", "--quiet", timeout=60)
+            local = git("rev-parse", "HEAD").stdout.strip()
+            remote = git("rev-parse", "@{u}").stdout.strip()
+            if not local or not remote or local == remote:
+                continue
+            reap()
+            with lock:
+                busy = len(rooms) > 0
+            if busy:
+                continue            # odalar boşalınca çekeriz
+            updating = True
+            print("güncelleniyor %s -> %s" % (local[:7], remote[:7]), flush=True)
+            r = git("pull", "--ff-only", timeout=180)
+            print(r.stdout.strip(), r.stderr.strip(), flush=True)
+            if r.returncode == 0:
+                try:
+                    subprocess.run([A.godot, "--headless", "--path", A.project, "--import"],
+                                   stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, timeout=600)
+                except Exception as e:
+                    print("içe aktarma uyarısı:", e, flush=True)
+                try:
+                    h1 = open(hub_file, "rb").read()
+                except Exception:
+                    h1 = h0
+                if h1 != h0:
+                    print("hub.py değişti, yeniden başlatılıyor", flush=True)
+                    os.execv(sys.executable, [sys.executable] + sys.argv)
+            updating = False
+        except Exception as e:
+            print("güncelleme hatası:", e, flush=True)
+            updating = False
+
+
 def main():
     global A
     ap = argparse.ArgumentParser()
@@ -180,9 +234,11 @@ def main():
     ap.add_argument("--per-ip", type=int, default=2)
     ap.add_argument("--idle", type=int, default=600, help="oda boş kalınca kaç sn sonra kapanır")
     ap.add_argument("--region", default="TR")
+    ap.add_argument("--no-update", action="store_true", help="otomatik git güncellemesini kapat")
     A = ap.parse_args()
     A.port_lo, A.port_hi = [int(x) for x in A.ports.split("-")]
     threading.Thread(target=lambda: [(reap(), time.sleep(5)) for _ in iter(int, 1)], daemon=True).start()
+    threading.Thread(target=updater, daemon=True).start()
     print("hub hazır: :%d  genel adres=%s  sürüm=%s" % (A.port, A.public_host, server_ver()), flush=True)
     ThreadingHTTPServer(("0.0.0.0", A.port), H).serve_forever()
 

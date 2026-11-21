@@ -73,6 +73,9 @@ static func loading(parent: Control, next_turn: int) -> Loading:
 	track.add_child(o.bar_fill)
 	o.status = TK.t(TIPS[0], "small", TK.MUTED)
 	o.status.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	o.status.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	o.status.custom_minimum_size = Vector2(o._w, 0)
+	o.status.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	v.add_child(o.status)
 	o.modulate = Color(1, 1, 1, 0)
 	parent.add_child(o)

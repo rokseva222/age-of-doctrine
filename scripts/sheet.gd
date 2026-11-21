@@ -52,8 +52,13 @@ func _build(title: String, width: float, tall: bool, closable: bool, kicker: Str
 	tv.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	tv.add_theme_constant_override("separation", -4)
 	if kicker != "":
-		tv.add_child(TK.t(kicker, "kicker"))
+		var kl := TK.t(kicker, "kicker")
+		kl.clip_text = true
+		kl.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
+		tv.add_child(kl)
 	title_lbl = TK.t(title, "h3", TK.TEXT)
+	title_lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	title_lbl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	tv.add_child(title_lbl)
 	head.add_child(tv)
 	if closable:
@@ -118,6 +123,9 @@ static func _wrap_long_labels(n: Node, limit: float) -> void:
 			ch.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		elif ch is RichTextLabel and not ch.fit_content and ch.get_minimum_size().x > limit:
 			ch.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		elif ch is Button and not ch.clip_text and ch.get_child_count() == 0 and ch.get_minimum_size().x > limit:
+			ch.clip_text = true
+			ch.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
 		if not (ch is ScrollContainer):
 			_wrap_long_labels(ch, limit)
 

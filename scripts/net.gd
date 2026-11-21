@@ -16,6 +16,8 @@ const PROTO := 1
 const DEFAULT_PORT := 47320
 const LAN_PORT := 47321
 const MAX_PLAYERS := 12
+const GRACE_SECS := 120.0                    # biri turu bitirince diğerlerine tanınan bekleme süresi
+const MISS_LIMIT := 2                        # üst üste bu kadar tur kaçıran oyuncunun ülkesini yapay zekâ devralır
 
 signal lobby_changed()
 signal game_started(cid: int)
@@ -25,6 +27,7 @@ signal disconnected()
 signal error(msg: String)
 signal chat(from_cid: int, pname: String, text: String)
 signal over(text: String)
+signal note(kind: String, cid: int, text: String)   # oyuncu olayları: ready, afk, back, left, grace, diplo...
 
 # ---- ortak durum
 var is_server := false
@@ -36,11 +39,15 @@ var started := false
 var waiting: Array = []                    # henüz hazır olmayan ülke kimlikleri
 var chat_log: Array = []                   # [{cid, name, text}] (son 60 mesaj)
 var deadline_left := 0.0                   # tur bitimine kalan saniye (-1 = sınırsız)
+var deadline_grace := false                # true: geri sayım "diğerleri bitirdi, sen bekletiyorsun" süresi
+var afk_ids: Array = []                    # yapay zekânın yönettiği insan ülkeleri
 
 # ---- sunucu
 var room = null
 var gs_server = null
 var _round_timer := 0.0
+var _grace_on := false
+var _grace_left := 0.0
 var _lan_udp: PacketPeerUDP = null
 var _lan_t := 0.0
 var _st_t := 0.0
@@ -221,11 +228,16 @@ func _on_peer_connected(id: int) -> void:
 func _on_peer_disconnected(id: int) -> void:
 	if is_server:
 		var p: Dictionary = players.get(id, {})
-		if started and room != null and int(p.get("cid", -1)) >= 0:
-			room.set_afk(int(p.cid), true)      # bağlantı koptu: yapay zekâ devralır
+		var gone_cid: int = int(p.get("cid", -1))
+		if started and room != null and gone_cid >= 0:
+			room.set_afk(gone_cid, true)      # bağlantı koptu: yapay zekâ devralır
 		players.erase(id)
+		if started and room != null and gone_cid >= 0:
+			_say("left", gone_cid)
+		_reassign_host()
 		_check_round()
 		_push_lobby()
+		_push_status()
 
 
 @rpc("any_peer", "call_remote", "reliable")
@@ -244,7 +256,9 @@ func srv_hello(proto: int, pname: String, token: String = "") -> void:
 				players.erase(q)
 		players[id] = {"name": pname.left(24), "cid": int(seat.cid), "cname": String(seat.cname), "host": false, "pass_ok": true, "token": token}
 		room.set_afk(int(seat.cid), false)
+		room.missed[int(seat.cid)] = 0
 		_send_state(id, "cli_start")
+		_say("back", int(seat.cid))
 		_push_lobby()
 		_push_status()
 		return
@@ -355,9 +369,17 @@ func srv_submit(list: Array, is_ready: bool) -> void:
 	var p: Dictionary = players.get(id, {})
 	if p.is_empty() or int(p.cid) < 0:
 		return
+	var was_afk: bool = bool(room.afk.get(int(p.cid), false))
+	var was_ready: bool = bool(room.ready.get(int(p.cid), false))
 	room.set_afk(int(p.cid), false)
+	if was_afk:
+		_say("back", int(p.cid))
 	room.submit(int(p.cid), list)
 	room.set_ready(int(p.cid), is_ready)
+	if is_ready:
+		room.missed[int(p.cid)] = 0
+		if not was_ready:
+			_say("ready", int(p.cid))
 	_push_status()
 	_check_round()
 
@@ -383,9 +405,23 @@ func _check_round() -> void:
 		_run_round()
 
 
+## Süre doldu: hâlâ hazır olmayanlar bu turu kaçırdı; üst üste MISS_LIMIT kez kaçıran yapay zekâya devredilir.
+func _force_round() -> void:
+	if room == null:
+		return
+	for c in room.waiting_for():
+		var n: int = int(room.missed.get(int(c), 0)) + 1
+		room.missed[int(c)] = n
+		if n >= MISS_LIMIT:
+			room.set_afk(int(c), true)
+			_say("afk", int(c))
+	_run_round()
+
+
 func _run_round() -> void:
 	var r: Dictionary = room.process_round()
 	_round_timer = float(info.secs)
+	_grace_on = false
 	for pid in players:
 		_send_state(pid, "cli_round")
 	if String(r.get("over", "")) != "":
@@ -404,10 +440,47 @@ func _push_lobby() -> void:
 	lobby_changed.emit()
 
 
+## Geri sayım: tur süresi (secs>0) ve bekleme süresinden (biri bitirince) hangisi önce dolacaksa o.
+func _deadline() -> Dictionary:
+	var left := -1.0
+	var grace := false
+	if started and float(info.secs) > 0.0:
+		left = maxf(_round_timer, 0.0)
+	if _grace_on and (left < 0.0 or _grace_left < left):
+		left = maxf(_grace_left, 0.0)
+		grace = true
+	return {"left": left, "grace": grace}
+
+
 func _push_status() -> void:
 	var w: Array = room.waiting_for() if room != null else []
+	var afk: Array = []
+	if room != null:
+		for h in room.gs.humans:
+			if bool(room.afk.get(h, false)):
+				afk.append(h)
+	var d: Dictionary = _deadline()
 	for pid in players:
-		_to(pid, "cli_status", [w, _round_timer])
+		_to(pid, "cli_status", [w, float(d.left), afk, bool(d.grace)])
+
+
+## Herkese oyuncu olayı yollar (istemci bayraklı şeritte gösterir).
+func _say(kind: String, cid: int, text: String = "") -> void:
+	for pid in players:
+		if bool(players[pid].get("pass_ok", false)):
+			_to(pid, "cli_note", [kind, cid, text])
+
+
+
+## Kurucu çıkarsa sıradaki bağlı oyuncu kurucu olur (yoksa kimse oyunu başlatamazdı).
+func _reassign_host() -> void:
+	for q in players.values():
+		if bool(q.host):
+			return
+	for q in players.values():
+		if bool(q.get("pass_ok", false)):
+			q.host = true
+			return
 
 
 ## Bir sunucuya ping atar (sonuç pings["ip:port"] içinde, ms). Yanıt gelmezse 2 sn sonra -1.
@@ -466,11 +539,23 @@ func _process(delta: float) -> void:
 			for t in _lan_targets():
 				_lan_udp.set_dest_address(t, LAN_PORT)
 				_lan_udp.put_packet(data)
-		if started and room != null and float(info.secs) > 0.0:
-			_round_timer -= delta
-			if _round_timer <= 0.0:
+		if started and room != null:
+			var w: Array = room.waiting_for()
+			# biri turu bitirdi, diğerleri hâlâ oynuyor: bekleme süresi başlar
+			if not _grace_on and not w.is_empty() and w.size() < room.active_count():
+				_grace_on = true
+				_grace_left = GRACE_SECS
+				_say("grace", int(w[0]), str(int(GRACE_SECS)))
+				_push_status()
+			elif _grace_on and w.is_empty():
+				_grace_on = false
+			if _grace_on:
+				_grace_left -= delta
+			if float(info.secs) > 0.0:
+				_round_timer -= delta
+			if (_grace_on and _grace_left <= 0.0) or (float(info.secs) > 0.0 and _round_timer <= 0.0):
 				# süre doldu: hazır olmayanın emirleri o ana kadar gönderdiği kadar, tur işlenir
-				_run_round()
+				_force_round()
 	if _lan_listen != null:
 		while _lan_listen.get_available_packet_count() > 0:
 			var pkt: PackedByteArray = _lan_listen.get_packet()
@@ -536,6 +621,11 @@ func leave() -> void:
 	gs_server = null
 	players = {}
 	chat_log = []
+	_grace_on = false
+	afk_ids = []
+	waiting = []
+	deadline_left = 0.0
+	deadline_grace = false
 	if _upnp_thread != null:
 		_upnp_thread.wait_to_finish()
 		_upnp_thread = null
@@ -618,10 +708,18 @@ func cli_round(raw: PackedByteArray, cid: int, wait: Array, era: String) -> void
 
 
 @rpc("authority", "call_remote", "reliable")
-func cli_status(wait: Array, left: float) -> void:
+func cli_status(wait: Array, left: float, afk: Array = [], grace: bool = false) -> void:
 	waiting = wait
 	deadline_left = left
+	deadline_grace = grace
+	afk_ids = afk
 	status_changed.emit()
+
+
+@rpc("authority", "call_remote", "reliable")
+func cli_note(kind: String, cid: int, text: String) -> void:
+	note.emit(kind, cid, text)
+
 
 
 @rpc("authority", "call_remote", "reliable")
