@@ -17,10 +17,15 @@ apt-get update -y
 apt-get install -y python3 git unzip curl ufw ca-certificates
 
 if [ ! -x /opt/godot/godot ]; then
+  case "$(uname -m)" in
+    x86_64) ARCH="x86_64" ;;
+    aarch64|arm64) ARCH="arm64" ;;     # Oracle ücretsiz Ampere sunucuları vb.
+    *) echo "Desteklenmeyen işlemci: $(uname -m)"; exit 1 ;;
+  esac
   mkdir -p /opt/godot
-  curl -fL "https://github.com/godotengine/godot/releases/download/${GODOT_TAG}/Godot_v${GODOT_TAG}_linux.x86_64.zip" -o /tmp/godot.zip
+  curl -fL "https://github.com/godotengine/godot/releases/download/${GODOT_TAG}/Godot_v${GODOT_TAG}_linux.${ARCH}.zip" -o /tmp/godot.zip
   unzip -o /tmp/godot.zip -d /opt/godot
-  mv /opt/godot/Godot_v${GODOT_TAG}_linux.x86_64 /opt/godot/godot
+  mv /opt/godot/Godot_v${GODOT_TAG}_linux.${ARCH} /opt/godot/godot
   chmod +x /opt/godot/godot
 fi
 
@@ -63,6 +68,7 @@ Persistent=true
 WantedBy=timers.target
 UNIT
 
+# Oracle Cloud Ubuntu görüntüleri iptables'te varsayılan olarak yalnızca 22'yi açar: ufw ile birlikte yönetilir.
 ufw allow OpenSSH
 ufw allow 8780/tcp
 ufw allow 47400:47499/udp
