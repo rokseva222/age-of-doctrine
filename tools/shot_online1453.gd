@@ -8,14 +8,14 @@ func _shot(name: String) -> void:
 func _init() -> void:
 	var St = load("res://scripts/settings.gd")
 	var Loc = load("res://scripts/loc.gd")
-	St.load_all(); St.language = "tr"; St.ui_scale_custom = true; St.ui_scale = 1.4; St.seen_howto = true; St.seen_promo = true; St.tut_done = true; St.sfx = 0.0
+	St.load_all(); St.language = "tr"; St.ui_scale_custom = true; St.ui_scale = 1.0; St.seen_howto = true; St.seen_promo = true; St.tut_done = true; St.sfx = 0.0
 	St.seen_update = load("res://scripts/info_sheets.gd").UPDATE_VER
 	St.player_name = "Fatih"
 	St.save_all()
 	main = load("res://main.tscn").instantiate()
 	get_root().add_child(main)
 	Loc.apply("tr")
-	St.ui_scale_custom = true; St.ui_scale = 1.4; St.language = "tr"; St.apply_display(self)
+	St.ui_scale_custom = true; St.ui_scale = 1.0; St.language = "tr"; St.apply_display(self)
 	DirAccess.make_dir_recursive_absolute(out)
 	await create_timer(2.0).timeout
 	main.menu.finish_splash()
@@ -31,6 +31,9 @@ func _init() -> void:
 	await _shot("0_oda_kur")
 	main.menu.root.get_children().back().close()
 	await create_timer(0.4).timeout
+	St.ui_scale = 1.4
+	St.apply_display(self)
+	await create_timer(0.6).timeout
 	main.online_join("127.0.0.1", 47398)
 	await create_timer(3.0).timeout
 	await _shot("1_lobi")
