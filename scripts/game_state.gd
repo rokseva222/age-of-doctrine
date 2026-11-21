@@ -72,6 +72,8 @@ var wars: Array = []
 var news_log: Array = []
 var turn := 0
 var player := -1
+var humans: Array = []                   # çok oyunculu (aynı telefon / online): insan ülke kimlikleri; boşsa tek oyunculu
+var hs_i := 0                            # sırası gelen insanın humans içindeki indeksi
 var next_army_id := 1
 var player_acted := false                # bu turda oyuncu emir verdi mi
 var auto_idle := false                   # emir verilmezse boştaki ordulara otomatik görev (ayar)
@@ -187,6 +189,16 @@ func switch_player(cid: int) -> void:
 	player = cid
 	countries[cid].is_player = true
 	Currency.sync(self)
+
+
+## Çok oyunculu mu (2+ insan)?
+func is_multi() -> bool:
+	return humans.size() > 1
+
+
+## Sırası gelmemiş başka bir insanın ülkesi mi? (Ona gelen teklifler/çağrılar o sıra gelene kadar bekletilmez, yok sayılır.)
+func is_other_human(cid: int) -> bool:
+	return humans.size() > 1 and cid != player and humans.has(cid)
 
 
 func _init_armies() -> void:
@@ -1490,6 +1502,8 @@ func _ally_join(ally: int, friend: int, foe: int, kind: String) -> void:
 	var c = countries[ally]
 	if not c.alive or ally == foe or at_war(ally, foe) or is_allied(ally, foe):
 		return
+	if is_other_human(ally):
+		return
 	if ally == player:
 		if setup_mode:
 			return
@@ -2044,6 +2058,8 @@ func _ai_alliance_decision(c) -> void:
 	if cands.is_empty():
 		return
 	var t: int = cands[rng.randi_range(0, cands.size() - 1)]
+	if is_other_human(t):
+		return
 	if t == player:
 		if not pending_proposal:
 			pending_proposal = true
@@ -2583,6 +2599,8 @@ func _war_diplomacy() -> void:
 			continue
 		if countries[w.a].is_rebel or countries[w.b].is_rebel:
 			continue
+		if is_other_human(w.a) or is_other_human(w.b):
+			continue
 		if w.a == player or w.b == player:
 			if pending_proposal:
 				continue
@@ -2626,10 +2644,10 @@ func end_turn() -> void:
 	turn_battles.clear()
 	var t := Time.get_ticks_usec() if profile else 0
 	for c in countries:
-		if c.alive and c.id != player:
+		if c.alive and c.id != player and not humans.has(c.id):
 			_ai_turn(c)
 	last_auto = 0
-	if player >= 0 and countries[player].alive:
+	if humans.size() <= 1 and player >= 0 and countries[player].alive:
 		if countries[player].auto_cmd or (auto_idle and not player_acted):
 			last_auto = _ai_orders(countries[player])
 	player_acted = false
@@ -3224,13 +3242,15 @@ func _eliminate(c) -> void:
 			_fix_capital(o3.id)
 	stats.eliminated += 1
 	post_news(Names.eliminated(rng, c.name), c.capital, "elim")
-	if c.id == player:
+	if c.id == player and humans.size() <= 1:
 		game_over.emit(false, "%s devleti yıkıldı. Cihan Bülteni sana başsağlığı diliyor." % c.name)
 	pending_proposal = false
 	refresh_stats()
 
 
 func _check_victory() -> void:
+	if humans.size() > 1:
+		return          # çok oyunculuda zaferi Mp.check_end belirler
 	if player < 0 or victory_declared or not countries[player].alive:
 		return
 	var owned: int = countries[player].prov_owned
@@ -4210,7 +4230,7 @@ func _rebel_independence(c) -> void:
 func to_dict() -> Dictionary:
 	var d: Dictionary = {
 		"v": 3, "seed": seed_value, "base": base_country_count,
-		"turn": turn, "player": player, "next_army_id": next_army_id, "victory": victory_declared,
+		"turn": turn, "player": player, "humans": humans, "hs_i": hs_i, "next_army_id": next_army_id, "victory": victory_declared,
 		"rng_state": rng.state, "rebel_names": rebel_name_count, "merc_names": merc_names, "stats": stats,
 		"difficulty": difficulty, "blocs": blocs, "next_bloc": next_bloc_id, "cold": cold, "sea_camp": sea_campaign.keys(), "crisis": crisis, "crisis_end": crisis_last_end, "scn": scn, "era": Eras.current, "nuke_cd": nuke_cd, "gas_cd": gas_cd, "grand": grand, "chokes": chokes, "daily": daily, "pol": pol, "faith": faith, "focus": focus, "syear": Names.start_year, "wroom": wroom, "indep": indep, "career": career, "moment_p": moment_pending, "moment_f": moment_flags, "infamy": infamy, "un_cd": un_cd, "un_log": un_log, "aid": aid, "trade": trade, "vassals": vassals, "custom_ovr": custom_ovr,
 	}
@@ -4440,6 +4460,13 @@ func from_dict(d: Dictionary) -> bool:
 	game_started = true
 	if player >= 0:
 		countries[player].is_player = true
+	humans = []
+	for h in d.get("humans", []):
+		var hid: int = int(h)
+		if hid >= 0 and hid < countries.size():
+			humans.append(hid)
+			countries[hid].is_player = true
+	hs_i = clampi(int(d.get("hs_i", 0)), 0, maxi(humans.size() - 1, 0))
 	refresh_stats()
 	Currency.sync(self)
 	Macro.prime(self)

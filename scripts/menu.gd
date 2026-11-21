@@ -37,6 +37,7 @@ signal preview_country(cid: int)
 signal back_pressed()
 signal quit_pressed()
 signal settings_changed()
+signal multi_pressed()
 
 const CONT_TR := {
 	"Europe": "Avrupa", "Asia": "Asya", "Africa": "Afrika", "North America": "Kuzey Amerika",
@@ -76,6 +77,8 @@ var _toast_lbl: Label
 var _toast_tw: Tween
 var era_id := ""
 var era_scn := ""      # çağın üstüne uygulanacak kullanıcı senaryosu
+var _sel_kicker: Label
+var _sel_title: Label
 
 
 func _ready() -> void:
@@ -350,14 +353,7 @@ func _build_main() -> void:
 	var online_btn := TK.button("Çok Oyunculu", "", "globe", Vector2(0, 64), 21)
 	online_btn.pressed.connect(func():
 		_click()
-		toast("Online çok oyunculu mod yakında geliyor!"))
-	var soon := TK.stamp("Yakında", TK.PURPLE)
-	soon.set_anchors_preset(Control.PRESET_TOP_RIGHT)
-	soon.offset_top = -12
-	soon.offset_right = -10
-	soon.grow_horizontal = Control.GROW_DIRECTION_BEGIN
-	soon.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	online_btn.add_child(soon)
+		multi_pressed.emit())
 	btns.add_child(online_btn)
 	continue_btn = TK.button("Devam Et", "", "folder", Vector2(0, 64), 21)
 	continue_btn.pressed.connect(func():
@@ -483,8 +479,10 @@ func _build_select() -> void:
 	var tv := VBoxContainer.new()
 	tv.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	tv.add_theme_constant_override("separation", -6)
-	tv.add_child(TK.t("Yeni oyun", "kicker"))
-	tv.add_child(TK.t("Ülkeni seç", "h3", TK.TEXT))
+	_sel_kicker = TK.t("Yeni oyun", "kicker")
+	tv.add_child(_sel_kicker)
+	_sel_title = TK.t("Ülkeni seç", "h3", TK.TEXT)
+	tv.add_child(_sel_title)
 	head.add_child(tv)
 	v.add_child(head)
 	_scn_btn = TK.button("Dünya 2027", "", "book", Vector2(0, 60), 16)
@@ -978,6 +976,29 @@ func show_select(g) -> void:
 		for r in _rows:
 			r["badge"].visible = sc0["suggest"].has(r["en"])
 	_fade_in(select_panel)
+
+
+## Çok oyunculu ülke seçimi başlığı: "Oyuncu k/n". n=0 ise normal başlık.
+func set_pick_header(k: int, n: int) -> void:
+	if _sel_title == null:
+		return
+	if n > 0:
+		_sel_kicker.text = TK.up("Çok oyunculu")
+		_sel_title.text = Loc.t("Oyuncu %d/%d: ülkeni seç") % [k, n]
+	else:
+		_sel_kicker.text = TK.up("Yeni oyun")
+		_sel_title.text = Loc.t("Ülkeni seç")
+
+
+## Sıradaki oyuncu için seçimi sıfırlar.
+func reset_pick() -> void:
+	_sel = -1
+	_clear_sel()
+	_sel_card.visible = false
+	_go_btn.disabled = true
+	for r in _rows:
+		TK.row_select(r.btn, false, TK.PAPER)
+		r.btn.add_theme_stylebox_override("normal", TK.line_box(Color(0, 0, 0, 0), TK.LINE))
 
 
 func hide_all() -> void:

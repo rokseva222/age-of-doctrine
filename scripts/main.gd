@@ -49,6 +49,8 @@ const Daily = preload("res://scripts/daily.gd")
 const Politics = preload("res://scripts/politics.gd")
 const ApUi = preload("res://scripts/ap_ui.gd")
 const SlotsUI = preload("res://scripts/slots_ui.gd")
+const Mp = preload("res://scripts/mp.gd")
+const MpUI = preload("res://scripts/mp_ui.gd")
 const FOCUS_ZOOM := 3.4
 
 var gs
@@ -65,6 +67,9 @@ var selected_army = null
 var selected_fleet = null
 var selected_wing = null
 var tutorial = null
+var mp_n := 0                   # çok oyunculu kurulumda oyuncu sayısı (0 = normal oyun)
+var mp_picks: Array = []        # şu ana kadar seçilen ülkeler
+var mp_before: Dictionary = {}  # tur başı özetleri {ülke: snapshot}
 var _cab_last := -99
 var _cab_recent: Array = []
 var _cab_rng := RandomNumberGenerator.new()
@@ -129,6 +134,7 @@ func _ready() -> void:
 	ui.save_requested.connect(func(): SlotsUI.open(ui.root, "save", _save_game, ui._click))
 	menu.splash_done.connect(_on_splash_done)
 	menu.play_pressed.connect(_to_select)
+	menu.multi_pressed.connect(_on_multi_menu)
 	menu.era_chosen.connect(func(id: String): _start_era(id))
 	menu.scenario_era.connect(func(sid: String, era: String): _start_era(era, sid))
 	menu.indep_start.connect(_start_indep)
@@ -294,12 +300,16 @@ func _drift_step() -> void:
 
 
 func _to_select() -> void:
+	if menu != null and mp_n == 0:
+		menu.set_pick_header(0, 0)
 	mode = "select"
 	_apply_settings()
 	drift_timer.stop()
 	map.input_enabled = true
 	_update_insets()
 	menu.show_select(gs)
+	if mp_n > 0:
+		menu.set_pick_header(mp_picks.size() + 1, mp_n)
 	map.animate_to(map.world_rect().get_center(), map.min_zoom * 1.25, 0.8)
 
 
@@ -319,6 +329,7 @@ func _start_era(id: String, scn: String = "") -> void:
 
 
 func _back_to_menu() -> void:
+	_mp_reset()
 	if Eras.current != "":
 		_new_world()
 		map.input_enabled = false
@@ -333,6 +344,22 @@ func _on_preview_country(cid: int) -> void:
 
 
 func _on_start_requested(cid: int) -> void:
+	var mp_start: Array = []
+	if mp_n > 0:
+		if mp_picks.has(cid):
+			menu.toast(Loc.t("Bu ülkeyi başka oyuncu seçti."))
+			return
+		mp_picks.append(cid)
+		if mp_picks.size() < mp_n:
+			menu.reset_pick()
+			menu.set_pick_header(mp_picks.size() + 1, mp_n)
+			menu.toast(Loc.t("Oyuncu %d: %s seçildi.") % [mp_picks.size(), gs.countries[cid].name])
+			return
+		mp_start = mp_picks.duplicate()
+		cid = mp_start[0]
+		mp_n = 0
+		mp_picks = []
+		menu.set_pick_header(0, 0)
 	map.set_highlight_country(-1)
 	ui.reset_news()
 	gs.difficulty = Settings.difficulty
@@ -344,10 +371,13 @@ func _on_start_requested(cid: int) -> void:
 			Scenarios.apply(gs, menu.era_scn)     # dönemin üstüne kullanıcı senaryosu
 	else:
 		Scenarios.apply(gs, menu.scenario_id)
-	if gs.scn_play >= 0:
+	if gs.scn_play >= 0 and mp_start.is_empty():
 		gs.switch_player(gs.scn_play)
 		cid = gs.player
 		gs.scn_play = -1
+	if not mp_start.is_empty():
+		gs.scn_play = -1
+		Mp.begin(gs, mp_start)
 	map.repaint_all()
 	mode = "game"
 	playing = true
@@ -364,6 +394,9 @@ func _on_start_requested(cid: int) -> void:
 		map.select_province(cap)
 		ui.show_province(cap, null)
 	sfx.play("horn", 0.6)
+	if not mp_start.is_empty():
+		_mp_pass(gs.player, false)
+		return
 	if not Settings.tut_done:
 		Settings.seen_howto = true
 		Settings.save_all()
@@ -387,6 +420,7 @@ func reload_for_language() -> void:
 
 
 func _go_main_menu() -> void:
+	_mp_reset()
 	if mode == "game" and gs.game_started and gs.player >= 0 and gs.countries[gs.player].alive and Settings.autosave:
 		Saves.write(gs, 0, Eras.current)
 	_detach_gs()
@@ -441,6 +475,8 @@ func _load_game(slot: int = 0) -> void:
 	if Daily.active(gs):
 		AP.cur_key = "daily"
 	ui.toast("Oyun yüklendi: %s" % Names.date_string(gs.turn))
+	if Mp.active(gs):
+		_mp_pass(gs.player, false)
 	Independence.resume(gs)
 	Career.resume(gs)
 	EraMoments.resume(gs)
@@ -459,6 +495,22 @@ func _on_step() -> void:
 	if turn_busy or not playing or mode != "game" or ui.is_dialog_open():
 		return
 	turn_busy = true
+	if Mp.active(gs):
+		var rs: Dictionary = Mp.finish_seat(gs)
+		if not rs.round_done:
+			sfx.play("stamp", 0.8)
+			_mp_seat_changed()
+			await _mp_pass(int(rs.next), mp_before.has(int(rs.next)))
+			turn_busy = false
+			return
+		Mp.prepare_round(gs)
+		mp_before = {}
+		for h in Mp.alive_humans(gs):
+			var keep: int = gs.player
+			gs.switch_player(h)
+			mp_before[h] = TurnUI.snapshot(gs)
+			gs.switch_player(keep)
+		Mp._flag_all(gs)
 	sfx.play("stamp", 0.8)
 	var before: Dictionary = TurnUI.snapshot(gs)
 	var ov = TurnUI.loading(ui.root, gs.turn + 1)
@@ -473,6 +525,22 @@ func _on_step() -> void:
 	await get_tree().create_timer(0.3).timeout
 	if is_instance_valid(ov):
 		ov.queue_free()
+	if Mp.active(gs):
+		var endtxt: String = Mp.check_end(gs)
+		if endtxt != "":
+			turn_busy = false
+			sfx.play("win")
+			ui.show_dialog("ZAFER!", endtxt, [
+				{"text": "Oynamaya devam et", "cb": func():
+					_mp_seat_changed()
+					_mp_pass(Mp.begin_round(gs), true, before), "kind": "good"},
+				{"text": "Ana menü", "cb": func(): _go_main_menu()},
+			])
+			return
+		_mp_seat_changed()
+		await _mp_pass(Mp.begin_round(gs), true, before)
+		turn_busy = false
+		return
 	# savaş/barış teklifi gibi pencereler açıldıysa önce onlar kapansın
 	while mode == "game" and ui.is_dialog_open():
 		await get_tree().create_timer(0.2).timeout
@@ -551,6 +619,62 @@ func _show_card(card: Dictionary) -> void:
 		gs.game_over.emit(false, fatal_text)
 
 
+# ------------------------------------------------------------------ çok oyunculu (aynı telefon)
+
+func _on_multi_menu() -> void:
+	MpUI.open_mode(menu.root, func():
+		MpUI.open_count(menu.root, func(n: int):
+			mp_n = n
+			mp_picks = []
+			_to_select()),
+		func(): menu.toast("Online mod yapım aşamasında."))
+
+
+func _mp_reset() -> void:
+	mp_n = 0
+	mp_picks = []
+	mp_before = {}
+
+
+## Koltuk değişti: seçimleri sıfırla, haritayı yeni oyuncunun başkentine odakla.
+func _mp_seat_changed() -> void:
+	selected_army = null
+	_clear_fleet_sel()
+	map.set_selected_army(null)
+	ui.reset_news()
+	ui.refresh_top()
+	map.repaint_all()
+	var cap: int = gs.countries[gs.player].capital
+	map.focus_country(gs.player)
+	if cap >= 0:
+		selected_pid = cap
+		map.select_province(cap)
+		ui.show_province(cap, null)
+	else:
+		selected_pid = -1
+		map.select_province(-1)
+
+
+## "Telefonu devret" perdesi; oyuncu "Hazırım" deyince (varsa) tur raporu ve kabine kararları gösterilir.
+func _mp_pass(cid: int, with_report: bool, snap: Dictionary = {}) -> void:
+	if cid < 0 or gs == null:
+		return
+	var holder := {"done": false}
+	MpUI.pass_screen(ui.root, gs, cid, func(): holder.done = true)
+	while not holder.done and mode == "game" and gs != null:
+		await get_tree().create_timer(0.1).timeout
+	if mode != "game" or gs == null or not with_report:
+		return
+	var before: Dictionary = snap if not snap.is_empty() else mp_before.get(cid, TurnUI.snapshot(gs))
+	var rep = TurnUI.build_report(ui, gs, before, func(pid: int):
+		map.focus_province(pid, FOCUS_ZOOM)
+		_select(pid))
+	ui.set_modal(rep)
+	sfx.play("news", 0.9)
+	await rep.closed
+	await _cabinet_turn()
+
+
 func _on_tick() -> void:
 	if ui.is_dialog_open():
 		return
@@ -616,6 +740,8 @@ func _track_missions() -> String:
 
 
 func _check_goals() -> void:
+	if Mp.active(gs):
+		return
 	var fresh: Array = Goals.check(gs)
 	var msg := _track_missions()
 	if fresh.is_empty():
