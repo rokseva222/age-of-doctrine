@@ -37,3 +37,7 @@ func _on_lobby() -> void:
 	await create_timer(1.0).timeout
 	net.rpc_id(1, "srv_pick", cid, g.countries[cid].name)
 	print("PICK ", g.countries[cid].name)
+	var say: String = _arg("say", "")
+	if say != "":
+		await create_timer(float(_arg("say_after", "4")) ).timeout
+		net.rpc_id(1, "srv_chat", say)

@@ -42,13 +42,13 @@ func _init() -> void:
 		if p.name == "Konstantinopolis":
 			ist = p.id
 	# geniş plan -> sura yaklaş
-	main.map.zoom = 2.4
-	main.map.cam_pos = gs.provinces[ist].label_pos + Vector2(60, 10)
+	main.map.zoom = 5.0
+	main.map.cam_pos = gs.provinces[ist].label_pos + Vector2(10, -4)
 	main.map._apply()
-	await _wait(2.2)
-	main.map.focus_province(ist, 7.0)
-	await _wait(3.2)
-	for i in 9:
+	await _wait(2.0)
+	main.map.animate_to(gs.provinces[ist].label_pos, 24.0, 3.2)
+	await _wait(3.6)
+	for i in 11:
 		main.ui.hide_dialog(); _tick()
 		main._do_turn()
 		main.ui.hide_info(); main.ui.set_hud_visible(false); main.ui.toast_panel.visible = false
