@@ -97,6 +97,48 @@ func _init() -> void:
 	for i in 5:
 		o.end_turn()
 	chk(o.offers.is_empty(), "teklif süresi doldu")
+	# haber bakışı: A, C'ye savaş açar; C'nin ekranında "savaş açtın" yazmamalı, A'da "sana savaş açtı" olmamalı
+	var q = GS.new()
+	q.new_world(9)
+	q.start_game(picks[0])
+	Mp.begin(q, [picks[0], picks[1]])
+	q.switch_player(picks[0])
+	var enemy: int = picks[1]
+	q.countries[picks[0]].truce.clear()
+	var guard := 0
+	while q.at_war(picks[0], enemy) or q.is_allied(picks[0], enemy):
+		enemy = (enemy + 1) % q.countries.size()
+		guard += 1
+		if guard > 300: break
+	var foe: int = -1
+	for c in q.countries:
+		if c.alive and not c.is_rebel and c.id != picks[0] and c.id != picks[1] and not q.at_war(picks[0], c.id) and not q.is_allied(picks[0], c.id):
+			foe = c.id
+			break
+	var n0: int = q.news_log.size()
+	q.declare_war(picks[0], picks[1])      # insan A, insan B'ye savaş açar
+	var fresh: Array = q.news_log.slice(n0)
+	var bad_you := false
+	for n in fresh:
+		if str(n.text).find("açtın") >= 0 or str(n.text).find("ilan ettin") >= 0 or str(n.text).find("Cihan senden") >= 0:
+			bad_you = true
+	chk(not bad_you, "çok oyunculu savaş haberinde 'açtın' yok")
+	q.switch_player(picks[1])
+	var seen: Array = []
+	for n in fresh:
+		if q.news_visible(n):
+			seen.append(str(n.text))
+	var hit := false
+	for t in seen:
+		if t.find(q.countries[picks[0]].name) >= 0:
+			hit = true
+	chk(hit and not seen.is_empty(), "B koltuğu A'nın savaş açtığını görüyor: %s" % str(seen))
+	q.switch_player(picks[0])
+	var mine_priv := false
+	for n in fresh:
+		if n.has("for") and int(n["for"]) == picks[1] and q.news_visible(n):
+			mine_priv = true
+	chk(not mine_priv, "A koltuğu B'ye özel haberi görmüyor")
 	var s = GS.new()
 	s.new_world(5)
 	s.start_game(picks[0])

@@ -2018,6 +2018,8 @@ func show_world_panel(tab: int = 0) -> void:
 		var shown := 0
 		for i in range(gs.news_log.size() - 1, -1, -1):
 			var n = gs.news_log[i]
+			if not gs.news_visible(n):
+				continue
 			var fl: Array = kinds_of[state.filter]
 			if not fl.is_empty() and not (n.kind in fl):
 				continue

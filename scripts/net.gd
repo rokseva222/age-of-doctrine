@@ -9,6 +9,7 @@ const Room = preload("res://scripts/net_room.gd")
 const GS = preload("res://scripts/game_state.gd")
 const Mp = preload("res://scripts/mp.gd")
 const Eras = preload("res://scripts/eras.gd")
+const Scenarios = preload("res://scripts/scenarios.gd")
 const Settings = preload("res://scripts/settings.gd")
 
 const PROTO := 1
@@ -322,6 +323,11 @@ func _build_world(picks: Array) -> void:
 	g.start_game(picks[0])
 	if era != "":
 		Eras.start(g, era)
+	# oda kurucunun seçtiği senaryo (dönemin üstüne ya da serbest dünyaya) herkes için aynı başlangıç durumunu kurar
+	var scn: String = String(info.get("scn", ""))
+	if scn != "" and not Scenarios.get_sc(scn).is_empty():
+		Scenarios.apply(g, scn)
+	g.scn_play = -1
 	room = Room.new()
 	room.setup(g, picks)
 	gs_server = g

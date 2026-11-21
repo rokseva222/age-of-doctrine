@@ -954,14 +954,30 @@ func player_launch_assault(pid: int, ids: Array, op: String, frac: float = 1.0) 
 
 # ===================================================================== yardımcılar
 
-func post_news(text: String, prov: int = -1, kind: String = "info", icon: String = "") -> void:
+## Oyuncu bakışlı haber türleri ("sen/ordun" dili). Çok oyunculuda yalnız ilgili koltuğa gösterilir.
+const PERSONAL_KINDS := ["war_player", "capture_player", "lost_player"]
+
+
+## for_cid: haber yalnız bu oyuncuya gösterilir (-2: otomatik; kişisel türler çok oyunculuda o an sırası olan oyuncuya bağlanır).
+func post_news(text: String, prov: int = -1, kind: String = "info", icon: String = "", for_cid: int = -2) -> void:
 	var rec := {"turn": turn, "text": text, "prov": prov, "kind": kind}
 	if icon != "":
 		rec["ic"] = icon
+	if for_cid == -2 and kind in PERSONAL_KINDS and is_net_multi():
+		for_cid = player
+	if for_cid >= 0:
+		rec["for"] = for_cid
 	news_log.append(rec)
 	if news_log.size() > 300:
 		news_log.pop_front()
+	if for_cid >= 0 and for_cid != player and is_net_multi():
+		return        # başka koltuğa özel haber: şu anki ekranda şeritte gösterme
 	news_posted.emit(text, prov, kind)
+
+
+## Bu haber şu an bakan oyuncuya gösterilsin mi? (Kişiye özel haber başka koltuğun ekranına düşmez.)
+func news_visible(n: Dictionary) -> bool:
+	return not n.has("for") or int(n["for"]) == player or not is_net_multi()
 
 
 func refresh_stats() -> void:
@@ -1382,7 +1398,15 @@ func declare_war(a: int, b: int, joined: bool = false) -> bool:
 		return true
 	var na: String = countries[a].name
 	var nb: String = countries[b].name
-	if not joined:
+	if not joined and is_net_multi() and (humans.has(a) or humans.has(b) or net_humans.has(a) or net_humans.has(b)):
+		# çok oyunculu: herkesin gördüğü haber üçüncü şahıs; "sana savaş açıldı" yalnız hedef oyuncuya
+		post_news(Names.war_declared(rng, na, nb), countries[a].capital, "war")
+		if humans.has(b) or net_humans.has(b):
+			post_news(Names.war_on_player(rng, na), countries[a].capital, "war_player", "", b)
+		if not setup_no_call:
+			_call_allies(a, b)
+			_maybe_side_call(a, b)
+	elif not joined:
 		if b == player:
 			post_news(Names.war_on_player(rng, na), countries[a].capital, "war_player")
 			if float(countries[b].budget.get("mil", 0)) < 25.0 and not countries[a].is_rebel:
@@ -3331,7 +3355,14 @@ func _complete_siege(a, p) -> void:
 			infamy = minf(100.0, infamy + 2.5)
 	province_changed.emit(p.id)
 	var by_name: String = countries[a.owner].name
-	if a.owner == player:
+	if is_net_multi():
+		# çok oyunculu: herkese ortak üçüncü şahıs haber; fetheden/kaybeden insan oyuncuya ayrıca kişisel haber
+		post_news(Names.province_captured(rng, p.name, by_name), p.id, "capture")
+		if humans.has(a.owner) or net_humans.has(a.owner):
+			post_news(Names.player_captured(rng, p.name), p.id, "capture_player", "", a.owner)
+		if p.owner != a.owner and (humans.has(p.owner) or net_humans.has(p.owner)):
+			post_news(Names.player_lost(rng, p.name), p.id, "lost_player", "", p.owner)
+	elif a.owner == player:
 		post_news(Names.player_captured(rng, p.name), p.id, "capture_player")
 	elif p.owner == player:
 		post_news(Names.player_lost(rng, p.name), p.id, "lost_player")

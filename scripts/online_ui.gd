@@ -7,6 +7,7 @@ const Loc = preload("res://scripts/loc.gd")
 const Net = preload("res://scripts/net.gd")
 const Settings = preload("res://scripts/settings.gd")
 const Eras = preload("res://scripts/eras.gd")
+const Scenarios = preload("res://scripts/scenarios.gd")
 
 const REGIONS := ["TR", "EU", "US", "AS", "SA", "AF", "OC"]
 
@@ -218,7 +219,14 @@ static func host_form(main) -> void:
 	era_ob.set_item_metadata(0, "")
 	for e in Eras.all():
 		era_ob.add_item(Loc.t(String(e["name"])))
-		era_ob.set_item_metadata(era_ob.item_count - 1, String(e["id"]))
+		era_ob.set_item_metadata(era_ob.item_count - 1, {"era": String(e["id"]), "scn": ""})
+	era_ob.set_item_metadata(0, {"era": "", "scn": ""})
+	# hazır senaryolar (Doğu Cephesi, Boğaz Krizi, kurgusal olanlar...): oda bu senaryonun başlangıç durumuyla açılır
+	for sc in Scenarios.all():
+		if String(sc["id"]) == "free":
+			continue
+		era_ob.add_item(Loc.t("Senaryo") + ": " + String(sc["name"]))
+		era_ob.set_item_metadata(era_ob.item_count - 1, {"era": String(sc.get("era", "")), "scn": String(sc["id"])})
 	sh.body.add_child(era_ob)
 	# tur süresi
 	sh.body.add_child(TK.t("Tur süresi", "kicker"))
@@ -279,7 +287,8 @@ static func host_form(main) -> void:
 	note.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	sh.body.add_child(note)
 	sh.add_button("Oda kur", func():
-		main.online_host({"name": nm.text.strip_edges(), "era": String(era_ob.get_item_metadata(era_ob.selected)), "pass": pw.text, "round_secs": float(st.secs), "max": int(st.max), "region": String(st.region), "fog": int(st.fog)}), "gold", true, "play", 220)
+		var pick: Dictionary = era_ob.get_item_metadata(era_ob.selected)
+		main.online_host({"name": nm.text.strip_edges(), "era": String(pick.era), "scenario": String(pick.scn), "pass": pw.text, "round_secs": float(st.secs), "max": int(st.max), "region": String(st.region), "fog": int(st.fog)}), "gold", true, "play", 220)
 	sh.add_button("Vazgeç", func(): pass, "ghost", true, "", 170)
 
 

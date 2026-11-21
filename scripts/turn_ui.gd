@@ -166,7 +166,7 @@ static func build_report(ui, gs, before: Dictionary, on_focus: Callable) -> Repo
 		fought[b.prov] = true
 	for n in gs.news_log:
 		# oyuncunun muharebeleri zaten harp raporunda; aynı haberi iki kez gösterme
-		if n.turn == gs.turn and not (n.kind == "battle" and fought.has(n.prov)):
+		if n.turn == gs.turn and gs.news_visible(n) and not (n.kind == "battle" and fought.has(n.prov)):
 			items.append(n)
 	var idx := 0
 	for n in items:
