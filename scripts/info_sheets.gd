@@ -294,8 +294,9 @@ static func open_howto(parent: Node) -> void:
 			render.call())
 
 
-const UPDATE_VER := "1.2.35"
+const UPDATE_VER := "1.2.36"
 const WHATS_NEW := [
+	["Dost ülkeler saldırmaz", "Yapay zekâ artık ilişkisi yüksek (dostça) ülkelere kolay savaş açmıyor: ilişki yükseldikçe saldırı ihtimali azalır, ittifak düzeyindeki dostlara neredeyse hiç saldırmaz."],
 	["Tarihî dönem bayrakları", "1299–1520 çağlarında Osmanlı, Bizans, Memlük, Timur, Yuan, Ming, Safevî, Kutsal Roma, Fransa, İngiltere, Polonya, Litvanya, Venedik, Macaristan ve Moskova artık dönemin sancaklarıyla görünüyor. 1962'de Malaya bayrağı eklendi."],
 ]
 

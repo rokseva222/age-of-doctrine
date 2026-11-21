@@ -3692,6 +3692,9 @@ func _ai_war_decision(c) -> void:
 			if provinces[cid2].home == c.id:
 				claims += 1
 		ratio *= 1.0 + 0.06 * minf(float(claims), 10.0)
+		var rel_ai: float = relation_of(c.id, oid)
+		if rel_ai > 50.0:       # dost ülkeye yapay zekâ kolay savaş açmaz: 65'te %25, 80'de %50, 100'de %83 azalır
+			ratio *= clampf(1.0 - (rel_ai - 50.0) / 60.0, 0.17, 1.0)
 		if ratio > best_ratio:
 			best_ratio = ratio
 			best = oid

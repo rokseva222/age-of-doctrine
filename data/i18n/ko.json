@@ -4695,7 +4695,9 @@
   "Çağa özel donanma": "시대별 해군",
   "Donanma artık çağa göre farklı: 1299–1520 senaryolarında yelkenli filolar (Kogge, Karaka, Kalyon) ve kürekli Kadırga filoları savaşır; denizaltı ve uçak gemisi yoktur, kadırgalar gizli değildir ve asker taşıyabilir. 1914'te dretnot, kruvazör, muhrip ve U-botları; 1939'da zırhlı, uçak gemisi ve denizaltılar; Soğuk Savaş ve günümüzde füzeli muhrip, firkateyn, nükleer denizaltı. Hava filosu yalnızca hava teknolojisi olan ülkelerde kurulur.": "해군이 이제 시대에 따라 달라집니다. 1299~1520 시나리오에서는 범선 함대(코그선, 캐랙, 갤리온)와 노 젓는 갤리 함대가 싸우며, 잠수함과 항공모함은 없고 갤리선은 숨지 않으며 병력을 실을 수 있습니다. 1914년에는 드레드노트, 순양함, 구축함, U보트, 1939년에는 전함, 항공모함, 잠수함, 냉전과 현대에는 미사일 구축함, 프리깃, 핵잠수함이 등장합니다. 항공 편대는 항공 기술이 있는 나라에만 편성됩니다.",
   "Tarihî dönem bayrakları": "시대별 깃발",
-  "1299–1520 çağlarında Osmanlı, Bizans, Memlük, Timur, Yuan, Ming, Safevî, Kutsal Roma, Fransa, İngiltere, Polonya, Litvanya, Venedik, Macaristan ve Moskova artık dönemin sancaklarıyla görünüyor. 1962'de Malaya bayrağı eklendi.": "1299~1520 시대에서 오스만, 비잔틴, 맘루크, 티무르, 원, 명, 사파비, 신성 로마 제국, 프랑스, 잉글랜드, 폴란드, 리투아니아, 베네치아, 헝가리, 모스크바가 당시의 깃발로 표시됩니다. 1962년 말라야 깃발도 추가되었습니다."
+  "1299–1520 çağlarında Osmanlı, Bizans, Memlük, Timur, Yuan, Ming, Safevî, Kutsal Roma, Fransa, İngiltere, Polonya, Litvanya, Venedik, Macaristan ve Moskova artık dönemin sancaklarıyla görünüyor. 1962'de Malaya bayrağı eklendi.": "1299~1520 시대에서 오스만, 비잔틴, 맘루크, 티무르, 원, 명, 사파비, 신성 로마 제국, 프랑스, 잉글랜드, 폴란드, 리투아니아, 베네치아, 헝가리, 모스크바가 당시의 깃발로 표시됩니다. 1962년 말라야 깃발도 추가되었습니다.",
+  "Dost ülkeler saldırmaz": "우호국은 공격하지 않음",
+  "Yapay zekâ artık ilişkisi yüksek (dostça) ülkelere kolay savaş açmıyor: ilişki yükseldikçe saldırı ihtimali azalır, ittifak düzeyindeki dostlara neredeyse hiç saldırmaz.": "AI가 관계가 높은(우호적인) 나라에 쉽게 선전포고하지 않습니다. 관계가 높을수록 공격 확률이 낮아지며, 동맹 수준의 우방은 거의 공격받지 않습니다."
  },
  "months": [
   "1월",
