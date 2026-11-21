@@ -777,7 +777,10 @@ static func fill(gs, text: String, rng: RandomNumberGenerator) -> String:
 
 
 ## Etkileri uygular ve arayüz için [{ic, txt, good}] listesi döndürür.
-static func apply(gs, eff: Dictionary) -> Array:
+static func apply(gs, eff: Dictionary, nb: int = -9) -> Array:
+	var _cmd := Cmd.Scope.new(gs, "Cabinet.apply", [eff, _nb_id])
+	if nb != -9:
+		_nb_id = nb
 	var c = gs.countries[gs.player]
 	var out: Array = []
 	# birim: haftalık net gelir (en az brüt gelirin %12'si); kasa farkı oyuncuya anlamlı kalsın
@@ -843,7 +846,12 @@ static func apply(gs, eff: Dictionary) -> Array:
 					out.append({"ic": "spy", "txt": "%s sarsıldı" % nc.name, "good": v < 0})
 			"mit":
 				if gs.crisis_active_for_card():
-					gs.crisis["mit"] = v
+					if gs.is_net_multi():
+						var mb: Dictionary = gs.crisis.get("mit_by", {})
+						mb[c.id] = v
+						gs.crisis["mit_by"] = mb
+					else:
+						gs.crisis["mit"] = v
 					out.append({"ic": "shield", "txt": ("Kriz etkisi azaldı" if v < 1.0 else "Kriz tam etkili"), "good": v < 1.0})
 			"elect":
 				out.append_array(_election(gs, c, v))

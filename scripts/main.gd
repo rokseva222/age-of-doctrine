@@ -16,6 +16,7 @@ const Scenarios = preload("res://scripts/scenarios.gd")
 const Eras = preload("res://scripts/eras.gd")
 const AssaultUI = preload("res://scripts/assault_ui.gd")
 const Cabinet = preload("res://scripts/cabinet.gd")
+const Crises = preload("res://scripts/crises.gd")
 const CabinetUI = preload("res://scripts/cabinet_ui.gd")
 const SendUI = preload("res://scripts/send_ui.gd")
 const AppointUI = preload("res://scripts/appoint_ui.gd")
@@ -608,7 +609,19 @@ func _offers_turn() -> void:
 			await get_tree().create_timer(0.1).timeout
 
 
-## Online: boşalan bakanlıklar için atama kararı (rastgele kart ve kriz kartları online'da yok).
+## Online: boşalan bakanlıklar, dünya krizi kararı ve rastgele kabine kartı. Kararlar komut olarak sunucuya gider.
+## Sunucuda tekrar oynatılınca rastgele sonuç çıkaran kartlar (seçim, sınır olayları, ölümcül şans) online'da atlanır.
+var _crisis_asked := -1
+
+
+func _card_net_ok(card: Dictionary) -> bool:
+	var txt: String = var_to_str(card.get("o", []))
+	for bad in ["\"elect\"", "\"bforce\"", "\"bcede\"", "\"bnego\"", "\"fatal\""]:
+		if txt.contains(bad):
+			return false
+	return not card.get("sched", false)
+
+
 func _online_cabinet() -> void:
 	if mode != "game" or gs == null or gs.player < 0 or not gs.countries[gs.player].alive:
 		return
@@ -623,6 +636,25 @@ func _online_cabinet() -> void:
 		ui.refresh_top()
 		if mode != "game" or not playing:
 			return
+	# dünya krizi: herkes kendi önlemini seçer
+	if not gs.crisis.is_empty() and Crises.active(gs):
+		var mb: Dictionary = gs.crisis.get("mit_by", {})
+		var cstart: int = int(gs.crisis.get("start", -1))
+		if not mb.has(gs.player) and _crisis_asked != cstart:
+			_crisis_asked = cstart
+			await _show_card(Crises.card_for(gs, String(gs.crisis.kind)))
+			if mode != "game" or not playing:
+				return
+	if not Settings.cabinet:
+		return
+	var card: Dictionary = Cabinet.pick(gs, _cab_last, _cab_recent, _cab_rng)
+	if card.is_empty() or not _card_net_ok(card):
+		return
+	_cab_last = gs.turn
+	_cab_recent.append(card.id)
+	if _cab_recent.size() > 10:
+		_cab_recent.pop_front()
+	await _show_card(card)
 
 
 func _cabinet_turn() -> void:
@@ -873,6 +905,7 @@ func _online_begin(cid: int) -> void:
 	_lobby_sheet = null
 	online = true
 	ui.online_mode = true
+	_online_turn_seen = -1
 	_reconnects = 0
 	turn_busy = false
 	_wait_free()
@@ -888,6 +921,7 @@ func _online_begin(cid: int) -> void:
 		add_child(_sync_timer)
 	_sync_timer.start()
 	_online_swap(net.gs_client, cid)
+	_online_turn_seen = gs.turn
 	map.focus_country(cid)
 	var cap: int = gs.countries[cid].capital
 	if cap >= 0:
@@ -946,6 +980,7 @@ func _online_round(_inf: Dictionary) -> void:
 		_select(pid))
 	ui.set_modal(rep)
 	sfx.play("news", 0.9)
+	_online_missions()
 	await rep.closed
 	await _offers_turn()
 	await _online_cabinet()
@@ -1074,6 +1109,32 @@ func _track_missions() -> String:
 		if r.promoted != "":
 			msg += ("\n" if msg != "" else "") + Loc.t("Terfi: %s!") % Loc.t(r.promoted)
 	return msg
+
+
+## Online: yalnızca "tur geçirme" görevi sayılır (istatistikler sunucuda oyuncu başına tutulmaz).
+var _online_turn_seen := -1
+
+
+func _online_missions() -> void:
+	if gs == null:
+		return
+	if _online_turn_seen < 0:
+		_online_turn_seen = gs.turn
+		return
+	var dlt: int = clampi(gs.turn - _online_turn_seen, 0, 3)
+	_online_turn_seen = gs.turn
+	if dlt <= 0:
+		return
+	var r: Dictionary = Missions.add("turns", dlt)
+	var msg := ""
+	for t in r.done:
+		msg += ("\n" if msg != "" else "") + Loc.t("Görev tamam: %s (+%d puan)") % [Loc.t(t.t), int(t.xp)]
+	if int(r.ap) > 0:
+		msg += ("\n" if msg != "" else "") + Loc.t("AOD Puanı: +%d AP") % int(r.ap)
+	if r.promoted != "":
+		msg += ("\n" if msg != "" else "") + Loc.t("Terfi: %s!") % Loc.t(r.promoted)
+	if msg != "":
+		ui.toast(msg)
 
 
 func _check_goals() -> void:

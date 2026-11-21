@@ -294,8 +294,9 @@ static func open_howto(parent: Node) -> void:
 			render.call())
 
 
-const UPDATE_VER := "1.2.39"
+const UPDATE_VER := "1.2.40"
 const WHATS_NEW := [
+	["Online: savaş sisi ve kartlar", "Oda kurarken savaş sisi seçilebilir (Kapalı/Orta/Tam): görmemen gereken ordular sunucudan sana hiç gönderilmez. Online'da dünya krizi kararı ve rastgele kabine kartları da çalışır; tur geçirmek görev ilerlemesine sayılır. Sunucu listesi, topluluğun sabit sunucularını da gösterir."],
 	["Online çok oyunculu (beta)", "«Çok Oyunculu → Online»: sunucu listesi (ping ve konumla), kodla katıl, aynı Wi-Fi'da LAN oyunu ve oda kur; oda kurunca yönlendiricide port kendiliğinden açılır. Herkes kendi telefonundan oynar; turlar eş zamanlıdır: herkes «Turu geç» deyince (ya da süre dolunca) tur işlenir. Oyun menüsünde sohbet var; insanlar arası ittifak ve barış teklifleri karşı oyuncunun onayına gider. Bağlantısı kopan oyuncunun ülkesini yapay zekâ devralır. Beta: kalıcı sunucu için ayrı bir sunucu programı vardır."],
 	["Çok oyunculu: aynı telefonda", "Ana menüde «Çok Oyunculu → Aynı Telefon»: 2–6 kişi aynı telefonda sırayla oynar. Her oyuncu kendi ülkesini seçer, hamlesini yapınca «Telefonu devret» perdesi gelir; herkes kendi tur raporunu görür. Son ayakta kalan ya da dünyanın %55'ini alan kazanır. Kayıt/devam desteklenir; bu modda AOD Puanı ve görev ilerlemesi sayılmaz."],
 	["Dost ülkeler saldırmaz", "Yapay zekâ artık ilişkisi yüksek (dostça) ülkelere kolay savaş açmıyor: ilişki yükseldikçe saldırı ihtimali azalır, ittifak düzeyindeki dostlara neredeyse hiç saldırmaz."],

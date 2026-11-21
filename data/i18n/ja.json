@@ -4771,7 +4771,10 @@
   "%s ve %s barış imzaladı.": "%sと%sは和平に調印しました。",
   "Sohbet": "チャット",
   "Mesaj yaz...": "メッセージを入力...",
-  "«Çok Oyunculu → Online»: sunucu listesi (ping ve konumla), kodla katıl, aynı Wi-Fi'da LAN oyunu ve oda kur; oda kurunca yönlendiricide port kendiliğinden açılır. Herkes kendi telefonundan oynar; turlar eş zamanlıdır: herkes «Turu geç» deyince (ya da süre dolunca) tur işlenir. Oyun menüsünde sohbet var; insanlar arası ittifak ve barış teklifleri karşı oyuncunun onayına gider. Bağlantısı kopan oyuncunun ülkesini yapay zekâ devralır. Beta: kalıcı sunucu için ayrı bir sunucu programı vardır.": "「マルチプレイ → オンライン」：サーバー一覧（Pingと地域付き）、コードで参加、同じWi-FiのLAN対戦、ルーム作成。ホストするとルーターのポートが自動で開きます。各自が自分のスマホで遊び、ターンは同時進行です：全員が「ターン終了」を押す（または時間切れ）とターンが処理されます。ゲームメニューにチャットがあり、人間同士の同盟・和平の提案は相手プレイヤーの承認に回されます。接続が切れたプレイヤーの国はAIが引き継ぎます。ベータ：常設サーバー用に別のサーバープログラムがあります。"
+  "«Çok Oyunculu → Online»: sunucu listesi (ping ve konumla), kodla katıl, aynı Wi-Fi'da LAN oyunu ve oda kur; oda kurunca yönlendiricide port kendiliğinden açılır. Herkes kendi telefonundan oynar; turlar eş zamanlıdır: herkes «Turu geç» deyince (ya da süre dolunca) tur işlenir. Oyun menüsünde sohbet var; insanlar arası ittifak ve barış teklifleri karşı oyuncunun onayına gider. Bağlantısı kopan oyuncunun ülkesini yapay zekâ devralır. Beta: kalıcı sunucu için ayrı bir sunucu programı vardır.": "「マルチプレイ → オンライン」：サーバー一覧（Pingと地域付き）、コードで参加、同じWi-FiのLAN対戦、ルーム作成。ホストするとルーターのポートが自動で開きます。各自が自分のスマホで遊び、ターンは同時進行です：全員が「ターン終了」を押す（または時間切れ）とターンが処理されます。ゲームメニューにチャットがあり、人間同士の同盟・和平の提案は相手プレイヤーの承認に回されます。接続が切れたプレイヤーの国はAIが引き継ぎます。ベータ：常設サーバー用に別のサーバープログラムがあります。",
+  "Online: savaş sisi ve kartlar": "オンライン：戦場の霧とカード",
+  "Oda kurarken savaş sisi seçilebilir (Kapalı/Orta/Tam): görmemen gereken ordular sunucudan sana hiç gönderilmez. Online'da dünya krizi kararı ve rastgele kabine kartları da çalışır; tur geçirmek görev ilerlemesine sayılır. Sunucu listesi, topluluğun sabit sunucularını da gösterir.": "ルーム作成時に戦場の霧（オフ/中/完全）を選べます。見えないはずの軍隊の情報はサーバーから送られません。世界危機の決定とランダムな閣僚カードもオンラインで使えるようになり、ターンを進めるとミッションに加算されます。サーバー一覧にはコミュニティの常設サーバーも表示されます。",
+  "Liste sunucusu adresi (isteğe bağlı)": "リストサーバーのアドレス（任意）"
  },
  "months": [
   "1月",

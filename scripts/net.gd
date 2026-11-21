@@ -56,6 +56,7 @@ var _seats: Dictionary = {}                # token -> {"cid", "cname"} (bağlant
 var _q_srv: UDPServer = null
 var _q_peers: Array = []
 var pings: Dictionary = {}                 # "ip:port" -> ms (-1 = yanıt yok)
+var ping_info: Dictionary = {}             # "ip:port" -> {"players", "max"} (sunucunun kendi yanıtından)
 var _q_out: Dictionary = {}                # "ip:port" -> {peer, t0}
 
 # ---- istemci
@@ -135,7 +136,7 @@ func host(cfg: Dictionary) -> bool:
 	connected = true
 	info = {"name": String(cfg.get("name", "Oda")), "era": String(cfg.get("era", "")), "scn": String(cfg.get("scenario", "")),
 		"max": int(cfg.get("max", MAX_PLAYERS)), "pass": String(cfg.get("pass", "")), "secs": float(cfg.get("round_secs", 120.0)),
-		"port": port, "proto": PROTO, "ver": String(cfg.get("ver", ""))}
+		"port": port, "proto": PROTO, "ver": String(cfg.get("ver", "")), "fog": clampi(int(cfg.get("fog", 0)), 0, 2)}
 	_world_seed = int(cfg.get("seed", randi() % 1000000))
 	_lan_udp = PacketPeerUDP.new()
 	_lan_udp.set_broadcast_enabled(true)
@@ -328,6 +329,7 @@ func _build_world(picks: Array) -> void:
 
 func _send_state(pid: int, method: String) -> void:
 	var d: Dictionary = gs_server.to_dict()
+	d["armies"] = gs_server.fog_filter_armies(d["armies"], int(players[pid].cid), int(info.get("fog", 0)))
 	var raw: PackedByteArray = var_to_bytes(d).compress(FileAccess.COMPRESSION_GZIP)
 	_to(pid, method, [raw, int(players[pid].cid), room.waiting_for(), String(info.era)])
 

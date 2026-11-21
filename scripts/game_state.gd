@@ -217,6 +217,11 @@ func is_human_target(t: int) -> bool:
 	return net_humans.size() > 1 and net_humans.has(t)
 
 
+## Online çok oyunculu mu (sunucuda ya da istemcide)? Kriz önlemleri bu durumda oyuncu başına tutulur.
+func is_net_multi() -> bool:
+	return humans.size() > 1 or net_humans.size() > 1
+
+
 const OFFER_TTL := 3
 
 
@@ -1033,6 +1038,34 @@ func _fog_provinces() -> Dictionary:
 			for nb in provinces[pid2].neighbors:
 				_fog_vis[nb] = true
 	return _fog_vis
+
+
+## Sunucu için: cid ülkesinin görebildiği eyaletler (mode 1 orta, 2 tam). Önbelleksiz, Settings'ten bağımsız.
+func fog_set_for(cid: int, mode: int) -> Dictionary:
+	var vis: Dictionary = {}
+	for pid in countries[cid].held_ids:
+		vis[pid] = true
+	for a in armies.values():
+		if a.owner == cid or is_allied(cid, a.owner):
+			vis[a.prov] = true
+	if mode == 1:
+		for pid2 in vis.keys():
+			for nb in provinces[pid2].neighbors:
+				vis[nb] = true
+	return vis
+
+
+## Sunucu: bu oyuncuya gidecek ordu listesinden görmemesi gerekenleri çıkarır.
+func fog_filter_armies(arms: Array, cid: int, mode: int) -> Array:
+	if mode <= 0 or cid < 0:
+		return arms
+	var vis: Dictionary = fog_set_for(cid, mode)
+	var out: Array = []
+	for a in arms:
+		var ow: int = int(a[1])
+		if ow == cid or is_allied(cid, ow) or spy_active(ow) or vis.has(int(a[2])):
+			out.append(a)
+	return out
 
 
 ## Casus: {ülke id: bu haftaya kadar ordularını görürüz}, {ülke id: yeniden casus gönderebileceğimiz hafta}

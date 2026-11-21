@@ -42,3 +42,18 @@ Oyuna adres vermek için `scripts/net_master.gd` içindeki `MASTER_URL` sabitini
 
 ## Telefonla oda kurmak
 Oyunda Çok Oyunculu → Online → **Oda kur**. Telefon hem sunucu hem oyuncu olur; uygulama açık kalmalı. Aynı Wi-Fi'dakiler LAN listesinde görür; uzaktakiler **kodla** (ya da IP:port ile) katılır — ev modeminde port yönlendirme gerekir. Kalıcı odalar için bilgisayar/VPS önerilir.
+
+## Sunucu listesi nasıl dolar? (üç yol)
+
+1. **LAN**: Aynı Wi-Fi'daki odalar otomatik görünür (hiçbir kurulum gerekmez).
+2. **Sabit topluluk sunucuları**: `server/servers.json` dosyasına sunucunun adresini yaz ve depoya gönder; oyun bu listeyi
+   `raw.githubusercontent.com` üzerinden çeker (ana liste sunucusu olmadan çalışır). Örnek:
+   `[{"name": "TR Resmi", "ip": "203.0.113.5", "port": 47320, "region": "TR", "era": ""}]`
+   Oyuncu sayısı ve ping, oyun tarafından sunucudan canlı alınır.
+3. **Ana liste sunucusu (dinamik)**: odaların kendiliğinden listeye düşmesi için `server/master_server.py` bir yerde çalışmalı.
+   - Render.com: depoyu bağla → "New Blueprint" → `render.yaml` hazır (ücretsiz plan). Verilen `https://....onrender.com`
+     adresini oyunda *Çok Oyunculu → Online* ekranının altındaki "Liste sunucusu adresi" alanına yaz
+     ya da `scripts/net_master.gd` içindeki `MASTER_URL` sabitine koyup yeni sürüm çıkar.
+   - Kendi sunucun: `docker build -f server/Dockerfile.master -t aod-master server && docker run -p 8780:8780 aod-master`
+     (önüne Caddy/nginx ile HTTPS koy).
+   - Sunucu programı `--master https://adresin --region EU` ile listeye kendini bildirir.

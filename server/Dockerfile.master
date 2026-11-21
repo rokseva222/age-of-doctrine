@@ -1,0 +1,8 @@
+# Ana liste (master) sunucusu: yalnızca Python standart kütüphanesi.
+#   docker build -f server/Dockerfile.master -t aod-master server
+#   docker run -p 8780:8780 aod-master
+FROM python:3.12-slim
+WORKDIR /app
+COPY master_server.py /app/master_server.py
+EXPOSE 8780
+CMD ["python3", "master_server.py", "8780"]

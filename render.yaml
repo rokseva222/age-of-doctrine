@@ -1,0 +1,9 @@
+# Render.com (ücretsiz web servisi) ile ana liste sunucusu: depoyu bağla, "Blueprint" olarak ekle.
+services:
+  - type: web
+    name: aod-master
+    runtime: docker
+    dockerfilePath: ./server/Dockerfile.master
+    dockerContext: ./server
+    plan: free
+    healthCheckPath: /servers

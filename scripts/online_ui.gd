@@ -147,7 +147,10 @@ static func browser(main) -> void:
 			var ping: int = int(net.pings.get(key, -2))
 			var ptxt: String = "…" if ping == -2 else ("—" if ping < 0 else "%d ms" % ping)
 			var era: String = String(e.era) if String(e.era) != "" else Loc.t("Dünya 2027")
-			var txt := "%s  ·  %s  ·  %d/%d  ·  %s  ·  %s%s" % [e.name, era, int(e.players), int(e.max), ptxt, String(e.get("region", "")), "  🔒" if bool(e.get("pass", false)) else ""]
+			var pinfo: Dictionary = net.ping_info.get(key, {})
+			var pl: int = int(pinfo.get("players", e.players))
+			var mx: int = int(pinfo.get("max", e.max))
+			var txt := "%s  ·  %s  ·  %d/%d  ·  %s  ·  %s%s" % [e.name, era, pl, mx, ptxt, String(e.get("region", "")), "  🔒" if bool(e.get("pass", false)) else ""]
 			var b := TK.button(txt, "", "", Vector2(0, 64), 15)
 			b.pressed.connect(func():
 				sh.close()
@@ -177,13 +180,27 @@ static func browser(main) -> void:
 		if master.failed.is_connected(on_fail):
 			master.failed.disconnect(on_fail))
 	render.call()
+	var murl := LineEdit.new()
+	murl.placeholder_text = Loc.t("Liste sunucusu adresi (isteğe bağlı)")
+	murl.text = Settings.master_url
+	murl.custom_minimum_size = Vector2(0, 52)
+	murl.text_submitted.connect(func(t: String):
+		Settings.master_url = t.strip_edges()
+		Settings.save_all()
+		master.fetch())
+	murl.focus_exited.connect(func():
+		if Settings.master_url != murl.text.strip_edges():
+			Settings.master_url = murl.text.strip_edges()
+			Settings.save_all()
+			master.fetch())
+	sh.body.add_child(murl)
 	sh.add_button("Geri", func(): pass, "ghost", true, "", 170)
 
 
 ## Oda kurma formu.
 static func host_form(main) -> void:
 	var sh = Sheet.open(main.menu.root, "Oda kur", 760, true, true, "Online")
-	var st := {"name": "", "era": "", "secs": 120, "max": 4, "pass": "", "region": "EU", "public": true}
+	var st := {"name": "", "era": "", "secs": 120, "max": 4, "pass": "", "region": "EU", "public": true, "fog": 0}
 	var nm := LineEdit.new()
 	nm.placeholder_text = Loc.t("Oda adı")
 	nm.text = Loc.t("Oda") + " " + str(randi() % 900 + 100)
@@ -232,6 +249,20 @@ static func host_form(main) -> void:
 				TK.style_button(c, "")
 			TK.style_button(b2, "gold"))
 		max_row.add_child(b2)
+	sh.body.add_child(TK.t("Savaş sisi", "kicker"))
+	var fog_row := HBoxContainer.new()
+	fog_row.add_theme_constant_override("separation", 8)
+	sh.body.add_child(fog_row)
+	var fnames := ["Kapalı", "Orta", "Tam"]
+	for i in 3:
+		var fb := TK.button(fnames[i], "gold" if i == 0 else "", "", Vector2(0, 56), 16)
+		fb.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		fb.pressed.connect(func():
+			st.fog = i
+			for c in fog_row.get_children():
+				TK.style_button(c, "")
+			TK.style_button(fb, "gold"))
+		fog_row.add_child(fb)
 	sh.body.add_child(TK.t("Konum", "kicker"))
 	var reg_row := HFlowContainer.new()
 	reg_row.add_theme_constant_override("h_separation", 8)
@@ -248,7 +279,7 @@ static func host_form(main) -> void:
 	note.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	sh.body.add_child(note)
 	sh.add_button("Oda kur", func():
-		main.online_host({"name": nm.text.strip_edges(), "era": String(era_ob.get_item_metadata(era_ob.selected)), "pass": pw.text, "round_secs": float(st.secs), "max": int(st.max), "region": String(st.region)}), "gold", true, "play", 220)
+		main.online_host({"name": nm.text.strip_edges(), "era": String(era_ob.get_item_metadata(era_ob.selected)), "pass": pw.text, "round_secs": float(st.secs), "max": int(st.max), "region": String(st.region), "fog": int(st.fog)}), "gold", true, "play", 220)
 	sh.add_button("Vazgeç", func(): pass, "ghost", true, "", 170)
 
 

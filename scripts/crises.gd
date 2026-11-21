@@ -56,7 +56,10 @@ static func income_mult(gs, c) -> float:
 
 
 static func _mit_of(gs, cid: int) -> float:
-	if cid == gs.player:
+	var mb: Dictionary = gs.crisis.get("mit_by", {})
+	if mb.has(cid):
+		return float(mb[cid])
+	if cid == gs.player and not gs.is_net_multi():
 		return float(gs.crisis.get("mit", 1.0))
 	return 0.7
 
@@ -113,9 +116,12 @@ static func _end(gs) -> void:
 	var kind: String = gs.crisis.kind
 	var mit: float = float(gs.crisis.get("mit", 1.0))
 	gs.post_news(Names.crisis_end(gs.rng, kind_name(kind)), -1, "event", "peace")
-	if gs.player >= 0 and gs.countries[gs.player].alive and mit < 1.0:
+	if gs.player >= 0 and gs.countries[gs.player].alive and mit < 1.0 and not gs.is_net_multi():
 		var c = gs.countries[gs.player]
 		c.stability = clampf(c.stability + 3.0, 5.0, 100.0)    # toparlanma ödülü
+	for k in gs.crisis.get("mit_by", {}):
+		if float(gs.crisis.mit_by[k]) < 1.0 and gs.countries[int(k)].alive:
+			gs.countries[int(k)].stability = clampf(gs.countries[int(k)].stability + 3.0, 5.0, 100.0)
 	gs.crisis_last_end = gs.turn
 	gs.crisis = {}
 

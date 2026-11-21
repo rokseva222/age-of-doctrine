@@ -4771,7 +4771,10 @@
   "%s ve %s barış imzaladı.": "%s와(과) %s이(가) 평화 조약에 서명했습니다.",
   "Sohbet": "채팅",
   "Mesaj yaz...": "메시지 입력...",
-  "«Çok Oyunculu → Online»: sunucu listesi (ping ve konumla), kodla katıl, aynı Wi-Fi'da LAN oyunu ve oda kur; oda kurunca yönlendiricide port kendiliğinden açılır. Herkes kendi telefonundan oynar; turlar eş zamanlıdır: herkes «Turu geç» deyince (ya da süre dolunca) tur işlenir. Oyun menüsünde sohbet var; insanlar arası ittifak ve barış teklifleri karşı oyuncunun onayına gider. Bağlantısı kopan oyuncunun ülkesini yapay zekâ devralır. Beta: kalıcı sunucu için ayrı bir sunucu programı vardır.": "「멀티플레이 → 온라인」: 서버 목록(핑·지역 표시), 코드로 참가, 같은 Wi-Fi의 LAN 게임, 방 만들기. 방을 만들면 공유기 포트가 자동으로 열립니다. 각자 자기 휴대폰으로 플레이하며 턴은 동시 진행입니다. 모두가 «턴 종료»를 누르면(또는 시간이 다 되면) 턴이 처리됩니다. 게임 메뉴에 채팅이 있고, 사람 간 동맹·평화 제안은 상대 플레이어의 승인으로 넘어갑니다. 연결이 끊긴 플레이어의 나라는 AI가 맡습니다. 베타: 상시 서버용 별도 서버 프로그램이 있습니다."
+  "«Çok Oyunculu → Online»: sunucu listesi (ping ve konumla), kodla katıl, aynı Wi-Fi'da LAN oyunu ve oda kur; oda kurunca yönlendiricide port kendiliğinden açılır. Herkes kendi telefonundan oynar; turlar eş zamanlıdır: herkes «Turu geç» deyince (ya da süre dolunca) tur işlenir. Oyun menüsünde sohbet var; insanlar arası ittifak ve barış teklifleri karşı oyuncunun onayına gider. Bağlantısı kopan oyuncunun ülkesini yapay zekâ devralır. Beta: kalıcı sunucu için ayrı bir sunucu programı vardır.": "「멀티플레이 → 온라인」: 서버 목록(핑·지역 표시), 코드로 참가, 같은 Wi-Fi의 LAN 게임, 방 만들기. 방을 만들면 공유기 포트가 자동으로 열립니다. 각자 자기 휴대폰으로 플레이하며 턴은 동시 진행입니다. 모두가 «턴 종료»를 누르면(또는 시간이 다 되면) 턴이 처리됩니다. 게임 메뉴에 채팅이 있고, 사람 간 동맹·평화 제안은 상대 플레이어의 승인으로 넘어갑니다. 연결이 끊긴 플레이어의 나라는 AI가 맡습니다. 베타: 상시 서버용 별도 서버 프로그램이 있습니다.",
+  "Online: savaş sisi ve kartlar": "온라인: 전장의 안개와 카드",
+  "Oda kurarken savaş sisi seçilebilir (Kapalı/Orta/Tam): görmemen gereken ordular sunucudan sana hiç gönderilmez. Online'da dünya krizi kararı ve rastgele kabine kartları da çalışır; tur geçirmek görev ilerlemesine sayılır. Sunucu listesi, topluluğun sabit sunucularını da gösterir.": "방을 만들 때 전장의 안개(끔/중간/완전)를 고를 수 있으며, 보면 안 되는 군대는 서버가 아예 보내지 않습니다. 세계 위기 결정과 무작위 내각 카드도 이제 온라인에서 작동하고, 턴 진행은 임무에 집계됩니다. 서버 목록에는 커뮤니티 고정 서버도 표시됩니다.",
+  "Liste sunucusu adresi (isteğe bağlı)": "목록 서버 주소(선택)"
  },
  "months": [
   "1월",
