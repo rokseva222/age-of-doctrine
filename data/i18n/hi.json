@@ -4795,7 +4795,9 @@
   "Bu cihazda": "इस डिवाइस पर",
   "Sunucuda kurulan odaya herkes internetten, hiçbir ayar yapmadan katılır; sen çıksan da oda açık kalır.": "सर्वर पर बने कमरे में कोई भी बिना किसी सेटअप के इंटरनेट से जुड़ सकता है, और आपके जाने पर भी वह खुला रहता है।",
   "Online: sunucuda oda kurma": "ऑनलाइन: सर्वर पर कमरे",
-  "Oda kurarken «Sunucuda» seçeneği eklendi: oda merkezi sunucuda açılır, herkes internetten ayar yapmadan katılır. Sunucu hazır değilse oda bu cihazda kurulur.": "कमरा बनाते समय «सर्वर पर» विकल्प जुड़ा: कमरा केंद्रीय सर्वर पर खुलता है और सब बिना सेटअप इंटरनेट से जुड़ते हैं। सर्वर उपलब्ध न हो तो कमरा इसी डिवाइस पर बनता है।"
+  "Oda kurarken «Sunucuda» seçeneği eklendi: oda merkezi sunucuda açılır, herkes internetten ayar yapmadan katılır. Sunucu hazır değilse oda bu cihazda kurulur.": "कमरा बनाते समय «सर्वर पर» विकल्प जुड़ा: कमरा केंद्रीय सर्वर पर खुलता है और सब बिना सेटअप इंटरनेट से जुड़ते हैं। सर्वर उपलब्ध न हो तो कमरा इसी डिवाइस पर बनता है।",
+  "Online: 12 oyunculu odalar": "ऑनलाइन: 12 खिलाड़ियों के कमरे",
+  "Online odalar artık 12 oyuncuya kadar kurulabiliyor (2, 3, 4, 5, 6, 8, 10, 12).": "ऑनलाइन कमरों में अब 12 खिलाड़ी तक हो सकते हैं (2, 3, 4, 5, 6, 8, 10, 12)।"
  },
  "months": [
   "जनवरी",

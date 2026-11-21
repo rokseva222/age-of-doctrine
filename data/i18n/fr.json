@@ -4794,7 +4794,9 @@
   "Bu cihazda": "Sur cet appareil",
   "Sunucuda kurulan odaya herkes internetten, hiçbir ayar yapmadan katılır; sen çıksan da oda açık kalır.": "Tout le monde peut rejoindre via Internet une salle créée sur le serveur sans rien configurer, et elle reste ouverte même si tu pars.",
   "Online: sunucuda oda kurma": "En ligne : salles sur le serveur",
-  "Oda kurarken «Sunucuda» seçeneği eklendi: oda merkezi sunucuda açılır, herkes internetten ayar yapmadan katılır. Sunucu hazır değilse oda bu cihazda kurulur.": "À la création d'une salle, l'option « Sur le serveur » est disponible : la salle s'ouvre sur le serveur central et tous la rejoignent via Internet sans rien configurer. Si le serveur est indisponible, la salle est créée sur cet appareil."
+  "Oda kurarken «Sunucuda» seçeneği eklendi: oda merkezi sunucuda açılır, herkes internetten ayar yapmadan katılır. Sunucu hazır değilse oda bu cihazda kurulur.": "À la création d'une salle, l'option « Sur le serveur » est disponible : la salle s'ouvre sur le serveur central et tous la rejoignent via Internet sans rien configurer. Si le serveur est indisponible, la salle est créée sur cet appareil.",
+  "Online: 12 oyunculu odalar": "En ligne : salles de 12 joueurs",
+  "Online odalar artık 12 oyuncuya kadar kurulabiliyor (2, 3, 4, 5, 6, 8, 10, 12).": "Les salles en ligne accueillent désormais jusqu'à 12 joueurs (2, 3, 4, 5, 6, 8, 10, 12)."
  },
  "months": [
   "janvier",

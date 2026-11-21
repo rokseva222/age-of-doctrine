@@ -15,7 +15,7 @@ const Settings = preload("res://scripts/settings.gd")
 const PROTO := 1
 const DEFAULT_PORT := 47320
 const LAN_PORT := 47321
-const MAX_PLAYERS := 6
+const MAX_PLAYERS := 12
 
 signal lobby_changed()
 signal game_started(cid: int)

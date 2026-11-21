@@ -28,7 +28,7 @@ func _init() -> void:
 		master.url = url
 	await process_frame
 	var cfg := {"name": _arg("name", "Sunucu"), "era": _arg("era", ""), "scenario": _arg("scn", ""), "port": int(_arg("port", "47320")), "round_secs": float(_arg("secs", "120")),
-		"max": int(_arg("max", "6")), "pass": _arg("pass", ""), "ver": _arg("ver", ""), "upnp": _arg("upnp", "0") == "1", "fog": int(_arg("fog", "0"))}
+		"max": clampi(int(_arg("max", "6")), 2, 12), "pass": _arg("pass", ""), "ver": _arg("ver", ""), "upnp": _arg("upnp", "0") == "1", "fog": int(_arg("fog", "0"))}
 	if not net.host(cfg):
 		print("Sunucu açılamadı")
 		quit(1)

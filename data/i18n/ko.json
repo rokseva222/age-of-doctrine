@@ -4795,7 +4795,9 @@
   "Bu cihazda": "이 기기에서",
   "Sunucuda kurulan odaya herkes internetten, hiçbir ayar yapmadan katılır; sen çıksan da oda açık kalır.": "서버에 만든 방에는 누구나 설정 없이 인터넷으로 참가할 수 있으며, 내가 나가도 방은 열려 있습니다.",
   "Online: sunucuda oda kurma": "온라인: 서버에 방 만들기",
-  "Oda kurarken «Sunucuda» seçeneği eklendi: oda merkezi sunucuda açılır, herkes internetten ayar yapmadan katılır. Sunucu hazır değilse oda bu cihazda kurulur.": "방을 만들 때 «서버에서» 옵션이 추가되었습니다. 방이 중앙 서버에서 열리고 모두 설정 없이 인터넷으로 참가합니다. 서버를 쓸 수 없으면 이 기기에서 방을 만듭니다."
+  "Oda kurarken «Sunucuda» seçeneği eklendi: oda merkezi sunucuda açılır, herkes internetten ayar yapmadan katılır. Sunucu hazır değilse oda bu cihazda kurulur.": "방을 만들 때 «서버에서» 옵션이 추가되었습니다. 방이 중앙 서버에서 열리고 모두 설정 없이 인터넷으로 참가합니다. 서버를 쓸 수 없으면 이 기기에서 방을 만듭니다.",
+  "Online: 12 oyunculu odalar": "온라인: 12인 방",
+  "Online odalar artık 12 oyuncuya kadar kurulabiliyor (2, 3, 4, 5, 6, 8, 10, 12).": "온라인 방이 최대 12명까지 가능합니다(2, 3, 4, 5, 6, 8, 10, 12)."
  },
  "months": [
   "1월",

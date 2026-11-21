@@ -4795,7 +4795,9 @@
   "Bu cihazda": "在本设备上",
   "Sunucuda kurulan odaya herkes internetten, hiçbir ayar yapmadan katılır; sen çıksan da oda açık kalır.": "任何人都可通过互联网无需任何设置加入服务器上创建的房间，即使你离开房间也保持开放。",
   "Online: sunucuda oda kurma": "在线：服务器房间",
-  "Oda kurarken «Sunucuda» seçeneği eklendi: oda merkezi sunucuda açılır, herkes internetten ayar yapmadan katılır. Sunucu hazır değilse oda bu cihazda kurulur.": "创建房间时新增「在服务器上」选项：房间在中央服务器开启，所有人无需设置即可通过互联网加入。若服务器不可用，则在本设备上创建房间。"
+  "Oda kurarken «Sunucuda» seçeneği eklendi: oda merkezi sunucuda açılır, herkes internetten ayar yapmadan katılır. Sunucu hazır değilse oda bu cihazda kurulur.": "创建房间时新增「在服务器上」选项：房间在中央服务器开启，所有人无需设置即可通过互联网加入。若服务器不可用，则在本设备上创建房间。",
+  "Online: 12 oyunculu odalar": "在线：12人房间",
+  "Online odalar artık 12 oyuncuya kadar kurulabiliyor (2, 3, 4, 5, 6, 8, 10, 12).": "在线房间现在最多可容纳12名玩家（2、3、4、5、6、8、10、12）。"
  },
  "months": [
   "1月",

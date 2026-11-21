@@ -4795,7 +4795,9 @@
   "Bu cihazda": "Su questo dispositivo",
   "Sunucuda kurulan odaya herkes internetten, hiçbir ayar yapmadan katılır; sen çıksan da oda açık kalır.": "Chiunque può unirsi via internet a una stanza creata sul server senza configurare nulla, e resta aperta anche se esci.",
   "Online: sunucuda oda kurma": "Online: stanze sul server",
-  "Oda kurarken «Sunucuda» seçeneği eklendi: oda merkezi sunucuda açılır, herkes internetten ayar yapmadan katılır. Sunucu hazır değilse oda bu cihazda kurulur.": "Creando una stanza c'è la nuova opzione «Sul server»: la stanza si apre sul server centrale e tutti entrano via internet senza configurare nulla. Se il server non è disponibile, la stanza viene creata su questo dispositivo."
+  "Oda kurarken «Sunucuda» seçeneği eklendi: oda merkezi sunucuda açılır, herkes internetten ayar yapmadan katılır. Sunucu hazır değilse oda bu cihazda kurulur.": "Creando una stanza c'è la nuova opzione «Sul server»: la stanza si apre sul server centrale e tutti entrano via internet senza configurare nulla. Se il server non è disponibile, la stanza viene creata su questo dispositivo.",
+  "Online: 12 oyunculu odalar": "Online: stanze da 12 giocatori",
+  "Online odalar artık 12 oyuncuya kadar kurulabiliyor (2, 3, 4, 5, 6, 8, 10, 12).": "Le stanze online ora ospitano fino a 12 giocatori (2, 3, 4, 5, 6, 8, 10, 12)."
  },
  "months": [
   "gennaio",

@@ -4795,7 +4795,9 @@
   "Bu cihazda": "На этом устройстве",
   "Sunucuda kurulan odaya herkes internetten, hiçbir ayar yapmadan katılır; sen çıksan da oda açık kalır.": "К комнате на сервере можно присоединиться через интернет без настроек, и она остаётся открытой, даже если вы выйдете.",
   "Online: sunucuda oda kurma": "Онлайн: комнаты на сервере",
-  "Oda kurarken «Sunucuda» seçeneği eklendi: oda merkezi sunucuda açılır, herkes internetten ayar yapmadan katılır. Sunucu hazır değilse oda bu cihazda kurulur.": "При создании комнаты появился вариант «На сервере»: комната открывается на центральном сервере, и все заходят через интернет без настроек. Если сервер недоступен, комната создаётся на этом устройстве."
+  "Oda kurarken «Sunucuda» seçeneği eklendi: oda merkezi sunucuda açılır, herkes internetten ayar yapmadan katılır. Sunucu hazır değilse oda bu cihazda kurulur.": "При создании комнаты появился вариант «На сервере»: комната открывается на центральном сервере, и все заходят через интернет без настроек. Если сервер недоступен, комната создаётся на этом устройстве.",
+  "Online: 12 oyunculu odalar": "Онлайн: комнаты на 12 игроков",
+  "Online odalar artık 12 oyuncuya kadar kurulabiliyor (2, 3, 4, 5, 6, 8, 10, 12).": "Онлайн-комнаты теперь вмещают до 12 игроков (2, 3, 4, 5, 6, 8, 10, 12)."
  },
  "months": [
   "января",

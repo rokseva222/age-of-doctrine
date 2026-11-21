@@ -4571,7 +4571,9 @@
   "Bu cihazda": "On this device",
   "Sunucuda kurulan odaya herkes internetten, hiçbir ayar yapmadan katılır; sen çıksan da oda açık kalır.": "Anyone can join a room created on the server over the internet with no setup, and it stays open even if you leave.",
   "Online: sunucuda oda kurma": "Online: rooms on the server",
-  "Oda kurarken «Sunucuda» seçeneği eklendi: oda merkezi sunucuda açılır, herkes internetten ayar yapmadan katılır. Sunucu hazır değilse oda bu cihazda kurulur.": "A «On the server» option was added when creating a room: the room opens on the central server and everyone joins over the internet with no setup. If the server isn't available, the room is created on this device."
+  "Oda kurarken «Sunucuda» seçeneği eklendi: oda merkezi sunucuda açılır, herkes internetten ayar yapmadan katılır. Sunucu hazır değilse oda bu cihazda kurulur.": "A «On the server» option was added when creating a room: the room opens on the central server and everyone joins over the internet with no setup. If the server isn't available, the room is created on this device.",
+  "Online: 12 oyunculu odalar": "Online: rooms for 12 players",
+  "Online odalar artık 12 oyuncuya kadar kurulabiliyor (2, 3, 4, 5, 6, 8, 10, 12).": "Online rooms can now hold up to 12 players (2, 3, 4, 5, 6, 8, 10, 12)."
  },
  "months": [
   "January",

@@ -63,7 +63,7 @@ def create_room(b, ip):
     if not SAFE.match(era) or not SAFE.match(scn):
         return 400, {"err": "geçersiz çağ/senaryo"}
     try:
-        mx = max(2, min(6, int(b.get("max", 4))))
+        mx = max(2, min(12, int(b.get("max", 4))))
         secs = max(0.0, min(600.0, float(b.get("secs", 120))))
         fog = max(0, min(2, int(b.get("fog", 0))))
     except Exception:

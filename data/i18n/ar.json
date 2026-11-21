@@ -4795,7 +4795,9 @@
   "Bu cihazda": "على هذا الجهاز",
   "Sunucuda kurulan odaya herkes internetten, hiçbir ayar yapmadan katılır; sen çıksan da oda açık kalır.": "يمكن لأي شخص الانضمام عبر الإنترنت إلى غرفة أُنشئت على الخادم دون أي إعداد، وتبقى مفتوحة حتى لو غادرت.",
   "Online: sunucuda oda kurma": "أونلاين: غرف على الخادم",
-  "Oda kurarken «Sunucuda» seçeneği eklendi: oda merkezi sunucuda açılır, herkes internetten ayar yapmadan katılır. Sunucu hazır değilse oda bu cihazda kurulur.": "أُضيف خيار «على الخادم» عند إنشاء غرفة: تُفتح الغرفة على الخادم المركزي وينضم الجميع عبر الإنترنت دون إعداد. إن لم يتوفر الخادم تُنشأ الغرفة على هذا الجهاز."
+  "Oda kurarken «Sunucuda» seçeneği eklendi: oda merkezi sunucuda açılır, herkes internetten ayar yapmadan katılır. Sunucu hazır değilse oda bu cihazda kurulur.": "أُضيف خيار «على الخادم» عند إنشاء غرفة: تُفتح الغرفة على الخادم المركزي وينضم الجميع عبر الإنترنت دون إعداد. إن لم يتوفر الخادم تُنشأ الغرفة على هذا الجهاز.",
+  "Online: 12 oyunculu odalar": "أونلاين: غرف لـ 12 لاعبًا",
+  "Online odalar artık 12 oyuncuya kadar kurulabiliyor (2, 3, 4, 5, 6, 8, 10, 12).": "تتسع الغرف الآن حتى 12 لاعبًا (2، 3، 4، 5، 6، 8، 10، 12)."
  },
  "months": [
   "يناير",

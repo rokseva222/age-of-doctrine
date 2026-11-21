@@ -249,7 +249,7 @@ static func host_form(main) -> void:
 	var max_row := HFlowContainer.new()
 	max_row.add_theme_constant_override("h_separation", 8)
 	sh.body.add_child(max_row)
-	for n in range(2, 7):
+	for n in [2, 3, 4, 5, 6, 8, 10, 12]:
 		var b2 := TK.button(str(n), "gold" if n == 4 else "", "", Vector2(90, 56), 18)
 		b2.pressed.connect(func():
 			st.max = n

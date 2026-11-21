@@ -4795,7 +4795,9 @@
   "Bu cihazda": "روی این دستگاه",
   "Sunucuda kurulan odaya herkes internetten, hiçbir ayar yapmadan katılır; sen çıksan da oda açık kalır.": "هر کسی بدون هیچ تنظیمی از طریق اینترنت به اتاقِ ساخته‌شده روی سرور می‌پیوندد و حتی اگر بروید باز می‌ماند.",
   "Online: sunucuda oda kurma": "آنلاین: اتاق روی سرور",
-  "Oda kurarken «Sunucuda» seçeneği eklendi: oda merkezi sunucuda açılır, herkes internetten ayar yapmadan katılır. Sunucu hazır değilse oda bu cihazda kurulur.": "هنگام ساخت اتاق گزینه‌ی «روی سرور» اضافه شد: اتاق روی سرور مرکزی باز می‌شود و همه بدون تنظیمات از طریق اینترنت می‌پیوندند. اگر سرور در دسترس نباشد اتاق روی همین دستگاه ساخته می‌شود."
+  "Oda kurarken «Sunucuda» seçeneği eklendi: oda merkezi sunucuda açılır, herkes internetten ayar yapmadan katılır. Sunucu hazır değilse oda bu cihazda kurulur.": "هنگام ساخت اتاق گزینه‌ی «روی سرور» اضافه شد: اتاق روی سرور مرکزی باز می‌شود و همه بدون تنظیمات از طریق اینترنت می‌پیوندند. اگر سرور در دسترس نباشد اتاق روی همین دستگاه ساخته می‌شود.",
+  "Online: 12 oyunculu odalar": "آنلاین: اتاق‌های ۱۲ نفره",
+  "Online odalar artık 12 oyuncuya kadar kurulabiliyor (2, 3, 4, 5, 6, 8, 10, 12).": "اتاق‌های آنلاین اکنون تا ۱۲ بازیکن را در خود جا می‌دهند (۲، ۳، ۴، ۵، ۶، ۸، ۱۰، ۱۲)."
  },
  "months": [
   "ژانویه",

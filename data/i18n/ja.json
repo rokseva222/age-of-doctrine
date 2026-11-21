@@ -4795,7 +4795,9 @@
   "Bu cihazda": "この端末",
   "Sunucuda kurulan odaya herkes internetten, hiçbir ayar yapmadan katılır; sen çıksan da oda açık kalır.": "サーバー上に作った部屋には、誰でも設定なしでインターネット経由で参加でき、あなたが抜けても開いたままです。",
   "Online: sunucuda oda kurma": "オンライン：サーバー上の部屋",
-  "Oda kurarken «Sunucuda» seçeneği eklendi: oda merkezi sunucuda açılır, herkes internetten ayar yapmadan katılır. Sunucu hazır değilse oda bu cihazda kurulur.": "部屋作成時に「サーバー上」の選択肢を追加しました。部屋は中央サーバーで開かれ、全員が設定なしでインターネット経由で参加できます。サーバーが使えない場合は、この端末で部屋を作成します。"
+  "Oda kurarken «Sunucuda» seçeneği eklendi: oda merkezi sunucuda açılır, herkes internetten ayar yapmadan katılır. Sunucu hazır değilse oda bu cihazda kurulur.": "部屋作成時に「サーバー上」の選択肢を追加しました。部屋は中央サーバーで開かれ、全員が設定なしでインターネット経由で参加できます。サーバーが使えない場合は、この端末で部屋を作成します。",
+  "Online: 12 oyunculu odalar": "オンライン：12人部屋",
+  "Online odalar artık 12 oyuncuya kadar kurulabiliyor (2, 3, 4, 5, 6, 8, 10, 12).": "オンライン部屋は最大12人まで作れます（2、3、4、5、6、8、10、12）。"
  },
  "months": [
   "1月",
