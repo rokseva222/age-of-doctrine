@@ -4782,7 +4782,9 @@
   "Henüz bağlanılmadı.": "아직 연결되지 않았습니다.",
   "Oda senaryosu: %s. Başlangıç durumu oyun başlayınca uygulanır.": "방 시나리오: %s. 시작 상황은 게임이 시작되면 적용됩니다.",
   "Online: bağlantı düzeltmeleri": "온라인: 연결 수정",
-  "Bağlanılamayan odada lobi artık boş açık kalmıyor: 6 sn içinde bağlanamazsa (aynı bilgisayardaki ikinci oyun dahil, yerel adresi de dener) menüye dönüp hata gösterir. Bağlantı gelmeden «Ülke seç» kapalı, «Ayrıl» artık boş harita bırakmıyor. Senaryolu odalarda ülke seçim ekranı senaryo adını gösterir.": "접속할 수 없는 방이 빈 로비를 열어 두지 않습니다. 6초 안에 연결되지 않으면(같은 PC의 두 번째 게임을 위해 로컬 주소도 시도합니다) 오류와 함께 메뉴로 돌아갑니다. 연결 전에는 «국가 선택»이 비활성화되고 «나가기»가 빈 지도를 남기지 않습니다. 시나리오 방은 국가 선택 화면에 시나리오 이름을 표시합니다."
+  "Bağlanılamayan odada lobi artık boş açık kalmıyor: 6 sn içinde bağlanamazsa (aynı bilgisayardaki ikinci oyun dahil, yerel adresi de dener) menüye dönüp hata gösterir. Bağlantı gelmeden «Ülke seç» kapalı, «Ayrıl» artık boş harita bırakmıyor. Senaryolu odalarda ülke seçim ekranı senaryo adını gösterir.": "접속할 수 없는 방이 빈 로비를 열어 두지 않습니다. 6초 안에 연결되지 않으면(같은 PC의 두 번째 게임을 위해 로컬 주소도 시도합니다) 오류와 함께 메뉴로 돌아갑니다. 연결 전에는 «국가 선택»이 비활성화되고 «나가기»가 빈 지도를 남기지 않습니다. 시나리오 방은 국가 선택 화면에 시나리오 이름을 표시합니다.",
+  "Online: lobi hatası giderildi": "온라인: 로비 오류 수정",
+  "Bir bağlantı denemesi başarısız olduktan sonra tekrar katılırken lobinin hata verip donması düzeltildi.": "연결 시도 실패 후 다시 참가할 때 로비에서 오류가 나며 멈추는 문제를 고쳤습니다."
  },
  "months": [
   "1월",

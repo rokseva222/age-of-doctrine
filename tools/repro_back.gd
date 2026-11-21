@@ -20,6 +20,10 @@ func _init() -> void:
 	for i in 6:
 		main.ui.hide_dialog()
 		await create_timer(0.3).timeout
+	if OS.get_environment("AOD_TWICE") != "":
+		main.online_join("127.0.0.1", 47555)
+		await create_timer(14.0).timeout
+		print("ILK DENEME sonrasi lobi var mi=", main._lobby_sheet != null and is_instance_valid(main._lobby_sheet))
 	main.online_join(OS.get_environment("AOD_ADDR") if OS.get_environment("AOD_ADDR") != "" else "127.0.0.1", int(OS.get_environment("AOD_PORT")) if OS.get_environment("AOD_PORT") != "" else 47398)
 	await create_timer(float(OS.get_environment("AOD_WAIT")) if OS.get_environment("AOD_WAIT") != "" else 2.5).timeout
 	await _shot("1_lobi")

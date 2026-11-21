@@ -311,6 +311,8 @@ static func lobby(main) -> Control:
 	sh.body.add_child(TK.t("Sohbet", "kicker"))
 	chat_box(net, sh.body, 150.0)
 	var render := func():
+		if not is_instance_valid(pick) or not is_instance_valid(codelbl):
+			return          # kapanmış lobiden kalan eski sinyal bağı
 		if net.info.has("need_pass"):
 			codelbl.text = Loc.t("Şifre gerekli.")
 			return
@@ -339,7 +341,11 @@ static func lobby(main) -> Control:
 			if bool(p.host) and int(id) == multiplayer_id(net):
 				me_host = true
 		start.visible = me_host
-	net.lobby_changed.connect(func(): render.call())
+	var on_change := func(): render.call()
+	net.lobby_changed.connect(on_change)
+	sh.tree_exiting.connect(func():
+		if net.lobby_changed.is_connected(on_change):
+			net.lobby_changed.disconnect(on_change))
 	pick.pressed.connect(func(): main.online_pick_country())
 	start.pressed.connect(func(): net.rpc_id(1, "srv_start") if not net.is_server else net.srv_start())
 	render.call()

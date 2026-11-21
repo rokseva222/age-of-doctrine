@@ -4782,7 +4782,9 @@
   "Henüz bağlanılmadı.": "Соединение ещё не установлено.",
   "Oda senaryosu: %s. Başlangıç durumu oyun başlayınca uygulanır.": "Сценарий комнаты: %s. Начальная ситуация применяется при старте игры.",
   "Online: bağlantı düzeltmeleri": "Онлайн: исправления подключения",
-  "Bağlanılamayan odada lobi artık boş açık kalmıyor: 6 sn içinde bağlanamazsa (aynı bilgisayardaki ikinci oyun dahil, yerel adresi de dener) menüye dönüp hata gösterir. Bağlantı gelmeden «Ülke seç» kapalı, «Ayrıl» artık boş harita bırakmıyor. Senaryolu odalarda ülke seçim ekranı senaryo adını gösterir.": "Недоступная комната больше не оставляет пустое лобби: если подключиться не удалось за 6 с (пробуется и локальный адрес — для второй копии игры на том же ПК), вы вернётесь в меню с ошибкой. «Выбрать страну» неактивна до подключения, а «Выйти» больше не оставляет пустую карту. В комнатах со сценарием на экране выбора страны показано название сценария."
+  "Bağlanılamayan odada lobi artık boş açık kalmıyor: 6 sn içinde bağlanamazsa (aynı bilgisayardaki ikinci oyun dahil, yerel adresi de dener) menüye dönüp hata gösterir. Bağlantı gelmeden «Ülke seç» kapalı, «Ayrıl» artık boş harita bırakmıyor. Senaryolu odalarda ülke seçim ekranı senaryo adını gösterir.": "Недоступная комната больше не оставляет пустое лобби: если подключиться не удалось за 6 с (пробуется и локальный адрес — для второй копии игры на том же ПК), вы вернётесь в меню с ошибкой. «Выбрать страну» неактивна до подключения, а «Выйти» больше не оставляет пустую карту. В комнатах со сценарием на экране выбора страны показано название сценария.",
+  "Online: lobi hatası giderildi": "Онлайн: исправлена ошибка лобби",
+  "Bir bağlantı denemesi başarısız olduktan sonra tekrar katılırken lobinin hata verip donması düzeltildi.": "Исправлена ошибка и зависание лобби при повторном входе после неудачной попытки подключения."
  },
  "months": [
   "января",

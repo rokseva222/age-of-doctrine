@@ -4781,7 +4781,9 @@
   "Henüz bağlanılmadı.": "Ainda não conectado.",
   "Oda senaryosu: %s. Başlangıç durumu oyun başlayınca uygulanır.": "Cenário da sala: %s. A situação inicial é aplicada quando o jogo começa.",
   "Online: bağlantı düzeltmeleri": "Online: correções de conexão",
-  "Bağlanılamayan odada lobi artık boş açık kalmıyor: 6 sn içinde bağlanamazsa (aynı bilgisayardaki ikinci oyun dahil, yerel adresi de dener) menüye dönüp hata gösterir. Bağlantı gelmeden «Ülke seç» kapalı, «Ayrıl» artık boş harita bırakmıyor. Senaryolu odalarda ülke seçim ekranı senaryo adını gösterir.": "Uma sala inacessível não deixa mais um lobby vazio aberto: se não conectar em 6 s (também tenta o endereço local, para um segundo jogo no mesmo PC) você volta ao menu com um erro. «Escolher país» fica desativado até conectar e «Sair» não deixa mais um mapa em branco. Salas com cenário mostram o nome do cenário na escolha do país."
+  "Bağlanılamayan odada lobi artık boş açık kalmıyor: 6 sn içinde bağlanamazsa (aynı bilgisayardaki ikinci oyun dahil, yerel adresi de dener) menüye dönüp hata gösterir. Bağlantı gelmeden «Ülke seç» kapalı, «Ayrıl» artık boş harita bırakmıyor. Senaryolu odalarda ülke seçim ekranı senaryo adını gösterir.": "Uma sala inacessível não deixa mais um lobby vazio aberto: se não conectar em 6 s (também tenta o endereço local, para um segundo jogo no mesmo PC) você volta ao menu com um erro. «Escolher país» fica desativado até conectar e «Sair» não deixa mais um mapa em branco. Salas com cenário mostram o nome do cenário na escolha do país.",
+  "Online: lobi hatası giderildi": "Online: erro do lobby corrigido",
+  "Bir bağlantı denemesi başarısız olduktan sonra tekrar katılırken lobinin hata verip donması düzeltildi.": "Corrigido o erro e travamento do lobby ao entrar de novo após uma tentativa de conexão falha."
  },
  "months": [
   "janeiro",

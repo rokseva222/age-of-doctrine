@@ -4782,7 +4782,9 @@
   "Henüz bağlanılmadı.": "هنوز متصل نشده است.",
   "Oda senaryosu: %s. Başlangıç durumu oyun başlayınca uygulanır.": "سناریوی اتاق: %s. وضعیت آغازین با شروع بازی اعمال می‌شود.",
   "Online: bağlantı düzeltmeleri": "آنلاین: رفع مشکلات اتصال",
-  "Bağlanılamayan odada lobi artık boş açık kalmıyor: 6 sn içinde bağlanamazsa (aynı bilgisayardaki ikinci oyun dahil, yerel adresi de dener) menüye dönüp hata gösterir. Bağlantı gelmeden «Ülke seç» kapalı, «Ayrıl» artık boş harita bırakmıyor. Senaryolu odalarda ülke seçim ekranı senaryo adını gösterir.": "اتاقی که به آن دسترسی نیست دیگر لابی خالی باز نمی‌گذارد: اگر در ۶ ثانیه وصل نشود (آدرس محلی را هم امتحان می‌کند، برای بازی دوم روی همان رایانه) با پیام خطا به منو برمی‌گردید. «انتخاب کشور» تا برقراری اتصال غیرفعال است و «خروج» دیگر نقشه خالی نمی‌گذارد. اتاق‌های سناریودار نام سناریو را هنگام انتخاب کشور نشان می‌دهند."
+  "Bağlanılamayan odada lobi artık boş açık kalmıyor: 6 sn içinde bağlanamazsa (aynı bilgisayardaki ikinci oyun dahil, yerel adresi de dener) menüye dönüp hata gösterir. Bağlantı gelmeden «Ülke seç» kapalı, «Ayrıl» artık boş harita bırakmıyor. Senaryolu odalarda ülke seçim ekranı senaryo adını gösterir.": "اتاقی که به آن دسترسی نیست دیگر لابی خالی باز نمی‌گذارد: اگر در ۶ ثانیه وصل نشود (آدرس محلی را هم امتحان می‌کند، برای بازی دوم روی همان رایانه) با پیام خطا به منو برمی‌گردید. «انتخاب کشور» تا برقراری اتصال غیرفعال است و «خروج» دیگر نقشه خالی نمی‌گذارد. اتاق‌های سناریودار نام سناریو را هنگام انتخاب کشور نشان می‌دهند.",
+  "Online: lobi hatası giderildi": "آنلاین: رفع خطای لابی",
+  "Bir bağlantı denemesi başarısız olduktan sonra tekrar katılırken lobinin hata verip donması düzeltildi.": "خطا و قفل شدن لابی هنگام پیوستن دوباره پس از یک تلاش ناموفق اتصال رفع شد."
  },
  "months": [
   "ژانویه",

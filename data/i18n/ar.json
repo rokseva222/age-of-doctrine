@@ -4782,7 +4782,9 @@
   "Henüz bağlanılmadı.": "لم يتم الاتصال بعد.",
   "Oda senaryosu: %s. Başlangıç durumu oyun başlayınca uygulanır.": "سيناريو الغرفة: %s. يُطبَّق الوضع الابتدائي عند بدء اللعبة.",
   "Online: bağlantı düzeltmeleri": "أونلاين: إصلاحات الاتصال",
-  "Bağlanılamayan odada lobi artık boş açık kalmıyor: 6 sn içinde bağlanamazsa (aynı bilgisayardaki ikinci oyun dahil, yerel adresi de dener) menüye dönüp hata gösterir. Bağlantı gelmeden «Ülke seç» kapalı, «Ayrıl» artık boş harita bırakmıyor. Senaryolu odalarda ülke seçim ekranı senaryo adını gösterir.": "لم تعد الغرفة التي يتعذّر الوصول إليها تترك ردهة فارغة مفتوحة: إن لم يتم الاتصال خلال 6 ثوانٍ (ويجرّب العنوان المحلي أيضًا للعبة ثانية على الحاسوب نفسه) تعود إلى القائمة مع رسالة خطأ. «اختيار دولة» معطّل حتى يتم الاتصال، و«مغادرة» لم يعد يترك خريطة فارغة. تعرض غرف السيناريو اسم السيناريو عند اختيار الدولة."
+  "Bağlanılamayan odada lobi artık boş açık kalmıyor: 6 sn içinde bağlanamazsa (aynı bilgisayardaki ikinci oyun dahil, yerel adresi de dener) menüye dönüp hata gösterir. Bağlantı gelmeden «Ülke seç» kapalı, «Ayrıl» artık boş harita bırakmıyor. Senaryolu odalarda ülke seçim ekranı senaryo adını gösterir.": "لم تعد الغرفة التي يتعذّر الوصول إليها تترك ردهة فارغة مفتوحة: إن لم يتم الاتصال خلال 6 ثوانٍ (ويجرّب العنوان المحلي أيضًا للعبة ثانية على الحاسوب نفسه) تعود إلى القائمة مع رسالة خطأ. «اختيار دولة» معطّل حتى يتم الاتصال، و«مغادرة» لم يعد يترك خريطة فارغة. تعرض غرف السيناريو اسم السيناريو عند اختيار الدولة.",
+  "Online: lobi hatası giderildi": "أونلاين: إصلاح خلل الردهة",
+  "Bir bağlantı denemesi başarısız olduktan sonra tekrar katılırken lobinin hata verip donması düzeltildi.": "تم إصلاح خطأ وتجمّد الردهة عند الانضمام مجددًا بعد محاولة اتصال فاشلة."
  },
  "months": [
   "يناير",

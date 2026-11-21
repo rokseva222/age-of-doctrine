@@ -4782,7 +4782,9 @@
   "Henüz bağlanılmadı.": "尚未连接。",
   "Oda senaryosu: %s. Başlangıç durumu oyun başlayınca uygulanır.": "房间剧本：%s。开局状况将在游戏开始时应用。",
   "Online: bağlantı düzeltmeleri": "在线：连接修复",
-  "Bağlanılamayan odada lobi artık boş açık kalmıyor: 6 sn içinde bağlanamazsa (aynı bilgisayardaki ikinci oyun dahil, yerel adresi de dener) menüye dönüp hata gösterir. Bağlantı gelmeden «Ülke seç» kapalı, «Ayrıl» artık boş harita bırakmıyor. Senaryolu odalarda ülke seçim ekranı senaryo adını gösterir.": "无法连接的房间不再留下空大厅：6 秒内无法连接（也会尝试本机地址，适用于同一台电脑上的第二个游戏）就会带错误提示返回菜单。连接成功前「选择国家」不可用，「离开」也不再留下空白地图。剧本房间在选国家界面显示剧本名称。"
+  "Bağlanılamayan odada lobi artık boş açık kalmıyor: 6 sn içinde bağlanamazsa (aynı bilgisayardaki ikinci oyun dahil, yerel adresi de dener) menüye dönüp hata gösterir. Bağlantı gelmeden «Ülke seç» kapalı, «Ayrıl» artık boş harita bırakmıyor. Senaryolu odalarda ülke seçim ekranı senaryo adını gösterir.": "无法连接的房间不再留下空大厅：6 秒内无法连接（也会尝试本机地址，适用于同一台电脑上的第二个游戏）就会带错误提示返回菜单。连接成功前「选择国家」不可用，「离开」也不再留下空白地图。剧本房间在选国家界面显示剧本名称。",
+  "Online: lobi hatası giderildi": "在线：修复大厅错误",
+  "Bir bağlantı denemesi başarısız olduktan sonra tekrar katılırken lobinin hata verip donması düzeltildi.": "修复了连接失败后再次加入时大厅报错并卡住的问题。"
  },
  "months": [
   "1月",

@@ -4782,7 +4782,9 @@
   "Henüz bağlanılmadı.": "Non ancora connesso.",
   "Oda senaryosu: %s. Başlangıç durumu oyun başlayınca uygulanır.": "Scenario della stanza: %s. La situazione iniziale viene applicata all'avvio della partita.",
   "Online: bağlantı düzeltmeleri": "Online: correzioni di connessione",
-  "Bağlanılamayan odada lobi artık boş açık kalmıyor: 6 sn içinde bağlanamazsa (aynı bilgisayardaki ikinci oyun dahil, yerel adresi de dener) menüye dönüp hata gösterir. Bağlantı gelmeden «Ülke seç» kapalı, «Ayrıl» artık boş harita bırakmıyor. Senaryolu odalarda ülke seçim ekranı senaryo adını gösterir.": "Una stanza irraggiungibile non lascia più una lobby vuota aperta: se non si connette entro 6 s (prova anche l'indirizzo locale, per un secondo gioco sullo stesso PC) torni al menu con un errore. «Scegli paese» resta disattivato finché non c'è connessione e «Esci» non lascia più una mappa vuota. Le stanze con scenario mostrano il nome dello scenario alla scelta del paese."
+  "Bağlanılamayan odada lobi artık boş açık kalmıyor: 6 sn içinde bağlanamazsa (aynı bilgisayardaki ikinci oyun dahil, yerel adresi de dener) menüye dönüp hata gösterir. Bağlantı gelmeden «Ülke seç» kapalı, «Ayrıl» artık boş harita bırakmıyor. Senaryolu odalarda ülke seçim ekranı senaryo adını gösterir.": "Una stanza irraggiungibile non lascia più una lobby vuota aperta: se non si connette entro 6 s (prova anche l'indirizzo locale, per un secondo gioco sullo stesso PC) torni al menu con un errore. «Scegli paese» resta disattivato finché non c'è connessione e «Esci» non lascia più una mappa vuota. Le stanze con scenario mostrano il nome dello scenario alla scelta del paese.",
+  "Online: lobi hatası giderildi": "Online: bug della lobby risolto",
+  "Bir bağlantı denemesi başarısız olduktan sonra tekrar katılırken lobinin hata verip donması düzeltildi.": "Risolto l'errore e il blocco della lobby quando ci si riunisce dopo un tentativo di connessione fallito."
  },
  "months": [
   "gennaio",

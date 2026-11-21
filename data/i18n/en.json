@@ -4558,7 +4558,9 @@
   "Henüz bağlanılmadı.": "Not connected yet.",
   "Oda senaryosu: %s. Başlangıç durumu oyun başlayınca uygulanır.": "Room scenario: %s. Its starting situation is applied when the game starts.",
   "Online: bağlantı düzeltmeleri": "Online: connection fixes",
-  "Bağlanılamayan odada lobi artık boş açık kalmıyor: 6 sn içinde bağlanamazsa (aynı bilgisayardaki ikinci oyun dahil, yerel adresi de dener) menüye dönüp hata gösterir. Bağlantı gelmeden «Ülke seç» kapalı, «Ayrıl» artık boş harita bırakmıyor. Senaryolu odalarda ülke seçim ekranı senaryo adını gösterir.": "A room you can't reach no longer leaves an empty lobby open: if it can't connect within 6 s (it also tries the local address, for a second game on the same PC) you return to the menu with an error. «Pick country» is disabled until connected and «Leave» no longer leaves a blank map. Scenario rooms show the scenario name on the country-pick screen."
+  "Bağlanılamayan odada lobi artık boş açık kalmıyor: 6 sn içinde bağlanamazsa (aynı bilgisayardaki ikinci oyun dahil, yerel adresi de dener) menüye dönüp hata gösterir. Bağlantı gelmeden «Ülke seç» kapalı, «Ayrıl» artık boş harita bırakmıyor. Senaryolu odalarda ülke seçim ekranı senaryo adını gösterir.": "A room you can't reach no longer leaves an empty lobby open: if it can't connect within 6 s (it also tries the local address, for a second game on the same PC) you return to the menu with an error. «Pick country» is disabled until connected and «Leave» no longer leaves a blank map. Scenario rooms show the scenario name on the country-pick screen.",
+  "Online: lobi hatası giderildi": "Online: lobby bug fixed",
+  "Bir bağlantı denemesi başarısız olduktan sonra tekrar katılırken lobinin hata verip donması düzeltildi.": "Fixed the lobby erroring and freezing when you join again after a failed connection attempt."
  },
  "months": [
   "January",

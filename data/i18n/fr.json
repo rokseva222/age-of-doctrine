@@ -4781,7 +4781,9 @@
   "Henüz bağlanılmadı.": "Pas encore connecté.",
   "Oda senaryosu: %s. Başlangıç durumu oyun başlayınca uygulanır.": "Scénario de la salle : %s. La situation de départ s'applique au début de la partie.",
   "Online: bağlantı düzeltmeleri": "En ligne : correctifs de connexion",
-  "Bağlanılamayan odada lobi artık boş açık kalmıyor: 6 sn içinde bağlanamazsa (aynı bilgisayardaki ikinci oyun dahil, yerel adresi de dener) menüye dönüp hata gösterir. Bağlantı gelmeden «Ülke seç» kapalı, «Ayrıl» artık boş harita bırakmıyor. Senaryolu odalarda ülke seçim ekranı senaryo adını gösterir.": "Une salle injoignable ne laisse plus un lobby vide ouvert : sans connexion en 6 s (l'adresse locale est aussi essayée, pour un second jeu sur le même PC) tu reviens au menu avec une erreur. « Choisir un pays » est désactivé tant que la connexion n'est pas établie et « Quitter » ne laisse plus de carte vide. Les salles à scénario affichent le nom du scénario au choix du pays."
+  "Bağlanılamayan odada lobi artık boş açık kalmıyor: 6 sn içinde bağlanamazsa (aynı bilgisayardaki ikinci oyun dahil, yerel adresi de dener) menüye dönüp hata gösterir. Bağlantı gelmeden «Ülke seç» kapalı, «Ayrıl» artık boş harita bırakmıyor. Senaryolu odalarda ülke seçim ekranı senaryo adını gösterir.": "Une salle injoignable ne laisse plus un lobby vide ouvert : sans connexion en 6 s (l'adresse locale est aussi essayée, pour un second jeu sur le même PC) tu reviens au menu avec une erreur. « Choisir un pays » est désactivé tant que la connexion n'est pas établie et « Quitter » ne laisse plus de carte vide. Les salles à scénario affichent le nom du scénario au choix du pays.",
+  "Online: lobi hatası giderildi": "En ligne : bug du lobby corrigé",
+  "Bir bağlantı denemesi başarısız olduktan sonra tekrar katılırken lobinin hata verip donması düzeltildi.": "Correction de l'erreur et du blocage du lobby en cas de nouvelle tentative après une connexion échouée."
  },
  "months": [
   "janvier",
