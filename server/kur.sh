@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Age of Doctrine merkez sunucu kurulumu (Ubuntu 22.04/24.04 veya Debian 12, root olarak).
+# Age of Doctrine merkez sunucu kurulumu (Ubuntu 22.04/24.04, Debian 12 veya Oracle/Rocky/Alma/RHEL 9, root olarak).
 #   sudo bash kur.sh            -> genel IP otomatik bulunur
 #   sudo bash kur.sh 203.0.113.5  (ya da alan adı)
 # Yaptığı: Godot 4.3 (başsız) + oyun deposu + hub servisi (systemd) + güvenlik duvarı.
@@ -13,8 +13,18 @@ REPO="https://github.com/rokseva222/age-of-doctrine"
 MAX_ROOMS="${MAX_ROOMS:-6}"
 echo ">> Genel adres: $PUBLIC_HOST"
 
-apt-get update -y
-apt-get install -y python3 git unzip curl ufw ca-certificates
+if command -v apt-get >/dev/null 2>&1; then
+  PM=apt
+  apt-get update -y
+  apt-get install -y python3 git unzip curl ufw ca-certificates
+else
+  PM=dnf
+  dnf install -y python3 git unzip curl ca-certificates firewalld || true
+  dnf install -y libXcursor libXi libXinerama libXrandr mesa-libGL fontconfig alsa-lib || true
+  # SELinux /opt altındaki ikili dosyaları çalıştırmayı engelleyebilir: izin verici moda al.
+  setenforce 0 || true
+  sed -i 's/^SELINUX=.*/SELINUX=permissive/' /etc/selinux/config 2>/dev/null || true
+fi
 
 if [ ! -x /opt/godot/godot ]; then
   case "$(uname -m)" in
@@ -69,10 +79,24 @@ WantedBy=timers.target
 UNIT
 
 # Oracle Cloud Ubuntu görüntüleri iptables'te varsayılan olarak yalnızca 22'yi açar: ufw ile birlikte yönetilir.
-ufw allow OpenSSH
-ufw allow 8780/tcp
-ufw allow 47400:47499/udp
-ufw --force enable
+if [ "$PM" = "apt" ]; then
+  ufw allow OpenSSH
+  ufw allow 8780/tcp
+  ufw allow 47400:47499/udp
+  ufw --force enable
+  # Oracle Ubuntu görüntülerinde iptables'te REJECT kuralı olabilir: portları onun önüne ekle.
+  if iptables -S INPUT 2>/dev/null | grep -q 'REJECT'; then
+    iptables -I INPUT 1 -p tcp --dport 8780 -j ACCEPT || true
+    iptables -I INPUT 1 -p udp --dport 47400:47499 -j ACCEPT || true
+    (command -v netfilter-persistent >/dev/null && netfilter-persistent save) || true
+  fi
+else
+  systemctl enable --now firewalld
+  firewall-cmd --permanent --add-service=ssh
+  firewall-cmd --permanent --add-port=8780/tcp
+  firewall-cmd --permanent --add-port=47400-47499/udp
+  firewall-cmd --reload
+fi
 
 systemctl daemon-reload
 systemctl enable --now aod-hub.service aod-update.timer
