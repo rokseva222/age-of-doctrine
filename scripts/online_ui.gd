@@ -314,8 +314,9 @@ static func lobby(main) -> Control:
 		if net.info.has("need_pass"):
 			codelbl.text = Loc.t("Şifre gerekli.")
 			return
+		pick.disabled = not net.info.has("name")
 		var code: String = code_of(local_ip(), int(net.info.get("port", 0))) if net.is_server else ""
-		codelbl.text = ("%s: %s   ·   %s" % [Loc.t("Kod"), code, local_ip()]) if net.is_server else String(net.info.get("name", ""))
+		codelbl.text = ("%s: %s   ·   %s" % [Loc.t("Kod"), code, local_ip()]) if net.is_server else (String(net.info.get("name", "")) if net.info.has("name") else Loc.t("Bağlanılıyor..."))
 		netlbl.visible = net.is_server
 		if net.is_server:
 			var port: int = int(net.info.get("port", 0))

@@ -766,6 +766,17 @@ func online_join(ip: String, port: int) -> void:
 	if n.join(ip, port):
 		menu.toast(Loc.t("Bağlanılıyor..."))
 		_online_open_lobby()
+		_join_guard(n)
+
+
+## 16 sn içinde sunucudan lobi bilgisi gelmezse bağlantı başarısız sayılır (boş lobide takılı kalma).
+func _join_guard(n) -> void:
+	await get_tree().create_timer(16.0).timeout
+	if online or n != net or n.is_server or n.info.has("name") or n.info.has("need_pass"):
+		return
+	if _lobby_sheet != null and is_instance_valid(_lobby_sheet):
+		menu.toast(Loc.t("Sunucuya bağlanılamadı."))
+		online_leave()
 
 
 func _online_open_lobby() -> void:
@@ -782,6 +793,9 @@ func _online_lobby_changed() -> void:
 ## Lobiden ülke seçimi: aynı ülke seçim ekranı, ama "Başla" sunucuya seçimi gönderir.
 func online_pick_country() -> void:
 	var n = get_net()
+	if not n.info.has("name"):
+		menu.toast(Loc.t("Henüz bağlanılmadı."))
+		return
 	online_picking = true
 	if _lobby_sheet != null and is_instance_valid(_lobby_sheet):
 		_lobby_sheet.visible = false
@@ -803,6 +817,11 @@ func online_pick_country() -> void:
 	menu.show_select(gs)
 	menu.set_pick_header(0, 0)
 	menu.set_online_pick(true)
+	var scn_id: String = String(n.info.get("scn", ""))
+	if scn_id != "":
+		var sc: Dictionary = Scenarios.get_sc(scn_id)
+		menu._sel_kicker.text = TK.up("Online · %s: %s" % [Loc.t("Senaryo"), Loc.t(String(sc.get("name", scn_id)))])
+		menu.toast(Loc.t("Oda senaryosu: %s. Başlangıç durumu oyun başlayınca uygulanır.") % Loc.t(String(sc.get("name", scn_id))))
 
 
 func _online_pick_done(cid: int) -> void:
@@ -833,11 +852,17 @@ func online_leave() -> void:
 	if master != null:
 		master.stop_announce()
 	online = false
+	online_picking = false
+	menu.set_online_pick(false)
 	ui.online_mode = false
 	if _sync_timer != null:
 		_sync_timer.stop()
 	_wait_free()
-	if mode == "game":
+	if _lobby_sheet != null and is_instance_valid(_lobby_sheet):
+		_lobby_sheet.queue_free()
+	_lobby_sheet = null
+	map.set_highlight_country(-1)
+	if mode == "select" or mode == "game":
 		_go_main_menu()
 
 
@@ -860,6 +885,9 @@ func _online_lost() -> void:
 			net.join(net.last_addr, net.last_port)
 		return
 	menu.toast(Loc.t("Sunucu bağlantısı koptu."))
+	if not online and _lobby_sheet != null and is_instance_valid(_lobby_sheet):
+		online_leave()
+		return
 	if online:
 		ui.toast(Loc.t("Sunucu bağlantısı koptu."))
 		online = false

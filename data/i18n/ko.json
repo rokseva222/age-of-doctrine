@@ -4778,7 +4778,11 @@
   "Online: senaryolu odalar": "온라인: 시나리오 방",
   "Oda kurarken hazır senaryolardan biri seçilebilir (Ukrayna, Kore, Napolyon…). Katılan herkes aynı senaryo durumuyla başlar.": "방을 만들 때 준비된 시나리오(우크라이나, 한국, 나폴레옹…)를 고를 수 있습니다. 참가자 모두 같은 시나리오 상태로 시작합니다.",
   "Çok oyunculu: haberler ve güvenlik": "멀티플레이: 뉴스와 보안",
-  "Savaş ve fetih haberleri artık her oyuncunun bakış açısından gelir: «Rusya'ya savaş açtın» yalnızca hedef oyuncuya özel gösterilir, diğerleri üçüncü şahıs haber görür. Sunucu geçersiz veya hileli komutları reddeder.": "전쟁·정복 뉴스가 이제 각 플레이어의 시점으로 전달됩니다. «러시아에 선전포고했다»는 대상 플레이어에게만 보이고, 다른 사람은 3인칭 뉴스를 봅니다. 서버는 잘못되었거나 부정한 명령을 거부합니다."
+  "Savaş ve fetih haberleri artık her oyuncunun bakış açısından gelir: «Rusya'ya savaş açtın» yalnızca hedef oyuncuya özel gösterilir, diğerleri üçüncü şahıs haber görür. Sunucu geçersiz veya hileli komutları reddeder.": "전쟁·정복 뉴스가 이제 각 플레이어의 시점으로 전달됩니다. «러시아에 선전포고했다»는 대상 플레이어에게만 보이고, 다른 사람은 3인칭 뉴스를 봅니다. 서버는 잘못되었거나 부정한 명령을 거부합니다.",
+  "Henüz bağlanılmadı.": "아직 연결되지 않았습니다.",
+  "Oda senaryosu: %s. Başlangıç durumu oyun başlayınca uygulanır.": "방 시나리오: %s. 시작 상황은 게임이 시작되면 적용됩니다.",
+  "Online: bağlantı düzeltmeleri": "온라인: 연결 수정",
+  "Bağlanılamayan odada lobi artık boş açık kalmıyor: 6 sn içinde bağlanamazsa (aynı bilgisayardaki ikinci oyun dahil, yerel adresi de dener) menüye dönüp hata gösterir. Bağlantı gelmeden «Ülke seç» kapalı, «Ayrıl» artık boş harita bırakmıyor. Senaryolu odalarda ülke seçim ekranı senaryo adını gösterir.": "접속할 수 없는 방이 빈 로비를 열어 두지 않습니다. 6초 안에 연결되지 않으면(같은 PC의 두 번째 게임을 위해 로컬 주소도 시도합니다) 오류와 함께 메뉴로 돌아갑니다. 연결 전에는 «국가 선택»이 비활성화되고 «나가기»가 빈 지도를 남기지 않습니다. 시나리오 방은 국가 선택 화면에 시나리오 이름을 표시합니다."
  },
  "months": [
   "1월",

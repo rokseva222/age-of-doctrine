@@ -71,9 +71,15 @@ func _ready() -> void:
 	multiplayer.peer_disconnected.connect(_on_peer_disconnected)
 	multiplayer.connected_to_server.connect(func():
 		connected = true
+		_ever_connected = true
 		rpc_id(1, "srv_hello", PROTO, Settings_name(), my_token()))
 	multiplayer.connection_failed.connect(func():
 		connected = false
+		# aynı bilgisayarda iki oyun açıkken genel IP'ye (NAT geri dönüşü) bağlanılamaz: yerel adresi de dene
+		if not _ever_connected and last_addr != "127.0.0.1" and not _tried_local:
+			_tried_local = true
+			join("127.0.0.1", last_port)
+			return
 		error.emit("Sunucuya bağlanılamadı.")
 		disconnected.emit())
 	multiplayer.server_disconnected.connect(func():
@@ -479,6 +485,8 @@ func _process(delta: float) -> void:
 
 var last_addr := ""
 var last_port := DEFAULT_PORT
+var _ever_connected := false
+var _tried_local := false
 
 
 func join(addr: String, port: int = DEFAULT_PORT) -> bool:
@@ -491,10 +499,33 @@ func join(addr: String, port: int = DEFAULT_PORT) -> bool:
 		return false
 	multiplayer.multiplayer_peer = peer
 	is_server = false
+	_attempt += 1
+	_watch(_attempt)
 	return true
 
 
+var _attempt := 0
+
+## ENet bağlantı hatasını ~30 sn sonra bildirir; çok uzun. 6 sn içinde bağlanılamazsa kendimiz vazgeçeriz.
+func _watch(n: int) -> void:
+	await get_tree().create_timer(6.0).timeout
+	if n != _attempt or connected or is_server or multiplayer.multiplayer_peer == null:
+		return
+	if multiplayer.multiplayer_peer is ENetMultiplayerPeer:
+		multiplayer.multiplayer_peer.close()
+	multiplayer.multiplayer_peer = null
+	if not _ever_connected and last_addr != "127.0.0.1" and not _tried_local:
+		_tried_local = true
+		join("127.0.0.1", last_port)
+		return
+	error.emit("Sunucuya bağlanılamadı.")
+	disconnected.emit()
+
+
 func leave() -> void:
+	_ever_connected = false
+	_tried_local = false
+	_attempt += 1
 	if multiplayer.multiplayer_peer != null:
 		multiplayer.multiplayer_peer.close()
 		multiplayer.multiplayer_peer = null

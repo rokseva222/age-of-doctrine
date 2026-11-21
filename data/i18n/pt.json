@@ -4777,7 +4777,11 @@
   "Online: senaryolu odalar": "Online: salas com cenário",
   "Oda kurarken hazır senaryolardan biri seçilebilir (Ukrayna, Kore, Napolyon…). Katılan herkes aynı senaryo durumuyla başlar.": "Ao criar uma sala você pode escolher um cenário pronto (Ucrânia, Coreia, Napoleão…). Todos que entram começam com o mesmo estado do cenário.",
   "Çok oyunculu: haberler ve güvenlik": "Multijogador: notícias e segurança",
-  "Savaş ve fetih haberleri artık her oyuncunun bakış açısından gelir: «Rusya'ya savaş açtın» yalnızca hedef oyuncuya özel gösterilir, diğerleri üçüncü şahıs haber görür. Sunucu geçersiz veya hileli komutları reddeder.": "As notícias de guerra e conquista agora chegam da perspectiva de cada jogador: «Você declarou guerra à Rússia» aparece só para o jogador alvo; os demais veem notícias em terceira pessoa. O servidor rejeita comandos inválidos ou trapaceiros."
+  "Savaş ve fetih haberleri artık her oyuncunun bakış açısından gelir: «Rusya'ya savaş açtın» yalnızca hedef oyuncuya özel gösterilir, diğerleri üçüncü şahıs haber görür. Sunucu geçersiz veya hileli komutları reddeder.": "As notícias de guerra e conquista agora chegam da perspectiva de cada jogador: «Você declarou guerra à Rússia» aparece só para o jogador alvo; os demais veem notícias em terceira pessoa. O servidor rejeita comandos inválidos ou trapaceiros.",
+  "Henüz bağlanılmadı.": "Ainda não conectado.",
+  "Oda senaryosu: %s. Başlangıç durumu oyun başlayınca uygulanır.": "Cenário da sala: %s. A situação inicial é aplicada quando o jogo começa.",
+  "Online: bağlantı düzeltmeleri": "Online: correções de conexão",
+  "Bağlanılamayan odada lobi artık boş açık kalmıyor: 6 sn içinde bağlanamazsa (aynı bilgisayardaki ikinci oyun dahil, yerel adresi de dener) menüye dönüp hata gösterir. Bağlantı gelmeden «Ülke seç» kapalı, «Ayrıl» artık boş harita bırakmıyor. Senaryolu odalarda ülke seçim ekranı senaryo adını gösterir.": "Uma sala inacessível não deixa mais um lobby vazio aberto: se não conectar em 6 s (também tenta o endereço local, para um segundo jogo no mesmo PC) você volta ao menu com um erro. «Escolher país» fica desativado até conectar e «Sair» não deixa mais um mapa em branco. Salas com cenário mostram o nome do cenário na escolha do país."
  },
  "months": [
   "janeiro",

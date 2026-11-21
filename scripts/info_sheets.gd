@@ -294,8 +294,9 @@ static func open_howto(parent: Node) -> void:
 			render.call())
 
 
-const UPDATE_VER := "1.2.42"
+const UPDATE_VER := "1.2.43"
 const WHATS_NEW := [
+	["Online: bağlantı düzeltmeleri", "Bağlanılamayan odada lobi artık boş açık kalmıyor: 6 sn içinde bağlanamazsa (aynı bilgisayardaki ikinci oyun dahil, yerel adresi de dener) menüye dönüp hata gösterir. Bağlantı gelmeden «Ülke seç» kapalı, «Ayrıl» artık boş harita bırakmıyor. Senaryolu odalarda ülke seçim ekranı senaryo adını gösterir."],
 	["Online: senaryolu odalar", "Oda kurarken hazır senaryolardan biri seçilebilir (Ukrayna, Kore, Napolyon…). Katılan herkes aynı senaryo durumuyla başlar."],
 	["Çok oyunculu: haberler ve güvenlik", "Savaş ve fetih haberleri artık her oyuncunun bakış açısından gelir: «Rusya'ya savaş açtın» yalnızca hedef oyuncuya özel gösterilir, diğerleri üçüncü şahıs haber görür. Sunucu geçersiz veya hileli komutları reddeder."],
 	["Online: savaş sisi ve kartlar", "Oda kurarken savaş sisi seçilebilir (Kapalı/Orta/Tam): görmemen gereken ordular sunucudan sana hiç gönderilmez. Online'da dünya krizi kararı ve rastgele kabine kartları da çalışır; tur geçirmek görev ilerlemesine sayılır. Sunucu listesi, topluluğun sabit sunucularını da gösterir."],

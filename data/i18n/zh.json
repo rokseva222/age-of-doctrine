@@ -4778,7 +4778,11 @@
   "Online: senaryolu odalar": "在线：剧本房间",
   "Oda kurarken hazır senaryolardan biri seçilebilir (Ukrayna, Kore, Napolyon…). Katılan herkes aynı senaryo durumuyla başlar.": "创建房间时可选择现成剧本（乌克兰、朝鲜、拿破仑…）。所有加入者都从相同的剧本状态开始。",
   "Çok oyunculu: haberler ve güvenlik": "多人：新闻与安全",
-  "Savaş ve fetih haberleri artık her oyuncunun bakış açısından gelir: «Rusya'ya savaş açtın» yalnızca hedef oyuncuya özel gösterilir, diğerleri üçüncü şahıs haber görür. Sunucu geçersiz veya hileli komutları reddeder.": "战争与征服新闻现在按每位玩家的视角送达：「你对俄罗斯宣战」只显示给被针对的玩家，其他人看到第三人称新闻。服务器会拒绝无效或作弊的命令。"
+  "Savaş ve fetih haberleri artık her oyuncunun bakış açısından gelir: «Rusya'ya savaş açtın» yalnızca hedef oyuncuya özel gösterilir, diğerleri üçüncü şahıs haber görür. Sunucu geçersiz veya hileli komutları reddeder.": "战争与征服新闻现在按每位玩家的视角送达：「你对俄罗斯宣战」只显示给被针对的玩家，其他人看到第三人称新闻。服务器会拒绝无效或作弊的命令。",
+  "Henüz bağlanılmadı.": "尚未连接。",
+  "Oda senaryosu: %s. Başlangıç durumu oyun başlayınca uygulanır.": "房间剧本：%s。开局状况将在游戏开始时应用。",
+  "Online: bağlantı düzeltmeleri": "在线：连接修复",
+  "Bağlanılamayan odada lobi artık boş açık kalmıyor: 6 sn içinde bağlanamazsa (aynı bilgisayardaki ikinci oyun dahil, yerel adresi de dener) menüye dönüp hata gösterir. Bağlantı gelmeden «Ülke seç» kapalı, «Ayrıl» artık boş harita bırakmıyor. Senaryolu odalarda ülke seçim ekranı senaryo adını gösterir.": "无法连接的房间不再留下空大厅：6 秒内无法连接（也会尝试本机地址，适用于同一台电脑上的第二个游戏）就会带错误提示返回菜单。连接成功前「选择国家」不可用，「离开」也不再留下空白地图。剧本房间在选国家界面显示剧本名称。"
  },
  "months": [
   "1月",

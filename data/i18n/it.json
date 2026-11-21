@@ -4778,7 +4778,11 @@
   "Online: senaryolu odalar": "Online: stanze con scenario",
   "Oda kurarken hazır senaryolardan biri seçilebilir (Ukrayna, Kore, Napolyon…). Katılan herkes aynı senaryo durumuyla başlar.": "Creando una stanza puoi scegliere uno scenario pronto (Ucraina, Corea, Napoleone…). Tutti i partecipanti partono dallo stesso stato dello scenario.",
   "Çok oyunculu: haberler ve güvenlik": "Multigiocatore: notizie e sicurezza",
-  "Savaş ve fetih haberleri artık her oyuncunun bakış açısından gelir: «Rusya'ya savaş açtın» yalnızca hedef oyuncuya özel gösterilir, diğerleri üçüncü şahıs haber görür. Sunucu geçersiz veya hileli komutları reddeder.": "Le notizie di guerra e conquista ora arrivano dal punto di vista di ogni giocatore: «Hai dichiarato guerra alla Russia» è mostrato solo al giocatore colpito, gli altri vedono notizie in terza persona. Il server rifiuta comandi non validi o truccati."
+  "Savaş ve fetih haberleri artık her oyuncunun bakış açısından gelir: «Rusya'ya savaş açtın» yalnızca hedef oyuncuya özel gösterilir, diğerleri üçüncü şahıs haber görür. Sunucu geçersiz veya hileli komutları reddeder.": "Le notizie di guerra e conquista ora arrivano dal punto di vista di ogni giocatore: «Hai dichiarato guerra alla Russia» è mostrato solo al giocatore colpito, gli altri vedono notizie in terza persona. Il server rifiuta comandi non validi o truccati.",
+  "Henüz bağlanılmadı.": "Non ancora connesso.",
+  "Oda senaryosu: %s. Başlangıç durumu oyun başlayınca uygulanır.": "Scenario della stanza: %s. La situazione iniziale viene applicata all'avvio della partita.",
+  "Online: bağlantı düzeltmeleri": "Online: correzioni di connessione",
+  "Bağlanılamayan odada lobi artık boş açık kalmıyor: 6 sn içinde bağlanamazsa (aynı bilgisayardaki ikinci oyun dahil, yerel adresi de dener) menüye dönüp hata gösterir. Bağlantı gelmeden «Ülke seç» kapalı, «Ayrıl» artık boş harita bırakmıyor. Senaryolu odalarda ülke seçim ekranı senaryo adını gösterir.": "Una stanza irraggiungibile non lascia più una lobby vuota aperta: se non si connette entro 6 s (prova anche l'indirizzo locale, per un secondo gioco sullo stesso PC) torni al menu con un errore. «Scegli paese» resta disattivato finché non c'è connessione e «Esci» non lascia più una mappa vuota. Le stanze con scenario mostrano il nome dello scenario alla scelta del paese."
  },
  "months": [
   "gennaio",

@@ -4778,7 +4778,11 @@
   "Online: senaryolu odalar": "Онлайн: комнаты со сценарием",
   "Oda kurarken hazır senaryolardan biri seçilebilir (Ukrayna, Kore, Napolyon…). Katılan herkes aynı senaryo durumuyla başlar.": "При создании комнаты можно выбрать готовый сценарий (Украина, Корея, Наполеон…). Все, кто присоединяется, начинают с одного и того же состояния сценария.",
   "Çok oyunculu: haberler ve güvenlik": "Мультиплеер: новости и безопасность",
-  "Savaş ve fetih haberleri artık her oyuncunun bakış açısından gelir: «Rusya'ya savaş açtın» yalnızca hedef oyuncuya özel gösterilir, diğerleri üçüncü şahıs haber görür. Sunucu geçersiz veya hileli komutları reddeder.": "Новости о войне и захватах теперь приходят с точки зрения каждого игрока: «Вы объявили войну России» видит только затронутый игрок, остальные получают новости от третьего лица. Сервер отклоняет недопустимые и читерские команды."
+  "Savaş ve fetih haberleri artık her oyuncunun bakış açısından gelir: «Rusya'ya savaş açtın» yalnızca hedef oyuncuya özel gösterilir, diğerleri üçüncü şahıs haber görür. Sunucu geçersiz veya hileli komutları reddeder.": "Новости о войне и захватах теперь приходят с точки зрения каждого игрока: «Вы объявили войну России» видит только затронутый игрок, остальные получают новости от третьего лица. Сервер отклоняет недопустимые и читерские команды.",
+  "Henüz bağlanılmadı.": "Соединение ещё не установлено.",
+  "Oda senaryosu: %s. Başlangıç durumu oyun başlayınca uygulanır.": "Сценарий комнаты: %s. Начальная ситуация применяется при старте игры.",
+  "Online: bağlantı düzeltmeleri": "Онлайн: исправления подключения",
+  "Bağlanılamayan odada lobi artık boş açık kalmıyor: 6 sn içinde bağlanamazsa (aynı bilgisayardaki ikinci oyun dahil, yerel adresi de dener) menüye dönüp hata gösterir. Bağlantı gelmeden «Ülke seç» kapalı, «Ayrıl» artık boş harita bırakmıyor. Senaryolu odalarda ülke seçim ekranı senaryo adını gösterir.": "Недоступная комната больше не оставляет пустое лобби: если подключиться не удалось за 6 с (пробуется и локальный адрес — для второй копии игры на том же ПК), вы вернётесь в меню с ошибкой. «Выбрать страну» неактивна до подключения, а «Выйти» больше не оставляет пустую карту. В комнатах со сценарием на экране выбора страны показано название сценария."
  },
  "months": [
   "января",

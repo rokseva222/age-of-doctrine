@@ -4778,7 +4778,11 @@
   "Online: senaryolu odalar": "أونلاين: غرف بسيناريو",
   "Oda kurarken hazır senaryolardan biri seçilebilir (Ukrayna, Kore, Napolyon…). Katılan herkes aynı senaryo durumuyla başlar.": "عند إنشاء غرفة يمكنك اختيار سيناريو جاهز (أوكرانيا، كوريا، نابليون…). كل من ينضم يبدأ بنفس حالة السيناريو.",
   "Çok oyunculu: haberler ve güvenlik": "متعدد اللاعبين: الأخبار والأمان",
-  "Savaş ve fetih haberleri artık her oyuncunun bakış açısından gelir: «Rusya'ya savaş açtın» yalnızca hedef oyuncuya özel gösterilir, diğerleri üçüncü şahıs haber görür. Sunucu geçersiz veya hileli komutları reddeder.": "تصل أخبار الحرب والفتح الآن من منظور كل لاعب: «أعلنتَ الحرب على روسيا» تظهر للاعب المستهدف فقط، ويرى الآخرون أخبارًا بصيغة الغائب. يرفض الخادم الأوامر غير الصالحة أو المتلاعب بها."
+  "Savaş ve fetih haberleri artık her oyuncunun bakış açısından gelir: «Rusya'ya savaş açtın» yalnızca hedef oyuncuya özel gösterilir, diğerleri üçüncü şahıs haber görür. Sunucu geçersiz veya hileli komutları reddeder.": "تصل أخبار الحرب والفتح الآن من منظور كل لاعب: «أعلنتَ الحرب على روسيا» تظهر للاعب المستهدف فقط، ويرى الآخرون أخبارًا بصيغة الغائب. يرفض الخادم الأوامر غير الصالحة أو المتلاعب بها.",
+  "Henüz bağlanılmadı.": "لم يتم الاتصال بعد.",
+  "Oda senaryosu: %s. Başlangıç durumu oyun başlayınca uygulanır.": "سيناريو الغرفة: %s. يُطبَّق الوضع الابتدائي عند بدء اللعبة.",
+  "Online: bağlantı düzeltmeleri": "أونلاين: إصلاحات الاتصال",
+  "Bağlanılamayan odada lobi artık boş açık kalmıyor: 6 sn içinde bağlanamazsa (aynı bilgisayardaki ikinci oyun dahil, yerel adresi de dener) menüye dönüp hata gösterir. Bağlantı gelmeden «Ülke seç» kapalı, «Ayrıl» artık boş harita bırakmıyor. Senaryolu odalarda ülke seçim ekranı senaryo adını gösterir.": "لم تعد الغرفة التي يتعذّر الوصول إليها تترك ردهة فارغة مفتوحة: إن لم يتم الاتصال خلال 6 ثوانٍ (ويجرّب العنوان المحلي أيضًا للعبة ثانية على الحاسوب نفسه) تعود إلى القائمة مع رسالة خطأ. «اختيار دولة» معطّل حتى يتم الاتصال، و«مغادرة» لم يعد يترك خريطة فارغة. تعرض غرف السيناريو اسم السيناريو عند اختيار الدولة."
  },
  "months": [
   "يناير",

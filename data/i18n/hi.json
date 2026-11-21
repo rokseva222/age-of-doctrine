@@ -4778,7 +4778,11 @@
   "Online: senaryolu odalar": "ऑनलाइन: परिदृश्य वाले कमरे",
   "Oda kurarken hazır senaryolardan biri seçilebilir (Ukrayna, Kore, Napolyon…). Katılan herkes aynı senaryo durumuyla başlar.": "कमरा बनाते समय तैयार परिदृश्य चुन सकते हैं (यूक्रेन, कोरिया, नेपोलियन…)। जुड़ने वाले सभी एक ही परिदृश्य-स्थिति से शुरू करते हैं।",
   "Çok oyunculu: haberler ve güvenlik": "मल्टीप्लेयर: समाचार और सुरक्षा",
-  "Savaş ve fetih haberleri artık her oyuncunun bakış açısından gelir: «Rusya'ya savaş açtın» yalnızca hedef oyuncuya özel gösterilir, diğerleri üçüncü şahıs haber görür. Sunucu geçersiz veya hileli komutları reddeder.": "युद्ध और विजय के समाचार अब हर खिलाड़ी के नज़रिये से आते हैं: «आपने रूस पर युद्ध घोषित किया» केवल निशाने वाले खिलाड़ी को दिखता है, बाकी तीसरे व्यक्ति में समाचार देखते हैं। सर्वर अमान्य या धोखे वाले आदेश अस्वीकार करता है।"
+  "Savaş ve fetih haberleri artık her oyuncunun bakış açısından gelir: «Rusya'ya savaş açtın» yalnızca hedef oyuncuya özel gösterilir, diğerleri üçüncü şahıs haber görür. Sunucu geçersiz veya hileli komutları reddeder.": "युद्ध और विजय के समाचार अब हर खिलाड़ी के नज़रिये से आते हैं: «आपने रूस पर युद्ध घोषित किया» केवल निशाने वाले खिलाड़ी को दिखता है, बाकी तीसरे व्यक्ति में समाचार देखते हैं। सर्वर अमान्य या धोखे वाले आदेश अस्वीकार करता है।",
+  "Henüz bağlanılmadı.": "अभी कनेक्ट नहीं हुआ।",
+  "Oda senaryosu: %s. Başlangıç durumu oyun başlayınca uygulanır.": "कमरे का परिदृश्य: %s। शुरुआती स्थिति खेल शुरू होने पर लागू होती है।",
+  "Online: bağlantı düzeltmeleri": "ऑनलाइन: कनेक्शन सुधार",
+  "Bağlanılamayan odada lobi artık boş açık kalmıyor: 6 sn içinde bağlanamazsa (aynı bilgisayardaki ikinci oyun dahil, yerel adresi de dener) menüye dönüp hata gösterir. Bağlantı gelmeden «Ülke seç» kapalı, «Ayrıl» artık boş harita bırakmıyor. Senaryolu odalarda ülke seçim ekranı senaryo adını gösterir.": "जिस कमरे तक पहुँच नहीं होती, वह अब खाली लॉबी खुली नहीं छोड़ता: 6 सेकंड में कनेक्ट न हो (एक ही PC पर दूसरे गेम के लिए स्थानीय पता भी आज़माता है) तो त्रुटि के साथ मेनू पर लौट आते हैं। कनेक्ट होने तक «देश चुनें» बंद रहता है और «छोड़ें» अब खाली नक्शा नहीं छोड़ता। परिदृश्य वाले कमरे देश चुनते समय परिदृश्य का नाम दिखाते हैं।"
  },
  "months": [
   "जनवरी",

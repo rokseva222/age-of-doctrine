@@ -4554,7 +4554,11 @@
   "Online: senaryolu odalar": "Online: scenario rooms",
   "Oda kurarken hazır senaryolardan biri seçilebilir (Ukrayna, Kore, Napolyon…). Katılan herkes aynı senaryo durumuyla başlar.": "When creating a room you can pick a ready-made scenario (Ukraine, Korea, Napoleonic…). Everyone who joins starts from the same scenario state.",
   "Çok oyunculu: haberler ve güvenlik": "Multiplayer: news and security",
-  "Savaş ve fetih haberleri artık her oyuncunun bakış açısından gelir: «Rusya'ya savaş açtın» yalnızca hedef oyuncuya özel gösterilir, diğerleri üçüncü şahıs haber görür. Sunucu geçersiz veya hileli komutları reddeder.": "War and conquest news now arrives from each player's own perspective: «You declared war on Russia» is shown only to the targeted player, others see third-person news. The server rejects invalid or cheating commands."
+  "Savaş ve fetih haberleri artık her oyuncunun bakış açısından gelir: «Rusya'ya savaş açtın» yalnızca hedef oyuncuya özel gösterilir, diğerleri üçüncü şahıs haber görür. Sunucu geçersiz veya hileli komutları reddeder.": "War and conquest news now arrives from each player's own perspective: «You declared war on Russia» is shown only to the targeted player, others see third-person news. The server rejects invalid or cheating commands.",
+  "Henüz bağlanılmadı.": "Not connected yet.",
+  "Oda senaryosu: %s. Başlangıç durumu oyun başlayınca uygulanır.": "Room scenario: %s. Its starting situation is applied when the game starts.",
+  "Online: bağlantı düzeltmeleri": "Online: connection fixes",
+  "Bağlanılamayan odada lobi artık boş açık kalmıyor: 6 sn içinde bağlanamazsa (aynı bilgisayardaki ikinci oyun dahil, yerel adresi de dener) menüye dönüp hata gösterir. Bağlantı gelmeden «Ülke seç» kapalı, «Ayrıl» artık boş harita bırakmıyor. Senaryolu odalarda ülke seçim ekranı senaryo adını gösterir.": "A room you can't reach no longer leaves an empty lobby open: if it can't connect within 6 s (it also tries the local address, for a second game on the same PC) you return to the menu with an error. «Pick country» is disabled until connected and «Leave» no longer leaves a blank map. Scenario rooms show the scenario name on the country-pick screen."
  },
  "months": [
   "January",

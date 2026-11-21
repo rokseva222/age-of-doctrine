@@ -1005,6 +1005,8 @@ func reset_pick() -> void:
 ## Online lobi seçimi: "Başla" yerine "Bu ülkeyi seç".
 func set_online_pick(on: bool) -> void:
 	_online_pick = on
+	if _scn_btn != null:
+		_scn_btn.visible = not on      # online odada senaryo/çağ odayı kuran kişiye aittir
 	if _sel_title != null and on:
 		_sel_kicker.text = TK.up("Online")
 		_sel_title.text = Loc.t("Ülkeni seç")

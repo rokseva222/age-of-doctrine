@@ -4777,7 +4777,11 @@
   "Online: senaryolu odalar": "Online: Szenario-Räume",
   "Oda kurarken hazır senaryolardan biri seçilebilir (Ukrayna, Kore, Napolyon…). Katılan herkes aynı senaryo durumuyla başlar.": "Beim Erstellen eines Raums kannst du ein fertiges Szenario wählen (Ukraine, Korea, Napoleon…). Alle Beitretenden starten mit demselben Szenariostand.",
   "Çok oyunculu: haberler ve güvenlik": "Mehrspieler: Nachrichten und Sicherheit",
-  "Savaş ve fetih haberleri artık her oyuncunun bakış açısından gelir: «Rusya'ya savaş açtın» yalnızca hedef oyuncuya özel gösterilir, diğerleri üçüncü şahıs haber görür. Sunucu geçersiz veya hileli komutları reddeder.": "Kriegs- und Eroberungsmeldungen kommen jetzt aus der Sicht jedes Spielers: «Du hast Russland den Krieg erklärt» sieht nur der betroffene Spieler, andere sehen neutrale Meldungen. Der Server weist ungültige oder manipulierte Befehle ab."
+  "Savaş ve fetih haberleri artık her oyuncunun bakış açısından gelir: «Rusya'ya savaş açtın» yalnızca hedef oyuncuya özel gösterilir, diğerleri üçüncü şahıs haber görür. Sunucu geçersiz veya hileli komutları reddeder.": "Kriegs- und Eroberungsmeldungen kommen jetzt aus der Sicht jedes Spielers: «Du hast Russland den Krieg erklärt» sieht nur der betroffene Spieler, andere sehen neutrale Meldungen. Der Server weist ungültige oder manipulierte Befehle ab.",
+  "Henüz bağlanılmadı.": "Noch nicht verbunden.",
+  "Oda senaryosu: %s. Başlangıç durumu oyun başlayınca uygulanır.": "Raumszenario: %s. Die Ausgangslage wird beim Spielstart angewendet.",
+  "Online: bağlantı düzeltmeleri": "Online: Verbindungskorrekturen",
+  "Bağlanılamayan odada lobi artık boş açık kalmıyor: 6 sn içinde bağlanamazsa (aynı bilgisayardaki ikinci oyun dahil, yerel adresi de dener) menüye dönüp hata gösterir. Bağlantı gelmeden «Ülke seç» kapalı, «Ayrıl» artık boş harita bırakmıyor. Senaryolu odalarda ülke seçim ekranı senaryo adını gösterir.": "Ein nicht erreichbarer Raum lässt keine leere Lobby mehr offen: Ohne Verbindung nach 6 s (auch die lokale Adresse wird versucht, für ein zweites Spiel am selben PC) geht es mit Fehlermeldung zurück ins Menü. «Land wählen» ist bis zur Verbindung gesperrt, «Verlassen» hinterlässt keine leere Karte mehr. Szenarioräume zeigen den Szenarionamen bei der Länderwahl."
  },
  "months": [
   "Januar",

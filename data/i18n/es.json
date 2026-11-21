@@ -4777,7 +4777,11 @@
   "Online: senaryolu odalar": "Online: salas con escenario",
   "Oda kurarken hazır senaryolardan biri seçilebilir (Ukrayna, Kore, Napolyon…). Katılan herkes aynı senaryo durumuyla başlar.": "Al crear una sala puedes elegir un escenario prediseñado (Ucrania, Corea, Napoleón…). Todos los que se unan empiezan con el mismo estado del escenario.",
   "Çok oyunculu: haberler ve güvenlik": "Multijugador: noticias y seguridad",
-  "Savaş ve fetih haberleri artık her oyuncunun bakış açısından gelir: «Rusya'ya savaş açtın» yalnızca hedef oyuncuya özel gösterilir, diğerleri üçüncü şahıs haber görür. Sunucu geçersiz veya hileli komutları reddeder.": "Las noticias de guerra y conquista llegan ahora desde la perspectiva de cada jugador: «Declaraste la guerra a Rusia» solo lo ve el jugador afectado; los demás ven noticias en tercera persona. El servidor rechaza comandos inválidos o tramposos."
+  "Savaş ve fetih haberleri artık her oyuncunun bakış açısından gelir: «Rusya'ya savaş açtın» yalnızca hedef oyuncuya özel gösterilir, diğerleri üçüncü şahıs haber görür. Sunucu geçersiz veya hileli komutları reddeder.": "Las noticias de guerra y conquista llegan ahora desde la perspectiva de cada jugador: «Declaraste la guerra a Rusia» solo lo ve el jugador afectado; los demás ven noticias en tercera persona. El servidor rechaza comandos inválidos o tramposos.",
+  "Henüz bağlanılmadı.": "Aún no hay conexión.",
+  "Oda senaryosu: %s. Başlangıç durumu oyun başlayınca uygulanır.": "Escenario de la sala: %s. La situación inicial se aplica al empezar la partida.",
+  "Online: bağlantı düzeltmeleri": "Online: correcciones de conexión",
+  "Bağlanılamayan odada lobi artık boş açık kalmıyor: 6 sn içinde bağlanamazsa (aynı bilgisayardaki ikinci oyun dahil, yerel adresi de dener) menüye dönüp hata gösterir. Bağlantı gelmeden «Ülke seç» kapalı, «Ayrıl» artık boş harita bırakmıyor. Senaryolu odalarda ülke seçim ekranı senaryo adını gösterir.": "Una sala inaccesible ya no deja un lobby vacío abierto: si no conecta en 6 s (también prueba la dirección local, para un segundo juego en el mismo PC) vuelves al menú con un error. «Elegir país» está desactivado hasta conectar y «Salir» ya no deja un mapa en blanco. Las salas con escenario muestran su nombre al elegir país."
  },
  "months": [
   "enero",
