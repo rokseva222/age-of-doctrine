@@ -450,7 +450,10 @@ func _process(delta: float) -> void:
 			for p in players.values():
 				n += 1
 			var beacon := "AOD|%d|%s|%s|%d|%d|%d|%s" % [PROTO, String(info.name).replace("|", " "), String(info.era), n, int(info.max), int(info.port), "1" if String(info.pass) != "" else "0"]
-			_lan_udp.put_packet(beacon.to_utf8_buffer())
+			var data := beacon.to_utf8_buffer()
+			for t in _lan_targets():
+				_lan_udp.set_dest_address(t, LAN_PORT)
+				_lan_udp.put_packet(data)
 		if started and room != null and float(info.secs) > 0.0:
 			_round_timer -= delta
 			if _round_timer <= 0.0:
@@ -510,6 +513,19 @@ func leave() -> void:
 	if _q_srv != null:
 		_q_srv.stop()
 		_q_srv = null
+
+
+## Yayın hedefleri: genel yayın + her yerel IPv4 arayüzünün /24 yayın adresi (çok kartlı PC'lerde 255.255.255.255 yanlış karta gidebilir).
+func _lan_targets() -> Array:
+	var out: Array = ["255.255.255.255"]
+	for a in IP.get_local_addresses():
+		var f: PackedStringArray = String(a).split(".")
+		if f.size() != 4 or f[0] == "127" or (f[0] == "169" and f[1] == "254"):
+			continue
+		var t := "%s.%s.%s.255" % [f[0], f[1], f[2]]
+		if not out.has(t):
+			out.append(t)
+	return out
 
 
 func lan_scan_start() -> void:
