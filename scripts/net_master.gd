@@ -8,14 +8,22 @@ const STATIC_URL := "https://raw.githubusercontent.com/rokseva222/age-of-doctrin
 const Settings = preload("res://scripts/settings.gd")
 ## Ana liste sunucusu kurulmamış olsa bile çalışan herkese açık oda panosu (ntfy.sh konusu): odalar kendini buraya yazar, liste buradan okunur.
 const FEED_URL := "https://ntfy.sh/aod-rooms-v1-k7q2x9"
+## Merkezi sunucu (hub) adresi depodaki server/hub.json dosyasından okunur: sunucu değişince uygulamayı güncellemek gerekmez.
+const HUB_CFG_URL := "https://raw.githubusercontent.com/rokseva222/age-of-doctrine/main/server/hub.json"
 const IP_URL := "https://api.ipify.org"
 const FEED_BEAT := 240.0          # sn: ntfy ücretsiz kota için seyrek
 const FEED_TTL := 660             # sn: bu kadar süredir duyuru yapmayan oda düşer
 
 signal list_ready(servers: Array)
 signal failed(msg: String)
+signal created(info: Dictionary)          # merkezi sunucuda oda açıldı: {"ip","port"}
+signal create_failed(code: String, msg: String)
+signal _hub_cfg_done
 
 var url := MASTER_URL
+var hub_url := ""
+var _hreq: HTTPRequest
+var _creq: HTTPRequest
 var _req: HTTPRequest
 var _sreq: HTTPRequest
 var _dyn: Array = []
@@ -57,6 +65,14 @@ func _ready() -> void:
 	_feed_timer.wait_time = FEED_BEAT
 	_feed_timer.timeout.connect(_feed_publish)
 	add_child(_feed_timer)
+	_hreq = HTTPRequest.new()
+	_hreq.timeout = 8.0
+	add_child(_hreq)
+	_hreq.request_completed.connect(_on_hub_cfg)
+	_creq = HTTPRequest.new()
+	_creq.timeout = 20.0
+	add_child(_creq)
+	_creq.request_completed.connect(_on_created)
 	_hb = HTTPRequest.new()
 	_hb.timeout = 8.0
 	add_child(_hb)
@@ -68,7 +84,9 @@ func _ready() -> void:
 
 
 func _base() -> String:
-	var u: String = Settings.master_url.strip_edges() if Settings.master_url.strip_edges() != "" else url
+	var u: String = Settings.master_url.strip_edges()
+	if u == "":
+		u = hub_url if hub_url != "" else url
 	return u.trim_suffix("/")
 
 
@@ -79,6 +97,8 @@ func _configured() -> bool:
 
 ## Hem ana liste sunucusundan (ayarlıysa) hem depodaki sabit listeden sunucuları çeker; ikisi birleşik yayınlanır.
 func fetch() -> void:
+	if hub_url == "" and Settings.master_url.strip_edges() == "":
+		await _load_hub_cfg()
 	_sreq.cancel_request()
 	_sreq.request(STATIC_URL)
 	_freq.cancel_request()
@@ -224,3 +244,52 @@ func _on_hb(result: int, code: int, _h: PackedStringArray, body: PackedByteArray
 		var j = JSON.parse_string(body.get_string_from_utf8())
 		if j is Dictionary and j.has("token"):
 			_token = String(j.token)
+
+
+## server/hub.json → {"url": "http://1.2.3.4:8780"}; boşsa merkezi sunucu yoktur.
+func _load_hub_cfg() -> void:
+	_hreq.cancel_request()
+	if _hreq.request(HUB_CFG_URL) != OK:
+		return
+	await _hub_cfg_done
+
+
+func _on_hub_cfg(result: int, code: int, _h: PackedStringArray, body: PackedByteArray) -> void:
+	if result == HTTPRequest.RESULT_SUCCESS and code == 200:
+		var j = JSON.parse_string(body.get_string_from_utf8())
+		if j is Dictionary:
+			var u: String = String(j.get("url", "")).strip_edges()
+			if u.begins_with("http"):
+				hub_url = u
+	_hub_cfg_done.emit()
+
+
+## Merkezi sunucuda oda açtırır. Başarılıysa created({"ip","port"}); olmazsa create_failed(kod, mesaj).
+## kod: "nohub" (sunucu yok/ulaşılamadı) | "ver" | "full" | "limit" | "error"
+func create_room(cfg: Dictionary) -> void:
+	if not _configured():
+		await _load_hub_cfg()
+	if not _configured():
+		create_failed.emit("nohub", "")
+		return
+	_creq.cancel_request()
+	var err: int = _creq.request(_base() + "/create", ["Content-Type: application/json"], HTTPClient.METHOD_POST, JSON.stringify(cfg))
+	if err != OK:
+		create_failed.emit("nohub", "")
+
+
+func _on_created(result: int, code: int, _h: PackedStringArray, body: PackedByteArray) -> void:
+	if result != HTTPRequest.RESULT_SUCCESS:
+		create_failed.emit("nohub", "")
+		return
+	var j = JSON.parse_string(body.get_string_from_utf8())
+	if code == 200 and j is Dictionary and j.has("port"):
+		created.emit({"ip": String(j.get("ip", "")), "port": int(j.port)})
+	elif code == 409 and j is Dictionary:
+		create_failed.emit("ver", String(j.get("server_ver", "")))
+	elif code == 429:
+		create_failed.emit("limit", "")
+	elif code == 503:
+		create_failed.emit("full", "")
+	else:
+		create_failed.emit("nohub", "")

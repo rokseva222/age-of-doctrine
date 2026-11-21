@@ -4784,7 +4784,18 @@
   "Online: bağlantı düzeltmeleri": "Онлайн: исправления подключения",
   "Bağlanılamayan odada lobi artık boş açık kalmıyor: 6 sn içinde bağlanamazsa (aynı bilgisayardaki ikinci oyun dahil, yerel adresi de dener) menüye dönüp hata gösterir. Bağlantı gelmeden «Ülke seç» kapalı, «Ayrıl» artık boş harita bırakmıyor. Senaryolu odalarda ülke seçim ekranı senaryo adını gösterir.": "Недоступная комната больше не оставляет пустое лобби: если подключиться не удалось за 6 с (пробуется и локальный адрес — для второй копии игры на том же ПК), вы вернётесь в меню с ошибкой. «Выбрать страну» неактивна до подключения, а «Выйти» больше не оставляет пустую карту. В комнатах со сценарием на экране выбора страны показано название сценария.",
   "Online: lobi hatası giderildi": "Онлайн: исправлена ошибка лобби",
-  "Bir bağlantı denemesi başarısız olduktan sonra tekrar katılırken lobinin hata verip donması düzeltildi.": "Исправлена ошибка и зависание лобби при повторном входе после неудачной попытки подключения."
+  "Bir bağlantı denemesi başarısız olduktan sonra tekrar katılırken lobinin hata verip donması düzeltildi.": "Исправлена ошибка и зависание лобби при повторном входе после неудачной попытки подключения.",
+  "Oda sunucuda kuruluyor...": "Комната создаётся на сервере...",
+  "Sunucu sürümü %s. Oyunu güncelle.": "Версия сервера %s. Обновите игру.",
+  "Sunucu dolu, biraz sonra tekrar dene.": "Сервер заполнен, попробуйте чуть позже.",
+  "Zaten açık odan var, önce onu kapat.": "У вас уже есть открытая комната, сначала закройте её.",
+  "Merkezi sunucu şu an kullanılamıyor; oda bu cihazda kuruluyor.": "Центральный сервер сейчас недоступен; комната создаётся на этом устройстве.",
+  "Barındırma": "Хостинг",
+  "Sunucuda (önerilen)": "На сервере (рекомендуется)",
+  "Bu cihazda": "На этом устройстве",
+  "Sunucuda kurulan odaya herkes internetten, hiçbir ayar yapmadan katılır; sen çıksan da oda açık kalır.": "К комнате на сервере можно присоединиться через интернет без настроек, и она остаётся открытой, даже если вы выйдете.",
+  "Online: sunucuda oda kurma": "Онлайн: комнаты на сервере",
+  "Oda kurarken «Sunucuda» seçeneği eklendi: oda merkezi sunucuda açılır, herkes internetten ayar yapmadan katılır. Sunucu hazır değilse oda bu cihazda kurulur.": "При создании комнаты появился вариант «На сервере»: комната открывается на центральном сервере, и все заходят через интернет без настроек. Если сервер недоступен, комната создаётся на этом устройстве."
  },
  "months": [
   "января",

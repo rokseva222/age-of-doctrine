@@ -4784,7 +4784,18 @@
   "Online: bağlantı düzeltmeleri": "온라인: 연결 수정",
   "Bağlanılamayan odada lobi artık boş açık kalmıyor: 6 sn içinde bağlanamazsa (aynı bilgisayardaki ikinci oyun dahil, yerel adresi de dener) menüye dönüp hata gösterir. Bağlantı gelmeden «Ülke seç» kapalı, «Ayrıl» artık boş harita bırakmıyor. Senaryolu odalarda ülke seçim ekranı senaryo adını gösterir.": "접속할 수 없는 방이 빈 로비를 열어 두지 않습니다. 6초 안에 연결되지 않으면(같은 PC의 두 번째 게임을 위해 로컬 주소도 시도합니다) 오류와 함께 메뉴로 돌아갑니다. 연결 전에는 «국가 선택»이 비활성화되고 «나가기»가 빈 지도를 남기지 않습니다. 시나리오 방은 국가 선택 화면에 시나리오 이름을 표시합니다.",
   "Online: lobi hatası giderildi": "온라인: 로비 오류 수정",
-  "Bir bağlantı denemesi başarısız olduktan sonra tekrar katılırken lobinin hata verip donması düzeltildi.": "연결 시도 실패 후 다시 참가할 때 로비에서 오류가 나며 멈추는 문제를 고쳤습니다."
+  "Bir bağlantı denemesi başarısız olduktan sonra tekrar katılırken lobinin hata verip donması düzeltildi.": "연결 시도 실패 후 다시 참가할 때 로비에서 오류가 나며 멈추는 문제를 고쳤습니다.",
+  "Oda sunucuda kuruluyor...": "서버에 방을 만드는 중...",
+  "Sunucu sürümü %s. Oyunu güncelle.": "서버 버전은 %s입니다. 게임을 업데이트하세요.",
+  "Sunucu dolu, biraz sonra tekrar dene.": "서버가 가득 찼습니다. 잠시 후 다시 시도하세요.",
+  "Zaten açık odan var, önce onu kapat.": "이미 열려 있는 방이 있습니다. 먼저 닫으세요.",
+  "Merkezi sunucu şu an kullanılamıyor; oda bu cihazda kuruluyor.": "중앙 서버를 지금 사용할 수 없어 이 기기에서 방을 만듭니다.",
+  "Barındırma": "호스팅",
+  "Sunucuda (önerilen)": "서버에서 (권장)",
+  "Bu cihazda": "이 기기에서",
+  "Sunucuda kurulan odaya herkes internetten, hiçbir ayar yapmadan katılır; sen çıksan da oda açık kalır.": "서버에 만든 방에는 누구나 설정 없이 인터넷으로 참가할 수 있으며, 내가 나가도 방은 열려 있습니다.",
+  "Online: sunucuda oda kurma": "온라인: 서버에 방 만들기",
+  "Oda kurarken «Sunucuda» seçeneği eklendi: oda merkezi sunucuda açılır, herkes internetten ayar yapmadan katılır. Sunucu hazır değilse oda bu cihazda kurulur.": "방을 만들 때 «서버에서» 옵션이 추가되었습니다. 방이 중앙 서버에서 열리고 모두 설정 없이 인터넷으로 참가합니다. 서버를 쓸 수 없으면 이 기기에서 방을 만듭니다."
  },
  "months": [
   "1월",

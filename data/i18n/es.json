@@ -4783,7 +4783,18 @@
   "Online: bağlantı düzeltmeleri": "Online: correcciones de conexión",
   "Bağlanılamayan odada lobi artık boş açık kalmıyor: 6 sn içinde bağlanamazsa (aynı bilgisayardaki ikinci oyun dahil, yerel adresi de dener) menüye dönüp hata gösterir. Bağlantı gelmeden «Ülke seç» kapalı, «Ayrıl» artık boş harita bırakmıyor. Senaryolu odalarda ülke seçim ekranı senaryo adını gösterir.": "Una sala inaccesible ya no deja un lobby vacío abierto: si no conecta en 6 s (también prueba la dirección local, para un segundo juego en el mismo PC) vuelves al menú con un error. «Elegir país» está desactivado hasta conectar y «Salir» ya no deja un mapa en blanco. Las salas con escenario muestran su nombre al elegir país.",
   "Online: lobi hatası giderildi": "Online: error del lobby corregido",
-  "Bir bağlantı denemesi başarısız olduktan sonra tekrar katılırken lobinin hata verip donması düzeltildi.": "Corregido el error y bloqueo del lobby al volver a unirse tras un intento de conexión fallido."
+  "Bir bağlantı denemesi başarısız olduktan sonra tekrar katılırken lobinin hata verip donması düzeltildi.": "Corregido el error y bloqueo del lobby al volver a unirse tras un intento de conexión fallido.",
+  "Oda sunucuda kuruluyor...": "Creando la sala en el servidor...",
+  "Sunucu sürümü %s. Oyunu güncelle.": "La versión del servidor es %s. Actualiza el juego.",
+  "Sunucu dolu, biraz sonra tekrar dene.": "El servidor está lleno, inténtalo de nuevo en un rato.",
+  "Zaten açık odan var, önce onu kapat.": "Ya tienes una sala abierta, ciérrala primero.",
+  "Merkezi sunucu şu an kullanılamıyor; oda bu cihazda kuruluyor.": "Servidor central no disponible ahora; la sala se crea en este dispositivo.",
+  "Barındırma": "Alojamiento",
+  "Sunucuda (önerilen)": "En el servidor (recomendado)",
+  "Bu cihazda": "En este dispositivo",
+  "Sunucuda kurulan odaya herkes internetten, hiçbir ayar yapmadan katılır; sen çıksan da oda açık kalır.": "Cualquiera puede unirse por internet a una sala creada en el servidor sin configurar nada, y sigue abierta aunque salgas.",
+  "Online: sunucuda oda kurma": "Online: salas en el servidor",
+  "Oda kurarken «Sunucuda» seçeneği eklendi: oda merkezi sunucuda açılır, herkes internetten ayar yapmadan katılır. Sunucu hazır değilse oda bu cihazda kurulur.": "Al crear una sala hay una nueva opción «En el servidor»: la sala se abre en el servidor central y todos se unen por internet sin configurar nada. Si el servidor no está disponible, la sala se crea en este dispositivo."
  },
  "months": [
   "enero",

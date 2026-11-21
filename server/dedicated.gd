@@ -34,6 +34,23 @@ func _init() -> void:
 		quit(1)
 		return
 	print("AOD sunucu hazır: %s port %d" % [cfg.name, cfg.port])
+	# --idle N: oda N sn boş kalırsa süreç kapanır (hub kullanılıyorsa). İlk oyuncu en geç 90 sn içinde gelmeli.
+	var idle_max: int = int(_arg("idle", "0"))
+	if idle_max > 0:
+		var idle_t := Timer.new()
+		idle_t.wait_time = 10.0
+		idle_t.autostart = true
+		var st := {"idle": 0, "had": false}
+		idle_t.timeout.connect(func():
+			if net.multiplayer.get_peers().size() > 0:
+				st.had = true
+				st.idle = 0
+				return
+			st.idle += 10
+			if st.idle >= (idle_max if st.had else 90):
+				print("Oda boş kaldı, kapanıyor")
+				quit(0))
+		get_root().add_child(idle_t)
 	var region: String = _arg("region", "EU")
 	var beat := Timer.new()
 	beat.wait_time = 20.0

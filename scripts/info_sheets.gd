@@ -294,8 +294,9 @@ static func open_howto(parent: Node) -> void:
 			render.call())
 
 
-const UPDATE_VER := "1.2.44"
+const UPDATE_VER := "1.2.45"
 const WHATS_NEW := [
+	["Online: sunucuda oda kurma", "Oda kurarken «Sunucuda» seçeneği eklendi: oda merkezi sunucuda açılır, herkes internetten ayar yapmadan katılır. Sunucu hazır değilse oda bu cihazda kurulur."],
 	["Online: lobi hatası giderildi", "Bir bağlantı denemesi başarısız olduktan sonra tekrar katılırken lobinin hata verip donması düzeltildi."],
 	["Online: bağlantı düzeltmeleri", "Bağlanılamayan odada lobi artık boş açık kalmıyor: 6 sn içinde bağlanamazsa (aynı bilgisayardaki ikinci oyun dahil, yerel adresi de dener) menüye dönüp hata gösterir. Bağlantı gelmeden «Ülke seç» kapalı, «Ayrıl» artık boş harita bırakmıyor. Senaryolu odalarda ülke seçim ekranı senaryo adını gösterir."],
 	["Online: senaryolu odalar", "Oda kurarken hazır senaryolardan biri seçilebilir (Ukrayna, Kore, Napolyon…). Katılan herkes aynı senaryo durumuyla başlar."],

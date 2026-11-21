@@ -4784,7 +4784,18 @@
   "Online: bağlantı düzeltmeleri": "在线：连接修复",
   "Bağlanılamayan odada lobi artık boş açık kalmıyor: 6 sn içinde bağlanamazsa (aynı bilgisayardaki ikinci oyun dahil, yerel adresi de dener) menüye dönüp hata gösterir. Bağlantı gelmeden «Ülke seç» kapalı, «Ayrıl» artık boş harita bırakmıyor. Senaryolu odalarda ülke seçim ekranı senaryo adını gösterir.": "无法连接的房间不再留下空大厅：6 秒内无法连接（也会尝试本机地址，适用于同一台电脑上的第二个游戏）就会带错误提示返回菜单。连接成功前「选择国家」不可用，「离开」也不再留下空白地图。剧本房间在选国家界面显示剧本名称。",
   "Online: lobi hatası giderildi": "在线：修复大厅错误",
-  "Bir bağlantı denemesi başarısız olduktan sonra tekrar katılırken lobinin hata verip donması düzeltildi.": "修复了连接失败后再次加入时大厅报错并卡住的问题。"
+  "Bir bağlantı denemesi başarısız olduktan sonra tekrar katılırken lobinin hata verip donması düzeltildi.": "修复了连接失败后再次加入时大厅报错并卡住的问题。",
+  "Oda sunucuda kuruluyor...": "正在服务器上创建房间...",
+  "Sunucu sürümü %s. Oyunu güncelle.": "服务器版本为 %s，请更新游戏。",
+  "Sunucu dolu, biraz sonra tekrar dene.": "服务器已满，请稍后再试。",
+  "Zaten açık odan var, önce onu kapat.": "你已有一个开着的房间，请先关闭。",
+  "Merkezi sunucu şu an kullanılamıyor; oda bu cihazda kuruluyor.": "中央服务器暂不可用，将在本设备上创建房间。",
+  "Barındırma": "托管方式",
+  "Sunucuda (önerilen)": "在服务器上（推荐）",
+  "Bu cihazda": "在本设备上",
+  "Sunucuda kurulan odaya herkes internetten, hiçbir ayar yapmadan katılır; sen çıksan da oda açık kalır.": "任何人都可通过互联网无需任何设置加入服务器上创建的房间，即使你离开房间也保持开放。",
+  "Online: sunucuda oda kurma": "在线：服务器房间",
+  "Oda kurarken «Sunucuda» seçeneği eklendi: oda merkezi sunucuda açılır, herkes internetten ayar yapmadan katılır. Sunucu hazır değilse oda bu cihazda kurulur.": "创建房间时新增「在服务器上」选项：房间在中央服务器开启，所有人无需设置即可通过互联网加入。若服务器不可用，则在本设备上创建房间。"
  },
  "months": [
   "1月",

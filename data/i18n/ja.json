@@ -4784,7 +4784,18 @@
   "Online: bağlantı düzeltmeleri": "オンライン：接続の修正",
   "Bağlanılamayan odada lobi artık boş açık kalmıyor: 6 sn içinde bağlanamazsa (aynı bilgisayardaki ikinci oyun dahil, yerel adresi de dener) menüye dönüp hata gösterir. Bağlantı gelmeden «Ülke seç» kapalı, «Ayrıl» artık boş harita bırakmıyor. Senaryolu odalarda ülke seçim ekranı senaryo adını gösterir.": "接続できない部屋で空のロビーが開いたままになることはなくなりました。6秒以内に接続できない場合（同じPCの2つ目のゲーム向けにローカルアドレスも試します）、エラーを表示してメニューに戻ります。接続前は「国を選ぶ」が無効で、「退出」で空の地図が残ることもありません。シナリオ部屋では国選択画面にシナリオ名が表示されます。",
   "Online: lobi hatası giderildi": "オンライン：ロビーの不具合を修正",
-  "Bir bağlantı denemesi başarısız olduktan sonra tekrar katılırken lobinin hata verip donması düzeltildi.": "接続に失敗した後に再参加するとロビーがエラーで固まる問題を修正しました。"
+  "Bir bağlantı denemesi başarısız olduktan sonra tekrar katılırken lobinin hata verip donması düzeltildi.": "接続に失敗した後に再参加するとロビーがエラーで固まる問題を修正しました。",
+  "Oda sunucuda kuruluyor...": "サーバーに部屋を作成中...",
+  "Sunucu sürümü %s. Oyunu güncelle.": "サーバーのバージョンは %s です。ゲームを更新してください。",
+  "Sunucu dolu, biraz sonra tekrar dene.": "サーバーが満員です。少し後でもう一度お試しください。",
+  "Zaten açık odan var, önce onu kapat.": "すでに開いている部屋があります。先に閉じてください。",
+  "Merkezi sunucu şu an kullanılamıyor; oda bu cihazda kuruluyor.": "中央サーバーが現在利用できないため、この端末で部屋を作成します。",
+  "Barındırma": "ホスティング",
+  "Sunucuda (önerilen)": "サーバー上（おすすめ）",
+  "Bu cihazda": "この端末",
+  "Sunucuda kurulan odaya herkes internetten, hiçbir ayar yapmadan katılır; sen çıksan da oda açık kalır.": "サーバー上に作った部屋には、誰でも設定なしでインターネット経由で参加でき、あなたが抜けても開いたままです。",
+  "Online: sunucuda oda kurma": "オンライン：サーバー上の部屋",
+  "Oda kurarken «Sunucuda» seçeneği eklendi: oda merkezi sunucuda açılır, herkes internetten ayar yapmadan katılır. Sunucu hazır değilse oda bu cihazda kurulur.": "部屋作成時に「サーバー上」の選択肢を追加しました。部屋は中央サーバーで開かれ、全員が設定なしでインターネット経由で参加できます。サーバーが使えない場合は、この端末で部屋を作成します。"
  },
  "months": [
   "1月",

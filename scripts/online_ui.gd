@@ -201,7 +201,7 @@ static func browser(main) -> void:
 ## Oda kurma formu.
 static func host_form(main) -> void:
 	var sh = Sheet.open(main.menu.root, "Oda kur", 760, true, true, "Online")
-	var st := {"name": "", "era": "", "secs": 120, "max": 4, "pass": "", "region": "EU", "public": true, "fog": 0}
+	var st := {"name": "", "era": "", "secs": 120, "max": 4, "pass": "", "region": "EU", "public": true, "fog": 0, "remote": true}
 	var nm := LineEdit.new()
 	nm.placeholder_text = Loc.t("Oda adı")
 	nm.text = Loc.t("Oda") + " " + str(randi() % 900 + 100)
@@ -283,12 +283,38 @@ static func host_form(main) -> void:
 				TK.style_button(c, "")
 			TK.style_button(b3, "gold"))
 		reg_row.add_child(b3)
-	var note := TK.t("Telefonda oda kurarsan oyun bitene kadar uygulamayı açık tut; kalıcı oda için sunucu programını bir bilgisayarda çalıştır.", "small", TK.FAINT)
+	sh.body.add_child(TK.t("Barındırma", "kicker"))
+	var host_row := HBoxContainer.new()
+	host_row.add_theme_constant_override("separation", 8)
+	sh.body.add_child(host_row)
+	var note := TK.t("", "small", TK.FAINT)
 	note.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	var set_note := func():
+		note.text = Loc.t("Sunucuda kurulan odaya herkes internetten, hiçbir ayar yapmadan katılır; sen çıksan da oda açık kalır.") if st.remote else Loc.t("Telefonda oda kurarsan oyun bitene kadar uygulamayı açık tut; kalıcı oda için sunucu programını bir bilgisayarda çalıştır.")
+	var hb_srv := TK.button("Sunucuda (önerilen)", "gold", "", Vector2(0, 56), 16)
+	var hb_loc := TK.button("Bu cihazda", "", "", Vector2(0, 56), 16)
+	for hb in [hb_srv, hb_loc]:
+		hb.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		host_row.add_child(hb)
+	hb_srv.pressed.connect(func():
+		st.remote = true
+		TK.style_button(hb_srv, "gold")
+		TK.style_button(hb_loc, "")
+		set_note.call())
+	hb_loc.pressed.connect(func():
+		st.remote = false
+		TK.style_button(hb_srv, "")
+		TK.style_button(hb_loc, "gold")
+		set_note.call())
+	set_note.call()
 	sh.body.add_child(note)
 	sh.add_button("Oda kur", func():
 		var pick: Dictionary = era_ob.get_item_metadata(era_ob.selected)
-		main.online_host({"name": nm.text.strip_edges(), "era": String(pick.era), "scenario": String(pick.scn), "pass": pw.text, "round_secs": float(st.secs), "max": int(st.max), "region": String(st.region), "fog": int(st.fog)}), "gold", true, "play", 220)
+		var hcfg := {"name": nm.text.strip_edges(), "era": String(pick.era), "scenario": String(pick.scn), "pass": pw.text, "round_secs": float(st.secs), "max": int(st.max), "region": String(st.region), "fog": int(st.fog)}
+		if st.remote:
+			main.online_host_remote(hcfg)
+		else:
+			main.online_host(hcfg), "gold", true, "play", 220)
 	sh.add_button("Vazgeç", func(): pass, "ghost", true, "", 170)
 
 

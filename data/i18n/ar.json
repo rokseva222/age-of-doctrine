@@ -4784,7 +4784,18 @@
   "Online: bağlantı düzeltmeleri": "أونلاين: إصلاحات الاتصال",
   "Bağlanılamayan odada lobi artık boş açık kalmıyor: 6 sn içinde bağlanamazsa (aynı bilgisayardaki ikinci oyun dahil, yerel adresi de dener) menüye dönüp hata gösterir. Bağlantı gelmeden «Ülke seç» kapalı, «Ayrıl» artık boş harita bırakmıyor. Senaryolu odalarda ülke seçim ekranı senaryo adını gösterir.": "لم تعد الغرفة التي يتعذّر الوصول إليها تترك ردهة فارغة مفتوحة: إن لم يتم الاتصال خلال 6 ثوانٍ (ويجرّب العنوان المحلي أيضًا للعبة ثانية على الحاسوب نفسه) تعود إلى القائمة مع رسالة خطأ. «اختيار دولة» معطّل حتى يتم الاتصال، و«مغادرة» لم يعد يترك خريطة فارغة. تعرض غرف السيناريو اسم السيناريو عند اختيار الدولة.",
   "Online: lobi hatası giderildi": "أونلاين: إصلاح خلل الردهة",
-  "Bir bağlantı denemesi başarısız olduktan sonra tekrar katılırken lobinin hata verip donması düzeltildi.": "تم إصلاح خطأ وتجمّد الردهة عند الانضمام مجددًا بعد محاولة اتصال فاشلة."
+  "Bir bağlantı denemesi başarısız olduktan sonra tekrar katılırken lobinin hata verip donması düzeltildi.": "تم إصلاح خطأ وتجمّد الردهة عند الانضمام مجددًا بعد محاولة اتصال فاشلة.",
+  "Oda sunucuda kuruluyor...": "جارٍ إنشاء الغرفة على الخادم...",
+  "Sunucu sürümü %s. Oyunu güncelle.": "إصدار الخادم %s. يرجى تحديث اللعبة.",
+  "Sunucu dolu, biraz sonra tekrar dene.": "الخادم ممتلئ، حاول مجددًا بعد قليل.",
+  "Zaten açık odan var, önce onu kapat.": "لديك غرفة مفتوحة بالفعل، أغلقها أولًا.",
+  "Merkezi sunucu şu an kullanılamıyor; oda bu cihazda kuruluyor.": "الخادم المركزي غير متاح الآن؛ سيتم إنشاء الغرفة على هذا الجهاز.",
+  "Barındırma": "الاستضافة",
+  "Sunucuda (önerilen)": "على الخادم (موصى به)",
+  "Bu cihazda": "على هذا الجهاز",
+  "Sunucuda kurulan odaya herkes internetten, hiçbir ayar yapmadan katılır; sen çıksan da oda açık kalır.": "يمكن لأي شخص الانضمام عبر الإنترنت إلى غرفة أُنشئت على الخادم دون أي إعداد، وتبقى مفتوحة حتى لو غادرت.",
+  "Online: sunucuda oda kurma": "أونلاين: غرف على الخادم",
+  "Oda kurarken «Sunucuda» seçeneği eklendi: oda merkezi sunucuda açılır, herkes internetten ayar yapmadan katılır. Sunucu hazır değilse oda bu cihazda kurulur.": "أُضيف خيار «على الخادم» عند إنشاء غرفة: تُفتح الغرفة على الخادم المركزي وينضم الجميع عبر الإنترنت دون إعداد. إن لم يتوفر الخادم تُنشأ الغرفة على هذا الجهاز."
  },
  "months": [
   "يناير",

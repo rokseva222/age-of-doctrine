@@ -1,5 +1,19 @@
 # Age of Doctrine — Sunucu Kurulumu
 
+## 0) Merkezi sunucu (önerilen — oyuncular hiçbir ayar yapmaz)
+
+Odalar oyuncunun telefonunda değil, internette duran bir sunucuda açılır. Herkes yalnızca dışarı doğru bağlandığı için
+mobil veri / ev modemi / port yönlendirme sorunu olmaz. Odayı kuran çıksa da oda açık kalır; boş kalınca kapanır.
+
+1. 2 GB RAM'li bir VPS al (Ubuntu 22.04/24.04). Barındırma panelinde **8780/tcp** ve **47400-47499/udp** portlarını aç.
+2. Sunucuya SSH ile bağlanıp: `curl -fsSL https://raw.githubusercontent.com/rokseva222/age-of-doctrine/main/server/kur.sh | sudo bash`
+3. Betik sonunda yazdığı **Hub adresini** (`http://IP:8780`) `server/hub.json` dosyasına `{"url": "http://IP:8780"}` olarak yaz ve depoya gönder.
+   Oyun bu adresi çalışırken oradan okur; **uygulamayı güncellemek gerekmez**.
+4. Kontrol: `curl http://IP:8780/health` → `{"ok": true, ...}`. Günlük: `journalctl -u aod-hub -f`.
+
+Sunucu her gece depoyu günceller; yeni sürüm yayınlayınca oyuncuların sürümüyle sunucu sürümü aynı olmalıdır
+(sürüm farklıysa oyun "Sunucu sürümü X. Oyunu güncelle." der). Aynı anda en çok 6 oda (`MAX_ROOMS=8 sudo -E bash kur.sh` ile artırılır).
+
 İki parça vardır:
 
 1. **Oyun sunucusu** (bu klasördeki `dedicated.gd`): bir odayı tutar, turları işler.

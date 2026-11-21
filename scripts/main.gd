@@ -761,6 +761,37 @@ func online_host(cfg: Dictionary) -> void:
 	_online_open_lobby()
 
 
+## Odayı merkezi sunucuda açtırır, sonra oraya ilk oyuncu (kurucu) olarak katılır. Sunucu yoksa/ulaşılamazsa bu cihazda kurar.
+func online_host_remote(cfg: Dictionary) -> void:
+	var m = get_master()
+	menu.toast(Loc.t("Oda sunucuda kuruluyor..."))
+	var req := {"name": cfg.get("name", ""), "era": cfg.get("era", ""), "scenario": cfg.get("scenario", ""), "pass": cfg.get("pass", ""),
+		"secs": cfg.get("round_secs", 120.0), "max": cfg.get("max", 4), "fog": cfg.get("fog", 0), "ver": Info.UPDATE_VER}
+	var st := {"done": false}
+	var ok_cb := func(info: Dictionary):
+		if st.done:
+			return
+		st.done = true
+		online_join(String(info.ip), int(info.port))
+	var fail_cb := func(code: String, msg: String):
+		if st.done:
+			return
+		st.done = true
+		match code:
+			"ver":
+				menu.toast(Loc.t("Sunucu sürümü %s. Oyunu güncelle.") % msg)
+			"full":
+				menu.toast(Loc.t("Sunucu dolu, biraz sonra tekrar dene."))
+			"limit":
+				menu.toast(Loc.t("Zaten açık odan var, önce onu kapat."))
+			_:
+				menu.toast(Loc.t("Merkezi sunucu şu an kullanılamıyor; oda bu cihazda kuruluyor."))
+				online_host(cfg)
+	m.created.connect(ok_cb, CONNECT_ONE_SHOT)
+	m.create_failed.connect(fail_cb, CONNECT_ONE_SHOT)
+	m.create_room(req)
+
+
 func online_join(ip: String, port: int) -> void:
 	var n = get_net()
 	if n.join(ip, port):

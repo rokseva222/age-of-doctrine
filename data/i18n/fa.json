@@ -4784,7 +4784,18 @@
   "Online: bağlantı düzeltmeleri": "آنلاین: رفع مشکلات اتصال",
   "Bağlanılamayan odada lobi artık boş açık kalmıyor: 6 sn içinde bağlanamazsa (aynı bilgisayardaki ikinci oyun dahil, yerel adresi de dener) menüye dönüp hata gösterir. Bağlantı gelmeden «Ülke seç» kapalı, «Ayrıl» artık boş harita bırakmıyor. Senaryolu odalarda ülke seçim ekranı senaryo adını gösterir.": "اتاقی که به آن دسترسی نیست دیگر لابی خالی باز نمی‌گذارد: اگر در ۶ ثانیه وصل نشود (آدرس محلی را هم امتحان می‌کند، برای بازی دوم روی همان رایانه) با پیام خطا به منو برمی‌گردید. «انتخاب کشور» تا برقراری اتصال غیرفعال است و «خروج» دیگر نقشه خالی نمی‌گذارد. اتاق‌های سناریودار نام سناریو را هنگام انتخاب کشور نشان می‌دهند.",
   "Online: lobi hatası giderildi": "آنلاین: رفع خطای لابی",
-  "Bir bağlantı denemesi başarısız olduktan sonra tekrar katılırken lobinin hata verip donması düzeltildi.": "خطا و قفل شدن لابی هنگام پیوستن دوباره پس از یک تلاش ناموفق اتصال رفع شد."
+  "Bir bağlantı denemesi başarısız olduktan sonra tekrar katılırken lobinin hata verip donması düzeltildi.": "خطا و قفل شدن لابی هنگام پیوستن دوباره پس از یک تلاش ناموفق اتصال رفع شد.",
+  "Oda sunucuda kuruluyor...": "در حال ساخت اتاق روی سرور...",
+  "Sunucu sürümü %s. Oyunu güncelle.": "نسخه سرور %s است. بازی را به‌روزرسانی کنید.",
+  "Sunucu dolu, biraz sonra tekrar dene.": "سرور پر است، کمی بعد دوباره تلاش کنید.",
+  "Zaten açık odan var, önce onu kapat.": "شما از قبل یک اتاق باز دارید، اول آن را ببندید.",
+  "Merkezi sunucu şu an kullanılamıyor; oda bu cihazda kuruluyor.": "سرور مرکزی فعلاً در دسترس نیست؛ اتاق روی همین دستگاه ساخته می‌شود.",
+  "Barındırma": "میزبانی",
+  "Sunucuda (önerilen)": "روی سرور (پیشنهادی)",
+  "Bu cihazda": "روی این دستگاه",
+  "Sunucuda kurulan odaya herkes internetten, hiçbir ayar yapmadan katılır; sen çıksan da oda açık kalır.": "هر کسی بدون هیچ تنظیمی از طریق اینترنت به اتاقِ ساخته‌شده روی سرور می‌پیوندد و حتی اگر بروید باز می‌ماند.",
+  "Online: sunucuda oda kurma": "آنلاین: اتاق روی سرور",
+  "Oda kurarken «Sunucuda» seçeneği eklendi: oda merkezi sunucuda açılır, herkes internetten ayar yapmadan katılır. Sunucu hazır değilse oda bu cihazda kurulur.": "هنگام ساخت اتاق گزینه‌ی «روی سرور» اضافه شد: اتاق روی سرور مرکزی باز می‌شود و همه بدون تنظیمات از طریق اینترنت می‌پیوندند. اگر سرور در دسترس نباشد اتاق روی همین دستگاه ساخته می‌شود."
  },
  "months": [
   "ژانویه",

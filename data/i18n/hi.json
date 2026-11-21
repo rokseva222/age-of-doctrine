@@ -4784,7 +4784,18 @@
   "Online: bağlantı düzeltmeleri": "ऑनलाइन: कनेक्शन सुधार",
   "Bağlanılamayan odada lobi artık boş açık kalmıyor: 6 sn içinde bağlanamazsa (aynı bilgisayardaki ikinci oyun dahil, yerel adresi de dener) menüye dönüp hata gösterir. Bağlantı gelmeden «Ülke seç» kapalı, «Ayrıl» artık boş harita bırakmıyor. Senaryolu odalarda ülke seçim ekranı senaryo adını gösterir.": "जिस कमरे तक पहुँच नहीं होती, वह अब खाली लॉबी खुली नहीं छोड़ता: 6 सेकंड में कनेक्ट न हो (एक ही PC पर दूसरे गेम के लिए स्थानीय पता भी आज़माता है) तो त्रुटि के साथ मेनू पर लौट आते हैं। कनेक्ट होने तक «देश चुनें» बंद रहता है और «छोड़ें» अब खाली नक्शा नहीं छोड़ता। परिदृश्य वाले कमरे देश चुनते समय परिदृश्य का नाम दिखाते हैं।",
   "Online: lobi hatası giderildi": "ऑनलाइन: लॉबी बग ठीक",
-  "Bir bağlantı denemesi başarısız olduktan sonra tekrar katılırken lobinin hata verip donması düzeltildi.": "विफल कनेक्शन प्रयास के बाद दोबारा जुड़ते समय लॉबी में त्रुटि और अटकना ठीक किया गया।"
+  "Bir bağlantı denemesi başarısız olduktan sonra tekrar katılırken lobinin hata verip donması düzeltildi.": "विफल कनेक्शन प्रयास के बाद दोबारा जुड़ते समय लॉबी में त्रुटि और अटकना ठीक किया गया।",
+  "Oda sunucuda kuruluyor...": "सर्वर पर कमरा बनाया जा रहा है...",
+  "Sunucu sürümü %s. Oyunu güncelle.": "सर्वर संस्करण %s है। कृपया गेम अपडेट करें।",
+  "Sunucu dolu, biraz sonra tekrar dene.": "सर्वर भरा है, थोड़ी देर में फिर कोशिश करें।",
+  "Zaten açık odan var, önce onu kapat.": "आपका एक कमरा पहले से खुला है, पहले उसे बंद करें।",
+  "Merkezi sunucu şu an kullanılamıyor; oda bu cihazda kuruluyor.": "केंद्रीय सर्वर अभी उपलब्ध नहीं; कमरा इसी डिवाइस पर बनाया जा रहा है।",
+  "Barındırma": "होस्टिंग",
+  "Sunucuda (önerilen)": "सर्वर पर (अनुशंसित)",
+  "Bu cihazda": "इस डिवाइस पर",
+  "Sunucuda kurulan odaya herkes internetten, hiçbir ayar yapmadan katılır; sen çıksan da oda açık kalır.": "सर्वर पर बने कमरे में कोई भी बिना किसी सेटअप के इंटरनेट से जुड़ सकता है, और आपके जाने पर भी वह खुला रहता है।",
+  "Online: sunucuda oda kurma": "ऑनलाइन: सर्वर पर कमरे",
+  "Oda kurarken «Sunucuda» seçeneği eklendi: oda merkezi sunucuda açılır, herkes internetten ayar yapmadan katılır. Sunucu hazır değilse oda bu cihazda kurulur.": "कमरा बनाते समय «सर्वर पर» विकल्प जुड़ा: कमरा केंद्रीय सर्वर पर खुलता है और सब बिना सेटअप इंटरनेट से जुड़ते हैं। सर्वर उपलब्ध न हो तो कमरा इसी डिवाइस पर बनता है।"
  },
  "months": [
   "जनवरी",

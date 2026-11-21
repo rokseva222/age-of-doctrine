@@ -4784,7 +4784,18 @@
   "Online: bağlantı düzeltmeleri": "Online: correzioni di connessione",
   "Bağlanılamayan odada lobi artık boş açık kalmıyor: 6 sn içinde bağlanamazsa (aynı bilgisayardaki ikinci oyun dahil, yerel adresi de dener) menüye dönüp hata gösterir. Bağlantı gelmeden «Ülke seç» kapalı, «Ayrıl» artık boş harita bırakmıyor. Senaryolu odalarda ülke seçim ekranı senaryo adını gösterir.": "Una stanza irraggiungibile non lascia più una lobby vuota aperta: se non si connette entro 6 s (prova anche l'indirizzo locale, per un secondo gioco sullo stesso PC) torni al menu con un errore. «Scegli paese» resta disattivato finché non c'è connessione e «Esci» non lascia più una mappa vuota. Le stanze con scenario mostrano il nome dello scenario alla scelta del paese.",
   "Online: lobi hatası giderildi": "Online: bug della lobby risolto",
-  "Bir bağlantı denemesi başarısız olduktan sonra tekrar katılırken lobinin hata verip donması düzeltildi.": "Risolto l'errore e il blocco della lobby quando ci si riunisce dopo un tentativo di connessione fallito."
+  "Bir bağlantı denemesi başarısız olduktan sonra tekrar katılırken lobinin hata verip donması düzeltildi.": "Risolto l'errore e il blocco della lobby quando ci si riunisce dopo un tentativo di connessione fallito.",
+  "Oda sunucuda kuruluyor...": "Creazione della stanza sul server...",
+  "Sunucu sürümü %s. Oyunu güncelle.": "La versione del server è %s. Aggiorna il gioco.",
+  "Sunucu dolu, biraz sonra tekrar dene.": "Server pieno, riprova tra poco.",
+  "Zaten açık odan var, önce onu kapat.": "Hai già una stanza aperta, chiudila prima.",
+  "Merkezi sunucu şu an kullanılamıyor; oda bu cihazda kuruluyor.": "Server centrale non disponibile; la stanza viene creata su questo dispositivo.",
+  "Barındırma": "Hosting",
+  "Sunucuda (önerilen)": "Sul server (consigliato)",
+  "Bu cihazda": "Su questo dispositivo",
+  "Sunucuda kurulan odaya herkes internetten, hiçbir ayar yapmadan katılır; sen çıksan da oda açık kalır.": "Chiunque può unirsi via internet a una stanza creata sul server senza configurare nulla, e resta aperta anche se esci.",
+  "Online: sunucuda oda kurma": "Online: stanze sul server",
+  "Oda kurarken «Sunucuda» seçeneği eklendi: oda merkezi sunucuda açılır, herkes internetten ayar yapmadan katılır. Sunucu hazır değilse oda bu cihazda kurulur.": "Creando una stanza c'è la nuova opzione «Sul server»: la stanza si apre sul server centrale e tutti entrano via internet senza configurare nulla. Se il server non è disponibile, la stanza viene creata su questo dispositivo."
  },
  "months": [
   "gennaio",
