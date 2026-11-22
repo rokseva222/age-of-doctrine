@@ -31,7 +31,7 @@
   "share":0.75,"flag":"I:ww1_austria"},
  {"id":"kalmar","name":"Kuzey Birliği","desc":"İskandinav ülkelerini tek çatıda birleştir.","former":["Sweden","Norway","Denmark","Finland"],
   "lands":["Sweden","Norway","Denmark","Finland","Iceland"],
-  "share":0.85,"flag":"R:0,0,1,1,#0b3d91|R:0.3,0,0.14,1,#f4c430|R:0,0.43,1,0.14,#f4c430"},
+  "share":0.85,"flag":"I:north_union"},
  {"id":"central_america","name":"Orta Amerika Federasyonu","desc":"Orta Amerika'yı birleştir.","former":["Guatemala","Honduras","El Salvador","Nicaragua","Costa Rica"],
   "lands":["Guatemala","Honduras","El Salvador","Nicaragua","Costa Rica"],
   "share":0.85,"flag":"I:central_america"}
