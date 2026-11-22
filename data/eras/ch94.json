@@ -218,6 +218,106 @@
     "gold_mult": 1.5,
     "play": false,
     "flag": "I:ichkeria"
+   },
+   {
+    "name": "Kabardey-Balkarya",
+    "pids": [
+     1848
+    ],
+    "capital": 1848,
+    "tech": 0.3,
+    "aggression": 0.15,
+    "colors": [
+     "2f66b0",
+     "ece6d6",
+     "3a8f4a"
+    ],
+    "war": false,
+    "leader": "Cumhurbaşkanı|Valeri Kokov",
+    "troops": 8000,
+    "gold_mult": 1.0,
+    "play": false,
+    "flag": "I:kabardino_balkaria"
+   },
+   {
+    "name": "Karaçay-Çerkesya",
+    "pids": [
+     1847
+    ],
+    "capital": 1847,
+    "tech": 0.3,
+    "aggression": 0.15,
+    "colors": [
+     "3a8f4a",
+     "ece6d6",
+     "2f66b0"
+    ],
+    "war": false,
+    "leader": "Başkan|Vladimir Hubiyev",
+    "troops": 6000,
+    "gold_mult": 1.0,
+    "play": false,
+    "flag": "I:karachay_cherkessia"
+   },
+   {
+    "name": "Adigey",
+    "pids": [
+     1846
+    ],
+    "capital": 1846,
+    "tech": 0.3,
+    "aggression": 0.15,
+    "colors": [
+     "3a8f4a",
+     "e3a92b",
+     "ece6d6"
+    ],
+    "war": false,
+    "leader": "Cumhurbaşkanı|Aslan Carimov",
+    "troops": 4000,
+    "gold_mult": 1.0,
+    "play": false,
+    "flag": "I:adygea"
+   },
+   {
+    "name": "Kuzey Osetya-Alanya",
+    "pids": [
+     1849
+    ],
+    "capital": 1849,
+    "tech": 0.3,
+    "aggression": 0.15,
+    "colors": [
+     "ece6d6",
+     "c8444a",
+     "e3a92b"
+    ],
+    "war": false,
+    "leader": "Cumhurbaşkanı|Ahsarbek Galazov",
+    "troops": 9000,
+    "gold_mult": 1.0,
+    "play": false,
+    "flag": "I:north_ossetia"
+   },
+   {
+    "name": "Kalmıkya",
+    "pids": [
+     1856
+    ],
+    "capital": 1856,
+    "tech": 0.3,
+    "aggression": 0.15,
+    "colors": [
+     "e3a92b",
+     "2f66b0",
+     "ece6d6"
+    ],
+    "war": false,
+    "leader": "Cumhurbaşkanı|Kirsan İlyumcinov",
+    "troops": 5000,
+    "gold_mult": 1.0,
+    "play": false,
+    "flag": "I:kalmykia"
    }
   ],
   "garrison": [

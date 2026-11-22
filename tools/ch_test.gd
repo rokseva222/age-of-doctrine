@@ -8,7 +8,7 @@ const EraMoments = preload("res://scripts/era_moments.gd")
 
 func _dump(g, tag: String) -> void:
 	var s := "  [%s] %s |" % [tag, Names.date_string(g.turn)]
-	for n in ["Russia", "custom_0", "Turkey", "Georgia"]:
+	for n in ["Russia", "custom_0", "custom_1", "custom_2", "custom_3", "custom_4", "custom_5", "Turkey", "Georgia"]:
 		if not g.macro_idx.has(n):
 			continue
 		var c = g.countries[g.macro_idx[n]]
