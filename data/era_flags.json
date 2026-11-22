@@ -133,7 +133,9 @@
   "Mali": "I:cw62_mali",
   "Mauritania": "I:cw62_mauritania",
   "Oman": "I:cw_oman",
-  "Vietnam": "A:vn"
+  "Vietnam": "A:vn",
+  "Liechtenstein": "I:ddr",
+  "Brunei": "I:cw62_south_vietnam"
  },
  "ott1520": {
   "Turkey": "I:pre_ottoman_1520|R:0,0,1,1,#c8102e|C:0.42,.5,0.22,#ffffff|C:0.49,.5,0.19,#c8102e|S:.62,.5,.07,#ffffff",
@@ -379,7 +381,16 @@
   "Uganda": "I:bunyoro",
   "North Macedonia": "I:karamanids",
   "Madagascar": "I:madagascar",
-  "Somalia": "I:adal_ifat"
+  "Somalia": "I:adal_ifat",
+  "Greece": "I:pre_byzantine|R:0,0,1,1,#8e1b2f|K:#f4c430,.08,.5,.5|C:.25,.25,.05,#f4c430|C:.75,.25,.05,#f4c430|C:.25,.75,.05,#f4c430|C:.75,.75,.05,#f4c430",
+  "Egypt": "I:pre_mamluk|R:0,0,1,1,#f4c430|C:0.42,.5,0.22,#c8102e|C:0.49,.5,0.19,#f4c430",
+  "Germany": "I:pre_hre_1380|R:0,0,1,1,#f4c430|P:#141414,.5,0.2,0.71,.5,.5,0.8,0.29000000000000004,.5",
+  "United Kingdom": "I:pre_england|R:0,0,1,1,#ffffff|K:#c8102e,0.16,0.5,.5",
+  "Italy": "I:pre_venice|R:0,0,1,1,#c8102e|C:.5,.5,.2,#f4c430",
+  "Poland": "I:pre_poland|R:0,0,1,1,#c8102e|P:#ffffff,.5,0.24,0.6819999999999999,.5,.5,0.76,0.318,.5",
+  "Hungary": "I:pre_hungary|H:#c8102e,#ffffff,#c8102e,#ffffff,#c8102e,#ffffff,#c8102e,#ffffff",
+  "Lithuania": "I:pre_lithuania|R:0,0,1,1,#c8102e|O:#ffffff,.03,.5,.5,0.2",
+  "Russia": "I:pre_muscovy|R:0,0,1,1,#c8102e|C:.5,.5,.17,#ffffff"
  },
  "ott1453": {
   "Turkey": "I:pre_ottoman_1453|R:0,0,1,1,#c8102e|C:0.42,.5,0.22,#ffffff|C:0.49,.5,0.19,#c8102e|S:.62,.5,.07,#ffffff",
@@ -456,6 +467,29 @@
   "North Macedonia": "I:karamanids",
   "Madagascar": "I:madagascar",
   "Japan": "I:muromachi",
-  "Somalia": "I:adal_ifat"
+  "Somalia": "I:adal_ifat",
+  "Uzbekistan": "I:pre_timurid|R:0,0,1,1,#8e1b2f|O:#f4c430,.025,.42,.4,.1|O:#f4c430,.025,.58,.4,.1|O:#f4c430,.025,.5,.6,.1",
+  "Greece": "I:pre_byzantine|R:0,0,1,1,#8e1b2f|K:#f4c430,.08,.5,.5|C:.25,.25,.05,#f4c430|C:.75,.25,.05,#f4c430|C:.25,.75,.05,#f4c430|C:.75,.75,.05,#f4c430",
+  "Egypt": "I:pre_mamluk|R:0,0,1,1,#f4c430|C:0.42,.5,0.22,#c8102e|C:0.49,.5,0.19,#f4c430",
+  "France": "I:pre_france_1380|R:0,0,1,1,#1c3f94|S:.3,.3,.075,#f4c430,8|S:.7,.3,.075,#f4c430,8|S:.5,.68,.075,#f4c430,8",
+  "United Kingdom": "I:pre_england|R:0,0,1,1,#ffffff|K:#c8102e,0.16,0.5,.5",
+  "Italy": "I:pre_venice|R:0,0,1,1,#c8102e|C:.5,.5,.2,#f4c430",
+  "Poland": "I:pre_poland|R:0,0,1,1,#c8102e|P:#ffffff,.5,0.24,0.6819999999999999,.5,.5,0.76,0.318,.5",
+  "Hungary": "I:pre_hungary|H:#c8102e,#ffffff,#c8102e,#ffffff,#c8102e,#ffffff,#c8102e,#ffffff",
+  "Lithuania": "I:pre_lithuania|R:0,0,1,1,#c8102e|O:#ffffff,.03,.5,.5,0.2",
+  "Russia": "I:pre_muscovy|R:0,0,1,1,#c8102e|C:.5,.5,.17,#ffffff",
+  "Bulgaria": "I:bulgaria",
+  "China": "I:pre_ming|R:0,0,1,1,#f4c430|C:0.5,0.5,0.24,#c8102e|C:.5,.5,.11,#f4c430"
+ },
+ "cw74": {
+  "Russia": "I:ussr",
+  "China": "A:cn",
+  "Cuba": "A:cu",
+  "Egypt": "A:eg",
+  "Serbia": "I:yugoslavia_federal",
+  "Czechia": "I:czechoslovakia",
+  "Vietnam": "A:vn",
+  "Liechtenstein": "I:ddr",
+  "Brunei": "I:cw62_south_vietnam"
  }
 }
