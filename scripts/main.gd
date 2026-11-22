@@ -1906,6 +1906,11 @@ func _on_ui_action(act: String, arg) -> void:
 			_clear_fleet_sel()
 			selected_pid = -1
 			ui.hide_info()
+		"conscript":
+			var cerr: String = gs.player_conscript(arg)
+			ui.toast(cerr if cerr != "" else Loc.t("Yerel halktan asker devşirildi."))
+			ui.show_province(arg, null)
+			map.repaint_all()
 		"gather_here":
 			var gn: int = gs.gather_armies(arg)
 			ui.toast(Loc.t("%d ordu bu eyalete yola çıktı.") % gn if gn > 0 else Loc.t("Yola çıkabilecek boşta ordu yok."))

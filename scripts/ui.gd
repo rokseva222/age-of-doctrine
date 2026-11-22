@@ -695,6 +695,8 @@ func show_province(pid: int, selected_army) -> void:
 				_abtn("Bu ordu uçurulsun", "blue", Icons.pick("paratrooper", "users"), "wing_lift_from", pid)
 	if p.owner == me and p.controller == me and army != null and army.owner == me and p.coastal and not Seas.coast_zones(gs, pid).is_empty():
 		_abtn("Gemiye bin", "blue", Icons.pick("cargo_ship", "ship"), "embark", pid)
+	if p.controller == me and p.owner != me and not moving and p.unrest < 4:
+		_abtn("Yerel halktan asker devşir", "blue", "users", "conscript", pid)
 	if p.owner == me and p.controller == me and not moving and gs.armies_of(me).size() >= 2:
 		_abtn("Tüm orduları buraya topla", "blue", "flag", "gather_here", pid)
 	if moving:

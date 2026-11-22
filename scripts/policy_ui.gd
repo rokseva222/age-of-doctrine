@@ -225,6 +225,14 @@ func _tab_budget() -> void:
 		["Teknoloji", "%d" % int(c.tech * 100.0)],
 	]))
 	content.add_child(_wrap("Sanayi, siber ve lojistik değerleri ilgili bütçe payını yükselttikçe haftalar içinde artar; istikrar da öyle. Teknoloji ülkenin gelişmişlik düzeyidir, bütçeyle değişmez: hangi seviyede silah alabildiğini ve ordu kalitesini belirler. Üst seviye silahlar için ayrıca yeterli sanayi gerekir: Sanayi payını yükselt.", "small", TK.FAINT))
+	var rb := TK.button(Loc.t("Teknoloji araştır: +2 puan (%s)") % Macro.money(gs.research_cost()), "gold", "bolt", Vector2(0, 56), 15)
+	rb.pressed.connect(func():
+		ui._click()
+		var rerr: String = gs.player_research()
+		_toast(rerr if rerr != "" else "Teknoloji araştırması tamamlandı: +2 puan.")
+		render())
+	content.add_child(rb)
+	content.add_child(_wrap("Daha gelişmiş bir müttefikin varsa araştırma yarı fiyatadır (teknoloji aktarımı). Teknoloji yükseldikçe fiyat artar.", "small", TK.FAINT))
 	content.add_child(TK.hsep())
 	content.add_child(_kick("Ordu doktrini"))
 	var fl := HFlowContainer.new()

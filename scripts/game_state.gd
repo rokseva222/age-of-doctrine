@@ -2572,7 +2572,7 @@ const PROVOKE_ACTS := {
 	"border": {"name": "Sınır kışkırtması", "mul": 0.08, "rel": -30.0, "cd": 8, "infamy": 3.0, "icon": "sword"},
 }
 const WAR_REL_MAX := 20.0
-const TRADE_MAX := 4
+const TRADE_MAX := 8          # ilk 4 anlaşma tam, sonrakiler %60 verim (toplam kazanç dengeli kalır)
 
 
 func provoke_cost(kind: String) -> float:
@@ -2641,7 +2641,11 @@ func trade_gain(partner: int) -> float:
 func _trade_gain_for(cid: int, partner: int) -> float:
 	var me = countries[cid]
 	var o = countries[partner]
-	return minf(0.05 * minf(maxf(me.income, 1.0), maxf(o.income, 1.0)), 0.15 * maxf(me.income, 1.0))
+	var g: float = minf(0.05 * minf(maxf(me.income, 1.0), maxf(o.income, 1.0)), 0.15 * maxf(me.income, 1.0))
+	var n: int = (trade_by[cid] as Array).size() if trade_by.has(cid) else 0
+	if n > 4:
+		g *= (4.0 + 0.6 * float(n - 4)) / float(n)
+	return g
 
 
 func trade_total() -> float:
@@ -3797,6 +3801,67 @@ func player_order_move(a, target: int, count: int = 0) -> String:
 	return ""
 
 
+## O8: teknoloji araştırması / müttefikten teknoloji transferi. Maliyet teknoloji yükseldikçe artar; daha gelişmiş müttefik varsa yarı fiyat.
+func research_cost() -> float:
+	var me = countries[player]
+	var f: float = 1.0
+	for al in me.allies:
+		if countries[al].alive and countries[al].tech > me.tech + 0.02:
+			f = 0.5
+			break
+	return maxf(30.0, me.income * 3.0 * (1.0 + me.tech * 3.0)) * f
+
+
+func player_research() -> String:
+	var _cmd := Cmd.Scope.new(self, "player_research", [])
+	if player < 0:
+		return "Oyuncu yok."
+	var me = countries[player]
+	if me.tech >= 0.98:
+		return "Teknoloji zaten en üst seviyede."
+	var cost: float = research_cost()
+	if me.gold < cost:
+		return "Kasa yetersiz: araştırma bedeli %s." % Macro.money(cost)
+	me.gold -= cost
+	me.tech_set = clampf(maxf(me.tech_set, me.tech) + 0.02, 0.0, 1.0)
+	me.tech = me.tech_set
+	Macro.recalc(me)
+	player_acted = true
+	post_news("%s: teknoloji araştırması tamamlandı (+2)." % me.name, me.capital, "info")
+	state_changed.emit()
+	return ""
+
+
+## O4: işgal edilen (denetlenen ama sahibi başka) eyalette yerel halktan asker devşirme: nüfusun %5-10'u, şansa bağlı; huzursuzluk ve istikrar bedeli.
+func player_conscript(pid: int) -> String:
+	var _cmd := Cmd.Scope.new(self, "player_conscript", [pid])
+	if player < 0 or pid < 0 or pid >= provinces.size():
+		return "Geçersiz eyalet."
+	var p = provinces[pid]
+	var me = countries[player]
+	if p.controller != player or p.owner == player:
+		return "Yalnızca işgal ettiğin yabancı eyaletlerde devşirme yapılır."
+	if p.unrest >= 4:
+		return "Bölge çok huzursuz: halk devşirmeye direniyor. Önce sakinleşmesini bekle."
+	var ex = armies.get(pid)
+	if ex != null and ex.owner != player:
+		return "Eyalette başka bir ordu var."
+	var cap: int = int(maxf(1000.0, float(me.troops) * 0.08))
+	var n: int = mini(int(p.pop * 1000000.0 * rng.randf_range(0.05, 0.10)), cap)
+	p.unrest += 4
+	me.stability = maxf(5.0, me.stability - 1.0)
+	player_acted = true
+	if rng.randf() > 0.7 or n < 300:
+		post_news("%s halkı devşirmeden kaçtı: asker toplanamadı." % p.name, pid, "info")
+		state_changed.emit()
+		return "Devşirme başarısız: halk köylere kaçtı."
+	_spawn_army(player, pid, n)
+	post_news("%s halkından asker devşirildi." % p.name, pid, "info")
+	armies_changed.emit()
+	state_changed.emit()
+	return ""
+
+
 ## O1: oyuncunun tüm boştaki ordularını hedef eyalete topla (kuşatıp savaşanlara dokunmaz). Dönüş: yola çıkan ordu sayısı.
 func gather_armies(target: int) -> int:
 	if player < 0 or target < 0 or target >= provinces.size():
@@ -4427,7 +4492,7 @@ func _random_event() -> void:
 	if alive.is_empty():
 		return
 	var c = alive[rng.randi_range(0, alive.size() - 1)]
-	var kind := rng.randi_range(0, 15)
+	var kind := rng.randi_range(0, 16)
 	var prov_ids := country_province_ids(c.id)
 	var news_kind := "event_player" if c.id == player else "event"
 	match kind:
@@ -4541,6 +4606,24 @@ func _random_event() -> void:
 		14:
 			c.stability = clampf(c.stability + rng.randf_range(2.0, 5.0), 0.0, 100.0)
 			post_news(Names.event_line("summit", rng, c.name), c.capital, news_kind, "summit")
+		16:
+			# O12: komşular arasında sınır gerginliği: ilişki düşer, savaş ihtimali artar
+			var nbs: Array = neighbor_countries(c.id)
+			var cand: Array = []
+			for nid in nbs:
+				var oc = countries[nid]
+				if oc.alive and not oc.is_rebel and not is_allied(c.id, nid) and not at_war(c.id, nid):
+					cand.append(nid)
+			if cand.is_empty():
+				return
+			var tgt: int = cand[rng.randi_range(0, cand.size() - 1)]
+			relation_add(c.id, tgt, -rng.randf_range(6.0, 12.0))
+			var tp: String = Names.pick([
+				"Sınırda gerginlik: %s ile %s arasında silahlı olay yaşandı.",
+				"%s ve %s birbirini sınır ihlaliyle suçladı; ilişkiler gerildi.",
+				"%s ile %s arasında sınır karakolu krizi: diplomatlar alarmda.",
+			], rng)
+			post_news(tp % [c.name, countries[tgt].name], c.capital, news_kind, "border_clash")
 
 
 func _rand_prov_name(ids: Array) -> String:

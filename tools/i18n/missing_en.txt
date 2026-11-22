@@ -418,6 +418,7 @@ Focus completed: %s — %s
 savaş çıktı
 ilişkiler bozuldu
 yol tıkalı
+Geçersiz eyalet.
 Steel Storm
 Red Dawn
 Iron Fist
