@@ -181,7 +181,7 @@
   "Thailand": "H:#c8102e,#ffffff,#c8102e",
   "Vietnam": "R:0,0,1,1,#f4c430|O:#c8102e,.03,.5,.5,0.22",
   "Laos": "I:lan_xang",
-  "Cambodia": "R:0,0,1,1,#1c3f94|C:0.5,0.5,0.2,#f4c430",
+  "Cambodia": "I:khmer",
   "Malaysia": "R:0,0,1,1,#f4c430|C:0.42,.5,0.22,#c8102e|C:0.49,.5,0.19,#f4c430",
   "Brunei": "R:0,0,1,1,#f4c430",
   "Indonesia": "H:#c8102e,#ffffff",
@@ -196,7 +196,7 @@
   "Mali": "R:0,0,1,1,#f4c430|S:.5,.5,0.22,#141414,8",
   "Nigeria": "V:#2e7d32,#ffffff,#c8102e",
   "Ghana": "I:akan",
-  "Dem. Rep. Congo": "R:0,0,1,1,#00695c|K:#f4c430,0.12,0.5,.5",
+  "Dem. Rep. Congo": "I:kongo",
   "Tanzania": "H:#4aa3df,#ffffff|C:.5,.5,.1,#c8102e",
   "Uganda": "R:0,0,1,1,#d84315|C:0.5,0.5,0.18,#ffffff",
   "Zimbabwe": "R:0,0,1,1,#7b3f00|C:0.5,0.5,0.2,#f4c430|S:.5,.5,.1,#141414,8",
@@ -256,7 +256,7 @@
   "Thailand": "H:#c8102e,#ffffff,#c8102e",
   "Vietnam": "R:0,0,1,1,#c8102e|C:.5,.5,.2,#f4c430",
   "Laos": "I:lan_xang",
-  "Cambodia": "R:0,0,1,1,#1c3f94|C:0.5,0.5,0.2,#f4c430",
+  "Cambodia": "I:khmer",
   "Malaysia": "R:0,0,1,1,#f4c430|C:0.42,.5,0.22,#c8102e|C:0.49,.5,0.19,#f4c430",
   "Brunei": "R:0,0,1,1,#f4c430",
   "Indonesia": "I:majapahit",
@@ -271,7 +271,7 @@
   "Mali": "R:0,0,1,1,#f4c430|S:.5,.5,0.22,#2e7d32,8",
   "Nigeria": "V:#2e7d32,#ffffff,#c8102e",
   "Ghana": "I:akan",
-  "Dem. Rep. Congo": "R:0,0,1,1,#00695c|K:#f4c430,0.12,0.5,.5",
+  "Dem. Rep. Congo": "I:kongo",
   "Tanzania": "H:#4aa3df,#ffffff|C:.5,.5,.1,#c8102e",
   "Uganda": "R:0,0,1,1,#d84315|C:0.5,0.5,0.18,#ffffff",
   "Zimbabwe": "R:0,0,1,1,#7b3f00|C:0.5,0.5,0.2,#f4c430|S:.5,.5,.1,#141414,8",
@@ -317,7 +317,9 @@
   "Greenland": "I:novgorod",
   "Portugal": "I:portugal",
   "Laos": "I:lan_xang",
-  "Ghana": "I:akan"
+  "Ghana": "I:akan",
+  "Cambodia": "I:khmer",
+  "Dem. Rep. Congo": "I:kongo"
  },
  "ott1453": {
   "Turkey": "I:pre_ottoman_1453|R:0,0,1,1,#c8102e|C:0.42,.5,0.22,#ffffff|C:0.49,.5,0.19,#c8102e|S:.62,.5,.07,#ffffff",
@@ -335,6 +337,8 @@
   "Greenland": "I:novgorod",
   "Portugal": "I:portugal",
   "Laos": "I:lan_xang",
-  "Ghana": "I:akan"
+  "Ghana": "I:akan",
+  "Cambodia": "I:khmer",
+  "Dem. Rep. Congo": "I:kongo"
  }
 }
