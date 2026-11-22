@@ -79,6 +79,7 @@ var next_offer_id := 1
 var net_humans: Array = []               # online istemcide: sunucudaki insan ülkeler (yerel kopya tek oyunculu gibi davranır)
 var hs_i := 0                            # sırası gelen insanın humans içindeki indeksi
 var cmd_log = null                       # online istemcide oyuncu emirlerinin kaydı (Array); null = kayıt kapalı (cmd.gd)
+var news_bias := 0                      # sunucu emirleri yeniden oynatırken 1: haberler sonuç turunun raporunda görünsün
 var cmd_replay := false                  # sunucu komutu yeniden oynatırken true (kayıt alınmaz)
 var cmd_depth := 0                       # iç içe emir çağrılarında yalnızca en dıştakini kaydetmek için
 var next_army_id := 1
@@ -955,12 +956,12 @@ func player_launch_assault(pid: int, ids: Array, op: String, frac: float = 1.0) 
 # ===================================================================== yardımcılar
 
 ## Oyuncu bakışlı haber türleri ("sen/ordun" dili). Çok oyunculuda yalnız ilgili koltuğa gösterilir.
-const PERSONAL_KINDS := ["war_player", "capture_player", "lost_player"]
+const PERSONAL_KINDS := ["war_player", "capture_player", "lost_player", "dipl"]
 
 
 ## for_cid: haber yalnız bu oyuncuya gösterilir (-2: otomatik; kişisel türler çok oyunculuda o an sırası olan oyuncuya bağlanır).
 func post_news(text: String, prov: int = -1, kind: String = "info", icon: String = "", for_cid: int = -2) -> void:
-	var rec := {"turn": turn, "text": text, "prov": prov, "kind": kind}
+	var rec := {"turn": turn + news_bias, "text": text, "prov": prov, "kind": kind}
 	if icon != "":
 		rec["ic"] = icon
 	if for_cid == -2 and kind in PERSONAL_KINDS and is_net_multi():
@@ -973,6 +974,15 @@ func post_news(text: String, prov: int = -1, kind: String = "info", icon: String
 	if for_cid >= 0 and for_cid != player and is_net_multi():
 		return        # başka koltuğa özel haber: şu anki ekranda şeritte gösterme
 	news_posted.emit(text, prov, kind)
+
+
+## Online: yalnız insan bir oyuncuya özel diplomasi/saldırı bildirimi (yapay zekâ ülkeler haber almaz).
+func notify_human(to: int, text: String, prov: int = -1, kind: String = "dipl") -> void:
+	if to < 0 or to >= countries.size() or to == player:
+		return
+	if not (humans.has(to) or net_humans.has(to)):
+		return
+	post_news(text, prov, kind, "", to)
 
 
 ## Bu haber şu an bakan oyuncuya gösterilsin mi? (Kişiye özel haber başka koltuğun ekranına düşmez.)
@@ -1406,6 +1416,10 @@ func declare_war(a: int, b: int, joined: bool = false) -> bool:
 		if not setup_no_call:
 			_call_allies(a, b)
 			_maybe_side_call(a, b)
+	elif joined and is_net_multi() and (humans.has(b) or net_humans.has(b)):
+		# müttefik çağrısıyla savaşa giren ülke: hedef insan oyuncu da duysun
+		post_news(Names.war_declared(rng, na, nb), countries[a].capital, "war")
+		post_news(Names.war_on_player(rng, na), countries[a].capital, "war_player", "", b)
 	elif not joined:
 		if b == player:
 			post_news(Names.war_on_player(rng, na), countries[a].capital, "war_player")
@@ -1657,6 +1671,13 @@ func _ally_join(ally: int, friend: int, foe: int, kind: String) -> void:
 	if not c.alive or ally == foe or at_war(ally, foe) or is_allied(ally, foe):
 		return
 	if is_other_human(ally):
+		if is_net_multi():
+			var fn: String = countries[friend].name
+			var en: String = countries[foe].name
+			if kind == "defend":
+				notify_human(ally, "Müttefikin %s, %s tarafından saldırıya uğradı. İstersen savaşa katılabilirsin." % [fn, en], countries[friend].capital)
+			else:
+				notify_human(ally, "Müttefikin %s, %s devletine savaş açtı. İstersen savaşa katılabilirsin." % [fn, en], countries[friend].capital)
 		return
 	if ally == player:
 		if setup_mode:
@@ -2487,6 +2508,22 @@ func player_sign_trade(target: int) -> String:
 	relation_add(player, target, 5.0)
 	state_changed.emit()
 	return ""
+
+
+## Ambargo koy / kaldır (önceden arayüzde doğrudan değiştiriliyordu; online'da sunucuya gitmesi için komut oldu).
+func player_set_embargo(target: int, on: bool) -> void:
+	var _cmd := Cmd.Scope.new(self, "player_set_embargo", [target, on])
+	if target < 0 or target >= countries.size() or target == player:
+		return
+	var c = countries[player]
+	if on:
+		if c.enemies.has(target) or c.embargo.has(target):
+			return
+		c.embargo.append(target)
+	else:
+		c.embargo.erase(target)
+	Macro.prime(self)
+	state_changed.emit()
 
 
 func player_cancel_trade(target: int) -> void:

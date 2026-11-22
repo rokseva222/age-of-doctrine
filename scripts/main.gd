@@ -440,7 +440,9 @@ func _on_start_requested(cid: int) -> void:
 
 ## Dil değişince arayüz yeniden kurulur: oyun varsa önce otomatik kayıt yuvasına yazılır, sonra sahne yeniden yüklenir.
 func reload_for_language() -> void:
-	if mode == "game" and gs != null and gs.game_started and gs.player >= 0 and gs.countries[gs.player].alive:
+	if online or (net != null and net.connected):
+		_online_cleanup()
+	elif mode == "game" and gs != null and gs.game_started and gs.player >= 0 and gs.countries[gs.player].alive:
 		Saves.write(gs, 0, Eras.current)
 	get_tree().reload_current_scene()
 
@@ -456,6 +458,10 @@ func _menu_pressed() -> void:
 
 
 func _go_main_menu(no_save: bool = false) -> void:
+	# online odadaysak (ya da bağlantı açıksa) önce odadan ayrıl: yoksa arka planda tur akıp oyuncuyu geri çekiyordu
+	if online or (net != null and (net.connected or net.is_server)):
+		no_save = true
+		_online_cleanup()
 	_mp_reset()
 	if not no_save and mode == "game" and gs.game_started and gs.player >= 0 and gs.countries[gs.player].alive and Settings.autosave:
 		Saves.write(gs, 0, Eras.current)
@@ -752,6 +758,7 @@ func get_net():
 		net.over.connect(_online_over)
 		net.chat.connect(_on_net_chat)
 		net.note.connect(_online_note)
+		net.flush_asked.connect(_online_flush)
 	return net
 
 
@@ -908,7 +915,17 @@ func _on_net_chat(_cid: int, pn: String, text: String) -> void:
 
 
 func online_leave() -> void:
+	_online_cleanup()
+	if mode == "select" or mode == "game":
+		_go_main_menu(true)
+
+
+## Odadan çıkış: bağlantıyı kapatır, online durumunu ve arayüzünü temizler (menüye dönmeden).
+func _online_cleanup() -> void:
+	Cmd.rec_gs = null
 	if net != null:
+		net.gs_client = null
+		net.my_cid = -1
 		net.leave()
 	if master != null:
 		master.stop_announce()
@@ -924,8 +941,6 @@ func online_leave() -> void:
 		_lobby_sheet.queue_free()
 	_lobby_sheet = null
 	map.set_highlight_country(-1)
-	if mode == "select" or mode == "game":
-		_go_main_menu(true)
 
 
 func _hud_free() -> void:
@@ -934,11 +949,15 @@ func _hud_free() -> void:
 	_hud = null
 
 
+## Süre dolmak üzere: bekleyen emirleri hemen sunucuya yolla (hazır işaretlemeden).
+func _online_flush() -> void:
+	if online and not turn_busy and gs != null and not gs.cmd_log.is_empty():
+		net.to_server("srv_submit", [gs.turn, gs.cmd_log.duplicate(true), false])
+
+
 func _online_note(kind: String, cid: int, text: String) -> void:
 	if online and _hud != null and is_instance_valid(_hud):
 		_hud.add_note(kind, cid, text)
-		if kind == "ready" and cid == net.my_cid:
-			return
 
 
 func _online_over(text: String) -> void:
@@ -946,7 +965,7 @@ func _online_over(text: String) -> void:
 	turn_busy = false
 	if online:
 		sfx.play("win")
-		ui.show_dialog("ZAFER!", text, [{"text": "Ana menü", "cb": func(): online_leave(), "kind": "good"}])
+		ui.show_dialog("Oyun bitti", text, [{"text": "Ana menü", "cb": func(): online_leave(), "kind": "good"}])
 
 
 var _reconnects := 0
@@ -1004,6 +1023,8 @@ func _online_swap(g, cid: int) -> void:
 
 
 func _online_begin(cid: int) -> void:
+	if net == null or net.gs_client == null or net.multiplayer.multiplayer_peer == null:
+		return
 	if _lobby_sheet != null and is_instance_valid(_lobby_sheet):
 		_lobby_sheet.queue_free()
 	_lobby_sheet = null
@@ -1021,7 +1042,7 @@ func _online_begin(cid: int) -> void:
 		_sync_timer.timeout.connect(func():
 			# planlanan emirleri düzenli olarak sunucuya yolla: süre dolarsa kaybolmasın
 			if online and not turn_busy and gs != null and not gs.cmd_log.is_empty():
-				net.to_server("srv_submit", [gs.cmd_log.duplicate(true), false]))
+				net.to_server("srv_submit", [gs.turn, gs.cmd_log.duplicate(true), false]))
 		add_child(_sync_timer)
 	_sync_timer.start()
 	_online_swap(net.gs_client, cid)
@@ -1045,10 +1066,18 @@ func _online_step() -> void:
 	turn_busy = true
 	sfx.play("stamp", 0.8)
 	_online_before = TurnUI.snapshot(gs)
-	net.to_server("srv_submit", [gs.cmd_log.duplicate(true), true])
+	net.to_server("srv_submit", [gs.turn, gs.cmd_log.duplicate(true), true])
 	_wait_free()
 	_wait_ov = TurnUI.loading(ui.root, gs.turn + 1)
 	_wait_ov.set_step(0.4, Loc.t("Diğer oyuncular bekleniyor..."))
+	var wv = _wait_ov.status.get_parent()
+	if wv != null:
+		wv.add_child(TK.spacer(0, 10))
+		var lb := TK.button("Odadan ayrıl", "ghost", "", Vector2(0, 56), 16)
+		lb.pressed.connect(func():
+			ui._click()
+			_menu_pressed())
+		wv.add_child(lb)
 	_online_status()
 
 
@@ -1072,10 +1101,15 @@ func _online_status() -> void:
 	var txt: String = Loc.t("Diğer oyuncular bekleniyor...")
 	if not names.is_empty():
 		txt = Loc.t("Bekleniyor: %s") % ", ".join(names)
+	if net.deadline_left > 0.0 and net.deadline_grace:
+		var sl: int = int(ceil(net.deadline_left))
+		txt += "\n" + Loc.t("Bekleme: %s") % ("%d:%02d" % [sl / 60, sl % 60])
 	_wait_ov.set_step(0.4, txt)
 
 
 func _online_round(_inf: Dictionary) -> void:
+	if not online or mode != "game" or net == null or net.gs_client == null:
+		return
 	var cid: int = net.my_cid
 	_wait_free()
 	_online_swap(net.gs_client, cid)

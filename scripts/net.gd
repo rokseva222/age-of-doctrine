@@ -12,10 +12,14 @@ const Eras = preload("res://scripts/eras.gd")
 const Scenarios = preload("res://scripts/scenarios.gd")
 const Settings = preload("res://scripts/settings.gd")
 
-const PROTO := 1
+const PROTO := 2
 const DEFAULT_PORT := 47320
 const LAN_PORT := 47321
 const MAX_PLAYERS := 12
+const FLUSH_SECS := 4.0
+const MAX_CMDS := 600
+const MAX_COUNTRY_ID := 400
+const HELLO_SECS := 10.0
 const GRACE_SECS := 120.0                    # biri turu bitirince diğerlerine tanınan bekleme süresi
 const MISS_LIMIT := 2                        # üst üste bu kadar tur kaçıran oyuncunun ülkesini yapay zekâ devralır
 
@@ -27,6 +31,7 @@ signal disconnected()
 signal error(msg: String)
 signal chat(from_cid: int, pname: String, text: String)
 signal over(text: String)
+signal flush_asked()
 signal note(kind: String, cid: int, text: String)   # oyuncu olayları: ready, afk, back, left, grace, diplo...
 
 # ---- ortak durum
@@ -48,6 +53,8 @@ var gs_server = null
 var _round_timer := 0.0
 var _grace_on := false
 var _grace_left := 0.0
+var _flushed := false                      # bu tur için "bekleyen emirleri yolla" çağrısı yapıldı mı
+var _hello_t: Dictionary = {}              # peer -> bağlandıktan beri geçen sn (selam gelmeyen eş atılır)
 var _lan_udp: PacketPeerUDP = null
 var _lan_t := 0.0
 var _st_t := 0.0
@@ -130,6 +137,8 @@ func to_server(method: String, args: Array = []) -> void:
 
 
 func _sender() -> int:
+	if multiplayer == null:
+		return 1
 	var s: int = multiplayer.get_remote_sender_id()
 	return 1 if s == 0 else s
 
@@ -159,6 +168,7 @@ func host(cfg: Dictionary) -> bool:
 	_q_srv.listen(port + 1)
 	info["seed"] = _world_seed
 	players = {}
+	_seats.clear()
 	if local_player:
 		players[1] = {"name": Settings_name(), "cid": -1, "host": true, "pass_ok": true}
 	if bool(cfg.get("upnp", false)):
@@ -222,7 +232,8 @@ func _exit_tree() -> void:
 
 
 func _on_peer_connected(id: int) -> void:
-	pass
+	if is_server:
+		_hello_t[id] = 0.0
 
 
 func _on_peer_disconnected(id: int) -> void:
@@ -232,6 +243,7 @@ func _on_peer_disconnected(id: int) -> void:
 		if started and room != null and gone_cid >= 0:
 			room.set_afk(gone_cid, true)      # bağlantı koptu: yapay zekâ devralır
 		players.erase(id)
+		_hello_t.erase(id)
 		if started and room != null and gone_cid >= 0:
 			_say("left", gone_cid)
 		_reassign_host()
@@ -245,8 +257,15 @@ func srv_hello(proto: int, pname: String, token: String = "") -> void:
 	if not is_server:
 		return
 	var id: int = _sender()
+	_hello_t.erase(id)
+	if players.has(id):
+		return                                   # ikinci selam: yok say
 	if proto != PROTO:
 		_to(id, "cli_denied", ["Sürüm uyuşmazlığı: sunucu ve oyun aynı sürümde olmalı."])
+		return
+	token = token.left(32)
+	if started and not (token != "" and _seats.has(token)):
+		_to(id, "cli_denied", ["Oyun başladı, bu odaya artık yeni oyuncu alınmıyor."])
 		return
 	if started and token != "" and _seats.has(token):
 		# oyun sürüyor: bu cihazın eski koltuğuna geri dön
@@ -298,13 +317,13 @@ func srv_pick(cid: int, cname: String = "") -> void:
 	var id: int = _sender()
 	if not players.has(id) or not bool(players[id].pass_ok):
 		return
+	if cid < 0 or cid >= MAX_COUNTRY_ID:
+		return
 	for p in players.values():
 		if int(p.cid) == cid:
 			return
 	players[id].cid = cid
 	players[id]["cname"] = cname.left(40)
-	if String(players[id].get("token", "")) != "":
-		_seats[String(players[id].token)] = {"cid": cid, "cname": cname.left(40)}
 	_push_lobby()
 
 
@@ -317,15 +336,36 @@ func srv_start() -> void:
 		return
 	var picks: Array = []
 	for p in players.values():
-		if int(p.cid) >= 0:
+		if int(p.cid) >= 0 and bool(p.get("pass_ok", false)) and not picks.has(int(p.cid)):
 			picks.append(int(p.cid))
 	if picks.size() < 1:
 		_to(id, "cli_denied", ["En az bir oyuncu ülke seçmeli."])
 		return
+	room = null
 	_build_world(picks)
+	if room == null or room.gs.humans.is_empty():
+		room = null
+		gs_server = null
+		_to(id, "cli_denied", ["Seçilen ülkeler geçersiz."])
+		return
+	# dünyada geçersiz çıkan seçimler (yok olmuş/ayrılıkçı ülke) elenir
+	var valid: Array = room.gs.humans
+	_seats.clear()
+	for pid in players.keys():
+		var pc: int = int(players[pid].cid)
+		if pc >= 0 and not valid.has(pc):
+			players[pid].cid = -1
+			players[pid]["cname"] = ""
+		elif pc >= 0 and String(players[pid].get("token", "")) != "":
+			_seats[String(players[pid].token)] = {"cid": pc, "cname": String(players[pid].get("cname", ""))}
 	started = true
 	_round_timer = float(info.secs)
-	for pid in players:
+	_flushed = false
+	for pid in players.keys():
+		if int(players[pid].cid) < 0:
+			_to(pid, "cli_denied", ["Oyun başladı; ülke seçmediğin için bu turda yer alamıyorsun."])
+			_kick(pid)
+			continue
 		_send_state(pid, "cli_start")
 	_push_lobby()
 
@@ -340,6 +380,13 @@ func _build_world(picks: Array) -> void:
 	g.new_world(_world_seed)
 	if era != "":
 		Eras.restructure(g, era)
+	var ok_picks: Array = []
+	for pc in picks:
+		if int(pc) >= 0 and int(pc) < g.countries.size() and g.countries[int(pc)].alive and not g.countries[int(pc)].is_rebel:
+			ok_picks.append(int(pc))
+	picks = ok_picks
+	if picks.is_empty():
+		return
 	g.start_game(picks[0])
 	if era != "":
 		Eras.start(g, era)
@@ -353,8 +400,24 @@ func _build_world(picks: Array) -> void:
 	gs_server = g
 
 
+func _kick(pid: int) -> void:
+	if pid == 1 or multiplayer.multiplayer_peer == null:
+		return
+	players.erase(pid)
+	multiplayer.multiplayer_peer.disconnect_peer(pid)
+
+
 func _send_state(pid: int, method: String) -> void:
+	if not players.has(pid) or not bool(players[pid].get("pass_ok", false)) or int(players[pid].cid) < 0:
+		return
 	var d: Dictionary = gs_server.to_dict()
+	# başka oyuncuya özel haberler bu oyuncuya gönderilmez
+	var mine: int = int(players[pid].cid)
+	var nl: Array = []
+	for n in d.get("news", []):
+		if not n.has("for") or int(n["for"]) == mine:
+			nl.append(n)
+	d["news"] = nl
 	d["armies"] = gs_server.fog_filter_armies(d["armies"], int(players[pid].cid), int(info.get("fog", 0)))
 	var raw: PackedByteArray = var_to_bytes(d).compress(FileAccess.COMPRESSION_GZIP)
 	_to(pid, method, [raw, int(players[pid].cid), room.waiting_for(), String(info.era)])
@@ -362,13 +425,17 @@ func _send_state(pid: int, method: String) -> void:
 
 ## İstemci: bu turun komutlarını yollar. ready=true ise "turu bitirdim".
 @rpc("any_peer", "call_remote", "reliable")
-func srv_submit(list: Array, is_ready: bool) -> void:
-	if not is_server or not started:
+func srv_submit(turn: int, list: Array, is_ready: bool) -> void:
+	if not is_server or not started or room == null:
 		return
 	var id: int = _sender()
 	var p: Dictionary = players.get(id, {})
-	if p.is_empty() or int(p.cid) < 0:
+	if p.is_empty() or int(p.cid) < 0 or not bool(p.get("pass_ok", false)):
 		return
+	if turn != room.gs.turn:
+		return                                   # eski turdan kalan gönderim (ağ gecikmesi): yok say
+	if list.size() > MAX_CMDS:
+		list = list.slice(0, MAX_CMDS)
 	var was_afk: bool = bool(room.afk.get(int(p.cid), false))
 	var was_ready: bool = bool(room.ready.get(int(p.cid), false))
 	room.set_afk(int(p.cid), false)
@@ -389,13 +456,16 @@ func srv_chat(text: String) -> void:
 	if not is_server:
 		return
 	var id: int = _sender()
+	if not bool(players.get(id, {}).get("pass_ok", false)):
+		return
 	var cid: int = int(players.get(id, {}).get("cid", -1))
 	var pn: String = String(players.get(id, {}).get("name", ""))
 	var t: String = text.strip_edges().left(200)
 	if t == "":
 		return
-	for pid in players:
-		_to(pid, "cli_chat", [cid, pn, t])
+	for pid in players.keys():
+		if bool(players[pid].get("pass_ok", false)):
+			_to(pid, "cli_chat", [cid, pn, t])
 
 
 func _check_round() -> void:
@@ -409,24 +479,49 @@ func _check_round() -> void:
 func _force_round() -> void:
 	if room == null:
 		return
+	var temp: Array = []
 	for c in room.waiting_for():
 		var n: int = int(room.missed.get(int(c), 0)) + 1
 		room.missed[int(c)] = n
 		if n >= MISS_LIMIT:
 			room.set_afk(int(c), true)
 			_say("afk", int(c))
+		else:
+			# bu tur ülkeyi yapay zekâ yönetir (oyuncu boşta kalmasın); sonra oyuncuya geri verilir
+			room.set_afk(int(c), true)
+			temp.append(int(c))
+			_say("miss", int(c))
 	_run_round()
+	if room != null:
+		for c in temp:
+			room.set_afk(int(c), false)
+	_push_status()
 
 
 func _run_round() -> void:
 	var r: Dictionary = room.process_round()
 	_round_timer = float(info.secs)
 	_grace_on = false
-	for pid in players:
+	_flushed = false
+	for pid in players.keys():
 		_send_state(pid, "cli_round")
 	if String(r.get("over", "")) != "":
-		for pid in players:
-			_to(pid, "cli_over", [String(r.over)])
+		for pid in players.keys():
+			if bool(players[pid].get("pass_ok", false)):
+				_to(pid, "cli_over", [String(r.over)])
+		_reset_to_lobby()
+
+
+## Oyun bitti: oda boşalır, kurucu yeni oyun başlatabilir (eski koltuklar silinir).
+func _reset_to_lobby() -> void:
+	started = false
+	room = null
+	gs_server = null
+	_seats.clear()
+	_grace_on = false
+	for pid in players.keys():
+		players[pid].cid = -1
+		players[pid]["cname"] = ""
 
 
 func _push_lobby() -> void:
@@ -460,13 +555,28 @@ func _push_status() -> void:
 			if bool(room.afk.get(h, false)):
 				afk.append(h)
 	var d: Dictionary = _deadline()
-	for pid in players:
-		_to(pid, "cli_status", [w, float(d.left), afk, bool(d.grace)])
+	for pid in players.keys():
+		if bool(players[pid].get("pass_ok", false)):
+			_to(pid, "cli_status", [w, float(d.left), afk, bool(d.grace)])
 
 
 ## Herkese oyuncu olayı yollar (istemci bayraklı şeritte gösterir).
 func _say(kind: String, cid: int, text: String = "") -> void:
-	for pid in players:
+	if room != null and gs_server != null and cid >= 0 and cid < gs_server.countries.size():
+		var nm: String = String(gs_server.countries[cid].name)
+		var line := ""
+		match kind:
+			"left":
+				line = "%s oyundan ayrıldı; ülkesini yapay zekâ yönetiyor." % nm
+			"afk":
+				line = "%s art arda turları kaçırdı; ülkesini yapay zekâ yönetiyor." % nm
+			"back":
+				line = "%s oyuna geri döndü." % nm
+		if line != "":
+			gs_server.news_bias = 1          # bir sonraki tur raporunda görünsün
+			gs_server.post_news(line, -1, "info")
+			gs_server.news_bias = 0
+	for pid in players.keys():
 		if bool(players[pid].get("pass_ok", false)):
 			_to(pid, "cli_note", [kind, cid, text])
 
@@ -539,7 +649,13 @@ func _process(delta: float) -> void:
 			for t in _lan_targets():
 				_lan_udp.set_dest_address(t, LAN_PORT)
 				_lan_udp.put_packet(data)
-		if started and room != null:
+		for hp in _hello_t.keys():
+			_hello_t[hp] += delta
+			if _hello_t[hp] > HELLO_SECS and not players.has(hp):
+				_hello_t.erase(hp)
+				if multiplayer.multiplayer_peer != null:
+					multiplayer.multiplayer_peer.disconnect_peer(int(hp))
+		if started and room != null and room.active_count() > 0:
 			var w: Array = room.waiting_for()
 			# biri turu bitirdi, diğerleri hâlâ oynuyor: bekleme süresi başlar
 			if not _grace_on and not w.is_empty() and w.size() < room.active_count():
@@ -556,6 +672,18 @@ func _process(delta: float) -> void:
 			if (_grace_on and _grace_left <= 0.0) or (float(info.secs) > 0.0 and _round_timer <= 0.0):
 				# süre doldu: hazır olmayanın emirleri o ana kadar gönderdiği kadar, tur işlenir
 				_force_round()
+			elif not _flushed and not w.is_empty():
+				# süre dolmak üzere: bekleyenlerin yerelde biriken emirlerini sunucuya yollatır (kaybolmasın)
+				var lf: float = 999999.0
+				if float(info.secs) > 0.0:
+					lf = _round_timer
+				if _grace_on:
+					lf = minf(lf, _grace_left)
+				if lf <= FLUSH_SECS:
+					_flushed = true
+					for pid in players.keys():
+						if int(players[pid].get("cid", -1)) >= 0 and w.has(int(players[pid].cid)):
+							_to(pid, "cli_flush")
 	if _lan_listen != null:
 		while _lan_listen.get_available_packet_count() > 0:
 			var pkt: PackedByteArray = _lan_listen.get_packet()
@@ -620,8 +748,11 @@ func leave() -> void:
 	room = null
 	gs_server = null
 	players = {}
+	_seats.clear()
+	_hello_t.clear()
 	chat_log = []
 	_grace_on = false
+	_flushed = false
 	afk_ids = []
 	waiting = []
 	deadline_left = 0.0
@@ -714,6 +845,11 @@ func cli_status(wait: Array, left: float, afk: Array = [], grace: bool = false) 
 	deadline_grace = grace
 	afk_ids = afk
 	status_changed.emit()
+
+
+@rpc("authority", "call_remote", "reliable")
+func cli_flush() -> void:
+	flush_asked.emit()
 
 
 @rpc("authority", "call_remote", "reliable")

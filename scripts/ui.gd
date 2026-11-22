@@ -169,6 +169,8 @@ func _news_info(kind: String, ic: String = "") -> Array:
 			r = ["İSYAN", TK.PURPLE, "unrest"]
 		"alliance":
 			r = ["İTTİFAK", TK.BLUE, "handshake"]
+		"dipl":
+			r = ["DİPLOMASİ", TK.BLUE, "handshake"]
 		"rank":
 			r = ["SIRALAMA", TK.MUTED, "trophy"]
 		"cyber":
@@ -1148,6 +1150,8 @@ func show_pause_menu() -> void:
 			continue
 		if it[0] == "Sohbet" and not online_mode:
 			continue
+		if online_mode and (it[0] == "Kaydet" or it[0] == "Yükle" or it[0] == "Sandbox"):
+			continue
 		if it[0] == "Savaş Odası" and (gs.player < 0 or gs.countries[gs.player].enemies.is_empty()) and not (gs.wroom is Dictionary and bool(gs.wroom.get("on", false))):
 			continue
 		var b := TK.button(it[0], it[1], it[2], Vector2(0, 62), 20)
@@ -2006,7 +2010,7 @@ func show_world_panel(tab: int = 0) -> void:
 	var kinds_of := [
 		[],
 		["war", "war_player", "capture", "capture_player", "lost_player", "battle", "elim", "cyber", "ops"],
-		["peace", "alliance"],
+		["peace", "alliance", "dipl"],
 		["event", "event_player", "rebel", "rebel_player", "info", "rank", "arms"],
 	]
 	var build_news := func():

@@ -766,13 +766,7 @@ func _tab_trade() -> void:
 		b.disabled = c.enemies.has(j)
 		b.pressed.connect(func():
 			ui._click()
-			if on_emb:
-				c.embargo.erase(j)
-			else:
-				c.embargo.append(j)
-				if not gs.is_allied(c.id, j):
-					pass
-			Macro.prime(gs)
+			gs.player_set_embargo(j, not on_emb)
 			render())
 		h.add_child(b)
 		content.add_child(h)

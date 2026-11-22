@@ -294,8 +294,11 @@ static func open_howto(parent: Node) -> void:
 			render.call())
 
 
-const UPDATE_VER := "1.2.46"
+const UPDATE_VER := "1.2.47"
 const WHATS_NEW := [
+	["Online: bildirimler ve oyuncu şeridi", "Ekranın üstünde artık her oyuncunun bayrağı görünür: turu geçti, oynuyor, yapay zekâ ya da ayrıldı. «X turu geçti» olayları anında akar; tek başına kaldıysan geri sayım görürsün. Diplomasi ve saldırılar (elçi, hediye, ambargo, ticaret, yardım, ültimatom, hava/deniz saldırısı, çıkarma, kimyasal/nükleer, teklif cevapları) karşı oyuncuya tur raporunda haber olarak gider."],
+	["Online: 120 sn bekleme ve yapay zekâ devri", "Biri turu bitirince diğerlerine 120 sn tanınır; süre dolunca tur işlenir ve o tur ülkeyi yapay zekâ oynar. Art arda iki tur kaçıran oyuncunun ülkesini yapay zekâ devralır; geri dönünce koltuğunu geri alır. Oyundan ayrılan oyuncuya süre işlemez, ana menüden «Odadan ayrıl» ile temiz çıkılır."],
+	["Listeler ve düzeltmeler", "Senaryo ve savaş listeleri tek kaydırmalı, aranabilir tam ekran listeye döndü; online oda kurarken de aynı liste kullanılır. Uzun yazıların ekranı aşması, ana menüdeki bildirimler ve bekleme ekranı düzeltildi. Sunucu artık yeni sürümle kendini güncelliyor; online sürüm denetimi sıkılaştı."],
 	["Online: 12 oyunculu odalar", "Online odalar artık 12 oyuncuya kadar kurulabiliyor (2, 3, 4, 5, 6, 8, 10, 12)."],
 	["Online: sunucuda oda kurma", "Oda kurarken «Sunucuda» seçeneği eklendi: oda merkezi sunucuda açılır, herkes internetten ayar yapmadan katılır. Sunucu hazır değilse oda bu cihazda kurulur."],
 	["Online: lobi hatası giderildi", "Bir bağlantı denemesi başarısız olduktan sonra tekrar katılırken lobinin hata verip donması düzeltildi."],

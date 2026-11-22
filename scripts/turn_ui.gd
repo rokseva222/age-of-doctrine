@@ -7,7 +7,7 @@ const Macro = preload("res://scripts/macro.gd")
 
 const PRIORITY := {
 	"war_player": 100, "lost_player": 95, "capture_player": 90, "rebel_player": 85, "war": 70, "elim": 65,
-	"capture": 60, "peace": 58, "alliance": 50, "battle": 45, "event_player": 40, "rebel": 35, "event": 30,
+	"dipl": 96, "capture": 60, "peace": 58, "alliance": 50, "battle": 45, "event_player": 40, "rebel": 35, "event": 30,
 	"cyber": 25, "rank": 20, "info": 10,
 }
 const TIPS := [

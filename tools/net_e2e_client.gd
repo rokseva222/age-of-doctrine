@@ -60,7 +60,7 @@ func _play() -> void:
 	const Macro = preload("res://scripts/macro.gd")
 	Macro.set_budget(g.countries[cid], "army", 25 + done_rounds)
 	print("gönder: ", g.cmd_log.size(), " komut, tur=", g.turn)
-	net.rpc_id(1, "srv_submit", g.cmd_log, true)
+	net.rpc_id(1, "srv_submit", g.turn, g.cmd_log, true)
 
 var _dropped := false
 func _on_round(inf: Dictionary) -> void:

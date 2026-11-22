@@ -106,7 +106,15 @@ static func _dec(gs, v):
 
 const COUNTRY_PARAMS := ["target", "foe", "ally", "enemy", "v", "cid", "owner", "country", "a", "b"]
 const PROV_PARAMS := ["pid", "prov", "dest"]
-const GS_CMDS := ["finish_peace", "hire_merc", "respond_offer"]
+const GS_CMDS := ["hire_merc", "respond_offer"]
+## Sunucunun istemciden kabul ettiği modül emirleri (beyaz liste): iç yardımcı fonksiyonlar çağrılamaz.
+const MODULE_CMDS := ["Air.player_strike", "Air.rebase", "Air.airlift", "Air.rename", "Air.set_flag", "Air.set_stance",
+	"Cabinet.appoint", "Cabinet.dismiss", "Cabinet.apply", "Carriers.build_ship", "Carriers.buy", "Carriers.strike",
+	"Chokepoints.set_mode", "Fleets.order_move", "Fleets.stop", "Fleets.merge", "Fleets.blockade", "Fleets.player_bombard",
+	"Fleets.player_torpedo", "Fleets.embark", "Fleets.debark", "Fleets.rename", "Fleets.set_flag", "Fleets.set_stance",
+	"Fleets.set_escort", "Fleets.split", "Focus.start", "Focus.cancel", "Formables.form", "GrandOp.launch",
+	"Macro.set_front", "Macro.set_budget", "Macro.set_doctrine", "Macro.mobilize", "Macro.buy",
+	"Politics.choose", "Politics.do_action", "Ultimatum.deliver", "UN.propose", "UN.player_vote"]
 const OBJ_PARAMS := ["a", "f", "w", "army", "fleet", "wing", "fid", "c", "me", "country_obj"]
 static var _sigs: Dictionary = {}
 
@@ -174,7 +182,7 @@ static func replay(gs, cid: int, cmd) -> Dictionary:
 	if name.contains("."):
 		var mod: String = name.get_slice(".", 0)
 		var fn0: String = name.get_slice(".", 1)
-		if not MODULES.has(mod):
+		if not MODULES.has(mod) or not MODULE_CMDS.has(name):
 			return {"ok": false, "res": null, "err": "bilinmeyen modül"}
 		scr = load(MODULES[mod])
 		if not scr.has_method(fn0) and not _sig("m:" + name, scr, fn0).has("args"):
@@ -192,8 +200,16 @@ static func replay(gs, cid: int, cmd) -> Dictionary:
 			verr = "başkasının ülkesi"
 	if verr != "":
 		return {"ok": false, "res": null, "err": verr}
+	var gerr: String = _guard(gs, cid, name, args)
+	if gerr != "":
+		return {"ok": false, "res": null, "err": gerr}
 	var keep: int = gs.player
 	gs.switch_player(cid)
+	if name == "Cabinet.appoint":
+		var cerr: String = _guard_cabinet(gs, args)
+		if cerr != "":
+			gs.switch_player(keep)
+			return {"ok": false, "res": null, "err": cerr}
 	gs.cmd_replay = true
 	var res = null
 	var ok := true
@@ -208,3 +224,68 @@ static func replay(gs, cid: int, cmd) -> Dictionary:
 	gs.cmd_replay = false
 	gs.switch_player(keep)
 	return {"ok": ok, "res": res, "err": err}
+
+
+static func _own_country(args: Array, cid: int, idx: int) -> bool:
+	return args.size() > idx and args[idx] is Model.Country and args[idx].id == cid
+
+
+## Sunucu tarafı sahiplik/aralık denetimi: istemci başkası adına ya da kasadan fazlasını harcayamaz.
+static func _guard(gs, cid: int, name: String, args: Array) -> String:
+	match name:
+		"Macro.buy":
+			if not _own_country(args, cid, 0):
+				return "başkasının ülkesi"
+			if args.size() < 4 or int(args[3]) < 1 or int(args[3]) > 100000:
+				return "miktar"
+		"Macro.mobilize", "Macro.set_doctrine":
+			if not _own_country(args, cid, 0):
+				return "başkasının ülkesi"
+		"UN.propose":
+			if args.size() < 3 or int(args[1]) != cid:
+				return "önerge sahibi"
+			if args.size() > 3:
+				args[3] = {}                      # oy sonuçlarını istemci dayatamaz
+		"hire_merc":
+			if args.is_empty() or int(args[0]) != cid:
+				return "başkası adına"
+			if args.size() > 2:
+				args[2] = true                    # sözleşme bedeli her zaman ödenir
+		"Cabinet.apply":
+			if args.is_empty() or not (args[0] is Dictionary):
+				return "bozuk etki"
+			var eff: Dictionary = args[0]
+			for k in eff.keys():
+				var v = eff[k]
+				if not (v is int or v is float):
+					eff.erase(k)
+					continue
+				var f: float = float(v)
+				match String(k):
+					"g":
+						f = clampf(f, -3.0, 3.0)
+					"troops", "tech":
+						f = clampf(f, -0.05, 0.05)
+					"mit":
+						f = clampf(f, 0.0, 1.0)
+					"nbtruce":
+						f = clampf(f, 0.0, 52.0)
+					_:
+						f = clampf(f, -10.0, 10.0)
+				eff[k] = f
+	return ""
+
+
+## Kabine atamasında aday ve bedel sunucuda yeniden hesaplanır (istemci bedeli 0 yazamaz).
+static func _guard_cabinet(gs, args: Array) -> String:
+	if args.size() < 2 or not (args[1] is Dictionary):
+		return "bozuk aday"
+	var Cab = load("res://scripts/cabinet.gd")
+	var role: String = String(args[0])
+	if not Cab.APPOINT.has(role):
+		return "bilinmeyen rol"
+	for cand in Cab.candidates(gs, role):
+		if String(cand.n) == String(args[1].get("n", "")):
+			args[1] = cand
+			return ""
+	return "aday bulunamadı"

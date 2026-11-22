@@ -172,11 +172,39 @@ func _init() -> void:
 			f_own += 1
 	chk(f2.size() < all_n and f_own == own_n, "tam sis: yabancı ordular süzüldü (%d→%d), kendi ordular duruyor" % [all_n, f2.size()])
 	chk(g.fog_filter_armies(da.armies, ids[1], 0).size() == all_n, "sis kapalı: hepsi")
+	# diplomasi bildirimleri: karşı insan oyuncu haber alır (ittifak kurulmuş: elçi + ambargo), kötü niyetli komutlar reddedilir
+	var cn = _client_copy(g, ids[0])
+	var e1: String = cn.player_improve_relations(ids[1], "envoy")
+	cn.player_set_embargo(ids[2], true)
+	chk(cn.cmd_log.size() >= 2, "bildirim emirleri kaydedildi (%s)" % e1)
+	room.submit(ids[0], cn.cmd_log)
+	var evil: Array = [
+		{"n": "Macro.buy", "a": [{"$c": ids[0]}, "x", -50]},
+		{"n": "Macro.buy", "a": [{"$c": ids[1]}, "x", 5]},
+		{"n": "finish_peace", "a": [null, 0, [], []]},
+		{"n": "Cabinet.candidates", "a": []},
+		{"n": "UN.propose", "a": ["sanction", ids[0], ids[2], {}]},
+	]
+	room.submit(ids[1], evil)
+	for h in ids:
+		room.set_ready(h, true)
+	var rr4: Dictionary = room.process_round()
+	chk(rr4.rejected >= 5, "kötü niyetli komutlar reddedildi: %d" % int(rr4.rejected))
+	var got_env := false
+	var got_emb := false
+	for n in g.news_log:
+		if n.kind == "dipl" and int(n.get("for", -1)) == ids[1] and n.turn == g.turn and String(n.text).contains("elçi"):
+			got_env = true
+		if n.kind == "dipl" and int(n.get("for", -1)) == ids[2] and n.turn == g.turn and String(n.text).contains("ambargo"):
+			got_emb = true
+	chk(got_env or e1 != "", "elçi haberi hedef oyuncuya (e1=%s)" % e1)
+	chk(got_emb, "ambargo haberi hedef oyuncuya")
+	chk(g.countries[ids[0]].embargo.has(ids[2]), "ambargo sunucuda uygulandı")
 	# 5 tur daha stabil
 	for i in 5:
 		for h in ids:
 			room.set_ready(h, true)
 		room.process_round()
-	chk(g.turn == t1 + 9, "ardışık turlar")
+	chk(g.turn == t1 + 10, "ardışık turlar")
 	print("HATA SAYISI=", bad)
 	quit()

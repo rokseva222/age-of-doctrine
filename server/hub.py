@@ -58,7 +58,7 @@ def free_port():
 
 
 def create_room(b, ip):
-    name = clean(b.get("name", "Oda"), 24).strip() or "Oda"
+    name = clean(b.get("name", "Oda"), 24).strip().lstrip("-").strip() or "Oda"
     era = str(b.get("era", ""))
     scn = str(b.get("scenario", ""))
     if not SAFE.match(era) or not SAFE.match(scn):
@@ -69,14 +69,14 @@ def create_room(b, ip):
         fog = max(0, min(2, int(b.get("fog", 0))))
     except Exception:
         return 400, {"err": "geçersiz sayı"}
-    pw = clean(b.get("pass", ""), 16)
+    pw = clean(b.get("pass", ""), 16).lstrip("-")
     sv = server_ver()
     if sv and str(b.get("ver", "")) != sv:
         return 409, {"err": "ver", "server_ver": sv}
     reap()
-    if updating:
-        return 503, {"err": "update"}
     with lock:
+        if updating:
+            return 503, {"err": "update"}
         if len(rooms) >= A.max_rooms:
             return 503, {"err": "dolu"}
         if sum(1 for r in rooms.values() if r["ip"] == ip) >= A.per_ip:
@@ -121,7 +121,7 @@ class H(BaseHTTPRequestHandler):
             return None
 
     def _ip(self):
-        return self.headers.get("X-Forwarded-For", self.client_address[0]).split(",")[0].strip()
+        return self.client_address[0]      # X-Forwarded-For güvenilmez (hub doğrudan internete açık)
 
     def do_GET(self):
         path = self.path.split("?")[0]
@@ -197,9 +197,10 @@ def updater():
             reap()
             with lock:
                 busy = len(rooms) > 0
+                if not busy:
+                    updating = True
             if busy:
                 continue            # odalar boşalınca çekeriz
-            updating = True
             print("güncelleniyor %s -> %s" % (local[:7], remote[:7]), flush=True)
             r = git("pull", "--ff-only", timeout=180)
             print(r.stdout.strip(), r.stderr.strip(), flush=True)

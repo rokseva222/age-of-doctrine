@@ -42,7 +42,7 @@ func _init() -> void:
 		idle_t.autostart = true
 		var st := {"idle": 0, "had": false}
 		idle_t.timeout.connect(func():
-			if net.multiplayer.get_peers().size() > 0:
+			if net.players.size() > 0:
 				st.had = true
 				st.idle = 0
 				return

@@ -64,5 +64,26 @@ func _init() -> void:
 	for i in 32:
 		net._process(1.0)
 	chk(g.turn == t0 + 4, "tur süresi dolunca işlendi (turn=%d)" % g.turn)
+	# bayat tur kimliği reddedilir, güncel olan kabul edilir (yerel sunucu oyuncusu = eş 1)
+	net.players[1] = {"name": "t", "cid": ids[0], "host": true, "pass_ok": true}
+	room.ready[ids[0]] = false
+	net.srv_submit(g.turn - 1, [], true)
+	chk(not bool(room.ready.get(ids[0], false)), "bayat tur gönderimi yok sayıldı")
+	net.srv_submit(g.turn, [], false)
+	chk(not bool(room.ready.get(ids[0], false)), "hazır işaretlenmeden gönderim")
+	# süre dolmak üzereyken bekleyenlere "emirleri yolla" çağrısı bir kez gider
+	var flushed := [0]
+	net.flush_asked.connect(func(): flushed[0] += 1)
+	net.info.secs = 30.0
+	net._round_timer = 6.0
+	net._flushed = false
+	room.missed[ids[0]] = 0
+	for i in 3:
+		net._process(1.0)
+	chk(flushed[0] == 1, "bitmeden önce bir kez emir yollatıldı (%d)" % flushed[0])
+	# geçici YZ devri: kaçıran oyuncu AFK olarak işaretli kalmaz (ilk kaçış)
+	for i in 5:
+		net._process(1.0)
+	chk(not bool(room.afk.get(ids[0], false)), "geçici devir sonrası oyuncuya geri verildi")
 	print("HATA SAYISI=%d" % bad)
 	quit()
