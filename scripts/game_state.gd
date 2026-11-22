@@ -1075,25 +1075,35 @@ func news_visible(n: Dictionary) -> bool:
 
 
 func refresh_stats() -> void:
-	for c in countries:
-		c.prov_owned = 0
-		c.prov_held = 0
-		c.income = 0.0
-		c.troops = 0
-		c.owned_ids = []
-		c.held_ids = []
+	var cs: Array = countries
+	var nc: int = cs.size()
+	var owned: Array = []
+	var held: Array = []
+	var inc := PackedFloat64Array()
+	inc.resize(nc)
+	for i in nc:
+		owned.append([])
+		held.append([])
 	for p in provinces:
-		if p.owner >= 0:
-			countries[p.owner].prov_owned += 1
-			countries[p.owner].owned_ids.append(p.id)
-		if p.controller >= 0:
-			countries[p.controller].prov_held += 1
-			countries[p.controller].held_ids.append(p.id)
-		if p.controller == p.owner:
-			if p.owner >= 0:
-				countries[p.owner].income += p.rev()
-		elif p.controller >= 0:
-			countries[p.controller].income += p.rev() * 0.5
+		var o: int = p.owner
+		var ct: int = p.controller
+		if o >= 0:
+			owned[o].append(p.id)
+		if ct >= 0:
+			held[ct].append(p.id)
+		if ct == o:
+			if o >= 0:
+				inc[o] += p.rev()
+		elif ct >= 0:
+			inc[ct] += p.rev() * 0.5
+	for i in nc:
+		var c = cs[i]
+		c.owned_ids = owned[i]
+		c.held_ids = held[i]
+		c.prov_owned = owned[i].size()
+		c.prov_held = held[i].size()
+		c.income = inc[i]
+		c.troops = 0
 	for a in armies.values():
 		countries[a.owner].troops += a.size
 	for f in fleets.values():

@@ -9,6 +9,7 @@ const Arsenal = preload("res://scripts/arsenal.gd")
 const Settings = preload("res://scripts/settings.gd")
 const Loc = preload("res://scripts/loc.gd")
 const Ext = preload("res://scripts/fleet_ext.gd")
+const Eras = preload("res://scripts/eras.gd")
 const Cmd = preload("res://scripts/cmd.gd")
 
 const KINDS := ["fighter", "bomber", "drone", "transport", "recon"]
@@ -73,9 +74,18 @@ const CLASSES := {
 
 # ------------------------------------------------------------------ yardımcılar
 
+static var _fam_key := "\u0001"
+static var _fam_val := ""
+
+
 static func family() -> String:
+	var cur: String = Eras.current          # çağ ailesi hesabı pahalı: çağ değişmedikçe önbellekten
+	if cur == _fam_key:
+		return _fam_val
 	var f: String = Ext.family()
-	return f if UNIT_F.has(f) and f != "pre" else ("pre" if f == "pre" else "")
+	_fam_val = f if UNIT_F.has(f) and f != "pre" else ("pre" if f == "pre" else "")
+	_fam_key = cur
+	return _fam_val
 
 
 static func units(c) -> float:
@@ -255,8 +265,8 @@ static func _kind_list(lst: Array, kind: String) -> Array:
 
 
 ## Ülkenin kanatlarını hava gücüyle eşitle (tür başına pay)
-static func sync_country(gs, c, fresh: bool = false) -> void:
-	var lst: Array = wings_of(gs, c.id)
+static func sync_country(gs, c, fresh: bool = false, pre: Array = []) -> void:
+	var lst: Array = pre if not pre.is_empty() else wings_of(gs, c.id)
 	var ok: bool = qualifies(c)
 	var share: Dictionary = SHARE.get(family(), SHARE[""])
 	var u: float = units(c) if ok else 0.0
@@ -722,9 +732,15 @@ static func tick(gs) -> void:
 				continue
 			w.base = nb
 			w.cd = maxi(w.cd, gs.turn + 1)
+	# kanatları sahibine göre bir kez grupla (ülke başına tüm kanatları taramak ~10 ms'ydi)
+	var by_owner: Dictionary = {}
+	for w2 in gs.wings.values():
+		if not by_owner.has(w2.owner):
+			by_owner[w2.owner] = []
+		by_owner[w2.owner].append(w2)
 	for c2 in gs.countries:
-		if c2.alive and not c2.is_rebel and (qualifies(c2) or not wings_of(gs, c2.id).is_empty()):
-			sync_country(gs, c2)
+		if c2.alive and not c2.is_rebel and (qualifies(c2) or by_owner.has(c2.id)):
+			sync_country(gs, c2, false, by_owner.get(c2.id, []))
 	_ai(gs)
 
 

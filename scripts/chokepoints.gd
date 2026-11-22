@@ -156,6 +156,9 @@ static func income_mult(c) -> float:
 	return float(_mult.get(c.id, 1.0))
 
 
+static var _sig_key := ""
+
+
 static func _recompute(gs) -> void:
 	_mult.clear()
 	for c in gs.countries:
@@ -191,7 +194,15 @@ static func tick(gs) -> void:
 			gs.infamy = minf(100.0, gs.infamy + 0.7)
 		elif ctrl != gs.player and (gs.turn + ctrl + int(d.v)) % 8 == 0:
 			_ai(gs, id, st, cc, int(d.v))
-	_recompute(gs)
+	# çarpanlar yalnızca kontrol/mod değişince ya da 8 haftada bir yeniden hesaplanır (her tur 10 ms'ydi)
+	var sig := ""
+	for d2 in LIST:
+		var st2: Dictionary = gs.chokes[String(d2.id)]
+		sig += "%s:%s;" % [str(st2.get("ctrl", -1)), str(st2.get("mode", "open"))]
+	var key: String = "%d|%s" % [gs.get_instance_id(), sig]
+	if key != _sig_key or gs.turn % 8 == 0 or _mult.is_empty():
+		_sig_key = key
+		_recompute(gs)
 
 
 static func _news(t: String) -> String:

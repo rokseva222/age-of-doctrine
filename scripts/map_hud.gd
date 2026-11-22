@@ -480,18 +480,31 @@ func _draw_chokes(gs, screen: Rect2) -> void:
 					draw_polyline(pts, wc, 1.5, true)
 
 
+var _sel_rings: Dictionary = {}       # eyalet id -> dünya koordinatlı halka dizileri (her karede yeniden dönüştürülmez)
+
+
 func _draw_selection(gs, pid: int, cv: CanvasItem) -> void:
 	var p = gs.provinces[pid]
 	var pulse := 0.5 + 0.5 * sin(map.anim_time * 4.0)
-	for ring in p.rings:
-		var pts := PackedVector2Array()
-		for v in ring:
-			pts.append(map.world_to_screen(v))
-		if pts.size() < 3:
-			continue
-		pts.append(pts[0])
-		cv.draw_polyline(pts, Color(0.03, 0.04, 0.06, 0.8), 6.0, true)
-		cv.draw_polyline(pts, Color(TK.PAPER.r, TK.PAPER.g, TK.PAPER.b, 0.85 + 0.15 * pulse), 3.0, true)
+	var rings: Array = _sel_rings.get(pid, [])
+	if rings.is_empty():
+		for ring in p.rings:
+			var pts := PackedVector2Array()
+			for v in ring:
+				pts.append(v)
+			if pts.size() < 3:
+				continue
+			pts.append(pts[0])
+			rings.append(pts)
+		_sel_rings[pid] = rings
+	# köşe başına world_to_screen yerine tek dönüşüm matrisi: ekran = dünya*zoom + (vp/2 - cam*zoom)
+	var z: float = maxf(map.zoom, 0.0001)
+	var off: Vector2 = map.get_viewport_rect().size * 0.5 - map.cam_pos * z
+	cv.draw_set_transform(off, 0.0, Vector2(z, z))
+	for pts2 in rings:
+		cv.draw_polyline(pts2, Color(0.03, 0.04, 0.06, 0.8), 6.0 / z, true)
+		cv.draw_polyline(pts2, Color(TK.PAPER.r, TK.PAPER.g, TK.PAPER.b, 0.85 + 0.15 * pulse), 3.0 / z, true)
+	cv.draw_set_transform(Vector2.ZERO, 0.0, Vector2.ONE)
 
 
 func _draw_paths(gs) -> void:

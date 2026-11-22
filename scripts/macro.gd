@@ -830,8 +830,10 @@ static func _deliver(gs, c) -> void:
 		_retire(c, id, qty)
 		if c.id == gs.player:
 			gs.post_news("Teslimat: %d × %s envantere katıldı." % [qty, Arsenal.name_of(id)], c.capital, "arms")
+	var delivered: bool = keep.size() != c.orders.size()
 	c.orders = keep
-	recalc(c)
+	if delivered:
+		recalc(c)       # teslimat yoksa envanter değişmedi: boşuna yeniden hesaplama (haftada ~5 ms)
 
 
 ## yeni silah gelince en eski nesil kısmen emekli edilir

@@ -306,11 +306,14 @@ static func income_mult(gs, c) -> float:
 
 ## Her 4 haftada: eyaletler komşu ve devlet baskısıyla inanç değiştirir.
 static func tick(gs) -> void:
-	if gs.turn % SPREAD_EVERY != 0 or gs.player < 0:
+	if gs.player < 0:
 		return
 	ensure(gs)
 	var changes: Array = []
+	var slot: int = gs.turn % SPREAD_EVERY       # eyaletlerin 1/4'ü her turda (4 haftalık tek seferlik yük/donma yerine)
 	for p in gs.provinces:
+		if p.id % SPREAD_EVERY != slot:
+			continue
 		if p.owner < 0 or p.controller < 0:
 			continue
 		var cur := of(gs, p.id)
@@ -344,6 +347,11 @@ static func tick(gs) -> void:
 			gs.post_news(msg_tr if _tr() else msg_en, pid, "info")
 		if pr.owner == gs.player and ch[1] != old:
 			pass
+	if slot != 0:
+		if not changes.is_empty():
+			invalidate()
+			gs.province_changed.emit(changes[0][0])
+		return
 	# yabancı inanç payı yüksekse istikrar yavaşça aşınır (oyuncu)
 	var me = gs.countries[gs.player]
 	var fs := foreign_share(gs, gs.player)
