@@ -562,6 +562,9 @@ static func net_income(gs, c) -> float:
 
 # ===================================================================== haftalık işlemler
 
+static var pf: Dictionary = {}
+
+
 static func weekly(gs) -> void:
 	_now = gs.turn
 	if gs.macro_idx.is_empty():
@@ -576,31 +579,54 @@ static func weekly(gs) -> void:
 		if c.is_rebel:
 			_rebel_week(gs, c)
 			continue
+		var _t0 := Time.get_ticks_usec()
 		ensure(gs, c)
 		if c.trade_block > 0:
 			c.trade_block -= 1
 		var slot: int = gs.turn + c.id
 		if slot % 4 == 0 or c.id == gs.player:
 			_trade(gs, c)
+		if gs.profile:
+			pf["trade"] = int(pf.get("trade", 0)) + Time.get_ticks_usec() - _t0
+			_t0 = Time.get_ticks_usec()
 		if slot % 2 == 0 or c.id == gs.player or not c.enemies.is_empty():
 			recalc(c)
-		var f: Dictionary = calc(gs, c)
+		if gs.profile:
+			pf["recalc"] = int(pf.get("recalc", 0)) + Time.get_ticks_usec() - _t0
+			_t0 = Time.get_ticks_usec()
+		var f: Dictionary
+		if slot % 2 == 0 or c.id == gs.player or gs.humans.has(c.id) or not c.enemies.is_empty() or c.fin.is_empty():
+			f = calc(gs, c)
+		else:
+			f = c.fin          # YZ barış ülkesi: gelir tablosu 2 turda bir yenilenir (yavaş değişir)
+		if gs.profile:
+			pf["calc"] = int(pf.get("calc", 0)) + Time.get_ticks_usec() - _t0
+			_t0 = Time.get_ticks_usec()
 		c.fin = f
 		c.gold += f["pots"]["res"] - f["short"]
 		c.fund += f["fund_in"]
 		Propaganda.weekly(gs, c, f["rev"])
 		c.stability = clampf(c.stability + Propaganda.stability_delta(c), 3.0, 100.0)
 		_invest(gs, c, f)
+		if gs.profile:
+			pf["invest"] = int(pf.get("invest", 0)) + Time.get_ticks_usec() - _t0
+			_t0 = Time.get_ticks_usec()
 		c.gold_delta = f["net"]
 		var gm: float = Goods.weekly(gs, c)
 		c.gold += gm
 		c.gold_delta += gm
+		if gs.profile:
+			pf["goods"] = int(pf.get("goods", 0)) + Time.get_ticks_usec() - _t0
+			_t0 = Time.get_ticks_usec()
 		if c.gold < 0.0:
 			for a in gs.armies_of(c.id):
 				a.size = maxi(100, int(a.size * 0.97))
 			c.stability = maxf(5.0, c.stability - 1.0)
 			c.gold = 0.0
 		_deliver(gs, c)
+		if gs.profile:
+			pf["deliver"] = int(pf.get("deliver", 0)) + Time.get_ticks_usec() - _t0
+			_t0 = Time.get_ticks_usec()
 		if slot % 2 == 0:
 			_recruit(gs, c, 6.0 * (0.6 + float(c.budget["mil"]) / 25.0))     # haftalık asker alımı bütçe payına bağlı (%10 pay ≈ 3x eski hız)
 		if slot % 3 == 0:
@@ -887,7 +913,7 @@ static func _deliver(gs, c) -> void:
 			gs.post_news("Teslimat: %d × %s envantere katıldı." % [qty, Arsenal.name_of(id)], c.capital, "arms")
 	var delivered: bool = keep.size() != c.orders.size()
 	c.orders = keep
-	if delivered:
+	if delivered and (c.id == gs.player or gs.humans.has(c.id)):
 		recalc(c)       # teslimat yoksa envanter değişmedi: boşuna yeniden hesaplama (haftada ~5 ms)
 
 

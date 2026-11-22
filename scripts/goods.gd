@@ -237,7 +237,12 @@ static func set_policy(c, good: String, pol: String) -> bool:
 static func weekly(gs, c) -> float:
 	ensure(c)
 	var g0: Dictionary = c.goods
-	if (gs.turn + c.id) % 4 == 0 or c.id == gs.player or float(g0.rate.oil.dem) <= 0.0:
+	var slot: bool = (gs.turn + c.id) % 4 == 0
+	# YZ ülkeleri: tam hesap 4 turda bir; aradaki turlarda son sonuç (para + kıtlık cezası) aynen uygulanır
+	if not slot and c.id != gs.player and g0.has("gold") and (g0.deals as Array).is_empty() and float(g0.rate.oil.dem) > 0.0:
+		_apply_short(c, g0.short)
+		return float(g0.gold)
+	if slot or c.id == gs.player or float(g0.rate.oil.dem) <= 0.0:
 		_recount(gs, c)
 	var inc: float = maxf(c.income, 1.0)
 	var avail0: float = open_share(c)
@@ -305,6 +310,11 @@ static func weekly(gs, c) -> float:
 	money += inc * 0.05           # iç pazarın olağan payı (ortalama ülke için ticaret dengeli kalsın)
 	money = clampf(money, -inc * 0.08, inc * 0.13)
 	g0.gold = money
+	_apply_short(c, short)
+	return money
+
+
+static func _apply_short(c, short: Dictionary) -> void:
 	for k in short:
 		var s: float = float(short[k])
 		match k:
@@ -314,7 +324,6 @@ static func weekly(gs, c) -> float:
 				c.industry = clampf(c.industry - 0.25 * s, 5.0, 100.0)
 			"oil":
 				c.logistics = clampf(c.logistics - 0.3 * s, 5.0, 100.0)
-	return money
 
 
 ## Kayıt

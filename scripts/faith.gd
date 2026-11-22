@@ -311,17 +311,32 @@ static func tick(gs) -> void:
 	ensure(gs)
 	var changes: Array = []
 	var slot: int = gs.turn % SPREAD_EVERY       # eyaletlerin 1/4'ü her turda (4 haftalık tek seferlik yük/donma yerine)
-	for p in gs.provinces:
-		if p.id % SPREAD_EVERY != slot:
+	var fc: Dictionary = {}       # bu turun yerel inanç önbelleği (tur içinde değişmez)
+	var sfc: Dictionary = {}
+	var np: int = gs.provinces.size()
+	for pi in range(slot, np, SPREAD_EVERY):      # yalnızca bu turun dilimi (tüm eyaletleri gezmeye gerek yok)
+		var p = gs.provinces[pi]
+		if p.id != pi:
 			continue
 		if p.owner < 0 or p.controller < 0:
 			continue
-		var cur := of(gs, p.id)
+		var cur: String = fc[p.id] if fc.has(p.id) else of(gs, p.id)
 		var press := {}
+		var w1: float = 1.0 / maxf(1.0, float(p.neighbors.size()))
 		for nb in p.neighbors:
-			var f := of(gs, nb)
-			press[f] = float(press.get(f, 0.0)) + 1.0 / maxf(1.0, float(p.neighbors.size()))
-		var sf := state_faith(gs, p.controller)
+			var f: String
+			if fc.has(nb):
+				f = fc[nb]
+			else:
+				f = of(gs, nb)
+				fc[nb] = f
+			press[f] = float(press.get(f, 0.0)) + w1
+		var sf: String
+		if sfc.has(p.controller):
+			sf = sfc[p.controller]
+		else:
+			sf = state_faith(gs, p.controller)
+			sfc[p.controller] = sf
 		press[sf] = float(press.get(sf, 0.0)) + 0.6          # devlet baskısı
 		var best := cur
 		var bv: float = float(press.get(cur, 0.0)) + 0.35     # atalet (mezhepler direnir)

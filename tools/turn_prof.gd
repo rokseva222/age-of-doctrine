@@ -26,4 +26,7 @@ func _init():
 	keys.sort_custom(func(x, y): return gs.prof[x] > gs.prof[y])
 	for k in keys:
 		print("  %-14s %.1f ms/tur" % [k, float(gs.prof[k]) / n / 1000.0])
+	var Macro = load("res://scripts/macro.gd")
+	for k in Macro.pf:
+		print("  macro.%-10s %.1f ms/tur" % [k, float(Macro.pf[k]) / n / 1000.0])
 	quit()

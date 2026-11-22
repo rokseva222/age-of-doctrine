@@ -139,6 +139,31 @@ static func dist(gs, a: int, b: int) -> float:
 	return gs.provinces[a].label_pos.distance_to(gs.provinces[b].label_pos)
 
 
+static var _reach: Dictionary = {}
+static var _reach_fam: String = "?"
+static var _reach_n: int = -1
+
+
+## Bir üssün menzilindeki eyaletler (üs + tür başına önbellek; harita sabit olduğu için çağ/harita değişince temizlenir)
+static func reach(gs, base: int, kind: String) -> Array:
+	var fam: String = family()
+	if fam != _reach_fam or gs.provinces.size() != _reach_n:
+		_reach.clear()
+		_reach_fam = fam
+		_reach_n = gs.provinces.size()
+	var key: int = base * 8 + KINDS.find(kind)
+	if _reach.has(key):
+		return _reach[key]
+	var rng_px: float = range_px(kind)
+	var bpos: Vector2 = gs.provinces[base].label_pos
+	var out: Array = []
+	for p in gs.provinces:
+		if p.label_pos.distance_to(bpos) <= rng_px:
+			out.append(p.id)
+	_reach[key] = out
+	return out
+
+
 static func in_range(gs, w, pid: int) -> bool:
 	return w.base >= 0 and dist(gs, w.base, pid) <= range_px(w.kind)
 
@@ -265,6 +290,9 @@ static func _kind_list(lst: Array, kind: String) -> Array:
 
 
 ## Ülkenin kanatlarını hava gücüyle eşitle (tür başına pay)
+static var _sync_mult: float = 1.0
+
+
 static func sync_country(gs, c, fresh: bool = false, pre: Array = []) -> void:
 	var lst: Array = pre if not pre.is_empty() else wings_of(gs, c.id)
 	var ok: bool = qualifies(c)
@@ -294,7 +322,7 @@ static func sync_country(gs, c, fresh: bool = false, pre: Array = []) -> void:
 			for w in cur_l:
 				if w.size < best.size:
 					best = w
-			best.size += minf(tgt - cur, maxf(1.0, tgt * 0.05) if not fresh else tgt - cur)
+			best.size += minf(tgt - cur, maxf(1.0, tgt * 0.05) * _sync_mult if not fresh else tgt - cur)
 		elif cur > tgt * 1.12 + 1.0:
 			var f: float = tgt / cur
 			for w in cur_l:
@@ -420,12 +448,9 @@ static func targets(gs, w) -> Array:
 	var out: Array = []
 	if w.kind != "bomber" and w.kind != "drone":
 		return out
-	var rng_px: float = range_px(w.kind)
-	for p in gs.provinces:
-		if p.label_pos.distance_to(gs.provinces[w.base].label_pos) > rng_px:
-			continue
-		if _holder_hostile(gs, w.owner, p.id):
-			out.append(p.id)
+	for pid in reach(gs, w.base, w.kind):
+		if _holder_hostile(gs, w.owner, pid):
+			out.append(pid)
 	out.sort_custom(func(a, b):
 		var sa: int = gs.armies[a].size if gs.armies.has(a) and gs.armies[a].owner != w.owner else 0
 		var sb: int = gs.armies[b].size if gs.armies.has(b) and gs.armies[b].owner != w.owner else 0
@@ -581,8 +606,9 @@ static func lift_sources(gs, w) -> Array:
 static func lift_dests(gs, w, src_pid: int) -> Array:
 	var out: Array = []
 	var cand: Array = []
-	for p in gs.provinces:
-		if p.id == src_pid or not in_range(gs, w, p.id):
+	for pid0 in reach(gs, w.base, w.kind):
+		var p = gs.provinces[pid0]
+		if p.id == src_pid:
 			continue
 		if p.controller == w.owner:
 			var front := false
@@ -741,8 +767,16 @@ static func tick(gs) -> void:
 			by_owner[w2.owner] = []
 		by_owner[w2.owner].append(w2)
 	for c2 in gs.countries:
-		if c2.alive and not c2.is_rebel and (qualifies(c2) or by_owner.has(c2.id)):
+		if not c2.alive or c2.is_rebel:
+			continue
+		# YZ ülkelerinin kanat eşitlemesi 3 turda bir (büyüme adımı 3 kat); oyuncu her tur
+		var hum: bool = c2.id == gs.player or gs.humans.has(c2.id)
+		if not hum and (gs.turn + c2.id) % 3 != 0:
+			continue
+		if qualifies(c2) or by_owner.has(c2.id):
+			_sync_mult = 1.0 if hum else 3.0
 			sync_country(gs, c2, false, by_owner.get(c2.id, []))
+	_sync_mult = 1.0
 	_ai(gs)
 
 
@@ -788,19 +822,32 @@ static func _ai(gs) -> void:
 			continue
 		var best := -1
 		var bs := 0.0
-		for pid in targets(gs, w):
-			var d = gs.armies.get(pid)
-			var sz: int = d.size if d != null and d.owner != w.owner else 0
-			if sz < 3000:
+		# tüm eyaletleri taramak yerine yalnızca ordu bulunan eyaletler (3000+ asker) adaydır
+		var rng_px: float = range_px(w.kind)
+		var bpos: Vector2 = gs.provinces[w.base].label_pos
+		var cands: Array = []
+		for pid2 in gs.armies:
+			var d2 = gs.armies[pid2]
+			if d2.owner == w.owner or d2.size < 3000:
 				continue
-			var sc: float = float(sz)
-			# eşlik edilmeyen ya da yoğun önlemeli hedeften kaçın
+			if gs.provinces[pid2].label_pos.distance_to(bpos) > rng_px:
+				continue
+			if _holder_hostile(gs, w.owner, pid2):
+				cands.append(pid2)
+		cands.sort_custom(func(a, b):
+			var sa: int = gs.armies[a].size
+			var sb: int = gs.armies[b].size
+			if sa != sb:
+				return sa > sb
+			return a < b)
+		for pid in cands:
+			var sz: int = gs.armies[pid].size
 			var pint: float = _sum_cp(interceptors(gs, pid, gs._holder(pid), w.owner))
 			if pint > cp(w) * 1.5:
 				continue
-			if sc > bs:
-				bs = sc
-				best = pid
+			bs = float(sz)
+			best = pid
+			break
 		if best >= 0:
 			resolve_strike(gs, w, best)
 			w.cd = gs.turn + STRIKE_CD + 1
@@ -808,15 +855,19 @@ static func _ai(gs) -> void:
 
 ## Yapay zekâ hava köprüsü: arkadaki büyük bir orduyu en yakın dost cephe eyaletine uçurur (paraşüt yok)
 static func _ai_lift(gs, w, rr: RandomNumberGenerator) -> void:
-	if w.cd > gs.turn or not _controls(gs, w) or rr.randf() > 0.3:
+	if w.cd > gs.turn or not _controls(gs, w):
 		return
 	var c = gs.countries[w.owner]
-	if c.enemies.is_empty():
+	if c.enemies.is_empty() or rr.randf() > 0.3:
 		return
-	for src in lift_sources(gs, w):
+	var srcs: Array = []
+	for pid in gs.armies:       # yalnızca 4000+ askerli, emir almamış ordular (lift_sources hepsini menzil için tarıyordu)
+		var a0 = gs.armies[pid]
+		if a0.owner == w.owner and a0.size >= 4000 and a0.op == "" and a0.prov >= 0 and a0.sp_size <= 0 and in_range(gs, w, pid):
+			srcs.append(pid)
+	srcs.sort_custom(func(x, y): return gs.armies[x].size > gs.armies[y].size)
+	for src in srcs:
 		var a = gs.armies[src]
-		if a.size < 4000 or a.op != "":
-			continue
 		var p = gs.provinces[src]
 		var front := false
 		for nb in p.neighbors:

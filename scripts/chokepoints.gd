@@ -200,7 +200,7 @@ static func tick(gs) -> void:
 		var st2: Dictionary = gs.chokes[String(d2.id)]
 		sig += "%s:%s;" % [str(st2.get("ctrl", -1)), str(st2.get("mode", "open"))]
 	var key: String = "%d|%s" % [gs.get_instance_id(), sig]
-	if key != _sig_key or gs.turn % 8 == 0 or _mult.is_empty():
+	if key != _sig_key or gs.turn % 16 == 0 or _mult.is_empty():
 		_sig_key = key
 		_recompute(gs)
 
