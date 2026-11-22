@@ -436,33 +436,35 @@ def card_list(im, cfg, col, m, idx, box, base_dir):
 
 
 def card_cell(im, cfg, col, m, idx, box, base_dir):
-    """Izgara hücresi: üstte ortalanmış fotoğraf, altında isim ve unvan."""
+    """Izgara hücresi: solda büyük fotoğraf, sağda numara + isim + unvan."""
     d = ImageDraw.Draw(im)
     x0, y0, x1, y1 = [int(v) for v in box]
     w, h = x1 - x0, y1 - y0
     draw_panel(d, (x0, y0, x1, y1), col, accent=False)
     d.rectangle((x0, y0, x1, y0 + 4), fill=col["paper"])
     pad = 14
-    tw = w - 2 * 22
+    ps = max(60, min(h - 2 * pad - 4, int(w * 0.46)))
+    px = x0 + pad + 4
+    py = y0 + (h - ps) // 2 + 2
+    pt = make_portrait(m, ps, cfg, col, base_dir)
+    im.paste(pt, (px, py), pt)
+    tx = px + ps + 18
+    tw = x1 - tx - 14
     scale = 1.0
     while True:
-        name_lines, nf, nlh = fit_text(display_name(m, cfg), HEAD, tw, min(50, int(h * 0.2)) * scale, 22, max_lines=2)
-        role_lines, rf, rlh = fit_text(display_role(m, cfg), BODY_B, tw, min(26, int(h * 0.11)) * scale, 15, max_lines=2)
-        text_h = nlh * len(name_lines) + 8 + rlh * len(role_lines)
-        ps = int(min(w - 2 * pad - 60, h - 2 * pad - text_h - 10, 230))
-        if ps >= min(110, h * 0.42) or scale < 0.5:
+        name_lines, nf, nlh = fit_text(display_name(m, cfg), HEAD, tw, min(54, int(h * 0.24)) * scale, 20, max_lines=2)
+        role_lines, rf, rlh = fit_text(display_role(m, cfg), BODY_B, tw, min(24, int(h * 0.11)) * scale, 13, max_lines=3)
+        idx_h = 26 if cfg["show_index"] else 0
+        text_h = idx_h + nlh * len(name_lines) + 10 + rlh * len(role_lines)
+        if text_h <= h - 28 or scale < 0.5:
             break
         scale -= 0.07
-    ps = max(ps, 60)
-    total = ps + 10 + text_h
-    y = y0 + (h - total) / 2 + 2
-    pt = make_portrait(m, ps, cfg, col, base_dir)
-    im.paste(pt, (x0 + (w - ps) // 2, int(y)), pt)
-    y += ps + 10
-    y += draw_block(d, x0 + w / 2, y, name_lines, nf, nlh, col["paper"], "m") + 8
-    draw_block(d, x0 + w / 2, y, role_lines, rf, rlh, col["paper_dim"], "m")
+    y = y0 + (h - text_h) / 2 + 2
     if cfg["show_index"]:
-        draw_text(d, (x0 + 18, y0 + 16), f"{idx:02d}", font(MONO_B, 20), col["red"], "la", 2)
+        draw_text(d, (tx, y), f"{idx:02d}", font(MONO_B, 20), col["red"], "la", 2)
+        y += idx_h
+    y += draw_block(d, tx, y, name_lines, nf, nlh, col["paper"], "l") + 10
+    draw_block(d, tx, y, role_lines, rf, rlh, col["paper_dim"], "l")
 
 
 def card_single(im, cfg, col, m, idx, total, box, base_dir):
@@ -487,7 +489,7 @@ def card_single(im, cfg, col, m, idx, total, box, base_dir):
         text_h = label_h + 14 + nlh * len(name_lines) + 14 + 2 + 20 + rlh * len(role_lines)
         if bio_lines:
             text_h += 34 + blh * len(bio_lines) + 40
-        ps = int(min(560, h - text_h - 36 - 30, w - 100))
+        ps = int(min(700, h - text_h - 36 - 30, w - 100))
         if ps >= 300 or scale < 0.5:
             break
         scale -= 0.07
