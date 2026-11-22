@@ -1,0 +1,438 @@
+{
+ "moments": [
+  {
+   "id": "arctic_grenland",
+   "turn": 8,
+   "title": "Grönland Sorusu",
+   "scene": "crisis",
+   "icon": "treaty",
+   "text": "Washington Grönland'ın 'ulusal güvenlik için gerekli' olduğunu söylüyor; Danimarka ve Nuuk satılık olmadığını yineliyor. Kutup ticaret yolları, nadir toprak elementleri ve erken uyarı radarları adayı stratejik bir ödül yapıyor.",
+   "major": true,
+   "default_fx": [
+    [
+     "rel",
+     "United States of America",
+     "Denmark",
+     -4
+    ],
+    [
+     "stab",
+     "Denmark",
+     -1
+    ]
+   ],
+   "roles": {
+    "Denmark": {
+     "text": "Kopenhag müttefiklerin baskısı altında; Avrupa size destek verirken NATO içi çatlak büyüyor.",
+     "options": [
+      {
+       "t": "Avrupa desteğini topla",
+       "d": "Avrupa desteğini topla",
+       "fx": [
+        [
+         "rel",
+         "Denmark",
+         "Norway",
+         4
+        ],
+        [
+         "rel",
+         "Denmark",
+         "United States of America",
+         -3
+        ],
+        [
+         "stab",
+         "Denmark",
+         2
+        ]
+       ],
+       "r": "Danimarka AB ve Kuzey ülkelerinden destek bildirisi aldı."
+      },
+      {
+       "t": "Daha fazla ABD üssü ve yatırım öner",
+       "d": "Daha fazla ABD üssü ve yatırım öner",
+       "fx": [
+        [
+         "rel",
+         "Denmark",
+         "United States of America",
+         4
+        ],
+        [
+         "stab",
+         "Denmark",
+         -1
+        ]
+       ],
+       "r": "Danimarka ABD'ye Grönland'da genişletilmiş savunma anlaşması önerdi."
+      }
+     ]
+    },
+    "United States of America": {
+     "text": "Başkan Grönland için 'her yolu denemeyi' istiyor; ama NATO müttefiki bir ülkeyi zorlamak ittifakı sarsar.",
+     "options": [
+      {
+       "t": "Ekonomik ve diplomatik baskı",
+       "d": "Ekonomik ve diplomatik baskı",
+       "fx": [
+        [
+         "rel",
+         "United States of America",
+         "Denmark",
+         -5
+        ],
+        [
+         "rel",
+         "United States of America",
+         "Norway",
+         -1
+        ]
+       ],
+       "r": "ABD Danimarka'ya gümrük ve yatırım teklifleriyle baskı kurdu."
+      },
+      {
+       "t": "Üs anlaşmasıyla yetin",
+       "d": "Üs anlaşmasıyla yetin",
+       "fx": [
+        [
+         "rel",
+         "United States of America",
+         "Denmark",
+         4
+        ],
+        [
+         "stab",
+         "United States of America",
+         1
+        ]
+       ],
+       "r": "Washington Pituffik'teki varlığını genişleten bir anlaşmaya razı oldu."
+      }
+     ]
+    },
+    "Canada": {
+     "text": "Ottawa Kuzey Kutbu egemenliğini güçlendirmek için buzkıranlar ve denizaltılar planlıyor.",
+     "options": [
+      {
+       "t": "Kuzey savunma yatırımı",
+       "d": "Kuzey savunma yatırımı",
+       "fx": [
+        [
+         "gold",
+         "Canada",
+         -0.5
+        ],
+        [
+         "troops",
+         "Canada",
+         3
+        ],
+        [
+         "rel",
+         "Canada",
+         "United States of America",
+         -1
+        ]
+       ],
+       "r": "Kanada Kuzey Kutbu'na radar, buzkıran ve denizaltı programı duyurdu.",
+       "keep_default": true
+      },
+      {
+       "t": "ABD ile ortak savunma (NORAD)",
+       "d": "ABD ile ortak savunma (NORAD)",
+       "fx": [
+        [
+         "rel",
+         "Canada",
+         "United States of America",
+         3
+        ]
+       ],
+       "r": "Kanada NORAD modernizasyonunu hızlandırdı.",
+       "keep_default": true
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "arctic_kuzeyyol",
+   "turn": 32,
+   "title": "Kuzey Deniz Yolu Açılıyor",
+   "scene": "trade",
+   "icon": "ship",
+   "text": "Yaz buzulları rekor düzeyde çekildi; Çin yük gemileri Rus buzkıranları eşliğinde Kuzey Deniz Yolu'ndan Avrupa'ya geçti. Süveyş'e alternatif yeni bir ticaret kuşağı doğuyor; Norveç ve NATO Kutup radarlarını izliyor.",
+   "major": false,
+   "default_fx": [
+    [
+     "gold",
+     "Russia",
+     1.0
+    ],
+    [
+     "rel",
+     "Russia",
+     "China",
+     3
+    ],
+    [
+     "rel",
+     "Norway",
+     "Russia",
+     -2
+    ]
+   ],
+   "roles": {
+    "Russia": {
+     "text": "Kutup rotası Rusya'ya gelir ve nüfuz getiriyor; ama yaptırımlar teknoloji erişimini kısıtlıyor.",
+     "options": [
+      {
+       "t": "Rota ücreti ve Kuzey Filosu'nu güçlendir",
+       "d": "Rota ücreti ve Kuzey Filosu'nu güçlendir",
+       "fx": [
+        [
+         "gold",
+         "Russia",
+         1.5
+        ],
+        [
+         "rel",
+         "Russia",
+         "Norway",
+         -3
+        ],
+        [
+         "rel",
+         "Russia",
+         "United States of America",
+         -2
+        ]
+       ],
+       "r": "Rusya Kuzey Deniz Yolu'nda geçiş ücreti ve deniz devriyesi artırdı."
+      },
+      {
+       "t": "Çin ile ortak yatırım",
+       "d": "Çin ile ortak yatırım",
+       "fx": [
+        [
+         "gold",
+         "Russia",
+         1.0
+        ],
+        [
+         "rel",
+         "Russia",
+         "China",
+         4
+        ]
+       ],
+       "r": "Moskova ve Pekin kutup LNG ve liman projelerine ortak oldu."
+      }
+     ]
+    },
+    "Norway": {
+     "text": "Svalbard ve Barents Denizi'ndeki ağırlığınız büyük; Rusya ile komşuluğu sakin tutmak istiyorsunuz.",
+     "options": [
+      {
+       "t": "NATO ile Kuzey devriyesi",
+       "d": "NATO ile Kuzey devriyesi",
+       "fx": [
+        [
+         "rel",
+         "Norway",
+         "United States of America",
+         3
+        ],
+        [
+         "rel",
+         "Norway",
+         "Russia",
+         -4
+        ],
+        [
+         "troops",
+         "Norway",
+         3
+        ]
+       ],
+       "r": "Norveç NATO'nun Kuzey devriye ve tatbikatlarını artırdı."
+      },
+      {
+       "t": "Barents işbirliğini koru",
+       "d": "Barents işbirliğini koru",
+       "fx": [
+        [
+         "rel",
+         "Norway",
+         "Russia",
+         3
+        ],
+        [
+         "stab",
+         "Norway",
+         1
+        ]
+       ],
+       "r": "Oslo balıkçılık ve arama-kurtarma işbirliğini sürdürdü."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "arctic_denizalti",
+   "turn": 70,
+   "title": "Kutup Altı Denizaltı Karşılaşması",
+   "scene": "naval",
+   "icon": "submarine",
+   "text": "Buzun altında bir Rus ve bir NATO denizaltısı tehlikeli şekilde yakın geçti; iki taraf da sonarla izlendiğini söylüyor. Kutup, silahsız bir bölge değil: kıta sahanlığı iddiaları da masada.",
+   "major": true,
+   "default_fx": [
+    [
+     "rel",
+     "Russia",
+     "United States of America",
+     -3
+    ],
+    [
+     "stab",
+     "Russia",
+     -1
+    ]
+   ],
+   "roles": {
+    "Russia": {
+     "text": "Kutup denizaltı filonuz caydırıcılığınızın temeli; bir kaza kriz çıkarabilir.",
+     "options": [
+      {
+       "t": "Sessizce geri çekil",
+       "d": "Sessizce geri çekil",
+       "fx": [
+        [
+         "rel",
+         "Russia",
+         "United States of America",
+         1
+        ]
+       ],
+       "r": "Moskova olayı büyütmedi, devriyeleri azalttı."
+      },
+      {
+       "t": "Kıta sahanlığı iddiasını sertleştir",
+       "d": "Kıta sahanlığı iddiasını sertleştir",
+       "fx": [
+        [
+         "rel",
+         "Russia",
+         "Norway",
+         -3
+        ],
+        [
+         "rel",
+         "Russia",
+         "Canada",
+         -3
+        ],
+        [
+         "rel",
+         "Russia",
+         "Denmark",
+         -3
+        ]
+       ],
+       "r": "Rusya BM'ye genişletilmiş kıta sahanlığı iddiası sundu."
+      }
+     ]
+    },
+    "United States of America": {
+     "text": "Kutup caydırıcılığı için buzkıran filosu ve denizaltı gerekli; bütçeyi nereye ayıracaksın?",
+     "options": [
+      {
+       "t": "Buzkıran ve denizaltı yatırımı",
+       "d": "Buzkıran ve denizaltı yatırımı",
+       "fx": [
+        [
+         "gold",
+         "United States of America",
+         -0.5
+        ],
+        [
+         "rel",
+         "United States of America",
+         "Russia",
+         -2
+        ],
+        [
+         "rel",
+         "United States of America",
+         "Canada",
+         2
+        ]
+       ],
+       "r": "ABD Kutup Güvenlik Kesicisi programını hızlandırdı.",
+       "keep_default": true
+      },
+      {
+       "t": "Diplomasi ve Arktik Konseyi",
+       "d": "Diplomasi ve Arktik Konseyi",
+       "fx": [
+        [
+         "rel",
+         "United States of America",
+         "Russia",
+         2
+        ]
+       ],
+       "r": "ABD Arktik Konseyi'nde kriz yönetimi kanalı önerdi.",
+       "keep_default": true
+      }
+     ]
+    }
+   }
+  }
+ ],
+ "moments_en": {
+  "Avrupa desteğini topla": "Rally European support",
+  "Danimarka AB ve Kuzey ülkelerinden destek bildirisi aldı.": "Denmark gathered a statement of support from the EU and the Nordics.",
+  "Daha fazla ABD üssü ve yatırım öner": "Offer more US basing and investment",
+  "Danimarka ABD'ye Grönland'da genişletilmiş savunma anlaşması önerdi.": "Denmark offered the US an expanded defence deal in Greenland.",
+  "Kopenhag müttefiklerin baskısı altında; Avrupa size destek verirken NATO içi çatlak büyüyor.": "Copenhagen is under pressure from an ally; Europe backs you while a rift grows inside NATO.",
+  "Ekonomik ve diplomatik baskı": "Economic and diplomatic pressure",
+  "ABD Danimarka'ya gümrük ve yatırım teklifleriyle baskı kurdu.": "The US pressed Denmark with tariffs and investment offers.",
+  "Üs anlaşmasıyla yetin": "Settle for a basing deal",
+  "Washington Pituffik'teki varlığını genişleten bir anlaşmaya razı oldu.": "Washington agreed to a deal widening its Pituffik presence.",
+  "Başkan Grönland için 'her yolu denemeyi' istiyor; ama NATO müttefiki bir ülkeyi zorlamak ittifakı sarsar.": "The President wants to 'try every route' for Greenland, but pressuring a NATO ally would shake the alliance.",
+  "Kuzey savunma yatırımı": "Invest in northern defence",
+  "Kanada Kuzey Kutbu'na radar, buzkıran ve denizaltı programı duyurdu.": "Canada announced radar, icebreaker and submarine programmes for the Arctic.",
+  "ABD ile ortak savunma (NORAD)": "Joint defence with the US (NORAD)",
+  "Kanada NORAD modernizasyonunu hızlandırdı.": "Canada sped up NORAD modernisation.",
+  "Ottawa Kuzey Kutbu egemenliğini güçlendirmek için buzkıranlar ve denizaltılar planlıyor.": "Ottawa plans icebreakers and submarines to assert Arctic sovereignty.",
+  "Grönland Sorusu": "The Greenland Question",
+  "Washington Grönland'ın 'ulusal güvenlik için gerekli' olduğunu söylüyor; Danimarka ve Nuuk satılık olmadığını yineliyor. Kutup ticaret yolları, nadir toprak elementleri ve erken uyarı radarları adayı stratejik bir ödül yapıyor.": "Washington says Greenland is 'necessary for national security'; Copenhagen and Nuuk repeat that it is not for sale. Polar trade routes, rare earths and early-warning radars make the island a strategic prize.",
+  "Rota ücreti ve Kuzey Filosu'nu güçlendir": "Charge transit fees and boost the Northern Fleet",
+  "Rusya Kuzey Deniz Yolu'nda geçiş ücreti ve deniz devriyesi artırdı.": "Russia raised transit fees and naval patrols on the route.",
+  "Çin ile ortak yatırım": "Joint investment with China",
+  "Moskova ve Pekin kutup LNG ve liman projelerine ortak oldu.": "Moscow and Beijing partnered on polar LNG and port projects.",
+  "Kutup rotası Rusya'ya gelir ve nüfuz getiriyor; ama yaptırımlar teknoloji erişimini kısıtlıyor.": "The polar route brings income and leverage, but sanctions limit access to technology.",
+  "NATO ile Kuzey devriyesi": "NATO patrols in the north",
+  "Norveç NATO'nun Kuzey devriye ve tatbikatlarını artırdı.": "Norway increased NATO patrols and drills in the north.",
+  "Barents işbirliğini koru": "Preserve Barents cooperation",
+  "Oslo balıkçılık ve arama-kurtarma işbirliğini sürdürdü.": "Oslo kept fisheries and search-and-rescue cooperation.",
+  "Svalbard ve Barents Denizi'ndeki ağırlığınız büyük; Rusya ile komşuluğu sakin tutmak istiyorsunuz.": "You carry weight around Svalbard and the Barents Sea and want a calm border with Russia.",
+  "Kuzey Deniz Yolu Açılıyor": "The Northern Sea Route Opens",
+  "Yaz buzulları rekor düzeyde çekildi; Çin yük gemileri Rus buzkıranları eşliğinde Kuzey Deniz Yolu'ndan Avrupa'ya geçti. Süveyş'e alternatif yeni bir ticaret kuşağı doğuyor; Norveç ve NATO Kutup radarlarını izliyor.": "Summer ice receded to record levels; Chinese freighters crossed the Northern Sea Route to Europe under Russian icebreaker escort. A new trade belt rivals Suez; Norway and NATO watch the polar radars.",
+  "Sessizce geri çekil": "Quietly withdraw",
+  "Moskova olayı büyütmedi, devriyeleri azalttı.": "Moscow did not inflate the incident and reduced patrols.",
+  "Kıta sahanlığı iddiasını sertleştir": "Harden the continental-shelf claim",
+  "Rusya BM'ye genişletilmiş kıta sahanlığı iddiası sundu.": "Russia filed an extended continental-shelf claim at the UN.",
+  "Kutup denizaltı filonuz caydırıcılığınızın temeli; bir kaza kriz çıkarabilir.": "Your polar submarine fleet is the core of deterrence; an accident could spark a crisis.",
+  "Buzkıran ve denizaltı yatırımı": "Invest in icebreakers and submarines",
+  "ABD Kutup Güvenlik Kesicisi programını hızlandırdı.": "The US sped up its Polar Security Cutter programme.",
+  "Diplomasi ve Arktik Konseyi": "Diplomacy and the Arctic Council",
+  "ABD Arktik Konseyi'nde kriz yönetimi kanalı önerdi.": "The US proposed a crisis channel in the Arctic Council.",
+  "Kutup caydırıcılığı için buzkıran filosu ve denizaltı gerekli; bütçeyi nereye ayıracaksın?": "Polar deterrence needs icebreakers and submarines; where will you spend?",
+  "Kutup Altı Denizaltı Karşılaşması": "A Submarine Encounter Under the Ice",
+  "Buzun altında bir Rus ve bir NATO denizaltısı tehlikeli şekilde yakın geçti; iki taraf da sonarla izlendiğini söylüyor. Kutup, silahsız bir bölge değil: kıta sahanlığı iddiaları da masada.": "A Russian and a NATO submarine passed dangerously close under the ice; both say they were being tracked by sonar. The pole is no disarmed zone: continental-shelf claims are on the table as well."
+ }
+}

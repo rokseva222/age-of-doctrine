@@ -1,0 +1,515 @@
+{
+ "moments": [
+  {
+   "id": "korea_pazarlik",
+   "turn": 7,
+   "title": "Kim–Trump Zirvesi Söylentisi",
+   "scene": "peace",
+   "icon": "treaty",
+   "text": "Washington Kim ile bir zirvenin kapısını açık tuttuğunu söylüyor; Pyongyang ise ancak 'nükleer statüsünün tanınması' halinde konuşacağını belirtiyor. Seul, kendisinin atlanmasından endişeli.",
+   "major": true,
+   "default_fx": [
+    [
+     "rel",
+     "North Korea",
+     "United States of America",
+     1
+    ]
+   ],
+   "roles": {
+    "North Korea": {
+     "text": "Silahlı Rus ortaklığınız var, ABD ile masaya oturmak size ekonomik rahatlama getirebilir.",
+     "options": [
+      {
+       "t": "Zirve için şart koş: nükleer tanınma",
+       "d": "Zirve için şart koş: nükleer tanınma",
+       "fx": [
+        [
+         "rel",
+         "North Korea",
+         "United States of America",
+         -2
+        ],
+        [
+         "stab",
+         "North Korea",
+         1
+        ]
+       ],
+       "r": "Pyongyang zirveyi nükleer statünün tanınmasına bağladı."
+      },
+      {
+       "t": "Koşulsuz görüşmeye razı ol",
+       "d": "Koşulsuz görüşmeye razı ol",
+       "fx": [
+        [
+         "rel",
+         "North Korea",
+         "United States of America",
+         5
+        ],
+        [
+         "gold",
+         "North Korea",
+         1.0
+        ]
+       ],
+       "r": "Kuzey Kore ABD ile üst düzey görüşmeye hazır olduğunu bildirdi."
+      }
+     ]
+    },
+    "South Korea": {
+     "text": "Güney Kore 'barış ve caydırıcılık' dengesinde; ABD ile gümrük ve güvenlik pazarlıkları sürüyor.",
+     "options": [
+      {
+       "t": "Seul'ü masaya sok",
+       "d": "Seul'ü masaya sok",
+       "fx": [
+        [
+         "rel",
+         "South Korea",
+         "United States of America",
+         2
+        ],
+        [
+         "rel",
+         "South Korea",
+         "North Korea",
+         1
+        ]
+       ],
+       "r": "Seul müzakerede 'Kore'siz Kore kararı olmaz' dedi."
+      },
+      {
+       "t": "Müttefik koordinasyonu",
+       "d": "Müttefik koordinasyonu",
+       "fx": [
+        [
+         "rel",
+         "South Korea",
+         "United States of America",
+         3
+        ],
+        [
+         "rel",
+         "South Korea",
+         "Japan",
+         3
+        ],
+        [
+         "rel",
+         "South Korea",
+         "North Korea",
+         -2
+        ]
+       ],
+       "r": "Seul, Tokyo ve Washington ortak bir pozisyon yayımladı."
+      }
+     ]
+    },
+    "China": {
+     "text": "Pekin Yarımada'da denge istiyor: kimse tek başına belirleyici olmamalı.",
+     "options": [
+      {
+       "t": "Altılı görüşme öner",
+       "d": "Altılı görüşme öner",
+       "fx": [
+        [
+         "rel",
+         "China",
+         "United States of America",
+         1
+        ],
+        [
+         "rel",
+         "China",
+         "South Korea",
+         2
+        ],
+        [
+         "rel",
+         "China",
+         "North Korea",
+         1
+        ]
+       ],
+       "r": "Çin çok taraflı müzakere önerdi.",
+       "keep_default": true
+      },
+      {
+       "t": "Pyongyang'ı destekle",
+       "d": "Pyongyang'ı destekle",
+       "fx": [
+        [
+         "rel",
+         "China",
+         "North Korea",
+         4
+        ],
+        [
+         "rel",
+         "China",
+         "South Korea",
+         -2
+        ]
+       ],
+       "r": "Çin Kuzey Kore'ye yakıt ve gıda yardımı gönderdi.",
+       "keep_default": true
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "korea_denizalti",
+   "turn": 36,
+   "title": "Nükleer Denizaltı Tartışması",
+   "scene": "naval",
+   "icon": "submarine",
+   "text": "Güney Kore, ABD'nin onayıyla nükleer yakıtlı denizaltı yapmak istiyor; Kuzey Kore ve Çin tepkili, Japonya ise endişeli. Bölgede deniz silahlanması hızlanıyor.",
+   "major": false,
+   "default_fx": [
+    [
+     "rel",
+     "North Korea",
+     "South Korea",
+     -3
+    ],
+    [
+     "rel",
+     "China",
+     "South Korea",
+     -3
+    ]
+   ],
+   "roles": {
+    "South Korea": {
+     "text": "Nükleer denizaltı caydırıcılığı artırır, ama komşuların tepkisini ve silahsızlanma baskısını da getirir.",
+     "options": [
+      {
+       "t": "Denizaltı programını başlat",
+       "d": "Denizaltı programını başlat",
+       "fx": [
+        [
+         "gold",
+         "South Korea",
+         -1.0
+        ],
+        [
+         "rel",
+         "South Korea",
+         "United States of America",
+         3
+        ],
+        [
+         "rel",
+         "South Korea",
+         "China",
+         -4
+        ],
+        [
+         "rel",
+         "South Korea",
+         "North Korea",
+         -3
+        ]
+       ],
+       "r": "Seul nükleer yakıtlı denizaltı programını başlattı."
+      },
+      {
+       "t": "Konvansiyonel güçle yetin",
+       "d": "Konvansiyonel güçle yetin",
+       "fx": [
+        [
+         "rel",
+         "South Korea",
+         "China",
+         1
+        ],
+        [
+         "stab",
+         "South Korea",
+         1
+        ]
+       ],
+       "r": "Güney Kore konvansiyonel denizaltı ve füze savunmasına yöneldi."
+      }
+     ]
+    },
+    "North Korea": {
+     "text": "Kuzey Kore 'karşı önlem' diyor: yeni füze ve denizaltı gövdesi gösterisi planlıyor.",
+     "options": [
+      {
+       "t": "Askerî geçit töreni ve test",
+       "d": "Askerî geçit töreni ve test",
+       "fx": [
+        [
+         "rel",
+         "North Korea",
+         "United States of America",
+         -3
+        ],
+        [
+         "rel",
+         "North Korea",
+         "South Korea",
+         -3
+        ],
+        [
+         "buff",
+         "North Korea",
+         "att",
+         1.05,
+         6
+        ]
+       ],
+       "r": "Kuzey Kore yeni füzelerini geçit törenine çıkardı."
+      },
+      {
+       "t": "Sessiz kal, Rusya'dan teknoloji al",
+       "d": "Sessiz kal, Rusya'dan teknoloji al",
+       "fx": [
+        [
+         "gold",
+         "North Korea",
+         1.0
+        ],
+        [
+         "rel",
+         "North Korea",
+         "Russia",
+         3
+        ]
+       ],
+       "r": "Pyongyang Rus teknolojisi karşılığı yeni anlaşmalar yaptı."
+      }
+     ]
+    },
+    "Japan": {
+     "text": "Tokyo komşusunun nükleer denizaltısından rahatsız ama ittifakı bozmak istemiyor.",
+     "options": [
+      {
+       "t": "Üçlü savunma işbirliği",
+       "d": "Üçlü savunma işbirliği",
+       "fx": [
+        [
+         "rel",
+         "Japan",
+         "South Korea",
+         3
+        ],
+        [
+         "rel",
+         "Japan",
+         "United States of America",
+         2
+        ]
+       ],
+       "r": "Japonya Güney Kore ve ABD ile deniz istihbaratı paylaşımını artırdı.",
+       "keep_default": true
+      },
+      {
+       "t": "Kendi deniz bütçesini artır",
+       "d": "Kendi deniz bütçesini artır",
+       "fx": [
+        [
+         "gold",
+         "Japan",
+         -0.5
+        ],
+        [
+         "troops",
+         "Japan",
+         2
+        ]
+       ],
+       "r": "Tokyo deniz savunma bütçesini artırdı.",
+       "keep_default": true
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "korea_cephe",
+   "turn": 80,
+   "title": "Sınırda Ateş Değişimi",
+   "scene": "naval",
+   "icon": "ship",
+   "text": "Batı Denizi'ndeki Kuzey Sınır Hattı'nda iki tarafın donanması birbirine ateş açtı; olay kazaen mi başladı, kimse bilmiyor. Hotline hâlâ cevap vermiyor.",
+   "major": true,
+   "default_fx": [
+    [
+     "stab",
+     "North Korea",
+     -1
+    ],
+    [
+     "stab",
+     "South Korea",
+     -1
+    ],
+    [
+     "rel",
+     "North Korea",
+     "South Korea",
+     -5
+    ]
+   ],
+   "roles": {
+    "South Korea": {
+     "text": "Orantılı misilleme caydırıcılık; ama tırmanma tüm yarımadayı yakar.",
+     "options": [
+      {
+       "t": "Sınırlı karşılık ve diplomatik kanal",
+       "d": "Sınırlı karşılık ve diplomatik kanal",
+       "fx": [
+        [
+         "rel",
+         "South Korea",
+         "North Korea",
+         -2
+        ],
+        [
+         "stab",
+         "South Korea",
+         1
+        ],
+        [
+         "rel",
+         "South Korea",
+         "China",
+         1
+        ]
+       ],
+       "r": "Seul sınırlı karşılık verip ABD ve Çin üzerinden mesaj gönderdi."
+      },
+      {
+       "t": "Tam misilleme",
+       "d": "Tam misilleme",
+       "fx": [
+        [
+         "war",
+         "South Korea",
+         "North Korea",
+         "solo"
+        ],
+        [
+         "buff",
+         "South Korea",
+         "att",
+         1.1,
+         6
+        ],
+        [
+         "rel",
+         "South Korea",
+         "North Korea",
+         -8
+        ]
+       ],
+       "r": "Güney Kore Kuzey Kore kıyı bataryalarını vurdu."
+      }
+     ]
+    },
+    "North Korea": {
+     "text": "Olay sizin lehinize bir koz ya da kontrol dışı bir tırmanma olabilir.",
+     "options": [
+      {
+       "t": "Sınırı tırmandır",
+       "d": "Sınırı tırmandır",
+       "fx": [
+        [
+         "war",
+         "North Korea",
+         "South Korea",
+         "solo"
+        ],
+        [
+         "buff",
+         "North Korea",
+         "att",
+         1.1,
+         6
+        ],
+        [
+         "rel",
+         "North Korea",
+         "South Korea",
+         -8
+        ]
+       ],
+       "r": "Kuzey Kore kıyı topçusuyla ateş açtı."
+      },
+      {
+       "t": "Olayı kapat",
+       "d": "Olayı kapat",
+       "fx": [
+        [
+         "rel",
+         "North Korea",
+         "South Korea",
+         2
+        ],
+        [
+         "stab",
+         "North Korea",
+         1
+        ]
+       ],
+       "r": "Pyongyang hotline'ı açıp olayı 'kaza' diye kapattı."
+      }
+     ]
+    }
+   }
+  }
+ ],
+ "moments_en": {
+  "Zirve için şart koş: nükleer tanınma": "Demand nuclear recognition as the price",
+  "Pyongyang zirveyi nükleer statünün tanınmasına bağladı.": "Pyongyang tied a summit to recognition of its nuclear status.",
+  "Koşulsuz görüşmeye razı ol": "Agree to talks without conditions",
+  "Kuzey Kore ABD ile üst düzey görüşmeye hazır olduğunu bildirdi.": "North Korea said it was ready for top-level talks with the US.",
+  "Silahlı Rus ortaklığınız var, ABD ile masaya oturmak size ekonomik rahatlama getirebilir.": "With a Russian partnership in hand, sitting with the US could bring economic relief.",
+  "Seul'ü masaya sok": "Insist on a seat at the table",
+  "Seul müzakerede 'Kore'siz Kore kararı olmaz' dedi.": "Seoul said there would be 'no decision about Korea without Korea'.",
+  "Müttefik koordinasyonu": "Coordinate with allies",
+  "Seul, Tokyo ve Washington ortak bir pozisyon yayımladı.": "Seoul, Tokyo and Washington issued a joint position.",
+  "Güney Kore 'barış ve caydırıcılık' dengesinde; ABD ile gümrük ve güvenlik pazarlıkları sürüyor.": "South Korea balances 'peace and deterrence'; talks with the US on tariffs and security continue.",
+  "Altılı görüşme öner": "Propose multilateral talks",
+  "Çin çok taraflı müzakere önerdi.": "China proposed multilateral talks.",
+  "Pyongyang'ı destekle": "Back Pyongyang",
+  "Çin Kuzey Kore'ye yakıt ve gıda yardımı gönderdi.": "China sent fuel and food aid to North Korea.",
+  "Pekin Yarımada'da denge istiyor: kimse tek başına belirleyici olmamalı.": "Beijing wants balance on the peninsula: nobody should decide alone.",
+  "Kim–Trump Zirvesi Söylentisi": "Kim–Trump Summit Rumours",
+  "Washington Kim ile bir zirvenin kapısını açık tuttuğunu söylüyor; Pyongyang ise ancak 'nükleer statüsünün tanınması' halinde konuşacağını belirtiyor. Seul, kendisinin atlanmasından endişeli.": "Washington says it keeps the door open to a summit with Kim; Pyongyang says it will talk only if its nuclear status is recognised. Seoul fears being bypassed.",
+  "Denizaltı programını başlat": "Launch the submarine programme",
+  "Seul nükleer yakıtlı denizaltı programını başlattı.": "Seoul launched its nuclear-powered submarine programme.",
+  "Konvansiyonel güçle yetin": "Stay with conventional forces",
+  "Güney Kore konvansiyonel denizaltı ve füze savunmasına yöneldi.": "South Korea chose conventional subs and missile defence.",
+  "Nükleer denizaltı caydırıcılığı artırır, ama komşuların tepkisini ve silahsızlanma baskısını da getirir.": "Nuclear subs raise deterrence but bring neighbours' reactions and non-proliferation pressure.",
+  "Askerî geçit töreni ve test": "Parade and test",
+  "Kuzey Kore yeni füzelerini geçit törenine çıkardı.": "North Korea paraded new missiles.",
+  "Sessiz kal, Rusya'dan teknoloji al": "Stay quiet and take Russian technology",
+  "Pyongyang Rus teknolojisi karşılığı yeni anlaşmalar yaptı.": "Pyongyang struck new deals in exchange for Russian technology.",
+  "Kuzey Kore 'karşı önlem' diyor: yeni füze ve denizaltı gövdesi gösterisi planlıyor.": "North Korea says 'countermeasures': it plans to show new missiles and a submarine hull.",
+  "Üçlü savunma işbirliği": "Trilateral defence cooperation",
+  "Japonya Güney Kore ve ABD ile deniz istihbaratı paylaşımını artırdı.": "Japan increased naval intelligence sharing with South Korea and the US.",
+  "Kendi deniz bütçesini artır": "Raise its own naval budget",
+  "Tokyo deniz savunma bütçesini artırdı.": "Tokyo raised its naval defence budget.",
+  "Tokyo komşusunun nükleer denizaltısından rahatsız ama ittifakı bozmak istemiyor.": "Tokyo is uneasy about its neighbour's nuclear sub but does not want to harm the alliance.",
+  "Nükleer Denizaltı Tartışması": "The Nuclear Submarine Debate",
+  "Güney Kore, ABD'nin onayıyla nükleer yakıtlı denizaltı yapmak istiyor; Kuzey Kore ve Çin tepkili, Japonya ise endişeli. Bölgede deniz silahlanması hızlanıyor.": "South Korea wants to build nuclear-powered submarines with US approval; North Korea and China object and Japan is uneasy. A naval arms build-up is quickening in the region.",
+  "Sınırlı karşılık ve diplomatik kanal": "Limited response and a diplomatic channel",
+  "Seul sınırlı karşılık verip ABD ve Çin üzerinden mesaj gönderdi.": "Seoul responded in limited fashion and sent messages via the US and China.",
+  "Tam misilleme": "Full retaliation",
+  "Güney Kore Kuzey Kore kıyı bataryalarını vurdu.": "South Korea struck North Korean coastal batteries.",
+  "Orantılı misilleme caydırıcılık; ama tırmanma tüm yarımadayı yakar.": "Proportional retaliation is deterrence, but escalation could burn the whole peninsula.",
+  "Sınırı tırmandır": "Escalate on the line",
+  "Kuzey Kore kıyı topçusuyla ateş açtı.": "North Korea opened fire with coastal artillery.",
+  "Olayı kapat": "Close the incident",
+  "Pyongyang hotline'ı açıp olayı 'kaza' diye kapattı.": "Pyongyang opened the hotline and closed the incident as an accident.",
+  "Olay sizin lehinize bir koz ya da kontrol dışı bir tırmanma olabilir.": "The incident can be leverage or an escalation out of control.",
+  "Sınırda Ateş Değişimi": "An Exchange of Fire at the Border",
+  "Batı Denizi'ndeki Kuzey Sınır Hattı'nda iki tarafın donanması birbirine ateş açtı; olay kazaen mi başladı, kimse bilmiyor. Hotline hâlâ cevap vermiyor.": "The two navies exchanged fire along the Northern Limit Line in the West Sea; nobody knows whether it began by accident. The hotline is still unanswered."
+ }
+}

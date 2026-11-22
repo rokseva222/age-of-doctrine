@@ -1,0 +1,446 @@
+{
+ "moments": [
+  {
+   "id": "essequibo_secim",
+   "turn": 8,
+   "title": "Esequibo'da 'Seçim' ve Haritalar",
+   "scene": "border",
+   "icon": "flag",
+   "text": "Venezuela, tartışmalı Esequibo bölgesi için valilik ve meclis seçimi ilan etti; Guyana buna 'yasa dışı' dedi ve Uluslararası Adalet Divanı'na gitti. Büyük açık deniz petrol sahaları Guyana'yı zengin, Karakas'ı ise sabırsız yapıyor.",
+   "major": true,
+   "default_fx": [
+    [
+     "rel",
+     "Venezuela",
+     "Guyana",
+     -4
+    ],
+    [
+     "rel",
+     "Guyana",
+     "United States of America",
+     2
+    ]
+   ],
+   "roles": {
+    "Guyana": {
+     "text": "UAD size dayanak veriyor; ama ordunuz küçük ve sınır ormanları geniş. Petrol geliri savunmaya yatırım fırsatı.",
+     "options": [
+      {
+       "t": "ABD ve İngiliz Milletler Topluluğu desteği iste",
+       "d": "ABD ve İngiliz Milletler Topluluğu desteği iste",
+       "fx": [
+        [
+         "rel",
+         "Guyana",
+         "United States of America",
+         5
+        ],
+        [
+         "rel",
+         "Guyana",
+         "Venezuela",
+         -3
+        ],
+        [
+         "troops",
+         "Guyana",
+         5
+        ]
+       ],
+       "r": "Guyana ABD ile ortak devriye ve eğitim anlaşması imzaladı."
+      },
+      {
+       "t": "Brezilya ile arabuluculuk",
+       "d": "Brezilya ile arabuluculuk",
+       "fx": [
+        [
+         "rel",
+         "Guyana",
+         "Brazil",
+         4
+        ],
+        [
+         "rel",
+         "Guyana",
+         "Venezuela",
+         1
+        ]
+       ],
+       "r": "Georgetown Brezilya ve Karayip topluluğu aracılığıyla görüşme istedi."
+      }
+     ]
+    },
+    "Venezuela": {
+     "text": "Karakas iç ekonomik sıkıntıyı dış davayla örtmek istiyor; ama ABD donanması Karayipler'de devriyede.",
+     "options": [
+      {
+       "t": "Esequibo'yu eyalet ilan et",
+       "d": "Esequibo'yu eyalet ilan et",
+       "fx": [
+        [
+         "rel",
+         "Venezuela",
+         "Guyana",
+         -6
+        ],
+        [
+         "rel",
+         "Venezuela",
+         "United States of America",
+         -4
+        ],
+        [
+         "stab",
+         "Venezuela",
+         2
+        ]
+       ],
+       "r": "Venezuela Esequibo'yu 'Guayana Esekiba eyaleti' ilan etti."
+      },
+      {
+       "t": "Diplomatik yolu koru",
+       "d": "Diplomatik yolu koru",
+       "fx": [
+        [
+         "rel",
+         "Venezuela",
+         "Guyana",
+         3
+        ],
+        [
+         "rel",
+         "Venezuela",
+         "Brazil",
+         3
+        ],
+        [
+         "stab",
+         "Venezuela",
+         -1
+        ]
+       ],
+       "r": "Karakas Brezilya ve BM aracılığıyla görüşmeye razı oldu."
+      }
+     ]
+    },
+    "Brazil": {
+     "text": "Brezilya'nın kuzey sınırı ve Amazon yolu tehlikede; arabuluculuk rolünü üstlenebilirsiniz.",
+     "options": [
+      {
+       "t": "Arabuluculuk teklif et",
+       "d": "Arabuluculuk teklif et",
+       "fx": [
+        [
+         "rel",
+         "Brazil",
+         "Guyana",
+         3
+        ],
+        [
+         "rel",
+         "Brazil",
+         "Venezuela",
+         3
+        ]
+       ],
+       "r": "Brasilia iki tarafı ortak masaya çağırdı.",
+       "keep_default": true
+      },
+      {
+       "t": "Sınıra birlik yığ",
+       "d": "Sınıra birlik yığ",
+       "fx": [
+        [
+         "troops",
+         "Brazil",
+         2
+        ],
+        [
+         "rel",
+         "Brazil",
+         "Venezuela",
+         -2
+        ]
+       ],
+       "r": "Brezilya Roraima'daki birliklerini artırdı.",
+       "keep_default": true
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "essequibo_petrol",
+   "turn": 30,
+   "title": "Açık Deniz Petrolü ve Bir Olay",
+   "scene": "naval",
+   "icon": "ship",
+   "text": "Guyana'nın Stabroek sahasındaki üretim rekor kırarken Venezuela devriye botları sulara girdi; bir petrol platformu çevresinde tehlikeli bir yaklaşma yaşandı. İki taraf da 'savunma' diyor.",
+   "major": false,
+   "default_fx": [
+    [
+     "gold",
+     "Guyana",
+     1.0
+    ],
+    [
+     "rel",
+     "Venezuela",
+     "Guyana",
+     -3
+    ]
+   ],
+   "roles": {
+    "Guyana": {
+     "text": "Platformlarınız ekonominizin kalbi; bir kaza sizi bir anda savaşa çekebilir.",
+     "options": [
+      {
+       "t": "Sahil güvenliği ve hava savunmasını güçlendir",
+       "d": "Sahil güvenliği ve hava savunmasını güçlendir",
+       "fx": [
+        [
+         "troops",
+         "Guyana",
+         4
+        ],
+        [
+         "gold",
+         "Guyana",
+         -0.5
+        ],
+        [
+         "rel",
+         "Guyana",
+         "Venezuela",
+         -2
+        ]
+       ],
+       "r": "Guyana platformlarını korumak için sahil güvenliğini genişletti."
+      },
+      {
+       "t": "Şikâyet et, tırmandırma",
+       "d": "Şikâyet et, tırmandırma",
+       "fx": [
+        [
+         "rel",
+         "Guyana",
+         "Venezuela",
+         0
+        ],
+        [
+         "rel",
+         "Guyana",
+         "United States of America",
+         2
+        ]
+       ],
+       "r": "Georgetown olayı BM'ye bildirdi."
+      }
+     ]
+    },
+    "Venezuela": {
+     "text": "Petrol sahalarına karşı tavır sert ama ABD'nin tepkisi belirsiz.",
+     "options": [
+      {
+       "t": "Baskıyı sürdür",
+       "d": "Baskıyı sürdür",
+       "fx": [
+        [
+         "rel",
+         "Venezuela",
+         "Guyana",
+         -4
+        ],
+        [
+         "rel",
+         "Venezuela",
+         "United States of America",
+         -3
+        ]
+       ],
+       "r": "Venezuela deniz devriyesini artırdı."
+      },
+      {
+       "t": "Gerilimi düşür",
+       "d": "Gerilimi düşür",
+       "fx": [
+        [
+         "rel",
+         "Venezuela",
+         "Guyana",
+         3
+        ],
+        [
+         "stab",
+         "Venezuela",
+         -1
+        ]
+       ],
+       "r": "Karakas devriyeleri geri çekti."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "essequibo_sinir2",
+   "turn": 64,
+   "title": "Ormanda Sınır Çatışması",
+   "scene": "border",
+   "icon": "border_clash",
+   "text": "Cuyuní Nehri çevresinde silahlı çete saldırısı ve karşı ateş: bir sınır karakolu vuruldu. Venezuela 'Guyana ordusu provokasyon yaptı' diyor.",
+   "major": true,
+   "default_fx": [
+    [
+     "stab",
+     "Guyana",
+     -1
+    ],
+    [
+     "rel",
+     "Venezuela",
+     "Guyana",
+     -5
+    ]
+   ],
+   "roles": {
+    "Guyana": {
+     "text": "Küçük ama iyi eğitilmiş birlikleriniz var; ABD'nin desteği hayati.",
+     "options": [
+      {
+       "t": "Sınırda direniş, ABD'yi çağır",
+       "d": "Sınırda direniş, ABD'yi çağır",
+       "fx": [
+        [
+         "buff",
+         "Guyana",
+         "def",
+         1.2,
+         8
+        ],
+        [
+         "rel",
+         "Guyana",
+         "United States of America",
+         4
+        ]
+       ],
+       "r": "Guyana birliklerini Cuyuní hattına kaydırıp ABD'den yardım istedi."
+      },
+      {
+       "t": "BM Güvenlik Konseyi'ne git",
+       "d": "BM Güvenlik Konseyi'ne git",
+       "fx": [
+        [
+         "rel",
+         "Guyana",
+         "Venezuela",
+         -1
+        ],
+        [
+         "stab",
+         "Guyana",
+         1
+        ]
+       ],
+       "r": "Georgetown olayı BMGK'ya taşıdı."
+      }
+     ]
+    },
+    "Venezuela": {
+     "text": "Çatışma iç siyasi malzeme; ama savaş ABD'yi doğrudan sahaya çekebilir.",
+     "options": [
+      {
+       "t": "Sınırı aş",
+       "d": "Sınırı aş",
+       "fx": [
+        [
+         "war",
+         "Venezuela",
+         "Guyana",
+         "solo"
+        ],
+        [
+         "buff",
+         "Venezuela",
+         "att",
+         1.1,
+         6
+        ],
+        [
+         "rel",
+         "Venezuela",
+         "United States of America",
+         -6
+        ]
+       ],
+       "r": "Venezuela sınırı aşıp Esequibo'ya girdi."
+      },
+      {
+       "t": "Operasyonu durdur",
+       "d": "Operasyonu durdur",
+       "fx": [
+        [
+         "rel",
+         "Venezuela",
+         "Guyana",
+         2
+        ],
+        [
+         "stab",
+         "Venezuela",
+         -1
+        ]
+       ],
+       "r": "Venezuela sınır birliklerini çekti."
+      }
+     ]
+    }
+   }
+  }
+ ],
+ "moments_en": {
+  "ABD ve İngiliz Milletler Topluluğu desteği iste": "Seek US and Commonwealth backing",
+  "Guyana ABD ile ortak devriye ve eğitim anlaşması imzaladı.": "Guyana signed a joint patrol and training deal with the US.",
+  "Brezilya ile arabuluculuk": "Mediation with Brazil",
+  "Georgetown Brezilya ve Karayip topluluğu aracılığıyla görüşme istedi.": "Georgetown sought talks through Brazil and the Caribbean community.",
+  "UAD size dayanak veriyor; ama ordunuz küçük ve sınır ormanları geniş. Petrol geliri savunmaya yatırım fırsatı.": "The ICJ is your backstop, but your army is small and the border jungle is wide. Oil revenue is a chance to invest in defence.",
+  "Esequibo'yu eyalet ilan et": "Declare Essequibo a state",
+  "Venezuela Esequibo'yu 'Guayana Esekiba eyaleti' ilan etti.": "Venezuela declared Essequibo the state of 'Guayana Esequiba'.",
+  "Diplomatik yolu koru": "Stay on the diplomatic track",
+  "Karakas Brezilya ve BM aracılığıyla görüşmeye razı oldu.": "Caracas agreed to talks via Brazil and the UN.",
+  "Karakas iç ekonomik sıkıntıyı dış davayla örtmek istiyor; ama ABD donanması Karayipler'de devriyede.": "Caracas wants to mask domestic hardship with a foreign cause, yet a US naval force patrols the Caribbean.",
+  "Arabuluculuk teklif et": "Offer mediation",
+  "Brasilia iki tarafı ortak masaya çağırdı.": "Brasília invited both sides to a joint table.",
+  "Sınıra birlik yığ": "Mass units at the border",
+  "Brezilya Roraima'daki birliklerini artırdı.": "Brazil reinforced its units in Roraima.",
+  "Brezilya'nın kuzey sınırı ve Amazon yolu tehlikede; arabuluculuk rolünü üstlenebilirsiniz.": "Brazil's northern border and Amazon routes are at stake; you can take the mediator's role.",
+  "Esequibo'da 'Seçim' ve Haritalar": "'Elections' and Maps over Essequibo",
+  "Venezuela, tartışmalı Esequibo bölgesi için valilik ve meclis seçimi ilan etti; Guyana buna 'yasa dışı' dedi ve Uluslararası Adalet Divanı'na gitti. Büyük açık deniz petrol sahaları Guyana'yı zengin, Karakas'ı ise sabırsız yapıyor.": "Venezuela called a governor and assembly election for the disputed Essequibo; Guyana called it unlawful and went to the International Court of Justice. Big offshore oil fields make Guyana rich and Caracas impatient.",
+  "Sahil güvenliği ve hava savunmasını güçlendir": "Reinforce coast guard and air defence",
+  "Guyana platformlarını korumak için sahil güvenliğini genişletti.": "Guyana expanded its coast guard to protect the platforms.",
+  "Şikâyet et, tırmandırma": "Complain without escalating",
+  "Georgetown olayı BM'ye bildirdi.": "Georgetown reported the incident to the UN.",
+  "Platformlarınız ekonominizin kalbi; bir kaza sizi bir anda savaşa çekebilir.": "Your platforms are the heart of the economy; one accident could drag you into war.",
+  "Baskıyı sürdür": "Keep the pressure on",
+  "Venezuela deniz devriyesini artırdı.": "Venezuela increased naval patrols.",
+  "Gerilimi düşür": "Lower the temperature",
+  "Karakas devriyeleri geri çekti.": "Caracas pulled back its patrols.",
+  "Petrol sahalarına karşı tavır sert ama ABD'nin tepkisi belirsiz.": "You are hard on the oil fields, but the US response is unclear.",
+  "Açık Deniz Petrolü ve Bir Olay": "Offshore Oil and an Incident",
+  "Guyana'nın Stabroek sahasındaki üretim rekor kırarken Venezuela devriye botları sulara girdi; bir petrol platformu çevresinde tehlikeli bir yaklaşma yaşandı. İki taraf da 'savunma' diyor.": "As Guyana's Stabroek output hits records, Venezuelan patrol boats entered the waters; a dangerous approach occurred near an oil platform. Both sides say 'defensive'.",
+  "Sınırda direniş, ABD'yi çağır": "Hold the line and call on the US",
+  "Guyana birliklerini Cuyuní hattına kaydırıp ABD'den yardım istedi.": "Guyana moved troops to the Cuyuní line and asked the US for help.",
+  "BM Güvenlik Konseyi'ne git": "Go to the UN Security Council",
+  "Georgetown olayı BMGK'ya taşıdı.": "Georgetown took the incident to the Security Council.",
+  "Küçük ama iyi eğitilmiş birlikleriniz var; ABD'nin desteği hayati.": "Your small units are well trained; US backing is vital.",
+  "Sınırı aş": "Cross the border",
+  "Venezuela sınırı aşıp Esequibo'ya girdi.": "Venezuela crossed into Essequibo.",
+  "Operasyonu durdur": "Stand down",
+  "Venezuela sınır birliklerini çekti.": "Venezuela pulled back its border units.",
+  "Çatışma iç siyasi malzeme; ama savaş ABD'yi doğrudan sahaya çekebilir.": "The clash is domestic political material, but war could pull the US in directly.",
+  "Ormanda Sınır Çatışması": "A Jungle Border Clash",
+  "Cuyuní Nehri çevresinde silahlı çete saldırısı ve karşı ateş: bir sınır karakolu vuruldu. Venezuela 'Guyana ordusu provokasyon yaptı' diyor.": "Armed gangs and return fire around the Cuyuní River: a border post was hit. Venezuela claims the Guyanese army provoked it."
+ }
+}

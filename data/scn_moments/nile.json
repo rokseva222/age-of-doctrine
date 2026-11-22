@@ -1,0 +1,440 @@
+{
+ "moments": [
+  {
+   "id": "nile_acilis",
+   "turn": 6,
+   "title": "Rönesans Barajı Resmen Açıldı",
+   "scene": "crisis",
+   "icon": "dam",
+   "text": "Etiyopya, Büyük Etiyopya Rönesans Barajı'nın açılışını yaptı: 5.150 MW ile Afrika'nın en büyük hidroelektrik santrali. Mısır ve Sudan 'tek taraflı' diyerek tepki gösterdi; Mavi Nil'de ani su salınımı Sudan'da sel yarattı.",
+   "major": true,
+   "default_fx": [
+    [
+     "rel",
+     "Egypt",
+     "Ethiopia",
+     -5
+    ],
+    [
+     "rel",
+     "Sudan",
+     "Ethiopia",
+     -3
+    ],
+    [
+     "gold",
+     "Ethiopia",
+     1.0
+    ]
+   ],
+   "roles": {
+    "Ethiopia": {
+     "text": "Baraj bir ulusal zafer ve gelir kaynağı; ama Mısır'ın yardımı olmadan Nil'de barış olmaz.",
+     "options": [
+      {
+       "t": "Elektrik satışı ve ortak işletme öner",
+       "d": "Elektrik satışı ve ortak işletme öner",
+       "fx": [
+        [
+         "rel",
+         "Ethiopia",
+         "Egypt",
+         4
+        ],
+        [
+         "rel",
+         "Ethiopia",
+         "Sudan",
+         4
+        ],
+        [
+         "gold",
+         "Ethiopia",
+         1.0
+        ]
+       ],
+       "r": "Addis Ababa komşulara elektrik satışı ve ortak işletme önerdi."
+      },
+      {
+       "t": "Su kontrolünü tek elde tut",
+       "d": "Su kontrolünü tek elde tut",
+       "fx": [
+        [
+         "rel",
+         "Ethiopia",
+         "Egypt",
+         -5
+        ],
+        [
+         "stab",
+         "Ethiopia",
+         2
+        ]
+       ],
+       "r": "Etiyopya baraj işletmesini tek taraflı sürdürdü."
+      }
+     ]
+    },
+    "Egypt": {
+     "text": "Su 'hayat meselesi'; ama savaş çok maliyetli ve Etiyopya uzak. Diplomasi, hukuk ve baskı yolları var.",
+     "options": [
+      {
+       "t": "BM Güvenlik Konseyi ve hukuki yol",
+       "d": "BM Güvenlik Konseyi ve hukuki yol",
+       "fx": [
+        [
+         "rel",
+         "Egypt",
+         "Ethiopia",
+         -2
+        ],
+        [
+         "rel",
+         "Egypt",
+         "United States of America",
+         2
+        ]
+       ],
+       "r": "Kahire meseleyi BMGK'ya taşıdı."
+      },
+      {
+       "t": "Eritre ve Somali ile ittifak ara",
+       "d": "Eritre ve Somali ile ittifak ara",
+       "fx": [
+        [
+         "rel",
+         "Egypt",
+         "Eritrea",
+         5
+        ],
+        [
+         "rel",
+         "Egypt",
+         "Ethiopia",
+         -5
+        ],
+        [
+         "ally",
+         "Egypt",
+         "Eritrea"
+        ]
+       ],
+       "r": "Kahire Eritre ile savunma ve istihbarat anlaşması imzaladı."
+      }
+     ]
+    },
+    "Sudan": {
+     "text": "İç savaş ve selin ortasındaki Sudan, her iki tarafa da muhtaç.",
+     "options": [
+      {
+       "t": "Mısır'a yakın dur",
+       "d": "Mısır'a yakın dur",
+       "fx": [
+        [
+         "rel",
+         "Sudan",
+         "Egypt",
+         4
+        ],
+        [
+         "rel",
+         "Sudan",
+         "Ethiopia",
+         -3
+        ]
+       ],
+       "r": "Hartum Kahire ile ortak su açıklaması yaptı.",
+       "keep_default": true
+      },
+      {
+       "t": "Etiyopya'dan elektrik al",
+       "d": "Etiyopya'dan elektrik al",
+       "fx": [
+        [
+         "rel",
+         "Sudan",
+         "Ethiopia",
+         4
+        ],
+        [
+         "gold",
+         "Sudan",
+         0.5
+        ]
+       ],
+       "r": "Sudan Etiyopya'dan elektrik ithal etmeyi kabul etti.",
+       "keep_default": true
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "nile_kuraklik",
+   "turn": 34,
+   "title": "Kuraklık Yılı",
+   "scene": "crisis",
+   "icon": "drought",
+   "text": "Muson yağmurları düşük gelince Nil'in debisi azaldı; Mısır'da buğday ve pirinç ekimi su sınırına dayandı. Baraj gölünün doldurulma takvimi yeniden tartışma konusu.",
+   "major": false,
+   "default_fx": [
+    [
+     "stab",
+     "Egypt",
+     -2
+    ],
+    [
+     "gold",
+     "Egypt",
+     -0.5
+    ]
+   ],
+   "roles": {
+    "Egypt": {
+     "text": "Su yetersizliği ekmek fiyatına ve sokağa yansıyor.",
+     "options": [
+      {
+       "t": "Su tasarrufu ve tuzdan arındırma",
+       "d": "Su tasarrufu ve tuzdan arındırma",
+       "fx": [
+        [
+         "gold",
+         "Egypt",
+         -1.0
+        ],
+        [
+         "stab",
+         "Egypt",
+         2
+        ]
+       ],
+       "r": "Kahire tuzdan arındırma ve damla sulama yatırımını artırdı."
+      },
+      {
+       "t": "Etiyopya'ya sıkı baskı",
+       "d": "Etiyopya'ya sıkı baskı",
+       "fx": [
+        [
+         "rel",
+         "Egypt",
+         "Ethiopia",
+         -4
+        ],
+        [
+         "rel",
+         "Egypt",
+         "Saudi Arabia",
+         2
+        ]
+       ],
+       "r": "Mısır, ABD ve Körfez üzerinden baraj işletmesi için baskı yaptı."
+      }
+     ]
+    },
+    "Ethiopia": {
+     "text": "Siz de kuraklıktan etkileniyorsunuz; ortak bir su yönetimi sizi küresel saygıya taşıyabilir.",
+     "options": [
+      {
+       "t": "Ortak bir veri paylaşımı kabul et",
+       "d": "Ortak bir veri paylaşımı kabul et",
+       "fx": [
+        [
+         "rel",
+         "Ethiopia",
+         "Egypt",
+         4
+        ],
+        [
+         "rel",
+         "Ethiopia",
+         "Sudan",
+         3
+        ],
+        [
+         "stab",
+         "Ethiopia",
+         -1
+        ]
+       ],
+       "r": "Etiyopya Mısır ve Sudan'la su verisi paylaşımına razı oldu."
+      },
+      {
+       "t": "Baraj gölünü doldurmaya devam et",
+       "d": "Baraj gölünü doldurmaya devam et",
+       "fx": [
+        [
+         "rel",
+         "Ethiopia",
+         "Egypt",
+         -4
+        ],
+        [
+         "gold",
+         "Ethiopia",
+         1.0
+        ]
+       ],
+       "r": "Addis Ababa gölü doldurma programını sürdürdü."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "nile_sinirdaki",
+   "turn": 66,
+   "title": "Hartum'da Vekâlet Savaşı",
+   "scene": "border",
+   "icon": "border_clash",
+   "text": "Sudan'daki hizipler Mısır ve Etiyopya'nın desteğini alıyor; Eritre sınırında asker yığınağı var. Nil artık yalnız bir su sorunu değil, bölgesel bir güç mücadelesi.",
+   "major": true,
+   "default_fx": [
+    [
+     "rel",
+     "Egypt",
+     "Ethiopia",
+     -3
+    ],
+    [
+     "stab",
+     "Sudan",
+     -2
+    ]
+   ],
+   "roles": {
+    "Egypt": {
+     "text": "Sudan'ın düşmesi sizin güney kapınızı açabilir.",
+     "options": [
+      {
+       "t": "Sudan ordusuna destek",
+       "d": "Sudan ordusuna destek",
+       "fx": [
+        [
+         "rel",
+         "Egypt",
+         "Sudan",
+         5
+        ],
+        [
+         "rel",
+         "Egypt",
+         "Ethiopia",
+         -3
+        ],
+        [
+         "stab",
+         "Sudan",
+         1
+        ]
+       ],
+       "r": "Kahire Sudan ordusuna silah ve istihbarat sağladı."
+      },
+      {
+       "t": "Arabuluculuk ve ateşkes",
+       "d": "Arabuluculuk ve ateşkes",
+       "fx": [
+        [
+         "rel",
+         "Egypt",
+         "Sudan",
+         2
+        ],
+        [
+         "rel",
+         "Egypt",
+         "Saudi Arabia",
+         2
+        ]
+       ],
+       "r": "Mısır Cidde formülünde yeni bir ateşkes çağrısı yaptı."
+      }
+     ]
+    },
+    "Ethiopia": {
+     "text": "Sınırdaki gerilim iç siyasetteki Tigray ve Amhara sorunlarıyla birleşiyor.",
+     "options": [
+      {
+       "t": "Sınırı sağlamlaştır",
+       "d": "Sınırı sağlamlaştır",
+       "fx": [
+        [
+         "troops",
+         "Ethiopia",
+         3
+        ],
+        [
+         "rel",
+         "Ethiopia",
+         "Eritrea",
+         -3
+        ]
+       ],
+       "r": "Addis Ababa sınır birliklerini güçlendirdi."
+      },
+      {
+       "t": "Eritre ile diyalog",
+       "d": "Eritre ile diyalog",
+       "fx": [
+        [
+         "rel",
+         "Ethiopia",
+         "Eritrea",
+         4
+        ],
+        [
+         "stab",
+         "Ethiopia",
+         1
+        ]
+       ],
+       "r": "Etiyopya Eritre ile liman ve sınır görüşmesi başlattı."
+      }
+     ]
+    }
+   }
+  }
+ ],
+ "moments_en": {
+  "Elektrik satışı ve ortak işletme öner": "Offer power sales and joint operation",
+  "Addis Ababa komşulara elektrik satışı ve ortak işletme önerdi.": "Addis Ababa offered power sales and joint operation to neighbours.",
+  "Su kontrolünü tek elde tut": "Keep control of the water",
+  "Etiyopya baraj işletmesini tek taraflı sürdürdü.": "Ethiopia kept running the dam unilaterally.",
+  "Baraj bir ulusal zafer ve gelir kaynağı; ama Mısır'ın yardımı olmadan Nil'de barış olmaz.": "The dam is a national triumph and a source of income, but there is no Nile peace without Egypt.",
+  "BM Güvenlik Konseyi ve hukuki yol": "Security Council and legal track",
+  "Kahire meseleyi BMGK'ya taşıdı.": "Cairo took the issue to the Security Council.",
+  "Eritre ve Somali ile ittifak ara": "Build a bloc with Eritrea and Somalia",
+  "Kahire Eritre ile savunma ve istihbarat anlaşması imzaladı.": "Cairo signed a defence and intelligence deal with Eritrea.",
+  "Su 'hayat meselesi'; ama savaş çok maliyetli ve Etiyopya uzak. Diplomasi, hukuk ve baskı yolları var.": "Water is 'existential', but war is very costly and Ethiopia is far away. Diplomacy, law and pressure are the options.",
+  "Mısır'a yakın dur": "Lean toward Egypt",
+  "Hartum Kahire ile ortak su açıklaması yaptı.": "Khartoum issued a joint water statement with Cairo.",
+  "Etiyopya'dan elektrik al": "Buy electricity from Ethiopia",
+  "Sudan Etiyopya'dan elektrik ithal etmeyi kabul etti.": "Sudan agreed to import electricity from Ethiopia.",
+  "İç savaş ve selin ortasındaki Sudan, her iki tarafa da muhtaç.": "Sudan, amid civil war and floods, needs both sides.",
+  "Rönesans Barajı Resmen Açıldı": "The Renaissance Dam Is Inaugurated",
+  "Etiyopya, Büyük Etiyopya Rönesans Barajı'nın açılışını yaptı: 5.150 MW ile Afrika'nın en büyük hidroelektrik santrali. Mısır ve Sudan 'tek taraflı' diyerek tepki gösterdi; Mavi Nil'de ani su salınımı Sudan'da sel yarattı.": "Ethiopia inaugurated the Grand Ethiopian Renaissance Dam: at 5,150 MW it is Africa's largest hydropower plant. Egypt and Sudan reacted against the 'unilateral' step; a sudden release on the Blue Nile caused flooding in Sudan.",
+  "Su tasarrufu ve tuzdan arındırma": "Water saving and desalination",
+  "Kahire tuzdan arındırma ve damla sulama yatırımını artırdı.": "Cairo expanded desalination and drip irrigation.",
+  "Etiyopya'ya sıkı baskı": "Press Ethiopia hard",
+  "Mısır, ABD ve Körfez üzerinden baraj işletmesi için baskı yaptı.": "Egypt pressed over the dam's operation via the US and the Gulf.",
+  "Su yetersizliği ekmek fiyatına ve sokağa yansıyor.": "The water shortage shows up in bread prices and on the street.",
+  "Ortak bir veri paylaşımı kabul et": "Accept joint data sharing",
+  "Etiyopya Mısır ve Sudan'la su verisi paylaşımına razı oldu.": "Ethiopia agreed to share water data with Egypt and Sudan.",
+  "Baraj gölünü doldurmaya devam et": "Keep filling the reservoir",
+  "Addis Ababa gölü doldurma programını sürdürdü.": "Addis Ababa kept to its filling programme.",
+  "Siz de kuraklıktan etkileniyorsunuz; ortak bir su yönetimi sizi küresel saygıya taşıyabilir.": "You are hit by drought too; joint water management could bring you global respect.",
+  "Kuraklık Yılı": "A Year of Drought",
+  "Muson yağmurları düşük gelince Nil'in debisi azaldı; Mısır'da buğday ve pirinç ekimi su sınırına dayandı. Baraj gölünün doldurulma takvimi yeniden tartışma konusu.": "Low monsoon rains cut the Nile's flow; Egypt's wheat and rice planting hit the water limit. The filling schedule of the reservoir is again a point of dispute.",
+  "Sudan ordusuna destek": "Back the Sudanese army",
+  "Kahire Sudan ordusuna silah ve istihbarat sağladı.": "Cairo supplied arms and intelligence to the Sudanese army.",
+  "Arabuluculuk ve ateşkes": "Mediation and ceasefire",
+  "Mısır Cidde formülünde yeni bir ateşkes çağrısı yaptı.": "Egypt called for a new ceasefire under the Jeddah format.",
+  "Sudan'ın düşmesi sizin güney kapınızı açabilir.": "Sudan's collapse could open your southern door.",
+  "Sınırı sağlamlaştır": "Secure the border",
+  "Addis Ababa sınır birliklerini güçlendirdi.": "Addis Ababa strengthened its border units.",
+  "Eritre ile diyalog": "Dialogue with Eritrea",
+  "Etiyopya Eritre ile liman ve sınır görüşmesi başlattı.": "Ethiopia opened port and border talks with Eritrea.",
+  "Sınırdaki gerilim iç siyasetteki Tigray ve Amhara sorunlarıyla birleşiyor.": "Border tension combines with Tigray and Amhara problems at home.",
+  "Hartum'da Vekâlet Savaşı": "Proxy War in Khartoum",
+  "Sudan'daki hizipler Mısır ve Etiyopya'nın desteğini alıyor; Eritre sınırında asker yığınağı var. Nil artık yalnız bir su sorunu değil, bölgesel bir güç mücadelesi.": "Factions in Sudan receive Egyptian and Ethiopian backing; troops mass on the Eritrean border. The Nile is no longer just a water issue but a regional power struggle."
+ }
+}

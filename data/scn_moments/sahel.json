@@ -1,0 +1,489 @@
+{
+ "moments": [
+  {
+   "id": "sahel_ablukabam",
+   "turn": 6,
+   "title": "Başkent Abluka Altında (Kurgusal)",
+   "scene": "crisis",
+   "icon": "warning",
+   "text": "Kurgusal silahlı gruplar yakıt konvoylarını yakıp ana yolları keserek başkenti sıkıştırıyor; okullar kapalı, elektrik kesintileri günlük. Hükümet 'dış destek'i arıyor: Rus paralı timleri mi, Fransız hava gücü mü, yoksa bölgesel ittifak mı? Bu bir kurgudur.",
+   "major": true,
+   "default_fx": [
+    [
+     "stab",
+     "Mali",
+     -3
+    ],
+    [
+     "stab",
+     "Burkina Faso",
+     -2
+    ]
+   ],
+   "roles": {
+    "Mali": {
+     "text": "Başkent boğuluyor; ordu moralsiz ve yakıt yok. Hangi dış güce yaslanacaksınız?",
+     "options": [
+      {
+       "t": "Rus yardımına yönel",
+       "d": "Rus yardımına yönel",
+       "fx": [
+        [
+         "rel",
+         "Mali",
+         "Russia",
+         6
+        ],
+        [
+         "rel",
+         "Mali",
+         "France",
+         -4
+        ],
+        [
+         "troops",
+         "Mali",
+         3
+        ]
+       ],
+       "r": "Bamako Rus askerî danışman ve silah talep etti."
+      },
+      {
+       "t": "Bölgesel ittifak kur",
+       "d": "Bölgesel ittifak kur",
+       "fx": [
+        [
+         "rel",
+         "Mali",
+         "Niger",
+         5
+        ],
+        [
+         "rel",
+         "Mali",
+         "Burkina Faso",
+         5
+        ],
+        [
+         "ally",
+         "Mali",
+         "Niger"
+        ]
+       ],
+       "r": "Mali, Nijer ve Burkina Faso ortak bir kuvvet açıkladı."
+      }
+     ]
+    },
+    "France": {
+     "text": "Fransa bölgeden çekildi ama çıkarları ve vatandaşları risk altında; Paris yeniden müdahale eder mi?",
+     "options": [
+      {
+       "t": "Hava desteği ve istihbarat ver",
+       "d": "Hava desteği ve istihbarat ver",
+       "fx": [
+        [
+         "rel",
+         "France",
+         "Mali",
+         3
+        ],
+        [
+         "rel",
+         "France",
+         "Algeria",
+         -2
+        ]
+       ],
+       "r": "Paris sınırlı hava desteği ve istihbarat önerdi.",
+       "keep_default": true
+      },
+      {
+       "t": "Uzak dur",
+       "d": "Uzak dur",
+       "fx": [
+        [
+         "rel",
+         "France",
+         "Mali",
+         -2
+        ],
+        [
+         "stab",
+         "France",
+         1
+        ]
+       ],
+       "r": "Fransa yeniden müdahale etmeyi reddetti.",
+       "keep_default": true
+      }
+     ]
+    },
+    "Algeria": {
+     "text": "Cezayir kuzey sınırı ve Tuareg meselesi nedeniyle duruma çok duyarlı; Mali ile ilişkiler gergin.",
+     "options": [
+      {
+       "t": "Arabuluculuk ve sınır güvenliği",
+       "d": "Arabuluculuk ve sınır güvenliği",
+       "fx": [
+        [
+         "rel",
+         "Algeria",
+         "Mali",
+         3
+        ],
+        [
+         "troops",
+         "Algeria",
+         2
+        ]
+       ],
+       "r": "Cezayir tarafları görüşmeye çağırıp sınır devriyelerini artırdı.",
+       "keep_default": true
+      },
+      {
+       "t": "Sert tepki ver",
+       "d": "Sert tepki ver",
+       "fx": [
+        [
+         "rel",
+         "Algeria",
+         "Mali",
+         -4
+        ]
+       ],
+       "r": "Cezayir Mali'yi 'komşuluğa aykırı' davranmakla suçladı.",
+       "keep_default": true
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "sahel_darbe",
+   "turn": 30,
+   "title": "Bir Darbe Söylentisi (Kurgusal)",
+   "scene": "crisis",
+   "icon": "protest",
+   "text": "Kurgusal bir cuntanın içinde çatlak var: genç subaylar liderliği 'yetersiz' buluyor. Dış güçler hangi cenahın destekleneceğini tartışıyor; bölgesel örgütler yaptırım tehdidinde bulunuyor.",
+   "major": false,
+   "default_fx": [
+    [
+     "stab",
+     "Mali",
+     -2
+    ],
+    [
+     "stab",
+     "Niger",
+     -2
+    ],
+    [
+     "stab",
+     "Burkina Faso",
+     -2
+    ]
+   ],
+   "roles": {
+    "Niger": {
+     "text": "Üranyum ve petrol gelirleri hanenizi besliyor; ama içerideki rakipler de sabırsız.",
+     "options": [
+      {
+       "t": "Güvenlik güçlerini sıkılaştır",
+       "d": "Güvenlik güçlerini sıkılaştır",
+       "fx": [
+        [
+         "stab",
+         "Niger",
+         3
+        ],
+        [
+         "rel",
+         "Niger",
+         "Nigeria",
+         -2
+        ]
+       ],
+       "r": "Niamey ordu ve istihbaratta kadro değişikliğine gitti."
+      },
+      {
+       "t": "Siyasi açılım sözü ver",
+       "d": "Siyasi açılım sözü ver",
+       "fx": [
+        [
+         "stab",
+         "Niger",
+         1
+        ],
+        [
+         "rel",
+         "Niger",
+         "Nigeria",
+         3
+        ],
+        [
+         "rel",
+         "Niger",
+         "France",
+         1
+        ]
+       ],
+       "r": "Nijer geçiş takvimi ve seçim sözü verdi."
+      }
+     ]
+    },
+    "Nigeria": {
+     "text": "Nijerya sınırdaki istikrarsızlığa karşı ECOWAS'ı mı çağıracak, yoksa tek başına mı hareket edecek?",
+     "options": [
+      {
+       "t": "ECOWAS yaptırımı ve diplomasi",
+       "d": "ECOWAS yaptırımı ve diplomasi",
+       "fx": [
+        [
+         "rel",
+         "Nigeria",
+         "Niger",
+         -3
+        ],
+        [
+         "rel",
+         "Nigeria",
+         "France",
+         2
+        ]
+       ],
+       "r": "Abuja ECOWAS üzerinden yaptırım tehdidi yaptı.",
+       "keep_default": true
+      },
+      {
+       "t": "Doğrudan diyalog",
+       "d": "Doğrudan diyalog",
+       "fx": [
+        [
+         "rel",
+         "Nigeria",
+         "Niger",
+         4
+        ]
+       ],
+       "r": "Abuja Niamey ile doğrudan güvenlik görüşmesi yaptı.",
+       "keep_default": true
+      }
+     ]
+    },
+    "Burkina Faso": {
+     "text": "Burkina Faso'da kırsal alanların büyük kısmı silahlı grupların elinde; ordunun dayanıklılığı zayıf.",
+     "options": [
+      {
+       "t": "Gönüllü milis genişlet",
+       "d": "Gönüllü milis genişlet",
+       "fx": [
+        [
+         "troops",
+         "Burkina Faso",
+         4
+        ],
+        [
+         "stab",
+         "Burkina Faso",
+         -1
+        ]
+       ],
+       "r": "Ouagadougou gönüllü savunma milislerini genişletti."
+      },
+      {
+       "t": "Rus danışman ve dron al",
+       "d": "Rus danışman ve dron al",
+       "fx": [
+        [
+         "rel",
+         "Burkina Faso",
+         "Russia",
+         4
+        ],
+        [
+         "rel",
+         "Burkina Faso",
+         "France",
+         -3
+        ],
+        [
+         "troops",
+         "Burkina Faso",
+         2
+        ]
+       ],
+       "r": "Burkina Faso Rus danışman ve dron anlaşması yaptı."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "sahel_bolgeselsavas",
+   "turn": 70,
+   "title": "Bölgesel Savaşın Eşiği (Kurgusal)",
+   "scene": "border",
+   "icon": "border_clash",
+   "text": "Kurgusal silahlı grupların ilerleyişi sınır devletlerini tehdit ediyor: mülteciler, silah akışı ve altın madenleri bölgesel savaş riskini büyütüyor. Dış güçler masada ya da sahada.",
+   "major": true,
+   "default_fx": [
+    [
+     "stab",
+     "Mali",
+     -2
+    ],
+    [
+     "stab",
+     "Algeria",
+     -1
+    ]
+   ],
+   "roles": {
+    "Algeria": {
+     "text": "Cezayir Sahra güvenliği için sınırlı müdahale seçeneğini tartışıyor.",
+     "options": [
+      {
+       "t": "Sınırlı sınır ötesi operasyon",
+       "d": "Sınırlı sınır ötesi operasyon",
+       "fx": [
+        [
+         "rel",
+         "Algeria",
+         "Mali",
+         -4
+        ],
+        [
+         "troops",
+         "Algeria",
+         2
+        ],
+        [
+         "stab",
+         "Algeria",
+         1
+        ]
+       ],
+       "r": "Cezayir sınırda sınırlı bir operasyon başlattı."
+      },
+      {
+       "t": "Diplomatik kriz masası",
+       "d": "Diplomatik kriz masası",
+       "fx": [
+        [
+         "rel",
+         "Algeria",
+         "Mali",
+         2
+        ],
+        [
+         "rel",
+         "Algeria",
+         "Nigeria",
+         2
+        ]
+       ],
+       "r": "Cezayir Afrika Birliği ile ortak kriz masası önerdi."
+      }
+     ]
+    },
+    "Mali": {
+     "text": "Hükümetiniz ayakta ama kontrolünüz haritanın küçük bir kısmında.",
+     "options": [
+      {
+       "t": "Rus güçlerine tam bağlan",
+       "d": "Rus güçlerine tam bağlan",
+       "fx": [
+        [
+         "rel",
+         "Mali",
+         "Russia",
+         5
+        ],
+        [
+         "rel",
+         "Mali",
+         "France",
+         -3
+        ],
+        [
+         "buff",
+         "Mali",
+         "def",
+         1.1,
+         8
+        ]
+       ],
+       "r": "Bamako Rus güçlerine yeni üsler verdi."
+      },
+      {
+       "t": "Müzakere ve af",
+       "d": "Müzakere ve af",
+       "fx": [
+        [
+         "stab",
+         "Mali",
+         2
+        ],
+        [
+         "rel",
+         "Mali",
+         "Algeria",
+         3
+        ]
+       ],
+       "r": "Mali silahlı gruplarla müzakere ve af önerdi."
+      }
+     ]
+    }
+   }
+  }
+ ],
+ "moments_en": {
+  "Rus yardımına yönel": "Turn to Russian help",
+  "Bamako Rus askerî danışman ve silah talep etti.": "Bamako requested Russian advisers and arms.",
+  "Bölgesel ittifak kur": "Form a regional alliance",
+  "Mali, Nijer ve Burkina Faso ortak bir kuvvet açıkladı.": "Mali, Niger and Burkina Faso announced a joint force.",
+  "Başkent boğuluyor; ordu moralsiz ve yakıt yok. Hangi dış güce yaslanacaksınız?": "The capital is suffocating; the army has poor morale and no fuel. Which outside power will you lean on?",
+  "Hava desteği ve istihbarat ver": "Offer air support and intelligence",
+  "Paris sınırlı hava desteği ve istihbarat önerdi.": "Paris offered limited air support and intelligence.",
+  "Uzak dur": "Stay away",
+  "Fransa yeniden müdahale etmeyi reddetti.": "France refused to intervene again.",
+  "Fransa bölgeden çekildi ama çıkarları ve vatandaşları risk altında; Paris yeniden müdahale eder mi?": "France has left the region, but its interests and nationals are at risk; will Paris intervene again?",
+  "Arabuluculuk ve sınır güvenliği": "Mediation and border security",
+  "Cezayir tarafları görüşmeye çağırıp sınır devriyelerini artırdı.": "Algiers invited the parties to talks and increased border patrols.",
+  "Sert tepki ver": "React sharply",
+  "Cezayir Mali'yi 'komşuluğa aykırı' davranmakla suçladı.": "Algiers accused Mali of 'un-neighbourly conduct'.",
+  "Cezayir kuzey sınırı ve Tuareg meselesi nedeniyle duruma çok duyarlı; Mali ile ilişkiler gergin.": "Algeria is very sensitive because of its southern border and the Tuareg question; ties with Mali are strained.",
+  "Başkent Abluka Altında (Kurgusal)": "The Capital Under Blockade (Fictional)",
+  "Kurgusal silahlı gruplar yakıt konvoylarını yakıp ana yolları keserek başkenti sıkıştırıyor; okullar kapalı, elektrik kesintileri günlük. Hükümet 'dış destek'i arıyor: Rus paralı timleri mi, Fransız hava gücü mü, yoksa bölgesel ittifak mı? Bu bir kurgudur.": "Fictional armed groups burn fuel convoys and cut main roads, squeezing the capital; schools are shut, power cuts are daily. The government seeks outside help: Russian contractors, French air power or a regional alliance? This is fiction.",
+  "Güvenlik güçlerini sıkılaştır": "Tighten the security forces",
+  "Niamey ordu ve istihbaratta kadro değişikliğine gitti.": "Niamey reshuffled the army and intelligence.",
+  "Siyasi açılım sözü ver": "Promise a political opening",
+  "Nijer geçiş takvimi ve seçim sözü verdi.": "Niger promised a transition timetable and elections.",
+  "Üranyum ve petrol gelirleri hanenizi besliyor; ama içerideki rakipler de sabırsız.": "Uranium and oil revenues sustain you, but rivals at home are impatient.",
+  "ECOWAS yaptırımı ve diplomasi": "ECOWAS sanctions and diplomacy",
+  "Abuja ECOWAS üzerinden yaptırım tehdidi yaptı.": "Abuja threatened sanctions via ECOWAS.",
+  "Doğrudan diyalog": "Direct dialogue",
+  "Abuja Niamey ile doğrudan güvenlik görüşmesi yaptı.": "Abuja held direct security talks with Niamey.",
+  "Nijerya sınırdaki istikrarsızlığa karşı ECOWAS'ı mı çağıracak, yoksa tek başına mı hareket edecek?": "Will Nigeria call on ECOWAS against instability on its border, or act alone?",
+  "Gönüllü milis genişlet": "Expand volunteer militias",
+  "Ouagadougou gönüllü savunma milislerini genişletti.": "Ouagadougou expanded its volunteer defence militias.",
+  "Rus danışman ve dron al": "Add Russian advisers and drones",
+  "Burkina Faso Rus danışman ve dron anlaşması yaptı.": "Burkina Faso signed a deal for Russian advisers and drones.",
+  "Burkina Faso'da kırsal alanların büyük kısmı silahlı grupların elinde; ordunun dayanıklılığı zayıf.": "Much of rural Burkina Faso is held by armed groups; the army's endurance is weak.",
+  "Bir Darbe Söylentisi (Kurgusal)": "A Coup Rumour (Fictional)",
+  "Kurgusal bir cuntanın içinde çatlak var: genç subaylar liderliği 'yetersiz' buluyor. Dış güçler hangi cenahın destekleneceğini tartışıyor; bölgesel örgütler yaptırım tehdidinde bulunuyor.": "There is a crack in a fictional junta: young officers find the leadership 'inadequate'. Outside powers debate which camp to back; regional bodies threaten sanctions.",
+  "Sınırlı sınır ötesi operasyon": "Limited cross-border operation",
+  "Cezayir sınırda sınırlı bir operasyon başlattı.": "Algeria launched a limited operation on the border.",
+  "Diplomatik kriz masası": "Diplomatic crisis desk",
+  "Cezayir Afrika Birliği ile ortak kriz masası önerdi.": "Algiers proposed a joint crisis desk with the African Union.",
+  "Cezayir Sahra güvenliği için sınırlı müdahale seçeneğini tartışıyor.": "Algeria weighs a limited intervention for Saharan security.",
+  "Rus güçlerine tam bağlan": "Fully commit to Russian forces",
+  "Bamako Rus güçlerine yeni üsler verdi.": "Bamako granted the Russian forces new bases.",
+  "Müzakere ve af": "Negotiation and amnesty",
+  "Mali silahlı gruplarla müzakere ve af önerdi.": "Mali offered negotiation and amnesty to armed groups.",
+  "Hükümetiniz ayakta ama kontrolünüz haritanın küçük bir kısmında.": "Your government stands, but your control covers a small part of the map.",
+  "Bölgesel Savaşın Eşiği (Kurgusal)": "On the Brink of a Regional War (Fictional)",
+  "Kurgusal silahlı grupların ilerleyişi sınır devletlerini tehdit ediyor: mülteciler, silah akışı ve altın madenleri bölgesel savaş riskini büyütüyor. Dış güçler masada ya da sahada.": "The advance of fictional armed groups threatens neighbouring states: refugees, arms flows and gold mines raise the risk of a regional war. Outside powers are at the table or in the field."
+ }
+}

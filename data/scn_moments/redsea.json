@@ -1,0 +1,536 @@
+{
+ "moments": [
+  {
+   "id": "redsea_husiler",
+   "turn": 5,
+   "title": "Husilerin Gemi Saldırıları",
+   "scene": "naval",
+   "icon": "ship",
+   "text": "Yemen'deki Husiler Kızıldeniz'den geçen ticaret gemilerine füze ve dron saldırıları düzenliyor; Süveyş geçişleri sert düştü, armatörler Ümit Burnu'na yöneliyor. Gazze ateşkesi gerilimi azalttıysa da saldırı tehdidi bitmedi.",
+   "major": true,
+   "default_fx": [
+    [
+     "gold",
+     "Egypt",
+     -1.0
+    ],
+    [
+     "rel",
+     "Yemen",
+     "United States of America",
+     -3
+    ],
+    [
+     "rel",
+     "Yemen",
+     "Israel",
+     -4
+    ]
+   ],
+   "roles": {
+    "Egypt": {
+     "text": "Süveyş gelirleri, ekonominizin can damarı, çöktü. Hem Husilerden hem Batı'dan uzak durmanız gerek.",
+     "options": [
+      {
+       "t": "Denizcilik güvenliği koalisyonu kur",
+       "d": "Denizcilik güvenliği koalisyonu kur",
+       "fx": [
+        [
+         "rel",
+         "Egypt",
+         "Saudi Arabia",
+         4
+        ],
+        [
+         "rel",
+         "Egypt",
+         "United States of America",
+         3
+        ],
+        [
+         "gold",
+         "Egypt",
+         0.5
+        ]
+       ],
+       "r": "Kahire Körfez ve Avrupa ile Kızıldeniz devriye koalisyonu kurdu."
+      },
+      {
+       "t": "Süveyş'e indirim ve teşvik",
+       "d": "Süveyş'e indirim ve teşvik",
+       "fx": [
+        [
+         "gold",
+         "Egypt",
+         -0.5
+        ],
+        [
+         "stab",
+         "Egypt",
+         1
+        ]
+       ],
+       "r": "Süveyş Kanalı Otoritesi armatörlere indirim sundu."
+      }
+     ]
+    },
+    "Yemen": {
+     "text": "Husiler Kızıldeniz'i koz olarak kullanıyor; ama hava saldırıları ve ablukanın bedeli ağır.",
+     "options": [
+      {
+       "t": "Saldırıları sürdür",
+       "d": "Saldırıları sürdür",
+       "fx": [
+        [
+         "rel",
+         "Yemen",
+         "United States of America",
+         -5
+        ],
+        [
+         "rel",
+         "Yemen",
+         "Israel",
+         -5
+        ],
+        [
+         "rel",
+         "Yemen",
+         "Saudi Arabia",
+         -2
+        ]
+       ],
+       "r": "Husiler yeni gemi saldırıları ilan etti."
+      },
+      {
+       "t": "Ateşkesi koru",
+       "d": "Ateşkesi koru",
+       "fx": [
+        [
+         "rel",
+         "Yemen",
+         "United States of America",
+         2
+        ],
+        [
+         "rel",
+         "Yemen",
+         "Saudi Arabia",
+         3
+        ],
+        [
+         "stab",
+         "Yemen",
+         1
+        ]
+       ],
+       "r": "Sana Gazze ateşkesine uyumlu bir saldırı ara verdi."
+      }
+     ]
+    },
+    "Israel": {
+     "text": "Eilat limanı ve hava savunması hedefte; Husilere vuruş mu, ABD ile koordinasyon mu?",
+     "options": [
+      {
+       "t": "Hudeyde limanını vur",
+       "d": "Hudeyde limanını vur",
+       "fx": [
+        [
+         "rel",
+         "Israel",
+         "Yemen",
+         -6
+        ],
+        [
+         "rel",
+         "Israel",
+         "Iran",
+         -2
+        ]
+       ],
+       "r": "İsrail Hudeyde limanı ve elektrik santrallerini vurdu.",
+       "keep_default": true
+      },
+      {
+       "t": "Savunmaya odaklan",
+       "d": "Savunmaya odaklan",
+       "fx": [
+        [
+         "stab",
+         "Israel",
+         1
+        ]
+       ],
+       "r": "İsrail çok katmanlı hava savunmasını yeniledi.",
+       "keep_default": true
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "redsea_sigorta",
+   "turn": 28,
+   "title": "Sigorta Primleri ve Konvoylar",
+   "scene": "trade",
+   "icon": "trade",
+   "text": "Savaş riski primleri deniz sigortasını ikiye katladı; konteyner navlunu yükseldi, Avrupa limanlarında gecikmeler başladı. Donanmalar konvoy eskortu için yarışıyor.",
+   "major": false,
+   "default_fx": [
+    [
+     "gold",
+     "Egypt",
+     -0.5
+    ],
+    [
+     "rel",
+     "Saudi Arabia",
+     "Iran",
+     -2
+    ]
+   ],
+   "roles": {
+    "Saudi Arabia": {
+     "text": "Cidde ve Yanbu limanlarınız Kızıldeniz'e bağlı; Vizyon 2030 de güvenli bir deniz ister.",
+     "options": [
+      {
+       "t": "Husilerle yeni bir barış anlaşması",
+       "d": "Husilerle yeni bir barış anlaşması",
+       "fx": [
+        [
+         "rel",
+         "Saudi Arabia",
+         "Yemen",
+         4
+        ],
+        [
+         "rel",
+         "Saudi Arabia",
+         "Iran",
+         2
+        ]
+       ],
+       "r": "Riyad Husilerle yol haritası görüşmelerini canlandırdı."
+      },
+      {
+       "t": "Deniz gücünü artır",
+       "d": "Deniz gücünü artır",
+       "fx": [
+        [
+         "troops",
+         "Saudi Arabia",
+         3
+        ],
+        [
+         "gold",
+         "Saudi Arabia",
+         -0.5
+        ],
+        [
+         "rel",
+         "Saudi Arabia",
+         "Yemen",
+         -3
+        ]
+       ],
+       "r": "Suudi Arabistan Kızıldeniz filosunu güçlendirdi."
+      }
+     ]
+    },
+    "Iran": {
+     "text": "Husiler sizin vekil gücünüz; ama baskı ABD yaptırımlarını sıkılaştırıyor.",
+     "options": [
+      {
+       "t": "Husilere desteği sürdür",
+       "d": "Husilere desteği sürdür",
+       "fx": [
+        [
+         "rel",
+         "Iran",
+         "United States of America",
+         -3
+        ],
+        [
+         "rel",
+         "Iran",
+         "Saudi Arabia",
+         -2
+        ]
+       ],
+       "r": "İran Husilere silah ve istihbarat akışını sürdürdü."
+      },
+      {
+       "t": "Gerilimi düşür",
+       "d": "Gerilimi düşür",
+       "fx": [
+        [
+         "rel",
+         "Iran",
+         "United States of America",
+         2
+        ],
+        [
+         "rel",
+         "Iran",
+         "Saudi Arabia",
+         2
+        ]
+       ],
+       "r": "Tahran Husileri sakinleştirmek için Umman kanalını kullandı."
+      }
+     ]
+    },
+    "Egypt": {
+     "text": "Süveyş geliri neredeyse yarı yarıya düştü; borç ve kur baskısı büyüyor.",
+     "options": [
+      {
+       "t": "Körfez'den acil finansman",
+       "d": "Körfez'den acil finansman",
+       "fx": [
+        [
+         "gold",
+         "Egypt",
+         1.5
+        ],
+        [
+         "rel",
+         "Egypt",
+         "Saudi Arabia",
+         3
+        ]
+       ],
+       "r": "Kahire Körfez fonlarından acil kredi aldı.",
+       "keep_default": true
+      },
+      {
+       "t": "IMF programını aç",
+       "d": "IMF programını aç",
+       "fx": [
+        [
+         "gold",
+         "Egypt",
+         0.8
+        ],
+        [
+         "stab",
+         "Egypt",
+         -1
+        ]
+       ],
+       "r": "Mısır IMF ile yeni bir program görüşmesi yaptı.",
+       "keep_default": true
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "redsea_abluka",
+   "turn": 62,
+   "title": "Hudeyde Savaşı",
+   "scene": "pre_landing",
+   "icon": "landing",
+   "text": "Yemen'in kuzeybatı limanı Hudeyde için kara ve deniz harekâtı sürüyor; Husilerin füze stokları ve Kızıldeniz'in kaderi bu limanda düğümleniyor.",
+   "major": true,
+   "default_fx": [
+    [
+     "stab",
+     "Yemen",
+     -3
+    ],
+    [
+     "rel",
+     "Iran",
+     "Saudi Arabia",
+     -2
+    ]
+   ],
+   "roles": {
+    "Saudi Arabia": {
+     "text": "Liman düşerse Husilerin deniz tehdidi büyük ölçüde kırılır; ama insani felaket ve uluslararası baskı da artar.",
+     "options": [
+      {
+       "t": "Harekâtı destekle",
+       "d": "Harekâtı destekle",
+       "fx": [
+        [
+         "war",
+         "Saudi Arabia",
+         "Yemen",
+         "solo"
+        ],
+        [
+         "buff",
+         "Saudi Arabia",
+         "att",
+         1.1,
+         6
+        ],
+        [
+         "rel",
+         "Saudi Arabia",
+         "Iran",
+         -4
+        ]
+       ],
+       "r": "Riyad koalisyonun Hudeyde harekâtına hava desteği verdi."
+      },
+      {
+       "t": "İnsani koridor ve müzakere",
+       "d": "İnsani koridor ve müzakere",
+       "fx": [
+        [
+         "rel",
+         "Saudi Arabia",
+         "Yemen",
+         3
+        ],
+        [
+         "stab",
+         "Saudi Arabia",
+         1
+        ]
+       ],
+       "r": "Suudi Arabistan Hudeyde'de insani koridor önerdi."
+      }
+     ]
+    },
+    "Yemen": {
+     "text": "Husi hâkimiyetindeki liman hayatî; kaybı hem para hem silah akışını keser.",
+     "options": [
+      {
+       "t": "Limanı sonuna dek savun",
+       "d": "Limanı sonuna dek savun",
+       "fx": [
+        [
+         "buff",
+         "Yemen",
+         "def",
+         1.2,
+         8
+        ],
+        [
+         "rel",
+         "Yemen",
+         "Saudi Arabia",
+         -3
+        ]
+       ],
+       "r": "Husiler Hudeyde'de mayın ve füzelerle savunma kurdu."
+      },
+      {
+       "t": "Ateşkes için taviz ver",
+       "d": "Ateşkes için taviz ver",
+       "fx": [
+        [
+         "peace",
+         "Yemen",
+         "Saudi Arabia"
+        ],
+        [
+         "rel",
+         "Yemen",
+         "Saudi Arabia",
+         3
+        ]
+       ],
+       "r": "Sana Hudeyde'de BM gözetimi önerdi."
+      }
+     ]
+    },
+    "Iran": {
+     "text": "Hudeyde düşerse Körfez'deki vekâlet zinciriniz zayıflar.",
+     "options": [
+      {
+       "t": "Denizden ikmal kanalı aç",
+       "d": "Denizden ikmal kanalı aç",
+       "fx": [
+        [
+         "rel",
+         "Iran",
+         "Saudi Arabia",
+         -3
+        ],
+        [
+         "rel",
+         "Iran",
+         "United States of America",
+         -3
+        ]
+       ],
+       "r": "İran gizlice Husilere deniz yoluyla silah gönderdi.",
+       "keep_default": true
+      },
+      {
+       "t": "Arabuluculuk için Umman'ı kullan",
+       "d": "Arabuluculuk için Umman'ı kullan",
+       "fx": [
+        [
+         "rel",
+         "Iran",
+         "Saudi Arabia",
+         2
+        ]
+       ],
+       "r": "Tahran Umman aracılığıyla ateşkes çağrısı yaptı.",
+       "keep_default": true
+      }
+     ]
+    }
+   }
+  }
+ ],
+ "moments_en": {
+  "Denizcilik güvenliği koalisyonu kur": "Form a maritime security coalition",
+  "Kahire Körfez ve Avrupa ile Kızıldeniz devriye koalisyonu kurdu.": "Cairo built a Red Sea patrol coalition with Gulf states and Europe.",
+  "Süveyş'e indirim ve teşvik": "Suez discounts and incentives",
+  "Süveyş Kanalı Otoritesi armatörlere indirim sundu.": "The Suez Canal Authority offered discounts to shipowners.",
+  "Süveyş gelirleri, ekonominizin can damarı, çöktü. Hem Husilerden hem Batı'dan uzak durmanız gerek.": "Suez revenue, a lifeline for your economy, has collapsed. You must keep your distance from both the Houthis and the West.",
+  "Saldırıları sürdür": "Continue the attacks",
+  "Husiler yeni gemi saldırıları ilan etti.": "The Houthis announced new attacks on ships.",
+  "Ateşkesi koru": "Keep the truce",
+  "Sana Gazze ateşkesine uyumlu bir saldırı ara verdi.": "Sanaa paused attacks in line with the Gaza ceasefire.",
+  "Husiler Kızıldeniz'i koz olarak kullanıyor; ama hava saldırıları ve ablukanın bedeli ağır.": "The Houthis use the Red Sea as leverage, but air strikes and the blockade are costly.",
+  "Hudeyde limanını vur": "Strike Hodeidah port",
+  "İsrail Hudeyde limanı ve elektrik santrallerini vurdu.": "Israel struck Hodeidah port and power stations.",
+  "Savunmaya odaklan": "Focus on defence",
+  "İsrail çok katmanlı hava savunmasını yeniledi.": "Israel renewed its layered air defence.",
+  "Eilat limanı ve hava savunması hedefte; Husilere vuruş mu, ABD ile koordinasyon mu?": "The port of Eilat and your air defences are targets; strike the Houthis, or coordinate with the US?",
+  "Husilerin Gemi Saldırıları": "Houthi Attacks on Shipping",
+  "Yemen'deki Husiler Kızıldeniz'den geçen ticaret gemilerine füze ve dron saldırıları düzenliyor; Süveyş geçişleri sert düştü, armatörler Ümit Burnu'na yöneliyor. Gazze ateşkesi gerilimi azalttıysa da saldırı tehdidi bitmedi.": "The Houthis in Yemen launch missile and drone attacks on merchant ships in the Red Sea; Suez transits fell sharply and shipowners turn toward the Cape of Good Hope. The Gaza ceasefire eased tension, but the attack threat has not ended.",
+  "Husilerle yeni bir barış anlaşması": "A new peace deal with the Houthis",
+  "Riyad Husilerle yol haritası görüşmelerini canlandırdı.": "Riyadh revived roadmap talks with the Houthis.",
+  "Deniz gücünü artır": "Build up naval power",
+  "Suudi Arabistan Kızıldeniz filosunu güçlendirdi.": "Saudi Arabia strengthened its Red Sea fleet.",
+  "Cidde ve Yanbu limanlarınız Kızıldeniz'e bağlı; Vizyon 2030 de güvenli bir deniz ister.": "Jeddah and Yanbu ports depend on the Red Sea; Vision 2030 also needs a safe sea.",
+  "Husilere desteği sürdür": "Keep supporting the Houthis",
+  "İran Husilere silah ve istihbarat akışını sürdürdü.": "Iran kept up arms and intelligence flow to the Houthis.",
+  "Gerilimi düşür": "De-escalate",
+  "Tahran Husileri sakinleştirmek için Umman kanalını kullandı.": "Tehran used the Omani channel to calm the Houthis.",
+  "Husiler sizin vekil gücünüz; ama baskı ABD yaptırımlarını sıkılaştırıyor.": "The Houthis are your proxy, but pressure is tightening US sanctions.",
+  "Körfez'den acil finansman": "Seek emergency Gulf finance",
+  "Kahire Körfez fonlarından acil kredi aldı.": "Cairo got an emergency loan from Gulf funds.",
+  "IMF programını aç": "Open the IMF programme",
+  "Mısır IMF ile yeni bir program görüşmesi yaptı.": "Egypt held talks on a new IMF programme.",
+  "Süveyş geliri neredeyse yarı yarıya düştü; borç ve kur baskısı büyüyor.": "Suez revenue nearly halved; debt and currency pressure mounts.",
+  "Sigorta Primleri ve Konvoylar": "Insurance Premiums and Convoys",
+  "Savaş riski primleri deniz sigortasını ikiye katladı; konteyner navlunu yükseldi, Avrupa limanlarında gecikmeler başladı. Donanmalar konvoy eskortu için yarışıyor.": "War-risk premiums doubled marine insurance; container freight rose and Europe's ports saw delays. Navies compete to escort convoys.",
+  "Harekâtı destekle": "Support the operation",
+  "Riyad koalisyonun Hudeyde harekâtına hava desteği verdi.": "Riyadh gave air support to the coalition's Hodeidah operation.",
+  "İnsani koridor ve müzakere": "Humanitarian corridor and talks",
+  "Suudi Arabistan Hudeyde'de insani koridor önerdi.": "Saudi Arabia proposed a humanitarian corridor at Hodeidah.",
+  "Liman düşerse Husilerin deniz tehdidi büyük ölçüde kırılır; ama insani felaket ve uluslararası baskı da artar.": "If the port falls, the Houthi sea threat is largely broken, but the humanitarian toll and global pressure grow.",
+  "Limanı sonuna dek savun": "Defend the port to the end",
+  "Husiler Hudeyde'de mayın ve füzelerle savunma kurdu.": "The Houthis built a defence of mines and missiles at Hodeidah.",
+  "Ateşkes için taviz ver": "Concede for a ceasefire",
+  "Sana Hudeyde'de BM gözetimi önerdi.": "Sanaa offered UN supervision at Hodeidah.",
+  "Husi hâkimiyetindeki liman hayatî; kaybı hem para hem silah akışını keser.": "The Houthi-held port is vital; losing it would cut both money and the arms flow.",
+  "Denizden ikmal kanalı aç": "Open a sea supply line",
+  "İran gizlice Husilere deniz yoluyla silah gönderdi.": "Iran covertly shipped arms to the Houthis by sea.",
+  "Arabuluculuk için Umman'ı kullan": "Use Oman for mediation",
+  "Tahran Umman aracılığıyla ateşkes çağrısı yaptı.": "Tehran called for a ceasefire via Oman.",
+  "Hudeyde düşerse Körfez'deki vekâlet zinciriniz zayıflar.": "If Hodeidah falls, your proxy chain in the Gulf weakens.",
+  "Hudeyde Savaşı": "The Battle for Hodeidah",
+  "Yemen'in kuzeybatı limanı Hudeyde için kara ve deniz harekâtı sürüyor; Husilerin füze stokları ve Kızıldeniz'in kaderi bu limanda düğümleniyor.": "A land and sea operation for Hodeidah, Yemen's northwest port, is under way; the Houthis' missile stocks and the fate of the Red Sea hinge on this port."
+ }
+}

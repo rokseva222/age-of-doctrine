@@ -1,0 +1,555 @@
+{
+ "moments": [
+  {
+   "id": "kuraklik_nehir",
+   "turn": 10,
+   "title": "Nehirler Çekiliyor (Kurgusal)",
+   "scene": "crisis",
+   "icon": "drought",
+   "text": "Kurgusal bir kuraklık dalgası Fırat, Dicle, Nil ve İndus'un debisini düşürdü; barajlar rekor düşük seviyede. Su paylaşım anlaşmaları yeniden okunuyor ve her başkent 'önce kendi halkım' diyor. Bu bir kurgudur.",
+   "major": true,
+   "default_fx": [
+    [
+     "stab",
+     "Turkey",
+     -1
+    ],
+    [
+     "stab",
+     "Iraq",
+     -2
+    ],
+    [
+     "stab",
+     "Egypt",
+     -2
+    ],
+    [
+     "stab",
+     "Pakistan",
+     -2
+    ]
+   ],
+   "roles": {
+    "Turkey": {
+     "text": "Barajlarınız komşuların suyunu elinizde tutuyor; hem büyük bir koz hem büyük bir sorumluluk.",
+     "options": [
+      {
+       "t": "Salımı artır, ticaret karşılığı su",
+       "d": "Salımı artır, ticaret karşılığı su",
+       "fx": [
+        [
+         "rel",
+         "Turkey",
+         "Iraq",
+         5
+        ],
+        [
+         "gold",
+         "Turkey",
+         0.5
+        ]
+       ],
+       "r": "Ankara Irak'a daha fazla su salımı ve karşılığında enerji-ticaret anlaşması önerdi."
+      },
+      {
+       "t": "Barajları tut, iç ihtiyacı önce karşıla",
+       "d": "Barajları tut, iç ihtiyacı önce karşıla",
+       "fx": [
+        [
+         "rel",
+         "Turkey",
+         "Iraq",
+         -4
+        ],
+        [
+         "stab",
+         "Turkey",
+         1
+        ]
+       ],
+       "r": "Türkiye baraj salımlarını azalttı; Irak ve Suriye tepki gösterdi."
+      }
+     ]
+    },
+    "Iraq": {
+     "text": "Irak'ta tarım ve bataklıklar kuruyor; göçler başladı.",
+     "options": [
+      {
+       "t": "Ankara ile su anlaşması",
+       "d": "Ankara ile su anlaşması",
+       "fx": [
+        [
+         "rel",
+         "Iraq",
+         "Turkey",
+         5
+        ],
+        [
+         "stab",
+         "Iraq",
+         1
+        ]
+       ],
+       "r": "Bağdat Türkiye ile su-enerji paketi imzaladı.",
+       "keep_default": true
+      },
+      {
+       "t": "Uluslararası baskı yap",
+       "d": "Uluslararası baskı yap",
+       "fx": [
+        [
+         "rel",
+         "Iraq",
+         "Turkey",
+         -3
+        ],
+        [
+         "rel",
+         "Iraq",
+         "United States of America",
+         2
+        ]
+       ],
+       "r": "Bağdat meseleyi BM'ye taşıdı.",
+       "keep_default": true
+      }
+     ]
+    },
+    "India": {
+     "text": "Hindistan'da muson başarısız; İndus ve Brahmaputra kontrolü stratejik bir mesele.",
+     "options": [
+      {
+       "t": "Su altyapısını hızlandır",
+       "d": "Su altyapısını hızlandır",
+       "fx": [
+        [
+         "gold",
+         "India",
+         -1.0
+        ],
+        [
+         "stab",
+         "India",
+         2
+        ],
+        [
+         "rel",
+         "India",
+         "Pakistan",
+         -2
+        ]
+       ],
+       "r": "Delhi nehir bağlantı ve baraj projelerini hızlandırdı.",
+       "keep_default": true
+      },
+      {
+       "t": "Komşularla su görüşmesi",
+       "d": "Komşularla su görüşmesi",
+       "fx": [
+        [
+         "rel",
+         "India",
+         "Pakistan",
+         3
+        ],
+        [
+         "stab",
+         "India",
+         -1
+        ]
+       ],
+       "r": "Hindistan Pakistan ve Bangladeş'le su görüşmesi önerdi.",
+       "keep_default": true
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "kuraklik_gida",
+   "turn": 40,
+   "title": "Gıda Fiyatları Fırlıyor (Kurgusal)",
+   "scene": "trade",
+   "icon": "drought",
+   "text": "Buğday, pirinç ve mısır fiyatları kurak sezonla ikiye katlandı; ihracat yasakları ve stok yapma yarışı başladı. Ekmek kuyrukları siyasi bir güvenlik sorununa dönüşüyor.",
+   "major": false,
+   "default_fx": [
+    [
+     "stab",
+     "Egypt",
+     -2
+    ],
+    [
+     "stab",
+     "Ethiopia",
+     -2
+    ],
+    [
+     "stab",
+     "Pakistan",
+     -2
+    ],
+    [
+     "gold",
+     "Egypt",
+     -0.5
+    ]
+   ],
+   "roles": {
+    "Egypt": {
+     "text": "Dünyanın en büyük buğday ithalatçılarındansınız; ekmek sübvansiyonu bütçeyi eritiyor.",
+     "options": [
+      {
+       "t": "Stok ve uzun vadeli ithalat anlaşması",
+       "d": "Stok ve uzun vadeli ithalat anlaşması",
+       "fx": [
+        [
+         "gold",
+         "Egypt",
+         -1.0
+        ],
+        [
+         "stab",
+         "Egypt",
+         3
+        ],
+        [
+         "rel",
+         "Egypt",
+         "Turkey",
+         2
+        ]
+       ],
+       "r": "Kahire Rusya ve Ukrayna ile uzun vadeli tahıl anlaşması yaptı."
+      },
+      {
+       "t": "Sübvansiyonu kıs",
+       "d": "Sübvansiyonu kıs",
+       "fx": [
+        [
+         "gold",
+         "Egypt",
+         1.0
+        ],
+        [
+         "stab",
+         "Egypt",
+         -4
+        ]
+       ],
+       "r": "Mısır ekmek sübvansiyonunu azalttı; protestolar çıktı."
+      }
+     ]
+    },
+    "Pakistan": {
+     "text": "Pencap'ın buğday ambarı kurudu; ihracat yerine iç tüketim mi?",
+     "options": [
+      {
+       "t": "İhracat yasağı koy",
+       "d": "İhracat yasağı koy",
+       "fx": [
+        [
+         "stab",
+         "Pakistan",
+         2
+        ],
+        [
+         "gold",
+         "Pakistan",
+         -0.5
+        ],
+        [
+         "rel",
+         "Pakistan",
+         "India",
+         -1
+        ]
+       ],
+       "r": "İslamabad buğday ve pirinç ihracatını yasakladı.",
+       "keep_default": true
+      },
+      {
+       "t": "Uluslararası yardım iste",
+       "d": "Uluslararası yardım iste",
+       "fx": [
+        [
+         "stab",
+         "Pakistan",
+         1
+        ],
+        [
+         "rel",
+         "Pakistan",
+         "Saudi Arabia",
+         3
+        ]
+       ],
+       "r": "Pakistan BM ve Körfez'den gıda yardımı istedi.",
+       "keep_default": true
+      }
+     ]
+    },
+    "Ethiopia": {
+     "text": "Etiyopya'da kuraklık ve iç çatışma birleşiyor; milyonlarca insan gıda yardımına muhtaç.",
+     "options": [
+      {
+       "t": "Sulama ve yardım programı",
+       "d": "Sulama ve yardım programı",
+       "fx": [
+        [
+         "stab",
+         "Ethiopia",
+         2
+        ],
+        [
+         "gold",
+         "Ethiopia",
+         -1.0
+        ]
+       ],
+       "r": "Addis Ababa büyük bir sulama ve gıda yardımı programı başlattı.",
+       "keep_default": true
+      },
+      {
+       "t": "Barajı elektrik ve tarım için kullan",
+       "d": "Barajı elektrik ve tarım için kullan",
+       "fx": [
+        [
+         "gold",
+         "Ethiopia",
+         1.0
+        ],
+        [
+         "rel",
+         "Ethiopia",
+         "Egypt",
+         -3
+        ]
+       ],
+       "r": "Etiyopya baraj gölünü sulama için kullandı.",
+       "keep_default": true
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "kuraklik_savas",
+   "turn": 90,
+   "title": "Su Savaşı Eşiğinde (Kurgusal)",
+   "scene": "border",
+   "icon": "border_clash",
+   "text": "Kurak yıl üçüncü yılına girdi: baraj kapakları, nehir yönlendirmeleri ve sınır geçişleri çatışma nedeni oldu. Bir ülke 'su yoluyla savaş' demeye hazır; diğerleri arabuluculuk arıyor. Bu bir kurgudur.",
+   "major": true,
+   "default_fx": [
+    [
+     "rel",
+     "Egypt",
+     "Ethiopia",
+     -3
+    ],
+    [
+     "rel",
+     "India",
+     "Pakistan",
+     -3
+    ],
+    [
+     "rel",
+     "Iraq",
+     "Turkey",
+     -3
+    ]
+   ],
+   "roles": {
+    "India": {
+     "text": "Su bir güvenlik mesele; ama savaş nükleer bir gölgede.",
+     "options": [
+      {
+       "t": "Kontrollü baskı: su akışını sınırla",
+       "d": "Kontrollü baskı: su akışını sınırla",
+       "fx": [
+        [
+         "rel",
+         "India",
+         "Pakistan",
+         -5
+        ],
+        [
+         "rel",
+         "India",
+         "China",
+         -1
+        ]
+       ],
+       "r": "Hindistan sınır ötesi su akışını sınırladı."
+      },
+      {
+       "t": "Ortak su komisyonu",
+       "d": "Ortak su komisyonu",
+       "fx": [
+        [
+         "rel",
+         "India",
+         "Pakistan",
+         4
+        ],
+        [
+         "stab",
+         "India",
+         1
+        ]
+       ],
+       "r": "Delhi ortak su komisyonu ve veri paylaşımı önerdi."
+      }
+     ]
+    },
+    "Pakistan": {
+     "text": "Suyun kesilmesi 'savaş eylemi' diye ilan edilebilir; ama ekonomi ve ordu hazır mı?",
+     "options": [
+      {
+       "t": "Sınırda gövde gösterisi",
+       "d": "Sınırda gövde gösterisi",
+       "fx": [
+        [
+         "troops",
+         "Pakistan",
+         3
+        ],
+        [
+         "rel",
+         "Pakistan",
+         "India",
+         -4
+        ]
+       ],
+       "r": "Pakistan sınır hattına birlik kaydırdı."
+      },
+      {
+       "t": "Tahkim ve Çin aracılığı",
+       "d": "Tahkim ve Çin aracılığı",
+       "fx": [
+        [
+         "rel",
+         "Pakistan",
+         "China",
+         3
+        ],
+        [
+         "rel",
+         "Pakistan",
+         "India",
+         -1
+        ]
+       ],
+       "r": "İslamabad uluslararası tahkim ve Pekin arabuluculuğu istedi."
+      }
+     ]
+    },
+    "Egypt": {
+     "text": "Nil'in aşağı mecrasında son kelime sizde olmayabilir; ama diplomasi bitmedi.",
+     "options": [
+      {
+       "t": "Etiyopya ile bağlayıcı su anlaşması",
+       "d": "Etiyopya ile bağlayıcı su anlaşması",
+       "fx": [
+        [
+         "rel",
+         "Egypt",
+         "Ethiopia",
+         4
+        ],
+        [
+         "stab",
+         "Egypt",
+         1
+        ]
+       ],
+       "r": "Kahire Etiyopya'ya bağlayıcı doldurma ve işletme kuralları önerdi.",
+       "keep_default": true
+      },
+      {
+       "t": "Güç gösterisi ve ittifak",
+       "d": "Güç gösterisi ve ittifak",
+       "fx": [
+        [
+         "rel",
+         "Egypt",
+         "Ethiopia",
+         -5
+        ],
+        [
+         "rel",
+         "Egypt",
+         "Eritrea",
+         4
+        ],
+        [
+         "troops",
+         "Egypt",
+         2
+        ]
+       ],
+       "r": "Mısır Eritre ve Somali ile ortak tatbikat yaptı.",
+       "keep_default": true
+      }
+     ]
+    }
+   }
+  }
+ ],
+ "moments_en": {
+  "Salımı artır, ticaret karşılığı su": "Release more water in exchange for trade",
+  "Ankara Irak'a daha fazla su salımı ve karşılığında enerji-ticaret anlaşması önerdi.": "Ankara offered Iraq more water in exchange for an energy–trade deal.",
+  "Barajları tut, iç ihtiyacı önce karşıla": "Hold the dams and serve home needs first",
+  "Türkiye baraj salımlarını azalttı; Irak ve Suriye tepki gösterdi.": "Turkey reduced dam releases; Iraq and Syria reacted.",
+  "Barajlarınız komşuların suyunu elinizde tutuyor; hem büyük bir koz hem büyük bir sorumluluk.": "Your dams hold your neighbours' water: both great leverage and great responsibility.",
+  "Ankara ile su anlaşması": "A water deal with Ankara",
+  "Bağdat Türkiye ile su-enerji paketi imzaladı.": "Baghdad signed a water-and-energy package with Turkey.",
+  "Uluslararası baskı yap": "Seek international pressure",
+  "Bağdat meseleyi BM'ye taşıdı.": "Baghdad took the issue to the UN.",
+  "Irak'ta tarım ve bataklıklar kuruyor; göçler başladı.": "Farming and marshlands are drying in Iraq; migration has begun.",
+  "Su altyapısını hızlandır": "Speed up water infrastructure",
+  "Delhi nehir bağlantı ve baraj projelerini hızlandırdı.": "Delhi accelerated river-linking and dam projects.",
+  "Komşularla su görüşmesi": "Water talks with neighbours",
+  "Hindistan Pakistan ve Bangladeş'le su görüşmesi önerdi.": "India proposed water talks with Pakistan and Bangladesh.",
+  "Hindistan'da muson başarısız; İndus ve Brahmaputra kontrolü stratejik bir mesele.": "The monsoon failed in India; control of the Indus and Brahmaputra is a strategic issue.",
+  "Nehirler Çekiliyor (Kurgusal)": "The Rivers Are Receding (Fictional)",
+  "Kurgusal bir kuraklık dalgası Fırat, Dicle, Nil ve İndus'un debisini düşürdü; barajlar rekor düşük seviyede. Su paylaşım anlaşmaları yeniden okunuyor ve her başkent 'önce kendi halkım' diyor. Bu bir kurgudur.": "A fictional drought wave cut the flow of the Euphrates, Tigris, Nile and Indus; reservoirs sit at record lows. Water-sharing treaties are being re-read, and every capital says 'my own people first'. This is fiction.",
+  "Stok ve uzun vadeli ithalat anlaşması": "Stockpiles and long-term import deals",
+  "Kahire Rusya ve Ukrayna ile uzun vadeli tahıl anlaşması yaptı.": "Cairo signed long-term grain deals with Russia and Ukraine.",
+  "Sübvansiyonu kıs": "Cut the subsidy",
+  "Mısır ekmek sübvansiyonunu azalttı; protestolar çıktı.": "Egypt trimmed bread subsidies; protests broke out.",
+  "Dünyanın en büyük buğday ithalatçılarındansınız; ekmek sübvansiyonu bütçeyi eritiyor.": "You are among the biggest wheat importers; bread subsidies drain the budget.",
+  "İhracat yasağı koy": "Impose an export ban",
+  "İslamabad buğday ve pirinç ihracatını yasakladı.": "Islamabad banned wheat and rice exports.",
+  "Uluslararası yardım iste": "Appeal for international aid",
+  "Pakistan BM ve Körfez'den gıda yardımı istedi.": "Pakistan appealed to the UN and the Gulf for food aid.",
+  "Pencap'ın buğday ambarı kurudu; ihracat yerine iç tüketim mi?": "Punjab's granary is dry; domestic supply instead of export?",
+  "Sulama ve yardım programı": "Irrigation and relief programme",
+  "Addis Ababa büyük bir sulama ve gıda yardımı programı başlattı.": "Addis Ababa launched a large irrigation and food-relief programme.",
+  "Barajı elektrik ve tarım için kullan": "Use the dam for power and farming",
+  "Etiyopya baraj gölünü sulama için kullandı.": "Ethiopia used its reservoir for irrigation.",
+  "Etiyopya'da kuraklık ve iç çatışma birleşiyor; milyonlarca insan gıda yardımına muhtaç.": "Drought and internal conflict combine in Ethiopia; millions need food aid.",
+  "Gıda Fiyatları Fırlıyor (Kurgusal)": "Food Prices Soar (Fictional)",
+  "Buğday, pirinç ve mısır fiyatları kurak sezonla ikiye katlandı; ihracat yasakları ve stok yapma yarışı başladı. Ekmek kuyrukları siyasi bir güvenlik sorununa dönüşüyor.": "Wheat, rice and maize prices doubled with the dry season; export bans and a stockpiling race began. Bread queues are turning into a political security problem.",
+  "Kontrollü baskı: su akışını sınırla": "Controlled pressure: limit the flow",
+  "Hindistan sınır ötesi su akışını sınırladı.": "India limited cross-border water flow.",
+  "Ortak su komisyonu": "A joint water commission",
+  "Delhi ortak su komisyonu ve veri paylaşımı önerdi.": "Delhi proposed a joint water commission and data sharing.",
+  "Su bir güvenlik mesele; ama savaş nükleer bir gölgede.": "Water is a security matter, but war lies under a nuclear shadow.",
+  "Sınırda gövde gösterisi": "A show of force at the border",
+  "Pakistan sınır hattına birlik kaydırdı.": "Pakistan moved units to the border line.",
+  "Tahkim ve Çin aracılığı": "Arbitration and Chinese mediation",
+  "İslamabad uluslararası tahkim ve Pekin arabuluculuğu istedi.": "Islamabad requested international arbitration and Beijing's mediation.",
+  "Suyun kesilmesi 'savaş eylemi' diye ilan edilebilir; ama ekonomi ve ordu hazır mı?": "Cutting off water can be declared 'an act of war', but are the economy and army ready?",
+  "Etiyopya ile bağlayıcı su anlaşması": "A binding water deal with Ethiopia",
+  "Kahire Etiyopya'ya bağlayıcı doldurma ve işletme kuralları önerdi.": "Cairo proposed binding filling and operating rules to Ethiopia.",
+  "Güç gösterisi ve ittifak": "Show of force and alliances",
+  "Mısır Eritre ve Somali ile ortak tatbikat yaptı.": "Egypt held joint drills with Eritrea and Somalia.",
+  "Nil'in aşağı mecrasında son kelime sizde olmayabilir; ama diplomasi bitmedi.": "You may not hold the last word on the lower Nile, but diplomacy is not over.",
+  "Su Savaşı Eşiğinde (Kurgusal)": "On the Edge of Water War (Fictional)",
+  "Kurak yıl üçüncü yılına girdi: baraj kapakları, nehir yönlendirmeleri ve sınır geçişleri çatışma nedeni oldu. Bir ülke 'su yoluyla savaş' demeye hazır; diğerleri arabuluculuk arıyor. Bu bir kurgudur.": "The drought enters its third year: dam gates, river diversions and border crossings have become flashpoints. One country is ready to say 'war over water'; others seek mediation. This is fiction."
+ }
+}

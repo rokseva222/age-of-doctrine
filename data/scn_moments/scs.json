@@ -1,0 +1,500 @@
+{
+ "moments": [
+  {
+   "id": "scs_scarborough",
+   "turn": 6,
+   "title": "Scarborough Şoalı Doğa Koruma Alanı",
+   "scene": "naval",
+   "icon": "ship",
+   "text": "Çin, Scarborough Şoalı'nı 'ulusal doğa koruma alanı' ilan etti; Filipinler bunu bir ele geçirme adımı olarak görüyor. Sahil güvenlik gemileri su topu ve çarpışma teknikleriyle karşı karşıya.",
+   "major": true,
+   "default_fx": [
+    [
+     "rel",
+     "China",
+     "Philippines",
+     -4
+    ],
+    [
+     "stab",
+     "Philippines",
+     -1
+    ]
+   ],
+   "roles": {
+    "Philippines": {
+     "text": "Ayungin ve Scarborough için ikmal misyonlarınız tehlikede; ABD ile savunma anlaşmanız var.",
+     "options": [
+      {
+       "t": "ABD ve Japonya ile ortak devriye",
+       "d": "ABD ve Japonya ile ortak devriye",
+       "fx": [
+        [
+         "rel",
+         "Philippines",
+         "United States of America",
+         4
+        ],
+        [
+         "rel",
+         "Philippines",
+         "Japan",
+         4
+        ],
+        [
+         "rel",
+         "Philippines",
+         "China",
+         -4
+        ]
+       ],
+       "r": "Manila ABD ve Japonya ile ortak deniz devriyesi yaptı."
+      },
+      {
+       "t": "Uluslararası tahkim ve ASEAN",
+       "d": "Uluslararası tahkim ve ASEAN",
+       "fx": [
+        [
+         "rel",
+         "Philippines",
+         "Vietnam",
+         3
+        ],
+        [
+         "rel",
+         "Philippines",
+         "Malaysia",
+         2
+        ],
+        [
+         "rel",
+         "Philippines",
+         "China",
+         -1
+        ]
+       ],
+       "r": "Manila 2016 tahkim kararına yeniden atıf yaptı ve ASEAN desteği istedi."
+      }
+     ]
+    },
+    "China": {
+     "text": "Sahil güvenlik kontrolün aracı; ama Filipinler ile krizi aşırı tırmandırmak ABD'yi sahaya çeker.",
+     "options": [
+      {
+       "t": "Devriye ve su topuyla baskı yap",
+       "d": "Devriye ve su topuyla baskı yap",
+       "fx": [
+        [
+         "rel",
+         "China",
+         "Philippines",
+         -5
+        ],
+        [
+         "rel",
+         "China",
+         "United States of America",
+         -2
+        ],
+        [
+         "buff",
+         "China",
+         "att",
+         1.05,
+         6
+        ]
+       ],
+       "r": "Çin sahil güvenliği Scarborough'da devriyeleri artırdı."
+      },
+      {
+       "t": "Balıkçılık çerçevesi öner",
+       "d": "Balıkçılık çerçevesi öner",
+       "fx": [
+        [
+         "rel",
+         "China",
+         "Philippines",
+         2
+        ],
+        [
+         "rel",
+         "China",
+         "Vietnam",
+         1
+        ]
+       ],
+       "r": "Pekin Filipinler'e sınırlı balıkçılık çerçevesi önerdi."
+      }
+     ]
+    },
+    "Vietnam": {
+     "text": "Hanoi kendi adacıklarını sessizce genişletiyor; Pekin ve Manila krizinde taraf tutmak istemiyor.",
+     "options": [
+      {
+       "t": "Sessiz inşaata devam et",
+       "d": "Sessiz inşaata devam et",
+       "fx": [
+        [
+         "rel",
+         "Vietnam",
+         "China",
+         -2
+        ],
+        [
+         "gold",
+         "Vietnam",
+         -0.3
+        ]
+       ],
+       "r": "Vietnam Spratly'deki yapılaşmayı sürdürdü.",
+       "keep_default": true
+      },
+      {
+       "t": "Çin ile temas kanalını koru",
+       "d": "Çin ile temas kanalını koru",
+       "fx": [
+        [
+         "rel",
+         "Vietnam",
+         "China",
+         2
+        ]
+       ],
+       "r": "Hanoi Pekin'le Güney Çin Denizi diyalog hattını yeniledi.",
+       "keep_default": true
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "scs_ayungin",
+   "turn": 34,
+   "title": "Ayungin Şoalı İkmali",
+   "scene": "border",
+   "icon": "border_clash",
+   "text": "BRP Sierra Madre'ye giden ikmal botu Çin sahil güvenliği tarafından engellendi; bir Filipinli denizci yaralandı. Savunma anlaşmasının 'silahlı saldırı' tanımı yeniden gündemde.",
+   "major": true,
+   "default_fx": [
+    [
+     "rel",
+     "Philippines",
+     "China",
+     -5
+    ],
+    [
+     "rel",
+     "United States of America",
+     "China",
+     -2
+    ]
+   ],
+   "roles": {
+    "Philippines": {
+     "text": "Mutabakat kâğıt üzerinde; sahada rotayı korumanız lazım.",
+     "options": [
+      {
+       "t": "Eskortlu ikmal (ABD desteği)",
+       "d": "Eskortlu ikmal (ABD desteği)",
+       "fx": [
+        [
+         "rel",
+         "Philippines",
+         "United States of America",
+         4
+        ],
+        [
+         "rel",
+         "Philippines",
+         "China",
+         -3
+        ],
+        [
+         "troops",
+         "Philippines",
+         2
+        ]
+       ],
+       "r": "Manila ikmali eskortlu yaptı ve ABD gemileri bölgede kaldı."
+      },
+      {
+       "t": "Gizli ikmal ve diplomasi",
+       "d": "Gizli ikmal ve diplomasi",
+       "fx": [
+        [
+         "rel",
+         "Philippines",
+         "China",
+         2
+        ],
+        [
+         "stab",
+         "Philippines",
+         -1
+        ]
+       ],
+       "r": "Manila Çin'le geçici bir ikmal mutabakatını kabul etti."
+      }
+     ]
+    },
+    "China": {
+     "text": "Sierra Madre çürüyor; bir inşaat malzemesi ikmali 'statükoyu bozmak' sayılır.",
+     "options": [
+      {
+       "t": "Gemiyi engelle",
+       "d": "Gemiyi engelle",
+       "fx": [
+        [
+         "rel",
+         "China",
+         "Philippines",
+         -4
+        ],
+        [
+         "rel",
+         "China",
+         "United States of America",
+         -3
+        ]
+       ],
+       "r": "Çin sahil güvenliği ikmal botlarını durdurdu."
+      },
+      {
+       "t": "Sınırlı ikmale izin ver",
+       "d": "Sınırlı ikmale izin ver",
+       "fx": [
+        [
+         "rel",
+         "China",
+         "Philippines",
+         3
+        ],
+        [
+         "rel",
+         "China",
+         "United States of America",
+         1
+        ]
+       ],
+       "r": "Pekin insani ikmale izin verdi."
+      }
+     ]
+    },
+    "United States of America": {
+     "text": "Savunma Anlaşması'nın 4. maddesi sizi bağlıyor mu? Cevabınız tüm bölge için bir sinyal.",
+     "options": [
+      {
+       "t": "Tam bağlılık beyanı",
+       "d": "Tam bağlılık beyanı",
+       "fx": [
+        [
+         "rel",
+         "United States of America",
+         "Philippines",
+         5
+        ],
+        [
+         "rel",
+         "United States of America",
+         "China",
+         -4
+        ]
+       ],
+       "r": "Washington Manila'ya 'demir gibi' güvence verdi.",
+       "keep_default": true
+      },
+      {
+       "t": "Belirsizliği koru",
+       "d": "Belirsizliği koru",
+       "fx": [
+        [
+         "rel",
+         "United States of America",
+         "Philippines",
+         -2
+        ],
+        [
+         "rel",
+         "United States of America",
+         "China",
+         1
+        ]
+       ],
+       "r": "ABD ittifak yükümlülüğünü açık etmedi.",
+       "keep_default": true
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "scs_davranis",
+   "turn": 70,
+   "title": "Davranış Kuralları Müzakeresi",
+   "scene": "peace",
+   "icon": "treaty",
+   "text": "ASEAN dönem başkanı Manila, Çin ile 'bağlayıcı' Davranış Kuralları metnini bitirmek istiyor; Pekin hukuken bağlayıcılığa ve üçüncü ülke hükümlerine karşı. Müzakere çıkmaza giriyor.",
+   "major": false,
+   "default_fx": [
+    [
+     "rel",
+     "China",
+     "Philippines",
+     1
+    ],
+    [
+     "stab",
+     "Philippines",
+     1
+    ]
+   ],
+   "roles": {
+    "Philippines": {
+     "text": "Manila ASEAN başkanı: metni imzalatırsanız tarihe geçersiniz; ama Çin'in çekincesi tüm anlaşmayı zayıflatabilir.",
+     "options": [
+      {
+       "t": "Bağlayıcı metin için diren",
+       "d": "Bağlayıcı metin için diren",
+       "fx": [
+        [
+         "rel",
+         "Philippines",
+         "China",
+         -2
+        ],
+        [
+         "rel",
+         "Philippines",
+         "Vietnam",
+         2
+        ],
+        [
+         "rel",
+         "Philippines",
+         "Malaysia",
+         2
+        ]
+       ],
+       "r": "Manila bağlayıcı metin için ısrar etti."
+      },
+      {
+       "t": "Esnek bir ara metin kabul et",
+       "d": "Esnek bir ara metin kabul et",
+       "fx": [
+        [
+         "rel",
+         "Philippines",
+         "China",
+         3
+        ],
+        [
+         "stab",
+         "Philippines",
+         -1
+        ]
+       ],
+       "r": "Manila bağlayıcı olmayan bir ara metni kabul etti."
+      }
+     ]
+    },
+    "China": {
+     "text": "Pekin ASEAN'ı bölmek ve metinden yararlanmak istiyor; ama kriz Filipinler'i ABD'ye yaklaştırdı.",
+     "options": [
+      {
+       "t": "Üçüncü ülke şartına itiraz et",
+       "d": "Üçüncü ülke şartına itiraz et",
+       "fx": [
+        [
+         "rel",
+         "China",
+         "Philippines",
+         -2
+        ],
+        [
+         "rel",
+         "China",
+         "Vietnam",
+         -1
+        ]
+       ],
+       "r": "Pekin üçüncü ülke şartına itiraz etti ve metni yavaşlattı."
+      },
+      {
+       "t": "Metni imzala",
+       "d": "Metni imzala",
+       "fx": [
+        [
+         "rel",
+         "China",
+         "Philippines",
+         4
+        ],
+        [
+         "rel",
+         "China",
+         "Vietnam",
+         3
+        ],
+        [
+         "rel",
+         "China",
+         "United States of America",
+         1
+        ]
+       ],
+       "r": "Çin Davranış Kuralları metnini imzalamaya hazır olduğunu söyledi."
+      }
+     ]
+    }
+   }
+  }
+ ],
+ "moments_en": {
+  "ABD ve Japonya ile ortak devriye": "Joint patrols with the US and Japan",
+  "Manila ABD ve Japonya ile ortak deniz devriyesi yaptı.": "Manila held joint maritime patrols with the US and Japan.",
+  "Uluslararası tahkim ve ASEAN": "International arbitration and ASEAN",
+  "Manila 2016 tahkim kararına yeniden atıf yaptı ve ASEAN desteği istedi.": "Manila cited the 2016 arbitration again and sought ASEAN backing.",
+  "Ayungin ve Scarborough için ikmal misyonlarınız tehlikede; ABD ile savunma anlaşmanız var.": "Your resupply missions to Second Thomas Shoal and Scarborough are at risk; you have a defence treaty with the US.",
+  "Devriye ve su topuyla baskı yap": "Press with patrols and water cannon",
+  "Çin sahil güvenliği Scarborough'da devriyeleri artırdı.": "China's coast guard added patrols at Scarborough.",
+  "Balıkçılık çerçevesi öner": "Offer a fisheries framework",
+  "Pekin Filipinler'e sınırlı balıkçılık çerçevesi önerdi.": "Beijing offered Manila a limited fisheries framework.",
+  "Sahil güvenlik kontrolün aracı; ama Filipinler ile krizi aşırı tırmandırmak ABD'yi sahaya çeker.": "The coast guard is your instrument, but escalating too far with the Philippines draws in the US.",
+  "Sessiz inşaata devam et": "Continue quiet construction",
+  "Vietnam Spratly'deki yapılaşmayı sürdürdü.": "Vietnam continued building in the Spratlys.",
+  "Çin ile temas kanalını koru": "Keep the channel with China",
+  "Hanoi Pekin'le Güney Çin Denizi diyalog hattını yeniledi.": "Hanoi renewed its South China Sea hotline with Beijing.",
+  "Hanoi kendi adacıklarını sessizce genişletiyor; Pekin ve Manila krizinde taraf tutmak istemiyor.": "Hanoi quietly expands its own islets and does not want to take sides in the Beijing–Manila crisis.",
+  "Scarborough Şoalı Doğa Koruma Alanı": "Scarborough Shoal 'Nature Reserve'",
+  "Çin, Scarborough Şoalı'nı 'ulusal doğa koruma alanı' ilan etti; Filipinler bunu bir ele geçirme adımı olarak görüyor. Sahil güvenlik gemileri su topu ve çarpışma teknikleriyle karşı karşıya.": "China declared Scarborough Shoal a 'national nature reserve'; the Philippines sees it as a step toward seizure. Coast guard ships meet with water cannon and ramming manoeuvres.",
+  "Eskortlu ikmal (ABD desteği)": "Escorted resupply (with US support)",
+  "Manila ikmali eskortlu yaptı ve ABD gemileri bölgede kaldı.": "Manila ran the resupply under escort with US ships nearby.",
+  "Gizli ikmal ve diplomasi": "Discreet resupply and diplomacy",
+  "Manila Çin'le geçici bir ikmal mutabakatını kabul etti.": "Manila accepted a provisional resupply understanding with China.",
+  "Mutabakat kâğıt üzerinde; sahada rotayı korumanız lazım.": "The understanding exists on paper; at sea you must protect the route.",
+  "Gemiyi engelle": "Block the ship",
+  "Çin sahil güvenliği ikmal botlarını durdurdu.": "Chinese coast guard stopped the supply boats.",
+  "Sınırlı ikmale izin ver": "Allow limited resupply",
+  "Pekin insani ikmale izin verdi.": "Beijing permitted a humanitarian resupply.",
+  "Sierra Madre çürüyor; bir inşaat malzemesi ikmali 'statükoyu bozmak' sayılır.": "The Sierra Madre is rusting; a delivery of building materials counts as 'altering the status quo'.",
+  "Tam bağlılık beyanı": "A full statement of commitment",
+  "Washington Manila'ya 'demir gibi' güvence verdi.": "Washington gave Manila 'ironclad' assurances.",
+  "Belirsizliği koru": "Keep strategic ambiguity",
+  "ABD ittifak yükümlülüğünü açık etmedi.": "The US kept its alliance obligations vague.",
+  "Savunma Anlaşması'nın 4. maddesi sizi bağlıyor mu? Cevabınız tüm bölge için bir sinyal.": "Does Article IV of the Mutual Defense Treaty bind you? Your answer is a signal for the region.",
+  "Ayungin Şoalı İkmali": "The Second Thomas Shoal Resupply",
+  "BRP Sierra Madre'ye giden ikmal botu Çin sahil güvenliği tarafından engellendi; bir Filipinli denizci yaralandı. Savunma anlaşmasının 'silahlı saldırı' tanımı yeniden gündemde.": "A resupply boat bound for the BRP Sierra Madre was blocked by Chinese coast guard; a Filipino sailor was wounded. The 'armed attack' definition in the defence treaty is back on the table.",
+  "Bağlayıcı metin için diren": "Insist on a binding text",
+  "Manila bağlayıcı metin için ısrar etti.": "Manila insisted on a binding text.",
+  "Esnek bir ara metin kabul et": "Accept a flexible interim text",
+  "Manila bağlayıcı olmayan bir ara metni kabul etti.": "Manila accepted a non-binding interim text.",
+  "Manila ASEAN başkanı: metni imzalatırsanız tarihe geçersiniz; ama Çin'in çekincesi tüm anlaşmayı zayıflatabilir.": "Manila chairs ASEAN: if you get the text signed you make history, but China's reservations could hollow out the deal.",
+  "Üçüncü ülke şartına itiraz et": "Reject the third-party clause",
+  "Pekin üçüncü ülke şartına itiraz etti ve metni yavaşlattı.": "Beijing objected to the third-party clause and slowed the text.",
+  "Metni imzala": "Sign the text",
+  "Çin Davranış Kuralları metnini imzalamaya hazır olduğunu söyledi.": "China said it was ready to sign the Code of Conduct.",
+  "Pekin ASEAN'ı bölmek ve metinden yararlanmak istiyor; ama kriz Filipinler'i ABD'ye yaklaştırdı.": "Beijing wants to divide ASEAN and benefit from the text, yet the crisis pushed the Philippines closer to the US.",
+  "Davranış Kuralları Müzakeresi": "Code of Conduct Talks",
+  "ASEAN dönem başkanı Manila, Çin ile 'bağlayıcı' Davranış Kuralları metnini bitirmek istiyor; Pekin hukuken bağlayıcılığa ve üçüncü ülke hükümlerine karşı. Müzakere çıkmaza giriyor.": "ASEAN chair Manila wants to finish a 'binding' Code of Conduct with China; Beijing resists legal bindingness and third-party clauses. The talks stall."
+ }
+}
