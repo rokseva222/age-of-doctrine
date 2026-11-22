@@ -3,6 +3,7 @@ extends RefCounted
 
 const EraNames = preload("res://scripts/era_names.gd")
 const Model = preload("res://scripts/model.gd")
+const RichStore = preload("res://scripts/rich_store.gd")
 const Settings = preload("res://scripts/settings.gd")
 const Names = preload("res://scripts/names.gd")
 const WorldData = preload("res://scripts/world_data.gd")
@@ -222,7 +223,27 @@ const GUARD_WEEKS := 16
 const SMALL_NATION := 8
 
 
+## O5: kaynak üreticisi ülkelerin bantları (yüzde): petrol / maden / tarım. Listede olmayan ülkelerde %6 rastgele yatak.
+const RICH_OIL := ["Saudi Arabia", "Russia", "Iran", "Iraq", "Kuwait", "United Arab Emirates", "Qatar", "Venezuela", "Nigeria", "Libya", "Algeria", "Kazakhstan", "Norway", "Canada", "Mexico", "United States of America", "Angola", "Oman", "Azerbaijan", "Indonesia", "Brazil"]
+const RICH_MINE := ["Australia", "Chile", "Peru", "South Africa", "Democratic Republic of the Congo", "Zambia", "China", "Russia", "Indonesia", "Brazil", "Mongolia", "Kazakhstan", "Canada", "Turkey", "India", "Guinea", "Bolivia", "Ghana", "Papua New Guinea", "Poland", "Sweden", "Finland", "Ukraine"]
+const RICH_FARM := ["United States of America", "Brazil", "India", "France", "Ukraine", "Argentina", "Thailand", "Vietnam", "China", "Russia", "Turkey", "Canada", "Australia", "Germany", "Poland", "Egypt", "Pakistan", "Indonesia", "Romania", "Hungary", "Kazakhstan", "Spain", "Italy", "Paraguay", "Uruguay"]
+
+
+func ensure_rich() -> void:
+	RichStore.bands.clear()
+	for c in countries:
+		var oil: int = 30 if RICH_OIL.has(c.name_en) else 0
+		var mine: int = 30 if RICH_MINE.has(c.name_en) else 0
+		var farm: int = 35 if RICH_FARM.has(c.name_en) else 0
+		if oil + mine + farm == 0:
+			oil = 2
+			mine = 2
+			farm = 2
+		RichStore.bands[c.id] = {"oil": oil, "mine": mine, "farm": farm}
+
+
 func start_game(player_country: int) -> void:
+	ensure_rich()
 	player = player_country
 	guard_left = GUARD_WEEKS
 	if player >= 0:
@@ -4912,6 +4933,7 @@ func from_dict(d: Dictionary) -> bool:
 		var nc := Model.Country.new()
 		nc.id = countries.size()
 		countries.append(nc)
+	ensure_rich()
 	for i in cs.size():
 		var r: Dictionary = cs[i]
 		var c = countries[i]

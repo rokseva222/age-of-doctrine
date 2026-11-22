@@ -8,6 +8,12 @@ const BLD := {
 	"press": {"name": "Kağıt fabrikası ve matbaa", "bonus": 0.20, "mult": 7.0, "icon": "bld_press", "info": "Gelir +%20, huzursuzluğu azaltır"},
 }
 const BLD_WEEKS := 8
+## O5: bölgesel kaynaklar. Ülke bazında bilinen üreticilerde eyaletlerin bir kısmı o kaynakta zengindir: o bina %35 ucuz, getirisi %30 fazla.
+## Yatak seçimi eyalet kimliğinden deterministik türetilir (kayda girmez); gs.ensure_rich() ülke bantlarını kurar.
+const RichStore = preload("res://scripts/rich_store.gd")
+const RICH_NAMES := {"farm": "Verimli tarım ovası", "mine": "Zengin maden yatağı", "oil": "Petrol ve gaz sahası"}
+const RICH_COST := 0.65
+const RICH_BONUS := 1.3
 ## Eski çağda (pre) petrol tesisi / matbaa yok: dönem adları
 const BLD_PRE_NAME := {"oil": "Neft ocağı", "press": "Kâğıt atölyesi ve medrese"}
 
@@ -52,14 +58,30 @@ class Province:
 	func income() -> int:
 		return 1 + dev + int(sqrt(maxf(pop, 0.0)) * 0.6)
 
+	func rich() -> String:
+		var b: Dictionary = RichStore.bands.get(home, {})
+		if b.is_empty():
+			return ""
+		var h: int = int((id * 2654435761) % 100)
+		var lo := 0
+		for k in ["oil", "mine", "farm"]:
+			var w: int = int(b.get(k, 0))
+			if h >= lo and h < lo + w:
+				return k
+			lo += w
+		return ""
+
 	func rev() -> float:
-		return gdp * 0.17 / 52.0 * (1.0 + BLD.get(bld, {}).get("bonus", 0.0))   # haftalık devlet geliri, milyon $
+		var bonus: float = BLD.get(bld, {}).get("bonus", 0.0)
+		if bld != "" and bld == rich():
+			bonus *= RICH_BONUS
+		return gdp * 0.17 / 52.0 * (1.0 + bonus)   # haftalık devlet geliri, milyon $
 
 	func base_rev() -> float:
 		return gdp * 0.17 / 52.0
 
 	func bld_cost(kind: String) -> float:
-		return maxf(12.0, base_rev() * float(BLD[kind].mult)) * (1.0 + 0.4 * float(is_capital))
+		return maxf(12.0, base_rev() * float(BLD[kind].mult)) * (1.0 + 0.4 * float(is_capital)) * (RICH_COST if kind == rich() else 1.0)
 
 	func value() -> int:
 		return 1 + int(dev * 0.5) + (4 if is_capital else 0) + (1 if pop >= 25.0 else 0)

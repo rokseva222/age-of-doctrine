@@ -414,6 +414,7 @@ Missing prerequisite:
 New national focus: %s (%d weeks).
 Focus completed: %s — %s
  weekly income
+Democratic Republic of the Congo
 ülke ortadan kalktı
 savaş çıktı
 ilişkiler bozuldu

@@ -17,10 +17,10 @@ Kaynak: ahmett_ttarik, luciferdeu, erenkbtss, devranpashaa, play store paylaşı
 
 ## Öneriler
 - O1. [YAPILDI: eyalet kartında 'Tüm orduları buraya topla'; Ordularım'da 'Cepheye topla / Sınıra konuşlandır'] Orduyu toplu seç / bölge seç → tüm orduyu oraya topla; sınır komşusuna "cepheye taşı" (sadece savaştaki ülkelere); savaş öncesi sınır güvenliği/konuşlandırma.
-- O2. [KISMEN: elle toplama/konuşlandırma eklendi; otomatik komut davranışı aynı] Otomatik komuta opsiyonu (RP oyuncusu: ordu kendi savaşsın) — var, ama "en zayıf eyalete saldırır"; daha ince ayar (cepheye topla, bölge seç).
+- O2. [YAPILDI: elle toplama/konuşlandırma + otomatik komut tarzı (dengeli/savunma/şehir odaklı)] Otomatik komuta opsiyonu (RP oyuncusu: ordu kendi savaşsın) — var, ama "en zayıf eyalete saldırır"; daha ince ayar (cepheye topla, bölge seç).
 - O3. [YAPILDI: Ayarlar > 'Her tur haber bülteni'; haberler çağa uygun] Haber penceresi kapatma / seçmeli gösterim; haber başlıkları tarihe bağlı.
 - O4. [YAPILDI: işgal edilen eyalet kartında 'Yerel halktan asker devşir'] İşgal bölgesinde nüfustan asker devşirme (%5–10, şansa bağlı) + zorla askerlik/asimilasyon; EoF benzeri nüfus-asker mantığı.
-- O5. Yatırım/bina maliyeti: kaynak olan bölgede ucuz (ör. Erzincan maden); bölgeye özel binalar (maden, petrol rafinerisi, okul, kütüphane, bölgeye özgü tarım ürünü); toplu seçim yerine bölgeye göre; ihracatı olan ilde tesis.
+- O5. [KISMEN: ülke bazlı kaynak yatakları — zengin eyalette ilgili bina %35 ucuz, getirisi +%30, il kartında "Kaynak" satırı; gerçek jeoloji verisi değil, ülke listesi + eyalet kimliğinden türetilen vekil; okul/kütüphane/rafineri/ihracat yok] Yatırım/bina maliyeti: kaynak olan bölgede ucuz (ör. Erzincan maden); bölgeye özel binalar (maden, petrol rafinerisi, okul, kütüphane, bölgeye özgü tarım ürünü); toplu seçim yerine bölgeye göre; ihracatı olan ilde tesis.
 - O6. Stok/envanter birikimi (üstte); doğal gaz/petrol arama; ülkeler arası doğal gaz-petrol anlaşmaları; ithalat/ihracat sistemi.
 - O7. [YAPILDI: sınır 8; 4'ten sonrası %60 verim] Ticaret anlaşması sınırı 4 → 5/7/10.
 - O8. [YAPILDI: Bütçe > 'Teknoloji araştır'; gelişmiş müttefik varsa yarı fiyat] Savaş teknolojisi araştırması / bazı ülkelerden parayla teknoloji alma.
@@ -30,7 +30,7 @@ Kaynak: ahmett_ttarik, luciferdeu, erenkbtss, devranpashaa, play store paylaşı
 - O12. [YAPILDI: komşular arası sınır gerginliği olayı + krizler + tüm çağlarda olaylar] Olaylar: ülkeler arası güncel gerginlik eventleri.
 - O13. [VAR: senaryo editöründe olay, diplomasi, ordu/silah sayfaları] Editör: isim/ordu adı/silah adı/ilişki düzenleme + olay yaratma (örn. Atatürk Samsun'a çıkması).
 - O14. Online: her zaman açık özel mesaj sohbeti (opsiyonel), isteğe bağlı sesli, diplomatik görüşme daveti.
-- O15. [KISMEN: vasal/beylik isyanı var; BM ile devleti diriltme önergesi yok] Vasal/Evrenos Bey tarzı bey­lik isyanı (var), yok edilen devleti BM fonuyla yeniden inşa önergesi.
+- O15. [YAPILDI: BM'de "Yıkılan devleti diriltme" önergesi] Vasal/Evrenos Bey tarzı bey­lik isyanı (var), yok edilen devleti BM fonuyla yeniden inşa önergesi.
 - O16. [YAPILDI: 'Mihver Dünyası 1962' alternatif çağı] Highcastle (Yüksek Şato'daki Adam) tarzı alternatif senaryo (devranpashaa).
 - O17. Sadık oyuncular: "Rule the World" a göre daha sade arayüz övgüsü — karmaşıklığı artırmadan ilerle.
 

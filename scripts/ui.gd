@@ -648,6 +648,9 @@ func show_province(pid: int, selected_army) -> void:
 	_card_tags.visible = _card_tags.get_child_count() > 0
 	_card_stat("Nüfus", "%.1fM" % p.pop, TK.TEXT, true)
 	_card_stat("Gelir", Macro.money(p.rev()) + Loc.t("/hf"), TK.GOLD)
+	var rk: String = p.rich()
+	if rk != "":
+		_card_stat("Kaynak", Loc.t(Model.RICH_NAMES[rk]), TK.GREEN)
 	_card_stat("Savunma", "%d" % p.defense, TK.TEXT)
 	var army = gs.armies.get(pid)
 	var hint := ""
