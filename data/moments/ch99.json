@@ -1,0 +1,3233 @@
+{
+ "moments": [
+  {
+   "id": "c99_agustos",
+   "y": 1999,
+   "m": 8,
+   "title": "Dağıstan'a Baskın",
+   "scene": "border",
+   "icon": "border_clash",
+   "text": "7 Ağustos 1999: Şamil Basayev ve Arap komutan Hattab komutasında 1.500'e yakın savaşçı Dağıstan'ın dağlık Botlih bölgesine girdi ve 'İslam Devleti' ilan etti. 9 Ağustos'ta Yeltsin Başbakan Stepaşin'i görevden alıp Vladimir Putin'i atadı.",
+   "major": true,
+   "default_fx": [
+    [
+     "unrest",
+     230,
+     30
+    ],
+    [
+     "stab",
+     "Russia",
+     -3
+    ],
+    [
+     "buff",
+     "Russia",
+     "att",
+     1.1,
+     10
+    ],
+    [
+     "flag",
+     "c99_dag"
+    ]
+   ],
+   "roles": {
+    "Russia": {
+     "text": "Dağıstan'ın dağlarında köyler elden gidiyor. Yeltsin zayıf, Putin henüz tanınmıyor. Ordu 1996'nın intikamını arıyor.",
+     "options": [
+      {
+       "t": "Karşı taarruz ve hava harekâtı (tarihî)",
+       "d": "Dağıstan'da Basayev'e karşı sert harekât",
+       "fx": [
+        [
+         "buff",
+         "Russia",
+         "att",
+         1.15,
+         10
+        ],
+        [
+         "troops",
+         "Russia",
+         2
+        ],
+        [
+         "rel",
+         "Russia",
+         "custom_0",
+         -20
+        ],
+        [
+         "stab",
+         "Russia",
+         2
+        ],
+        [
+         "flag",
+         "c99_dag"
+        ]
+       ],
+       "r": "Rus uçakları ve Dağıstan milisleri Botlih'te Basayev'i geri püskürttü."
+      },
+      {
+       "t": "Maskhadov'la müzakere",
+       "d": "Çeçen hükümetinden Basayev'i durdurmasını iste",
+       "fx": [
+        [
+         "rel",
+         "Russia",
+         "custom_0",
+         5
+        ],
+        [
+         "xstab",
+         "Russia",
+         -3
+        ]
+       ],
+       "r": "Moskova Maskhadov'dan Basayev'i kontrol etmesini istedi."
+      }
+     ]
+    },
+    "custom_0": {
+     "text": "Maskhadov Basayev'in baskınını kınadı ama kontrol edemiyor. Şura'daki radikaller 'Dağıstan'ı kurtarma' fikrinde; Maskhadov'un otoritesi zayıf.",
+     "options": [
+      {
+       "t": "Baskını kınama, Maskhadov'la git (tarihî)",
+       "d": "Rusya'ya savaş gerekçesi verme",
+       "fx": [
+        [
+         "rel",
+         "custom_0",
+         "Russia",
+         5
+        ],
+        [
+         "stab",
+         "custom_0",
+         -3
+        ],
+        [
+         "rel",
+         "custom_0",
+         "Turkey",
+         3
+        ]
+       ],
+       "r": "Maskhadov Dağıstan baskınını 'Grozni'nin işi değil' diye açıkladı."
+      },
+      {
+       "t": "Şura'ya katıl, Dağıstan'ı destekle",
+       "d": "Savaşa hazırlan",
+       "fx": [
+        [
+         "unrest",
+         230,
+         25
+        ],
+        [
+         "troops",
+         "custom_0",
+         25
+        ],
+        [
+         "rel",
+         "custom_0",
+         "Russia",
+         -25
+        ],
+        [
+         "stab",
+         "custom_0",
+         2
+        ]
+       ],
+       "r": "Çeçen gönüllüler Dağıstan'ın Botlih ve Novolak bölgelerine akıyor."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "c99_eylul",
+   "y": 1999,
+   "m": 9,
+   "title": "Apartman Patlamaları",
+   "scene": "crisis",
+   "icon": "flame",
+   "text": "4–16 Eylül 1999: Buynaksk, Moskova (iki kez) ve Volgodonsk'ta apartmanlara yönelik patlamalarda yaklaşık 300 kişi öldü. Putin 'tuvalette bile avlarız' dedi; sorumlular hâlâ tartışmalı, ama kamuoyu savaş istiyor.",
+   "major": true,
+   "default_fx": [
+    [
+     "troops",
+     "Russia",
+     3
+    ],
+    [
+     "rel",
+     "Russia",
+     "custom_0",
+     -35
+    ],
+    [
+     "stab",
+     "Russia",
+     3
+    ],
+    [
+     "flag",
+     "c99_war"
+    ]
+   ],
+   "roles": {
+    "Russia": {
+     "text": "Ülke şokta, kamuoyu intikam istiyor. 'Terörle Mücadele Harekâtı' kararı Putin'in kaderini belirleyecek.",
+     "options": [
+      {
+       "t": "Terörle Mücadele Harekâtı'nı başlat (tarihî)",
+       "d": "Çeçenistan'a hava ve kara harekâtı",
+       "fx": [
+        [
+         "war",
+         "Russia",
+         "custom_0",
+         "solo"
+        ],
+        [
+         "troops",
+         "Russia",
+         4
+        ],
+        [
+         "buff",
+         "Russia",
+         "att",
+         1.15,
+         12
+        ],
+        [
+         "stab",
+         "Russia",
+         3
+        ],
+        [
+         "rel",
+         "Russia",
+         "custom_0",
+         -35
+        ],
+        [
+         "flag",
+         "c99_war"
+        ]
+       ],
+       "r": "Rus uçakları Çeçenistan'ı bombalıyor; 30 Eylül'de zırhlı sütunlar Terek'i geçti."
+      },
+      {
+       "t": "Önce Rusya'da güvenlik, ortak soruşturma",
+       "d": "Çeçen hükümetinden işbirliği iste",
+       "fx": [
+        [
+         "rel",
+         "Russia",
+         "custom_0",
+         5
+        ],
+        [
+         "stab",
+         "Russia",
+         -4
+        ],
+        [
+         "flag",
+         "c99_probe"
+        ]
+       ],
+       "r": "Moskova Maskhadov'la ortak soruşturma önerdi; kamuoyu sabırsız."
+      }
+     ]
+    },
+    "custom_0": {
+     "text": "Patlamalarla ilgisiniz yok ama Rus basını suçu Çeçenlere atıyor. Maskhadov Moskova'ya ortak soruşturma teklif etti; yine de büyük bir saldırının hazırlandığı belli.",
+     "options": [
+      {
+       "t": "Savunmaya geç, seferberlik ilan et",
+       "d": "Rus saldırısı kaçınılmaz",
+       "fx": [
+        [
+         "war",
+         "Russia",
+         "custom_0",
+         "solo"
+        ],
+        [
+         "troops",
+         "custom_0",
+         40
+        ],
+        [
+         "buff",
+         "custom_0",
+         "def",
+         1.25,
+         14
+        ],
+        [
+         "buff",
+         "Russia",
+         "att",
+         0.3,
+         27
+        ],
+        [
+         "flag",
+         "c99_war"
+        ]
+       ],
+       "r": "Maskhadov seferberlik ilan etti; 'gazavat' çağrısı yapıldı."
+      },
+      {
+       "t": "Ortak soruşturma ve barış çağrısı",
+       "d": "Diplomasiyi dene",
+       "fx": [
+        [
+         "rel",
+         "custom_0",
+         "Russia",
+         8
+        ],
+        [
+         "stab",
+         "custom_0",
+         -2
+        ],
+        [
+         "rel",
+         "custom_0",
+         "Turkey",
+         4
+        ]
+       ],
+       "r": "Maskhadov Putin'e görüşme önerdi; Moskova yanıt vermedi."
+      }
+     ]
+    },
+    "Turkey": {
+     "text": "17 Ağustos depremi (17 bin ölü) Türkiye'yi yaraladı; ülke toparlanma çabasında. Çeçenistan'daki gelişmeler yeniden diaspora tepkisini canlandırıyor.",
+     "options": [
+      {
+       "t": "Rusya'yla ilişkileri koru",
+       "d": "Mavi Akım doğalgazı ve ticaret",
+       "fx": [
+        [
+         "rel",
+         "Turkey",
+         "Russia",
+         6
+        ],
+        [
+         "xstab",
+         "Turkey",
+         -1
+        ]
+       ],
+       "r": "Ankara 'terörle mücadele'yi Rusya'nın hakkı olarak niteledi.",
+       "keep_default": true
+      },
+      {
+       "t": "İnsani yardım ve çekimser tutum",
+       "d": "Mültecilere yardım",
+       "fx": [
+        [
+         "rel",
+         "Turkey",
+         "Russia",
+         -3
+        ],
+        [
+         "rel",
+         "Turkey",
+         "custom_0",
+         10
+        ]
+       ],
+       "r": "Türkiye Çeçen mültecilere insani yardım gönderdi.",
+       "keep_default": true
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "c99_ekim",
+   "y": 1999,
+   "m": 10,
+   "title": "Terek'in Ötesi",
+   "scene": "pre_assault",
+   "icon": "tank",
+   "text": "30 Eylül'de Rus zırhlı sütunları Çeçenistan'ın kuzeyini (Nadterechnıy, Naur, Şelkovskaya) işgal etti. 21 Ekim'de Grozni'deki Merkez Pazarı füzelerle vuruldu (yüzlerce sivil ölü). 200 bini aşkın mülteci İnguşetya'ya aktı.",
+   "major": true,
+   "default_fx": [
+    [
+     "unrest",
+     1850,
+     15
+    ],
+    [
+     "stab",
+     "custom_0",
+     -4
+    ],
+    [
+     "rel",
+     "Russia",
+     "United States of America",
+     -4
+    ],
+    [
+     "rel",
+     "Russia",
+     "Turkey",
+     -3
+    ]
+   ],
+   "roles": {
+    "Russia": {
+     "text": "Birinci savaştan farklı: hava ve topçu önce, piyade sonra. Basın serbestçe gezemiyor, kayıp haberleri sınırlı. Putin'in reytingi yükseliyor.",
+     "options": [
+      {
+       "t": "Kuzeyi güvenceye al, Grozni'yi kuşat (tarihî)",
+       "d": "Kademeli ilerleme, düşük zayiat",
+       "fx": [
+        [
+         "buff",
+         "Russia",
+         "att",
+         1.1,
+         10
+        ],
+        [
+         "unrest",
+         1850,
+         10
+        ],
+        [
+         "rel",
+         "Russia",
+         "United States of America",
+         -3
+        ],
+        [
+         "stab",
+         "Russia",
+         2
+        ]
+       ],
+       "r": "Rus birlikleri Terek'in kuzeyini ele geçirip Grozni'yi çevrelemeye başladı."
+      },
+      {
+       "t": "İnsani koridor aç, mültecilere yardım et",
+       "d": "Sivil kayıpları azalt",
+       "fx": [
+        [
+         "rel",
+         "Russia",
+         "United States of America",
+         2
+        ],
+        [
+         "xstab",
+         "Russia",
+         -2
+        ]
+       ],
+       "r": "Moskova İnguşetya sınırında güvenli geçit ilan etti."
+      }
+     ]
+    },
+    "custom_0": {
+     "text": "Ordunun kuzeyi kayıpsız aldı; Maskhadov güney dağlarında yeni bir savunma hattı kuruyor. Mülteciler kuzeyden güneye ya da İnguşetya'ya akıyor.",
+     "options": [
+      {
+       "t": "Grozni'yi savunmaya hazırlan",
+       "d": "Şehir savunması",
+       "fx": [
+        [
+         "buff",
+         "custom_0",
+         "def",
+         1.25,
+         14
+        ],
+        [
+         "troops",
+         "custom_0",
+         20
+        ]
+       ],
+       "r": "Çeçen birlikleri Grozni'ye tahkimat yapıyor."
+      },
+      {
+       "t": "Dağlarda direnişe geç, şehri boşalt",
+       "d": "Gerilla savaşı",
+       "fx": [
+        [
+         "unrest",
+         1851,
+         15
+        ],
+        [
+         "troops",
+         "custom_0",
+         15
+        ],
+        [
+         "buff",
+         "custom_0",
+         "def",
+         1.15,
+         20
+        ]
+       ],
+       "r": "Maskhadov güçlerini güneye ve dağlara kaydırıyor."
+      }
+     ]
+    },
+    "Georgia": {
+     "text": "Çeçen mültecilerin bir kısmı Pankisi Vadisi'ne geçiyor; Rusya Gürcistan'ı savaşçılara 'sığınak' olmakla suçluyor.",
+     "options": [
+      {
+       "t": "Mültecileri kabul et, sınırı kontrol et",
+       "d": "İnsani yaklaşım",
+       "fx": [
+        [
+         "rel",
+         "Georgia",
+         "Russia",
+         -4
+        ],
+        [
+         "rel",
+         "Georgia",
+         "United States of America",
+         3
+        ]
+       ],
+       "r": "Gürcistan mültecilere sınır kapısını açtı.",
+       "keep_default": true
+      },
+      {
+       "t": "Sınırı kapat",
+       "d": "Rusya'ya güven ver",
+       "fx": [
+        [
+         "rel",
+         "Georgia",
+         "Russia",
+         4
+        ],
+        [
+         "xstab",
+         "Georgia",
+         -2
+        ]
+       ],
+       "r": "Tiflis Çeçenistan sınırını kapattı.",
+       "keep_default": true
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "c99_kasim",
+   "y": 1999,
+   "m": 11,
+   "title": "İstanbul Zirvesi",
+   "scene": "trade",
+   "icon": "treaty",
+   "text": "18–19 Kasım 1999: AGİT İstanbul Zirvesi'nde Clinton ve Yeltsin Çeçenistan konusunda karşı karşıya geldi; Uyarlanmış AKKA antlaşması imzalandı, Bakü–Tiflis–Ceyhan boru hattı için hükümetlerarası anlaşma imzalandı. Rusya, Gürcistan'daki üslerini kapatma taahhüdü verdi.",
+   "major": true,
+   "default_fx": [
+    [
+     "rel",
+     "Russia",
+     "United States of America",
+     -3
+    ],
+    [
+     "rel",
+     "Turkey",
+     "Azerbaijan",
+     6
+    ],
+    [
+     "rel",
+     "Turkey",
+     "Georgia",
+     6
+    ],
+    [
+     "rel",
+     "Turkey",
+     "United States of America",
+     4
+    ],
+    [
+     "xstab",
+     "Turkey",
+     3
+    ],
+    [
+     "flag",
+     "c99_istanbul"
+    ]
+   ],
+   "roles": {
+    "Turkey": {
+     "text": "Ev sahibisiniz: Clinton, Yeltsin, Şröder, Chirac ve Kafkasya liderleri İstanbul'da. Boru hattı Türkiye'nin enerji koridoru hedefi; Çeçenistan ise sahneyi gölgeliyor.",
+     "options": [
+      {
+       "t": "Zirveyi başarıyla topla, nazik uyarı (tarihî)",
+       "d": "BTC anlaşmasını imzala",
+       "fx": [
+        [
+         "rel",
+         "Turkey",
+         "United States of America",
+         8
+        ],
+        [
+         "rel",
+         "Turkey",
+         "Azerbaijan",
+         8
+        ],
+        [
+         "rel",
+         "Turkey",
+         "Georgia",
+         8
+        ],
+        [
+         "rel",
+         "Turkey",
+         "Russia",
+         -2
+        ],
+        [
+         "xstab",
+         "Turkey",
+         3
+        ]
+       ],
+       "r": "Zirvede BTC boru hattı anlaşması imzalandı; Türkiye Kafkasya'da kilit oyuncu oldu.",
+       "keep_default": true
+      },
+      {
+       "t": "Çeçenistan'ı gündemin merkezine koy",
+       "d": "Rusya'ya sert mesaj",
+       "fx": [
+        [
+         "rel",
+         "Turkey",
+         "Russia",
+         -10
+        ],
+        [
+         "rel",
+         "Turkey",
+         "custom_0",
+         15
+        ],
+        [
+         "rel",
+         "Turkey",
+         "United States of America",
+         4
+        ],
+        [
+         "xstab",
+         "Turkey",
+         -1
+        ]
+       ],
+       "r": "Ankara zirvede Çeçenistan'daki sivil kayıplar için sert dil kullandı.",
+       "keep_default": true
+      },
+      {
+       "t": "Boru hattı ve ticaret öncelikli",
+       "d": "Rusya'yı kızdırma",
+       "fx": [
+        [
+         "rel",
+         "Turkey",
+         "Russia",
+         6
+        ],
+        [
+         "rel",
+         "Turkey",
+         "Azerbaijan",
+         6
+        ],
+        [
+         "rel",
+         "Turkey",
+         "Georgia",
+         4
+        ]
+       ],
+       "r": "Ankara zirveyi enerji ve ticaret gündemine odakladı.",
+       "keep_default": true
+      }
+     ]
+    },
+    "Russia": {
+     "text": "Yeltsin'in son büyük sahnesi: Batı'nın eleştirisine 'iç mesele' diyecek ve Putin'in savaşını savunacak. Gürcistan'daki üsler konusunda taahhüt verirseniz Batı yumuşar.",
+     "options": [
+      {
+       "t": "AKKA'yı imzala, Çeçenistan'ı 'iç mesele' say (tarihî)",
+       "d": "Zirvede savaşı savun",
+       "fx": [
+        [
+         "rel",
+         "Russia",
+         "United States of America",
+         -3
+        ],
+        [
+         "rel",
+         "Russia",
+         "Turkey",
+         3
+        ],
+        [
+         "stab",
+         "Russia",
+         1
+        ]
+       ],
+       "r": "Yeltsin zirvede 'Rusya terörle mücadele ediyor' diyerek eleştirileri reddetti."
+      },
+      {
+       "t": "Gürcistan üslerini kapat, Batı'yı yumuşat",
+       "d": "Taviz ver",
+       "fx": [
+        [
+         "rel",
+         "Russia",
+         "United States of America",
+         4
+        ],
+        [
+         "rel",
+         "Russia",
+         "Georgia",
+         6
+        ],
+        [
+         "xstab",
+         "Russia",
+         -1
+        ]
+       ],
+       "r": "Rusya Gürcistan'daki iki üssünü kapatma sözü verdi."
+      }
+     ]
+    },
+    "United States of America": {
+     "text": "Clinton, Yeltsin'in 'Çeçenistan'da sivillere saldıran' sertliğini kamuoyu önünde eleştirmeyi düşünüyor; ama Rusya'nın nükleer arsenali ve reformlar hâlâ öncelikli.",
+     "options": [
+      {
+       "t": "Kamuoyu önünde eleştiri (tarihî)",
+       "d": "Çeçenistan'da çözümü siyasî olarak iste",
+       "fx": [
+        [
+         "rel",
+         "United States of America",
+         "Russia",
+         -6
+        ],
+        [
+         "rel",
+         "United States of America",
+         "Turkey",
+         4
+        ]
+       ],
+       "r": "Clinton zirvede Çeçenistan'da siyasî çözüm çağrısı yaptı; Yeltsin öfkelendi.",
+       "keep_default": true
+      },
+      {
+       "t": "Sessiz diplomasi, AKKA öncelikli",
+       "d": "Rusya'yla kırma",
+       "fx": [
+        [
+         "rel",
+         "United States of America",
+         "Russia",
+         3
+        ]
+       ],
+       "r": "Washington zirvede silah kontrol anlaşmasına odaklandı.",
+       "keep_default": true
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "c99_aralik",
+   "y": 1999,
+   "m": 12,
+   "title": "Yeltsin İstifa Etti, Grozni Kuşatıldı",
+   "scene": "pre_siege",
+   "icon": "flame",
+   "text": "6 Aralık: Rusya Grozni sakinlerine şehri 11 Aralık'a kadar boşaltma ültimatomu verdi; sonra topçu ve hava saldırıları başladı. 31 Aralık'ta Boris Yeltsin istifa etti, Putin vekâleten cumhurbaşkanı oldu.",
+   "major": true,
+   "default_fx": [
+    [
+     "stab",
+     "Russia",
+     4
+    ],
+    [
+     "buff",
+     "Russia",
+     "att",
+     1.15,
+     10
+    ],
+    [
+     "unrest",
+     1851,
+     25
+    ],
+    [
+     "flag",
+     "c99_yeltsin_resigned"
+    ]
+   ],
+   "roles": {
+    "Russia": {
+     "text": "Putin yılbaşı gecesi iktidarı devraldı; ordu Grozni'yi kuşatmış durumda. İlk savaşın hatasını tekrarlamamak için mahalle mahalle girmek yerine tamamen topçu ile ezmek planlanıyor.",
+     "options": [
+      {
+       "t": "Grozni'ye topyekûn taarruz (tarihî)",
+       "d": "Önce topçu, sonra piyade",
+       "fx": [
+        [
+         "buff",
+         "Russia",
+         "att",
+         1.2,
+         10
+        ],
+        [
+         "troops",
+         "Russia",
+         2
+        ],
+        [
+         "unrest",
+         1851,
+         25
+        ],
+        [
+         "rel",
+         "Russia",
+         "United States of America",
+         -3
+        ],
+        [
+         "stab",
+         "Russia",
+         3
+        ]
+       ],
+       "r": "Rus topçusu Grozni'yi haftalarca dövdü; şehir enkaza döndü."
+      },
+      {
+       "t": "Güvenli koridor ve pazarlık",
+       "d": "Kuşatmayı hafif tut",
+       "fx": [
+        [
+         "xstab",
+         "Russia",
+         -2
+        ],
+        [
+         "rel",
+         "Russia",
+         "United States of America",
+         3
+        ],
+        [
+         "rel",
+         "Russia",
+         "custom_0",
+         3
+        ]
+       ],
+       "r": "Moskova sivillerin çıkışı için güvenli koridor önerdi."
+      }
+     ]
+    },
+    "custom_0": {
+     "text": "Grozni bir ölüm tuzağına dönüşebilir: kuşatılmış şehirde hem silahlı kuvvetler hem de yüz binlerce sivil var. Maskhadov güçlerini kurtarmak için çıkış yolları arıyor.",
+     "options": [
+      {
+       "t": "Grozni'yi tutmaya çalış",
+       "d": "Şehir savunması",
+       "fx": [
+        [
+         "buff",
+         "custom_0",
+         "def",
+         1.3,
+         10
+        ],
+        [
+         "troops",
+         "custom_0",
+         20
+        ],
+        [
+         "stab",
+         "custom_0",
+         -2
+        ]
+       ],
+       "r": "Basayev ve Gelayev şehirde direnişi örgütledi."
+      },
+      {
+       "t": "Şehri boşalt, güneyde direniş kur",
+       "d": "Kayıpları azalt",
+       "fx": [
+        [
+         "troops",
+         "custom_0",
+         10
+        ],
+        [
+         "buff",
+         "custom_0",
+         "def",
+         1.15,
+         18
+        ],
+        [
+         "stab",
+         "custom_0",
+         2
+        ]
+       ],
+       "r": "Maskhadov güçlerini şehirden çıkarmayı planlıyor."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "c99_subat",
+   "y": 2000,
+   "m": 2,
+   "title": "Grozni Düştü",
+   "scene": "pre_siege",
+   "icon": "flag",
+   "text": "Ocak sonunda Çeçen kuvvetleri Grozni'den Alhan-Kala yönünde yarma yaptı, ama mayın tarlasında ağır kayıp verdi (Gelayev ve Basayev yaralı, Basayev bir ayağını kaybetti). 6 Şubat'ta Rusya Grozni'nin ele geçirildiğini ilan etti.",
+   "major": true,
+   "default_fx": [
+    [
+     "occupy",
+     "Russia",
+     1851
+    ],
+    [
+     "unrest",
+     1851,
+     40
+    ],
+    [
+     "stab",
+     "custom_0",
+     -10
+    ],
+    [
+     "troops",
+     "custom_0",
+     -20
+    ],
+    [
+     "flag",
+     "c99_grozny_fell"
+    ]
+   ],
+   "roles": {
+    "Russia": {
+     "text": "Grozni sizin, ama şehrin yarısı enkaz. Direniş dağlarda ve köylerde sürecek; mayınlar ve pusular zayiat verecek.",
+     "options": [
+      {
+       "t": "Dağ harekâtı: Argun Vadisi, Vedeno",
+       "d": "Gerilla üslerini yok et",
+       "fx": [
+        [
+         "buff",
+         "Russia",
+         "att",
+         1.1,
+         12
+        ],
+        [
+         "troops",
+         "Russia",
+         2
+        ]
+       ],
+       "r": "Rus birlikleri güney dağlarına ilerliyor."
+      },
+      {
+       "t": "Siyasî çözüm: yerel yönetim kur",
+       "d": "Çeçen yanlısı yönetim",
+       "fx": [
+        [
+         "unrest",
+         1851,
+         -10
+        ],
+        [
+         "stab",
+         "Russia",
+         2
+        ]
+       ],
+       "r": "Kremlin Çeçen eşrafıyla yeni bir yönetim kurmak için temas kurdu."
+      }
+     ]
+    },
+    "custom_0": {
+     "text": "Şehir kaybedildi; ordunun parçalanması, silahlı çetelerin ve radikal şeflerin etkisini artırır. Maskhadov dağlarda birliği korumaya çalışıyor.",
+     "options": [
+      {
+       "t": "Gerilla savaşına geç",
+       "d": "Pusu, mayın, intihar saldırısı",
+       "fx": [
+        [
+         "unrest",
+         1851,
+         30
+        ],
+        [
+         "buff",
+         "custom_0",
+         "def",
+         1.2,
+         25
+        ],
+        [
+         "troops",
+         "custom_0",
+         20
+        ],
+        [
+         "flag",
+         "c99_guerrilla"
+        ]
+       ],
+       "r": "Çeçen müfrezeleri dağlara çekilip köylere dağıldı."
+      },
+      {
+       "t": "Moskova'ya ateşkes teklif et",
+       "d": "Yeniden müzakere",
+       "fx": [
+        [
+         "rel",
+         "custom_0",
+         "Russia",
+         5
+        ],
+        [
+         "stab",
+         "custom_0",
+         -3
+        ]
+       ],
+       "r": "Maskhadov Putin'e koşulsuz ateşkes önerdi; Kremlin reddetti."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "c99_mart",
+   "y": 2000,
+   "m": 3,
+   "title": "Putin Seçildi",
+   "scene": "pre_court",
+   "icon": "flag",
+   "text": "26 Mart 2000: Putin ilk turda %53 oyla cumhurbaşkanı seçildi. Mart başında Komsomolskoye'de Çeçen birlikleri kuşatılıp yok edildi; 1 Mart'ta Ulus-Kert'te Pskov paraşütçüleri ağır zayiat verdi.",
+   "major": false,
+   "default_fx": [
+    [
+     "stab",
+     "Russia",
+     4
+    ],
+    [
+     "xstab",
+     "Russia",
+     3
+    ],
+    [
+     "unrest",
+     1851,
+     -5
+    ]
+   ],
+   "roles": {
+    "Russia": {
+     "text": "Zaferle seçildiniz; Çeçenistan dosyası artık 'terörle mücadele' olarak çerçeveleniyor. Oligarkları ve valileri kontrol altına alma zamanı.",
+     "options": [
+      {
+       "t": "Dikeyi güçlendir: federal bölgeler (tarihî)",
+       "d": "Merkezî kontrol",
+       "fx": [
+        [
+         "stab",
+         "Russia",
+         4
+        ],
+        [
+         "xstab",
+         "Russia",
+         3
+        ]
+       ],
+       "r": "Putin yedi federal bölge kurarak valileri denetim altına aldı."
+      },
+      {
+       "t": "Çeçen yanlısı bir lider ara",
+       "d": "Çeçenleştirme",
+       "fx": [
+        [
+         "stab",
+         "Russia",
+         2
+        ],
+        [
+         "unrest",
+         1851,
+         -5
+        ]
+       ],
+       "r": "Kremlin Çeçenistan'da yeni bir yönetici adayı arıyor."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "c99_haziran",
+   "y": 2000,
+   "m": 6,
+   "title": "Doğrudan Yönetim ve Kadirov",
+   "scene": "pre_court",
+   "icon": "treaty",
+   "text": "12 Haziran 2000: Putin eski Çeçen müftüsü Ahmed Kadirov'u Çeçenistan 'yönetim başkanı' atadı. Müftü Maskhadov'un 'cihat' çağrısına karşı çıkmış ve Rusya'nın yanına geçmişti; 'Çeçenleştirme' politikası başladı.",
+   "major": false,
+   "default_fx": [
+    [
+     "unrest",
+     1851,
+     -15
+    ],
+    [
+     "stab",
+     "custom_0",
+     -3
+    ],
+    [
+     "stab",
+     "Russia",
+     2
+    ]
+   ],
+   "roles": {
+    "Russia": {
+     "text": "Çeçen yanlısı yönetim size iç kamuoyunda 'normalleşme' sağlıyor; ama Kadirov'un özerkliği ileride başka sorunlar doğurabilir.",
+     "options": [
+      {
+       "t": "Çeçenleştirme: Kadirov'a yetki ver (tarihî)",
+       "d": "Yerel milisler, af ve kimlik değişimi",
+       "fx": [
+        [
+         "unrest",
+         1851,
+         -20
+        ],
+        [
+         "stab",
+         "Russia",
+         2
+        ],
+        [
+         "rel",
+         "Russia",
+         "custom_0",
+         -5
+        ]
+       ],
+       "r": "Kadirov'un milisleri Rus birlikleriyle birlikte operasyon yapmaya başladı."
+      },
+      {
+       "t": "Doğrudan askerî yönetimi sürdür",
+       "d": "Yeterince asker, yerel aracı yok",
+       "fx": [
+        [
+         "unrest",
+         1851,
+         10
+        ],
+        [
+         "troops",
+         "Russia",
+         2
+        ],
+        [
+         "stab",
+         "Russia",
+         -1
+        ]
+       ],
+       "r": "Genelkurmay yerel aracıları reddetti; operasyonlar sürüyor."
+      }
+     ]
+    },
+    "custom_0": {
+     "text": "Çeçen toplumunda bölünme: eski müftü Moskova'nın yanına geçti, yerel ailelerin bir kısmı Kadirov'a katılıyor. Direniş, içeriden gelen bir rakiple karşı karşıya.",
+     "options": [
+      {
+       "t": "Kadirov'u 'hain' ilan et, suikast örgütle",
+       "d": "İç savaşı alevlendir",
+       "fx": [
+        [
+         "stab",
+         "custom_0",
+         -3
+        ],
+        [
+         "unrest",
+         1851,
+         15
+        ],
+        [
+         "buff",
+         "custom_0",
+         "att",
+         1.1,
+         10
+        ]
+       ],
+       "r": "Maskhadov ve Basayev Kadirov'a karşı ölüm fetvası çıkardı."
+      },
+      {
+       "t": "Halkı sahiplen, eşrafla uzlaş",
+       "d": "Meşruiyeti koru",
+       "fx": [
+        [
+         "stab",
+         "custom_0",
+         4
+        ],
+        [
+         "troops",
+         "custom_0",
+         10
+        ]
+       ],
+       "r": "Maskhadov eşraf ve köy büyüklerini bir araya getiren meclisler topladı."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "c99_eylul01",
+   "y": 2001,
+   "m": 9,
+   "title": "11 Eylül ve Terörle Savaş",
+   "scene": "crisis",
+   "icon": "warning",
+   "text": "11 Eylül 2001'den sonra Putin Bush'u arayan ilk lider oldu; Batı'nın Çeçenistan eleştirisi yumuşadı. 2001–02'de Rusya, Gürcistan'ın Pankisi Vadisi'ndeki Çeçen ve Arap savaşçıları bahane ederek tepki gösterdi; ABD Gürcistan'a 'Train and Equip' programı başlattı.",
+   "major": true,
+   "default_fx": [
+    [
+     "rel",
+     "Russia",
+     "United States of America",
+     15
+    ],
+    [
+     "rel",
+     "Russia",
+     "Turkey",
+     3
+    ],
+    [
+     "rel",
+     "Georgia",
+     "United States of America",
+     8
+    ],
+    [
+     "stab",
+     "custom_0",
+     -3
+    ],
+    [
+     "flag",
+     "c99_911"
+    ]
+   ],
+   "roles": {
+    "Russia": {
+     "text": "Batı'nın dikkati Afganistan'a kaydı; Çeçenistan artık 'Rusya'nın uluslararası terörizmle savaşı'nın parçası. Orta Asya'da ABD üslerine razı olmak karşılığında Batı'dan ne alabilirsiniz?",
+     "options": [
+      {
+       "t": "ABD'yle ortaklık (tarihî)",
+       "d": "Terörle savaşta işbirliği",
+       "fx": [
+        [
+         "rel",
+         "Russia",
+         "United States of America",
+         15
+        ],
+        [
+         "stab",
+         "Russia",
+         2
+        ],
+        [
+         "rel",
+         "Russia",
+         "Turkey",
+         3
+        ]
+       ],
+       "r": "Putin Bush'a istihbarat ve hava sahası desteği sundu."
+      },
+      {
+       "t": "Mesafeli kal, bağımsız çizgi",
+       "d": "Batı'ya güvenme",
+       "fx": [
+        [
+         "rel",
+         "Russia",
+         "United States of America",
+         -3
+        ],
+        [
+         "xstab",
+         "Russia",
+         -1
+        ]
+       ],
+       "r": "Moskova ABD'nin Orta Asya'ya yerleşmesine itiraz etti."
+      }
+     ]
+    },
+    "custom_0": {
+     "text": "Dünya sizi artık 'el-Kaide bağlantılı' görüyor; Hattab'ın ve Arap gönüllülerin varlığı bu algıyı güçlendiriyor. Batı desteği hızla eriyor.",
+     "options": [
+      {
+       "t": "Terörizmi kınadığını ilan et",
+       "d": "İmajı kurtar",
+       "fx": [
+        [
+         "rel",
+         "custom_0",
+         "United States of America",
+         4
+        ],
+        [
+         "rel",
+         "custom_0",
+         "Turkey",
+         3
+        ],
+        [
+         "stab",
+         "custom_0",
+         -2
+        ]
+       ],
+       "r": "Maskhadov 11 Eylül'ü kınayıp 'Çeçenistan terör örgütü değil' dedi."
+      },
+      {
+       "t": "Yabancı gönüllülere bağlı kal",
+       "d": "Cihat söylemini sürdür",
+       "fx": [
+        [
+         "troops",
+         "custom_0",
+         10
+        ],
+        [
+         "rel",
+         "custom_0",
+         "United States of America",
+         -8
+        ],
+        [
+         "rel",
+         "custom_0",
+         "Turkey",
+         -3
+        ]
+       ],
+       "r": "Radikal komutanlar cihat söylemini sertleştirdi."
+      }
+     ]
+    },
+    "Georgia": {
+     "text": "Pankisi Vadisi'nde Çeçen mülteciler ve silahlı gruplar var; Rusya 'terörist sığınağı' diye baskı yapıyor. Shevardnadze ABD'ye yaklaşmak için fırsat görüyor.",
+     "options": [
+      {
+       "t": "ABD 'Train and Equip' programını kabul et (tarihî)",
+       "d": "ABD'ye yaklaş",
+       "fx": [
+        [
+         "rel",
+         "Georgia",
+         "United States of America",
+         15
+        ],
+        [
+         "rel",
+         "Georgia",
+         "Russia",
+         -8
+        ],
+        [
+         "troops",
+         "Georgia",
+         10
+        ]
+       ],
+       "r": "ABD Özel Kuvvetleri Gürcü askerlerini eğitmeye başladı.",
+       "keep_default": true
+      },
+      {
+       "t": "Rusya'yla ortak operasyon",
+       "d": "Pankisi'yi birlikte temizle",
+       "fx": [
+        [
+         "rel",
+         "Georgia",
+         "Russia",
+         6
+        ],
+        [
+         "rel",
+         "Georgia",
+         "United States of America",
+         -2
+        ]
+       ],
+       "r": "Tiflis Moskova'yla Pankisi'de ortak güvenlik operasyonu önerdi.",
+       "keep_default": true
+      }
+     ]
+    },
+    "United States of America": {
+     "text": "Bush ve Putin ortaklık kuruyor; Rusya Afganistan'da kritik. Kongre'de ve basında Çeçenistan'daki insan hakları ihlalleri sorgulanıyor.",
+     "options": [
+      {
+       "t": "Putin'le ortaklık (tarihî)",
+       "d": "Çeçenistan eleştirisini yumuşat",
+       "fx": [
+        [
+         "rel",
+         "United States of America",
+         "Russia",
+         15
+        ],
+        [
+         "rel",
+         "United States of America",
+         "Georgia",
+         6
+        ]
+       ],
+       "r": "Bush Putin'i Teksas'taki çiftliğine davet etti.",
+       "keep_default": true
+      },
+      {
+       "t": "Çeçenistan'ı şart koş",
+       "d": "İnsan hakları baskısı",
+       "fx": [
+        [
+         "rel",
+         "United States of America",
+         "Russia",
+         -5
+        ]
+       ],
+       "r": "Kongre'de Rusya yardımına Çeçenistan şartı önerildi.",
+       "keep_default": true
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "c99_ekim02",
+   "y": 2002,
+   "m": 10,
+   "title": "Dubrovka Tiyatro Krizi",
+   "scene": "crisis",
+   "icon": "warning",
+   "text": "23–26 Ekim 2002: Movsar Barayev komutasında 40 kadar Çeçen Moskova'daki Dubrovka tiyatrosunu bastı, 850 rehine aldı. Rus özel kuvvetleri üçüncü gün uyutucu gaz kullanarak baskın yaptı; yaklaşık 130 rehine öldü.",
+   "major": true,
+   "default_fx": [
+    [
+     "stab",
+     "Russia",
+     -3
+    ],
+    [
+     "unrest",
+     1851,
+     10
+    ],
+    [
+     "rel",
+     "Russia",
+     "custom_0",
+     -10
+    ]
+   ],
+   "roles": {
+    "Russia": {
+     "text": "Moskova'nın kalbinde rehine krizi; kamuoyu hem çaresiz hem öfkeli. Baskın riskli, müzakere ise 'taviz' demek.",
+     "options": [
+      {
+       "t": "Gaz ve baskın (tarihî)",
+       "d": "Askerî çözüm, yüksek risk",
+       "fx": [
+        [
+         "stab",
+         "Russia",
+         -2
+        ],
+        [
+         "buff",
+         "Russia",
+         "att",
+         1.1,
+         8
+        ],
+        [
+         "unrest",
+         1851,
+         10
+        ],
+        [
+         "rel",
+         "Russia",
+         "United States of America",
+         -2
+        ]
+       ],
+       "r": "Rus özel kuvvetleri gaz verip tiyatroya girdi; rehinelerin çoğu kurtuldu ama yüzlercesi hastanelik oldu."
+      },
+      {
+       "t": "Müzakere: Kosachev, Politkovskaya, Aushev",
+       "d": "Hayatları kurtarmaya çalış",
+       "fx": [
+        [
+         "xstab",
+         "Russia",
+         -3
+        ],
+        [
+         "rel",
+         "Russia",
+         "custom_0",
+         3
+        ]
+       ],
+       "r": "Moskova arabuluculara izin verdi; ama krizde zaman daralıyor."
+      }
+     ]
+    },
+    "custom_0": {
+     "text": "Maskhadov rehine almayı onaylamadığını açıkladı ama saldırıyı Basayev üstlendi. Bu eylem Çeçen davasının uluslararası imajını ağır yaralayabilir.",
+     "options": [
+      {
+       "t": "Saldırıyı kınama, rehineleri koruma çağrısı yap",
+       "d": "Maskhadov'un 'olumsuz' tutumu",
+       "fx": [
+        [
+         "rel",
+         "custom_0",
+         "United States of America",
+         3
+        ],
+        [
+         "rel",
+         "custom_0",
+         "Turkey",
+         3
+        ],
+        [
+         "stab",
+         "custom_0",
+         -2
+        ]
+       ],
+       "r": "Maskhadov rehinelerin serbest bırakılması çağrısı yaptı."
+      },
+      {
+       "t": "Basayev'in tarafını tut",
+       "d": "Sertlik yanlısı çizgi",
+       "fx": [
+        [
+         "buff",
+         "custom_0",
+         "att",
+         1.1,
+         8
+        ],
+        [
+         "rel",
+         "custom_0",
+         "United States of America",
+         -6
+        ],
+        [
+         "rel",
+         "custom_0",
+         "Turkey",
+         -4
+        ]
+       ],
+       "r": "Basayev eylemi 'Rusya'ya bir mesaj' olarak sundu."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "c99_mart03",
+   "y": 2003,
+   "m": 3,
+   "title": "Çeçen Anayasa Referandumu",
+   "scene": "pre_court",
+   "icon": "treaty",
+   "text": "23 Mart 2003: Çeçenistan'ın Rusya'nın bir parçası olduğunu öngören anayasa referandumu %96 'evet' ile geçti; savaş yorgunu halk ve ağır askerî varlık altında yapılan oy tartışmalı. 5 Ekim'de Ahmed Kadirov %80 ile 'cumhurbaşkanı' seçildi.",
+   "major": false,
+   "default_fx": [
+    [
+     "unrest",
+     1851,
+     -10
+    ],
+    [
+     "stab",
+     "Russia",
+     2
+    ],
+    [
+     "stab",
+     "custom_0",
+     -2
+    ]
+   ],
+   "roles": {
+    "Russia": {
+     "text": "Referandum Çeçenistan'ı 'hukuken' Rusya'ya bağlıyor; Batı tartışmalı oylamayı eleştirse de Putin'in bölgedeki konumu pekişiyor.",
+     "options": [
+      {
+       "t": "Seçimleri sürdür, Kadirov'u destekle (tarihî)",
+       "d": "Çeçen yönetimi güçlendir",
+       "fx": [
+        [
+         "unrest",
+         1851,
+         -15
+        ],
+        [
+         "stab",
+         "Russia",
+         2
+        ]
+       ],
+       "r": "Kremlin referandumu 'normalleşmenin kanıtı' diye sundu."
+      },
+      {
+       "t": "Af ve yeniden yapılanma",
+       "d": "Yeniden inşa fonları",
+       "fx": [
+        [
+         "unrest",
+         1851,
+         -10
+        ],
+        [
+         "gold",
+         "Russia",
+         -0.5
+        ],
+        [
+         "stab",
+         "Russia",
+         1
+        ]
+       ],
+       "r": "Moskova Grozni'nin yeniden inşası için yeni fonlar açıkladı."
+      }
+     ]
+    },
+    "custom_0": {
+     "text": "Referandum Rus ordusunun gölgesinde yapıldı; direnişin siyasî kanadı marjinal kalıyor. Maskhadov yeraltından halka seslenmeye çalışıyor.",
+     "options": [
+      {
+       "t": "Referandumu 'sahte' ilan et",
+       "d": "Meşruiyeti sorgulat",
+       "fx": [
+        [
+         "stab",
+         "custom_0",
+         -1
+        ],
+        [
+         "rel",
+         "custom_0",
+         "Turkey",
+         3
+        ]
+       ],
+       "r": "Maskhadov referandumu 'işgal altında yapılan bir tiyatro' diye niteledi."
+      },
+      {
+       "t": "Gerilla operasyonlarını sürdür",
+       "d": "Askerî baskı",
+       "fx": [
+        [
+         "unrest",
+         1851,
+         10
+        ],
+        [
+         "buff",
+         "custom_0",
+         "def",
+         1.1,
+         14
+        ]
+       ],
+       "r": "Çeçen müfrezeleri Rus konvoylarına pusu kurmayı sürdürüyor."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "c99_mayis04",
+   "y": 2004,
+   "m": 5,
+   "title": "Kadirov'a Suikast",
+   "scene": "crisis",
+   "icon": "missile",
+   "text": "9 Mayıs 2004: Grozni'de Zafer Günü töreninde stadyumda patlama; Ahmed Kadirov öldü. Haziranda Basayev'in müfrezeleri İnguşetya'nın Nazran kentini bastı (21–22 Haziran), Ağustos'ta Alu Alhanov Çeçenistan başkanı seçildi.",
+   "major": false,
+   "default_fx": [
+    [
+     "stab",
+     "custom_0",
+     -3
+    ],
+    [
+     "unrest",
+     1851,
+     15
+    ],
+    [
+     "unrest",
+     1850,
+     30
+    ],
+    [
+     "stab",
+     "Russia",
+     -2
+    ]
+   ],
+   "roles": {
+    "Russia": {
+     "text": "Çeçenleştirme politikasının mimarı öldü; Ramzan Kadirov güç boşluğunu doldurmaya hazır. Direniş İnguşetya'ya taşıyor.",
+     "options": [
+      {
+       "t": "Alhanov'u destekle, Ramzan'ı kontrol altına al (tarihî)",
+       "d": "Siyasî denge",
+       "fx": [
+        [
+         "stab",
+         "Russia",
+         1
+        ],
+        [
+         "unrest",
+         1851,
+         -8
+        ]
+       ],
+       "r": "Kremlin Alu Alhanov'u 'Çeçen cumhurbaşkanı' olarak destekledi."
+      },
+      {
+       "t": "Ramzan Kadirov'a yetki ver",
+       "d": "Güvenlik güçlerini ona bırak",
+       "fx": [
+        [
+         "unrest",
+         1851,
+         -15
+        ],
+        [
+         "unrest",
+         1850,
+         10
+        ],
+        [
+         "stab",
+         "Russia",
+         1
+        ]
+       ],
+       "r": "Ramzan'ın 'Kadirovtsi' milisleri güvenlikte öne çıktı."
+      }
+     ]
+    },
+    "custom_0": {
+     "text": "Suikast direnişin başarısı, ama Rusya'nın misillemesi sertleşecek. Basayev'in hedefi yeni cepheler açmak: İnguşetya, Kabardin-Balkar.",
+     "options": [
+      {
+       "t": "İnguşetya'da yeni cephe aç (tarihî)",
+       "d": "Nazran baskını",
+       "fx": [
+        [
+         "unrest",
+         1850,
+         30
+        ],
+        [
+         "buff",
+         "custom_0",
+         "att",
+         1.15,
+         8
+        ],
+        [
+         "stab",
+         "custom_0",
+         2
+        ]
+       ],
+       "r": "Basayev'in adamları Nazran'da polis ve güvenlik noktalarını bastı."
+      },
+      {
+       "t": "Çeçenistan içinde savunmada kal",
+       "d": "Gücü koru",
+       "fx": [
+        [
+         "troops",
+         "custom_0",
+         10
+        ],
+        [
+         "buff",
+         "custom_0",
+         "def",
+         1.1,
+         10
+        ]
+       ],
+       "r": "Maskhadov'un adamları güney dağlarında mevzilerini korudu."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "c99_eylul04",
+   "y": 2004,
+   "m": 9,
+   "title": "Beslan",
+   "scene": "crisis",
+   "icon": "warning",
+   "text": "1–3 Eylül 2004: Kuzey Osetya'nın Beslan kentinde 1 No'lu okulu bastıkları bir grup (Basayev adına) 1.100 rehine aldı. Üçüncü gün patlamalar ve çatışmayla 334 kişi öldü; yarısına yakını çocuktu.",
+   "major": true,
+   "default_fx": [
+    [
+     "stab",
+     "Russia",
+     -3
+    ],
+    [
+     "xstab",
+     "Russia",
+     2
+    ],
+    [
+     "rel",
+     "Russia",
+     "United States of America",
+     -3
+    ],
+    [
+     "stab",
+     "custom_0",
+     -4
+    ]
+   ],
+   "roles": {
+    "Russia": {
+     "text": "Savaşın en korkunç anı: kamuoyu sarsıldı, Batı sempati gösterdi. Putin'in tepkisi: merkezileşme.",
+     "options": [
+      {
+       "t": "Valilerin atanması, güvenlik yasası (tarihî)",
+       "d": "Merkezî kontrol",
+       "fx": [
+        [
+         "stab",
+         "Russia",
+         -2
+        ],
+        [
+         "xstab",
+         "Russia",
+         2
+        ],
+        [
+         "unrest",
+         1850,
+         -5
+        ],
+        [
+         "rel",
+         "Russia",
+         "United States of America",
+         -3
+        ]
+       ],
+       "r": "Putin valilerin doğrudan seçimini kaldırdı; 'terörle mücadele' yasaları sertleşti."
+      },
+      {
+       "t": "Siyasî çözüm: Maskhadov'la temas",
+       "d": "Müzakere kapısı",
+       "fx": [
+        [
+         "stab",
+         "Russia",
+         -4
+        ],
+        [
+         "rel",
+         "Russia",
+         "custom_0",
+         5
+        ],
+        [
+         "xstab",
+         "Russia",
+         -2
+        ]
+       ],
+       "r": "Kremlin'in bir kanadı Maskhadov'la gizli temas önerdi; Putin reddetti."
+      }
+     ]
+    },
+    "custom_0": {
+     "text": "Basayev sorumluluk üstlendi; Maskhadov saldırıyı kınadı ama bu artık direnişin imajını kurtaramıyor. Batı ve İslam dünyasında Çeçen davasına destek hızla azalıyor.",
+     "options": [
+      {
+       "t": "Saldırıyı kınama, Basayev'den ayrıl",
+       "d": "Siyasî çizgiyi koru",
+       "fx": [
+        [
+         "rel",
+         "custom_0",
+         "Turkey",
+         3
+        ],
+        [
+         "rel",
+         "custom_0",
+         "United States of America",
+         3
+        ],
+        [
+         "stab",
+         "custom_0",
+         -4
+        ]
+       ],
+       "r": "Maskhadov Beslan'ı kınayıp 'sivil hedeflere karşıyız' dedi."
+      },
+      {
+       "t": "Basayev'in çizgisine kay",
+       "d": "Cihatçı çizgi",
+       "fx": [
+        [
+         "buff",
+         "custom_0",
+         "att",
+         1.1,
+         8
+        ],
+        [
+         "rel",
+         "custom_0",
+         "Turkey",
+         -6
+        ],
+        [
+         "rel",
+         "custom_0",
+         "United States of America",
+         -8
+        ]
+       ],
+       "r": "Radikal komutanlar saldırıyı 'savaşın doğal sonucu' saydı."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "c99_mart05",
+   "y": 2005,
+   "m": 3,
+   "title": "Maskhadov Öldürüldü",
+   "scene": "crisis",
+   "icon": "missile",
+   "text": "8 Mart 2005: Çeçen direnişinin seçilmiş lideri Aslan Maskhadov, Tolstoy-Yurt köyünde bir sığınakta Rus özel kuvvetlerince öldürüldü. Yerine Abdulhalim Saydullayev geçti.",
+   "major": false,
+   "default_fx": [
+    [
+     "stab",
+     "custom_0",
+     -10
+    ],
+    [
+     "unrest",
+     1851,
+     5
+    ],
+    [
+     "stab",
+     "Russia",
+     1
+    ],
+    [
+     "flag",
+     "c99_maskhadov_dead"
+    ]
+   ],
+   "roles": {
+    "Russia": {
+     "text": "Putin 'direnişin başı' diye kutladı; Maskhadov'la müzakere kapısı tamamen kapandı. Direniş giderek Basayev ve İslamcılara kayıyor.",
+     "options": [
+      {
+       "t": "Tutumu sürdür, af ve milisler (tarihî)",
+       "d": "Direnişi içeriden böl",
+       "fx": [
+        [
+         "unrest",
+         1851,
+         -10
+        ],
+        [
+         "stab",
+         "Russia",
+         1
+        ]
+       ],
+       "r": "Moskova yeni af ilan etti; Kadirovtsi'ler operasyonları yönetiyor."
+      },
+      {
+       "t": "Sertliği artır",
+       "d": "Daha fazla temizlik operasyonu",
+       "fx": [
+        [
+         "buff",
+         "Russia",
+         "att",
+         1.1,
+         8
+        ],
+        [
+         "unrest",
+         1851,
+         5
+        ],
+        [
+         "rel",
+         "Russia",
+         "United States of America",
+         -2
+        ]
+       ],
+       "r": "Rus iç birlikleri dağlarda yeni operasyonlar başlattı."
+      }
+     ]
+    },
+    "custom_0": {
+     "text": "Maskhadov'un ölümü direnişin ılımlı kanadını yok etti. Saydullayev genç bir din adamı, ama sahada komuta Basayev'de.",
+     "options": [
+      {
+       "t": "Saydullayev'le sürdür, birliği koru",
+       "d": "Komuta birliği",
+       "fx": [
+        [
+         "stab",
+         "custom_0",
+         4
+        ],
+        [
+         "buff",
+         "custom_0",
+         "def",
+         1.05,
+         12
+        ]
+       ],
+       "r": "Komutanlar Saydullayev'e bağlılık yemini etti."
+      },
+      {
+       "t": "Basayev'e askerî yetki ver",
+       "d": "Sert çizgi",
+       "fx": [
+        [
+         "troops",
+         "custom_0",
+         10
+        ],
+        [
+         "buff",
+         "custom_0",
+         "att",
+         1.1,
+         10
+        ],
+        [
+         "stab",
+         "custom_0",
+         -2
+        ],
+        [
+         "rel",
+         "custom_0",
+         "Turkey",
+         -4
+        ]
+       ],
+       "r": "Basayev bütün askerî harekâtı yönetmeye başladı."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "c99_temmuz06",
+   "y": 2006,
+   "m": 7,
+   "title": "Saydullayev ve Basayev'in Sonu",
+   "scene": "crisis",
+   "icon": "missile",
+   "text": "17 Haziran 2006: Saydullayev Argun'da öldürüldü; yerine Doku Umarov geçti. 10 Temmuz'da Basayev İnguşetya'nın Ekajevo köyünde bir patlamada öldü; Rus yetkililer operasyonu üstlendi. İki karizmatik lider kısa sürede ortadan kalktı.",
+   "major": false,
+   "default_fx": [
+    [
+     "stab",
+     "custom_0",
+     -8
+    ],
+    [
+     "unrest",
+     1851,
+     -10
+    ],
+    [
+     "stab",
+     "Russia",
+     2
+    ]
+   ],
+   "roles": {
+    "Russia": {
+     "text": "Savaşın iki kilit ismi ortadan kalktı. Kremlin 'savaş bitti' diyecek; ama genç militanlar ve Kafkasya genelinde bir ağ yeniden yapılanıyor.",
+     "options": [
+      {
+       "t": "Zafer ilan et, Çeçenleştirmeyi tamamla (tarihî)",
+       "d": "Askerî varlığı azalt",
+       "fx": [
+        [
+         "unrest",
+         1851,
+         -15
+        ],
+        [
+         "stab",
+         "Russia",
+         3
+        ]
+       ],
+       "r": "Moskova Çeçenistan'da askerî varlığı azaltıp güvenliği Ramzan Kadirov'a bıraktı."
+      },
+      {
+       "t": "Kafkasya genelinde istihbarat operasyonları",
+       "d": "Ağı tamamen sök",
+       "fx": [
+        [
+         "unrest",
+         1851,
+         -8
+        ],
+        [
+         "unrest",
+         230,
+         -5
+        ],
+        [
+         "unrest",
+         1850,
+         -5
+        ]
+       ],
+       "r": "Rus servisleri Kuzey Kafkasya'da yeni operasyonlar başlattı."
+      }
+     ]
+    },
+    "custom_0": {
+     "text": "Direniş lidersiz kaldı. Doku Umarov, Kafkasya'nın tümüne yayılan bir İslamî cephe kurmaya çalışıyor; Çeçen milliyetçiliği ikinci plana düşüyor.",
+     "options": [
+      {
+       "t": "Umarov'u destekle, Kafkas cephesi kur",
+       "d": "Bölgesel ağ",
+       "fx": [
+        [
+         "unrest",
+         230,
+         10
+        ],
+        [
+         "unrest",
+         1850,
+         10
+        ],
+        [
+         "troops",
+         "custom_0",
+         10
+        ],
+        [
+         "stab",
+         "custom_0",
+         2
+        ]
+       ],
+       "r": "Umarov Dağıstan, İnguşetya ve Kabardin-Balkar hücrelerini birleştirmeye girişti."
+      },
+      {
+       "t": "Siyasî bir çıkış ara",
+       "d": "Görüşme ve af",
+       "fx": [
+        [
+         "rel",
+         "custom_0",
+         "Russia",
+         8
+        ],
+        [
+         "stab",
+         "custom_0",
+         3
+        ]
+       ],
+       "r": "Bazı komutanlar Moskova'nın af tekliflerine kapıyı açtı."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "c99_ekim07",
+   "y": 2007,
+   "m": 10,
+   "title": "Kafkas Emirliği",
+   "scene": "pre_court",
+   "icon": "flag",
+   "text": "15 Şubat 2007: Ramzan Kadirov Çeçenistan cumhurbaşkanı oldu. 31 Ekim'de Doku Umarov 'Kafkas Emirliği'ni ilan etti: Çeçen bağımsızlık davası terk edilip bütün Kuzey Kafkasya'yı kapsayan İslamî bir cihat çerçevesine oturtuldu.",
+   "major": false,
+   "default_fx": [
+    [
+     "unrest",
+     230,
+     20
+    ],
+    [
+     "unrest",
+     1850,
+     20
+    ],
+    [
+     "stab",
+     "custom_0",
+     -3
+    ],
+    [
+     "flag",
+     "c99_emirate"
+    ]
+   ],
+   "roles": {
+    "Russia": {
+     "text": "Çeçenistan Ramzan'ın kontrolünde 'sakin'; ama şiddet Dağıstan ve İnguşetya'ya kayıyor. Bu, Kremlin'in 'çözülmüş' savaşının yeni, daha dağınık sürümü.",
+     "options": [
+      {
+       "t": "Ramzan'ı destekle, Dağıstan'da operasyon (tarihî)",
+       "d": "Çeçen modelini komşulara uygula",
+       "fx": [
+        [
+         "unrest",
+         1851,
+         -15
+        ],
+        [
+         "unrest",
+         230,
+         -5
+        ],
+        [
+         "stab",
+         "Russia",
+         1
+        ]
+       ],
+       "r": "Moskova Ramzan Kadirov'a Çeçenistan'da geniş yetki verdi."
+      },
+      {
+       "t": "Ekonomik kalkınma programı",
+       "d": "Kuzey Kafkasya'ya yatırım",
+       "fx": [
+        [
+         "gold",
+         "Russia",
+         -0.5
+        ],
+        [
+         "unrest",
+         230,
+         -8
+        ],
+        [
+         "unrest",
+         1850,
+         -8
+        ]
+       ],
+       "r": "Kremlin Kuzey Kafkasya için yeni bir kalkınma fonu açıkladı."
+      }
+     ]
+    },
+    "custom_0": {
+     "text": "Umarov bir 'emirlik' ilan etti: Çeçen bağımsızlık fikri bir sonraki aşamaya dönüşüyor. Ama Çeçen toplumu savaştan yorgun ve Kadirov'un baskısı altında.",
+     "options": [
+      {
+       "t": "Kafkas Emirliği'ne katıl",
+       "d": "Cihat çerçevesi",
+       "fx": [
+        [
+         "unrest",
+         230,
+         15
+        ],
+        [
+         "unrest",
+         1850,
+         15
+        ],
+        [
+         "troops",
+         "custom_0",
+         10
+        ],
+        [
+         "stab",
+         "custom_0",
+         -2
+        ]
+       ],
+       "r": "Umarov'un çağrısıyla Dağıstan ve İnguşetya'da yeni hücreler kuruldu."
+      },
+      {
+       "t": "Milliyetçi çizgiyi koru",
+       "d": "Çeçen bağımsızlığı",
+       "fx": [
+        [
+         "rel",
+         "custom_0",
+         "Turkey",
+         4
+        ],
+        [
+         "stab",
+         "custom_0",
+         2
+        ]
+       ],
+       "r": "Sürgündeki Çeçen hükümeti Umarov'un 'emirlik' fikrine itiraz etti."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "c99_agustos08",
+   "y": 2008,
+   "m": 8,
+   "title": "Gürcistan Savaşı",
+   "scene": "border",
+   "icon": "border_clash",
+   "text": "7–12 Ağustos 2008: Gürcistan'ın Güney Osetya'ya taarruzu üzerine Rus birlikleri Gürcistan'a girdi; beş günlük savaşta Abhazya ve Güney Osetya Rusya tarafından tanındı. Gürcistan 2000'lerin başından beri Çeçen mültecileri ve Rus kampanyasına yönelik eleştiriler yüzünden Moskova'nın hedefinde.",
+   "major": true,
+   "default_fx": [
+    [
+     "war",
+     "Russia",
+     "Georgia",
+     "solo"
+    ],
+    [
+     "troops",
+     "Russia",
+     2
+    ],
+    [
+     "rel",
+     "Russia",
+     "United States of America",
+     -10
+    ],
+    [
+     "rel",
+     "Russia",
+     "Georgia",
+     -30
+    ],
+    [
+     "rel",
+     "Turkey",
+     "Russia",
+     2
+    ],
+    [
+     "flag",
+     "c99_georgia"
+    ]
+   ],
+   "roles": {
+    "Georgia": {
+     "text": "Saakaşvili Güney Osetya'da 'anayasal düzeni' yeniden kurmak istiyor; Batı destek sözü verdi ama Rus ordusu Kafkas Geçidi'nden gelebilir.",
+     "options": [
+      {
+       "t": "Tskhinvali'ye taarruz (tarihî)",
+       "d": "Rusya'ya karşı savaş",
+       "fx": [
+        [
+         "war",
+         "Russia",
+         "Georgia",
+         "solo"
+        ],
+        [
+         "troops",
+         "Georgia",
+         15
+        ],
+        [
+         "buff",
+         "Russia",
+         "att",
+         1.15,
+         6
+        ],
+        [
+         "rel",
+         "Georgia",
+         "United States of America",
+         5
+        ],
+        [
+         "stab",
+         "Georgia",
+         -4
+        ]
+       ],
+       "r": "Gürcü birlikleri Tskhinvali'ye taarruz etti; Rus zırhlıları Roki Tüneli'nden Gürcistan'a girdi.",
+       "keep_default": true
+      },
+      {
+       "t": "Taarruzdan vazgeç, diplomasi",
+       "d": "Savaştan kaçın",
+       "fx": [
+        [
+         "rel",
+         "Georgia",
+         "United States of America",
+         -2
+        ],
+        [
+         "stab",
+         "Georgia",
+         2
+        ],
+        [
+         "rel",
+         "Georgia",
+         "Russia",
+         3
+        ]
+       ],
+       "r": "Tiflis son anda Tskhinvali taarruzunu iptal etti.",
+       "keep_default": true
+      }
+     ]
+    },
+    "Russia": {
+     "text": "Medvedev cumhurbaşkanı, Putin başbakan; Gürcistan'ın NATO yolundaki ilerleyişi (Nisan 2008 Bükreş zirvesi) Kremlin'i rahatsız ediyor. Güney Osetya'da çatışma çıkarsa tepki hazır.",
+     "options": [
+      {
+       "t": "Gürcistan'a karşı sınırlı harekât (tarihî)",
+       "d": "Barış gücü gerekçesiyle ilerle",
+       "fx": [
+        [
+         "war",
+         "Russia",
+         "Georgia",
+         "solo"
+        ],
+        [
+         "troops",
+         "Russia",
+         2
+        ],
+        [
+         "buff",
+         "Russia",
+         "att",
+         1.15,
+         6
+        ],
+        [
+         "rel",
+         "Russia",
+         "United States of America",
+         -10
+        ],
+        [
+         "rel",
+         "Russia",
+         "Georgia",
+         -30
+        ]
+       ],
+       "r": "Rus birlikleri Gori'ye kadar ilerledi; Batı ağır sözler söyledi."
+      },
+      {
+       "t": "Yalnızca Osetya'yı koru",
+       "d": "Sınırlı karşılık",
+       "fx": [
+        [
+         "rel",
+         "Russia",
+         "Georgia",
+         -10
+        ],
+        [
+         "rel",
+         "Russia",
+         "United States of America",
+         -3
+        ]
+       ],
+       "r": "Moskova yalnızca Güney Osetya'daki barış gücünü takviye etti."
+      }
+     ]
+    },
+    "Turkey": {
+     "text": "Türkiye Gürcistan'la (BTC, Kars-Tiflis demiryolu) ve Rusya'yla (doğalgaz, turizm, inşaat) aynı anda ilişkide. 'Kafkasya İstikrar ve İşbirliği Platformu' fikrini ortaya atma zamanı.",
+     "options": [
+      {
+       "t": "Kafkasya platformu öner (tarihî)",
+       "d": "Bölgesel arabuluculuk",
+       "fx": [
+        [
+         "rel",
+         "Turkey",
+         "Russia",
+         4
+        ],
+        [
+         "rel",
+         "Turkey",
+         "Georgia",
+         4
+        ],
+        [
+         "xstab",
+         "Turkey",
+         2
+        ]
+       ],
+       "r": "Erdoğan Kafkasya İstikrar ve İşbirliği Platformu'nu önerdi.",
+       "keep_default": true
+      },
+      {
+       "t": "Gürcistan'a destek ver",
+       "d": "Batı'yla hizalan",
+       "fx": [
+        [
+         "rel",
+         "Turkey",
+         "Georgia",
+         10
+        ],
+        [
+         "rel",
+         "Turkey",
+         "Russia",
+         -8
+        ],
+        [
+         "rel",
+         "Turkey",
+         "United States of America",
+         4
+        ]
+       ],
+       "r": "Ankara Gürcistan'ın toprak bütünlüğünü destekleyen açıklama yaptı.",
+       "keep_default": true
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "c99_eylul08",
+   "y": 2008,
+   "m": 9,
+   "title": "Sarkozy Ateşkesi",
+   "scene": "peace",
+   "icon": "treaty",
+   "text": "12 Ağustos'ta Fransa Cumhurbaşkanı Sarkozy'nin aracılığıyla altı maddelik ateşkes imzalandı; Eylülde Rus birlikleri Gürcistan'ın iç kısımlarından çekilmeye başladı. Moskova'ya yaptırımlar sınırlı kaldı; Küresel finansal kriz gündemi ele geçiriyor.",
+   "major": false,
+   "default_fx": [
+    [
+     "peace",
+     "Russia",
+     "Georgia"
+    ],
+    [
+     "rel",
+     "Russia",
+     "United States of America",
+     -3
+    ],
+    [
+     "stab",
+     "Georgia",
+     -3
+    ]
+   ],
+   "roles": {
+    "Russia": {
+     "text": "Askerî olarak kazandınız, diplomatik olarak yalnızlaşıyorsunuz; Abhazya ve Güney Osetya'nın tanınması çok az ülkeden destek buldu.",
+     "options": [
+      {
+       "t": "Ateşkesi kabul et, çekil (tarihî)",
+       "d": "İki bölgeyi tanı, yaptırımlardan kaç",
+       "fx": [
+        [
+         "peace",
+         "Russia",
+         "Georgia"
+        ],
+        [
+         "rel",
+         "Russia",
+         "United States of America",
+         -3
+        ],
+        [
+         "stab",
+         "Russia",
+         1
+        ]
+       ],
+       "r": "Rus birlikleri Gori ve Poti'den çekildi; Abhazya ve Güney Osetya'da kalıcı üsler kurulacak."
+      },
+      {
+       "t": "İlerlemeye devam et, Tiflis'e yönel",
+       "d": "Gürcistan'ı çökert",
+       "fx": [
+        [
+         "buff",
+         "Russia",
+         "att",
+         1.1,
+         6
+        ],
+        [
+         "rel",
+         "Russia",
+         "United States of America",
+         -15
+        ],
+        [
+         "xstab",
+         "Russia",
+         -3
+        ]
+       ],
+       "r": "Moskova ateşkesi ihlal edip Gürcistan içlerine ilerledi; Batı sert tepki gösterdi."
+      }
+     ]
+    },
+    "Georgia": {
+     "text": "Ordu yenildi, topraklar kaybedildi. Batı sözlü destek verdi ama askerî yardım yok. Saakaşvili için ya savunma yenilenmesi ya da NATO'ya hızlı yaklaşmak.",
+     "options": [
+      {
+       "t": "Ateşkesi kabul et (tarihî)",
+       "d": "Kayıpları durdur",
+       "fx": [
+        [
+         "peace",
+         "Russia",
+         "Georgia"
+        ],
+        [
+         "rel",
+         "Georgia",
+         "United States of America",
+         6
+        ],
+        [
+         "stab",
+         "Georgia",
+         -3
+        ]
+       ],
+       "r": "Saakaşvili altı maddelik ateşkesi imzaladı.",
+       "keep_default": true
+      },
+      {
+       "t": "Savaşa devam, Batı'dan yardım iste",
+       "d": "Direniş",
+       "fx": [
+        [
+         "troops",
+         "Georgia",
+         20
+        ],
+        [
+         "rel",
+         "Georgia",
+         "United States of America",
+         8
+        ],
+        [
+         "stab",
+         "Georgia",
+         -2
+        ]
+       ],
+       "r": "Gürcü yedek birlikleri Tiflis çevresinde mevzilendi.",
+       "keep_default": true
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "c99_nisan09",
+   "y": 2009,
+   "m": 4,
+   "title": "Terörle Mücadele Rejiminin Sonu",
+   "scene": "peace",
+   "icon": "dove",
+   "text": "16 Nisan 2009: Medvedev Çeçenistan'daki 'terörle mücadele operasyonu' rejimini resmen sona erdirdi. Ramzan Kadirov bölgenin tam kontrolünde; Grozni yeniden inşa edildi; ama Dağıstan, İnguşetya ve Kabardin-Balkar'da şiddet sürüyor.",
+   "major": true,
+   "default_fx": [
+    [
+     "stab",
+     "Russia",
+     3
+    ],
+    [
+     "unrest",
+     1851,
+     -20
+    ],
+    [
+     "stab",
+     "custom_0",
+     2
+    ]
+   ],
+   "roles": {
+    "Russia": {
+     "text": "On yıllık savaş resmen bitti; bedeli çok büyük, ama Çeçenistan Rusya içinde kaldı. Sorun şimdi Ramzan Kadirov'un Moskova'ya olan bağımlılığı ve diğer cumhuriyetlerde yayılan şiddet.",
+     "options": [
+      {
+       "t": "Rejimi bitir, Ramzan'ı sürdür (tarihî)",
+       "d": "Normalleşme ilan et",
+       "fx": [
+        [
+         "stab",
+         "Russia",
+         3
+        ],
+        [
+         "unrest",
+         1851,
+         -20
+        ]
+       ],
+       "r": "Kremlin Çeçenistan'da 'normalleşme'yi ilan etti."
+      },
+      {
+       "t": "Kuzey Kafkasya'ya kalkınma ve güvenlik paketi",
+       "d": "Yayılmayı önle",
+       "fx": [
+        [
+         "unrest",
+         230,
+         -10
+        ],
+        [
+         "unrest",
+         1850,
+         -10
+        ],
+        [
+         "gold",
+         "Russia",
+         -0.5
+        ],
+        [
+         "stab",
+         "Russia",
+         2
+        ]
+       ],
+       "r": "Moskova Kuzey Kafkasya için yeni bir federal kalkınma programı açıkladı."
+      }
+     ]
+    },
+    "custom_0": {
+     "text": "Direniş bölünmüş ve zayıf; bağımsızlık fikri Ramzan'ın baskısı altında. Yine de Umarov'un Emirliği Kafkasya'da hâlâ ayakta.",
+     "options": [
+      {
+       "t": "Gerilla savaşını sürdür",
+       "d": "Direniş devam",
+       "fx": [
+        [
+         "unrest",
+         1851,
+         10
+        ],
+        [
+         "troops",
+         "custom_0",
+         10
+        ]
+       ],
+       "r": "Dağlarda küçük çeteler Rus ve Kadirovtsi hedeflerine saldırmayı sürdürüyor."
+      },
+      {
+       "t": "Siyasî bir uzlaşıya yönel",
+       "d": "Af ve entegrasyon",
+       "fx": [
+        [
+         "rel",
+         "custom_0",
+         "Russia",
+         15
+        ],
+        [
+         "stab",
+         "custom_0",
+         5
+        ],
+        [
+         "unrest",
+         1851,
+         -10
+        ]
+       ],
+       "r": "Çeçen komutanların bir kısmı Kadirov'un afından yararlandı."
+      }
+     ]
+    }
+   }
+  }
+ ],
+ "en": {
+  "Karşı taarruz ve hava harekâtı (tarihî)": "Counter-offensive and air strikes (historical)",
+  "Dağıstan'da Basayev'e karşı sert harekât": "Hit Basayev's force in Dagestan",
+  "Rus uçakları ve Dağıstan milisleri Botlih'te Basayev'i geri püskürttü.": "Russian aircraft and Dagestani militias pushed Basayev back at Botlikh.",
+  "Maskhadov'la müzakere": "Negotiate with Maskhadov",
+  "Çeçen hükümetinden Basayev'i durdurmasını iste": "Ask Grozny to rein in Basayev",
+  "Moskova Maskhadov'dan Basayev'i kontrol etmesini istedi.": "Moscow asked Maskhadov to control Basayev.",
+  "Dağıstan'ın dağlarında köyler elden gidiyor. Yeltsin zayıf, Putin henüz tanınmıyor. Ordu 1996'nın intikamını arıyor.": "Villages are slipping away in the mountains of Dagestan. Yeltsin is weak and Putin is barely known. The army wants revenge for 1996.",
+  "Baskını kınama, Maskhadov'la git (tarihî)": "Condemn the raid and distance Grozny (historical)",
+  "Rusya'ya savaş gerekçesi verme": "Deny Moscow a pretext",
+  "Maskhadov Dağıstan baskınını 'Grozni'nin işi değil' diye açıkladı.": "Maskhadov said the Dagestan raid was 'not Grozny's business'.",
+  "Şura'ya katıl, Dağıstan'ı destekle": "Back Basayev and the Shura",
+  "Savaşa hazırlan": "Prepare for war",
+  "Çeçen gönüllüler Dağıstan'ın Botlih ve Novolak bölgelerine akıyor.": "Chechen volunteers flow towards Dagestan's Botlikh and Novolak districts.",
+  "Maskhadov Basayev'in baskınını kınadı ama kontrol edemiyor. Şura'daki radikaller 'Dağıstan'ı kurtarma' fikrinde; Maskhadov'un otoritesi zayıf.": "Maskhadov condemned Basayev's raid but cannot control him. Radicals in the Shura talk of 'liberating Dagestan'; Maskhadov's authority is weak.",
+  "Dağıstan'a Baskın": "The Invasion of Dagestan",
+  "7 Ağustos 1999: Şamil Basayev ve Arap komutan Hattab komutasında 1.500'e yakın savaşçı Dağıstan'ın dağlık Botlih bölgesine girdi ve 'İslam Devleti' ilan etti. 9 Ağustos'ta Yeltsin Başbakan Stepaşin'i görevden alıp Vladimir Putin'i atadı.": "7 August 1999: about 1,500 fighters under Shamil Basayev and the Arab commander Khattab entered the mountainous Botlikh area of Dagestan and proclaimed an 'Islamic state'. On 9 August Yeltsin dismissed Prime Minister Stepashin and appointed Vladimir Putin.",
+  "Terörle Mücadele Harekâtı'nı başlat (tarihî)": "Launch the counter-terrorist operation (historical)",
+  "Çeçenistan'a hava ve kara harekâtı": "Air and ground operation into Chechnya",
+  "Rus uçakları Çeçenistan'ı bombalıyor; 30 Eylül'de zırhlı sütunlar Terek'i geçti.": "Russian aircraft are bombing Chechnya; on 30 September armoured columns crossed the Terek.",
+  "Önce Rusya'da güvenlik, ortak soruşturma": "Security at home and a joint inquiry first",
+  "Çeçen hükümetinden işbirliği iste": "Ask Grozny to cooperate",
+  "Moskova Maskhadov'la ortak soruşturma önerdi; kamuoyu sabırsız.": "Moscow offered Maskhadov a joint inquiry; the public is impatient.",
+  "Ülke şokta, kamuoyu intikam istiyor. 'Terörle Mücadele Harekâtı' kararı Putin'in kaderini belirleyecek.": "The country is in shock and public opinion demands revenge. The decision on a 'counter-terrorist operation' will define Putin.",
+  "Savunmaya geç, seferberlik ilan et": "Mobilise for defence",
+  "Rus saldırısı kaçınılmaz": "A Russian attack is unavoidable",
+  "Maskhadov seferberlik ilan etti; 'gazavat' çağrısı yapıldı.": "Maskhadov declared mobilisation; a call for 'ghazavat' was made.",
+  "Ortak soruşturma ve barış çağrısı": "Call for a joint inquiry and peace",
+  "Diplomasiyi dene": "Try diplomacy",
+  "Maskhadov Putin'e görüşme önerdi; Moskova yanıt vermedi.": "Maskhadov proposed a meeting to Putin; Moscow did not reply.",
+  "Patlamalarla ilgisiniz yok ama Rus basını suçu Çeçenlere atıyor. Maskhadov Moskova'ya ortak soruşturma teklif etti; yine de büyük bir saldırının hazırlandığı belli.": "You had nothing to do with the bombings but the Russian press blames the Chechens. Maskhadov offered a joint inquiry to Moscow; a major attack is clearly being prepared.",
+  "Rusya'yla ilişkileri koru": "Keep relations with Russia",
+  "Mavi Akım doğalgazı ve ticaret": "Blue Stream gas and trade",
+  "Ankara 'terörle mücadele'yi Rusya'nın hakkı olarak niteledi.": "Ankara described counter-terrorism as Russia's right.",
+  "İnsani yardım ve çekimser tutum": "Humanitarian aid and caution",
+  "Mültecilere yardım": "Aid for refugees",
+  "Türkiye Çeçen mültecilere insani yardım gönderdi.": "Turkey sent humanitarian aid to Chechen refugees.",
+  "17 Ağustos depremi (17 bin ölü) Türkiye'yi yaraladı; ülke toparlanma çabasında. Çeçenistan'daki gelişmeler yeniden diaspora tepkisini canlandırıyor.": "The 17 August earthquake (17,000 dead) wounded Turkey, which is struggling to recover. Developments in Chechnya revive reaction in the diaspora.",
+  "Apartman Patlamaları": "The Apartment Bombings",
+  "4–16 Eylül 1999: Buynaksk, Moskova (iki kez) ve Volgodonsk'ta apartmanlara yönelik patlamalarda yaklaşık 300 kişi öldü. Putin 'tuvalette bile avlarız' dedi; sorumlular hâlâ tartışmalı, ama kamuoyu savaş istiyor.": "4–16 September 1999: bombings of apartment blocks in Buynaksk, Moscow (twice) and Volgodonsk killed about 300 people. Putin vowed to 'hunt them down even in the outhouse'; responsibility is still disputed, but the public wants war.",
+  "Kuzeyi güvenceye al, Grozni'yi kuşat (tarihî)": "Secure the north and encircle Grozny (historical)",
+  "Kademeli ilerleme, düşük zayiat": "Gradual advance, low casualties",
+  "Rus birlikleri Terek'in kuzeyini ele geçirip Grozni'yi çevrelemeye başladı.": "Russian troops took the north bank of the Terek and began encircling Grozny.",
+  "İnsani koridor aç, mültecilere yardım et": "Open a humanitarian corridor",
+  "Sivil kayıpları azalt": "Reduce civilian harm",
+  "Moskova İnguşetya sınırında güvenli geçit ilan etti.": "Moscow declared a safe passage on the Ingush border.",
+  "Birinci savaştan farklı: hava ve topçu önce, piyade sonra. Basın serbestçe gezemiyor, kayıp haberleri sınırlı. Putin'in reytingi yükseliyor.": "Unlike the first war: air and artillery first, infantry afterwards. The press cannot roam freely and casualty news is limited. Putin's ratings are rising.",
+  "Grozni'yi savunmaya hazırlan": "Prepare to defend Grozny",
+  "Şehir savunması": "City defence",
+  "Çeçen birlikleri Grozni'ye tahkimat yapıyor.": "Chechen units are fortifying Grozny.",
+  "Dağlarda direnişe geç, şehri boşalt": "Shift to the mountains, evacuate Grozny",
+  "Gerilla savaşı": "Guerrilla war",
+  "Maskhadov güçlerini güneye ve dağlara kaydırıyor.": "Maskhadov is shifting his forces to the south and the mountains.",
+  "Ordunun kuzeyi kayıpsız aldı; Maskhadov güney dağlarında yeni bir savunma hattı kuruyor. Mülteciler kuzeyden güneye ya da İnguşetya'ya akıyor.": "The army took the north without loss; Maskhadov is building a new defence line in the southern mountains. Refugees stream south or into Ingushetia.",
+  "Mültecileri kabul et, sınırı kontrol et": "Take in refugees, control the border",
+  "İnsani yaklaşım": "A humanitarian approach",
+  "Gürcistan mültecilere sınır kapısını açtı.": "Georgia opened its border to refugees.",
+  "Sınırı kapat": "Close the border",
+  "Rusya'ya güven ver": "Reassure Russia",
+  "Tiflis Çeçenistan sınırını kapattı.": "Tbilisi closed the Chechen border.",
+  "Çeçen mültecilerin bir kısmı Pankisi Vadisi'ne geçiyor; Rusya Gürcistan'ı savaşçılara 'sığınak' olmakla suçluyor.": "Some Chechen refugees are crossing into the Pankisi Gorge; Russia accuses Georgia of giving fighters a 'safe haven'.",
+  "Terek'in Ötesi": "Across the Terek",
+  "30 Eylül'de Rus zırhlı sütunları Çeçenistan'ın kuzeyini (Nadterechnıy, Naur, Şelkovskaya) işgal etti. 21 Ekim'de Grozni'deki Merkez Pazarı füzelerle vuruldu (yüzlerce sivil ölü). 200 bini aşkın mülteci İnguşetya'ya aktı.": "On 30 September Russian armoured columns occupied northern Chechnya (Nadterechny, Naursky, Shelkovskaya). On 21 October the Central Market in Grozny was hit by missiles, killing hundreds of civilians. More than 200,000 refugees poured into Ingushetia.",
+  "Zirveyi başarıyla topla, nazik uyarı (tarihî)": "Run the summit smoothly with a mild warning (historical)",
+  "BTC anlaşmasını imzala": "Sign the BTC deal",
+  "Zirvede BTC boru hattı anlaşması imzalandı; Türkiye Kafkasya'da kilit oyuncu oldu.": "The BTC pipeline deal was signed at the summit; Turkey became a key Caucasus player.",
+  "Çeçenistan'ı gündemin merkezine koy": "Put Chechnya at the centre of the agenda",
+  "Rusya'ya sert mesaj": "A sharp message to Russia",
+  "Ankara zirvede Çeçenistan'daki sivil kayıplar için sert dil kullandı.": "Ankara used strong language over civilian casualties in Chechnya.",
+  "Boru hattı ve ticaret öncelikli": "Pipeline and trade first",
+  "Rusya'yı kızdırma": "Do not anger Russia",
+  "Ankara zirveyi enerji ve ticaret gündemine odakladı.": "Ankara focused the summit on energy and trade.",
+  "Ev sahibisiniz: Clinton, Yeltsin, Şröder, Chirac ve Kafkasya liderleri İstanbul'da. Boru hattı Türkiye'nin enerji koridoru hedefi; Çeçenistan ise sahneyi gölgeliyor.": "You are the host: Clinton, Yeltsin, Schröder, Chirac and the Caucasian leaders are in Istanbul. The pipeline serves Turkey's energy-corridor goal while Chechnya casts a shadow over the stage.",
+  "AKKA'yı imzala, Çeçenistan'ı 'iç mesele' say (tarihî)": "Sign CFE; call Chechnya an internal matter (historical)",
+  "Zirvede savaşı savun": "Defend the war at the summit",
+  "Yeltsin zirvede 'Rusya terörle mücadele ediyor' diyerek eleştirileri reddetti.": "Yeltsin dismissed the criticism, saying 'Russia is fighting terrorism'.",
+  "Gürcistan üslerini kapat, Batı'yı yumuşat": "Pledge to close Georgian bases to soften the West",
+  "Taviz ver": "Make a concession",
+  "Rusya Gürcistan'daki iki üssünü kapatma sözü verdi.": "Russia promised to close two bases in Georgia.",
+  "Yeltsin'in son büyük sahnesi: Batı'nın eleştirisine 'iç mesele' diyecek ve Putin'in savaşını savunacak. Gürcistan'daki üsler konusunda taahhüt verirseniz Batı yumuşar.": "Yeltsin's last big scene: he will call the criticism interference and defend Putin's war. A commitment on the Georgian bases would soften the West.",
+  "Kamuoyu önünde eleştiri (tarihî)": "Public criticism (historical)",
+  "Çeçenistan'da çözümü siyasî olarak iste": "Demand a political solution",
+  "Clinton zirvede Çeçenistan'da siyasî çözüm çağrısı yaptı; Yeltsin öfkelendi.": "Clinton called for a political solution in Chechnya; Yeltsin was furious.",
+  "Sessiz diplomasi, AKKA öncelikli": "Quiet diplomacy, CFE first",
+  "Rusya'yla kırma": "Do not rupture ties",
+  "Washington zirvede silah kontrol anlaşmasına odaklandı.": "Washington focused on the arms-control deal at the summit.",
+  "Clinton, Yeltsin'in 'Çeçenistan'da sivillere saldıran' sertliğini kamuoyu önünde eleştirmeyi düşünüyor; ama Rusya'nın nükleer arsenali ve reformlar hâlâ öncelikli.": "Clinton considers publicly criticising Yeltsin's hard line against civilians in Chechnya, yet Russia's nuclear arsenal and reforms remain priorities.",
+  "İstanbul Zirvesi": "The Istanbul Summit",
+  "18–19 Kasım 1999: AGİT İstanbul Zirvesi'nde Clinton ve Yeltsin Çeçenistan konusunda karşı karşıya geldi; Uyarlanmış AKKA antlaşması imzalandı, Bakü–Tiflis–Ceyhan boru hattı için hükümetlerarası anlaşma imzalandı. Rusya, Gürcistan'daki üslerini kapatma taahhüdü verdi.": "18–19 November 1999: at the OSCE Istanbul Summit Clinton and Yeltsin clashed over Chechnya; the Adapted CFE Treaty was signed, and an intergovernmental agreement for the Baku–Tbilisi–Ceyhan pipeline was signed. Russia pledged to close its bases in Georgia.",
+  "Grozni'ye topyekûn taarruz (tarihî)": "All-out assault on Grozny (historical)",
+  "Önce topçu, sonra piyade": "Artillery first, infantry later",
+  "Rus topçusu Grozni'yi haftalarca dövdü; şehir enkaza döndü.": "Russian artillery pounded Grozny for weeks; the city turned to rubble.",
+  "Güvenli koridor ve pazarlık": "Safe corridor and bargaining",
+  "Kuşatmayı hafif tut": "Keep the siege lighter",
+  "Moskova sivillerin çıkışı için güvenli koridor önerdi.": "Moscow offered a safe corridor for civilians.",
+  "Putin yılbaşı gecesi iktidarı devraldı; ordu Grozni'yi kuşatmış durumda. İlk savaşın hatasını tekrarlamamak için mahalle mahalle girmek yerine tamamen topçu ile ezmek planlanıyor.": "Putin took power on New Year's Eve; the army has Grozny encircled. To avoid repeating the first war's mistake, the plan is to crush the city with artillery rather than enter block by block.",
+  "Grozni'yi tutmaya çalış": "Try to hold Grozny",
+  "Basayev ve Gelayev şehirde direnişi örgütledi.": "Basayev and Gelayev organised the resistance inside the city.",
+  "Şehri boşalt, güneyde direniş kur": "Break out and resist in the south",
+  "Kayıpları azalt": "Save the force",
+  "Maskhadov güçlerini şehirden çıkarmayı planlıyor.": "Maskhadov plans to withdraw his forces from the city.",
+  "Grozni bir ölüm tuzağına dönüşebilir: kuşatılmış şehirde hem silahlı kuvvetler hem de yüz binlerce sivil var. Maskhadov güçlerini kurtarmak için çıkış yolları arıyor.": "Grozny may turn into a death trap: besieged, with both armed forces and hundreds of thousands of civilians. Maskhadov looks for exits to save his forces.",
+  "Yeltsin İstifa Etti, Grozni Kuşatıldı": "Yeltsin Resigns, Grozny Besieged",
+  "6 Aralık: Rusya Grozni sakinlerine şehri 11 Aralık'a kadar boşaltma ültimatomu verdi; sonra topçu ve hava saldırıları başladı. 31 Aralık'ta Boris Yeltsin istifa etti, Putin vekâleten cumhurbaşkanı oldu.": "6 December: Russia gave Grozny's residents an ultimatum to leave by 11 December; artillery and air strikes followed. On 31 December Boris Yeltsin resigned and Putin became acting president.",
+  "Dağ harekâtı: Argun Vadisi, Vedeno": "Mountain operation: Argun Valley, Vedeno",
+  "Gerilla üslerini yok et": "Destroy the guerrilla bases",
+  "Rus birlikleri güney dağlarına ilerliyor.": "Russian forces advance into the southern mountains.",
+  "Siyasî çözüm: yerel yönetim kur": "A political solution: set up local authority",
+  "Çeçen yanlısı yönetim": "A pro-Moscow Chechen administration",
+  "Kremlin Çeçen eşrafıyla yeni bir yönetim kurmak için temas kurdu.": "The Kremlin approached Chechen elders to set up a new administration.",
+  "Grozni sizin, ama şehrin yarısı enkaz. Direniş dağlarda ve köylerde sürecek; mayınlar ve pusular zayiat verecek.": "Grozny is yours but half the city is rubble. The resistance will go on in the mountains and villages; mines and ambushes will cost casualties.",
+  "Gerilla savaşına geç": "Switch to guerrilla war",
+  "Pusu, mayın, intihar saldırısı": "Ambush, mines, suicide attacks",
+  "Çeçen müfrezeleri dağlara çekilip köylere dağıldı.": "Chechen detachments withdrew into the mountains and dispersed into villages.",
+  "Moskova'ya ateşkes teklif et": "Offer a ceasefire to Moscow",
+  "Yeniden müzakere": "Seek talks",
+  "Maskhadov Putin'e koşulsuz ateşkes önerdi; Kremlin reddetti.": "Maskhadov offered Putin an unconditional ceasefire; the Kremlin refused.",
+  "Şehir kaybedildi; ordunun parçalanması, silahlı çetelerin ve radikal şeflerin etkisini artırır. Maskhadov dağlarda birliği korumaya çalışıyor.": "The city is lost; the army's fragmentation increases the sway of warlords and radicals. Maskhadov tries to keep unity in the mountains.",
+  "Grozni Düştü": "Grozny Falls",
+  "Ocak sonunda Çeçen kuvvetleri Grozni'den Alhan-Kala yönünde yarma yaptı, ama mayın tarlasında ağır kayıp verdi (Gelayev ve Basayev yaralı, Basayev bir ayağını kaybetti). 6 Şubat'ta Rusya Grozni'nin ele geçirildiğini ilan etti.": "At the end of January Chechen forces broke out of Grozny towards Alkhan-Kala but suffered heavy losses in a minefield (Basayev lost a foot). On 6 February Russia declared Grozny captured.",
+  "Dikeyi güçlendir: federal bölgeler (tarihî)": "Strengthen the vertical: federal districts",
+  "Merkezî kontrol": "Centralise control",
+  "Putin yedi federal bölge kurarak valileri denetim altına aldı.": "Putin set up seven federal districts to rein in the governors.",
+  "Çeçen yanlısı bir lider ara": "Seek a pro-Moscow Chechen leader",
+  "Çeçenleştirme": "Chechenisation",
+  "Kremlin Çeçenistan'da yeni bir yönetici adayı arıyor.": "The Kremlin is looking for a new administrator in Chechnya.",
+  "Zaferle seçildiniz; Çeçenistan dosyası artık 'terörle mücadele' olarak çerçeveleniyor. Oligarkları ve valileri kontrol altına alma zamanı.": "You won decisively; the Chechnya file is now framed as 'fighting terrorism'. It is time to tame oligarchs and governors.",
+  "Putin Seçildi": "Putin Elected",
+  "26 Mart 2000: Putin ilk turda %53 oyla cumhurbaşkanı seçildi. Mart başında Komsomolskoye'de Çeçen birlikleri kuşatılıp yok edildi; 1 Mart'ta Ulus-Kert'te Pskov paraşütçüleri ağır zayiat verdi.": "26 March 2000: Putin was elected president in the first round with 53%. In early March Chechen units were encircled and destroyed at Komsomolskoye; on 1 March Pskov paratroopers took heavy losses at Ulus-Kert.",
+  "Çeçenleştirme: Kadirov'a yetki ver (tarihî)": "Chechenisation: empower Kadyrov (historical)",
+  "Yerel milisler, af ve kimlik değişimi": "Local militias, amnesty and defections",
+  "Kadirov'un milisleri Rus birlikleriyle birlikte operasyon yapmaya başladı.": "Kadyrov's militias began operating alongside Russian forces.",
+  "Doğrudan askerî yönetimi sürdür": "Keep direct military rule",
+  "Yeterince asker, yerel aracı yok": "Plenty of troops, no local broker",
+  "Genelkurmay yerel aracıları reddetti; operasyonlar sürüyor.": "The General Staff rejected local brokers; operations go on.",
+  "Çeçen yanlısı yönetim size iç kamuoyunda 'normalleşme' sağlıyor; ama Kadirov'un özerkliği ileride başka sorunlar doğurabilir.": "A pro-Moscow Chechen administration gives you 'normalisation' at home, yet Kadyrov's autonomy may cause trouble later.",
+  "Kadirov'u 'hain' ilan et, suikast örgütle": "Brand Kadyrov a traitor and organise assassinations",
+  "İç savaşı alevlendir": "Fuel an internal war",
+  "Maskhadov ve Basayev Kadirov'a karşı ölüm fetvası çıkardı.": "Maskhadov and Basayev issued a death sentence against Kadyrov.",
+  "Halkı sahiplen, eşrafla uzlaş": "Win over the elders and clans",
+  "Meşruiyeti koru": "Protect legitimacy",
+  "Maskhadov eşraf ve köy büyüklerini bir araya getiren meclisler topladı.": "Maskhadov convened gatherings of elders and village leaders.",
+  "Çeçen toplumunda bölünme: eski müftü Moskova'nın yanına geçti, yerel ailelerin bir kısmı Kadirov'a katılıyor. Direniş, içeriden gelen bir rakiple karşı karşıya.": "Division in Chechen society: the former mufti has switched to Moscow and some local clans are joining Kadyrov. The resistance faces a rival from within.",
+  "Doğrudan Yönetim ve Kadirov": "Direct Rule and Kadyrov",
+  "12 Haziran 2000: Putin eski Çeçen müftüsü Ahmed Kadirov'u Çeçenistan 'yönetim başkanı' atadı. Müftü Maskhadov'un 'cihat' çağrısına karşı çıkmış ve Rusya'nın yanına geçmişti; 'Çeçenleştirme' politikası başladı.": "12 June 2000: Putin appointed Akhmad Kadyrov, the former Chechen mufti, as Chechnya's 'head of administration'. He had opposed Maskhadov's call for jihad and switched to Moscow; the policy of 'Chechenisation' began.",
+  "ABD'yle ortaklık (tarihî)": "Partnership with the US (historical)",
+  "Terörle savaşta işbirliği": "Cooperate in the war on terror",
+  "Putin Bush'a istihbarat ve hava sahası desteği sundu.": "Putin offered Bush intelligence and airspace support.",
+  "Mesafeli kal, bağımsız çizgi": "Stay aloof, independent line",
+  "Batı'ya güvenme": "Do not rely on the West",
+  "Moskova ABD'nin Orta Asya'ya yerleşmesine itiraz etti.": "Moscow objected to America settling in Central Asia.",
+  "Batı'nın dikkati Afganistan'a kaydı; Çeçenistan artık 'Rusya'nın uluslararası terörizmle savaşı'nın parçası. Orta Asya'da ABD üslerine razı olmak karşılığında Batı'dan ne alabilirsiniz?": "The West's attention has turned to Afghanistan; Chechnya is now part of 'Russia's fight against international terrorism'. What can you get from the West in exchange for accepting US bases in Central Asia?",
+  "Terörizmi kınadığını ilan et": "Condemn terrorism publicly",
+  "İmajı kurtar": "Salvage the image",
+  "Maskhadov 11 Eylül'ü kınayıp 'Çeçenistan terör örgütü değil' dedi.": "Maskhadov condemned 9/11 and said Chechnya is not a terrorist organisation.",
+  "Yabancı gönüllülere bağlı kal": "Stay with the foreign fighters",
+  "Cihat söylemini sürdür": "Keep the jihadist line",
+  "Radikal komutanlar cihat söylemini sertleştirdi.": "Radical commanders hardened their jihadist rhetoric.",
+  "Dünya sizi artık 'el-Kaide bağlantılı' görüyor; Hattab'ın ve Arap gönüllülerin varlığı bu algıyı güçlendiriyor. Batı desteği hızla eriyor.": "The world now sees you as 'al-Qaeda linked'; the presence of Khattab and Arab volunteers reinforces that view. Western sympathy is melting fast.",
+  "ABD 'Train and Equip' programını kabul et (tarihî)": "Accept the US 'Train and Equip' programme (historical)",
+  "ABD'ye yaklaş": "Move toward the US",
+  "ABD Özel Kuvvetleri Gürcü askerlerini eğitmeye başladı.": "US Special Forces began training Georgian soldiers.",
+  "Rusya'yla ortak operasyon": "A joint operation with Russia",
+  "Pankisi'yi birlikte temizle": "Clear Pankisi together",
+  "Tiflis Moskova'yla Pankisi'de ortak güvenlik operasyonu önerdi.": "Tbilisi proposed a joint security operation in Pankisi.",
+  "Pankisi Vadisi'nde Çeçen mülteciler ve silahlı gruplar var; Rusya 'terörist sığınağı' diye baskı yapıyor. Shevardnadze ABD'ye yaklaşmak için fırsat görüyor.": "There are Chechen refugees and armed groups in the Pankisi Gorge; Russia pushes the 'terrorist haven' line. Shevardnadze sees a chance to move closer to the US.",
+  "Putin'le ortaklık (tarihî)": "Partnership with Putin (historical)",
+  "Çeçenistan eleştirisini yumuşat": "Soften the line on Chechnya",
+  "Bush Putin'i Teksas'taki çiftliğine davet etti.": "Bush invited Putin to his Texas ranch.",
+  "Çeçenistan'ı şart koş": "Make Chechnya a condition",
+  "İnsan hakları baskısı": "Human rights pressure",
+  "Kongre'de Rusya yardımına Çeçenistan şartı önerildi.": "A Chechnya condition on Russia aid was proposed in Congress.",
+  "Bush ve Putin ortaklık kuruyor; Rusya Afganistan'da kritik. Kongre'de ve basında Çeçenistan'daki insan hakları ihlalleri sorgulanıyor.": "Bush and Putin are building a partnership; Russia is key in Afghanistan. Human rights abuses in Chechnya are questioned in Congress and the press.",
+  "11 Eylül ve Terörle Savaş": "9/11 and the War on Terror",
+  "11 Eylül 2001'den sonra Putin Bush'u arayan ilk lider oldu; Batı'nın Çeçenistan eleştirisi yumuşadı. 2001–02'de Rusya, Gürcistan'ın Pankisi Vadisi'ndeki Çeçen ve Arap savaşçıları bahane ederek tepki gösterdi; ABD Gürcistan'a 'Train and Equip' programı başlattı.": "After 9/11 Putin was the first leader to call Bush; Western criticism of Chechnya softened. In 2001–02 Russia reacted to Chechen and Arab fighters in Georgia's Pankisi Gorge; the US launched a 'Train and Equip' programme in Georgia.",
+  "Gaz ve baskın (tarihî)": "Gas and storm (historical)",
+  "Askerî çözüm, yüksek risk": "Military solution, high risk",
+  "Rus özel kuvvetleri gaz verip tiyatroya girdi; rehinelerin çoğu kurtuldu ama yüzlercesi hastanelik oldu.": "Russian special forces pumped in gas and stormed the theatre; most hostages survived but hundreds were hospitalised.",
+  "Müzakere: Kosachev, Politkovskaya, Aushev": "Negotiate through intermediaries",
+  "Hayatları kurtarmaya çalış": "Try to save lives",
+  "Moskova arabuluculara izin verdi; ama krizde zaman daralıyor.": "Moscow allowed intermediaries, but time is running out.",
+  "Moskova'nın kalbinde rehine krizi; kamuoyu hem çaresiz hem öfkeli. Baskın riskli, müzakere ise 'taviz' demek.": "A hostage crisis in the heart of Moscow; the public is both helpless and furious. A raid is risky; negotiation means 'concession'.",
+  "Saldırıyı kınama, rehineleri koruma çağrısı yap": "Condemn the raid and urge protection of hostages",
+  "Maskhadov'un 'olumsuz' tutumu": "Maskhadov's disavowal",
+  "Maskhadov rehinelerin serbest bırakılması çağrısı yaptı.": "Maskhadov called for the hostages' release.",
+  "Basayev'in tarafını tut": "Side with Basayev",
+  "Sertlik yanlısı çizgi": "The hardline path",
+  "Basayev eylemi 'Rusya'ya bir mesaj' olarak sundu.": "Basayev presented the action as 'a message to Russia'.",
+  "Maskhadov rehine almayı onaylamadığını açıkladı ama saldırıyı Basayev üstlendi. Bu eylem Çeçen davasının uluslararası imajını ağır yaralayabilir.": "Maskhadov said he did not approve of hostage-taking, yet Basayev claimed the attack. It may badly damage the international image of the Chechen cause.",
+  "Dubrovka Tiyatro Krizi": "The Moscow Theatre Siege",
+  "23–26 Ekim 2002: Movsar Barayev komutasında 40 kadar Çeçen Moskova'daki Dubrovka tiyatrosunu bastı, 850 rehine aldı. Rus özel kuvvetleri üçüncü gün uyutucu gaz kullanarak baskın yaptı; yaklaşık 130 rehine öldü.": "23–26 October 2002: about 40 Chechens under Movsar Barayev seized the Dubrovka theatre in Moscow, taking 850 hostages. On the third day Russian special forces stormed it after pumping in an incapacitating gas; about 130 hostages died.",
+  "Seçimleri sürdür, Kadirov'u destekle (tarihî)": "Press on with Kadyrov (historical)",
+  "Çeçen yönetimi güçlendir": "Strengthen Chechen rule",
+  "Kremlin referandumu 'normalleşmenin kanıtı' diye sundu.": "The Kremlin presented the referendum as 'proof of normalisation'.",
+  "Af ve yeniden yapılanma": "Amnesty and reconstruction",
+  "Yeniden inşa fonları": "Reconstruction funds",
+  "Moskova Grozni'nin yeniden inşası için yeni fonlar açıkladı.": "Moscow announced new funds for rebuilding Grozny.",
+  "Referandum Çeçenistan'ı 'hukuken' Rusya'ya bağlıyor; Batı tartışmalı oylamayı eleştirse de Putin'in bölgedeki konumu pekişiyor.": "The referendum legally ties Chechnya to Russia; though the West criticises the contested vote, Putin's position is strengthened.",
+  "Referandumu 'sahte' ilan et": "Declare the vote a sham",
+  "Meşruiyeti sorgulat": "Contest legitimacy",
+  "Maskhadov referandumu 'işgal altında yapılan bir tiyatro' diye niteledi.": "Maskhadov called the referendum 'theatre under occupation'.",
+  "Gerilla operasyonlarını sürdür": "Keep up guerrilla operations",
+  "Askerî baskı": "Military pressure",
+  "Çeçen müfrezeleri Rus konvoylarına pusu kurmayı sürdürüyor.": "Chechen detachments keep ambushing Russian convoys.",
+  "Referandum Rus ordusunun gölgesinde yapıldı; direnişin siyasî kanadı marjinal kalıyor. Maskhadov yeraltından halka seslenmeye çalışıyor.": "The referendum was held in the army's shadow; the resistance's political wing is marginalised. Maskhadov tries to address the people from hiding.",
+  "Çeçen Anayasa Referandumu": "The Chechen Constitutional Referendum",
+  "23 Mart 2003: Çeçenistan'ın Rusya'nın bir parçası olduğunu öngören anayasa referandumu %96 'evet' ile geçti; savaş yorgunu halk ve ağır askerî varlık altında yapılan oy tartışmalı. 5 Ekim'de Ahmed Kadirov %80 ile 'cumhurbaşkanı' seçildi.": "23 March 2003: a referendum on a constitution declaring Chechnya a part of Russia passed with 96% 'yes'; the vote, held under heavy military presence in a war-weary population, is disputed. On 5 October Akhmad Kadyrov was elected 'president' with 80%.",
+  "Alhanov'u destekle, Ramzan'ı kontrol altına al (tarihî)": "Back Alkhanov while restraining Ramzan (historical)",
+  "Siyasî denge": "Political balance",
+  "Kremlin Alu Alhanov'u 'Çeçen cumhurbaşkanı' olarak destekledi.": "The Kremlin backed Alu Alkhanov as 'Chechen president'.",
+  "Ramzan Kadirov'a yetki ver": "Empower Ramzan Kadyrov",
+  "Güvenlik güçlerini ona bırak": "Hand him the security forces",
+  "Ramzan'ın 'Kadirovtsi' milisleri güvenlikte öne çıktı.": "Ramzan's 'Kadyrovtsy' militias took the lead in security.",
+  "Çeçenleştirme politikasının mimarı öldü; Ramzan Kadirov güç boşluğunu doldurmaya hazır. Direniş İnguşetya'ya taşıyor.": "The architect of Chechenisation is dead; Ramzan Kadyrov is ready to fill the vacuum. The insurgency is spreading to Ingushetia.",
+  "İnguşetya'da yeni cephe aç (tarihî)": "Open a new front in Ingushetia (historical)",
+  "Nazran baskını": "The Nazran raid",
+  "Basayev'in adamları Nazran'da polis ve güvenlik noktalarını bastı.": "Basayev's men stormed police and security posts in Nazran.",
+  "Çeçenistan içinde savunmada kal": "Stay in defence within Chechnya",
+  "Gücü koru": "Preserve strength",
+  "Maskhadov'un adamları güney dağlarında mevzilerini korudu.": "Maskhadov's men held their positions in the southern mountains.",
+  "Suikast direnişin başarısı, ama Rusya'nın misillemesi sertleşecek. Basayev'in hedefi yeni cepheler açmak: İnguşetya, Kabardin-Balkar.": "The assassination is a success for the resistance, but Russian retaliation will harden. Basayev aims to open new fronts: Ingushetia and Kabardino-Balkaria.",
+  "Kadirov'a Suikast": "Kadyrov Assassinated",
+  "9 Mayıs 2004: Grozni'de Zafer Günü töreninde stadyumda patlama; Ahmed Kadirov öldü. Haziranda Basayev'in müfrezeleri İnguşetya'nın Nazran kentini bastı (21–22 Haziran), Ağustos'ta Alu Alhanov Çeçenistan başkanı seçildi.": "9 May 2004: a bomb at the Victory Day ceremony in Grozny's stadium killed Akhmad Kadyrov. In June Basayev's units raided Nazran, Ingushetia (21–22 June); in August Alu Alkhanov was elected president of Chechnya.",
+  "Valilerin atanması, güvenlik yasası (tarihî)": "Appoint governors, tighten security (historical)",
+  "Putin valilerin doğrudan seçimini kaldırdı; 'terörle mücadele' yasaları sertleşti.": "Putin abolished direct election of governors and hardened counter-terror laws.",
+  "Siyasî çözüm: Maskhadov'la temas": "A political track: contact Maskhadov",
+  "Müzakere kapısı": "Open the door to talks",
+  "Kremlin'in bir kanadı Maskhadov'la gizli temas önerdi; Putin reddetti.": "One Kremlin faction proposed secret contact with Maskhadov; Putin refused.",
+  "Savaşın en korkunç anı: kamuoyu sarsıldı, Batı sempati gösterdi. Putin'in tepkisi: merkezileşme.": "The war's most terrible moment: public shock and Western sympathy. Putin's response: centralisation.",
+  "Saldırıyı kınama, Basayev'den ayrıl": "Condemn it and distance from Basayev",
+  "Siyasî çizgiyi koru": "Preserve the political line",
+  "Maskhadov Beslan'ı kınayıp 'sivil hedeflere karşıyız' dedi.": "Maskhadov condemned Beslan, saying he opposes attacks on civilians.",
+  "Basayev'in çizgisine kay": "Follow Basayev's line",
+  "Cihatçı çizgi": "A jihadist line",
+  "Radikal komutanlar saldırıyı 'savaşın doğal sonucu' saydı.": "Radical commanders called the attack 'a natural result of the war'.",
+  "Basayev sorumluluk üstlendi; Maskhadov saldırıyı kınadı ama bu artık direnişin imajını kurtaramıyor. Batı ve İslam dünyasında Çeçen davasına destek hızla azalıyor.": "Basayev claimed responsibility; Maskhadov condemned the attack, but that can no longer save the resistance's image. Support for the Chechen cause in the West and the Muslim world is falling fast.",
+  "Beslan": "Beslan",
+  "1–3 Eylül 2004: Kuzey Osetya'nın Beslan kentinde 1 No'lu okulu bastıkları bir grup (Basayev adına) 1.100 rehine aldı. Üçüncü gün patlamalar ve çatışmayla 334 kişi öldü; yarısına yakını çocuktu.": "1–3 September 2004: a group acting in Basayev's name seized School No. 1 in Beslan, North Ossetia, taking 1,100 hostages. On the third day explosions and gunfire killed 334 people, nearly half of them children.",
+  "Tutumu sürdür, af ve milisler (tarihî)": "Press on with amnesty and militias (historical)",
+  "Direnişi içeriden böl": "Divide the resistance from within",
+  "Moskova yeni af ilan etti; Kadirovtsi'ler operasyonları yönetiyor.": "Moscow declared a new amnesty; the Kadyrovtsy run operations.",
+  "Sertliği artır": "Intensify operations",
+  "Daha fazla temizlik operasyonu": "More sweeps",
+  "Rus iç birlikleri dağlarda yeni operasyonlar başlattı.": "Russian interior troops began new mountain operations.",
+  "Putin 'direnişin başı' diye kutladı; Maskhadov'la müzakere kapısı tamamen kapandı. Direniş giderek Basayev ve İslamcılara kayıyor.": "Putin hailed 'the head of the resistance'; the door to talks with Maskhadov is shut for good. The insurgency is drifting toward Basayev and the Islamists.",
+  "Saydullayev'le sürdür, birliği koru": "Rally behind Sadulayev",
+  "Komuta birliği": "Unity of command",
+  "Komutanlar Saydullayev'e bağlılık yemini etti.": "Commanders swore allegiance to Sadulayev.",
+  "Basayev'e askerî yetki ver": "Hand Basayev military control",
+  "Sert çizgi": "The hard line",
+  "Basayev bütün askerî harekâtı yönetmeye başladı.": "Basayev began directing all military operations.",
+  "Maskhadov'un ölümü direnişin ılımlı kanadını yok etti. Saydullayev genç bir din adamı, ama sahada komuta Basayev'de.": "Maskhadov's death destroyed the moderate wing. Sadulayev is a young cleric but Basayev commands in the field.",
+  "Maskhadov Öldürüldü": "Maskhadov Killed",
+  "8 Mart 2005: Çeçen direnişinin seçilmiş lideri Aslan Maskhadov, Tolstoy-Yurt köyünde bir sığınakta Rus özel kuvvetlerince öldürüldü. Yerine Abdulhalim Saydullayev geçti.": "8 March 2005: Aslan Maskhadov, the resistance's elected leader, was killed by Russian special forces in a bunker in Tolstoy-Yurt. Abdul-Halim Sadulayev succeeded him.",
+  "Zafer ilan et, Çeçenleştirmeyi tamamla (tarihî)": "Declare victory and complete Chechenisation (historical)",
+  "Askerî varlığı azalt": "Draw down the force",
+  "Moskova Çeçenistan'da askerî varlığı azaltıp güvenliği Ramzan Kadirov'a bıraktı.": "Moscow reduced its military presence and left security to Ramzan Kadyrov.",
+  "Kafkasya genelinde istihbarat operasyonları": "Intelligence operations across the Caucasus",
+  "Ağı tamamen sök": "Dismantle the network",
+  "Rus servisleri Kuzey Kafkasya'da yeni operasyonlar başlattı.": "Russian services began new operations across the North Caucasus.",
+  "Savaşın iki kilit ismi ortadan kalktı. Kremlin 'savaş bitti' diyecek; ama genç militanlar ve Kafkasya genelinde bir ağ yeniden yapılanıyor.": "Two key figures of the war are gone. The Kremlin will say 'the war is over'; but young militants and a network across the Caucasus are rebuilding.",
+  "Umarov'u destekle, Kafkas cephesi kur": "Back Umarov and build a Caucasus front",
+  "Bölgesel ağ": "A regional network",
+  "Umarov Dağıstan, İnguşetya ve Kabardin-Balkar hücrelerini birleştirmeye girişti.": "Umarov began joining cells in Dagestan, Ingushetia and Kabardino-Balkaria.",
+  "Siyasî bir çıkış ara": "Seek a political exit",
+  "Görüşme ve af": "Talks and amnesty",
+  "Bazı komutanlar Moskova'nın af tekliflerine kapıyı açtı.": "Some commanders opened the door to Moscow's amnesty offers.",
+  "Direniş lidersiz kaldı. Doku Umarov, Kafkasya'nın tümüne yayılan bir İslamî cephe kurmaya çalışıyor; Çeçen milliyetçiliği ikinci plana düşüyor.": "The resistance is leaderless. Doku Umarov tries to build an Islamic front across the whole Caucasus; Chechen nationalism recedes.",
+  "Saydullayev ve Basayev'in Sonu": "The End of Sadulayev and Basayev",
+  "17 Haziran 2006: Saydullayev Argun'da öldürüldü; yerine Doku Umarov geçti. 10 Temmuz'da Basayev İnguşetya'nın Ekajevo köyünde bir patlamada öldü; Rus yetkililer operasyonu üstlendi. İki karizmatik lider kısa sürede ortadan kalktı.": "17 June 2006: Sadulayev was killed in Argun; Doku Umarov succeeded him. On 10 July Basayev died in an explosion in the Ingush village of Ekazhevo; Russian officials claimed the operation. Two charismatic leaders disappeared within weeks.",
+  "Ramzan'ı destekle, Dağıstan'da operasyon (tarihî)": "Back Ramzan, operate in Dagestan (historical)",
+  "Çeçen modelini komşulara uygula": "Apply the Chechen model next door",
+  "Moskova Ramzan Kadirov'a Çeçenistan'da geniş yetki verdi.": "Moscow gave Ramzan Kadyrov wide powers in Chechnya.",
+  "Ekonomik kalkınma programı": "An economic development programme",
+  "Kuzey Kafkasya'ya yatırım": "Invest in the North Caucasus",
+  "Kremlin Kuzey Kafkasya için yeni bir kalkınma fonu açıkladı.": "The Kremlin announced a new development fund for the North Caucasus.",
+  "Çeçenistan Ramzan'ın kontrolünde 'sakin'; ama şiddet Dağıstan ve İnguşetya'ya kayıyor. Bu, Kremlin'in 'çözülmüş' savaşının yeni, daha dağınık sürümü.": "Chechnya is 'calm' under Ramzan, but the violence is moving to Dagestan and Ingushetia. This is a new, more diffuse version of the war the Kremlin claims is solved.",
+  "Kafkas Emirliği'ne katıl": "Join the Caucasus Emirate",
+  "Cihat çerçevesi": "A jihadist framework",
+  "Umarov'un çağrısıyla Dağıstan ve İnguşetya'da yeni hücreler kuruldu.": "New cells were set up in Dagestan and Ingushetia at Umarov's call.",
+  "Milliyetçi çizgiyi koru": "Keep the nationalist line",
+  "Çeçen bağımsızlığı": "Chechen independence",
+  "Sürgündeki Çeçen hükümeti Umarov'un 'emirlik' fikrine itiraz etti.": "The Chechen government in exile objected to Umarov's 'emirate'.",
+  "Umarov bir 'emirlik' ilan etti: Çeçen bağımsızlık fikri bir sonraki aşamaya dönüşüyor. Ama Çeçen toplumu savaştan yorgun ve Kadirov'un baskısı altında.": "Umarov proclaimed an 'emirate': the Chechen independence idea has morphed into something else. Yet Chechen society is war-weary and under Kadyrov's pressure.",
+  "Kafkas Emirliği": "The Caucasus Emirate",
+  "15 Şubat 2007: Ramzan Kadirov Çeçenistan cumhurbaşkanı oldu. 31 Ekim'de Doku Umarov 'Kafkas Emirliği'ni ilan etti: Çeçen bağımsızlık davası terk edilip bütün Kuzey Kafkasya'yı kapsayan İslamî bir cihat çerçevesine oturtuldu.": "15 February 2007: Ramzan Kadyrov became president of Chechnya. On 31 October Doku Umarov proclaimed the 'Caucasus Emirate': the Chechen independence cause was dropped in favour of an Islamic jihad covering the whole North Caucasus.",
+  "Tskhinvali'ye taarruz (tarihî)": "Attack Tskhinvali (historical)",
+  "Rusya'ya karşı savaş": "War against Russia",
+  "Gürcü birlikleri Tskhinvali'ye taarruz etti; Rus zırhlıları Roki Tüneli'nden Gürcistan'a girdi.": "Georgian troops attacked Tskhinvali; Russian armour entered through the Roki tunnel.",
+  "Taarruzdan vazgeç, diplomasi": "Hold back and use diplomacy",
+  "Savaştan kaçın": "Avoid the war",
+  "Tiflis son anda Tskhinvali taarruzunu iptal etti.": "Tbilisi called off the Tskhinvali offensive at the last moment.",
+  "Saakaşvili Güney Osetya'da 'anayasal düzeni' yeniden kurmak istiyor; Batı destek sözü verdi ama Rus ordusu Kafkas Geçidi'nden gelebilir.": "Saakashvili wants to restore 'constitutional order' in South Ossetia; the West has given encouragement but the Russian army can come through the Roki tunnel.",
+  "Gürcistan'a karşı sınırlı harekât (tarihî)": "A limited campaign against Georgia (historical)",
+  "Barış gücü gerekçesiyle ilerle": "Advance under a peacekeeping pretext",
+  "Rus birlikleri Gori'ye kadar ilerledi; Batı ağır sözler söyledi.": "Russian forces advanced to Gori; the West spoke harshly.",
+  "Yalnızca Osetya'yı koru": "Defend Ossetia only",
+  "Sınırlı karşılık": "A limited reaction",
+  "Moskova yalnızca Güney Osetya'daki barış gücünü takviye etti.": "Moscow only reinforced its peacekeepers in South Ossetia.",
+  "Medvedev cumhurbaşkanı, Putin başbakan; Gürcistan'ın NATO yolundaki ilerleyişi (Nisan 2008 Bükreş zirvesi) Kremlin'i rahatsız ediyor. Güney Osetya'da çatışma çıkarsa tepki hazır.": "Medvedev is president, Putin prime minister; Georgia's NATO path (the April 2008 Bucharest summit) bothers the Kremlin. If fighting breaks out in South Ossetia, the response is ready.",
+  "Kafkasya platformu öner (tarihî)": "Propose the Caucasus Platform (historical)",
+  "Bölgesel arabuluculuk": "Regional mediation",
+  "Erdoğan Kafkasya İstikrar ve İşbirliği Platformu'nu önerdi.": "Erdoğan proposed the Caucasus Stability and Cooperation Platform.",
+  "Gürcistan'a destek ver": "Back Georgia",
+  "Batı'yla hizalan": "Align with the West",
+  "Ankara Gürcistan'ın toprak bütünlüğünü destekleyen açıklama yaptı.": "Ankara issued a statement backing Georgia's territorial integrity.",
+  "Türkiye Gürcistan'la (BTC, Kars-Tiflis demiryolu) ve Rusya'yla (doğalgaz, turizm, inşaat) aynı anda ilişkide. 'Kafkasya İstikrar ve İşbirliği Platformu' fikrini ortaya atma zamanı.": "Turkey has ties with both Georgia (BTC, Kars–Tbilisi rail) and Russia (gas, tourism, construction). A good moment to float the 'Caucasus Stability and Cooperation Platform'.",
+  "Gürcistan Savaşı": "The Russo-Georgian War",
+  "7–12 Ağustos 2008: Gürcistan'ın Güney Osetya'ya taarruzu üzerine Rus birlikleri Gürcistan'a girdi; beş günlük savaşta Abhazya ve Güney Osetya Rusya tarafından tanındı. Gürcistan 2000'lerin başından beri Çeçen mültecileri ve Rus kampanyasına yönelik eleştiriler yüzünden Moskova'nın hedefinde.": "7–12 August 2008: after Georgia's assault on South Ossetia, Russian forces entered Georgia; in the five-day war Abkhazia and South Ossetia were recognised by Russia. Georgia had been a Moscow target since the early 2000s over Chechen refugees and criticism of the Russian campaign.",
+  "Ateşkesi kabul et, çekil (tarihî)": "Accept the ceasefire and withdraw (historical)",
+  "İki bölgeyi tanı, yaptırımlardan kaç": "Recognise the two regions, avoid sanctions",
+  "Rus birlikleri Gori ve Poti'den çekildi; Abhazya ve Güney Osetya'da kalıcı üsler kurulacak.": "Russian forces withdrew from Gori and Poti; permanent bases will be built in Abkhazia and South Ossetia.",
+  "İlerlemeye devam et, Tiflis'e yönel": "Keep advancing toward Tbilisi",
+  "Gürcistan'ı çökert": "Collapse Georgia",
+  "Moskova ateşkesi ihlal edip Gürcistan içlerine ilerledi; Batı sert tepki gösterdi.": "Moscow violated the ceasefire and advanced deeper; the West reacted fiercely.",
+  "Askerî olarak kazandınız, diplomatik olarak yalnızlaşıyorsunuz; Abhazya ve Güney Osetya'nın tanınması çok az ülkeden destek buldu.": "You won militarily but are diplomatically isolated; recognition of Abkhazia and South Ossetia found support from very few states.",
+  "Ateşkesi kabul et (tarihî)": "Accept the ceasefire (historical)",
+  "Kayıpları durdur": "Stop the losses",
+  "Saakaşvili altı maddelik ateşkesi imzaladı.": "Saakashvili signed the six-point ceasefire.",
+  "Savaşa devam, Batı'dan yardım iste": "Fight on and ask for Western help",
+  "Direniş": "Resist",
+  "Gürcü yedek birlikleri Tiflis çevresinde mevzilendi.": "Georgian reserves dug in around Tbilisi.",
+  "Ordu yenildi, topraklar kaybedildi. Batı sözlü destek verdi ama askerî yardım yok. Saakaşvili için ya savunma yenilenmesi ya da NATO'ya hızlı yaklaşmak.": "The army has been beaten and territory lost. The West gave verbal support but no military aid. For Saakashvili: rebuild defences or race toward NATO.",
+  "Sarkozy Ateşkesi": "The Sarkozy Ceasefire",
+  "12 Ağustos'ta Fransa Cumhurbaşkanı Sarkozy'nin aracılığıyla altı maddelik ateşkes imzalandı; Eylülde Rus birlikleri Gürcistan'ın iç kısımlarından çekilmeye başladı. Moskova'ya yaptırımlar sınırlı kaldı; Küresel finansal kriz gündemi ele geçiriyor.": "The six-point ceasefire mediated by French President Sarkozy was signed in August; in September Russian troops began pulling out of the interior of Georgia. Sanctions against Moscow stayed limited as the global financial crisis took over the agenda.",
+  "Rejimi bitir, Ramzan'ı sürdür (tarihî)": "End the regime and keep Ramzan (historical)",
+  "Normalleşme ilan et": "Declare normalisation",
+  "Kremlin Çeçenistan'da 'normalleşme'yi ilan etti.": "The Kremlin declared 'normalisation' in Chechnya.",
+  "Kuzey Kafkasya'ya kalkınma ve güvenlik paketi": "A North Caucasus development and security package",
+  "Yayılmayı önle": "Contain the spread",
+  "Moskova Kuzey Kafkasya için yeni bir federal kalkınma programı açıkladı.": "Moscow announced a new federal development programme for the North Caucasus.",
+  "On yıllık savaş resmen bitti; bedeli çok büyük, ama Çeçenistan Rusya içinde kaldı. Sorun şimdi Ramzan Kadirov'un Moskova'ya olan bağımlılığı ve diğer cumhuriyetlerde yayılan şiddet.": "Ten years of war are officially over; the cost was huge, but Chechnya stayed in Russia. The question now is Ramzan Kadyrov's dependence on Moscow and the violence spreading in other republics.",
+  "Gerilla savaşını sürdür": "Continue the guerrilla war",
+  "Direniş devam": "Keep resisting",
+  "Dağlarda küçük çeteler Rus ve Kadirovtsi hedeflerine saldırmayı sürdürüyor.": "Small bands in the mountains keep attacking Russian and Kadyrovtsy targets.",
+  "Siyasî bir uzlaşıya yönel": "Accept a political settlement",
+  "Af ve entegrasyon": "Amnesty and integration",
+  "Çeçen komutanların bir kısmı Kadirov'un afından yararlandı.": "Some Chechen commanders took Kadyrov's amnesty.",
+  "Direniş bölünmüş ve zayıf; bağımsızlık fikri Ramzan'ın baskısı altında. Yine de Umarov'un Emirliği Kafkasya'da hâlâ ayakta.": "The resistance is divided and weak; the independence idea is under Ramzan's pressure. Yet Umarov's Emirate is still standing in the Caucasus.",
+  "Terörle Mücadele Rejiminin Sonu": "The End of the CTO Regime",
+  "16 Nisan 2009: Medvedev Çeçenistan'daki 'terörle mücadele operasyonu' rejimini resmen sona erdirdi. Ramzan Kadirov bölgenin tam kontrolünde; Grozni yeniden inşa edildi; ama Dağıstan, İnguşetya ve Kabardin-Balkar'da şiddet sürüyor.": "16 April 2009: Medvedev officially ended the 'counter-terrorist operation' regime in Chechnya. Ramzan Kadyrov has full control of the region; Grozny has been rebuilt; yet violence continues in Dagestan, Ingushetia and Kabardino-Balkaria."
+ }
+}

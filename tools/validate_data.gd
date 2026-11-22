@@ -53,6 +53,8 @@ func W(msg: String) -> void:
 
 
 func _country(n, where: String) -> void:
+	if typeof(n) == TYPE_STRING and String(n).begins_with("custom_"):
+		return      # setup.custom ile çağ/senaryoda kurulan özel devlet
 	if typeof(n) != TYPE_STRING or not names.has(String(n)):
 		E("%s: bilinmeyen ülke '%s'" % [where, str(n)])
 
@@ -316,7 +318,7 @@ func _era(d: Dictionary) -> void:
 	if base != "" and not (base in ["ww1", "ww2"]) and not FileAccess.file_exists("res://data/eras/%s.json" % base):
 		E("base '%s' bulunamadı" % base)
 	var fam := String(d.get("family", ""))
-	if fam == "" and base == "":
+	if fam == "" and base == "" and not d.has("tech_ovr"):
 		W("family yok (ww1/ww2/cold)")
 	for host in d.get("absorb", {}).keys():
 		_country(host, "absorb")

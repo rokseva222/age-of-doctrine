@@ -253,6 +253,26 @@ func switch_player(cid: int) -> void:
 	player = cid
 	countries[cid].is_player = true
 	Currency.sync(self)
+	_retarget_moment()
+
+
+## Oyuncu değişince bekleyen tarihî kartın rolünü yeni oyuncuya göre düzelt (ör. çağ başlangıç kartı, sonradan seçilen özel devlet)
+func _retarget_moment() -> void:
+	if moment_pending.is_empty() or not (moment_pending.get("m") is Dictionary):
+		return
+	var m: Dictionary = moment_pending.m
+	var rn: String = countries[player].name_en
+	var old: String = String(moment_pending.get("role", ""))
+	if old == rn:
+		return
+	var roles: Dictionary = m.get("roles", {})
+	if roles.has(rn):
+		moment_pending["role"] = rn
+	else:
+		moment_pending["role"] = ""
+		if old != "":
+			for f in m.get("default_fx", []):
+				EraMoments.apply(self, f)
 
 
 ## Çok oyunculu mu (2+ insan)?

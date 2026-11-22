@@ -1,0 +1,575 @@
+{
+ "id": "ch94c",
+ "name": "Içkerya Direniyor",
+ "sub": "Aralık 1994 – Birinci Çeçen Savaşı (Çeçen olarak oyna)",
+ "family": "",
+ "icon": "helmet",
+ "mood": "war",
+ "start_year": 1994,
+ "start_doy": 335,
+ "blurb": "11 Aralık 1994: Yeltsin 'anayasal düzeni yeniden tesis' için orduyu Çeçenistan'a gönderiyor. Cahar Dudayev'in bağımsız Çeçenistan'ı Grozni'de, Rus ordusu Mozdok'ta. Yılbaşı taarruzu, Samaşki, Budyonnovsk, Grozni'nin geri alınması ve Hasavyurt: ilk savaşı yeniden yaz.",
+ "suggest": [
+  "Russia"
+ ],
+ "look": {
+  "shadow": [
+   0.06,
+   0.07,
+   0.09
+  ],
+  "mid": [
+   0.44,
+   0.46,
+   0.44
+  ],
+  "light": [
+   0.93,
+   0.9,
+   0.84
+  ],
+  "amount": 0.18,
+  "vignette": 0.14,
+  "grain": 0.01
+ },
+ "defs": {
+  "Russia": {
+   "leader": "Cumhurbaşkanı|Boris Yeltsin",
+   "gdp": 400,
+   "mil": {
+    "personnel": 1700000,
+    "tank": 15000,
+    "afv": 20000,
+    "arty": 14000,
+    "air": 3200,
+    "sub": 130
+   }
+  },
+  "United States of America": {
+   "leader": "Başkan|Bill Clinton",
+   "gdp": 7300,
+   "mil": {
+    "personnel": 1650000,
+    "tank": 9000,
+    "afv": 25000,
+    "arty": 6000,
+    "air": 5500,
+    "sub": 95
+   }
+  },
+  "Turkey": {
+   "leader": "Başbakan|Tansu Çiller",
+   "gdp": 180,
+   "mil": {
+    "personnel": 640000,
+    "tank": 4200,
+    "afv": 3700,
+    "arty": 5000,
+    "air": 500,
+    "sub": 17
+   }
+  },
+  "Georgia": {
+   "leader": "Devlet Başkanı|Eduard Şevardnadze",
+   "gdp": 3
+  },
+  "Azerbaijan": {
+   "leader": "Cumhurbaşkanı|Haydar Aliyev",
+   "gdp": 4
+  },
+  "Armenia": {
+   "leader": "Cumhurbaşkanı|Levon Ter-Petrosyan",
+   "gdp": 1.6
+  },
+  "Ukraine": {
+   "leader": "Cumhurbaşkanı|Leonid Kuçma",
+   "gdp": 50
+  },
+  "Belarus": {
+   "leader": "Cumhurbaşkanı|Aleksandr Lukaşenko",
+   "gdp": 17
+  },
+  "Kazakhstan": {
+   "leader": "Cumhurbaşkanı|Nursultan Nazarbayev",
+   "gdp": 20
+  },
+  "Germany": {
+   "leader": "Şansölye|Helmut Kohl",
+   "gdp": 2600
+  },
+  "France": {
+   "leader": "Cumhurbaşkanı|François Mitterrand",
+   "gdp": 1400
+  },
+  "United Kingdom": {
+   "leader": "Başbakan|John Major",
+   "gdp": 1100
+  },
+  "China": {
+   "leader": "Genel Sekreter|Jiang Zemin",
+   "gdp": 560
+  },
+  "Japan": {
+   "leader": "Başbakan|Tomiichi Murayama",
+   "gdp": 5200
+  },
+  "Italy": {
+   "leader": "Başbakan|Silvio Berlusconi"
+  },
+  "Israel": {
+   "leader": "Başbakan|Yitzhak Rabin"
+  },
+  "Iran": {
+   "leader": "Cumhurbaşkanı|Ali Ekber Haşimi Rafsancani"
+  },
+  "Egypt": {
+   "leader": "Cumhurbaşkanı|Hüsnü Mübarek"
+  },
+  "India": {
+   "leader": "Başbakan|P. V. Narasimha Rao"
+  },
+  "Saudi Arabia": {
+   "leader": "Kral|Fahd bin Abdülaziz"
+  },
+  "Poland": {
+   "leader": "Cumhurbaşkanı|Lech Wałęsa"
+  },
+  "Serbia": {
+   "leader": "Cumhurbaşkanı|Slobodan Milošević"
+  },
+  "custom_0": {
+   "leader": "Cumhurbaşkanı|Cahar Dudayev"
+  }
+ },
+ "pop_f": {
+  "Europe": 0.96,
+  "North America": 0.78,
+  "Asia": 0.76,
+  "Africa": 0.55,
+  "South America": 0.68,
+  "Oceania": 0.8
+ },
+ "gdp_default": 0.25,
+ "tech_ovr": {
+  "Russia": 0.45,
+  "Turkey": 0.5,
+  "United States of America": 0.95,
+  "Germany": 0.85,
+  "France": 0.85,
+  "United Kingdom": 0.85,
+  "Israel": 0.85,
+  "Japan": 0.85,
+  "China": 0.3,
+  "Ukraine": 0.4,
+  "Georgia": 0.15,
+  "Azerbaijan": 0.2,
+  "Armenia": 0.2,
+  "India": 0.3,
+  "Iran": 0.3,
+  "Saudi Arabia": 0.55,
+  "Poland": 0.4,
+  "Egypt": 0.3,
+  "Belarus": 0.3,
+  "Kazakhstan": 0.25,
+  "Italy": 0.8
+ },
+ "nukes": [
+  "United States of America",
+  "Russia",
+  "United Kingdom",
+  "France",
+  "China",
+  "Israel"
+ ],
+ "carriers": {
+  "United States of America": 12,
+  "United Kingdom": 3,
+  "France": 2,
+  "Russia": 1,
+  "India": 1,
+  "Italy": 1
+ },
+ "setup": {
+  "blocs": [],
+  "wars": [],
+  "truce": [],
+  "intro": "Aralık 1994: Moskova'nın desteklediği Çeçen muhalefetinin tank saldırısı çöktü; Yeltsin Çeçenistan'a girmeye karar verdi. Dudayev'in 15 bin kişilik ordusu Grozni'de bekliyor; Rus birlikleri Mozdok, İnguşetya ve Dağıstan'da toplanıyor.",
+  "custom": [
+   {
+    "name": "Çeçenistan (Içkerya)",
+    "pids": [
+     1851
+    ],
+    "capital": 1851,
+    "tech": 0.3,
+    "aggression": 0.4,
+    "colors": [
+     "1d6b3a",
+     "ece6d6",
+     "b02a2a"
+    ],
+    "war": false,
+    "leader": "Cumhurbaşkanı|Cahar Dudayev",
+    "troops": 90000,
+    "gold_mult": 1.5,
+    "play": true
+   }
+  ],
+  "garrison": [
+   [
+    1850,
+    "Russia",
+    20000
+   ],
+   [
+    230,
+    "Russia",
+    12000
+   ],
+   [
+    1852,
+    "Russia",
+    8000
+   ]
+  ],
+  "stability": {
+   "Russia": -6,
+   "Turkey": -3
+  }
+ },
+ "events": [
+  {
+   "y": 1994,
+   "m": 12,
+   "t": "Rusya'nın 'anayasal düzeni yeniden tesis' operasyonu Kuzey Kafkasya'da gerginliği tırmandırdı.",
+   "fx": [
+    [
+     "stab",
+     "Russia",
+     -1
+    ]
+   ]
+  },
+  {
+   "y": 1995,
+   "m": 1,
+   "t": "Kobe depremi Japonya'yı vurdu; binlerce ölü.",
+   "fx": [
+    [
+     "stab",
+     "Japan",
+     -3
+    ]
+   ]
+  },
+  {
+   "y": 1995,
+   "m": 2,
+   "t": "Barings Bankası Asya türev işlemleri yüzünden iflas etti.",
+   "fx": [
+    [
+     "stab",
+     "United Kingdom",
+     -1
+    ]
+   ]
+  },
+  {
+   "y": 1995,
+   "m": 4,
+   "t": "Oklahoma City'de federal binaya bombalı saldırı: 168 ölü.",
+   "fx": [
+    [
+     "stab",
+     "United States of America",
+     -2
+    ]
+   ]
+  },
+  {
+   "y": 1995,
+   "m": 7,
+   "t": "Srebrenitsa'da Bosna Sırp birlikleri binlerce Boşnak erkeği öldürdü.",
+   "fx": [
+    [
+     "stab",
+     "Serbia",
+     -2
+    ]
+   ]
+  },
+  {
+   "y": 1995,
+   "m": 8,
+   "t": "Hırvatistan 'Fırtına' harekâtı ile Sırp Krajina'yı geri aldı.",
+   "fx": [
+    [
+     "stab",
+     "Serbia",
+     -3
+    ]
+   ]
+  },
+  {
+   "y": 1995,
+   "m": 11,
+   "t": "Dayton Barış Anlaşması Bosna Savaşı'nı bitirdi; Rabin suikastle öldürüldü.",
+   "fx": [
+    [
+     "stab",
+     "Israel",
+     -5
+    ]
+   ]
+  },
+  {
+   "y": 1996,
+   "m": 3,
+   "t": "Tayvan Boğazı krizi: ABD iki uçak gemisi gönderdi.",
+   "fx": [
+    [
+     "stab",
+     "China",
+     -1
+    ]
+   ]
+  },
+  {
+   "y": 1996,
+   "m": 7,
+   "t": "Atlanta Olimpiyatları'nda bombalı saldırı.",
+   "fx": [
+    [
+     "stab",
+     "United States of America",
+     -1
+    ]
+   ]
+  },
+  {
+   "y": 1996,
+   "m": 11,
+   "t": "Yeltsin kalp ameliyatı geçirdi; Rusya'da iktidar belirsizliği.",
+   "fx": [
+    [
+     "stab",
+     "Russia",
+     -3
+    ]
+   ]
+  },
+  {
+   "y": 1997,
+   "m": 5,
+   "t": "Rusya ve NATO 'Kurucu Senet'i imzaladı.",
+   "fx": [
+    [
+     "stab",
+     "Russia",
+     1
+    ]
+   ]
+  },
+  {
+   "y": 1997,
+   "m": 7,
+   "t": "Hong Kong Çin'e devredildi; Tayland'da Asya krizi başladı.",
+   "fx": [
+    [
+     "stab",
+     "United Kingdom",
+     0
+    ]
+   ]
+  }
+ ],
+ "leaders": {
+  "horizon": 1998,
+  "chain": {
+   "France": [
+    [
+     1995,
+     5,
+     "Cumhurbaşkanı|Jacques Chirac"
+    ]
+   ],
+   "United Kingdom": [
+    [
+     1997,
+     5,
+     "Başbakan|Tony Blair"
+    ]
+   ],
+   "Turkey": [
+    [
+     1996,
+     3,
+     "Başbakan|Mesut Yılmaz"
+    ],
+    [
+     1996,
+     6,
+     "Başbakan|Necmettin Erbakan"
+    ]
+   ],
+   "Japan": [
+    [
+     1996,
+     1,
+     "Başbakan|Ryutaro Hashimoto"
+    ]
+   ],
+   "Italy": [
+    [
+     1995,
+     1,
+     "Başbakan|Lamberto Dini"
+    ],
+    [
+     1996,
+     5,
+     "Başbakan|Romano Prodi"
+    ]
+   ],
+   "Israel": [
+    [
+     1995,
+     11,
+     "Başbakan|Şimon Peres"
+    ],
+    [
+     1996,
+     6,
+     "Başbakan|Binyamin Netanyahu"
+    ]
+   ],
+   "India": [
+    [
+     1996,
+     5,
+     "Başbakan|Atal Bihari Vajpayee"
+    ],
+    [
+     1996,
+     6,
+     "Başbakan|H. D. Deve Gowda"
+    ],
+    [
+     1997,
+     4,
+     "Başbakan|I. K. Gujral"
+    ]
+   ],
+   "Poland": [
+    [
+     1995,
+     12,
+     "Cumhurbaşkanı|Aleksander Kwaśniewski"
+    ]
+   ],
+   "custom_0": [
+    [
+     1996,
+     4,
+     "Cumhurbaşkanı Vekili|Zelimhan Yandarbiyev"
+    ],
+    [
+     1997,
+     2,
+     "Cumhurbaşkanı|Aslan Maskhadov"
+    ]
+   ]
+  }
+ },
+ "objectives": {
+  "*": [
+   {
+    "id": "h1",
+    "type": "survive",
+    "turns": 140,
+    "text": "Ağustos 1996 – Mayıs 1997'ye kadar ayakta kal"
+   },
+   {
+    "id": "h2",
+    "type": "stability",
+    "n": 50,
+    "text": "İstikrarı 50 üzerinde tut",
+    "required": false
+   }
+  ],
+  "Russia": [
+   {
+    "id": "hr1",
+    "type": "eliminate",
+    "country": "custom_0",
+    "text": "Çeçenistan'ı (Içkerya) ortadan kaldır"
+   },
+   {
+    "id": "hr2",
+    "type": "stability",
+    "n": 45,
+    "text": "Savaşa rağmen istikrarı 45 üzerinde tut",
+    "required": false
+   }
+  ],
+  "custom_0": [
+   {
+    "id": "hc1",
+    "type": "survive",
+    "turns": 140,
+    "text": "Rusya'ya karşı ayakta kal (Mayıs 1997'ye kadar)"
+   },
+   {
+    "id": "hc2",
+    "type": "cease_war",
+    "with": "Russia",
+    "text": "Rusya'yla kalıcı barışı sağla"
+   }
+  ],
+  "Turkey": [
+   {
+    "id": "ht1",
+    "type": "no_war",
+    "turns": 100,
+    "text": "100 hafta savaşa girmeden Kafkasya'daki dengeyi koru"
+   }
+  ],
+  "Georgia": [
+   {
+    "id": "hg1",
+    "type": "no_war",
+    "turns": 100,
+    "text": "100 hafta boyunca Rusya'yla savaşa girme"
+   }
+  ]
+ },
+ "en": {
+  "name": "Ichkeria Resists",
+  "sub": "December 1994 – The First Chechen War (play as Chechnya)",
+  "blurb": "11 December 1994: Yeltsin sends the army into Chechnya to 'restore constitutional order'. Dudayev's independent Chechnya holds Grozny while the Russian army masses at Mozdok. The New Year's storm, Samashki, Budyonnovsk, the retaking of Grozny and Khasavyurt: rewrite the first war.",
+  "setup_intro": "December 1994: a Moscow-backed Chechen opposition tank assault collapsed and Yeltsin decided to enter Chechnya. Dudayev's army of 15,000 waits in Grozny; Russian forces are massing in Mozdok, Ingushetia and Dagestan.",
+  "events": {
+   "0": "Russia's 'restore constitutional order' operation raises tension in the North Caucasus.",
+   "1": "The Kobe earthquake struck Japan; thousands dead.",
+   "2": "Barings Bank collapsed over derivatives losses in Asia.",
+   "3": "Bomb attack on a federal building in Oklahoma City: 168 dead.",
+   "4": "Bosnian Serb forces killed thousands of Bosniak men at Srebrenica.",
+   "5": "Croatia retook the Serb Krajina in Operation Storm.",
+   "6": "The Dayton Accords ended the Bosnian War; Rabin was assassinated.",
+   "7": "Taiwan Strait crisis: the US sent two carrier groups.",
+   "8": "Bomb attack at the Atlanta Olympics.",
+   "9": "Yeltsin underwent heart surgery; uncertainty about power in Russia.",
+   "10": "Russia and NATO signed the Founding Act.",
+   "11": "Hong Kong was handed back to China; the Asian crisis began in Thailand."
+  },
+  "objectives": {
+   "h1": "Survive until May 1997",
+   "h2": "Keep stability above 50",
+   "hr1": "Eliminate Chechnya (Ichkeria)",
+   "hr2": "Keep stability above 45 despite the war",
+   "hc1": "Survive against Russia (until May 1997)",
+   "hc2": "Reach a lasting peace with Russia",
+   "ht1": "Keep the Caucasus balance for 100 weeks without going to war",
+   "hg1": "Stay out of war with Russia for 100 weeks"
+  }
+ }
+}

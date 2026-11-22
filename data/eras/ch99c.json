@@ -1,0 +1,703 @@
+{
+ "id": "ch99c",
+ "name": "Kafkas Direnişi",
+ "sub": "Ağustos 1999 – Terörle Mücadele Harekâtı (Çeçen olarak oyna)",
+ "family": "",
+ "icon": "helmet",
+ "mood": "war",
+ "start_year": 1999,
+ "start_doy": 213,
+ "blurb": "7 Ağustos 1999: Basayev ve Hattab Dağıstan'a girdi; Putin başbakan oldu. Apartman patlamaları, Terek'in ötesi, Grozni'nin düşüşü, Beslan, Maskhadov'un ölümü ve Kafkas Emirliği: on yıllık savaşı yaşa.",
+ "suggest": [
+  "Russia"
+ ],
+ "look": {
+  "shadow": [
+   0.06,
+   0.07,
+   0.09
+  ],
+  "mid": [
+   0.44,
+   0.46,
+   0.44
+  ],
+  "light": [
+   0.93,
+   0.9,
+   0.84
+  ],
+  "amount": 0.18,
+  "vignette": 0.14,
+  "grain": 0.01
+ },
+ "defs": {
+  "Russia": {
+   "leader": "Cumhurbaşkanı|Boris Yeltsin",
+   "gdp": 200,
+   "mil": {
+    "personnel": 1200000,
+    "tank": 10000,
+    "afv": 15000,
+    "arty": 12000,
+    "air": 2800,
+    "sub": 80
+   }
+  },
+  "United States of America": {
+   "leader": "Başkan|Bill Clinton",
+   "gdp": 9600,
+   "mil": {
+    "personnel": 1400000,
+    "tank": 8500,
+    "afv": 24000,
+    "arty": 5500,
+    "air": 5000,
+    "sub": 85
+   }
+  },
+  "Turkey": {
+   "leader": "Başbakan|Bülent Ecevit",
+   "gdp": 250,
+   "mil": {
+    "personnel": 639000,
+    "tank": 4200,
+    "afv": 3800,
+    "arty": 5200,
+    "air": 520,
+    "sub": 18
+   }
+  },
+  "Georgia": {
+   "leader": "Devlet Başkanı|Eduard Şevardnadze",
+   "gdp": 3
+  },
+  "Azerbaijan": {
+   "leader": "Cumhurbaşkanı|Haydar Aliyev",
+   "gdp": 4.6
+  },
+  "Armenia": {
+   "leader": "Cumhurbaşkanı|Robert Koçaryan",
+   "gdp": 1.9
+  },
+  "Ukraine": {
+   "leader": "Cumhurbaşkanı|Leonid Kuçma",
+   "gdp": 32
+  },
+  "Belarus": {
+   "leader": "Cumhurbaşkanı|Aleksandr Lukaşenko",
+   "gdp": 12
+  },
+  "Kazakhstan": {
+   "leader": "Cumhurbaşkanı|Nursultan Nazarbayev",
+   "gdp": 17
+  },
+  "Germany": {
+   "leader": "Şansölye|Gerhard Schröder",
+   "gdp": 2100
+  },
+  "France": {
+   "leader": "Cumhurbaşkanı|Jacques Chirac",
+   "gdp": 1500
+  },
+  "United Kingdom": {
+   "leader": "Başbakan|Tony Blair",
+   "gdp": 1500
+  },
+  "China": {
+   "leader": "Genel Sekreter|Jiang Zemin",
+   "gdp": 1090
+  },
+  "Japan": {
+   "leader": "Başbakan|Keizo Obuchi",
+   "gdp": 4600
+  },
+  "Italy": {
+   "leader": "Başbakan|Massimo D'Alema"
+  },
+  "Israel": {
+   "leader": "Başbakan|Ehud Barak"
+  },
+  "Iran": {
+   "leader": "Cumhurbaşkanı|Muhammed Hatemi"
+  },
+  "Egypt": {
+   "leader": "Cumhurbaşkanı|Hüsnü Mübarek"
+  },
+  "India": {
+   "leader": "Başbakan|Atal Bihari Vajpayee"
+  },
+  "Saudi Arabia": {
+   "leader": "Kral|Fahd bin Abdülaziz"
+  },
+  "Poland": {
+   "leader": "Cumhurbaşkanı|Aleksander Kwaśniewski"
+  },
+  "Serbia": {
+   "leader": "Cumhurbaşkanı|Slobodan Milošević"
+  },
+  "custom_0": {
+   "leader": "Cumhurbaşkanı|Aslan Maskhadov"
+  }
+ },
+ "pop_f": {
+  "Europe": 0.97,
+  "North America": 0.84,
+  "Asia": 0.8,
+  "Africa": 0.6,
+  "South America": 0.72,
+  "Oceania": 0.84
+ },
+ "gdp_default": 0.28,
+ "tech_ovr": {
+  "Russia": 0.42,
+  "Turkey": 0.55,
+  "United States of America": 0.95,
+  "Germany": 0.85,
+  "France": 0.85,
+  "United Kingdom": 0.85,
+  "Israel": 0.85,
+  "Japan": 0.85,
+  "China": 0.4,
+  "Ukraine": 0.35,
+  "Georgia": 0.2,
+  "Azerbaijan": 0.25,
+  "Armenia": 0.2,
+  "India": 0.4,
+  "Iran": 0.35,
+  "Saudi Arabia": 0.55,
+  "Poland": 0.4,
+  "Egypt": 0.3,
+  "Belarus": 0.3,
+  "Kazakhstan": 0.25,
+  "Italy": 0.8
+ },
+ "nukes": [
+  "United States of America",
+  "Russia",
+  "United Kingdom",
+  "France",
+  "China",
+  "Israel",
+  "India",
+  "Pakistan"
+ ],
+ "carriers": {
+  "United States of America": 12,
+  "United Kingdom": 3,
+  "France": 2,
+  "Russia": 1,
+  "India": 1,
+  "Italy": 2
+ },
+ "setup": {
+  "blocs": [],
+  "wars": [],
+  "truce": [],
+  "intro": "Ağustos 1999: Yeltsin'in sağlığı kötü, Rusya iflasın eşiğinden yeni dönmüş; Maskhadov'un Çeçenistan'ı fiilen bağımsız ama kaos içinde. Dağıstan'ın dağlarında bir çatışma tüm Kafkasya'yı yeniden ateşe verebilir.",
+  "custom": [
+   {
+    "name": "Çeçenistan (Içkerya)",
+    "pids": [
+     1851
+    ],
+    "capital": 1851,
+    "tech": 0.3,
+    "aggression": 0.4,
+    "colors": [
+     "1d6b3a",
+     "ece6d6",
+     "b02a2a"
+    ],
+    "war": false,
+    "leader": "Cumhurbaşkanı|Aslan Maskhadov",
+    "troops": 110000,
+    "gold_mult": 1.2,
+    "play": true
+   }
+  ],
+  "garrison": [
+   [
+    1850,
+    "Russia",
+    45000
+   ],
+   [
+    230,
+    "Russia",
+    30000
+   ],
+   [
+    1852,
+    "Russia",
+    25000
+   ]
+  ],
+  "stability": {
+   "Russia": -8,
+   "Turkey": -4
+  }
+ },
+ "events": [
+  {
+   "y": 1999,
+   "m": 8,
+   "t": "17 Ağustos Marmara depremi Türkiye'yi vurdu: yaklaşık 17 bin ölü.",
+   "fx": [
+    [
+     "stab",
+     "Turkey",
+     -6
+    ]
+   ]
+  },
+  {
+   "y": 1999,
+   "m": 10,
+   "t": "Pakistan'da General Müşerref darbeyle iktidarı aldı.",
+   "fx": [
+    [
+     "stab",
+     "Pakistan",
+     -5
+    ]
+   ]
+  },
+  {
+   "y": 1999,
+   "m": 12,
+   "t": "Y2K korkusu atlatıldı; Panama Kanalı Panama'ya devredildi.",
+   "fx": []
+  },
+  {
+   "y": 2000,
+   "m": 10,
+   "t": "Yugoslavya'da Miloşeviç devrildi.",
+   "fx": [
+    [
+     "stab",
+     "Serbia",
+     -5
+    ]
+   ]
+  },
+  {
+   "y": 2001,
+   "m": 10,
+   "t": "ABD Afganistan'a girdi: Terörle Savaş başladı.",
+   "fx": [
+    [
+     "stab",
+     "Afghanistan",
+     -8
+    ]
+   ]
+  },
+  {
+   "y": 2003,
+   "m": 3,
+   "t": "ABD öncülüğünde Irak işgali başladı.",
+   "fx": [
+    [
+     "stab",
+     "Iraq",
+     -10
+    ]
+   ]
+  },
+  {
+   "y": 2003,
+   "m": 11,
+   "t": "Gürcistan'da 'Gül Devrimi': Şevardnadze istifa etti.",
+   "fx": [
+    [
+     "stab",
+     "Georgia",
+     -4
+    ]
+   ]
+  },
+  {
+   "y": 2004,
+   "m": 5,
+   "t": "AB beş yeni üye kabul etti: doğu genişlemesi.",
+   "fx": [
+    [
+     "stab",
+     "Poland",
+     3
+    ]
+   ]
+  },
+  {
+   "y": 2004,
+   "m": 12,
+   "t": "Ukrayna'da 'Turuncu Devrim'; Hint Okyanusu tsunamisi.",
+   "fx": [
+    [
+     "stab",
+     "Ukraine",
+     -3
+    ]
+   ]
+  },
+  {
+   "y": 2005,
+   "m": 7,
+   "t": "Londra'da metro bombalı saldırıları: 52 ölü.",
+   "fx": [
+    [
+     "stab",
+     "United Kingdom",
+     -2
+    ]
+   ]
+  },
+  {
+   "y": 2006,
+   "m": 10,
+   "t": "Kuzey Kore ilk nükleer deneyini yaptı.",
+   "fx": [
+    [
+     "stab",
+     "North Korea",
+     -2
+    ]
+   ]
+  },
+  {
+   "y": 2008,
+   "m": 9,
+   "t": "Lehman Brothers çöktü: küresel finans krizi başladı.",
+   "fx": [
+    [
+     "stab",
+     "United States of America",
+     -4
+    ],
+    [
+     "stab",
+     "United Kingdom",
+     -3
+    ]
+   ]
+  },
+  {
+   "y": 2009,
+   "m": 1,
+   "t": "Barack Obama ABD başkanı olarak yemin etti.",
+   "fx": []
+  }
+ ],
+ "leaders": {
+  "horizon": 2010,
+  "chain": {
+   "Russia": [
+    [
+     1999,
+     12,
+     "Cumhurbaşkanı Vekili|Vladimir Putin"
+    ],
+    [
+     2000,
+     5,
+     "Cumhurbaşkanı|Vladimir Putin"
+    ],
+    [
+     2008,
+     5,
+     "Cumhurbaşkanı|Dmitri Medvedev"
+    ]
+   ],
+   "United States of America": [
+    [
+     2001,
+     1,
+     "Başkan|George W. Bush"
+    ],
+    [
+     2009,
+     1,
+     "Başkan|Barack Obama"
+    ]
+   ],
+   "United Kingdom": [
+    [
+     2007,
+     6,
+     "Başbakan|Gordon Brown"
+    ]
+   ],
+   "France": [
+    [
+     2007,
+     5,
+     "Cumhurbaşkanı|Nicolas Sarkozy"
+    ]
+   ],
+   "Germany": [
+    [
+     2005,
+     11,
+     "Şansölye|Angela Merkel"
+    ]
+   ],
+   "Turkey": [
+    [
+     2002,
+     11,
+     "Başbakan|Abdullah Gül"
+    ],
+    [
+     2003,
+     3,
+     "Başbakan|Recep Tayyip Erdoğan"
+    ]
+   ],
+   "Georgia": [
+    [
+     2004,
+     1,
+     "Devlet Başkanı|Mihail Saakaşvili"
+    ]
+   ],
+   "Azerbaijan": [
+    [
+     2003,
+     10,
+     "Cumhurbaşkanı|İlham Aliyev"
+    ]
+   ],
+   "Armenia": [
+    [
+     2008,
+     4,
+     "Cumhurbaşkanı|Serj Sarkisyan"
+    ]
+   ],
+   "Ukraine": [
+    [
+     2005,
+     1,
+     "Cumhurbaşkanı|Viktor Yuşçenko"
+    ]
+   ],
+   "China": [
+    [
+     2003,
+     3,
+     "Başkan|Hu Jintao"
+    ]
+   ],
+   "Japan": [
+    [
+     2000,
+     4,
+     "Başbakan|Yoshiro Mori"
+    ],
+    [
+     2001,
+     4,
+     "Başbakan|Junichiro Koizumi"
+    ],
+    [
+     2006,
+     9,
+     "Başbakan|Shinzo Abe"
+    ],
+    [
+     2007,
+     9,
+     "Başbakan|Yasuo Fukuda"
+    ],
+    [
+     2008,
+     9,
+     "Başbakan|Taro Aso"
+    ]
+   ],
+   "Italy": [
+    [
+     2000,
+     4,
+     "Başbakan|Giuliano Amato"
+    ],
+    [
+     2001,
+     6,
+     "Başbakan|Silvio Berlusconi"
+    ],
+    [
+     2006,
+     5,
+     "Başbakan|Romano Prodi"
+    ],
+    [
+     2008,
+     5,
+     "Başbakan|Silvio Berlusconi"
+    ]
+   ],
+   "Israel": [
+    [
+     2001,
+     3,
+     "Başbakan|Ariel Şaron"
+    ],
+    [
+     2006,
+     5,
+     "Başbakan|Ehud Olmert"
+    ],
+    [
+     2009,
+     3,
+     "Başbakan|Binyamin Netanyahu"
+    ]
+   ],
+   "Iran": [
+    [
+     2005,
+     8,
+     "Cumhurbaşkanı|Mahmud Ahmedinejad"
+    ]
+   ],
+   "India": [
+    [
+     2004,
+     5,
+     "Başbakan|Manmohan Singh"
+    ]
+   ],
+   "Saudi Arabia": [
+    [
+     2005,
+     8,
+     "Kral|Abdullah bin Abdülaziz"
+    ]
+   ],
+   "Poland": [
+    [
+     2005,
+     12,
+     "Cumhurbaşkanı|Lech Kaczyński"
+    ]
+   ],
+   "custom_0": [
+    [
+     2005,
+     3,
+     "Cumhurbaşkanı|Abdulhalim Saydullayev"
+    ],
+    [
+     2006,
+     6,
+     "Emir|Doku Umarov"
+    ]
+   ]
+  }
+ },
+ "objectives": {
+  "*": [
+   {
+    "id": "j1",
+    "type": "survive",
+    "turns": 260,
+    "text": "Beş yıl boyunca ayakta kal (2004'e kadar)"
+   },
+   {
+    "id": "j2",
+    "type": "stability",
+    "n": 50,
+    "text": "İstikrarı 50 üzerinde tut",
+    "required": false
+   }
+  ],
+  "Russia": [
+   {
+    "id": "jr1",
+    "type": "eliminate",
+    "country": "custom_0",
+    "text": "Çeçenistan'ı (Içkerya) ortadan kaldır"
+   },
+   {
+    "id": "jr2",
+    "type": "stability",
+    "n": 50,
+    "text": "İstikrarı 50 üzerinde tut",
+    "required": false
+   }
+  ],
+  "custom_0": [
+   {
+    "id": "jc1",
+    "type": "survive",
+    "turns": 260,
+    "text": "Rusya'ya karşı beş yıl ayakta kal"
+   },
+   {
+    "id": "jc2",
+    "type": "cease_war",
+    "with": "Russia",
+    "text": "Rusya'yla ateşkes yap (ve koru)",
+    "required": false
+   }
+  ],
+  "Turkey": [
+   {
+    "id": "jt1",
+    "type": "stability",
+    "n": 55,
+    "text": "Marmara depremi sonrası istikrarı 55 üzerine çıkar"
+   }
+  ],
+  "Georgia": [
+   {
+    "id": "jg1",
+    "type": "no_war",
+    "turns": 156,
+    "text": "156 hafta Rusya'yla savaşa girme"
+   }
+  ],
+  "United States of America": [
+   {
+    "id": "ju1",
+    "type": "alliances",
+    "n": 6,
+    "text": "6 müttefik edin"
+   }
+  ]
+ },
+ "en": {
+  "name": "Caucasus Resistance",
+  "sub": "August 1999 – The Counter-Terrorist Operation (play as Chechnya)",
+  "blurb": "7 August 1999: Basayev and Khattab enter Dagestan and Putin becomes prime minister. The apartment bombings, across the Terek, the fall of Grozny, Beslan, Maskhadov's death and the Caucasus Emirate: live a ten-year war.",
+  "setup_intro": "August 1999: Yeltsin is ailing and Russia has just stepped back from bankruptcy; Maskhadov's Chechnya is independent in practice but in chaos. A clash in the mountains of Dagestan may set the whole Caucasus ablaze again.",
+  "events": {
+   "0": "The 17 August Marmara earthquake struck Turkey: about 17,000 dead.",
+   "1": "In Pakistan, General Musharraf seized power in a coup.",
+   "2": "The Y2K scare passed; the Panama Canal was handed to Panama.",
+   "3": "Milošević was ousted in Yugoslavia.",
+   "4": "The US entered Afghanistan: the War on Terror began.",
+   "5": "The US-led invasion of Iraq began.",
+   "6": "Georgia's 'Rose Revolution': Shevardnadze resigned.",
+   "7": "The EU admitted new members: eastern enlargement.",
+   "8": "Ukraine's 'Orange Revolution'; the Indian Ocean tsunami.",
+   "9": "London transport bombings: 52 dead.",
+   "10": "North Korea conducted its first nuclear test.",
+   "11": "Lehman Brothers collapsed: the global financial crisis began.",
+   "12": "Barack Obama was sworn in as US president."
+  },
+  "objectives": {
+   "j1": "Survive five years (until 2004)",
+   "j2": "Keep stability above 50",
+   "jr1": "Eliminate Chechnya (Ichkeria)",
+   "jr2": "Keep stability above 50",
+   "jc1": "Survive five years against Russia",
+   "jc2": "Agree and keep a ceasefire with Russia",
+   "jt1": "Raise stability above 55 after the Marmara earthquake",
+   "jg1": "Stay out of war with Russia for 156 weeks",
+   "ju1": "Make 6 allies"
+  }
+ }
+}
