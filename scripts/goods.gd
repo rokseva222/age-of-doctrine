@@ -37,9 +37,8 @@ static func ensure(c) -> void:
 
 
 ## Eyalet başına haftalık üretim (birim)
-static func prov_prod(p, g: String) -> float:
+static func prov_prod(p, g: String, rk: String = "") -> float:
 	var pop: float = maxf(0.05, p.pop)
-	var rk: String = p.rich()
 	var h2: int = int((p.id * 40503) % 100)
 	match g:
 		"grain":
@@ -75,26 +74,51 @@ static func prov_prod(p, g: String) -> float:
 	return 0.0
 
 
-static func _recount(gs, c) -> void:
-	var prod := {"grain": 0.0, "wood": 0.0, "ore": 0.0, "oil": 0.0}
-	var pop := 0.0
+static var _acc: Dictionary = {}
+static var _acc_turn := -99
+static var _acc_gs := 0
+
+
+## Tüm eyaletleri tek geçişte tarar: ülke -> {pop, prod{...}} (4 haftada bir; oyuncu için her tur)
+static func _scan(gs, only: int = -1) -> Dictionary:
+	var acc := {}
 	for p in gs.provinces:
-		if p.owner != c.id or p.controller != c.id:
+		if p.owner < 0 or p.owner != p.controller or (only >= 0 and p.owner != only):
 			continue
-		pop += maxf(0.05, p.pop)
+		var e: Dictionary = acc.get(p.owner, {})
+		if e.is_empty():
+			e = {"pop": 0.0, "grain": 0.0, "wood": 0.0, "ore": 0.0, "oil": 0.0}
+			acc[p.owner] = e
+		var rk: String = p.rich()
+		e.pop += maxf(0.05, p.pop)
 		for g in GOODS:
-			prod[g] += prod_for(p, g)
+			e[g] += prov_prod(p, g, rk)
+	return acc
+
+
+static func _recount(gs, c) -> void:
+	var e: Dictionary
+	if c.id == gs.player:
+		e = _scan(gs, c.id).get(c.id, {})
+	else:
+		var gid: int = gs.get_instance_id()
+		if _acc_gs != gid or gs.turn - _acc_turn >= 4 or gs.turn < _acc_turn:
+			_acc = _scan(gs)
+			_acc_turn = gs.turn
+			_acc_gs = gid
+		e = _acc.get(c.id, {})
+	var pop: float = float(e.get("pop", 0.0))
 	var ind: float = 0.7 + 0.6 * clampf(c.industry, 0.0, 100.0) / 100.0
 	var war: float = 1.0 + (0.15 if not c.enemies.is_empty() else 0.0)
 	for g in GOODS:
 		var d: float = pop * float(DEMAND[g]) * ind
 		if g == "oil":
 			d *= war
-		c.goods.rate[g] = {"prod": prod[g], "dem": maxf(0.01, d)}
+		c.goods.rate[g] = {"prod": float(e.get(g, 0.0)), "dem": maxf(0.01, d)}
 
 
 static func prod_for(p, g: String) -> float:
-	return prov_prod(p, g)
+	return prov_prod(p, g, p.rich())
 
 
 ## Küresel fiyat endeksi (1.0 etrafında, savaşlarda petrol pahalanır)
