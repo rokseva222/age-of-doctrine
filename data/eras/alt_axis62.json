@@ -1,0 +1,1425 @@
+{
+ "id": "alt_axis62",
+ "name": "Mihver Dünyası",
+ "sub": "1962 – Alternatif",
+ "base": "cw62",
+ "family": "cold",
+ "pack": "alt",
+ "icon": "flag",
+ "mood": "tense",
+ "start_year": 1962,
+ "start_doy": 120,
+ "blurb": "Mihver Devletleri savaşı kazandı. Almanya Avrupa'yı ve Rusya'nın batısını, Japonya Pasifik'i ve Sibirya'nın doğusunu elinde tutuyor; Amerika ikiye bölündü, Kayalık Dağlar'da kırılgan bir tarafsız bölge kaldı. Berlin'de yaşlanan rejimin ardıl kavgası, Tokyo'da genişleme hırsı: iki imparatorluk arasındaki soğuk savaş her an sıcağa dönebilir.",
+ "suggest": [
+  "Germany",
+  "Japan",
+  "United Kingdom",
+  "Russia",
+  "Italy"
+ ],
+ "look": {
+  "shadow": [
+   0.06,
+   0.07,
+   0.09
+  ],
+  "mid": [
+   0.42,
+   0.45,
+   0.42
+  ],
+  "light": [
+   0.93,
+   0.9,
+   0.83
+  ],
+  "amount": 0.28,
+  "vignette": 0.14,
+  "grain": 0.01
+ },
+ "setup": {
+  "blocs": [
+   {
+    "name": "Mihver Düzeni",
+    "members": [
+     "Germany",
+     "Italy",
+     "Hungary",
+     "Romania",
+     "Bulgaria",
+     "Spain"
+    ],
+    "emblem": {
+     "shape": 0,
+     "inner": 2,
+     "symbol": "star",
+     "c1": "7a1f1f",
+     "c2": "1b1b1b",
+     "c3": "ece6d6"
+    }
+   }
+  ],
+  "wars": [],
+  "truce": [],
+  "intro": "1962: Dünya Mihver'in. Berlin ile Tokyo arasındaki sınır Rus topraklarında ve Kuzey Amerika'da çiziliyor; kimse bu bölünmenin kalıcı olduğundan emin değil.",
+  "cold": [
+   [
+    "Germany",
+    "Japan"
+   ]
+  ],
+  "stability": {
+   "Russia": -12,
+   "Germany": -3
+  },
+  "rename": {
+   "Germany": {
+    "name": "Büyük Alman Reich'ı",
+    "leader": "Reich Şansölyesi|Martin Holz",
+    "color": "5a1010"
+   },
+   "Russia": {
+    "name": "Rus Kalıntı Devleti",
+    "leader": "Başkan|Aleksandr Voronov",
+    "color": "6b6b3a"
+   },
+   "Japan": {
+    "name": "Japon İmparatorluğu"
+   }
+  },
+  "transfer": [
+   [
+    228,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    229,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    230,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    231,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    232,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    233,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    234,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    235,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    248,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    249,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    250,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    257,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    258,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    260,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    262,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    266,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    267,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    269,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    271,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    272,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    273,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    274,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    275,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    276,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    277,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    278,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    279,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    280,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    281,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    682,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    683,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    684,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    685,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    686,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    687,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    688,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    689,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    690,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    691,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    692,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    693,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    694,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    695,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    696,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    697,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    698,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    1110,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    1116,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    1117,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    1356,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    1357,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    1358,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    1359,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    1360,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    1361,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    1362,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    1384,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    1385,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    1386,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    1387,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    1388,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    1389,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    1390,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    1513,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    1625,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    1626,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    1627,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    1628,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    1629,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    1656,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    1657,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    1658,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    1659,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    1671,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    1672,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    1673,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    1674,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    1675,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    1676,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    1677,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    1678,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    1679,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    1725,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    1726,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    1727,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    1728,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    1738,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    1739,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    1740,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    1741,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    1842,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    1843,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    1844,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    1845,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    1846,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    1847,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    1848,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    1849,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    1850,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    1851,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    1852,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    1853,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    1854,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    1856,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    1857,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    1858,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    1859,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    1860,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    1861,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    1862,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    1863,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    1864,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    1865,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    1866,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    1867,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    1868,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    1869,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    1870,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    2122,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    2123,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    2124,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    2125,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    2126,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    2127,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    2128,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    2129,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    2454,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    2455,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    2456,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    2457,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    2458,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    2459,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    2460,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    2461,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    2462,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    2463,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    2636,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    2637,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    2638,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    2639,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    2640,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    2641,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    2642,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    2667,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    2668,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    2669,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    2670,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    2671,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    2672,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    2685,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    2686,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    2687,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    2688,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    2689,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    2690,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    2691,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    2692,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    2693,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    2694,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    2695,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    2718,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    2719,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    2720,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    2721,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    2722,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    2723,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    2724,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    2735,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    2736,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    2737,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    2738,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    2739,
+    "Russia",
+    "Germany",
+    "own"
+   ],
+   [
+    236,
+    "Russia",
+    "Japan",
+    "own"
+   ],
+   [
+    238,
+    "Russia",
+    "Japan",
+    "own"
+   ],
+   [
+    239,
+    "Russia",
+    "Japan",
+    "own"
+   ],
+   [
+    240,
+    "Russia",
+    "Japan",
+    "own"
+   ],
+   [
+    241,
+    "Russia",
+    "Japan",
+    "own"
+   ],
+   [
+    251,
+    "Russia",
+    "Japan",
+    "own"
+   ],
+   [
+    252,
+    "Russia",
+    "Japan",
+    "own"
+   ],
+   [
+    253,
+    "Russia",
+    "Japan",
+    "own"
+   ],
+   [
+    256,
+    "Russia",
+    "Japan",
+    "own"
+   ],
+   [
+    261,
+    "Russia",
+    "Japan",
+    "own"
+   ],
+   [
+    270,
+    "Russia",
+    "Japan",
+    "own"
+   ],
+   [
+    1855,
+    "Russia",
+    "Japan",
+    "own"
+   ]
+  ],
+  "custom": [
+   {
+    "name": "Reich Amerikası",
+    "pids": [
+     72,
+     73,
+     74,
+     75,
+     76,
+     77,
+     78,
+     85,
+     86,
+     87,
+     88,
+     89,
+     90,
+     91,
+     92,
+     93,
+     94,
+     95,
+     96,
+     97,
+     98,
+     111,
+     112,
+     113,
+     115,
+     116,
+     117,
+     118,
+     119
+    ],
+    "capital": 95,
+    "tech": 0.7,
+    "aggression": 0.1,
+    "colors": [
+     "5a1010",
+     "1b1b1b",
+     "ece6d6"
+    ],
+    "war": false,
+    "leader": "Reich Valisi|Karl Brenner",
+    "troops": 140000,
+    "gold_mult": 1.2,
+    "play": false,
+    "flag": "A:de"
+   },
+   {
+    "name": "Japon Pasifik Devletleri",
+    "pids": [
+     67,
+     80,
+     99,
+     103,
+     83,
+     100,
+     120,
+     121,
+     1813,
+     1821,
+     1831
+    ],
+    "capital": 80,
+    "tech": 0.7,
+    "aggression": 0.1,
+    "colors": [
+     "f4efe4",
+     "bc002d",
+     "1b1b1b"
+    ],
+    "war": false,
+    "leader": "Genel Vali|Hiroshi Kondo",
+    "troops": 110000,
+    "gold_mult": 1.2,
+    "play": false,
+    "flag": "A:jp"
+   },
+   {
+    "name": "Kayalık Dağlar Tarafsız Bölgesi",
+    "pids": [
+     68,
+     69,
+     70,
+     71,
+     79,
+     81,
+     82,
+     84,
+     101,
+     102,
+     104,
+     105,
+     106,
+     107,
+     108,
+     109,
+     110,
+     114
+    ],
+    "capital": 104,
+    "tech": 0.6,
+    "aggression": 0.1,
+    "colors": [
+     "2f4f4f",
+     "c9b98a",
+     "ece6d6"
+    ],
+    "war": false,
+    "leader": "Başkan|Samuel Whitaker",
+    "troops": 60000,
+    "gold_mult": 1.0,
+    "play": false,
+    "flag": "I:alt_neutral_zone"
+   }
+  ]
+ },
+ "events": [
+  {
+   "y": 1962,
+   "m": 7,
+   "t": "Berlin'de yaşlanan Führer'in sağlığı hakkında söylentiler artıyor; ardıl kavgası saray koridorlarına taştı.",
+   "fx": [
+    [
+     "stab",
+     "Germany",
+     -4
+    ]
+   ]
+  },
+  {
+   "y": 1962,
+   "m": 10,
+   "t": "Kayalık Dağlar sınırında Alman ve Japon devriyeleri karşılaştı; Tarafsız Bölge'de gerginlik yükseldi.",
+   "fx": [
+    [
+     "stab",
+     "Japan",
+     -2
+    ]
+   ]
+  },
+  {
+   "y": 1963,
+   "m": 2,
+   "t": "Sibirya'daki Rus direniş grupları Alman ve Japon karakollarına saldırdı; iki imparatorluk birbirini suçluyor.",
+   "fx": [
+    [
+     "stab",
+     "Russia",
+     -3
+    ]
+   ]
+  }
+ ],
+ "objectives": {
+  "*": [
+   {
+    "id": "o1",
+    "type": "survive",
+    "text": "Bir yıl ayakta kal",
+    "turns": 52
+   },
+   {
+    "id": "o2",
+    "type": "alliances",
+    "text": "3 müttefik edin",
+    "n": 3,
+    "required": false
+   }
+  ],
+  "Germany": [
+   {
+    "id": "g1",
+    "type": "stability",
+    "text": "İstikrarı 50 üzerinde tut",
+    "n": 50
+   },
+   {
+    "id": "g2",
+    "type": "cease_war",
+    "text": "Japonya ile savaş çıkmasını önle",
+    "with": "Japan"
+   }
+  ],
+  "Japan": [
+   {
+    "id": "j1",
+    "type": "stability",
+    "text": "İstikrarı 50 üzerinde tut",
+    "n": 50
+   },
+   {
+    "id": "j2",
+    "type": "cease_war",
+    "text": "Almanya ile savaş çıkmasını önle",
+    "with": "Germany"
+   }
+  ],
+  "United Kingdom": [
+   {
+    "id": "u1",
+    "type": "stability",
+    "text": "İstikrarı 50 üzerinde tut",
+    "n": 50
+   }
+  ]
+ },
+ "en": {
+  "name": "The Axis World",
+  "sub": "1962 – Alternate",
+  "blurb": "The Axis won the war. Germany holds Europe and western Russia, Japan holds the Pacific and eastern Siberia; America has been split in two with a fragile neutral zone left in the Rockies. In Berlin the ageing regime fights over succession, in Tokyo ambition grows: the cold war between the two empires can turn hot at any moment.",
+  "setup_intro": "1962: The world belongs to the Axis. The border between Berlin and Tokyo is being drawn across Russian lands and North America, and nobody is sure the division will last.",
+  "events": {
+   "0": "Rumours about the ageing Führer's health grow in Berlin; the succession struggle has spilled into the palace corridors.",
+   "1": "German and Japanese patrols met on the Rocky Mountain border; tension rises in the Neutral Zone.",
+   "2": "Russian resistance groups in Siberia attacked German and Japanese outposts; the two empires blame each other."
+  },
+  "objectives": {
+   "o1": "Survive one year",
+   "o2": "Make 3 allies",
+   "g1": "Keep stability above 50",
+   "g2": "Prevent war with Japan",
+   "j1": "Keep stability above 50",
+   "j2": "Prevent war with Germany",
+   "u1": "Keep stability above 50"
+  }
+ }
+}
