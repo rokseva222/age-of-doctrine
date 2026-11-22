@@ -35,11 +35,13 @@ const CAT_ICON := {"inf": "rifle", "tank": "tank", "afv": "afv", "arty": "arty",
 const TIER_COL := [Color("646c77"), Color("9aa2ad"), Color("5ba4e0"), Color("a98be0")]
 
 
-static func open(ui_ref, gs_ref, start_tab: int = 0) -> void:
+static func open(ui_ref, gs_ref, start_tab: int = 0, start_cat: String = "") -> void:
 	var p = load("res://scripts/policy_ui.gd").new()
 	p.ui = ui_ref
 	p.gs = gs_ref
 	p.tab = start_tab
+	if start_cat != "":
+		p.cat = start_cat
 	p._build()
 
 
@@ -222,6 +224,7 @@ func _tab_budget() -> void:
 		["İstikrar", "%d" % int(c.stability), TK.GREEN if c.stability >= 50.0 else TK.RED_TEXT],
 		["Teknoloji", "%d" % int(c.tech * 100.0)],
 	]))
+	content.add_child(_wrap("Sanayi, siber ve lojistik değerleri ilgili bütçe payını yükselttikçe haftalar içinde artar; istikrar da öyle. Teknoloji ülkenin gelişmişlik düzeyidir, bütçeyle değişmez: hangi seviyede silah alabildiğini ve ordu kalitesini belirler. Üst seviye silahlar için ayrıca yeterli sanayi gerekir: Sanayi payını yükselt.", "small", TK.FAINT))
 	content.add_child(TK.hsep())
 	content.add_child(_kick("Ordu doktrini"))
 	var fl := HFlowContainer.new()

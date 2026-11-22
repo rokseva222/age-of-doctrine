@@ -144,6 +144,9 @@ static func open_settings(parent: Node, on_change: Callable, sfx = null) -> void
 	sh.body.add_child(TK.toggle_row("Savaş için ilişki şartı", Settings.war_gate, func(on: bool):
 		Settings.war_gate = on
 		changed.call(), "Açıkken savaş ilan edebilmek için hedef ülkeyle ilişkin en çok 20 olmalı; önce Diplomasi ekranından protesto, karalama ya da sınır kışkırtmasıyla ilişkileri düşürürsün. Müttefikinin düşmanına her zaman savaş açabilirsin."))
+	sh.body.add_child(TK.toggle_row("İttifaksız başla", Settings.start_alone, func(on: bool):
+		Settings.start_alone = on
+		changed.call(), "Açıkken yeni oyuna, seçtiğin ülkenin hazır ittifakları olmadan başlarsın; müttefikleri kendin seçersin. Vasal bağları silinmez. Yeni başlayan oyunlarda geçerlidir."))
 	sh.body.add_child(TK.toggle_row("Dünya Savaşları savaşsız başlasın", Settings.era_peace, func(on: bool):
 		Settings.era_peace = on
 		changed.call(), "Açıkken 1. ve 2. Dünya Savaşı senaryoları savaş başlamadan, ittifaklar ve gerginlikle açılır; savaşı yapay zekâ ya da sen çıkarırsın (saldırganlık ayarı da etkiler). Yeni başlayan senaryolarda geçerlidir."))

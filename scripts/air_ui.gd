@@ -236,6 +236,12 @@ static func manage(ui, gs, w, done: Callable) -> void:
 		sh.body.add_child(hl)
 	# eylemler
 	sh.body.add_child(TK.hsep())
+	var buy_hint := TK.t(Loc.t("Filoyu büyütmek için yeni uçak ve İHA siparişi ver: teslimatta hava gücün ve filoların büyür."), "small", TK.FAINT)
+	buy_hint.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	sh.body.add_child(buy_hint)
+	_sbtn(ui, sh, "Uçak ve İHA siparişi ver", Icons.pick("jet", "plus"), "gold", func():
+		done.call()
+		load("res://scripts/policy_ui.gd").open(ui, gs, 1, "air"))
 	_sbtn(ui, sh, "Bayrak tasarla", Icons.pick("flag", "flag"), "blue", func():
 		FlagEditor.open(ui.root, w.flag, func(spec: String):
 			Air.set_flag(gs, wid, spec)

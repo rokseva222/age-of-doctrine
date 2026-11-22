@@ -407,6 +407,8 @@ func _on_start_requested(cid: int) -> void:
 		gs.switch_player(gs.scn_play)
 		cid = gs.player
 		gs.scn_play = -1
+	if Settings.start_alone and mp_start.is_empty():
+		gs.strip_start_alliances()
 	if not mp_start.is_empty():
 		gs.scn_play = -1
 		Mp.begin(gs, mp_start)

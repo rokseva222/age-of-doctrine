@@ -32,6 +32,7 @@ static var streak := 0                # üst üste gün serisi
 static var streak_day := -1
 static var ach: Dictionary = {}       # açılan başarımlar/öğretici adımlar: id -> tur
 static var war_aggr := 1.0             # yapay zekânın savaş açma isteği çarpanı (0 = hiç savaş açmaz, 1 = normal)
+static var start_alone := false         # yeni oyuna ittifaksız başla (oyuncunun başlangıç ittifakları silinir)
 static var era_peace := false           # 1. / 2. Dünya Savaşı senaryoları savaşsız (diplomatik) başlar
 static var war_gate := true            # oyuncu savaş ilan etmek için ilişkiyi en çok %20'ye düşürmeli (öğretici/sandbox hariç)
 static var difficulty := 1            # 0 kolay, 1 normal, 2 zor
@@ -107,6 +108,7 @@ static func load_all() -> void:
 	war_aggr = clampf(float(cf.get_value("game", "war_aggr", war_aggr)), 0.0, 1.0)
 	war_gate = bool(cf.get_value("game", "war_gate", war_gate))
 	era_peace = bool(cf.get_value("game", "era_peace", era_peace))
+	start_alone = bool(cf.get_value("game", "start_alone", start_alone))
 	var a = cf.get_value("game", "ach", {})
 	ach = a.duplicate() if a is Dictionary else {}
 	var mm = cf.get_value("game", "missions", {})
@@ -152,6 +154,7 @@ static func save_all() -> void:
 	cf.set_value("game", "difficulty", difficulty)
 	cf.set_value("game", "war_aggr", war_aggr)
 	cf.set_value("game", "war_gate", war_gate)
+	cf.set_value("game", "start_alone", start_alone)
 	cf.set_value("game", "era_peace", era_peace)
 	cf.set_value("game", "ach", ach)
 	cf.set_value("game", "missions", missions)

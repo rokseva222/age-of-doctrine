@@ -245,6 +245,21 @@ func war_chest_relief() -> void:
 	me.stability = minf(100.0, me.stability + 4.0)
 
 
+## "İttifaksız başla" ayarı: oyuncunun başlangıç ittifakları sessizce silinir (vasal-efendi bağları kalır).
+func strip_start_alliances() -> void:
+	if player < 0:
+		return
+	var me = countries[player]
+	for al in me.allies.duplicate():
+		if lord_of(player) == al or lord_of(al) == player:
+			continue
+		me.allies.erase(al)
+		countries[al].allies.erase(player)
+	if me.alliance >= 0:
+		bloc_leave(player, true)
+	state_changed.emit()
+
+
 func switch_player(cid: int) -> void:
 	if cid < 0 or cid >= countries.size():
 		return
@@ -4155,8 +4170,8 @@ func _ai_war_decision(c) -> void:
 				claims += 1
 		ratio *= 1.0 + 0.06 * minf(float(claims), 10.0)
 		var rel_ai: float = relation_of(c.id, oid)
-		if rel_ai > 50.0:       # dost ülkeye yapay zekâ savaş açmaz: 60'ta %60, 70'te %80 azalır, 75 ve üstünde hiç
-			ratio *= clampf(1.0 - (rel_ai - 50.0) / 25.0, 0.0, 1.0)
+		if rel_ai > 30.0:       # ilişki iyiyse yapay zekâ savaş açmaz: 40'ta %25, 50'de %50 azalır, 70 ve üstünde hiç
+			ratio *= clampf(1.0 - (rel_ai - 30.0) / 40.0, 0.0, 1.0)
 		if ratio > best_ratio:
 			best_ratio = ratio
 			best = oid
