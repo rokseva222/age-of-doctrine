@@ -211,7 +211,7 @@ static func owned(gs) -> int:
 
 # ------------------------------------------------------------------ başlangıç
 
-## params: host_en, dir, n, name, leader, color, ideo, method
+## params: host_en, dir, n, name, leader, color, flag (isteğe bağlı bayrak tasarımı), ideo, method
 static func begin(gs, params: Dictionary) -> bool:
 	var host_en: String = String(params.get("host_en", ""))
 	var host: int = int(gs.macro_idx.get(host_en, -1))
@@ -242,6 +242,8 @@ static func begin(gs, params: Dictionary) -> bool:
 	var spec := {"name": String(params.get("name", "")).strip_edges().substr(0, 30), "from": [[host_en, n]], "dir": String(params.get("dir", "near")),
 		"troops": troops, "tech": 0.4, "defect": false, "leader": "%s|%s" % [Loc.t("Lider"), String(params.get("leader", "")).strip_edges().substr(0, 24)] if String(params.get("leader", "")).strip_edges() != "" else "",
 		"colors": cols, "pattern": int(gs.rng.randi() % 6), "aggression": 0.6, "doctrine": 2}
+	if String(params.get("flag", "")) != "":
+		spec["flag"] = String(params["flag"])
 	if not base.is_empty():
 		spec["pids"] = base
 		n = base.size()

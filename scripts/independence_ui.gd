@@ -9,6 +9,7 @@ const Macro = preload("res://scripts/macro.gd")
 const I = preload("res://scripts/independence.gd")
 const U = preload("res://scripts/user_scn.gd")
 const Districts = preload("res://scripts/districts.gd")
+const FlagEditor = preload("res://scripts/flag_editor.gd")
 const Icons = preload("res://scripts/icons.gd")
 const PHASE_ICONS := ["phase_spark", "phase_uprising", "phase_negotiation", "phase_statehood", "phase_consolidation"]
 
@@ -75,7 +76,7 @@ static func city_difficulty(host_en: String, pids: Array) -> String:
 ## on_start: Callable(params: Dictionary)
 static func open_setup(parent: Node, on_start: Callable) -> void:
 	var sh = Sheet.open(parent, "Bağımsızlık Yolu", 900, true, true, "Yeni kip")
-	var p := {"host_en": "Spain", "dir": "east", "n": 3, "ncity": 1, "pids": [], "name": "", "leader": "", "color": 0, "ideo": "liberal", "method": "uprising"}
+	var p := {"host_en": "Spain", "dir": "east", "n": 3, "ncity": 1, "pids": [], "name": "", "leader": "", "color": 0, "flag": "", "ideo": "liberal", "method": "uprising"}
 	var intro := TK.t("Kurgusal bir hareketin lideri ol. Gizlice örgütlen, ayaklan, müzakere et, bağımsızlığını ilan et, tanınmanı sağla ve devleti ayakta tut. Yabancı destek ideolojine göre gelir; her yardımın bir şartı vardır.", "body", TK.MUTED)
 	intro.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	sh.body.add_child(intro)
@@ -264,6 +265,21 @@ static func open_setup(parent: Node, on_start: Callable) -> void:
 			(swatches[idx][1] as StyleBoxFlat).set_border_width_all(4))
 		colrow.add_child(b)
 	sh.body.add_child(colrow)
+	# bayrak (isteğe bağlı): boş bırakılırsa renklerden otomatik çizilir
+	var fl_lbl := TK.t("", "small", TK.MUTED)
+	var set_fl := func():
+		fl_lbl.text = Loc.t("Bayrak: özel tasarım var") if String(p.flag) != "" else Loc.t("Bayrak: renklerden otomatik")
+	set_fl.call()
+	var fhb := HBoxContainer.new()
+	fhb.add_theme_constant_override("separation", 10)
+	var fb := TK.button("Bayrak tasarla", "blue", "", Vector2(0, 52), 17)
+	fb.pressed.connect(func():
+		FlagEditor.open(parent, String(p.flag), func(sp: String):
+			p.flag = sp
+			set_fl.call()))
+	fhb.add_child(fb)
+	fhb.add_child(fl_lbl)
+	sh.body.add_child(fhb)
 	# ideoloji
 	sh.body.add_child(TK.t("İdeoloji (yabancı desteği belirler)", "kicker", TK.GOLD))
 	var ideo := PickButton.new()
