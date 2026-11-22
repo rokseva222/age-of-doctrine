@@ -170,6 +170,126 @@
    }
   },
   {
+   "id": "nile_enerji",
+   "turn": 20,
+   "title": "Baraj Elektriği Dağıtımı",
+   "scene": "crisis",
+   "icon": "dam",
+   "text": "Etiyopya barajın elektriğini komşulara satmaya başladı; Sudan ve Kenya ilgili. Mısır ise 'su güvenliği için bağlayıcı anlaşma' ısrarını sürdürüyor.",
+   "major": false,
+   "default_fx": [
+    [
+     "gold",
+     "Ethiopia",
+     1.5
+    ],
+    [
+     "rel",
+     "Ethiopia",
+     "Sudan",
+     3
+    ],
+    [
+     "rel",
+     "Egypt",
+     "Ethiopia",
+     -2
+    ]
+   ],
+   "roles": {
+    "Ethiopia": {
+     "text": "Elektrik Etiyopya'ya gelir ve bölgesel nüfuz getiriyor.",
+     "options": [
+      {
+       "t": "Komşulara elektrik sat",
+       "d": "Komşulara elektrik sat",
+       "fx": [
+        [
+         "gold",
+         "Ethiopia",
+         2.0
+        ],
+        [
+         "rel",
+         "Ethiopia",
+         "Sudan",
+         3
+        ],
+        [
+         "rel",
+         "Ethiopia",
+         "Egypt",
+         -2
+        ]
+       ],
+       "r": "Addis Ababa Sudan ve Kenya'ya elektrik satışını artırdı."
+      },
+      {
+       "t": "Mısır'a su garantisi ver",
+       "d": "Mısır'a su garantisi ver",
+       "fx": [
+        [
+         "rel",
+         "Ethiopia",
+         "Egypt",
+         4
+        ],
+        [
+         "stab",
+         "Ethiopia",
+         1
+        ]
+       ],
+       "r": "Etiyopya Mısır'a doldurma programı güvencesi verdi."
+      }
+     ]
+    },
+    "Egypt": {
+     "text": "Kahire barajın sonuçlarına karşı hukuki ve diplomatik hamle arıyor.",
+     "options": [
+      {
+       "t": "BM Güvenlik Konseyi'ne başvur",
+       "d": "BM Güvenlik Konseyi'ne başvur",
+       "fx": [
+        [
+         "rel",
+         "Egypt",
+         "United States of America",
+         2
+        ],
+        [
+         "rel",
+         "Egypt",
+         "Ethiopia",
+         -2
+        ]
+       ],
+       "r": "Kahire meseleyi BM Güvenlik Konseyi'ne taşıdı."
+      },
+      {
+       "t": "Sudan'la ortak tutum belirle",
+       "d": "Sudan'la ortak tutum belirle",
+       "fx": [
+        [
+         "rel",
+         "Egypt",
+         "Sudan",
+         4
+        ],
+        [
+         "rel",
+         "Egypt",
+         "Ethiopia",
+         -1
+        ]
+       ],
+       "r": "Mısır ve Sudan ortak su tutumunda anlaştı."
+      }
+     ]
+    }
+   }
+  },
+  {
    "id": "nile_kuraklik",
    "turn": 34,
    "title": "Kuraklık Yılı",
@@ -392,6 +512,124 @@
      ]
     }
    }
+  },
+  {
+   "id": "nile_arabulucu",
+   "turn": 100,
+   "title": "Tahkim Teklifi",
+   "scene": "peace",
+   "icon": "treaty",
+   "text": "Afrika Birliği ve Körfez ülkeleri barajın işleyişine dair bağlayıcı bir tahkim önerdi. Mısır masaya oturabilir; Etiyopya tahkimin egemenliğini kısıtlamasından çekiniyor.",
+   "major": true,
+   "default_fx": [
+    [
+     "rel",
+     "Egypt",
+     "Ethiopia",
+     1
+    ],
+    [
+     "rel",
+     "Ethiopia",
+     "Sudan",
+     1
+    ]
+   ],
+   "roles": {
+    "Egypt": {
+     "text": "Tahkim yolu Mısır'a hukuki güvence verebilir; ama zaman alır.",
+     "options": [
+      {
+       "t": "Tahkimi kabul et",
+       "d": "Tahkimi kabul et",
+       "fx": [
+        [
+         "rel",
+         "Egypt",
+         "Ethiopia",
+         3
+        ],
+        [
+         "rel",
+         "Egypt",
+         "Saudi Arabia",
+         3
+        ],
+        [
+         "stab",
+         "Egypt",
+         1
+        ]
+       ],
+       "r": "Kahire tahkimi kabul etti."
+      },
+      {
+       "t": "Doğrudan anlaşma iste",
+       "d": "Doğrudan anlaşma iste",
+       "fx": [
+        [
+         "rel",
+         "Egypt",
+         "Ethiopia",
+         -2
+        ],
+        [
+         "stab",
+         "Egypt",
+         1
+        ]
+       ],
+       "r": "Kahire doğrudan bağlayıcı anlaşmada ısrar etti."
+      }
+     ]
+    },
+    "Ethiopia": {
+     "text": "Addis Ababa egemenlik hakkını koruma gerekçesiyle tahkime mesafeli.",
+     "options": [
+      {
+       "t": "Tahkimi kabul et, esnek ol",
+       "d": "Tahkimi kabul et, esnek ol",
+       "fx": [
+        [
+         "rel",
+         "Ethiopia",
+         "Egypt",
+         4
+        ],
+        [
+         "stab",
+         "Ethiopia",
+         -1
+        ],
+        [
+         "gold",
+         "Ethiopia",
+         1.0
+        ]
+       ],
+       "r": "Etiyopya tahkimi kabul etti."
+      },
+      {
+       "t": "Tahkimi reddet",
+       "d": "Tahkimi reddet",
+       "fx": [
+        [
+         "rel",
+         "Ethiopia",
+         "Egypt",
+         -3
+        ],
+        [
+         "stab",
+         "Ethiopia",
+         2
+        ]
+       ],
+       "r": "Etiyopya tahkimi reddetti."
+      }
+     ]
+    }
+   }
   }
  ],
  "moments_en": {
@@ -435,6 +673,30 @@
   "Etiyopya Eritre ile liman ve sınır görüşmesi başlattı.": "Ethiopia opened port and border talks with Eritrea.",
   "Sınırdaki gerilim iç siyasetteki Tigray ve Amhara sorunlarıyla birleşiyor.": "Border tension combines with Tigray and Amhara problems at home.",
   "Hartum'da Vekâlet Savaşı": "Proxy War in Khartoum",
-  "Sudan'daki hizipler Mısır ve Etiyopya'nın desteğini alıyor; Eritre sınırında asker yığınağı var. Nil artık yalnız bir su sorunu değil, bölgesel bir güç mücadelesi.": "Factions in Sudan receive Egyptian and Ethiopian backing; troops mass on the Eritrean border. The Nile is no longer just a water issue but a regional power struggle."
+  "Sudan'daki hizipler Mısır ve Etiyopya'nın desteğini alıyor; Eritre sınırında asker yığınağı var. Nil artık yalnız bir su sorunu değil, bölgesel bir güç mücadelesi.": "Factions in Sudan receive Egyptian and Ethiopian backing; troops mass on the Eritrean border. The Nile is no longer just a water issue but a regional power struggle.",
+  "Komşulara elektrik sat": "Sell electricity to neighbours",
+  "Addis Ababa Sudan ve Kenya'ya elektrik satışını artırdı.": "Addis Ababa expanded power sales to Sudan and Kenya.",
+  "Mısır'a su garantisi ver": "Offer Egypt a water guarantee",
+  "Etiyopya Mısır'a doldurma programı güvencesi verdi.": "Ethiopia gave Egypt a filling-schedule assurance.",
+  "Elektrik Etiyopya'ya gelir ve bölgesel nüfuz getiriyor.": "Electricity brings Ethiopia income and regional influence.",
+  "BM Güvenlik Konseyi'ne başvur": "Go to the UN Security Council",
+  "Kahire meseleyi BM Güvenlik Konseyi'ne taşıdı.": "Cairo took the matter to the UN Security Council.",
+  "Sudan'la ortak tutum belirle": "Coordinate with Sudan",
+  "Mısır ve Sudan ortak su tutumunda anlaştı.": "Egypt and Sudan agreed a joint water position.",
+  "Kahire barajın sonuçlarına karşı hukuki ve diplomatik hamle arıyor.": "Cairo seeks legal and diplomatic moves against the dam's effects.",
+  "Baraj Elektriği Dağıtımı": "Dam Electricity Distribution",
+  "Etiyopya barajın elektriğini komşulara satmaya başladı; Sudan ve Kenya ilgili. Mısır ise 'su güvenliği için bağlayıcı anlaşma' ısrarını sürdürüyor.": "Ethiopia began selling the dam's electricity to its neighbours; Sudan and Kenya are interested. Egypt keeps insisting on a 'binding agreement for water security'.",
+  "Tahkimi kabul et": "Accept arbitration",
+  "Kahire tahkimi kabul etti.": "Cairo accepted arbitration.",
+  "Doğrudan anlaşma iste": "Demand a direct agreement",
+  "Kahire doğrudan bağlayıcı anlaşmada ısrar etti.": "Cairo insisted on a direct binding agreement.",
+  "Tahkim yolu Mısır'a hukuki güvence verebilir; ama zaman alır.": "Arbitration may give Egypt legal assurance, but it takes time.",
+  "Tahkimi kabul et, esnek ol": "Accept arbitration and stay flexible",
+  "Etiyopya tahkimi kabul etti.": "Ethiopia accepted arbitration.",
+  "Tahkimi reddet": "Reject arbitration",
+  "Etiyopya tahkimi reddetti.": "Ethiopia rejected arbitration.",
+  "Addis Ababa egemenlik hakkını koruma gerekçesiyle tahkime mesafeli.": "Addis Ababa is wary of arbitration on sovereignty grounds.",
+  "Tahkim Teklifi": "An Arbitration Offer",
+  "Afrika Birliği ve Körfez ülkeleri barajın işleyişine dair bağlayıcı bir tahkim önerdi. Mısır masaya oturabilir; Etiyopya tahkimin egemenliğini kısıtlamasından çekiniyor.": "The African Union and Gulf states proposed binding arbitration on the dam's operation. Egypt may take a seat; Ethiopia fears it would limit its sovereignty."
  }
 }

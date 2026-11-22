@@ -185,6 +185,120 @@
    }
   },
   {
+   "id": "irn_yaptirim",
+   "turn": 20,
+   "title": "Yaptırım Pazarlığı",
+   "scene": "peace",
+   "icon": "treaty",
+   "text": "Umman ve Katar arabuluculuğunda yaptırım gevşetmesi karşılığında zenginleştirme sınırı pazarlığı yapılıyor. Washington ve Tel Aviv ikna olmuş değil; Tahran ekonomik baskı altında.",
+   "major": false,
+   "default_fx": [
+    [
+     "rel",
+     "Iran",
+     "United States of America",
+     2
+    ],
+    [
+     "rel",
+     "Israel",
+     "United States of America",
+     -1
+    ]
+   ],
+   "roles": {
+    "Iran": {
+     "text": "Ekonomi sıkışıyor; ama müzakere taviz olarak görülebilir.",
+     "options": [
+      {
+       "t": "Sınırlı anlaşmayı kabul et",
+       "d": "Sınırlı anlaşmayı kabul et",
+       "fx": [
+        [
+         "gold",
+         "Iran",
+         1.5
+        ],
+        [
+         "rel",
+         "Iran",
+         "United States of America",
+         4
+        ],
+        [
+         "stab",
+         "Iran",
+         -1
+        ]
+       ],
+       "r": "İran sınırlı bir ara anlaşmayı kabul etti."
+      },
+      {
+       "t": "Direniş ekonomisini sürdür",
+       "d": "Direniş ekonomisini sürdür",
+       "fx": [
+        [
+         "rel",
+         "Iran",
+         "United States of America",
+         -3
+        ],
+        [
+         "stab",
+         "Iran",
+         1
+        ]
+       ],
+       "r": "Tahran taviz vermeyi reddetti."
+      }
+     ]
+    },
+    "United States of America": {
+     "text": "Washington müzakereden yana ama İsrail ve Körfez ülkelerinin güvenlik kaygıları var.",
+     "options": [
+      {
+       "t": "Müzakereyi destekle",
+       "d": "Müzakereyi destekle",
+       "fx": [
+        [
+         "rel",
+         "United States of America",
+         "Iran",
+         3
+        ],
+        [
+         "rel",
+         "United States of America",
+         "Israel",
+         -3
+        ]
+       ],
+       "r": "ABD arabuluculuğu açıkça destekledi."
+      },
+      {
+       "t": "Maksimum baskıyı sürdür",
+       "d": "Maksimum baskıyı sürdür",
+       "fx": [
+        [
+         "rel",
+         "United States of America",
+         "Iran",
+         -4
+        ],
+        [
+         "rel",
+         "United States of America",
+         "Israel",
+         3
+        ]
+       ],
+       "r": "Washington yaptırımları sıkılaştırdı."
+      }
+     ]
+    }
+   }
+  },
+  {
    "id": "irn_nukleer",
    "turn": 24,
    "title": "Zenginleştirilmiş Uranyumun Kaderi",
@@ -435,6 +549,114 @@
      ]
     }
    }
+  },
+  {
+   "id": "irn_vekil",
+   "turn": 76,
+   "title": "Vekil Çatışmaları",
+   "scene": "air",
+   "icon": "missile",
+   "text": "Irak ve Suriye'de İran bağlantılı gruplar ile ABD üsleri arasında drone ve roket saldırıları arttı. Bölgesel savaşın eşiğinde bir tırmanış riski var.",
+   "major": true,
+   "default_fx": [
+    [
+     "stab",
+     "Iraq",
+     -2
+    ],
+    [
+     "rel",
+     "Iran",
+     "United States of America",
+     -3
+    ]
+   ],
+   "roles": {
+    "Iran": {
+     "text": "Vekillerin denetimi sınırlı; ama saldırılar siyasi koz sağlıyor.",
+     "options": [
+      {
+       "t": "Vekilleri dizginle",
+       "d": "Vekilleri dizginle",
+       "fx": [
+        [
+         "rel",
+         "Iran",
+         "United States of America",
+         3
+        ],
+        [
+         "stab",
+         "Iran",
+         -1
+        ]
+       ],
+       "r": "Tahran vekil gruplara itidal çağrısı yaptı."
+      },
+      {
+       "t": "Baskıyı artır",
+       "d": "Baskıyı artır",
+       "fx": [
+        [
+         "rel",
+         "Iran",
+         "United States of America",
+         -4
+        ],
+        [
+         "rel",
+         "Iran",
+         "Iraq",
+         2
+        ]
+       ],
+       "r": "İran bağlantılı gruplar saldırıları artırdı."
+      }
+     ]
+    },
+    "United States of America": {
+     "text": "Üslerde can kaybı riski var. Misilleme mi, geri çekilme mi?",
+     "options": [
+      {
+       "t": "Hedefli misilleme yap",
+       "d": "Hedefli misilleme yap",
+       "fx": [
+        [
+         "rel",
+         "United States of America",
+         "Iran",
+         -4
+        ],
+        [
+         "rel",
+         "United States of America",
+         "Iraq",
+         -2
+        ]
+       ],
+       "r": "ABD vekil gruplara hedefli hava saldırıları yaptı."
+      },
+      {
+       "t": "Üsleri azalt",
+       "d": "Üsleri azalt",
+       "fx": [
+        [
+         "rel",
+         "United States of America",
+         "Iraq",
+         3
+        ],
+        [
+         "stab",
+         "United States of America",
+         1
+        ]
+       ],
+       "r": "Washington bazı üsleri küçülttü."
+      }
+     ]
+    }
+   }
   }
  ],
  "moments_en": {
@@ -467,7 +689,7 @@
   "Siz stoğun çıkarılmasını ya da yok edilmesini istiyorsunuz; yeni saldırı ABD'yi bağlar mı?": "You want the stockpile removed or destroyed; would a new strike bind the US?",
   "Kalıcı anlaşma için tavizler ver": "Offer concessions for a permanent deal",
   "ABD yaptırımların kademeli gevşemesini önerdi.": "The US offered phased sanctions relief.",
-  "Maksimum baskıyı sürdür": "Keep up maximum pressure",
+  "Maksimum baskıyı sürdür": "Keep maximum pressure",
   "Washington yeni yaptırımlar ilan etti.": "Washington announced new sanctions.",
   "Başkan 'kalıcı bir anlaşma' istiyor; Kongre ve müttefikler farklı yönlere çekiyor.": "The President wants a 'permanent deal'; Congress and allies pull in different directions.",
   "Zenginleştirilmiş Uranyumun Kaderi": "The Fate of the Enriched Uranium",
@@ -478,6 +700,29 @@
   "Tahran Türkiye ve Irak'tan elektrik ithalatı için anlaştı.": "Tehran agreed to import electricity from Turkey and Iraq.",
   "Halk ışıksız ve susuz; ordu ve Devrim Muhafızları iç düzeni mi sağlayacak yoksa yatırım mı?": "The public lacks light and water; will the army and the Guards police the interior, or will you invest?",
   "Şebeke Çöküyor": "The Grid Falters",
-  "İran'da elektrik rasyonu başladı: savaş hasarı, yaptırımlar ve yaz sıcağı şebekeyi çökertiyor; fabrikalar kapanıyor ve sokak protestoları artıyor. Tahran'da yeni lider kadrosu iç kontrolü sıkılaştırıyor.": "Electricity rationing began in Iran: war damage, sanctions and summer heat are crippling the grid; factories shut and street protests grow. The new leadership in Tehran tightens internal control."
+  "İran'da elektrik rasyonu başladı: savaş hasarı, yaptırımlar ve yaz sıcağı şebekeyi çökertiyor; fabrikalar kapanıyor ve sokak protestoları artıyor. Tahran'da yeni lider kadrosu iç kontrolü sıkılaştırıyor.": "Electricity rationing began in Iran: war damage, sanctions and summer heat are crippling the grid; factories shut and street protests grow. The new leadership in Tehran tightens internal control.",
+  "Sınırlı anlaşmayı kabul et": "Accept a limited deal",
+  "İran sınırlı bir ara anlaşmayı kabul etti.": "Iran accepted a limited interim deal.",
+  "Direniş ekonomisini sürdür": "Stay with the resistance economy",
+  "Tahran taviz vermeyi reddetti.": "Tehran refused to concede.",
+  "Ekonomi sıkışıyor; ama müzakere taviz olarak görülebilir.": "The economy is squeezed, but negotiation could look like a concession.",
+  "Müzakereyi destekle": "Support the talks",
+  "ABD arabuluculuğu açıkça destekledi.": "The US openly backed the mediation.",
+  "Washington yaptırımları sıkılaştırdı.": "Washington tightened sanctions.",
+  "Washington müzakereden yana ama İsrail ve Körfez ülkelerinin güvenlik kaygıları var.": "Washington favours talks, but Israel and Gulf states have security concerns.",
+  "Yaptırım Pazarlığı": "The Sanctions Bargain",
+  "Umman ve Katar arabuluculuğunda yaptırım gevşetmesi karşılığında zenginleştirme sınırı pazarlığı yapılıyor. Washington ve Tel Aviv ikna olmuş değil; Tahran ekonomik baskı altında.": "Oman and Qatar are mediating a bargain: sanctions relief for enrichment limits. Washington and Tel Aviv are unconvinced; Tehran is under economic pressure.",
+  "Vekilleri dizginle": "Rein in the proxies",
+  "Tahran vekil gruplara itidal çağrısı yaptı.": "Tehran urged restraint on the proxy groups.",
+  "Baskıyı artır": "Raise the pressure",
+  "İran bağlantılı gruplar saldırıları artırdı.": "Iran-linked groups increased attacks.",
+  "Vekillerin denetimi sınırlı; ama saldırılar siyasi koz sağlıyor.": "Control over proxies is limited, but the attacks provide leverage.",
+  "Hedefli misilleme yap": "Strike back in a targeted way",
+  "ABD vekil gruplara hedefli hava saldırıları yaptı.": "The US launched targeted strikes on proxy groups.",
+  "Üsleri azalt": "Draw down the bases",
+  "Washington bazı üsleri küçülttü.": "Washington scaled down some bases.",
+  "Üslerde can kaybı riski var. Misilleme mi, geri çekilme mi?": "There is a risk of casualties at the bases. Retaliate or pull back?",
+  "Vekil Çatışmaları": "Proxy Clashes",
+  "Irak ve Suriye'de İran bağlantılı gruplar ile ABD üsleri arasında drone ve roket saldırıları arttı. Bölgesel savaşın eşiğinde bir tırmanış riski var.": "Drone and rocket attacks between Iran-linked groups and US bases in Iraq and Syria have intensified. There is a risk of escalation on the verge of regional war."
  }
 }

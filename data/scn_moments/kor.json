@@ -167,6 +167,126 @@
    }
   },
   {
+   "id": "kor_fuze",
+   "turn": 18,
+   "title": "Kıtalararası Füze Testi",
+   "scene": "air",
+   "icon": "missile",
+   "text": "Kuzey Kore yeni bir kıtalararası balistik füzeyi Japon Denizi'ne doğru fırlattı; füze Japon münhasır ekonomik bölgesine düştü. Güvenlik Konseyi toplanıyor.",
+   "major": true,
+   "default_fx": [
+    [
+     "rel",
+     "North Korea",
+     "United States of America",
+     -3
+    ],
+    [
+     "rel",
+     "North Korea",
+     "Japan",
+     -3
+    ],
+    [
+     "stab",
+     "South Korea",
+     -1
+    ]
+   ],
+   "roles": {
+    "South Korea": {
+     "text": "Seul savunma ittifakını güçlendirirken diyalog kanalını da korumak istiyor.",
+     "options": [
+      {
+       "t": "Ortak tatbikat yap",
+       "d": "Ortak tatbikat yap",
+       "fx": [
+        [
+         "rel",
+         "South Korea",
+         "United States of America",
+         4
+        ],
+        [
+         "rel",
+         "South Korea",
+         "Japan",
+         3
+        ],
+        [
+         "rel",
+         "South Korea",
+         "North Korea",
+         -3
+        ]
+       ],
+       "r": "Seul ABD ve Japonya ile ortak füze savunma tatbikatı yaptı."
+      },
+      {
+       "t": "Diyalog teklif et",
+       "d": "Diyalog teklif et",
+       "fx": [
+        [
+         "rel",
+         "South Korea",
+         "North Korea",
+         3
+        ],
+        [
+         "stab",
+         "South Korea",
+         -1
+        ]
+       ],
+       "r": "Seul Pyongyang'a doğrudan görüşme önerdi."
+      }
+     ]
+    },
+    "North Korea": {
+     "text": "Kim rejimi testi caydırıcılık olarak sunuyor; yaptırımlar ağırlaşıyor.",
+     "options": [
+      {
+       "t": "Yeni test için hazırlan",
+       "d": "Yeni test için hazırlan",
+       "fx": [
+        [
+         "rel",
+         "North Korea",
+         "United States of America",
+         -3
+        ],
+        [
+         "stab",
+         "North Korea",
+         2
+        ]
+       ],
+       "r": "Pyongyang yeni bir füze testi hazırlığına girdi."
+      },
+      {
+       "t": "Moratoryum öner",
+       "d": "Moratoryum öner",
+       "fx": [
+        [
+         "rel",
+         "North Korea",
+         "United States of America",
+         3
+        ],
+        [
+         "rel",
+         "North Korea",
+         "South Korea",
+         2
+        ]
+       ],
+       "r": "Kuzey Kore sınırlı bir test moratoryumu önerdi."
+      }
+     ]
+    }
+   }
+  },
+  {
    "id": "kor_tatbikatlar",
    "turn": 30,
    "title": "Yaz Tatbikatları ve Rus Mühimmatı",
@@ -426,6 +546,119 @@
      ]
     }
    }
+  },
+  {
+   "id": "kor_siber",
+   "turn": 72,
+   "title": "Kripto Hırsızlığı",
+   "scene": "crisis",
+   "icon": "warning",
+   "text": "Kuzey Kore bağlantılı bir hacker grubu uluslararası bir kripto borsasından yüz milyonlarca dolar çaldı. Fonlar silah programına gidiyor olabilir; borsa sahibi ülkeler tepkili.",
+   "major": false,
+   "default_fx": [
+    [
+     "gold",
+     "North Korea",
+     2.0
+    ],
+    [
+     "rel",
+     "North Korea",
+     "United States of America",
+     -2
+    ],
+    [
+     "rel",
+     "North Korea",
+     "Japan",
+     -2
+    ]
+   ],
+   "roles": {
+    "North Korea": {
+     "text": "Kripto gelir yaptırımlara karşı bir can simidi; tespiti zor.",
+     "options": [
+      {
+       "t": "Operasyonu genişlet",
+       "d": "Operasyonu genişlet",
+       "fx": [
+        [
+         "gold",
+         "North Korea",
+         2.0
+        ],
+        [
+         "rel",
+         "North Korea",
+         "United States of America",
+         -3
+        ]
+       ],
+       "r": "Pyongyang siber operasyonlarını genişletti."
+      },
+      {
+       "t": "Kamuoyundan uzak dur",
+       "d": "Kamuoyundan uzak dur",
+       "fx": [
+        [
+         "stab",
+         "North Korea",
+         1
+        ]
+       ],
+       "r": "Pyongyang açıklama yapmadı."
+      }
+     ]
+    },
+    "United States of America": {
+     "text": "Washington bu para akışını durdurmak için yaptırım ve istihbarat operasyonu planlıyor.",
+     "options": [
+      {
+       "t": "Yaptırım ve siber operasyon yap",
+       "d": "Yaptırım ve siber operasyon yap",
+       "fx": [
+        [
+         "rel",
+         "United States of America",
+         "North Korea",
+         -3
+        ],
+        [
+         "rel",
+         "United States of America",
+         "Japan",
+         2
+        ],
+        [
+         "gold",
+         "North Korea",
+         -1.0
+        ]
+       ],
+       "r": "ABD borsa ağlarına yönelik ortak operasyon yürüttü."
+      },
+      {
+       "t": "Diplomatik baskı yap",
+       "d": "Diplomatik baskı yap",
+       "fx": [
+        [
+         "rel",
+         "United States of America",
+         "China",
+         -2
+        ],
+        [
+         "rel",
+         "United States of America",
+         "Russia",
+         -2
+        ]
+       ],
+       "r": "Washington Çin ve Rusya'ya baskı kurdu."
+      }
+     ]
+    }
+   }
   }
  ],
  "moments_en": {
@@ -469,6 +702,30 @@
   "Pyongyang olayı 'provokasyon' diye kınayıp tırmandırmadı.": "Pyongyang condemned a 'provocation' without escalating.",
   "Olayı fırsat sayıp 'misilleme' diyebilirsiniz; ya da kontrolü kaybetmeden durdurursunuz.": "You can use the incident as a pretext for 'retaliation', or stop it before losing control.",
   "Sınırda Silah Sesi": "Shots at the Border",
-  "DMZ'de bir uyarı ateşi kazaya dönüştü: bir askerî devriye mayına bastı, iki tarafın topçusu ateş açtı. Hotline sessiz kalırsa tırmanma kaçınılmaz.": "A warning shot in the DMZ turned into an accident: a patrol hit a mine and artillery on both sides opened fire. If the hotline stays silent, escalation is unavoidable."
+  "DMZ'de bir uyarı ateşi kazaya dönüştü: bir askerî devriye mayına bastı, iki tarafın topçusu ateş açtı. Hotline sessiz kalırsa tırmanma kaçınılmaz.": "A warning shot in the DMZ turned into an accident: a patrol hit a mine and artillery on both sides opened fire. If the hotline stays silent, escalation is unavoidable.",
+  "Ortak tatbikat yap": "Hold joint drills",
+  "Seul ABD ve Japonya ile ortak füze savunma tatbikatı yaptı.": "Seoul held joint missile-defence drills with the US and Japan.",
+  "Diyalog teklif et": "Offer dialogue",
+  "Seul Pyongyang'a doğrudan görüşme önerdi.": "Seoul offered direct talks to Pyongyang.",
+  "Seul savunma ittifakını güçlendirirken diyalog kanalını da korumak istiyor.": "Seoul strengthens its defence alliance while trying to keep a dialogue channel open.",
+  "Yeni test için hazırlan": "Prepare another test",
+  "Pyongyang yeni bir füze testi hazırlığına girdi.": "Pyongyang began preparing another missile test.",
+  "Moratoryum öner": "Offer a moratorium",
+  "Kuzey Kore sınırlı bir test moratoryumu önerdi.": "North Korea floated a limited test moratorium.",
+  "Kim rejimi testi caydırıcılık olarak sunuyor; yaptırımlar ağırlaşıyor.": "The Kim regime frames the test as deterrence; sanctions are growing heavier.",
+  "Kıtalararası Füze Testi": "An ICBM Test",
+  "Kuzey Kore yeni bir kıtalararası balistik füzeyi Japon Denizi'ne doğru fırlattı; füze Japon münhasır ekonomik bölgesine düştü. Güvenlik Konseyi toplanıyor.": "North Korea fired a new intercontinental ballistic missile toward the Sea of Japan; it landed in Japan's exclusive economic zone. The Security Council is convening.",
+  "Operasyonu genişlet": "Expand the operation",
+  "Pyongyang siber operasyonlarını genişletti.": "Pyongyang expanded its cyber operations.",
+  "Kamuoyundan uzak dur": "Keep a low profile",
+  "Pyongyang açıklama yapmadı.": "Pyongyang made no statement.",
+  "Kripto gelir yaptırımlara karşı bir can simidi; tespiti zor.": "Crypto income is a lifeline against sanctions and hard to trace.",
+  "Yaptırım ve siber operasyon yap": "Sanction and run a cyber operation",
+  "ABD borsa ağlarına yönelik ortak operasyon yürüttü.": "The US ran a joint operation against exchange networks.",
+  "Diplomatik baskı yap": "Apply diplomatic pressure",
+  "Washington Çin ve Rusya'ya baskı kurdu.": "Washington pressed China and Russia.",
+  "Washington bu para akışını durdurmak için yaptırım ve istihbarat operasyonu planlıyor.": "Washington plans sanctions and an intelligence operation to stop the flows.",
+  "Kripto Hırsızlığı": "The Crypto Heist",
+  "Kuzey Kore bağlantılı bir hacker grubu uluslararası bir kripto borsasından yüz milyonlarca dolar çaldı. Fonlar silah programına gidiyor olabilir; borsa sahibi ülkeler tepkili.": "A North Korea-linked hacking group stole hundreds of millions of dollars from an international crypto exchange. The funds may go to the weapons programme; exchange-host countries are angry."
  }
 }

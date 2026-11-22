@@ -161,6 +161,133 @@
    }
   },
   {
+   "id": "korea_ittifak",
+   "turn": 22,
+   "title": "Seul–Tokyo–Vaşington Üçlü Zirvesi",
+   "scene": "peace",
+   "icon": "treaty",
+   "text": "Üç müttefik füze uyarı verilerini gerçek zamanlı paylaşma ve ortak tatbikat konusunda anlaştı. Pyongyang bunu 'Asya NATO'su' olarak niteliyor.",
+   "major": false,
+   "default_fx": [
+    [
+     "rel",
+     "South Korea",
+     "Japan",
+     4
+    ],
+    [
+     "rel",
+     "South Korea",
+     "United States of America",
+     3
+    ],
+    [
+     "rel",
+     "North Korea",
+     "South Korea",
+     -2
+    ]
+   ],
+   "roles": {
+    "South Korea": {
+     "text": "Seul tarihsel anlaşmazlıklara rağmen Tokyo ile işbirliğini derinleştiriyor.",
+     "options": [
+      {
+       "t": "Üçlü işbirliğini derinleştir",
+       "d": "Üçlü işbirliğini derinleştir",
+       "fx": [
+        [
+         "rel",
+         "South Korea",
+         "Japan",
+         4
+        ],
+        [
+         "rel",
+         "South Korea",
+         "United States of America",
+         3
+        ],
+        [
+         "rel",
+         "South Korea",
+         "North Korea",
+         -3
+        ]
+       ],
+       "r": "Seul üçlü işbirliğini kurumsallaştırdı."
+      },
+      {
+       "t": "Pyongyang ile kanalı koru",
+       "d": "Pyongyang ile kanalı koru",
+       "fx": [
+        [
+         "rel",
+         "South Korea",
+         "North Korea",
+         3
+        ],
+        [
+         "rel",
+         "South Korea",
+         "Japan",
+         -1
+        ]
+       ],
+       "r": "Seul diyalog kanalını açık tuttu."
+      }
+     ]
+    },
+    "Japan": {
+     "text": "Tokyo savunma bütçesini artırıyor; bölgesel ittifak için fırsat.",
+     "options": [
+      {
+       "t": "Ortak füze savunması kur",
+       "d": "Ortak füze savunması kur",
+       "fx": [
+        [
+         "rel",
+         "Japan",
+         "South Korea",
+         4
+        ],
+        [
+         "rel",
+         "Japan",
+         "United States of America",
+         3
+        ],
+        [
+         "gold",
+         "Japan",
+         -0.5
+        ]
+       ],
+       "r": "Tokyo ortak füze savunma sistemini hızlandırdı."
+      },
+      {
+       "t": "Ayrı savunma hattı kur",
+       "d": "Ayrı savunma hattı kur",
+       "fx": [
+        [
+         "troops",
+         "Japan",
+         2
+        ],
+        [
+         "rel",
+         "Japan",
+         "South Korea",
+         -1
+        ]
+       ],
+       "r": "Tokyo bağımsız savunma planına odaklandı."
+      }
+     ]
+    }
+   }
+  },
+  {
    "id": "korea_denizalti",
    "turn": 36,
    "title": "Nükleer Denizaltı Tartışması",
@@ -462,6 +589,118 @@
      ]
     }
    }
+  },
+  {
+   "id": "korea_aci",
+   "turn": 100,
+   "title": "İnsani Yardım Koridoru",
+   "scene": "peace",
+   "icon": "dove",
+   "text": "Kuzey Kore'deki gıda kıtlığı BM'yi alarma geçirdi; Güney Kore ve Çin yardım koridoru önerdi. Siyasi bir yumuşama için nadir bir fırsat.",
+   "major": false,
+   "default_fx": [
+    [
+     "stab",
+     "North Korea",
+     -2
+    ],
+    [
+     "rel",
+     "South Korea",
+     "North Korea",
+     2
+    ]
+   ],
+   "roles": {
+    "North Korea": {
+     "text": "Rejim yardımı kabul ederse dışa bağımlılık görünür; reddederse kıtlık büyür.",
+     "options": [
+      {
+       "t": "Yardımı kabul et",
+       "d": "Yardımı kabul et",
+       "fx": [
+        [
+         "stab",
+         "North Korea",
+         2
+        ],
+        [
+         "rel",
+         "North Korea",
+         "South Korea",
+         3
+        ],
+        [
+         "rel",
+         "North Korea",
+         "China",
+         3
+        ]
+       ],
+       "r": "Pyongyang insani yardım koridorunu kabul etti."
+      },
+      {
+       "t": "Yardımı reddet",
+       "d": "Yardımı reddet",
+       "fx": [
+        [
+         "stab",
+         "North Korea",
+         -2
+        ],
+        [
+         "rel",
+         "North Korea",
+         "South Korea",
+         -2
+        ]
+       ],
+       "r": "Pyongyang yardımı reddetti."
+      }
+     ]
+    },
+    "South Korea": {
+     "text": "Seul yardımı politik koz olarak kullanmak ya da saf insani bir jest yapmak seçebilir.",
+     "options": [
+      {
+       "t": "Şartsız yardım yap",
+       "d": "Şartsız yardım yap",
+       "fx": [
+        [
+         "rel",
+         "South Korea",
+         "North Korea",
+         4
+        ],
+        [
+         "gold",
+         "South Korea",
+         -0.5
+        ]
+       ],
+       "r": "Seul şartsız yardım önerdi."
+      },
+      {
+       "t": "Siyasi şart öne sür",
+       "d": "Siyasi şart öne sür",
+       "fx": [
+        [
+         "rel",
+         "South Korea",
+         "North Korea",
+         -1
+        ],
+        [
+         "stab",
+         "South Korea",
+         1
+        ]
+       ],
+       "r": "Seul yardım için askerî güven artırıcı adım istedi."
+      }
+     ]
+    }
+   }
   }
  ],
  "moments_en": {
@@ -510,6 +749,30 @@
   "Pyongyang hotline'ı açıp olayı 'kaza' diye kapattı.": "Pyongyang opened the hotline and closed the incident as an accident.",
   "Olay sizin lehinize bir koz ya da kontrol dışı bir tırmanma olabilir.": "The incident can be leverage or an escalation out of control.",
   "Sınırda Ateş Değişimi": "An Exchange of Fire at the Border",
-  "Batı Denizi'ndeki Kuzey Sınır Hattı'nda iki tarafın donanması birbirine ateş açtı; olay kazaen mi başladı, kimse bilmiyor. Hotline hâlâ cevap vermiyor.": "The two navies exchanged fire along the Northern Limit Line in the West Sea; nobody knows whether it began by accident. The hotline is still unanswered."
+  "Batı Denizi'ndeki Kuzey Sınır Hattı'nda iki tarafın donanması birbirine ateş açtı; olay kazaen mi başladı, kimse bilmiyor. Hotline hâlâ cevap vermiyor.": "The two navies exchanged fire along the Northern Limit Line in the West Sea; nobody knows whether it began by accident. The hotline is still unanswered.",
+  "Üçlü işbirliğini derinleştir": "Deepen trilateral cooperation",
+  "Seul üçlü işbirliğini kurumsallaştırdı.": "Seoul institutionalised the trilateral cooperation.",
+  "Pyongyang ile kanalı koru": "Preserve the channel to Pyongyang",
+  "Seul diyalog kanalını açık tuttu.": "Seoul kept its dialogue channel open.",
+  "Seul tarihsel anlaşmazlıklara rağmen Tokyo ile işbirliğini derinleştiriyor.": "Seoul deepens cooperation with Tokyo despite historic disputes.",
+  "Ortak füze savunması kur": "Build joint missile defence",
+  "Tokyo ortak füze savunma sistemini hızlandırdı.": "Tokyo accelerated joint missile defence.",
+  "Ayrı savunma hattı kur": "Build a separate defence line",
+  "Tokyo bağımsız savunma planına odaklandı.": "Tokyo focused on its own defence plan.",
+  "Tokyo savunma bütçesini artırıyor; bölgesel ittifak için fırsat.": "Tokyo raises defence spending; an alliance chance.",
+  "Seul–Tokyo–Vaşington Üçlü Zirvesi": "The Seoul–Tokyo–Washington Summit",
+  "Üç müttefik füze uyarı verilerini gerçek zamanlı paylaşma ve ortak tatbikat konusunda anlaştı. Pyongyang bunu 'Asya NATO'su' olarak niteliyor.": "The three allies agreed to share missile-warning data in real time and hold joint drills. Pyongyang calls it an 'Asian NATO'.",
+  "Yardımı kabul et": "Accept the aid",
+  "Pyongyang insani yardım koridorunu kabul etti.": "Pyongyang accepted the humanitarian corridor.",
+  "Yardımı reddet": "Refuse the aid",
+  "Pyongyang yardımı reddetti.": "Pyongyang refused the aid.",
+  "Rejim yardımı kabul ederse dışa bağımlılık görünür; reddederse kıtlık büyür.": "If the regime accepts aid, dependence shows; if it refuses, famine grows.",
+  "Şartsız yardım yap": "Give unconditional aid",
+  "Seul şartsız yardım önerdi.": "Seoul offered unconditional aid.",
+  "Siyasi şart öne sür": "Attach political conditions",
+  "Seul yardım için askerî güven artırıcı adım istedi.": "Seoul sought confidence-building steps in exchange for aid.",
+  "Seul yardımı politik koz olarak kullanmak ya da saf insani bir jest yapmak seçebilir.": "Seoul can use aid as leverage or make a purely humanitarian gesture.",
+  "İnsani Yardım Koridoru": "A Humanitarian Corridor",
+  "Kuzey Kore'deki gıda kıtlığı BM'yi alarma geçirdi; Güney Kore ve Çin yardım koridoru önerdi. Siyasi bir yumuşama için nadir bir fırsat.": "Food shortages in North Korea alarmed the UN; South Korea and China proposed an aid corridor. A rare chance for political thaw."
  }
 }

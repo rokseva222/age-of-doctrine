@@ -171,6 +171,123 @@
    }
   },
   {
+   "id": "essequibo_uydu",
+   "turn": 24,
+   "title": "Uydu Görüntüleri",
+   "scene": "border",
+   "icon": "border_clash",
+   "text": "Uydu görüntüleri Venezuela'nın sınır bölgesinde yeni yollar ve asker yığınağı gösteriyor. Guyana BM ve komşularından destek istiyor; Brezilya sınırında devriye artırıyor.",
+   "major": true,
+   "default_fx": [
+    [
+     "stab",
+     "Guyana",
+     -1
+    ],
+    [
+     "rel",
+     "Guyana",
+     "Venezuela",
+     -3
+    ],
+    [
+     "rel",
+     "Brazil",
+     "Venezuela",
+     -1
+    ]
+   ],
+   "roles": {
+    "Guyana": {
+     "text": "Küçük ordun var, ama petrol geliri ve uluslararası destek sende.",
+     "options": [
+      {
+       "t": "BM ve ABD'den güvence iste",
+       "d": "BM ve ABD'den güvence iste",
+       "fx": [
+        [
+         "rel",
+         "Guyana",
+         "United States of America",
+         5
+        ],
+        [
+         "stab",
+         "Guyana",
+         2
+        ]
+       ],
+       "r": "Georgetown BM ve Washington'dan güvence aldı."
+      },
+      {
+       "t": "Ordu modernizasyonu başlat",
+       "d": "Ordu modernizasyonu başlat",
+       "fx": [
+        [
+         "troops",
+         "Guyana",
+         3
+        ],
+        [
+         "gold",
+         "Guyana",
+         -1.0
+        ]
+       ],
+       "r": "Guyana petrol gelirini savunmaya ayırdı."
+      }
+     ]
+    },
+    "Venezuela": {
+     "text": "Caracas iç siyaseti için Essequibo'yu bir ulusal dava olarak kullanıyor.",
+     "options": [
+      {
+       "t": "Yığınağı sürdür",
+       "d": "Yığınağı sürdür",
+       "fx": [
+        [
+         "troops",
+         "Venezuela",
+         2
+        ],
+        [
+         "rel",
+         "Venezuela",
+         "Guyana",
+         -4
+        ],
+        [
+         "rel",
+         "Venezuela",
+         "Brazil",
+         -2
+        ]
+       ],
+       "r": "Caracas sınırdaki askerî varlığını artırdı."
+      },
+      {
+       "t": "Müzakere öner",
+       "d": "Müzakere öner",
+       "fx": [
+        [
+         "rel",
+         "Venezuela",
+         "Guyana",
+         2
+        ],
+        [
+         "stab",
+         "Venezuela",
+         -1
+        ]
+       ],
+       "r": "Caracas Guyana'ya müzakere önerdi."
+      }
+     ]
+    }
+   }
+  },
+  {
    "id": "essequibo_petrol",
    "turn": 30,
    "title": "Açık Deniz Petrolü ve Bir Olay",
@@ -398,6 +515,125 @@
      ]
     }
    }
+  },
+  {
+   "id": "essequibo_tahkim",
+   "turn": 100,
+   "title": "Uluslararası Adalet Divanı",
+   "scene": "pre_court",
+   "icon": "treaty",
+   "text": "Adalet Divanı sınır uyuşmazlığına ilişkin esas kararı için duruşma tarihi belirledi. Guyana 1899 tahkim kararına dayanıyor; Venezuela Cenevre Anlaşması'nı savunuyor.",
+   "major": true,
+   "default_fx": [
+    [
+     "rel",
+     "Guyana",
+     "Venezuela",
+     -2
+    ],
+    [
+     "rel",
+     "Guyana",
+     "United States of America",
+     2
+    ]
+   ],
+   "roles": {
+    "Guyana": {
+     "text": "Hukuki süreç lehinize ama karar sonrası riskler var.",
+     "options": [
+      {
+       "t": "Karara bağlı kal",
+       "d": "Karara bağlı kal",
+       "fx": [
+        [
+         "stab",
+         "Guyana",
+         2
+        ],
+        [
+         "rel",
+         "Guyana",
+         "United States of America",
+         2
+        ],
+        [
+         "rel",
+         "Guyana",
+         "Brazil",
+         2
+        ]
+       ],
+       "r": "Georgetown Divan kararına uyacağını açıkladı."
+      },
+      {
+       "t": "Kararı beklemeden hak iddia et",
+       "d": "Kararı beklemeden hak iddia et",
+       "fx": [
+        [
+         "troops",
+         "Guyana",
+         1
+        ],
+        [
+         "rel",
+         "Guyana",
+         "Venezuela",
+         -3
+        ]
+       ],
+       "r": "Guyana bölgede varlık gösterdi."
+      }
+     ]
+    },
+    "Venezuela": {
+     "text": "Caracas Divan'ın yetkisini tanımıyor; karar sonrası ne olacak?",
+     "options": [
+      {
+       "t": "Divan'ı reddet",
+       "d": "Divan'ı reddet",
+       "fx": [
+        [
+         "rel",
+         "Venezuela",
+         "Guyana",
+         -4
+        ],
+        [
+         "rel",
+         "Venezuela",
+         "United States of America",
+         -3
+        ],
+        [
+         "stab",
+         "Venezuela",
+         1
+        ]
+       ],
+       "r": "Venezuela Divan'ın yetkisini reddetti."
+      },
+      {
+       "t": "Müzakereye devam et",
+       "d": "Müzakereye devam et",
+       "fx": [
+        [
+         "rel",
+         "Venezuela",
+         "Guyana",
+         3
+        ],
+        [
+         "stab",
+         "Venezuela",
+         -1
+        ]
+       ],
+       "r": "Caracas ikili görüşme yolunu açık tuttu."
+      }
+     ]
+    }
+   }
   }
  ],
  "moments_en": {
@@ -441,6 +677,30 @@
   "Venezuela sınır birliklerini çekti.": "Venezuela pulled back its border units.",
   "Çatışma iç siyasi malzeme; ama savaş ABD'yi doğrudan sahaya çekebilir.": "The clash is domestic political material, but war could pull the US in directly.",
   "Ormanda Sınır Çatışması": "A Jungle Border Clash",
-  "Cuyuní Nehri çevresinde silahlı çete saldırısı ve karşı ateş: bir sınır karakolu vuruldu. Venezuela 'Guyana ordusu provokasyon yaptı' diyor.": "Armed gangs and return fire around the Cuyuní River: a border post was hit. Venezuela claims the Guyanese army provoked it."
+  "Cuyuní Nehri çevresinde silahlı çete saldırısı ve karşı ateş: bir sınır karakolu vuruldu. Venezuela 'Guyana ordusu provokasyon yaptı' diyor.": "Armed gangs and return fire around the Cuyuní River: a border post was hit. Venezuela claims the Guyanese army provoked it.",
+  "BM ve ABD'den güvence iste": "Seek UN and US assurances",
+  "Georgetown BM ve Washington'dan güvence aldı.": "Georgetown secured assurances from the UN and Washington.",
+  "Ordu modernizasyonu başlat": "Launch military modernisation",
+  "Guyana petrol gelirini savunmaya ayırdı.": "Guyana put oil revenue into defence.",
+  "Küçük ordun var, ama petrol geliri ve uluslararası destek sende.": "You have a small army, but oil revenue and international support.",
+  "Yığınağı sürdür": "Continue the build-up",
+  "Caracas sınırdaki askerî varlığını artırdı.": "Caracas increased its military presence at the frontier.",
+  "Müzakere öner": "Offer talks",
+  "Caracas Guyana'ya müzakere önerdi.": "Caracas offered talks to Guyana.",
+  "Caracas iç siyaseti için Essequibo'yu bir ulusal dava olarak kullanıyor.": "Caracas uses Essequibo as a national cause for domestic politics.",
+  "Uydu Görüntüleri": "Satellite Images",
+  "Uydu görüntüleri Venezuela'nın sınır bölgesinde yeni yollar ve asker yığınağı gösteriyor. Guyana BM ve komşularından destek istiyor; Brezilya sınırında devriye artırıyor.": "Satellite images show new roads and a troop build-up on Venezuela's side of the frontier. Guyana seeks UN and neighbour support; Brazil boosts border patrols.",
+  "Karara bağlı kal": "Commit to abide by the ruling",
+  "Georgetown Divan kararına uyacağını açıkladı.": "Georgetown said it would abide by the ICJ ruling.",
+  "Kararı beklemeden hak iddia et": "Press claims ahead of the ruling",
+  "Guyana bölgede varlık gösterdi.": "Guyana made a show of presence in the region.",
+  "Hukuki süreç lehinize ama karar sonrası riskler var.": "The legal process favours you but post-ruling risks exist.",
+  "Divan'ı reddet": "Reject the Court",
+  "Venezuela Divan'ın yetkisini reddetti.": "Venezuela rejected the Court's jurisdiction.",
+  "Müzakereye devam et": "Continue negotiations",
+  "Caracas ikili görüşme yolunu açık tuttu.": "Caracas kept the bilateral channel open.",
+  "Caracas Divan'ın yetkisini tanımıyor; karar sonrası ne olacak?": "Caracas does not recognise the Court's jurisdiction; what happens after the ruling?",
+  "Uluslararası Adalet Divanı": "The International Court of Justice",
+  "Adalet Divanı sınır uyuşmazlığına ilişkin esas kararı için duruşma tarihi belirledi. Guyana 1899 tahkim kararına dayanıyor; Venezuela Cenevre Anlaşması'nı savunuyor.": "The ICJ set a hearing date for its final ruling on the border dispute. Guyana relies on the 1899 arbitral award; Venezuela defends the Geneva Agreement."
  }
 }

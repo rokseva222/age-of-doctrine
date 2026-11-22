@@ -159,6 +159,119 @@
    }
   },
   {
+   "id": "sahel_wagner",
+   "turn": 22,
+   "title": "Yabancı Güvenlik Şirketleri",
+   "scene": "crisis",
+   "icon": "warning",
+   "text": "Sahel hükûmetleri Fransa'yı çıkarıp yabancı güvenlik şirketleriyle çalışmaya başladı. Köy katliamları ve insan hakları ihlalleri haberleri BM'yi harekete geçirdi.",
+   "major": true,
+   "default_fx": [
+    [
+     "rel",
+     "Mali",
+     "France",
+     -2
+    ],
+    [
+     "stab",
+     "Mali",
+     -1
+    ]
+   ],
+   "roles": {
+    "Mali": {
+     "text": "Bamako cihatçılarla savaşmak için dış destek istiyor; ama maliyet siyasi.",
+     "options": [
+      {
+       "t": "Yabancı şirketle çalışmaya devam et",
+       "d": "Yabancı şirketle çalışmaya devam et",
+       "fx": [
+        [
+         "troops",
+         "Mali",
+         2
+        ],
+        [
+         "rel",
+         "Mali",
+         "France",
+         -3
+        ],
+        [
+         "rel",
+         "Mali",
+         "Algeria",
+         -1
+        ]
+       ],
+       "r": "Bamako yabancı güvenlik şirketiyle çalışmaya devam etti."
+      },
+      {
+       "t": "Bölgesel güçlerle ortak ordu kur",
+       "d": "Bölgesel güçlerle ortak ordu kur",
+       "fx": [
+        [
+         "rel",
+         "Mali",
+         "Burkina Faso",
+         3
+        ],
+        [
+         "rel",
+         "Mali",
+         "Niger",
+         3
+        ]
+       ],
+       "r": "Mali komşularla ortak güç kurulmasını önerdi."
+      }
+     ]
+    },
+    "France": {
+     "text": "Paris'in Sahel'deki nüfuzu azalıyor; üsler kapanırken ne yapılacak?",
+     "options": [
+      {
+       "t": "Üsleri Gine Körfezi'ne kaydır",
+       "d": "Üsleri Gine Körfezi'ne kaydır",
+       "fx": [
+        [
+         "rel",
+         "France",
+         "Nigeria",
+         3
+        ],
+        [
+         "troops",
+         "France",
+         1
+        ]
+       ],
+       "r": "Fransa askerlerini kıyı ülkelerine kaydırdı."
+      },
+      {
+       "t": "Sahel ülkeleriyle diyaloğu koru",
+       "d": "Sahel ülkeleriyle diyaloğu koru",
+       "fx": [
+        [
+         "rel",
+         "France",
+         "Mali",
+         2
+        ],
+        [
+         "stab",
+         "France",
+         1
+        ]
+       ],
+       "r": "Paris Sahel ülkeleriyle diplomatik kanalı açık tuttu."
+      }
+     ]
+    }
+   }
+  },
+  {
    "id": "sahel_darbe",
    "turn": 30,
    "title": "Bir Darbe Söylentisi (Kurgusal)",
@@ -436,6 +549,122 @@
      ]
     }
    }
+  },
+  {
+   "id": "sahel_yardim",
+   "turn": 100,
+   "title": "Kıtlık ve Mülteci Akını",
+   "scene": "crisis",
+   "icon": "drought",
+   "text": "Çatışma ve kuraklık milyonlarca insanı yerinden etti; BM acil insani yardım çağrısı yaptı. Komşu ülkeler sınırlarında mülteci kamplarıyla karşı karşıya.",
+   "major": false,
+   "default_fx": [
+    [
+     "stab",
+     "Niger",
+     -2
+    ],
+    [
+     "stab",
+     "Burkina Faso",
+     -2
+    ],
+    [
+     "gold",
+     "Nigeria",
+     -0.5
+    ]
+   ],
+   "roles": {
+    "Nigeria": {
+     "text": "Nijerya yük paylaşımı için bölgesel bir fon önerebilir.",
+     "options": [
+      {
+       "t": "Bölgesel yardım fonu başlat",
+       "d": "Bölgesel yardım fonu başlat",
+       "fx": [
+        [
+         "gold",
+         "Nigeria",
+         -1.0
+        ],
+        [
+         "rel",
+         "Nigeria",
+         "Niger",
+         3
+        ],
+        [
+         "rel",
+         "Nigeria",
+         "Burkina Faso",
+         3
+        ]
+       ],
+       "r": "Abuja bölgesel insani yardım fonu önerdi."
+      },
+      {
+       "t": "Sınırı kapat",
+       "d": "Sınırı kapat",
+       "fx": [
+        [
+         "stab",
+         "Nigeria",
+         1
+        ],
+        [
+         "rel",
+         "Nigeria",
+         "Niger",
+         -3
+        ]
+       ],
+       "r": "Nijerya sınırı kapattı."
+      }
+     ]
+    },
+    "Algeria": {
+     "text": "Cezayir kuzey sınırında istikrar istiyor; insani koridora destek verebilir.",
+     "options": [
+      {
+       "t": "İnsani koridor aç",
+       "d": "İnsani koridor aç",
+       "fx": [
+        [
+         "rel",
+         "Algeria",
+         "Mali",
+         4
+        ],
+        [
+         "gold",
+         "Algeria",
+         -0.5
+        ]
+       ],
+       "r": "Cezayir sınırında insani yardım koridoru açtı."
+      },
+      {
+       "t": "Sınır güvenliğini artır",
+       "d": "Sınır güvenliğini artır",
+       "fx": [
+        [
+         "troops",
+         "Algeria",
+         2
+        ],
+        [
+         "rel",
+         "Algeria",
+         "Mali",
+         -1
+        ]
+       ],
+       "r": "Cezayir sınır birliklerini artırdı."
+      }
+     ]
+    }
+   }
   }
  ],
  "moments_en": {
@@ -484,6 +713,30 @@
   "Mali silahlı gruplarla müzakere ve af önerdi.": "Mali offered negotiation and amnesty to armed groups.",
   "Hükümetiniz ayakta ama kontrolünüz haritanın küçük bir kısmında.": "Your government stands, but your control covers a small part of the map.",
   "Bölgesel Savaşın Eşiği (Kurgusal)": "On the Brink of a Regional War (Fictional)",
-  "Kurgusal silahlı grupların ilerleyişi sınır devletlerini tehdit ediyor: mülteciler, silah akışı ve altın madenleri bölgesel savaş riskini büyütüyor. Dış güçler masada ya da sahada.": "The advance of fictional armed groups threatens neighbouring states: refugees, arms flows and gold mines raise the risk of a regional war. Outside powers are at the table or in the field."
+  "Kurgusal silahlı grupların ilerleyişi sınır devletlerini tehdit ediyor: mülteciler, silah akışı ve altın madenleri bölgesel savaş riskini büyütüyor. Dış güçler masada ya da sahada.": "The advance of fictional armed groups threatens neighbouring states: refugees, arms flows and gold mines raise the risk of a regional war. Outside powers are at the table or in the field.",
+  "Yabancı şirketle çalışmaya devam et": "Keep the contractor partnership",
+  "Bamako yabancı güvenlik şirketiyle çalışmaya devam etti.": "Bamako kept working with the foreign contractor.",
+  "Bölgesel güçlerle ortak ordu kur": "Build a joint force with regional states",
+  "Mali komşularla ortak güç kurulmasını önerdi.": "Mali proposed a joint force with neighbours.",
+  "Bamako cihatçılarla savaşmak için dış destek istiyor; ama maliyet siyasi.": "Bamako wants outside help against jihadists, but the cost is political.",
+  "Üsleri Gine Körfezi'ne kaydır": "Shift bases to the Gulf of Guinea",
+  "Fransa askerlerini kıyı ülkelerine kaydırdı.": "France shifted forces to coastal states.",
+  "Sahel ülkeleriyle diyaloğu koru": "Keep dialogue with Sahel states",
+  "Paris Sahel ülkeleriyle diplomatik kanalı açık tuttu.": "Paris kept a diplomatic channel open to Sahel states.",
+  "Paris'in Sahel'deki nüfuzu azalıyor; üsler kapanırken ne yapılacak?": "Paris's Sahel influence is waning; what to do as bases close?",
+  "Yabancı Güvenlik Şirketleri": "Foreign Security Contractors",
+  "Sahel hükûmetleri Fransa'yı çıkarıp yabancı güvenlik şirketleriyle çalışmaya başladı. Köy katliamları ve insan hakları ihlalleri haberleri BM'yi harekete geçirdi.": "Sahel governments expelled France and began working with foreign security contractors. Reports of village massacres and rights abuses prompted UN action.",
+  "Bölgesel yardım fonu başlat": "Launch a regional aid fund",
+  "Abuja bölgesel insani yardım fonu önerdi.": "Abuja proposed a regional humanitarian fund.",
+  "Sınırı kapat": "Close the border",
+  "Nijerya sınırı kapattı.": "Nigeria closed its border.",
+  "Nijerya yük paylaşımı için bölgesel bir fon önerebilir.": "Nigeria can propose a regional fund for burden sharing.",
+  "İnsani koridor aç": "Open a humanitarian corridor",
+  "Cezayir sınırında insani yardım koridoru açtı.": "Algeria opened an aid corridor at its border.",
+  "Sınır güvenliğini artır": "Raise border security",
+  "Cezayir sınır birliklerini artırdı.": "Algeria increased border troops.",
+  "Cezayir kuzey sınırında istikrar istiyor; insani koridora destek verebilir.": "Algeria wants stability on its southern border and could support a humanitarian corridor.",
+  "Kıtlık ve Mülteci Akını": "Famine and Refugee Flows",
+  "Çatışma ve kuraklık milyonlarca insanı yerinden etti; BM acil insani yardım çağrısı yaptı. Komşu ülkeler sınırlarında mülteci kamplarıyla karşı karşıya.": "Conflict and drought displaced millions; the UN issued an urgent humanitarian appeal. Neighbouring countries face refugee camps at their borders."
  }
 }

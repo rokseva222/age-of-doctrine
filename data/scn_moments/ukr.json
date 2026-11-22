@@ -320,6 +320,109 @@
    }
   },
   {
+   "id": "ukr_dron",
+   "turn": 30,
+   "title": "Dron Duvarı",
+   "scene": "air",
+   "icon": "missile",
+   "text": "Avrupa'nın doğu sınırı boyunca dron ve hava savunma sistemleri örülüyor; Polonya ve Baltık ülkeleri hava sahası ihlallerine karşı ortak bir 'dron duvarı' istiyor. Rusya bunu provokasyon sayıyor.",
+   "major": false,
+   "default_fx": [
+    [
+     "rel",
+     "Poland",
+     "Russia",
+     -3
+    ],
+    [
+     "rel",
+     "Poland",
+     "Germany",
+     2
+    ]
+   ],
+   "roles": {
+    "Poland": {
+     "text": "Varşova hava ihlallerine sert karşılık vermek ve ortak sistemi hızlandırmak istiyor.",
+     "options": [
+      {
+       "t": "Dron duvarını başlat",
+       "d": "Dron duvarını başlat",
+       "fx": [
+        [
+         "rel",
+         "Poland",
+         "Germany",
+         4
+        ],
+        [
+         "buff",
+         "Poland",
+         "def",
+         1.15,
+         10
+        ],
+        [
+         "gold",
+         "Poland",
+         -0.5
+        ]
+       ],
+       "r": "Polonya ve komşuları ortak dron ve radar ağını devreye aldı."
+      },
+      {
+       "t": "Sadece diplomatik protesto",
+       "d": "Sadece diplomatik protesto",
+       "fx": [
+        [
+         "stab",
+         "Poland",
+         1
+        ]
+       ],
+       "r": "Varşova ihlaller için Moskova'ya nota verdi."
+      }
+     ]
+    },
+    "Russia": {
+     "text": "Moskova duvarı tehdit olarak görüyor; ama dron savaşında sınır ötesi tırmanış riski büyük.",
+     "options": [
+      {
+       "t": "Hava savunma tatbikatı yap",
+       "d": "Hava savunma tatbikatı yap",
+       "fx": [
+        [
+         "rel",
+         "Russia",
+         "Poland",
+         -3
+        ],
+        [
+         "troops",
+         "Russia",
+         1
+        ]
+       ],
+       "r": "Rusya sınırda büyük bir hava savunma tatbikatı yaptı."
+      },
+      {
+       "t": "İhlalleri sınırla",
+       "d": "İhlalleri sınırla",
+       "fx": [
+        [
+         "rel",
+         "Russia",
+         "Poland",
+         2
+        ]
+       ],
+       "r": "Rusya sınır ihlallerini azalttı."
+      }
+     ]
+    }
+   }
+  },
+  {
    "id": "ukr_doktor",
    "turn": 44,
    "title": "Doğu Dönüm Noktası: Donbas'ın Son Çeyreği",
@@ -553,6 +656,123 @@
      ]
     }
    }
+  },
+  {
+   "id": "ukr_yeniden",
+   "turn": 100,
+   "title": "Yeniden İnşa Fonu",
+   "scene": "peace",
+   "icon": "trade",
+   "text": "Savaş sonrası için Avrupa, ABD ve Körfez ülkeleri milyarlarca dolarlık bir yeniden inşa fonu önerdi. Dondurulmuş Rus varlıklarının kullanımı ve Ukrayna'nın AB yolu masada.",
+   "major": false,
+   "default_fx": [
+    [
+     "gold",
+     "Ukraine",
+     2.0
+    ],
+    [
+     "rel",
+     "Ukraine",
+     "Germany",
+     3
+    ],
+    [
+     "rel",
+     "Russia",
+     "Germany",
+     -3
+    ]
+   ],
+   "roles": {
+    "Ukraine": {
+     "text": "Fon kalkınmayı hızlandırır ama şartları siyasi: yolsuzlukla mücadele ve reformlar.",
+     "options": [
+      {
+       "t": "Reform şartlarını kabul et",
+       "d": "Reform şartlarını kabul et",
+       "fx": [
+        [
+         "gold",
+         "Ukraine",
+         3.0
+        ],
+        [
+         "rel",
+         "Ukraine",
+         "Germany",
+         4
+        ],
+        [
+         "stab",
+         "Ukraine",
+         1
+        ]
+       ],
+       "r": "Kiev reform takvimini kabul etti; fon serbest bırakıldı."
+      },
+      {
+       "t": "Şartsız yardım iste",
+       "d": "Şartsız yardım iste",
+       "fx": [
+        [
+         "rel",
+         "Ukraine",
+         "Germany",
+         -3
+        ],
+        [
+         "stab",
+         "Ukraine",
+         1
+        ]
+       ],
+       "r": "Kiev şartsız yardım talep etti."
+      }
+     ]
+    },
+    "Russia": {
+     "text": "Moskova dondurulmuş varlıkların fona aktarılmasına karşı.",
+     "options": [
+      {
+       "t": "Hukuki karşı hamle yap",
+       "d": "Hukuki karşı hamle yap",
+       "fx": [
+        [
+         "rel",
+         "Russia",
+         "Germany",
+         -3
+        ],
+        [
+         "stab",
+         "Russia",
+         1
+        ]
+       ],
+       "r": "Rusya varlıklara el koymanın hukuka aykırı olduğunu savundu."
+      },
+      {
+       "t": "Müzakereyle çözüm ara",
+       "d": "Müzakereyle çözüm ara",
+       "fx": [
+        [
+         "rel",
+         "Russia",
+         "Germany",
+         2
+        ],
+        [
+         "gold",
+         "Russia",
+         0.5
+        ]
+       ],
+       "r": "Moskova varlıklar için müzakere teklif etti."
+      }
+     ]
+    }
+   }
   }
  ],
  "moments_en": {
@@ -613,6 +833,30 @@
   "Kremlin, ateşkesi 'oyalama' diye niteledi.": "The Kremlin called the truce a 'stalling tactic'.",
   "Takas pazarlıkta koz; Moskova enerji ateşkesini 'yaptırım gevşetmesi' karşılığı kabul edebilir.": "The swap is a bargaining chip; Moscow might accept an energy truce for sanctions relief.",
   "Büyük Esir Takası": "The Great Prisoner Swap",
-  "Binlerce esirin değiştirildiği yeni bir takas yapıldı; iki başkent de 'ilerleme' dedi ama ateşkes hâlâ yok. Müzakerecilere göre bir sonraki aşama enerji ateşkesi.": "A new swap exchanged thousands of prisoners; both capitals spoke of 'progress', yet there is still no ceasefire. Negotiators say the next step is an energy truce."
+  "Binlerce esirin değiştirildiği yeni bir takas yapıldı; iki başkent de 'ilerleme' dedi ama ateşkes hâlâ yok. Müzakerecilere göre bir sonraki aşama enerji ateşkesi.": "A new swap exchanged thousands of prisoners; both capitals spoke of 'progress', yet there is still no ceasefire. Negotiators say the next step is an energy truce.",
+  "Dron duvarını başlat": "Launch the drone wall",
+  "Polonya ve komşuları ortak dron ve radar ağını devreye aldı.": "Poland and its neighbours activated a joint drone and radar network.",
+  "Sadece diplomatik protesto": "Diplomatic protest only",
+  "Varşova ihlaller için Moskova'ya nota verdi.": "Warsaw sent Moscow a note over the violations.",
+  "Varşova hava ihlallerine sert karşılık vermek ve ortak sistemi hızlandırmak istiyor.": "Warsaw wants a firm answer to airspace violations and to speed up the joint system.",
+  "Hava savunma tatbikatı yap": "Stage an air-defence drill",
+  "Rusya sınırda büyük bir hava savunma tatbikatı yaptı.": "Russia held a major air-defence drill at the border.",
+  "İhlalleri sınırla": "Curb the violations",
+  "Rusya sınır ihlallerini azalttı.": "Russia reduced airspace violations.",
+  "Moskova duvarı tehdit olarak görüyor; ama dron savaşında sınır ötesi tırmanış riski büyük.": "Moscow sees the wall as a threat, but cross-border escalation is risky in a drone war.",
+  "Dron Duvarı": "The Drone Wall",
+  "Avrupa'nın doğu sınırı boyunca dron ve hava savunma sistemleri örülüyor; Polonya ve Baltık ülkeleri hava sahası ihlallerine karşı ortak bir 'dron duvarı' istiyor. Rusya bunu provokasyon sayıyor.": "A mesh of drones and air defences is being woven along Europe's eastern border; Poland and the Baltics want a joint 'drone wall' against airspace violations. Russia calls it a provocation.",
+  "Reform şartlarını kabul et": "Accept reform conditions",
+  "Kiev reform takvimini kabul etti; fon serbest bırakıldı.": "Kyiv accepted a reform timetable; the fund was released.",
+  "Şartsız yardım iste": "Demand no-strings aid",
+  "Kiev şartsız yardım talep etti.": "Kyiv demanded aid without conditions.",
+  "Fon kalkınmayı hızlandırır ama şartları siyasi: yolsuzlukla mücadele ve reformlar.": "The fund can speed development but comes with political conditions: anti-corruption and reforms.",
+  "Hukuki karşı hamle yap": "File a legal counter-move",
+  "Rusya varlıklara el koymanın hukuka aykırı olduğunu savundu.": "Russia argued that seizing assets is unlawful.",
+  "Müzakereyle çözüm ara": "Seek a negotiated solution",
+  "Moskova varlıklar için müzakere teklif etti.": "Moscow offered talks on the assets.",
+  "Moskova dondurulmuş varlıkların fona aktarılmasına karşı.": "Moscow opposes transferring frozen assets into the fund.",
+  "Yeniden İnşa Fonu": "The Reconstruction Fund",
+  "Savaş sonrası için Avrupa, ABD ve Körfez ülkeleri milyarlarca dolarlık bir yeniden inşa fonu önerdi. Dondurulmuş Rus varlıklarının kullanımı ve Ukrayna'nın AB yolu masada.": "Europe, the US and Gulf states proposed a multi-billion reconstruction fund for after the war. The use of frozen Russian assets and Ukraine's EU path are on the table."
  }
 }

@@ -168,6 +168,127 @@
    }
   },
   {
+   "id": "scs_kod",
+   "turn": 24,
+   "title": "Davranış Kuralları Müzakeresi",
+   "scene": "peace",
+   "icon": "treaty",
+   "text": "ASEAN ve Çin, Güney Çin Denizi'nde bağlayıcı bir davranış kuralları metni üzerinde yeniden görüşüyor. Filipinler ve Vietnam bağlayıcılık ve tahkim hakkında ısrarcı; Pekin esnek metin istiyor.",
+   "major": false,
+   "default_fx": [
+    [
+     "rel",
+     "Philippines",
+     "China",
+     1
+    ],
+    [
+     "rel",
+     "Vietnam",
+     "China",
+     1
+    ]
+   ],
+   "roles": {
+    "Philippines": {
+     "text": "Manila 2016 tahkim kararına dayanarak bağlayıcı bir metin istiyor.",
+     "options": [
+      {
+       "t": "Bağlayıcı metin iste",
+       "d": "Bağlayıcı metin iste",
+       "fx": [
+        [
+         "rel",
+         "Philippines",
+         "China",
+         -2
+        ],
+        [
+         "rel",
+         "Philippines",
+         "United States of America",
+         2
+        ],
+        [
+         "rel",
+         "Philippines",
+         "Vietnam",
+         3
+        ]
+       ],
+       "r": "Manila bağlayıcı metin talep etti."
+      },
+      {
+       "t": "Esnek metne razı ol",
+       "d": "Esnek metne razı ol",
+       "fx": [
+        [
+         "rel",
+         "Philippines",
+         "China",
+         3
+        ],
+        [
+         "stab",
+         "Philippines",
+         -1
+        ]
+       ],
+       "r": "Manila esnek bir metni kabul etti."
+      }
+     ]
+    },
+    "China": {
+     "text": "Pekin ikili görüşme ve esnek bir metin istiyor; tahkim kararını tanımıyor.",
+     "options": [
+      {
+       "t": "İkili müzakereyi öner",
+       "d": "İkili müzakereyi öner",
+       "fx": [
+        [
+         "rel",
+         "China",
+         "Philippines",
+         2
+        ],
+        [
+         "rel",
+         "China",
+         "Vietnam",
+         2
+        ]
+       ],
+       "r": "Pekin ikili müzakereler önerdi."
+      },
+      {
+       "t": "Tahkim kararını reddet, devriye artır",
+       "d": "Tahkim kararını reddet, devriye artır",
+       "fx": [
+        [
+         "rel",
+         "China",
+         "Philippines",
+         -4
+        ],
+        [
+         "rel",
+         "China",
+         "Vietnam",
+         -3
+        ],
+        [
+         "troops",
+         "China",
+         1
+        ]
+       ],
+       "r": "Pekin tahkim kararını reddedip devriyeyi artırdı."
+      }
+     ]
+    }
+   }
+  },
+  {
    "id": "scs_ayungin",
    "turn": 34,
    "title": "Ayungin Şoalı İkmali",
@@ -447,6 +568,112 @@
      ]
     }
    }
+  },
+  {
+   "id": "scs_balik",
+   "turn": 100,
+   "title": "Balıkçılık ve Petrol Rekabeti",
+   "scene": "naval",
+   "icon": "ship",
+   "text": "Vietnam ve Malezya yeni petrol sahalarına sondaj yapıyor; Çin sahil güvenliği ve balıkçı filoları bölgede varlık gösteriyor. Balık stokları azalırken gerilim artıyor.",
+   "major": true,
+   "default_fx": [
+    [
+     "gold",
+     "Vietnam",
+     1.0
+    ],
+    [
+     "rel",
+     "China",
+     "Vietnam",
+     -3
+    ]
+   ],
+   "roles": {
+    "Vietnam": {
+     "text": "Hanoi hem Çin'le ekonomik bağları korumak hem de petrol haklarını savunmak istiyor.",
+     "options": [
+      {
+       "t": "Sondajı sürdür",
+       "d": "Sondajı sürdür",
+       "fx": [
+        [
+         "gold",
+         "Vietnam",
+         1.5
+        ],
+        [
+         "rel",
+         "Vietnam",
+         "China",
+         -3
+        ]
+       ],
+       "r": "Vietnam sondaj faaliyetini sürdürdü."
+      },
+      {
+       "t": "Ortak geliştirme öner",
+       "d": "Ortak geliştirme öner",
+       "fx": [
+        [
+         "rel",
+         "Vietnam",
+         "China",
+         3
+        ],
+        [
+         "gold",
+         "Vietnam",
+         0.5
+        ]
+       ],
+       "r": "Hanoi ortak geliştirme önerdi."
+      }
+     ]
+    },
+    "China": {
+     "text": "Pekin 'dokuz çizgi' iddiasına dayanıyor; ama komşularla ticaret değerli.",
+     "options": [
+      {
+       "t": "Sahil güvenliği gönder",
+       "d": "Sahil güvenliği gönder",
+       "fx": [
+        [
+         "rel",
+         "China",
+         "Vietnam",
+         -4
+        ],
+        [
+         "troops",
+         "China",
+         1
+        ]
+       ],
+       "r": "Çin sahil güvenliği sondaj bölgesine gitti."
+      },
+      {
+       "t": "Ortak sondaj görüşmesi başlat",
+       "d": "Ortak sondaj görüşmesi başlat",
+       "fx": [
+        [
+         "rel",
+         "China",
+         "Vietnam",
+         3
+        ],
+        [
+         "gold",
+         "China",
+         0.5
+        ]
+       ],
+       "r": "Pekin ortak sondaj görüşmeleri başlattı."
+      }
+     ]
+    }
+   }
   }
  ],
  "moments_en": {
@@ -495,6 +722,29 @@
   "Çin Davranış Kuralları metnini imzalamaya hazır olduğunu söyledi.": "China said it was ready to sign the Code of Conduct.",
   "Pekin ASEAN'ı bölmek ve metinden yararlanmak istiyor; ama kriz Filipinler'i ABD'ye yaklaştırdı.": "Beijing wants to divide ASEAN and benefit from the text, yet the crisis pushed the Philippines closer to the US.",
   "Davranış Kuralları Müzakeresi": "Code of Conduct Talks",
-  "ASEAN dönem başkanı Manila, Çin ile 'bağlayıcı' Davranış Kuralları metnini bitirmek istiyor; Pekin hukuken bağlayıcılığa ve üçüncü ülke hükümlerine karşı. Müzakere çıkmaza giriyor.": "ASEAN chair Manila wants to finish a 'binding' Code of Conduct with China; Beijing resists legal bindingness and third-party clauses. The talks stall."
+  "ASEAN dönem başkanı Manila, Çin ile 'bağlayıcı' Davranış Kuralları metnini bitirmek istiyor; Pekin hukuken bağlayıcılığa ve üçüncü ülke hükümlerine karşı. Müzakere çıkmaza giriyor.": "ASEAN chair Manila wants to finish a 'binding' Code of Conduct with China; Beijing resists legal bindingness and third-party clauses. The talks stall.",
+  "Bağlayıcı metin iste": "Demand a binding text",
+  "Manila bağlayıcı metin talep etti.": "Manila demanded a binding text.",
+  "Esnek metne razı ol": "Settle for a flexible text",
+  "Manila esnek bir metni kabul etti.": "Manila accepted a flexible text.",
+  "Manila 2016 tahkim kararına dayanarak bağlayıcı bir metin istiyor.": "Manila wants a binding text anchored in the 2016 arbitral award.",
+  "İkili müzakereyi öner": "Offer bilateral talks",
+  "Pekin ikili müzakereler önerdi.": "Beijing offered bilateral talks.",
+  "Tahkim kararını reddet, devriye artır": "Reject the ruling and raise patrols",
+  "Pekin tahkim kararını reddedip devriyeyi artırdı.": "Beijing rejected the ruling and raised patrols.",
+  "Pekin ikili görüşme ve esnek bir metin istiyor; tahkim kararını tanımıyor.": "Beijing wants bilateral talks and a flexible text; it does not recognise the arbitral ruling.",
+  "ASEAN ve Çin, Güney Çin Denizi'nde bağlayıcı bir davranış kuralları metni üzerinde yeniden görüşüyor. Filipinler ve Vietnam bağlayıcılık ve tahkim hakkında ısrarcı; Pekin esnek metin istiyor.": "ASEAN and China are talking again about a binding code of conduct in the South China Sea. The Philippines and Vietnam insist on binding terms and arbitration; Beijing wants a flexible text.",
+  "Sondajı sürdür": "Continue drilling",
+  "Vietnam sondaj faaliyetini sürdürdü.": "Vietnam continued drilling.",
+  "Ortak geliştirme öner": "Propose joint development",
+  "Hanoi ortak geliştirme önerdi.": "Hanoi proposed joint development.",
+  "Hanoi hem Çin'le ekonomik bağları korumak hem de petrol haklarını savunmak istiyor.": "Hanoi wants to protect economic ties with China and defend its oil rights.",
+  "Sahil güvenliği gönder": "Send the coast guard",
+  "Çin sahil güvenliği sondaj bölgesine gitti.": "The Chinese coast guard moved to the drilling zone.",
+  "Ortak sondaj görüşmesi başlat": "Open joint-drilling talks",
+  "Pekin ortak sondaj görüşmeleri başlattı.": "Beijing opened joint drilling talks.",
+  "Pekin 'dokuz çizgi' iddiasına dayanıyor; ama komşularla ticaret değerli.": "Beijing relies on its 'nine-dash line' but trade with neighbours is valuable.",
+  "Balıkçılık ve Petrol Rekabeti": "The Fishing and Oil Contest",
+  "Vietnam ve Malezya yeni petrol sahalarına sondaj yapıyor; Çin sahil güvenliği ve balıkçı filoları bölgede varlık gösteriyor. Balık stokları azalırken gerilim artıyor.": "Vietnam and Malaysia are drilling new oil fields; Chinese coast guard and fishing fleets maintain a presence. Fish stocks decline and tensions rise."
  }
 }

@@ -169,6 +169,117 @@
    }
   },
   {
+   "id": "redsea_konvoy",
+   "turn": 18,
+   "title": "Uluslararası Deniz Konvoyu",
+   "scene": "naval",
+   "icon": "ship",
+   "text": "Kızıldeniz'de ticari gemiler için çok uluslu bir deniz konvoyu kuruldu. Mısır, Süveyş gelirlerini korumak için kritik; Husiler saldırıları sürdürüyor.",
+   "major": true,
+   "default_fx": [
+    [
+     "gold",
+     "Egypt",
+     1.0
+    ],
+    [
+     "rel",
+     "Yemen",
+     "United States of America",
+     -2
+    ]
+   ],
+   "roles": {
+    "Egypt": {
+     "text": "Süveyş gelirleri düşüyor; konvoya katılmak siyasi risk.",
+     "options": [
+      {
+       "t": "Konvoya liman desteği ver",
+       "d": "Konvoya liman desteği ver",
+       "fx": [
+        [
+         "gold",
+         "Egypt",
+         1.5
+        ],
+        [
+         "rel",
+         "Egypt",
+         "United States of America",
+         3
+        ],
+        [
+         "rel",
+         "Egypt",
+         "Yemen",
+         -2
+        ]
+       ],
+       "r": "Kahire konvoya liman ve lojistik destek verdi."
+      },
+      {
+       "t": "Tarafsız kal",
+       "d": "Tarafsız kal",
+       "fx": [
+        [
+         "stab",
+         "Egypt",
+         1
+        ],
+        [
+         "gold",
+         "Egypt",
+         -0.5
+        ]
+       ],
+       "r": "Mısır konvoyun dışında kaldı."
+      }
+     ]
+    },
+    "Yemen": {
+     "text": "Husiler konvoyu 'saldırganlık' sayıyor; denizdeki varlık gücü korunmalı.",
+     "options": [
+      {
+       "t": "Saldırıları artır",
+       "d": "Saldırıları artır",
+       "fx": [
+        [
+         "rel",
+         "Yemen",
+         "United States of America",
+         -4
+        ],
+        [
+         "gold",
+         "Egypt",
+         -1.0
+        ]
+       ],
+       "r": "Husiler konvoya karşı saldırıları artırdı."
+      },
+      {
+       "t": "Gemilere geçiş izni ver",
+       "d": "Gemilere geçiş izni ver",
+       "fx": [
+        [
+         "rel",
+         "Yemen",
+         "Saudi Arabia",
+         2
+        ],
+        [
+         "gold",
+         "Yemen",
+         0.5
+        ]
+       ],
+       "r": "Husiler seçili ülke gemilerine geçiş izni verdi."
+      }
+     ]
+    }
+   }
+  },
+  {
    "id": "redsea_sigorta",
    "turn": 28,
    "title": "Sigorta Primleri ve Konvoylar",
@@ -478,6 +589,115 @@
      ]
     }
    }
+  },
+  {
+   "id": "redsea_liman",
+   "turn": 100,
+   "title": "Cibuti–Berbera Rekabeti",
+   "scene": "trade",
+   "icon": "trade",
+   "text": "Kızıldeniz kıyısında yeni limanlar ve deniz üsleri açılıyor: Cibuti, Berbera ve Port Sudan. Körfez ülkeleri, Çin ve Türkiye bölgesel nüfuz için yarışıyor.",
+   "major": false,
+   "default_fx": [
+    [
+     "gold",
+     "Saudi Arabia",
+     -0.5
+    ],
+    [
+     "rel",
+     "Saudi Arabia",
+     "Egypt",
+     1
+    ]
+   ],
+   "roles": {
+    "Saudi Arabia": {
+     "text": "Riyad Kızıldeniz'de ekonomik ve güvenlik sahalarını genişletmek istiyor.",
+     "options": [
+      {
+       "t": "Liman ve yatırım ortaklıkları kur",
+       "d": "Liman ve yatırım ortaklıkları kur",
+       "fx": [
+        [
+         "gold",
+         "Saudi Arabia",
+         -1.0
+        ],
+        [
+         "rel",
+         "Saudi Arabia",
+         "Egypt",
+         3
+        ],
+        [
+         "stab",
+         "Saudi Arabia",
+         1
+        ]
+       ],
+       "r": "Riyad Kızıldeniz'de liman ortaklıkları kurdu."
+      },
+      {
+       "t": "Doğrudan deniz üssü aç",
+       "d": "Doğrudan deniz üssü aç",
+       "fx": [
+        [
+         "troops",
+         "Saudi Arabia",
+         2
+        ],
+        [
+         "gold",
+         "Saudi Arabia",
+         -1.0
+        ]
+       ],
+       "r": "Suudi Arabistan Kızıldeniz'de deniz üssü açtı."
+      }
+     ]
+    },
+    "Egypt": {
+     "text": "Süveyş'in rakipsiz konumu yeni limanlarla zayıflayabilir.",
+     "options": [
+      {
+       "t": "Süveyş'i modernize et",
+       "d": "Süveyş'i modernize et",
+       "fx": [
+        [
+         "gold",
+         "Egypt",
+         -0.5
+        ],
+        [
+         "stab",
+         "Egypt",
+         1
+        ]
+       ],
+       "r": "Kahire Süveyş'i genişletmeye ve ücretleri indirmeye gitti."
+      },
+      {
+       "t": "Ortaklık kur",
+       "d": "Ortaklık kur",
+       "fx": [
+        [
+         "gold",
+         "Egypt",
+         1.0
+        ],
+        [
+         "rel",
+         "Egypt",
+         "Saudi Arabia",
+         3
+        ]
+       ],
+       "r": "Mısır yeni limanlarla ortak işletme planları yaptı."
+      }
+     ]
+    }
+   }
   }
  ],
  "moments_en": {
@@ -531,6 +751,30 @@
   "Tahran Umman aracılığıyla ateşkes çağrısı yaptı.": "Tehran called for a ceasefire via Oman.",
   "Hudeyde düşerse Körfez'deki vekâlet zinciriniz zayıflar.": "If Hodeidah falls, your proxy chain in the Gulf weakens.",
   "Hudeyde Savaşı": "The Battle for Hodeidah",
-  "Yemen'in kuzeybatı limanı Hudeyde için kara ve deniz harekâtı sürüyor; Husilerin füze stokları ve Kızıldeniz'in kaderi bu limanda düğümleniyor.": "A land and sea operation for Hodeidah, Yemen's northwest port, is under way; the Houthis' missile stocks and the fate of the Red Sea hinge on this port."
+  "Yemen'in kuzeybatı limanı Hudeyde için kara ve deniz harekâtı sürüyor; Husilerin füze stokları ve Kızıldeniz'in kaderi bu limanda düğümleniyor.": "A land and sea operation for Hodeidah, Yemen's northwest port, is under way; the Houthis' missile stocks and the fate of the Red Sea hinge on this port.",
+  "Konvoya liman desteği ver": "Offer port support to the convoy",
+  "Kahire konvoya liman ve lojistik destek verdi.": "Cairo gave the convoy port and logistics support.",
+  "Tarafsız kal": "Stay neutral",
+  "Mısır konvoyun dışında kaldı.": "Egypt stayed out of the convoy.",
+  "Süveyş gelirleri düşüyor; konvoya katılmak siyasi risk.": "Suez revenue is falling; joining the convoy is politically risky.",
+  "Saldırıları artır": "Escalate attacks",
+  "Husiler konvoya karşı saldırıları artırdı.": "The Houthis escalated attacks on the convoy.",
+  "Gemilere geçiş izni ver": "Allow selective passage",
+  "Husiler seçili ülke gemilerine geçiş izni verdi.": "The Houthis allowed selective passage to some flags.",
+  "Husiler konvoyu 'saldırganlık' sayıyor; denizdeki varlık gücü korunmalı.": "The Houthis call the convoy 'aggression'; sea presence must be preserved.",
+  "Uluslararası Deniz Konvoyu": "An International Naval Convoy",
+  "Kızıldeniz'de ticari gemiler için çok uluslu bir deniz konvoyu kuruldu. Mısır, Süveyş gelirlerini korumak için kritik; Husiler saldırıları sürdürüyor.": "A multinational naval convoy was set up for merchant ships in the Red Sea. Egypt, protecting Suez income, is key; the Houthis keep up attacks.",
+  "Liman ve yatırım ortaklıkları kur": "Build port and investment partnerships",
+  "Riyad Kızıldeniz'de liman ortaklıkları kurdu.": "Riyadh formed port partnerships on the Red Sea.",
+  "Doğrudan deniz üssü aç": "Open a naval base directly",
+  "Suudi Arabistan Kızıldeniz'de deniz üssü açtı.": "Saudi Arabia opened a naval base on the Red Sea.",
+  "Riyad Kızıldeniz'de ekonomik ve güvenlik sahalarını genişletmek istiyor.": "Riyadh wants to widen its economic and security presence in the Red Sea.",
+  "Süveyş'i modernize et": "Modernise Suez",
+  "Kahire Süveyş'i genişletmeye ve ücretleri indirmeye gitti.": "Cairo widened Suez and cut fees.",
+  "Ortaklık kur": "Form partnerships",
+  "Mısır yeni limanlarla ortak işletme planları yaptı.": "Egypt drew up joint operation plans with the new ports.",
+  "Süveyş'in rakipsiz konumu yeni limanlarla zayıflayabilir.": "Suez's unrivalled position could weaken with new ports.",
+  "Cibuti–Berbera Rekabeti": "The Djibouti–Berbera Rivalry",
+  "Kızıldeniz kıyısında yeni limanlar ve deniz üsleri açılıyor: Cibuti, Berbera ve Port Sudan. Körfez ülkeleri, Çin ve Türkiye bölgesel nüfuz için yarışıyor.": "New ports and naval bases are opening on the Red Sea coast: Djibouti, Berbera and Port Sudan. Gulf states, China and Turkey compete for regional influence."
  }
 }

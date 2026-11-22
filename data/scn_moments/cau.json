@@ -183,6 +183,126 @@
    }
   },
   {
+   "id": "cau_tcm",
+   "turn": 18,
+   "title": "Ortak Ticaret Koridoru",
+   "scene": "trade",
+   "icon": "trade",
+   "text": "Bakü ve Erivan, Türkiye üzerinden Orta Asya'ya uzanan ortak bir demiryolu ve boru hattı koridoru üzerinde çalışıyor. ABD ve AB projeyi destekliyor; Rusya ve İran kaygılı.",
+   "major": false,
+   "default_fx": [
+    [
+     "rel",
+     "Azerbaijan",
+     "Armenia",
+     3
+    ],
+    [
+     "rel",
+     "Azerbaijan",
+     "Turkey",
+     3
+    ],
+    [
+     "rel",
+     "Armenia",
+     "United States of America",
+     2
+    ]
+   ],
+   "roles": {
+    "Armenia": {
+     "text": "Koridor Ermenistan için ekonomik fırsat; ama egemenlik kaygısı var.",
+     "options": [
+      {
+       "t": "Koridora katıl",
+       "d": "Koridora katıl",
+       "fx": [
+        [
+         "gold",
+         "Armenia",
+         1.5
+        ],
+        [
+         "rel",
+         "Armenia",
+         "Azerbaijan",
+         3
+        ],
+        [
+         "rel",
+         "Armenia",
+         "Russia",
+         -3
+        ]
+       ],
+       "r": "Erivan koridor anlaşmasını imzaladı."
+      },
+      {
+       "t": "Şartları görüş",
+       "d": "Şartları görüş",
+       "fx": [
+        [
+         "stab",
+         "Armenia",
+         1
+        ],
+        [
+         "rel",
+         "Armenia",
+         "Azerbaijan",
+         -1
+        ]
+       ],
+       "r": "Erivan egemenlik güvencesi talep etti."
+      }
+     ]
+    },
+    "Azerbaijan": {
+     "text": "Bakü tarihsel bir fırsat görüyor; ama Ermenistan'ın şartları sert.",
+     "options": [
+      {
+       "t": "Esnek ol",
+       "d": "Esnek ol",
+       "fx": [
+        [
+         "rel",
+         "Azerbaijan",
+         "Armenia",
+         3
+        ],
+        [
+         "gold",
+         "Azerbaijan",
+         1.0
+        ]
+       ],
+       "r": "Bakü bazı taleplerde esnek davrandı."
+      },
+      {
+       "t": "Zangezur hattı iste",
+       "d": "Zangezur hattı iste",
+       "fx": [
+        [
+         "rel",
+         "Azerbaijan",
+         "Armenia",
+         -3
+        ],
+        [
+         "rel",
+         "Azerbaijan",
+         "Turkey",
+         3
+        ]
+       ],
+       "r": "Bakü kesintisiz bir geçiş hattı talep etti."
+      }
+     ]
+    }
+   }
+  },
+  {
    "id": "cau_rota",
    "turn": 26,
    "title": "Zengezur Rotası İnşaatı",
@@ -417,6 +537,112 @@
      ]
     }
    }
+  },
+  {
+   "id": "cau_sinirci",
+   "turn": 90,
+   "title": "Sınır Komisyonu Çıkmazı",
+   "scene": "border",
+   "icon": "border_clash",
+   "text": "Sınır komisyonu haritalar üzerinde anlaşamıyor; sınır köyleri ve su kaynakları kilit noktalar. Yeniden bir silahlı olay riski belirdi.",
+   "major": true,
+   "default_fx": [
+    [
+     "rel",
+     "Azerbaijan",
+     "Armenia",
+     -2
+    ],
+    [
+     "stab",
+     "Armenia",
+     -1
+    ]
+   ],
+   "roles": {
+    "Armenia": {
+     "text": "Erivan kayıp köylerini ve su kaynaklarını savunmak istiyor.",
+     "options": [
+      {
+       "t": "Sınırı güçlendir",
+       "d": "Sınırı güçlendir",
+       "fx": [
+        [
+         "troops",
+         "Armenia",
+         2
+        ],
+        [
+         "rel",
+         "Armenia",
+         "Azerbaijan",
+         -2
+        ]
+       ],
+       "r": "Ermenistan sınır birliklerini güçlendirdi."
+      },
+      {
+       "t": "Üçüncü taraf arabulucu iste",
+       "d": "Üçüncü taraf arabulucu iste",
+       "fx": [
+        [
+         "rel",
+         "Armenia",
+         "United States of America",
+         3
+        ],
+        [
+         "stab",
+         "Armenia",
+         1
+        ]
+       ],
+       "r": "Erivan AB ve ABD'den arabuluculuk istedi."
+      }
+     ]
+    },
+    "Azerbaijan": {
+     "text": "Bakü kazanımlarını pekiştirmek istiyor; yeni bir çatışma uluslararası tepki çeker.",
+     "options": [
+      {
+       "t": "Sınırda sabırlı kal",
+       "d": "Sınırda sabırlı kal",
+       "fx": [
+        [
+         "stab",
+         "Azerbaijan",
+         1
+        ],
+        [
+         "rel",
+         "Azerbaijan",
+         "Armenia",
+         1
+        ]
+       ],
+       "r": "Bakü sınırda itidal gösterdi."
+      },
+      {
+       "t": "Gözdağı ver",
+       "d": "Gözdağı ver",
+       "fx": [
+        [
+         "rel",
+         "Azerbaijan",
+         "Armenia",
+         -3
+        ],
+        [
+         "troops",
+         "Azerbaijan",
+         1
+        ]
+       ],
+       "r": "Bakü sınır hattında tatbikat yaptı."
+      }
+     ]
+    }
+   }
   }
  ],
  "moments_en": {
@@ -460,6 +686,30 @@
   "Aliyev anayasa değişikliği için son tarih verdi.": "Aliyev set a deadline for the constitutional change.",
   "Anayasa şartı barışın son engeli gibi görünüyor; baskı yaparsanız Paşinyan zayıflar, ama beklerseniz süreç donar.": "The constitutional condition looks like the last obstacle; pressure weakens Pashinyan, but waiting freezes the process.",
   "Anayasa Referandumu": "The Constitutional Referendum",
-  "Ermenistan'da Karabağ'a atıf yapan anayasa maddesinin kaldırılması referanduma gidiyor; muhalefet ve kilise karşı, Bakü ise bu değişikliği barışın ön şartı sayıyor.": "In Armenia a referendum on removing the Karabakh reference from the constitution is looming; the opposition and the church are opposed, while Baku sees the change as a precondition for peace."
+  "Ermenistan'da Karabağ'a atıf yapan anayasa maddesinin kaldırılması referanduma gidiyor; muhalefet ve kilise karşı, Bakü ise bu değişikliği barışın ön şartı sayıyor.": "In Armenia a referendum on removing the Karabakh reference from the constitution is looming; the opposition and the church are opposed, while Baku sees the change as a precondition for peace.",
+  "Koridora katıl": "Join the corridor",
+  "Erivan koridor anlaşmasını imzaladı.": "Yerevan signed the corridor agreement.",
+  "Şartları görüş": "Negotiate conditions",
+  "Erivan egemenlik güvencesi talep etti.": "Yerevan demanded sovereignty guarantees.",
+  "Koridor Ermenistan için ekonomik fırsat; ama egemenlik kaygısı var.": "The corridor is an economic opportunity for Armenia, but there are sovereignty concerns.",
+  "Esnek ol": "Be flexible",
+  "Bakü bazı taleplerde esnek davrandı.": "Baku showed flexibility on some demands.",
+  "Zangezur hattı iste": "Insist on the Zangezur line",
+  "Bakü kesintisiz bir geçiş hattı talep etti.": "Baku demanded an uninterrupted transit line.",
+  "Bakü tarihsel bir fırsat görüyor; ama Ermenistan'ın şartları sert.": "Baku sees a historic opportunity, but Armenia's conditions are tough.",
+  "Ortak Ticaret Koridoru": "A Joint Trade Corridor",
+  "Bakü ve Erivan, Türkiye üzerinden Orta Asya'ya uzanan ortak bir demiryolu ve boru hattı koridoru üzerinde çalışıyor. ABD ve AB projeyi destekliyor; Rusya ve İran kaygılı.": "Baku and Yerevan are working on a joint rail and pipeline corridor stretching via Turkey to Central Asia. The US and EU back the project; Russia and Iran are uneasy.",
+  "Sınırı güçlendir": "Reinforce the border",
+  "Ermenistan sınır birliklerini güçlendirdi.": "Armenia reinforced its border troops.",
+  "Üçüncü taraf arabulucu iste": "Ask for a third-party mediator",
+  "Erivan AB ve ABD'den arabuluculuk istedi.": "Yerevan requested EU and US mediation.",
+  "Erivan kayıp köylerini ve su kaynaklarını savunmak istiyor.": "Yerevan wants to defend its border villages and water sources.",
+  "Sınırda sabırlı kal": "Stay patient on the border",
+  "Bakü sınırda itidal gösterdi.": "Baku showed restraint on the border.",
+  "Gözdağı ver": "Apply pressure",
+  "Bakü sınır hattında tatbikat yaptı.": "Baku held drills along the border.",
+  "Bakü kazanımlarını pekiştirmek istiyor; yeni bir çatışma uluslararası tepki çeker.": "Baku wants to consolidate its gains; a new clash would draw international reaction.",
+  "Sınır Komisyonu Çıkmazı": "Border Commission Deadlock",
+  "Sınır komisyonu haritalar üzerinde anlaşamıyor; sınır köyleri ve su kaynakları kilit noktalar. Yeniden bir silahlı olay riski belirdi.": "The border commission cannot agree on maps; border villages and water sources are the key issues. The risk of another armed incident has appeared."
  }
 }

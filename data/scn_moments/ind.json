@@ -314,6 +314,115 @@
    }
   },
   {
+   "id": "ind_sinir",
+   "turn": 22,
+   "title": "Hat Boyunca Gerilim",
+   "scene": "border",
+   "icon": "border_clash",
+   "text": "Kontrol Hattı'nda yeniden topçu atışları başladı; iki taraf da sivil köyleri boşaltıyor. Nükleer güçler arasında nadiren görülen bir doğrudan hat konuşması yapılıyor.",
+   "major": true,
+   "default_fx": [
+    [
+     "rel",
+     "India",
+     "Pakistan",
+     -2
+    ],
+    [
+     "stab",
+     "Pakistan",
+     -1
+    ]
+   ],
+   "roles": {
+    "India": {
+     "text": "Delhi iç siyasi baskı altında; ama tırmanış hesapları riskli.",
+     "options": [
+      {
+       "t": "Sınırlı misilleme yap",
+       "d": "Sınırlı misilleme yap",
+       "fx": [
+        [
+         "rel",
+         "India",
+         "Pakistan",
+         -4
+        ],
+        [
+         "buff",
+         "India",
+         "att",
+         1.1,
+         6
+        ]
+       ],
+       "r": "Hindistan hat boyunca sınırlı karşılık verdi."
+      },
+      {
+       "t": "Hot-line'dan yatıştır",
+       "d": "Hot-line'dan yatıştır",
+       "fx": [
+        [
+         "rel",
+         "India",
+         "Pakistan",
+         2
+        ],
+        [
+         "stab",
+         "India",
+         1
+        ]
+       ],
+       "r": "Delhi askerî hat üzerinden itidal mesajı verdi."
+      }
+     ]
+    },
+    "Pakistan": {
+     "text": "İslamabad ekonomik kırılganlıkla mücadele ediyor; tırmanış maliyetli.",
+     "options": [
+      {
+       "t": "Aynı ölçüde karşılık ver",
+       "d": "Aynı ölçüde karşılık ver",
+       "fx": [
+        [
+         "rel",
+         "Pakistan",
+         "India",
+         -4
+        ],
+        [
+         "stab",
+         "Pakistan",
+         1
+        ]
+       ],
+       "r": "Pakistan topçu ateşiyle karşılık verdi."
+      },
+      {
+       "t": "BM'ye başvur",
+       "d": "BM'ye başvur",
+       "fx": [
+        [
+         "rel",
+         "Pakistan",
+         "India",
+         1
+        ],
+        [
+         "rel",
+         "Pakistan",
+         "China",
+         2
+        ]
+       ],
+       "r": "İslamabad meseleyi BM'ye taşıdı."
+      }
+     ]
+    }
+   }
+  },
+  {
    "id": "ind_indus",
    "turn": 48,
    "title": "İndus Suları ve Ekim Hasadı",
@@ -424,6 +533,112 @@
      ]
     }
    }
+  },
+  {
+   "id": "ind_su",
+   "turn": 90,
+   "title": "Nehir Suyu Anlaşmazlığı",
+   "scene": "crisis",
+   "icon": "dam",
+   "text": "Hindistan baraj ve kanal projelerini hızlandırdı; Pakistan bunu 'su silahı' olarak nitelendiriyor. Tarım sezonu yaklaşırken su akışı siyasi koz haline geldi.",
+   "major": true,
+   "default_fx": [
+    [
+     "gold",
+     "Pakistan",
+     -1.0
+    ],
+    [
+     "rel",
+     "Pakistan",
+     "India",
+     -3
+    ]
+   ],
+   "roles": {
+    "Pakistan": {
+     "text": "Tarım ve elektrik üretimi suya bağlı; hukuki yol mu, askerî tehdit mi?",
+     "options": [
+      {
+       "t": "Uluslararası hakem başvurusu yap",
+       "d": "Uluslararası hakem başvurusu yap",
+       "fx": [
+        [
+         "rel",
+         "Pakistan",
+         "China",
+         2
+        ],
+        [
+         "stab",
+         "Pakistan",
+         1
+        ]
+       ],
+       "r": "Pakistan uluslararası tahkime başvurdu."
+      },
+      {
+       "t": "Sert uyarı yap",
+       "d": "Sert uyarı yap",
+       "fx": [
+        [
+         "rel",
+         "Pakistan",
+         "India",
+         -4
+        ],
+        [
+         "stab",
+         "Pakistan",
+         2
+        ]
+       ],
+       "r": "İslamabad suyun kesilmesini 'savaş sebebi' ilan etti."
+      }
+     ]
+    },
+    "India": {
+     "text": "Delhi su projelerini 'meşru kalkınma' sayıyor.",
+     "options": [
+      {
+       "t": "Projeleri sürdür",
+       "d": "Projeleri sürdür",
+       "fx": [
+        [
+         "gold",
+         "India",
+         1.0
+        ],
+        [
+         "rel",
+         "India",
+         "Pakistan",
+         -3
+        ]
+       ],
+       "r": "Hindistan projelerini sürdürdü."
+      },
+      {
+       "t": "Su paylaşımı görüşmesi öner",
+       "d": "Su paylaşımı görüşmesi öner",
+       "fx": [
+        [
+         "rel",
+         "India",
+         "Pakistan",
+         3
+        ],
+        [
+         "stab",
+         "India",
+         -1
+        ]
+       ],
+       "r": "Delhi su paylaşımı görüşmelerini önerdi."
+      }
+     ]
+    }
+   }
   }
  ],
  "moments_en": {
@@ -467,6 +682,30 @@
   "Hindistan Pakistan'la teknik su görüşmelerine razı oldu.": "India agreed to technical water talks with Pakistan.",
   "Baraj yatırımları uzun vadeli; kısa vadede kuraklık Hindistan'ın kendi çiftçilerini de vuruyor.": "Dam investments are long-term; in the short term drought also hits Indian farmers.",
   "İndus Suları ve Ekim Hasadı": "The Indus Waters and the Autumn Harvest",
-  "Hindistan İndus kolları üzerinde yeni barajlar ve su yönlendirmeleri planlarken Pakistan 'su kesilirse savaş' diyor. Muson sonrası kuraklık Pencap'ta gerilimi artırıyor.": "India plans new dams and diversions on the Indus tributaries while Pakistan says cutting water means war. A post-monsoon drought raises tension in Punjab."
+  "Hindistan İndus kolları üzerinde yeni barajlar ve su yönlendirmeleri planlarken Pakistan 'su kesilirse savaş' diyor. Muson sonrası kuraklık Pencap'ta gerilimi artırıyor.": "India plans new dams and diversions on the Indus tributaries while Pakistan says cutting water means war. A post-monsoon drought raises tension in Punjab.",
+  "Sınırlı misilleme yap": "Make a limited retaliation",
+  "Hindistan hat boyunca sınırlı karşılık verdi.": "India made a limited response along the line.",
+  "Hot-line'dan yatıştır": "De-escalate by hotline",
+  "Delhi askerî hat üzerinden itidal mesajı verdi.": "Delhi sent a message of restraint over the military hotline.",
+  "Delhi iç siyasi baskı altında; ama tırmanış hesapları riskli.": "Delhi faces domestic pressure, but escalation calculations are risky.",
+  "Aynı ölçüde karşılık ver": "Respond in kind",
+  "Pakistan topçu ateşiyle karşılık verdi.": "Pakistan answered with artillery fire.",
+  "BM'ye başvur": "Appeal to the UN",
+  "İslamabad meseleyi BM'ye taşıdı.": "Islamabad took the matter to the UN.",
+  "İslamabad ekonomik kırılganlıkla mücadele ediyor; tırmanış maliyetli.": "Islamabad struggles with economic fragility; escalation is costly.",
+  "Hat Boyunca Gerilim": "Tension Along the Line of Control",
+  "Kontrol Hattı'nda yeniden topçu atışları başladı; iki taraf da sivil köyleri boşaltıyor. Nükleer güçler arasında nadiren görülen bir doğrudan hat konuşması yapılıyor.": "Artillery fire resumed along the Line of Control; both sides are evacuating civilian villages. A rare direct hotline call is held between the two nuclear powers.",
+  "Uluslararası hakem başvurusu yap": "File for international arbitration",
+  "Pakistan uluslararası tahkime başvurdu.": "Pakistan filed for international arbitration.",
+  "Sert uyarı yap": "Issue a stern warning",
+  "İslamabad suyun kesilmesini 'savaş sebebi' ilan etti.": "Islamabad called a water cut a 'cause for war'.",
+  "Tarım ve elektrik üretimi suya bağlı; hukuki yol mu, askerî tehdit mi?": "Farming and power depend on water; a legal path or a military threat?",
+  "Projeleri sürdür": "Continue the projects",
+  "Hindistan projelerini sürdürdü.": "India continued its projects.",
+  "Su paylaşımı görüşmesi öner": "Offer talks on water sharing",
+  "Delhi su paylaşımı görüşmelerini önerdi.": "Delhi offered water-sharing talks.",
+  "Delhi su projelerini 'meşru kalkınma' sayıyor.": "Delhi calls the water projects 'legitimate development'.",
+  "Nehir Suyu Anlaşmazlığı": "The River Water Dispute",
+  "Hindistan baraj ve kanal projelerini hızlandırdı; Pakistan bunu 'su silahı' olarak nitelendiriyor. Tarım sezonu yaklaşırken su akışı siyasi koz haline geldi.": "India sped up dam and canal projects; Pakistan calls it a 'water weapon'. With the farming season near, river flow has become political leverage."
  }
 }

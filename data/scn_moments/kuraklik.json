@@ -167,6 +167,126 @@
    }
   },
   {
+   "id": "kuraklik_kitlik",
+   "turn": 20,
+   "title": "Hasat Kaybı",
+   "scene": "crisis",
+   "icon": "drought",
+   "text": "İkinci yıl kuraklık: buğday ve pirinç rekoltesi yüzde 30 düştü. Tahıl ihracatçıları ihracatı kısıyor; fiyatlar uçtu. Büyük şehirlerde gıda protestoları başladı.",
+   "major": true,
+   "default_fx": [
+    [
+     "gold",
+     "Egypt",
+     -1.0
+    ],
+    [
+     "gold",
+     "Pakistan",
+     -1.0
+    ],
+    [
+     "stab",
+     "Egypt",
+     -2
+    ],
+    [
+     "stab",
+     "Pakistan",
+     -2
+    ]
+   ],
+   "roles": {
+    "Egypt": {
+     "text": "Mısır dünyanın en büyük buğday ithalatçılarından; ekmek sübvansiyonu tehlikede.",
+     "options": [
+      {
+       "t": "Stratejik stokları kullan",
+       "d": "Stratejik stokları kullan",
+       "fx": [
+        [
+         "stab",
+         "Egypt",
+         2
+        ],
+        [
+         "gold",
+         "Egypt",
+         -0.5
+        ]
+       ],
+       "r": "Kahire stratejik tahıl stoklarını piyasaya sürdü."
+      },
+      {
+       "t": "Uzun vadeli tedarik anlaşması yap",
+       "d": "Uzun vadeli tedarik anlaşması yap",
+       "fx": [
+        [
+         "gold",
+         "Egypt",
+         -1.0
+        ],
+        [
+         "rel",
+         "Egypt",
+         "Russia",
+         3
+        ]
+       ],
+       "r": "Kahire uzun vadeli tahıl tedarik anlaşmaları yaptı."
+      }
+     ]
+    },
+    "India": {
+     "text": "Hindistan ihracat yasağıyla yurt içi fiyatı koruyabilir; ama ihracatçı ülkelerle ilişkiler zorlanır.",
+     "options": [
+      {
+       "t": "İhracat yasağı koy",
+       "d": "İhracat yasağı koy",
+       "fx": [
+        [
+         "stab",
+         "India",
+         2
+        ],
+        [
+         "rel",
+         "India",
+         "Egypt",
+         -3
+        ],
+        [
+         "rel",
+         "India",
+         "Pakistan",
+         -1
+        ]
+       ],
+       "r": "Hindistan pirinç ihracatını yasakladı."
+      },
+      {
+       "t": "Kota ile ihracata izin ver",
+       "d": "Kota ile ihracata izin ver",
+       "fx": [
+        [
+         "rel",
+         "India",
+         "Egypt",
+         2
+        ],
+        [
+         "gold",
+         "India",
+         0.5
+        ]
+       ],
+       "r": "Delhi kotalı ihracata izin verdi."
+      }
+     ]
+    }
+   }
+  },
+  {
    "id": "kuraklik_gida",
    "turn": 40,
    "title": "Gıda Fiyatları Fırlıyor (Kurgusal)",
@@ -497,6 +617,127 @@
      ]
     }
    }
+  },
+  {
+   "id": "kuraklik_goc",
+   "turn": 120,
+   "title": "Büyük Göç Dalgası",
+   "scene": "border",
+   "icon": "drought",
+   "text": "Kuraklıktan kaçanlar sınırlara yöneldi; milyonlarca iklim mültecisi yeni topraklar arıyor. Ülkeler sınırları kapatırken uluslararası bir mülteci anlaşması çağrısı yükseliyor.",
+   "major": false,
+   "default_fx": [
+    [
+     "stab",
+     "Turkey",
+     -2
+    ],
+    [
+     "stab",
+     "Egypt",
+     -2
+    ],
+    [
+     "stab",
+     "India",
+     -1
+    ]
+   ],
+   "roles": {
+    "Turkey": {
+     "text": "Türkiye hem transit hem hedef ülke; kapasite zorlanıyor.",
+     "options": [
+      {
+       "t": "Sınırları kontrollü aç",
+       "d": "Sınırları kontrollü aç",
+       "fx": [
+        [
+         "gold",
+         "Turkey",
+         0.5
+        ],
+        [
+         "rel",
+         "Turkey",
+         "Germany",
+         3
+        ],
+        [
+         "stab",
+         "Turkey",
+         -1
+        ]
+       ],
+       "r": "Ankara sınırları kontrollü açıp uluslararası mali destek istedi."
+      },
+      {
+       "t": "Sınırı güçlendir",
+       "d": "Sınırı güçlendir",
+       "fx": [
+        [
+         "troops",
+         "Turkey",
+         2
+        ],
+        [
+         "rel",
+         "Turkey",
+         "Germany",
+         -2
+        ]
+       ],
+       "r": "Türkiye sınır güvenliğini artırdı."
+      }
+     ]
+    },
+    "India": {
+     "text": "Hindistan kendi nüfusu ve komşu göçüyle karşı karşıya.",
+     "options": [
+      {
+       "t": "Bölgesel göç anlaşması öner",
+       "d": "Bölgesel göç anlaşması öner",
+       "fx": [
+        [
+         "rel",
+         "India",
+         "Pakistan",
+         2
+        ],
+        [
+         "rel",
+         "India",
+         "Egypt",
+         1
+        ],
+        [
+         "stab",
+         "India",
+         1
+        ]
+       ],
+       "r": "Delhi bölgesel göç anlaşması önerdi."
+      },
+      {
+       "t": "Sınır çitlerini güçlendir",
+       "d": "Sınır çitlerini güçlendir",
+       "fx": [
+        [
+         "troops",
+         "India",
+         2
+        ],
+        [
+         "rel",
+         "India",
+         "Pakistan",
+         -2
+        ]
+       ],
+       "r": "Hindistan sınır çitlerini güçlendirdi."
+      }
+     ]
+    }
+   }
   }
  ],
  "moments_en": {
@@ -550,6 +791,29 @@
   "Mısır Eritre ve Somali ile ortak tatbikat yaptı.": "Egypt held joint drills with Eritrea and Somalia.",
   "Nil'in aşağı mecrasında son kelime sizde olmayabilir; ama diplomasi bitmedi.": "You may not hold the last word on the lower Nile, but diplomacy is not over.",
   "Su Savaşı Eşiğinde (Kurgusal)": "On the Edge of Water War (Fictional)",
-  "Kurak yıl üçüncü yılına girdi: baraj kapakları, nehir yönlendirmeleri ve sınır geçişleri çatışma nedeni oldu. Bir ülke 'su yoluyla savaş' demeye hazır; diğerleri arabuluculuk arıyor. Bu bir kurgudur.": "The drought enters its third year: dam gates, river diversions and border crossings have become flashpoints. One country is ready to say 'war over water'; others seek mediation. This is fiction."
+  "Kurak yıl üçüncü yılına girdi: baraj kapakları, nehir yönlendirmeleri ve sınır geçişleri çatışma nedeni oldu. Bir ülke 'su yoluyla savaş' demeye hazır; diğerleri arabuluculuk arıyor. Bu bir kurgudur.": "The drought enters its third year: dam gates, river diversions and border crossings have become flashpoints. One country is ready to say 'war over water'; others seek mediation. This is fiction.",
+  "Stratejik stokları kullan": "Use strategic stocks",
+  "Kahire stratejik tahıl stoklarını piyasaya sürdü.": "Cairo released strategic grain stocks.",
+  "Uzun vadeli tedarik anlaşması yap": "Sign long-term supply deals",
+  "Kahire uzun vadeli tahıl tedarik anlaşmaları yaptı.": "Cairo signed long-term grain supply deals.",
+  "Mısır dünyanın en büyük buğday ithalatçılarından; ekmek sübvansiyonu tehlikede.": "Egypt is among the world's biggest wheat importers; bread subsidies are in danger.",
+  "Hindistan pirinç ihracatını yasakladı.": "India banned rice exports.",
+  "Kota ile ihracata izin ver": "Allow quota-based exports",
+  "Delhi kotalı ihracata izin verdi.": "Delhi allowed quota-based exports.",
+  "Hindistan ihracat yasağıyla yurt içi fiyatı koruyabilir; ama ihracatçı ülkelerle ilişkiler zorlanır.": "India can protect domestic prices with an export ban but strain ties with importers.",
+  "Hasat Kaybı": "The Harvest Failure",
+  "İkinci yıl kuraklık: buğday ve pirinç rekoltesi yüzde 30 düştü. Tahıl ihracatçıları ihracatı kısıyor; fiyatlar uçtu. Büyük şehirlerde gıda protestoları başladı.": "A second year of drought: wheat and rice yields fell 30%. Grain exporters are curbing exports; prices soared. Food protests began in major cities.",
+  "Sınırları kontrollü aç": "Open borders in a controlled way",
+  "Ankara sınırları kontrollü açıp uluslararası mali destek istedi.": "Ankara opened borders in a controlled way and asked for international funding.",
+  "Sınırı güçlendir": "Reinforce the border",
+  "Türkiye sınır güvenliğini artırdı.": "Turkey strengthened border security.",
+  "Türkiye hem transit hem hedef ülke; kapasite zorlanıyor.": "Turkey is both a transit and destination state; capacity is strained.",
+  "Bölgesel göç anlaşması öner": "Propose a regional migration compact",
+  "Delhi bölgesel göç anlaşması önerdi.": "Delhi proposed a regional migration compact.",
+  "Sınır çitlerini güçlendir": "Reinforce border fencing",
+  "Hindistan sınır çitlerini güçlendirdi.": "India reinforced border fencing.",
+  "Hindistan kendi nüfusu ve komşu göçüyle karşı karşıya.": "India faces its own population pressure and cross-border migration.",
+  "Büyük Göç Dalgası": "The Great Migration Wave",
+  "Kuraklıktan kaçanlar sınırlara yöneldi; milyonlarca iklim mültecisi yeni topraklar arıyor. Ülkeler sınırları kapatırken uluslararası bir mülteci anlaşması çağrısı yükseliyor.": "People fleeing the drought headed for borders; millions of climate refugees look for new lands. Countries close their frontiers as calls for an international refugee compact grow."
  }
 }

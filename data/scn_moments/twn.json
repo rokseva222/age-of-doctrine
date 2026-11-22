@@ -172,6 +172,125 @@
    }
   },
   {
+   "id": "twn_yarimiletken",
+   "turn": 18,
+   "title": "Yarı İletken Gerilimi",
+   "scene": "trade",
+   "icon": "trade",
+   "text": "Çin gümrük kontrolleri Tayvan'ın çip ihracatını yavaşlattı; ABD ve Japonya ortak tedarik zinciri güvenliği istiyor. TSMC fabrikaları dünyanın kilit noktası.",
+   "major": false,
+   "default_fx": [
+    [
+     "gold",
+     "Taiwan",
+     -1.0
+    ],
+    [
+     "gold",
+     "China",
+     -0.5
+    ],
+    [
+     "rel",
+     "United States of America",
+     "China",
+     -3
+    ]
+   ],
+   "roles": {
+    "Taiwan": {
+     "text": "Çip ihracatı sorunu doğrudan ekonomik güvenliğin parçası.",
+     "options": [
+      {
+       "t": "ABD ve Japonya ile tedarik ittifakı kur",
+       "d": "ABD ve Japonya ile tedarik ittifakı kur",
+       "fx": [
+        [
+         "rel",
+         "Taiwan",
+         "United States of America",
+         5
+        ],
+        [
+         "rel",
+         "Taiwan",
+         "Japan",
+         5
+        ],
+        [
+         "rel",
+         "Taiwan",
+         "China",
+         -3
+        ]
+       ],
+       "r": "Taipei ortak yarı iletken güvenlik anlaşmasına gitti."
+      },
+      {
+       "t": "Pekin'le ticaret kanalı aç",
+       "d": "Pekin'le ticaret kanalı aç",
+       "fx": [
+        [
+         "rel",
+         "Taiwan",
+         "China",
+         3
+        ],
+        [
+         "gold",
+         "Taiwan",
+         0.5
+        ]
+       ],
+       "r": "Tayvan Çin'le ticari kanal arayışına girdi."
+      }
+     ]
+    },
+    "China": {
+     "text": "Pekin teknoloji bağımlılığını azaltmak istiyor ama kendi sanayisi de çipe bağlı.",
+     "options": [
+      {
+       "t": "Kontrolleri sürdür",
+       "d": "Kontrolleri sürdür",
+       "fx": [
+        [
+         "rel",
+         "China",
+         "Taiwan",
+         -3
+        ],
+        [
+         "rel",
+         "China",
+         "United States of America",
+         -2
+        ]
+       ],
+       "r": "Çin kontrolleri sürdürdü; fiyatlar yükseldi."
+      },
+      {
+       "t": "Kontrolleri gevşet",
+       "d": "Kontrolleri gevşet",
+       "fx": [
+        [
+         "rel",
+         "China",
+         "Taiwan",
+         2
+        ],
+        [
+         "gold",
+         "China",
+         0.5
+        ]
+       ],
+       "r": "Pekin gümrük kontrollerini gevşetti."
+      }
+     ]
+    }
+   }
+  },
+  {
    "id": "twn_ablukaprova",
    "turn": 28,
    "title": "Karantina Kuşatması",
@@ -415,6 +534,110 @@
      ]
     }
    }
+  },
+  {
+   "id": "twn_kablo2",
+   "turn": 96,
+   "title": "Deniz Altı Kablo Kesintisi",
+   "scene": "naval",
+   "icon": "submarine",
+   "text": "Tayvan'ı dünyaya bağlayan deniz altı kablolarından ikisi aynı gün kesildi; sorumlular belirsiz, ama bir Çin bayraklı gemi bölgede izlendi. İletişimde yavaşlama, borsada düşüş yaşandı.",
+   "major": true,
+   "default_fx": [
+    [
+     "stab",
+     "Taiwan",
+     -2
+    ],
+    [
+     "gold",
+     "Taiwan",
+     -0.5
+    ],
+    [
+     "rel",
+     "Taiwan",
+     "China",
+     -3
+    ]
+   ],
+   "roles": {
+    "Taiwan": {
+     "text": "Kablo sabotajı bir abluka provasının işareti olabilir.",
+     "options": [
+      {
+       "t": "Gemiyi yakala",
+       "d": "Gemiyi yakala",
+       "fx": [
+        [
+         "rel",
+         "Taiwan",
+         "China",
+         -4
+        ],
+        [
+         "stab",
+         "Taiwan",
+         2
+        ]
+       ],
+       "r": "Tayvan sahil güvenliği şüpheli gemiyi yakaladı."
+      },
+      {
+       "t": "Yedek hat kur ve izle",
+       "d": "Yedek hat kur ve izle",
+       "fx": [
+        [
+         "gold",
+         "Taiwan",
+         -0.5
+        ],
+        [
+         "stab",
+         "Taiwan",
+         1
+        ]
+       ],
+       "r": "Taipei yedek iletişim hatlarını devreye aldı."
+      }
+     ]
+    },
+    "China": {
+     "text": "Pekin suçlamaları reddediyor; ama ek ihlaller baskı aracı olabilir.",
+     "options": [
+      {
+       "t": "Suçlamayı reddet",
+       "d": "Suçlamayı reddet",
+       "fx": [
+        [
+         "stab",
+         "China",
+         1
+        ]
+       ],
+       "r": "Çin kablo kesintisinden sorumlu olmadığını söyledi."
+      },
+      {
+       "t": "Ek deniz devriyesi gönder",
+       "d": "Ek deniz devriyesi gönder",
+       "fx": [
+        [
+         "rel",
+         "China",
+         "Taiwan",
+         -4
+        ],
+        [
+         "troops",
+         "China",
+         1
+        ]
+       ],
+       "r": "Çin Tayvan Boğazı'nda devriyeyi artırdı."
+      }
+     ]
+    }
+   }
   }
  ],
  "moments_en": {
@@ -458,6 +681,30 @@
   "Taipei Pekin'le ekonomik temas kanalı önerdi.": "Taipei proposed an economic contact channel with Beijing.",
   "Halk bölünmüş: bir kesim savunma harcamasını, diğer kesim Pekin'le ticareti istiyor.": "The public is split: some want more defence spending, others want trade with Beijing.",
   "Seçim ve Çıkmaz": "Elections and Stalemate",
-  "Tayvan'da yerel seçimler yaklaşırken Pekin hem sopa hem havuç gösteriyor: ticaret kolaylıkları ile askerî baskıyı birlikte uyguluyor. Boğaz'da iki taraf da ilk vuran olmak istemiyor.": "As local elections approach in Taiwan, Beijing uses both stick and carrot: trade concessions along with military pressure. In the Strait neither side wants to be the first to fire."
+  "Tayvan'da yerel seçimler yaklaşırken Pekin hem sopa hem havuç gösteriyor: ticaret kolaylıkları ile askerî baskıyı birlikte uyguluyor. Boğaz'da iki taraf da ilk vuran olmak istemiyor.": "As local elections approach in Taiwan, Beijing uses both stick and carrot: trade concessions along with military pressure. In the Strait neither side wants to be the first to fire.",
+  "ABD ve Japonya ile tedarik ittifakı kur": "Form a supply alliance with the US and Japan",
+  "Taipei ortak yarı iletken güvenlik anlaşmasına gitti.": "Taipei joined a joint semiconductor security pact.",
+  "Pekin'le ticaret kanalı aç": "Open a trade channel with Beijing",
+  "Tayvan Çin'le ticari kanal arayışına girdi.": "Taiwan sought a trade channel with Beijing.",
+  "Çip ihracatı sorunu doğrudan ekonomik güvenliğin parçası.": "The chip export problem is part of core economic security.",
+  "Kontrolleri sürdür": "Maintain the checks",
+  "Çin kontrolleri sürdürdü; fiyatlar yükseldi.": "China kept the checks; prices rose.",
+  "Kontrolleri gevşet": "Ease the checks",
+  "Pekin gümrük kontrollerini gevşetti.": "Beijing eased the customs checks.",
+  "Pekin teknoloji bağımlılığını azaltmak istiyor ama kendi sanayisi de çipe bağlı.": "Beijing wants less dependence but its own industry relies on chips.",
+  "Yarı İletken Gerilimi": "The Chip Standoff",
+  "Çin gümrük kontrolleri Tayvan'ın çip ihracatını yavaşlattı; ABD ve Japonya ortak tedarik zinciri güvenliği istiyor. TSMC fabrikaları dünyanın kilit noktası.": "Chinese customs checks slowed Taiwan's chip exports; the US and Japan want joint supply-chain security. TSMC fabs are the world's chokepoint.",
+  "Gemiyi yakala": "Seize the vessel",
+  "Tayvan sahil güvenliği şüpheli gemiyi yakaladı.": "Taiwan's coast guard seized the suspect ship.",
+  "Yedek hat kur ve izle": "Set up backup lines and monitor",
+  "Taipei yedek iletişim hatlarını devreye aldı.": "Taipei activated backup communication lines.",
+  "Kablo sabotajı bir abluka provasının işareti olabilir.": "Cable sabotage may be a rehearsal for a blockade.",
+  "Suçlamayı reddet": "Deny the allegations",
+  "Çin kablo kesintisinden sorumlu olmadığını söyledi.": "China said it was not responsible for the cable cut.",
+  "Ek deniz devriyesi gönder": "Send extra naval patrols",
+  "Çin Tayvan Boğazı'nda devriyeyi artırdı.": "China stepped up patrols in the Taiwan Strait.",
+  "Pekin suçlamaları reddediyor; ama ek ihlaller baskı aracı olabilir.": "Beijing denies the claims; but further incidents could serve as leverage.",
+  "Deniz Altı Kablo Kesintisi": "An Undersea Cable Cut",
+  "Tayvan'ı dünyaya bağlayan deniz altı kablolarından ikisi aynı gün kesildi; sorumlular belirsiz, ama bir Çin bayraklı gemi bölgede izlendi. İletişimde yavaşlama, borsada düşüş yaşandı.": "Two of the undersea cables linking Taiwan to the world were cut on the same day; the culprits are unclear, but a Chinese-flagged vessel was tracked in the area. Communications slowed and markets fell."
  }
 }

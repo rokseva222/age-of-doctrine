@@ -281,6 +281,130 @@
    }
   },
   {
+   "id": "arctic_buzkiran",
+   "turn": 50,
+   "title": "Buzkıran Yarışı",
+   "scene": "naval",
+   "icon": "ship",
+   "text": "Rusya, Çin ve Kanada yeni nükleer ve konvansiyonel buzkıran filoları yapıyor; ABD'nin eski buzkıran filosu yetersiz. Kutup güvenliği bir donanma yarışına dönüşüyor.",
+   "major": false,
+   "default_fx": [
+    [
+     "gold",
+     "Russia",
+     -0.5
+    ],
+    [
+     "gold",
+     "United States of America",
+     -0.5
+    ],
+    [
+     "rel",
+     "United States of America",
+     "Russia",
+     -2
+    ]
+   ],
+   "roles": {
+    "United States of America": {
+     "text": "Kongre buzkıran bütçesini artırmak için baskı görüyor.",
+     "options": [
+      {
+       "t": "Buzkıran programı başlat",
+       "d": "Buzkıran programı başlat",
+       "fx": [
+        [
+         "gold",
+         "United States of America",
+         -1.0
+        ],
+        [
+         "buff",
+         "United States of America",
+         "att",
+         1.05,
+         10
+        ],
+        [
+         "rel",
+         "United States of America",
+         "Canada",
+         3
+        ]
+       ],
+       "r": "ABD yeni buzkıran filosu için bütçe ayırdı."
+      },
+      {
+       "t": "Müttefiklerden kirala",
+       "d": "Müttefiklerden kirala",
+       "fx": [
+        [
+         "rel",
+         "United States of America",
+         "Canada",
+         2
+        ],
+        [
+         "rel",
+         "United States of America",
+         "Norway",
+         2
+        ]
+       ],
+       "r": "Washington müttefiklerden buzkıran kiralamayı seçti."
+      }
+     ]
+    },
+    "Russia": {
+     "text": "Rusya en büyük buzkıran filosuna sahip; üstünlük ticaret ve askerî nüfuz demek.",
+     "options": [
+      {
+       "t": "Filoyu genişlet",
+       "d": "Filoyu genişlet",
+       "fx": [
+        [
+         "gold",
+         "Russia",
+         -1.0
+        ],
+        [
+         "rel",
+         "Russia",
+         "Norway",
+         -2
+        ],
+        [
+         "troops",
+         "Russia",
+         1
+        ]
+       ],
+       "r": "Rusya yeni nükleer buzkıranlar ekledi."
+      },
+      {
+       "t": "Çin ile ortak program kur",
+       "d": "Çin ile ortak program kur",
+       "fx": [
+        [
+         "rel",
+         "Russia",
+         "China",
+         4
+        ],
+        [
+         "gold",
+         "Russia",
+         0.5
+        ]
+       ],
+       "r": "Moskova ve Pekin ortak buzkıran projesi duyurdu."
+      }
+     ]
+    }
+   }
+  },
+  {
    "id": "arctic_denizalti",
    "turn": 70,
    "title": "Kutup Altı Denizaltı Karşılaşması",
@@ -390,6 +514,115 @@
      ]
     }
    }
+  },
+  {
+   "id": "arctic_nadir",
+   "turn": 110,
+   "title": "Nadir Toprak Madenleri",
+   "scene": "trade",
+   "icon": "trade",
+   "text": "Grönland ve Kuzey Kanada'daki nadir toprak madenleri için uluslararası ihale açıldı. Çin ve ABD şirketleri yarışırken yerli halklar ve çevre örgütleri itiraz ediyor.",
+   "major": false,
+   "default_fx": [
+    [
+     "gold",
+     "Denmark",
+     1.0
+    ],
+    [
+     "gold",
+     "Canada",
+     1.0
+    ],
+    [
+     "rel",
+     "Denmark",
+     "United States of America",
+     1
+    ]
+   ],
+   "roles": {
+    "Denmark": {
+     "text": "Madenler gelir ve nüfuz getirir; ama Grönland'ın özerkliği hassas.",
+     "options": [
+      {
+       "t": "Müttefik şirketlere ver",
+       "d": "Müttefik şirketlere ver",
+       "fx": [
+        [
+         "rel",
+         "Denmark",
+         "United States of America",
+         4
+        ],
+        [
+         "gold",
+         "Denmark",
+         1.0
+        ]
+       ],
+       "r": "Kopenhag ihaleyi müttefik şirketlere verdi."
+      },
+      {
+       "t": "Yerel yönetime yetki ver",
+       "d": "Yerel yönetime yetki ver",
+       "fx": [
+        [
+         "stab",
+         "Denmark",
+         -1
+        ],
+        [
+         "rel",
+         "Denmark",
+         "United States of America",
+         -1
+        ]
+       ],
+       "r": "Nuuk madenler üzerinde karar yetkisi aldı."
+      }
+     ]
+    },
+    "Canada": {
+     "text": "Ottawa yerli halklarla istişare yapmak ve çevresel standartları korumak zorunda.",
+     "options": [
+      {
+       "t": "Sıkı çevre standartları koy",
+       "d": "Sıkı çevre standartları koy",
+       "fx": [
+        [
+         "stab",
+         "Canada",
+         2
+        ],
+        [
+         "gold",
+         "Canada",
+         -0.2
+        ]
+       ],
+       "r": "Kanada sıkı çevre koşulları getirdi."
+      },
+      {
+       "t": "Madenciliği hızlandır",
+       "d": "Madenciliği hızlandır",
+       "fx": [
+        [
+         "gold",
+         "Canada",
+         1.5
+        ],
+        [
+         "stab",
+         "Canada",
+         -1
+        ]
+       ],
+       "r": "Ottawa maden izinlerini hızlandırdı."
+      }
+     ]
+    }
+   }
   }
  ],
  "moments_en": {
@@ -433,6 +666,30 @@
   "ABD Arktik Konseyi'nde kriz yönetimi kanalı önerdi.": "The US proposed a crisis channel in the Arctic Council.",
   "Kutup caydırıcılığı için buzkıran filosu ve denizaltı gerekli; bütçeyi nereye ayıracaksın?": "Polar deterrence needs icebreakers and submarines; where will you spend?",
   "Kutup Altı Denizaltı Karşılaşması": "A Submarine Encounter Under the Ice",
-  "Buzun altında bir Rus ve bir NATO denizaltısı tehlikeli şekilde yakın geçti; iki taraf da sonarla izlendiğini söylüyor. Kutup, silahsız bir bölge değil: kıta sahanlığı iddiaları da masada.": "A Russian and a NATO submarine passed dangerously close under the ice; both say they were being tracked by sonar. The pole is no disarmed zone: continental-shelf claims are on the table as well."
+  "Buzun altında bir Rus ve bir NATO denizaltısı tehlikeli şekilde yakın geçti; iki taraf da sonarla izlendiğini söylüyor. Kutup, silahsız bir bölge değil: kıta sahanlığı iddiaları da masada.": "A Russian and a NATO submarine passed dangerously close under the ice; both say they were being tracked by sonar. The pole is no disarmed zone: continental-shelf claims are on the table as well.",
+  "Buzkıran programı başlat": "Start an icebreaker programme",
+  "ABD yeni buzkıran filosu için bütçe ayırdı.": "The US funded a new icebreaker fleet.",
+  "Müttefiklerden kirala": "Lease from allies",
+  "Washington müttefiklerden buzkıran kiralamayı seçti.": "Washington opted to lease icebreakers from allies.",
+  "Kongre buzkıran bütçesini artırmak için baskı görüyor.": "Congress faces pressure to raise icebreaker spending.",
+  "Filoyu genişlet": "Expand the fleet",
+  "Rusya yeni nükleer buzkıranlar ekledi.": "Russia added new nuclear icebreakers.",
+  "Çin ile ortak program kur": "Set up a joint programme with China",
+  "Moskova ve Pekin ortak buzkıran projesi duyurdu.": "Moscow and Beijing announced a joint icebreaker project.",
+  "Rusya en büyük buzkıran filosuna sahip; üstünlük ticaret ve askerî nüfuz demek.": "Russia has the largest icebreaker fleet; dominance means trade and military influence.",
+  "Buzkıran Yarışı": "The Icebreaker Race",
+  "Rusya, Çin ve Kanada yeni nükleer ve konvansiyonel buzkıran filoları yapıyor; ABD'nin eski buzkıran filosu yetersiz. Kutup güvenliği bir donanma yarışına dönüşüyor.": "Russia, China and Canada are building new nuclear and conventional icebreaker fleets; the US icebreaker fleet is outdated. Polar security is turning into a naval race.",
+  "Müttefik şirketlere ver": "Award to allied firms",
+  "Kopenhag ihaleyi müttefik şirketlere verdi.": "Copenhagen awarded the tender to allied firms.",
+  "Yerel yönetime yetki ver": "Give authority to local government",
+  "Nuuk madenler üzerinde karar yetkisi aldı.": "Nuuk gained decision authority over the mines.",
+  "Madenler gelir ve nüfuz getirir; ama Grönland'ın özerkliği hassas.": "The mines bring income and leverage, but Greenland's autonomy is sensitive.",
+  "Sıkı çevre standartları koy": "Impose strict environmental standards",
+  "Kanada sıkı çevre koşulları getirdi.": "Canada imposed strict environmental conditions.",
+  "Madenciliği hızlandır": "Speed up mining",
+  "Ottawa maden izinlerini hızlandırdı.": "Ottawa fast-tracked mining permits.",
+  "Ottawa yerli halklarla istişare yapmak ve çevresel standartları korumak zorunda.": "Ottawa must consult Indigenous peoples and uphold environmental standards.",
+  "Nadir Toprak Madenleri": "Rare-Earth Mines",
+  "Grönland ve Kuzey Kanada'daki nadir toprak madenleri için uluslararası ihale açıldı. Çin ve ABD şirketleri yarışırken yerli halklar ve çevre örgütleri itiraz ediyor.": "An international tender opened for rare-earth mines in Greenland and northern Canada. Chinese and US firms compete while Indigenous communities and environmental groups object."
  }
 }
