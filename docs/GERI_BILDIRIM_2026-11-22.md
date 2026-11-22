@@ -46,13 +46,13 @@ Kaynak: ahmett_ttarik, luciferdeu, erenkbtss, devranpashaa, play store paylaşı
 
 ## Ek: ss'lerin ikinci okuması (2026-11-23, 63 ekran görüntüsü, tamamı tekrar okundu)
 Ilk listede olmayan ya da eksik kalan maddeler. Durum etiketi kodda bakılarak yazıldı; "BAKILACAK" olanlar doğrulanmadı.
-- E1. [BAKILACAK] Ülke renkleri haritada belirgin/farklı olsun (Emir Ali, harita görüntüleri); Türkiye–Yunanistan renkleri yer değiştirmiş görünüyor.
-- E2. [KISMEN] Alınan teçhizatın (tank, top, denizaltı) farkı anlaşılsın, savaşa etkisi olsun: model bazlı güç ve simge VAR; haritada/ordu kartında görsel fark ve açık etki yazısı eksik.
+- E1. [VAR: scripts/country_colors.gd sabit kimlik renkleri; Türkiye kırmızı, Yunanistan mavi] Ülke renkleri haritada belirgin/farklı olsun (Emir Ali, harita görüntüleri); Türkiye–Yunanistan renkleri yer değiştirmiş görünüyor.
+- E2. [VAR: Envanter sekmesinde kara donanımı çarpanı + sınıf payları + açıklama; ordu kartı etkisi ayrıca eklenmedi] Alınan teçhizatın (tank, top, denizaltı) farkı anlaşılsın, savaşa etkisi olsun: model bazlı güç ve simge VAR; haritada/ordu kartında görsel fark ve açık etki yazısı eksik.
 - E3. [KODDA VAR, yeniden denenmeli] Hata 1/4/5 (Furkan): savaşsız adaya ordu geçirilemiyor, geçit izni bitince ordu içeride kalıyor, Japonlar gibi denize çıkılamıyor. Dost deniz nakliyesi, çıkarma ve geçit bitince eve gönderme kodda var; ss'ler 19–21 Kasım sürümünden.
-- E4. [YOK] Saldırı/ordu hareketi animasyonu; hava bombardımanında küçük patlama efekti (Furkan/Eren fikri).
-- E5. [KISMEN] Savaş sonrası asimilasyon/din dönüştürme VAR (eyalet kartı); "isyan çıkma sıklığı çok fazla, fetihten başka gelişim yok" dengesi bakılmadı (mainanonacc).
+- E4. [YAPILDI: ordu hareket animasyonu zaten vardı; çatışma kıvılcımı + hava bombardımanı patlaması eklendi] Saldırı/ordu hareketi animasyonu; hava bombardımanında küçük patlama efekti (Furkan/Eren fikri).
+- E5. [KONTROL EDİLDİ: aynı anda en çok 6 isyan, kıta başına 3; güven ve garnizon huzursuzluğu azaltır; ek değişiklik yapılmadı] Savaş sonrası asimilasyon/din dönüştürme VAR (eyalet kartı); "isyan çıkma sıklığı çok fazla, fetihten başka gelişim yok" dengesi bakılmadı (mainanonacc).
 - E6. [YAPILDI: formlama kartında 'Haritada göster' + 'Alınacak yerler (elinde tutan ülke)' listesi] "Osmanlı'yı oluştur" formlarken nereleri almam gerektiği haritada gösterilsin.
-- E7. [KISMEN] Yeni senaryolar: Osmanlı kuruluşu (ott1299) ve İstanbul'un fethi (ott1453) VAR; 15 Temmuz, 12 Eylül, Navalny protestosu, Weimar/Beyaz Rusya/Sovyet çatışması YOK.
+- E7. [KISMEN: 15 Temmuz ve Rusya protestoları senaryosu EKLENDİ; 12 Eylül ve Weimar/Beyaz Rusya için 1980/1920 harita dönemi gerekir] Yeni senaryolar: Osmanlı kuruluşu (ott1299) ve İstanbul'un fethi (ott1453) VAR; 15 Temmuz, 12 Eylül, Navalny protestosu, Weimar/Beyaz Rusya/Sovyet çatışması YOK.
 - E8. [BAKILACAK] Senaryo editörü: haritadan tıklayarak ülke/il seçme, kaydırma sorunu, tarih/harita ayarı.
 - E9. [YAPILDI: eğitim/tarım bütçesi, 3 tip kiralık asker (gönüllü/profesyonel/özel harekât) zaten vardı, bu tur Askerlik düzeni: gönüllü/normal/zorunlu eklendi] Kiralık asker 3 tip (çete / orta / özel harekat); zorunlu askerlik tur başına çok az (5–10 bin); vergi↔asker sürgüsü; bütçede eğitim, tarım, vergi.
 - E10. [İNCELENDİ: tek eyaletli olanlar yalnız 26 mikro devlet (Singapur, Malta, Monako...); Türkiye/Arabistan çok eyaletli] Eyalet sayısı dengesiz: Arabistan tek il, Türkiye'de 2 tek il (Emir Ali).
@@ -61,4 +61,7 @@ Ilk listede olmayan ya da eksik kalan maddeler. Durum etiketi kodda bakılarak y
 - E13. [BAKILACAK] Hata 2/3/6 (Furkan): 1939'da Grodno ve Brest ile Polonya sınırındaki bölge Sovyet görünüyor; Hindistan'ın içindeki beylikler yok; 1914 haritasında Kars/Hicaz ve Avusturya'nın İtalya/Romanya'dan aldığı toprak fazlası. (WW1'de Kars→Rusya, Hicaz→Osmanlı aktarımı kodda var; 1939 Polonya doğusu için tarih doğrulaması gerek.)
 - E14. [VAR: 1914 ve 1939'da Cezayir/Hindistan/Vietnam... vasal olarak başlar; günümüz haritasında yok] Fransa/İngiltere'nin Afrika-Asya-Amerika topraklarını vasal yap (ör. Cezayir, WW2'de Fransa vasalı).
 - E15. [İNCELENDİ] Pil tüketimi: 2 saatte %15 (mainanonacc); cihaz profili gerekir (B1 ile aynı).
-- E16. [KISMEN: bütçeye Eğitim ve Bilim (teknolojiyi yıllar içinde yükseltir) ile Tarım ve Gıda (gelir +, istikrar +) kalemleri eklendi; vergi↔asker sürgüsü ve tank/top/tüfek gücü ayarı YOK] Eğitim, tarım, vergi, asker alımı, tank/top/tüfek gücü içeren "teknoloji/ülke yönetimi ekranı" (Emir Ali/Furkan sohbeti, World Empire benzeri).
+- E16. [KISMEN: askerlik düzeni (gönüllü/normal/zorunlu) eklendi;: bütçeye Eğitim ve Bilim (teknolojiyi yıllar içinde yükseltir) ile Tarım ve Gıda (gelir +, istikrar +) kalemleri eklendi; vergi↔asker sürgüsü ve tank/top/tüfek gücü ayarı YOK] Eğitim, tarım, vergi, asker alımı, tank/top/tüfek gücü içeren "teknoloji/ülke yönetimi ekranı" (Emir Ali/Furkan sohbeti, World Empire benzeri).
+
+## Mal ve kaynak ekonomisi (2026-11-23)
+- Tahıl, kereste, maden, petrol/gaz: üretim (eyalet nüfusu, bina, zengin yatak), tüketim, stok, fiyat, ithalat/ihracat, kıtlık etkisi; Ticaret sekmesinde pazar paneli; Kereste atölyesi binası; 52 haftalık tedarik anlaşmaları (petrol/gaz dahil).
