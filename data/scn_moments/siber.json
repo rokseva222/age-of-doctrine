@@ -1,0 +1,549 @@
+{
+ "moments": [
+  {
+   "id": "siber_sebeke",
+   "turn": 4,
+   "title": "Elektrik Şebekesi Vuruldu",
+   "scene": "crisis",
+   "icon": "warning",
+   "text": "Büyük bir şehrin elektrik şebekesi gizemli bir siber saldırıyla çöktü. Hastaneler jeneratörle çalışıyor; kimse saldırıyı üstlenmedi, ama herkes birbirini suçluyor.",
+   "major": true,
+   "default_fx": [
+    [
+     "stab",
+     "United States of America",
+     -2
+    ],
+    [
+     "rel",
+     "United States of America",
+     "China",
+     -3
+    ],
+    [
+     "rel",
+     "United States of America",
+     "Russia",
+     -3
+    ]
+   ],
+   "roles": {
+    "United States of America": {
+     "text": "Atıf zor; yanlış suçlama krizi büyütür, geç karşılık zayıf görünür.",
+     "options": [
+      {
+       "t": "Siber karşı saldırı yap",
+       "d": "Siber karşı saldırı yap",
+       "fx": [
+        [
+         "rel",
+         "United States of America",
+         "China",
+         -4
+        ],
+        [
+         "rel",
+         "United States of America",
+         "Russia",
+         -4
+        ],
+        [
+         "stab",
+         "United States of America",
+         1
+        ]
+       ],
+       "r": "Washington şüpheli ağlara karşı misilleme yaptı."
+      },
+      {
+       "t": "Müttefiklerle ortak atıf yap",
+       "d": "Müttefiklerle ortak atıf yap",
+       "fx": [
+        [
+         "rel",
+         "United States of America",
+         "United Kingdom",
+         3
+        ],
+        [
+         "rel",
+         "United States of America",
+         "Germany",
+         3
+        ],
+        [
+         "rel",
+         "United States of America",
+         "China",
+         -2
+        ]
+       ],
+       "r": "ABD müttefikleriyle ortak bir atıf açıklaması yaptı."
+      }
+     ]
+    },
+    "China": {
+     "text": "Pekin suçlamaları reddediyor; ama kendi kritik şebekelerini de güçlendirmek zorunda.",
+     "options": [
+      {
+       "t": "Suçlamaları reddet, savunmayı artır",
+       "d": "Suçlamaları reddet, savunmayı artır",
+       "fx": [
+        [
+         "gold",
+         "China",
+         -0.5
+        ],
+        [
+         "stab",
+         "China",
+         1
+        ]
+       ],
+       "r": "Çin suçlamaları reddedip siber savunmasını artırdı.",
+       "keep_default": true
+      },
+      {
+       "t": "Ortak soruşturma öner",
+       "d": "Ortak soruşturma öner",
+       "fx": [
+        [
+         "rel",
+         "China",
+         "United States of America",
+         3
+        ],
+        [
+         "rel",
+         "China",
+         "Germany",
+         2
+        ]
+       ],
+       "r": "Pekin uluslararası ortak soruşturma önerdi.",
+       "keep_default": true
+      }
+     ]
+    },
+    "Russia": {
+     "text": "Moskova şebeke vuruşunu hem inkâr ediyor hem de caydırıcı bir mesaj olarak değerlendiriyor.",
+     "options": [
+      {
+       "t": "Belirsiz kal",
+       "d": "Belirsiz kal",
+       "fx": [
+        [
+         "rel",
+         "Russia",
+         "United States of America",
+         -2
+        ],
+        [
+         "stab",
+         "Russia",
+         1
+        ]
+       ],
+       "r": "Rusya olayı inkâr etti ama belirsizliği sürdürdü."
+      },
+      {
+       "t": "Karşı atıf yap",
+       "d": "Karşı atıf yap",
+       "fx": [
+        [
+         "rel",
+         "Russia",
+         "United States of America",
+         -4
+        ],
+        [
+         "rel",
+         "Russia",
+         "United Kingdom",
+         -2
+        ]
+       ],
+       "r": "Moskova ABD ve müttefiklerini suçladı."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "siber_liman",
+   "turn": 20,
+   "title": "Liman Otomasyonu Çöktü",
+   "scene": "trade",
+   "icon": "ship",
+   "text": "Dünyanın en büyük konteyner limanlarından birinde yazılım saldırısı konteyner takibini kilitledi; gemiler kuyruğa girdi. Küresel tedarik zinciri günlerce aksadı, fiyatlar fırladı.",
+   "major": false,
+   "default_fx": [
+    [
+     "gold",
+     "Japan",
+     -1.0
+    ],
+    [
+     "gold",
+     "Germany",
+     -1.0
+    ],
+    [
+     "gold",
+     "China",
+     -1.0
+    ],
+    [
+     "rel",
+     "United States of America",
+     "China",
+     -2
+    ]
+   ],
+   "roles": {
+    "Germany": {
+     "text": "Alman sanayisi ithal parçalara bağımlı; liman krizi fabrikaları durdurabilir.",
+     "options": [
+      {
+       "t": "Stratejik stoklara başvur",
+       "d": "Stratejik stoklara başvur",
+       "fx": [
+        [
+         "gold",
+         "Germany",
+         -0.5
+        ],
+        [
+         "stab",
+         "Germany",
+         1
+        ]
+       ],
+       "r": "Almanya stratejik parça stoklarını devreye soktu."
+      },
+      {
+       "t": "Alternatif limanlara yönel",
+       "d": "Alternatif limanlara yönel",
+       "fx": [
+        [
+         "gold",
+         "Germany",
+         -1.0
+        ],
+        [
+         "rel",
+         "Germany",
+         "Netherlands",
+         3
+        ]
+       ],
+       "r": "Berlin gemileri alternatif limanlara yönlendirdi."
+      }
+     ]
+    },
+    "Japan": {
+     "text": "Japonya ihracata bağımlı; liman gecikmesi doğrudan büyümeyi vuruyor.",
+     "options": [
+      {
+       "t": "Ticaret ortaklarıyla ortak siber savunma",
+       "d": "Ticaret ortaklarıyla ortak siber savunma",
+       "fx": [
+        [
+         "rel",
+         "Japan",
+         "United States of America",
+         4
+        ],
+        [
+         "gold",
+         "Japan",
+         -0.5
+        ]
+       ],
+       "r": "Tokyo ticaret ortaklarıyla ortak savunma planı kurdu."
+      },
+      {
+       "t": "Gemi rotalarını çeşitlendir",
+       "d": "Gemi rotalarını çeşitlendir",
+       "fx": [
+        [
+         "gold",
+         "Japan",
+         -0.5
+        ],
+        [
+         "stab",
+         "Japan",
+         1
+        ]
+       ],
+       "r": "Japonya gemi rotalarını çeşitlendirdi."
+      }
+     ]
+    },
+    "China": {
+     "text": "Çin limanları dünya ticaretinin kalbi; saldırıdan zarar görenlerden biri de sensin.",
+     "options": [
+      {
+       "t": "Limanları yeniden başlat ve ihracatı koru",
+       "d": "Limanları yeniden başlat ve ihracatı koru",
+       "fx": [
+        [
+         "gold",
+         "China",
+         0.5
+        ],
+        [
+         "stab",
+         "China",
+         1
+        ]
+       ],
+       "r": "Çin limanları hızla yeniden başlattı."
+      },
+      {
+       "t": "Rakip liman ağlarına siber baskı yap",
+       "d": "Rakip liman ağlarına siber baskı yap",
+       "fx": [
+        [
+         "rel",
+         "China",
+         "United States of America",
+         -3
+        ],
+        [
+         "rel",
+         "China",
+         "Japan",
+         -2
+        ]
+       ],
+       "r": "Pekin rakip liman ağlarına baskı yaptı."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "siber_borsa",
+   "turn": 42,
+   "title": "Borsa Çöküşü ve Yapay Zekâ Manipülasyonu",
+   "scene": "trade",
+   "icon": "trade",
+   "text": "Sahte haber ve yapay zekâ üretimi dezenformasyon dalgası dünya borsalarını yarım gün içinde yüzde 12 düşürdü. Hükûmetler piyasaları durdurup ortak bir 'siber barış' önerisi arıyor.",
+   "major": true,
+   "default_fx": [
+    [
+     "gold",
+     "United States of America",
+     -1.0
+    ],
+    [
+     "gold",
+     "China",
+     -1.0
+    ],
+    [
+     "gold",
+     "Germany",
+     -1.0
+    ],
+    [
+     "stab",
+     "United States of America",
+     -2
+    ]
+   ],
+   "roles": {
+    "United States of America": {
+     "text": "Başkan piyasaya güven vermek zorunda; ama sorumluları hâlâ kesin bilmiyorsun.",
+     "options": [
+      {
+       "t": "Siber barış zirvesi çağır",
+       "d": "Siber barış zirvesi çağır",
+       "fx": [
+        [
+         "rel",
+         "United States of America",
+         "China",
+         3
+        ],
+        [
+         "rel",
+         "United States of America",
+         "Russia",
+         2
+        ],
+        [
+         "stab",
+         "United States of America",
+         1
+        ]
+       ],
+       "r": "ABD büyük güçleri siber barış zirvesine çağırdı."
+      },
+      {
+       "t": "Piyasayı destekle ve yaptırım uygula",
+       "d": "Piyasayı destekle ve yaptırım uygula",
+       "fx": [
+        [
+         "gold",
+         "United States of America",
+         -0.5
+        ],
+        [
+         "rel",
+         "United States of America",
+         "China",
+         -3
+        ],
+        [
+         "rel",
+         "United States of America",
+         "Russia",
+         -3
+        ]
+       ],
+       "r": "Washington piyasaya likidite sağlayıp yaptırımları artırdı."
+      }
+     ]
+    },
+    "China": {
+     "text": "Pekin kendi piyasa istikrarını korumalı; ortak anlaşmaya mı gidecek?",
+     "options": [
+      {
+       "t": "Siber barış önerisini destekle",
+       "d": "Siber barış önerisini destekle",
+       "fx": [
+        [
+         "rel",
+         "China",
+         "United States of America",
+         4
+        ],
+        [
+         "stab",
+         "China",
+         1
+        ]
+       ],
+       "r": "Çin siber barış önerisine destek verdi."
+      },
+      {
+       "t": "Kendi finans ağını kapat",
+       "d": "Kendi finans ağını kapat",
+       "fx": [
+        [
+         "rel",
+         "China",
+         "United States of America",
+         -2
+        ],
+        [
+         "stab",
+         "China",
+         1
+        ]
+       ],
+       "r": "Çin finans ağını dış dünyadan yalıttı."
+      }
+     ]
+    },
+    "Russia": {
+     "text": "Moskova yaptırımlar altında; piyasa çöküşü Rusya'ya göre bir fırsat da olabilir.",
+     "options": [
+      {
+       "t": "Alternatif ödeme sistemi kur",
+       "d": "Alternatif ödeme sistemi kur",
+       "fx": [
+        [
+         "rel",
+         "Russia",
+         "China",
+         4
+        ],
+        [
+         "gold",
+         "Russia",
+         0.5
+        ]
+       ],
+       "r": "Rusya alternatif ödeme ağını hızlandırdı."
+      },
+      {
+       "t": "Zirveye katıl",
+       "d": "Zirveye katıl",
+       "fx": [
+        [
+         "rel",
+         "Russia",
+         "United States of America",
+         3
+        ],
+        [
+         "stab",
+         "Russia",
+         1
+        ]
+       ],
+       "r": "Moskova siber barış zirvesine katıldı."
+      }
+     ]
+    }
+   }
+  }
+ ],
+ "moments_en": {
+  "Siber karşı saldırı yap": "Launch a cyber counterstrike",
+  "Washington şüpheli ağlara karşı misilleme yaptı.": "Washington retaliated against suspected networks.",
+  "Müttefiklerle ortak atıf yap": "Attribute jointly with allies",
+  "ABD müttefikleriyle ortak bir atıf açıklaması yaptı.": "The US issued a joint attribution with allies.",
+  "Atıf zor; yanlış suçlama krizi büyütür, geç karşılık zayıf görünür.": "Attribution is hard; a wrong accusation inflates the crisis, a late response looks weak.",
+  "Suçlamaları reddet, savunmayı artır": "Deny and strengthen defences",
+  "Çin suçlamaları reddedip siber savunmasını artırdı.": "China denied the claims and boosted its cyber defences.",
+  "Ortak soruşturma öner": "Offer a joint inquiry",
+  "Pekin uluslararası ortak soruşturma önerdi.": "Beijing offered a joint international inquiry.",
+  "Pekin suçlamaları reddediyor; ama kendi kritik şebekelerini de güçlendirmek zorunda.": "Beijing denies the accusations but must harden its own critical grids.",
+  "Belirsiz kal": "Stay ambiguous",
+  "Rusya olayı inkâr etti ama belirsizliği sürdürdü.": "Russia denied it but kept the ambiguity.",
+  "Karşı atıf yap": "Counter-accuse",
+  "Moskova ABD ve müttefiklerini suçladı.": "Moscow accused the US and its allies.",
+  "Moskova şebeke vuruşunu hem inkâr ediyor hem de caydırıcı bir mesaj olarak değerlendiriyor.": "Moscow denies the grid strike while treating it as a deterrent message.",
+  "Elektrik Şebekesi Vuruldu": "A Power Grid Is Hit",
+  "Büyük bir şehrin elektrik şebekesi gizemli bir siber saldırıyla çöktü. Hastaneler jeneratörle çalışıyor; kimse saldırıyı üstlenmedi, ama herkes birbirini suçluyor.": "A major city's power grid collapsed in a mysterious cyberattack. Hospitals run on generators; nobody claimed the attack but everyone blames everyone else.",
+  "Stratejik stoklara başvur": "Tap strategic stockpiles",
+  "Almanya stratejik parça stoklarını devreye soktu.": "Germany released strategic parts stockpiles.",
+  "Alternatif limanlara yönel": "Reroute to alternative ports",
+  "Berlin gemileri alternatif limanlara yönlendirdi.": "Berlin rerouted ships to alternative ports.",
+  "Alman sanayisi ithal parçalara bağımlı; liman krizi fabrikaları durdurabilir.": "German industry depends on imported parts; the port crisis could stop factories.",
+  "Ticaret ortaklarıyla ortak siber savunma": "Joint cyber defence with trade partners",
+  "Tokyo ticaret ortaklarıyla ortak savunma planı kurdu.": "Tokyo formed a joint defence plan with trading partners.",
+  "Gemi rotalarını çeşitlendir": "Diversify shipping routes",
+  "Japonya gemi rotalarını çeşitlendirdi.": "Japan diversified its shipping routes.",
+  "Japonya ihracata bağımlı; liman gecikmesi doğrudan büyümeyi vuruyor.": "Japan depends on exports; port delays hit growth directly.",
+  "Limanları yeniden başlat ve ihracatı koru": "Restart ports and protect exports",
+  "Çin limanları hızla yeniden başlattı.": "China restarted its ports quickly.",
+  "Rakip liman ağlarına siber baskı yap": "Retaliate against rival port networks",
+  "Pekin rakip liman ağlarına baskı yaptı.": "Beijing pressed rival port networks.",
+  "Çin limanları dünya ticaretinin kalbi; saldırıdan zarar görenlerden biri de sensin.": "Chinese ports are the heart of world trade; you are among the victims too.",
+  "Liman Otomasyonu Çöktü": "Port Automation Collapses",
+  "Dünyanın en büyük konteyner limanlarından birinde yazılım saldırısı konteyner takibini kilitledi; gemiler kuyruğa girdi. Küresel tedarik zinciri günlerce aksadı, fiyatlar fırladı.": "A software attack at one of the world's biggest container ports locked cargo tracking; ships queued up. The global supply chain stalled for days and prices jumped.",
+  "Siber barış zirvesi çağır": "Call a cyber peace summit",
+  "ABD büyük güçleri siber barış zirvesine çağırdı.": "The US convened the great powers for a cyber peace summit.",
+  "Piyasayı destekle ve yaptırım uygula": "Support markets and sanction",
+  "Washington piyasaya likidite sağlayıp yaptırımları artırdı.": "Washington injected liquidity and stepped up sanctions.",
+  "Başkan piyasaya güven vermek zorunda; ama sorumluları hâlâ kesin bilmiyorsun.": "The President must reassure markets, yet you still do not know who is responsible.",
+  "Siber barış önerisini destekle": "Support the cyber peace proposal",
+  "Çin siber barış önerisine destek verdi.": "China backed the cyber peace proposal.",
+  "Kendi finans ağını kapat": "Wall off your own financial network",
+  "Çin finans ağını dış dünyadan yalıttı.": "China walled off its financial network from the world.",
+  "Pekin kendi piyasa istikrarını korumalı; ortak anlaşmaya mı gidecek?": "Beijing must protect its own market stability; will it go for a joint agreement?",
+  "Alternatif ödeme sistemi kur": "Build an alternative payment system",
+  "Rusya alternatif ödeme ağını hızlandırdı.": "Russia accelerated an alternative payment network.",
+  "Zirveye katıl": "Join the summit",
+  "Moskova siber barış zirvesine katıldı.": "Moscow joined the cyber peace summit.",
+  "Moskova yaptırımlar altında; piyasa çöküşü Rusya'ya göre bir fırsat da olabilir.": "Moscow lives under sanctions; a market crash could also look like an opportunity.",
+  "Borsa Çöküşü ve Yapay Zekâ Manipülasyonu": "A Market Crash and AI Manipulation",
+  "Sahte haber ve yapay zekâ üretimi dezenformasyon dalgası dünya borsalarını yarım gün içinde yüzde 12 düşürdü. Hükûmetler piyasaları durdurup ortak bir 'siber barış' önerisi arıyor.": "A wave of fake news and AI-generated disinformation knocked world stock markets down 12% in half a day. Governments halt trading and look for a joint 'cyber peace' proposal."
+ }
+}

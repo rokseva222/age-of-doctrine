@@ -1,0 +1,623 @@
+{
+ "moments": [
+  {
+   "id": "balt_madde5",
+   "turn": 3,
+   "title": "NATO Madde 5 Devrede",
+   "scene": "pre_war",
+   "icon": "warning",
+   "text": "Rus birlikleri Estonya ve Letonya sınırını aştı; NATO müttefikleri Madde 5'i devreye aldı. Baltık'ta hava sahası kapanıyor; Finlandiya ve Polonya acil istişare istiyor.",
+   "major": true,
+   "default_fx": [
+    [
+     "rel",
+     "Russia",
+     "United States of America",
+     -6
+    ],
+    [
+     "rel",
+     "Russia",
+     "Poland",
+     -4
+    ],
+    [
+     "stab",
+     "Estonia",
+     -2
+    ],
+    [
+     "stab",
+     "Latvia",
+     -2
+    ]
+   ],
+   "roles": {
+    "Estonia": {
+     "text": "Tallinn'in birlikleri sınırda direniyor; NATO takviyesi birkaç gün uzakta.",
+     "options": [
+      {
+       "t": "Narva hattında savun",
+       "d": "Narva hattında savun",
+       "fx": [
+        [
+         "buff",
+         "Estonia",
+         "def",
+         1.3,
+         10
+        ],
+        [
+         "stab",
+         "Estonia",
+         2
+        ]
+       ],
+       "r": "Estonya birlikleri Narva hattında savundu."
+      },
+      {
+       "t": "Gerillaya geç ve yedekleri seferber et",
+       "d": "Gerillaya geç ve yedekleri seferber et",
+       "fx": [
+        [
+         "mob",
+         "Estonia"
+        ],
+        [
+         "troops",
+         "Estonia",
+         3
+        ]
+       ],
+       "r": "Tallinn yedek kuvvetleri seferber etti."
+      }
+     ]
+    },
+    "Russia": {
+     "text": "Moskova 'sınır ihlali' gerekçesini yineliyor; ama NATO müttefik hava gücü devreye giriyor.",
+     "options": [
+      {
+       "t": "Baltık'ta ilerlemeyi sürdür",
+       "d": "Baltık'ta ilerlemeyi sürdür",
+       "fx": [
+        [
+         "buff",
+         "Russia",
+         "att",
+         1.15,
+         8
+        ],
+        [
+         "rel",
+         "Russia",
+         "United States of America",
+         -4
+        ],
+        [
+         "troops",
+         "Russia",
+         -2
+        ]
+       ],
+       "r": "Rus birlikleri Baltık'ta ilerlemeye devam etti."
+      },
+      {
+       "t": "Durma noktası ilan et",
+       "d": "Durma noktası ilan et",
+       "fx": [
+        [
+         "rel",
+         "Russia",
+         "United States of America",
+         2
+        ],
+        [
+         "stab",
+         "Russia",
+         -1
+        ]
+       ],
+       "r": "Moskova 'sınırlı bir operasyon' dedi ve duraksadı."
+      }
+     ]
+    },
+    "United States of America": {
+     "text": "Washington Madde 5 taahhüdünü yerine getirecek mi, yoksa müttefiklerden yük paylaşımı mı isteyecek?",
+     "options": [
+      {
+       "t": "Hızlı Tepki Gücü gönder",
+       "d": "Hızlı Tepki Gücü gönder",
+       "fx": [
+        [
+         "rel",
+         "United States of America",
+         "Estonia",
+         6
+        ],
+        [
+         "rel",
+         "United States of America",
+         "Russia",
+         -4
+        ],
+        [
+         "troops",
+         "United States of America",
+         -2
+        ]
+       ],
+       "r": "ABD Baltık'a hızlı tepki gücü gönderdi."
+      },
+      {
+       "t": "Hava ve füze savunması ver",
+       "d": "Hava ve füze savunması ver",
+       "fx": [
+        [
+         "rel",
+         "United States of America",
+         "Estonia",
+         4
+        ],
+        [
+         "gold",
+         "United States of America",
+         -0.5
+        ]
+       ],
+       "r": "Washington Baltık'a hava ve füze savunması kaydırdı."
+      }
+     ]
+    },
+    "Finland": {
+     "text": "Finlandiya sınırında Rus birlikleri yığınağı var; ama yeni NATO üyesisin.",
+     "options": [
+      {
+       "t": "Sınırı tahkim et",
+       "d": "Sınırı tahkim et",
+       "fx": [
+        [
+         "troops",
+         "Finland",
+         3
+        ],
+        [
+         "buff",
+         "Finland",
+         "def",
+         1.2,
+         10
+        ]
+       ],
+       "r": "Finlandiya Rusya sınırını tahkim etti."
+      },
+      {
+       "t": "Müttefiklere destek ver",
+       "d": "Müttefiklere destek ver",
+       "fx": [
+        [
+         "rel",
+         "Finland",
+         "Estonia",
+         5
+        ],
+        [
+         "rel",
+         "Finland",
+         "Russia",
+         -4
+        ]
+       ],
+       "r": "Helsinki Baltık müttefiklerine hava ve istihbarat desteği verdi."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "balt_suvalki",
+   "turn": 18,
+   "title": "Suwałki Koridoru",
+   "scene": "pre_assault",
+   "icon": "tank",
+   "text": "Rus ve Belarus birlikleri, Polonya ile Litvanya'yı ayıran dar Suwałki Koridoru'na yöneldi. Burası kesilirse Baltık ülkeleri NATO'dan kopar.",
+   "major": true,
+   "default_fx": [
+    [
+     "troops",
+     "Poland",
+     -2
+    ],
+    [
+     "troops",
+     "Lithuania",
+     -2
+    ],
+    [
+     "troops",
+     "Belarus",
+     -2
+    ],
+    [
+     "stab",
+     "Lithuania",
+     -2
+    ]
+   ],
+   "roles": {
+    "Poland": {
+     "text": "Koridor Polonya'nın sorumluluğunda. Yetişen takviye olursa kapanmaz; olmazsa Baltık kopar.",
+     "options": [
+      {
+       "t": "Koridoru tahkim et (tarihî)",
+       "d": "Koridoru tahkim et (tarihî)",
+       "fx": [
+        [
+         "buff",
+         "Poland",
+         "def",
+         1.3,
+         12
+        ],
+        [
+         "troops",
+         "Poland",
+         -2
+        ],
+        [
+         "stab",
+         "Poland",
+         2
+        ]
+       ],
+       "r": "Polonya koridoru ağır silahlarla tahkim etti."
+      },
+      {
+       "t": "Belarus'a önleyici saldırı",
+       "d": "Belarus'a önleyici saldırı",
+       "fx": [
+        [
+         "buff",
+         "Poland",
+         "att",
+         1.2,
+         6
+        ],
+        [
+         "rel",
+         "Poland",
+         "Belarus",
+         -8
+        ],
+        [
+         "troops",
+         "Poland",
+         -4
+        ]
+       ],
+       "r": "Polonya Belarus sınırında önleyici bir saldırı düzenledi."
+      }
+     ]
+    },
+    "Lithuania": {
+     "text": "Litvanya'nın ordusu küçük; Rus-Belarus kıskacı gerçek bir tehdit.",
+     "options": [
+      {
+       "t": "NATO takviyesini bekle",
+       "d": "NATO takviyesini bekle",
+       "fx": [
+        [
+         "buff",
+         "Lithuania",
+         "def",
+         1.2,
+         8
+        ],
+        [
+         "rel",
+         "Lithuania",
+         "United States of America",
+         4
+        ]
+       ],
+       "r": "Vilnius NATO takviyesini bekleyerek hatlarını tuttu."
+      },
+      {
+       "t": "Sınırı kapatıp seferber ol",
+       "d": "Sınırı kapatıp seferber ol",
+       "fx": [
+        [
+         "mob",
+         "Lithuania"
+        ],
+        [
+         "rel",
+         "Lithuania",
+         "Belarus",
+         -6
+        ]
+       ],
+       "r": "Litvanya sınırı kapatıp seferberlik ilan etti."
+      }
+     ]
+    },
+    "Germany": {
+     "text": "Alman tugayı Litvanya'da; ancak ana güç haftalar sonra gelebilir.",
+     "options": [
+      {
+       "t": "Ek tugay gönder",
+       "d": "Ek tugay gönder",
+       "fx": [
+        [
+         "rel",
+         "Germany",
+         "Lithuania",
+         5
+        ],
+        [
+         "troops",
+         "Germany",
+         -2
+        ],
+        [
+         "gold",
+         "Germany",
+         -0.5
+        ]
+       ],
+       "r": "Almanya Baltık'a ek bir tugay gönderdi.",
+       "keep_default": true
+      },
+      {
+       "t": "Arabuluculuk ve yaptırım",
+       "d": "Arabuluculuk ve yaptırım",
+       "fx": [
+        [
+         "rel",
+         "Germany",
+         "Russia",
+         -2
+        ],
+        [
+         "stab",
+         "Germany",
+         1
+        ]
+       ],
+       "r": "Berlin yaptırım ve arabuluculuk çağrısı yaptı.",
+       "keep_default": true
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "balt_ateskes",
+   "turn": 45,
+   "title": "Ateşkes Girişimi",
+   "scene": "peace",
+   "icon": "dove",
+   "text": "Çin ve Türkiye ortak bir ateşkes önerisiyle devreye girdi. Cepheler dondurulursa Rusya kazanımlarını koruyabilir; NATO ise geri çekilme şartı koşuyor.",
+   "major": true,
+   "default_fx": [
+    [
+     "rel",
+     "China",
+     "Russia",
+     1
+    ],
+    [
+     "rel",
+     "Turkey",
+     "Russia",
+     1
+    ]
+   ],
+   "roles": {
+    "Russia": {
+     "text": "Cephe dondurulursa kazançlar korunur; ama yaptırımlar ve NATO hava gücü maliyet yaratıyor.",
+     "options": [
+      {
+       "t": "Cepheyi dondurmayı kabul et",
+       "d": "Cepheyi dondurmayı kabul et",
+       "fx": [
+        [
+         "peace",
+         "Russia",
+         "Estonia"
+        ],
+        [
+         "peace",
+         "Russia",
+         "Latvia"
+        ],
+        [
+         "stab",
+         "Russia",
+         2
+        ],
+        [
+         "rel",
+         "Russia",
+         "United States of America",
+         2
+        ]
+       ],
+       "r": "Rusya cephe hattında ateşkesi kabul etti."
+      },
+      {
+       "t": "Zaferi sonuna kadar sürdür",
+       "d": "Zaferi sonuna kadar sürdür",
+       "fx": [
+        [
+         "buff",
+         "Russia",
+         "att",
+         1.1,
+         6
+        ],
+        [
+         "stab",
+         "Russia",
+         -2
+        ],
+        [
+         "rel",
+         "Russia",
+         "China",
+         -2
+        ]
+       ],
+       "r": "Moskova ateşkesi reddedip taarruza devam etti."
+      }
+     ]
+    },
+    "United States of America": {
+     "text": "NATO kazanımın geri alınmasını istiyor; ateşkes bir tehlikeli emsal olabilir.",
+     "options": [
+      {
+       "t": "Geri çekilme şartı koş",
+       "d": "Geri çekilme şartı koş",
+       "fx": [
+        [
+         "rel",
+         "United States of America",
+         "Russia",
+         -3
+        ],
+        [
+         "rel",
+         "United States of America",
+         "Estonia",
+         3
+        ]
+       ],
+       "r": "Washington Rus çekilmesi şartı koştu."
+      },
+      {
+       "t": "Ateşkesi kabul et",
+       "d": "Ateşkesi kabul et",
+       "fx": [
+        [
+         "peace",
+         "United States of America",
+         "Russia"
+        ],
+        [
+         "rel",
+         "United States of America",
+         "Russia",
+         3
+        ],
+        [
+         "rel",
+         "United States of America",
+         "Estonia",
+         -2
+        ]
+       ],
+       "r": "ABD ateşkes önerisine esneklik gösterdi."
+      }
+     ]
+    },
+    "Estonia": {
+     "text": "Tallinn dondurulmuş bir cepheyle işgal altındaki topraklara razı olmak zorunda mı?",
+     "options": [
+      {
+       "t": "Geri çekilmeden barış yok",
+       "d": "Geri çekilmeden barış yok",
+       "fx": [
+        [
+         "stab",
+         "Estonia",
+         2
+        ],
+        [
+         "rel",
+         "Estonia",
+         "United States of America",
+         3
+        ]
+       ],
+       "r": "Estonya geri çekilme olmadan barışı reddetti."
+      },
+      {
+       "t": "Geçici ateşkesi kabul et",
+       "d": "Geçici ateşkesi kabul et",
+       "fx": [
+        [
+         "peace",
+         "Estonia",
+         "Russia"
+        ],
+        [
+         "stab",
+         "Estonia",
+         -2
+        ]
+       ],
+       "r": "Estonya geçici ateşkese razı oldu."
+      }
+     ]
+    }
+   }
+  }
+ ],
+ "moments_en": {
+  "Narva hattında savun": "Defend at the Narva line",
+  "Estonya birlikleri Narva hattında savundu.": "Estonian troops defended the Narva line.",
+  "Gerillaya geç ve yedekleri seferber et": "Switch to guerrilla and mobilise reserves",
+  "Tallinn yedek kuvvetleri seferber etti.": "Tallinn mobilised its reserves.",
+  "Tallinn'in birlikleri sınırda direniyor; NATO takviyesi birkaç gün uzakta.": "Tallinn's troops resist on the border; NATO reinforcements are days away.",
+  "Baltık'ta ilerlemeyi sürdür": "Press on in the Baltics",
+  "Rus birlikleri Baltık'ta ilerlemeye devam etti.": "Russian troops pressed on in the Baltics.",
+  "Durma noktası ilan et": "Declare a pause",
+  "Moskova 'sınırlı bir operasyon' dedi ve duraksadı.": "Moscow called it 'a limited operation' and paused.",
+  "Moskova 'sınır ihlali' gerekçesini yineliyor; ama NATO müttefik hava gücü devreye giriyor.": "Moscow repeats its 'border violation' rationale, but allied NATO air power is arriving.",
+  "Hızlı Tepki Gücü gönder": "Send the Rapid Reaction Force",
+  "ABD Baltık'a hızlı tepki gücü gönderdi.": "The US sent a rapid reaction force to the Baltics.",
+  "Hava ve füze savunması ver": "Provide air and missile defence",
+  "Washington Baltık'a hava ve füze savunması kaydırdı.": "Washington shifted air and missile defence to the Baltics.",
+  "Washington Madde 5 taahhüdünü yerine getirecek mi, yoksa müttefiklerden yük paylaşımı mı isteyecek?": "Will Washington honour Article 5, or ask allies to share the burden?",
+  "Sınırı tahkim et": "Fortify the border",
+  "Finlandiya Rusya sınırını tahkim etti.": "Finland fortified its Russian border.",
+  "Müttefiklere destek ver": "Support the allies",
+  "Helsinki Baltık müttefiklerine hava ve istihbarat desteği verdi.": "Helsinki gave its Baltic allies air and intelligence support.",
+  "Finlandiya sınırında Rus birlikleri yığınağı var; ama yeni NATO üyesisin.": "Russian troops are massing on Finland's border, but you are a new NATO member.",
+  "NATO Madde 5 Devrede": "NATO Invokes Article 5",
+  "Rus birlikleri Estonya ve Letonya sınırını aştı; NATO müttefikleri Madde 5'i devreye aldı. Baltık'ta hava sahası kapanıyor; Finlandiya ve Polonya acil istişare istiyor.": "Russian troops crossed the Estonian and Latvian borders; NATO allies invoked Article 5. Airspace over the Baltic is closing; Finland and Poland call for urgent consultations.",
+  "Koridoru tahkim et (tarihî)": "Fortify the gap",
+  "Polonya koridoru ağır silahlarla tahkim etti.": "Poland fortified the gap with heavy weapons.",
+  "Belarus'a önleyici saldırı": "Pre-empt into Belarus",
+  "Polonya Belarus sınırında önleyici bir saldırı düzenledi.": "Poland launched a pre-emptive strike on the Belarusian border.",
+  "Koridor Polonya'nın sorumluluğunda. Yetişen takviye olursa kapanmaz; olmazsa Baltık kopar.": "The gap is Poland's responsibility. If reinforcements arrive it stays open; if not, the Baltics are cut off.",
+  "NATO takviyesini bekle": "Wait for NATO reinforcements",
+  "Vilnius NATO takviyesini bekleyerek hatlarını tuttu.": "Vilnius held its lines awaiting NATO reinforcements.",
+  "Sınırı kapatıp seferber ol": "Close the border and mobilise",
+  "Litvanya sınırı kapatıp seferberlik ilan etti.": "Lithuania sealed the border and mobilised.",
+  "Litvanya'nın ordusu küçük; Rus-Belarus kıskacı gerçek bir tehdit.": "Lithuania's army is small; the Russian–Belarusian pincer is a real threat.",
+  "Ek tugay gönder": "Send an extra brigade",
+  "Almanya Baltık'a ek bir tugay gönderdi.": "Germany sent an extra brigade to the Baltics.",
+  "Arabuluculuk ve yaptırım": "Mediation and sanctions",
+  "Berlin yaptırım ve arabuluculuk çağrısı yaptı.": "Berlin called for sanctions and mediation.",
+  "Alman tugayı Litvanya'da; ancak ana güç haftalar sonra gelebilir.": "A German brigade is in Lithuania, but the main force may arrive only in weeks.",
+  "Suwałki Koridoru": "The Suwałki Gap",
+  "Rus ve Belarus birlikleri, Polonya ile Litvanya'yı ayıran dar Suwałki Koridoru'na yöneldi. Burası kesilirse Baltık ülkeleri NATO'dan kopar.": "Russian and Belarusian forces headed for the narrow Suwałki Gap between Poland and Lithuania. If it is cut, the Baltic states are severed from NATO.",
+  "Cepheyi dondurmayı kabul et": "Accept a freeze",
+  "Rusya cephe hattında ateşkesi kabul etti.": "Russia accepted a ceasefire along the front.",
+  "Zaferi sonuna kadar sürdür": "Press for victory",
+  "Moskova ateşkesi reddedip taarruza devam etti.": "Moscow rejected the ceasefire and kept attacking.",
+  "Cephe dondurulursa kazançlar korunur; ama yaptırımlar ve NATO hava gücü maliyet yaratıyor.": "A freeze preserves gains, but sanctions and NATO air power are costly.",
+  "Geri çekilme şartı koş": "Demand a pullback",
+  "Washington Rus çekilmesi şartı koştu.": "Washington demanded a Russian pullback.",
+  "Ateşkesi kabul et": "Accept the ceasefire",
+  "ABD ateşkes önerisine esneklik gösterdi.": "The US showed flexibility on the ceasefire.",
+  "NATO kazanımın geri alınmasını istiyor; ateşkes bir tehlikeli emsal olabilir.": "NATO wants the gains reversed; a ceasefire could set a dangerous precedent.",
+  "Geri çekilmeden barış yok": "No peace without a pullback",
+  "Estonya geri çekilme olmadan barışı reddetti.": "Estonia rejected peace without a pullback.",
+  "Geçici ateşkesi kabul et": "Accept a temporary truce",
+  "Estonya geçici ateşkese razı oldu.": "Estonia agreed to a temporary truce.",
+  "Tallinn dondurulmuş bir cepheyle işgal altındaki topraklara razı olmak zorunda mı?": "Must Tallinn accept a frozen front with its land under occupation?",
+  "Ateşkes Girişimi": "A Ceasefire Initiative",
+  "Çin ve Türkiye ortak bir ateşkes önerisiyle devreye girdi. Cepheler dondurulursa Rusya kazanımlarını koruyabilir; NATO ise geri çekilme şartı koşuyor.": "China and Turkey stepped in with a joint ceasefire proposal. If fronts are frozen, Russia keeps its gains; NATO demands a pullback as a condition."
+ }
+}

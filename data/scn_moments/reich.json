@@ -1,0 +1,532 @@
+{
+ "moments": [
+  {
+   "id": "reich_ilan",
+   "turn": 4,
+   "title": "Doğuda Ayrılık İlanı",
+   "scene": "crisis",
+   "icon": "warning",
+   "text": "Almanya'nın doğusunda otoriter bir hareket ayrılığını ilan etti ve modern bir ordu kurdu. Hükûmet olağanüstü toplandı; komşuların sınır güvenliği alarmda.",
+   "major": true,
+   "default_fx": [
+    [
+     "stab",
+     "Germany",
+     -3
+    ],
+    [
+     "rel",
+     "Poland",
+     "Germany",
+     3
+    ],
+    [
+     "troops",
+     "Poland",
+     2
+    ]
+   ],
+   "roles": {
+    "Germany": {
+     "text": "Berlin ne hareketi ezmek için orduyu mu kullanacak, yoksa siyasi bir çözüm mü arayacak?",
+     "options": [
+      {
+       "t": "Orduyu seferber et",
+       "d": "Orduyu seferber et",
+       "fx": [
+        [
+         "buff",
+         "Germany",
+         "def",
+         1.15,
+         10
+        ],
+        [
+         "stab",
+         "Germany",
+         -1
+        ],
+        [
+         "gold",
+         "Germany",
+         -1.0
+        ]
+       ],
+       "r": "Almanya orduyu doğu sınırında seferber etti."
+      },
+      {
+       "t": "Müzakere ve yasal yolu dene",
+       "d": "Müzakere ve yasal yolu dene",
+       "fx": [
+        [
+         "stab",
+         "Germany",
+         -2
+        ],
+        [
+         "rel",
+         "Germany",
+         "France",
+         2
+        ]
+       ],
+       "r": "Berlin hareketle müzakere kanalı açtı."
+      }
+     ]
+    },
+    "Poland": {
+     "text": "Varşova doğudaki yeni yapıyı kendi güvenliği için tehdit görüyor; NATO'dan destek istiyor.",
+     "options": [
+      {
+       "t": "Sınırı tahkim et",
+       "d": "Sınırı tahkim et",
+       "fx": [
+        [
+         "troops",
+         "Poland",
+         3
+        ],
+        [
+         "buff",
+         "Poland",
+         "def",
+         1.15,
+         10
+        ]
+       ],
+       "r": "Polonya sınırını tahkim etti."
+      },
+      {
+       "t": "Almanya ile ortak savunma kur",
+       "d": "Almanya ile ortak savunma kur",
+       "fx": [
+        [
+         "rel",
+         "Poland",
+         "Germany",
+         6
+        ],
+        [
+         "stab",
+         "Poland",
+         1
+        ]
+       ],
+       "r": "Varşova ve Berlin ortak savunma planı hazırladı."
+      }
+     ]
+    },
+    "France": {
+     "text": "Fransa Avrupa savunma çemberini toplamaya çalışıyor; ama kendi iç siyaseti bölünmüş.",
+     "options": [
+      {
+       "t": "Avrupa Savunma Çemberi'ni destekle",
+       "d": "Avrupa Savunma Çemberi'ni destekle",
+       "fx": [
+        [
+         "rel",
+         "France",
+         "Germany",
+         5
+        ],
+        [
+         "rel",
+         "France",
+         "Poland",
+         4
+        ],
+        [
+         "troops",
+         "France",
+         -1
+        ]
+       ],
+       "r": "Paris ortak savunma çemberine tam destek verdi.",
+       "keep_default": true
+      },
+      {
+       "t": "Arabuluculuk öner",
+       "d": "Arabuluculuk öner",
+       "fx": [
+        [
+         "stab",
+         "France",
+         1
+        ]
+       ],
+       "r": "Paris iki taraf arasında arabuluculuk önerdi.",
+       "keep_default": true
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "reich_sinir",
+   "turn": 20,
+   "title": "Sınırda Çatışma",
+   "scene": "border",
+   "icon": "border_clash",
+   "text": "Ayrılıkçı güçlerle Çek ve Polonya sınır birlikleri arasında ilk silahlı çatışma yaşandı. Bölgesel savunma çemberinin Madde 5 benzeri taahhüdü ilk kez sınanıyor.",
+   "major": true,
+   "default_fx": [
+    [
+     "troops",
+     "Czechia",
+     -2
+    ],
+    [
+     "troops",
+     "Poland",
+     -2
+    ],
+    [
+     "stab",
+     "Czechia",
+     -2
+    ]
+   ],
+   "roles": {
+    "Czechia": {
+     "text": "Prag küçük bir ülke; yardım gelene kadar sınırı tutmak zorunda.",
+     "options": [
+      {
+       "t": "Çemberden yardım iste",
+       "d": "Çemberden yardım iste",
+       "fx": [
+        [
+         "rel",
+         "Czechia",
+         "Germany",
+         4
+        ],
+        [
+         "rel",
+         "Czechia",
+         "Poland",
+         4
+        ],
+        [
+         "stab",
+         "Czechia",
+         1
+        ]
+       ],
+       "r": "Prag Avrupa Savunma Çemberi'nden acil yardım istedi."
+      },
+      {
+       "t": "Sınırı tek başına tut",
+       "d": "Sınırı tek başına tut",
+       "fx": [
+        [
+         "buff",
+         "Czechia",
+         "def",
+         1.2,
+         8
+        ],
+        [
+         "troops",
+         "Czechia",
+         -2
+        ]
+       ],
+       "r": "Çek birlikleri sınırda yalnız direndi."
+      }
+     ]
+    },
+    "Germany": {
+     "text": "Çatışma yayılmadan karşılık verilmeli; ama sivil kayıp riski var.",
+     "options": [
+      {
+       "t": "Sınırlı karşı saldırı",
+       "d": "Sınırlı karşı saldırı",
+       "fx": [
+        [
+         "buff",
+         "Germany",
+         "att",
+         1.15,
+         8
+        ],
+        [
+         "troops",
+         "Germany",
+         -2
+        ]
+       ],
+       "r": "Alman birlikleri sınırlı bir karşı saldırıya geçti."
+      },
+      {
+       "t": "Savunmada kal",
+       "d": "Savunmada kal",
+       "fx": [
+        [
+         "buff",
+         "Germany",
+         "def",
+         1.2,
+         10
+        ]
+       ],
+       "r": "Berlin savunma hattını güçlendirip bekledi."
+      }
+     ]
+    },
+    "Poland": {
+     "text": "Sınır çatışması Polonya topraklarına sıçrayabilir.",
+     "options": [
+      {
+       "t": "Hava ve topçu desteği ver",
+       "d": "Hava ve topçu desteği ver",
+       "fx": [
+        [
+         "rel",
+         "Poland",
+         "Czechia",
+         5
+        ],
+        [
+         "troops",
+         "Poland",
+         -1
+        ]
+       ],
+       "r": "Polonya Çek müttefikine hava ve topçu desteği verdi.",
+       "keep_default": true
+      },
+      {
+       "t": "Kendi sınırına odaklan",
+       "d": "Kendi sınırına odaklan",
+       "fx": [
+        [
+         "buff",
+         "Poland",
+         "def",
+         1.15,
+         8
+        ]
+       ],
+       "r": "Varşova kendi sınırını güvenceye aldı.",
+       "keep_default": true
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "reich_diplomasi",
+   "turn": 46,
+   "title": "Ortak Avrupa Zirvesi",
+   "scene": "peace",
+   "icon": "treaty",
+   "text": "Avrupa liderleri olağanüstü zirvede; Yeni Reich'in tanınmaması, ekonomik yaptırımlar ve ortak orduya katkı tartışılıyor. Bazı ülkeler siyasi çözüm istiyor, bazıları kesin sonuç.",
+   "major": true,
+   "default_fx": [
+    [
+     "rel",
+     "Germany",
+     "United Kingdom",
+     2
+    ],
+    [
+     "rel",
+     "Germany",
+     "France",
+     2
+    ]
+   ],
+   "roles": {
+    "Germany": {
+     "text": "Berlin yük paylaşımı istiyor; ama ortak ordu için egemenlik tartışması çıkıyor.",
+     "options": [
+      {
+       "t": "Ortak komuta öner",
+       "d": "Ortak komuta öner",
+       "fx": [
+        [
+         "rel",
+         "Germany",
+         "France",
+         4
+        ],
+        [
+         "rel",
+         "Germany",
+         "Poland",
+         3
+        ],
+        [
+         "stab",
+         "Germany",
+         1
+        ]
+       ],
+       "r": "Almanya ortak Avrupa komutası önerdi."
+      },
+      {
+       "t": "Ulusal komutayı koru",
+       "d": "Ulusal komutayı koru",
+       "fx": [
+        [
+         "rel",
+         "Germany",
+         "France",
+         -2
+        ],
+        [
+         "stab",
+         "Germany",
+         1
+        ]
+       ],
+       "r": "Berlin ulusal komuta çizgisini korudu."
+      }
+     ]
+    },
+    "United Kingdom": {
+     "text": "Londra kıtadaki bir savaşa ne kadar bulaşmak istiyor? Hava gücü ve istihbarat öne çıkabilir.",
+     "options": [
+      {
+       "t": "Hava gücü ve istihbarat gönder",
+       "d": "Hava gücü ve istihbarat gönder",
+       "fx": [
+        [
+         "rel",
+         "United Kingdom",
+         "Germany",
+         4
+        ],
+        [
+         "rel",
+         "United Kingdom",
+         "Poland",
+         4
+        ],
+        [
+         "gold",
+         "United Kingdom",
+         -0.5
+        ]
+       ],
+       "r": "Londra Avrupa çemberine hava ve istihbarat desteği verdi."
+      },
+      {
+       "t": "Sadece yaptırım uygula",
+       "d": "Sadece yaptırım uygula",
+       "fx": [
+        [
+         "gold",
+         "United Kingdom",
+         -0.2
+        ],
+        [
+         "stab",
+         "United Kingdom",
+         1
+        ]
+       ],
+       "r": "Britanya Yeni Reich'e ekonomik yaptırım uyguladı."
+      }
+     ]
+    },
+    "France": {
+     "text": "Fransa nükleer şemsiye ve liderlik rolü sunabilir.",
+     "options": [
+      {
+       "t": "Avrupa'ya güvenlik şemsiyesi sun",
+       "d": "Avrupa'ya güvenlik şemsiyesi sun",
+       "fx": [
+        [
+         "rel",
+         "France",
+         "Germany",
+         5
+        ],
+        [
+         "rel",
+         "France",
+         "Poland",
+         5
+        ],
+        [
+         "stab",
+         "France",
+         -1
+        ]
+       ],
+       "r": "Fransa komşularına savunma güvencesi verdi.",
+       "keep_default": true
+      },
+      {
+       "t": "Müzakere kapısını aralık tut",
+       "d": "Müzakere kapısını aralık tut",
+       "fx": [
+        [
+         "stab",
+         "France",
+         1
+        ]
+       ],
+       "r": "Paris diyalog yolunu açık tuttu.",
+       "keep_default": true
+      }
+     ]
+    }
+   }
+  }
+ ],
+ "moments_en": {
+  "Orduyu seferber et": "Mobilise the army",
+  "Almanya orduyu doğu sınırında seferber etti.": "Germany mobilised the army on its eastern border.",
+  "Müzakere ve yasal yolu dene": "Try negotiation and the courts",
+  "Berlin hareketle müzakere kanalı açtı.": "Berlin opened a negotiation channel with the movement.",
+  "Berlin ne hareketi ezmek için orduyu mu kullanacak, yoksa siyasi bir çözüm mü arayacak?": "Will Berlin use the army to crush the movement, or seek a political settlement?",
+  "Sınırı tahkim et": "Fortify the border",
+  "Polonya sınırını tahkim etti.": "Poland fortified its border.",
+  "Almanya ile ortak savunma kur": "Form a joint defence with Germany",
+  "Varşova ve Berlin ortak savunma planı hazırladı.": "Warsaw and Berlin drew up a joint defence plan.",
+  "Varşova doğudaki yeni yapıyı kendi güvenliği için tehdit görüyor; NATO'dan destek istiyor.": "Warsaw sees the new entity as a threat to its security and wants NATO backing.",
+  "Avrupa Savunma Çemberi'ni destekle": "Back the European Defence Circle",
+  "Paris ortak savunma çemberine tam destek verdi.": "Paris fully backed the joint defence circle.",
+  "Arabuluculuk öner": "Offer mediation",
+  "Paris iki taraf arasında arabuluculuk önerdi.": "Paris offered mediation between the sides.",
+  "Fransa Avrupa savunma çemberini toplamaya çalışıyor; ama kendi iç siyaseti bölünmüş.": "France tries to assemble a European defence circle, but domestic politics are divided.",
+  "Doğuda Ayrılık İlanı": "The Eastern Secession",
+  "Almanya'nın doğusunda otoriter bir hareket ayrılığını ilan etti ve modern bir ordu kurdu. Hükûmet olağanüstü toplandı; komşuların sınır güvenliği alarmda.": "An authoritarian movement in eastern Germany declared secession and raised a modern army. The government met in emergency session; neighbours put their borders on alert.",
+  "Çemberden yardım iste": "Invoke the defence circle",
+  "Prag Avrupa Savunma Çemberi'nden acil yardım istedi.": "Prague requested emergency help from the European Defence Circle.",
+  "Sınırı tek başına tut": "Hold the border alone",
+  "Çek birlikleri sınırda yalnız direndi.": "Czech troops held the border alone.",
+  "Prag küçük bir ülke; yardım gelene kadar sınırı tutmak zorunda.": "Prague is a small country and must hold the border until help arrives.",
+  "Sınırlı karşı saldırı": "A limited counteroffensive",
+  "Alman birlikleri sınırlı bir karşı saldırıya geçti.": "German units launched a limited counteroffensive.",
+  "Savunmada kal": "Hold defensively",
+  "Berlin savunma hattını güçlendirip bekledi.": "Berlin reinforced its defensive line and waited.",
+  "Çatışma yayılmadan karşılık verilmeli; ama sivil kayıp riski var.": "A response must come before the fighting spreads, but there is a risk to civilians.",
+  "Hava ve topçu desteği ver": "Provide air and artillery support",
+  "Polonya Çek müttefikine hava ve topçu desteği verdi.": "Poland gave its Czech ally air and artillery support.",
+  "Kendi sınırına odaklan": "Focus on your own border",
+  "Varşova kendi sınırını güvenceye aldı.": "Warsaw secured its own frontier.",
+  "Sınır çatışması Polonya topraklarına sıçrayabilir.": "The border fighting could spill onto Polish territory.",
+  "Sınırda Çatışma": "Fighting on the Border",
+  "Ayrılıkçı güçlerle Çek ve Polonya sınır birlikleri arasında ilk silahlı çatışma yaşandı. Bölgesel savunma çemberinin Madde 5 benzeri taahhüdü ilk kez sınanıyor.": "The first armed clash broke out between the separatist forces and Czech and Polish border units. The Article 5-style pledge of the regional defence circle is tested for the first time.",
+  "Ortak komuta öner": "Propose a joint command",
+  "Almanya ortak Avrupa komutası önerdi.": "Germany proposed a joint European command.",
+  "Ulusal komutayı koru": "Keep national command",
+  "Berlin ulusal komuta çizgisini korudu.": "Berlin kept its national command line.",
+  "Berlin yük paylaşımı istiyor; ama ortak ordu için egemenlik tartışması çıkıyor.": "Berlin wants burden sharing, but a joint force raises sovereignty disputes.",
+  "Hava gücü ve istihbarat gönder": "Send air power and intelligence",
+  "Londra Avrupa çemberine hava ve istihbarat desteği verdi.": "London gave the European circle air and intelligence support.",
+  "Sadece yaptırım uygula": "Apply sanctions only",
+  "Britanya Yeni Reich'e ekonomik yaptırım uyguladı.": "Britain imposed economic sanctions on the New Reich.",
+  "Londra kıtadaki bir savaşa ne kadar bulaşmak istiyor? Hava gücü ve istihbarat öne çıkabilir.": "How deeply will London commit to a continental war? Air power and intelligence stand out.",
+  "Avrupa'ya güvenlik şemsiyesi sun": "Offer a European security umbrella",
+  "Fransa komşularına savunma güvencesi verdi.": "France gave its neighbours a defence guarantee.",
+  "Müzakere kapısını aralık tut": "Keep the door open for talks",
+  "Paris diyalog yolunu açık tuttu.": "Paris kept dialogue open.",
+  "Fransa nükleer şemsiye ve liderlik rolü sunabilir.": "France can offer a nuclear umbrella and a leadership role.",
+  "Ortak Avrupa Zirvesi": "A Joint European Summit",
+  "Avrupa liderleri olağanüstü zirvede; Yeni Reich'in tanınmaması, ekonomik yaptırımlar ve ortak orduya katkı tartışılıyor. Bazı ülkeler siyasi çözüm istiyor, bazıları kesin sonuç.": "European leaders gathered for an emergency summit; non-recognition of the New Reich, economic sanctions and contributions to a joint force are on the agenda. Some want a political settlement, others a decisive result."
+ }
+}

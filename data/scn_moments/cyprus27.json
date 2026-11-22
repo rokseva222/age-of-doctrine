@@ -1,0 +1,488 @@
+{
+ "moments": [
+  {
+   "id": "cyprus27_sondaj",
+   "turn": 6,
+   "title": "Sondaj Gemileri Karşı Karşıya",
+   "scene": "naval",
+   "icon": "ship",
+   "text": "Doğu Akdeniz'de gaz ruhsat sahalarında bir Türk sondaj gemisi ile Kıbrıs-Fransız konsorsiyumunun gemisi karşılaştı; iki tarafın savaş gemileri sahada. Her taraf kendi deniz yetki alanını savunuyor.",
+   "major": true,
+   "default_fx": [
+    [
+     "rel",
+     "Turkey",
+     "Greece",
+     -3
+    ],
+    [
+     "rel",
+     "Turkey",
+     "France",
+     -2
+    ],
+    [
+     "stab",
+     "Cyprus",
+     -1
+    ]
+   ],
+   "roles": {
+    "Turkey": {
+     "text": "Ankara 'Mavi Vatan' tezini savunuyor; gemiyi çekmek geri adım olarak görülebilir.",
+     "options": [
+      {
+       "t": "Sondaja devam et",
+       "d": "Sondaja devam et",
+       "fx": [
+        [
+         "rel",
+         "Turkey",
+         "Greece",
+         -4
+        ],
+        [
+         "rel",
+         "Turkey",
+         "France",
+         -3
+        ],
+        [
+         "stab",
+         "Turkey",
+         2
+        ]
+       ],
+       "r": "Türkiye gemiyi sahada tuttu; donanma eşlik etti."
+      },
+      {
+       "t": "Gemiyi çek ve masaya otur",
+       "d": "Gemiyi çek ve masaya otur",
+       "fx": [
+        [
+         "rel",
+         "Turkey",
+         "Greece",
+         4
+        ],
+        [
+         "stab",
+         "Turkey",
+         -1
+        ]
+       ],
+       "r": "Türkiye gemiyi geri çekip diyalog önerdi."
+      }
+     ]
+    },
+    "Greece": {
+     "text": "Atina Brüksel ve Paris'in desteğini topluyor; ama savaş gemilerinin sahada olması kazaya açık.",
+     "options": [
+      {
+       "t": "AB ve Fransa'dan destek iste",
+       "d": "AB ve Fransa'dan destek iste",
+       "fx": [
+        [
+         "rel",
+         "Greece",
+         "France",
+         4
+        ],
+        [
+         "rel",
+         "Greece",
+         "Turkey",
+         -3
+        ]
+       ],
+       "r": "Atina AB ve Fransa'dan açık destek aldı."
+      },
+      {
+       "t": "Doğrudan görüşme öner",
+       "d": "Doğrudan görüşme öner",
+       "fx": [
+        [
+         "rel",
+         "Greece",
+         "Turkey",
+         4
+        ],
+        [
+         "stab",
+         "Greece",
+         -1
+        ]
+       ],
+       "r": "Atina Ankara'ya istikşafi görüşme önerdi."
+      }
+     ]
+    },
+    "France": {
+     "text": "Fransız konsorsiyum projesi tehdit altında; Paris sahaya fırkateyn gönderebilir.",
+     "options": [
+      {
+       "t": "Fırkateyn gönder",
+       "d": "Fırkateyn gönder",
+       "fx": [
+        [
+         "rel",
+         "France",
+         "Turkey",
+         -4
+        ],
+        [
+         "rel",
+         "France",
+         "Greece",
+         3
+        ]
+       ],
+       "r": "Paris bölgeye bir fırkateyn gönderdi.",
+       "keep_default": true
+      },
+      {
+       "t": "Diplomasiyi tercih et",
+       "d": "Diplomasiyi tercih et",
+       "fx": [
+        [
+         "rel",
+         "France",
+         "Turkey",
+         2
+        ]
+       ],
+       "r": "Fransa AB aracılığıyla çözüm aradı.",
+       "keep_default": true
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "cyprus27_kablo",
+   "turn": 22,
+   "title": "Deniz Altı Kablo Kesildi",
+   "scene": "crisis",
+   "icon": "warning",
+   "text": "Kıbrıs–Mısır arasındaki enerji ve veri kablosunda arıza oluştu; iki taraf da birbirini suçluyor. Ada çevresinde denizaltı hatlarının güvenliği ilk kez bu kadar büyük bir gündem.",
+   "major": true,
+   "default_fx": [
+    [
+     "rel",
+     "Egypt",
+     "Turkey",
+     -2
+    ],
+    [
+     "rel",
+     "Cyprus",
+     "Turkey",
+     -3
+    ],
+    [
+     "stab",
+     "Cyprus",
+     -2
+    ]
+   ],
+   "roles": {
+    "Cyprus": {
+     "text": "Kablo projesi AB için de stratejik; ama delil yok. İddia mı, soruşturma mı?",
+     "options": [
+      {
+       "t": "Uluslararası soruşturma iste",
+       "d": "Uluslararası soruşturma iste",
+       "fx": [
+        [
+         "rel",
+         "Cyprus",
+         "Greece",
+         3
+        ],
+        [
+         "rel",
+         "Cyprus",
+         "France",
+         2
+        ]
+       ],
+       "r": "Lefkoşa AB ve BM'den soruşturma talep etti."
+      },
+      {
+       "t": "Doğrudan Ankara'yı suçla",
+       "d": "Doğrudan Ankara'yı suçla",
+       "fx": [
+        [
+         "rel",
+         "Cyprus",
+         "Turkey",
+         -5
+        ],
+        [
+         "stab",
+         "Cyprus",
+         1
+        ]
+       ],
+       "r": "Kıbrıs hükûmeti kablo arızasından Türkiye'yi sorumlu tuttu."
+      }
+     ]
+    },
+    "Turkey": {
+     "text": "Ankara olayla ilgisi olmadığını söylüyor; ama kablo hattının geçtiği deniz yetki alanı tartışmalı.",
+     "options": [
+      {
+       "t": "Ortak teknik inceleme öner",
+       "d": "Ortak teknik inceleme öner",
+       "fx": [
+        [
+         "rel",
+         "Turkey",
+         "Cyprus",
+         3
+        ],
+        [
+         "rel",
+         "Turkey",
+         "Egypt",
+         3
+        ]
+       ],
+       "r": "Türkiye ortak teknik inceleme önerdi."
+      },
+      {
+       "t": "Suçlamaları reddet, donanmayı artır",
+       "d": "Suçlamaları reddet, donanmayı artır",
+       "fx": [
+        [
+         "rel",
+         "Turkey",
+         "Cyprus",
+         -3
+        ],
+        [
+         "troops",
+         "Turkey",
+         2
+        ]
+       ],
+       "r": "Ankara suçlamaları reddedip denizde varlığını artırdı."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "cyprus27_bm",
+   "turn": 44,
+   "title": "BM Müzakereleri Zirvesi",
+   "scene": "peace",
+   "icon": "dove",
+   "text": "BM Genel Sekreteri adadaki Türk ve Rum liderleri yeniden görüşmeye çağırdı. İki devletli çözüm, federasyon ve işbirliği başlıklarında yeni formüller konuşuluyor; ama güvenlik garantileri ve sondaj hakları tıkanıklık yaratıyor.",
+   "major": true,
+   "default_fx": [
+    [
+     "rel",
+     "Turkey",
+     "Greece",
+     2
+    ],
+    [
+     "rel",
+     "Cyprus",
+     "N. Cyprus",
+     1
+    ]
+   ],
+   "roles": {
+    "Turkey": {
+     "text": "Ankara 'egemen eşitlik' diyor; KKTC ile birlikte hareket etmek şart.",
+     "options": [
+      {
+       "t": "Egemen eşitlik şartı koş",
+       "d": "Egemen eşitlik şartı koş",
+       "fx": [
+        [
+         "rel",
+         "Turkey",
+         "N. Cyprus",
+         5
+        ],
+        [
+         "rel",
+         "Turkey",
+         "Greece",
+         -2
+        ]
+       ],
+       "r": "Türkiye masada iki devletli çözüm vurgusu yaptı."
+      },
+      {
+       "t": "Esnek formüle açık ol",
+       "d": "Esnek formüle açık ol",
+       "fx": [
+        [
+         "rel",
+         "Turkey",
+         "Greece",
+         4
+        ],
+        [
+         "rel",
+         "Turkey",
+         "N. Cyprus",
+         -2
+        ],
+        [
+         "stab",
+         "Turkey",
+         1
+        ]
+       ],
+       "r": "Türkiye işbirliği temelli yeni formülü dinlemeye razı oldu."
+      }
+     ]
+    },
+    "Cyprus": {
+     "text": "Lefkoşa AB üyeliğini ve garanti sistemini koruyor; federasyon için taviz verecek mi?",
+     "options": [
+      {
+       "t": "Federasyon önerisine evet",
+       "d": "Federasyon önerisine evet",
+       "fx": [
+        [
+         "rel",
+         "Cyprus",
+         "N. Cyprus",
+         4
+        ],
+        [
+         "rel",
+         "Cyprus",
+         "Turkey",
+         3
+        ],
+        [
+         "stab",
+         "Cyprus",
+         -1
+        ]
+       ],
+       "r": "Kıbrıs liderliği güçlendirilmiş federasyon önerisine açık davrandı."
+      },
+      {
+       "t": "Mevcut düzeni savun",
+       "d": "Mevcut düzeni savun",
+       "fx": [
+        [
+         "rel",
+         "Cyprus",
+         "N. Cyprus",
+         -3
+        ],
+        [
+         "stab",
+         "Cyprus",
+         1
+        ]
+       ],
+       "r": "Rum yönetimi mevcut düzeni savundu."
+      }
+     ]
+    },
+    "N. Cyprus": {
+     "text": "KKTC tanınma ve doğrudan ticaret talep ediyor; Ankara'nın ve BM'nin dengesi kritik.",
+     "options": [
+      {
+       "t": "Tanınma kampanyası başlat",
+       "d": "Tanınma kampanyası başlat",
+       "fx": [
+        [
+         "rel",
+         "N. Cyprus",
+         "Turkey",
+         4
+        ],
+        [
+         "rel",
+         "N. Cyprus",
+         "Cyprus",
+         -3
+        ]
+       ],
+       "r": "KKTC uluslararası tanınma diplomasisini hızlandırdı.",
+       "keep_default": true
+      },
+      {
+       "t": "Doğrudan ticaret için pazarlık et",
+       "d": "Doğrudan ticaret için pazarlık et",
+       "fx": [
+        [
+         "rel",
+         "N. Cyprus",
+         "Cyprus",
+         3
+        ],
+        [
+         "gold",
+         "N. Cyprus",
+         0.5
+        ]
+       ],
+       "r": "KKTC AB ile sınırlı ticaret görüşmesi yürüttü.",
+       "keep_default": true
+      }
+     ]
+    }
+   }
+  }
+ ],
+ "moments_en": {
+  "Sondaja devam et": "Keep drilling",
+  "Türkiye gemiyi sahada tuttu; donanma eşlik etti.": "Turkey kept the ship on site under naval escort.",
+  "Gemiyi çek ve masaya otur": "Withdraw and talk",
+  "Türkiye gemiyi geri çekip diyalog önerdi.": "Turkey pulled the ship back and offered dialogue.",
+  "Ankara 'Mavi Vatan' tezini savunuyor; gemiyi çekmek geri adım olarak görülebilir.": "Ankara defends its 'Blue Homeland' thesis; pulling the ship back could look like a retreat.",
+  "AB ve Fransa'dan destek iste": "Request EU and French backing",
+  "Atina AB ve Fransa'dan açık destek aldı.": "Athens secured clear backing from the EU and France.",
+  "Doğrudan görüşme öner": "Propose direct talks",
+  "Atina Ankara'ya istikşafi görüşme önerdi.": "Athens proposed exploratory talks to Ankara.",
+  "Atina Brüksel ve Paris'in desteğini topluyor; ama savaş gemilerinin sahada olması kazaya açık.": "Athens is gathering support from Brussels and Paris, but warships at close range invite an accident.",
+  "Fırkateyn gönder": "Send a frigate",
+  "Paris bölgeye bir fırkateyn gönderdi.": "Paris sent a frigate to the region.",
+  "Diplomasiyi tercih et": "Favour diplomacy",
+  "Fransa AB aracılığıyla çözüm aradı.": "France sought a solution through the EU.",
+  "Fransız konsorsiyum projesi tehdit altında; Paris sahaya fırkateyn gönderebilir.": "The French consortium's project is under threat; Paris could send a frigate.",
+  "Sondaj Gemileri Karşı Karşıya": "Drill Ships Face to Face",
+  "Doğu Akdeniz'de gaz ruhsat sahalarında bir Türk sondaj gemisi ile Kıbrıs-Fransız konsorsiyumunun gemisi karşılaştı; iki tarafın savaş gemileri sahada. Her taraf kendi deniz yetki alanını savunuyor.": "A Turkish drill ship and a Cypriot-French consortium vessel met in the contested gas blocks of the Eastern Mediterranean; warships of both sides are on the scene. Each side defends its own maritime zone.",
+  "Uluslararası soruşturma iste": "Demand an international inquiry",
+  "Lefkoşa AB ve BM'den soruşturma talep etti.": "Nicosia called for an EU and UN inquiry.",
+  "Doğrudan Ankara'yı suçla": "Blame Ankara directly",
+  "Kıbrıs hükûmeti kablo arızasından Türkiye'yi sorumlu tuttu.": "The Cypriot government blamed Turkey for the fault.",
+  "Kablo projesi AB için de stratejik; ama delil yok. İddia mı, soruşturma mı?": "The cable project is strategic for the EU too, but there is no proof. Accuse or investigate?",
+  "Ortak teknik inceleme öner": "Offer a joint technical review",
+  "Türkiye ortak teknik inceleme önerdi.": "Turkey offered a joint technical review.",
+  "Suçlamaları reddet, donanmayı artır": "Reject the claims and raise naval presence",
+  "Ankara suçlamaları reddedip denizde varlığını artırdı.": "Ankara rejected the claims and raised its naval presence.",
+  "Ankara olayla ilgisi olmadığını söylüyor; ama kablo hattının geçtiği deniz yetki alanı tartışmalı.": "Ankara says it is unconnected, but the sea zone the cable crosses is disputed.",
+  "Deniz Altı Kablo Kesildi": "An Undersea Cable Is Cut",
+  "Kıbrıs–Mısır arasındaki enerji ve veri kablosunda arıza oluştu; iki taraf da birbirini suçluyor. Ada çevresinde denizaltı hatlarının güvenliği ilk kez bu kadar büyük bir gündem.": "A fault hit the Cyprus–Egypt energy and data cable; both sides blame each other. The safety of undersea lines around the island has never been so high on the agenda.",
+  "Egemen eşitlik şartı koş": "Insist on sovereign equality",
+  "Türkiye masada iki devletli çözüm vurgusu yaptı.": "Turkey stressed a two-state solution at the table.",
+  "Esnek formüle açık ol": "Be open to a flexible formula",
+  "Türkiye işbirliği temelli yeni formülü dinlemeye razı oldu.": "Turkey agreed to listen to a cooperation-based formula.",
+  "Ankara 'egemen eşitlik' diyor; KKTC ile birlikte hareket etmek şart.": "Ankara insists on 'sovereign equality' and must coordinate with the TRNC.",
+  "Federasyon önerisine evet": "Say yes to a federation proposal",
+  "Kıbrıs liderliği güçlendirilmiş federasyon önerisine açık davrandı.": "The Cypriot leadership was open to a strengthened federation proposal.",
+  "Mevcut düzeni savun": "Defend the status quo",
+  "Rum yönetimi mevcut düzeni savundu.": "The Greek Cypriot side defended the status quo.",
+  "Lefkoşa AB üyeliğini ve garanti sistemini koruyor; federasyon için taviz verecek mi?": "Nicosia guards its EU membership and the guarantee system; will it concede on federation?",
+  "Tanınma kampanyası başlat": "Launch a recognition campaign",
+  "KKTC uluslararası tanınma diplomasisini hızlandırdı.": "The TRNC stepped up its recognition diplomacy.",
+  "Doğrudan ticaret için pazarlık et": "Bargain for direct trade",
+  "KKTC AB ile sınırlı ticaret görüşmesi yürüttü.": "The TRNC held limited trade talks with the EU.",
+  "KKTC tanınma ve doğrudan ticaret talep ediyor; Ankara'nın ve BM'nin dengesi kritik.": "The TRNC wants recognition and direct trade; the balance between Ankara and the UN is critical.",
+  "BM Müzakereleri Zirvesi": "The UN Summit on the Island",
+  "BM Genel Sekreteri adadaki Türk ve Rum liderleri yeniden görüşmeye çağırdı. İki devletli çözüm, federasyon ve işbirliği başlıklarında yeni formüller konuşuluyor; ama güvenlik garantileri ve sondaj hakları tıkanıklık yaratıyor.": "The UN Secretary-General invited the leaders of the two communities back to the table. New formulas on a two-state solution, federation and cooperation are in play, but security guarantees and drilling rights remain sticking points."
+ }
+}

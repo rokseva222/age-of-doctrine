@@ -1,0 +1,543 @@
+{
+ "moments": [
+  {
+   "id": "napol_ilan",
+   "turn": 3,
+   "title": "Yeni İmparatorluk İlan Edildi",
+   "scene": "crisis",
+   "icon": "flag",
+   "text": "Paris çevresinde general önderliğindeki asi birlikler 'Yeni İmparatorluk'u ilan etti. Ordu ikiye bölündü; Elysée Sarayı kuşatma altında. Avrupa başkentleri yeni bir Napolyon hayaletinden endişeli.",
+   "major": true,
+   "default_fx": [
+    [
+     "stab",
+     "France",
+     -4
+    ],
+    [
+     "rel",
+     "United Kingdom",
+     "France",
+     2
+    ],
+    [
+     "troops",
+     "Germany",
+     2
+    ]
+   ],
+   "roles": {
+    "France": {
+     "text": "Cumhuriyet ordusu bölünmüş; Paris tehlikede. Sadık birlikleri toplamak mı, başkenti terk etmek mi?",
+     "options": [
+      {
+       "t": "Paris'i savun",
+       "d": "Paris'i savun",
+       "fx": [
+        [
+         "buff",
+         "France",
+         "def",
+         1.25,
+         10
+        ],
+        [
+         "stab",
+         "France",
+         1
+        ]
+       ],
+       "r": "Cumhuriyetçi güçler Paris çevresinde savunma kurdu."
+      },
+      {
+       "t": "Hükûmeti Loire'a taşı",
+       "d": "Hükûmeti Loire'a taşı",
+       "fx": [
+        [
+         "stab",
+         "France",
+         -3
+        ],
+        [
+         "troops",
+         "France",
+         2
+        ]
+       ],
+       "r": "Fransız hükûmeti Paris'ten Loire'a taşındı."
+      }
+     ]
+    },
+    "Germany": {
+     "text": "Berlin Fransız iç savaşının sınıra yayılmasından çekiniyor.",
+     "options": [
+      {
+       "t": "Sınırı koru",
+       "d": "Sınırı koru",
+       "fx": [
+        [
+         "troops",
+         "Germany",
+         2
+        ],
+        [
+         "buff",
+         "Germany",
+         "def",
+         1.1,
+         8
+        ]
+       ],
+       "r": "Almanya Fransa sınırını güçlendirdi."
+      },
+      {
+       "t": "Cumhuriyeti destekle",
+       "d": "Cumhuriyeti destekle",
+       "fx": [
+        [
+         "rel",
+         "Germany",
+         "France",
+         5
+        ],
+        [
+         "gold",
+         "Germany",
+         -0.5
+        ]
+       ],
+       "r": "Berlin Fransız hükûmetine siyasi ve mali destek verdi."
+      }
+     ]
+    },
+    "United Kingdom": {
+     "text": "Londra Kanal'ın öbür yakasındaki gelişmeleri tarihî dersleri hatırlayarak izliyor.",
+     "options": [
+      {
+       "t": "Donanmayı Kanal'a gönder",
+       "d": "Donanmayı Kanal'a gönder",
+       "fx": [
+        [
+         "rel",
+         "United Kingdom",
+         "France",
+         2
+        ],
+        [
+         "troops",
+         "United Kingdom",
+         1
+        ]
+       ],
+       "r": "Kraliyet Donanması Manş'ta devriye başladı.",
+       "keep_default": true
+      },
+      {
+       "t": "Tarafsız kal ve izle",
+       "d": "Tarafsız kal ve izle",
+       "fx": [
+        [
+         "stab",
+         "United Kingdom",
+         1
+        ]
+       ],
+       "r": "Britanya kararsız kalıp gelişmeleri izledi.",
+       "keep_default": true
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "napol_ordu",
+   "turn": 22,
+   "title": "Grande Armée'nin Yürüyüşü",
+   "scene": "pre_assault",
+   "icon": "tank",
+   "text": "Yeni İmparatorluk Belçika ve Ren sınırına doğru yürüyor. İmparator 'Avrupa'yı yeniden düzenleyeceğini' ilan etti; İspanya ve İtalya tarafsızlık arayışında.",
+   "major": true,
+   "default_fx": [
+    [
+     "troops",
+     "Germany",
+     -2
+    ],
+    [
+     "rel",
+     "Germany",
+     "France",
+     -3
+    ],
+    [
+     "stab",
+     "Spain",
+     -1
+    ],
+    [
+     "stab",
+     "Italy",
+     -1
+    ]
+   ],
+   "roles": {
+    "Germany": {
+     "text": "Alman ordusu Ren'de hazır; ama yeni İmparatorluk piyade ve topçuda üstün.",
+     "options": [
+      {
+       "t": "Ren'de savun",
+       "d": "Ren'de savun",
+       "fx": [
+        [
+         "buff",
+         "Germany",
+         "def",
+         1.3,
+         10
+        ],
+        [
+         "troops",
+         "Germany",
+         1
+        ]
+       ],
+       "r": "Almanya Ren hattında savunma kurdu."
+      },
+      {
+       "t": "Önleyici saldırı yap",
+       "d": "Önleyici saldırı yap",
+       "fx": [
+        [
+         "buff",
+         "Germany",
+         "att",
+         1.15,
+         6
+        ],
+        [
+         "troops",
+         "Germany",
+         -4
+        ]
+       ],
+       "r": "Alman birlikleri Elzas'a önleyici saldırı yaptı."
+      }
+     ]
+    },
+    "Spain": {
+     "text": "Madrid Napolyon çağının acı hatıralarını biliyor; ama İmparator sınırda.",
+     "options": [
+      {
+       "t": "Pireneler'i tahkim et",
+       "d": "Pireneler'i tahkim et",
+       "fx": [
+        [
+         "troops",
+         "Spain",
+         3
+        ],
+        [
+         "buff",
+         "Spain",
+         "def",
+         1.2,
+         10
+        ]
+       ],
+       "r": "İspanya Pireneler'de tahkimat kurdu."
+      },
+      {
+       "t": "Tarafsızlık ilan et",
+       "d": "Tarafsızlık ilan et",
+       "fx": [
+        [
+         "stab",
+         "Spain",
+         1
+        ],
+        [
+         "rel",
+         "Spain",
+         "France",
+         2
+        ]
+       ],
+       "r": "Madrid tarafsızlık ilan etti."
+      }
+     ]
+    },
+    "Italy": {
+     "text": "Roma Alpler hattında tehdit altında; İmparator İtalya'yı 'özgürleştirmek' istiyor.",
+     "options": [
+      {
+       "t": "Alp geçitlerini kapat",
+       "d": "Alp geçitlerini kapat",
+       "fx": [
+        [
+         "troops",
+         "Italy",
+         2
+        ],
+        [
+         "buff",
+         "Italy",
+         "def",
+         1.2,
+         8
+        ]
+       ],
+       "r": "İtalya Alp geçitlerini tahkim etti."
+      },
+      {
+       "t": "Müzakere et",
+       "d": "Müzakere et",
+       "fx": [
+        [
+         "rel",
+         "Italy",
+         "France",
+         3
+        ],
+        [
+         "stab",
+         "Italy",
+         -1
+        ]
+       ],
+       "r": "Roma Yeni İmparatorluk'la gizli görüşmeler yaptı."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "napol_koalisyon",
+   "turn": 48,
+   "title": "Yeni Koalisyon",
+   "scene": "peace",
+   "icon": "treaty",
+   "text": "Britanya, Almanya ve Rusya Yeni İmparatorluk'a karşı yeni bir koalisyon kurma çabasında. Napolyon çağının yedinci koalisyonu gibi; ama bu kez modern silahlar var.",
+   "major": true,
+   "default_fx": [
+    [
+     "rel",
+     "United Kingdom",
+     "Germany",
+     3
+    ],
+    [
+     "rel",
+     "United Kingdom",
+     "Russia",
+     2
+    ],
+    [
+     "rel",
+     "Germany",
+     "Russia",
+     1
+    ]
+   ],
+   "roles": {
+    "United Kingdom": {
+     "text": "Londra koalisyonun finansörü ve donanma gücü olabilir. Büyük bir kara taahhüdü ise riskli.",
+     "options": [
+      {
+       "t": "Koalisyona mali ve deniz desteği ver",
+       "d": "Koalisyona mali ve deniz desteği ver",
+       "fx": [
+        [
+         "rel",
+         "United Kingdom",
+         "Germany",
+         4
+        ],
+        [
+         "gold",
+         "United Kingdom",
+         -1.0
+        ],
+        [
+         "buff",
+         "United Kingdom",
+         "att",
+         1.05,
+         8
+        ]
+       ],
+       "r": "Londra koalisyona finans ve donanma desteği verdi."
+      },
+      {
+       "t": "Sadece denizden abluka kur",
+       "d": "Sadece denizden abluka kur",
+       "fx": [
+        [
+         "gold",
+         "France",
+         -1.0
+        ],
+        [
+         "stab",
+         "United Kingdom",
+         1
+        ]
+       ],
+       "r": "Britanya Fransa'ya deniz ablukası kurdu."
+      }
+     ]
+    },
+    "Germany": {
+     "text": "Almanya koalisyonun kara gücü; ama ortak komuta konusunda görüş ayrılığı var.",
+     "options": [
+      {
+       "t": "Ortak komutayı kabul et",
+       "d": "Ortak komutayı kabul et",
+       "fx": [
+        [
+         "rel",
+         "Germany",
+         "United Kingdom",
+         4
+        ],
+        [
+         "rel",
+         "Germany",
+         "Russia",
+         3
+        ],
+        [
+         "buff",
+         "Germany",
+         "att",
+         1.1,
+         8
+        ]
+       ],
+       "r": "Berlin ortak komutayı kabul etti."
+      },
+      {
+       "t": "Ulusal komutada ısrar et",
+       "d": "Ulusal komutada ısrar et",
+       "fx": [
+        [
+         "rel",
+         "Germany",
+         "United Kingdom",
+         -2
+        ],
+        [
+         "stab",
+         "Germany",
+         1
+        ]
+       ],
+       "r": "Almanya bağımsız komuta çizgisini korudu."
+      }
+     ]
+    },
+    "France": {
+     "text": "Cumhuriyet koalisyonla birlikte Yeni İmparatorluk'u geri püskürtebilir.",
+     "options": [
+      {
+       "t": "Koalisyona katıl",
+       "d": "Koalisyona katıl",
+       "fx": [
+        [
+         "rel",
+         "France",
+         "United Kingdom",
+         5
+        ],
+        [
+         "rel",
+         "France",
+         "Germany",
+         4
+        ],
+        [
+         "buff",
+         "France",
+         "def",
+         1.1,
+         8
+        ]
+       ],
+       "r": "Fransız Cumhuriyeti koalisyonla ortak plan yaptı."
+      },
+      {
+       "t": "Fransa'yı kendin kurtar",
+       "d": "Fransa'yı kendin kurtar",
+       "fx": [
+        [
+         "stab",
+         "France",
+         2
+        ],
+        [
+         "rel",
+         "France",
+         "United Kingdom",
+         -3
+        ]
+       ],
+       "r": "Cumhuriyet yabancı yardımı reddetti."
+      }
+     ]
+    }
+   }
+  }
+ ],
+ "moments_en": {
+  "Paris'i savun": "Defend Paris",
+  "Cumhuriyetçi güçler Paris çevresinde savunma kurdu.": "Republican forces set up a defence around Paris.",
+  "Hükûmeti Loire'a taşı": "Move the government to the Loire",
+  "Fransız hükûmeti Paris'ten Loire'a taşındı.": "The French government relocated from Paris to the Loire.",
+  "Cumhuriyet ordusu bölünmüş; Paris tehlikede. Sadık birlikleri toplamak mı, başkenti terk etmek mi?": "The Republican army is split and Paris is in danger. Rally loyal troops or leave the capital?",
+  "Sınırı koru": "Guard the frontier",
+  "Almanya Fransa sınırını güçlendirdi.": "Germany reinforced the French border.",
+  "Cumhuriyeti destekle": "Back the Republic",
+  "Berlin Fransız hükûmetine siyasi ve mali destek verdi.": "Berlin gave the French government political and financial backing.",
+  "Berlin Fransız iç savaşının sınıra yayılmasından çekiniyor.": "Berlin fears the French civil war spilling over the border.",
+  "Donanmayı Kanal'a gönder": "Send the fleet to the Channel",
+  "Kraliyet Donanması Manş'ta devriye başladı.": "The Royal Navy began Channel patrols.",
+  "Tarafsız kal ve izle": "Stay neutral and watch",
+  "Britanya kararsız kalıp gelişmeleri izledi.": "Britain stayed neutral and watched.",
+  "Londra Kanal'ın öbür yakasındaki gelişmeleri tarihî dersleri hatırlayarak izliyor.": "London watches across the Channel, mindful of history's lessons.",
+  "Yeni İmparatorluk İlan Edildi": "The New Empire Is Proclaimed",
+  "Paris çevresinde general önderliğindeki asi birlikler 'Yeni İmparatorluk'u ilan etti. Ordu ikiye bölündü; Elysée Sarayı kuşatma altında. Avrupa başkentleri yeni bir Napolyon hayaletinden endişeli.": "Rebel units led by a general around Paris proclaimed the 'New Empire'. The army has split; the Élysée is under siege. European capitals fear a new Napoleonic spectre.",
+  "Ren'de savun": "Defend on the Rhine",
+  "Almanya Ren hattında savunma kurdu.": "Germany set up a defence on the Rhine.",
+  "Önleyici saldırı yap": "Strike pre-emptively",
+  "Alman birlikleri Elzas'a önleyici saldırı yaptı.": "German troops struck pre-emptively into Alsace.",
+  "Alman ordusu Ren'de hazır; ama yeni İmparatorluk piyade ve topçuda üstün.": "The German army is ready on the Rhine, but the New Empire is superior in infantry and artillery.",
+  "Pireneler'i tahkim et": "Fortify the Pyrenees",
+  "İspanya Pireneler'de tahkimat kurdu.": "Spain built fortifications in the Pyrenees.",
+  "Tarafsızlık ilan et": "Declare neutrality",
+  "Madrid tarafsızlık ilan etti.": "Madrid declared neutrality.",
+  "Madrid Napolyon çağının acı hatıralarını biliyor; ama İmparator sınırda.": "Madrid knows the bitter memories of the Napoleonic age, but the Emperor is at the border.",
+  "Alp geçitlerini kapat": "Close the Alpine passes",
+  "İtalya Alp geçitlerini tahkim etti.": "Italy fortified the Alpine passes.",
+  "Müzakere et": "Negotiate",
+  "Roma Yeni İmparatorluk'la gizli görüşmeler yaptı.": "Rome held secret talks with the New Empire.",
+  "Roma Alpler hattında tehdit altında; İmparator İtalya'yı 'özgürleştirmek' istiyor.": "Rome is threatened along the Alps; the Emperor wants to 'liberate' Italy.",
+  "Grande Armée'nin Yürüyüşü": "The March of the New Grande Armée",
+  "Yeni İmparatorluk Belçika ve Ren sınırına doğru yürüyor. İmparator 'Avrupa'yı yeniden düzenleyeceğini' ilan etti; İspanya ve İtalya tarafsızlık arayışında.": "The New Empire is marching toward Belgium and the Rhine. The Emperor proclaimed he will 'reorder Europe'; Spain and Italy seek neutrality.",
+  "Koalisyona mali ve deniz desteği ver": "Provide funds and naval support",
+  "Londra koalisyona finans ve donanma desteği verdi.": "London gave the coalition funding and naval support.",
+  "Sadece denizden abluka kur": "A blockade at sea only",
+  "Britanya Fransa'ya deniz ablukası kurdu.": "Britain blockaded France at sea.",
+  "Londra koalisyonun finansörü ve donanma gücü olabilir. Büyük bir kara taahhüdü ise riskli.": "London can be the coalition's paymaster and naval power. A large land commitment is risky.",
+  "Ortak komutayı kabul et": "Accept joint command",
+  "Berlin ortak komutayı kabul etti.": "Berlin accepted joint command.",
+  "Ulusal komutada ısrar et": "Insist on national command",
+  "Almanya bağımsız komuta çizgisini korudu.": "Germany kept its independent command line.",
+  "Almanya koalisyonun kara gücü; ama ortak komuta konusunda görüş ayrılığı var.": "Germany is the coalition's land power, but there is disagreement over joint command.",
+  "Koalisyona katıl": "Join the coalition",
+  "Fransız Cumhuriyeti koalisyonla ortak plan yaptı.": "The French Republic coordinated plans with the coalition.",
+  "Fransa'yı kendin kurtar": "Save France yourself",
+  "Cumhuriyet yabancı yardımı reddetti.": "The Republic refused foreign aid.",
+  "Cumhuriyet koalisyonla birlikte Yeni İmparatorluk'u geri püskürtebilir.": "The Republic, together with the coalition, can push back the New Empire.",
+  "Yeni Koalisyon": "The New Coalition",
+  "Britanya, Almanya ve Rusya Yeni İmparatorluk'a karşı yeni bir koalisyon kurma çabasında. Napolyon çağının yedinci koalisyonu gibi; ama bu kez modern silahlar var.": "Britain, Germany and Russia are trying to form a new coalition against the New Empire. Like the seventh coalition of the Napoleonic age, but this time with modern weapons."
+ }
+}

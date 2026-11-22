@@ -1,0 +1,496 @@
+{
+ "moments": [
+  {
+   "id": "kara_sehir",
+   "turn": 5,
+   "title": "Çöl Şehri Düştü",
+   "scene": "crisis",
+   "icon": "flag",
+   "text": "Kara Sancak savaşçıları Suriye ve Irak çölünde stratejik bir şehri ele geçirdi; yerel güçler dağıldı. Binlerce sivil kaçıyor, sınır kapıları doluyor. Bölge devletleri mültecilerle ve sınır güvenliğiyle uğraşıyor.",
+   "major": true,
+   "default_fx": [
+    [
+     "stab",
+     "Syria",
+     -2
+    ],
+    [
+     "stab",
+     "Iraq",
+     -2
+    ],
+    [
+     "stab",
+     "Turkey",
+     -1
+    ]
+   ],
+   "roles": {
+    "Turkey": {
+     "text": "Sınır boyunca mülteci akını ve olası terör tehdidi var. Müdahale mi, sınırı kapatmak mı?",
+     "options": [
+      {
+       "t": "Sınır güvenlik hattı kur",
+       "d": "Sınır güvenlik hattı kur",
+       "fx": [
+        [
+         "troops",
+         "Turkey",
+         2
+        ],
+        [
+         "stab",
+         "Turkey",
+         1
+        ],
+        [
+         "gold",
+         "Turkey",
+         -0.5
+        ]
+       ],
+       "r": "Türkiye sınır boyunca güvenlik hattı kurdu."
+      },
+      {
+       "t": "Sınır ötesi operasyon yap",
+       "d": "Sınır ötesi operasyon yap",
+       "fx": [
+        [
+         "troops",
+         "Turkey",
+         -2
+        ],
+        [
+         "rel",
+         "Turkey",
+         "Iraq",
+         -2
+        ],
+        [
+         "rel",
+         "Turkey",
+         "United States of America",
+         2
+        ]
+       ],
+       "r": "Türk birlikleri sınır ötesinde sınırlı bir operasyon başlattı."
+      }
+     ]
+    },
+    "Iraq": {
+     "text": "Bağdat'ın ordusu dağınık; milisler ve Kürt güçleriyle ortak savunma kurmak şart.",
+     "options": [
+      {
+       "t": "Ortak savunma koalisyonu kur",
+       "d": "Ortak savunma koalisyonu kur",
+       "fx": [
+        [
+         "troops",
+         "Iraq",
+         3
+        ],
+        [
+         "stab",
+         "Iraq",
+         2
+        ],
+        [
+         "rel",
+         "Iraq",
+         "Iran",
+         3
+        ]
+       ],
+       "r": "Bağdat Kürt ve milis güçlerle ortak savunma kurdu."
+      },
+      {
+       "t": "ABD'den hava desteği iste",
+       "d": "ABD'den hava desteği iste",
+       "fx": [
+        [
+         "rel",
+         "Iraq",
+         "United States of America",
+         5
+        ],
+        [
+         "rel",
+         "Iraq",
+         "Iran",
+         -3
+        ]
+       ],
+       "r": "Bağdat ABD'den hava ve istihbarat desteği istedi."
+      }
+     ]
+    },
+    "Iran": {
+     "text": "İran sınırın hemen yanında yeni bir Sünni aşırılıkçı yapı görüyor; Şii kutsal kentler tehdit altında.",
+     "options": [
+      {
+       "t": "Danışman ve silah gönder",
+       "d": "Danışman ve silah gönder",
+       "fx": [
+        [
+         "rel",
+         "Iran",
+         "Iraq",
+         5
+        ],
+        [
+         "troops",
+         "Iran",
+         -1
+        ],
+        [
+         "gold",
+         "Iran",
+         -0.5
+        ]
+       ],
+       "r": "Tahran Irak'a danışman ve silah gönderdi.",
+       "keep_default": true
+      },
+      {
+       "t": "Sınırı tahkim et",
+       "d": "Sınırı tahkim et",
+       "fx": [
+        [
+         "troops",
+         "Iran",
+         2
+        ],
+        [
+         "stab",
+         "Iran",
+         1
+        ]
+       ],
+       "r": "İran sınır birliklerini tahkim etti.",
+       "keep_default": true
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "kara_koalisyon",
+   "turn": 24,
+   "title": "Bölgesel Koalisyon Çağrısı",
+   "scene": "crisis",
+   "icon": "treaty",
+   "text": "Kara Sancak ilerlemesini sürdürüyor. Büyük güçler ve bölge ülkeleri bir koalisyon kurulması için çağrı yaptı; ama kimin liderlik edeceği, hangi ülkenin güç göndereceği belirsiz.",
+   "major": true,
+   "default_fx": [
+    [
+     "rel",
+     "United States of America",
+     "Turkey",
+     1
+    ],
+    [
+     "rel",
+     "United States of America",
+     "Iraq",
+     2
+    ]
+   ],
+   "roles": {
+    "United States of America": {
+     "text": "Washington hava harekâtı ve özel kuvvetlerle sınırlı bir rol önerebilir; kara birliği siyaseten pahalı.",
+     "options": [
+      {
+       "t": "Hava harekâtı koalisyonu kur",
+       "d": "Hava harekâtı koalisyonu kur",
+       "fx": [
+        [
+         "rel",
+         "United States of America",
+         "Turkey",
+         3
+        ],
+        [
+         "rel",
+         "United States of America",
+         "Iraq",
+         4
+        ],
+        [
+         "gold",
+         "United States of America",
+         -1.0
+        ]
+       ],
+       "r": "ABD hava harekâtı koalisyonu kurdu."
+      },
+      {
+       "t": "Bölge ülkelerine bırak",
+       "d": "Bölge ülkelerine bırak",
+       "fx": [
+        [
+         "rel",
+         "United States of America",
+         "Turkey",
+         -2
+        ],
+        [
+         "stab",
+         "United States of America",
+         1
+        ]
+       ],
+       "r": "Washington öncelikle bölge ülkelerinin sorumluluk almasını istedi."
+      }
+     ]
+    },
+    "Turkey": {
+     "text": "Ankara koalisyonda ağırlık istiyor; ama müttefikinin Kürt gruplarla ittifakı sorun.",
+     "options": [
+      {
+       "t": "Koalisyona katıl ama şart koş",
+       "d": "Koalisyona katıl ama şart koş",
+       "fx": [
+        [
+         "rel",
+         "Turkey",
+         "United States of America",
+         4
+        ],
+        [
+         "troops",
+         "Turkey",
+         -1
+        ]
+       ],
+       "r": "Türkiye koalisyona şartlı olarak katıldı."
+      },
+      {
+       "t": "Tek başına hareket et",
+       "d": "Tek başına hareket et",
+       "fx": [
+        [
+         "rel",
+         "Turkey",
+         "United States of America",
+         -4
+        ],
+        [
+         "stab",
+         "Turkey",
+         1
+        ]
+       ],
+       "r": "Ankara bağımsız bir sınır ötesi plan yürüttü."
+      }
+     ]
+    },
+    "Israel": {
+     "text": "İsrail yeni bir kuzey cephesi istemiyor; ama aşırılıkçı bir yapı sınırdan çok uzak da değil.",
+     "options": [
+      {
+       "t": "Gizli istihbarat paylaş",
+       "d": "Gizli istihbarat paylaş",
+       "fx": [
+        [
+         "rel",
+         "Israel",
+         "United States of America",
+         3
+        ],
+        [
+         "rel",
+         "Israel",
+         "Iran",
+         -2
+        ]
+       ],
+       "r": "İsrail koalisyona gizli istihbarat sağladı."
+      },
+      {
+       "t": "Hava savunmasını güçlendir",
+       "d": "Hava savunmasını güçlendir",
+       "fx": [
+        [
+         "troops",
+         "Israel",
+         2
+        ],
+        [
+         "gold",
+         "Israel",
+         -0.5
+        ]
+       ],
+       "r": "İsrail kuzey hava savunmasını güçlendirdi."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "kara_baraj",
+   "turn": 54,
+   "title": "Baraj ve Petrol Sahaları",
+   "scene": "crisis",
+   "icon": "dam",
+   "text": "Kara Sancak Fırat üzerindeki bir barajı ve petrol sahalarını ele geçirdi. Su ve enerji kontrolü hem finansmanı hem de siyasi baskıyı güçlendiriyor; koalisyon bu altyapıyı vurup vurmamayı tartışıyor.",
+   "major": false,
+   "default_fx": [
+    [
+     "gold",
+     "Turkey",
+     -0.5
+    ],
+    [
+     "stab",
+     "Syria",
+     -2
+    ],
+    [
+     "stab",
+     "Iraq",
+     -2
+    ]
+   ],
+   "roles": {
+    "Iraq": {
+     "text": "Su ve petrol gelirinin kaybı ekonomiyi sarsıyor. Baraj saldırısı sivilleri de etkiler.",
+     "options": [
+      {
+       "t": "Barajı geri almak için kara harekâtı",
+       "d": "Barajı geri almak için kara harekâtı",
+       "fx": [
+        [
+         "troops",
+         "Iraq",
+         -3
+        ],
+        [
+         "stab",
+         "Iraq",
+         2
+        ],
+        [
+         "buff",
+         "Iraq",
+         "att",
+         1.1,
+         6
+        ]
+       ],
+       "r": "Irak birlikleri barajı geri almak için harekât başlattı."
+      },
+      {
+       "t": "Müzakereyle baraj yönetimini ele al",
+       "d": "Müzakereyle baraj yönetimini ele al",
+       "fx": [
+        [
+         "stab",
+         "Iraq",
+         1
+        ],
+        [
+         "gold",
+         "Iraq",
+         -0.5
+        ]
+       ],
+       "r": "Bağdat yerel aşiretlerle baraj için pazarlık yaptı."
+      }
+     ]
+    },
+    "Turkey": {
+     "text": "Fırat'ın suyu Türkiye için de kritik; barajda yaşanacak bir kriz tarım ve enerjiyi etkiler.",
+     "options": [
+      {
+       "t": "Hava saldırısı destekle",
+       "d": "Hava saldırısı destekle",
+       "fx": [
+        [
+         "rel",
+         "Turkey",
+         "Iraq",
+         4
+        ],
+        [
+         "troops",
+         "Turkey",
+         -1
+        ]
+       ],
+       "r": "Türkiye barajın geri alınması için hava desteği verdi.",
+       "keep_default": true
+      },
+      {
+       "t": "Su akışını yönet",
+       "d": "Su akışını yönet",
+       "fx": [
+        [
+         "rel",
+         "Turkey",
+         "Iraq",
+         -2
+        ],
+        [
+         "gold",
+         "Turkey",
+         0.5
+        ]
+       ],
+       "r": "Ankara Fırat akışını düzenleyerek baskı kurdu.",
+       "keep_default": true
+      }
+     ]
+    }
+   }
+  }
+ ],
+ "moments_en": {
+  "Sınır güvenlik hattı kur": "Establish a border security belt",
+  "Türkiye sınır boyunca güvenlik hattı kurdu.": "Turkey set up a border security belt.",
+  "Sınır ötesi operasyon yap": "Launch a cross-border operation",
+  "Türk birlikleri sınır ötesinde sınırlı bir operasyon başlattı.": "Turkish troops began a limited cross-border operation.",
+  "Sınır boyunca mülteci akını ve olası terör tehdidi var. Müdahale mi, sınırı kapatmak mı?": "There is a refugee influx and potential terror threat along the border. Intervene or seal it?",
+  "Ortak savunma koalisyonu kur": "Form a joint defence coalition",
+  "Bağdat Kürt ve milis güçlerle ortak savunma kurdu.": "Baghdad formed a joint defence with Kurdish and militia forces.",
+  "ABD'den hava desteği iste": "Ask for US air support",
+  "Bağdat ABD'den hava ve istihbarat desteği istedi.": "Baghdad asked the US for air and intelligence support.",
+  "Bağdat'ın ordusu dağınık; milisler ve Kürt güçleriyle ortak savunma kurmak şart.": "Baghdad's army is fragmented; joint defence with militias and Kurdish forces is essential.",
+  "Danışman ve silah gönder": "Send advisers and arms",
+  "Tahran Irak'a danışman ve silah gönderdi.": "Tehran sent advisers and arms to Iraq.",
+  "Sınırı tahkim et": "Fortify the border",
+  "İran sınır birliklerini tahkim etti.": "Iran reinforced its border units.",
+  "İran sınırın hemen yanında yeni bir Sünni aşırılıkçı yapı görüyor; Şii kutsal kentler tehdit altında.": "Iran sees a new Sunni extremist entity next door; Shia holy cities are at risk.",
+  "Çöl Şehri Düştü": "A Desert City Falls",
+  "Kara Sancak savaşçıları Suriye ve Irak çölünde stratejik bir şehri ele geçirdi; yerel güçler dağıldı. Binlerce sivil kaçıyor, sınır kapıları doluyor. Bölge devletleri mültecilerle ve sınır güvenliğiyle uğraşıyor.": "Black Banner fighters took a strategic desert city in Syria and Iraq; local forces dissolved. Thousands of civilians are fleeing and border crossings are overwhelmed. Regional states face refugees and border security at once.",
+  "Hava harekâtı koalisyonu kur": "Lead an air-campaign coalition",
+  "ABD hava harekâtı koalisyonu kurdu.": "The US formed an air-campaign coalition.",
+  "Bölge ülkelerine bırak": "Leave it to regional states",
+  "Washington öncelikle bölge ülkelerinin sorumluluk almasını istedi.": "Washington asked regional states to take responsibility.",
+  "Washington hava harekâtı ve özel kuvvetlerle sınırlı bir rol önerebilir; kara birliği siyaseten pahalı.": "Washington can offer air power and special forces; ground troops are politically costly.",
+  "Koalisyona katıl ama şart koş": "Join with conditions",
+  "Türkiye koalisyona şartlı olarak katıldı.": "Turkey joined the coalition on conditions.",
+  "Tek başına hareket et": "Act alone",
+  "Ankara bağımsız bir sınır ötesi plan yürüttü.": "Ankara pursued an independent cross-border plan.",
+  "Ankara koalisyonda ağırlık istiyor; ama müttefikinin Kürt gruplarla ittifakı sorun.": "Ankara wants weight in the coalition, but its ally's ties to Kurdish groups are a problem.",
+  "Gizli istihbarat paylaş": "Share intelligence quietly",
+  "İsrail koalisyona gizli istihbarat sağladı.": "Israel quietly supplied the coalition with intelligence.",
+  "Hava savunmasını güçlendir": "Reinforce air defences",
+  "İsrail kuzey hava savunmasını güçlendirdi.": "Israel reinforced its northern air defences.",
+  "İsrail yeni bir kuzey cephesi istemiyor; ama aşırılıkçı bir yapı sınırdan çok uzak da değil.": "Israel does not want a new northern front, but an extremist entity is not far from the border.",
+  "Bölgesel Koalisyon Çağrısı": "A Call for a Regional Coalition",
+  "Kara Sancak ilerlemesini sürdürüyor. Büyük güçler ve bölge ülkeleri bir koalisyon kurulması için çağrı yaptı; ama kimin liderlik edeceği, hangi ülkenin güç göndereceği belirsiz.": "Black Banner continues to advance. The great powers and regional states have called for a coalition, but who will lead and who will send forces remains unclear.",
+  "Barajı geri almak için kara harekâtı": "Ground operation to retake the dam",
+  "Irak birlikleri barajı geri almak için harekât başlattı.": "Iraqi troops launched an operation to retake the dam.",
+  "Müzakereyle baraj yönetimini ele al": "Negotiate over dam management",
+  "Bağdat yerel aşiretlerle baraj için pazarlık yaptı.": "Baghdad bargained with local tribes over the dam.",
+  "Su ve petrol gelirinin kaybı ekonomiyi sarsıyor. Baraj saldırısı sivilleri de etkiler.": "Losing water and oil revenue shakes the economy. A strike on the dam would also hurt civilians.",
+  "Hava saldırısı destekle": "Back an air strike",
+  "Türkiye barajın geri alınması için hava desteği verdi.": "Turkey provided air support to retake the dam.",
+  "Su akışını yönet": "Manage river flows",
+  "Ankara Fırat akışını düzenleyerek baskı kurdu.": "Ankara regulated the Euphrates flow to apply pressure.",
+  "Fırat'ın suyu Türkiye için de kritik; barajda yaşanacak bir kriz tarım ve enerjiyi etkiler.": "The Euphrates is vital to Turkey too; a dam crisis would affect agriculture and energy.",
+  "Baraj ve Petrol Sahaları": "Dams and Oil Fields",
+  "Kara Sancak Fırat üzerindeki bir barajı ve petrol sahalarını ele geçirdi. Su ve enerji kontrolü hem finansmanı hem de siyasi baskıyı güçlendiriyor; koalisyon bu altyapıyı vurup vurmamayı tartışıyor.": "Black Banner seized a dam on the Euphrates and oil fields. Control of water and energy strengthens both its funding and its leverage; the coalition debates whether to strike the infrastructure."
+ }
+}
