@@ -1,0 +1,880 @@
+Air.player_strike
+Air.rebase
+Air.airlift
+Air.rename
+Air.set_flag
+Air.set_stance
+%s: %d    %s: %d km    %s: %s
+Cabinet.appoint
+Cabinet.dismiss
+Cabinet.apply
+Carriers.build_ship
+Carriers.buy
+Carriers.strike
+Open passage
+Toll
+Closed to enemies
+Closed to all
+Ships pass freely. World trade flows and nobody blames you.
+You charge a toll to non-allied countries: your income rises, theirs dips slightly.
+Ships of countries you fight or embargo cannot pass; their income falls.
+Nobody but allies may pass. World trade is shaken; your stability falls and world backlash grows.
+Bosphorus and Dardanelles
+Suez Canal
+Strait of Hormuz
+Strait of Malacca
+Bab-el-Mandeb
+Strait of Gibraltar
+Panama Canal
+Danish Straits
+English Channel
+%s is now under the control of %s.
+%s began charging a toll at the %s.
+%s closed the %s to enemy ships.
+%s reopened the %s.
+Chokepoints.set_mode
+%s closed the %s to everyone: world trade is shaken!
+Macro.set_budget
+Macro.set_front
+Fleets
+Air
+Cabinet
+Macro
+UN
+Focus
+Politics
+Carriers
+Chokepoints
+Formables
+GrandOp
+Ultimatum
+Faith
+Fleets.set_escort
+Fleets.order_move
+Fleets.stop
+Fleets.merge
+Fleets.blockade
+Fleets.player_bombard
+Fleets.player_torpedo
+Fleets.embark
+Fleets.debark
+Fleets.rename
+Fleets.set_flag
+Fleets.set_stance
+Fleets.split
+Focus.start
+Focus.cancel
+Formables.form
+GrandOp.launch
+Macro.set_doctrine
+Macro.mobilize
+Macro.buy
+Politics.choose
+Politics.do_action
+Ultimatum.deliver
+UN.propose
+UN.player_vote
+imza yok
+argüman sayısı
+boş argüman: %s
+tür: %s
+ülke aralığı: %s
+il aralığı: %s
+bozuk komut
+geçersiz oyuncu
+bilinmeyen modül
+bilinmeyen komut
+başkasının ülkesi
+önerge sahibi
+başkası adına
+bozuk etki
+bozuk aday
+bilinmeyen rol
+aday bulunamadı
+USD
+TRY
+EUR
+GBP
+JPY
+RUB
+CNY
+INR
+CHF
+CAD
+AUD
+BRL
+MXN
+KRW
+SAR
+AED
+EGP
+ZAR
+PLN
+SEK
+NOK
+DKK
+CZK
+HUF
+RON
+UAH
+IDR
+PKR
+BDT
+THB
+VND
+MYR
+SGD
+PHP
+NGN
+KES
+ARS
+CLP
+COP
+PEN
+ILS
+IRR
+ETB
+TZS
+UGX
+DZD
+MAD
+GHS
+KZT
+UZS
+IQD
+AFN
+JOD
+KWD
+QAR
+OMR
+BHD
+BGN
+RSD
+MKD
+ALL
+BAM
+MDL
+GEL
+AMD
+AZN
+BYN
+TJS
+KGS
+TMT
+MNT
+LKR
+NPR
+MMK
+KHR
+LAK
+TWD
+NZD
+ISK
+VES
+CUP
+HTG
+DOP
+GTQ
+HNL
+NIO
+CRC
+BOB
+PYG
+UYU
+JMD
+TTD
+SDG
+SSP
+YER
+SYP
+LYD
+TND
+MZN
+AOA
+ZMW
+MWK
+ZWG
+MGA
+XAF
+XOF
+RWF
+BIF
+CDF
+SOS
+ERN
+DJF
+GNF
+SLE
+LRD
+GMD
+MUR
+SCR
+CVE
+STN
+MRU
+BWP
+FJD
+PGK
+SBD
+VUV
+WST
+TOP
+XCD
+BBD
+BZD
+BSD
+GYD
+SRD
+KPW
+KMF
+MVR
+BTN
+BND
+Full Treasury
+The treasury is doubled, but the army is weak. Spend wisely.
+Scarce Resources
+The treasury is halved, but the army is strong. Move fast.
+Neighbor Attacks
+A neighbor declared war on day one. Defend or make peace.
+Trade with your neighbor is cut; income starts low but the army is ready.
+Restless Country
+Domestic stability starts low; do not lose control.
+Golden Age
+The country is calm and wealthy; turn this easy start into growth.
+Shadow of Cold War
+Tension with your neighbor could turn into war at any moment.
+I:ww1_germany
+I:ww1_austria
+Europe
+North America
+Asia
+Africa
+South America
+Oceania
+Savaşsız başla
+Catholicism
+Protestantism
+Orthodoxy
+Oriental Christianity
+Sunni Islam
+Shia Islam
+Ibadi Islam
+Hinduism
+Buddhism
+Sikhism
+Shinto
+Chinese folk religion
+Judaism
+Traditional beliefs
+Irreligious
+Vatican
+East Timor
+Saint Vincent and the Grenadines
+Antigua and Barbuda
+Saint Kitts and Nevis
+Northern Cyprus
+Karachay
+Kabardin
+Zanzibar
+Unguja
+Rheinland
+%s: the people are gradually turning to %s.
+Battle fleet
+Submarine fleet
+Carrier group
+Transport fleet
+Economy
+Military
+Diplomacy
+Home Front
+National
+Industrial Mobilization
+Factories are put on a production footing.
+Trade Agreements
+New markets and customs deals.
+Ports and Railways
+Infrastructure spending strengthens supply lines.
+National Banking
+State banks pour cash into the treasury.
+Economic Miracle
+Record growth lifts industry and revenue.
+Conscription Reform
+A wider reserve pool.
+Offensive Doctrine
+Armies drill for fast, concentrated strikes.
+Defense Lines
+Fortification and defense in depth.
+Arms Fund
+A large transfer into the defense fund.
+Elite War Colleges
+The staff corps reaches a new level.
+Foreign Ministry Reform
+Embassies are reorganized and your image improves.
+Multilateral Diplomacy
+Your voice is heard at every table.
+Spy Network
+Intelligence expands; cyber maturity grows.
+Sphere of Influence
+Influence among neighbors brings cash and goodwill.
+Global Leader
+The world counts you among its leaders.
+National Unity
+A shared goal, a shared hope.
+Education Drive
+Schools and universities expand.
+Social Security
+Healthcare and pensions tie the people to the state.
+National Identity
+A shared identity and a strong people's army.
+Prosperity, stability and confidence.
+National Defense Industry
+Domestic arms production boosts the defense fund and the army.
+Straits and Energy Corridor
+Control of the straits and pipelines brings revenue.
+Leap of the Century
+Industry, army and people rise together.
+Global Power Projection
+Bases in every ocean, allies on every continent.
+Dollar Hegemony
+The reserve-currency privilege fills the treasury.
+World Policeman
+Deterrence and the alliance network at their peak.
+Belt and Road
+Trade and influence through infrastructure diplomacy.
+Army Modernization
+The people's army is renewed with technology.
+Manufacturing Giant
+The world's factory at full capacity.
+Strategic Depth
+Vast lands are the best defense.
+Energy Weapon
+Gas and oil leverage fills the treasury.
+Mobilization Doctrine
+Mass reserve army preparation.
+Industrial Leap
+Manufacturing and jobs grow fast.
+Digital India
+Software and cyber capacity rise.
+Demographic Power
+A young population feeds army and economy.
+Engineering Excellence
+World leader in precision manufacturing.
+Engine of Europe
+Europe's economic hub; diplomacy gets easier.
+Rearmament
+The army modernizes quickly.
+Nuclear Deterrent
+An independent deterrent brings security.
+Francophonie
+Language and cultural ties build influence.
+Aerospace and Luxury
+High-value exports.
+Naval Supremacy
+The naval tradition adds strength to the army.
+The City
+The financial center pours in cash.
+Commonwealth Ties
+Old ties pay off in diplomacy.
+Technology Giant
+A pioneer in robotics and electronics.
+Defense Reform
+The self-defense forces expand.
+Island Defense
+Coastal and island defenses harden.
+Axis of Resistance
+The regional proxy network deters.
+Missile Program
+Ballistic missile capacity expands.
+Economic Resilience
+Self-sufficiency against sanctions.
+Start-up Army
+Army and tech sector intertwine.
+Iron Dome
+Layered air defense.
+Rapid Mobilization
+Reserves ready within days.
+Treasury cash
+Defense fund
+Income
+Stability
+Industry
+Logistics
+Cyber
+Attack
+Defense
+Recruitment
+World relations
+World backlash
+Spy cooldown
+No player.
+This focus is not for your country.
+Already completed.
+Finish or cancel the current focus first.
+Missing prerequisite: 
+New national focus: %s (%d weeks).
+Focus completed: %s — %s
+ weekly income
+ülke ortadan kalktı
+savaş çıktı
+ilişkiler bozuldu
+yol tıkalı
+Steel Storm
+Red Dawn
+Iron Fist
+Northern Tide
+Last Gate
+Night Spear
+Broken Chain
+Great Wave
+Golden Sword
+Silent Cyclone
+{me} has launched the grand operation "{op}" against {foe}: land, air and naval forces moved at once.
+"{op}" has begun! {me}'s army launched a sweeping combined assault on the {foe} front; cyber lines went down.
+Sirens at the border: {me}'s operation "{op}" targets {foe}'s defensive line.
+"{op}": the first wave of bombardment continues, {foe}'s command network is shaken by outages.
+{foe} sources report heavy pressure on air defenses in the opening hours of "{op}".
+"{op}": {me} special forces struck bridges and depots behind {foe}'s lines.
+"{op}", week two: armored columns push deep, {foe}'s reserves cannot reach the front.
+{foe}'s government met in emergency session; alert declared in the capital because of "{op}".
+Naval support: {me}'s fleet began striking coastal targets as part of "{op}".
+VICTORY! "{op}" is complete: {me} captured {n} of {foe}'s {tot} cities. Loss ratio {ratio}.
+"{op}" goes into the history books: {foe}'s defense collapsed, {n} cities fell under {me} control in one stroke.
+The {foe} front has shattered! {n} cities fell in "{op}"; {me}'s generals declared victory.
+"{op}": {me}'s army took {n} cities, enemy losses {killed}, own losses {lost}. The world press calls it a "lightning strike".
+"{op}" partly successful: {me} could take only {n} cities, {foe}'s resistance holds the line. Loss ratio {ratio}.
+{me} gained {n} cities with "{op}", but the plan fell short of its goals.
+"{op}" slowed down: {n} cities taken but {foe} kept its main lines.
+FIASCO! "{op}" collapsed: {me}'s assault dissolved against {foe}'s defense, losses {lost}.
+Operation "{op}" failed: not a single city was taken. {foe} is preparing a counter-attack.
+A heavy blow for {me}: the "{op}" plan leaked and collapsed; {lost} troops lost.
+Spark
+Uprising
+Negotiation
+Statehood
+Consolidation
+Keep popular support and secrecy; start the uprising when ready.
+Hold and expand your provinces; gather foreign support and legitimacy.
+Make a ceasefire and show the people's will with a referendum.
+Choose your constitution, win recognition from 5+ countries, apply to the UN.
+Keep stability above 50 and dependency below 3 for 52 weeks.
+Liberal-democratic
+Social-labor
+National-conservative
+Traditionalist-religious
+Federalist-autonomist
+Technocrat-reformist
+Armed uprising
+Coup attempt
+Political movement
+War at once: 3 provinces, ready troops. No secrecy, but no lost time.
+Organize first: seize part of power in a sudden move once support is high. Heavy cost on failure.
+Start peacefully: 1 province, long truce. Win the people and the world first; war later if you choose.
+Free
+United
+Northern
+People's
+Eastern
+New
+Southern
+Western
+Common
+Front
+Union
+Movement
+Assembly
+Initiative
+Council
+Army
+Liberation
+Revival
+Dawn
+Awakening
+Homeland
+Horizon
+Oath
+A Secret Meeting Leaked
+A cell's meeting place appeared in the local press. Security units opened an investigation.
+Deny it and scatter
+Go deeper underground
+Go public
+Diaspora Donation
+The community abroad offered a donation. The small one has no strings; the large one is connected.
+Take the small donation
+Take the large donation (strings)
+Decline
+University Demonstration
+Students want to march under the movement's flag. It may draw big attention, and a crackdown.
+Support it
+Stay quiet
+Steer it: civil action
+Security Operation
+The central government is conducting sudden searches. One of the weapon caches is at risk.
+Move the cache
+Burn the cache
+Defend it
+Village Elders Swear an Oath
+Village elders in the region are ready to back the movement; in return they want a pledge of local autonomy.
+Make the pledge
+Only thank them
+Prisoner Exchange
+The central government proposed a prisoner exchange. A goodwill gesture could resonate in the world press.
+Accept
+Raise the terms
+Refuse
+Foreign Journalist
+A well-known foreign journalist wants to visit. What they see could win attention, or put you in a tight spot.
+Let them roam freely
+Guided tour
+Hungry Villages
+The fighting hit the fields; food is running out in some villages.
+Distribute grain
+Feed the army first
+Mediator's Offer
+A neutral country offered a broad autonomy plan: no independence, but a strong local assembly and a revenue share.
+Bargain
+Reject
+The Hardliners
+A group of commanders call negotiation treason and threaten to break away.
+Make concessions
+Enforce discipline
+Form a council
+The Currency
+Will the new state print its own money, or peg to a neighbor's currency?
+Print our own
+Peg (patron's currency)
+Militia Integration
+Scattered militias want to join the national army, but expect pay and rank.
+Fully integrate
+Select some
+Disband
+Border Bargaining
+A secret talk on the border line with the old center was proposed. Concede, and peace becomes lasting.
+Concede
+Hold firm
+Election Calendar
+The people ask about the first free elections. Voting raises legitimacy, but the outcome is not guaranteed.
+Hold elections
+Postpone
+Investment Delegation
+A foreign delegation offered a large investment in ports and energy, in exchange for a long concession.
+Back local capital
+The Constitution
+Independence is declared. Time to choose the new state's form of government.
+Republic
+Parliamentary monarchy
+Federation
+Transitional rule
+%s is born: it sets out for independence in the lands of %s. The road is long; it will take support, money and time.
+%s has risen! Fighting with %s forces has begun.
+%s sent financial aid to %s.
+%s shipped weapons to %s.
+Volunteers from %s joined %s.
+%s officially recognized %s.
+%s Wants Base Rights
+%s Wants a Concession
+%s Wants Foreign Policy Alignment
+%s Sets a Reform Condition
+%s demands a military base in return for its support.
+%s wants a long-term concession on ports and energy lines.
+%s expects you to side with it in international votes.
+%s makes its continued support conditional on a political reform package.
+%s declared war on %s: the rivalry has turned hot.
++8 support, −10 secrecy
+Build a secret cell
++12 secrecy, +2,000 volunteers
+Raise funds
++1.5 weeks of income, −3 support
+Procure arms
+Better arms, −8 secrecy
+Start the uprising
+War with the center begins; phase 2
+Coup
+Success seizes 3 provinces at once; failure is costly
++6 support
+Recruit volunteers
++5,000 troops, −2 stability
+International appeal
++6 legitimacy
+Referendum
+The people's will: on success, declare independence
+Unilateral declaration
+Instant independence; legitimacy −15, the center may resume war
+Apply for UN membership
+On success, the Consolidation phase
+Border treaty
++8 legitimacy; needs peace with the center
+Development investment
++4 stability
+COUP SUCCEEDS: %s seized %d provinces of %s at once!
+The coup attempt was crushed: %s took heavy losses and fighting has begun.
+REFERENDUM: The people voted for independence for %s!
+%s has declared independence!
+The UN admitted %s as a member!
+Security forces raided %s cells.
+International pressure worked: a ceasefire was reached between %s and the center.
+The conflict enters a new stage: mediators call %s and the center to the table.
+Around the capital
+East
+West
+North
+South
+%s: %.2fM   /   %s: %s
+Ali Solmaz
+Selengül Öztürk
+Enes Koçak
+Aykut Karaman
+Utku Berk Nergiz
+Sato Takuya
+Nakamura Yuta
+Hayrunnisa Nur Varilci
+Arthur Dorohov
+Seva Hovanneski
+Dmitriy Petrov
+Aleksandr Vladimirov
+Thomas Martin
+Lucas Dubois
+Lahar Shurma
+Rohit Shingh
+Alejandro Gracia
+Mattia Romano
+Lorenzo Esposita
+Jung Ha-joon
+Kim Jin-woo
+Afonso Costa
+Martim Ferreira
+Chen Yu Qiang
+Wang Wei
+Huang Lei
+Rok Games Studios
+Age of Doctrine
+Normal
+AodNet
+Online · %s: %s
+Online
+Antarctica
+Seven seas (open ocean)
+N. Muharebe Filosu
+MpPass
+Kar
+Vel
+Dor
+Mir
+Zan
+Nor
+Sal
+Ben
+Kor
+Ves
+Tal
+Mor
+Ish
+Bra
+Sar
+Lun
+Gar
+Tev
+Hal
+Zen
+Fal
+Dar
+Min
+Pol
+Ayd
+Cer
+Dal
+Erz
+Fen
+Gor
+Hav
+Ibr
+Jav
+Kel
+Lor
+Mak
+Nav
+Orm
+Par
+Rav
+Tarn
+Ul
+Vor
+Yar
+Zul
+Bela
+Sera
+Nora
+Tola
+Mira
+Vala
+Dora
+Ruma
+Teka
+Sova
+diğerleri bitirdi, sen bekletiyorsun
+bekleyen emirleri yolla
+InternetGatewayDevice
+UDP
+Age of Doctrine ping
+AODQ
+AODR
+AOD
+Content-Type: text/plain
+Content-Type: application/json
+NotificationScheduler
+NotificationChannel
+NotificationData
+TR
+EU
+US
+AS
+SA
+AF
+OC
+ABCDEFGHIJKLMNOPQRSTUVWXYZ234567
+LAN
+%d ms
+ set
+%s\n%d wk
+%d weeks
+Requires: 
+Democracy
+Monarchy
+Authoritarian rule
+One-party (communist)
+Military rule
+Fascist rule
+Constitutional monarchy
+Theocracy
+Colonial administration
+Feudal kingdom
+Regular elections, strong legitimacy and trade. War weariness erodes stability quickly; coup risk is very low.
+An old dynasty: stability is slow and firm. Low coup risk, but little reform flexibility.
+A strong center: stability recovers, little war weariness. Lower efficiency, moderate coup risk.
+Planned economy and tight organization: solid stability. Limited foreign trade, low-to-moderate coup risk.
+The army rules: no war weariness but an inefficient economy; high coup risk.
+One leader and nationalist mobilization: firm stability, no war weariness. Harsh world reaction, a slightly inefficient economy.
+A symbolic dynasty with an elected parliament governing: strong legitimacy and trade, very low coup risk. War weariness is a little milder than in a democracy.
+Clerics rule: firm stability, very little war weariness. The economy and foreign trade are inefficient, and the secular world keeps its distance.
+Governors appointed by the mother country rule: stability is slow and quiet, but income is low and the people want independence.
+Nobles and landlords bound to the crown: middling stability, low war weariness. If the barons grow strong, palace coups threaten.
+The opposition won the election in %s; new leader %s.
+The government won the election in %s.
+PALACE COUP: a coup inside the %s court; new ruler %s.
+COUP: the army seized power in %s; new leader %s.
+Mass Protests
+Hundreds of thousands are on the streets of the capital demanding the government resign. Parliament is divided.
+Call early elections
+Martial law
+Promise reforms
+Coup Plot
+Intelligence reports that a group of generals has met to overthrow the government. What do we do?
+Pay off the generals
+Purge them
+Ignore it
+Early elections were called; the streets calmed.
+Martial law was declared.
+A reform package was announced; the protests eased.
+The officers were paid off; the coup plan was shelved.
+The plotters were purged. The army is quiet but uneasy.
+The plot fizzled out on its own.
+The generals seized power. New leader %s; the country is now under military rule.
+Move to a system with elections: stability −10 now; legitimacy and income rise permanently.
+Keep the dynasty but hand power to an elected parliament: stability −6 now; legitimacy and trade rise, coup risk drops.
+Return to dynastic rule: stability −10 now, then slow and firm; low war weariness, mild world backlash.
+Break the nobles and gather power in the throne: absolute monarchy. Stability +8, less war weariness; backlash grows.
+Move to authoritarian rule: stability +8, no war weariness; income −2%, world backlash grows.
+One leader and nationalist mobilization: stability +6, no war weariness; income −3%, a very harsh world backlash and worse ties with democracies.
+One party and a planned economy: stability +4, steady income; backlash grows and ties with democracies worsen.
+Clerics take over government: stability +5, much less war weariness; income −3%, ties with secular states worsen.
+Democratize
+Become a constitutional monarchy
+Restore the monarchy
+Absolute monarchy (centralize)
+Centralize power
+Adopt fascist rule
+Adopt one-party rule
+Declare a theocracy
+in %d weeks
+Martial law (12 weeks)
+Stability +0.5 per week and lower coup risk; income −8%, world backlash grows.
+Martial law declared in %s.
+%s changed its form of government: %s.
+Form of government changed: %s.
+AOD1....
+NATO
+I:reb_kara_sancak
+I:reb_yeni_reich
+I:reb_yeni_imparatorluk
+Norwegian Sea
+North Sea
+Baltic Sea
+Eastern Atlantic
+North Atlantic
+Western Atlantic
+Central Atlantic
+South Atlantic
+Southeast Atlantic
+Caribbean Sea
+Gulf of Mexico
+Western Mediterranean
+Central Mediterranean
+Eastern Mediterranean
+Aegean Sea
+Black Sea
+Arabian Sea
+Persian Gulf
+Bay of Bengal
+Western Indian Ocean
+Eastern Indian Ocean
+Indonesian Seas
+South China Sea
+East China and Yellow Sea
+Sea of Japan
+Northwest Pacific
+Northeast Pacific
+Eastern Pacific
+Southeast Pacific
+Southwest Pacific
+Arctic Ocean
+Caspian Sea
+Label
+Button
+PanelContainer
+LineEdit
+VScrollBar
+HScrollBar
+VBoxContainer
+HBoxContainer
+HFlowContainer
+%d km
+AOD1.
+%d hafta ayakta kal
+Survive %d weeks
+Stay out of war for %d weeks
+Reach %d provinces
+Make %d allies
+Keep stability above %d
+Reach %d bloc members
+Reach %d%% of world GDP
+Make peace with %s
+Eliminate %s
+Operation: %s
+War Room: %s is under way.
+War Room: the plan was cancelled.
+In progress
+Succeeded
+Failed
+Waiting
+War Room: %s has been captured.
+THE CAPITAL HAS FALLEN
+%s fell in phase %d of your plan. The enemy chain of command is collapsing.
+Phase complete
+Phase %d: %s has been captured.
+War Room: the %s phase failed. %s
+The war is over; the plan was closed.
+War Room: the assault on %s has begun.
+War Room: 
+Plan completed
+%s: all %d phases succeeded. The General Staff is rewarded: stability +4 and extra funds.
+Plan ended
+%s: %d phases succeeded, %d failed.

@@ -332,6 +332,14 @@ static func t(s: String) -> String:
 	return r
 
 
+## Türkçe/İngilizce çift: tr dilinde Türkçe; başka dilde (varsa) dil paketindeki çeviri, yoksa verilen İngilizce.
+static func pair(tr_text: String, en_text: String) -> String:
+	if lang == "tr":
+		return tr_text
+	var r := translate(tr_text)
+	return r if r != "" else en_text
+
+
 static var _pct_re: RegEx = null
 
 

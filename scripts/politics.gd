@@ -106,7 +106,7 @@ static func icon(r: String) -> String:
 
 
 static func desc_of(r: String) -> String:
-	return String(DESC_TR[r]) if _tr() else String(DESC_EN[r])
+	return Loc.pair(String(DESC_TR[r]), String(DESC_EN[r]))
 
 
 static func ensure(gs) -> void:
@@ -259,9 +259,9 @@ static func _ai_election(gs, c) -> void:
 		var nm: String = _new_leader(gs, c, "elect")
 		c.stability = clampf(c.stability - 3.0, 5.0, 100.0)
 		if _close_to_player(gs, c):
-			gs.post_news((("%s'de seçimi muhalefet kazandı; yeni lider %s." if _tr() else "The opposition won the election in %s; new leader %s.") % [c.name, nm]), c.capital, "info")
+			gs.post_news((Loc.pair("%s'de seçimi muhalefet kazandı; yeni lider %s.", "The opposition won the election in %s; new leader %s.") % [c.name, nm]), c.capital, "info")
 	elif _close_to_player(gs, c):
-		gs.post_news((("%s'de iktidar seçimi kazandı." if _tr() else "The government won the election in %s.") % c.name), c.capital, "info")
+		gs.post_news((Loc.pair("%s'de iktidar seçimi kazandı.", "The government won the election in %s.") % c.name), c.capital, "info")
 
 
 static func _ai_coup(gs, c) -> void:
@@ -279,14 +279,14 @@ static func _ai_coup(gs, c) -> void:
 				gs.finish_peace(w, -1, [])
 	if _close_to_player(gs, c) or gs.rng.randf() < 0.3:
 		var pre_e: bool = Macro.era_on and Eras.family() == "pre"
-		var cm: String = ("SARAY DARBESİ: %s'de hanedan içi darbe; yeni hükümdar %s." if pre_e else "DARBE: %s'de ordu yönetime el koydu; yeni lider %s.") if _tr() else ("PALACE COUP: a coup inside the %s court; new ruler %s." if pre_e else "COUP: the army seized power in %s; new leader %s.")
+		var cm: String = Loc.pair("SARAY DARBESİ: %s'de hanedan içi darbe; yeni hükümdar %s." if pre_e else "DARBE: %s'de ordu yönetime el koydu; yeni lider %s.", "PALACE COUP: a coup inside the %s court; new ruler %s." if pre_e else "COUP: the army seized power in %s; new leader %s.")
 		gs.post_news(cm % [c.name, nm], c.capital, "event")
 
 
 # ------------------------------------------------------------------ oyuncu uyarı kartları
 
 static func _t(tr: String, en: String) -> String:
-	return tr if _tr() else en
+	return Loc.pair(tr, en)
 
 
 static func _player_card(gs, c, r: String) -> void:

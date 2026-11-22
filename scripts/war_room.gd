@@ -19,7 +19,7 @@ static func _tr() -> bool:
 
 
 static func _t(tr: String, en: String) -> String:
-	return tr if _tr() else en
+	return Loc.pair(tr, en)
 
 
 static func ensure(gs) -> void:

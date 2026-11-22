@@ -65,15 +65,15 @@ static func name_of(id: String) -> String:
 	if d.is_empty():
 		return id
 	var n: Array = d.name
-	return String(n[0]) if _tr() else String(n[1])
+	return Loc.pair(String(n[0]), String(n[1]))
 
 
 static func mode_name(m: String) -> String:
-	return String(MODE_TR[m]) if _tr() else String(MODE_EN[m])
+	return Loc.pair(String(MODE_TR[m]), String(MODE_EN[m]))
 
 
 static func mode_desc(m: String) -> String:
-	return String(MODE_DESC_TR[m]) if _tr() else String(MODE_DESC_EN[m])
+	return Loc.pair(String(MODE_DESC_TR[m]), String(MODE_DESC_EN[m]))
 
 
 ## gs.chokes: {id: {"mode", "ctrl", "cd"}} — eksikse kurar

@@ -174,7 +174,7 @@ const FX_NAME := {
 
 
 static func _t(tr: String, en: String) -> String:
-	return en if Loc.lang != "tr" else tr
+	return Loc.pair(tr, en)
 
 
 static func nm(id: String) -> String:

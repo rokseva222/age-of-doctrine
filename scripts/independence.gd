@@ -124,27 +124,27 @@ static func _tr() -> bool:
 
 
 static func _p(pair: Array) -> String:
-	return pair[0] if _tr() else pair[1]
+	return Loc.pair(pair[0], pair[1])
 
 
 static func ideo_name(i: String) -> String:
-	return IDEO_TR[i] if _tr() else IDEO_EN[i]
+	return Loc.pair(IDEO_TR[i], IDEO_EN[i])
 
 
 static func phase_name(ph: int) -> String:
-	return PHASE_TR[ph] if _tr() else PHASE_EN[ph]
+	return Loc.pair(PHASE_TR[ph], PHASE_EN[ph])
 
 
 static func phase_goal(ph: int) -> String:
-	return PHASE_GOAL_TR[ph] if _tr() else PHASE_GOAL_EN[ph]
+	return Loc.pair(PHASE_GOAL_TR[ph], PHASE_GOAL_EN[ph])
 
 
 static func method_name(m: String) -> String:
-	return METHOD_TR[m] if _tr() else METHOD_EN[m]
+	return Loc.pair(METHOD_TR[m], METHOD_EN[m])
 
 
 static func method_desc(m: String) -> String:
-	return METHOD_DESC_TR[m] if _tr() else METHOD_DESC_EN[m]
+	return Loc.pair(METHOD_DESC_TR[m], METHOD_DESC_EN[m])
 
 
 static func active(gs) -> bool:

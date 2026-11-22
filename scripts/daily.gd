@@ -62,12 +62,12 @@ static func twist_of(id: String) -> Dictionary:
 
 static func twist_name(id: String) -> String:
 	var n: Array = twist_of(id).name
-	return String(n[0]) if _tr() else String(n[1])
+	return Loc.pair(String(n[0]), String(n[1]))
 
 
 static func twist_desc(id: String) -> String:
 	var n: Array = twist_of(id).desc
-	return String(n[0]) if _tr() else String(n[1])
+	return Loc.pair(String(n[0]), String(n[1]))
 
 
 static func _subst(v, p: String, n: String):
