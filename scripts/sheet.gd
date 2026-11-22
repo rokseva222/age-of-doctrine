@@ -93,6 +93,13 @@ func _build(title: String, width: float, tall: bool, closable: bool, kicker: Str
 
 var head_box: HBoxContainer
 var scroll: ScrollContainer
+
+
+## Sayfalı editörler: pencere her sayfada ekranı doldurur (sayfa değişince boy/alt düğmeler zıplamasın)
+func fill_height() -> void:
+	_tall_min = 100000.0
+	_refit()
+
 var _tall_min := 0.0
 var _fit_pending := false
 

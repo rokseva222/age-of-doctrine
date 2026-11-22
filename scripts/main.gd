@@ -1605,7 +1605,7 @@ func _end_map_preview() -> void:
 		cb.call()
 
 
-func _begin_map_pick(cb: Callable) -> void:
+func _begin_map_pick(cb: Callable, focus_en: String = "") -> void:
 	_pick_cb = cb
 	_pick_ids = []
 	_pick_hidden = _hide_editor_sheets()
@@ -1627,10 +1627,22 @@ func _begin_map_pick(cb: Callable) -> void:
 	_pick_bar.position.y = 16
 	_pick_refresh()
 	map.input_enabled = true
-	map.animate_to(map.world_rect().get_center(), map.min_zoom * 1.25, 0.6)
+	var fc := -1
+	for c in gs.countries:
+		if focus_en != "" and c.name_en == focus_en and c.alive:
+			fc = c.id
+	if fc >= 0:
+		map.focus_country(fc)         # il seçilecek ülkeye yaklaş (dünya ölçeğinde il seçmek imkânsız)
+	else:
+		map.animate_to(map.world_rect().get_center(), map.min_zoom * 1.25, 0.6)
 
 
 func _pick_refresh() -> void:
+	var sel := {}
+	for pid in _pick_ids:
+		sel[pid] = true
+	map.pick_mode = true
+	map.set_form_view(sel)
 	_pick_lbl.text = "%s: %d %s" % [Loc.t("Haritadan il seç — dokunarak ekle/çıkar"), _pick_ids.size(), Loc.t("il")]
 
 
@@ -1642,6 +1654,8 @@ func _end_map_pick() -> void:
 		_pick_bar.queue_free()
 		_pick_bar = null
 	map.select_province(-1)
+	map.pick_mode = false
+	map.set_form_view({})
 	_scn_world_unbind()
 	for c in _pick_hidden:
 		if is_instance_valid(c):

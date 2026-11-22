@@ -351,7 +351,7 @@ func _build() -> void:
 			U.remove(String(d["id"]))
 			_sheet.close()
 			on_done.call(""), "danger", false, "", 110)
-	_sheet.add_button("Kapat", func(): _sheet.close(), "", false, "", 130)
+	_sheet.fill_height()
 	_show_page(0)
 
 
@@ -559,8 +559,11 @@ func _fill_transfer() -> void:
 					if not by_src.has(own):
 						by_src[own] = []
 					by_src[own].append(int(pid))
+				if by_src.is_empty():
+					_msg.text = Loc.t("Seçilen iller zaten hedef ülkenin; devredilecek il yok.")
+					return
 				for sn in by_src:
-					_add_transfer(sn, _val(dst), by_src[sn], int(wk.value), false)), "blue"))
+					_add_transfer(sn, _val(dst), by_src[sn], int(wk.value), false), _val(src)), "blue"))
 	box.add_child(br)
 
 
@@ -682,7 +685,7 @@ func _fill_garrison() -> void:
 				chosen_lbl.text = "✔ " + _pname(int(pids[0]))
 				for p in _prov_index():
 					if int(p["id"]) == int(pids[0]):
-						who.set_value(String(p["en"]))), "blue"))
+						who.set_value(String(p["en"])), _val(who)), "blue"))
 	box.add_child(row)
 
 

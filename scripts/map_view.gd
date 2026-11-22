@@ -39,6 +39,7 @@ var selected_army = null
 var selected_fleet = null
 var selected_wing = null
 var highlight_country := -1
+var pick_mode := false                # senaryo editörü il seçimi: seçilen iller altın sarısı, diğerleri kendi rengi
 var form_set: Dictionary = {}          # boş değil: Ülke Formla görünümü (hedef eyaletler: yeşil sende, turuncu alınacak)
 var rel_country := -1                  # >=0: ilişki görünümü (seçili ülke sarı, müttefik mavi, savaş kırmızı, ateşkes mor)
 var input_enabled := true
@@ -236,6 +237,8 @@ func _rel_fill(cid: int) -> Color:
 
 
 func _form_fill(p) -> Color:
+	if pick_mode:
+		return Color(0.98, 0.80, 0.22) if form_set.has(p.id) else _country_fill(p.owner)
 	if form_set.has(p.id):
 		return Color(0.25, 0.68, 0.38) if p.owner == gs.player else Color(0.93, 0.52, 0.16)
 	return Color(0.20, 0.30, 0.22) if p.owner == gs.player else Color(0.13, 0.16, 0.20)
