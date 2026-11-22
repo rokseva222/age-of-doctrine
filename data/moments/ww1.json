@@ -1,6 +1,182 @@
 {
 "moments": [
 {
+"id": "july_crisis",
+"y": 1914,
+"m": 7,
+"title": "Temmuz Krizi",
+"scene": "crisis",
+"icon": "warning",
+"text": "Saraybosna'da Arşidük Franz Ferdinand vuruldu. Viyana Sırbistan'a ağır bir ültimatom hazırlıyor; Berlin 'açık çek' verdi, Rusya Sırp kardeşliğini bırakmak istemiyor. Avrupa ittifaklar ağıyla kaymaya başladı.",
+"major": true,
+"default_fx": [
+[
+"rel",
+"Austria",
+"Russia",
+-8
+],
+[
+"rel",
+"Germany",
+"Russia",
+-5
+]
+],
+"roles": {
+"Austria": {
+"text": "Ültimatom 48 saat süreli, Sırbistan'ın egemenliğini zedeleyecek maddeler içeriyor. Ya Sırbistan'ı cezalandıracaksın ya da imparatorluğun itibarı çökecek.",
+"options": [
+{
+"t": "Ültimatomu ver (tarihî)",
+"d": "Savaş neredeyse kaçınılmaz",
+"fx": [
+[
+"buff",
+"Austria",
+"att",
+1.1,
+8
+],
+[
+"rel",
+"Austria",
+"Russia",
+-10
+],
+[
+"rel",
+"Austria",
+"Germany",
+8
+]
+],
+"r": "Viyana ültimatomu verdi; Sırbistan reddetti, savaş kapıda."
+},
+{
+"t": "Konferans iste",
+"d": "Diplomasi, ama Almanya hayal kırıklığına uğrar",
+"fx": [
+[
+"rel",
+"Austria",
+"Germany",
+-6
+],
+[
+"stab",
+"Austria",
+3
+]
+],
+"r": "Viyana sakin kalmayı seçti; kriz sürüyor."
+}
+]
+},
+"Germany": {
+"text": "Kayzer Viyana'ya 'açık çek' verdi. Genelkurmay Rusya'nın seferberliği tamamlamadan harekete geçmeyi istiyor.",
+"options": [
+{
+"t": "Avusturya'yı sonuna dek destekle (tarihî)",
+"d": "İttifak sağlam, ama kriz tırmanıyor",
+"fx": [
+[
+"rel",
+"Germany",
+"Austria",
+10
+],
+[
+"rel",
+"Germany",
+"Russia",
+-8
+],
+[
+"rel",
+"Germany",
+"United Kingdom",
+-5
+]
+],
+"r": "Berlin Viyana'ya tam destek verdi."
+},
+{
+"t": "Viyana'yı dizginle",
+"d": "Savaşı önlemeye çalış",
+"fx": [
+[
+"rel",
+"Germany",
+"Austria",
+-5
+],
+[
+"rel",
+"Germany",
+"United Kingdom",
+6
+],
+[
+"stab",
+"Germany",
+-2
+]
+],
+"r": "Berlin Viyana'ya itidal çağrısı yaptı."
+}
+]
+},
+"Russia": {
+"text": "Çar Sırbistan'ı yalnız bırakmak istemiyor; seferberlik ise Almanya'yı da savaşa çekebilir.",
+"options": [
+{
+"t": "Kısmi seferberlik, sonra genel (tarihî)",
+"d": "Sırbistan'ı koru, Almanya'yı kızdır",
+"fx": [
+[
+"troops",
+"Russia",
+6
+],
+[
+"rel",
+"Russia",
+"Germany",
+-10
+],
+[
+"rel",
+"Russia",
+"France",
+6
+]
+],
+"r": "Rusya seferberlik ilan etti."
+},
+{
+"t": "Arabuluculuk iste",
+"d": "Zaman kazan",
+"fx": [
+[
+"rel",
+"Russia",
+"Germany",
+3
+],
+[
+"stab",
+"Russia",
+2
+]
+],
+"r": "Petersburg uluslararası arabuluculuk istedi."
+}
+]
+}
+}
+},
+{
 "id": "tannenberg",
 "y": 1914,
 "m": 8,
@@ -484,6 +660,222 @@
 }
 },
 {
+"id": "christmas_truce",
+"y": 1914,
+"m": 12,
+"title": "Noel Ateşkesi",
+"scene": "peace",
+"icon": "dove",
+"text": "Batı Cephesi'nde Noel gecesi bazı hatlarda silahlar sustu; askerler 'kimsenin toprağı'nda buluşup hediyeleşti. Komutanlar bunun tekrarlanmasını yasaklamak istiyor.",
+"major": false,
+"default_fx": [
+[
+"stab",
+"Germany",
+2
+],
+[
+"stab",
+"France",
+2
+],
+[
+"stab",
+"United Kingdom",
+2
+]
+],
+"roles": {
+"Germany": {
+"text": "Askerler Noel şarkıları söylüyor. Bu yakınlaşma savaş azmini kemirebilir.",
+"options": [
+{
+"t": "Yasakla, disiplin uygula (tarihî)",
+"d": "Savaş azmi korunur",
+"fx": [
+[
+"stab",
+"Germany",
+-1
+],
+[
+"buff",
+"Germany",
+"att",
+1.05,
+6
+]
+],
+"r": "Berlin yasak getirdi; cephede disiplin sıkılaştı."
+},
+{
+"t": "Göz yum",
+"d": "Moral artar ama ordu yumuşar",
+"fx": [
+[
+"stab",
+"Germany",
+3
+],
+[
+"buff",
+"Germany",
+"att",
+0.95,
+6
+]
+],
+"r": "Cephede moral yükseldi."
+}
+]
+},
+"United Kingdom": {
+"text": "Yüksek komuta 'dostluk' haberlerinden rahatsız; ama askerin moraline de ihtiyaç var.",
+"options": [
+{
+"t": "Yasakla (tarihî)",
+"d": "Disiplin korunur",
+"fx": [
+[
+"buff",
+"United Kingdom",
+"att",
+1.05,
+6
+],
+[
+"stab",
+"United Kingdom",
+-1
+]
+],
+"r": "Londra emir verdi: bir daha ateşkes yok."
+},
+{
+"t": "Göz yum",
+"d": "Moral ve itibar",
+"fx": [
+[
+"stab",
+"United Kingdom",
+3
+]
+],
+"r": "Askerler Noel'i rahat geçirdi."
+}
+]
+}
+}
+},
+{
+"id": "dardanelles_navy",
+"y": 1915,
+"m": 3,
+"title": "Boğaz'a Donanma Saldırısı",
+"scene": "naval",
+"icon": "ship",
+"text": "Müttefik donanması 18 Mart'ta Çanakkale Boğazı'nı zorlamaya girişti; mayın hattı ve sahil bataryaları üç zırhlıyı batırdı. Osmanlı cephanesi tükenmek üzereydi.",
+"major": true,
+"default_fx": [
+[
+"stab",
+"Turkey",
+6
+],
+[
+"stab",
+"United Kingdom",
+-2
+]
+],
+"roles": {
+"Turkey": {
+"text": "Donanma saldırısı püskürtüldü ama cephane azaldı. Müttefikler kara harekâtına geçebilir.",
+"options": [
+{
+"t": "Mayın hatlarını yenile (tarihî)",
+"d": "Boğaz'ı kapalı tut",
+"fx": [
+[
+"buff",
+"Turkey",
+"def",
+1.15,
+20
+],
+[
+"gold",
+"Turkey",
+-1
+]
+],
+"r": "Yeni mayınlar döşendi; Boğaz geçilmez kaldı."
+},
+{
+"t": "Almanya'dan cephane iste",
+"d": "Bağımlılık artar",
+"fx": [
+[
+"rel",
+"Turkey",
+"Germany",
+8
+],
+[
+"buff",
+"Turkey",
+"def",
+1.1,
+20
+]
+],
+"r": "Berlin cephane gönderdi."
+}
+]
+},
+"United Kingdom": {
+"text": "Churchill donanmanın başarısız olduğunu kabul etmek istemiyor; kayıplar ağır.",
+"options": [
+{
+"t": "Kara çıkarması planla (tarihî)",
+"d": "Büyük kumar",
+"fx": [
+[
+"troops",
+"United Kingdom",
+-3
+],
+[
+"rel",
+"United Kingdom",
+"Turkey",
+-5
+]
+],
+"r": "Londra Gelibolu çıkarması için emir verdi."
+},
+{
+"t": "Vazgeç",
+"d": "Kayıplar durur, itibar sarsılır",
+"fx": [
+[
+"stab",
+"United Kingdom",
+-2
+],
+[
+"gold",
+"United Kingdom",
+1
+]
+],
+"r": "Londra Boğaz planından vazgeçti."
+}
+]
+}
+}
+},
+{
 "id": "gallipoli",
 "y": 1915,
 "m": 4,
@@ -780,6 +1172,126 @@
 }
 },
 {
+"id": "isonzo",
+"y": 1915,
+"m": 6,
+"title": "İzonzo Cephesi Açıldı",
+"scene": "pre_border",
+"icon": "flag",
+"text": "İtalya Londra Antlaşması ile İtilaf safında savaşa girdi ve Avusturya'ya saldırdı. Alp dağlarında ve İzonzo Nehri boyunca yıllarca sürecek kanlı bir mevzi savaşı başlıyor.",
+"major": true,
+"default_fx": [
+[
+"war",
+"Italy",
+"Austria"
+],
+[
+"stab",
+"Austria",
+-1
+]
+],
+"roles": {
+"Italy": {
+"text": "Cadorna ilk taarruzu Trieste'ye yönlendirmek istiyor; dağlık arazi savunmacıyı avantajlı kılıyor.",
+"options": [
+{
+"t": "İzonzo'ya yüklen (tarihî)",
+"d": "Çok kayıp, az kazanç",
+"fx": [
+[
+"war",
+"Italy",
+"Austria"
+],
+[
+"buff",
+"Italy",
+"att",
+1.1,
+10
+],
+[
+"troops",
+"Italy",
+-5
+],
+[
+"rel",
+"Italy",
+"United Kingdom",
+6
+]
+],
+"r": "İtalyan ordusu İzonzo'da ilk taarruzunu başlattı."
+},
+{
+"t": "Savunmada kal, ordunu hazırla",
+"d": "Zaman kazan",
+"fx": [
+[
+"stab",
+"Italy",
+2
+],
+[
+"rel",
+"Italy",
+"United Kingdom",
+-3
+]
+],
+"r": "Roma taarruzu erteledi."
+}
+]
+},
+"Austria": {
+"text": "İkinci cephe sizi zorluyor; Galiçya'dan takviye çekmek gerekebilir.",
+"options": [
+{
+"t": "Dağ hatlarını tahkim et",
+"d": "Savunmacı avantajı kullan",
+"fx": [
+[
+"buff",
+"Austria",
+"def",
+1.2,
+20
+],
+[
+"gold",
+"Austria",
+-1
+]
+],
+"r": "Avusturya İzonzo hattını tahkim etti."
+},
+{
+"t": "Galiçya'dan birlik çek",
+"d": "Doğuyu zayıflat",
+"fx": [
+[
+"troops",
+"Austria",
+3
+],
+[
+"buff",
+"Russia",
+"att",
+1.05,
+8
+]
+],
+"r": "Birlikler İtalyan cephesine kaydırıldı."
+}
+]
+}
+}
+},
+{
 "id": "verdun",
 "y": 1916,
 "m": 2,
@@ -925,6 +1437,337 @@
 }
 },
 {
+"id": "kut_siege",
+"y": 1916,
+"m": 4,
+"title": "Kut Kuşatması",
+"scene": "pre_siege",
+"icon": "tank",
+"text": "Irak'ta Kut-ül-Amâre'de kuşatılan İngiliz-Hint garnizonu açlıkla karşı karşıya. Kurtarma girişimleri başarısız; Halil Paşa'nın ordusu ablukayı sıkılaştırıyor.",
+"major": true,
+"default_fx": [
+[
+"stab",
+"Turkey",
+4
+],
+[
+"stab",
+"United Kingdom",
+-3
+]
+],
+"roles": {
+"Turkey": {
+"text": "Kut teslim olmak üzere. Mezopotamya cephesinin kaderini belirleyecek bir zafer.",
+"options": [
+{
+"t": "Kuşatmayı sürdür (tarihî)",
+"d": "Zaferi kesinleştir",
+"fx": [
+[
+"buff",
+"Turkey",
+"def",
+1.1,
+20
+],
+[
+"stab",
+"Turkey",
+6
+],
+[
+"rel",
+"Turkey",
+"Germany",
+3
+]
+],
+"r": "Kut teslim oldu; on binlerce esir alındı."
+},
+{
+"t": "Şartlı teslim teklif et",
+"d": "Daha az kayıp",
+"fx": [
+[
+"stab",
+"Turkey",
+2
+],
+[
+"rel",
+"Turkey",
+"United Kingdom",
+2
+]
+],
+"r": "Garnizon müzakereli teslim oldu."
+}
+]
+},
+"United Kingdom": {
+"text": "Kut'a ikmal ulaşmıyor; kurtarma ordusu bataklıkta çaresiz.",
+"options": [
+{
+"t": "Kurtarma için büyük taarruz",
+"d": "Ağır kayıp riski",
+"fx": [
+[
+"troops",
+"United Kingdom",
+-4
+],
+[
+"stab",
+"United Kingdom",
+-2
+]
+],
+"r": "İngiliz kurtarma ordusu bir kez daha saldırdı."
+},
+{
+"t": "Müzakere et, teslim ol (tarihî)",
+"d": "Büyük prestij kaybı",
+"fx": [
+[
+"stab",
+"United Kingdom",
+-4
+],
+[
+"rel",
+"United Kingdom",
+"Turkey",
+-3
+]
+],
+"r": "Londra'da Kut'un düşüşü hayal kırıklığı yarattı."
+}
+]
+}
+}
+},
+{
+"id": "jutland",
+"y": 1916,
+"m": 5,
+"title": "Jutland Deniz Savaşı",
+"scene": "naval",
+"icon": "ship",
+"text": "Kuzey Denizi'nde iki dev donanma karşılaştı: Scheer'in Açık Deniz Filosu ile Jellicoe'nun Grand Fleet'i. Kayıp İngiltere'de fazla, ama Alman filosu bir daha limandan çıkmaya cesaret edemeyecek.",
+"major": true,
+"default_fx": [
+[
+"stab",
+"Germany",
+3
+],
+[
+"stab",
+"United Kingdom",
+-1
+]
+],
+"roles": {
+"United Kingdom": {
+"text": "Churchill'in sözüyle Jellicoe 'savaşı öğleden sonra kaybedebilecek tek adam'. Riske girmeli misin?",
+"options": [
+{
+"t": "Temkinli kal, ablukayı koru (tarihî)",
+"d": "Deniz üstünlüğü sürer",
+"fx": [
+[
+"buff",
+"United Kingdom",
+"def",
+1.1,
+20
+],
+[
+"gold",
+"Germany",
+-1
+]
+],
+"r": "Grand Fleet ablukayı sürdürdü."
+},
+{
+"t": "Kesin muharebeye zorla",
+"d": "Büyük risk, büyük ödül",
+"fx": [
+[
+"troops",
+"United Kingdom",
+-3
+],
+[
+"buff",
+"United Kingdom",
+"att",
+1.1,
+8
+]
+],
+"r": "Britanya filosu Alman filosunu kovaladı."
+}
+]
+},
+"Germany": {
+"text": "Filo İngiliz abluka hattını kırmak istiyor; Scheer ağır ve riskli bir seçimle karşı karşıya.",
+"options": [
+{
+"t": "Eve dön, denizaltıya yüklen (tarihî)",
+"d": "Yüzey filosu limanda kalır",
+"fx": [
+[
+"stab",
+"Germany",
+2
+],
+[
+"rel",
+"Germany",
+"United States of America",
+-3
+]
+],
+"r": "Alman filosu limanlara döndü; denizaltı harbi öne çıktı."
+},
+{
+"t": "Yeniden denize çık",
+"d": "Abluka kırılabilir",
+"fx": [
+[
+"troops",
+"Germany",
+-3
+],
+[
+"buff",
+"Germany",
+"att",
+1.05,
+8
+]
+],
+"r": "Alman filosu yeniden denize açıldı."
+}
+]
+}
+}
+},
+{
+"id": "brusilov",
+"y": 1916,
+"m": 6,
+"title": "Brusilov Taarruzu",
+"scene": "ww1_assault",
+"icon": "helmet_ww1",
+"text": "General Brusilov cephenin dar bir kesiminde değil, geniş bir hatta aynı anda saldırdı: Avusturya-Macaristan ordusu çöküyor, Almanya Verdun'dan tümen çekmek zorunda kalıyor.",
+"major": true,
+"default_fx": [
+[
+"troops",
+"Austria",
+-6
+],
+[
+"troops",
+"Russia",
+-3
+],
+[
+"stab",
+"Austria",
+-3
+]
+],
+"roles": {
+"Russia": {
+"text": "Taarruz beklenmedik bir başarı; ama ikmal ve rezerv sınırlı. Ne kadar ileri gideceksin?",
+"options": [
+{
+"t": "Zaferi sonuna dek sür (tarihî)",
+"d": "Kayıplar çok, kazanç büyük",
+"fx": [
+[
+"buff",
+"Russia",
+"att",
+1.2,
+8
+],
+[
+"troops",
+"Russia",
+-6
+],
+[
+"stab",
+"Russia",
+-2
+]
+],
+"r": "Rus ordusu Galiçya'da yüz kilometre ilerledi."
+},
+{
+"t": "Mevzileri tut, orduyu koru",
+"d": "Zayıf bir başarı",
+"fx": [
+[
+"stab",
+"Russia",
+1
+]
+],
+"r": "Brusilov durdu; Alman takviyeleri geldi."
+}
+]
+},
+"Austria": {
+"text": "Cephe çöküyor. Alman yardımı mı, geri çekilme mi?",
+"options": [
+{
+"t": "Almanya'dan komuta devri iste",
+"d": "Bağımsızlık kaybı",
+"fx": [
+[
+"rel",
+"Austria",
+"Germany",
+8
+],
+[
+"stab",
+"Austria",
+-3
+]
+],
+"r": "Alman generaller Avusturya birliklerinin komutasını aldı."
+},
+{
+"t": "Kendi başına geri çekil",
+"d": "Kayıp az, itibar kaybı",
+"fx": [
+[
+"troops",
+"Austria",
+-3
+],
+[
+"stab",
+"Austria",
+-2
+]
+],
+"r": "Avusturya hattı geri çekti."
+}
+]
+}
+}
+},
+{
 "id": "somme",
 "y": 1916,
 "m": 7,
@@ -997,6 +1840,155 @@
 ]
 ],
 "r": "Haig taarruzu erteledi."
+}
+]
+}
+}
+},
+{
+"id": "uboat_1917",
+"y": 1917,
+"m": 2,
+"title": "Sınırsız Denizaltı Savaşı Yeniden",
+"scene": "pre_naval",
+"icon": "submarine",
+"text": "Almanya 1 Şubat'ta tarafsızlar dahil tüm gemilere saldırmaya başladı. Hedef İngiltere'yi altı ayda boğmak; bedel Amerika'nın savaşa girmesi olabilir. Zimmermann Telgrafı'nın ortaya çıkması da an meselesi.",
+"major": true,
+"default_fx": [
+[
+"gold",
+"United Kingdom",
+-1.0
+],
+[
+"rel",
+"Germany",
+"United States of America",
+-10
+]
+],
+"roles": {
+"Germany": {
+"text": "Amirallere göre altı ayda İngiltere diz çökecek. Ama Amerikan sanayisi sınırsızdır.",
+"options": [
+{
+"t": "Sınırsız harbi başlat (tarihî)",
+"d": "Büyük kumar",
+"fx": [
+[
+"gold",
+"United Kingdom",
+-1.5
+],
+[
+"rel",
+"Germany",
+"United States of America",
+-12
+],
+[
+"buff",
+"Germany",
+"att",
+1.05,
+12
+]
+],
+"r": "U-botlar her gemiyi vurmaya başladı."
+},
+{
+"t": "Sınırlı harpte kal",
+"d": "ABD tarafsız kalır",
+"fx": [
+[
+"rel",
+"Germany",
+"United States of America",
+4
+],
+[
+"stab",
+"Germany",
+-2
+]
+],
+"r": "Berlin denizaltı harbini sınırlı tuttu."
+}
+]
+},
+"United Kingdom": {
+"text": "Gemi kayıpları dayanılmaz; yiyecek stokları haftalara düştü. Konvoy sistemi önerisi masada.",
+"options": [
+{
+"t": "Konvoy sistemi kur (tarihî)",
+"d": "Kayıplar düşer",
+"fx": [
+[
+"gold",
+"United Kingdom",
+1.0
+],
+[
+"stab",
+"United Kingdom",
+3
+]
+],
+"r": "Amirallik konvoy sistemini zorunlu kıldı."
+},
+{
+"t": "Gemileri tek tek yolla",
+"d": "Kayıp artar",
+"fx": [
+[
+"gold",
+"United Kingdom",
+-1.0
+],
+[
+"stab",
+"United Kingdom",
+-3
+]
+],
+"r": "Kayıplar artmaya devam etti."
+}
+]
+},
+"United States of America": {
+"text": "Alman denizaltıları Amerikan gemilerini batırıyor. Kongre tarafsızlık ile savaş arasında bölünmüş durumda.",
+"options": [
+{
+"t": "Almanya ile ilişkiyi kes (tarihî)",
+"d": "Savaşa yaklaş",
+"fx": [
+[
+"rel",
+"United States of America",
+"Germany",
+-12
+],
+[
+"rel",
+"United States of America",
+"United Kingdom",
+8
+]
+],
+"r": "Washington Berlin ile ilişkileri kesti."
+},
+{
+"t": "Silahlı tarafsızlık",
+"d": "Ticaret gemilerini silahlandır",
+"fx": [
+[
+"rel",
+"United States of America",
+"Germany",
+-5
+]
+],
+"r": "Amerikan ticaret gemileri silahlandırıldı."
 }
 ]
 }
@@ -1226,6 +2218,250 @@
 }
 },
 {
+"id": "passchendaele",
+"y": 1917,
+"m": 7,
+"title": "Passchendaele",
+"scene": "ww1_assault",
+"icon": "helmet_ww1",
+"text": "Haig, Flandre'de Üçüncü Ypres Muharebesi'ni başlattı: yağmur ve topçu ateşi araziyi dizlere kadar çamura çevirdi. Birkaç kilometre için yüz binlerce kayıp verilecek.",
+"major": true,
+"default_fx": [
+[
+"troops",
+"United Kingdom",
+-6
+],
+[
+"troops",
+"Germany",
+-5
+],
+[
+"stab",
+"United Kingdom",
+-2
+]
+],
+"roles": {
+"United Kingdom": {
+"text": "Haig Belçika kıyısına ulaşıp U-bot üslerini ele geçirmek istiyor. Yağmur mevsimi başlıyor.",
+"options": [
+{
+"t": "Taarruzu sürdür (tarihî)",
+"d": "Büyük kayıplar",
+"fx": [
+[
+"buff",
+"United Kingdom",
+"att",
+1.1,
+10
+],
+[
+"troops",
+"United Kingdom",
+-8
+],
+[
+"stab",
+"United Kingdom",
+-3
+]
+],
+"r": "Müttefikler Passchendaele köyünü zorlu bir bedelle aldı."
+},
+{
+"t": "Taarruzu kısıtla",
+"d": "Kayıp az, kazanç az",
+"fx": [
+[
+"stab",
+"United Kingdom",
+1
+]
+],
+"r": "Haig sınırlı hedeflerle yetindi."
+}
+]
+},
+"Germany": {
+"text": "İngiliz taarruzu çamurda tıkandı, ama savunma hatları da eriyor.",
+"options": [
+{
+"t": "Derinlemesine savunma (tarihî)",
+"d": "Çamur savunmacının yanında",
+"fx": [
+[
+"buff",
+"Germany",
+"def",
+1.2,
+12
+],
+[
+"troops",
+"Germany",
+-3
+]
+],
+"r": "Alman savunması çamurda İngilizleri yıprattı."
+},
+{
+"t": "Karşı saldırı yap",
+"d": "Büyük risk",
+"fx": [
+[
+"troops",
+"Germany",
+-6
+],
+[
+"buff",
+"Germany",
+"att",
+1.05,
+6
+]
+],
+"r": "Alman karşı saldırıları pahalıya patladı."
+}
+]
+}
+}
+},
+{
+"id": "caporetto",
+"y": 1917,
+"m": 10,
+"title": "Caporetto",
+"scene": "ww1_assault",
+"icon": "tank",
+"text": "Alman tümenleri ve gaz topçusuyla desteklenen Avusturya taarruzu İtalyan hattını Caporetto'da yardı. İtalyan ordusu Piave'ye kadar çekiliyor; yüz binlerce esir ve kayıp.",
+"major": true,
+"default_fx": [
+[
+"troops",
+"Italy",
+-10
+],
+[
+"stab",
+"Italy",
+-6
+],
+[
+"troops",
+"Austria",
+-2
+]
+],
+"roles": {
+"Italy": {
+"text": "Cadorna görevden alındı. Hatları Piave'de toplamak şart; müttefik tümenleri yolda.",
+"options": [
+{
+"t": "Piave'de savun (tarihî)",
+"d": "Ulusal direniş",
+"fx": [
+[
+"buff",
+"Italy",
+"def",
+1.25,
+20
+],
+[
+"stab",
+"Italy",
+4
+],
+[
+"rel",
+"Italy",
+"United Kingdom",
+5
+]
+],
+"r": "İtalya Piave hattında dayandı."
+},
+{
+"t": "Barış ara",
+"d": "Müttefiklerle ilişki bozulur",
+"fx": [
+[
+"stab",
+"Italy",
+-4
+],
+[
+"rel",
+"Italy",
+"United Kingdom",
+-8
+],
+[
+"rel",
+"Italy",
+"Germany",
+4
+]
+],
+"r": "Roma gizlice barış yoklaması yaptı."
+}
+]
+},
+"Austria": {
+"text": "Alman desteği zaferi getirdi; şimdi Venedik'e mi yürüyeceksin, yoksa ikmal sınırlarını mı koruyacaksın?",
+"options": [
+{
+"t": "Piave'ye kadar ilerle (tarihî)",
+"d": "Zafer, ama ikmal zorlanır",
+"fx": [
+[
+"buff",
+"Austria",
+"att",
+1.1,
+8
+],
+[
+"stab",
+"Austria",
+4
+]
+],
+"r": "Avusturya Piave'ye ulaştı ve durdu."
+},
+{
+"t": "Venedik'e yüklen",
+"d": "Cesur ama riskli",
+"fx": [
+[
+"troops",
+"Austria",
+-4
+],
+[
+"buff",
+"Austria",
+"att",
+1.2,
+8
+],
+[
+"stab",
+"Austria",
+2
+]
+],
+"r": "Avusturya birlikleri Venedik ovasına girdi."
+}
+]
+}
+}
+},
+{
 "id": "oct_rev",
 "y": 1917,
 "m": 11,
@@ -1353,6 +2589,546 @@
 ]
 ],
 "r": "Brest-Litovsk: Rusya büyük toprak bıraktı."
+}
+]
+}
+}
+},
+{
+"id": "jerusalem",
+"y": 1917,
+"m": 12,
+"title": "Kudüs Düştü",
+"scene": "pre_siege",
+"icon": "flag",
+"text": "Allenby'nin ordusu Gazze-Birüssebi hattını yararak Kudüs'e girdi. Balfour Deklarasyonu iki hafta önce yayımlandı. Filistin'de Osmanlı hâkimiyeti çöküyor.",
+"major": true,
+"default_fx": [
+[
+"stab",
+"Turkey",
+-5
+],
+[
+"stab",
+"United Kingdom",
+4
+]
+],
+"roles": {
+"Turkey": {
+"text": "Kudüs kaybedildi; Filistin cephesi çöküyor. Yıldırım Orduları Grubu'nun kaderi sende.",
+"options": [
+{
+"t": "Hattı yeniden kur (tarihî)",
+"d": "Geri çekil ve tahkim et",
+"fx": [
+[
+"buff",
+"Turkey",
+"def",
+1.1,
+20
+],
+[
+"stab",
+"Turkey",
+-2
+]
+],
+"r": "Osmanlı ordusu Filistin'de yeni bir hat kurdu."
+},
+{
+"t": "Kudüs'ü geri al",
+"d": "Kumar",
+"fx": [
+[
+"troops",
+"Turkey",
+-6
+],
+[
+"buff",
+"Turkey",
+"att",
+1.1,
+6
+]
+],
+"r": "Osmanlı karşı taarruzu çıkmaza girdi."
+}
+]
+},
+"United Kingdom": {
+"text": "Noel hediyesi olarak Kudüs'ü Lloyd George'a sundun. Arap ve Yahudi vaatleri çatışıyor.",
+"options": [
+{
+"t": "Allenby'yi Şam'a yönlendir (tarihî)",
+"d": "Zafer yürüyüşü sürer",
+"fx": [
+[
+"buff",
+"United Kingdom",
+"att",
+1.15,
+12
+],
+[
+"rel",
+"United Kingdom",
+"Turkey",
+-4
+]
+],
+"r": "İngiliz ordusu Filistin'de ilerlemeyi sürdürdü."
+},
+{
+"t": "Batı Cephesi'ne takviye gönder",
+"d": "Batı öncelikli",
+"fx": [
+[
+"troops",
+"France",
+2
+],
+[
+"stab",
+"United Kingdom",
+1
+]
+],
+"r": "Doğu Akdeniz'de ilerleme yavaşladı."
+}
+]
+}
+}
+},
+{
+"id": "spring_1918",
+"y": 1918,
+"m": 3,
+"title": "Kaiserschlacht: 1918 Bahar Taarruzu",
+"scene": "ww1_assault",
+"icon": "tank",
+"text": "Ludendorff, Rusya'dan boşalan tümenlerle Amerikalılar gelmeden Batı'da kesin sonuç arıyor. İlk günlerde fırtına birlikleri İngiliz hattını yardı; ama ikmal hatları uzuyor.",
+"major": true,
+"default_fx": [
+[
+"troops",
+"United Kingdom",
+-8
+],
+[
+"troops",
+"France",
+-4
+],
+[
+"troops",
+"Germany",
+-6
+],
+[
+"stab",
+"United Kingdom",
+-3
+]
+],
+"roles": {
+"Germany": {
+"text": "İlerleme hızlı ama kayıplar da ağır; rezervler eriyor. Hedef Amiens mi, Kanal limanları mı?",
+"options": [
+{
+"t": "Amiens'e yüklen (tarihî)",
+"d": "Sonuç alacak ya da tükenecek",
+"fx": [
+[
+"buff",
+"Germany",
+"att",
+1.2,
+8
+],
+[
+"troops",
+"Germany",
+-8
+],
+[
+"stab",
+"Germany",
+-2
+]
+],
+"r": "Alman ordusu Amiens'e yaklaştı ama ikmal tıkandı."
+},
+{
+"t": "Kanal limanlarına yönel",
+"d": "İngiltere'yi kopar",
+"fx": [
+[
+"buff",
+"Germany",
+"att",
+1.1,
+8
+],
+[
+"troops",
+"Germany",
+-5
+]
+],
+"r": "Alman saldırısı Flandre'ye kaydı."
+}
+]
+},
+"United Kingdom": {
+"text": "5. Ordu dağıldı; Fransa ile aranızdaki bağlantı kopmak üzere. Foch'a ortak komuta mı verilecek?",
+"options": [
+{
+"t": "Foch'u başkomutan yap (tarihî)",
+"d": "Ortak komuta",
+"fx": [
+[
+"rel",
+"United Kingdom",
+"France",
+10
+],
+[
+"buff",
+"United Kingdom",
+"def",
+1.15,
+10
+]
+],
+"r": "İtilaf orduları Foch'un komutasında birleşti."
+},
+{
+"t": "Bağımsız komutayı sürdür",
+"d": "Eşgüdüm zayıf",
+"fx": [
+[
+"rel",
+"United Kingdom",
+"France",
+-5
+],
+[
+"troops",
+"United Kingdom",
+-3
+]
+],
+"r": "İngiliz komutası bağımsız kaldı."
+}
+]
+},
+"France": {
+"text": "İngiliz hattı yarıldı; Paris tekrar tehlikede. Pétain rezervleri nereye yığacak?",
+"options": [
+{
+"t": "Rezervleri Amiens'e kaydır (tarihî)",
+"d": "Müttefiki kurtar",
+"fx": [
+[
+"rel",
+"France",
+"United Kingdom",
+8
+],
+[
+"troops",
+"France",
+-3
+]
+],
+"r": "Fransız birlikleri Amiens hattını kapattı."
+},
+{
+"t": "Paris'i koru",
+"d": "Kendi başkentini önceliklendir",
+"fx": [
+[
+"rel",
+"France",
+"United Kingdom",
+-6
+],
+[
+"stab",
+"France",
+2
+]
+],
+"r": "Fransa Paris'i kollayacak şekilde dizildi."
+}
+]
+}
+}
+},
+{
+"id": "amiens",
+"y": 1918,
+"m": 8,
+"title": "Amiens: Alman Ordusunun Kara Günü",
+"scene": "ww1_assault",
+"icon": "tank",
+"text": "8 Ağustos'ta tanklar ve sürpriz topçu ateşiyle yapılan Müttefik taarruzu Alman hattını yırttı; Ludendorff buna 'Alman ordusunun kara günü' dedi. 'Yüz Gün' taarruzları başlıyor.",
+"major": true,
+"default_fx": [
+[
+"troops",
+"Germany",
+-8
+],
+[
+"stab",
+"Germany",
+-5
+],
+[
+"buff",
+"United Kingdom",
+"att",
+1.1,
+10
+]
+],
+"roles": {
+"Germany": {
+"text": "Moral çöküyor; esirler teslim oluyor. Komuta kademesi barış sinyalini düşünmeye başladı.",
+"options": [
+{
+"t": "Hindenburg Hattı'na çekil (tarihî)",
+"d": "Orduyu koru",
+"fx": [
+[
+"buff",
+"Germany",
+"def",
+1.15,
+12
+],
+[
+"stab",
+"Germany",
+-2
+]
+],
+"r": "Alman ordusu Hindenburg Hattı'na çekildi."
+},
+{
+"t": "Her mevziyi tut",
+"d": "Ağır kayıp",
+"fx": [
+[
+"buff",
+"Germany",
+"def",
+1.2,
+6
+],
+[
+"troops",
+"Germany",
+-8
+],
+[
+"stab",
+"Germany",
+-4
+]
+],
+"r": "Alman komutası geri çekilmeyi yasakladı."
+}
+]
+},
+"United Kingdom": {
+"text": "Tank ve piyade eşgüdümü işledi. Şimdi taarruzu genişletmeli misin?",
+"options": [
+{
+"t": "Yüz Gün taarruzunu sürdür (tarihî)",
+"d": "Baskıyı hiç kesme",
+"fx": [
+[
+"buff",
+"United Kingdom",
+"att",
+1.15,
+12
+],
+[
+"troops",
+"United Kingdom",
+-4
+]
+],
+"r": "İtilaf orduları sürekli taarruza geçti."
+},
+{
+"t": "Mevzileri tahkim et",
+"d": "Yavaş ama güvenli",
+"fx": [
+[
+"stab",
+"United Kingdom",
+2
+]
+],
+"r": "Müttefikler kazanılan yerleri tahkim etti."
+}
+]
+},
+"France": {
+"text": "Foch 'Hepsi taarruz!' dedi. Fransız ordusu da büyük taarruza katılmalı mı?",
+"options": [
+{
+"t": "Genel taarruza katıl (tarihî)",
+"d": "Zafer yakın",
+"fx": [
+[
+"buff",
+"France",
+"att",
+1.15,
+12
+],
+[
+"troops",
+"France",
+-4
+]
+],
+"r": "Fransız orduları Meuse–Argonne'a doğru yüklendi."
+},
+{
+"t": "Seçici taarruz yap",
+"d": "Daha az kayıp",
+"fx": [
+[
+"stab",
+"France",
+2
+]
+],
+"r": "Fransa sınırlı taarruzlarla yetindi."
+}
+]
+}
+}
+},
+{
+"id": "mudros",
+"y": 1918,
+"m": 10,
+"title": "Mondros Mütarekesi",
+"scene": "peace",
+"icon": "treaty",
+"text": "Bulgaristan ve Filistin cepheleri çöktü; Osmanlı hükûmeti Limni'deki Agamemnon zırhlısında İngilizlerle ateşkes görüşüyor. Şartlar ağır: Boğazlar açılacak, ordu terhis edilecek.",
+"major": true,
+"default_fx": [
+[
+"peace",
+"Turkey",
+"United Kingdom"
+],
+[
+"stab",
+"Turkey",
+-8
+]
+],
+"roles": {
+"Turkey": {
+"text": "Rauf Bey şartları pazarlıkla hafifletmeye çalışıyor; ama cephe yok. Mütareke imzalamak ağır, imzalamamak daha ağır.",
+"options": [
+{
+"t": "Mütarekeyi imzala (tarihî)",
+"d": "Savaşı bitir",
+"fx": [
+[
+"peace",
+"Turkey",
+"United Kingdom"
+],
+[
+"stab",
+"Turkey",
+-4
+],
+[
+"rel",
+"Turkey",
+"United Kingdom",
+4
+]
+],
+"r": "Osmanlı hükûmeti Mondros'u imzaladı."
+},
+{
+"t": "Direnişi sürdür",
+"d": "Tükenmiş ordu, riskli",
+"fx": [
+[
+"stab",
+"Turkey",
+-6
+],
+[
+"buff",
+"Turkey",
+"def",
+1.05,
+8
+]
+],
+"r": "Hükûmet bir süre daha pazarlık etti."
+}
+]
+},
+"United Kingdom": {
+"text": "Osmanlı'dan şartsız teslim yakın. Boğazlar ve Irak petrolü için ne kadar ileri gideceksin?",
+"options": [
+{
+"t": "Ağır şartlar dayat (tarihî)",
+"d": "Boğazlar ve işgal hakkı",
+"fx": [
+[
+"rel",
+"United Kingdom",
+"Turkey",
+-6
+],
+[
+"buff",
+"United Kingdom",
+"att",
+1.05,
+6
+]
+],
+"r": "Londra Boğazlar'ın açılmasını ve ordunun terhisini şart koştu."
+},
+{
+"t": "Daha esnek şartlar öner",
+"d": "Barışı kolaylaştır",
+"fx": [
+[
+"rel",
+"United Kingdom",
+"Turkey",
+4
+],
+[
+"stab",
+"Turkey",
+3
+]
+],
+"r": "Londra bir miktar esneklik gösterdi."
 }
 ]
 }
@@ -1716,6 +3492,305 @@
 ]
 ],
 "r": "İngiltere Anadolu hareketiyle masaya oturdu."
+}
+]
+}
+}
+},
+{
+"id": "versailles",
+"y": 1919,
+"m": 6,
+"title": "Versay Antlaşması",
+"scene": "peace",
+"icon": "treaty",
+"text": "Aynalar Salonu'nda imzalanan antlaşma Almanya'ya savaş suçu yüklüyor: büyük tazminat, toprak kayıpları, ordu sınırlaması. Wilson 'Ulusların Cemiyeti'ni savunuyor; Clemenceau güvenlik istiyor.",
+"major": true,
+"default_fx": [
+[
+"stab",
+"Germany",
+-8
+],
+[
+"gold",
+"Germany",
+-1.0
+],
+[
+"rel",
+"Germany",
+"France",
+-8
+]
+],
+"roles": {
+"Germany": {
+"text": "Heyet 'diktat' olarak gördüğü metni imzalamak zorunda; reddetmek işgali getirir.",
+"options": [
+{
+"t": "İmzala (tarihî)",
+"d": "Yeniden doğuş için zaman kazan",
+"fx": [
+[
+"stab",
+"Germany",
+-4
+],
+[
+"rel",
+"Germany",
+"France",
+-4
+],
+[
+"rel",
+"Germany",
+"United Kingdom",
+4
+]
+],
+"r": "Almanya Versay'ı imzaladı; millî gurur yaralandı."
+},
+{
+"t": "Reddet",
+"d": "İşgal riski",
+"fx": [
+[
+"stab",
+"Germany",
+-8
+],
+[
+"rel",
+"Germany",
+"France",
+-10
+],
+[
+"troops",
+"Germany",
+-3
+]
+],
+"r": "Berlin imzayı reddetti; Müttefikler yürüyüş tehdidinde bulundu."
+}
+]
+},
+"France": {
+"text": "Clemenceau Ren sınırında güvence istiyor; Wilson ve Lloyd George ise ılımlı.",
+"options": [
+{
+"t": "Sert şartları savun (tarihî)",
+"d": "Güvenlik ve tazminat",
+"fx": [
+[
+"gold",
+"France",
+2.0
+],
+[
+"rel",
+"France",
+"Germany",
+-8
+],
+[
+"stab",
+"France",
+3
+]
+],
+"r": "Fransa ağır tazminat ve Ren işgali elde etti."
+},
+{
+"t": "Ilımlı bir barışa razı ol",
+"d": "Uzlaşı",
+"fx": [
+[
+"rel",
+"France",
+"United Kingdom",
+4
+],
+[
+"rel",
+"France",
+"Germany",
+3
+]
+],
+"r": "Paris müttefik uzlaşısını kabul etti."
+}
+]
+},
+"United States of America": {
+"text": "Wilson'ın On Dört Maddesi'nin kaderi belli olmak üzere; Senato Uluslar Cemiyeti'ne şüpheli.",
+"options": [
+{
+"t": "Ulusların Cemiyeti'ni destekle (tarihî)",
+"d": "Yeni dünya düzeni",
+"fx": [
+[
+"rel",
+"United States of America",
+"United Kingdom",
+4
+],
+[
+"stab",
+"United States of America",
+-3
+]
+],
+"r": "Wilson Ulusların Cemiyeti için kampanya yürüttü; Senato onaylamadı."
+},
+{
+"t": "Avrupa'dan uzak dur",
+"d": "İzolasyon",
+"fx": [
+[
+"stab",
+"United States of America",
+3
+],
+[
+"rel",
+"United States of America",
+"France",
+-4
+]
+],
+"r": "Amerika Avrupa işlerinden çekildi."
+}
+]
+}
+}
+},
+{
+"id": "sevres",
+"y": 1920,
+"m": 8,
+"title": "Sevr Antlaşması",
+"scene": "peace",
+"icon": "treaty",
+"text": "Osmanlı heyeti Sevr'de İtilaf'ın dayattığı antlaşmayı imzaladı: İzmir ve Doğu Trakya Yunanistan'a, Boğazlar uluslararası, Doğu'da Ermeni ve Kürt bölgeleri öngörülüyor. Ankara bu metni tanımıyor.",
+"major": true,
+"default_fx": [
+[
+"rel",
+"Turkey",
+"Greece",
+-8
+],
+[
+"rel",
+"Greece",
+"Turkey",
+-6
+],
+[
+"stab",
+"Greece",
+4
+]
+],
+"roles": {
+"Turkey": {
+"text": "İstanbul hükûmeti imzaladı ama Anadolu'da Millî Mücadele sürüyor; Büyük Millet Meclisi antlaşmayı reddediyor.",
+"options": [
+{
+"t": "Sevr'i reddet, savaşa devam (tarihî)",
+"d": "Millî egemenlik",
+"fx": [
+[
+"stab",
+"Turkey",
+6
+],
+[
+"buff",
+"Turkey",
+"def",
+1.15,
+20
+],
+[
+"rel",
+"Turkey",
+"United Kingdom",
+-6
+]
+],
+"r": "TBMM Sevr'i tanımadığını ilan etti."
+},
+{
+"t": "Müzakere yolunu aç",
+"d": "Taviz",
+"fx": [
+[
+"rel",
+"Turkey",
+"United Kingdom",
+4
+],
+[
+"stab",
+"Turkey",
+-4
+]
+],
+"r": "Ankara İtilaf ile gizli görüşme yürüttü."
+}
+]
+},
+"Greece": {
+"text": "Venizelos'un Büyük Yunanistan hayali gerçek oluyor; ama Anadolu'da direniş artıyor.",
+"options": [
+{
+"t": "Anadolu'ya ilerle (tarihî)",
+"d": "Sevr'i silahla uygula",
+"fx": [
+[
+"buff",
+"Greece",
+"att",
+1.1,
+12
+],
+[
+"rel",
+"Greece",
+"Turkey",
+-8
+],
+[
+"rel",
+"Greece",
+"United Kingdom",
+4
+]
+],
+"r": "Yunan ordusu iç Anadolu'ya yöneldi."
+},
+{
+"t": "Kazanımları tahkim et",
+"d": "İzmir ve Trakya yeter",
+"fx": [
+[
+"buff",
+"Greece",
+"def",
+1.1,
+12
+],
+[
+"stab",
+"Greece",
+2
+]
+],
+"r": "Yunanistan işgal bölgelerini tahkim etti."
 }
 ]
 }
@@ -2362,6 +4437,288 @@
 "Almanya yeniden silahlanıyor.": "Germany is rearming.",
 "Koalisyon hükûmeti": "Coalition government",
 "Demokrasiyi koru": "Defend democracy",
-"Weimar bir süre daha ayakta.": "Weimar stands for a while longer."
+"Weimar bir süre daha ayakta.": "Weimar stands for a while longer.",
+"Ültimatomu ver (tarihî)": "Deliver the ultimatum (historical)",
+"Savaş neredeyse kaçınılmaz": "War is almost inevitable",
+"Viyana ültimatomu verdi; Sırbistan reddetti, savaş kapıda.": "Vienna delivered the ultimatum; Serbia refused and war is at the door.",
+"Konferans iste": "Ask for a conference",
+"Diplomasi, ama Almanya hayal kırıklığına uğrar": "Diplomacy, but Germany will be disappointed",
+"Viyana sakin kalmayı seçti; kriz sürüyor.": "Vienna chose calm; the crisis drags on.",
+"Ültimatom 48 saat süreli, Sırbistan'ın egemenliğini zedeleyecek maddeler içeriyor. Ya Sırbistan'ı cezalandıracaksın ya da imparatorluğun itibarı çökecek.": "The ultimatum is limited to 48 hours and includes clauses that violate Serbian sovereignty. Either you punish Serbia or the empire's prestige collapses.",
+"Avusturya'yı sonuna dek destekle (tarihî)": "Back Austria to the hilt (historical)",
+"İttifak sağlam, ama kriz tırmanıyor": "The alliance is firm, but the crisis escalates",
+"Berlin Viyana'ya tam destek verdi.": "Berlin gave Vienna full support.",
+"Viyana'yı dizginle": "Restrain Vienna",
+"Savaşı önlemeye çalış": "Try to prevent war",
+"Berlin Viyana'ya itidal çağrısı yaptı.": "Berlin urged Vienna to show restraint.",
+"Kayzer Viyana'ya 'açık çek' verdi. Genelkurmay Rusya'nın seferberliği tamamlamadan harekete geçmeyi istiyor.": "The Kaiser gave Vienna a 'blank cheque'. The General Staff wants to move before Russia completes mobilization.",
+"Kısmi seferberlik, sonra genel (tarihî)": "Partial then general mobilization (historical)",
+"Sırbistan'ı koru, Almanya'yı kızdır": "Protect Serbia, anger Germany",
+"Rusya seferberlik ilan etti.": "Russia declared mobilization.",
+"Arabuluculuk iste": "Ask for mediation",
+"Petersburg uluslararası arabuluculuk istedi.": "St Petersburg asked for international mediation.",
+"Çar Sırbistan'ı yalnız bırakmak istemiyor; seferberlik ise Almanya'yı da savaşa çekebilir.": "The Tsar does not want to leave Serbia alone; yet mobilization could drag Germany into the war too.",
+"Temmuz Krizi": "The July Crisis",
+"Saraybosna'da Arşidük Franz Ferdinand vuruldu. Viyana Sırbistan'a ağır bir ültimatom hazırlıyor; Berlin 'açık çek' verdi, Rusya Sırp kardeşliğini bırakmak istemiyor. Avrupa ittifaklar ağıyla kaymaya başladı.": "Archduke Franz Ferdinand was shot in Sarajevo. Vienna is preparing a harsh ultimatum to Serbia; Berlin has given a 'blank cheque' and Russia will not abandon Serbia. Europe begins to slide along its web of alliances.",
+"Yasakla, disiplin uygula (tarihî)": "Forbid it and enforce discipline",
+"Savaş azmi korunur": "The fighting spirit is preserved",
+"Berlin yasak getirdi; cephede disiplin sıkılaştı.": "Berlin forbade it; discipline tightened at the front.",
+"Göz yum": "Turn a blind eye",
+"Moral artar ama ordu yumuşar": "Morale rises but the army softens",
+"Cephede moral yükseldi.": "Morale rose at the front.",
+"Askerler Noel şarkıları söylüyor. Bu yakınlaşma savaş azmini kemirebilir.": "Soldiers sing carols. This fraternisation could erode the will to fight.",
+"Yasakla (tarihî)": "Forbid it (historical)",
+"Disiplin korunur": "Discipline is preserved",
+"Londra emir verdi: bir daha ateşkes yok.": "London ordered: no more truces.",
+"Moral ve itibar": "Morale and prestige",
+"Askerler Noel'i rahat geçirdi.": "The troops enjoyed a calmer Christmas.",
+"Yüksek komuta 'dostluk' haberlerinden rahatsız; ama askerin moraline de ihtiyaç var.": "High Command is uneasy about 'fraternisation', yet the men's morale matters too.",
+"Noel Ateşkesi": "The Christmas Truce",
+"Batı Cephesi'nde Noel gecesi bazı hatlarda silahlar sustu; askerler 'kimsenin toprağı'nda buluşup hediyeleşti. Komutanlar bunun tekrarlanmasını yasaklamak istiyor.": "On Christmas Eve on parts of the Western Front the guns fell silent; soldiers met in no man's land and exchanged gifts. Commanders want to forbid a repeat.",
+"Mayın hatlarını yenile (tarihî)": "Renew the minefields (historical)",
+"Boğaz'ı kapalı tut": "Keep the Straits closed",
+"Yeni mayınlar döşendi; Boğaz geçilmez kaldı.": "New mines were laid; the Straits stayed impassable.",
+"Almanya'dan cephane iste": "Ask Germany for ammunition",
+"Bağımlılık artar": "Dependence grows",
+"Berlin cephane gönderdi.": "Berlin sent ammunition.",
+"Donanma saldırısı püskürtüldü ama cephane azaldı. Müttefikler kara harekâtına geçebilir.": "The naval attack was repelled but ammunition is low. The Allies may turn to a land campaign.",
+"Kara çıkarması planla (tarihî)": "Plan a land invasion (historical)",
+"Londra Gelibolu çıkarması için emir verdi.": "London ordered the Gallipoli landing.",
+"Vazgeç": "Give up",
+"Kayıplar durur, itibar sarsılır": "Losses stop, prestige suffers",
+"Londra Boğaz planından vazgeçti.": "London abandoned the Straits plan.",
+"Churchill donanmanın başarısız olduğunu kabul etmek istemiyor; kayıplar ağır.": "Churchill does not want to admit the fleet failed; the losses are heavy.",
+"Boğaz'a Donanma Saldırısı": "The Naval Attack on the Straits",
+"Müttefik donanması 18 Mart'ta Çanakkale Boğazı'nı zorlamaya girişti; mayın hattı ve sahil bataryaları üç zırhlıyı batırdı. Osmanlı cephanesi tükenmek üzereydi.": "On 18 March the Allied fleet tried to force the Dardanelles; the minefield and shore batteries sank three battleships. Ottoman ammunition was nearly exhausted.",
+"İzonzo'ya yüklen (tarihî)": "Press on the Isonzo (historical)",
+"Çok kayıp, az kazanç": "Heavy losses, little gain",
+"İtalyan ordusu İzonzo'da ilk taarruzunu başlattı.": "The Italian army launched its first attack on the Isonzo.",
+"Savunmada kal, ordunu hazırla": "Stay on the defensive and prepare",
+"Roma taarruzu erteledi.": "Rome postponed the offensive.",
+"Cadorna ilk taarruzu Trieste'ye yönlendirmek istiyor; dağlık arazi savunmacıyı avantajlı kılıyor.": "Cadorna wants the first offensive to head for Trieste; the mountains favour the defender.",
+"Dağ hatlarını tahkim et": "Fortify the mountain lines",
+"Savunmacı avantajı kullan": "Use the defender's advantage",
+"Avusturya İzonzo hattını tahkim etti.": "Austria fortified the Isonzo line.",
+"Galiçya'dan birlik çek": "Pull units from Galicia",
+"Doğuyu zayıflat": "Weaken the East",
+"Birlikler İtalyan cephesine kaydırıldı.": "Units were shifted to the Italian front.",
+"İkinci cephe sizi zorluyor; Galiçya'dan takviye çekmek gerekebilir.": "A second front strains you; you may have to pull reinforcements from Galicia.",
+"İzonzo Cephesi Açıldı": "The Isonzo Front Opens",
+"İtalya Londra Antlaşması ile İtilaf safında savaşa girdi ve Avusturya'ya saldırdı. Alp dağlarında ve İzonzo Nehri boyunca yıllarca sürecek kanlı bir mevzi savaşı başlıyor.": "Italy joined the Entente under the Treaty of London and attacked Austria. A bloody positional war begins in the Alps and along the Isonzo river that will last for years.",
+"Kuşatmayı sürdür (tarihî)": "Maintain the siege (historical)",
+"Zaferi kesinleştir": "Seal the victory",
+"Kut teslim oldu; on binlerce esir alındı.": "Kut surrendered; thousands of prisoners were taken.",
+"Şartlı teslim teklif et": "Offer terms",
+"Daha az kayıp": "Fewer losses",
+"Garnizon müzakereli teslim oldu.": "The garrison surrendered by agreement.",
+"Kut teslim olmak üzere. Mezopotamya cephesinin kaderini belirleyecek bir zafer.": "Kut is about to surrender. A victory that could decide the fate of the Mesopotamian front.",
+"Kurtarma için büyük taarruz": "Launch a great relief attack",
+"Ağır kayıp riski": "High risk of losses",
+"İngiliz kurtarma ordusu bir kez daha saldırdı.": "The British relief force attacked once more.",
+"Müzakere et, teslim ol (tarihî)": "Negotiate and surrender (historical)",
+"Büyük prestij kaybı": "A big loss of prestige",
+"Londra'da Kut'un düşüşü hayal kırıklığı yarattı.": "Kut's fall caused dismay in London.",
+"Kut'a ikmal ulaşmıyor; kurtarma ordusu bataklıkta çaresiz.": "Supplies do not reach Kut; the relief force is stuck in the marshes.",
+"Kut Kuşatması": "The Siege of Kut",
+"Irak'ta Kut-ül-Amâre'de kuşatılan İngiliz-Hint garnizonu açlıkla karşı karşıya. Kurtarma girişimleri başarısız; Halil Paşa'nın ordusu ablukayı sıkılaştırıyor.": "The British-Indian garrison besieged at Kut al-Amara in Iraq faces starvation. Relief attempts have failed; Halil Pasha's army tightens the blockade.",
+"Temkinli kal, ablukayı koru (tarihî)": "Stay cautious, keep the blockade (historical)",
+"Deniz üstünlüğü sürer": "Naval supremacy continues",
+"Grand Fleet ablukayı sürdürdü.": "The Grand Fleet kept up the blockade.",
+"Kesin muharebeye zorla": "Force a decisive battle",
+"Büyük risk, büyük ödül": "High risk, high reward",
+"Britanya filosu Alman filosunu kovaladı.": "The British fleet pursued the German fleet.",
+"Churchill'in sözüyle Jellicoe 'savaşı öğleden sonra kaybedebilecek tek adam'. Riske girmeli misin?": "In Churchill's words Jellicoe is 'the only man who could lose the war in an afternoon'. Should you take the risk?",
+"Eve dön, denizaltıya yüklen (tarihî)": "Go home and turn to submarines (historical)",
+"Yüzey filosu limanda kalır": "The surface fleet stays in port",
+"Alman filosu limanlara döndü; denizaltı harbi öne çıktı.": "The German fleet returned to port; submarine warfare came to the fore.",
+"Yeniden denize çık": "Sail again",
+"Abluka kırılabilir": "The blockade might break",
+"Alman filosu yeniden denize açıldı.": "The German fleet sailed again.",
+"Filo İngiliz abluka hattını kırmak istiyor; Scheer ağır ve riskli bir seçimle karşı karşıya.": "The fleet wants to break the British blockade line; Scheer faces a heavy and risky choice.",
+"Jutland Deniz Savaşı": "The Battle of Jutland",
+"Kuzey Denizi'nde iki dev donanma karşılaştı: Scheer'in Açık Deniz Filosu ile Jellicoe'nun Grand Fleet'i. Kayıp İngiltere'de fazla, ama Alman filosu bir daha limandan çıkmaya cesaret edemeyecek.": "Two giant fleets met in the North Sea: Scheer's High Seas Fleet and Jellicoe's Grand Fleet. British losses were higher, yet the German fleet will hardly dare leave harbour again.",
+"Zaferi sonuna dek sür (tarihî)": "Exploit to the end (historical)",
+"Kayıplar çok, kazanç büyük": "Heavy losses, big gains",
+"Rus ordusu Galiçya'da yüz kilometre ilerledi.": "The Russian army advanced a hundred kilometres in Galicia.",
+"Mevzileri tut, orduyu koru": "Hold ground, preserve the army",
+"Zayıf bir başarı": "A modest success",
+"Brusilov durdu; Alman takviyeleri geldi.": "Brusilov halted; German reinforcements arrived.",
+"Taarruz beklenmedik bir başarı; ama ikmal ve rezerv sınırlı. Ne kadar ileri gideceksin?": "The attack is an unexpected success; but supplies and reserves are limited. How far will you go?",
+"Almanya'dan komuta devri iste": "Hand command to Germany",
+"Bağımsızlık kaybı": "Loss of independence",
+"Alman generaller Avusturya birliklerinin komutasını aldı.": "German generals took command of Austrian units.",
+"Kendi başına geri çekil": "Withdraw on your own",
+"Kayıp az, itibar kaybı": "Fewer losses, loss of prestige",
+"Avusturya hattı geri çekti.": "Austria pulled back its line.",
+"Cephe çöküyor. Alman yardımı mı, geri çekilme mi?": "The front is collapsing. German help, or retreat?",
+"Brusilov Taarruzu": "The Brusilov Offensive",
+"General Brusilov cephenin dar bir kesiminde değil, geniş bir hatta aynı anda saldırdı: Avusturya-Macaristan ordusu çöküyor, Almanya Verdun'dan tümen çekmek zorunda kalıyor.": "General Brusilov attacked not at one narrow point but along a broad line: the Austro-Hungarian army is collapsing and Germany has to pull divisions away from Verdun.",
+"Sınırsız harbi başlat (tarihî)": "Begin unrestricted warfare (historical)",
+"U-botlar her gemiyi vurmaya başladı.": "U-boats began sinking every ship.",
+"Sınırlı harpte kal": "Keep it restricted",
+"ABD tarafsız kalır": "The US stays neutral",
+"Berlin denizaltı harbini sınırlı tuttu.": "Berlin kept the submarine war limited.",
+"Amirallere göre altı ayda İngiltere diz çökecek. Ama Amerikan sanayisi sınırsızdır.": "The admirals say Britain will kneel in six months. But American industry is limitless.",
+"Konvoy sistemi kur (tarihî)": "Introduce convoys (historical)",
+"Kayıplar düşer": "Losses fall",
+"Amirallik konvoy sistemini zorunlu kıldı.": "The Admiralty made convoys compulsory.",
+"Gemileri tek tek yolla": "Sail ships singly",
+"Kayıp artar": "Losses mount",
+"Kayıplar artmaya devam etti.": "Losses kept mounting.",
+"Gemi kayıpları dayanılmaz; yiyecek stokları haftalara düştü. Konvoy sistemi önerisi masada.": "Shipping losses are unbearable; food stocks are down to weeks. A convoy system is on the table.",
+"Almanya ile ilişkiyi kes (tarihî)": "Break relations with Germany (historical)",
+"Savaşa yaklaş": "Edge toward war",
+"Washington Berlin ile ilişkileri kesti.": "Washington severed relations with Berlin.",
+"Ticaret gemilerini silahlandır": "Arm merchant ships",
+"Amerikan ticaret gemileri silahlandırıldı.": "American merchant ships were armed.",
+"Alman denizaltıları Amerikan gemilerini batırıyor. Kongre tarafsızlık ile savaş arasında bölünmüş durumda.": "German submarines are sinking American ships. Congress is divided between neutrality and war.",
+"Sınırsız Denizaltı Savaşı Yeniden": "Unrestricted Submarine Warfare Resumes",
+"Almanya 1 Şubat'ta tarafsızlar dahil tüm gemilere saldırmaya başladı. Hedef İngiltere'yi altı ayda boğmak; bedel Amerika'nın savaşa girmesi olabilir. Zimmermann Telgrafı'nın ortaya çıkması da an meselesi.": "On 1 February Germany began attacking all ships, neutrals included. The aim is to starve Britain within six months; the price may be American entry into the war. The Zimmermann Telegram is about to come to light too.",
+"Taarruzu sürdür (tarihî)": "Press on (historical)",
+"Büyük kayıplar": "Huge losses",
+"Müttefikler Passchendaele köyünü zorlu bir bedelle aldı.": "The Allies took Passchendaele village at terrible cost.",
+"Taarruzu kısıtla": "Limit the attack",
+"Kayıp az, kazanç az": "Fewer losses, smaller gains",
+"Haig sınırlı hedeflerle yetindi.": "Haig settled for limited objectives.",
+"Haig Belçika kıyısına ulaşıp U-bot üslerini ele geçirmek istiyor. Yağmur mevsimi başlıyor.": "Haig wants to reach the Belgian coast and take the U-boat bases. The rainy season is starting.",
+"Derinlemesine savunma (tarihî)": "Defence in depth (historical)",
+"Çamur savunmacının yanında": "The mud favours the defender",
+"Alman savunması çamurda İngilizleri yıprattı.": "The German defence ground the British down in the mud.",
+"Karşı saldırı yap": "Counterattack",
+"Büyük risk": "High risk",
+"Alman karşı saldırıları pahalıya patladı.": "German counterattacks proved costly.",
+"İngiliz taarruzu çamurda tıkandı, ama savunma hatları da eriyor.": "The British attack is bogged down in mud, but your defences are wearing thin too.",
+"Passchendaele": "Passchendaele",
+"Haig, Flandre'de Üçüncü Ypres Muharebesi'ni başlattı: yağmur ve topçu ateşi araziyi dizlere kadar çamura çevirdi. Birkaç kilometre için yüz binlerce kayıp verilecek.": "Haig launched the Third Battle of Ypres in Flanders: rain and shellfire turned the ground into knee-deep mud. Hundreds of thousands will fall for a few kilometres.",
+"Piave'de savun (tarihî)": "Defend on the Piave (historical)",
+"Ulusal direniş": "National resistance",
+"İtalya Piave hattında dayandı.": "Italy held on the Piave line.",
+"Barış ara": "Seek peace",
+"Müttefiklerle ilişki bozulur": "Ties with allies suffer",
+"Roma gizlice barış yoklaması yaptı.": "Rome secretly probed for peace.",
+"Cadorna görevden alındı. Hatları Piave'de toplamak şart; müttefik tümenleri yolda.": "Cadorna was dismissed. The lines must be rallied on the Piave; Allied divisions are on their way.",
+"Piave'ye kadar ilerle (tarihî)": "Advance to the Piave (historical)",
+"Zafer, ama ikmal zorlanır": "Victory, but supply strains",
+"Avusturya Piave'ye ulaştı ve durdu.": "Austria reached the Piave and stopped.",
+"Venedik'e yüklen": "Strike for Venice",
+"Cesur ama riskli": "Bold but risky",
+"Avusturya birlikleri Venedik ovasına girdi.": "Austrian troops entered the Venetian plain.",
+"Alman desteği zaferi getirdi; şimdi Venedik'e mi yürüyeceksin, yoksa ikmal sınırlarını mı koruyacaksın?": "German support brought victory; will you march on Venice now, or respect your supply limits?",
+"Caporetto": "Caporetto",
+"Alman tümenleri ve gaz topçusuyla desteklenen Avusturya taarruzu İtalyan hattını Caporetto'da yardı. İtalyan ordusu Piave'ye kadar çekiliyor; yüz binlerce esir ve kayıp.": "An Austrian attack backed by German divisions and gas artillery broke the Italian line at Caporetto. The Italian army is falling back to the Piave; hundreds of thousands are lost or captured.",
+"Hattı yeniden kur (tarihî)": "Re-form the line (historical)",
+"Geri çekil ve tahkim et": "Withdraw and fortify",
+"Osmanlı ordusu Filistin'de yeni bir hat kurdu.": "The Ottoman army set up a new line in Palestine.",
+"Kudüs'ü geri al": "Retake Jerusalem",
+"Kumar": "A gamble",
+"Osmanlı karşı taarruzu çıkmaza girdi.": "The Ottoman counterattack stalled.",
+"Kudüs kaybedildi; Filistin cephesi çöküyor. Yıldırım Orduları Grubu'nun kaderi sende.": "Jerusalem is lost; the Palestine front is collapsing. The fate of the Yildirim Army Group is in your hands.",
+"Allenby'yi Şam'a yönlendir (tarihî)": "Send Allenby to Damascus (historical)",
+"Zafer yürüyüşü sürer": "The victory march goes on",
+"İngiliz ordusu Filistin'de ilerlemeyi sürdürdü.": "The British army pressed on in Palestine.",
+"Batı Cephesi'ne takviye gönder": "Send reinforcements to the West",
+"Batı öncelikli": "The West comes first",
+"Doğu Akdeniz'de ilerleme yavaşladı.": "Progress slowed in the Eastern Mediterranean.",
+"Noel hediyesi olarak Kudüs'ü Lloyd George'a sundun. Arap ve Yahudi vaatleri çatışıyor.": "You offered Jerusalem to Lloyd George as a Christmas present. Promises to Arabs and Jews conflict.",
+"Kudüs Düştü": "Jerusalem Falls",
+"Allenby'nin ordusu Gazze-Birüssebi hattını yararak Kudüs'e girdi. Balfour Deklarasyonu iki hafta önce yayımlandı. Filistin'de Osmanlı hâkimiyeti çöküyor.": "Allenby's army broke the Gaza–Beersheba line and entered Jerusalem. The Balfour Declaration was published weeks earlier. Ottoman rule in Palestine is collapsing.",
+"Amiens'e yüklen (tarihî)": "Press on Amiens (historical)",
+"Sonuç alacak ya da tükenecek": "Succeed or run dry",
+"Alman ordusu Amiens'e yaklaştı ama ikmal tıkandı.": "The German army neared Amiens but supply stalled.",
+"Kanal limanlarına yönel": "Head for the Channel ports",
+"İngiltere'yi kopar": "Cut off Britain",
+"Alman saldırısı Flandre'ye kaydı.": "The German attack shifted to Flanders.",
+"İlerleme hızlı ama kayıplar da ağır; rezervler eriyor. Hedef Amiens mi, Kanal limanları mı?": "Progress is rapid but losses are heavy; reserves are melting away. Is the target Amiens or the Channel ports?",
+"Foch'u başkomutan yap (tarihî)": "Make Foch supreme commander (historical)",
+"Ortak komuta": "Unified command",
+"İtilaf orduları Foch'un komutasında birleşti.": "The Entente armies united under Foch.",
+"Bağımsız komutayı sürdür": "Keep independent command",
+"Eşgüdüm zayıf": "Weak coordination",
+"İngiliz komutası bağımsız kaldı.": "British command stayed independent.",
+"5. Ordu dağıldı; Fransa ile aranızdaki bağlantı kopmak üzere. Foch'a ortak komuta mı verilecek?": "The Fifth Army has broken; the link with the French is about to snap. Will Foch be given unified command?",
+"Rezervleri Amiens'e kaydır (tarihî)": "Shift reserves to Amiens (historical)",
+"Müttefiki kurtar": "Save the ally",
+"Fransız birlikleri Amiens hattını kapattı.": "French troops sealed the Amiens line.",
+"Paris'i koru": "Protect Paris",
+"Kendi başkentini önceliklendir": "Prioritise your own capital",
+"Fransa Paris'i kollayacak şekilde dizildi.": "France deployed to cover Paris.",
+"İngiliz hattı yarıldı; Paris tekrar tehlikede. Pétain rezervleri nereye yığacak?": "The British line has split; Paris is in danger again. Where will Pétain pile up the reserves?",
+"Kaiserschlacht: 1918 Bahar Taarruzu": "Kaiserschlacht: The 1918 Spring Offensive",
+"Ludendorff, Rusya'dan boşalan tümenlerle Amerikalılar gelmeden Batı'da kesin sonuç arıyor. İlk günlerde fırtına birlikleri İngiliz hattını yardı; ama ikmal hatları uzuyor.": "Ludendorff, with divisions freed from Russia, seeks a decision in the West before the Americans arrive. In the first days stormtroopers tore through the British line, but supply lines are stretching.",
+"Hindenburg Hattı'na çekil (tarihî)": "Fall back to the Hindenburg Line (historical)",
+"Alman ordusu Hindenburg Hattı'na çekildi.": "The German army fell back to the Hindenburg Line.",
+"Her mevziyi tut": "Hold every position",
+"Ağır kayıp": "Heavy losses",
+"Alman komutası geri çekilmeyi yasakladı.": "German command forbade retreat.",
+"Moral çöküyor; esirler teslim oluyor. Komuta kademesi barış sinyalini düşünmeye başladı.": "Morale is collapsing; prisoners are surrendering. The high command begins considering a peace signal.",
+"Yüz Gün taarruzunu sürdür (tarihî)": "Continue the Hundred Days (historical)",
+"Baskıyı hiç kesme": "Never ease the pressure",
+"İtilaf orduları sürekli taarruza geçti.": "The Entente armies went onto a continuous offensive.",
+"Mevzileri tahkim et": "Consolidate the ground",
+"Yavaş ama güvenli": "Slow but safe",
+"Müttefikler kazanılan yerleri tahkim etti.": "The Allies consolidated their gains.",
+"Tank ve piyade eşgüdümü işledi. Şimdi taarruzu genişletmeli misin?": "The tank–infantry coordination worked. Should you widen the offensive?",
+"Genel taarruza katıl (tarihî)": "Join the general offensive (historical)",
+"Zafer yakın": "Victory is near",
+"Fransız orduları Meuse–Argonne'a doğru yüklendi.": "French armies pushed toward the Meuse–Argonne.",
+"Seçici taarruz yap": "Attack selectively",
+"Fransa sınırlı taarruzlarla yetindi.": "France made do with limited attacks.",
+"Foch 'Hepsi taarruz!' dedi. Fransız ordusu da büyük taarruza katılmalı mı?": "Foch said 'Everybody to battle!' Should the French army join the great offensive?",
+"Amiens: Alman Ordusunun Kara Günü": "Amiens: The Black Day of the German Army",
+"8 Ağustos'ta tanklar ve sürpriz topçu ateşiyle yapılan Müttefik taarruzu Alman hattını yırttı; Ludendorff buna 'Alman ordusunun kara günü' dedi. 'Yüz Gün' taarruzları başlıyor.": "On 8 August a Allied attack with tanks and surprise artillery tore the German line; Ludendorff called it 'the black day of the German Army'. The Hundred Days offensives begin.",
+"Savaşı bitir": "End the war",
+"Osmanlı hükûmeti Mondros'u imzaladı.": "The Ottoman government signed Mudros.",
+"Direnişi sürdür": "Keep resisting",
+"Tükenmiş ordu, riskli": "An exhausted army, risky",
+"Hükûmet bir süre daha pazarlık etti.": "The government haggled a little longer.",
+"Rauf Bey şartları pazarlıkla hafifletmeye çalışıyor; ama cephe yok. Mütareke imzalamak ağır, imzalamamak daha ağır.": "Rauf Bey tries to soften the terms by bargaining; but the front is gone. Signing an armistice is heavy, not signing heavier.",
+"Ağır şartlar dayat (tarihî)": "Impose harsh terms (historical)",
+"Boğazlar ve işgal hakkı": "The Straits and occupation rights",
+"Londra Boğazlar'ın açılmasını ve ordunun terhisini şart koştu.": "London demanded the opening of the Straits and demobilization.",
+"Daha esnek şartlar öner": "Offer milder terms",
+"Barışı kolaylaştır": "Make peace easier",
+"Londra bir miktar esneklik gösterdi.": "London showed some flexibility.",
+"Osmanlı'dan şartsız teslim yakın. Boğazlar ve Irak petrolü için ne kadar ileri gideceksin?": "An Ottoman unconditional surrender is near. How far will you go for the Straits and Iraqi oil?",
+"Mondros Mütarekesi": "The Armistice of Mudros",
+"Bulgaristan ve Filistin cepheleri çöktü; Osmanlı hükûmeti Limni'deki Agamemnon zırhlısında İngilizlerle ateşkes görüşüyor. Şartlar ağır: Boğazlar açılacak, ordu terhis edilecek.": "The Bulgarian and Palestine fronts have collapsed; the Ottoman government is negotiating an armistice with the British aboard HMS Agamemnon at Lemnos. The terms are harsh: the Straits to be opened, the army demobilized.",
+"İmzala (tarihî)": "Sign (historical)",
+"Yeniden doğuş için zaman kazan": "Buy time for recovery",
+"Almanya Versay'ı imzaladı; millî gurur yaralandı.": "Germany signed Versailles; national pride was wounded.",
+"Reddet": "Refuse",
+"İşgal riski": "Risk of occupation",
+"Berlin imzayı reddetti; Müttefikler yürüyüş tehdidinde bulundu.": "Berlin refused to sign; the Allies threatened to march.",
+"Heyet 'diktat' olarak gördüğü metni imzalamak zorunda; reddetmek işgali getirir.": "The delegation must sign a text it sees as a 'diktat'; refusing means occupation.",
+"Sert şartları savun (tarihî)": "Insist on harsh terms (historical)",
+"Güvenlik ve tazminat": "Security and reparations",
+"Fransa ağır tazminat ve Ren işgali elde etti.": "France secured heavy reparations and a Rhineland occupation.",
+"Ilımlı bir barışa razı ol": "Accept a moderate peace",
+"Uzlaşı": "Compromise",
+"Paris müttefik uzlaşısını kabul etti.": "Paris accepted the Allied compromise.",
+"Clemenceau Ren sınırında güvence istiyor; Wilson ve Lloyd George ise ılımlı.": "Clemenceau wants guarantees on the Rhine; Wilson and Lloyd George are moderate.",
+"Ulusların Cemiyeti'ni destekle (tarihî)": "Back the League of Nations (historical)",
+"Yeni dünya düzeni": "A new world order",
+"Wilson Ulusların Cemiyeti için kampanya yürüttü; Senato onaylamadı.": "Wilson campaigned for the League; the Senate did not ratify.",
+"Avrupa'dan uzak dur": "Stay out of Europe",
+"İzolasyon": "Isolation",
+"Amerika Avrupa işlerinden çekildi.": "America withdrew from European affairs.",
+"Wilson'ın On Dört Maddesi'nin kaderi belli olmak üzere; Senato Uluslar Cemiyeti'ne şüpheli.": "The fate of Wilson's Fourteen Points is about to be decided; the Senate is wary of the League of Nations.",
+"Versay Antlaşması": "The Treaty of Versailles",
+"Aynalar Salonu'nda imzalanan antlaşma Almanya'ya savaş suçu yüklüyor: büyük tazminat, toprak kayıpları, ordu sınırlaması. Wilson 'Ulusların Cemiyeti'ni savunuyor; Clemenceau güvenlik istiyor.": "The treaty signed in the Hall of Mirrors places war guilt on Germany: huge reparations, territorial losses, army limits. Wilson champions a League of Nations; Clemenceau wants security.",
+"Sevr'i reddet, savaşa devam (tarihî)": "Reject Sèvres and fight on (historical)",
+"Millî egemenlik": "National sovereignty",
+"TBMM Sevr'i tanımadığını ilan etti.": "The Grand National Assembly declared that it did not recognise Sèvres.",
+"Müzakere yolunu aç": "Open the road to negotiation",
+"Taviz": "Concessions",
+"Ankara İtilaf ile gizli görüşme yürüttü.": "Ankara held secret talks with the Entente.",
+"İstanbul hükûmeti imzaladı ama Anadolu'da Millî Mücadele sürüyor; Büyük Millet Meclisi antlaşmayı reddediyor.": "The Istanbul government signed, but the National Struggle continues in Anatolia; the Grand National Assembly rejects the treaty.",
+"Anadolu'ya ilerle (tarihî)": "Advance into Anatolia (historical)",
+"Sevr'i silahla uygula": "Enforce Sèvres by arms",
+"Yunan ordusu iç Anadolu'ya yöneldi.": "The Greek army moved into inner Anatolia.",
+"Kazanımları tahkim et": "Consolidate your gains",
+"İzmir ve Trakya yeter": "Izmir and Thrace suffice",
+"Yunanistan işgal bölgelerini tahkim etti.": "Greece consolidated the occupation zones.",
+"Venizelos'un Büyük Yunanistan hayali gerçek oluyor; ama Anadolu'da direniş artıyor.": "Venizelos's dream of a Greater Greece is coming true; but resistance grows in Anatolia.",
+"Sevr Antlaşması": "The Treaty of Sèvres",
+"Osmanlı heyeti Sevr'de İtilaf'ın dayattığı antlaşmayı imzaladı: İzmir ve Doğu Trakya Yunanistan'a, Boğazlar uluslararası, Doğu'da Ermeni ve Kürt bölgeleri öngörülüyor. Ankara bu metni tanımıyor.": "The Ottoman delegation signed the treaty imposed by the Entente at Sèvres: Izmir and Eastern Thrace to Greece, the Straits internationalized, Armenian and Kurdish zones foreseen in the East. Ankara does not recognise the text."
 }
 }

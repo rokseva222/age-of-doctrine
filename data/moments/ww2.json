@@ -1,6 +1,200 @@
 {
 "moments": [
 {
+"id": "poland_1939",
+"y": 1939,
+"m": 9,
+"title": "Polonya'nın Düşüşü",
+"scene": "blitz",
+"icon": "tank",
+"text": "Almanya 1 Eylül'de Polonya'ya saldırdı; Sovyetler 17 Eylül'de doğudan girdi. İngiltere ve Fransa savaş ilan etti ama Batı Cephesi sessiz.",
+"major": true,
+"default_fx": [
+[
+"war",
+"Germany",
+"Poland"
+],
+[
+"war",
+"United Kingdom",
+"Germany"
+],
+[
+"war",
+"France",
+"Germany"
+],
+[
+"troops",
+"Poland",
+-15
+]
+],
+"roles": {
+"Poland": {
+"text": "Panzerler sınırı aştı, Varşova kuşatılıyor. Müttefikler söz verdi ama gelmiyor.",
+"options": [
+{
+"t": "Varşova'yı savun (tarihî)",
+"d": "Son direniş",
+"fx": [
+[
+"buff",
+"Poland",
+"def",
+1.3,
+6
+],
+[
+"stab",
+"Poland",
+4
+]
+],
+"r": "Varşova haftalarca direndi."
+},
+{
+"t": "Romanya'ya çekil",
+"d": "Orduyu kurtar",
+"fx": [
+[
+"troops",
+"Poland",
+-5
+],
+[
+"rel",
+"Poland",
+"United Kingdom",
+6
+]
+],
+"r": "Polonya hükûmeti ve ordu kalıntıları Romanya'ya çekildi."
+}
+]
+},
+"Germany": {
+"text": "Yıldırım Savaşı işliyor. Sovyetlerle gizli protokol imzalı.",
+"options": [
+{
+"t": "Polonya'yı hızla bitir (tarihî)",
+"d": "Sürat ve şok",
+"fx": [
+[
+"buff",
+"Germany",
+"att",
+1.2,
+8
+],
+[
+"gold",
+"Germany",
+1.0
+]
+],
+"r": "Wehrmacht Polonya'yı üç haftada ezdi."
+},
+{
+"t": "Batı için rezerv tut",
+"d": "Temkinli",
+"fx": [
+[
+"buff",
+"Germany",
+"def",
+1.1,
+8
+]
+],
+"r": "Alman komutası Batı için güç ayırdı."
+}
+]
+},
+"United Kingdom": {
+"text": "Chamberlain savaş ilan etti. Cephe yok; 'Sahte Savaş' başlıyor.",
+"options": [
+{
+"t": "BEF'i Fransa'ya gönder (tarihî)",
+"d": "Kıta taahhüdü",
+"fx": [
+[
+"rel",
+"United Kingdom",
+"France",
+8
+],
+[
+"buff",
+"United Kingdom",
+"def",
+1.1,
+10
+]
+],
+"r": "İngiliz Seferi Kuvveti Fransa'ya çıktı."
+},
+{
+"t": "Ablukayı sürdür",
+"d": "Deniz gücü",
+"fx": [
+[
+"gold",
+"Germany",
+-0.5
+],
+[
+"stab",
+"United Kingdom",
+2
+]
+],
+"r": "Kraliyet Donanması Almanya'yı abluka altına aldı."
+}
+]
+},
+"France": {
+"text": "Maginot Hattı'na güveniyorsun. Saldırı mı savunma mı?",
+"options": [
+{
+"t": "Maginot'da bekle (tarihî)",
+"d": "Savunmaya güven",
+"fx": [
+[
+"buff",
+"France",
+"def",
+1.15,
+12
+]
+],
+"r": "Fransa Maginot arkasında bekledi."
+},
+{
+"t": "Saar'a sınırlı saldırı",
+"d": "Almanları oyala",
+"fx": [
+[
+"buff",
+"France",
+"att",
+1.1,
+4
+],
+[
+"troops",
+"France",
+-2
+]
+],
+"r": "Fransız birlikleri Saar'a ilerledi ve durdu."
+}
+]
+}
+}
+},
+{
 "id": "winter_war",
 "y": 1939,
 "m": 11,
@@ -144,6 +338,151 @@
 ]
 ],
 "r": "Hanko kiralandı; savaş yok."
+}
+]
+}
+}
+},
+{
+"id": "norway_1940",
+"y": 1940,
+"m": 4,
+"title": "Weserübung: Norveç ve Danimarka",
+"scene": "landing",
+"icon": "landing",
+"text": "Almanya bir gecede Danimarka'yı aldı ve Norveç limanlarına çıkarma yaptı. Narvik demir cevheri hattı için kritik. İngiliz donanması Narvik'te Alman muhripleri batırdı.",
+"major": true,
+"default_fx": [
+[
+"war",
+"Germany",
+"Norway"
+],
+[
+"war",
+"Germany",
+"Denmark"
+],
+[
+"occupy",
+"Germany",
+"Denmark"
+]
+],
+"roles": {
+"Norway": {
+"text": "Alman gemileri Oslo fiyordunda; kral ve hükûmet kaçışta.",
+"options": [
+{
+"t": "Narvik'te diren (tarihî)",
+"d": "Müttefik yardımı bekle",
+"fx": [
+[
+"buff",
+"Norway",
+"def",
+1.3,
+8
+],
+[
+"rel",
+"Norway",
+"United Kingdom",
+10
+]
+],
+"r": "Norveç ve Müttefikler Narvik'i geri aldı; sonra çekildi."
+},
+{
+"t": "Teslim ol",
+"d": "Kayıp az",
+"fx": [
+[
+"stab",
+"Norway",
+-8
+],
+[
+"peace",
+"Norway",
+"Germany"
+]
+],
+"r": "Norveç hızla teslim oldu."
+}
+]
+},
+"Germany": {
+"text": "Kriegsmarine büyük kayıp verdi ama Norveç elde. Narvik'i tutmak şart.",
+"options": [
+{
+"t": "Skandinavya'yı tahkim et (tarihî)",
+"d": "Cevher ve üsler",
+"fx": [
+[
+"gold",
+"Germany",
+1.5
+],
+[
+"buff",
+"Germany",
+"def",
+1.1,
+12
+]
+],
+"r": "Almanya Norveç'i işgal altında tuttu."
+},
+{
+"t": "Güçleri Batı için çek",
+"d": "Fransa'ya odaklan",
+"fx": [
+[
+"buff",
+"Germany",
+"att",
+1.1,
+6
+]
+],
+"r": "Alman birlikleri Fransa harekâtına kaydı."
+}
+]
+},
+"United Kingdom": {
+"text": "Norveç seferi dağınık; Churchill Amirallik'te.",
+"options": [
+{
+"t": "Narvik'e takviye (tarihî)",
+"d": "Cevheri kes",
+"fx": [
+[
+"buff",
+"United Kingdom",
+"att",
+1.1,
+6
+],
+[
+"gold",
+"Germany",
+-1.0
+]
+],
+"r": "İngiliz ve Fransız birlikleri Narvik'te savaştı."
+},
+{
+"t": "Çekil ve Fransa'ya odaklan",
+"d": "Güç topla",
+"fx": [
+[
+"stab",
+"United Kingdom",
+-2
+]
+],
+"r": "İngiltere Norveç'ten çekildi."
 }
 ]
 }
@@ -383,6 +722,167 @@
 }
 },
 {
+"id": "italy_war_1940",
+"y": 1940,
+"m": 6,
+"title": "İtalya Savaşa Girdi",
+"scene": "pre_alliance",
+"icon": "flag",
+"text": "Fransa çökerken Mussolini 10 Haziran'da Britanya ve Fransa'ya savaş ilan etti. Roma 'kolay zafer' bekliyor; ordusu hazır değil.",
+"major": true,
+"default_fx": [
+[
+"war",
+"Italy",
+"France"
+],
+[
+"war",
+"Italy",
+"United Kingdom"
+],
+[
+"ally",
+"Italy",
+"Germany"
+]
+],
+"roles": {
+"Italy": {
+"text": "Duce çöküşten pay almak istiyor. Genelkurmay hazırlıksız.",
+"options": [
+{
+"t": "Savaşa gir (tarihî)",
+"d": "Fransa'dan pay al",
+"fx": [
+[
+"buff",
+"Italy",
+"att",
+1.05,
+6
+],
+[
+"stab",
+"Italy",
+2
+],
+[
+"rel",
+"Italy",
+"Germany",
+10
+]
+],
+"r": "İtalya Fransa'ya saldırdı; Alpler'de ilerleyemedi."
+},
+{
+"t": "Tarafsız kal",
+"d": "Gücü koru",
+"fx": [
+[
+"stab",
+"Italy",
+3
+],
+[
+"rel",
+"Italy",
+"Germany",
+-8
+]
+],
+"r": "Roma 'savaşsız' statüsünü korudu."
+}
+]
+},
+"France": {
+"text": "Hükûmet Bordeaux'ya kaçtı; Pétain ateşkes istiyor.",
+"options": [
+{
+"t": "Ateşkes imzala (tarihî)",
+"d": "Vichy rejimi",
+"fx": [
+[
+"peace",
+"France",
+"Germany"
+],
+[
+"stab",
+"France",
+-10
+],
+[
+"rel",
+"France",
+"United Kingdom",
+-15
+]
+],
+"r": "Fransa Compiègne'de ateşkes imzaladı."
+},
+{
+"t": "Kuzey Afrika'dan savaş",
+"d": "Direniş sürsün",
+"fx": [
+[
+"buff",
+"France",
+"def",
+1.2,
+10
+],
+[
+"stab",
+"France",
+-6
+]
+],
+"r": "Fransız hükûmeti Cezayir'den savaşı sürdürmeye çalıştı."
+}
+]
+},
+"United Kingdom": {
+"text": "Fransa düşüyor, İtalya savaşa girdi. Akdeniz'de tek başınasın.",
+"options": [
+{
+"t": "Malta ve Mısır'ı tahkim et (tarihî)",
+"d": "Akdeniz'i kaybetme",
+"fx": [
+[
+"buff",
+"United Kingdom",
+"def",
+1.15,
+12
+]
+],
+"r": "İngiltere Malta'yı donanma üssü olarak güçlendirdi."
+},
+{
+"t": "Fransız filosunu önle",
+"d": "Sert ama güvenli",
+"fx": [
+[
+"rel",
+"United Kingdom",
+"France",
+-15
+],
+[
+"gold",
+"United Kingdom",
+0.5
+]
+],
+"r": "Kraliyet Donanması Mers-el-Kebir'de Fransız gemilerine ateş açtı."
+}
+]
+}
+}
+},
+{
 "id": "battle_britain",
 "y": 1940,
 "m": 8,
@@ -528,6 +1028,527 @@
 ]
 ],
 "r": "Deniz Aslanı rafa kalktı."
+}
+]
+}
+}
+},
+{
+"id": "tripartite",
+"y": 1940,
+"m": 9,
+"title": "Üçlü Pakt",
+"scene": "pre_alliance",
+"icon": "treaty",
+"text": "Berlin'de Almanya, İtalya ve Japonya askeri ittifak imzaladı. Hedef ABD'yi caydırmak. Japonya Fransız Çinhindi'ne giriyor.",
+"major": true,
+"default_fx": [
+[
+"ally",
+"Germany",
+"Japan"
+],
+[
+"ally",
+"Italy",
+"Japan"
+],
+[
+"rel",
+"Japan",
+"United States of America",
+-12
+]
+],
+"roles": {
+"Japan": {
+"text": "Çin'de bataklık; petrol ve kauçuk için Güneydoğu Asya cazip. ABD ambargo tehdidinde.",
+"options": [
+{
+"t": "Paktı imzala (tarihî)",
+"d": "Eksen'e katıl",
+"fx": [
+[
+"ally",
+"Japan",
+"Germany"
+],
+[
+"rel",
+"Japan",
+"United States of America",
+-15
+],
+[
+"gold",
+"Japan",
+1.0
+]
+],
+"r": "Tokyo Üçlü Pakt'a katıldı; Washington sertleşti."
+},
+{
+"t": "Bağımsız kal",
+"d": "Diplomasi şansı",
+"fx": [
+[
+"rel",
+"Japan",
+"United States of America",
+6
+],
+[
+"stab",
+"Japan",
+1
+]
+],
+"r": "Japonya bağımsız manevra alanını korudu."
+}
+]
+},
+"United States of America": {
+"text": "Roosevelt 'demokrasinin cephaneliği' vizyonunda; Kongre izolasyonda.",
+"options": [
+{
+"t": "İngiltere'ye yardım artır (tarihî)",
+"d": "Destroyers-for-bases",
+"fx": [
+[
+"rel",
+"United States of America",
+"United Kingdom",
+12
+],
+[
+"rel",
+"United States of America",
+"Germany",
+-8
+]
+],
+"r": "Washington İngiltere'ye muhrip verdi, üs aldı."
+},
+{
+"t": "Tarafsız kal",
+"d": "İzolasyon",
+"fx": [
+[
+"stab",
+"United States of America",
+3
+]
+],
+"r": "Amerika dışarıda kaldı."
+}
+]
+}
+}
+},
+{
+"id": "greece_1940",
+"y": 1940,
+"m": 10,
+"title": "İtalya Yunanistan'a Saldırdı",
+"scene": "pre_border",
+"icon": "helmet_ww2",
+"text": "28 Ekim'de Mussolini Arnavutluk'tan Yunanistan'a saldırdı; Metaxas 'Hayır!' dedi. Yunan ordusu dağlarda İtalyanları geri püskürtüyor.",
+"major": true,
+"default_fx": [
+[
+"war",
+"Italy",
+"Greece"
+],
+[
+"troops",
+"Italy",
+-6
+]
+],
+"roles": {
+"Greece": {
+"text": "İtalyan taarruzu Epir'de takıldı. İngiltere hava desteği öneriyor.",
+"options": [
+{
+"t": "Karşı taarruz yap (tarihî)",
+"d": "Arnavutluk'a gir",
+"fx": [
+[
+"buff",
+"Greece",
+"att",
+1.25,
+12
+],
+[
+"stab",
+"Greece",
+6
+],
+[
+"troops",
+"Italy",
+-4
+]
+],
+"r": "Yunanlar Arnavutluk'un güneyine girdi."
+},
+{
+"t": "Savunmada kal",
+"d": "Yıpratmaya oyna",
+"fx": [
+[
+"buff",
+"Greece",
+"def",
+1.3,
+12
+]
+],
+"r": "Yunan ordusu hattı tuttu."
+}
+]
+},
+"Italy": {
+"text": "Yağmur ve dağlar harekâtı çamura çevirdi; Hitler öfkeli.",
+"options": [
+{
+"t": "Takviye ve yeni taarruz",
+"d": "Onuru kurtar",
+"fx": [
+[
+"buff",
+"Italy",
+"att",
+1.1,
+8
+],
+[
+"troops",
+"Italy",
+-3
+]
+],
+"r": "İtalya Arnavutluk'ta yeniden taarruz hazırladı."
+},
+{
+"t": "Almanya'dan yardım iste (tarihî)",
+"d": "Bağımlılık",
+"fx": [
+[
+"rel",
+"Italy",
+"Germany",
+8
+],
+[
+"stab",
+"Italy",
+-4
+]
+],
+"r": "Roma Berlin'den yardım istedi; Balkanlar kaçınılmaz."
+}
+]
+},
+"Germany": {
+"text": "Müttefikin başarısızlığı Balkanlar'ı açıyor; Barbarossa öncesi güney yanı güvenli olmalı.",
+"options": [
+{
+"t": "Balkan harekâtı hazırla (tarihî)",
+"d": "Güney yanını kapat",
+"fx": [
+[
+"buff",
+"Germany",
+"att",
+1.1,
+10
+]
+],
+"r": "Berlin Balkanlar'a hazırlık başlattı."
+},
+{
+"t": "Müdahale etme",
+"d": "Güç koru",
+"fx": [
+[
+"stab",
+"Germany",
+1
+]
+],
+"r": "Almanya Balkanlar'a girmedi."
+}
+]
+}
+}
+},
+{
+"id": "compass_1940",
+"y": 1940,
+"m": 12,
+"title": "Pusula Harekâtı",
+"scene": "blitz",
+"icon": "tank",
+"text": "İngiliz ve Hint birlikleri Mısır'dan Libya'ya saldırdı; Sidi Barrani'de yüz binlik İtalyan ordusu çöktü. Rommel henüz Afrika'da değil.",
+"major": true,
+"default_fx": [
+[
+"troops",
+"Italy",
+-10
+],
+[
+"stab",
+"Italy",
+-4
+],
+[
+"buff",
+"United Kingdom",
+"att",
+1.1,
+8
+]
+],
+"roles": {
+"United Kingdom": {
+"text": "Wavell'in küçük ordusu İtalya'yı yenerek Cyrenaica'ya ilerliyor.",
+"options": [
+{
+"t": "Trablus'a kadar ilerle",
+"d": "Kuzey Afrika'yı bitir",
+"fx": [
+[
+"buff",
+"United Kingdom",
+"att",
+1.15,
+8
+],
+[
+"troops",
+"United Kingdom",
+-2
+]
+],
+"r": "İngiliz ordusu Bingazi'yi aldı."
+},
+{
+"t": "Güçleri Yunanistan'a kaydır (tarihî)",
+"d": "Balkan taahhüdü",
+"fx": [
+[
+"rel",
+"United Kingdom",
+"Greece",
+10
+],
+[
+"buff",
+"Italy",
+"def",
+1.1,
+8
+]
+],
+"r": "Churchill birlikleri Yunanistan'a gönderdi; Libya'da ilerleme durdu."
+}
+]
+},
+"Italy": {
+"text": "Libya'daki ordun dağıldı. Almanya Afrika Korpusu göndermeyi düşünüyor.",
+"options": [
+{
+"t": "Alman yardımı kabul et (tarihî)",
+"d": "Rommel gelsin",
+"fx": [
+[
+"rel",
+"Italy",
+"Germany",
+10
+],
+[
+"buff",
+"Italy",
+"def",
+1.15,
+10
+]
+],
+"r": "Roma Afrika'ya Alman birlikleri çağırdı."
+},
+{
+"t": "Tek başına tut",
+"d": "Gurur",
+"fx": [
+[
+"troops",
+"Italy",
+-5
+],
+[
+"stab",
+"Italy",
+-3
+]
+],
+"r": "İtalya Trablus'ta kendi başına tutunmaya çalıştı."
+}
+]
+}
+}
+},
+{
+"id": "yugoslavia_1941",
+"y": 1941,
+"m": 4,
+"title": "Yugoslavya ve Yunanistan'ın Düşüşü",
+"scene": "blitz",
+"icon": "tank",
+"text": "Belgrad'daki darbenin ardından Almanya 6 Nisan'da Yugoslavya ve Yunanistan'a saldırdı. İki hafta içinde Balkanlar Eksen'in elinde.",
+"major": true,
+"default_fx": [
+[
+"war",
+"Germany",
+"Serbia"
+],
+[
+"war",
+"Germany",
+"Greece"
+],
+[
+"troops",
+"Greece",
+-10
+],
+[
+"troops",
+"Serbia",
+-12
+]
+],
+"roles": {
+"Greece": {
+"text": "Alman panzerleri Metaxas Hattı'nı aştı; İngiliz birlikleri geri çekiliyor.",
+"options": [
+{
+"t": "Girit'e çekil (tarihî)",
+"d": "Direniş adada",
+"fx": [
+[
+"buff",
+"Greece",
+"def",
+1.2,
+8
+],
+[
+"stab",
+"Greece",
+-4
+]
+],
+"r": "Hükûmet ve İngiliz birlikleri Girit'e çekildi."
+},
+{
+"t": "Ateşkes iste",
+"d": "Kan dökülmesin",
+"fx": [
+[
+"peace",
+"Greece",
+"Germany"
+],
+[
+"stab",
+"Greece",
+-8
+]
+],
+"r": "Atina ateşkes istedi."
+}
+]
+},
+"Germany": {
+"text": "Balkanlar kısa sürede düşecek; Barbarossa bir ay gecikecek.",
+"options": [
+{
+"t": "Balkanları hızla ez (tarihî)",
+"d": "Güney yanı güvende",
+"fx": [
+[
+"buff",
+"Germany",
+"att",
+1.2,
+6
+],
+[
+"gold",
+"Germany",
+1.0
+]
+],
+"r": "Wehrmacht iki haftada Balkanlar'ı aldı."
+},
+{
+"t": "Sadece Yugoslavya'yı al",
+"d": "Barbarossa'yı kaçırma",
+"fx": [
+[
+"stab",
+"Germany",
+1
+]
+],
+"r": "Alman operasyonu sınırlı kaldı."
+}
+]
+},
+"Serbia": {
+"text": "Prens Paul'ün Eksen'e katılması darbeyle devrildi; Alman bombaları Belgrad'da.",
+"options": [
+{
+"t": "Dağlara çekil, direniş kur (tarihî)",
+"d": "Partizan savaşı",
+"fx": [
+[
+"buff",
+"Serbia",
+"def",
+1.25,
+20
+],
+[
+"stab",
+"Serbia",
+-4
+]
+],
+"r": "Yugoslav direniş grupları dağlara çekildi."
+},
+{
+"t": "Teslim ol",
+"d": "Kayıp az",
+"fx": [
+[
+"peace",
+"Serbia",
+"Germany"
+],
+[
+"stab",
+"Serbia",
+-10
+]
+],
+"r": "Yugoslav hükûmeti teslim oldu."
 }
 ]
 }
@@ -767,6 +1788,161 @@
 ]
 ],
 "r": "Finlandiya savaş dışı."
+}
+]
+}
+}
+},
+{
+"id": "leningrad_1941",
+"y": 1941,
+"m": 9,
+"title": "Leningrad Kuşatması",
+"scene": "pre_siege",
+"icon": "helmet_ww2",
+"text": "Alman ve Fin orduları Leningrad'ı çevirdi. Şehir 872 gün abluka altında kalacak; açlık ve soğuk yüz binlerce can alacak.",
+"major": true,
+"default_fx": [
+[
+"troops",
+"Russia",
+-6
+],
+[
+"stab",
+"Russia",
+-3
+],
+[
+"rel",
+"Finland",
+"Germany",
+5
+]
+],
+"roles": {
+"Russia": {
+"text": "Stalin 'Leningrad teslim olmayacak' dedi. Ladoga Gölü üzerinden yaşam yolu açılabilir.",
+"options": [
+{
+"t": "Her pahasına tut (tarihî)",
+"d": "Ladoga yaşam yolu",
+"fx": [
+[
+"buff",
+"Russia",
+"def",
+1.3,
+20
+],
+[
+"stab",
+"Russia",
+3
+],
+[
+"troops",
+"Russia",
+-3
+]
+],
+"r": "Leningrad kuşatmaya direndi."
+},
+{
+"t": "Şehri boşalt",
+"d": "Kayıp azalır",
+"fx": [
+[
+"stab",
+"Russia",
+-4
+]
+],
+"r": "Sovyetler Leningrad'ın bir kısmını boşalttı."
+}
+]
+},
+"Germany": {
+"text": "Hitler şehri almak yerine açlıktan teslim etmek istiyor.",
+"options": [
+{
+"t": "Kuşatmayı sürdür (tarihî)",
+"d": "Güçleri Moskova'ya kaydır",
+"fx": [
+[
+"troops",
+"Russia",
+-3
+],
+[
+"buff",
+"Germany",
+"att",
+1.05,
+6
+]
+],
+"r": "Alman ordusu şehri kuşatmada tuttu."
+},
+{
+"t": "Fırtınayla al",
+"d": "Sokak savaşı riski",
+"fx": [
+[
+"troops",
+"Germany",
+-8
+],
+[
+"buff",
+"Germany",
+"att",
+1.15,
+4
+]
+],
+"r": "Alman saldırıları şehir kenarında durdu."
+}
+]
+},
+"Finland": {
+"text": "Alman müttefikin Leningrad'a baskı için eski sınırın ötesine geçmeni istiyor.",
+"options": [
+{
+"t": "Eski sınırda dur (tarihî)",
+"d": "Sınırlı hedef",
+"fx": [
+[
+"stab",
+"Finland",
+2
+],
+[
+"rel",
+"Finland",
+"United Kingdom",
+4
+]
+],
+"r": "Finlandiya eski sınırda durdu."
+},
+{
+"t": "Şehre doğru ilerle",
+"d": "Almanya'ya yaklaş",
+"fx": [
+[
+"rel",
+"Finland",
+"Germany",
+10
+],
+[
+"troops",
+"Finland",
+-4
+]
+],
+"r": "Fin birlikleri Svir'e kadar ilerledi."
 }
 ]
 }
@@ -1117,6 +2293,234 @@
 }
 },
 {
+"id": "singapore_1942",
+"y": 1942,
+"m": 2,
+"title": "Singapur'un Düşüşü",
+"scene": "carrier",
+"icon": "carrier",
+"text": "Japon 25. Ordusu Malaya'dan inip Singapur'u 15 Şubat'ta aldı. Yüz bini aşkın İngiliz Commonwealth askeri esir; Churchill buna 'en büyük felaket' dedi.",
+"major": true,
+"default_fx": [
+[
+"war",
+"Japan",
+"United Kingdom"
+],
+[
+"troops",
+"United Kingdom",
+-10
+],
+[
+"stab",
+"United Kingdom",
+-5
+],
+[
+"buff",
+"Japan",
+"att",
+1.1,
+10
+]
+],
+"roles": {
+"Japan": {
+"text": "Singapur düştü; petrol bölgeleri ve Burma açık. Yayılma sınırını nerede çizeceksin?",
+"options": [
+{
+"t": "Burma ve Hollanda Doğu Hint'ine yüklen (tarihî)",
+"d": "Petrol ve kauçuk",
+"fx": [
+[
+"buff",
+"Japan",
+"att",
+1.2,
+10
+],
+[
+"gold",
+"Japan",
+2.0
+]
+],
+"r": "Japonya Burma'ya ve Hint Adaları'na girdi."
+},
+{
+"t": "Kazanımları tahkim et",
+"d": "Savunma çevresi",
+"fx": [
+[
+"buff",
+"Japan",
+"def",
+1.2,
+12
+],
+[
+"stab",
+"Japan",
+3
+]
+],
+"r": "Japonya fethedilen yerleri tahkim etti."
+}
+]
+},
+"United Kingdom": {
+"text": "Doğu'daki imparatorluk sarsıldı. Hindistan ve Avustralya'yı savunmak zorundasın.",
+"options": [
+{
+"t": "Hindistan'ı tahkim et (tarihî)",
+"d": "Burma hattını tut",
+"fx": [
+[
+"buff",
+"United Kingdom",
+"def",
+1.2,
+14
+]
+],
+"r": "İngiltere Hindistan sınırında savunma kurdu."
+},
+{
+"t": "Amerika'dan donanma desteği iste",
+"d": "Pasifik'te ittifak",
+"fx": [
+[
+"rel",
+"United Kingdom",
+"United States of America",
+8
+]
+],
+"r": "Londra Pasifik'te Amerikan desteğini artırdı."
+}
+]
+}
+}
+},
+{
+"id": "midway_1942",
+"y": 1942,
+"m": 6,
+"title": "Midway Muharebesi",
+"scene": "carrier",
+"icon": "carrier",
+"text": "Amerikan keşif ve dalış bombardıman uçakları dakikalar içinde dört Japon uçak gemisini batırdı. Japon donanmasının taarruz gücü kırıldı; Pasifik'te denge değişiyor.",
+"major": true,
+"default_fx": [
+[
+"troops",
+"Japan",
+-8
+],
+[
+"stab",
+"Japan",
+-4
+],
+[
+"buff",
+"United States of America",
+"att",
+1.1,
+12
+]
+],
+"roles": {
+"Japan": {
+"text": "Yamamoto Midway'i yem yapıp Amerikan filosunu yok etmek istiyor; ama Amerikalılar şifreyi çözdü.",
+"options": [
+{
+"t": "Planı uygula (tarihî)",
+"d": "Büyük kumar",
+"fx": [
+[
+"troops",
+"Japan",
+-6
+],
+[
+"buff",
+"Japan",
+"att",
+0.9,
+12
+],
+[
+"stab",
+"Japan",
+-3
+]
+],
+"r": "Japonya dört uçak gemisini kaybetti."
+},
+{
+"t": "Midway'den vazgeç",
+"d": "Filoyu koru",
+"fx": [
+[
+"stab",
+"Japan",
+1
+],
+[
+"buff",
+"Japan",
+"def",
+1.1,
+8
+]
+],
+"r": "Japon planı iptal edildi; Doğu Pasifik'te saldırı ertelendi."
+}
+]
+},
+"United States of America": {
+"text": "Nimitz şifre çözücüler sayesinde Japon planını biliyor. Üç uçak gemin pusuda.",
+"options": [
+{
+"t": "Pusuya yat (tarihî)",
+"d": "Taarruz inisiyatifi",
+"fx": [
+[
+"buff",
+"United States of America",
+"att",
+1.2,
+14
+],
+[
+"stab",
+"United States of America",
+4
+]
+],
+"r": "Amerikan donanması Midway'de zafer kazandı."
+},
+{
+"t": "Filoyu geride tut",
+"d": "Sorunsuz ama pasif",
+"fx": [
+[
+"buff",
+"United States of America",
+"def",
+1.1,
+8
+]
+],
+"r": "Amerikan filosu Hawaii'yi korudu."
+}
+]
+}
+}
+},
+{
 "id": "stalingrad",
 "y": 1942,
 "m": 8,
@@ -1278,6 +2682,896 @@
 ]
 },
 {
+"id": "alamein_1942",
+"y": 1942,
+"m": 10,
+"title": "El Alamein",
+"scene": "blitz",
+"icon": "tank",
+"text": "Montgomery'nin 8. Ordusu Mısır'da Rommel'i durdurup karşı saldırıya geçti. Afrika Korpusu yakıtsız, ikmalsiz; Libya'dan Tunus'a çekiliyor.",
+"major": true,
+"default_fx": [
+[
+"troops",
+"Germany",
+-6
+],
+[
+"troops",
+"Italy",
+-6
+],
+[
+"buff",
+"United Kingdom",
+"att",
+1.15,
+10
+]
+],
+"roles": {
+"Germany": {
+"text": "Rommel yakıt bitti diyor. Hitler 'zafer ya da ölüm' emri verdi.",
+"options": [
+{
+"t": "Tunus'a çekil (tarihî)",
+"d": "Orduyu kurtar",
+"fx": [
+[
+"buff",
+"Germany",
+"def",
+1.15,
+10
+],
+[
+"stab",
+"Germany",
+-2
+]
+],
+"r": "Afrika Korpusu Libya'dan Tunus'a çekildi."
+},
+{
+"t": "Hattı tut",
+"d": "Büyük kayıp",
+"fx": [
+[
+"troops",
+"Germany",
+-8
+],
+[
+"stab",
+"Germany",
+-3
+]
+],
+"r": "Alman birlikleri Alamein hattında ezildi."
+}
+]
+},
+"United Kingdom": {
+"text": "Uzun süredir ilk büyük zafer elinde. Hız mı, ihtiyat mı?",
+"options": [
+{
+"t": "Hızla ilerle",
+"d": "Afrika'yı bitir",
+"fx": [
+[
+"buff",
+"United Kingdom",
+"att",
+1.2,
+10
+],
+[
+"stab",
+"United Kingdom",
+4
+]
+],
+"r": "8. Ordu Libya boyunca ilerledi."
+},
+{
+"t": "Temkinli ilerle (tarihî)",
+"d": "Ordu korunur",
+"fx": [
+[
+"stab",
+"United Kingdom",
+3
+],
+[
+"buff",
+"United Kingdom",
+"def",
+1.1,
+8
+]
+],
+"r": "Montgomery sistemli ilerledi."
+}
+]
+},
+"Italy": {
+"text": "Afrika Kolordusu çöküyor; imparatorluk rüyası bitiyor.",
+"options": [
+{
+"t": "Almanlarla çekil",
+"d": "Kalanı kurtar",
+"fx": [
+[
+"troops",
+"Italy",
+-3
+],
+[
+"stab",
+"Italy",
+-3
+]
+],
+"r": "İtalyan birlikleri Tunus'a çekildi."
+},
+{
+"t": "Direnişi sürdür",
+"d": "Moral zayıf",
+"fx": [
+[
+"troops",
+"Italy",
+-7
+],
+[
+"stab",
+"Italy",
+-5
+]
+],
+"r": "İtalyan birlikleri direnmeye çalıştı."
+}
+]
+}
+}
+},
+{
+"id": "torch_1942",
+"y": 1942,
+"m": 11,
+"title": "Meşale Harekâtı",
+"scene": "landing",
+"icon": "landing",
+"text": "Anglo-Amerikan kuvvetler Fas ve Cezayir'e çıktı. Vichy Fransa direndi, sonra ateşkes yaptı; Almanya Vichy'nin kalanını işgal etti. Kuzey Afrika kıskaçta.",
+"major": true,
+"default_fx": [
+[
+"rel",
+"United States of America",
+"United Kingdom",
+6
+],
+[
+"troops",
+"France",
+-4
+],
+[
+"buff",
+"United States of America",
+"att",
+1.1,
+8
+]
+],
+"roles": {
+"United States of America": {
+"text": "İlk büyük kara harekâtın. Tecrübesiz Amerikan ordusu Vichy ve Almanlarla karşılaşacak.",
+"options": [
+{
+"t": "Çıkarmayı yap (tarihî)",
+"d": "Batı Afrika ayağı",
+"fx": [
+[
+"buff",
+"United States of America",
+"att",
+1.15,
+12
+],
+[
+"rel",
+"United States of America",
+"France",
+4
+]
+],
+"r": "Amerikan birlikleri Kuzey Afrika'ya çıktı."
+},
+{
+"t": "Önce Fransa'ya çıkarma talep et",
+"d": "Müttefikle çatışma",
+"fx": [
+[
+"rel",
+"United States of America",
+"United Kingdom",
+-8
+]
+],
+"r": "Washington doğrudan Fransa çıkarması istedi; Londra direndi."
+}
+]
+},
+"France": {
+"text": "Vichy birlikleri Amerikalılara karşı mı, yoksa Müttefiklere katılmak mı? Darlan karar verecek.",
+"options": [
+{
+"t": "Ateşkes ve Müttefiklere katıl (tarihî)",
+"d": "Serbest Fransa güçleri",
+"fx": [
+[
+"ally",
+"France",
+"United Kingdom"
+],
+[
+"rel",
+"France",
+"United States of America",
+10
+]
+],
+"r": "Fransız birlikleri Kuzey Afrika'da Müttefiklere geçti."
+},
+{
+"t": "Direniş göster",
+"d": "Vichy sadakati",
+"fx": [
+[
+"troops",
+"France",
+-4
+],
+[
+"rel",
+"France",
+"Germany",
+6
+]
+],
+"r": "Vichy birlikleri bir süre direndi."
+}
+]
+},
+"Germany": {
+"text": "Vichy ihaneti Güney Fransa'nın işgalini tetikliyor; Tunus'a takviye gönderiliyor.",
+"options": [
+{
+"t": "Güney Fransa'yı işgal et (tarihî)",
+"d": "Tunus'a köprübaşı",
+"fx": [
+[
+"buff",
+"Germany",
+"def",
+1.1,
+10
+],
+[
+"stab",
+"Germany",
+-1
+]
+],
+"r": "Almanya Vichy bölgesini işgal etti ve Tunus'a takviye yolladı."
+},
+{
+"t": "Tunus'u bırak",
+"d": "Kuvvet toplama",
+"fx": [
+[
+"troops",
+"Germany",
+2
+],
+[
+"stab",
+"Germany",
+-2
+]
+],
+"r": "Almanya Tunus'u zayıf bıraktı."
+}
+]
+}
+}
+},
+{
+"id": "turkey_ww2",
+"y": 1943,
+"m": 1,
+"title": "Adana Görüşmesi",
+"scene": "pre_alliance",
+"icon": "treaty",
+"text": "Churchill Adana'da İnönü ile buluştu: Türkiye savaşa girsin mi?",
+"major": true,
+"default_fx": [],
+"roles": {
+"Turkey": {
+"text": "Churchill savaşa girmeni istiyor; Almanya sınırda, Stalingrad yeni kazanıldı. İnönü zaman kazanıyor.",
+"options": [
+{
+"t": "Tarafsız kal (tarihî)",
+"d": "Krom sat, bekle",
+"fx": [
+[
+"gold",
+"Turkey",
+6
+],
+[
+"xstab",
+"Turkey",
+5
+],
+[
+"rel",
+"Turkey",
+"United Kingdom",
+-5
+]
+],
+"r": "Türkiye 'faal tarafsızlık' sürdürdü."
+},
+{
+"t": "Müttefiklere katıl",
+"d": "Balkanlar'a yüklen",
+"fx": [
+[
+"war",
+"Turkey",
+"Germany"
+],
+[
+"war",
+"Turkey",
+"Bulgaria"
+],
+[
+"buff",
+"Turkey",
+"att",
+1.1,
+26
+],
+[
+"gold",
+"Turkey",
+8
+],
+[
+"rel",
+"Turkey",
+"United Kingdom",
+30
+]
+],
+"r": "Türk ordusu Trakya'da taarruzda."
+},
+{
+"t": "Mihver'e yanaş",
+"d": "Almanya ile anlaşma",
+"fx": [
+[
+"rel",
+"Turkey",
+"Germany",
+30
+],
+[
+"rel",
+"Turkey",
+"United Kingdom",
+-40
+],
+[
+"gold",
+"Turkey",
+4
+]
+],
+"r": "Ankara Berlin'e yaklaştı."
+}
+]
+}
+}
+},
+{
+"id": "kursk_1943",
+"y": 1943,
+"m": 7,
+"title": "Kursk Muharebesi",
+"scene": "blitz",
+"icon": "tank",
+"text": "Almanya Kursk çıkıntısını kuşatmak için Zitadelle harekâtını başlattı. Sovyetler derin mayın tarlaları ve tank savunmasıyla hazırdı; tarihin en büyük tank savaşı Prohorovka'da yaşanıyor.",
+"major": true,
+"default_fx": [
+[
+"troops",
+"Germany",
+-10
+],
+[
+"troops",
+"Russia",
+-6
+],
+[
+"buff",
+"Russia",
+"att",
+1.15,
+14
+]
+],
+"roles": {
+"Germany": {
+"text": "Hitler bu taarruzu tehlikeli buluyor; Sovyet hatları derin. Yine de inisiyatifi geri almak istiyorsun.",
+"options": [
+{
+"t": "Zitadelle'yi başlat (tarihî)",
+"d": "Son büyük taarruz",
+"fx": [
+[
+"troops",
+"Germany",
+-10
+],
+[
+"buff",
+"Germany",
+"att",
+1.1,
+4
+],
+[
+"stab",
+"Germany",
+-3
+]
+],
+"r": "Alman zırhlıları Kursk'ta tıkandı."
+},
+{
+"t": "Savunmaya geç",
+"d": "Güç tasarrufu",
+"fx": [
+[
+"buff",
+"Germany",
+"def",
+1.15,
+12
+]
+],
+"r": "Alman komutası Doğu Cephesi'nde savunmaya geçti."
+}
+]
+},
+"Russia": {
+"text": "İstihbarat Alman planını önceden bildirdi. Önce mi vuracaksın yoksa derin savunmada mı bekleyeceksin?",
+"options": [
+{
+"t": "Derin savunmada bekle (tarihî)",
+"d": "Yıprat, sonra karşı saldır",
+"fx": [
+[
+"buff",
+"Russia",
+"def",
+1.3,
+8
+],
+[
+"buff",
+"Russia",
+"att",
+1.2,
+14
+],
+[
+"stab",
+"Russia",
+4
+]
+],
+"r": "Kızıl Ordu Kursk'ta Alman zırhlılarını yıprattı."
+},
+{
+"t": "Önleyici taarruz yap",
+"d": "Riskli",
+"fx": [
+[
+"troops",
+"Russia",
+-6
+],
+[
+"buff",
+"Russia",
+"att",
+1.1,
+6
+]
+],
+"r": "Sovyet önleyici taarruzu sınırlı sonuç verdi."
+}
+]
+}
+}
+},
+{
+"id": "italy_armistice_1943",
+"y": 1943,
+"m": 9,
+"title": "İtalya'da Ateşkes",
+"scene": "peace",
+"icon": "treaty",
+"text": "Müttefikler Sicilya'dan sonra İtalya anakarasına çıktı; Mussolini devrildi, Badoglio hükûmeti ateşkes imzaladı. Almanya Kuzey İtalya'yı işgal etti, Mussolini'yi kurtardı.",
+"major": true,
+"default_fx": [
+[
+"peace",
+"Italy",
+"United Kingdom"
+],
+[
+"war",
+"Italy",
+"Germany"
+],
+[
+"stab",
+"Italy",
+-8
+]
+],
+"roles": {
+"Italy": {
+"text": "Kral Mussolini'yi tutuklattı; Müttefikle gizli ateşkes yapıldı. Almanlar Roma'ya yürüyor.",
+"options": [
+{
+"t": "Müttefiklerle ateşkes imzala (tarihî)",
+"d": "Cephe değiştir",
+"fx": [
+[
+"peace",
+"Italy",
+"United Kingdom"
+],
+[
+"war",
+"Italy",
+"Germany"
+],
+[
+"stab",
+"Italy",
+-5
+],
+[
+"rel",
+"Italy",
+"United Kingdom",
+12
+]
+],
+"r": "İtalya Müttefiklerle ateşkes imzaladı ve Almanya'ya karşı çıktı."
+},
+{
+"t": "Eksen'de kal",
+"d": "Almanya'nın yanında",
+"fx": [
+[
+"stab",
+"Italy",
+-3
+],
+[
+"rel",
+"Italy",
+"Germany",
+8
+]
+],
+"r": "Roma Eksen'e sadık kaldı."
+}
+]
+},
+"Germany": {
+"text": "Müttefikin ihanet etti. Kuzey İtalya'yı hızla işgal etmek ve Gustav Hattı'nı kurmak gerek.",
+"options": [
+{
+"t": "İtalya'yı işgal et (tarihî)",
+"d": "Direnişi kır",
+"fx": [
+[
+"buff",
+"Germany",
+"def",
+1.2,
+14
+],
+[
+"troops",
+"Germany",
+-2
+]
+],
+"r": "Alman birlikleri İtalya'nın kuzeyini işgal etti."
+},
+{
+"t": "Alplerde savun",
+"d": "Güçleri koru",
+"fx": [
+[
+"stab",
+"Germany",
+1
+]
+],
+"r": "Almanya Alpler'de savunmaya çekildi."
+}
+]
+},
+"United Kingdom": {
+"text": "İtalya ateşkes istiyor; Anzio ve Salerno'da Almanlar direniyor.",
+"options": [
+{
+"t": "İtalyan ateşkesini kabul et (tarihî)",
+"d": "Akdeniz sizin",
+"fx": [
+[
+"peace",
+"Italy",
+"United Kingdom"
+],
+[
+"buff",
+"United Kingdom",
+"att",
+1.1,
+10
+]
+],
+"r": "Müttefikler İtalya'nın ateşkesini kabul etti."
+},
+{
+"t": "Şartsız teslim iste",
+"d": "Daha sert",
+"fx": [
+[
+"rel",
+"United Kingdom",
+"Italy",
+-6
+]
+],
+"r": "Müttefikler şartsız teslim istedi."
+}
+]
+}
+}
+},
+{
+"id": "tehran_1943",
+"y": 1943,
+"m": 11,
+"title": "Tahran Konferansı",
+"scene": "pre_alliance",
+"icon": "treaty",
+"text": "Churchill, Roosevelt ve Stalin ilk kez bir araya geldi. İkinci Cephe'nin Fransa'ya açılması ve savaş sonrası Avrupa'nın şekli konuşuluyor. İnönü ise Kahire'de Türkiye'yi savaşa sokmak isteyen Müttefiklerle görüşüyor.",
+"major": true,
+"default_fx": [
+[
+"rel",
+"Russia",
+"United States of America",
+10
+],
+[
+"rel",
+"Russia",
+"United Kingdom",
+6
+]
+],
+"roles": {
+"Russia": {
+"text": "Stalin İkinci Cephe'yi istiyor; karşılığında Japonya'ya karşı savaş vaadi verebilirsin.",
+"options": [
+{
+"t": "Japonya'ya savaş sözü ver (tarihî)",
+"d": "Büyük Üçlü uyumu",
+"fx": [
+[
+"rel",
+"Russia",
+"United States of America",
+8
+],
+[
+"rel",
+"Russia",
+"United Kingdom",
+6
+],
+[
+"gold",
+"Russia",
+1.0
+]
+],
+"r": "Stalin Almanya yenildikten sonra Japonya'ya savaş sözü verdi."
+},
+{
+"t": "Doğu Avrupa'da etki iste",
+"d": "Savaş sonrası pazarlık",
+"fx": [
+[
+"rel",
+"Russia",
+"United Kingdom",
+-6
+],
+[
+"stab",
+"Russia",
+3
+]
+],
+"r": "Stalin Doğu Avrupa'da nüfuz bölgesi talep etti."
+}
+]
+},
+"United Kingdom": {
+"text": "Churchill Akdeniz ve Balkanlar'ı öncelemek istiyor; Stalin ve Roosevelt Fransa'yı.",
+"options": [
+{
+"t": "Overlord'u kabul et (tarihî)",
+"d": "Fransa'ya çıkarma",
+"fx": [
+[
+"rel",
+"United Kingdom",
+"Russia",
+6
+],
+[
+"rel",
+"United Kingdom",
+"United States of America",
+6
+]
+],
+"r": "İngiltere Overlord'u onayladı."
+},
+{
+"t": "Balkanlar'a ısrar et",
+"d": "Daha uzun savaş",
+"fx": [
+[
+"rel",
+"United Kingdom",
+"Russia",
+-6
+],
+[
+"stab",
+"United Kingdom",
+-1
+]
+],
+"r": "Churchill Balkan alternatifinde ısrar etti."
+}
+]
+},
+"United States of America": {
+"text": "Roosevelt Stalin'in güvenini kazanmak istiyor; İkinci Cephe için net tarih ver.",
+"options": [
+{
+"t": "Overlord tarihini onayla (tarihî)",
+"d": "İttifak güçlenir",
+"fx": [
+[
+"rel",
+"United States of America",
+"Russia",
+8
+],
+[
+"buff",
+"United States of America",
+"att",
+1.05,
+10
+]
+],
+"r": "Amerika Overlord için söz verdi."
+},
+{
+"t": "Pasifik'i öncele",
+"d": "Avrupa gecikir",
+"fx": [
+[
+"rel",
+"United States of America",
+"Russia",
+-6
+],
+[
+"buff",
+"United States of America",
+"att",
+1.1,
+8
+]
+],
+"r": "Washington Pasifik'e daha fazla kaynak ayırdı."
+}
+]
+},
+"Turkey": {
+"text": "Müttefikler Türkiye'nin savaşa girmesini ve hava üsleri vermesini istiyor. İnönü 'hazır değiliz' diyor.",
+"options": [
+{
+"t": "Tarafsızlığı koru (tarihî)",
+"d": "Sıkı denge politikası",
+"fx": [
+[
+"rel",
+"Turkey",
+"United Kingdom",
+-3
+],
+[
+"stab",
+"Turkey",
+3
+]
+],
+"r": "Türkiye Kahire'de savaşa girmeyi kabul etmedi."
+},
+{
+"t": "Savaşa girme sözü ver",
+"d": "Büyük risk",
+"fx": [
+[
+"rel",
+"Turkey",
+"United Kingdom",
+10
+],
+[
+"rel",
+"Turkey",
+"Germany",
+-10
+],
+[
+"gold",
+"Turkey",
+1.0
+]
+],
+"r": "Ankara Müttefiklere yaklaştı; Almanya sinirlendi."
+}
+]
+}
+}
+},
+{
 "id": "dday",
 "y": 1944,
 "m": 6,
@@ -1417,6 +3711,774 @@
 ]
 ],
 "r": "Alman ordusu Seine hattına."
+}
+]
+}
+}
+},
+{
+"id": "warsaw_1944",
+"y": 1944,
+"m": 8,
+"title": "Varşova Ayaklanması",
+"scene": "crisis",
+"icon": "flame",
+"text": "Kızıl Ordu Vistula kıyısına yaklaşırken Polonya Yurt Ordusu 1 Ağustos'ta Varşova'da ayaklandı. Sovyetler ilerlemeyi durdurdu; Almanlar şehri sistemli şekilde yok ediyor.",
+"major": true,
+"default_fx": [
+[
+"troops",
+"Poland",
+-12
+],
+[
+"stab",
+"Poland",
+-6
+],
+[
+"rel",
+"Poland",
+"Russia",
+-10
+]
+],
+"roles": {
+"Poland": {
+"text": "Londra'daki hükûmet ayaklanma emri verdi. Moskova yardım etmiyor, Müttefikler uzakta.",
+"options": [
+{
+"t": "Ayaklanmayı sürdür (tarihî)",
+"d": "Umutsuz ama onurlu",
+"fx": [
+[
+"stab",
+"Poland",
+4
+],
+[
+"troops",
+"Poland",
+-8
+]
+],
+"r": "Varşova 63 gün direndi ve yıkıldı."
+},
+{
+"t": "Ateşkes iste",
+"d": "Sivil kayıpları azalt",
+"fx": [
+[
+"stab",
+"Poland",
+-4
+]
+],
+"r": "Yurt Ordusu teslim şartlarını görüştü."
+}
+]
+},
+"Russia": {
+"text": "Almanlar Polonya Yurt Ordusu'nu eziyor; bu Moskova'ya rakip bir hükûmeti de yok edecek.",
+"options": [
+{
+"t": "Vistula'da bekle (tarihî)",
+"d": "Siyasi hesap",
+"fx": [
+[
+"rel",
+"Russia",
+"United Kingdom",
+-8
+],
+[
+"rel",
+"Russia",
+"Poland",
+-8
+],
+[
+"stab",
+"Russia",
+1
+]
+],
+"r": "Kızıl Ordu Vistula kıyısında durdu."
+},
+{
+"t": "Varşova'ya ilerle",
+"d": "Müttefiklerle uyum",
+"fx": [
+[
+"troops",
+"Russia",
+-6
+],
+[
+"rel",
+"Russia",
+"United Kingdom",
+6
+],
+[
+"rel",
+"Russia",
+"Poland",
+6
+]
+],
+"r": "Sovyet birlikleri Varşova'ya yönelmek zorunda kaldı."
+}
+]
+},
+"Germany": {
+"text": "Ayaklanma arkanda; Himmler şehri yerle bir etmek istiyor.",
+"options": [
+{
+"t": "Ayaklanmayı ez (tarihî)",
+"d": "Sert bastırma",
+"fx": [
+[
+"troops",
+"Poland",
+-8
+],
+[
+"buff",
+"Germany",
+"def",
+1.1,
+8
+],
+[
+"rel",
+"Germany",
+"United Kingdom",
+-5
+]
+],
+"r": "Alman birlikleri Varşova'yı yerle bir etti."
+},
+{
+"t": "Güçleri Batı'ya kaydır",
+"d": "Cephe önceliği",
+"fx": [
+[
+"stab",
+"Germany",
+1
+]
+],
+"r": "Almanya güçlerini Doğu Cephesi'nde tuttu."
+}
+]
+}
+}
+},
+{
+"id": "leyte_1944",
+"y": 1944,
+"m": 10,
+"title": "Leyte Körfezi",
+"scene": "carrier",
+"icon": "carrier",
+"text": "Amerikan kuvvetleri Filipinler'e çıktı; Japon filosu son büyük deniz savaşında dört ayrı kolla karşılık verdi. Dünyanın en büyük deniz savaşı Japon donanmasını fiilen yok etti.",
+"major": true,
+"default_fx": [
+[
+"troops",
+"Japan",
+-10
+],
+[
+"stab",
+"Japan",
+-5
+],
+[
+"buff",
+"United States of America",
+"att",
+1.15,
+12
+]
+],
+"roles": {
+"Japan": {
+"text": "Filo yakıtsız; çıkarma filosuna son hamleyi yapmak için kamikaze ve yem gemileri hazırlandı.",
+"options": [
+{
+"t": "Sho-Go planını uygula (tarihî)",
+"d": "Son büyük kumar",
+"fx": [
+[
+"troops",
+"Japan",
+-8
+],
+[
+"buff",
+"Japan",
+"att",
+1.1,
+4
+],
+[
+"stab",
+"Japan",
+-3
+]
+],
+"r": "Japon donanması Leyte'de ağır yenilgi aldı."
+},
+{
+"t": "Filoyu limanda sakla",
+"d": "Kaynak tasarrufu",
+"fx": [
+[
+"stab",
+"Japan",
+-2
+],
+[
+"buff",
+"United States of America",
+"att",
+1.05,
+8
+]
+],
+"r": "Japon filosu limanda kaldı; Filipinler savunmasız."
+}
+]
+},
+"United States of America": {
+"text": "MacArthur 'Döneceğim' sözünü tutuyor. Üç Amerikan filosu Leyte'de.",
+"options": [
+{
+"t": "Filipinler'i geri al (tarihî)",
+"d": "Pasifik'te kesin üstünlük",
+"fx": [
+[
+"buff",
+"United States of America",
+"att",
+1.2,
+14
+],
+[
+"gold",
+"United States of America",
+1.0
+]
+],
+"r": "Amerikan kuvvetleri Leyte'ye çıktı ve donanma zaferi kazandı."
+},
+{
+"t": "Formosa'ya yönel",
+"d": "Alternatif hedef",
+"fx": [
+[
+"stab",
+"United States of America",
+1
+]
+],
+"r": "Washington Formosa seçeneğini değerlendirdi."
+}
+]
+}
+}
+},
+{
+"id": "bulge_1944",
+"y": 1944,
+"m": 12,
+"title": "Ardenler Taarruzu",
+"scene": "blitz",
+"icon": "tank",
+"text": "Hitler Batı'da son kumarı oynadı: sisli Ardenler'den Anvers'e saldırı. Müttefik hatları şaşırdı; Bastogne kuşatıldı. Hava açılınca Müttefik uçakları taarruzu durdurdu.",
+"major": true,
+"default_fx": [
+[
+"troops",
+"Germany",
+-12
+],
+[
+"troops",
+"United States of America",
+-6
+],
+[
+"stab",
+"Germany",
+-4
+]
+],
+"roles": {
+"Germany": {
+"text": "Yakıt ve rezerv sınırlı. Kötü hava Müttefik hava gücünü engelliyor ama bu uzun sürmeyecek.",
+"options": [
+{
+"t": "Anvers'e yüklen (tarihî)",
+"d": "Büyük kumar",
+"fx": [
+[
+"buff",
+"Germany",
+"att",
+1.25,
+4
+],
+[
+"troops",
+"Germany",
+-10
+],
+[
+"stab",
+"Germany",
+-3
+]
+],
+"r": "Alman zırhlıları Ardenler'de yakıtsız kaldı."
+},
+{
+"t": "Güçleri Doğu'ya ayır",
+"d": "Savunmayı güçlendir",
+"fx": [
+[
+"buff",
+"Germany",
+"def",
+1.1,
+10
+]
+],
+"r": "Almanya yedeklerini Doğu Cephesi'ne kaydırdı."
+}
+]
+},
+"United States of America": {
+"text": "Bastogne'de 101. Hava İndirme kuşatıldı. Patton kuzeye dönmek üzere.",
+"options": [
+{
+"t": "Bastogne'yi kurtar (tarihî)",
+"d": "Patton'ı yönlendir",
+"fx": [
+[
+"buff",
+"United States of America",
+"def",
+1.2,
+6
+],
+[
+"buff",
+"United States of America",
+"att",
+1.15,
+10
+]
+],
+"r": "Amerikan 3. Ordusu Bastogne'a ulaştı."
+},
+{
+"t": "Hattı yeniden kur",
+"d": "Sağlam ama yavaş",
+"fx": [
+[
+"buff",
+"United States of America",
+"def",
+1.15,
+8
+]
+],
+"r": "Müttefikler hattı yeniden kurdu."
+}
+]
+},
+"United Kingdom": {
+"text": "Montgomery kuzeyde komutayı devraldı; Alman ilerleyişi Muse'ta durdurulmalı.",
+"options": [
+{
+"t": "Muse hattını tut (tarihî)",
+"d": "Kuzey kanadı güvene al",
+"fx": [
+[
+"buff",
+"United Kingdom",
+"def",
+1.2,
+8
+]
+],
+"r": "İngiliz XXX Kolordu Muse hattını tuttu."
+},
+{
+"t": "Karşı taarruz yap",
+"d": "Riskli",
+"fx": [
+[
+"buff",
+"United Kingdom",
+"att",
+1.1,
+6
+],
+[
+"troops",
+"United Kingdom",
+-3
+]
+],
+"r": "İngiliz birlikleri karşı taarruza geçti."
+}
+]
+}
+}
+},
+{
+"id": "yalta_1945",
+"y": 1945,
+"m": 2,
+"title": "Yalta Konferansı",
+"scene": "pre_alliance",
+"icon": "treaty",
+"text": "Churchill, Roosevelt ve Stalin Kırım'da savaş sonrası Avrupa'yı ve Almanya'nın işgal bölgelerini kararlaştırdı. Sovyetler Japonya'ya karşı savaşa girmeyi onayladı; Doğu Avrupa'nın kaderi belirsiz.",
+"major": true,
+"default_fx": [
+[
+"rel",
+"Russia",
+"United States of America",
+6
+],
+[
+"rel",
+"Russia",
+"United Kingdom",
+4
+],
+[
+"stab",
+"Germany",
+-3
+]
+],
+"roles": {
+"Russia": {
+"text": "Kızıl Ordu Berlin'e 70 km mesafede; Doğu Avrupa'da nüfuz istiyorsun.",
+"options": [
+{
+"t": "Doğu Avrupa'da nüfuz kazan (tarihî)",
+"d": "Savaş sonrası pazarlık",
+"fx": [
+[
+"rel",
+"Russia",
+"United Kingdom",
+-6
+],
+[
+"gold",
+"Russia",
+1.0
+],
+[
+"stab",
+"Russia",
+3
+]
+],
+"r": "Stalin Polonya ve Doğu Avrupa üzerinde nüfuz elde etti."
+},
+{
+"t": "Japonya'ya savaş taahhüdünü artır",
+"d": "Müttefiklere yardım",
+"fx": [
+[
+"rel",
+"Russia",
+"United States of America",
+8
+]
+],
+"r": "Sovyetler Japonya'ya karşı savaş sözünü teyit etti."
+}
+]
+},
+"United Kingdom": {
+"text": "Churchill Polonya'nın bağımsızlığı için endişeli; Sovyet isteklerini sınırlamak istiyor.",
+"options": [
+{
+"t": "Özgür seçim talep et (tarihî)",
+"d": "Polonya için garanti",
+"fx": [
+[
+"rel",
+"United Kingdom",
+"Russia",
+-4
+],
+[
+"rel",
+"United Kingdom",
+"Poland",
+8
+]
+],
+"r": "Churchill Polonya'da özgür seçim sözü aldı."
+},
+{
+"t": "Stalin'le uzlaş",
+"d": "Savaşı hızla bitir",
+"fx": [
+[
+"rel",
+"United Kingdom",
+"Russia",
+6
+],
+[
+"rel",
+"United Kingdom",
+"Poland",
+-6
+]
+],
+"r": "İngiltere Sovyetlerle uzlaştı."
+}
+]
+},
+"United States of America": {
+"text": "Roosevelt hasta; Sovyetlerin Pasifik savaşına katılması ve Birleşmiş Milletler öncelik.",
+"options": [
+{
+"t": "Sovyetleri Pasifik'e davet et (tarihî)",
+"d": "Birleşmiş Milletler kurulsun",
+"fx": [
+[
+"rel",
+"United States of America",
+"Russia",
+8
+],
+[
+"buff",
+"United States of America",
+"att",
+1.05,
+10
+]
+],
+"r": "Roosevelt Stalin'den Japonya'ya savaş sözü aldı."
+},
+{
+"t": "Doğu Avrupa'da sert ol",
+"d": "Gerginlik artar",
+"fx": [
+[
+"rel",
+"United States of America",
+"Russia",
+-6
+]
+],
+"r": "Washington Doğu Avrupa konusunda sertleşti."
+}
+]
+}
+}
+},
+{
+"id": "berlin_1945",
+"y": 1945,
+"m": 4,
+"title": "Berlin Muharebesi",
+"scene": "blitz",
+"icon": "flag",
+"text": "Kızıl Ordu Oder'i aşıp Berlin'i kuşattı; Hitler 30 Nisan'da bunkerde intihar etti. Almanya birkaç gün içinde teslim olacak.",
+"major": true,
+"default_fx": [
+[
+"peace",
+"Germany",
+"United Kingdom"
+],
+[
+"peace",
+"Germany",
+"United States of America"
+],
+[
+"peace",
+"Germany",
+"Russia"
+],
+[
+"stab",
+"Germany",
+-15
+]
+],
+"roles": {
+"Germany": {
+"text": "Berlin kuşatıldı; Volkssturm çocuk ve yaşlılardan oluşuyor. Dönitz görevi devralıyor.",
+"options": [
+{
+"t": "Şartsız teslim ol (tarihî)",
+"d": "Savaş biter",
+"fx": [
+[
+"peace",
+"Germany",
+"United Kingdom"
+],
+[
+"peace",
+"Germany",
+"United States of America"
+],
+[
+"peace",
+"Germany",
+"Russia"
+],
+[
+"stab",
+"Germany",
+-8
+]
+],
+"r": "Almanya 8 Mayıs'ta şartsız teslim oldu."
+},
+{
+"t": "Batı'ya teslim olmaya çalış",
+"d": "Sovyet baskısı",
+"fx": [
+[
+"stab",
+"Germany",
+-6
+],
+[
+"troops",
+"Germany",
+-8
+]
+],
+"r": "Almanya Batı'ya teslim olmak istedi; Müttefikler reddetti."
+}
+]
+},
+"Russia": {
+"text": "Zhukov ve Konev Berlin için yarışıyor. Şehre ilk giren zaferi alacak.",
+"options": [
+{
+"t": "Berlin'i fırtınayla al (tarihî)",
+"d": "Büyük kayıp, büyük zafer",
+"fx": [
+[
+"buff",
+"Russia",
+"att",
+1.2,
+8
+],
+[
+"troops",
+"Russia",
+-8
+],
+[
+"stab",
+"Russia",
+6
+]
+],
+"r": "Kızıl Ordu Berlin'i fethetti; bayrak Reichstag'a dikildi."
+},
+{
+"t": "Kuşatmayı sıkılaştır",
+"d": "Daha az kayıp",
+"fx": [
+[
+"stab",
+"Russia",
+3
+]
+],
+"r": "Sovyetler Berlin'i kuşatmada tuttu."
+}
+]
+},
+"United States of America": {
+"text": "Eisenhower Elbe'de durdu; Berlin Sovyetlere bırakıldı.",
+"options": [
+{
+"t": "Elbe'de dur (tarihî)",
+"d": "Müttefik uyumu",
+"fx": [
+[
+"rel",
+"United States of America",
+"Russia",
+6
+]
+],
+"r": "Amerikan orduları Elbe'de Sovyetlerle buluştu."
+},
+{
+"t": "Berlin'e ilerle",
+"d": "Prestij ama risk",
+"fx": [
+[
+"rel",
+"United States of America",
+"Russia",
+-8
+],
+[
+"troops",
+"United States of America",
+-4
+]
+],
+"r": "Amerikan birlikleri Berlin'e yöneldi."
+}
+]
+},
+"United Kingdom": {
+"text": "Batı orduları Elbe'ye ulaştı. Almanya'nın teslimi an meselesi.",
+"options": [
+{
+"t": "Zafer günü ilan et (tarihî)",
+"d": "Avrupa'da savaş bitti",
+"fx": [
+[
+"stab",
+"United Kingdom",
+6
+]
+],
+"r": "Churchill Avrupa'da zaferi ilan etti."
+},
+{
+"t": "Pasifik'e kaydır",
+"d": "Uzak Doğu'ya odaklan",
+"fx": [
+[
+"buff",
+"United Kingdom",
+"att",
+1.1,
+8
+]
+],
+"r": "İngiltere kuvvetlerini Uzak Doğu'ya yöneltti."
 }
 ]
 }
@@ -1567,106 +4629,6 @@
 ]
 ],
 "r": "Japonya ölümüne direniyor."
-}
-]
-}
-}
-},
-{
-"id": "turkey_ww2",
-"y": 1943,
-"m": 1,
-"title": "Adana Görüşmesi",
-"scene": "pre_alliance",
-"icon": "treaty",
-"text": "Churchill Adana'da İnönü ile buluştu: Türkiye savaşa girsin mi?",
-"major": true,
-"default_fx": [],
-"roles": {
-"Turkey": {
-"text": "Churchill savaşa girmeni istiyor; Almanya sınırda, Stalingrad yeni kazanıldı. İnönü zaman kazanıyor.",
-"options": [
-{
-"t": "Tarafsız kal (tarihî)",
-"d": "Krom sat, bekle",
-"fx": [
-[
-"gold",
-"Turkey",
-6
-],
-[
-"xstab",
-"Turkey",
-5
-],
-[
-"rel",
-"Turkey",
-"United Kingdom",
--5
-]
-],
-"r": "Türkiye 'faal tarafsızlık' sürdürdü."
-},
-{
-"t": "Müttefiklere katıl",
-"d": "Balkanlar'a yüklen",
-"fx": [
-[
-"war",
-"Turkey",
-"Germany"
-],
-[
-"war",
-"Turkey",
-"Bulgaria"
-],
-[
-"buff",
-"Turkey",
-"att",
-1.1,
-26
-],
-[
-"gold",
-"Turkey",
-8
-],
-[
-"rel",
-"Turkey",
-"United Kingdom",
-30
-]
-],
-"r": "Türk ordusu Trakya'da taarruzda."
-},
-{
-"t": "Mihver'e yanaş",
-"d": "Almanya ile anlaşma",
-"fx": [
-[
-"rel",
-"Turkey",
-"Germany",
-30
-],
-[
-"rel",
-"Turkey",
-"United Kingdom",
--40
-],
-[
-"gold",
-"Turkey",
-4
-]
-],
-"r": "Ankara Berlin'e yaklaştı."
 }
 ]
 }
@@ -1897,6 +4859,435 @@
 "Türk ordusu Trakya'da taarruzda.": "The Turkish army is attacking in Thrace.",
 "Mihver'e yanaş": "Lean toward the Axis",
 "Almanya ile anlaşma": "A deal with Germany",
-"Ankara Berlin'e yaklaştı.": "Ankara drew closer to Berlin."
+"Ankara Berlin'e yaklaştı.": "Ankara drew closer to Berlin.",
+"Varşova'yı savun (tarihî)": "Defend Warsaw (historical)",
+"Son direniş": "Last stand",
+"Varşova haftalarca direndi.": "Warsaw held out for weeks.",
+"Romanya'ya çekil": "Retreat into Romania",
+"Polonya hükûmeti ve ordu kalıntıları Romanya'ya çekildi.": "The Polish government and army remnants withdrew into Romania.",
+"Panzerler sınırı aştı, Varşova kuşatılıyor. Müttefikler söz verdi ama gelmiyor.": "Panzers crossed the border and Warsaw is besieged. The Allies promised help but are not coming.",
+"Polonya'yı hızla bitir (tarihî)": "Finish Poland quickly (historical)",
+"Sürat ve şok": "Speed and shock",
+"Wehrmacht Polonya'yı üç haftada ezdi.": "The Wehrmacht crushed Poland in weeks.",
+"Batı için rezerv tut": "Hold reserves for the West",
+"Temkinli": "Cautious",
+"Alman komutası Batı için güç ayırdı.": "German command held back forces for the West.",
+"Yıldırım Savaşı işliyor. Sovyetlerle gizli protokol imzalı.": "Blitzkrieg is working. The secret protocol with the Soviets is signed.",
+"BEF'i Fransa'ya gönder (tarihî)": "Send the BEF to France (historical)",
+"Kıta taahhüdü": "A continental commitment",
+"İngiliz Seferi Kuvveti Fransa'ya çıktı.": "The British Expeditionary Force landed in France.",
+"Ablukayı sürdür": "Rely on the blockade",
+"Deniz gücü": "Sea power",
+"Kraliyet Donanması Almanya'yı abluka altına aldı.": "The Royal Navy blockaded Germany.",
+"Chamberlain savaş ilan etti. Cephe yok; 'Sahte Savaş' başlıyor.": "Chamberlain declared war. There is no front; the 'Phoney War' begins.",
+"Maginot'da bekle (tarihî)": "Wait behind the Maginot (historical)",
+"Savunmaya güven": "Trust defence",
+"Fransa Maginot arkasında bekledi.": "France waited behind the Maginot Line.",
+"Saar'a sınırlı saldırı": "A limited Saar offensive",
+"Almanları oyala": "Pin the Germans",
+"Fransız birlikleri Saar'a ilerledi ve durdu.": "French troops advanced into the Saar and halted.",
+"Maginot Hattı'na güveniyorsun. Saldırı mı savunma mı?": "You trust the Maginot Line. Attack or defend?",
+"Polonya'nın Düşüşü": "The Fall of Poland",
+"Almanya 1 Eylül'de Polonya'ya saldırdı; Sovyetler 17 Eylül'de doğudan girdi. İngiltere ve Fransa savaş ilan etti ama Batı Cephesi sessiz.": "Germany attacked Poland on 1 September; the Soviets entered from the east on 17 September. Britain and France declared war but the Western Front stays quiet.",
+"Narvik'te diren (tarihî)": "Resist at Narvik (historical)",
+"Müttefik yardımı bekle": "Await Allied aid",
+"Norveç ve Müttefikler Narvik'i geri aldı; sonra çekildi.": "Norway and the Allies retook Narvik, then withdrew.",
+"Teslim ol": "Surrender",
+"Kayıp az": "Fewer casualties",
+"Norveç hızla teslim oldu.": "Norway surrendered quickly.",
+"Alman gemileri Oslo fiyordunda; kral ve hükûmet kaçışta.": "German ships are in the Oslofjord; the king and government are fleeing.",
+"Skandinavya'yı tahkim et (tarihî)": "Fortify Scandinavia (historical)",
+"Cevher ve üsler": "Ore and bases",
+"Almanya Norveç'i işgal altında tuttu.": "Germany held Norway under occupation.",
+"Güçleri Batı için çek": "Pull forces west",
+"Fransa'ya odaklan": "Focus on France",
+"Alman birlikleri Fransa harekâtına kaydı.": "German units shifted to the French campaign.",
+"Kriegsmarine büyük kayıp verdi ama Norveç elde. Narvik'i tutmak şart.": "The Kriegsmarine took heavy losses but Norway is in hand. Holding Narvik is vital.",
+"Narvik'e takviye (tarihî)": "Reinforce Narvik (historical)",
+"Cevheri kes": "Cut the ore",
+"İngiliz ve Fransız birlikleri Narvik'te savaştı.": "British and French troops fought at Narvik.",
+"Çekil ve Fransa'ya odaklan": "Withdraw and focus on France",
+"Güç topla": "Concentrate strength",
+"İngiltere Norveç'ten çekildi.": "Britain pulled out of Norway.",
+"Norveç seferi dağınık; Churchill Amirallik'te.": "The Norwegian campaign is chaotic; Churchill is at the Admiralty.",
+"Weserübung: Norveç ve Danimarka": "Weserübung: Norway and Denmark",
+"Almanya bir gecede Danimarka'yı aldı ve Norveç limanlarına çıkarma yaptı. Narvik demir cevheri hattı için kritik. İngiliz donanması Narvik'te Alman muhripleri batırdı.": "Germany took Denmark in a night and landed at Norwegian ports. Narvik is critical for the iron ore route. The Royal Navy sank German destroyers there.",
+"Savaşa gir (tarihî)": "Enter the war (historical)",
+"Fransa'dan pay al": "Claim a share of France",
+"İtalya Fransa'ya saldırdı; Alpler'de ilerleyemedi.": "Italy attacked France but gained little in the Alps.",
+"Gücü koru": "Preserve strength",
+"Roma 'savaşsız' statüsünü korudu.": "Rome kept its 'non-belligerent' status.",
+"Duce çöküşten pay almak istiyor. Genelkurmay hazırlıksız.": "The Duce wants a share of the collapse. The general staff is unprepared.",
+"Ateşkes imzala (tarihî)": "Sign an armistice (historical)",
+"Vichy rejimi": "The Vichy regime",
+"Fransa Compiègne'de ateşkes imzaladı.": "France signed the armistice at Compiègne.",
+"Kuzey Afrika'dan savaş": "Fight on from North Africa",
+"Direniş sürsün": "Keep fighting",
+"Fransız hükûmeti Cezayir'den savaşı sürdürmeye çalıştı.": "The French government tried to fight on from Algeria.",
+"Hükûmet Bordeaux'ya kaçtı; Pétain ateşkes istiyor.": "The government fled to Bordeaux; Pétain wants an armistice.",
+"Malta ve Mısır'ı tahkim et (tarihî)": "Fortify Malta and Egypt (historical)",
+"Akdeniz'i kaybetme": "Hold the Mediterranean",
+"İngiltere Malta'yı donanma üssü olarak güçlendirdi.": "Britain built up Malta as a naval base.",
+"Fransız filosunu önle": "Neutralize the French fleet",
+"Sert ama güvenli": "Harsh but safe",
+"Kraliyet Donanması Mers-el-Kebir'de Fransız gemilerine ateş açtı.": "The Royal Navy opened fire on the French ships at Mers-el-Kebir.",
+"Fransa düşüyor, İtalya savaşa girdi. Akdeniz'de tek başınasın.": "France is falling and Italy has joined in. In the Mediterranean you stand alone.",
+"İtalya Savaşa Girdi": "Italy Enters the War",
+"Fransa çökerken Mussolini 10 Haziran'da Britanya ve Fransa'ya savaş ilan etti. Roma 'kolay zafer' bekliyor; ordusu hazır değil.": "As France collapses Mussolini declared war on Britain and France on 10 June. Rome expects an easy victory; the army is unprepared.",
+"Paktı imzala (tarihî)": "Sign the Pact (historical)",
+"Eksen'e katıl": "Join the Axis",
+"Tokyo Üçlü Pakt'a katıldı; Washington sertleşti.": "Tokyo joined the Tripartite Pact; Washington hardened.",
+"Bağımsız kal": "Stay independent",
+"Diplomasi şansı": "A diplomatic chance",
+"Japonya bağımsız manevra alanını korudu.": "Japan kept its freedom of manoeuvre.",
+"Çin'de bataklık; petrol ve kauçuk için Güneydoğu Asya cazip. ABD ambargo tehdidinde.": "A quagmire in China; Southeast Asia is tempting for oil and rubber. The US threatens an embargo.",
+"İngiltere'ye yardım artır (tarihî)": "Increase aid to Britain (historical)",
+"Destroyers-for-bases": "Destroyers for bases",
+"Washington İngiltere'ye muhrip verdi, üs aldı.": "Washington gave Britain destroyers in exchange for bases.",
+"İzolasyon": "Isolation",
+"Amerika dışarıda kaldı.": "America stayed out.",
+"Roosevelt 'demokrasinin cephaneliği' vizyonunda; Kongre izolasyonda.": "Roosevelt envisions an 'arsenal of democracy'; Congress leans isolationist.",
+"Üçlü Pakt": "The Tripartite Pact",
+"Berlin'de Almanya, İtalya ve Japonya askeri ittifak imzaladı. Hedef ABD'yi caydırmak. Japonya Fransız Çinhindi'ne giriyor.": "Germany, Italy and Japan signed a military alliance in Berlin. The aim is to deter the United States. Japan is moving into French Indochina.",
+"Karşı taarruz yap (tarihî)": "Counterattack (historical)",
+"Arnavutluk'a gir": "Push into Albania",
+"Yunanlar Arnavutluk'un güneyine girdi.": "The Greeks pushed into southern Albania.",
+"Savunmada kal": "Hold the line",
+"Yıpratmaya oyna": "Wear them down",
+"Yunan ordusu hattı tuttu.": "The Greek army held the line.",
+"İtalyan taarruzu Epir'de takıldı. İngiltere hava desteği öneriyor.": "The Italian offensive has stalled in Epirus. Britain offers air support.",
+"Takviye ve yeni taarruz": "Reinforce and re-attack",
+"Onuru kurtar": "Save face",
+"İtalya Arnavutluk'ta yeniden taarruz hazırladı.": "Italy prepared a fresh attack in Albania.",
+"Almanya'dan yardım iste (tarihî)": "Ask Germany for help (historical)",
+"Bağımlılık": "Dependence",
+"Roma Berlin'den yardım istedi; Balkanlar kaçınılmaz.": "Rome asked Berlin for help; the Balkans became inevitable.",
+"Yağmur ve dağlar harekâtı çamura çevirdi; Hitler öfkeli.": "Rain and mountains turned the campaign to mud; Hitler is furious.",
+"Balkan harekâtı hazırla (tarihî)": "Prepare a Balkan campaign (historical)",
+"Güney yanını kapat": "Secure the southern flank",
+"Berlin Balkanlar'a hazırlık başlattı.": "Berlin began preparing for the Balkans.",
+"Müdahale etme": "Stay out",
+"Güç koru": "Save strength",
+"Almanya Balkanlar'a girmedi.": "Germany stayed out of the Balkans.",
+"Müttefikin başarısızlığı Balkanlar'ı açıyor; Barbarossa öncesi güney yanı güvenli olmalı.": "Your ally's failure opens the Balkans; the southern flank must be safe before Barbarossa.",
+"İtalya Yunanistan'a Saldırdı": "Italy Invades Greece",
+"28 Ekim'de Mussolini Arnavutluk'tan Yunanistan'a saldırdı; Metaxas 'Hayır!' dedi. Yunan ordusu dağlarda İtalyanları geri püskürtüyor.": "On 28 October Mussolini invaded Greece from Albania; Metaxas said 'No!'. The Greek army is driving the Italians back in the mountains.",
+"Trablus'a kadar ilerle": "Advance to Tripoli",
+"Kuzey Afrika'yı bitir": "Finish North Africa",
+"İngiliz ordusu Bingazi'yi aldı.": "The British army took Benghazi.",
+"Güçleri Yunanistan'a kaydır (tarihî)": "Shift forces to Greece (historical)",
+"Balkan taahhüdü": "The Balkan commitment",
+"Churchill birlikleri Yunanistan'a gönderdi; Libya'da ilerleme durdu.": "Churchill sent troops to Greece; the Libyan advance stalled.",
+"Wavell'in küçük ordusu İtalya'yı yenerek Cyrenaica'ya ilerliyor.": "Wavell's small army is routing Italy and advancing into Cyrenaica.",
+"Alman yardımı kabul et (tarihî)": "Accept German help (historical)",
+"Rommel gelsin": "Let Rommel come",
+"Roma Afrika'ya Alman birlikleri çağırdı.": "Rome called German troops to Africa.",
+"Tek başına tut": "Hold alone",
+"Gurur": "Pride",
+"İtalya Trablus'ta kendi başına tutunmaya çalıştı.": "Italy tried to hold Tripolitania alone.",
+"Libya'daki ordun dağıldı. Almanya Afrika Korpusu göndermeyi düşünüyor.": "Your army in Libya is shattered. Germany considers sending an Afrika Korps.",
+"Pusula Harekâtı": "Operation Compass",
+"İngiliz ve Hint birlikleri Mısır'dan Libya'ya saldırdı; Sidi Barrani'de yüz binlik İtalyan ordusu çöktü. Rommel henüz Afrika'da değil.": "British and Indian troops attacked from Egypt into Libya; at Sidi Barrani a hundred thousand Italians collapsed. Rommel is not yet in Africa.",
+"Girit'e çekil (tarihî)": "Withdraw to Crete (historical)",
+"Direniş adada": "Resist on the island",
+"Hükûmet ve İngiliz birlikleri Girit'e çekildi.": "The government and British troops pulled back to Crete.",
+"Ateşkes iste": "Seek a truce",
+"Kan dökülmesin": "Spare the bloodshed",
+"Atina ateşkes istedi.": "Athens sought an armistice.",
+"Alman panzerleri Metaxas Hattı'nı aştı; İngiliz birlikleri geri çekiliyor.": "German panzers broke through the Metaxas Line; British troops are withdrawing.",
+"Balkanları hızla ez (tarihî)": "Crush the Balkans quickly (historical)",
+"Güney yanı güvende": "The southern flank secured",
+"Wehrmacht iki haftada Balkanlar'ı aldı.": "The Wehrmacht took the Balkans in two weeks.",
+"Sadece Yugoslavya'yı al": "Take only Yugoslavia",
+"Barbarossa'yı kaçırma": "Do not delay Barbarossa",
+"Alman operasyonu sınırlı kaldı.": "The German operation stayed limited.",
+"Balkanlar kısa sürede düşecek; Barbarossa bir ay gecikecek.": "The Balkans will fall quickly; Barbarossa will slip by a month.",
+"Dağlara çekil, direniş kur (tarihî)": "Withdraw to the hills and resist (historical)",
+"Partizan savaşı": "Partisan war",
+"Yugoslav direniş grupları dağlara çekildi.": "Yugoslav resistance groups took to the hills.",
+"Yugoslav hükûmeti teslim oldu.": "The Yugoslav government surrendered.",
+"Prens Paul'ün Eksen'e katılması darbeyle devrildi; Alman bombaları Belgrad'da.": "Prince Paul's accession to the Axis was overthrown by a coup; German bombs are falling on Belgrade.",
+"Yugoslavya ve Yunanistan'ın Düşüşü": "The Fall of Yugoslavia and Greece",
+"Belgrad'daki darbenin ardından Almanya 6 Nisan'da Yugoslavya ve Yunanistan'a saldırdı. İki hafta içinde Balkanlar Eksen'in elinde.": "After the coup in Belgrade Germany attacked Yugoslavia and Greece on 6 April. Within weeks the Balkans are in Axis hands.",
+"Her pahasına tut (tarihî)": "Hold at all costs (historical)",
+"Ladoga yaşam yolu": "The Ladoga lifeline",
+"Leningrad kuşatmaya direndi.": "Leningrad withstood the siege.",
+"Şehri boşalt": "Evacuate the city",
+"Kayıp azalır": "Fewer losses",
+"Sovyetler Leningrad'ın bir kısmını boşalttı.": "The Soviets evacuated part of Leningrad.",
+"Stalin 'Leningrad teslim olmayacak' dedi. Ladoga Gölü üzerinden yaşam yolu açılabilir.": "Stalin said 'Leningrad will not surrender'. A lifeline across Lake Ladoga may be opened.",
+"Kuşatmayı sürdür (tarihî)": "Maintain the siege (historical)",
+"Güçleri Moskova'ya kaydır": "Redeploy to Moscow",
+"Alman ordusu şehri kuşatmada tuttu.": "The German army kept the city encircled.",
+"Fırtınayla al": "Storm the city",
+"Sokak savaşı riski": "Urban combat risk",
+"Alman saldırıları şehir kenarında durdu.": "German attacks bogged down at the city edge.",
+"Hitler şehri almak yerine açlıktan teslim etmek istiyor.": "Hitler would rather starve the city into surrender than storm it.",
+"Eski sınırda dur (tarihî)": "Stop at the old border (historical)",
+"Sınırlı hedef": "Limited aims",
+"Finlandiya eski sınırda durdu.": "Finland halted at the old border.",
+"Şehre doğru ilerle": "Advance on the city",
+"Almanya'ya yaklaş": "Closer to Germany",
+"Fin birlikleri Svir'e kadar ilerledi.": "Finnish troops advanced to the Svir.",
+"Alman müttefikin Leningrad'a baskı için eski sınırın ötesine geçmeni istiyor.": "Your German ally wants you to go beyond the old border to press Leningrad.",
+"Leningrad Kuşatması": "The Siege of Leningrad",
+"Alman ve Fin orduları Leningrad'ı çevirdi. Şehir 872 gün abluka altında kalacak; açlık ve soğuk yüz binlerce can alacak.": "German and Finnish armies encircled Leningrad. The city will be under blockade for 872 days; hunger and cold will claim hundreds of thousands.",
+"Burma ve Hollanda Doğu Hint'ine yüklen (tarihî)": "Press into Burma and the Dutch East Indies (historical)",
+"Petrol ve kauçuk": "Oil and rubber",
+"Japonya Burma'ya ve Hint Adaları'na girdi.": "Japan entered Burma and the East Indies.",
+"Kazanımları tahkim et": "Consolidate",
+"Savunma çevresi": "A defensive perimeter",
+"Japonya fethedilen yerleri tahkim etti.": "Japan consolidated its conquests.",
+"Singapur düştü; petrol bölgeleri ve Burma açık. Yayılma sınırını nerede çizeceksin?": "Singapore has fallen; the oil regions and Burma lie open. Where do you draw the line of expansion?",
+"Hindistan'ı tahkim et (tarihî)": "Fortify India (historical)",
+"Burma hattını tut": "Hold the Burma line",
+"İngiltere Hindistan sınırında savunma kurdu.": "Britain organised the defence on the Indian frontier.",
+"Amerika'dan donanma desteği iste": "Ask the US for naval support",
+"Pasifik'te ittifak": "An alliance in the Pacific",
+"Londra Pasifik'te Amerikan desteğini artırdı.": "London deepened Pacific cooperation with the US.",
+"Doğu'daki imparatorluk sarsıldı. Hindistan ve Avustralya'yı savunmak zorundasın.": "The empire in the East is shaken. You must defend India and Australia.",
+"Singapur'un Düşüşü": "The Fall of Singapore",
+"Japon 25. Ordusu Malaya'dan inip Singapur'u 15 Şubat'ta aldı. Yüz bini aşkın İngiliz Commonwealth askeri esir; Churchill buna 'en büyük felaket' dedi.": "The Japanese 25th Army swept down Malaya and took Singapore on 15 February. Over a hundred thousand Commonwealth troops were captured; Churchill called it the 'worst disaster'.",
+"Planı uygula (tarihî)": "Execute the plan (historical)",
+"Büyük kumar": "The big gamble",
+"Japonya dört uçak gemisini kaybetti.": "Japan lost four carriers.",
+"Midway'den vazgeç": "Abandon Midway",
+"Filoyu koru": "Preserve the fleet",
+"Japon planı iptal edildi; Doğu Pasifik'te saldırı ertelendi.": "The Japanese plan was cancelled; the Eastern Pacific attack was postponed.",
+"Yamamoto Midway'i yem yapıp Amerikan filosunu yok etmek istiyor; ama Amerikalılar şifreyi çözdü.": "Yamamoto wants Midway as bait to destroy the American fleet; but the Americans broke your code.",
+"Pusuya yat (tarihî)": "Spring the ambush (historical)",
+"Taarruz inisiyatifi": "The initiative",
+"Amerikan donanması Midway'de zafer kazandı.": "The US Navy won at Midway.",
+"Filoyu geride tut": "Hold the fleet back",
+"Sorunsuz ama pasif": "Safe but passive",
+"Amerikan filosu Hawaii'yi korudu.": "The US fleet guarded Hawaii.",
+"Nimitz şifre çözücüler sayesinde Japon planını biliyor. Üç uçak gemin pusuda.": "Nimitz, thanks to codebreakers, knows the Japanese plan. Your three carriers lie in ambush.",
+"Midway Muharebesi": "The Battle of Midway",
+"Amerikan keşif ve dalış bombardıman uçakları dakikalar içinde dört Japon uçak gemisini batırdı. Japon donanmasının taarruz gücü kırıldı; Pasifik'te denge değişiyor.": "American scouts and dive bombers sank four Japanese carriers within minutes. The offensive power of the Japanese navy is broken; the balance in the Pacific is shifting.",
+"Tunus'a çekil (tarihî)": "Retreat to Tunisia (historical)",
+"Afrika Korpusu Libya'dan Tunus'a çekildi.": "The Afrika Korps withdrew from Libya to Tunisia.",
+"Hattı tut": "Hold the line",
+"Büyük kayıp": "Heavy losses",
+"Alman birlikleri Alamein hattında ezildi.": "German troops were ground down at Alamein.",
+"Rommel yakıt bitti diyor. Hitler 'zafer ya da ölüm' emri verdi.": "Rommel says the fuel is gone. Hitler ordered 'victory or death'.",
+"Hızla ilerle": "Pursue fast",
+"Afrika'yı bitir": "Finish Africa",
+"8. Ordu Libya boyunca ilerledi.": "The Eighth Army advanced across Libya.",
+"Temkinli ilerle (tarihî)": "Advance carefully (historical)",
+"Ordu korunur": "The army is preserved",
+"Montgomery sistemli ilerledi.": "Montgomery advanced methodically.",
+"Uzun süredir ilk büyük zafer elinde. Hız mı, ihtiyat mı?": "The first great victory in a long time is within reach. Speed or caution?",
+"Almanlarla çekil": "Withdraw with the Germans",
+"Kalanı kurtar": "Save what remains",
+"İtalyan birlikleri Tunus'a çekildi.": "Italian troops pulled back to Tunisia.",
+"Direnişi sürdür": "Keep resisting",
+"Moral zayıf": "Morale is weak",
+"İtalyan birlikleri direnmeye çalıştı.": "Italian troops tried to hold on.",
+"Afrika Kolordusu çöküyor; imparatorluk rüyası bitiyor.": "The Afrika Corps is collapsing; the dream of empire is ending.",
+"El Alamein": "El Alamein",
+"Montgomery'nin 8. Ordusu Mısır'da Rommel'i durdurup karşı saldırıya geçti. Afrika Korpusu yakıtsız, ikmalsiz; Libya'dan Tunus'a çekiliyor.": "Montgomery's Eighth Army stopped Rommel in Egypt and counterattacked. The Afrika Korps is without fuel and supplies, falling back from Libya to Tunisia.",
+"Çıkarmayı yap (tarihî)": "Land the force (historical)",
+"Batı Afrika ayağı": "A western African foothold",
+"Amerikan birlikleri Kuzey Afrika'ya çıktı.": "American troops landed in North Africa.",
+"Önce Fransa'ya çıkarma talep et": "Demand an invasion of France first",
+"Müttefikle çatışma": "Friction with the ally",
+"Washington doğrudan Fransa çıkarması istedi; Londra direndi.": "Washington pushed for a direct invasion of France; London resisted.",
+"İlk büyük kara harekâtın. Tecrübesiz Amerikan ordusu Vichy ve Almanlarla karşılaşacak.": "Your first major land operation. The inexperienced American army will face Vichy and the Germans.",
+"Ateşkes ve Müttefiklere katıl (tarihî)": "Ceasefire and join the Allies (historical)",
+"Serbest Fransa güçleri": "Free French forces",
+"Fransız birlikleri Kuzey Afrika'da Müttefiklere geçti.": "French forces in North Africa switched to the Allies.",
+"Direniş göster": "Offer resistance",
+"Vichy sadakati": "Vichy loyalty",
+"Vichy birlikleri bir süre direndi.": "Vichy troops resisted for a time.",
+"Vichy birlikleri Amerikalılara karşı mı, yoksa Müttefiklere katılmak mı? Darlan karar verecek.": "Will Vichy forces resist the Americans or join the Allies? Darlan must decide.",
+"Güney Fransa'yı işgal et (tarihî)": "Occupy Southern France (historical)",
+"Tunus'a köprübaşı": "A bridgehead in Tunisia",
+"Almanya Vichy bölgesini işgal etti ve Tunus'a takviye yolladı.": "Germany occupied the Vichy zone and rushed reinforcements to Tunisia.",
+"Tunus'u bırak": "Abandon Tunisia",
+"Kuvvet toplama": "Concentrate forces",
+"Almanya Tunus'u zayıf bıraktı.": "Germany left Tunisia weak.",
+"Vichy ihaneti Güney Fransa'nın işgalini tetikliyor; Tunus'a takviye gönderiliyor.": "Vichy's betrayal triggers occupation of Southern France; reinforcements are rushed to Tunisia.",
+"Meşale Harekâtı": "Operation Torch",
+"Anglo-Amerikan kuvvetler Fas ve Cezayir'e çıktı. Vichy Fransa direndi, sonra ateşkes yaptı; Almanya Vichy'nin kalanını işgal etti. Kuzey Afrika kıskaçta.": "Anglo-American forces landed in Morocco and Algeria. Vichy France resisted, then agreed to a ceasefire; Germany occupied the remainder of Vichy. North Africa is in a pincer.",
+"Zitadelle'yi başlat (tarihî)": "Launch Citadel (historical)",
+"Son büyük taarruz": "The last great offensive",
+"Alman zırhlıları Kursk'ta tıkandı.": "German armour ground to a halt at Kursk.",
+"Savunmaya geç": "Go on the defensive",
+"Güç tasarrufu": "Save strength",
+"Alman komutası Doğu Cephesi'nde savunmaya geçti.": "German command went defensive in the East.",
+"Hitler bu taarruzu tehlikeli buluyor; Sovyet hatları derin. Yine de inisiyatifi geri almak istiyorsun.": "Hitler finds this offensive risky; Soviet lines are deep. Yet you want to retake the initiative.",
+"Derin savunmada bekle (tarihî)": "Wait in deep defence (historical)",
+"Yıprat, sonra karşı saldır": "Bleed them, then counterattack",
+"Kızıl Ordu Kursk'ta Alman zırhlılarını yıprattı.": "The Red Army bled German armour at Kursk.",
+"Önleyici taarruz yap": "Pre-empt with an offensive",
+"Riskli": "Risky",
+"Sovyet önleyici taarruzu sınırlı sonuç verdi.": "The Soviet pre-emptive strike yielded limited results.",
+"İstihbarat Alman planını önceden bildirdi. Önce mi vuracaksın yoksa derin savunmada mı bekleyeceksin?": "Intelligence revealed the German plan early. Strike first or wait in deep defence?",
+"Kursk Muharebesi": "The Battle of Kursk",
+"Almanya Kursk çıkıntısını kuşatmak için Zitadelle harekâtını başlattı. Sovyetler derin mayın tarlaları ve tank savunmasıyla hazırdı; tarihin en büyük tank savaşı Prohorovka'da yaşanıyor.": "Germany launched Operation Citadel to pinch off the Kursk salient. The Soviets were ready with deep minefields and anti-tank defences; the largest tank clash in history unfolds at Prokhorovka.",
+"Müttefiklerle ateşkes imzala (tarihî)": "Sign the armistice (historical)",
+"Cephe değiştir": "Switch sides",
+"İtalya Müttefiklerle ateşkes imzaladı ve Almanya'ya karşı çıktı.": "Italy signed with the Allies and turned on Germany.",
+"Eksen'de kal": "Stay with the Axis",
+"Almanya'nın yanında": "At Germany's side",
+"Roma Eksen'e sadık kaldı.": "Rome stayed loyal to the Axis.",
+"Kral Mussolini'yi tutuklattı; Müttefikle gizli ateşkes yapıldı. Almanlar Roma'ya yürüyor.": "The King had Mussolini arrested; a secret armistice was made with the Allies. The Germans march on Rome.",
+"İtalya'yı işgal et (tarihî)": "Occupy Italy (historical)",
+"Direnişi kır": "Crush resistance",
+"Alman birlikleri İtalya'nın kuzeyini işgal etti.": "German troops occupied northern Italy.",
+"Alplerde savun": "Defend at the Alps",
+"Güçleri koru": "Preserve forces",
+"Almanya Alpler'de savunmaya çekildi.": "Germany fell back to defence at the Alps.",
+"Müttefikin ihanet etti. Kuzey İtalya'yı hızla işgal etmek ve Gustav Hattı'nı kurmak gerek.": "Your ally betrayed you. You must quickly occupy northern Italy and build the Gustav Line.",
+"İtalyan ateşkesini kabul et (tarihî)": "Accept the armistice (historical)",
+"Akdeniz sizin": "The Mediterranean is yours",
+"Müttefikler İtalya'nın ateşkesini kabul etti.": "The Allies accepted Italy's armistice.",
+"Şartsız teslim iste": "Demand unconditional surrender",
+"Daha sert": "Harsher",
+"Müttefikler şartsız teslim istedi.": "The Allies demanded unconditional surrender.",
+"İtalya ateşkes istiyor; Anzio ve Salerno'da Almanlar direniyor.": "Italy wants an armistice; the Germans are resisting at Anzio and Salerno.",
+"İtalya'da Ateşkes": "The Italian Armistice",
+"Müttefikler Sicilya'dan sonra İtalya anakarasına çıktı; Mussolini devrildi, Badoglio hükûmeti ateşkes imzaladı. Almanya Kuzey İtalya'yı işgal etti, Mussolini'yi kurtardı.": "After Sicily the Allies landed on mainland Italy; Mussolini was deposed and the Badoglio government signed an armistice. Germany occupied northern Italy and rescued Mussolini.",
+"Japonya'ya savaş sözü ver (tarihî)": "Promise war on Japan (historical)",
+"Büyük Üçlü uyumu": "Big Three harmony",
+"Stalin Almanya yenildikten sonra Japonya'ya savaş sözü verdi.": "Stalin promised war on Japan after Germany's defeat.",
+"Doğu Avrupa'da etki iste": "Demand influence in Eastern Europe",
+"Savaş sonrası pazarlık": "Postwar bargaining",
+"Stalin Doğu Avrupa'da nüfuz bölgesi talep etti.": "Stalin pressed for a sphere of influence in Eastern Europe.",
+"Stalin İkinci Cephe'yi istiyor; karşılığında Japonya'ya karşı savaş vaadi verebilirsin.": "Stalin wants the Second Front; in return you may promise to fight Japan.",
+"Overlord'u kabul et (tarihî)": "Accept Overlord (historical)",
+"Fransa'ya çıkarma": "The cross-Channel invasion",
+"İngiltere Overlord'u onayladı.": "Britain agreed to Overlord.",
+"Balkanlar'a ısrar et": "Push for the Balkans",
+"Daha uzun savaş": "A longer war",
+"Churchill Balkan alternatifinde ısrar etti.": "Churchill insisted on the Balkan alternative.",
+"Churchill Akdeniz ve Balkanlar'ı öncelemek istiyor; Stalin ve Roosevelt Fransa'yı.": "Churchill prefers the Mediterranean and Balkans; Stalin and Roosevelt prefer France.",
+"Overlord tarihini onayla (tarihî)": "Confirm Overlord (historical)",
+"İttifak güçlenir": "The alliance strengthens",
+"Amerika Overlord için söz verdi.": "America committed to Overlord.",
+"Pasifik'i öncele": "Prioritise the Pacific",
+"Avrupa gecikir": "Europe waits",
+"Washington Pasifik'e daha fazla kaynak ayırdı.": "Washington devoted more resources to the Pacific.",
+"Roosevelt Stalin'in güvenini kazanmak istiyor; İkinci Cephe için net tarih ver.": "Roosevelt wants Stalin's trust; give a firm date for the Second Front.",
+"Tarafsızlığı koru (tarihî)": "Stay neutral (historical)",
+"Sıkı denge politikası": "A strict balancing policy",
+"Türkiye Kahire'de savaşa girmeyi kabul etmedi.": "Turkey declined to enter the war at Cairo.",
+"Savaşa girme sözü ver": "Promise to join",
+"Büyük risk": "A big risk",
+"Ankara Müttefiklere yaklaştı; Almanya sinirlendi.": "Ankara moved closer to the Allies; Germany bristled.",
+"Müttefikler Türkiye'nin savaşa girmesini ve hava üsleri vermesini istiyor. İnönü 'hazır değiliz' diyor.": "The Allies want Turkey to enter the war and grant air bases. İnönü says 'we are not ready'.",
+"Tahran Konferansı": "The Tehran Conference",
+"Churchill, Roosevelt ve Stalin ilk kez bir araya geldi. İkinci Cephe'nin Fransa'ya açılması ve savaş sonrası Avrupa'nın şekli konuşuluyor. İnönü ise Kahire'de Türkiye'yi savaşa sokmak isteyen Müttefiklerle görüşüyor.": "Churchill, Roosevelt and Stalin met for the first time. The opening of a Second Front in France and the shape of postwar Europe are on the table. Meanwhile İnönü is meeting in Cairo with Allies who want Turkey in the war.",
+"Ayaklanmayı sürdür (tarihî)": "Continue the uprising (historical)",
+"Umutsuz ama onurlu": "Hopeless but honourable",
+"Varşova 63 gün direndi ve yıkıldı.": "Warsaw resisted for 63 days and was destroyed.",
+"Sivil kayıpları azalt": "Reduce civilian losses",
+"Yurt Ordusu teslim şartlarını görüştü.": "The Home Army negotiated surrender terms.",
+"Londra'daki hükûmet ayaklanma emri verdi. Moskova yardım etmiyor, Müttefikler uzakta.": "The government in London ordered the uprising. Moscow is not helping and the Allies are far away.",
+"Vistula'da bekle (tarihî)": "Halt on the Vistula (historical)",
+"Siyasi hesap": "Political calculation",
+"Kızıl Ordu Vistula kıyısında durdu.": "The Red Army paused on the Vistula.",
+"Varşova'ya ilerle": "Advance on Warsaw",
+"Müttefiklerle uyum": "Allied harmony",
+"Sovyet birlikleri Varşova'ya yönelmek zorunda kaldı.": "Soviet troops advanced on Warsaw.",
+"Almanlar Polonya Yurt Ordusu'nu eziyor; bu Moskova'ya rakip bir hükûmeti de yok edecek.": "The Germans are crushing the Polish Home Army, which will also eliminate a government rival to Moscow.",
+"Ayaklanmayı ez (tarihî)": "Crush the uprising (historical)",
+"Sert bastırma": "Brutal suppression",
+"Alman birlikleri Varşova'yı yerle bir etti.": "German troops razed Warsaw.",
+"Güçleri Batı'ya kaydır": "Redeploy west",
+"Cephe önceliği": "Front priority",
+"Almanya güçlerini Doğu Cephesi'nde tuttu.": "Germany kept its forces on the Eastern Front.",
+"Ayaklanma arkanda; Himmler şehri yerle bir etmek istiyor.": "The uprising is in your rear; Himmler wants the city razed.",
+"Varşova Ayaklanması": "The Warsaw Uprising",
+"Kızıl Ordu Vistula kıyısına yaklaşırken Polonya Yurt Ordusu 1 Ağustos'ta Varşova'da ayaklandı. Sovyetler ilerlemeyi durdurdu; Almanlar şehri sistemli şekilde yok ediyor.": "As the Red Army neared the Vistula the Polish Home Army rose in Warsaw on 1 August. The Soviets halted their advance; the Germans are systematically destroying the city.",
+"Sho-Go planını uygula (tarihî)": "Execute Sho-Go (historical)",
+"Son büyük kumar": "The last great gamble",
+"Japon donanması Leyte'de ağır yenilgi aldı.": "The Japanese navy suffered a crushing defeat at Leyte.",
+"Filoyu limanda sakla": "Keep the fleet in port",
+"Kaynak tasarrufu": "Save resources",
+"Japon filosu limanda kaldı; Filipinler savunmasız.": "The fleet stayed in port; the Philippines were left exposed.",
+"Filo yakıtsız; çıkarma filosuna son hamleyi yapmak için kamikaze ve yem gemileri hazırlandı.": "The fleet is low on fuel; kamikaze and decoy ships are prepared for a last strike on the landing fleet.",
+"Filipinler'i geri al (tarihî)": "Retake the Philippines (historical)",
+"Pasifik'te kesin üstünlük": "Decisive Pacific superiority",
+"Amerikan kuvvetleri Leyte'ye çıktı ve donanma zaferi kazandı.": "American forces landed at Leyte and won the naval victory.",
+"Formosa'ya yönel": "Strike at Formosa",
+"Alternatif hedef": "An alternative target",
+"Washington Formosa seçeneğini değerlendirdi.": "Washington weighed the Formosa option.",
+"MacArthur 'Döneceğim' sözünü tutuyor. Üç Amerikan filosu Leyte'de.": "MacArthur is keeping his 'I shall return' pledge. Three American fleets are at Leyte.",
+"Leyte Körfezi": "Leyte Gulf",
+"Amerikan kuvvetleri Filipinler'e çıktı; Japon filosu son büyük deniz savaşında dört ayrı kolla karşılık verdi. Dünyanın en büyük deniz savaşı Japon donanmasını fiilen yok etti.": "American forces landed in the Philippines; the Japanese fleet struck back in four separate groups in the last great naval battle. The largest naval battle in history effectively destroyed the Japanese navy.",
+"Anvers'e yüklen (tarihî)": "Press on to Antwerp (historical)",
+"Alman zırhlıları Ardenler'de yakıtsız kaldı.": "German armour ran out of fuel in the Ardennes.",
+"Güçleri Doğu'ya ayır": "Divert to the East",
+"Savunmayı güçlendir": "Strengthen defence",
+"Almanya yedeklerini Doğu Cephesi'ne kaydırdı.": "Germany redeployed reserves to the Eastern Front.",
+"Yakıt ve rezerv sınırlı. Kötü hava Müttefik hava gücünü engelliyor ama bu uzun sürmeyecek.": "Fuel and reserves are limited. Bad weather grounds Allied air power but that will not last.",
+"Bastogne'yi kurtar (tarihî)": "Relieve Bastogne (historical)",
+"Patton'ı yönlendir": "Send Patton",
+"Amerikan 3. Ordusu Bastogne'a ulaştı.": "The US Third Army reached Bastogne.",
+"Hattı yeniden kur": "Re-form the line",
+"Sağlam ama yavaş": "Solid but slow",
+"Müttefikler hattı yeniden kurdu.": "The Allies re-formed their line.",
+"Bastogne'de 101. Hava İndirme kuşatıldı. Patton kuzeye dönmek üzere.": "The 101st Airborne is surrounded at Bastogne. Patton is about to turn north.",
+"Muse hattını tut (tarihî)": "Hold the Meuse (historical)",
+"Kuzey kanadı güvene al": "Secure the northern flank",
+"İngiliz XXX Kolordu Muse hattını tuttu.": "British XXX Corps held the Meuse line.",
+"Karşı taarruz yap": "Counterattack",
+"İngiliz birlikleri karşı taarruza geçti.": "British troops counterattacked.",
+"Montgomery kuzeyde komutayı devraldı; Alman ilerleyişi Muse'ta durdurulmalı.": "Montgomery took command in the north; the German advance must be halted at the Meuse.",
+"Ardenler Taarruzu": "The Battle of the Bulge",
+"Hitler Batı'da son kumarı oynadı: sisli Ardenler'den Anvers'e saldırı. Müttefik hatları şaşırdı; Bastogne kuşatıldı. Hava açılınca Müttefik uçakları taarruzu durdurdu.": "Hitler played his last gamble in the West: an attack through the foggy Ardennes toward Antwerp. Allied lines were surprised; Bastogne was surrounded. When the weather cleared Allied aircraft stopped the offensive.",
+"Doğu Avrupa'da nüfuz kazan (tarihî)": "Secure Eastern European influence (historical)",
+"Stalin Polonya ve Doğu Avrupa üzerinde nüfuz elde etti.": "Stalin secured influence over Poland and Eastern Europe.",
+"Japonya'ya savaş taahhüdünü artır": "Strengthen the commitment against Japan",
+"Müttefiklere yardım": "Help the allies",
+"Sovyetler Japonya'ya karşı savaş sözünü teyit etti.": "The Soviets reaffirmed their pledge against Japan.",
+"Kızıl Ordu Berlin'e 70 km mesafede; Doğu Avrupa'da nüfuz istiyorsun.": "The Red Army is 70 km from Berlin; you seek influence in Eastern Europe.",
+"Özgür seçim talep et (tarihî)": "Demand free elections (historical)",
+"Polonya için garanti": "A guarantee for Poland",
+"Churchill Polonya'da özgür seçim sözü aldı.": "Churchill secured a promise of free elections in Poland.",
+"Stalin'le uzlaş": "Compromise with Stalin",
+"Savaşı hızla bitir": "End the war faster",
+"İngiltere Sovyetlerle uzlaştı.": "Britain compromised with the Soviets.",
+"Churchill Polonya'nın bağımsızlığı için endişeli; Sovyet isteklerini sınırlamak istiyor.": "Churchill worries about Polish independence and wants to limit Soviet demands.",
+"Sovyetleri Pasifik'e davet et (tarihî)": "Invite the Soviets into the Pacific (historical)",
+"Birleşmiş Milletler kurulsun": "Establish the UN",
+"Roosevelt Stalin'den Japonya'ya savaş sözü aldı.": "Roosevelt secured Stalin's pledge to fight Japan.",
+"Doğu Avrupa'da sert ol": "Be firm on Eastern Europe",
+"Gerginlik artar": "More tension",
+"Washington Doğu Avrupa konusunda sertleşti.": "Washington hardened over Eastern Europe.",
+"Roosevelt hasta; Sovyetlerin Pasifik savaşına katılması ve Birleşmiş Milletler öncelik.": "Roosevelt is ill; Soviet entry into the Pacific war and the United Nations are priorities.",
+"Yalta Konferansı": "The Yalta Conference",
+"Churchill, Roosevelt ve Stalin Kırım'da savaş sonrası Avrupa'yı ve Almanya'nın işgal bölgelerini kararlaştırdı. Sovyetler Japonya'ya karşı savaşa girmeyi onayladı; Doğu Avrupa'nın kaderi belirsiz.": "Churchill, Roosevelt and Stalin decided postwar Europe and Germany's occupation zones in the Crimea. The Soviets agreed to enter the war against Japan; the fate of Eastern Europe remains uncertain.",
+"Şartsız teslim ol (tarihî)": "Surrender unconditionally (historical)",
+"Savaş biter": "The war ends",
+"Almanya 8 Mayıs'ta şartsız teslim oldu.": "Germany surrendered unconditionally on 8 May.",
+"Batı'ya teslim olmaya çalış": "Try to surrender to the West only",
+"Sovyet baskısı": "The Soviet pressure",
+"Almanya Batı'ya teslim olmak istedi; Müttefikler reddetti.": "Germany sought to surrender to the West only; the Allies refused.",
+"Berlin kuşatıldı; Volkssturm çocuk ve yaşlılardan oluşuyor. Dönitz görevi devralıyor.": "Berlin is encircled; the Volkssturm consists of children and old men. Dönitz takes over.",
+"Berlin'i fırtınayla al (tarihî)": "Storm Berlin (historical)",
+"Büyük kayıp, büyük zafer": "Heavy cost, great victory",
+"Kızıl Ordu Berlin'i fethetti; bayrak Reichstag'a dikildi.": "The Red Army took Berlin and raised the flag over the Reichstag.",
+"Kuşatmayı sıkılaştır": "Tighten the encirclement",
+"Daha az kayıp": "Fewer losses",
+"Sovyetler Berlin'i kuşatmada tuttu.": "The Soviets kept Berlin encircled.",
+"Zhukov ve Konev Berlin için yarışıyor. Şehre ilk giren zaferi alacak.": "Zhukov and Konev are racing for Berlin. Whoever enters first takes the glory.",
+"Elbe'de dur (tarihî)": "Halt at the Elbe (historical)",
+"Müttefik uyumu": "Allied harmony",
+"Amerikan orduları Elbe'de Sovyetlerle buluştu.": "American armies met the Soviets on the Elbe.",
+"Berlin'e ilerle": "Push to Berlin",
+"Prestij ama risk": "Prestige but risk",
+"Amerikan birlikleri Berlin'e yöneldi.": "American troops advanced on Berlin.",
+"Eisenhower Elbe'de durdu; Berlin Sovyetlere bırakıldı.": "Eisenhower halted at the Elbe; Berlin was left to the Soviets.",
+"Zafer günü ilan et (tarihî)": "Declare Victory in Europe (historical)",
+"Avrupa'da savaş bitti": "The war in Europe is over",
+"Churchill Avrupa'da zaferi ilan etti.": "Churchill declared victory in Europe.",
+"Pasifik'e kaydır": "Redeploy to the Pacific",
+"Uzak Doğu'ya odaklan": "Focus on the Far East",
+"İngiltere kuvvetlerini Uzak Doğu'ya yöneltti.": "Britain turned its forces to the Far East.",
+"Batı orduları Elbe'ye ulaştı. Almanya'nın teslimi an meselesi.": "Western armies reached the Elbe. Germany's surrender is a matter of days.",
+"Berlin Muharebesi": "The Battle of Berlin",
+"Kızıl Ordu Oder'i aşıp Berlin'i kuşattı; Hitler 30 Nisan'da bunkerde intihar etti. Almanya birkaç gün içinde teslim olacak.": "The Red Army crossed the Oder and surrounded Berlin; Hitler killed himself in his bunker on 30 April. Germany will surrender within days."
 }
 }
