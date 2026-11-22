@@ -808,7 +808,7 @@ func _goods_deal_dialog(c, g: String) -> void:
 	for sp in Goods.suppliers(gs, c, g):
 		var pid: int = sp[0]
 		var o = gs.countries[pid]
-		opts.append({"text": Loc.t("%s — fazlası %s birim/hf") % [o.name, Macro.num(int(sp[1] * 10.0))], "cb": func():
+		opts.append({"text": Loc.t("%s — fazlası %s birim/hf") % [o.name, Goods.fmt(sp[1])], "cb": func():
 			var e: String = Goods.make_deal(gs, c, g, pid)
 			ui.toast(Loc.t(e) if e != "" else Loc.t("%s ile %s anlaşması imzalandı (52 hafta)." ) % [o.name, Loc.t(Goods.NAMES[g])])
 			render(), "kind": "gold"})
@@ -820,7 +820,7 @@ func _goods_deal_dialog(c, g: String) -> void:
 
 
 func _goods_section(c) -> void:
-	Goods.ensure(c)
+	Goods.refresh(gs, c)
 	content.add_child(_kick("Mal ve kaynak pazarı"))
 	content.add_child(_wrap("Eyaletlerin tahıl, kereste, maden ve petrol üretir; halkın ve sanayin tüketir. Açık kalan haftalık pazardan alınır, fazlası satılır; stok biriktirebilirsin. Kıtlık: tahıl istikrarı, kereste/maden sanayiyi, petrol lojistiği düşürür. Ambargo, abluka ve siber kesinti ithalatı keser. Eyalette kereste atölyesi, maden, petrol, çiftlik kurarak üretimi artır.", "small", TK.MUTED))
 	var tot: float = float(c.goods.get("gold", 0.0))
@@ -847,12 +847,12 @@ func _goods_section(c) -> void:
 		v.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 		v.add_theme_constant_override("separation", 0)
 		v.add_child(TK.t(String(Goods.NAMES[g]), "bodyb", TK.RED_TEXT if sh > 0.0 else TK.TEXT))
-		v.add_child(_wrap(Loc.t("Üretim %s · Tüketim %s · Stok %s · Fiyat x%.2f") % [Macro.num(int(r.prod * 10.0)), Macro.num(int(r.dem * 10.0)), Macro.num(int(stock * 10.0)), Goods.price(gs, g)], "small", TK.MUTED))
+		v.add_child(_wrap(Loc.t("Üretim %s · Tüketim %s · Stok %s · Fiyat x%.2f") % [Goods.fmt(r.prod), Goods.fmt(r.dem), Goods.fmt(stock), Goods.price(gs, g)], "small", TK.MUTED))
 		h.add_child(v)
-		var bl := TK.t(("+" if bal >= 0.0 else "") + Macro.num(int(bal * 10.0)), "mono", TK.GREEN if bal >= 0.0 else (TK.RED_TEXT if sh > 0.0 else TK.ORANGE))
+		var bl := TK.t(("+" if bal >= 0.0 else "") + Goods.fmt(bal), "mono", TK.GREEN if bal >= 0.0 else (TK.RED_TEXT if sh > 0.0 else TK.ORANGE))
 		bl.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 		h.add_child(bl)
-		var pb := TK.button(Goods.POLICY_NAMES[pol], "gold" if pol != "auto" else "ghost", "", Vector2(150, 52), 15)
+		var pb := TK.button(Goods.POLICY_NAMES[pol], "gold" if pol != "auto" else "ghost", "", Vector2(110, 52), 13)
 		pb.pressed.connect(func():
 			ui._click()
 			var nx: String = Goods.POLICIES[(Goods.POLICIES.find(pol) + 1) % Goods.POLICIES.size()]
@@ -860,7 +860,7 @@ func _goods_section(c) -> void:
 			render())
 		h.add_child(pb)
 		var dl: Dictionary = Goods.deal_of(c, g)
-		var db := TK.button((Loc.t("İptal: %s") % gs.countries[int(dl.partner)].name) if not dl.is_empty() else Loc.t("Anlaşma yap"), "danger" if not dl.is_empty() else "ghost", "", Vector2(190, 52), 14)
+		var db := TK.button((Loc.t("İptal: %s") % gs.countries[int(dl.partner)].name) if not dl.is_empty() else Loc.t("Anlaşma yap"), "danger" if not dl.is_empty() else "ghost", "", Vector2(130, 52), 12)
 		db.pressed.connect(func():
 			ui._click()
 			if not dl.is_empty():

@@ -747,7 +747,7 @@ func show_province(pid: int, selected_army) -> void:
 		_abtn("Diplomasi", "blue", Icons.pick("diplomacy", "handshake"), "diplomacy", p.owner)
 	if p.owner == me and p.controller == me:
 		if p.bld != "":
-			_abtn("%s: %s" % [Model.bld_name(p.bld, Macro.era_on and Eras.family() == "pre"), Model.BLD[p.bld].info], "", "coins", "none", 0, false)
+			_abtn("%s: %s" % [Loc.t(Model.bld_name(p.bld, Macro.era_on and Eras.family() == "pre")), Loc.t(Model.BLD[p.bld].info)], "", "coins", "none", 0, false)
 		elif p.bld_wip != "":
 			_abtn("%s inşa ediliyor: %d hafta" % [Model.bld_name(p.bld_wip, Macro.era_on and Eras.family() == "pre"), maxi(1, p.bld_until - gs.turn)], "", "hourglass", "none", 0, false)
 		else:

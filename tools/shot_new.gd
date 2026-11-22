@@ -1,56 +1,90 @@
 extends SceneTree
-func _shot(path: String) -> void:
+## Yeni özellikler: mal pazarı, bütçe/askerlik düzeni, bina menüsü, kaynak arama, savaş ilanı penceresi.
+## xvfb-run -a godot --path . --rendering-driver opengl3 --resolution 1280x800 -s tools/shot_new.gd
+const PolicyUI = preload("res://scripts/policy_ui.gd")
+var main
+var out := "/tmp/shots_new"
+var n := 0
+
+func _shot(tag: String) -> void:
 	await RenderingServer.frame_post_draw
-	get_root().get_viewport().get_texture().get_image().save_png(path)
+	n += 1
+	get_root().get_viewport().get_texture().get_image().save_png("%s/%02d_%s.png" % [out, n, tag])
+	print("shot ", tag)
+
 func _init() -> void:
-	var St = load("res://scripts/settings.gd")
-	St.load_all(); St.language = "tr"
-	var main = load("res://main.tscn").instantiate()
+	main = load("res://main.tscn").instantiate()
 	get_root().add_child(main)
-	DirAccess.make_dir_recursive_absolute("/tmp/shots_new")
+	DirAccess.make_dir_recursive_absolute(out)
 	await create_timer(1.0).timeout
 	main.menu.finish_splash()
-	await create_timer(1.0).timeout
-	main.menu.show_main()
 	await create_timer(0.8).timeout
-	await _shot("/tmp/shots_new/01_menu.png")
-	var DU = load("res://scripts/daily_ui.gd")
-	DU.open(main.menu.root, func(c): pass)
+	main._to_select()
 	await create_timer(0.8).timeout
-	await _shot("/tmp/shots_new/02_daily.png")
-	main.menu.root.get_children().back().queue_free()
-	await create_timer(0.3).timeout
-	main._start_daily(load("res://scripts/daily.gd").cfg(20400))
+	var St = load("res://scripts/settings.gd")
+	St.seen_howto = true
+	var cid := -1
+	for c in main.gs.countries:
+		if c.name == "Türkiye":
+			cid = c.id
+	main.menu.select_country(cid)
+	await create_timer(0.5).timeout
+	main._on_start_requested(cid)
 	await create_timer(1.5).timeout
-	await _shot("/tmp/shots_new/03_daily_game.png")
-	main.ui._modal.queue_free()
-	await create_timer(0.3).timeout
-	main.ui.show_chokes()
+	var gs = main.gs
+	print("oyuncu: ", gs.countries[gs.player].name)
+	main._on_speed_changed(2)
+	await create_timer(8.0).timeout
+	main._on_speed_changed(0)
+	await create_timer(0.4).timeout
+	await _shot("oyun")
+	PolicyUI.open(main.ui, gs, 0)
 	await create_timer(0.8).timeout
-	await _shot("/tmp/shots_new/04_chokes.png")
-	main.ui._modal.queue_free()
-	await create_timer(0.3).timeout
-	main.ui.show_politics()
+	await _shot("butce")
+	for s0 in main.ui._modal.body.find_children("*", "ScrollContainer", true, false):
+		s0.scroll_vertical = 640
+	await create_timer(0.4).timeout
+	await _shot("butce_alt")
+	PolicyUI.open(main.ui, gs, 3)
 	await create_timer(0.8).timeout
-	await _shot("/tmp/shots_new/05_politics.png")
-	main.ui._modal.queue_free()
+	await _shot("ticaret_mal")
+	var sc = main.ui._modal
+	# aşağı kaydır
+	for s in sc.body.find_children("*", "ScrollContainer", true, false):
+		s.scroll_vertical = 500
+	await create_timer(0.4).timeout
+	await _shot("ticaret_mal_alt")
+	main.ui.hide_dialog()
 	await create_timer(0.3).timeout
-	var g = main.gs
-	var pl: int = g.player
-	var foe = g.neighbor_countries(pl)[0]
-	g.declare_war(pl, foe, false)
-	g.deploy_front(pl)
-	var WR = load("res://scripts/war_room.gd")
-	WR.new_plan(g, foe)
-	for s in WR.suggest(g, foe):
-		WR.add_phase(g, int(s.pid), String(s.op), float(s.frac), int(s.delay))
-	var WU = load("res://scripts/war_room_ui.gd")
-	WU.open(main.ui)
+	# eyalet kartı + bina menüsü + kaynak ara
+	var pid: int = gs.countries[gs.player].capital
+	for p in gs.provinces:
+		if p.owner == gs.player and p.controller == gs.player and p.bld == "" and p.rich() == "" and p.found == "":
+			pid = p.id
+			break
+	main._select(pid)
 	await create_timer(0.8).timeout
-	await _shot("/tmp/shots_new/06_warroom.png")
-	main.ui._modal.queue_free()
+	await _shot("eyalet_karti")
+	main._on_ui_action("build", pid) if main.has_method("_on_ui_action") else null
+	await create_timer(0.6).timeout
+	await _shot("bina_menusu")
+	main.ui.hide_dialog()
 	await create_timer(0.3).timeout
-	WU._picker(main.ui, {"step": 0, "pid": -1, "op": "assault", "frac": 1.0, "delay": 1})
-	await create_timer(0.8).timeout
-	await _shot("/tmp/shots_new/07_picker.png")
+	# savaş ilanı penceresi
+	var tgt := -1
+	for p0 in gs.provinces:
+		if p0.owner != gs.player:
+			continue
+		for nb in p0.neighbors:
+			var o: int = gs.provinces[nb].owner
+			if o >= 0 and o != gs.player and not gs.countries[o].is_rebel and not gs.is_allied(gs.player, o):
+				tgt = o
+				break
+		if tgt >= 0:
+			break
+	print("hedef: ", tgt)
+	if tgt >= 0:
+		main._on_ui_action("war", tgt) if main.has_method("_on_ui_action") else null
+		await create_timer(0.6).timeout
+		await _shot("savas_ilani")
 	quit()

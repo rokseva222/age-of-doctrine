@@ -7,7 +7,7 @@ const Cmd = preload("res://scripts/cmd.gd")
 const Loc = preload("res://scripts/loc.gd")
 const GOODS := ["grain", "wood", "ore", "oil"]
 const NAMES := {"grain": "Tahıl", "wood": "Kereste", "ore": "Maden cevheri", "oil": "Petrol ve gaz"}
-const ICONS := {"grain": "wheat", "wood": "axe", "ore": "bld_mine", "oil": "bld_oil"}
+const ICONS := {"grain": "wheat", "wood": "crate", "ore": "bld_mine", "oil": "bld_oil"}
 ## Haftalık gelirin yüzde kaçı o malın ticaretine denk gelir (fiyat 1.0 iken, tüm talep ithal edilirse)
 const SHARE := {"grain": 0.06, "wood": 0.03, "ore": 0.04, "oil": 0.07}
 ## Kişi (milyon nüfus) başına talep
@@ -18,6 +18,16 @@ const BUY_PREMIUM := 1.15
 const SELL_DISCOUNT := 0.85
 const CAP_AUTO := 8.0       # otomatik: talebin kaç haftalık stoğu tutulur
 const CAP_HOLD := 40.0
+
+
+## Ekranda gösterim: küçük değerler ondalıklı, büyükler tam sayı
+static func fmt(v: float) -> String:
+	var a: float = absf(v)
+	if a >= 100.0:
+		return "%d" % int(round(v))
+	if a >= 10.0:
+		return "%.0f" % v
+	return "%.1f" % v
 
 
 static func ensure(c) -> void:
@@ -205,6 +215,13 @@ static func _deal_valid(gs, c, d: Dictionary) -> bool:
 	if not o.alive or o.is_rebel or c.enemies.has(o.id) or c.embargo.has(o.id) or o.embargo.has(c.id):
 		return false
 	return o.trade_block <= 0 and c.trade_block <= 0
+
+
+## Ekranda gösterilen güncel oran (ilk turda henüz hesaplanmamışsa hesaplar)
+static func refresh(gs, c) -> void:
+	ensure(c)
+	if float(c.goods.rate.oil.dem) <= 0.011:
+		_recount(gs, c)
 
 
 static func set_policy(c, good: String, pol: String) -> bool:
