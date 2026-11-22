@@ -52,10 +52,13 @@ func _init() -> void:
 				quit(0))
 		get_root().add_child(idle_t)
 	var region: String = _arg("region", "EU")
+	var announce := func():
+		master.announce({"name": cfg.name, "era": cfg.era, "players": net.players.size(), "max": cfg.max, "port": cfg.port, "pass": cfg.pass != "", "ver": cfg.ver, "region": region})
 	var beat := Timer.new()
-	beat.wait_time = 20.0
+	beat.wait_time = 8.0
 	beat.autostart = true
-	beat.timeout.connect(func():
-		master.announce({"name": cfg.name, "era": cfg.era, "players": net.players.size(), "max": cfg.max, "port": cfg.port, "pass": cfg.pass != "", "ver": cfg.ver, "region": region}))
+	beat.timeout.connect(announce)
 	get_root().add_child(beat)
+	# biri girip çıkınca ya da ülke seçince hemen duyur: oda listede geç görünmesin
+	net.lobby_changed.connect(announce)
 	master.announce({"name": cfg.name, "era": cfg.era, "players": 0, "max": cfg.max, "port": cfg.port, "pass": cfg.pass != "", "ver": cfg.ver, "region": region})
