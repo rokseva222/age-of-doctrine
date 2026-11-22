@@ -375,7 +375,8 @@ static func prepare(id: String) -> void:
 	var mil: Dictionary = {}
 	var DF: Dictionary = _t("defs", id)
 	for n in DF:
-		mil[n] = DF[n]["mil"]
+		if DF[n].has("mil"):
+			mil[n] = DF[n]["mil"]
 	Macro.era_mil = mil
 	Names.start_year = int(e["start_year"])
 	Names.start_doy = int(e["start_doy"])
@@ -525,8 +526,10 @@ static func restructure(gs, id: String) -> void:
 			continue
 		var c = gs.countries[cid3]
 		var d3: Dictionary = DEFS_ID[n3]
-		c.name = d3["name"]
-		c.color = Color(d3["color"])
+		if d3.has("name"):
+			c.name = d3["name"]
+		if d3.has("color"):
+			c.color = Color(d3["color"])
 		c.leader = d3.get("leader", "")
 		if d3.has("origin"):
 			c.origin_en = String(d3["origin"])       # kültür (isim/siluet/kabine) için asıl halk

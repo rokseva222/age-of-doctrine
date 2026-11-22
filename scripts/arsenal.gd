@@ -499,6 +499,17 @@ static func set_era(id: String) -> void:
 		TECH_OVR = TECH_MODERN
 		GATE = {}
 		cat_names_ovr = {}
+		# modern silah tablosunu kullanan çağlar (ör. 1994/1999 Çeçen savaşları): çağa özel teknoloji düzeyi ("tech_ovr", base zincirinden)
+		var cur := id
+		for i in 4:
+			if cur == "" or not EraExt.has_era(cur):
+				break
+			var to = EraExt.raw(cur).get("tech_ovr", null)
+			if to is Dictionary:
+				TECH_OVR = TECH_MODERN.duplicate()
+				TECH_OVR.merge(to, true)
+				break
+			cur = String(EraExt.raw(cur).get("base", ""))
 		return
 	var e: Dictionary = r
 	ITEMS = e["items"]

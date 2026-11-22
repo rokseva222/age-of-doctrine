@@ -165,6 +165,10 @@ static func apply(gs, f: Array, by_player: bool = false) -> void:
 	if kind == "unflag":
 		gs.moment_flags.erase(String(f[1]))
 		return
+	if kind == "unrest":      # ["unrest", eyalet_id, n]: huzursuzluk artır
+		var pu = gs.provinces[int(f[1])]
+		pu.unrest = clampi(pu.unrest + int(f[2]), 0, 100)
+		return
 	var a: int = _id(gs, String(f[1]))
 	if a < 0 or not gs.countries[a].alive:
 		return
@@ -239,6 +243,28 @@ static func apply(gs, f: Array, by_player: bool = false) -> void:
 		"mob":
 			Macro._now = gs.turn
 			ca.mob_until = gs.turn + int(f[2])
+		"occupy", "own":
+			# ["occupy", A, eyalet_id]: eyaletin kontrolü A'ya geçer (sahip aynı kalır); ["own", A, eyalet_id]: mülkiyet de A'ya geçer
+			if protect:
+				return
+			var pid2: int = int(f[2])
+			if pid2 < 0 or pid2 >= gs.provinces.size():
+				return
+			var pp = gs.provinces[pid2]
+			var was_owner: int = pp.owner
+			pp.controller = a
+			pp.siege = 0
+			pp.unrest = 0
+			if kind == "own":
+				pp.owner = a
+				pp.core = a
+				pp.acquired = gs.turn
+				if pp.is_capital and was_owner != a and was_owner >= 0:
+					pp.is_capital = false
+					gs._fix_capital(was_owner)
+			gs.province_changed.emit(pid2)
+			gs.refresh_stats()
+			Macro.build_idx(gs)
 
 
 static func resume(gs) -> void:
