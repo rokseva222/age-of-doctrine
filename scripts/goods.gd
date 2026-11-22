@@ -4,6 +4,7 @@ extends RefCounted
 ## stok biriktirilebilir, kıtlık istikrarı / sanayiyi / lojistiği vurur. Her şey deterministik (kayda yalnızca stok ve politika girer).
 
 const Cmd = preload("res://scripts/cmd.gd")
+const Loc = preload("res://scripts/loc.gd")
 const GOODS := ["grain", "wood", "ore", "oil"]
 const NAMES := {"grain": "Tahıl", "wood": "Kereste", "ore": "Maden cevheri", "oil": "Petrol ve gaz"}
 const ICONS := {"grain": "wheat", "wood": "axe", "ore": "bld_mine", "oil": "bld_oil"}
@@ -20,6 +21,8 @@ const CAP_HOLD := 40.0
 
 
 static func ensure(c) -> void:
+	if not c.goods.is_empty() and not c.goods.has("deals"):
+		c.goods["deals"] = []
 	if c.goods.is_empty():
 		var st := {}
 		var pol := {}
@@ -30,7 +33,7 @@ static func ensure(c) -> void:
 			pol[g] = "auto"
 			net[g] = 0.0
 			rate[g] = {"prod": 0.0, "dem": 0.0}
-		c.goods = {"stock": st, "pol": pol, "net": net, "rate": rate, "short": {}, "gold": 0.0}
+		c.goods = {"deals": [], "stock": st, "pol": pol, "net": net, "rate": rate, "short": {}, "gold": 0.0}
 
 
 ## Eyalet başına haftalık üretim (birim)
@@ -109,6 +112,74 @@ static func open_share(c) -> float:
 	return clampf((0.35 + 0.65 * c.trade_share) * (1.0 - clampf(c.blockade, 0.0, 1.0)), 0.0, 1.0)
 
 
+const DEAL_WEEKS := 52
+const DEAL_DISCOUNT := 0.80      # anlaşmalı alımda fiyat çarpanı
+
+
+static func deal_of(c, g: String) -> Dictionary:
+	for d in c.goods.get("deals", []):
+		if d.good == g:
+			return d
+	return {}
+
+
+## Anlaşma yapılabilecek tedarikçiler: o maldan açık verebilen, savaşta/ambargoda olmayan canlı ülkeler (en çok fazlası olandan başlayarak)
+static func suppliers(gs, c, g: String) -> Array:
+	var out: Array = []
+	for o in gs.countries:
+		if not o.alive or o.is_rebel or o.id == c.id:
+			continue
+		if c.enemies.has(o.id) or c.embargo.has(o.id) or o.embargo.has(c.id) or o.trade_block > 0:
+			continue
+		ensure(o)
+		if float(o.goods.rate[g].dem) <= 0.02 or float(o.goods.rate[g].prod) < float(o.goods.rate[g].dem) * 1.25:
+			continue
+		var sur: float = float(o.goods.rate[g].prod) - float(o.goods.rate[g].dem)
+		out.append([o.id, sur])
+	out.sort_custom(func(a, b): return a[1] > b[1])
+	return out.slice(0, 6)
+
+
+static func make_deal(gs, me, g: String, pid: int) -> String:
+	var _cmd := Cmd.Scope.new(gs, "Goods.make_deal", [me, g, pid])
+	ensure(me)
+	if not GOODS.has(g) or pid < 0 or pid >= gs.countries.size():
+		return "Geçersiz anlaşma."
+	if not deal_of(me, g).is_empty():
+		return "Bu malda zaten anlaşman var."
+	var ok := false
+	for s in suppliers(gs, me, g):
+		if s[0] == pid:
+			ok = true
+	if not ok:
+		return "Bu ülke şu an bu malı satamaz."
+	if (me.goods.deals as Array).size() >= 3:
+		return "En çok 3 anlaşma yapılabilir."
+	me.goods.deals.append({"good": g, "partner": pid, "until": gs.turn + DEAL_WEEKS})
+	me.relation[pid] = minf(100.0, float(me.relation.get(pid, 50.0)) + 6.0)
+	gs.countries[pid].relation[me.id] = minf(100.0, float(gs.countries[pid].relation.get(me.id, 50.0)) + 6.0)
+	return ""
+
+
+static func cancel_deal(gs, me, g: String) -> void:
+	var _cmd := Cmd.Scope.new(gs, "Goods.cancel_deal", [me, g])
+	ensure(me)
+	var keep: Array = []
+	for d in me.goods.deals:
+		if d.good != g:
+			keep.append(d)
+	me.goods.deals = keep
+
+
+static func _deal_valid(gs, c, d: Dictionary) -> bool:
+	if gs.turn >= int(d.until):
+		return false
+	var o = gs.countries[int(d.partner)]
+	if not o.alive or o.is_rebel or c.enemies.has(o.id) or c.embargo.has(o.id) or o.embargo.has(c.id):
+		return false
+	return o.trade_block <= 0 and c.trade_block <= 0
+
+
 static func set_policy(c, good: String, pol: String) -> bool:
 	var _cmd := Cmd.Scope.new(Cmd.rec_gs, "Goods.set_policy", [c, good, pol])
 	ensure(c)
@@ -125,7 +196,15 @@ static func weekly(gs, c) -> float:
 	if (gs.turn + c.id) % 4 == 0 or c.id == gs.player or float(g0.rate.oil.dem) <= 0.0:
 		_recount(gs, c)
 	var inc: float = maxf(c.income, 1.0)
-	var avail: float = open_share(c)
+	var avail0: float = open_share(c)
+	if not (g0.deals as Array).is_empty():
+		var live: Array = []
+		for d in g0.deals:
+			if _deal_valid(gs, c, d):
+				live.append(d)
+			elif c.id == gs.player:
+				gs.post_news(Loc.t("%s ile %s anlaşması sona erdi.") % [gs.countries[int(d.partner)].name, Loc.t(NAMES[d.good])], -1, "info", "", c.id)
+		g0.deals = live
 	var money := 0.0
 	var short := {}
 	for g in GOODS:
@@ -135,6 +214,8 @@ static func weekly(gs, c) -> float:
 		var pol: String = str(g0.pol.get(g, "auto"))
 		var stock: float = float(g0.stock.get(g, 0.0))
 		var px: float = price(gs, g)
+		var deal: Dictionary = deal_of(c, g)
+		var avail: float = maxf(avail0, 0.9) if not deal.is_empty() else avail0
 		var unit: float = inc * float(SHARE[g]) / dem          # 1 birimin değeri (fiyat 1.0)
 		var diff: float = prod - dem
 		var cap: float = dem * (CAP_HOLD if pol == "hold" else CAP_AUTO)
@@ -160,7 +241,11 @@ static func weekly(gs, c) -> float:
 				var bought: float = need * avail
 				if c.gold < 0.0:
 					bought = 0.0
-				money -= bought * unit * px * BUY_PREMIUM
+				var bill: float = bought * unit * px * BUY_PREMIUM * (DEAL_DISCOUNT if not deal.is_empty() else 1.0)
+				money -= bill
+				if not deal.is_empty():
+					var po = gs.countries[int(deal.partner)]
+					po.gold += bill * 0.6
 				var unmet: float = need - bought
 				if unmet > 0.001:
 					short[g] = clampf(unmet / dem, 0.0, 1.0)
@@ -186,7 +271,7 @@ static func weekly(gs, c) -> float:
 static func to_dict(c) -> Dictionary:
 	if c.goods.is_empty():
 		return {}
-	return {"stock": c.goods.stock, "pol": c.goods.pol}
+	return {"stock": c.goods.stock, "pol": c.goods.pol, "deals": c.goods.get("deals", [])}
 
 
 static func from_dict(c, d: Dictionary) -> void:
@@ -197,3 +282,4 @@ static func from_dict(c, d: Dictionary) -> void:
 		c.goods.stock[g] = float(d.get("stock", {}).get(g, 0.0))
 		var pv: String = str(d.get("pol", {}).get(g, "auto"))
 		c.goods.pol[g] = pv if POLICIES.has(pv) else "auto"
+	c.goods.deals = (d.get("deals", []) as Array).duplicate(true)

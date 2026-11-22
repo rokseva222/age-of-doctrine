@@ -116,7 +116,7 @@ const MODULE_CMDS := ["Air.player_strike", "Air.rebase", "Air.airlift", "Air.ren
 	"Chokepoints.set_mode", "Fleets.order_move", "Fleets.stop", "Fleets.merge", "Fleets.blockade", "Fleets.player_bombard",
 	"Fleets.player_torpedo", "Fleets.embark", "Fleets.debark", "Fleets.rename", "Fleets.set_flag", "Fleets.set_stance",
 	"Fleets.set_escort", "Fleets.split", "Focus.start", "Focus.cancel", "Formables.form", "GrandOp.launch",
-	"Macro.set_front", "Macro.set_budget", "Goods.set_policy", "Macro.set_doctrine", "Macro.mobilize", "Macro.buy",
+	"Macro.set_front", "Macro.set_budget", "Goods.set_policy", "Goods.make_deal", "Goods.cancel_deal", "Macro.set_doctrine", "Macro.mobilize", "Macro.buy",
 	"Politics.choose", "Politics.do_action", "Ultimatum.deliver", "UN.propose", "UN.player_vote"]
 const OBJ_PARAMS := ["a", "f", "w", "army", "fleet", "wing", "fid", "c", "me", "country_obj"]
 static var _sigs: Dictionary = {}
@@ -244,7 +244,7 @@ static func _guard(gs, cid: int, name: String, args: Array) -> String:
 				return "başkasının ülkesi"
 			if args.size() < 4 or int(args[3]) < 1 or int(args[3]) > 100000:
 				return "miktar"
-		"Macro.mobilize", "Macro.set_doctrine":
+		"Macro.mobilize", "Macro.set_doctrine", "Goods.make_deal", "Goods.cancel_deal":
 			if not _own_country(args, cid, 0):
 				return "başkasının ülkesi"
 		"UN.propose":

@@ -788,6 +788,22 @@ func _tab_trade() -> void:
 		content.add_child(TK.hsep(0.5))
 
 
+func _goods_deal_dialog(c, g: String) -> void:
+	var opts: Array = []
+	for sp in Goods.suppliers(gs, c, g):
+		var pid: int = sp[0]
+		var o = gs.countries[pid]
+		opts.append({"text": Loc.t("%s — fazlası %s birim/hf") % [o.name, Macro.num(int(sp[1] * 10.0))], "cb": func():
+			var e: String = Goods.make_deal(gs, c, g, pid)
+			ui.toast(Loc.t(e) if e != "" else Loc.t("%s ile %s anlaşması imzalandı (52 hafta)." ) % [o.name, Loc.t(Goods.NAMES[g])])
+			render(), "kind": "gold"})
+	opts.append({"text": "Vazgeç", "cb": func(): pass})
+	var body: String = Loc.t("52 haftalık tedarik anlaşması: açığını bu ülkeden %20 ucuza ve ambargo/abluka engeline takılmadan alırsın; satıcı ülke gelir elde eder, ilişkiler düzelir. Savaş, ambargo ya da siber kesinti anlaşmayı bozar. En çok 3 anlaşma.")
+	if opts.size() == 1:
+		body = Loc.t("Şu an bu malı fazlasıyla satabilecek (ambargosuz, savaşta olmayan) ülke yok.")
+	ui.show_dialog(Loc.t("Tedarik anlaşması: %s") % Loc.t(Goods.NAMES[g]), body, opts)
+
+
 func _goods_section(c) -> void:
 	Goods.ensure(c)
 	content.add_child(_kick("Mal ve kaynak pazarı"))
@@ -828,6 +844,16 @@ func _goods_section(c) -> void:
 			Goods.set_policy(c, g, nx)
 			render())
 		h.add_child(pb)
+		var dl: Dictionary = Goods.deal_of(c, g)
+		var db := TK.button((Loc.t("İptal: %s") % gs.countries[int(dl.partner)].name) if not dl.is_empty() else Loc.t("Anlaşma yap"), "danger" if not dl.is_empty() else "ghost", "", Vector2(190, 52), 14)
+		db.pressed.connect(func():
+			ui._click()
+			if not dl.is_empty():
+				Goods.cancel_deal(gs, c, g)
+				render()
+			else:
+				_goods_deal_dialog(c, g))
+		h.add_child(db)
 		content.add_child(h)
 		content.add_child(TK.hsep(0.5))
 	content.add_child(_wrap("Politika: Otomatik = fazla satılır, açık stoktan ve pazardan karşılanır. Depola = fazla satılmaz, uzun vadeli stok (40 hafta) birikir. Sat = stok her hafta %10 eritilip satılır.", "small", TK.FAINT))
