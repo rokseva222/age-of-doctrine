@@ -300,55 +300,6 @@
 }
 },
 {
-"id": "berlin_wall",
-"y": 1962,
-"m": 11,
-"title": "Checkpoint Charlie",
-"scene": "border",
-"icon": "border_clash",
-"text": "Berlin'de Amerikan ve Sovyet tankları 16 saat burun buruna.",
-"major": false,
-"default_fx": [],
-"roles": {
-"United States of America": {
-"text": "Doğu Alman polisi diplomatları durdurdu. Clay tankları sınıra sürdü.",
-"options": [
-{
-"t": "Tankları tut, telefon aç",
-"d": "Gerilimi düşür",
-"fx": [
-[
-"rel",
-"United States of America",
-"Russia",
-10
-]
-],
-"r": "Tanklar birer birer çekildi."
-},
-{
-"t": "Zorla geç",
-"d": "Dört güç hakları",
-"fx": [
-[
-"rel",
-"United States of America",
-"Russia",
--25
-],
-[
-"stab",
-"Germany",
--5
-]
-],
-"r": "Berlin'de kıvılcım."
-}
-]
-}
-}
-},
-{
 "id": "sino_indian",
 "y": 1962,
 "m": 10,
@@ -470,6 +421,55 @@
 ]
 ],
 "r": "Himalaya'da soğuk barış."
+}
+]
+}
+}
+},
+{
+"id": "berlin_wall",
+"y": 1962,
+"m": 11,
+"title": "Checkpoint Charlie",
+"scene": "border",
+"icon": "border_clash",
+"text": "Berlin'de Amerikan ve Sovyet tankları 16 saat burun buruna.",
+"major": false,
+"default_fx": [],
+"roles": {
+"United States of America": {
+"text": "Doğu Alman polisi diplomatları durdurdu. Clay tankları sınıra sürdü.",
+"options": [
+{
+"t": "Tankları tut, telefon aç",
+"d": "Gerilimi düşür",
+"fx": [
+[
+"rel",
+"United States of America",
+"Russia",
+10
+]
+],
+"r": "Tanklar birer birer çekildi."
+},
+{
+"t": "Zorla geç",
+"d": "Dört güç hakları",
+"fx": [
+[
+"rel",
+"United States of America",
+"Russia",
+-25
+],
+[
+"stab",
+"Germany",
+-5
+]
+],
+"r": "Berlin'de kıvılcım."
 }
 ]
 }
@@ -604,6 +604,117 @@
 ]
 ],
 "r": "Washington Vietnam'ı Saygon'a bıraktı."
+}
+]
+}
+}
+},
+{
+"id": "indopak_1965",
+"y": 1965,
+"m": 9,
+"title": "1965 Hint–Pakistan Savaşı",
+"scene": "crisis",
+"icon": "tank",
+"text": "Pakistan Keşmir'e 'Gibraltar Harekâtı' ile sızmacı gönderdi; Hindistan Lahor yönünde karşılık verdi. Tank savaşları Pencap'ta kızışıyor; BM ateşkes arıyor.",
+"major": true,
+"default_fx": [
+[
+"war",
+"India",
+"Pakistan"
+],
+[
+"troops",
+"India",
+-4
+],
+[
+"troops",
+"Pakistan",
+-4
+]
+],
+"roles": {
+"India": {
+"text": "Şastri Lahor'a doğru ilerleme emri verdi; ama çatışma uzarsa Çin müdahale edebilir.",
+"options": [
+{
+"t": "Lahor'a yüklen",
+"d": "Askerî baskı",
+"fx": [
+[
+"buff",
+"India",
+"att",
+1.15,
+8
+],
+[
+"troops",
+"India",
+-4
+]
+],
+"r": "Hint birlikleri Lahor kapılarına dayandı."
+},
+{
+"t": "Ateşkesi kabul et (tarihî)",
+"d": "Taşkent'te müzakere",
+"fx": [
+[
+"peace",
+"India",
+"Pakistan"
+],
+[
+"stab",
+"India",
+3
+]
+],
+"r": "Hindistan ateşkesi kabul etti; Taşkent'te anlaşma imzalandı."
+}
+]
+},
+"Pakistan": {
+"text": "Keşmir halk ayaklanması beklentisi gerçekleşmedi; Hint ordusu Pencap'ta.",
+"options": [
+{
+"t": "Savunmada diren",
+"d": "Lahor'u koru",
+"fx": [
+[
+"buff",
+"Pakistan",
+"def",
+1.2,
+8
+],
+[
+"stab",
+"Pakistan",
+3
+]
+],
+"r": "Pakistan Lahor hattını tuttu."
+},
+{
+"t": "Ateşkes iste (tarihî)",
+"d": "Çin ve ABD desteği sınırlı",
+"fx": [
+[
+"peace",
+"Pakistan",
+"India"
+],
+[
+"stab",
+"Pakistan",
+-3
+]
+],
+"r": "Pakistan BM ateşkesini kabul etti."
 }
 ]
 }
@@ -749,6 +860,120 @@
 }
 },
 {
+"id": "tet_1968",
+"y": 1968,
+"m": 1,
+"title": "Tet Taarruzu",
+"scene": "crisis",
+"icon": "helmet_ww2",
+"text": "Kuzey Vietnam ve Vietkong Tet bayramında Güney Vietnam'ın şehirlerine saldırdı; Saygon'daki ABD büyükelçiliği bile vuruldu. Askerî açıdan yenilgi, siyasi açıdan Amerikan kamuoyu için şok.",
+"major": true,
+"default_fx": [
+[
+"stab",
+"United States of America",
+-6
+],
+[
+"troops",
+"Vietnam",
+-8
+],
+[
+"rel",
+"United States of America",
+"Russia",
+-4
+]
+],
+"roles": {
+"United States of America": {
+"text": "Westmoreland takviye istiyor; Kongre ve halk savaştan bıkıyor.",
+"options": [
+{
+"t": "Takviye gönder",
+"d": "Savaşı yoğunlaştır",
+"fx": [
+[
+"buff",
+"United States of America",
+"att",
+1.1,
+10
+],
+[
+"stab",
+"United States of America",
+-5
+]
+],
+"r": "Washington daha fazla asker gönderdi; kamuoyu tepkisi büyüdü."
+},
+{
+"t": "Vietnamlaştırma ve müzakere (tarihî)",
+"d": "Çıkış stratejisi",
+"fx": [
+[
+"stab",
+"United States of America",
+3
+],
+[
+"rel",
+"United States of America",
+"Russia",
+3
+]
+],
+"r": "Johnson yeniden aday olmayacağını açıkladı; Paris görüşmeleri başladı."
+}
+]
+},
+"Vietnam": {
+"text": "Taarruz şehirlerde halk ayaklanması getirmedi ama Amerikan iradesini kırdı.",
+"options": [
+{
+"t": "Uzun savaşı sürdür (tarihî)",
+"d": "Sabır en güçlü silah",
+"fx": [
+[
+"buff",
+"Vietnam",
+"def",
+1.2,
+20
+],
+[
+"stab",
+"Vietnam",
+4
+]
+],
+"r": "Hanoi uzun savaş stratejisini sürdürdü."
+},
+{
+"t": "Müzakere masasına otur",
+"d": "Paris'te pazarlık",
+"fx": [
+[
+"rel",
+"Vietnam",
+"United States of America",
+6
+],
+[
+"gold",
+"Vietnam",
+0.5
+]
+],
+"r": "Hanoi Paris görüşmelerine katıldı."
+}
+]
+}
+}
+},
+{
 "id": "prague",
 "y": 1968,
 "m": 8,
@@ -808,6 +1033,315 @@
 ]
 ],
 "r": "Prag Baharı sürdü; Moskova huzursuz."
+}
+]
+}
+}
+},
+{
+"id": "bangladesh_1971",
+"y": 1971,
+"m": 12,
+"title": "Bangladeş Kurtuluş Savaşı",
+"scene": "crisis",
+"icon": "flag",
+"text": "Doğu Pakistan'daki ayaklanma Hindistan'ın müdahalesine dönüştü. Hindistan 14 günde Dakka'yı kuşattı; Pakistan ordusu teslim oldu ve Bangladeş doğdu.",
+"major": true,
+"default_fx": [
+[
+"war",
+"India",
+"Pakistan"
+],
+[
+"stab",
+"Pakistan",
+-8
+],
+[
+"troops",
+"Pakistan",
+-10
+]
+],
+"roles": {
+"India": {
+"text": "Milyonlarca mülteci Hindistan'a aktı; Gandhi Doğu Pakistan'da askerî çözüm arıyor.",
+"options": [
+{
+"t": "Dakka'ya yüklen (tarihî)",
+"d": "Bağımsız Bangladeş",
+"fx": [
+[
+"buff",
+"India",
+"att",
+1.2,
+6
+],
+[
+"stab",
+"India",
+6
+],
+[
+"gold",
+"India",
+1.0
+]
+],
+"r": "Hint ordusu Dakka'yı kuşattı; Pakistan teslim oldu."
+},
+{
+"t": "Sadece sınırı koru",
+"d": "Çatışma sınırlı kalır",
+"fx": [
+[
+"stab",
+"India",
+-2
+]
+],
+"r": "Hindistan sınırda kaldı."
+}
+]
+},
+"Pakistan": {
+"text": "Yahya Han'ın ordusu iki cephede; ABD ve Çin destek sözü verdi ama gelmedi.",
+"options": [
+{
+"t": "Batıda karşı taarruz yap",
+"d": "İkinci cephe aç",
+"fx": [
+[
+"buff",
+"Pakistan",
+"att",
+1.1,
+6
+],
+[
+"troops",
+"Pakistan",
+-5
+]
+],
+"r": "Pakistan batıda taarruza geçti; sonuç sınırlı kaldı."
+},
+{
+"t": "Teslim ol (tarihî)",
+"d": "Kayıpları durdur",
+"fx": [
+[
+"peace",
+"Pakistan",
+"India"
+],
+[
+"stab",
+"Pakistan",
+-8
+]
+],
+"r": "Pakistan Dakka'da teslim oldu."
+}
+]
+},
+"Bangladesh": {
+"text": "Mukti Bahini ve Hindistan'ın desteğiyle bağımsızlık ilan edildi.",
+"options": [
+{
+"t": "Bağımsızlığı ilan et (tarihî)",
+"d": "Yeni devlet",
+"fx": [
+[
+"stab",
+"Bangladesh",
+6
+],
+[
+"rel",
+"Bangladesh",
+"India",
+10
+]
+],
+"r": "Bangladeş bağımsızlığını ilan etti."
+},
+{
+"t": "Hindistan'a bağımlı olma",
+"d": "Bağımsız çizgi",
+"fx": [
+[
+"rel",
+"Bangladesh",
+"India",
+-4
+],
+[
+"stab",
+"Bangladesh",
+2
+]
+],
+"r": "Dakka dengeli bir dış politika izledi."
+}
+]
+}
+}
+},
+{
+"id": "yom_kippur_1973",
+"y": 1973,
+"m": 10,
+"title": "Yom Kippur Savaşı",
+"scene": "crisis",
+"icon": "tank",
+"text": "Mısır ve Suriye, Yom Kippur günü Süveyş ve Golan'da sürpriz saldırı başlattı. İsrail ilk günlerde geri adım attı; sonra karşı saldırıya geçti. Arap petrol ambargosu dünya ekonomisini sarsıyor.",
+"major": true,
+"default_fx": [
+[
+"war",
+"Egypt",
+"Israel"
+],
+[
+"war",
+"Syria",
+"Israel"
+],
+[
+"gold",
+"United States of America",
+-1.0
+],
+[
+"gold",
+"Saudi Arabia",
+2.0
+]
+],
+"roles": {
+"Israel": {
+"text": "Sürpriz saldırıda ağır kayıp; Golda Meir ABD'den acil silah yardımı istiyor.",
+"options": [
+{
+"t": "Karşı taarruz (tarihî)",
+"d": "Süveyş'i geç, Şam'a yönel",
+"fx": [
+[
+"buff",
+"Israel",
+"att",
+1.2,
+8
+],
+[
+"rel",
+"Israel",
+"United States of America",
+8
+],
+[
+"troops",
+"Israel",
+-4
+]
+],
+"r": "İsrail Süveyş'i geçti ve Şam yoluna çıktı."
+},
+{
+"t": "Savunmada kal",
+"d": "Kayıp azalt",
+"fx": [
+[
+"buff",
+"Israel",
+"def",
+1.2,
+8
+]
+],
+"r": "İsrail savunmada kaldı."
+}
+]
+},
+"Egypt": {
+"text": "Sedat ilk günlerde Süveyş'i geçti. Şimdi daha derine mi ilerleyeceksin?",
+"options": [
+{
+"t": "Bar-Lev Hattı'nı tut (tarihî)",
+"d": "Siyasi hedef",
+"fx": [
+[
+"stab",
+"Egypt",
+6
+],
+[
+"buff",
+"Egypt",
+"def",
+1.15,
+8
+]
+],
+"r": "Mısır kazandığı bölgeyi tuttu; ateşkes görüşmeleri başladı."
+},
+{
+"t": "Sina geçitlerine ilerle",
+"d": "Cesur ama riskli",
+"fx": [
+[
+"troops",
+"Egypt",
+-6
+],
+[
+"buff",
+"Egypt",
+"att",
+1.1,
+4
+]
+],
+"r": "Mısır zırhlıları Sina'da ilerledi ve ağır kayıp verdi."
+}
+]
+},
+"Saudi Arabia": {
+"text": "Faysal petrol silahını kullanabilir; Batı'ya ihracat durdurulabilir.",
+"options": [
+{
+"t": "Petrol ambargosu uygula (tarihî)",
+"d": "Fiyatlar fırlar",
+"fx": [
+[
+"gold",
+"Saudi Arabia",
+3.0
+],
+[
+"rel",
+"Saudi Arabia",
+"United States of America",
+-8
+]
+],
+"r": "Suudi Arabistan Batı'ya petrol ambargosu koydu."
+},
+{
+"t": "Ambargodan kaçın",
+"d": "Batı ile ilişkiyi koru",
+"fx": [
+[
+"rel",
+"Saudi Arabia",
+"United States of America",
+6
+]
+],
+"r": "Riyad ambargoya katılmadı."
 }
 ]
 }
@@ -960,6 +1494,236 @@
 }
 },
 {
+"id": "saigon_1975",
+"y": 1975,
+"m": 4,
+"title": "Saygon'un Düşüşü",
+"scene": "crisis",
+"icon": "helmet_ww2",
+"text": "Kuzey Vietnam tankları 30 Nisan'da Saygon'daki Bağımsızlık Sarayı'na girdi. Amerikan helikopterleri büyükelçilikten son kaçanları tahliye ediyor; Vietnam yeniden birleşiyor.",
+"major": true,
+"default_fx": [
+[
+"stab",
+"Vietnam",
+6
+],
+[
+"stab",
+"United States of America",
+-4
+],
+[
+"rel",
+"United States of America",
+"Vietnam",
+-10
+]
+],
+"roles": {
+"Vietnam": {
+"text": "Zafer geldi; ülke yeniden birleşiyor. Kamboçya ve Çin ile sınır sorunları büyüyor.",
+"options": [
+{
+"t": "Yeniden birleşmeyi tamamla (tarihî)",
+"d": "Tek Vietnam",
+"fx": [
+[
+"stab",
+"Vietnam",
+6
+],
+[
+"gold",
+"Vietnam",
+1.0
+]
+],
+"r": "Vietnam resmen birleşti."
+},
+{
+"t": "Sovyet desteğini artır",
+"d": "Güvenlik ittifakı",
+"fx": [
+[
+"rel",
+"Vietnam",
+"Russia",
+10
+],
+[
+"rel",
+"Vietnam",
+"China",
+-6
+]
+],
+"r": "Hanoi Moskova ile yakınlaştı."
+}
+]
+},
+"United States of America": {
+"text": "Vietnam Savaşı sona erdi; Watergate ve ekonomik kriz sonrası Amerika iç meselelerine dönüyor.",
+"options": [
+{
+"t": "Askerleri eve getir (tarihî)",
+"d": "Yara sarma dönemi",
+"fx": [
+[
+"stab",
+"United States of America",
+3
+],
+[
+"gold",
+"United States of America",
+1.0
+]
+],
+"r": "Washington Güneydoğu Asya'dan çekildi."
+},
+{
+"t": "Müttefikleri destekle",
+"d": "Yeni taahhütler",
+"fx": [
+[
+"rel",
+"United States of America",
+"South Korea",
+6
+],
+[
+"gold",
+"United States of America",
+-1.0
+]
+],
+"r": "Amerika bölgesel müttefiklerine güvence verdi."
+}
+]
+}
+}
+},
+{
+"id": "iran_rev_1979",
+"y": 1979,
+"m": 2,
+"title": "İran Devrimi",
+"scene": "crisis",
+"icon": "flag",
+"text": "Şah ülkeyi terk etti; Humeyni dönerek İslam Cumhuriyeti'ni ilan etti. ABD'nin Orta Doğu'daki en önemli müttefiki yön değiştirdi; petrol piyasası sarsıldı.",
+"major": true,
+"default_fx": [
+[
+"rel",
+"Iran",
+"United States of America",
+-20
+],
+[
+"stab",
+"Iran",
+-4
+],
+[
+"gold",
+"Saudi Arabia",
+1.0
+]
+],
+"roles": {
+"Iran": {
+"text": "Halk sokakta; ordu bölünmüş. Devrimin yönü belirsiz: İslamcı, milliyetçi ya da sol.",
+"options": [
+{
+"t": "İslam Cumhuriyeti'ni ilan et (tarihî)",
+"d": "Velayet-i fakih",
+"fx": [
+[
+"stab",
+"Iran",
+5
+],
+[
+"rel",
+"Iran",
+"United States of America",
+-10
+],
+[
+"rel",
+"Iran",
+"Russia",
+2
+]
+],
+"r": "Humeyni İslam Cumhuriyeti'ni kurdu."
+},
+{
+"t": "Seküler bir yönetim kur",
+"d": "Liberal geçiş",
+"fx": [
+[
+"stab",
+"Iran",
+-5
+],
+[
+"rel",
+"Iran",
+"United States of America",
+4
+]
+],
+"r": "Geçici hükûmet laik bir yol aradı."
+}
+]
+},
+"United States of America": {
+"text": "Carter yönetimi Şah'ın düşüşünü önleyemedi. Yeni rejimle ilişki mi, mesafe mi?",
+"options": [
+{
+"t": "Mesafeli kal (tarihî)",
+"d": "Petrolü güvene al",
+"fx": [
+[
+"rel",
+"United States of America",
+"Saudi Arabia",
+6
+],
+[
+"rel",
+"United States of America",
+"Iran",
+-8
+]
+],
+"r": "Washington İran'la mesafe koydu; Körfez'de varlığını artırdı."
+},
+{
+"t": "Yeni rejimle temas kur",
+"d": "Yumuşama",
+"fx": [
+[
+"rel",
+"United States of America",
+"Iran",
+6
+],
+[
+"stab",
+"United States of America",
+-2
+]
+],
+"r": "Washington geçici hükûmetle temas kurdu."
+}
+]
+}
+}
+},
+{
 "id": "afghan",
 "y": 1979,
 "m": 12,
@@ -1091,6 +1855,276 @@
 ]
 ],
 "r": "Moskova Olimpiyatları boykot edildi."
+}
+]
+}
+}
+},
+{
+"id": "iran_iraq_1980",
+"y": 1980,
+"m": 9,
+"title": "İran–Irak Savaşı",
+"scene": "crisis",
+"icon": "tank",
+"text": "Saddam Hüseyin, İran'ın devrim sonrası zayıflığından yararlanıp Şattülarap ve Hûzistan'ı almak için saldırdı. Sekiz yıl sürecek savaş başladı; Körfez petrolü tehlikede.",
+"major": true,
+"default_fx": [
+[
+"war",
+"Iraq",
+"Iran"
+],
+[
+"troops",
+"Iran",
+-6
+],
+[
+"troops",
+"Iraq",
+-4
+]
+],
+"roles": {
+"Iraq": {
+"text": "Saddam kısa bir zafer bekliyor; İran ordusu ise devrim sonrası dağınık.",
+"options": [
+{
+"t": "Hûzistan'a ilerle (tarihî)",
+"d": "Hızlı baskın",
+"fx": [
+[
+"buff",
+"Iraq",
+"att",
+1.15,
+8
+],
+[
+"troops",
+"Iraq",
+-4
+]
+],
+"r": "Irak ordusu Hûzistan'a girdi ama Horramşehr'de takıldı."
+},
+{
+"t": "Sınırı tahkim et",
+"d": "Savunmada kal",
+"fx": [
+[
+"buff",
+"Iraq",
+"def",
+1.15,
+12
+]
+],
+"r": "Irak sınırı tahkim etti."
+}
+]
+},
+"Iran": {
+"text": "Ordu tasfiye edilmiş; ama Devrim Muhafızları ve halk seferberliği hazır.",
+"options": [
+{
+"t": "Halk seferberliği (tarihî)",
+"d": "Kutsal Savunma",
+"fx": [
+[
+"mob",
+"Iran"
+],
+[
+"buff",
+"Iran",
+"def",
+1.2,
+12
+],
+[
+"stab",
+"Iran",
+4
+]
+],
+"r": "İran gönüllüleri cepheye akın etti."
+},
+{
+"t": "Müzakereye açıl",
+"d": "Taviz",
+"fx": [
+[
+"stab",
+"Iran",
+-3
+]
+],
+"r": "Tahran uluslararası arabuluculuğu aradı."
+}
+]
+},
+"Saudi Arabia": {
+"text": "Körfez monarşileri Irak'ı İran'a karşı bir kalkan olarak görüyor.",
+"options": [
+{
+"t": "Irak'ı finanse et (tarihî)",
+"d": "İran tehdidini dengele",
+"fx": [
+[
+"rel",
+"Saudi Arabia",
+"Iraq",
+10
+],
+[
+"rel",
+"Saudi Arabia",
+"Iran",
+-8
+],
+[
+"gold",
+"Saudi Arabia",
+-1.0
+]
+],
+"r": "Riyad Bağdat'a milyarlarca dolar kredi verdi."
+},
+{
+"t": "Tarafsız kal",
+"d": "Dengeli politika",
+"fx": [
+[
+"stab",
+"Saudi Arabia",
+2
+]
+],
+"r": "Suudi Arabistan tarafsız kaldı."
+}
+]
+}
+}
+},
+{
+"id": "falklands_1982",
+"y": 1982,
+"m": 4,
+"title": "Falkland Savaşı",
+"scene": "carrier",
+"icon": "carrier",
+"text": "Arjantin cuntası 2 Nisan'da Falkland (Malvinas) Adaları'nı işgal etti. Thatcher bir görev filosu gönderdi; deniz ve hava çarpışmaları Güney Atlantik'te sürüyor.",
+"major": true,
+"default_fx": [
+[
+"war",
+"Argentina",
+"United Kingdom"
+],
+[
+"troops",
+"Argentina",
+-6
+],
+[
+"stab",
+"Argentina",
+-4
+],
+[
+"stab",
+"United Kingdom",
+4
+]
+],
+"roles": {
+"United Kingdom": {
+"text": "Görev filosu 12.000 km uzakta; Exocet füzeleri gemilere tehdit. Adaları geri almak için çıkarma mı?",
+"options": [
+{
+"t": "Çıkarma yap (tarihî)",
+"d": "San Carlos çıkarması",
+"fx": [
+[
+"buff",
+"United Kingdom",
+"att",
+1.2,
+10
+],
+[
+"stab",
+"United Kingdom",
+4
+],
+[
+"troops",
+"United Kingdom",
+-3
+]
+],
+"r": "İngiliz birlikleri San Carlos'a çıktı ve Port Stanley'e yürüdü."
+},
+{
+"t": "Müzakereyi dene",
+"d": "BM arabuluculuğu",
+"fx": [
+[
+"stab",
+"United Kingdom",
+-4
+],
+[
+"rel",
+"United Kingdom",
+"Argentina",
+4
+]
+],
+"r": "Londra diplomasiyle çözüm aradı."
+}
+]
+},
+"Argentina": {
+"text": "Galtieri halkın desteğini kazandı; ama İngiliz donanması yaklaşıyor.",
+"options": [
+{
+"t": "Adaları tahkim et (tarihî)",
+"d": "Müdafaa",
+"fx": [
+[
+"buff",
+"Argentina",
+"def",
+1.2,
+10
+],
+[
+"stab",
+"Argentina",
+3
+]
+],
+"r": "Arjantin adalarda siper kazdı; hava gücüyle karşılık verdi."
+},
+{
+"t": "Geri çekil",
+"d": "Savaştan kaç",
+"fx": [
+[
+"stab",
+"Argentina",
+-6
+],
+[
+"troops",
+"Argentina",
+3
+]
+],
+"r": "Arjantin birliklerini geri çekmeyi düşündü."
 }
 ]
 }
@@ -1253,6 +2287,154 @@
 "Pakistan üzerinden silahlar akıyor.": "Weapons flow through Pakistan.",
 "Olimpiyat boykotu ve ambargo": "Olympic boycott and embargo",
 "Yumuşak baskı": "Soft pressure",
-"Moskova Olimpiyatları boykot edildi.": "The Moscow Olympics were boycotted."
+"Moskova Olimpiyatları boykot edildi.": "The Moscow Olympics were boycotted.",
+"Lahor'a yüklen": "Press toward Lahore",
+"Askerî baskı": "Military pressure",
+"Hint birlikleri Lahor kapılarına dayandı.": "Indian troops reached the gates of Lahore.",
+"Ateşkesi kabul et (tarihî)": "Accept the ceasefire (historical)",
+"Taşkent'te müzakere": "Talks at Tashkent",
+"Hindistan ateşkesi kabul etti; Taşkent'te anlaşma imzalandı.": "India accepted the ceasefire; the Tashkent agreement was signed.",
+"Şastri Lahor'a doğru ilerleme emri verdi; ama çatışma uzarsa Çin müdahale edebilir.": "Shastri ordered an advance toward Lahore; but a long conflict could draw in China.",
+"Savunmada diren": "Stand on the defensive",
+"Lahor'u koru": "Defend Lahore",
+"Pakistan Lahor hattını tuttu.": "Pakistan held the Lahore line.",
+"Ateşkes iste (tarihî)": "Accept the ceasefire (historical)",
+"Çin ve ABD desteği sınırlı": "Limited Chinese and US support",
+"Pakistan BM ateşkesini kabul etti.": "Pakistan accepted the UN ceasefire.",
+"Keşmir halk ayaklanması beklentisi gerçekleşmedi; Hint ordusu Pencap'ta.": "The hoped-for Kashmiri uprising did not come; the Indian army is in Punjab.",
+"1965 Hint–Pakistan Savaşı": "The 1965 Indo-Pakistani War",
+"Pakistan Keşmir'e 'Gibraltar Harekâtı' ile sızmacı gönderdi; Hindistan Lahor yönünde karşılık verdi. Tank savaşları Pencap'ta kızışıyor; BM ateşkes arıyor.": "Pakistan sent infiltrators into Kashmir under Operation Gibraltar; India answered with a thrust toward Lahore. Tank battles rage in Punjab; the UN is pressing for a ceasefire.",
+"Takviye gönder": "Send reinforcements",
+"Savaşı yoğunlaştır": "Escalate",
+"Washington daha fazla asker gönderdi; kamuoyu tepkisi büyüdü.": "Washington sent more troops; public backlash grew.",
+"Vietnamlaştırma ve müzakere (tarihî)": "Vietnamisation and talks (historical)",
+"Çıkış stratejisi": "An exit strategy",
+"Johnson yeniden aday olmayacağını açıkladı; Paris görüşmeleri başladı.": "Johnson announced he would not seek re-election; the Paris talks began.",
+"Westmoreland takviye istiyor; Kongre ve halk savaştan bıkıyor.": "Westmoreland asks for reinforcements; Congress and the public are tiring of the war.",
+"Uzun savaşı sürdür (tarihî)": "Prolong the war (historical)",
+"Sabır en güçlü silah": "Patience is the strongest weapon",
+"Hanoi uzun savaş stratejisini sürdürdü.": "Hanoi continued its protracted-war strategy.",
+"Müzakere masasına otur": "Go to the negotiating table",
+"Paris'te pazarlık": "Bargaining in Paris",
+"Hanoi Paris görüşmelerine katıldı.": "Hanoi joined the Paris talks.",
+"Taarruz şehirlerde halk ayaklanması getirmedi ama Amerikan iradesini kırdı.": "The offensive did not spark a popular uprising but cracked American will.",
+"Tet Taarruzu": "The Tet Offensive",
+"Kuzey Vietnam ve Vietkong Tet bayramında Güney Vietnam'ın şehirlerine saldırdı; Saygon'daki ABD büyükelçiliği bile vuruldu. Askerî açıdan yenilgi, siyasi açıdan Amerikan kamuoyu için şok.": "North Vietnamese and Viet Cong forces struck South Vietnamese cities during Tet; even the US embassy in Saigon was hit. A military defeat for them but a political shock for American opinion.",
+"Dakka'ya yüklen (tarihî)": "Drive on Dhaka (historical)",
+"Bağımsız Bangladeş": "An independent Bangladesh",
+"Hint ordusu Dakka'yı kuşattı; Pakistan teslim oldu.": "The Indian army surrounded Dhaka; Pakistan surrendered.",
+"Sadece sınırı koru": "Only secure the border",
+"Çatışma sınırlı kalır": "The conflict stays limited",
+"Hindistan sınırda kaldı.": "India stayed at the border.",
+"Milyonlarca mülteci Hindistan'a aktı; Gandhi Doğu Pakistan'da askerî çözüm arıyor.": "Millions of refugees poured into India; Gandhi seeks a military solution in East Pakistan.",
+"Batıda karşı taarruz yap": "Counterattack in the West",
+"İkinci cephe aç": "Open a second front",
+"Pakistan batıda taarruza geçti; sonuç sınırlı kaldı.": "Pakistan attacked in the West with limited results.",
+"Teslim ol (tarihî)": "Surrender (historical)",
+"Kayıpları durdur": "Stop the losses",
+"Pakistan Dakka'da teslim oldu.": "Pakistan surrendered at Dhaka.",
+"Yahya Han'ın ordusu iki cephede; ABD ve Çin destek sözü verdi ama gelmedi.": "Yahya Khan's army is fighting on two fronts; the US and China promised support that never came.",
+"Bağımsızlığı ilan et (tarihî)": "Declare independence (historical)",
+"Yeni devlet": "A new state",
+"Bangladeş bağımsızlığını ilan etti.": "Bangladesh declared independence.",
+"Hindistan'a bağımlı olma": "Avoid dependence on India",
+"Bağımsız çizgi": "An independent line",
+"Dakka dengeli bir dış politika izledi.": "Dhaka pursued a balanced foreign policy.",
+"Mukti Bahini ve Hindistan'ın desteğiyle bağımsızlık ilan edildi.": "Independence was declared with Mukti Bahini and India's backing.",
+"Bangladeş Kurtuluş Savaşı": "The Bangladesh Liberation War",
+"Doğu Pakistan'daki ayaklanma Hindistan'ın müdahalesine dönüştü. Hindistan 14 günde Dakka'yı kuşattı; Pakistan ordusu teslim oldu ve Bangladeş doğdu.": "The uprising in East Pakistan became an Indian intervention. India encircled Dhaka in 14 days; the Pakistani army surrendered and Bangladesh was born.",
+"Karşı taarruz (tarihî)": "Counterattack (historical)",
+"Süveyş'i geç, Şam'a yönel": "Cross Suez, drive toward Damascus",
+"İsrail Süveyş'i geçti ve Şam yoluna çıktı.": "Israel crossed Suez and pushed toward Damascus.",
+"Savunmada kal": "Stay defensive",
+"Kayıp azalt": "Cut losses",
+"İsrail savunmada kaldı.": "Israel stayed on the defensive.",
+"Sürpriz saldırıda ağır kayıp; Golda Meir ABD'den acil silah yardımı istiyor.": "Heavy losses in the surprise attack; Golda Meir is asking the US for urgent arms.",
+"Bar-Lev Hattı'nı tut (tarihî)": "Hold the Bar-Lev line (historical)",
+"Siyasi hedef": "The political goal",
+"Mısır kazandığı bölgeyi tuttu; ateşkes görüşmeleri başladı.": "Egypt held its gains; ceasefire talks began.",
+"Sina geçitlerine ilerle": "Advance to the Sinai passes",
+"Cesur ama riskli": "Bold but risky",
+"Mısır zırhlıları Sina'da ilerledi ve ağır kayıp verdi.": "Egyptian armour advanced into Sinai and took heavy losses.",
+"Sedat ilk günlerde Süveyş'i geçti. Şimdi daha derine mi ilerleyeceksin?": "Sadat crossed Suez in the first days. Will you go deeper?",
+"Petrol ambargosu uygula (tarihî)": "Impose the oil embargo (historical)",
+"Fiyatlar fırlar": "Prices soar",
+"Suudi Arabistan Batı'ya petrol ambargosu koydu.": "Saudi Arabia imposed an oil embargo on the West.",
+"Ambargodan kaçın": "Avoid the embargo",
+"Batı ile ilişkiyi koru": "Keep Western ties",
+"Riyad ambargoya katılmadı.": "Riyadh stayed out of the embargo.",
+"Faysal petrol silahını kullanabilir; Batı'ya ihracat durdurulabilir.": "Faisal could use the oil weapon; exports to the West could be halted.",
+"Yom Kippur Savaşı": "The Yom Kippur War",
+"Mısır ve Suriye, Yom Kippur günü Süveyş ve Golan'da sürpriz saldırı başlattı. İsrail ilk günlerde geri adım attı; sonra karşı saldırıya geçti. Arap petrol ambargosu dünya ekonomisini sarsıyor.": "Egypt and Syria launched a surprise attack on Yom Kippur at Suez and the Golan. Israel fell back in the first days, then counterattacked. The Arab oil embargo is shaking the world economy.",
+"Yeniden birleşmeyi tamamla (tarihî)": "Complete reunification (historical)",
+"Tek Vietnam": "One Vietnam",
+"Vietnam resmen birleşti.": "Vietnam was formally reunified.",
+"Sovyet desteğini artır": "Deepen Soviet ties",
+"Güvenlik ittifakı": "A security alliance",
+"Hanoi Moskova ile yakınlaştı.": "Hanoi moved closer to Moscow.",
+"Zafer geldi; ülke yeniden birleşiyor. Kamboçya ve Çin ile sınır sorunları büyüyor.": "Victory has come; the country is reunified. Border issues with Cambodia and China loom.",
+"Askerleri eve getir (tarihî)": "Bring the troops home (historical)",
+"Yara sarma dönemi": "Time to heal",
+"Washington Güneydoğu Asya'dan çekildi.": "Washington withdrew from Southeast Asia.",
+"Müttefikleri destekle": "Back your allies",
+"Yeni taahhütler": "New commitments",
+"Amerika bölgesel müttefiklerine güvence verdi.": "America reassured regional allies.",
+"Vietnam Savaşı sona erdi; Watergate ve ekonomik kriz sonrası Amerika iç meselelerine dönüyor.": "The Vietnam War is over; after Watergate and economic crisis America turns inward.",
+"Saygon'un Düşüşü": "The Fall of Saigon",
+"Kuzey Vietnam tankları 30 Nisan'da Saygon'daki Bağımsızlık Sarayı'na girdi. Amerikan helikopterleri büyükelçilikten son kaçanları tahliye ediyor; Vietnam yeniden birleşiyor.": "North Vietnamese tanks entered the Independence Palace in Saigon on 30 April. American helicopters evacuate the last escapees from the embassy; Vietnam is reunified.",
+"İslam Cumhuriyeti'ni ilan et (tarihî)": "Proclaim the Islamic Republic (historical)",
+"Velayet-i fakih": "Guardianship of the jurist",
+"Humeyni İslam Cumhuriyeti'ni kurdu.": "Khomeini founded the Islamic Republic.",
+"Seküler bir yönetim kur": "Form a secular government",
+"Liberal geçiş": "A liberal transition",
+"Geçici hükûmet laik bir yol aradı.": "The interim government sought a secular path.",
+"Halk sokakta; ordu bölünmüş. Devrimin yönü belirsiz: İslamcı, milliyetçi ya da sol.": "The people are in the streets; the army is split. The direction of the revolution is uncertain: Islamist, nationalist or left.",
+"Mesafeli kal (tarihî)": "Keep your distance (historical)",
+"Petrolü güvene al": "Secure the oil",
+"Washington İran'la mesafe koydu; Körfez'de varlığını artırdı.": "Washington kept its distance from Iran and strengthened its Gulf presence.",
+"Yeni rejimle temas kur": "Reach out to the new regime",
+"Yumuşama": "Detente",
+"Washington geçici hükûmetle temas kurdu.": "Washington made contact with the provisional government.",
+"Carter yönetimi Şah'ın düşüşünü önleyemedi. Yeni rejimle ilişki mi, mesafe mi?": "The Carter administration could not prevent the Shah's fall. Engage the new regime or keep your distance?",
+"İran Devrimi": "The Iranian Revolution",
+"Şah ülkeyi terk etti; Humeyni dönerek İslam Cumhuriyeti'ni ilan etti. ABD'nin Orta Doğu'daki en önemli müttefiki yön değiştirdi; petrol piyasası sarsıldı.": "The Shah left the country; Khomeini returned and proclaimed the Islamic Republic. America's key Middle Eastern ally changed course; the oil market was shaken.",
+"Hûzistan'a ilerle (tarihî)": "Advance into Khuzestan (historical)",
+"Hızlı baskın": "A quick strike",
+"Irak ordusu Hûzistan'a girdi ama Horramşehr'de takıldı.": "The Iraqi army entered Khuzestan but stalled at Khorramshahr.",
+"Sınırı tahkim et": "Fortify the border",
+"Irak sınırı tahkim etti.": "Iraq fortified the border.",
+"Saddam kısa bir zafer bekliyor; İran ordusu ise devrim sonrası dağınık.": "Saddam expects a quick victory; Iran's army is in post-revolution disarray.",
+"Halk seferberliği (tarihî)": "Mass mobilisation (historical)",
+"Kutsal Savunma": "Sacred Defence",
+"İran gönüllüleri cepheye akın etti.": "Iranian volunteers streamed to the front.",
+"Müzakereye açıl": "Open to negotiation",
+"Taviz": "Concessions",
+"Tahran uluslararası arabuluculuğu aradı.": "Tehran sought international mediation.",
+"Ordu tasfiye edilmiş; ama Devrim Muhafızları ve halk seferberliği hazır.": "The army has been purged; but the Revolutionary Guards and popular mobilisation are ready.",
+"Irak'ı finanse et (tarihî)": "Finance Iraq (historical)",
+"İran tehdidini dengele": "Counter Iran's threat",
+"Riyad Bağdat'a milyarlarca dolar kredi verdi.": "Riyadh lent Baghdad billions of dollars.",
+"Tarafsız kal": "Stay neutral",
+"Dengeli politika": "A balanced policy",
+"Suudi Arabistan tarafsız kaldı.": "Saudi Arabia stayed neutral.",
+"Körfez monarşileri Irak'ı İran'a karşı bir kalkan olarak görüyor.": "Gulf monarchies see Iraq as a shield against Iran.",
+"İran–Irak Savaşı": "The Iran–Iraq War",
+"Saddam Hüseyin, İran'ın devrim sonrası zayıflığından yararlanıp Şattülarap ve Hûzistan'ı almak için saldırdı. Sekiz yıl sürecek savaş başladı; Körfez petrolü tehlikede.": "Saddam Hussein attacked to seize the Shatt al-Arab and Khuzestan, exploiting Iran's post-revolutionary weakness. A war that will last eight years has begun; Gulf oil is at risk.",
+"Çıkarma yap (tarihî)": "Land the force (historical)",
+"San Carlos çıkarması": "The San Carlos landing",
+"İngiliz birlikleri San Carlos'a çıktı ve Port Stanley'e yürüdü.": "British troops landed at San Carlos and marched on Port Stanley.",
+"Müzakereyi dene": "Try negotiation",
+"BM arabuluculuğu": "UN mediation",
+"Londra diplomasiyle çözüm aradı.": "London sought a diplomatic solution.",
+"Görev filosu 12.000 km uzakta; Exocet füzeleri gemilere tehdit. Adaları geri almak için çıkarma mı?": "The task force is 12,000 km away; Exocet missiles threaten the ships. Land to retake the islands?",
+"Adaları tahkim et (tarihî)": "Fortify the islands (historical)",
+"Müdafaa": "Defence",
+"Arjantin adalarda siper kazdı; hava gücüyle karşılık verdi.": "Argentina dug in on the islands and responded with air power.",
+"Geri çekil": "Withdraw",
+"Savaştan kaç": "Avoid war",
+"Arjantin birliklerini geri çekmeyi düşündü.": "Argentina considered withdrawing its troops.",
+"Galtieri halkın desteğini kazandı; ama İngiliz donanması yaklaşıyor.": "Galtieri won popular support; but the British fleet is approaching.",
+"Falkland Savaşı": "The Falklands War",
+"Arjantin cuntası 2 Nisan'da Falkland (Malvinas) Adaları'nı işgal etti. Thatcher bir görev filosu gönderdi; deniz ve hava çarpışmaları Güney Atlantik'te sürüyor.": "The Argentine junta invaded the Falkland (Malvinas) Islands on 2 April. Thatcher sent a task force; naval and air battles are under way in the South Atlantic."
 }
 }
