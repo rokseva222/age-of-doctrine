@@ -1,0 +1,138 @@
+{
+ "id": "jul15",
+ "kind": "real",
+ "name": "Gece Yarısı: 15 Temmuz",
+ "sub": "2016 – Türkiye'de darbe girişimi",
+ "blurb": "Temmuz 2016: ordu içinden bir grup yönetime el koymaya çalışıyor. Girişim bastırılsa da olağanüstü hal, görevden almalar ve dış baskılar ülkeyi yeni bir döneme sokuyor. İstikrarı koru, kurumları ayakta tut.",
+ "intro": "Gece yarısı: köprüler kapandı, başkentte ve İstanbul'da hareketlilik var. Ordunun bir kesimi yönetime karşı safta; sen karar ver.",
+ "suggest": [
+  "Turkey",
+  "Greece",
+  "United States of America",
+  "Russia",
+  "Germany",
+  "Syria"
+ ],
+ "stability": {
+  "Turkey": -12
+ },
+ "events": [
+  {
+   "turn": 3,
+   "t": "Olağanüstü hal ilan edildi; kamu kurumlarında geniş çaplı görevden almalar başladı.",
+   "fx": [
+    [
+     "stab",
+     "Turkey",
+     -3
+    ]
+   ]
+  },
+  {
+   "turn": 8,
+   "t": "Müttefik başkentlerden ihtiyatlı açıklamalar geldi; Batı ile ilişkilerde soğukluk var.",
+   "fx": [
+    [
+     "stab",
+     "Turkey",
+     -1
+    ]
+   ]
+  },
+  {
+   "turn": 14,
+   "t": "Moskova ile temaslar hızlandı; enerji ve savunma görüşmeleri yeniden gündemde.",
+   "fx": [
+    [
+     "stab",
+     "Turkey",
+     1
+    ]
+   ]
+  },
+  {
+   "turn": 26,
+   "t": "Sınır güvenliği ve Suriye cephesindeki gelişmeler yeniden öne çıktı.",
+   "fx": [
+    [
+     "stab",
+     "Turkey",
+     -1
+    ],
+    [
+     "stab",
+     "Syria",
+     -1
+    ]
+   ]
+  },
+  {
+   "turn": 40,
+   "t": "Yürütme yetkilerini yeniden düzenleyen bir halkoylaması yapıldı; toplum ikiye bölünmüş görünüyor.",
+   "fx": [
+    [
+     "stab",
+     "Turkey",
+     -2
+    ]
+   ]
+  }
+ ],
+ "factions": [
+  {
+   "name": "Darbe Kliği",
+   "leader": "Albay|Selim Karaçay",
+   "from": [
+    [
+     "Turkey",
+     2
+    ]
+   ],
+   "dir": "west",
+   "troops": 18000,
+   "tech": 0.5,
+   "doctrine": 1,
+   "colors": [
+    "2a2f36",
+    "8a8f96",
+    "ece6d6"
+   ],
+   "pattern": 1,
+   "aggression": 0.7
+  }
+ ],
+ "objectives": {
+  "*": [
+   {
+    "id": "h1",
+    "type": "survive",
+    "turns": 104,
+    "text": "İki yıl ayakta kal"
+   },
+   {
+    "id": "h2",
+    "type": "stability",
+    "n": 55,
+    "text": "İstikrarı 55 üzerine çıkar"
+   }
+  ]
+ },
+ "deadline": 208,
+ "en": {
+  "name": "Midnight: 15 July",
+  "sub": "2016 – Coup attempt in Turkey",
+  "blurb": "July 2016: a group inside the army tries to seize power. Even after the attempt is put down, the state of emergency, mass dismissals and foreign pressure push the country into a new era. Keep stability up and hold the institutions together.",
+  "intro": "Midnight: the bridges are shut and there is movement in the capital and Istanbul. A faction of the army has turned on the government; you decide.",
+  "objectives": {
+   "h1": "Survive two years",
+   "h2": "Raise stability above 55"
+  },
+  "events": {
+   "0": "A state of emergency was declared; mass dismissals began across public bodies.",
+   "1": "Cautious statements from allied capitals; relations with the West have cooled.",
+   "2": "Contacts with Moscow picked up speed; energy and defence talks are back on the agenda.",
+   "3": "Border security and developments on the Syrian front moved to the fore again.",
+   "4": "A referendum reshaping executive powers was held; society looks split in two."
+  }
+ }
+}

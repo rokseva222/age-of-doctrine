@@ -1,0 +1,111 @@
+{
+ "id": "rusprotest",
+ "kind": "real",
+ "name": "Soğuk Meydan",
+ "sub": "2021 – Rusya'da protesto dalgası",
+ "blurb": "Kış 2021: büyük şehirlerde kitlesel gösteriler, gözaltılar ve Batı'dan yaptırım baskısı. Rusya'yı mı yöneteceksin, yoksa komşuların ve büyük güçlerin gözüyle krizi mi izleyeceksin? İstikrar, ekonomi ve dış ilişkiler aynı anda sınanıyor.",
+ "intro": "Kış: Moskova ve Saint Petersburg sokakları dolu. Güvenlik güçleri alarmda; her karar hem içeride hem dışarıda yankı bulacak.",
+ "suggest": [
+  "Russia",
+  "Belarus",
+  "Ukraine",
+  "Germany",
+  "United States of America",
+  "China"
+ ],
+ "stability": {
+  "Russia": -14,
+  "Belarus": -6
+ },
+ "events": [
+  {
+   "turn": 3,
+   "t": "Büyük şehirlerde kitlesel gösteriler; gözaltı sayısı hızla arttı.",
+   "fx": [
+    [
+     "stab",
+     "Russia",
+     -3
+    ]
+   ]
+  },
+  {
+   "turn": 6,
+   "t": "Batı ülkeleri yaptırım listelerini genişletti.",
+   "fx": [
+    [
+     "stab",
+     "Russia",
+     -1
+    ]
+   ]
+  },
+  {
+   "turn": 10,
+   "t": "İnternet kısıtlamaları ve siber saldırı iddiaları gündemde.",
+   "fx": [
+    [
+     "stab",
+     "Russia",
+     -1
+    ]
+   ]
+  },
+  {
+   "turn": 20,
+   "t": "Seçim yaklaşırken güvenlik güçleri alarmda; sınır komşuları durumu yakından izliyor.",
+   "fx": [
+    [
+     "stab",
+     "Belarus",
+     -1
+    ]
+   ]
+  },
+  {
+   "turn": 30,
+   "t": "Avrupa ile gaz ve enerji görüşmeleri sürüyor; Moskova iç baskıyı pazarlık kozu yapıyor.",
+   "fx": [
+    [
+     "stab",
+     "Russia",
+     1
+    ]
+   ]
+  }
+ ],
+ "objectives": {
+  "*": [
+   {
+    "id": "h1",
+    "type": "survive",
+    "turns": 104,
+    "text": "İki yıl ayakta kal"
+   },
+   {
+    "id": "h2",
+    "type": "stability",
+    "n": 55,
+    "text": "İstikrarı 55 üzerine çıkar"
+   }
+  ]
+ },
+ "deadline": 208,
+ "en": {
+  "name": "Cold Square",
+  "sub": "2021 – Protest wave in Russia",
+  "blurb": "Winter 2021: mass demonstrations in the big cities, detentions and sanctions pressure from the West. Will you run Russia, or watch the crisis through the eyes of its neighbours and the great powers? Stability, the economy and foreign relations are all tested at once.",
+  "intro": "Winter: the streets of Moscow and Saint Petersburg are full. Security forces are on alert; every decision will echo at home and abroad.",
+  "objectives": {
+   "h1": "Survive two years",
+   "h2": "Raise stability above 55"
+  },
+  "events": {
+   "0": "Mass demonstrations in the big cities; the number of detentions climbed quickly.",
+   "1": "Western countries widened their sanctions lists.",
+   "2": "Internet restrictions and cyber-attack claims are on the agenda.",
+   "3": "With elections approaching the security forces are on alert; border neighbours are watching closely.",
+   "4": "Gas and energy talks with Europe continue; Moscow uses domestic pressure as a bargaining chip."
+  }
+ }
+}
