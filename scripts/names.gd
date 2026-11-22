@@ -14,9 +14,24 @@ const PRE_TEXT := {
 }
 
 
+## Dünya Savaşları ve Soğuk Savaş çağlarında çağdışı kaçan genel haber şablonlarının dönem karşılıkları
+const WAR_TEXT := {
+	"{c} bilim insanları teknolojik atılım duyurdu!": "{c} mühendisleri cephe için yeni bir silah buluşu duyurdu!",
+	"{c} araştırma merkezinde çığır açan buluş.": "{c} laboratuvarlarında çığır açan buluş.",
+	"{c}: hükümet karşıtı gösteriler {p} eyaletinde şiddetlendi.": "{c}: {p} eyaletinde ekmek ve barış gösterileri büyüdü.",
+	"Uluslararası zirvede {c} lehine yumuşama. İstikrar arttı.": "Diplomatik görüşmelerde {c} lehine yumuşama. İstikrar arttı.",
+	"{c} ev sahipliğinde zirve: diplomatik itibar yükseldi.": "{c} ev sahipliğinde diplomatik görüşme: itibar yükseldi.",
+}
+
+
 static func era_text(s):
-	if typeof(s) == TYPE_STRING and Macro.era_on and Eras.family() == "pre" and PRE_TEXT.has(s):
+	if typeof(s) != TYPE_STRING or not Macro.era_on:
+		return s
+	var fam: String = Eras.family()
+	if fam == "pre" and PRE_TEXT.has(s):
 		return PRE_TEXT[s]
+	if (fam == "ww1" or fam == "ww2") and WAR_TEXT.has(s):
+		return WAR_TEXT[s]
 	return s
 ## Kurgusal isim üretimi ve "Cihan Bülteni" haber şablonları.
 ## Not: Ülke/eyalet isimlerine ek getirmemek için (X'e, X'ı...) şablonlar ek almayan kalıplarla yazıldı.

@@ -695,6 +695,8 @@ func show_province(pid: int, selected_army) -> void:
 				_abtn("Bu ordu uçurulsun", "blue", Icons.pick("paratrooper", "users"), "wing_lift_from", pid)
 	if p.owner == me and p.controller == me and army != null and army.owner == me and p.coastal and not Seas.coast_zones(gs, pid).is_empty():
 		_abtn("Gemiye bin", "blue", Icons.pick("cargo_ship", "ship"), "embark", pid)
+	if p.owner == me and p.controller == me and not moving and gs.armies_of(me).size() >= 2:
+		_abtn("Tüm orduları buraya topla", "blue", "flag", "gather_here", pid)
 	if moving:
 		_abtn("Yolla / böl: oran seç" if selected_army.size >= 200 else "Ordu buraya yürüsün", "gold", "play", "move_army", pid)
 		_abtn("Seçimi bırak", "ghost", "x", "deselect", pid)
@@ -1129,6 +1131,28 @@ func show_my_armies() -> void:
 	sh.body.add_child(TK.t(Loc.t("%d ordu, toplam %s asker. Satıra dokununca harita o ordunun üzerine gider.") % [list.size(), _fmt(total)], "small", TK.MUTED))
 	if list.is_empty():
 		sh.body.add_child(TK.t("Şu an sahada ordun yok. Eyalet kartından yeni birlik kurabilirsin.", "body", TK.FAINT))
+	else:
+		var me_c = gs.countries[gs.player]
+		var tg: Array = []
+		for e in me_c.enemies:
+			if gs.countries[e].alive and not gs.countries[e].is_rebel:
+				tg.append([e, Loc.t("Cepheye topla: %s") % gs.countries[e].name, "danger"])
+		for nb in gs.neighbor_countries(gs.player):
+			if tg.size() >= 5:
+				break
+			if gs.countries[nb].alive and not me_c.enemies.has(nb) and not gs.is_allied(gs.player, nb) and not gs.countries[nb].is_rebel:
+				tg.append([nb, Loc.t("Sınıra konuşlandır: %s") % gs.countries[nb].name, "ghost"])
+		if not tg.is_empty():
+			sh.body.add_child(TK.t("Boştaki ordular, o ülkeyle sınır olan eyaletlere dağılır (kuşatmadakiler yerinde kalır).", "small", TK.FAINT))
+		for t in tg:
+			var foe: int = t[0]
+			var gb := TK.button(String(t[1]), String(t[2]), "swords", Vector2(0, 52), 15)
+			gb.pressed.connect(func():
+				_click()
+				sh.close()
+				action.emit("deploy_border", foe))
+			sh.body.add_child(gb)
+		sh.body.add_child(TK.hsep())
 	for a in list:
 		var pid: int = a.prov
 		var st := ""

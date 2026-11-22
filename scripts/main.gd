@@ -1906,6 +1906,13 @@ func _on_ui_action(act: String, arg) -> void:
 			_clear_fleet_sel()
 			selected_pid = -1
 			ui.hide_info()
+		"gather_here":
+			var gn: int = gs.gather_armies(arg)
+			ui.toast(Loc.t("%d ordu bu eyalete yola çıktı.") % gn if gn > 0 else Loc.t("Yola çıkabilecek boşta ordu yok."))
+			ui.show_province(arg, null)
+		"deploy_border":
+			var dn: int = gs.deploy_to_border(arg)
+			ui.toast(Loc.t("%d ordu sınıra konuşlandırılıyor.") % dn if dn > 0 else Loc.t("Konuşlandırılacak boşta ordu yok."))
 		"deselect":
 			selected_army = null
 			map.set_selected_army(null)

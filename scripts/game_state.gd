@@ -3797,6 +3797,58 @@ func player_order_move(a, target: int, count: int = 0) -> String:
 	return ""
 
 
+## O1: oyuncunun tüm boştaki ordularını hedef eyalete topla (kuşatıp savaşanlara dokunmaz). Dönüş: yola çıkan ordu sayısı.
+func gather_armies(target: int) -> int:
+	if player < 0 or target < 0 or target >= provinces.size():
+		return 0
+	var moved := 0
+	for a in armies_of(player):
+		if a.prov == target or is_sieging(a) or not a.path.is_empty():
+			continue
+		if player_order_move(a, target) == "":
+			moved += 1
+	return moved
+
+
+## O1: "cepheye taşı": boştaki ordular, bir ülkeyle sınır oluşturan en yakın kendi eyaletine dağılır (her birine ayrı eyalet).
+## foe = savaştaki düşman ya da savaş öncesi sınır güvenliği için komşu ülke. Dönüş: yola çıkan ordu sayısı.
+func deploy_to_border(foe: int) -> int:
+	if player < 0 or foe < 0 or foe >= countries.size():
+		return 0
+	var taken: Dictionary = {}
+	var moved := 0
+	var lst: Array = armies_of(player)
+	lst.sort_custom(func(x, y): return x.size > y.size)
+	for a in lst:
+		if is_sieging(a) or not a.path.is_empty():
+			continue
+		if _is_border_with(a.prov, foe):
+			taken[a.prov] = true
+			continue
+		var pred := func(pid: int) -> bool:
+			if taken.has(pid) or provinces[pid].controller != player:
+				return false
+			var o = armies.get(pid)
+			if o != null and o.owner != player:
+				return false
+			return _is_border_with(pid, foe)
+		var path: Array = path_nearest(player, a.prov, pred, 14)
+		if path.is_empty():
+			continue
+		var dest: int = int(path[path.size() - 1])
+		if player_order_move(a, dest) == "":
+			taken[dest] = true
+			moved += 1
+	return moved
+
+
+func _is_border_with(pid: int, foe: int) -> bool:
+	for nb in provinces[pid].neighbors:
+		if provinces[nb].owner == foe or provinces[nb].controller == foe:
+			return true
+	return false
+
+
 ## Ordu neden hedefe gidemiyor? Oyuncuya yolun neden kapalı olduğunu ve ne yapabileceğini söyler.
 func move_block_reason(a, target: int) -> String:
 	# hedef (ya da yoldaki ilk kapalı komşu) kime ait?
