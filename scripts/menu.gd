@@ -927,17 +927,17 @@ func toast(msg: String) -> void:
 		_toast_panel.grow_horizontal = Control.GROW_DIRECTION_BOTH
 		_toast_panel.grow_vertical = Control.GROW_DIRECTION_BEGIN
 		_toast_panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		_toast_panel.z_index = 200
 		_toast_lbl = TK.t("", "body", TK.TEXT)
 		_toast_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		_toast_lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		_toast_panel.add_child(_toast_lbl)
 		root.add_child(_toast_panel)
-	var tmaxw: float = maxf(root.get_viewport_rect().size.x - 140.0, 320.0)
-	var tf: Font = _toast_lbl.get_theme_font("font")
-	var tfs: int = _toast_lbl.get_theme_font_size("font_size")
-	var tww: float = tf.get_string_size(msg, HORIZONTAL_ALIGNMENT_LEFT, -1, tfs).x + 6.0 if tf != null else tmaxw
-	_toast_lbl.custom_minimum_size = Vector2(minf(tww, minf(tmaxw, 900.0)), 0)
-	_toast_lbl.text = msg
+	var tmaxw: float = maxf(minf(root.get_viewport_rect().size.x - 140.0, 900.0), 320.0)
+	_toast_lbl.autowrap_mode = TextServer.AUTOWRAP_OFF
+	_toast_lbl.custom_minimum_size = Vector2.ZERO
+	_toast_lbl.text = TK.wrap_text(msg, _toast_lbl.get_theme_font("font"), _toast_lbl.get_theme_font_size("font_size"), tmaxw)
+	_toast_panel.reset_size()
 	_toast_panel.modulate = Color(1, 1, 1, 1)
 	_toast_panel.visible = true
 	if _toast_tw != null:

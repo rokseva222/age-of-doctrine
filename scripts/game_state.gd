@@ -101,7 +101,17 @@ var gas_cd := 0                          # bir sonraki kimyasal saldırı turu
 var nuke_cd := 0                         # bir sonraki nükleer saldırı turu
 const AI_MAX_ALLIES := 6               # yalnız yapay zekâ için yumuşak sınır; oyuncuda sınır yok
 var vassals: Dictionary = {}     # vasal ülke id -> {"lord": efendi id, "since": tur}
-var trade: Array = []                   # oyuncunun ticaret anlaşması ortakları (ülke id)
+var trade_by: Dictionary = {}           # ülke id -> ticaret anlaşması ortakları (her insan oyuncunun kendi listesi)
+var trade: Array:                       # şu anki oyuncunun ticaret ortakları
+	get:
+		if player < 0:
+			return []
+		if not trade_by.has(player):
+			trade_by[player] = []
+		return trade_by[player]
+	set(v):
+		if player >= 0:
+			trade_by[player] = v
 var aid: Dictionary = {"cd": {}, "good": {}}   # müttefik yardımı: bekleme süreleri / minnet (müttefik -> tur)
 var un_cd: Dictionary = {}               # BM önerge bekleme süreleri (önerge -> tur)
 var un_log: Array = []                   # son BM kararları
@@ -267,6 +277,10 @@ func respond_offer(oid: int, accept: bool) -> String:
 		relation_add(a, b, -4.0)
 		if kind == "alliance":
 			post_news("%s, %s devletinin ittifak teklifini reddetti." % [countries[b].name, countries[a].name], countries[b].capital, "alliance")
+		elif kind == "trade":
+			post_news("%s, %s devletinin ticaret anlaşması teklifini reddetti." % [countries[b].name, countries[a].name], countries[b].capital, "info")
+		elif kind == "passage":
+			post_news("%s, %s ordularına geçiş izni vermedi." % [countries[b].name, countries[a].name], countries[b].capital, "info")
 		else:
 			post_news("%s, %s devletinin barış teklifini reddetti." % [countries[b].name, countries[a].name], countries[b].capital, "peace")
 		return ""
@@ -274,6 +288,30 @@ func respond_offer(oid: int, accept: bool) -> String:
 		if at_war(a, b) or is_allied(a, b):
 			return ""
 		make_alliance(a, b)
+	elif kind == "trade":
+		var tl: Array = trade_by.get(a, [])
+		if at_war(a, b) or tl.has(b) or tl.size() >= TRADE_MAX:
+			return ""
+		var cost := trade_cost()
+		var ca = countries[a]
+		if ca.gold < cost:
+			post_news("%s ticaret anlaşmasını karşılayamadı." % ca.name, ca.capital, "info", "", a if is_net_multi() else -2)
+			return ""
+		ca.gold -= cost
+		tl.append(b)
+		trade_by[a] = tl
+		var tb: Array = trade_by.get(b, [])
+		if not tb.has(a) and tb.size() < TRADE_MAX:
+			tb.append(a)
+			trade_by[b] = tb
+		relation_add(a, b, 5.0)
+		post_news("%s ve %s ticaret anlaşması imzaladı." % [countries[a].name, countries[b].name], countries[b].capital, "info")
+	elif kind == "passage":
+		if at_war(a, b) or is_allied(a, b) or has_passage(a, b):
+			return ""
+		countries[b].passage[a] = turn + 39
+		relation_add(a, b, -3.0)
+		post_news("%s, %s ordularına 39 haftalık geçiş izni verdi." % [countries[b].name, countries[a].name], countries[b].capital, "info")
 	elif kind == "peace":
 		var w = get_war(a, b)
 		if w == null:
@@ -1260,6 +1298,8 @@ func player_request_passage(target: int) -> String:
 	if int(countries[player].passage_req_turn.get(target, -1)) == turn:
 		return "%s: Bu tur zaten bir teklif götürdün, gelecek tura kadar beklemelisin." % t.name
 	countries[player].passage_req_turn[target] = turn
+	if is_human_target(target):
+		return _make_offer("passage", target)          # insan oyuncuya sorulur
 	# hedef, oyuncunun düşmanıyla müttefikse reddeder
 	for e in countries[player].enemies:
 		if is_allied(target, e):
@@ -2101,11 +2141,11 @@ func player_break_alliance(target: int) -> String:
 # ------------------------------------------------------------ müttefik yardımı
 
 func _aid_left(kind: String, ally: int) -> int:
-	return maxi(0, int(aid.cd.get("%s%d" % [kind, ally], 0)) - turn)
+	return maxi(0, int(aid.cd.get("%s%d>%d" % [kind, player, ally], 0)) - turn)
 
 
 func _aid_set(kind: String, ally: int, weeks: int) -> void:
-	aid.cd["%s%d" % [kind, ally]] = turn + weeks
+	aid.cd["%s%d>%d" % [kind, player, ally]] = turn + weeks
 
 
 ## Müttefikin savaşa sokabileceğimiz düşmanlarımız (zaten savaşmadığı, müttefiki olmadığı).
@@ -2129,7 +2169,7 @@ func aid_request_chance(ally: int, foe: int) -> float:
 		ch += 0.3
 	ch += clampf((a.troops - f.troops) / maxf(1.0, f.troops) * 0.1, -0.15, 0.15)
 	ch -= 0.12 * float(a.enemies.size())
-	if int(aid.good.get(str(ally), 0)) > turn:
+	if int(aid.good.get("%d>%d" % [player, ally], 0)) > turn:
 		ch += 0.2
 	ch -= 0.1 * maxf(0.0, war_load() - 0.8)
 	return clampf(ch, 0.1, 0.92)
@@ -2195,7 +2235,7 @@ func player_aid_join(ally: int) -> String:
 	if foes.is_empty():
 		return "%s'ın savaşına katılabileceğin bir düşman yok." % countries[ally].name
 	declare_war(player, foes[0], true)
-	aid.good[str(ally)] = turn + 60
+	aid.good["%d>%d" % [player, ally]] = turn + 60
 	state_changed.emit()
 	return ""
 
@@ -2221,7 +2261,7 @@ func player_aid_gold(ally: int) -> String:
 	a.gold += cost * 0.8
 	a.stability = minf(100.0, a.stability + 2.0)
 	_aid_set("g", ally, 8)
-	aid.good[str(ally)] = turn + 40
+	aid.good["%d>%d" % [player, ally]] = turn + 40
 	post_news("%s, müttefiki %s'a mali yardım gönderdi." % [me.name, a.name], a.capital, "alliance")
 	state_changed.emit()
 	return ""
@@ -2470,7 +2510,11 @@ func trade_cost() -> float:
 
 ## ticaret anlaşmasından haftalık kazanç (her iki taraf)
 func trade_gain(partner: int) -> float:
-	var me = countries[player]
+	return _trade_gain_for(player, partner)
+
+
+func _trade_gain_for(cid: int, partner: int) -> float:
+	var me = countries[cid]
 	var o = countries[partner]
 	return minf(0.05 * minf(maxf(me.income, 1.0), maxf(o.income, 1.0)), 0.15 * maxf(me.income, 1.0))
 
@@ -2500,6 +2544,8 @@ func player_sign_trade(target: int) -> String:
 		return "Ambargo sürerken ticaret yapılmaz."
 	if relation_of(player, target) < 40.0:
 		return "%s ile ilişkiler ticaret için yetersiz (en az 40)." % t.name
+	if is_human_target(target):
+		return _make_offer("trade", target)          # insan oyuncu onaylamadan ticaret anlaşması olmaz
 	var cost := trade_cost()
 	if me.gold < cost:
 		return "Kasa yetmiyor (%s gerekli)." % Macro.money(cost)
@@ -2533,27 +2579,31 @@ func player_cancel_trade(target: int) -> void:
 
 
 func _trade_tick() -> void:
-	if trade.is_empty() or player < 0:
-		return
-	var me = countries[player]
-	for pid in trade.duplicate():
-		var o = countries[pid]
-		var why := ""
-		if not o.alive:
-			why = "ülke ortadan kalktı"
-		elif at_war(player, pid):
-			why = "savaş çıktı"
-		elif me.embargo.has(pid) or o.embargo.has(player):
-			why = "ambargo"
-		elif relation_of(player, pid) < 25.0:
-			why = "ilişkiler bozuldu"
-		if why != "":
-			trade.erase(pid)
-			post_news("%s ile ticaret anlaşması sona erdi." % o.name, me.capital, "info")
+	for cid in trade_by.keys():
+		var lst: Array = trade_by[cid]
+		if lst.is_empty() or int(cid) < 0 or int(cid) >= countries.size():
 			continue
-		var g := trade_gain(pid)
-		me.gold += g
-		o.gold += g
+		var me = countries[int(cid)]
+		for pid in lst.duplicate():
+			var o = countries[pid]
+			var why := ""
+			if not o.alive:
+				why = "ülke ortadan kalktı"
+			elif at_war(int(cid), pid):
+				why = "savaş çıktı"
+			elif me.embargo.has(pid) or o.embargo.has(int(cid)):
+				why = "ambargo"
+			elif relation_of(int(cid), pid) < 25.0:
+				why = "ilişkiler bozuldu"
+			if why != "":
+				lst.erase(pid)
+				post_news("%s ile ticaret anlaşması sona erdi." % o.name, me.capital, "info", "", int(cid) if is_net_multi() else -2)
+				continue
+			var g := _trade_gain_for(int(cid), pid)
+			me.gold += g
+			# karşı taraf da insan ve anlaşma onun listesinde de duruyorsa kazancı kendi turunda alır (çifte sayma olmasın)
+			if not (trade_by.has(pid) and (trade_by[pid] as Array).has(int(cid))):
+				o.gold += g
 
 
 ## Sandbox: eyaleti doğrudan verir (savaş/barış kuralları işlemez)
@@ -4464,7 +4514,7 @@ func to_dict() -> Dictionary:
 		"v": 3, "seed": seed_value, "base": base_country_count,
 		"turn": turn, "player": player, "humans": humans, "hs_i": hs_i, "offers": offers.duplicate(true), "next_offer_id": next_offer_id, "next_army_id": next_army_id, "victory": victory_declared,
 		"rng_state": rng.state, "rebel_names": rebel_name_count, "merc_names": merc_names, "stats": stats,
-		"difficulty": difficulty, "blocs": blocs, "next_bloc": next_bloc_id, "cold": cold, "sea_camp": sea_campaign.keys(), "crisis": crisis, "crisis_end": crisis_last_end, "scn": scn, "era": Eras.current, "nuke_cd": nuke_cd, "gas_cd": gas_cd, "grand": grand, "chokes": chokes, "daily": daily, "pol": pol, "faith": faith, "focus": focus, "syear": Names.start_year, "wroom": wroom, "indep": indep, "career": career, "moment_p": moment_pending, "moment_f": moment_flags, "infamy": infamy, "un_cd": un_cd, "un_log": un_log, "aid": aid, "trade": trade, "vassals": vassals, "custom_ovr": custom_ovr,
+		"difficulty": difficulty, "blocs": blocs, "next_bloc": next_bloc_id, "cold": cold, "sea_camp": sea_campaign.keys(), "crisis": crisis, "crisis_end": crisis_last_end, "scn": scn, "era": Eras.current, "nuke_cd": nuke_cd, "gas_cd": gas_cd, "grand": grand, "chokes": chokes, "daily": daily, "pol": pol, "faith": faith, "focus": focus, "syear": Names.start_year, "wroom": wroom, "indep": indep, "career": career, "moment_p": moment_pending, "moment_f": moment_flags, "infamy": infamy, "un_cd": un_cd, "un_log": un_log, "aid": aid, "trade_by": trade_by.duplicate(true), "vassals": vassals, "custom_ovr": custom_ovr,
 	}
 	Fleets.ensure(self)
 	d["fleets"] = Fleets.to_array(self)
@@ -4651,7 +4701,11 @@ func from_dict(d: Dictionary) -> bool:
 	infamy = float(d.get("infamy", 0.0))
 	un_cd = d.get("un_cd", {}).duplicate()
 	aid = d.get("aid", {"cd": {}, "good": {}}).duplicate(true)
-	trade = (d.get("trade", []) as Array).duplicate()
+	trade_by = {}
+	for k in (d.get("trade_by", {}) as Dictionary).keys():
+		trade_by[int(k)] = ((d.trade_by as Dictionary)[k] as Array).duplicate()
+	if trade_by.is_empty() and not (d.get("trade", []) as Array).is_empty() and int(d.get("player", -1)) >= 0:
+		trade_by[int(d.player)] = (d.trade as Array).duplicate()      # eski kayıt
 	custom_ovr = d.get("custom_ovr", {}).duplicate(true)
 	Arsenal.set_overrides(custom_ovr.get("weapons", {}), custom_ovr.get("cats", {}))
 	vassals = {}

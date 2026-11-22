@@ -417,6 +417,12 @@ func _send_state(pid: int, method: String) -> void:
 	for n in d.get("news", []):
 		if not n.has("for") or int(n["for"]) == mine:
 			nl.append(n)
+	# tur sonunda yüzlerce dünya haberi son-80 penceresinden bu oyuncuya özel (diplomasi) haberleri dışarı itiyordu:
+	# yakın turlardaki kişiye özel haberler her zaman eklenir
+	var cur: int = gs_server.turn
+	for n in gs_server.news_log:
+		if n.has("for") and int(n["for"]) == mine and int(n.get("turn", 0)) >= cur - 2 and not nl.has(n):
+			nl.append(n)
 	d["news"] = nl
 	d["armies"] = gs_server.fog_filter_armies(d["armies"], int(players[pid].cid), int(info.get("fog", 0)))
 	var raw: PackedByteArray = var_to_bytes(d).compress(FileAccess.COMPRESSION_GZIP)

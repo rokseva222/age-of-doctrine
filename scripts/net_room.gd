@@ -312,11 +312,18 @@ func _notify_cmd(cid: int, c, res, ctx: Dictionary) -> void:
 		"respond_offer":
 			var from: int = int(ctx.get("from", -1))
 			if from >= 0:
-				var ally: bool = String(ctx.get("kind", "")) == "alliance"
-				if _arg_bool(c, 1):
-					gs.notify_human(from, ("%s ittifak teklifini kabul etti." if ally else "%s barış teklifini kabul etti.") % me)
-				else:
-					gs.notify_human(from, ("%s ittifak teklifini reddetti." if ally else "%s barış teklifini reddetti.") % me)
+				var ok: bool = _arg_bool(c, 1)
+				var txt := ""
+				match String(ctx.get("kind", "")):
+					"alliance":
+						txt = "%s ittifak teklifini kabul etti." if ok else "%s ittifak teklifini reddetti."
+					"trade":
+						txt = "%s ticaret anlaşması teklifini kabul etti." if ok else "%s ticaret anlaşması teklifini reddetti."
+					"passage":
+						txt = "%s geçiş izni isteğini kabul etti." if ok else "%s geçiş izni isteğini reddetti."
+					_:
+						txt = "%s barış teklifini kabul etti." if ok else "%s barış teklifini reddetti."
+				gs.notify_human(from, txt % me)
 
 
 func _notify_strike(cid: int, pid: int, fmt: String, d: Dictionary) -> void:

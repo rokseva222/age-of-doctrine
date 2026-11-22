@@ -294,8 +294,11 @@ static func open_howto(parent: Node) -> void:
 			render.call())
 
 
-const UPDATE_VER := "1.2.47"
+const UPDATE_VER := "1.2.48"
 const WHATS_NEW := [
+	["Online: askerler ilerlemiyordu — düzeldi", "Online oyunda il numarası büyük olan hedeflere verilen ordu emirleri sunucuda reddediliyordu; bu yüzden iki oyuncu savaşırken askerler ilerlemiyor, saldırı başlamıyordu. Düzeltildi."],
+	["Online: ticaret ve geçiş izni artık sorulur", "Karşıdaki oyuncu insansa ticaret anlaşması ve geçiş izni ona teklif olarak gider; kabul ederse yürürlüğe girer, cevap sana haber olur. Ticaret ve elçi/hediye bekleme süreleri oyuncu başına ayrıldı."],
+	["Bildirimler ve ekran düzeni", "Üstteki uyarılar (ör. «ilişki zaten en üst düzeyde») artık açılan panellerin önünde görünür. Oyun başındaki dev boş kutu giderildi. Tur süresi ve bayrak şeridi küçüldü, tıklamayı engellemiyor. Elçi/hediye gibi haberler her turda doğru ulaşır. Odadan çıkınca kalan eski oda yeni oda kurarken otomatik kapanır."],
 	["Online: bildirimler ve oyuncu şeridi", "Ekranın üstünde artık her oyuncunun bayrağı görünür: turu geçti, oynuyor, yapay zekâ ya da ayrıldı. «X turu geçti» olayları anında akar; tek başına kaldıysan geri sayım görürsün. Diplomasi ve saldırılar (elçi, hediye, ambargo, ticaret, yardım, ültimatom, hava/deniz saldırısı, çıkarma, kimyasal/nükleer, teklif cevapları) karşı oyuncuya tur raporunda haber olarak gider."],
 	["Online: 120 sn bekleme ve yapay zekâ devri", "Biri turu bitirince diğerlerine 120 sn tanınır; süre dolunca tur işlenir ve o tur ülkeyi yapay zekâ oynar. Art arda iki tur kaçıran oyuncunun ülkesini yapay zekâ devralır; geri dönünce koltuğunu geri alır. Oyundan ayrılan oyuncuya süre işlemez, ana menüden «Odadan ayrıl» ile temiz çıkılır."],
 	["Listeler ve düzeltmeler", "Senaryo ve savaş listeleri tek kaydırmalı, aranabilir tam ekran listeye döndü; online oda kurarken de aynı liste kullanılır. Uzun yazıların ekranı aşması, ana menüdeki bildirimler ve bekleme ekranı düzeltildi. Sunucu artık yeni sürümle kendini güncelliyor; online sürüm denetimi sıkılaştı."],

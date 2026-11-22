@@ -197,7 +197,7 @@ func _init() -> void:
 			got_env = true
 		if n.kind == "dipl" and int(n.get("for", -1)) == ids[2] and n.turn == g.turn and String(n.text).contains("ambargo"):
 			got_emb = true
-	chk(got_env or e1 != "", "elçi haberi hedef oyuncuya (e1=%s)" % e1)
+	chk(got_env, "elçi haberi hedef oyuncuya (e1=%s)" % e1)
 	chk(got_emb, "ambargo haberi hedef oyuncuya")
 	chk(g.countries[ids[0]].embargo.has(ids[2]), "ambargo sunucuda uygulandı")
 	# 5 tur daha stabil

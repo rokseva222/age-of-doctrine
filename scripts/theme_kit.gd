@@ -813,3 +813,22 @@ static func _ts_fix(n: Node) -> void:
 			n.mouse_filter = Control.MOUSE_FILTER_PASS
 			return
 		p = p.get_parent()
+
+
+## Metni verilen genişliğe göre satırlara böler (kelime sınırında). Kapsayıcı yerleşimine güvenmeden, otomatik sarma
+## hatalarına (başlangıçta genişlik 0 sayılıp çok uzun/boş kutu oluşması) düşmeden bildirimler için kullanılır.
+static func wrap_text(text: String, font: Font, size: int, maxw: float) -> String:
+	if font == null or maxw <= 0.0:
+		return text
+	var out: PackedStringArray = []
+	for para in text.split("\n"):
+		var line := ""
+		for w in para.split(" "):
+			var cand: String = w if line == "" else line + " " + w
+			if line != "" and font.get_string_size(cand, HORIZONTAL_ALIGNMENT_LEFT, -1, size).x > maxw:
+				out.append(line)
+				line = w
+			else:
+				line = cand
+		out.append(line)
+	return "\n".join(out)

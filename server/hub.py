@@ -79,6 +79,21 @@ def create_room(b, ip):
             return 503, {"err": "update"}
         if len(rooms) >= A.max_rooms:
             return 503, {"err": "dolu"}
+        # aynı kişinin içinde kimse kalmamış eski odaları (odadan çıkınca arkada kalanlar) kapat; yeni oda kurabilsin
+        now = time.time()
+        for p, r in list(rooms.items()):
+            if r["ip"] != ip or now - r["t"] < 20:
+                continue
+            live = [v for v in servers.values() if v["port"] == p]
+            if live and all(v["players"] > 0 for v in live):
+                continue
+            try:
+                r["proc"].terminate()
+            except Exception:
+                pass
+            rooms.pop(p, None)
+            for t in [t for t, v in servers.items() if v["port"] == p]:
+                servers.pop(t, None)
         if sum(1 for r in rooms.values() if r["ip"] == ip) >= A.per_ip:
             return 429, {"err": "çok fazla oda"}
         port = free_port()

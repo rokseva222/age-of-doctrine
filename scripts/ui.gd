@@ -920,6 +920,7 @@ func _build_toast() -> void:
 	toast_panel.grow_horizontal = Control.GROW_DIRECTION_BOTH
 	toast_panel.offset_top = BAR_H + TICK_H + 16
 	toast_panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	toast_panel.z_index = 200          # açık paneller/pencerelerin ÜSTÜNDE görünsün (uyarılar panel arkasında kalıyordu)
 	var sb := TK.box(Color(TK.PANEL_SOLID.r, TK.PANEL_SOLID.g, TK.PANEL_SOLID.b, 0.98), TK.RED, 2, 0, 1, Vector4(24, 12, 26, 12))
 	sb.border_width_left = 6
 	toast_panel.add_theme_stylebox_override("panel", sb)
@@ -930,15 +931,14 @@ func _build_toast() -> void:
 
 
 func toast(text: String) -> void:
-	# uzun bildirimler ekranı aşmasın: en fazla ekran genişliğine yakın bir genişlikte satır sarar
-	var maxw: float = maxf(root.get_viewport_rect().size.x - 140.0, 320.0)
-	toast_lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	# uzun bildirimler ekranı aşmasın: satırlar elle bölünür (kapsayıcının otomatik sarması ilk karede boş/dev kutu üretiyordu)
+	var maxw: float = maxf(minf(root.get_viewport_rect().size.x - 140.0, 1000.0), 320.0)
+	toast_lbl.autowrap_mode = TextServer.AUTOWRAP_OFF
 	toast_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	var tf: Font = toast_lbl.get_theme_font("font")
 	var tfs: int = toast_lbl.get_theme_font_size("font_size")
-	var tw: float = tf.get_string_size(text, HORIZONTAL_ALIGNMENT_LEFT, -1, tfs).x + 6.0 if tf != null else maxw
-	toast_lbl.custom_minimum_size = Vector2(minf(tw, maxw), 0)
-	toast_lbl.text = text
+	toast_lbl.custom_minimum_size = Vector2.ZERO
+	toast_lbl.text = TK.wrap_text(text, tf, tfs, maxw)
 	toast_panel.reset_size()
 	if _toast_tween != null and _toast_tween.is_valid():
 		_toast_tween.kill()

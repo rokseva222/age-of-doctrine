@@ -5,8 +5,8 @@ extends Control
 const TK = preload("res://scripts/theme_kit.gd")
 const Loc = preload("res://scripts/loc.gd")
 
-const FEED_MAX := 5
-const FEED_SECS := 7.0
+const FEED_MAX := 3
+const FEED_SECS := 5.0
 
 var net = null
 var top_y := 80.0
@@ -24,7 +24,7 @@ var _sig := ""
 func setup(n, top: float) -> void:
 	net = n
 	top_y = top
-	z_index = 60
+	z_index = 0                    # pencereler/paneller bunun üstünde açılır (sonradan eklendikleri için)
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
 	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	var col := VBoxContainer.new()
@@ -32,10 +32,11 @@ func setup(n, top: float) -> void:
 	col.set_anchors_and_offsets_preset(Control.PRESET_TOP_WIDE)
 	col.offset_top = top_y + 8.0
 	col.offset_left = 16.0
-	col.offset_right = -16.0
+	col.offset_right = -96.0          # sağdaki simge çubuğunun soluna sığsın
 	col.add_theme_constant_override("separation", 6)
 	add_child(col)
-	var holder := CenterContainer.new()
+	var holder := HBoxContainer.new()
+	holder.alignment = BoxContainer.ALIGNMENT_END
 	holder.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	col.add_child(holder)
 	_strip = PanelContainer.new()
@@ -56,7 +57,8 @@ func setup(n, top: float) -> void:
 	_timer_lbl.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 	_timer_lbl.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	h.add_child(_timer_lbl)
-	var fh := CenterContainer.new()
+	var fh := HBoxContainer.new()
+	fh.alignment = BoxContainer.ALIGNMENT_END
 	fh.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	col.add_child(fh)
 	_feed = VBoxContainer.new()
@@ -113,7 +115,7 @@ func refresh() -> void:
 			fr.mouse_filter = Control.MOUSE_FILTER_IGNORE
 			var sb := TK.box(Color(0, 0, 0, 0), st[1], 3, 3, 0, Vector4(0, 0, 0, 0))
 			fr.add_theme_stylebox_override("panel", sb)
-			var fl := TK.flag_rect(g.countries[ci], Vector2(54, 36))
+			var fl := TK.flag_rect(g.countries[ci], Vector2(44, 30))
 			fl.mouse_filter = Control.MOUSE_FILTER_IGNORE
 			fr.add_child(fl)
 			v.add_child(fr)
@@ -127,7 +129,7 @@ func refresh() -> void:
 			_flow.add_child(v)
 		# şerit genişliği: bayrak sayısına göre, ekrana sığmazsa alt satıra sarar
 		var maxw: float = maxf(get_viewport_rect().size.x - 420.0, 200.0)
-		_flow.custom_minimum_size.x = minf(maxf(shown, 1) * 84.0 + 12.0, maxw)
+		_flow.custom_minimum_size.x = minf(maxf(shown, 1) * 70.0 + 12.0, maxw)
 	_update_label()
 
 

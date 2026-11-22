@@ -609,8 +609,18 @@ func _offers_turn() -> void:
 		if mode != "game" or gs == null:
 			return
 		var from_name: String = gs.countries[int(o.from)].name
-		var title: String = "İttifak teklifi" if String(o.kind) == "alliance" else "Barış teklifi"
-		var body: String = (Loc.t("%s sana ittifak teklif ediyor. Kabul edersen iki devlet müttefik olur.") if String(o.kind) == "alliance" else Loc.t("%s seninle barış istiyor. Kabul edersen savaş beraberlikle biter.")) % from_name
+		var ok: String = String(o.kind)
+		var title: String = "Barış teklifi"
+		var body: String = Loc.t("%s seninle barış istiyor. Kabul edersen savaş beraberlikle biter.") % from_name
+		if ok == "alliance":
+			title = "İttifak teklifi"
+			body = Loc.t("%s sana ittifak teklif ediyor. Kabul edersen iki devlet müttefik olur.") % from_name
+		elif ok == "trade":
+			title = "Ticaret anlaşması teklifi"
+			body = Loc.t("%s seninle ticaret anlaşması yapmak istiyor. Kabul edersen iki ülke de haftalık kazanç sağlar.") % from_name
+		elif ok == "passage":
+			title = "Geçiş izni isteği"
+			body = Loc.t("%s ordularının topraklarından geçmesi için izin istiyor. Kabul edersen 39 hafta geçerli olur.") % from_name
 		var holder := {"done": false}
 		var oid: int = int(o.id)
 		ui.show_dialog(title, body, [

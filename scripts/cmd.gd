@@ -106,6 +106,9 @@ static func _dec(gs, v):
 
 const COUNTRY_PARAMS := ["target", "foe", "ally", "enemy", "v", "cid", "owner", "country", "a", "b"]
 const PROV_PARAMS := ["pid", "prov", "dest"]
+## "target" adı bazı emirlerde ülke değil: il (ordu emri) ya da filo numarası (eskort; -1 = bırak). Ülke aralığı denetimi bunlarda yapılmaz.
+const TARGET_IS_PROV := ["player_order_move"]
+const TARGET_IS_OTHER := ["Fleets.set_escort"]
 const GS_CMDS := ["hire_merc", "respond_offer"]
 ## Sunucunun istemciden kabul ettiği modül emirleri (beyaz liste): iç yardımcı fonksiyonlar çağrılamaz.
 const MODULE_CMDS := ["Air.player_strike", "Air.rebase", "Air.airlift", "Air.rename", "Air.set_flag", "Air.set_stance",
@@ -134,7 +137,7 @@ static func _sig(key: String, obj, fn: String) -> Dictionary:
 
 
 ## Argümanlar imzaya uyuyor mu? Hata metni ("" = geçerli). Aralık dışı ülke/il, eksik nesne ve tür uyuşmazlığı çalıştırılmaz.
-static func _validate(gs, sig: Dictionary, args: Array, skip: int) -> String:
+static func _validate(gs, sig: Dictionary, args: Array, skip: int, cmd: String = "") -> String:
 	if sig.is_empty():
 		return "imza yok"
 	var params: Array = sig["args"].slice(skip)
@@ -158,9 +161,12 @@ static func _validate(gs, sig: Dictionary, args: Array, skip: int) -> String:
 		if pt == TYPE_DICTIONARY and not (v is Dictionary):
 			return "tür: %s" % pn
 		if v is int and pt == TYPE_INT:
-			if COUNTRY_PARAMS.has(pn) and (v < 0 or v >= gs.countries.size()):
+			var as_prov: bool = PROV_PARAMS.has(pn) or (pn == "target" and TARGET_IS_PROV.has(cmd))
+			if pn == "target" and (TARGET_IS_PROV.has(cmd) or TARGET_IS_OTHER.has(cmd)):
+				pass
+			elif COUNTRY_PARAMS.has(pn) and (v < 0 or v >= gs.countries.size()):
 				return "ülke aralığı: %s" % pn
-			if PROV_PARAMS.has(pn) and (v < 0 or v >= gs.provinces.size()):
+			if as_prov and (v < 0 or v >= gs.provinces.size()):
 				return "il aralığı: %s" % pn
 	return ""
 
@@ -188,12 +194,12 @@ static func replay(gs, cid: int, cmd) -> Dictionary:
 		if not scr.has_method(fn0) and not _sig("m:" + name, scr, fn0).has("args"):
 			return {"ok": false, "res": null, "err": "bilinmeyen komut"}
 		skip = 0 if NOGS.has(name) else 1
-		verr = _validate(gs, _sig("m:" + name, scr, fn0), args, skip)
+		verr = _validate(gs, _sig("m:" + name, scr, fn0), args, skip, name)
 	else:
 		# yalnız oyuncu emirleri çalışır: sunucunun iç yöntemleri (tur sonu, yükleme...) istemciden çağrılamaz
 		if not (name.begins_with("player_") or GS_CMDS.has(name)) or not gs.has_method(name):
 			return {"ok": false, "res": null, "err": "bilinmeyen komut"}
-		verr = _validate(gs, _sig("g:" + name, gs, name), args, 0)
+		verr = _validate(gs, _sig("g:" + name, gs, name), args, 0, name)
 	if verr == "" and skip == 0 and scr != null and NOGS.has(name):
 		# Macro.set_budget/set_front: yalnız kendi ülken (başkasının bütçesini değiştiremezsin)
 		if args.is_empty() or not (args[0] is Model.Country) or args[0].id != cid:
