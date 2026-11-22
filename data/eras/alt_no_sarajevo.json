@@ -128,6 +128,30 @@
      -3
     ]
    ]
+  },
+  {
+   "y": 1915,
+   "m": 1,
+   "t": "Avrupa'da ittifak sistemi gevşemeden devam ediyor; konferans diplomasisi barışı koruyor.",
+   "fx": [
+    [
+     "stab",
+     "Austria",
+     1
+    ]
+   ]
+  },
+  {
+   "y": 1916,
+   "m": 9,
+   "t": "Balkanlar'da demiryolu yatırımları hızlandı; ticaret yeniden canlandı.",
+   "fx": [
+    [
+     "stab",
+     "Serbia",
+     2
+    ]
+   ]
   }
  ],
  "objectives": {
@@ -162,7 +186,9 @@
   "setup_intro": "August 1914: the Sarajevo assassination failed. Europe's capitals are tense but at peace; the crisis is being managed by diplomacy.",
   "events": {
    "0": "A new Balkan arms race: Serbia and Austria dig in along the border.",
-   "1": "A border incident on the Vienna–Belgrade line: armies are on alert."
+   "1": "A border incident on the Vienna–Belgrade line: armies are on alert.",
+   "2": "The alliance system holds without loosening; conference diplomacy keeps the peace.",
+   "3": "Railway investment sped up in the Balkans; trade revived."
   },
   "objectives": {
    "o1": "Stay at peace for three years",

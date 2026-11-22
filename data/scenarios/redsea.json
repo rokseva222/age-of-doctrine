@@ -87,6 +87,55 @@
      2
     ]
    ]
+  },
+  {
+   "turn": 16,
+   "t": "Ticaret gemilerinin Ümit Burnu'ndan dolaşması navlun fiyatlarını yükseltti.",
+   "fx": [
+    [
+     "stab",
+     "Egypt",
+     -2
+    ]
+   ]
+  },
+  {
+   "turn": 22,
+   "t": "Uluslararası bir deniz görev gücü Kızıldeniz'de devriyeye başladı.",
+   "fx": [
+    [
+     "stab",
+     "Yemen",
+     -2
+    ]
+   ]
+  },
+  {
+   "turn": 38,
+   "t": "Yemen'de insani yardım koridoru açıldı; çatışmalarda kısa süreli sakinlik.",
+   "fx": [
+    [
+     "stab",
+     "Yemen",
+     3
+    ]
+   ]
+  },
+  {
+   "turn": 46,
+   "t": "İsrail ve Mısır arasında liman güvenliği görüşmeleri yapıldı.",
+   "fx": [
+    [
+     "stab",
+     "Israel",
+     1
+    ],
+    [
+     "stab",
+     "Egypt",
+     1
+    ]
+   ]
   }
  ],
  "objectives": {
@@ -151,7 +200,11 @@
   },
   "events": {
    "0": "Suez Canal revenues have dropped sharply.",
-   "1": "A mediation attempt in the Gulf: Riyadh and Tehran increased contacts."
+   "1": "A mediation attempt in the Gulf: Riyadh and Tehran increased contacts.",
+   "2": "Merchant ships rerouting around the Cape of Good Hope pushed freight rates up.",
+   "3": "An international naval task force began patrolling the Red Sea.",
+   "4": "A humanitarian corridor opened in Yemen; fighting briefly calmed.",
+   "5": "Israel and Egypt held talks on port security."
   }
  }
 }

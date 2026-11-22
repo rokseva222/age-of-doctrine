@@ -158,6 +158,30 @@
      -3
     ]
    ]
+  },
+  {
+   "y": 1940,
+   "m": 11,
+   "t": "Moskova ve Berlin Polonya'da ortak sınır komisyonu kurdu; Baltık'ta tedirginlik büyüyor.",
+   "fx": [
+    [
+     "stab",
+     "Poland",
+     -2
+    ]
+   ]
+  },
+  {
+   "y": 1941,
+   "m": 10,
+   "t": "Londra ablukayı sıkılaştırdı; Karadeniz limanlarında ticaret azaldı.",
+   "fx": [
+    [
+     "stab",
+     "Russia",
+     -2
+    ]
+   ]
   }
  ],
  "objectives": {
@@ -200,7 +224,9 @@
   "setup_intro": "September 1939: the Molotov–Ribbentrop pact has turned into an alliance. Soviet and German armies carve up Poland under joint plans.",
   "events": {
    "0": "Moscow and Berlin signed a joint economic deal; Soviet oil fuels German tanks.",
-   "1": "Soviet troops advance into the Balkans; London and Washington are alarmed."
+   "1": "Soviet troops advance into the Balkans; London and Washington are alarmed.",
+   "2": "Moscow and Berlin set up a joint border commission in Poland; unease grows in the Baltic.",
+   "3": "London tightened the blockade; trade fell in Black Sea ports."
   },
   "objectives": {
    "o1": "Survive three years",

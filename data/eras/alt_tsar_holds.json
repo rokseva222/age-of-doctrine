@@ -140,6 +140,30 @@
      5
     ]
    ]
+  },
+  {
+   "y": 1916,
+   "m": 11,
+   "t": "Çar, Duma ile anayasal reform görüşmelerine razı oldu; muhalefet temkinli.",
+   "fx": [
+    [
+     "stab",
+     "Russia",
+     2
+    ]
+   ]
+  },
+  {
+   "y": 1917,
+   "m": 3,
+   "t": "Doğu Cephesi'nde yeni bir Rus taarruzu hazırlanıyor; ikmal hatları zorlanıyor.",
+   "fx": [
+    [
+     "stab",
+     "Russia",
+     -1
+    ]
+   ]
   }
  ],
  "objectives": {
@@ -181,7 +205,9 @@
   "blurb": "The revolution in Russia never erupted. The Tsar's government reformed, army supply improved; on the Eastern Front, the German and Austrian armies face a heavy opponent.",
   "setup_intro": "August 1914: Russian mobilization is proceeding more smoothly than expected; Nicholas II is at the head of the army.",
   "events": {
-   "0": "The success of the Brusilov offensive strengthened the Tsarist regime; the Duma approved the war budget."
+   "0": "The success of the Brusilov offensive strengthened the Tsarist regime; the Duma approved the war budget.",
+   "1": "The Tsar agreed to talks with the Duma on constitutional reform; the opposition remained wary.",
+   "2": "A new Russian offensive is being prepared on the Eastern Front; supply lines strain."
   },
   "objectives": {
    "o1": "Survive three years",

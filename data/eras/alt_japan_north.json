@@ -146,6 +146,35 @@
      -3
     ]
    ]
+  },
+  {
+   "y": 1940,
+   "m": 9,
+   "t": "Mançurya'da Japon ikmal hattı uzadı; Çin cephesi ikinci planda kalınca direniş arttı.",
+   "fx": [
+    [
+     "stab",
+     "Japan",
+     -2
+    ],
+    [
+     "stab",
+     "China",
+     2
+    ]
+   ]
+  },
+  {
+   "y": 1941,
+   "m": 3,
+   "t": "Washington Tokyo'ya petrol ihracatını kısıtlama yoluna gitti.",
+   "fx": [
+    [
+     "stab",
+     "Japan",
+     -3
+    ]
+   ]
   }
  ],
  "objectives": {
@@ -187,7 +216,9 @@
   "blurb": "Instead of sinking into China, the Japanese army turned toward Siberia: the sequel to Khalkhin Gol became a real war. The Soviet Far East and the Mongolian steppe are on fire.",
   "setup_intro": "September 1939: the Kwantung Army crossed the Soviet border. Moscow was caught unprepared for a two-front war.",
   "events": {
-   "0": "Heavy fighting along the Trans-Siberian railway: Moscow scrambles to bring reinforcements."
+   "0": "Heavy fighting along the Trans-Siberian railway: Moscow scrambles to bring reinforcements.",
+   "1": "Japan's supply line stretched in Manchuria; resistance in China grew as that front was neglected.",
+   "2": "Washington moved to restrict oil exports to Tokyo."
   },
   "objectives": {
    "o1": "Survive three years",

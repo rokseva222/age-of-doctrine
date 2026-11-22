@@ -91,6 +91,44 @@
      -5
     ]
    ]
+  },
+  {
+   "turn": 14,
+   "t": "Filipinler ile ABD ortak balıkçı koruma devriyesi başlattı.",
+   "fx": [
+    [
+     "stab",
+     "Philippines",
+     1
+    ]
+   ]
+  },
+  {
+   "turn": 30,
+   "t": "Malezya açıklarında Çin gemileri petrol arama sahasına yaklaştı; Kuala Lumpur nota verdi.",
+   "fx": [
+    [
+     "stab",
+     "Malaysia",
+     -2
+    ]
+   ]
+  },
+  {
+   "turn": 50,
+   "t": "ASEAN zirvesi 'davranış kuralları' metni üzerinde yine uzlaşamadı.",
+   "fx": []
+  },
+  {
+   "turn": 66,
+   "t": "Vietnam yeni adacıklarda altyapı çalışmalarını hızlandırdı; Pekin tepki gösterdi.",
+   "fx": [
+    [
+     "stab",
+     "Vietnam",
+     -1
+    ]
+   ]
   }
  ],
  "objectives": {
@@ -140,7 +178,11 @@
   "events": {
    "0": "A Chinese coast guard vessel and a Philippine ship collided near a reef.",
    "1": "Vietnam and the Philippines signed a joint patrol agreement.",
-   "2": "Large-scale Chinese exercise in the Taiwan Strait."
+   "2": "Large-scale Chinese exercise in the Taiwan Strait.",
+   "3": "The Philippines and the US launched a joint patrol to protect fishermen.",
+   "4": "Chinese vessels approached an oil-exploration block off Malaysia; Kuala Lumpur sent a note.",
+   "5": "The ASEAN summit again failed to agree on a code-of-conduct text.",
+   "6": "Vietnam sped up infrastructure work on new islets; Beijing protested."
   }
  }
 }

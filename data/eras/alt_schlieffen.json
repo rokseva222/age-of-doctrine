@@ -153,6 +153,30 @@
      -4
     ]
    ]
+  },
+  {
+   "y": 1915,
+   "m": 6,
+   "t": "Almanya Fransa'dan ağır tazminat istedi; Paris'te hükûmet krizi.",
+   "fx": [
+    [
+     "stab",
+     "France",
+     -3
+    ]
+   ]
+  },
+  {
+   "y": 1915,
+   "m": 11,
+   "t": "Doğu Cephesi'nde Rus ilerleyişi başladı; Almanya birliklerini doğuya kaydırıyor.",
+   "fx": [
+    [
+     "stab",
+     "Germany",
+     -2
+    ]
+   ]
   }
  ],
  "objectives": {
@@ -201,7 +225,9 @@
   "setup_intro": "September 1914: the counter-offensive on the Marne failed. German columns stand at the gates of Paris; the government is fleeing.",
   "events": {
    "0": "Paris is besieged: the French government signals openness to talks from Bordeaux.",
-   "1": "The British Expeditionary Force is being evacuated from the Channel ports."
+   "1": "The British Expeditionary Force is being evacuated from the Channel ports.",
+   "2": "Germany demanded heavy indemnities from France; a government crisis erupted in Paris.",
+   "3": "A Russian advance began on the Eastern Front; Germany shifts forces east."
   },
   "objectives": {
    "o1": "Survive three years",

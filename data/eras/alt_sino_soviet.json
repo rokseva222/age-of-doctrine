@@ -122,6 +122,35 @@
      -4
     ]
    ]
+  },
+  {
+   "y": 1963,
+   "m": 6,
+   "t": "Sibirya sınırında yeni cephe hattı: Çin gerilla birlikleri Sovyet ikmalini bozuyor.",
+   "fx": [
+    [
+     "stab",
+     "Russia",
+     -2
+    ]
+   ]
+  },
+  {
+   "y": 1963,
+   "m": 10,
+   "t": "ABD iki tarafa da ateşkes çağrısı yaptı; Hindistan arabuluculuk önerdi.",
+   "fx": [
+    [
+     "stab",
+     "China",
+     1
+    ],
+    [
+     "stab",
+     "Russia",
+     1
+    ]
+   ]
   }
  ],
  "objectives": {
@@ -164,7 +193,9 @@
   "blurb": "The communist world split: the border clash on the Ussuri became a full-scale war in 1962. Can NATO turn the rift into an opportunity?",
   "setup_intro": "October 1962: the break between Beijing and Moscow has turned to arms. Two armies face each other on the Siberian border.",
   "events": {
-   "0": "Soviet armor advances in northern China; Beijing mobilizes reserves."
+   "0": "Soviet armor advances in northern China; Beijing mobilizes reserves.",
+   "1": "A new front along the Siberian border: Chinese guerrillas disrupt Soviet supply.",
+   "2": "The US called for a ceasefire on both sides; India offered mediation."
   },
   "objectives": {
    "o1": "Survive two years",

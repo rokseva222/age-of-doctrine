@@ -148,6 +148,30 @@
      -4
     ]
    ]
+  },
+  {
+   "y": 1915,
+   "m": 11,
+   "t": "Alp cephesinde kış basarken İtalyan ikmal hatları zorlandı.",
+   "fx": [
+    [
+     "stab",
+     "Italy",
+     -2
+    ]
+   ]
+  },
+  {
+   "y": 1916,
+   "m": 4,
+   "t": "Adriyatik'te İtilaf ve İtalyan filoları arasında kısa süreli çatışma.",
+   "fx": [
+    [
+     "stab",
+     "Italy",
+     -1
+    ]
+   ]
   }
  ],
  "objectives": {
@@ -182,7 +206,9 @@
   "blurb": "Italy never broke its alliance in 1914 and entered the war with the Central Powers. A new front opens from the Alps to the Mediterranean; southern France is in danger.",
   "setup_intro": "August 1914: Rome stayed loyal to the Triple Alliance. Italian armies turn toward the French border; the Entente fleet stands alone in the Mediterranean.",
   "events": {
-   "0": "Italian troops advance in the French Alps; the Entente shifts reserves south."
+   "0": "Italian troops advance in the French Alps; the Entente shifts reserves south.",
+   "1": "As winter closed in on the Alpine front, Italian supply lines strained.",
+   "2": "A brief clash between Entente and Italian fleets in the Adriatic."
   },
   "objectives": {
    "o1": "Survive three years",

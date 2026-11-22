@@ -109,6 +109,60 @@
      3
     ]
    ]
+  },
+  {
+   "turn": 10,
+   "t": "Hindistan ve Pakistan sınır nehirlerinin paylaşımı için acil toplantı yaptı.",
+   "fx": [
+    [
+     "stab",
+     "Pakistan",
+     -2
+    ],
+    [
+     "stab",
+     "India",
+     -1
+    ]
+   ]
+  },
+  {
+   "turn": 26,
+   "t": "Etiyopya yaylalarında hasat kaybı; yardım çağrısı yapıldı.",
+   "fx": [
+    [
+     "stab",
+     "Ethiopia",
+     -4
+    ]
+   ]
+  },
+  {
+   "turn": 40,
+   "t": "Türkiye'de barajlarda kritik seviye: şehirlerde su kesintileri başladı.",
+   "fx": [
+    [
+     "stab",
+     "Turkey",
+     -3
+    ]
+   ]
+  },
+  {
+   "turn": 58,
+   "t": "Tuzdan arındırma yatırımları hız kazandı; Körfez ülkeleri teknoloji ortaklığı önerdi.",
+   "fx": [
+    [
+     "stab",
+     "Iraq",
+     1
+    ],
+    [
+     "stab",
+     "Egypt",
+     1
+    ]
+   ]
   }
  ],
  "objectives": {
@@ -149,7 +203,11 @@
    "0": "Grain prices hit record highs; bread riots began in many countries.",
    "1": "The flow of the Tigris and Euphrates halved; Baghdad asked Ankara for water.",
    "2": "The United Nations called an emergency meeting on global water governance.",
-   "3": "Rains partly returned; the worst of the crisis may be behind us."
+   "3": "Rains partly returned; the worst of the crisis may be behind us.",
+   "4": "India and Pakistan held an emergency meeting over the sharing of border rivers.",
+   "5": "Harvest losses on the Ethiopian highlands; an appeal for aid was made.",
+   "6": "Critical dam levels in Turkey: water cuts began in cities.",
+   "7": "Desalination investment picked up speed; Gulf states offered technology partnerships."
   }
  }
 }

@@ -148,6 +148,30 @@
      -2
     ]
    ]
+  },
+  {
+   "y": 1941,
+   "m": 9,
+   "t": "Ankara ile Londra arasında askerî ikmal anlaşması imzalandı.",
+   "fx": [
+    [
+     "stab",
+     "Turkey",
+     2
+    ]
+   ]
+  },
+  {
+   "y": 1942,
+   "m": 3,
+   "t": "Boğazlar'ın güvenliği için ortak denizcilik planı: Karadeniz'de tatbikat.",
+   "fx": [
+    [
+     "stab",
+     "Turkey",
+     1
+    ]
+   ]
   }
  ],
  "objectives": {
@@ -180,7 +204,9 @@
   "blurb": "Turkey and Greece joined the Allies. A new front in the Balkans, a strong base in the Mediterranean: Berlin and Rome are worried about their southern flank.",
   "setup_intro": "September 1939: Ankara signed an alliance with London and Paris. The Straits are open to Allied ships; mobilization has begun in the Balkans.",
   "events": {
-   "0": "German preparations begin in the Balkans; the Turkish army is on alert at the border."
+   "0": "German preparations begin in the Balkans; the Turkish army is on alert at the border.",
+   "1": "Ankara and London signed a military supply agreement.",
+   "2": "A joint maritime plan for the security of the Straits: a drill in the Black Sea."
   },
   "objectives": {
    "o1": "Survive three years",

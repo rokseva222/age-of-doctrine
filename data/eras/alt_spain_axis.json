@@ -136,7 +136,44 @@
   9999,
   1
  ],
- "events": [],
+ "events": [
+  {
+   "y": 1940,
+   "m": 6,
+   "t": "İspanya, Cebelitarık üzerinden Britanya'ya baskı için Almanya ile ortak plan hazırladı.",
+   "fx": [
+    [
+     "stab",
+     "United Kingdom",
+     -2
+    ]
+   ]
+  },
+  {
+   "y": 1941,
+   "m": 1,
+   "t": "Portekiz sınırında tedirginlik; Londra Lizbon'a destek verdi.",
+   "fx": [
+    [
+     "stab",
+     "Portugal",
+     -2
+    ]
+   ]
+  },
+  {
+   "y": 1941,
+   "m": 8,
+   "t": "İspanya'da kıtlık: Mihver ticareti yetmeyince şehirlerde ekmek kuyrukları oluştu.",
+   "fx": [
+    [
+     "stab",
+     "Spain",
+     -3
+    ]
+   ]
+  }
+ ],
  "objectives": {
   "*": [
    {
@@ -168,7 +205,11 @@
   "sub": "September 1939 – Alternate",
   "blurb": "Franco accepted Hitler's offer: Spain is in the Axis. Gibraltar is under siege and new U-boat bases are opening on the Atlantic.",
   "setup_intro": "September 1939: Madrid allied with Berlin. Spanish artillery has taken positions on the Gibraltar border.",
-  "events": {},
+  "events": {
+   "0": "Spain prepared a joint plan with Germany to pressure Britain over Gibraltar.",
+   "1": "Unease on the Portuguese border; London backed Lisbon.",
+   "2": "Famine in Spain: Axis trade wasn't enough, and bread queues formed in the cities."
+  },
   "objectives": {
    "o1": "Survive three years",
    "s1": "Reach 30 provinces",

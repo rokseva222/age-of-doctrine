@@ -136,6 +136,30 @@
      3
     ]
    ]
+  },
+  {
+   "y": 1963,
+   "m": 2,
+   "t": "NATO ve Varşova Paktı cephe hattında karşılıklı geri çekilme görüşmelerine oturdu.",
+   "fx": [
+    [
+     "stab",
+     "Germany",
+     2
+    ]
+   ]
+  },
+  {
+   "y": 1963,
+   "m": 5,
+   "t": "Berlin'de yıkılan bölgelerin yeniden inşası için uluslararası fon önerisi.",
+   "fx": [
+    [
+     "stab",
+     "Germany",
+     1
+    ]
+   ]
   }
  ],
  "objectives": {
@@ -177,7 +201,9 @@
   "blurb": "The Berlin blockade escalated and the first shots were fired. The divided city and the armies lined up across Europe sit at the heart of the nuclear front.",
   "setup_intro": "October 1962: Soviet forces have shut the access routes to West Berlin. NATO and the Warsaw Pact have taken positions on the German border.",
   "events": {
-   "0": "The Berlin airlift was re-established; the US and Britain announced a joint plan."
+   "0": "The Berlin airlift was re-established; the US and Britain announced a joint plan.",
+   "1": "NATO and the Warsaw Pact sat down to talks on mutual pullbacks along the front.",
+   "2": "An international fund was proposed to rebuild the destroyed districts of Berlin."
   },
   "objectives": {
    "o1": "Survive two years",

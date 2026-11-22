@@ -142,6 +142,35 @@
      3
     ]
    ]
+  },
+  {
+   "y": 1963,
+   "m": 1,
+   "t": "Karayipler'de deniz ablukası kalktı; Küba'da yeniden inşa ve mülteci sorunu öne çıktı.",
+   "fx": [
+    [
+     "stab",
+     "Cuba",
+     2
+    ]
+   ]
+  },
+  {
+   "y": 1963,
+   "m": 4,
+   "t": "Washington ve Moskova nükleer silah denetimi için gizli temaslara başladı.",
+   "fx": [
+    [
+     "stab",
+     "United States of America",
+     1
+    ],
+    [
+     "stab",
+     "Russia",
+     1
+    ]
+   ]
   }
  ],
  "objectives": {
@@ -198,7 +227,9 @@
   "setup_intro": "October 1962: diplomacy has failed. Fighting has begun in Cuba, and Soviet and Turkish forces face off on the Black Sea.",
   "events": {
    "0": "Heavy fighting continues in Cuba; the UN Security Council has met in emergency session.",
-   "1": "The hotline between Moscow and Washington reopened: ceasefire talks begin."
+   "1": "The hotline between Moscow and Washington reopened: ceasefire talks begin.",
+   "2": "The naval blockade in the Caribbean was lifted; reconstruction and refugees came to the fore in Cuba.",
+   "3": "Washington and Moscow began secret contacts on nuclear arms control."
   },
   "objectives": {
    "o1": "Survive one year",

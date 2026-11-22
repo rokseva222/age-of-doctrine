@@ -147,6 +147,30 @@
      -5
     ]
    ]
+  },
+  {
+   "y": 1915,
+   "m": 10,
+   "t": "Britanya'da ticaret donanması Atlantik'te kayıplar veriyor; seyirci kalma politikası eleştiriliyor.",
+   "fx": [
+    [
+     "stab",
+     "United Kingdom",
+     -2
+    ]
+   ]
+  },
+  {
+   "y": 1916,
+   "m": 3,
+   "t": "Londra, Paris'e kredi vermeyi tartışıyor; tarafsızlıkla ticaret çıkarı çatışıyor.",
+   "fx": [
+    [
+     "stab",
+     "United Kingdom",
+     -1
+    ]
+   ]
   }
  ],
  "objectives": {
@@ -210,7 +234,9 @@
   "setup_intro": "August 1914: Despite the invasion of Belgium, the British Cabinet chose neutrality. The fleet stays in port; the continent is left to its fate.",
   "events": {
    "0": "The German advance along the Marne continues; the French government prepares to move to Bordeaux.",
-   "1": "War advocates take to London's streets: public opinion urges the Cabinet to enter the war."
+   "1": "War advocates take to London's streets: public opinion urges the Cabinet to enter the war.",
+   "2": "Britain's merchant fleet suffers losses in the Atlantic; the policy of staying out is under fire.",
+   "3": "London debates lending to Paris; neutrality clashes with commercial interest."
   },
   "objectives": {
    "o1": "Survive three years",

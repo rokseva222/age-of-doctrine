@@ -85,6 +85,60 @@
      -3
     ]
    ]
+  },
+  {
+   "turn": 18,
+   "t": "İki Kore arasındaki askerden arındırılmış bölgede hoparlör yayınları yeniden başladı.",
+   "fx": [
+    [
+     "stab",
+     "North Korea",
+     -1
+    ],
+    [
+     "stab",
+     "South Korea",
+     -1
+    ]
+   ]
+  },
+  {
+   "turn": 26,
+   "t": "Kuzey Kore'de kıtlık raporları arttı; Çin sınırında kaçak ticaret yoğunlaştı.",
+   "fx": [
+    [
+     "stab",
+     "North Korea",
+     -3
+    ]
+   ]
+  },
+  {
+   "turn": 48,
+   "t": "Güney Kore'de seçim yaklaşırken savunma bütçesi tartışması kızıştı.",
+   "fx": [
+    [
+     "stab",
+     "South Korea",
+     -2
+    ]
+   ]
+  },
+  {
+   "turn": 64,
+   "t": "Çin'in arabuluculuk önerisiyle altı taraflı görüşmelerin yeniden başlaması konuşuluyor.",
+   "fx": [
+    [
+     "stab",
+     "North Korea",
+     2
+    ],
+    [
+     "stab",
+     "South Korea",
+     2
+    ]
+   ]
   }
  ],
  "objectives": {
@@ -141,7 +195,11 @@
   },
   "events": {
    "0": "North Korea carried out a ballistic missile test at sea.",
-   "1": "South Korea, Japan and the US held a joint exercise."
+   "1": "South Korea, Japan and the US held a joint exercise.",
+   "2": "Loudspeaker broadcasts resumed in the demilitarised zone between the two Koreas.",
+   "3": "Reports of food shortages grew in North Korea; smuggling along the Chinese border intensified.",
+   "4": "As an election neared, the defence budget debate heated up in South Korea.",
+   "5": "Talk of restarting six-party talks emerged after a Chinese mediation offer."
   }
  }
 }

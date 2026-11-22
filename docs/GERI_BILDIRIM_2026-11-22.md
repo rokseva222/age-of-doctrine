@@ -42,7 +42,7 @@ Kaynak: ahmett_ttarik, luciferdeu, erenkbtss, devranpashaa, play store paylaşı
 
 ## Durum (2026-11-22 akşam)
 - S1 tamam (cyprus 1974/2027). S2 tamam (ch94/ch94c/ch99/ch99c, 32 olay kartı). O18 tamam.
-- Sıradaki: B1–B11 hata listesi, ardından S3 (tüm modlarda olay artırımı).
+- S3 (olay artırımı): kurgusal senaryolara 4 ve alternatif çağlara 2-3 yeni olay eklendi (TR + EN; diğer diller İngilizceye düşer).
 
 ## Ek: ss'lerin ikinci okuması (2026-11-23, 63 ekran görüntüsü, tamamı tekrar okundu)
 Ilk listede olmayan ya da eksik kalan maddeler. Durum etiketi kodda bakılarak yazıldı; "BAKILACAK" olanlar doğrulanmadı.

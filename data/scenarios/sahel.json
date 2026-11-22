@@ -96,6 +96,55 @@
      -3
     ]
    ]
+  },
+  {
+   "turn": 14,
+   "t": "Kuraklık ve göç dalgası kuzeydeki kasabaları zorluyor; yardım konvoyları saldırıya uğradı.",
+   "fx": [
+    [
+     "stab",
+     "Niger",
+     -2
+    ]
+   ]
+  },
+  {
+   "turn": 30,
+   "t": "Başkentlerde darbe söylentileri; ordu içinde komuta değişikliği yapıldı.",
+   "fx": [
+    [
+     "stab",
+     "Burkina Faso",
+     -3
+    ]
+   ]
+  },
+  {
+   "turn": 52,
+   "t": "Cezayir arabuluculuk toplantısı düzenledi; taraflar ateşkes taslağını görüştü.",
+   "fx": [
+    [
+     "stab",
+     "Mali",
+     2
+    ]
+   ]
+  },
+  {
+   "turn": 70,
+   "t": "Sınır ötesi ticaret yolları yeniden açıldı; pazarlarda fiyatlar düştü.",
+   "fx": [
+    [
+     "stab",
+     "Niger",
+     2
+    ],
+    [
+     "stab",
+     "Nigeria",
+     1
+    ]
+   ]
   }
  ],
  "objectives": {
@@ -136,7 +185,11 @@
   "events": {
    "0": "The Desert Union took control of border towns; thousands were displaced.",
    "1": "Neighbouring countries discussed forming a joint force.",
-   "2": "The withdrawal of foreign forces is debated; capitals seek a new security order."
+   "2": "The withdrawal of foreign forces is debated; capitals seek a new security order.",
+   "3": "Drought and displacement strain the northern towns; aid convoys were attacked.",
+   "4": "Coup rumours in the capitals; a command reshuffle was ordered inside the army.",
+   "5": "Algeria hosted a mediation meeting; the parties discussed a draft ceasefire.",
+   "6": "Cross-border trade routes reopened; market prices fell."
   }
  }
 }

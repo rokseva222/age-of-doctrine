@@ -91,6 +91,60 @@
      3
     ]
    ]
+  },
+  {
+   "turn": 18,
+   "t": "Etiyopya yeni bir hidroelektrik yatırımını duyurdu; Kahire'de endişe arttı.",
+   "fx": [
+    [
+     "stab",
+     "Egypt",
+     -2
+    ]
+   ]
+  },
+  {
+   "turn": 34,
+   "t": "Sudan'da su payı krizi çiftçileri sokağa döktü.",
+   "fx": [
+    [
+     "stab",
+     "Sudan",
+     -3
+    ]
+   ]
+  },
+  {
+   "turn": 42,
+   "t": "Afrika Birliği zirvesinde Nil için ortak veri paylaşımı önerildi.",
+   "fx": [
+    [
+     "stab",
+     "Ethiopia",
+     1
+    ],
+    [
+     "stab",
+     "Egypt",
+     1
+    ]
+   ]
+  },
+  {
+   "turn": 60,
+   "t": "Kuraklık uyarısı: Nil'in yaz taşkını beklenenden düşük kaldı.",
+   "fx": [
+    [
+     "stab",
+     "Egypt",
+     -2
+    ],
+    [
+     "stab",
+     "Sudan",
+     -2
+    ]
+   ]
   }
  ],
  "objectives": {
@@ -155,7 +209,11 @@
   "events": {
    "0": "The reservoir filling phase has begun; Egypt complains of a drop in Nile flow.",
    "1": "Egypt launched border exercises; Ethiopia is reinforcing its air defenses.",
-   "2": "Mediators have set up a negotiating table for the Nile."
+   "2": "Mediators have set up a negotiating table for the Nile.",
+   "3": "Ethiopia announced a new hydroelectric investment; concern grew in Cairo.",
+   "4": "A water-allocation crisis put Sudan's farmers on the streets.",
+   "5": "A joint data-sharing scheme for the Nile was proposed at an African Union summit.",
+   "6": "Drought warning: the Nile's summer flood came in lower than expected."
   }
  }
 }

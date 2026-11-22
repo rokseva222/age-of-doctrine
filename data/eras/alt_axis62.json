@@ -1347,6 +1347,30 @@
      -3
     ]
    ]
+  },
+  {
+   "y": 1963,
+   "m": 6,
+   "t": "Kuzey Amerika'da Alman-Japon bölge sınırında ticaret kısıtları gevşedi; her iki imparatorluk içeride huzursuzlukla boğuşuyor.",
+   "fx": [
+    [
+     "stab",
+     "Japan",
+     1
+    ]
+   ]
+  },
+  {
+   "y": 1964,
+   "m": 1,
+   "t": "Berlin'de ardıl krizi sürerken ordu ve parti arasındaki gerilim sokaklara taştı.",
+   "fx": [
+    [
+     "stab",
+     "Germany",
+     -3
+    ]
+   ]
   }
  ],
  "objectives": {
@@ -1410,7 +1434,9 @@
   "events": {
    "0": "Rumours about the ageing Führer's health grow in Berlin; the succession struggle has spilled into the palace corridors.",
    "1": "German and Japanese patrols met on the Rocky Mountain border; tension rises in the Neutral Zone.",
-   "2": "Russian resistance groups in Siberia attacked German and Japanese outposts; the two empires blame each other."
+   "2": "Russian resistance groups in Siberia attacked German and Japanese outposts; the two empires blame each other.",
+   "3": "Trade limits eased along the German-Japanese zone border in North America; both empires wrestle with unrest at home.",
+   "4": "As the succession crisis dragged on in Berlin, tension between army and party spilled onto the streets."
   },
   "objectives": {
    "o1": "Survive one year",

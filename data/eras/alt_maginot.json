@@ -147,6 +147,30 @@
      -4
     ]
    ]
+  },
+  {
+   "y": 1940,
+   "m": 9,
+   "t": "Fransız hattı sağlam; Almanya Belçika üzerinden yeni bir plan arıyor.",
+   "fx": [
+    [
+     "stab",
+     "Belgium",
+     -3
+    ]
+   ]
+  },
+  {
+   "y": 1941,
+   "m": 2,
+   "t": "Batı Cephesi'nde siper savaşı başladı; Britanya takviye gönderdi.",
+   "fx": [
+    [
+     "stab",
+     "United Kingdom",
+     -1
+    ]
+   ]
   }
  ],
  "objectives": {
@@ -188,7 +212,9 @@
   "blurb": "French generals fortified the Ardennes: a quick German victory will not be easy. The Western Front is turning back into trench warfare.",
   "setup_intro": "September 1939: the French army has been reorganized with reserves in the Ardennes. Plans are being rewritten in Berlin.",
   "events": {
-   "0": "The German offensive stalled in the Ardennes on the Western Front; the war looks set to be long."
+   "0": "The German offensive stalled in the Ardennes on the Western Front; the war looks set to be long.",
+   "1": "The French line holds; Germany looks for a new plan through Belgium.",
+   "2": "Trench warfare set in on the Western Front; Britain sent reinforcements."
   },
   "objectives": {
    "o1": "Survive three years",

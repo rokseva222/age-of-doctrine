@@ -89,6 +89,55 @@
    "turn": 60,
    "t": "Arktik Konseyi'nde sınır belirleme toplantısı çıkmaza girdi.",
    "fx": []
+  },
+  {
+   "turn": 20,
+   "t": "Kanada, Kuzeybatı Geçidi'nde egemenlik devriyelerini artırdı.",
+   "fx": [
+    [
+     "stab",
+     "Canada",
+     1
+    ]
+   ]
+  },
+  {
+   "turn": 42,
+   "t": "Grönland'da nadir toprak madenleri için yabancı yatırım tartışması hükümeti böldü.",
+   "fx": [
+    [
+     "stab",
+     "Denmark",
+     -2
+    ]
+   ]
+  },
+  {
+   "turn": 74,
+   "t": "Barents Denizi'nde ortak arama-kurtarma tatbikatı yapıldı; temaslar kısmen yumuşadı.",
+   "fx": [
+    [
+     "stab",
+     "Norway",
+     1
+    ],
+    [
+     "stab",
+     "Russia",
+     1
+    ]
+   ]
+  },
+  {
+   "turn": 96,
+   "t": "Buzulların erimesiyle yeni deniz yolları açıldı; sigorta ve gemi trafiği hızla arttı.",
+   "fx": [
+    [
+     "stab",
+     "Russia",
+     1
+    ]
+   ]
   }
  ],
  "objectives": {
@@ -139,7 +188,11 @@
   "events": {
    "0": "Russia commissioned new nuclear icebreakers on the Northern Sea Route.",
    "1": "A subsea cable off Norway was cut; suspicion falls on Moscow.",
-   "2": "The Arctic Council's border-delimitation meeting hit a deadlock."
+   "2": "The Arctic Council's border-delimitation meeting hit a deadlock.",
+   "3": "Canada stepped up sovereignty patrols in the Northwest Passage.",
+   "4": "A debate over foreign investment in Greenland's rare-earth mines split the government.",
+   "5": "A joint search-and-rescue drill was held in the Barents Sea; contacts eased somewhat.",
+   "6": "Melting ice opened new sea lanes; insurance costs and ship traffic rose quickly."
   }
  }
 }

@@ -60,6 +60,49 @@
      "Guyana"
     ]
    ]
+  },
+  {
+   "turn": 12,
+   "t": "Guyana açıklarında yeni bir petrol keşfi açıklandı; bölgedeki gerilim arttı.",
+   "fx": [
+    [
+     "stab",
+     "Guyana",
+     2
+    ],
+    [
+     "stab",
+     "Venezuela",
+     -1
+    ]
+   ]
+  },
+  {
+   "turn": 30,
+   "t": "Venezuela'da sınır halkından 'ulusal bütünlük' çağrısı; hükümet seferberlik sinyali verdi.",
+   "fx": [
+    [
+     "stab",
+     "Venezuela",
+     -2
+    ]
+   ]
+  },
+  {
+   "turn": 44,
+   "t": "Karayip ülkeleri acil toplanıp sorunun diyalogla çözülmesini istedi.",
+   "fx": [
+    [
+     "stab",
+     "Guyana",
+     1
+    ]
+   ]
+  },
+  {
+   "turn": 62,
+   "t": "Uluslararası mahkemede sözlü savunmalar başladı; taraflar karşılıklı geri adım atmıyor.",
+   "fx": []
   }
  ],
  "objectives": {
@@ -108,7 +151,11 @@
   },
   "events": {
    "0": "Brazil moved troops along the border and urged de-escalation.",
-   "1": "The US held a joint exercise with Guyana."
+   "1": "The US held a joint exercise with Guyana.",
+   "2": "A new offshore oil discovery was announced off Guyana; regional tension rose.",
+   "3": "Calls for 'national integrity' rose in Venezuela; the government signalled mobilisation.",
+   "4": "Caribbean states met urgently and asked for the dispute to be settled through dialogue.",
+   "5": "Oral arguments began at the international court; neither side is backing down."
   }
  }
 }

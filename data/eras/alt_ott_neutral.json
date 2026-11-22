@@ -151,6 +151,30 @@
      4
     ]
    ]
+  },
+  {
+   "y": 1915,
+   "m": 9,
+   "t": "Boğazlar üzerinden geçen geçiş harçları hazineyi doldurdu; Bağdat demiryolu hattı hız kazandı.",
+   "fx": [
+    [
+     "stab",
+     "Turkey",
+     2
+    ]
+   ]
+  },
+  {
+   "y": 1917,
+   "m": 2,
+   "t": "İtilaf ve Merkezî Güçler Osmanlı'dan cephe açması için baskı yapıyor.",
+   "fx": [
+    [
+     "stab",
+     "Turkey",
+     -2
+    ]
+   ]
   }
  ],
  "objectives": {
@@ -192,7 +216,9 @@
   "events": {
    "0": "With the Straits closed, Russian grain exports collapsed; bread queues grow in Petrograd.",
    "1": "The Entente offered Istanbul the Straits and territory; the Central Powers prepared a counter-offer.",
-   "2": "The Ottoman government keeps its neutrality; gold flows into its trading ports."
+   "2": "The Ottoman government keeps its neutrality; gold flows into its trading ports.",
+   "3": "Straits tolls filled the treasury; work on the Baghdad railway picked up speed.",
+   "4": "Both the Entente and the Central Powers press the Ottomans to open a front."
   },
   "objectives": {
    "o1": "Survive three years",

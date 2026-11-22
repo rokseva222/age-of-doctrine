@@ -168,6 +168,35 @@
      -6
     ]
    ]
+  },
+  {
+   "y": 1940,
+   "m": 8,
+   "t": "Almanya'da askerî konsey sivil bir geçiş hükûmeti önerdi; Doğu sınırında birlikler gerildi.",
+   "fx": [
+    [
+     "stab",
+     "Germany",
+     2
+    ]
+   ]
+  },
+  {
+   "y": 1941,
+   "m": 2,
+   "t": "Avrupa'da kalıcı barış konferansı için hazırlık: Cenevre gündemde.",
+   "fx": [
+    [
+     "stab",
+     "France",
+     2
+    ],
+    [
+     "stab",
+     "United Kingdom",
+     2
+    ]
+   ]
   }
  ],
  "objectives": {
@@ -216,7 +245,9 @@
   "setup_intro": "September 1939: Hitler died in an assassination. The generals took over; the Polish operation has stalled, but the doors are not yet closed.",
   "events": {
    "0": "The military council in Berlin offered a ceasefire; London and Paris state their terms.",
-   "1": "Political factions clash in Germany: will army rule last?"
+   "1": "Political factions clash in Germany: will army rule last?",
+   "2": "Germany's military council proposed a civilian transitional government; troops on the eastern border stood tense.",
+   "3": "Preparations for a lasting peace conference in Europe: Geneva is on the agenda."
   },
   "objectives": {
    "o1": "Survive three years",
