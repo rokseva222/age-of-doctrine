@@ -1,0 +1,360 @@
+# Orijinal olmayan (kodla çizilmiş) bayraklar — çağa göre liste
+
+Dosya adı kuralı: `era_<çağ>_<ülke>.png` (parantez içi önerilen ad). Alternatif tarih çağları temel çağın bayraklarını kullanır, ayrıca istemez.
+
+## I. Dünya Savaşı 1914 (çağ kodu: ww1) — 15 bayrak
+- Alman İmparatorluğu → `era_ww1_germany.png`
+- Avustralya → `era_ww1_australia.png`
+- Avusturya-Macaristan → `era_ww1_austria.png`
+- Brezilya → `era_ww1_brazil.png`
+- Güney Afrika → `era_ww1_south_africa.png`
+- Kanada → `era_ww1_canada.png`
+- Karadağ → `era_ww1_montenegro.png`
+- Osmanlı İmparatorluğu → `era_ww1_turkey.png`
+- Pers Devleti → `era_ww1_iran.png`
+- Rus İmparatorluğu → `era_ww1_russia.png`
+- Siyam → `era_ww1_thailand.png`
+- Sırbistan → `era_ww1_serbia.png`
+- Yeni Zelanda → `era_ww1_new_zealand.png`
+- Çin Cumhuriyeti → `era_ww1_china.png`
+- İspanya → `era_ww1_spain.png`
+
+## II. Dünya Savaşı 1939 (çağ kodu: ww2) — 14 bayrak
+- Almanya → `era_ww2_germany.png`
+- Avustralya → `era_ww2_australia.png`
+- Güney Afrika → `era_ww2_south_africa.png`
+- Irak → `era_ww2_iraq.png`
+- Kanada → `era_ww2_canada.png`
+- Moğolistan → `era_ww2_mongolia.png`
+- Mısır → `era_ww2_egypt.png`
+- SSCB → `era_ww2_russia.png`
+- Slovak Devleti → `era_ww2_slovakia.png`
+- Yeni Zelanda → `era_ww2_new_zealand.png`
+- Yugoslavya Krallığı → `era_ww2_serbia.png`
+- Çin Cumhuriyeti → `era_ww2_china.png`
+- İran → `era_ww2_iran.png`
+- İspanya → `era_ww2_spain.png`
+
+## Soğuk Savaş 1962 (çağ kodu: cw62) — 7 bayrak
+- Birleşik Arap Cumhuriyeti → `era_cw62_egypt.png`
+- Küba → `era_cw62_cuba.png`
+- SSCB → `era_cw62_russia.png`
+- Vietnam Demokratik Cumhuriyeti (Kuzey) → `era_cw62_vietnam.png`
+- Yugoslavya → `era_cw62_serbia.png`
+- Çekoslovakya → `era_cw62_czechia.png`
+- Çin Halk Cumhuriyeti → `era_cw62_china.png`
+
+## Osmanlı Doğuşu 1299 (çağ kodu: ott1299) — 75 bayrak
+- Abdülvâdîler (Tlemsen) → `era_ott1299_algeria.png`
+- Aborjin Toplulukları → `era_ott1299_australia.png`
+- Akan Devletleri → `era_ott1299_ghana.png`
+- Algonkin ve Irokua Toplulukları → `era_ott1299_canada.png`
+- Altın Orda → `era_ott1299_kazakhstan.png`
+- Anjou Arnavutluğu, Epir ve Teselya → `era_ott1299_albania.png`
+- Antiller (Taíno Şeflikleri) → `era_ott1299_cuba.png`
+- Aragon Tacı → `era_ott1299_andorra.png`
+- Arap Kabile Emirlikleri → `era_ott1299_saudi_arabia.png`
+- Batı Anadolu Beylikleri (Germiyan, Karesi, Menteşe, Hamid) → `era_ott1299_montenegro.png`
+- Bengal (Lahnavti Sultanlığı) → `era_ott1299_bangladesh.png`
+- Bosna Krallığı → `era_ott1299_bosnia_and_herz.png`
+- Brunei Sultanlığı → `era_ott1299_brunei.png`
+- Bulgar Çarlığı → `era_ott1299_bulgaria.png`
+- Bunyoro-Kitara ve Büyük Göller → `era_ott1299_uganda.png`
+- Büyük Zimbabve ve Güney Afrika → `era_ott1299_zimbabwe.png`
+- Dai Viet (Tran) → `era_ott1299_vietnam.png`
+- Danimarka ve Norveç → `era_ott1299_denmark.png`
+- Dekkan Hanedanları (Yadava, Kakatiya) → `era_ott1299_nepal.png`
+- Delhi Sultanlığı (Halacılar) → `era_ott1299_india.png`
+- Eflak ve Tatar Sınır Beylikleri → `era_ott1299_romania.png`
+- Etiyopya (Süleymanî Hanedanı) → `era_ott1299_ethiopia.png`
+- Filipin Beylikleri → `era_ott1299_philippines.png`
+- Flandre Kontluğu → `era_ott1299_belgium.png`
+- Goryeo Krallığı → `era_ott1299_south_korea.png`
+- Güney Hindistan Hanedanları (Pandya, Hoysala) → `era_ott1299_sri_lanka.png`
+- Gürcü Krallığı → `era_ott1299_georgia.png`
+- Hafsîler → `era_ott1299_tunisia.png`
+- Hausa Şehirleri ve Benin Krallığı → `era_ott1299_nigeria.png`
+- Hürmüz Krallığı → `era_ott1299_united_arab_emirates.png`
+- Ifat ve Adal Sultanlıkları → `era_ott1299_somalia.png`
+- Kamakura Şogunluğu → `era_ott1299_japan.png`
+- Kanem-Bornu → `era_ott1299_chad.png`
+- Karamanoğulları ve Kilikya Ermenileri → `era_ott1299_north_macedonia.png`
+- Kartlar (Herat) → `era_ott1299_afghanistan.png`
+- Kastilya Krallığı → `era_ott1299_spain.png`
+- Khmer Krallığı → `era_ott1299_cambodia.png`
+- Kilwa ve Swahili Kıyısı → `era_ott1299_tanzania.png`
+- Kongo ve Luba Devletleri → `era_ott1299_dem_rep_congo.png`
+- Kuzey Amerika Konfederasyonları → `era_ott1299_united_states_of_america.png`
+- Kıbrıs Krallığı (Lüzinyan) → `era_ott1299_cyprus.png`
+- Lao Müangları → `era_ott1299_laos.png`
+- Livonya ve Cermen Şövalyeleri → `era_ott1299_latvia.png`
+- Madagaskar Krallıkları → `era_ott1299_madagascar.png`
+- Majapahit İmparatorluğu → `era_ott1299_indonesia.png`
+- Malay Sultanlıkları → `era_ott1299_malaysia.png`
+- Maldiv Sultanlığı → `era_ott1299_maldives.png`
+- Mali İmparatorluğu → `era_ott1299_mali.png`
+- Maya Şehir Devletleri → `era_ott1299_guatemala.png`
+- Melanezya ve Pasifik Toplulukları → `era_ott1299_papua_new_guinea.png`
+- Merînîler → `era_ott1299_morocco.png`
+- Mexica Şehir Devletleri → `era_ott1299_mexico.png`
+- Moğol Yurdu (Doğu Moğolları) → `era_ott1299_mongolia.png`
+- Muisca ve Karayip Şeflikleri → `era_ott1299_colombia.png`
+- Myinsaing ve Pegu (Birmanya) → `era_ott1299_myanmar.png`
+- Napoli Krallığı (Anjou) → `era_ott1299_malta.png`
+- Novgorod Cumhuriyeti → `era_ott1299_greenland.png`
+- Nubya Krallıkları → `era_ott1299_sudan.png`
+- Portekiz Krallığı → `era_ott1299_portugal.png`
+- Resûlî Yemen → `era_ott1299_yemen.png`
+- Sind ve Multan Beylikleri → `era_ott1299_pakistan.png`
+- Songhay ve Mossi Devletleri → `era_ott1299_niger.png`
+- Sukhothai Krallığı → `era_ott1299_thailand.png`
+- Sırp Krallığı → `era_ott1299_serbia.png`
+- Tayvan Toplulukları → `era_ott1299_taiwan.png`
+- Tibet ve Himalaya → `era_ott1299_bhutan.png`
+- Tupi ve Guarani Toplulukları → `era_ott1299_brazil.png`
+- Umman → `era_ott1299_oman.png`
+- Çağatay Hanlığı → `era_ott1299_uzbekistan.png`
+- Ögedey Ulusu (Kaydu Mirası) → `era_ott1299_kyrgyzstan.png`
+- İlhanlı Devleti → `era_ott1299_azerbaijan.png`
+- İlhanlı Horasan ve Kirman Valilikleri → `era_ott1299_iran.png`
+- İnka Şefliği (Cusco) → `era_ott1299_peru.png`
+- İrlanda Lordlukları → `era_ott1299_ireland.png`
+- İsveç → `era_ott1299_sweden.png`
+
+## Fetih Çağı 1453 (çağ kodu: ott1453) — 72 bayrak
+- Abdülvâdîler (Tlemsen) → `era_ott1453_algeria.png`
+- Aborjin Toplulukları → `era_ott1453_australia.png`
+- Akan Devletleri → `era_ott1453_ghana.png`
+- Algonkin ve Irokua Toplulukları → `era_ott1453_canada.png`
+- Anadolu Beylikleri (Candar, Trabzon, Dulkadir, Ak Koyunlu) → `era_ott1453_montenegro.png`
+- Antiller (Taíno Şeflikleri) → `era_ott1453_cuba.png`
+- Aragon Tacı → `era_ott1453_andorra.png`
+- Arap Kabile Emirlikleri → `era_ott1453_saudi_arabia.png`
+- Arnavut Lezhë Birliği ve Zeta → `era_ott1453_albania.png`
+- Ava ve Pegu (Birmanya) → `era_ott1453_myanmar.png`
+- Ayutthaya Krallığı → `era_ott1453_thailand.png`
+- Bahmanî Sultanlığı → `era_ott1453_nepal.png`
+- Bengal Sultanlığı (İlyas Şahî) → `era_ott1453_bangladesh.png`
+- Bosna Krallığı ve Hersek → `era_ott1453_bosnia_and_herz.png`
+- Brunei Sultanlığı → `era_ott1453_brunei.png`
+- Bunyoro-Kitara ve Büyük Göller → `era_ott1453_uganda.png`
+- Burgonya ve Flandre → `era_ott1453_belgium.png`
+- Büyük Zimbabve ve Güney Afrika → `era_ott1453_zimbabwe.png`
+- Dai Viet (Lê) → `era_ott1453_vietnam.png`
+- Danimarka ve Norveç → `era_ott1453_denmark.png`
+- Delhi Sultanlığı (Lodiler) → `era_ott1453_india.png`
+- Eflak ve Boğdan → `era_ott1453_romania.png`
+- Etiyopya (Süleymanî Hanedanı) → `era_ott1453_ethiopia.png`
+- Filipin Beylikleri → `era_ott1453_philippines.png`
+- Gürcü Krallığı → `era_ott1453_georgia.png`
+- Hafsîler → `era_ott1453_tunisia.png`
+- Hausa Şehirleri ve Benin Krallığı → `era_ott1453_nigeria.png`
+- Hürmüz Krallığı → `era_ott1453_united_arab_emirates.png`
+- Ifat ve Adal Sultanlıkları → `era_ott1453_somalia.png`
+- Joseon Krallığı → `era_ott1453_south_korea.png`
+- Kabil ve Kandahar Beylikleri → `era_ott1453_afghanistan.png`
+- Kanem-Bornu → `era_ott1453_chad.png`
+- Kara Koyunlu → `era_ott1453_azerbaijan.png`
+- Karamanoğulları → `era_ott1453_north_macedonia.png`
+- Kastilya Krallığı → `era_ott1453_spain.png`
+- Khmer Krallığı → `era_ott1453_cambodia.png`
+- Kilwa ve Swahili Kıyısı → `era_ott1453_tanzania.png`
+- Kongo ve Luba Devletleri → `era_ott1453_dem_rep_congo.png`
+- Kuzey Amerika Konfederasyonları → `era_ott1453_united_states_of_america.png`
+- Kuzey Yuan (Moğollar) → `era_ott1453_mongolia.png`
+- Kıbrıs Krallığı (Lüzinyan) → `era_ott1453_cyprus.png`
+- Lan Xang Krallığı → `era_ott1453_laos.png`
+- Livonya ve Cermen Şövalyeleri → `era_ott1453_latvia.png`
+- Madagaskar Krallıkları → `era_ott1453_madagascar.png`
+- Majapahit İmparatorluğu → `era_ott1453_indonesia.png`
+- Malakka Sultanlığı → `era_ott1453_malaysia.png`
+- Maldiv Sultanlığı → `era_ott1453_maldives.png`
+- Mali İmparatorluğu → `era_ott1453_mali.png`
+- Maya Şehir Devletleri → `era_ott1453_guatemala.png`
+- Melanezya ve Pasifik Toplulukları → `era_ott1453_papua_new_guinea.png`
+- Merînîler → `era_ott1453_morocco.png`
+- Mexica Şehir Devletleri → `era_ott1453_mexico.png`
+- Moğulistan Hanlığı → `era_ott1453_kyrgyzstan.png`
+- Muisca ve Karayip Şeflikleri → `era_ott1453_colombia.png`
+- Muromachi Japonyası → `era_ott1453_japan.png`
+- Napoli Krallığı (Aragon) → `era_ott1453_malta.png`
+- Novgorod Cumhuriyeti → `era_ott1453_greenland.png`
+- Nubya Krallıkları → `era_ott1453_sudan.png`
+- Portekiz Krallığı → `era_ott1453_portugal.png`
+- Resûlî Yemen → `era_ott1453_yemen.png`
+- Sind ve Multan Beylikleri → `era_ott1453_pakistan.png`
+- Songhay ve Mossi Devletleri → `era_ott1453_niger.png`
+- Sırp Despotluğu → `era_ott1453_serbia.png`
+- Tayvan Toplulukları → `era_ott1453_taiwan.png`
+- Tibet ve Himalaya → `era_ott1453_bhutan.png`
+- Tupi ve Guarani Toplulukları → `era_ott1453_brazil.png`
+- Umman → `era_ott1453_oman.png`
+- Vijayanagara İmparatorluğu → `era_ott1453_sri_lanka.png`
+- Özbek Ulusu ve Altın Orda mirası → `era_ott1453_kazakhstan.png`
+- İnka Şefliği (Cusco) → `era_ott1453_peru.png`
+- İrlanda Lordlukları → `era_ott1453_ireland.png`
+- İsveç → `era_ott1453_sweden.png`
+
+## Kanuni Çağı 1520 (çağ kodu: ott1520) — 63 bayrak
+- Aborjin Toplulukları → `era_ott1520_australia.png`
+- Adal Sultanlığı ve Somali Şehirleri → `era_ott1520_somalia.png`
+- Akan Devletleri → `era_ott1520_ghana.png`
+- Algonkin ve Irokua Toplulukları → `era_ott1520_canada.png`
+- Antiller (Taíno ve İspanyol Üsleri) → `era_ott1520_cuba.png`
+- Arap Kabile Emirlikleri → `era_ott1520_saudi_arabia.png`
+- Ayutthaya Krallığı → `era_ott1520_thailand.png`
+- Aziz Yuhanna Şövalyeleri → `era_ott1520_malta.png`
+- Aztek Üçlü İttifakı → `era_ott1520_mexico.png`
+- Bengal Sultanlığı → `era_ott1520_bangladesh.png`
+- Bornu İmparatorluğu → `era_ott1520_chad.png`
+- Brunei Sultanlığı → `era_ott1520_brunei.png`
+- Bunyoro-Kitara ve Büyük Göller → `era_ott1520_uganda.png`
+- Cezayir (Barbaros) → `era_ott1520_algeria.png`
+- Dai Viet (Le Hanedanı) → `era_ott1520_vietnam.png`
+- Danimarka-Norveç → `era_ott1520_denmark.png`
+- Dekkan Sultanlıkları (Bahmanî mirası) → `era_ott1520_nepal.png`
+- Delhi Sultanlığı (Lodî) → `era_ott1520_india.png`
+- Demak ve Nusantara Sultanlıkları → `era_ott1520_indonesia.png`
+- Eflak ve Boğdan → `era_ott1520_romania.png`
+- Etiyopya İmparatorluğu → `era_ott1520_ethiopia.png`
+- Filipin Beylikleri → `era_ott1520_philippines.png`
+- Funj Sultanlığı → `era_ott1520_sudan.png`
+- Gürcü Krallıkları → `era_ott1520_georgia.png`
+- Habsburg Hanedanı → `era_ott1520_spain.png`
+- Hafsîler → `era_ott1520_tunisia.png`
+- Hausa Şehirleri ve Benin Krallığı → `era_ott1520_nigeria.png`
+- Hürmüz Krallığı → `era_ott1520_united_arab_emirates.png`
+- Joseon Krallığı → `era_ott1520_south_korea.png`
+- Kazak Hanlığı ve Bozkır Hanlıkları → `era_ott1520_kazakhstan.png`
+- Khmer Krallığı → `era_ott1520_cambodia.png`
+- Kilwa ve Swahili Kıyısı → `era_ott1520_tanzania.png`
+- Kongo Krallığı → `era_ott1520_dem_rep_congo.png`
+- Kuzey Amerika Konfederasyonları → `era_ott1520_united_states_of_america.png`
+- Kâbil Beyliği → `era_ott1520_afghanistan.png`
+- Kırım Hanlığı ve Bozkır → `era_ott1520_ukraine.png`
+- Lan Xang Krallığı → `era_ott1520_laos.png`
+- Livonya Tarikatı → `era_ott1520_latvia.png`
+- Madagaskar Krallıkları → `era_ott1520_madagascar.png`
+- Malay Sultanlıkları (Malakka mirası) → `era_ott1520_malaysia.png`
+- Maldiv Sultanlığı → `era_ott1520_maldives.png`
+- Maya Şehir Devletleri → `era_ott1520_guatemala.png`
+- Melanezya ve Pasifik Toplulukları → `era_ott1520_papua_new_guinea.png`
+- Moğol Hanlıkları → `era_ott1520_mongolia.png`
+- Muisca ve Karayip Şeflikleri → `era_ott1520_colombia.png`
+- Mutapa ve Güney Afrika Krallıkları → `era_ott1520_zimbabwe.png`
+- Portekiz Krallığı → `era_ott1520_portugal.png`
+- Sengoku Japonyası → `era_ott1520_japan.png`
+- Sind ve Multan Beylikleri → `era_ott1520_pakistan.png`
+- Songhay İmparatorluğu → `era_ott1520_mali.png`
+- Tahirî ve Zeydî Yemen → `era_ott1520_yemen.png`
+- Tayvan Toplulukları → `era_ott1520_taiwan.png`
+- Tibet ve Himalaya → `era_ott1520_bhutan.png`
+- Toungoo ve Ava (Birmanya) → `era_ott1520_myanmar.png`
+- Tupi ve Guarani Toplulukları → `era_ott1520_brazil.png`
+- Umman → `era_ott1520_oman.png`
+- Vattasîler ve Sa'dîler → `era_ott1520_morocco.png`
+- Vijayanagara İmparatorluğu → `era_ott1520_sri_lanka.png`
+- İnka İmparatorluğu → `era_ott1520_peru.png`
+- İrlanda Lordlukları → `era_ott1520_ireland.png`
+- İsveç → `era_ott1520_sweden.png`
+- İsviçre Konfederasyonu → `era_ott1520_switzerland.png`
+- Şeybânî Özbek Hanlığı → `era_ott1520_uzbekistan.png`
+
+## Timur Çağı 1380 (çağ kodu: tim1380) — 74 bayrak
+- Abdülvâdîler (Tlemsen) → `era_tim1380_algeria.png`
+- Aborjin Toplulukları → `era_tim1380_australia.png`
+- Akan Devletleri → `era_tim1380_ghana.png`
+- Algonkin ve Irokua Toplulukları → `era_tim1380_canada.png`
+- Altın Orda (Toktamış) → `era_tim1380_kazakhstan.png`
+- Antiller (Taíno Şeflikleri) → `era_tim1380_cuba.png`
+- Aragon Tacı → `era_tim1380_andorra.png`
+- Arap Kabile Emirlikleri → `era_tim1380_saudi_arabia.png`
+- Arnavut Beylikleri → `era_tim1380_albania.png`
+- Ava ve Pegu (Birmanya) → `era_tim1380_myanmar.png`
+- Ayutthaya Krallığı → `era_tim1380_thailand.png`
+- Bahmanî Sultanlığı → `era_tim1380_nepal.png`
+- Bengal Sultanlığı (İlyas Şahî) → `era_tim1380_bangladesh.png`
+- Bosna Krallığı → `era_tim1380_bosnia_and_herz.png`
+- Brunei Sultanlığı → `era_tim1380_brunei.png`
+- Bulgar Çarlıkları (Tırnovo, Vidin) → `era_tim1380_bulgaria.png`
+- Bunyoro-Kitara ve Büyük Göller → `era_tim1380_uganda.png`
+- Burgonya ve Flandre → `era_tim1380_belgium.png`
+- Büyük Zimbabve ve Güney Afrika → `era_tim1380_zimbabwe.png`
+- Celâyirliler ve Kara Koyunlu → `era_tim1380_azerbaijan.png`
+- Dai Viet (Tran) → `era_tim1380_vietnam.png`
+- Danimarka ve Norveç → `era_tim1380_denmark.png`
+- Delhi Sultanlığı (Tuğluk) → `era_tim1380_india.png`
+- Doğu Anadolu Beylikleri (Eretna, Dulkadir, Ak Koyunlu) → `era_tim1380_montenegro.png`
+- Eflak ve Boğdan → `era_tim1380_romania.png`
+- Etiyopya (Süleymanî Hanedanı) → `era_tim1380_ethiopia.png`
+- Filipin Beylikleri → `era_tim1380_philippines.png`
+- Goryeo Krallığı → `era_tim1380_south_korea.png`
+- Gürcü Krallığı → `era_tim1380_georgia.png`
+- Hafsîler → `era_tim1380_tunisia.png`
+- Hausa Şehirleri ve Benin Krallığı → `era_tim1380_nigeria.png`
+- Hürmüz Krallığı → `era_tim1380_united_arab_emirates.png`
+- Ifat ve Adal Sultanlıkları → `era_tim1380_somalia.png`
+- Kanem-Bornu → `era_tim1380_chad.png`
+- Karamanoğulları → `era_tim1380_north_macedonia.png`
+- Kartlar (Herat) → `era_tim1380_afghanistan.png`
+- Kastilya Krallığı → `era_tim1380_spain.png`
+- Khmer Krallığı → `era_tim1380_cambodia.png`
+- Kilwa ve Swahili Kıyısı → `era_tim1380_tanzania.png`
+- Kongo ve Luba Devletleri → `era_tim1380_dem_rep_congo.png`
+- Kuzey Amerika Konfederasyonları → `era_tim1380_united_states_of_america.png`
+- Kuzey Yuan (Moğollar) → `era_tim1380_mongolia.png`
+- Kıbrıs Krallığı (Lüzinyan) → `era_tim1380_cyprus.png`
+- Lan Xang Krallığı → `era_tim1380_laos.png`
+- Livonya ve Cermen Şövalyeleri → `era_tim1380_latvia.png`
+- Madagaskar Krallıkları → `era_tim1380_madagascar.png`
+- Majapahit İmparatorluğu → `era_tim1380_indonesia.png`
+- Malay Sultanlıkları → `era_tim1380_malaysia.png`
+- Maldiv Sultanlığı → `era_tim1380_maldives.png`
+- Mali İmparatorluğu → `era_tim1380_mali.png`
+- Maya Şehir Devletleri → `era_tim1380_guatemala.png`
+- Melanezya ve Pasifik Toplulukları → `era_tim1380_papua_new_guinea.png`
+- Merînîler → `era_tim1380_morocco.png`
+- Mexica Şehir Devletleri → `era_tim1380_mexico.png`
+- Moğulistan Hanlığı → `era_tim1380_kyrgyzstan.png`
+- Muisca ve Karayip Şeflikleri → `era_tim1380_colombia.png`
+- Muromachi Japonyası → `era_tim1380_japan.png`
+- Muzafferîler ve Serbedârlar → `era_tim1380_iran.png`
+- Napoli Krallığı (Anjou) → `era_tim1380_malta.png`
+- Novgorod Cumhuriyeti → `era_tim1380_greenland.png`
+- Nubya Krallıkları → `era_tim1380_sudan.png`
+- Portekiz Krallığı → `era_tim1380_portugal.png`
+- Resûlî Yemen → `era_tim1380_yemen.png`
+- Sind ve Multan Beylikleri → `era_tim1380_pakistan.png`
+- Songhay ve Mossi Devletleri → `era_tim1380_niger.png`
+- Sırp Devletleri (Lazar) → `era_tim1380_serbia.png`
+- Tayvan Toplulukları → `era_tim1380_taiwan.png`
+- Tibet ve Himalaya → `era_tim1380_bhutan.png`
+- Tupi ve Guarani Toplulukları → `era_tim1380_brazil.png`
+- Umman → `era_tim1380_oman.png`
+- Vijayanagara İmparatorluğu → `era_tim1380_sri_lanka.png`
+- İnka Şefliği (Cusco) → `era_tim1380_peru.png`
+- İrlanda Lordlukları → `era_tim1380_ireland.png`
+- İsveç → `era_tim1380_sweden.png`
+
+## Oluşturulabilir devletler (formlar) — 12
+- Osmanlı İmparatorluğu
+- Sovyetler Birliği
+- Roma İmparatorluğu
+- Pers İmparatorluğu
+- Yugoslavya
+- Birleşik Arap Cumhuriyeti
+- Moğol İmparatorluğu
+- İngiliz İmparatorluğu
+- Büyük Kolombiya
+- Avusturya-Macaristan
+- Kuzey Birliği
+- Orta Amerika Federasyonu
+
+## Bugünkü dünya — 2
+- Somaliland → `somaliland.png`
+- Kuzey Kıbrıs Türk Cumhuriyeti → `kuzey_kibris.png`
+
+## Senaryoda kurulan devletler (otomatik renk) — 4
+- Kara Sancak Hilafeti, Yeni Reich, Yeni İmparatorluk, Çöl Birliği
+
+Toplam çağ bayrağı: 320
