@@ -21,7 +21,7 @@ Kaynak: ahmett_ttarik, luciferdeu, erenkbtss, devranpashaa, play store paylaşı
 - O3. [YAPILDI: Ayarlar > 'Her tur haber bülteni'; haberler çağa uygun] Haber penceresi kapatma / seçmeli gösterim; haber başlıkları tarihe bağlı.
 - O4. [YAPILDI: işgal edilen eyalet kartında 'Yerel halktan asker devşir'] İşgal bölgesinde nüfustan asker devşirme (%5–10, şansa bağlı) + zorla askerlik/asimilasyon; EoF benzeri nüfus-asker mantığı.
 - O5. [KISMEN: ülke bazlı kaynak yatakları — zengin eyalette ilgili bina %35 ucuz, getirisi +%30, il kartında "Kaynak" satırı; gerçek jeoloji verisi değil, ülke listesi + eyalet kimliğinden türetilen vekil; okul/kütüphane/rafineri/ihracat yok] Yatırım/bina maliyeti: kaynak olan bölgede ucuz (ör. Erzincan maden); bölgeye özel binalar (maden, petrol rafinerisi, okul, kütüphane, bölgeye özgü tarım ürünü); toplu seçim yerine bölgeye göre; ihracatı olan ilde tesis.
-- O6. Stok/envanter birikimi (üstte); doğal gaz/petrol arama; ülkeler arası doğal gaz-petrol anlaşmaları; ithalat/ihracat sistemi.
+- O6. [KISMEN: petrol/gaz üreticisi ile tüketici arasındaki ticaret anlaşması %25 daha verimli; stok/envanter, arama-sondaj ve ithalat-ihracat kalemleri YOK — ayrı bir ekonomi sistemi gerektirir] Stok/envanter birikimi (üstte); doğal gaz/petrol arama; ülkeler arası doğal gaz-petrol anlaşmaları; ithalat/ihracat sistemi.
 - O7. [YAPILDI: sınır 8; 4'ten sonrası %60 verim] Ticaret anlaşması sınırı 4 → 5/7/10.
 - O8. [YAPILDI: Bütçe > 'Teknoloji araştır'; gelişmiş müttefik varsa yarı fiyat] Savaş teknolojisi araştırması / bazı ülkelerden parayla teknoloji alma.
 - O9. [VAR: Halk sekmesi, din dönüştürme ve propaganda] HoI4 benzeri siyasi görüş şekillendirme + din oranı tablosu; azınlık dinini parayla değiştirme.

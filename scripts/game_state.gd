@@ -2663,6 +2663,9 @@ func _trade_gain_for(cid: int, partner: int) -> float:
 	var me = countries[cid]
 	var o = countries[partner]
 	var g: float = minf(0.05 * minf(maxf(me.income, 1.0), maxf(o.income, 1.0)), 0.15 * maxf(me.income, 1.0))
+	# O6 (hafif): enerji/hammadde alışverişi — bir taraf petrol-gaz üreticisi, diğeri değilse anlaşma %25 daha verimli
+	if RICH_OIL.has(me.name_en) != RICH_OIL.has(o.name_en):
+		g *= 1.25
 	var n: int = (trade_by[cid] as Array).size() if trade_by.has(cid) else 0
 	if n > 4:
 		g *= (4.0 + 0.6 * float(n - 4)) / float(n)
