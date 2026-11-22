@@ -609,7 +609,10 @@ static func start(gs, id: String) -> void:
 		if a >= 0 and b >= 0:
 			gs.countries[a].truce[b] = gs.turn + int(t[2])
 			gs.countries[b].truce[a] = gs.turn + int(t[2])
-	for v in VASSALS.get(id, []):
+	var vlist: Array = VASSALS.get(id, [])
+	if EraExt.has_era(id) and EraExt.raw(id).has("vassals"):
+		vlist = EraExt.raw(id)["vassals"]
+	for v in vlist:
 		var vi: int = int(idx.get(v[0], -1))
 		var li: int = int(idx.get(v[1], -1))
 		if vi >= 0 and li >= 0 and gs.countries[vi].alive and gs.countries[li].alive:

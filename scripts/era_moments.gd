@@ -3,7 +3,7 @@ extends RefCounted
 ## Oyuncu olayın tarafıysa (roles içinde ülkesi varsa) seçenekli kart; değilse izleyici kartı (major) ya da haber,
 ## ve olayın tarihî etkisi (default_fx) uygulanır. Veri: data/moments/<era>.json (alt_* çağlar base'ini kullanır).
 ## fx: ["war",A,B] ["peace",A,B] ["ally",A,B] ["stab",A,d] ["gold",A,hafta] ["troops",A,yüzde] ["buff",A,key,çarpan,hafta]
-##     ["rel",A,B,d] ["cede",A,B,n] (A'nın B'ye en yakın n eyaleti B'ye) ["flag",ad] ["unflag",ad] ["xstab",A,d]
+##     (["war",A,B,"solo"]: müttefikler çağrılmaz)  ["rel",A,B,d] ["cede",A,B,n] (A'nın B'ye en yakın n eyaleti B'ye) ["flag",ad] ["unflag",ad] ["xstab",A,d]
 ## Oyuncunun kendi seçeneği oyuncuya da uygulanır; default_fx oyuncuya savaş ilanı dışında dokunmaz.
 
 const EraExt = preload("res://scripts/era_ext.gd")
@@ -12,6 +12,17 @@ const Loc = preload("res://scripts/loc.gd")
 const Macro = preload("res://scripts/macro.gd")
 
 static var _cache: Dictionary = {}
+static var _en: Dictionary = {}     # Türkçe metin -> İngilizce (data/moments/<era>.json içindeki "en" tablosu)
+
+
+## Veri metni: Türkçe dışı dillerde (varsa) çeviri tablosu, yoksa dosyadaki İngilizce, yoksa Türkçe kaynak
+static func tx(s: String) -> String:
+	if s == "" or Loc.lang == "tr":
+		return s
+	var r: String = Loc.translate(s) if Loc.lang != "en" else ""
+	if r != "":
+		return r
+	return String(_en.get(s, s))
 
 
 static func _load(era: String) -> Array:
@@ -21,6 +32,8 @@ static func _load(era: String) -> Array:
 	var d = DataUtil.read_json("res://data/moments/%s.json" % era)
 	if d is Dictionary and d.has("moments"):
 		out = d["moments"]
+		if d.has("en") and d["en"] is Dictionary:
+			_en.merge(d["en"], true)
 	elif d is Array:
 		out = d
 	_cache[era] = out
@@ -70,6 +83,24 @@ static func tick(gs, era: String, prev_ym: Array, ym: Array) -> void:
 		fire(gs, m)
 
 
+## Senaryo anları (data/scenarios/<id>.json "moments"): aynı kart biçimi, "turn" = başlangıçtan kaç hafta sonra.
+## Aynı anda tek kart; kartın "requires"/"forbid" bayrakları (moment_flags) geçerli. Metin çevirileri senaryonun "moments_en" tablosunda.
+static func scn_tick(gs, s: Dictionary) -> void:
+	if not gs.moment_pending.is_empty():
+		return
+	var el: int = gs.turn - int(gs.scn.get("start", 0))
+	var sk: String = "@" + String(gs.scn.get("id", ""))
+	if not _en.has(sk):
+		_en[sk] = ""
+		if s.has("moments_en") and s["moments_en"] is Dictionary:
+			_en.merge(s["moments_en"], true)
+	for m in s.get("moments", []):
+		if int(m.get("turn", 0)) <= el and _ok(gs, m):
+			fire(gs, m)
+			if not gs.moment_pending.is_empty():
+				return
+
+
 ## Çağ başlarken: başlangıç ayına düşen anlar hemen gelir (ör. Ekim 1962 Küba Füze Krizi)
 static func start(gs, era: String, ym: Array) -> void:
 	if era == "" or ym.size() < 2:
@@ -99,7 +130,7 @@ static func fire(gs, m: Dictionary) -> void:
 		gs.moment_pending = {"id": m["id"], "role": "", "m": m}
 		gs.moment_card.emit()
 	else:
-		gs.post_news(String(m.get("text", m.get("title", ""))), -1, "event")
+		gs.post_news(tx(String(m.get("text", m.get("title", "")))), -1, "event")
 
 
 ## Oyuncunun seçimi (pending.role != "")
@@ -123,7 +154,7 @@ static func choose(gs, idx: int) -> void:
 			apply(gs, f)
 	var r: String = String(o.get("r", ""))
 	if r != "":
-		gs.post_news(r, -1, "event")
+		gs.post_news(tx(r), -1, "event")
 
 
 static func apply(gs, f: Array, by_player: bool = false) -> void:
@@ -145,7 +176,12 @@ static func apply(gs, f: Array, by_player: bool = false) -> void:
 			if b >= 0 and gs.countries[b].alive and not gs.at_war(a, b) and (by_player or a != gs.player):
 				ca.truce.erase(b)
 				gs.countries[b].truce.erase(a)
+				var solo: bool = f.size() > 3 and String(f[3]) == "solo"     # "solo": ittifaklar çağrılmaz (ör. NATO üyeleri Kıbrıs'a savaş açmaz)
+				if solo:
+					gs.setup_no_call = true
 				gs.declare_war(a, b)
+				if solo:
+					gs.setup_no_call = false
 		"peace":
 			var b2: int = _id(gs, String(f[2]))
 			if b2 >= 0 and not protect and b2 != gs.player or by_player:
@@ -216,10 +252,10 @@ static func card(gs) -> Dictionary:
 	if p.is_empty():
 		return {}
 	var m: Dictionary = p.m
-	var out := {"title": String(m.get("title", "")), "scene": String(m.get("scene", "")), "icon": String(m.get("icon", "")), "body": String(m.get("text", "")), "options": []}
+	var out := {"title": tx(String(m.get("title", ""))), "scene": String(m.get("scene", "")), "icon": String(m.get("icon", "")), "body": tx(String(m.get("text", ""))), "options": []}
 	if String(p.role) != "":
 		var r: Dictionary = m.roles[p.role]
-		out.body = String(r.get("text", out.body))
+		out.body = tx(String(r.get("text", m.get("text", ""))))
 		for o in r.get("options", []):
-			out.options.append({"t": String(o.get("t", "?")), "d": String(o.get("d", "")), "kind": String(o.get("kind", ""))})
+			out.options.append({"t": tx(String(o.get("t", "?"))), "d": tx(String(o.get("d", ""))), "kind": String(o.get("kind", ""))})
 	return out

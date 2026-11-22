@@ -6,6 +6,7 @@ extends RefCounted
 const Loc = preload("res://scripts/loc.gd")
 const DataUtil = preload("res://scripts/data_util.gd")
 const EraEvents = preload("res://scripts/era_events.gd")
+const EraMoments = preload("res://scripts/era_moments.gd")
 const Chokepoints = preload("res://scripts/chokepoints.gd")
 
 const STREAK_STAB := 4
@@ -17,7 +18,7 @@ const HOLD_TYPES := ["own_capital", "own_province", "hold_choke", "stability", "
 ## Oyun başında çağrılır (oyuncu seçildikten sonra). def: senaryo ya da çağ sözlüğü.
 static func begin(gs, def: Dictionary, with_src: bool = true) -> void:
 	gs.scn = {"id": String(def.get("id", "")), "start": gs.turn, "done": {}, "fired": {}, "streak": {}, "cap": {}, "over": false}
-	if with_src and (def.has("objectives") or def.has("events") or def.has("deadline") or def.has("custom") or def.has("cab_events")):
+	if with_src and (def.has("objectives") or def.has("events") or def.has("moments") or def.has("deadline") or def.has("custom") or def.has("cab_events")):
 		gs.scn["src"] = def.duplicate(true)
 	for o in list(gs):
 		if String(o.get("type", "")) == "own_capital":
@@ -225,6 +226,8 @@ static func tick(gs) -> void:
 			txt = DataUtil.loc_text(txt, String(s["en"]["events"][str(i)]))
 		if txt != "":
 			gs.post_news(txt, -1, "event")
+	if s.has("moments"):
+		EraMoments.scn_tick(gs, s)
 	var cu: Array = s.get("custom", [])
 	for k in cu.size():
 		var ck := "c%d" % k

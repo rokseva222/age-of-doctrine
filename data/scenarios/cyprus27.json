@@ -1,0 +1,2312 @@
+{
+ "id": "cyprus27",
+ "kind": "fiction",
+ "name": "Ayşe Tatile Tekrar Çıkıyor",
+ "sub": "2027 – Doğu Akdeniz'de Yaz",
+ "blurb": "Kurgusal bir geleceğe dair senaryo: 2027'de Doğu Akdeniz'de gaz sahaları, deniz kablosu ve ada üzerindeki BM müzakereleri aynı anda kaynıyor. Yunanistan seçime gidiyor; Fransa, İsrail, Mısır ve ABD sahada. Ayşe yeniden tatile çıkar mı, yoksa masa mı kurulur?",
+ "intro": "2027: Doğu Akdeniz'de sondaj gemileri, enerji kabloları ve adadaki BM müzakereleri aynı anda gündemde. Her hamle bir sonrakini belirliyor.",
+ "suggest": [
+  "Turkey",
+  "Greece",
+  "Cyprus",
+  "N. Cyprus",
+  "France",
+  "Israel",
+  "Egypt",
+  "United States of America"
+ ],
+ "blocs": [
+  {
+   "name": "Yunanistan–Kıbrıs Savunma Ortaklığı",
+   "members": [
+    "Greece",
+    "Cyprus",
+    "France"
+   ],
+   "emblem": {
+    "shape": 5,
+    "inner": 1,
+    "symbol": "shield",
+    "c1": "2f66b0",
+    "c2": "ece6d6",
+    "c3": "2f66b0"
+   }
+  },
+  {
+   "name": "Türkiye–KKTC Güvenlik Ortaklığı",
+   "members": [
+    "Turkey",
+    "N. Cyprus"
+   ],
+   "emblem": {
+    "shape": 2,
+    "inner": 1,
+    "symbol": "star",
+    "c1": "c8444a",
+    "c2": "ece6d6",
+    "c3": "c8444a"
+   }
+  }
+ ],
+ "cold": [
+  [
+   "Turkey",
+   "Cyprus"
+  ],
+  [
+   "Turkey",
+   "Greece"
+  ]
+ ],
+ "stability": {
+  "Cyprus": -4,
+  "Greece": -5,
+  "N. Cyprus": -3
+ },
+ "events": [
+  {
+   "turn": 3,
+   "t": "Kıbrıs Rum Meclisi savunma bütçesini artırdı; İsrail yapımı hava savunma bataryaları için ihale açıldı.",
+   "fx": [
+    [
+     "stab",
+     "Cyprus",
+     1
+    ]
+   ]
+  },
+  {
+   "turn": 11,
+   "t": "Mısır ve Yunanistan Doğu Akdeniz'de ortak deniz tatbikatı yaptı; enerji güvenliği ortak başlık oldu.",
+   "fx": [
+    [
+     "stab",
+     "Egypt",
+     1
+    ]
+   ]
+  },
+  {
+   "turn": 19,
+   "t": "Fransa ile Kıbrıs Rum Yönetimi savunma iş birliği çerçeve anlaşmasını genişletti.",
+   "fx": []
+  },
+  {
+   "turn": 28,
+   "t": "Türkiye Girne limanı ve Ercan Havalimanı'nda kapasite artırımını duyurdu.",
+   "fx": [
+    [
+     "stab",
+     "N. Cyprus",
+     2
+    ]
+   ]
+  },
+  {
+   "turn": 37,
+   "t": "AB zirvesinde Doğu Akdeniz'e yönelik yaptırım tartışması: üye devletler bölündü.",
+   "fx": [
+    [
+     "stab",
+     "Greece",
+     -1
+    ],
+    [
+     "stab",
+     "Turkey",
+     -1
+    ]
+   ]
+  },
+  {
+   "turn": 46,
+   "t": "Doğu Akdeniz'de LNG fiyatları rekor kırdı; ruhsat sahalarının stratejik değeri arttı.",
+   "fx": [
+    [
+     "stab",
+     "Cyprus",
+     1
+    ],
+    [
+     "stab",
+     "Israel",
+     1
+    ]
+   ]
+  }
+ ],
+ "moments": [
+  {
+   "id": "c27_ocak",
+   "turn": 1,
+   "title": "Yeni Genel Sekreter, Eski Dosya",
+   "scene": "pre_trade",
+   "icon": "handshake",
+   "text": "Ocak 2027: BM'nin yeni Genel Sekreteri göreve başladı ve ilk gündemlerinden biri Kıbrıs. Taraflar adadaki yeni geçiş kapıları, güven artırıcı önlemler ve resmî müzakerelerin yeniden başlaması üzerinde pazarlık ediyor.",
+   "major": false,
+   "default_fx": [
+    [
+     "rel",
+     "Turkey",
+     "Greece",
+     2
+    ],
+    [
+     "stab",
+     "Cyprus",
+     1
+    ]
+   ],
+   "roles": {
+    "Turkey": {
+     "text": "Ankara 'gerçekçi çözüm' diyor ama yeni dönemin masasını boş bırakmak da istemiyor. Kuzeyde yeni yönetim federasyon dışı seçeneklere mesafeli.",
+     "options": [
+      {
+       "t": "Masaya otur: 5+1 formatı",
+       "d": "Müzakere kapısı aralanır",
+       "fx": [
+        [
+         "rel",
+         "Turkey",
+         "Greece",
+         8
+        ],
+        [
+         "rel",
+         "Turkey",
+         "Cyprus",
+         6
+        ],
+        [
+         "xstab",
+         "Turkey",
+         1
+        ],
+        [
+         "flag",
+         "c27_masa"
+        ]
+       ],
+       "r": "Ankara BM'nin 5+1 formatına katılacağını duyurdu."
+      },
+      {
+       "t": "İki devletli çözümü öne sür",
+       "d": "Sert duruş",
+       "fx": [
+        [
+         "rel",
+         "Turkey",
+         "Greece",
+         -10
+        ],
+        [
+         "rel",
+         "Turkey",
+         "Cyprus",
+         -12
+        ],
+        [
+         "xstab",
+         "Turkey",
+         2
+        ],
+        [
+         "flag",
+         "c27_sert"
+        ]
+       ],
+       "r": "Ankara iki egemen devlet mesajını yeniden vurguladı; AB'de tepki var."
+      },
+      {
+       "t": "Önce kapılar: iki yeni geçiş noktası",
+       "d": "Güven artırıcı adım",
+       "fx": [
+        [
+         "rel",
+         "Turkey",
+         "Cyprus",
+         10
+        ],
+        [
+         "stab",
+         "N. Cyprus",
+         3
+        ],
+        [
+         "flag",
+         "c27_masa"
+        ]
+       ],
+       "r": "Lefkoşa'da iki yeni geçiş kapısı açıldı; mahalleler arası trafik arttı."
+      }
+     ]
+    },
+    "Greece": {
+     "text": "Yunanistan seçim yılına giriyor; Atina Kıbrıs'ta 'ilkeli' bir duruşu savunuyor ama Ankara'yla gerginliği düşük tutmak istiyor.",
+     "options": [
+      {
+       "t": "BM sürecini destekle",
+       "d": "Federasyon ilkesi",
+       "fx": [
+        [
+         "rel",
+         "Greece",
+         "Turkey",
+         6
+        ],
+        [
+         "rel",
+         "Greece",
+         "Cyprus",
+         4
+        ],
+        [
+         "xstab",
+         "Greece",
+         1
+        ]
+       ],
+       "r": "Atina BM çerçevesindeki müzakerelere tam destek verdi.",
+       "keep_default": true
+      },
+      {
+       "t": "Sert çizgi: AB baskısı",
+       "d": "Brüksel'i devreye sok",
+       "fx": [
+        [
+         "rel",
+         "Greece",
+         "Turkey",
+         -8
+        ],
+        [
+         "rel",
+         "Greece",
+         "France",
+         6
+        ],
+        [
+         "xstab",
+         "Greece",
+         2
+        ]
+       ],
+       "r": "Atina Kıbrıs konusunu AB zirvesinin gündemine taşıdı.",
+       "keep_default": true
+      }
+     ]
+    },
+    "Cyprus": {
+     "text": "Lefkoşa AB başkanlığının gölgesinden çıktı; hükûmet enerji gelirlerini ve savunma ortaklıklarını güçlendirmek istiyor, ama yeni geçiş kapıları iç kamuoyunda tartışmalı.",
+     "options": [
+      {
+       "t": "Kapıları aç, masaya otur",
+       "d": "Uzlaşma çizgisi",
+       "fx": [
+        [
+         "rel",
+         "Cyprus",
+         "N. Cyprus",
+         12
+        ],
+        [
+         "rel",
+         "Cyprus",
+         "Turkey",
+         8
+        ],
+        [
+         "stab",
+         "Cyprus",
+         2
+        ],
+        [
+         "flag",
+         "c27_masa"
+        ]
+       ],
+       "r": "Lefkoşa yeni kapılar için BM'ye 'evet' dedi.",
+       "keep_default": true
+      },
+      {
+       "t": "Güvenliği öne al: savunma harcaması",
+       "d": "İsrail/Fransa tedariki",
+       "fx": [
+        [
+         "troops",
+         "Cyprus",
+         15
+        ],
+        [
+         "rel",
+         "Cyprus",
+         "Israel",
+         8
+        ],
+        [
+         "rel",
+         "Cyprus",
+         "Turkey",
+         -6
+        ]
+       ],
+       "r": "Rum Yönetimi hava savunma ve gözetleme sistemlerine yatırım yapıyor.",
+       "keep_default": true
+      }
+     ]
+    },
+    "N. Cyprus": {
+     "text": "Kuzey yönetimi federal bir çözüme açık ama Ankara ile uyumlu yürümek zorunda. Ekonomi pahalılık ve Türk lirası dalgalanması altında.",
+     "options": [
+      {
+       "t": "Geçiş kapılarını savun",
+       "d": "Ticaret ve temas",
+       "fx": [
+        [
+         "stab",
+         "N. Cyprus",
+         4
+        ],
+        [
+         "rel",
+         "N. Cyprus",
+         "Cyprus",
+         10
+        ],
+        [
+         "rel",
+         "N. Cyprus",
+         "Turkey",
+         -3
+        ]
+       ],
+       "r": "Kuzey yönetimi karşılıklı temasların artırılmasını istedi.",
+       "keep_default": true
+      },
+      {
+       "t": "Ankara ile tam eşgüdüm",
+       "d": "Entegrasyon",
+       "fx": [
+        [
+         "rel",
+         "N. Cyprus",
+         "Turkey",
+         10
+        ],
+        [
+         "rel",
+         "N. Cyprus",
+         "Cyprus",
+         -6
+        ],
+        [
+         "stab",
+         "N. Cyprus",
+         1
+        ]
+       ],
+       "r": "Kuzey yönetimi ekonomik entegrasyon protokollerini hızlandırdı.",
+       "keep_default": true
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "c27_sondaj",
+   "turn": 7,
+   "title": "Sondaj Gemisi Krizi",
+   "scene": "pre_naval",
+   "icon": "naval",
+   "text": "Şubat 2027: Güney Kıbrıs açıklarındaki ruhsat sahasında yeni bir arama kuyusu için sondaj gemisi geldi. Türkiye NAVTEX ilan etti ve bir savaş gemisi bölgeye yöneldi; Yunan ve Fransız firkateynleri de yola çıktı.",
+   "major": false,
+   "default_fx": [
+    [
+     "rel",
+     "Turkey",
+     "Greece",
+     -6
+    ],
+    [
+     "rel",
+     "Turkey",
+     "Cyprus",
+     -6
+    ],
+    [
+     "stab",
+     "Cyprus",
+     1
+    ],
+    [
+     "flag",
+     "c27_gerilim"
+    ]
+   ],
+   "roles": {
+    "Turkey": {
+     "text": "Savunma Bakanlığı ruhsat sahasının bir kısmını 'Türk kıta sahanlığı' sayıyor. Filo hazır; ama Avrupa'nın yaptırım tartışması yeniden alevlenebilir.",
+     "options": [
+      {
+       "t": "Gemiyi sahaya gönder, sondajı engelle",
+       "d": "Gösteri ve gerginlik",
+       "fx": [
+        [
+         "rel",
+         "Turkey",
+         "Greece",
+         -15
+        ],
+        [
+         "rel",
+         "Turkey",
+         "Cyprus",
+         -15
+        ],
+        [
+         "rel",
+         "Turkey",
+         "France",
+         -10
+        ],
+        [
+         "xstab",
+         "Turkey",
+         3
+        ],
+        [
+         "buff",
+         "Turkey",
+         "def",
+         1.1,
+         8
+        ],
+        [
+         "flag",
+         "c27_gerilim"
+        ]
+       ],
+       "r": "Türk savaş gemisi sondaj gemisinin yanına yanaştı; üç donanma sahada."
+      },
+      {
+       "t": "NAVTEX'i geri çek, ortak gaz fonu öner",
+       "d": "Gelirde adil pay",
+       "fx": [
+        [
+         "rel",
+         "Turkey",
+         "Cyprus",
+         8
+        ],
+        [
+         "rel",
+         "Turkey",
+         "Greece",
+         5
+        ],
+        [
+         "xstab",
+         "Turkey",
+         -2
+        ],
+        [
+         "flag",
+         "c27_masa"
+        ]
+       ],
+       "r": "Ankara ruhsat sahalarında gelirin iki toplum arasında paylaşılmasını önerdi."
+      },
+      {
+       "t": "Sessiz izle",
+       "d": "Gerilimi artırmadan",
+       "fx": [
+        [
+         "xstab",
+         "Turkey",
+         1
+        ],
+        [
+         "rel",
+         "Turkey",
+         "Greece",
+         -2
+        ]
+       ],
+       "r": "Ankara sondaj gemisini uzaktan izlemekle yetindi."
+      }
+     ]
+    },
+    "Greece": {
+     "text": "Atina Kıbrıs'ın münhasır ekonomik bölgesinde sondajı destekliyor; deniz kuvvetleri yola çıkarsa Ege'deki karşılıklı yumuşama bozulabilir.",
+     "options": [
+      {
+       "t": "Firkateyn gönder",
+       "d": "Ortak caydırıcılık",
+       "fx": [
+        [
+         "rel",
+         "Greece",
+         "Turkey",
+         -15
+        ],
+        [
+         "rel",
+         "Greece",
+         "Cyprus",
+         10
+        ],
+        [
+         "rel",
+         "Greece",
+         "France",
+         8
+        ],
+        [
+         "xstab",
+         "Greece",
+         3
+        ],
+        [
+         "flag",
+         "c27_gerilim"
+        ]
+       ],
+       "r": "Yunan firkateyni Kıbrıs açıklarına ulaştı.",
+       "keep_default": true
+      },
+      {
+       "t": "Diplomasi: AB ve NATO",
+       "d": "Gerilimi kanallara taşı",
+       "fx": [
+        [
+         "rel",
+         "Greece",
+         "Turkey",
+         3
+        ],
+        [
+         "xstab",
+         "Greece",
+         -1
+        ]
+       ],
+       "r": "Atina konuyu NATO ve AB kanallarından yürütüyor.",
+       "keep_default": true
+      }
+     ]
+    },
+    "Cyprus": {
+     "text": "Rum Yönetimi gaz gelirini bütçenin geleceği olarak görüyor; ama sondaj gemisinin etrafı yabancı savaş gemileriyle doldu.",
+     "options": [
+      {
+       "t": "Sondajı sürdür",
+       "d": "Hak iddiası",
+       "fx": [
+        [
+         "rel",
+         "Cyprus",
+         "Turkey",
+         -12
+        ],
+        [
+         "rel",
+         "Cyprus",
+         "France",
+         6
+        ],
+        [
+         "stab",
+         "Cyprus",
+         3
+        ],
+        [
+         "flag",
+         "c27_gerilim"
+        ]
+       ],
+       "r": "Rum Yönetimi sondajın sürdüğünü ve ruhsatın tam yasal olduğunu açıkladı.",
+       "keep_default": true
+      },
+      {
+       "t": "Sondajı askıya al, müzakere",
+       "d": "Gerilimi düşür",
+       "fx": [
+        [
+         "rel",
+         "Cyprus",
+         "Turkey",
+         10
+        ],
+        [
+         "stab",
+         "Cyprus",
+         -3
+        ],
+        [
+         "flag",
+         "c27_masa"
+        ]
+       ],
+       "r": "Lefkoşa sondajı kısa süreliğine askıya aldı; BM arabulucusu memnun.",
+       "keep_default": true
+      }
+     ]
+    },
+    "France": {
+     "text": "Fransız firkateyni sahada; Paris Doğu Akdeniz'de kalıcı varlık istiyor ama Ankara'yla doğrudan çatışmak istemiyor.",
+     "options": [
+      {
+       "t": "Firkateyni sahada tut",
+       "d": "Kıbrıs-Yunanistan ile dayanışma",
+       "fx": [
+        [
+         "rel",
+         "France",
+         "Turkey",
+         -10
+        ],
+        [
+         "rel",
+         "France",
+         "Greece",
+         8
+        ],
+        [
+         "rel",
+         "France",
+         "Cyprus",
+         8
+        ]
+       ],
+       "r": "Fransız donanması sahada kaldı.",
+       "keep_default": true
+      },
+      {
+       "t": "Geri çek, AB düzleminde ele al",
+       "d": "Gerilim düşer",
+       "fx": [
+        [
+         "rel",
+         "France",
+         "Turkey",
+         5
+        ],
+        [
+         "rel",
+         "France",
+         "Greece",
+         -3
+        ]
+       ],
+       "r": "Paris firkateyni geri çekti ve konuyu AB'ye taşıdı.",
+       "keep_default": true
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "c27_kablo",
+   "turn": 15,
+   "title": "Büyük Kablo Hattı",
+   "scene": "pre_trade",
+   "icon": "trade",
+   "text": "Nisan 2027: Yunanistan–Kıbrıs–İsrail enerji bağlantısı (Great Sea Interconnector) için döşeme gemileri etüt rotasına yaklaştı. Türkiye rotanın kendi deniz yetki alanından geçtiğini savunuyor; AB ve ABD projeyi destekliyor.",
+   "major": false,
+   "default_fx": [
+    [
+     "rel",
+     "Turkey",
+     "Greece",
+     -4
+    ],
+    [
+     "rel",
+     "Israel",
+     "Turkey",
+     -4
+    ]
+   ],
+   "roles": {
+    "Turkey": {
+     "text": "Etüt gemilerinin rotası Ankara'nın 'ilgili makamlardan izin' şartını çiğniyor. Deniz Kuvvetleri refakat edebilir; ancak Avrupa ve Washington ağır tepki verebilir.",
+     "options": [
+      {
+       "t": "Gemileri uzaktan takip et, durdur",
+       "d": "Caydırıcılık",
+       "fx": [
+        [
+         "rel",
+         "Turkey",
+         "Greece",
+         -12
+        ],
+        [
+         "rel",
+         "Turkey",
+         "United States of America",
+         -6
+        ],
+        [
+         "rel",
+         "Turkey",
+         "Israel",
+         -10
+        ],
+        [
+         "xstab",
+         "Turkey",
+         2
+        ],
+        [
+         "flag",
+         "c27_gerilim"
+        ]
+       ],
+       "r": "Türk savaş gemileri etüt gemilerini adım adım izledi; proje ertelendi."
+      },
+      {
+       "t": "Rotayı müzakere etmeyi teklif et",
+       "d": "Hukuki çerçeve",
+       "fx": [
+        [
+         "rel",
+         "Turkey",
+         "Greece",
+         6
+        ],
+        [
+         "rel",
+         "Turkey",
+         "United States of America",
+         5
+        ],
+        [
+         "xstab",
+         "Turkey",
+         -1
+        ],
+        [
+         "flag",
+         "c27_masa"
+        ]
+       ],
+       "r": "Ankara rota için hukuki çerçeve görüşmesi teklif etti."
+      },
+      {
+       "t": "Enerji koridoruna ortak ol",
+       "d": "Ankara masanın içinde",
+       "fx": [
+        [
+         "rel",
+         "Turkey",
+         "Greece",
+         10
+        ],
+        [
+         "rel",
+         "Turkey",
+         "Cyprus",
+         8
+        ],
+        [
+         "rel",
+         "Turkey",
+         "Israel",
+         5
+        ],
+        [
+         "xstab",
+         "Turkey",
+         2
+        ],
+        [
+         "gold",
+         "Turkey",
+         2
+        ],
+        [
+         "flag",
+         "c27_masa"
+        ]
+       ],
+       "r": "Ankara kabloyu ortak enerji koridoruna dönüştürmeyi önerdi."
+      }
+     ]
+    },
+    "Greece": {
+     "text": "Kablo, Atina'nın 'Kıbrıs'ı Avrupa şebekesine bağlama' vizyonunun omurgası; ama kredi, yatırım ve güvenlik riski artıyor.",
+     "options": [
+      {
+       "t": "Projeyi sürdür, deniz eskortu",
+       "d": "Kararlı duruş",
+       "fx": [
+        [
+         "rel",
+         "Greece",
+         "Turkey",
+         -10
+        ],
+        [
+         "rel",
+         "Greece",
+         "France",
+         6
+        ],
+        [
+         "xstab",
+         "Greece",
+         3
+        ],
+        [
+         "flag",
+         "c27_gerilim"
+        ]
+       ],
+       "r": "Atina kablo gemilerine savaş gemisi eskortu sağladı.",
+       "keep_default": true
+      },
+      {
+       "t": "Ertele, hukuki yola başvur",
+       "d": "Uluslararası hukuk",
+       "fx": [
+        [
+         "rel",
+         "Greece",
+         "Turkey",
+         4
+        ],
+        [
+         "xstab",
+         "Greece",
+         -2
+        ]
+       ],
+       "r": "Atina projeyi ertelemeyi ve hukuki yollara başvurmayı seçti.",
+       "keep_default": true
+      }
+     ]
+    },
+    "Israel": {
+     "text": "Tel Aviv kablonun ve doğal gaz ortaklığının güvenliği için Yunanistan ve Kıbrıs'la savunma iş birliğini artırıyor.",
+     "options": [
+      {
+       "t": "Hava savunma ve gözetleme desteği",
+       "d": "Güvenlik ortaklığı",
+       "fx": [
+        [
+         "rel",
+         "Israel",
+         "Greece",
+         10
+        ],
+        [
+         "rel",
+         "Israel",
+         "Cyprus",
+         10
+        ],
+        [
+         "rel",
+         "Israel",
+         "Turkey",
+         -10
+        ]
+       ],
+       "r": "İsrail Doğu Akdeniz ortaklarına gözetleme sistemleri sattı.",
+       "keep_default": true
+      },
+      {
+       "t": "Geri planda kal",
+       "d": "Gerilimden uzak",
+       "fx": [
+        [
+         "rel",
+         "Israel",
+         "Turkey",
+         2
+        ]
+       ],
+       "r": "Tel Aviv gerilimden uzak durdu.",
+       "keep_default": true
+      }
+     ]
+    },
+    "Egypt": {
+     "text": "Kahire Yunanistan'la MEB anlaşması yaptı ve bölgenin gaz merkezi olmak istiyor; Ankara ile ilişkiler ısınmış durumda.",
+     "options": [
+      {
+       "t": "Arabulucu rolü",
+       "d": "Gaz merkezi Kahire",
+       "fx": [
+        [
+         "rel",
+         "Egypt",
+         "Turkey",
+         6
+        ],
+        [
+         "rel",
+         "Egypt",
+         "Greece",
+         4
+        ],
+        [
+         "xstab",
+         "Egypt",
+         1
+        ]
+       ],
+       "r": "Kahire taraflar arasında arabuluculuk önerdi.",
+       "keep_default": true
+      },
+      {
+       "t": "Yunanistan ile hizalan",
+       "d": "MEB anlaşması",
+       "fx": [
+        [
+         "rel",
+         "Egypt",
+         "Greece",
+         8
+        ],
+        [
+         "rel",
+         "Egypt",
+         "Turkey",
+         -6
+        ]
+       ],
+       "r": "Kahire Atina'nın deniz sınırı tezini destekledi.",
+       "keep_default": true
+      }
+     ]
+    }
+   },
+   "requires": [
+    "c27_gerilim"
+   ]
+  },
+  {
+   "id": "c27_secim",
+   "turn": 24,
+   "title": "Atina'da Seçim Yazı",
+   "scene": "pre_trade",
+   "icon": "handshake",
+   "text": "Haziran 2027: Yunanistan'da seçim kampanyası kızıştı. Kıbrıs, Ege ve savunma harcamaları miting konuları; muhalefet hükûmeti 'yumuşaklıkla' suçluyor.",
+   "major": false,
+   "default_fx": [
+    [
+     "stab",
+     "Greece",
+     2
+    ],
+    [
+     "rel",
+     "Turkey",
+     "Greece",
+     -3
+    ]
+   ],
+   "roles": {
+    "Greece": {
+     "text": "Seçim sandığı yaklaşırken iki yol var: Ege'de sert söylem ya da yumuşama diliyle merkez seçmen.",
+     "options": [
+      {
+       "t": "Sert söylem: ulusal güvenlik",
+       "d": "Milliyetçi oy",
+       "fx": [
+        [
+         "xstab",
+         "Greece",
+         4
+        ],
+        [
+         "rel",
+         "Greece",
+         "Turkey",
+         -12
+        ],
+        [
+         "troops",
+         "Greece",
+         8
+        ]
+       ],
+       "r": "Atina seçim kampanyasında Ege ve Kıbrıs'ta sert bir çizgi izledi.",
+       "keep_default": true
+      },
+      {
+       "t": "Yumuşama: Atina Bildirgesi'ne dönüş",
+       "d": "Merkez oy",
+       "fx": [
+        [
+         "xstab",
+         "Greece",
+         1
+        ],
+        [
+         "rel",
+         "Greece",
+         "Turkey",
+         12
+        ]
+       ],
+       "r": "Atina karşılıklı güven artırıcı önlemleri yeniden öne çıkardı.",
+       "keep_default": true
+      }
+     ]
+    },
+    "Turkey": {
+     "text": "Atina'daki seçim söylemleri Ankara'da tepki yaratıyor. Karşılık vermek mi, soğukkanlı kalmak mı?",
+     "options": [
+      {
+       "t": "Aynı dille karşılık ver",
+       "d": "Sert dil",
+       "fx": [
+        [
+         "rel",
+         "Turkey",
+         "Greece",
+         -10
+        ],
+        [
+         "xstab",
+         "Turkey",
+         3
+        ]
+       ],
+       "r": "Ankara seçim kampanyasındaki sert açıklamalara aynı dille yanıt verdi."
+      },
+      {
+       "t": "Soğukkanlı kal",
+       "d": "Seçimi bekle",
+       "fx": [
+        [
+         "rel",
+         "Turkey",
+         "Greece",
+         3
+        ],
+        [
+         "xstab",
+         "Turkey",
+         -1
+        ]
+       ],
+       "r": "Ankara seçimin sonuçlanmasını bekleme kararı aldı."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "c27_maras",
+   "turn": 32,
+   "title": "Maraş'ta Hareket",
+   "scene": "pre_assault",
+   "icon": "landing",
+   "text": "Ağustos 2027: Kuzey yönetimi Maraş (Varosha) bölgesinde yeni açılışlar ve yerleşim planlarını duyurdu; Rum Yönetimi ve BM Güvenlik Konseyi önceki kararlara atıf yaptı.",
+   "major": false,
+   "default_fx": [
+    [
+     "rel",
+     "Cyprus",
+     "N. Cyprus",
+     -6
+    ],
+    [
+     "stab",
+     "Cyprus",
+     -1
+    ]
+   ],
+   "roles": {
+    "N. Cyprus": {
+     "text": "Maraş ekonomik canlanma için kozunuz ama Rum mülk sahipleri ve BM kararları açık bir engel.",
+     "options": [
+      {
+       "t": "Açılışı genişlet",
+       "d": "Ankara'nın desteğiyle",
+       "fx": [
+        [
+         "stab",
+         "N. Cyprus",
+         4
+        ],
+        [
+         "rel",
+         "N. Cyprus",
+         "Cyprus",
+         -15
+        ],
+        [
+         "rel",
+         "N. Cyprus",
+         "Turkey",
+         8
+        ],
+        [
+         "flag",
+         "c27_gerilim"
+        ]
+       ],
+       "r": "Maraş'ta yeni bölge halka açıldı; Lefkoşa protesto etti.",
+       "keep_default": true
+      },
+      {
+       "t": "Mülkiyet çerçevesi: ortak komisyon",
+       "d": "Hak sahiplerine yol",
+       "fx": [
+        [
+         "stab",
+         "N. Cyprus",
+         1
+        ],
+        [
+         "rel",
+         "N. Cyprus",
+         "Cyprus",
+         10
+        ],
+        [
+         "flag",
+         "c27_masa"
+        ]
+       ],
+       "r": "Kuzey yönetimi mülkiyet için ortak bir komisyon önerdi.",
+       "keep_default": true
+      }
+     ]
+    },
+    "Cyprus": {
+     "text": "Mülkiyet hakları ve BM kararları sizin için kırmızı çizgi; ama tepkiyi ölçmeden yükseltmek istemiyorsunuz.",
+     "options": [
+      {
+       "t": "BM Güvenlik Konseyi'ne git",
+       "d": "Hukuki zemin",
+       "fx": [
+        [
+         "rel",
+         "Cyprus",
+         "United States of America",
+         6
+        ],
+        [
+         "rel",
+         "Cyprus",
+         "France",
+         6
+        ],
+        [
+         "rel",
+         "Cyprus",
+         "Turkey",
+         -8
+        ]
+       ],
+       "r": "Rum Yönetimi Güvenlik Konseyi'ni olağan dışı toplantıya çağırdı.",
+       "keep_default": true
+      },
+      {
+       "t": "Ortak komisyona yanıt ver",
+       "d": "Teknik zemin",
+       "fx": [
+        [
+         "rel",
+         "Cyprus",
+         "N. Cyprus",
+         8
+        ],
+        [
+         "stab",
+         "Cyprus",
+         -2
+        ],
+        [
+         "flag",
+         "c27_masa"
+        ]
+       ],
+       "r": "Lefkoşa mülkiyet komisyonuna teknik düzeyde yanıt verdi.",
+       "keep_default": true
+      }
+     ]
+    },
+    "Turkey": {
+     "text": "Kuzeye verdiğiniz desteğin sınırı: Maraş'ta açılış sürsün mü, yoksa BM ile uyum mu?",
+     "options": [
+      {
+       "t": "Kuzeyi destekle",
+       "d": "Kıbrıs Türk tarafının hakkı",
+       "fx": [
+        [
+         "rel",
+         "Turkey",
+         "N. Cyprus",
+         10
+        ],
+        [
+         "rel",
+         "Turkey",
+         "Cyprus",
+         -8
+        ],
+        [
+         "rel",
+         "Turkey",
+         "Greece",
+         -6
+        ],
+        [
+         "xstab",
+         "Turkey",
+         2
+        ]
+       ],
+       "r": "Ankara Maraş'ta kuzey yönetiminin yanında durdu."
+      },
+      {
+       "t": "BM'ye uyumu tavsiye et",
+       "d": "Arabuluculuk",
+       "fx": [
+        [
+         "rel",
+         "Turkey",
+         "Cyprus",
+         5
+        ],
+        [
+         "rel",
+         "Turkey",
+         "N. Cyprus",
+         -4
+        ],
+        [
+         "rel",
+         "Turkey",
+         "France",
+         4
+        ],
+        [
+         "xstab",
+         "Turkey",
+         -2
+        ]
+       ],
+       "r": "Ankara kuzey yönetimine BM çerçevesine uyumu tavsiye etti."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "c27_firkateyn",
+   "turn": 41,
+   "title": "Fırkateynler Burun Buruna",
+   "scene": "pre_naval",
+   "icon": "naval",
+   "text": "Ekim 2027: Kıbrıs'ın güney doğusunda bir Türk ve bir Yunan firkateyni arasında 'ucu ucuna' kaçınılan bir çarpışma yaşandı; iki başkent de hava ve deniz birliklerini alarma geçirdi. Dünya tek bir hatanın felakete dönüşebileceğini konuşuyor.",
+   "major": true,
+   "default_fx": [
+    [
+     "rel",
+     "Turkey",
+     "Greece",
+     -8
+    ],
+    [
+     "stab",
+     "Greece",
+     -1
+    ],
+    [
+     "stab",
+     "Turkey",
+     -1
+    ],
+    [
+     "flag",
+     "c27_gerilim"
+    ]
+   ],
+   "roles": {
+    "Turkey": {
+     "text": "Ankara'da kriz masası kuruldu. Savaş gemisi kaptanı 'savunma' diyor; Yunan tarafı 'taciz' diyor. Bir gösteri harekâtı mı, yoksa sıcak hat mı?",
+     "options": [
+      {
+       "t": "Sert yanıt: ada kıyılarında gösteri",
+       "d": "Rum Yönetimine baskı",
+       "fx": [
+        [
+         "war",
+         "Turkey",
+         "Cyprus",
+         "solo"
+        ],
+        [
+         "buff",
+         "Turkey",
+         "att",
+         1.15,
+         8
+        ],
+        [
+         "rel",
+         "Turkey",
+         "Greece",
+         -20
+        ],
+        [
+         "rel",
+         "Turkey",
+         "United States of America",
+         -10
+        ],
+        [
+         "xstab",
+         "Turkey",
+         3
+        ],
+        [
+         "flag",
+         "c27_clash"
+        ]
+       ],
+       "r": "Türk birlikleri Kıbrıs açıklarında harekâta geçti; Rum Yönetimi ile savaş durumu başladı."
+      },
+      {
+       "t": "Sıcak hat ve karşılıklı geri çekilme",
+       "d": "Gerginliği düşür",
+       "fx": [
+        [
+         "rel",
+         "Turkey",
+         "Greece",
+         12
+        ],
+        [
+         "rel",
+         "Turkey",
+         "United States of America",
+         5
+        ],
+        [
+         "xstab",
+         "Turkey",
+         -1
+        ],
+        [
+         "flag",
+         "c27_masa"
+        ]
+       ],
+       "r": "Ankara ve Atina sıcak hat üzerinden karşılıklı geri çekilmede anlaştı."
+      },
+      {
+       "t": "BM ve NATO arabulucusu",
+       "d": "Çok taraflı çözüm",
+       "fx": [
+        [
+         "rel",
+         "Turkey",
+         "Greece",
+         6
+        ],
+        [
+         "rel",
+         "Turkey",
+         "France",
+         4
+        ],
+        [
+         "xstab",
+         "Turkey",
+         -2
+        ],
+        [
+         "flag",
+         "c27_masa"
+        ]
+       ],
+       "r": "Genel Sekreter ve NATO Genel Sekreteri iki başkente çağrıda bulundu."
+      }
+     ]
+    },
+    "Greece": {
+     "text": "Savunma Bakanı 'tek bir ateş savaş demek' diyor. Ege adalarında alarm. Askerî kartı mı oynamalı, diplomasiye mi yüklenmeli?",
+     "options": [
+      {
+       "t": "Seferberlik ve ortak caydırıcılık",
+       "d": "Fransa ve Kıbrıs ile",
+       "fx": [
+        [
+         "mob",
+         "Greece",
+         6
+        ],
+        [
+         "rel",
+         "Greece",
+         "Turkey",
+         -15
+        ],
+        [
+         "rel",
+         "Greece",
+         "France",
+         8
+        ],
+        [
+         "xstab",
+         "Greece",
+         2
+        ],
+        [
+         "flag",
+         "c27_clash"
+        ]
+       ],
+       "r": "Atina kısmi seferberlik ilan etti.",
+       "keep_default": true
+      },
+      {
+       "t": "Sıcak hat, AB zirvesi",
+       "d": "Soğukkanlılık",
+       "fx": [
+        [
+         "rel",
+         "Greece",
+         "Turkey",
+         10
+        ],
+        [
+         "xstab",
+         "Greece",
+         -1
+        ],
+        [
+         "flag",
+         "c27_masa"
+        ]
+       ],
+       "r": "Atina sıcak hattı kullandı ve AB zirvesi çağırdı.",
+       "keep_default": true
+      }
+     ]
+    },
+    "Cyprus": {
+     "text": "Güney kıyılar tehdit altında. Lefkoşa'nın bir hamlesi ya Ankara'yı kışkırtır ya da kendi limanlarını korur.",
+     "options": [
+      {
+       "t": "Ulusal Muhafız alarmda",
+       "d": "Savunma duruşu",
+       "fx": [
+        [
+         "troops",
+         "Cyprus",
+         20
+        ],
+        [
+         "buff",
+         "Cyprus",
+         "def",
+         1.15,
+         10
+        ],
+        [
+         "rel",
+         "Cyprus",
+         "Turkey",
+         -8
+        ]
+       ],
+       "r": "Rum Yönetimi Ulusal Muhafız'ı alarma geçirdi.",
+       "keep_default": true
+      },
+      {
+       "t": "BM'den müdahale iste",
+       "d": "Uluslararası kamuoyu",
+       "fx": [
+        [
+         "rel",
+         "Cyprus",
+         "United States of America",
+         8
+        ],
+        [
+         "rel",
+         "Cyprus",
+         "France",
+         6
+        ],
+        [
+         "flag",
+         "c27_masa"
+        ]
+       ],
+       "r": "Lefkoşa BM Güvenlik Konseyi'ni acil toplantıya çağırdı.",
+       "keep_default": true
+      }
+     ]
+    },
+    "United States of America": {
+     "text": "Washington iki NATO müttefikinin gerilimi için telefon trafiği yürütüyor. Hangi ucundan tutacak?",
+     "options": [
+      {
+       "t": "Sessiz arabuluculuk",
+       "d": "Hat üzerinden",
+       "fx": [
+        [
+         "rel",
+         "United States of America",
+         "Turkey",
+         4
+        ],
+        [
+         "rel",
+         "United States of America",
+         "Greece",
+         4
+        ],
+        [
+         "xstab",
+         "United States of America",
+         1
+        ]
+       ],
+       "r": "Washington iki başkentle de telefon diplomasisi yürüttü.",
+       "keep_default": true
+      },
+      {
+       "t": "Yunanistan'ı destekle",
+       "d": "Net saf",
+       "fx": [
+        [
+         "rel",
+         "United States of America",
+         "Greece",
+         10
+        ],
+        [
+         "rel",
+         "United States of America",
+         "Turkey",
+         -10
+        ]
+       ],
+       "r": "Washington Atina'nın yanında durdu.",
+       "keep_default": true
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "c27_zirve",
+   "turn": 50,
+   "title": "Yıl Sonu Zirvesi: Güven Paketi",
+   "scene": "pre_trade",
+   "icon": "handshake",
+   "text": "Aralık 2027: BM Genel Sekreteri adadaki iki lideri ve garantör ülkeleri bir araya getirdi. Masada ortak gaz fonu, kapı açılışları, Maraş'ın statüsü ve güvenlik düzenlemeleri var.",
+   "major": true,
+   "default_fx": [
+    [
+     "rel",
+     "Turkey",
+     "Greece",
+     3
+    ],
+    [
+     "stab",
+     "Cyprus",
+     1
+    ]
+   ],
+   "roles": {
+    "Turkey": {
+     "text": "Zirvede 'güven paketi' sunuluyor: ortak gaz fonu, birkaç yeni kapı ve Maraş'ta ortak yönetim. Bunun karşılığında Ankara'dan kıyılardaki gösterilere ara vermesi bekleniyor.",
+     "options": [
+      {
+       "t": "Paketi kabul et",
+       "d": "İşbirliği dönemi",
+       "fx": [
+        [
+         "rel",
+         "Turkey",
+         "Greece",
+         15
+        ],
+        [
+         "rel",
+         "Turkey",
+         "Cyprus",
+         15
+        ],
+        [
+         "rel",
+         "Turkey",
+         "France",
+         8
+        ],
+        [
+         "xstab",
+         "Turkey",
+         3
+        ],
+        [
+         "gold",
+         "Turkey",
+         3
+        ]
+       ],
+       "r": "Ankara güven paketini kabul etti; Doğu Akdeniz'de yumuşama dönemi başladı."
+      },
+      {
+       "t": "Ret: egemen eşitlik şart",
+       "d": "Sert duruş",
+       "fx": [
+        [
+         "rel",
+         "Turkey",
+         "Greece",
+         -8
+        ],
+        [
+         "rel",
+         "Turkey",
+         "Cyprus",
+         -8
+        ],
+        [
+         "xstab",
+         "Turkey",
+         1
+        ]
+       ],
+       "r": "Ankara egemen eşitlik şartıyla paketi reddetti."
+      }
+     ]
+    },
+    "Greece": {
+     "text": "Atina'nın zirvedeki tutumu seçim sonrası yeni hükûmetin ilk sınavı.",
+     "options": [
+      {
+       "t": "Paketi destekle",
+       "d": "Uzlaşma",
+       "fx": [
+        [
+         "rel",
+         "Greece",
+         "Turkey",
+         12
+        ],
+        [
+         "xstab",
+         "Greece",
+         2
+        ]
+       ],
+       "r": "Atina pakete 'evet' dedi.",
+       "keep_default": true
+      },
+      {
+       "t": "Şartları sertleştir",
+       "d": "Kıbrıs'ın güvenliği",
+       "fx": [
+        [
+         "rel",
+         "Greece",
+         "Turkey",
+         -6
+        ],
+        [
+         "xstab",
+         "Greece",
+         1
+        ]
+       ],
+       "r": "Atina yeni şartlar öne sürdü.",
+       "keep_default": true
+      }
+     ]
+    },
+    "Cyprus": {
+     "text": "Lefkoşa'nın pakete yanıtı iç siyasette büyük çalkantı yaratabilir; 2028 başkanlık seçimi yaklaşıyor.",
+     "options": [
+      {
+       "t": "Kabul et",
+       "d": "Ortak gelecek",
+       "fx": [
+        [
+         "rel",
+         "Cyprus",
+         "Turkey",
+         15
+        ],
+        [
+         "rel",
+         "Cyprus",
+         "N. Cyprus",
+         15
+        ],
+        [
+         "stab",
+         "Cyprus",
+         3
+        ]
+       ],
+       "r": "Rum Yönetimi paketi kabul etti.",
+       "keep_default": true
+      },
+      {
+       "t": "Reddet",
+       "d": "Güvenlik öncelikli",
+       "fx": [
+        [
+         "rel",
+         "Cyprus",
+         "Turkey",
+         -8
+        ],
+        [
+         "stab",
+         "Cyprus",
+         1
+        ]
+       ],
+       "r": "Lefkoşa paketi reddetti.",
+       "keep_default": true
+      }
+     ]
+    },
+    "N. Cyprus": {
+     "text": "Pakette kuzey için ortak yönetim ve yatırım var; ama bağımsız egemenlik talebi gündemden düşüyor.",
+     "options": [
+      {
+       "t": "Kabul et",
+       "d": "Ekonomi ve temas",
+       "fx": [
+        [
+         "stab",
+         "N. Cyprus",
+         5
+        ],
+        [
+         "rel",
+         "N. Cyprus",
+         "Cyprus",
+         15
+        ],
+        [
+         "rel",
+         "N. Cyprus",
+         "Turkey",
+         -4
+        ]
+       ],
+       "r": "Kuzey yönetimi pakete olumlu yanıt verdi.",
+       "keep_default": true
+      },
+      {
+       "t": "Reddet",
+       "d": "Ankara çizgisi",
+       "fx": [
+        [
+         "rel",
+         "N. Cyprus",
+         "Turkey",
+         8
+        ],
+        [
+         "rel",
+         "N. Cyprus",
+         "Cyprus",
+         -8
+        ]
+       ],
+       "r": "Kuzey yönetimi pakete mesafeli durdu.",
+       "keep_default": true
+      }
+     ]
+    }
+   },
+   "forbid": [
+    "c27_clash"
+   ]
+  },
+  {
+   "id": "c27_ateskes",
+   "turn": 52,
+   "title": "Güvenlik Konseyi: Ateşkes Çağrısı",
+   "scene": "pre_trade",
+   "icon": "handshake",
+   "text": "Aralık 2027: Kıbrıs'ta çatışma haftalardır sürüyor. BM Güvenlik Konseyi acil ateşkes ve çekilme çağrısı yaptı; NATO, AB ve ABD arabuluculuk telefonlarını sürdürüyor.",
+   "major": true,
+   "default_fx": [
+    [
+     "peace",
+     "Turkey",
+     "Cyprus"
+    ],
+    [
+     "stab",
+     "Cyprus",
+     -4
+    ]
+   ],
+   "roles": {
+    "Turkey": {
+     "text": "Savaş boyunca elde edilen mevziler ateşkes çizgisini belirleyecek. Kabul mü, devam mı?",
+     "options": [
+      {
+       "t": "Ateşkesi kabul et",
+       "d": "Mevzileri koru",
+       "fx": [
+        [
+         "peace",
+         "Turkey",
+         "Cyprus"
+        ],
+        [
+         "xstab",
+         "Turkey",
+         3
+        ],
+        [
+         "rel",
+         "Turkey",
+         "United States of America",
+         8
+        ]
+       ],
+       "r": "Ankara Güvenlik Konseyi'nin ateşkes çağrısını kabul etti."
+      },
+      {
+       "t": "Harekâta devam",
+       "d": "Daha çok mevzi",
+       "fx": [
+        [
+         "buff",
+         "Turkey",
+         "att",
+         1.15,
+         8
+        ],
+        [
+         "rel",
+         "Turkey",
+         "United States of America",
+         -10
+        ],
+        [
+         "rel",
+         "Turkey",
+         "France",
+         -10
+        ],
+        [
+         "xstab",
+         "Turkey",
+         -2
+        ]
+       ],
+       "r": "Ankara ateşkes çağrısını reddetti."
+      }
+     ]
+    },
+    "Cyprus": {
+     "text": "Rum Yönetimi yıpranmış durumda; ateşkes savunma çizgisini kurtarabilir ama toprak kaybını tescil edebilir.",
+     "options": [
+      {
+       "t": "Ateşkesi kabul et",
+       "d": "Nefes al",
+       "fx": [
+        [
+         "peace",
+         "Cyprus",
+         "Turkey"
+        ],
+        [
+         "stab",
+         "Cyprus",
+         2
+        ]
+       ],
+       "r": "Lefkoşa ateşkesi kabul etti.",
+       "keep_default": true
+      },
+      {
+       "t": "Direnişi sürdür",
+       "d": "Yardımı bekle",
+       "fx": [
+        [
+         "buff",
+         "Cyprus",
+         "def",
+         1.15,
+         8
+        ],
+        [
+         "stab",
+         "Cyprus",
+         -3
+        ]
+       ],
+       "r": "Lefkoşa ateşkesi reddetti; Atina ve Paris'ten destek bekliyor.",
+       "keep_default": true
+      }
+     ]
+    }
+   },
+   "requires": [
+    "c27_clash"
+   ]
+  }
+ ],
+ "objectives": {
+  "*": [
+   {
+    "id": "x1",
+    "type": "survive",
+    "turns": 104,
+    "text": "İki yıl boyunca ayakta kal"
+   },
+   {
+    "id": "x2",
+    "type": "stability",
+    "n": 55,
+    "text": "İstikrarı 55 üzerinde tut",
+    "required": false
+   },
+   {
+    "id": "x3",
+    "type": "alliances",
+    "n": 3,
+    "text": "3 müttefik edin",
+    "required": false
+   }
+  ],
+  "Turkey": [
+   {
+    "id": "xt1",
+    "type": "no_war",
+    "turns": 52,
+    "text": "Doğu Akdeniz'de 52 hafta savaşa girmeden güvenliği koru"
+   },
+   {
+    "id": "xt2",
+    "type": "alliances",
+    "n": 3,
+    "text": "3 müttefik edin",
+    "required": false
+   }
+  ],
+  "Greece": [
+   {
+    "id": "xg1",
+    "type": "no_war",
+    "turns": 52,
+    "text": "52 hafta savaşa girmeden Kıbrıs'ın güvenliğini sağla"
+   },
+   {
+    "id": "xg2",
+    "type": "stability",
+    "n": 60,
+    "text": "Seçim yılında istikrarı 60 üzerinde tut",
+    "required": false
+   }
+  ],
+  "Cyprus": [
+   {
+    "id": "xc1",
+    "type": "own_capital",
+    "country": "Cyprus",
+    "text": "Lefkoşa'yı elinde tut"
+   },
+   {
+    "id": "xc2",
+    "type": "stability",
+    "n": 55,
+    "text": "İstikrarı 55 üzerinde tut",
+    "required": false
+   }
+  ],
+  "N. Cyprus": [
+   {
+    "id": "xn1",
+    "type": "own_capital",
+    "country": "N. Cyprus",
+    "text": "Gazimağusa'yı elinde tut"
+   },
+   {
+    "id": "xn2",
+    "type": "stability",
+    "n": 50,
+    "text": "İstikrarı 50 üzerinde tut",
+    "required": false
+   }
+  ],
+  "Israel": [
+   {
+    "id": "xi1",
+    "type": "alliances",
+    "n": 3,
+    "text": "3 müttefik edin"
+   }
+  ],
+  "France": [
+   {
+    "id": "xf1",
+    "type": "alliances",
+    "n": 4,
+    "text": "4 müttefik edin"
+   }
+  ]
+ },
+ "deadline": 210,
+ "moments_en": {
+  "Masaya otur: 5+1 formatı": "Take a seat: the 5+1 format",
+  "Müzakere kapısı aralanır": "The door to negotiation opens",
+  "Ankara BM'nin 5+1 formatına katılacağını duyurdu.": "Ankara announced it will join the UN's 5+1 format.",
+  "İki devletli çözümü öne sür": "Push the two-state position",
+  "Sert duruş": "A hard line",
+  "Ankara iki egemen devlet mesajını yeniden vurguladı; AB'de tepki var.": "Ankara re-emphasised its two-sovereign-states message; the EU reacts.",
+  "Önce kapılar: iki yeni geçiş noktası": "Crossings first: two new checkpoints",
+  "Güven artırıcı adım": "A confidence-building step",
+  "Lefkoşa'da iki yeni geçiş kapısı açıldı; mahalleler arası trafik arttı.": "Two new crossings opened in Nicosia; traffic between the communities grew.",
+  "Ankara 'gerçekçi çözüm' diyor ama yeni dönemin masasını boş bırakmak da istemiyor. Kuzeyde yeni yönetim federasyon dışı seçeneklere mesafeli.": "Ankara calls for a 'realistic solution' but does not want to leave the new era's table empty. The new northern administration keeps its distance from non-federal options.",
+  "BM sürecini destekle": "Back the UN process",
+  "Federasyon ilkesi": "The federal principle",
+  "Atina BM çerçevesindeki müzakerelere tam destek verdi.": "Athens gave full support to the UN-framed talks.",
+  "Sert çizgi: AB baskısı": "Hard line: EU pressure",
+  "Brüksel'i devreye sok": "Bring in Brussels",
+  "Atina Kıbrıs konusunu AB zirvesinin gündemine taşıdı.": "Athens put Cyprus on the EU summit agenda.",
+  "Yunanistan seçim yılına giriyor; Atina Kıbrıs'ta 'ilkeli' bir duruşu savunuyor ama Ankara'yla gerginliği düşük tutmak istiyor.": "Greece enters an election year; Athens defends a 'principled' stance on Cyprus but wants to keep tension with Ankara low.",
+  "Kapıları aç, masaya otur": "Open the crossings, take a seat",
+  "Uzlaşma çizgisi": "Conciliatory line",
+  "Lefkoşa yeni kapılar için BM'ye 'evet' dedi.": "Nicosia said 'yes' to the UN on new crossings.",
+  "Güvenliği öne al: savunma harcaması": "Security first: defence spending",
+  "İsrail/Fransa tedariki": "Israeli/French supplies",
+  "Rum Yönetimi hava savunma ve gözetleme sistemlerine yatırım yapıyor.": "The Greek-Cypriot administration is investing in air defence and surveillance.",
+  "Lefkoşa AB başkanlığının gölgesinden çıktı; hükûmet enerji gelirlerini ve savunma ortaklıklarını güçlendirmek istiyor, ama yeni geçiş kapıları iç kamuoyunda tartışmalı.": "Nicosia has stepped out of the shadow of the EU presidency; the government wants to boost energy revenue and defence partnerships, but new crossings are debated at home.",
+  "Geçiş kapılarını savun": "Defend the new crossings",
+  "Ticaret ve temas": "Trade and contact",
+  "Kuzey yönetimi karşılıklı temasların artırılmasını istedi.": "The northern administration asked for more contact between communities.",
+  "Ankara ile tam eşgüdüm": "Full coordination with Ankara",
+  "Entegrasyon": "Integration",
+  "Kuzey yönetimi ekonomik entegrasyon protokollerini hızlandırdı.": "The northern administration sped up economic integration protocols.",
+  "Kuzey yönetimi federal bir çözüme açık ama Ankara ile uyumlu yürümek zorunda. Ekonomi pahalılık ve Türk lirası dalgalanması altında.": "The northern administration is open to a federal solution but must move in step with Ankara. The economy suffers from high prices and lira swings.",
+  "Yeni Genel Sekreter, Eski Dosya": "A New Secretary-General, an Old File",
+  "Ocak 2027: BM'nin yeni Genel Sekreteri göreve başladı ve ilk gündemlerinden biri Kıbrıs. Taraflar adadaki yeni geçiş kapıları, güven artırıcı önlemler ve resmî müzakerelerin yeniden başlaması üzerinde pazarlık ediyor.": "January 2027: the UN's new Secretary-General has taken office and Cyprus is among the first items on the agenda. The sides haggle over new crossing points, confidence-building measures and a formal restart of negotiations.",
+  "Gemiyi sahaya gönder, sondajı engelle": "Send the ship, block the drilling",
+  "Gösteri ve gerginlik": "Show of force and tension",
+  "Türk savaş gemisi sondaj gemisinin yanına yanaştı; üç donanma sahada.": "A Turkish warship moved alongside the drillship; three navies are on the scene.",
+  "NAVTEX'i geri çek, ortak gaz fonu öner": "Withdraw the NAVTEX, propose a joint gas fund",
+  "Gelirde adil pay": "A fair share of revenue",
+  "Ankara ruhsat sahalarında gelirin iki toplum arasında paylaşılmasını önerdi.": "Ankara proposed that revenue from the blocks be shared between the two communities.",
+  "Sessiz izle": "Watch quietly",
+  "Gerilimi artırmadan": "Without raising tension",
+  "Ankara sondaj gemisini uzaktan izlemekle yetindi.": "Ankara contented itself with watching the drillship from afar.",
+  "Savunma Bakanlığı ruhsat sahasının bir kısmını 'Türk kıta sahanlığı' sayıyor. Filo hazır; ama Avrupa'nın yaptırım tartışması yeniden alevlenebilir.": "The Defence Ministry regards part of the block as 'Turkish continental shelf'. The fleet is ready, but the European sanctions debate could flare up again.",
+  "Firkateyn gönder": "Send a frigate",
+  "Ortak caydırıcılık": "Joint deterrence",
+  "Yunan firkateyni Kıbrıs açıklarına ulaştı.": "A Greek frigate reached the waters off Cyprus.",
+  "Diplomasi: AB ve NATO": "Diplomacy: EU and NATO",
+  "Gerilimi kanallara taşı": "Take the tension to the institutions",
+  "Atina konuyu NATO ve AB kanallarından yürütüyor.": "Athens handles the matter through NATO and EU channels.",
+  "Atina Kıbrıs'ın münhasır ekonomik bölgesinde sondajı destekliyor; deniz kuvvetleri yola çıkarsa Ege'deki karşılıklı yumuşama bozulabilir.": "Athens backs drilling in Cyprus's exclusive economic zone; sending the navy could unravel the Aegean détente.",
+  "Sondajı sürdür": "Keep drilling",
+  "Hak iddiası": "Assert the right",
+  "Rum Yönetimi sondajın sürdüğünü ve ruhsatın tam yasal olduğunu açıkladı.": "The Greek-Cypriot administration said drilling continues and the licence is fully lawful.",
+  "Sondajı askıya al, müzakere": "Pause drilling, negotiate",
+  "Gerilimi düşür": "Lower the tension",
+  "Lefkoşa sondajı kısa süreliğine askıya aldı; BM arabulucusu memnun.": "Nicosia briefly paused drilling; the UN mediator is pleased.",
+  "Rum Yönetimi gaz gelirini bütçenin geleceği olarak görüyor; ama sondaj gemisinin etrafı yabancı savaş gemileriyle doldu.": "The Greek-Cypriot administration sees gas revenue as the budget's future, but the drillship is ringed by foreign warships.",
+  "Firkateyni sahada tut": "Keep the frigate on station",
+  "Kıbrıs-Yunanistan ile dayanışma": "Solidarity with Cyprus and Greece",
+  "Fransız donanması sahada kaldı.": "The French navy stayed on station.",
+  "Geri çek, AB düzleminde ele al": "Pull back, handle at EU level",
+  "Gerilim düşer": "Tension drops",
+  "Paris firkateyni geri çekti ve konuyu AB'ye taşıdı.": "Paris pulled the frigate back and took the issue to the EU.",
+  "Fransız firkateyni sahada; Paris Doğu Akdeniz'de kalıcı varlık istiyor ama Ankara'yla doğrudan çatışmak istemiyor.": "A French frigate is on station; Paris wants a lasting presence in the Eastern Mediterranean but not a direct clash with Ankara.",
+  "Sondaj Gemisi Krizi": "The Drillship Crisis",
+  "Şubat 2027: Güney Kıbrıs açıklarındaki ruhsat sahasında yeni bir arama kuyusu için sondaj gemisi geldi. Türkiye NAVTEX ilan etti ve bir savaş gemisi bölgeye yöneldi; Yunan ve Fransız firkateynleri de yola çıktı.": "February 2027: a drillship arrived for a new exploration well in a licence block south of Cyprus. Turkey issued a NAVTEX and a warship headed for the area; Greek and French frigates also set sail.",
+  "Gemileri uzaktan takip et, durdur": "Shadow and stop the vessels",
+  "Caydırıcılık": "Deterrence",
+  "Türk savaş gemileri etüt gemilerini adım adım izledi; proje ertelendi.": "Turkish warships shadowed the survey vessels step by step; the project was postponed.",
+  "Rotayı müzakere etmeyi teklif et": "Offer to negotiate the route",
+  "Hukuki çerçeve": "A legal framework",
+  "Ankara rota için hukuki çerçeve görüşmesi teklif etti.": "Ankara offered talks on a legal framework for the route.",
+  "Enerji koridoruna ortak ol": "Join the energy corridor",
+  "Ankara masanın içinde": "Ankara inside the tent",
+  "Ankara kabloyu ortak enerji koridoruna dönüştürmeyi önerdi.": "Ankara suggested turning the cable into a joint energy corridor.",
+  "Etüt gemilerinin rotası Ankara'nın 'ilgili makamlardan izin' şartını çiğniyor. Deniz Kuvvetleri refakat edebilir; ancak Avrupa ve Washington ağır tepki verebilir.": "The survey ships' route ignores Ankara's 'permission from the authorities' condition. The Navy could shadow them, but Europe and Washington may react harshly.",
+  "Projeyi sürdür, deniz eskortu": "Press on with a naval escort",
+  "Kararlı duruş": "A firm stand",
+  "Atina kablo gemilerine savaş gemisi eskortu sağladı.": "Athens provided warship escorts for the cable vessels.",
+  "Ertele, hukuki yola başvur": "Postpone, go legal",
+  "Uluslararası hukuk": "International law",
+  "Atina projeyi ertelemeyi ve hukuki yollara başvurmayı seçti.": "Athens chose to postpone the project and pursue legal avenues.",
+  "Kablo, Atina'nın 'Kıbrıs'ı Avrupa şebekesine bağlama' vizyonunun omurgası; ama kredi, yatırım ve güvenlik riski artıyor.": "The cable is the backbone of Athens's vision to link Cyprus to the European grid, but credit, investment and security risks are rising.",
+  "Hava savunma ve gözetleme desteği": "Offer air-defence and surveillance support",
+  "Güvenlik ortaklığı": "Security partnership",
+  "İsrail Doğu Akdeniz ortaklarına gözetleme sistemleri sattı.": "Israel sold surveillance systems to its Eastern Mediterranean partners.",
+  "Geri planda kal": "Stay in the background",
+  "Gerilimden uzak": "Away from tension",
+  "Tel Aviv gerilimden uzak durdu.": "Tel Aviv stayed clear of the tension.",
+  "Tel Aviv kablonun ve doğal gaz ortaklığının güvenliği için Yunanistan ve Kıbrıs'la savunma iş birliğini artırıyor.": "Tel Aviv is boosting defence cooperation with Greece and Cyprus to protect the cable and gas partnership.",
+  "Arabulucu rolü": "Play the mediator",
+  "Gaz merkezi Kahire": "Cairo as the gas hub",
+  "Kahire taraflar arasında arabuluculuk önerdi.": "Cairo offered to mediate between the parties.",
+  "Yunanistan ile hizalan": "Align with Greece",
+  "MEB anlaşması": "The EEZ agreement",
+  "Kahire Atina'nın deniz sınırı tezini destekledi.": "Cairo backed Athens's maritime-boundary thesis.",
+  "Kahire Yunanistan'la MEB anlaşması yaptı ve bölgenin gaz merkezi olmak istiyor; Ankara ile ilişkiler ısınmış durumda.": "Cairo signed an EEZ deal with Greece and wants to be the region's gas hub; ties with Ankara have been warming.",
+  "Büyük Kablo Hattı": "The Great Cable Route",
+  "Nisan 2027: Yunanistan–Kıbrıs–İsrail enerji bağlantısı (Great Sea Interconnector) için döşeme gemileri etüt rotasına yaklaştı. Türkiye rotanın kendi deniz yetki alanından geçtiğini savunuyor; AB ve ABD projeyi destekliyor.": "April 2027: survey vessels for the Greece–Cyprus–Israel energy link (Great Sea Interconnector) approached the route. Turkey says the route crosses its maritime jurisdiction; the EU and US back the project.",
+  "Sert söylem: ulusal güvenlik": "Tough rhetoric: national security",
+  "Milliyetçi oy": "The nationalist vote",
+  "Atina seçim kampanyasında Ege ve Kıbrıs'ta sert bir çizgi izledi.": "Athens ran a hard line on the Aegean and Cyprus during the campaign.",
+  "Yumuşama: Atina Bildirgesi'ne dönüş": "Détente: back to the Athens Declaration",
+  "Merkez oy": "The centre vote",
+  "Atina karşılıklı güven artırıcı önlemleri yeniden öne çıkardı.": "Athens put confidence-building measures back at the centre.",
+  "Seçim sandığı yaklaşırken iki yol var: Ege'de sert söylem ya da yumuşama diliyle merkez seçmen.": "As the ballot nears there are two roads: tough Aegean rhetoric or détente language for the centre.",
+  "Aynı dille karşılık ver": "Reply in kind",
+  "Sert dil": "Hard language",
+  "Ankara seçim kampanyasındaki sert açıklamalara aynı dille yanıt verdi.": "Ankara answered the campaign rhetoric in kind.",
+  "Soğukkanlı kal": "Stay calm",
+  "Seçimi bekle": "Wait for the vote",
+  "Ankara seçimin sonuçlanmasını bekleme kararı aldı.": "Ankara decided to wait for the vote.",
+  "Atina'daki seçim söylemleri Ankara'da tepki yaratıyor. Karşılık vermek mi, soğukkanlı kalmak mı?": "Election rhetoric in Athens provokes reaction in Ankara. Reply in kind or stay calm?",
+  "Atina'da Seçim Yazı": "Election Summer in Athens",
+  "Haziran 2027: Yunanistan'da seçim kampanyası kızıştı. Kıbrıs, Ege ve savunma harcamaları miting konuları; muhalefet hükûmeti 'yumuşaklıkla' suçluyor.": "June 2027: the campaign heats up in Greece. Cyprus, the Aegean and defence spending dominate rallies; the opposition accuses the government of 'softness'.",
+  "Açılışı genişlet": "Expand the opening",
+  "Ankara'nın desteğiyle": "With Ankara's backing",
+  "Maraş'ta yeni bölge halka açıldı; Lefkoşa protesto etti.": "A new area of Varosha opened to the public; Nicosia protested.",
+  "Mülkiyet çerçevesi: ortak komisyon": "Property framework: joint commission",
+  "Hak sahiplerine yol": "A path for owners",
+  "Kuzey yönetimi mülkiyet için ortak bir komisyon önerdi.": "The northern administration proposed a joint property commission.",
+  "Maraş ekonomik canlanma için kozunuz ama Rum mülk sahipleri ve BM kararları açık bir engel.": "Varosha is your card for economic revival but Greek-Cypriot owners and UN resolutions are an obvious obstacle.",
+  "BM Güvenlik Konseyi'ne git": "Go to the UN Security Council",
+  "Hukuki zemin": "Legal ground",
+  "Rum Yönetimi Güvenlik Konseyi'ni olağan dışı toplantıya çağırdı.": "The Greek-Cypriot administration asked for a special Security Council session.",
+  "Ortak komisyona yanıt ver": "Respond to the joint commission",
+  "Teknik zemin": "Technical ground",
+  "Lefkoşa mülkiyet komisyonuna teknik düzeyde yanıt verdi.": "Nicosia replied to the property commission at technical level.",
+  "Mülkiyet hakları ve BM kararları sizin için kırmızı çizgi; ama tepkiyi ölçmeden yükseltmek istemiyorsunuz.": "Property rights and UN resolutions are your red line, but you do not want to escalate without measuring the reaction.",
+  "Kuzeyi destekle": "Back the north",
+  "Kıbrıs Türk tarafının hakkı": "The Turkish-Cypriot side's right",
+  "Ankara Maraş'ta kuzey yönetiminin yanında durdu.": "Ankara stood with the northern administration on Varosha.",
+  "BM'ye uyumu tavsiye et": "Advise alignment with the UN",
+  "Arabuluculuk": "Mediation",
+  "Ankara kuzey yönetimine BM çerçevesine uyumu tavsiye etti.": "Ankara advised the northern administration to align with the UN framework.",
+  "Kuzeye verdiğiniz desteğin sınırı: Maraş'ta açılış sürsün mü, yoksa BM ile uyum mu?": "The limit of your support for the north: should the opening in Varosha continue or align with the UN?",
+  "Maraş'ta Hareket": "Movement in Varosha",
+  "Ağustos 2027: Kuzey yönetimi Maraş (Varosha) bölgesinde yeni açılışlar ve yerleşim planlarını duyurdu; Rum Yönetimi ve BM Güvenlik Konseyi önceki kararlara atıf yaptı.": "August 2027: the northern administration announced new openings and settlement plans in Varosha; the Greek-Cypriot administration and the UN Security Council referred to earlier resolutions.",
+  "Sert yanıt: ada kıyılarında gösteri": "Hard reply: a show of force off the island",
+  "Rum Yönetimine baskı": "Pressure on the Greek-Cypriot administration",
+  "Türk birlikleri Kıbrıs açıklarında harekâta geçti; Rum Yönetimi ile savaş durumu başladı.": "Turkish forces went into action off Cyprus; a state of war with the Greek-Cypriot administration began.",
+  "Sıcak hat ve karşılıklı geri çekilme": "Hotline and mutual pull-back",
+  "Gerginliği düşür": "Lower the tension",
+  "Ankara ve Atina sıcak hat üzerinden karşılıklı geri çekilmede anlaştı.": "Ankara and Athens agreed on a mutual pull-back via the hotline.",
+  "BM ve NATO arabulucusu": "UN and NATO mediators",
+  "Çok taraflı çözüm": "Multilateral fix",
+  "Genel Sekreter ve NATO Genel Sekreteri iki başkente çağrıda bulundu.": "The UN Secretary-General and NATO's chief appealed to both capitals.",
+  "Ankara'da kriz masası kuruldu. Savaş gemisi kaptanı 'savunma' diyor; Yunan tarafı 'taciz' diyor. Bir gösteri harekâtı mı, yoksa sıcak hat mı?": "A crisis desk was set up in Ankara. The frigate captain says 'defence'; the Greek side says 'harassment'. A show-of-force operation, or the hotline?",
+  "Seferberlik ve ortak caydırıcılık": "Mobilise and deter jointly",
+  "Fransa ve Kıbrıs ile": "With France and Cyprus",
+  "Atina kısmi seferberlik ilan etti.": "Athens announced a partial mobilisation.",
+  "Sıcak hat, AB zirvesi": "Hotline, EU summit",
+  "Soğukkanlılık": "Composure",
+  "Atina sıcak hattı kullandı ve AB zirvesi çağırdı.": "Athens used the hotline and called an EU summit.",
+  "Savunma Bakanı 'tek bir ateş savaş demek' diyor. Ege adalarında alarm. Askerî kartı mı oynamalı, diplomasiye mi yüklenmeli?": "The Defence Minister says 'one shot means war'. Alarm on the Aegean islands. Play the military card or lean on diplomacy?",
+  "Ulusal Muhafız alarmda": "National Guard on alert",
+  "Savunma duruşu": "Defensive posture",
+  "Rum Yönetimi Ulusal Muhafız'ı alarma geçirdi.": "The Greek-Cypriot administration placed the National Guard on alert.",
+  "BM'den müdahale iste": "Call for UN intervention",
+  "Uluslararası kamuoyu": "International opinion",
+  "Lefkoşa BM Güvenlik Konseyi'ni acil toplantıya çağırdı.": "Nicosia asked for an emergency UN Security Council meeting.",
+  "Güney kıyılar tehdit altında. Lefkoşa'nın bir hamlesi ya Ankara'yı kışkırtır ya da kendi limanlarını korur.": "The southern coast feels threatened. A move by Nicosia could either provoke Ankara or protect its own ports.",
+  "Sessiz arabuluculuk": "Quiet mediation",
+  "Hat üzerinden": "By phone",
+  "Washington iki başkentle de telefon diplomasisi yürüttü.": "Washington held phone diplomacy with both capitals.",
+  "Yunanistan'ı destekle": "Back Greece",
+  "Net saf": "A clear side",
+  "Washington Atina'nın yanında durdu.": "Washington stood with Athens.",
+  "Washington iki NATO müttefikinin gerilimi için telefon trafiği yürütüyor. Hangi ucundan tutacak?": "Washington runs phone diplomacy over a spat between two NATO allies. Which end to take?",
+  "Fırkateynler Burun Buruna": "Frigates Nose to Nose",
+  "Ekim 2027: Kıbrıs'ın güney doğusunda bir Türk ve bir Yunan firkateyni arasında 'ucu ucuna' kaçınılan bir çarpışma yaşandı; iki başkent de hava ve deniz birliklerini alarma geçirdi. Dünya tek bir hatanın felakete dönüşebileceğini konuşuyor.": "October 2027: off Cyprus's southeast a Turkish and a Greek frigate narrowly avoided a collision; both capitals put air and naval units on alert. The world is talking about one mistake turning into disaster.",
+  "Paketi kabul et": "Accept the package",
+  "İşbirliği dönemi": "An era of cooperation",
+  "Ankara güven paketini kabul etti; Doğu Akdeniz'de yumuşama dönemi başladı.": "Ankara accepted the confidence package; a thaw began in the Eastern Mediterranean.",
+  "Ret: egemen eşitlik şart": "Reject: sovereign equality required",
+  "Ankara egemen eşitlik şartıyla paketi reddetti.": "Ankara rejected the package, demanding sovereign equality.",
+  "Zirvede 'güven paketi' sunuluyor: ortak gaz fonu, birkaç yeni kapı ve Maraş'ta ortak yönetim. Bunun karşılığında Ankara'dan kıyılardaki gösterilere ara vermesi bekleniyor.": "A 'confidence package' is on the table: joint gas fund, new crossings and joint management of Varosha — in exchange Ankara is asked to pause shows of force.",
+  "Paketi destekle": "Back the package",
+  "Uzlaşma": "Compromise",
+  "Atina pakete 'evet' dedi.": "Athens said 'yes' to the package.",
+  "Şartları sertleştir": "Toughen the terms",
+  "Kıbrıs'ın güvenliği": "Cyprus's security",
+  "Atina yeni şartlar öne sürdü.": "Athens put forward new conditions.",
+  "Atina'nın zirvedeki tutumu seçim sonrası yeni hükûmetin ilk sınavı.": "Athens's stance at the summit is the new government's first test.",
+  "Kabul et": "Accept",
+  "Ortak gelecek": "A shared future",
+  "Rum Yönetimi paketi kabul etti.": "The Greek-Cypriot administration accepted the package.",
+  "Reddet": "Reject",
+  "Güvenlik öncelikli": "Security first",
+  "Lefkoşa paketi reddetti.": "Nicosia rejected the package.",
+  "Lefkoşa'nın pakete yanıtı iç siyasette büyük çalkantı yaratabilir; 2028 başkanlık seçimi yaklaşıyor.": "Nicosia's reply to the package could stir domestic politics; the 2028 presidential election approaches.",
+  "Ekonomi ve temas": "Economy and contact",
+  "Kuzey yönetimi pakete olumlu yanıt verdi.": "The northern administration responded positively.",
+  "Ankara çizgisi": "Ankara's line",
+  "Kuzey yönetimi pakete mesafeli durdu.": "The northern administration stayed distant from the package.",
+  "Pakette kuzey için ortak yönetim ve yatırım var; ama bağımsız egemenlik talebi gündemden düşüyor.": "The package offers the north joint governance and investment, but the claim to separate sovereignty falls off the agenda.",
+  "Yıl Sonu Zirvesi: Güven Paketi": "Year-End Summit: The Confidence Package",
+  "Aralık 2027: BM Genel Sekreteri adadaki iki lideri ve garantör ülkeleri bir araya getirdi. Masada ortak gaz fonu, kapı açılışları, Maraş'ın statüsü ve güvenlik düzenlemeleri var.": "December 2027: the UN Secretary-General gathered the island's two leaders and the guarantor states. On the table: a joint gas fund, crossing openings, Varosha's status and security arrangements.",
+  "Ateşkesi kabul et": "Accept the ceasefire",
+  "Mevzileri koru": "Hold the lines",
+  "Ankara Güvenlik Konseyi'nin ateşkes çağrısını kabul etti.": "Ankara accepted the Security Council's ceasefire call.",
+  "Harekâta devam": "Continue the operation",
+  "Daha çok mevzi": "More ground",
+  "Ankara ateşkes çağrısını reddetti.": "Ankara rejected the ceasefire call.",
+  "Savaş boyunca elde edilen mevziler ateşkes çizgisini belirleyecek. Kabul mü, devam mı?": "Positions won during the war will set the ceasefire line. Accept, or continue?",
+  "Nefes al": "Catch your breath",
+  "Lefkoşa ateşkesi kabul etti.": "Nicosia accepted the ceasefire.",
+  "Direnişi sürdür": "Keep fighting",
+  "Yardımı bekle": "Wait for help",
+  "Lefkoşa ateşkesi reddetti; Atina ve Paris'ten destek bekliyor.": "Nicosia rejected the ceasefire, waiting for support from Athens and Paris.",
+  "Rum Yönetimi yıpranmış durumda; ateşkes savunma çizgisini kurtarabilir ama toprak kaybını tescil edebilir.": "The Greek-Cypriot administration is worn down; a ceasefire could save the defence line but may entrench lost ground.",
+  "Güvenlik Konseyi: Ateşkes Çağrısı": "Security Council: A Call for Ceasefire",
+  "Aralık 2027: Kıbrıs'ta çatışma haftalardır sürüyor. BM Güvenlik Konseyi acil ateşkes ve çekilme çağrısı yaptı; NATO, AB ve ABD arabuluculuk telefonlarını sürdürüyor.": "December 2027: fighting on Cyprus has gone on for weeks. The UN Security Council called for an immediate ceasefire and withdrawal; NATO, the EU and the US keep up mediation calls."
+ },
+ "en": {
+  "name": "Ayşe Goes on Holiday Again",
+  "sub": "2027 – Summer in the Eastern Mediterranean",
+  "blurb": "A scenario set in an imagined future: in 2027, gas blocks, an undersea power cable and UN talks on Cyprus all come to the boil at once. Greece heads to an election; France, Israel, Egypt and the US are on the scene. Will Ayşe go on holiday again — or will a table be set?",
+  "intro": "2027: drillships, energy cables and the UN talks on the island are on the agenda at the same time. Every move shapes the next.",
+  "objectives": {
+   "x1": "Survive two years",
+   "x2": "Keep stability above 55",
+   "x3": "Make 3 allies",
+   "xt1": "Keep the Eastern Mediterranean secure for 52 weeks without going to war",
+   "xt2": "Make 3 allies",
+   "xg1": "Secure Cyprus for 52 weeks without going to war",
+   "xg2": "Keep stability above 60 in an election year",
+   "xc1": "Hold Nicosia",
+   "xc2": "Keep stability above 55",
+   "xn1": "Hold Famagusta",
+   "xn2": "Keep stability above 50",
+   "xi1": "Make 3 allies",
+   "xf1": "Make 4 allies"
+  },
+  "events": {
+   "0": "The Cypriot House raised the defence budget; a tender opened for Israeli-made air-defence batteries.",
+   "1": "Egypt and Greece held a joint naval exercise in the Eastern Mediterranean; energy security was a shared theme.",
+   "2": "France and the Greek-Cypriot administration expanded their defence cooperation framework agreement.",
+   "3": "Turkey announced capacity expansion at Kyrenia port and Ercan Airport.",
+   "4": "At the EU summit a sanctions debate on the Eastern Mediterranean split the member states.",
+   "5": "LNG prices in the Eastern Mediterranean hit a record; the strategic value of the licence blocks rose."
+  }
+ }
+}
