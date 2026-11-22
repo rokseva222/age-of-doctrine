@@ -262,6 +262,12 @@ static func launch(gs, tgt: int, op_name: String) -> Dictionary:
 
 
 static func tick(gs) -> void:
+	gs.for_each_human(func(): _tick_one(gs))
+
+
+static func _tick_one(gs) -> void:
+	if gs.player < 0:
+		return
 	ensure(gs)
 	if gs.grand.ops.is_empty():
 		return

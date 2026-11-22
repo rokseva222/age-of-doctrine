@@ -469,8 +469,8 @@ static func calc(gs, c) -> Dictionary:
 	rev *= Propaganda.income_mult(c)
 	rev *= blockade_mult(gs, c)
 	rev *= 1.0 - 0.10 * c.fleet_block      # filo ablukası (fleets.gd): kıyı bölgelerinde üstün düşman donanması
-	if c.id == gs.player:
-		rev *= Focus.income_mult(gs)
+	if c.id == gs.player or gs.humans.has(c.id):
+		rev *= Focus.income_mult(gs, c.id)
 	if c.id != gs.player:
 		rev *= [0.85, 1.0, 1.2][clampi(gs.difficulty, 0, 2)]
 	var wages: float = c.troops * wage_week(c) * 1.0e-6

@@ -239,15 +239,19 @@ static func cancel(gs) -> void:
 	gs.focus.left = 0
 
 
-static func income_mult(gs) -> float:
-	ensure(gs)
+static func income_mult(gs, cid: int = -1) -> float:
+	var f: Dictionary = gs.focus if cid < 0 else gs.focus_by.get(cid, {})
 	var s := 0.0
-	for id in gs.focus.done:
+	for id in f.get("done", []):
 		s += float(TREE[String(id)].fx.get("income", 0))
 	return 1.0 + s / 100.0
 
 
 static func tick(gs) -> void:
+	gs.for_each_human(func(): _tick_one(gs))
+
+
+static func _tick_one(gs) -> void:
 	ensure(gs)
 	var id := String(gs.focus.cur)
 	if id == "" or gs.player < 0:

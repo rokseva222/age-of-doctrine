@@ -85,8 +85,25 @@ var cmd_depth := 0                       # iç içe emir çağrılarında yalnı
 var next_army_id := 1
 var player_acted := false                # bu turda oyuncu emir verdi mi
 var auto_idle := false                   # emir verilmezse boştaki ordulara otomatik görev (ayar)
-var infamy_warned := false
-var infamy := 0.0                        # dünya tepkisi (0-100): fetihle artar, zamanla söner; yüksekse koalisyon kurulur
+# Dünya tepkisi, kimyasal/nükleer bekleme ve BM önerge beklemesi her insan oyuncunun kendi değeridir (çok oyunculu adalet).
+# Tek oyunculuda `player` sabit olduğundan eskisi gibi çalışır; çevrimiçide komut sırasında `player` = komutu veren insandır.
+var infamy_by: Dictionary = {}           # ülke id -> dünya tepkisi
+var infamy_warned_by: Dictionary = {}
+var gas_cd_by: Dictionary = {}
+var nuke_cd_by: Dictionary = {}
+var un_cd_by: Dictionary = {}
+var infamy: float:                       # dünya tepkisi (0-100): fetihle artar, zamanla söner; yüksekse koalisyon kurulur
+	get:
+		return float(infamy_by.get(player, 0.0)) if player >= 0 else 0.0
+	set(v):
+		if player >= 0:
+			infamy_by[player] = v
+var infamy_warned: bool:
+	get:
+		return bool(infamy_warned_by.get(player, false)) if player >= 0 else false
+	set(v):
+		if player >= 0:
+			infamy_warned_by[player] = v
 var faith: Dictionary = {}               # eyalet inancı {pid(str): kod} (faith.gd)
 var indep: Dictionary = {}               # Bağımsızlık Yolu kipi durumu (independence.gd)
 var career: Dictionary = {}              # Hikâye Modu (kariyer) durumu (career.gd)
@@ -96,9 +113,29 @@ var wroom: Dictionary = {}               # Savaş Odası planı (war_room.gd)
 var pol: Dictionary = {}                 # siyasi sistem durumu (politics.gd): rejimler, YZ seçimleri, kartlar
 var daily: Dictionary = {}               # Günlük Meydan Okuma durumu (daily.gd)
 var chokes: Dictionary = {}              # stratejik geçitler: {id: {mode, ctrl, cd}} (chokepoints.gd)
-var grand: Dictionary = {}               # Büyük Harekât: {cd, ops, done, last}
-var gas_cd := 0                          # bir sonraki kimyasal saldırı turu
-var nuke_cd := 0                         # bir sonraki nükleer saldırı turu
+var grand: Dictionary:                   # Büyük Harekât: {cd, ops, done, last}; her insan oyuncunun kendisi
+	get:
+		if player < 0:
+			return {}
+		if not grand_by.has(player):
+			grand_by[player] = {}
+		return grand_by[player]
+	set(v):
+		if player >= 0:
+			grand_by[player] = v
+var grand_by: Dictionary = {}
+var gas_cd: int:                         # bir sonraki kimyasal saldırı turu
+	get:
+		return int(gas_cd_by.get(player, 0)) if player >= 0 else 0
+	set(v):
+		if player >= 0:
+			gas_cd_by[player] = v
+var nuke_cd: int:                        # bir sonraki nükleer saldırı turu
+	get:
+		return int(nuke_cd_by.get(player, 0)) if player >= 0 else 0
+	set(v):
+		if player >= 0:
+			nuke_cd_by[player] = v
 const AI_MAX_ALLIES := 6               # yalnız yapay zekâ için yumuşak sınır; oyuncuda sınır yok
 var vassals: Dictionary = {}     # vasal ülke id -> {"lord": efendi id, "since": tur}
 var trade_by: Dictionary = {}           # ülke id -> ticaret anlaşması ortakları (her insan oyuncunun kendi listesi)
@@ -113,7 +150,16 @@ var trade: Array:                       # şu anki oyuncunun ticaret ortakları
 		if player >= 0:
 			trade_by[player] = v
 var aid: Dictionary = {"cd": {}, "good": {}}   # müttefik yardımı: bekleme süreleri / minnet (müttefik -> tur)
-var un_cd: Dictionary = {}               # BM önerge bekleme süreleri (önerge -> tur)
+var un_cd: Dictionary:                   # BM önerge bekleme süreleri (önerge -> tur); her insan oyuncunun kendisi
+	get:
+		if player < 0:
+			return {}
+		if not un_cd_by.has(player):
+			un_cd_by[player] = {}
+		return un_cd_by[player]
+	set(v):
+		if player >= 0:
+			un_cd_by[player] = v
 var un_log: Array = []                   # son BM kararları
 var un_pending: Dictionary = {}          # oyuncunun oyunu bekleyen yapay zekâ önergesi {kind, proposer, target}
 var last_auto := 0                       # son turda otomatik görevlendirilen ordu sayısı
@@ -1134,8 +1180,28 @@ func fog_filter_armies(arms: Array, cid: int, mode: int) -> Array:
 
 ## Casus: {ülke id: bu haftaya kadar ordularını görürüz}, {ülke id: yeniden casus gönderebileceğimiz hafta}
 var spy_until: Dictionary = {}
-var spy_cd: Dictionary = {}
-var focus: Dictionary = {}               # odak ağacı durumu (focus.gd)
+var spy_cd: Dictionary:                   # casusluk bekleme süreleri (hedef -> tur); her insan oyuncunun kendisi
+	get:
+		if player < 0:
+			return {}
+		if not spy_cd_by.has(player):
+			spy_cd_by[player] = {}
+		return spy_cd_by[player]
+	set(v):
+		if player >= 0:
+			spy_cd_by[player] = v
+var spy_cd_by: Dictionary = {}
+var focus: Dictionary:                   # odak ağacı durumu (focus.gd); her insan oyuncunun kendisi
+	get:
+		if player < 0:
+			return {}
+		if not focus_by.has(player):
+			focus_by[player] = {}
+		return focus_by[player]
+	set(v):
+		if player >= 0:
+			focus_by[player] = v
+var focus_by: Dictionary = {}
 
 
 func spy_active(cid: int) -> bool:
@@ -3304,25 +3370,62 @@ func _battle(att, def, dest: int) -> void:
 
 
 ## Fetih sürtünmesi: oyuncu hızla toprak kazanırsa dünya tepki gösterir; eşik aşılınca komşular ve büyük güçler koalisyon kurar.
+func _int_keyed_dict(src) -> Dictionary:
+	var out := {}
+	for k in (src as Dictionary).keys():
+		out[int(k)] = ((src as Dictionary)[k] as Dictionary).duplicate(true)
+	return out
+
+
+## Her insan için `player`ı geçici olarak o insana çevirip çağırır (haftalık sayaçlar; sunucuda player = -1). Tek oyunculuda yalnızca `player` için çağırır.
+func for_each_human(fn: Callable) -> void:
+	if humans.is_empty():
+		fn.call()
+		return
+	var saved: int = player
+	for h in humans:
+		player = int(h)
+		fn.call()
+	player = saved
+
+
+func _int_keyed(src) -> Dictionary:
+	var out := {}
+	for k in (src as Dictionary).keys():
+		out[int(k)] = (src as Dictionary)[k]
+	return out
+
+
 func _coalition_tick() -> void:
-	if player < 0:
+	if humans.is_empty():
+		_coalition_for(player)
+		return
+	var saved: int = player
+	for h in humans:
+		player = int(h)          # insan başına ayrı tepki sayacı (property'ler `player`e bağlı); koalisyon her insana karşı ayrı kurulur
+		_coalition_for(int(h))
+	player = saved
+
+
+func _coalition_for(pid: int) -> void:
+	if pid < 0:
 		return
 	infamy = maxf(0.0, infamy - 0.35)
 	if infamy < 15.0:
 		infamy_warned = false
 	elif infamy >= 25.0 and not infamy_warned:
 		infamy_warned = true
-		post_news("Dünya, %s'nin yükselişinden endişeli: komşular ve büyük güçler soğuk bakıyor." % countries[player].name, -1, "war")
+		post_news("Dünya, %s'nin yükselişinden endişeli: komşular ve büyük güçler soğuk bakıyor." % countries[pid].name, -1, "war")
 	if infamy < 50.0 or turn % 8 != 0:
 		return
 	var pool: Array = []
-	var nb: Array = neighbor_countries(player)
+	var nb: Array = neighbor_countries(pid)
 	for c in countries:
-		if not c.alive or c.is_rebel or c.id == player or is_allied(c.id, player) or at_war(c.id, player):
+		if not c.alive or c.is_rebel or c.id == pid or is_allied(c.id, pid) or at_war(c.id, pid):
 			continue
-		if c.truce.get(player, -1) > turn:
+		if c.truce.get(pid, -1) > turn:
 			continue
-		if nb.has(c.id) or c.troops > countries[player].troops * 0.5:
+		if nb.has(c.id) or c.troops > countries[pid].troops * 0.5:
 			pool.append(c)
 	if pool.is_empty():
 		return
@@ -3332,11 +3435,11 @@ func _coalition_tick() -> void:
 	for c in pool:
 		if joined >= n:
 			break
-		if declare_war(c.id, player, true):
+		if declare_war(c.id, pid, true):
 			joined += 1
 	if joined > 0:
 		infamy = maxf(0.0, infamy - 10.0 * joined)
-		post_news("KOALİSYON! %d ülke, %s'nin fetihlerine karşı savaş ilan etti." % [joined, countries[player].name], -1, "war_player")
+		post_news("KOALİSYON! %d ülke, %s'nin fetihlerine karşı savaş ilan etti." % [joined, countries[pid].name], -1, "war_player")
 
 
 ## Büyük bir muharebe kazanan ordu komutan çıkarır; kazandıkça seviye atlar (azami 5).
@@ -3440,6 +3543,8 @@ func _complete_siege(a, p) -> void:
 		stats.p_captures += 1
 		if not countries[p.owner].is_rebel:
 			infamy = minf(100.0, infamy + 2.5)
+	elif humans.has(a.owner) and not countries[p.owner].is_rebel:       # çevrimiçi/aynı telefon: `player` boşta; fetheden insanın sayacına yaz
+		infamy_by[a.owner] = minf(100.0, float(infamy_by.get(a.owner, 0.0)) + 2.5)
 	province_changed.emit(p.id)
 	var by_name: String = countries[a.owner].name
 	if is_net_multi():
@@ -4515,7 +4620,7 @@ func to_dict() -> Dictionary:
 		"v": 3, "seed": seed_value, "base": base_country_count,
 		"turn": turn, "player": player, "humans": humans, "hs_i": hs_i, "offers": offers.duplicate(true), "next_offer_id": next_offer_id, "next_army_id": next_army_id, "victory": victory_declared,
 		"rng_state": rng.state, "rebel_names": rebel_name_count, "merc_names": merc_names, "stats": stats,
-		"difficulty": difficulty, "blocs": blocs, "next_bloc": next_bloc_id, "cold": cold, "sea_camp": sea_campaign.keys(), "crisis": crisis, "crisis_end": crisis_last_end, "scn": scn, "era": Eras.current, "nuke_cd": nuke_cd, "gas_cd": gas_cd, "grand": grand, "chokes": chokes, "daily": daily, "pol": pol, "faith": faith, "focus": focus, "syear": Names.start_year, "wroom": wroom, "indep": indep, "career": career, "moment_p": moment_pending, "moment_f": moment_flags, "infamy": infamy, "un_cd": un_cd, "un_log": un_log, "aid": aid, "trade_by": trade_by.duplicate(true), "vassals": vassals, "custom_ovr": custom_ovr,
+		"difficulty": difficulty, "blocs": blocs, "next_bloc": next_bloc_id, "cold": cold, "sea_camp": sea_campaign.keys(), "crisis": crisis, "crisis_end": crisis_last_end, "scn": scn, "era": Eras.current, "nuke_cd_by": nuke_cd_by.duplicate(true), "gas_cd_by": gas_cd_by.duplicate(true), "grand_by": grand_by.duplicate(true), "spy_cd_by": spy_cd_by.duplicate(true), "focus_by": focus_by.duplicate(true), "chokes": chokes, "daily": daily, "pol": pol, "faith": faith,  "syear": Names.start_year, "wroom": wroom, "indep": indep, "career": career, "moment_p": moment_pending, "moment_f": moment_flags, "infamy_by": infamy_by.duplicate(true), "infamy_w_by": infamy_warned_by.duplicate(true), "un_cd_by": un_cd_by.duplicate(true), "un_log": un_log, "aid": aid, "trade_by": trade_by.duplicate(true), "vassals": vassals, "custom_ovr": custom_ovr,
 	}
 	Fleets.ensure(self)
 	d["fleets"] = Fleets.to_array(self)
@@ -4682,14 +4787,19 @@ func from_dict(d: Dictionary) -> bool:
 	crisis_last_end = int(d.get("crisis_end", -999))
 	scn = d.get("scn", {}).duplicate(true)
 	crisis_pending = {}
-	nuke_cd = int(d.get("nuke_cd", 0))
-	gas_cd = int(d.get("gas_cd", 0))
-	grand = d.get("grand", {}).duplicate(true)
+	nuke_cd_by = _int_keyed(d.get("nuke_cd_by", {}))
+	gas_cd_by = _int_keyed(d.get("gas_cd_by", {}))
+	grand_by = _int_keyed_dict(d.get("grand_by", {}))
+	spy_cd_by = _int_keyed_dict(d.get("spy_cd_by", {}))
+	focus_by = _int_keyed_dict(d.get("focus_by", {}))
+	var pl1: int = int(d.get("player", -1))
+	if pl1 >= 0 and not d.has("focus_by"):          # eski kayıt: tek kopya kaydeden oyuncuya aittir
+		grand_by[pl1] = (d.get("grand", {}) as Dictionary).duplicate(true)
+		focus_by[pl1] = (d.get("focus", {}) as Dictionary).duplicate(true)
 	chokes = d.get("chokes", {}).duplicate(true)
 	daily = d.get("daily", {}).duplicate(true)
 	pol = d.get("pol", {}).duplicate(true)
 	faith = d.get("faith", {}).duplicate(true)
-	focus = d.get("focus", {}).duplicate(true)
 	if era_id == "" and d.has("syear"):
 		Names.start_year = int(d["syear"])
 	wroom = d.get("wroom", {}).duplicate(true)
@@ -4699,8 +4809,19 @@ func from_dict(d: Dictionary) -> bool:
 	career = d.get("career", {}).duplicate(true)
 	moment_pending = d.get("moment_p", {}).duplicate(true)
 	moment_flags = d.get("moment_f", {}).duplicate(true)
-	infamy = float(d.get("infamy", 0.0))
-	un_cd = d.get("un_cd", {}).duplicate()
+	infamy_by = _int_keyed(d.get("infamy_by", {}))
+	infamy_warned_by = _int_keyed(d.get("infamy_w_by", {}))
+	un_cd_by = {}
+	for k in (d.get("un_cd_by", {}) as Dictionary).keys():
+		un_cd_by[int(k)] = ((d.un_cd_by as Dictionary)[k] as Dictionary).duplicate()
+	var pl0: int = int(d.get("player", -1))
+	if pl0 >= 0 and not d.has("infamy_by"):          # eski kayıt: tek sayaç, kaydeden oyuncuya aittir
+		infamy_by[pl0] = float(d.get("infamy", 0.0))
+		un_cd_by[pl0] = (d.get("un_cd", {}) as Dictionary).duplicate()
+		if int(d.get("nuke_cd", 0)) > 0:
+			nuke_cd_by[pl0] = int(d.nuke_cd)
+		if int(d.get("gas_cd", 0)) > 0:
+			gas_cd_by[pl0] = int(d.gas_cd)
 	aid = d.get("aid", {"cd": {}, "good": {}}).duplicate(true)
 	trade_by = {}
 	for k in (d.get("trade_by", {}) as Dictionary).keys():
