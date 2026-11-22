@@ -4888,7 +4888,13 @@
   "Online: ticaret ve geçiş izni artık sorulur": "在线：贸易与通行现在需要对方同意",
   "Karşıdaki oyuncu insansa ticaret anlaşması ve geçiş izni ona teklif olarak gider; kabul ederse yürürlüğe girer, cevap sana haber olur. Ticaret ve elçi/hediye bekleme süreleri oyuncu başına ayrıldı.": "如果对方是真人玩家，贸易协定或通行许可会作为提议发给他；只有他接受才生效，你会收到回复。贸易与使节/礼物的冷却现在按玩家分别计算。",
   "Bildirimler ve ekran düzeni": "通知与屏幕布局",
-  "Üstteki uyarılar (ör. «ilişki zaten en üst düzeyde») artık açılan panellerin önünde görünür. Oyun başındaki dev boş kutu giderildi. Tur süresi ve bayrak şeridi küçüldü, tıklamayı engellemiyor. Elçi/hediye gibi haberler her turda doğru ulaşır. Odadan çıkınca kalan eski oda yeni oda kurarken otomatik kapanır.": "顶部提示（如“关系已达最高”）现在显示在已打开的面板前面。游戏开始时的巨大空框已消失。回合计时器和国旗条变小，不再阻挡点击。使节/礼物的消息每回合都会可靠送达。退出后遗留的房间会在你创建新房间时自动关闭。"
+  "Üstteki uyarılar (ör. «ilişki zaten en üst düzeyde») artık açılan panellerin önünde görünür. Oyun başındaki dev boş kutu giderildi. Tur süresi ve bayrak şeridi küçüldü, tıklamayı engellemiyor. Elçi/hediye gibi haberler her turda doğru ulaşır. Odadan çıkınca kalan eski oda yeni oda kurarken otomatik kapanır.": "顶部提示（如“关系已达最高”）现在显示在已打开的面板前面。游戏开始时的巨大空框已消失。回合计时器和国旗条变小，不再阻挡点击。使节/礼物的消息每回合都会可靠送达。退出后遗留的房间会在你创建新房间时自动关闭。",
+  "Bağımsızlık Yolu: kendi bayrağını tasarla": "独立之路：设计你自己的旗帜",
+  "Hareketi kurarken «Bayrak tasarla» düğmesiyle kendi bayrağını çizebilirsin; boş bırakırsan renklerinden otomatik çizilir.": "创建运动时，可用“设计旗帜”按钮绘制自己的旗帜；留空则根据你的颜色自动生成。",
+  "Bayraklar: tüm dünya gerçek görsellerle": "旗帜：全世界使用真实图像",
+  "Dönem bayrakları (1914, 1939, 1962, Orta Çağ), oluşturulabilir devletler, Somaliland, Kuzey Kıbrıs ve senaryo devletleri artık gerçek bayrak görselleriyle çizilir. İsyancı gruplar da ülkesine ve çağına göre farklı bir bayrak taşır.": "时代旗帜（1914、1939、1962、中世纪）、可建立的国家、索马里兰、北塞浦路斯和剧本国家现在使用真实旗帜图像。叛乱团体也会根据所属国家和时代使用不同的旗帜。",
+  "Online: ortak sayaçlar herkese ayrı": "在线：共用计数器现按玩家分开",
+  "Dünya tepkisi, kimyasal ve nükleer bekleme, BM önergesi ve casusluk beklemesi artık her oyuncuya ayrı; koalisyon yalnızca fetihlerle yükselen oyuncuya kurulur. Odak ağacı ile Büyük Harekât sunucuda ilerliyor (önceden online'da ilerlemiyordu).": "世界反应、化学和核武器冷却、联合国提案冷却与间谍冷却现在按玩家分开；联盟只会针对因征服而引发它的玩家形成。国策树和大型行动现在在服务器上推进（此前在线时不会推进）。"
  },
  "months": [
   "1月",

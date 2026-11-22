@@ -294,8 +294,11 @@ static func open_howto(parent: Node) -> void:
 			render.call())
 
 
-const UPDATE_VER := "1.2.48"
+const UPDATE_VER := "1.2.49"
 const WHATS_NEW := [
+	["Bağımsızlık Yolu: kendi bayrağını tasarla", "Hareketi kurarken «Bayrak tasarla» düğmesiyle kendi bayrağını çizebilirsin; boş bırakırsan renklerinden otomatik çizilir."],
+	["Bayraklar: tüm dünya gerçek görsellerle", "Dönem bayrakları (1914, 1939, 1962, Orta Çağ), oluşturulabilir devletler, Somaliland, Kuzey Kıbrıs ve senaryo devletleri artık gerçek bayrak görselleriyle çizilir. İsyancı gruplar da ülkesine ve çağına göre farklı bir bayrak taşır."],
+	["Online: ortak sayaçlar herkese ayrı", "Dünya tepkisi, kimyasal ve nükleer bekleme, BM önergesi ve casusluk beklemesi artık her oyuncuya ayrı; koalisyon yalnızca fetihlerle yükselen oyuncuya kurulur. Odak ağacı ile Büyük Harekât sunucuda ilerliyor (önceden online'da ilerlemiyordu)."],
 	["Online: askerler ilerlemiyordu — düzeldi", "Online oyunda il numarası büyük olan hedeflere verilen ordu emirleri sunucuda reddediliyordu; bu yüzden iki oyuncu savaşırken askerler ilerlemiyor, saldırı başlamıyordu. Düzeltildi."],
 	["Online: ticaret ve geçiş izni artık sorulur", "Karşıdaki oyuncu insansa ticaret anlaşması ve geçiş izni ona teklif olarak gider; kabul ederse yürürlüğe girer, cevap sana haber olur. Ticaret ve elçi/hediye bekleme süreleri oyuncu başına ayrıldı."],
 	["Bildirimler ve ekran düzeni", "Üstteki uyarılar (ör. «ilişki zaten en üst düzeyde») artık açılan panellerin önünde görünür. Oyun başındaki dev boş kutu giderildi. Tur süresi ve bayrak şeridi küçüldü, tıklamayı engellemiyor. Elçi/hediye gibi haberler her turda doğru ulaşır. Odadan çıkınca kalan eski oda yeni oda kurarken otomatik kapanır."],

@@ -4888,7 +4888,13 @@
   "Online: ticaret ve geçiş izni artık sorulur": "온라인: 무역과 통과는 이제 상대에게 묻습니다",
   "Karşıdaki oyuncu insansa ticaret anlaşması ve geçiş izni ona teklif olarak gider; kabul ederse yürürlüğe girer, cevap sana haber olur. Ticaret ve elçi/hediye bekleme süreleri oyuncu başına ayrıldı.": "상대가 사람 플레이어이면 무역 협정과 통과 허가는 제안으로 전달되며, 수락해야만 발효되고 답변이 통지됩니다. 무역과 사절/선물 대기 시간은 이제 플레이어별로 적용됩니다.",
   "Bildirimler ve ekran düzeni": "알림과 화면 배치",
-  "Üstteki uyarılar (ör. «ilişki zaten en üst düzeyde») artık açılan panellerin önünde görünür. Oyun başındaki dev boş kutu giderildi. Tur süresi ve bayrak şeridi küçüldü, tıklamayı engellemiyor. Elçi/hediye gibi haberler her turda doğru ulaşır. Odadan çıkınca kalan eski oda yeni oda kurarken otomatik kapanır.": "상단 경고(예: '관계가 이미 최고 수준')가 이제 열린 패널 앞에 표시됩니다. 게임 시작 때의 거대한 빈 상자가 사라졌습니다. 턴 타이머와 국기 막대는 작아졌고 터치를 막지 않습니다. 사절/선물 소식이 매 턴 제대로 전달됩니다. 나간 뒤 남은 방은 새 방을 만들 때 자동으로 닫힙니다."
+  "Üstteki uyarılar (ör. «ilişki zaten en üst düzeyde») artık açılan panellerin önünde görünür. Oyun başındaki dev boş kutu giderildi. Tur süresi ve bayrak şeridi küçüldü, tıklamayı engellemiyor. Elçi/hediye gibi haberler her turda doğru ulaşır. Odadan çıkınca kalan eski oda yeni oda kurarken otomatik kapanır.": "상단 경고(예: '관계가 이미 최고 수준')가 이제 열린 패널 앞에 표시됩니다. 게임 시작 때의 거대한 빈 상자가 사라졌습니다. 턴 타이머와 국기 막대는 작아졌고 터치를 막지 않습니다. 사절/선물 소식이 매 턴 제대로 전달됩니다. 나간 뒤 남은 방은 새 방을 만들 때 자동으로 닫힙니다.",
+  "Bağımsızlık Yolu: kendi bayrağını tasarla": "독립의 길: 나만의 깃발 디자인",
+  "Hareketi kurarken «Bayrak tasarla» düğmesiyle kendi bayrağını çizebilirsin; boş bırakırsan renklerinden otomatik çizilir.": "운동을 만들 때 «깃발 디자인» 버튼으로 직접 깃발을 그릴 수 있습니다. 비워 두면 색상에서 자동으로 그려집니다.",
+  "Bayraklar: tüm dünya gerçek görsellerle": "국기: 전 세계가 실제 이미지로",
+  "Dönem bayrakları (1914, 1939, 1962, Orta Çağ), oluşturulabilir devletler, Somaliland, Kuzey Kıbrıs ve senaryo devletleri artık gerçek bayrak görselleriyle çizilir. İsyancı gruplar da ülkesine ve çağına göre farklı bir bayrak taşır.": "시대별 국기(1914·1939·1962·중세), 건국 가능한 국가, 소말릴란드, 북키프로스, 시나리오 국가가 이제 실제 국기 이미지로 표시됩니다. 반군 단체도 나라와 시대에 따라 다른 깃발을 사용합니다.",
+  "Online: ortak sayaçlar herkese ayrı": "온라인: 공용 카운터가 플레이어별로 분리",
+  "Dünya tepkisi, kimyasal ve nükleer bekleme, BM önergesi ve casusluk beklemesi artık her oyuncuya ayrı; koalisyon yalnızca fetihlerle yükselen oyuncuya kurulur. Odak ağacı ile Büyük Harekât sunucuda ilerliyor (önceden online'da ilerlemiyordu).": "세계 반응, 화학·핵 대기 시간, UN 안건 대기 시간, 첩보 대기 시간이 플레이어별로 분리됩니다. 연합은 정복으로 반응을 높인 플레이어에게만 결성됩니다. 국가 방침 트리와 대작전은 이제 서버에서 진행됩니다(이전에는 온라인에서 진행되지 않았습니다)."
  },
  "months": [
   "1월",
