@@ -153,6 +153,12 @@ func _ready() -> void:
 	menu.multi_pressed.connect(_on_multi_menu)
 	menu.era_chosen.connect(func(id: String): _start_era(id))
 	menu.scenario_era.connect(func(sid: String, era: String): _start_era(era, sid))
+	menu.scenario_leave_era.connect(func(sid: String):
+		_new_world()
+		menu.reset_world()
+		map.repaint_all()
+		_to_select()
+		menu.set_scenario(sid))
 	menu.indep_start.connect(_start_indep)
 	menu.career_era.connect(_career_pick_era)
 	menu.daily_start.connect(_start_daily)
@@ -589,7 +595,7 @@ func _on_step() -> void:
 	# savaş/barış teklifi gibi pencereler açıldıysa önce onlar kapansın
 	while mode == "game" and ui.is_dialog_open():
 		await get_tree().create_timer(0.2).timeout
-	if mode == "game" and playing and gs != null:
+	if mode == "game" and playing and gs != null and _bulletin_due():
 		var rep = TurnUI.build_report(ui, gs, before, func(pid: int):
 			map.focus_province(pid, FOCUS_ZOOM)
 			_select(pid))
@@ -597,7 +603,24 @@ func _on_step() -> void:
 		sfx.play("news", 0.9)
 		await rep.closed
 		await _cabinet_turn()
+	elif mode == "game" and playing and gs != null:
+		await _cabinet_turn()
 	turn_busy = false
+
+
+## Cihan Bülteni bu turda açılsın mı? Ayar açıksa her tur; kapalıysa yalnızca oyuncuya özel önemli haber varsa ya da 8 turda bir.
+func _bulletin_due() -> bool:
+	if Settings.bulletin or gs == null:
+		return true
+	if gs.turn % 8 == 0:
+		return true
+	for i in range(gs.news_log.size() - 1, maxi(-1, gs.news_log.size() - 40), -1):
+		var r: Dictionary = gs.news_log[i]
+		if int(r.get("turn", 0)) < gs.turn + gs.news_bias - 1:
+			break
+		if String(r.get("kind", "")) in ["war_player", "capture_player", "lost_player", "dipl", "peace"]:
+			return true
+	return false
 
 
 ## Bülten kapandıktan sonra, ayar açıksa ve sıra gelmişse bir kabine kartı göster.

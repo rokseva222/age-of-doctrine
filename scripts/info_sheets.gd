@@ -129,6 +129,9 @@ static func open_settings(parent: Node, on_change: Callable, sfx = null) -> void
 	sh.body.add_child(TK.toggle_row("Otomatik kayıt", Settings.autosave, func(on: bool):
 		Settings.autosave = on
 		changed.call(), "Her 13 haftada (üç ayda) bir kaydeder."))
+	sh.body.add_child(TK.toggle_row("Her tur haber bülteni", Settings.bulletin, func(on: bool):
+		Settings.bulletin = on
+		changed.call(), "Kapalıyken Cihan Bülteni ekranı yalnızca sana özel önemli bir şey olduğunda (savaş, eyalet kaybı/fethi, diplomasi, barış) ve 8 turda bir açılır; diğer haberler üstteki şeritte akar."))
 	sh.body.add_child(TK.toggle_row("Kabine kartları", Settings.cabinet, func(on: bool):
 		Settings.cabinet = on
 		changed.call(), "Bakanlar arada bir karar sorar (savunma, dışişleri, içişleri, maliye, sağlık, istihbarat). Bazı riskli seçimler oyunu bitirebilir."))

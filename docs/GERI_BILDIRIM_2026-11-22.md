@@ -4,13 +4,13 @@ Kaynak: ahmett_ttarik, luciferdeu, erenkbtss, devranpashaa, play store paylaşı
 
 ## Hatalar
 - B1. Kasma/donma arttı (kullanıcı notu).
-- B2. Senaryo menüsü bir kez kapatılınca tekrar açılamıyor / tıklanmıyor (grup, Eren Akgün).
+- B2. [YAPILDI] Senaryo menüsü bir kez kapatılınca tekrar açılamıyor / tıklanmıyor (grup, Eren Akgün).
 - B3. Ruslarla ilişki %41 iken Rusya savaş açtı (1914?) — savaş koşulu kontrol edilmeli.
-- B4. Bir devletle yeni savaşa girince 5 devlet daha savaş açıyor, bitirince 5 yeni devlet açıyor; "saldırganlık %0" görünüyor — sürekli savaş açma sarmalı.
-- B5. WW1: Almanya ve Avusturya-Macaristan ilişkiler yavaş azalıp ittifaktan çıkıyor, ilk ~15 haftadan sonra ikisi birlikte barış imzalıyor (oyuncu tek başına kalıyor). Kafkasya'da Ruslar tüm birliklerini oyuncuya çekiyor — denge.
+- B4. [YAPILDI: oyuncuya karşı tek savaşta en çok 3 müttefik katılır; 3+ savaştaysa YZ yığılmaz] Bir devletle yeni savaşa girince 5 devlet daha savaş açıyor, bitirince 5 yeni devlet açıyor; "saldırganlık %0" görünüyor — sürekli savaş açma sarmalı.
+- B5. [YAPILDI: DS çağlarında 20 hafta erken barış yok, savaşta ittifak çözülmez] WW1: Almanya ve Avusturya-Macaristan ilişkiler yavaş azalıp ittifaktan çıkıyor, ilk ~15 haftadan sonra ikisi birlikte barış imzalıyor (oyuncu tek başına kalıyor). Kafkasya'da Ruslar tüm birliklerini oyuncuya çekiyor — denge.
 - B6. Bütçe/teknoloji göstergesi nasıl yükselir belli değil; öğreticide yok; bütçede tarım/eğitim/teknoloji güncellenmemiş görünüyor.
 - B7. Ordu konumunu kaybetme: rakamlar karışık, ordunun yeri bulunamıyor (Vietnam örneği).
-- B8. Savaş sonrası/başlangıç haber ekranları (Cihan Bülteni) sürekli çıkıyor — kapatma/ayar isteniyor.
+- B8. [YAPILDI: Ayarlar > 'Her tur haber bülteni'] Savaş sonrası/başlangıç haber ekranları (Cihan Bülteni) sürekli çıkıyor — kapatma/ayar isteniyor.
 - B9. "Haber başlıkları tarihe bağlı olmalı" (ör. ABD'nin Küba anlaşması/Jüpiter füzeleri haberi) — haber başlıkları döneme/olaya uygun olmalı.
 - B10. Harita seçince yanında ittifaklarını da getiriyor ve silinemiyor (senaryo/seçim ekranı).
 - B11. Hava ordusunu nasıl güçlendireceği belli değil (deniz filosu güçlendirilebiliyor).

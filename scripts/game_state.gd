@@ -1796,16 +1796,26 @@ func _call_allies_of(defender: int, attacker: int) -> void:
 
 
 func _call_allies(attacker: int, defender: int) -> void:
+	# oyuncuya karşı tek savaşta en çok 3 müttefik katılır (5-6 devletin birden savaş açması sarmalı yaşanmasın)
+	var vs_player: bool = (attacker == player or defender == player) and Eras.current == ""
+	var left: int = 3 if vs_player else 99
 	for ally in countries[defender].allies.duplicate():
-		_ally_join(ally, defender, attacker, "defend")
+		if left <= 0 and attacker == player:
+			break
+		if _ally_join(ally, defender, attacker, "defend") and attacker == player:
+			left -= 1
+	left = 3 if vs_player else 99
 	for ally in countries[attacker].allies.duplicate():
-		_ally_join(ally, attacker, defender, "attack")
+		if left <= 0 and defender == player:
+			break
+		if _ally_join(ally, attacker, defender, "attack") and defender == player:
+			left -= 1
 
 
-func _ally_join(ally: int, friend: int, foe: int, kind: String) -> void:
+func _ally_join(ally: int, friend: int, foe: int, kind: String) -> bool:
 	var c = countries[ally]
 	if not c.alive or ally == foe or at_war(ally, foe) or is_allied(ally, foe):
-		return
+		return false
 	if is_other_human(ally):
 		if is_net_multi():
 			var fn: String = countries[friend].name
@@ -1814,17 +1824,19 @@ func _ally_join(ally: int, friend: int, foe: int, kind: String) -> void:
 				notify_human(ally, "Müttefikin %s, %s tarafından saldırıya uğradı. İstersen savaşa katılabilirsin." % [fn, en], countries[friend].capital)
 			else:
 				notify_human(ally, "Müttefikin %s, %s devletine savaş açtı. İstersen savaşa katılabilirsin." % [fn, en], countries[friend].capital)
-		return
+		return false
 	if ally == player:
 		if setup_mode:
-			return
+			return false
 		if not pending_proposal:
 			pending_proposal = true
 			ally_call.emit(friend, foe, kind)
-		return
+		return false
 	if rng.randf() < (0.75 if kind == "defend" else 0.55):
 		if declare_war(ally, foe, true):
 			post_news(Names.ally_joined(rng, c.name, countries[friend].name, countries[foe].name), c.capital, "war")
+			return true
+	return false
 
 
 func _alliance_decay() -> void:
@@ -1832,6 +1844,8 @@ func _alliance_decay() -> void:
 		if not c.alive:
 			continue
 		for a in c.allies.duplicate():
+			if Eras.current != "" and (not c.enemies.is_empty() or not countries[a].enemies.is_empty()):
+				continue          # tarihî çağlarda savaş sürerken ittifaklar çözülmez (Mihver/İtilaf)
 			if a > c.id and rng.randf() < (0.0008 if Eras.current != "" else 0.003):
 				# ortak düşmana karşı savaşan müttefikler savaş sürerken ayrılmaz (Entente/Mihver dağılmasın)
 				var shared := false
@@ -2879,6 +2893,17 @@ func _ai_wants_peace(ai: int, w) -> bool:
 	var dur: int = turn - w.start
 	if dur < 4:
 		return false
+	if Eras.current != "" and Eras.family() in ["ww1", "ww2"]:
+		# tarihî dünya savaşlarında erken ayrı barış yok: savaş en az ~5 ay sürer, ancak ağır yenilgide barış istenir
+		if dur < 20:
+			return false
+		if _lost_ratio(ai) > 0.55:
+			return true
+		if dur > 30 and mine * 1.5 < theirs:
+			return true
+		if dur > 60 and absi(mine - theirs) < 15:
+			return true
+		return countries[ai].troops <= 0 and dur > 10
 	if _lost_ratio(ai) > 0.35:
 		return true
 	if dur > 8 and mine * 1.5 < theirs:
@@ -4110,8 +4135,8 @@ func _ai_war_decision(c) -> void:
 			continue
 		if c.truce.get(oid, -1) > turn:
 			continue
-		if oid == player and turn < 14:
-			continue
+		if oid == player and (turn < 14 or o.enemies.size() >= 3):
+			continue          # oyuncu zaten 3+ savaştaysa yapay zekâ üstüne yığılmaz
 		if oid == player and Career.active(self) and Career.state(self) == "vassal" and c.id != int(career.host):
 			continue          # hükümdarın himayesindeki tımara yabancı devlet saldırmaz
 		var their_power := power_of(o)

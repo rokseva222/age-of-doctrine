@@ -27,6 +27,7 @@ const INTRO_PATH := "res://assets/brand/rok_intro.ogv"
 signal splash_done()
 signal play_pressed()
 signal era_chosen(id: String)
+signal scenario_leave_era(sid: String)       # çağ kipindeyken modern senaryo seçildi: dünya yeniden kurulup senaryo seçilir
 signal scenario_era(sid: String, era: String)     # çağlı kullanıcı senaryosu seçildi: dünya o çağa kurulur
 signal indep_start(params: Dictionary)
 signal career_era(era_id: String)
@@ -698,7 +699,7 @@ func set_era(id: String) -> void:
 	var e: Dictionary = Eras.get_era(id)
 	if _scn_btn != null:
 		_scn_btn.text = TK.up("%s  /  %s" % [e["name"], e["sub"]])
-		_scn_btn.disabled = true
+		_scn_btn.disabled = false      # çağdayken de senaryo listesi açılabilsin (modern bir senaryo seçilirse çağdan çıkılır)
 
 
 func _apply_suggest(suggest: Array) -> void:
@@ -730,6 +731,9 @@ func set_scenario(sid: String) -> void:
 		else:
 			scenario_era.emit(sid, sc_era)
 			return
+	if era_id != "":
+		scenario_leave_era.emit(sid)      # çağ kipinden modern dünyaya dön, sonra bu senaryoyu seç
+		return
 	scenario_id = sid
 	var sc: Dictionary = Scenarios.get_sc(sid)
 	_scn_btn.text = TK.up(sc["name"])

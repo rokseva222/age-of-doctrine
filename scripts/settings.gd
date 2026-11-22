@@ -15,6 +15,7 @@ static var navy := true       # deniz filosu rozetleri (duraklatma menüsünden)
 static var air := true        # hava filosu rozetleri
 static var autosave := true
 static var cabinet := true            # kabine/danışman kartları
+static var bulletin := true           # her turda Cihan Bülteni ekranı (kapalıyken yalnızca önemli turlarda ve 8 turda bir)
 static var notifications := true       # 5 saatte bir "ordun seni bekliyor" bildirimi (Android)
 static var language := ""             # "tr" / "en"; boşsa sistem dilinden seçilir
 static var auto_orders := true        # emir vermediğin turda boştaki ordular otomatik görev alır
@@ -91,6 +92,7 @@ static func load_all() -> void:
 		ui_scale = clampf(float(cf.get_value("view", "ui_scale", ui_scale)), 0.6, 1.4)
 	autosave = bool(cf.get_value("game", "autosave", autosave))
 	cabinet = bool(cf.get_value("game", "cabinet", cabinet))
+	bulletin = bool(cf.get_value("game", "bulletin", bulletin))
 	auto_orders = bool(cf.get_value("game", "auto_orders", auto_orders))
 	fog = clampi(int(cf.get_value("game", "fog", fog)), 0, 2)
 	currency = bool(cf.get_value("game", "currency", currency))
@@ -136,6 +138,7 @@ static func save_all() -> void:
 	cf.set_value("view", "ui_scale_ver", 3)
 	cf.set_value("game", "autosave", autosave)
 	cf.set_value("game", "cabinet", cabinet)
+	cf.set_value("game", "bulletin", bulletin)
 	cf.set_value("game", "auto_orders", auto_orders)
 	cf.set_value("game", "fog", fog)
 	cf.set_value("game", "currency", currency)

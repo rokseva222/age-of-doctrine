@@ -13,6 +13,7 @@ var title_lbl: Label
 var can_close := true
 var on_cancel: Callable = Callable()  ## X'e / boşluğa dokunarak kapatınca çağrılır (vazgeçme)
 var _closing := false
+var _dim: ColorRect
 
 
 static func open(parent: Node, title: String, width: float = 640.0, tall: bool = false, closable: bool = true, kicker: String = ""):
@@ -27,6 +28,7 @@ func _build(title: String, width: float, tall: bool, closable: bool, kicker: Str
 	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	mouse_filter = Control.MOUSE_FILTER_STOP
 	var dim := ColorRect.new()
+	_dim = dim
 	dim.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	dim.color = Color(0.03, 0.04, 0.06, 0.78)
 	dim.mouse_filter = Control.MOUSE_FILTER_STOP
@@ -177,6 +179,12 @@ func close() -> void:
 		return
 	_closing = true
 	closed.emit()
+	# solma sürerken (0,12 sn) arkadaki düğmeleri engellemesin: tıklama alttaki menüye geçsin
+	mouse_filter = Control.MOUSE_FILTER_IGNORE
+	if _dim != null:
+		_dim.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	if panel != null:
+		panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	var tw := create_tween()
 	tw.tween_property(self, "modulate", Color(1, 1, 1, 0), 0.12)
 	tw.tween_callback(queue_free)
