@@ -38,3 +38,8 @@ Kaynak: ahmett_ttarik, luciferdeu, erenkbtss, devranpashaa, play store paylaşı
 - S1. "Ayşe Tatile Çıkıyor" — Kıbrıs Harekâtı: 1974 Ecevit dönemi + modern 2027 versiyonu.
 - S2. Rus–Çeçen savaşları (1994–96 ve 1999–2009), Çeçenistan bölgesi, Dağıstan vb. destek.
 - S3. Tüm senaryolara olay (event) artırımı — internet araştırmasıyla.
+- O18. Takvim: senaryo editöründe ve genel oyunda MÖ/MS (milat) sistemi — YAPILDI (Names.year_label, editörde MS/MÖ seçici, 13 dil).
+
+## Durum (2026-11-22 akşam)
+- S1 tamam (cyprus 1974/2027). S2 tamam (ch94/ch94c/ch99/ch99c, 32 olay kartı). O18 tamam.
+- Sıradaki: B1–B11 hata listesi, ardından S3 (tüm modlarda olay artırımı).

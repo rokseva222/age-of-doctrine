@@ -74,8 +74,18 @@ static var start_year := 2027
 static var start_doy := 0                  # yılın kaçıncı günü (0 = 1 Ocak)
 
 
+## Yıl etiketi: iç sayım astronomik değil, "y <= 0 → MÖ (1 - y)", "y >= 1 → MS y". 1000'den sonraki yıllar sade yazılır.
+static func year_label(y: int) -> String:
+	var cjk: bool = Loc.lang in ["zh", "ja", "ko"]
+	if y <= 0:
+		return Loc.t("MÖ %d") % (1 - y)
+	if y < 1000:
+		return Loc.t("MS %d") % y
+	return ("%d" % y) if not cjk else (("%d년" if Loc.lang == "ko" else "%d年") % y)
+
+
 static func date_string(turn: int) -> String:
-	# Her tur 1 hafta. Varsayılan başlangıç: 1 Ocak 2027 (tarihî kiplerde değişir).
+	# Her tur 1 hafta. Varsayılan başlangıç: 1 Ocak 2027 (tarihî kiplerde değişir; negatif yıl = MÖ).
 	var days := turn * 7 + start_doy
 	var year := start_year + days / 365
 	var doy := days % 365
@@ -83,12 +93,13 @@ static func date_string(turn: int) -> String:
 	while m < 11 and doy >= MONTH_DAYS[m]:
 		doy -= MONTH_DAYS[m]
 		m += 1
+	var yl := year_label(year)
 	match Loc.lang:
 		"zh", "ja":
-			return "%d年%s%d日" % [year, Loc.months[m], doy + 1]
+			return "%s%s%d日" % [yl, Loc.months[m], doy + 1]
 		"ko":
-			return "%d년 %s %d일" % [year, Loc.months[m], doy + 1]
-	return "%d %s %d" % [doy + 1, Loc.months[m], year]
+			return "%s %s %d일" % [yl, Loc.months[m], doy + 1]
+	return "%d %s %s" % [doy + 1, Loc.months[m], yl]
 
 
 ## [yıl, ay(1-12)]

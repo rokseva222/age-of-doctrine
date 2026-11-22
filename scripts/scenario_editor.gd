@@ -22,6 +22,7 @@ const OBJ_LABELS := {
 
 var root: Node
 var _year_spin: SpinBox
+var _cal_opt: OptionButton           # takvim: 0 = MS (Milattan sonra), 1 = MÖ (Milattan önce)
 var _prov_idx: Array = []
 var on_done: Callable
 var d := {}          # düzenlenen senaryo (yayın biçiminde)
@@ -278,16 +279,24 @@ func _build() -> void:
 	var yll := TK.t("Başlangıç yılı (0 = 2027)", "body", TK.TEXT)
 	yll.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	ylb.add_child(yll)
+	var yv0: int = int(d.get("year", 0))
 	_year_spin = SpinBox.new()
 	_year_spin.min_value = 0
-	_year_spin.max_value = 2100
+	_year_spin.max_value = 9999
 	_year_spin.step = 1
-	_year_spin.value = int(d.get("year", 0))
+	_year_spin.value = (1 - yv0) if yv0 <= 0 and d.has("year") else yv0
 	_year_spin.editable = String(d.get("era", "")) == ""
 	_year_spin.custom_minimum_size = Vector2(160, 52)
 	ylb.add_child(_year_spin)
+	_cal_opt = OptionButton.new()
+	_cal_opt.add_item(Loc.t("MS"))
+	_cal_opt.add_item(Loc.t("MÖ"))
+	_cal_opt.selected = 1 if (d.has("year") and yv0 <= 0) else 0
+	_cal_opt.disabled = String(d.get("era", "")) != ""
+	_cal_opt.custom_minimum_size = Vector2(110, 52)
+	ylb.add_child(_cal_opt)
 	pb.add_child(ylb)
-	pb.add_child(TK.t("Modern harita 2024 ve sonrası için kurulu; geçmiş yıllar için yukarıdan bir dönem seç (silahlar ve kabine o döneme uyar).", "small", TK.FAINT))
+	pb.add_child(TK.t("Yıl yalnızca takvimi belirler (MS/MÖ seçilebilir); harita modern kalır. Silahlar ve kabine o döneme uysun istiyorsan yukarıdan bir dönem seç.", "small", TK.FAINT))
 	var dlb := HBoxContainer.new()
 	dlb.add_theme_constant_override("separation", 10)
 	var dll := TK.t("Süre sınırı (hafta, 0 = yok)", "body", TK.TEXT)
@@ -1701,7 +1710,7 @@ func _collect() -> Dictionary:
 	d["deadline"] = int(_dl_spin.value)
 	var yv: int = int(_year_spin.value)
 	if yv >= 1 and String(d.get("era", "")) == "":
-		d["year"] = maxi(yv, 2024)
+		d["year"] = (1 - yv) if _cal_opt != null and _cal_opt.selected == 1 else yv     # MÖ n → 1 - n (MÖ 1 = 0)
 	else:
 		d.erase("year")
 	if d.get("transfer", []).is_empty():
