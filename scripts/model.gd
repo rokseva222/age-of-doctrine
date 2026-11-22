@@ -55,6 +55,7 @@ class Province:
 	var unrest := 0
 	var acquired := 0
 	var home := -1                           # başlangıç sahibi
+	var found := ""                          # keşif: "" aranmadı, "-" arandı/bulunamadı, aksi halde bulunan kaynak (oil/mine/wood)
 	var bld := ""                            # tamamlanmış gelir binası ("farm","mine","oil","press"; boş = yok)
 	var bld_wip := ""                        # inşaat halindeki bina
 	var bld_until := 0                       # inşaatın biteceği tur
@@ -63,6 +64,8 @@ class Province:
 		return 1 + dev + int(sqrt(maxf(pop, 0.0)) * 0.6)
 
 	func rich() -> String:
+		if found != "" and found != "-":
+			return found
 		var b: Dictionary = RichStore.bands.get(home, {})
 		if b.is_empty():
 			return ""

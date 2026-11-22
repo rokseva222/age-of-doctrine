@@ -2075,6 +2075,11 @@ func _on_ui_action(act: String, arg) -> void:
 					_refresh_selection(), "kind": "gold" if gs.countries[gs.player].gold >= bc else ""})
 			opts.append({"text": "Vazgeç", "cb": func(): pass})
 			ui.show_dialog("Bina kur: %s" % bp.name, "Bu eyalette haftalık vergi gelirini artıran bir bina kur. İnşaat %d hafta sürer; eyalet fetihle el değiştirirse bina yeni sahibe geçer." % Model.BLD_WEEKS, opts)
+		"explore":
+			var xr: Dictionary = gs.player_explore(arg)
+			ui.toast(Loc.t(xr.text))
+			sfx.play("peace" if xr.ok else "error", 0.7)
+			_refresh_selection()
 		"form":
 			ui.FormationUI.open(ui, gs)
 		"focus_country":

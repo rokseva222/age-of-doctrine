@@ -752,6 +752,8 @@ func show_province(pid: int, selected_army) -> void:
 			_abtn("%s inşa ediliyor: %d hafta" % [Model.bld_name(p.bld_wip, Macro.era_on and Eras.family() == "pre"), maxi(1, p.bld_until - gs.turn)], "", "hourglass", "none", 0, false)
 		else:
 			_abtn("Bina kur (gelir)", "gold", Icons.pick("build", "coins"), "build", pid)
+	if p.owner == me and p.controller == me and p.rich() == "" and p.found == "":
+		_abtn(Loc.t("Kaynak ara (%s)") % Macro.money(gs.explore_cost(pid)), "ghost", Icons.pick("build", "coins"), "explore", pid)
 	if p.owner == me:
 		_abtn("Toplu işlemler", "gold", Icons.pick("build", "coins"), "bulk", pid)
 	if p.owner == me and p.controller == me and Faith.of(gs, pid) != Faith.state_faith(gs, me):

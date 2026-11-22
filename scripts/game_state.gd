@@ -584,6 +584,38 @@ func player_build(pid: int, kind: String) -> String:
 	return ""
 
 
+## Kaynak arama (petrol/gaz/maden/orman): kendi eyaletinde bir kez yapılır; şansa bağlı. {ok, text}
+func explore_cost(pid: int) -> float:
+	return maxf(12.0, provinces[pid].base_rev() * 9.0)
+
+
+func player_explore(pid: int) -> Dictionary:
+	var _cmd := Cmd.Scope.new(self, "player_explore", [pid])
+	var p = provinces[pid]
+	var me = countries[player]
+	if p.owner != player or p.controller != player:
+		return {"ok": false, "text": "Yalnızca kendi kontrolündeki eyalette arama yapılır."}
+	if p.rich() != "" or p.found != "":
+		return {"ok": false, "text": "Bu eyalette arama zaten yapıldı ya da kaynak biliniyor."}
+	if p.siege > 0:
+		return {"ok": false, "text": "Kuşatma altında arama yapılamaz."}
+	var cost: float = explore_cost(pid)
+	if me.gold < cost:
+		return {"ok": false, "text": "Kasa yetmiyor."}
+	me.gold -= cost
+	if rng.randf() < 0.30:
+		var r: float = rng.randf()
+		p.found = "oil" if r < 0.5 else ("mine" if r < 0.8 else "wood")
+		post_news(Loc.t("%s eyaletinde yeni kaynak bulundu: %s") % [p.name, Loc.t(Model.RICH_NAMES[p.found])], pid, "info")
+		if not _quiet:
+			province_changed.emit(pid)
+		return {"ok": true, "text": Loc.t("Keşif başarılı: %s") % Loc.t(Model.RICH_NAMES[p.found])}
+	p.found = "-"
+	if not _quiet:
+		province_changed.emit(pid)
+	return {"ok": false, "text": "Arama sonuç vermedi: bu eyalette işletilebilir kaynak çıkmadı."}
+
+
 ## Oyuncu: kendi eyaletinin halkını devlet inancına döndür (barışta da yapılır; para + hafif huzursuzluk).
 func faith_convert_cost(pid: int) -> float:
 	var same_fam: bool = Faith.family_of(Faith.of(self, pid)) == Faith.family_of(Faith.state_faith(self, player)) if player >= 0 else false
@@ -4911,7 +4943,7 @@ func to_dict() -> Dictionary:
 	d["next_wing"] = next_wing_id
 	var ps: Array = []
 	for p in provinces:
-		ps.append([p.owner, p.controller, p.siege, p.siege_by, p.dev, p.is_capital, p.core, p.unrest, p.acquired, p.pop, p.defense, p.gdp, p.bld, p.bld_wip, p.bld_until])
+		ps.append([p.owner, p.controller, p.siege, p.siege_by, p.dev, p.is_capital, p.core, p.unrest, p.acquired, p.pop, p.defense, p.gdp, p.bld, p.bld_wip, p.bld_until, p.found])
 	d["provinces"] = ps
 	var cs: Array = []
 	for c in countries:
@@ -4978,6 +5010,7 @@ func from_dict(d: Dictionary) -> bool:
 			p.bld = str(r[12])
 			p.bld_wip = str(r[13])
 			p.bld_until = int(r[14])
+		p.found = str(r[15]) if r.size() > 15 else ""
 	var cs: Array = d.countries
 	while countries.size() < cs.size():
 		var nc := Model.Country.new()
