@@ -15,7 +15,7 @@ const Focus = preload("res://scripts/focus.gd")
 const Currency = preload("res://scripts/currency.gd")
 const Cmd = preload("res://scripts/cmd.gd")
 
-const BUDGET_KEYS := ["mil", "ind", "cyber", "logi", "stab", "res"]
+const BUDGET_KEYS := ["mil", "ind", "cyber", "logi", "stab", "res", "edu", "agri"]
 static var intel_era := false  # WW1/WW2/Soğuk Savaş: "siber" yerine istihbarat
 static var pre_era := false   # ilk barut çağı ailesi (eras.gd ayarlar)
 
@@ -29,7 +29,7 @@ static func budget_name(key: String) -> String:
 	return String(BUDGET_NAMES[key])
 
 
-const BUDGET_NAMES := {"mil": "Savunma", "ind": "Sanayi", "cyber": "Siber", "logi": "Lojistik", "stab": "İç İstikrar", "res": "Hazine"}
+const BUDGET_NAMES := {"mil": "Savunma", "ind": "Sanayi", "cyber": "Siber", "logi": "Lojistik", "stab": "İç İstikrar", "res": "Hazine", "edu": "Eğitim ve Bilim", "agri": "Tarım ve Gıda"}
 const BUDGET_HINT := {
 	"mil": "Maaş, askerlik ve silah alımı",
 	"ind": "Gelir ve yerli silah indirimi",
@@ -37,6 +37,8 @@ const BUDGET_HINT := {
 	"logi": "Yabancı toprakta tedarik gücü",
 	"stab": "İsyan ve gelir kaybını önler",
 	"res": "Doğrudan hazineye girer",
+	"edu": "Teknolojiyi zamanla yükseltir",
+	"agri": "Gelir artar, istikrarı korur",
 }
 
 # att/def: savaş çarpanları, air: hava gücü etkisi, cyber: siber güç, logi: tedarik toleransı
@@ -51,10 +53,10 @@ const DOCTRINES := [
 const DOCTRINE_COOLDOWN := 26
 
 const PRESETS := {
-	"peace": {"mil": 18, "ind": 30, "cyber": 8, "logi": 12, "stab": 17, "res": 15},
-	"war": {"mil": 38, "ind": 18, "cyber": 12, "logi": 17, "stab": 10, "res": 5},
-	"hawk": {"mil": 28, "ind": 24, "cyber": 12, "logi": 14, "stab": 12, "res": 10},
-	"poor": {"mil": 22, "ind": 22, "cyber": 4, "logi": 10, "stab": 30, "res": 12},
+	"peace": {"mil": 16, "ind": 26, "cyber": 6, "logi": 10, "stab": 14, "res": 12, "edu": 10, "agri": 6},
+	"war": {"mil": 36, "ind": 16, "cyber": 10, "logi": 15, "stab": 9, "res": 4, "edu": 6, "agri": 4},
+	"hawk": {"mil": 26, "ind": 22, "cyber": 10, "logi": 12, "stab": 10, "res": 8, "edu": 7, "agri": 5},
+	"poor": {"mil": 20, "ind": 20, "cyber": 4, "logi": 8, "stab": 26, "res": 10, "edu": 7, "agri": 5},
 }
 
 static var _mil: Dictionary = {}
@@ -385,8 +387,40 @@ static func set_front(c, enemy: int, key: String, val: String) -> void:
 
 # ===================================================================== bütçe / doktrin
 
+## Eski kayıtlarda/özel ülkelerde eksik bütçe kalemlerini tamamlar; toplam 100 olur (eğitim 6, tarım 4: önce hazineden, sonra orantılı).
+static func fix_budget(c) -> void:
+	var miss: bool = false
+	for k in BUDGET_KEYS:
+		if not c.budget.has(k):
+			miss = true
+	if not miss:
+		return
+	var add := {"edu": 6, "agri": 4}
+	for k in BUDGET_KEYS:
+		if not c.budget.has(k):
+			c.budget[k] = int(add.get(k, 0))
+	var tot := 0
+	for k in BUDGET_KEYS:
+		tot += int(c.budget[k])
+	var over: int = tot - 100
+	if over > 0:
+		var take: int = mini(over, int(c.budget.get("res", 0)))
+		c.budget["res"] = int(c.budget["res"]) - take
+		over -= take
+		var guard := 0
+		while over > 0 and guard < 200:
+			for k in ["ind", "mil", "stab", "logi"]:
+				if over > 0 and int(c.budget[k]) > 1:
+					c.budget[k] = int(c.budget[k]) - 1
+					over -= 1
+			guard += 1
+	elif over < 0:
+		c.budget["res"] = int(c.budget["res"]) - over
+
+
 static func set_budget(c, key: String, val: int) -> void:
 	var _cmd := Cmd.Scope.new(Cmd.rec_gs, "Macro.set_budget", [c, key, val])
+	fix_budget(c)
 	val = clampi(val, 0, 70)
 	var others: Array = []
 	var sum_o := 0
@@ -467,6 +501,7 @@ static func calc(gs, c) -> Dictionary:
 	rev *= Politics.income_mult(gs, c)
 	rev *= Faith.income_mult(gs, c)
 	rev *= Propaganda.income_mult(c)
+	rev *= 1.0 + clampf(0.005 * (float(c.budget.get("agri", 4)) - 4.0), -0.02, 0.10)      # tarım payı: verimli üretim, gelir artar
 	rev *= blockade_mult(gs, c)
 	rev *= 1.0 - 0.10 * c.fleet_block      # filo ablukası (fleets.gd): kıyı bölgelerinde üstün düşman donanması
 	if c.id == gs.player or gs.humans.has(c.id):
@@ -484,7 +519,7 @@ static func calc(gs, c) -> Dictionary:
 	var covered := 0.0
 	if need > 0.0:
 		# ordu masrafı savunma fonunu aşıyorsa diğer kalemlerden (önce hazine, sanayi…) kesilir
-		for k in ["res", "ind", "logi", "cyber", "stab"]:
+		for k in ["res", "edu", "agri", "ind", "logi", "cyber", "stab"]:
 			var take: float = minf(pots[k], need)
 			pots[k] -= take
 			need -= take
@@ -601,6 +636,9 @@ static func _invest(gs, c, f: Dictionary) -> void:
 	c.logistics = _grow(c.logistics, pots["logi"] / (inc * 0.15), 0.30, 0.12)
 	var war_pen: float = 0.12 if not c.enemies.is_empty() else 0.0
 	c.stability = _grow(c.stability, pots["stab"] / (inc * 0.15), 0.35, 0.15 + war_pen)
+	c.stability = clampf(c.stability + 0.12 * clampf(pots["agri"] / (inc * 0.06) - 0.6, 0.0, 2.0) * (1.0 - c.stability / 110.0), 3.0, 100.0)   # gıda güvenliği istikrarı korur
+	var er: float = clampf(pots["edu"] / (inc * 0.08), 0.0, 2.2)
+	c.tech = clampf(c.tech + 0.00025 * maxf(0.0, er - 0.6), 0.0, 1.0)      # eğitim payı: yıllar içinde teknoloji yükselir
 	if c.stability < 25.0 and gs.rng.randf() < 0.05 and not c.owned_ids.is_empty():
 		var p = gs.provinces[c.owned_ids[gs.rng.randi_range(0, c.owned_ids.size() - 1)]]
 		if not p.is_capital and p.controller == p.owner:
@@ -1110,6 +1148,7 @@ static func to_dict(c) -> Dictionary:
 
 static func from_dict(c, d: Dictionary) -> void:
 	c.budget = d.get("budget", c.budget).duplicate()
+	fix_budget(c)
 	c.doctrine = d.get("doctrine", 0)
 	c.carriers = int(d.get("carriers", -1))
 	c.carrier_extra = int(d.get("car_x", 0))

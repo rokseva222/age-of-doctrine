@@ -54,11 +54,11 @@ Ilk listede olmayan ya da eksik kalan maddeler. Durum etiketi kodda bakılarak y
 - E6. [BAKILACAK] "Osmanlı'yı oluştur" formlarken nereleri almam gerektiği haritada gösterilsin.
 - E7. [KISMEN] Yeni senaryolar: Osmanlı kuruluşu (ott1299) ve İstanbul'un fethi (ott1453) VAR; 15 Temmuz, 12 Eylül, Navalny protestosu, Weimar/Beyaz Rusya/Sovyet çatışması YOK.
 - E8. [BAKILACAK] Senaryo editörü: haritadan tıklayarak ülke/il seçme, kaydırma sorunu, tarih/harita ayarı.
-- E9. [YOK] Kiralık asker 3 tip (çete / orta / özel harekat); zorunlu askerlik tur başına çok az (5–10 bin); vergi↔asker sürgüsü; bütçede eğitim, tarım, vergi.
+- E9. [KISMEN: eğitim ve tarım bütçesi eklendi; kiralık asker tipleri, zorunlu askerlik artışı ve vergi↔asker sürgüsü YOK] Kiralık asker 3 tip (çete / orta / özel harekat); zorunlu askerlik tur başına çok az (5–10 bin); vergi↔asker sürgüsü; bütçede eğitim, tarım, vergi.
 - E10. [YOK] Eyalet sayısı dengesiz: Arabistan tek il, Türkiye'de 2 tek il (Emir Ali).
 - E11. [YOK] Savaş ilanında savaş sebebi (casus belli) seçilsin (Taha); ittifak kurmak kolaylaşsın, para biriktirirken ilişki düşmesin (Yasin).
 - E12. [BAKILACAK] Propaganda sistemi yöntem seçimi (sözlü/yazılı) ve "hükümete inanç" seviyesi (Kemalist Halife).
 - E13. [BAKILACAK] Hata 2/3/6 (Furkan): 1939'da Grodno ve Brest ile Polonya sınırındaki bölge Sovyet görünüyor; Hindistan'ın içindeki beylikler yok; 1914 haritasında Kars/Hicaz ve Avusturya'nın İtalya/Romanya'dan aldığı toprak fazlası. (WW1'de Kars→Rusya, Hicaz→Osmanlı aktarımı kodda var; 1939 Polonya doğusu için tarih doğrulaması gerek.)
 - E14. [YOK] Fransa/İngiltere'nin Afrika-Asya-Amerika topraklarını vasal yap (ör. Cezayir, WW2'de Fransa vasalı).
 - E15. [İNCELENDİ] Pil tüketimi: 2 saatte %15 (mainanonacc); cihaz profili gerekir (B1 ile aynı).
-- E16. [YOK] Eğitim, tarım, vergi, asker alımı, tank/top/tüfek gücü içeren "teknoloji/ülke yönetimi ekranı" (Emir Ali/Furkan sohbeti, World Empire benzeri).
+- E16. [KISMEN: bütçeye Eğitim ve Bilim (teknolojiyi yıllar içinde yükseltir) ile Tarım ve Gıda (gelir +, istikrar +) kalemleri eklendi; vergi↔asker sürgüsü ve tank/top/tüfek gücü ayarı YOK] Eğitim, tarım, vergi, asker alımı, tank/top/tüfek gücü içeren "teknoloji/ülke yönetimi ekranı" (Emir Ali/Furkan sohbeti, World Empire benzeri).

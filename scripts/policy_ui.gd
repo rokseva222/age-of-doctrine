@@ -178,7 +178,7 @@ func _tab_budget() -> void:
 		var row := HBoxContainer.new()
 		row.add_theme_constant_override("separation", 14)
 		var bic := TK.IconView.new()
-		bic.icon = {"mil": "shield_star", "ind": "industry", "cyber": "hacker", "logi": "truck", "stab": "stability", "res": "bank"}.get(key, "coins")
+		bic.icon = {"mil": "shield_star", "ind": "industry", "cyber": "hacker", "logi": "truck", "stab": "stability", "res": "bank", "edu": "university", "agri": "wheat"}.get(key, "coins")
 		bic.color = Color.WHITE
 		bic.custom_minimum_size = Vector2(40, 40)
 		bic.size_flags_vertical = Control.SIZE_SHRINK_CENTER
@@ -224,7 +224,7 @@ func _tab_budget() -> void:
 		["İstikrar", "%d" % int(c.stability), TK.GREEN if c.stability >= 50.0 else TK.RED_TEXT],
 		["Teknoloji", "%d" % int(c.tech * 100.0)],
 	]))
-	content.add_child(_wrap("Sanayi, siber ve lojistik değerleri ilgili bütçe payını yükselttikçe haftalar içinde artar; istikrar da öyle. Teknoloji ülkenin gelişmişlik düzeyidir, bütçeyle değişmez: hangi seviyede silah alabildiğini ve ordu kalitesini belirler. Üst seviye silahlar için ayrıca yeterli sanayi gerekir: Sanayi payını yükselt.", "small", TK.FAINT))
+	content.add_child(_wrap("Sanayi, siber ve lojistik değerleri ilgili bütçe payını yükselttikçe haftalar içinde artar; istikrar da öyle. Teknoloji ülkenin gelişmişlik düzeyidir: Eğitim ve Bilim payı onu yıllar içinde yavaşça yükseltir, aşağıdaki düğmeyle hızlandırabilirsin. Hangi seviyede silah alabildiğini ve ordu kalitesini belirler. Üst seviye silahlar için ayrıca yeterli sanayi gerekir: Sanayi payını yükselt.", "small", TK.FAINT))
 	var rb := TK.button(Loc.t("Teknoloji araştır: +2 puan (%s)") % Macro.money(gs.research_cost()), "gold", "bolt", Vector2(0, 56), 15)
 	rb.pressed.connect(func():
 		ui._click()

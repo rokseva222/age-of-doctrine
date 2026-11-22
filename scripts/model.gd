@@ -139,7 +139,7 @@ class Country:
 	var owned_ids: Array = []
 	var held_ids: Array = []
 	# ---- makro yönetim (macro.gd yönetir)
-	var budget: Dictionary = {"mil": 25, "ind": 25, "cyber": 10, "logi": 15, "stab": 15, "res": 10}   # yüzde, toplam 100
+	var budget: Dictionary = {"mil": 22, "ind": 22, "cyber": 8, "logi": 12, "stab": 14, "res": 10, "edu": 7, "agri": 5}   # yüzde, toplam 100
 	var doctrine := 0
 	var doctrine_turn := -99
 	var industry := 55.0                     # sanayi / fabrika sağlığı 0..100
