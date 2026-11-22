@@ -180,7 +180,7 @@
   "Myanmar": "R:0,0,1,1,#c8102e|C:0.5,0.5,0.2,#ffffff",
   "Thailand": "H:#c8102e,#ffffff,#c8102e",
   "Vietnam": "R:0,0,1,1,#f4c430|O:#c8102e,.03,.5,.5,0.22",
-  "Laos": "R:0,0,1,1,#c8102e|C:0.5,0.5,0.2,#ffffff",
+  "Laos": "I:lan_xang",
   "Cambodia": "R:0,0,1,1,#1c3f94|C:0.5,0.5,0.2,#f4c430",
   "Malaysia": "R:0,0,1,1,#f4c430|C:0.42,.5,0.22,#c8102e|C:0.49,.5,0.19,#f4c430",
   "Brunei": "R:0,0,1,1,#f4c430",
@@ -255,7 +255,7 @@
   "Myanmar": "R:0,0,1,1,#c8102e|C:0.5,0.5,0.2,#f4c430",
   "Thailand": "H:#c8102e,#ffffff,#c8102e",
   "Vietnam": "R:0,0,1,1,#c8102e|C:.5,.5,.2,#f4c430",
-  "Laos": "R:0,0,1,1,#c8102e|C:0.5,0.5,0.2,#ffffff",
+  "Laos": "I:lan_xang",
   "Cambodia": "R:0,0,1,1,#1c3f94|C:0.5,0.5,0.2,#f4c430",
   "Malaysia": "R:0,0,1,1,#f4c430|C:0.42,.5,0.22,#c8102e|C:0.49,.5,0.19,#f4c430",
   "Brunei": "R:0,0,1,1,#f4c430",
@@ -315,7 +315,8 @@
   "Morocco": "I:marinid",
   "Malta": "I:naples_anjou",
   "Greenland": "I:novgorod",
-  "Portugal": "I:portugal"
+  "Portugal": "I:portugal",
+  "Laos": "I:lan_xang"
  },
  "ott1453": {
   "Turkey": "I:pre_ottoman_1453|R:0,0,1,1,#c8102e|C:0.42,.5,0.22,#ffffff|C:0.49,.5,0.19,#c8102e|S:.62,.5,.07,#ffffff",
@@ -331,6 +332,7 @@
   "Morocco": "I:marinid",
   "Malta": "I:naples_anjou",
   "Greenland": "I:novgorod",
-  "Portugal": "I:portugal"
+  "Portugal": "I:portugal",
+  "Laos": "I:lan_xang"
  }
 }
