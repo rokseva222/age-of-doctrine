@@ -24,6 +24,11 @@ static func clear_cache() -> void:
 
 static func _texture_for(c):
 	if c.flag_spec != "" and not c.is_rebel:
+		if c.flag_spec.begins_with("I:"):        # formlanan devletin görsel bayrağı: assets/flags/era_<ad>.png
+			var fp := "res://assets/flags/era_%s.png" % c.flag_spec.substr(2).split("|")[0]
+			if not _tex.has(fp):
+				_tex[fp] = load(fp) if ResourceLoader.exists(fp) else null
+			return _tex[fp]
 		return null
 	if not c.is_rebel and not era_specs.is_empty() and era_specs.has(c.name_en):
 		# "I:ad|..." -> assets/flags/era_<ad>.png (kullanıcının getirdiği görsel); yoksa kalan katmanlar, o da yoksa bugünkü bayrak

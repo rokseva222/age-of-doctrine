@@ -144,7 +144,7 @@ const CAPITAL := {
 # host tanımları: ad, renk, bayrak (flag_db kısa tanımı), lider, bloc, asker/silah, hedef GSYH (milyar $)
 const DEFS := {
 	"ww2": {
-		"Germany": {"name": "Almanya", "color": "5d6068", "flag": "H:k,w,#ce1126", "leader": "Reich Şansölyesi|Adolf Hitler", "gdp": 330,
+		"Germany": {"name": "Almanya", "color": "5d6068", "flag": "I:ww1_germany", "leader": "Reich Şansölyesi|Adolf Hitler", "gdp": 330,
 			"mil": {"personnel": 3700000, "tank": 3200, "afv": 4000, "arty": 9000, "air": 3600, "sub": 57}},
 		"Russia": {"name": "SSCB", "color": "b53a2e", "flag": "R:0,0,1,1,#cc0000|S:.14,.2,.09,#ffd700", "leader": "Genel Sekreter|Josef Stalin", "gdp": 380,
 			"mil": {"personnel": 3000000, "tank": 15000, "afv": 5000, "arty": 25000, "air": 9000, "sub": 165}},
@@ -194,9 +194,9 @@ const DEFS := {
 		"Slovakia": {"name": "Slovak Devleti", "color": "8aa0c0", "leader": "Cumhurbaşkanı|Jozef Tiso", "gdp": 4, "mil": {"personnel": 50000, "tank": 30, "afv": 20, "arty": 200, "air": 50, "sub": 0}},
 	},
 	"ww1": {
-		"Germany": {"name": "Alman İmparatorluğu", "color": "6d6f78", "flag": "H:k,w,#ce1126", "leader": "İmparator|II. Wilhelm", "gdp": 245,
+		"Germany": {"name": "Alman İmparatorluğu", "color": "6d6f78", "flag": "I:ww1_germany", "leader": "İmparator|II. Wilhelm", "gdp": 245,
 			"mil": {"personnel": 3800000, "tank": 0, "afv": 20, "arty": 9000, "air": 250, "sub": 28}},
-		"Austria": {"name": "Avusturya-Macaristan", "color": "d4c05a", "flag": "H:k,#fcd116", "leader": "İmparator|I. Franz Joseph", "gdp": 100,
+		"Austria": {"name": "Avusturya-Macaristan", "color": "d4c05a", "flag": "I:ww1_austria", "leader": "İmparator|I. Franz Joseph", "gdp": 100,
 			"mil": {"personnel": 2300000, "tank": 0, "afv": 10, "arty": 4000, "air": 40, "sub": 6}},
 		"Turkey": {"name": "Osmanlı İmparatorluğu", "color": "6fa882", "leader": "Sultan|V. Mehmed Reşad", "gdp": 40,
 			"mil": {"personnel": 800000, "tank": 0, "afv": 0, "arty": 2000, "air": 5, "sub": 0}},
@@ -382,7 +382,7 @@ static func prepare(id: String) -> void:
 	var fl: Dictionary = {}
 	fl = era_flag_table(id)
 	for n2 in DF:
-		if DF[n2].has("flag"):
+		if DF[n2].has("flag") and not str(fl.get(n2, "")).begins_with("I:"):
 			fl[n2] = DF[n2]["flag"]
 	Flags.set_era_specs(fl)
 

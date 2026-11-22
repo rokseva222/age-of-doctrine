@@ -1,0 +1,1831 @@
+{
+ "russia_1914": {
+  "desc": "Russian Empire 1914: three equal horizontal stripes, white on top, blue in the middle, red at the bottom (civil tricolor).",
+  "uses": [
+   [
+    "ww1",
+    "Russia"
+   ]
+  ]
+ },
+ "siam_1914": {
+  "desc": "Kingdom of Siam before 1917: plain red field with a large white elephant (facing left, standing, with ornate ceremonial cloth) in the center.",
+  "uses": [
+   [
+    "ww1",
+    "Thailand"
+   ]
+  ]
+ },
+ "serbia_1914": {
+  "desc": "Kingdom of Serbia 1914: three equal horizontal stripes, red on top, blue in the middle, white at the bottom, no emblem.",
+  "uses": [
+   [
+    "ww1",
+    "Serbia"
+   ]
+  ]
+ },
+ "new_zealand": {
+  "desc": "New Zealand 1914/1939: dark blue ensign; Union Jack in the upper-left canton; four red five-pointed stars with white borders forming the Southern Cross on the fly side.",
+  "uses": [
+   [
+    "ww1",
+    "New Zealand"
+   ],
+   [
+    "ww2",
+    "New Zealand"
+   ]
+  ]
+ },
+ "china_1914": {
+  "desc": "Republic of China 1912-1928 Five-Colored Flag: five equal horizontal stripes, from top red, yellow, blue, white, black.",
+  "uses": [
+   [
+    "ww1",
+    "China"
+   ]
+  ]
+ },
+ "spain_1914": {
+  "desc": "Kingdom of Spain 1914: horizontal red, yellow, red stripes in 1:2:1 ratio, with the Bourbon royal coat of arms (crowned shield) on the hoist side of the yellow stripe.",
+  "uses": [
+   [
+    "ww1",
+    "Spain"
+   ]
+  ]
+ },
+ "south_africa_1928": {
+  "desc": "Union of South Africa 1928-1994: three horizontal stripes orange, white, blue; in the center of the white stripe three small flags: Union Jack, Orange Free State flag, and Transvaal flag.",
+  "uses": [
+   [
+    "ww2",
+    "South Africa"
+   ]
+  ]
+ },
+ "iraq_kingdom": {
+  "desc": "Kingdom of Iraq 1932-1958: three horizontal stripes black, white, green; a red trapezoid on the hoist side containing two white seven-pointed stars.",
+  "uses": [
+   [
+    "ww2",
+    "Iraq"
+   ]
+  ]
+ },
+ "mongolia_1939": {
+  "desc": "Mongolian People's Republic 1939: red field; golden-yellow Soyombo symbol on the hoist side.",
+  "uses": [
+   [
+    "ww2",
+    "Mongolia"
+   ]
+  ]
+ },
+ "egypt_kingdom": {
+  "desc": "Kingdom of Egypt 1922-1952: plain green field with a white crescent and three white five-pointed stars inside the crescent.",
+  "uses": [
+   [
+    "ww2",
+    "Egypt"
+   ]
+  ]
+ },
+ "ussr": {
+  "desc": "Soviet Union: solid red field; golden-yellow hammer and sickle in the upper hoist corner with a gold-outlined red five-pointed star above it.",
+  "uses": [
+   [
+    "ww2",
+    "Russia"
+   ],
+   [
+    "cw62",
+    "Russia"
+   ]
+  ]
+ },
+ "slovakia_1939": {
+  "desc": "Slovak State 1939-1945: three horizontal stripes white, blue, red; a red shield with a white double cross over blue hills on the hoist side.",
+  "uses": [
+   [
+    "ww2",
+    "Slovakia"
+   ]
+  ]
+ },
+ "yugoslavia_kingdom": {
+  "desc": "Kingdom of Yugoslavia 1918-1941: three equal horizontal stripes blue, white, red; no emblem.",
+  "uses": [
+   [
+    "ww2",
+    "Serbia"
+   ]
+  ]
+ },
+ "china_roc": {
+  "desc": "Republic of China 1928-1949: red field with a blue canton in the upper hoist corner containing a white 12-rayed sun.",
+  "uses": [
+   [
+    "ww2",
+    "China"
+   ]
+  ]
+ },
+ "spain_franco": {
+  "desc": "Spain 1938-1945 (Franco): horizontal red, yellow, red stripes (1:2:1) with the Francoist coat of arms (black eagle of St. John holding a shield, with pillars of Hercules) on the yellow stripe.",
+  "uses": [
+   [
+    "ww2",
+    "Spain"
+   ]
+  ]
+ },
+ "uar": {
+  "desc": "United Arab Republic 1958-1971: three horizontal stripes red, white, black; two green five-pointed stars on the white stripe.",
+  "uses": [
+   [
+    "cw62",
+    "Egypt"
+   ]
+  ]
+ },
+ "cuba": {
+  "desc": "Cuba: five horizontal stripes blue, white, blue, white, blue; a red equilateral triangle on the hoist side with a white five-pointed star inside.",
+  "uses": [
+   [
+    "cw62",
+    "Cuba"
+   ]
+  ]
+ },
+ "vietnam_north": {
+  "desc": "North Vietnam 1955-1976: solid red field with a large yellow five-pointed star in the center.",
+  "uses": [
+   [
+    "cw62",
+    "Vietnam"
+   ]
+  ]
+ },
+ "yugoslavia_federal": {
+  "desc": "Socialist Federal Republic of Yugoslavia: three equal horizontal stripes blue, white, red; a red five-pointed star with a gold border in the center.",
+  "uses": [
+   [
+    "cw62",
+    "Serbia"
+   ]
+  ]
+ },
+ "czechoslovakia": {
+  "desc": "Czechoslovakia: two horizontal stripes, white on top and red at the bottom; a blue isosceles triangle from the hoist reaching to the center.",
+  "uses": [
+   [
+    "cw62",
+    "Czechia"
+   ]
+  ]
+ },
+ "china_prc": {
+  "desc": "People's Republic of China: solid red field; large yellow five-pointed star in the upper hoist corner, with four smaller yellow stars in an arc to its right.",
+  "uses": [
+   [
+    "cw62",
+    "China"
+   ]
+  ]
+ },
+ "rome": {
+  "desc": "Roman Empire (SPQR vexillum): deep crimson-red square-ish banner with golden 'SPQR' lettering in the center and a golden eagle above it.",
+  "uses": [
+   [
+    "form",
+    "rome"
+   ]
+  ]
+ },
+ "persia_empire": {
+  "desc": "Achaemenid Persian Empire: golden-yellow field with a blue-and-gold Faravahar (winged disc) in the center.",
+  "uses": [
+   [
+    "form",
+    "persia"
+   ]
+  ]
+ },
+ "mongol_empire": {
+  "desc": "Mongol Empire: sky-blue field with a golden-yellow Soyombo emblem on the hoist side.",
+  "uses": [
+   [
+    "form",
+    "mongol"
+   ]
+  ]
+ },
+ "british_empire": {
+  "desc": "British Empire: red ensign (red field) with the Union Jack in the upper-left canton and a golden globe-and-crown badge on the fly side.",
+  "uses": [
+   [
+    "form",
+    "british"
+   ]
+  ]
+ },
+ "gran_colombia": {
+  "desc": "Gran Colombia 1819: three horizontal stripes yellow (double height), blue, red with a small coat of arms (fasces and cornucopia) in the center of the yellow stripe.",
+  "uses": [
+   [
+    "form",
+    "gran_colombia"
+   ]
+  ]
+ },
+ "north_union": {
+  "desc": "Fictional Northern Union (Kalmar-style): blue field with a golden Nordic cross offset to the hoist side, with three small golden crowns on the cross.",
+  "uses": [
+   [
+    "form",
+    "kalmar"
+   ]
+  ]
+ },
+ "central_america": {
+  "desc": "Federal Republic of Central America 1823-1841: three horizontal stripes blue, white, blue; in the center a small coat of arms: triangle with five volcanoes, a rainbow, a Phrygian cap, and a sun.",
+  "uses": [
+   [
+    "form",
+    "central_america"
+   ]
+  ]
+ },
+ "somaliland": {
+  "desc": "Somaliland: three equal horizontal stripes green, white, red; white Arabic Shahada text in the green stripe; a black five-pointed star in the center of the white stripe.",
+  "uses": [
+   [
+    "now",
+    "Somaliland"
+   ]
+  ]
+ },
+ "northern_cyprus": {
+  "desc": "Turkish Republic of Northern Cyprus: white field with thin red horizontal stripes at the top and bottom edges; a red crescent and a red five-pointed star in the center.",
+  "uses": [
+   [
+    "now",
+    "N. Cyprus"
+   ]
+  ]
+ },
+ "zayyanid": {
+  "desc": "Zayyanid sultanate of Tlemcen, 14th century: plain white banner with a thin green border and a centered green crescent.",
+  "uses": [
+   [
+    "ott1299",
+    "Algeria"
+   ],
+   [
+    "ott1453",
+    "Algeria"
+   ],
+   [
+    "tim1380",
+    "Algeria"
+   ]
+  ]
+ },
+ "aboriginal": {
+  "desc": "Fictional unified banner for Aboriginal Australian peoples: split horizontally black over red, with a large ochre-yellow disc in the center.",
+  "uses": [
+   [
+    "ott1299",
+    "Australia"
+   ],
+   [
+    "ott1453",
+    "Australia"
+   ],
+   [
+    "ott1520",
+    "Australia"
+   ],
+   [
+    "tim1380",
+    "Australia"
+   ]
+  ]
+ },
+ "adal_ifat": {
+  "desc": "Medieval Horn of Africa sultanate: green banner with a white crescent and a white five-pointed star.",
+  "uses": [
+   [
+    "ott1520",
+    "Somalia"
+   ],
+   [
+    "ott1299",
+    "Somalia"
+   ],
+   [
+    "ott1453",
+    "Somalia"
+   ],
+   [
+    "tim1380",
+    "Somalia"
+   ]
+  ]
+ },
+ "akan": {
+  "desc": "Akan kingdoms (Ghana region): horizontal red, gold, green stripes with a black Adinkra 'Gye Nyame' symbol in the center.",
+  "uses": [
+   [
+    "ott1299",
+    "Ghana"
+   ],
+   [
+    "ott1453",
+    "Ghana"
+   ],
+   [
+    "ott1520",
+    "Ghana"
+   ],
+   [
+    "tim1380",
+    "Ghana"
+   ]
+  ]
+ },
+ "algonquin_iroquois": {
+  "desc": "Haudenosaunee/Algonquin confederacy: purple field with the white Hiawatha wampum belt design (a white tree in the center joined by two white squares left and right).",
+  "uses": [
+   [
+    "ott1299",
+    "Canada"
+   ],
+   [
+    "ott1453",
+    "Canada"
+   ],
+   [
+    "ott1520",
+    "Canada"
+   ],
+   [
+    "tim1380",
+    "Canada"
+   ]
+  ]
+ },
+ "golden_horde": {
+  "desc": "Golden Horde: deep golden-yellow field with a red or black tamga (stylized trident-like clan mark) in the center.",
+  "uses": [
+   [
+    "ott1299",
+    "Kazakhstan"
+   ],
+   [
+    "tim1380",
+    "Kazakhstan"
+   ]
+  ]
+ },
+ "anatolian_beyliks_w": {
+  "desc": "Western Anatolian Turkish beyliks: red banner with a white crescent and white six-pointed star, in a medieval style.",
+  "uses": [
+   [
+    "ott1299",
+    "Montenegro"
+   ]
+  ]
+ },
+ "anatolian_beyliks_e": {
+  "desc": "Eastern Anatolian Turkish beyliks: white banner with a green crescent facing right and a green six-pointed star.",
+  "uses": [
+   [
+    "ott1453",
+    "Montenegro"
+   ],
+   [
+    "tim1380",
+    "Montenegro"
+   ]
+  ]
+ },
+ "anjou_epirus": {
+  "desc": "Angevin Albania with Epirus: blue field covered with golden fleurs-de-lis, with a red label across the top.",
+  "uses": [
+   [
+    "ott1299",
+    "Albania"
+   ]
+  ]
+ },
+ "taino": {
+  "desc": "Taíno chiefdoms of the Caribbean: sky-blue banner with a stylized golden sun with a face (Taíno zemi symbol) in the center.",
+  "uses": [
+   [
+    "ott1299",
+    "Cuba"
+   ],
+   [
+    "ott1453",
+    "Cuba"
+   ],
+   [
+    "tim1380",
+    "Cuba"
+   ],
+   [
+    "ott1520",
+    "Cuba"
+   ]
+  ]
+ },
+ "aragon": {
+  "desc": "Crown of Aragon: the Senyera, nine horizontal stripes alternating gold and red (four red, five gold), no other charges.",
+  "uses": [
+   [
+    "ott1299",
+    "Andorra"
+   ],
+   [
+    "ott1453",
+    "Andorra"
+   ],
+   [
+    "tim1380",
+    "Andorra"
+   ]
+  ]
+ },
+ "arab_tribes": {
+  "desc": "Arab tribal emirates: plain green banner with a white sword (horizontal) under white Arabic-style calligraphic band.",
+  "uses": [
+   [
+    "ott1299",
+    "Saudi Arabia"
+   ],
+   [
+    "ott1453",
+    "Saudi Arabia"
+   ],
+   [
+    "ott1520",
+    "Saudi Arabia"
+   ],
+   [
+    "tim1380",
+    "Saudi Arabia"
+   ]
+  ]
+ },
+ "albania_skanderbeg": {
+  "desc": "Albanian principalities / League of Lezhë: red field with a black double-headed eagle in the center.",
+  "uses": [
+   [
+    "tim1380",
+    "Albania"
+   ],
+   [
+    "ott1453",
+    "Albania"
+   ]
+  ]
+ },
+ "ava_pegu": {
+  "desc": "Medieval Burmese kingdoms (Ava, Pegu, Toungoo): red banner with a golden hintha (mythical goose) in the center.",
+  "uses": [
+   [
+    "ott1453",
+    "Myanmar"
+   ],
+   [
+    "tim1380",
+    "Myanmar"
+   ],
+   [
+    "ott1299",
+    "Myanmar"
+   ],
+   [
+    "ott1520",
+    "Myanmar"
+   ]
+  ]
+ },
+ "ayutthaya": {
+  "desc": "Ayutthaya/Sukhothai kingdom of Siam: red banner with a golden garuda or a white chakra wheel in the center.",
+  "uses": [
+   [
+    "ott1453",
+    "Thailand"
+   ],
+   [
+    "ott1520",
+    "Thailand"
+   ],
+   [
+    "tim1380",
+    "Thailand"
+   ],
+   [
+    "ott1299",
+    "Thailand"
+   ]
+  ]
+ },
+ "knights_hospitaller": {
+  "desc": "Knights Hospitaller: red field with a white eight-pointed Maltese cross.",
+  "uses": [
+   [
+    "ott1520",
+    "Malta"
+   ]
+  ]
+ },
+ "aztec": {
+  "desc": "Aztec Triple Alliance: turquoise banner with a stylized golden Aztec sun or an eagle on a cactus in the center.",
+  "uses": [
+   [
+    "ott1520",
+    "Mexico"
+   ],
+   [
+    "ott1299",
+    "Mexico"
+   ],
+   [
+    "ott1453",
+    "Mexico"
+   ],
+   [
+    "tim1380",
+    "Mexico"
+   ]
+  ]
+ },
+ "bahmani": {
+  "desc": "Bahmani sultanate (Deccan): green banner with a golden crescent and a golden sun-ray emblem.",
+  "uses": [
+   [
+    "ott1453",
+    "Nepal"
+   ],
+   [
+    "tim1380",
+    "Nepal"
+   ],
+   [
+    "ott1520",
+    "Nepal"
+   ],
+   [
+    "ott1299",
+    "Nepal"
+   ]
+  ]
+ },
+ "bengal": {
+  "desc": "Bengal sultanate: green banner with a white crescent and white eight-pointed star.",
+  "uses": [
+   [
+    "ott1299",
+    "Bangladesh"
+   ],
+   [
+    "ott1520",
+    "Bangladesh"
+   ],
+   [
+    "ott1453",
+    "Bangladesh"
+   ],
+   [
+    "tim1380",
+    "Bangladesh"
+   ]
+  ]
+ },
+ "bornu": {
+  "desc": "Kanem-Bornu empire: red banner with a white lion or a white sword above a black horizontal band.",
+  "uses": [
+   [
+    "ott1520",
+    "Chad"
+   ],
+   [
+    "ott1299",
+    "Chad"
+   ],
+   [
+    "ott1453",
+    "Chad"
+   ],
+   [
+    "tim1380",
+    "Chad"
+   ]
+  ]
+ },
+ "bosnia": {
+  "desc": "Medieval Kingdom of Bosnia: white field with a blue shield bearing six golden fleurs-de-lis (Kotromanić arms) in the center.",
+  "uses": [
+   [
+    "ott1299",
+    "Bosnia and Herz."
+   ],
+   [
+    "tim1380",
+    "Bosnia and Herz."
+   ],
+   [
+    "ott1453",
+    "Bosnia and Herz."
+   ]
+  ]
+ },
+ "brunei": {
+  "desc": "Brunei sultanate: yellow banner with a diagonal black-and-white stripe pair and a red crescent in the center.",
+  "uses": [
+   [
+    "ott1299",
+    "Brunei"
+   ],
+   [
+    "ott1453",
+    "Brunei"
+   ],
+   [
+    "ott1520",
+    "Brunei"
+   ],
+   [
+    "tim1380",
+    "Brunei"
+   ]
+  ]
+ },
+ "bulgaria": {
+  "desc": "Second Bulgarian Empire: red banner with a golden crowned lion rampant.",
+  "uses": [
+   [
+    "tim1380",
+    "Bulgaria"
+   ],
+   [
+    "ott1299",
+    "Bulgaria"
+   ]
+  ]
+ },
+ "bunyoro": {
+  "desc": "Bunyoro-Kitara kingdom: black, white and red vertical stripes with a stylized spear and drum emblem in the center.",
+  "uses": [
+   [
+    "ott1299",
+    "Uganda"
+   ],
+   [
+    "ott1453",
+    "Uganda"
+   ],
+   [
+    "ott1520",
+    "Uganda"
+   ],
+   [
+    "tim1380",
+    "Uganda"
+   ]
+  ]
+ },
+ "burgundy": {
+  "desc": "Burgundy/Flanders: gold field with a black lion rampant (Flanders), or red saltire cross (Burgundian cross) on white.",
+  "uses": [
+   [
+    "ott1453",
+    "Belgium"
+   ],
+   [
+    "tim1380",
+    "Belgium"
+   ],
+   [
+    "ott1299",
+    "Belgium"
+   ]
+  ]
+ },
+ "zimbabwe": {
+  "desc": "Great Zimbabwe / Mutapa: banner of green and yellow stripes with a black Zimbabwe-bird emblem in the center.",
+  "uses": [
+   [
+    "ott1299",
+    "Zimbabwe"
+   ],
+   [
+    "ott1453",
+    "Zimbabwe"
+   ],
+   [
+    "tim1380",
+    "Zimbabwe"
+   ],
+   [
+    "ott1520",
+    "Zimbabwe"
+   ]
+  ]
+ },
+ "jalayirid": {
+  "desc": "Jalayirid/Kara Koyunlu: black banner with a white crescent and star, or two lions facing a sun.",
+  "uses": [
+   [
+    "tim1380",
+    "Azerbaijan"
+   ],
+   [
+    "ott1453",
+    "Azerbaijan"
+   ]
+  ]
+ },
+ "algiers": {
+  "desc": "Regency of Algiers (Barbarossa): red banner with a white crescent and a white star, and a white double-pointed sword.",
+  "uses": [
+   [
+    "ott1520",
+    "Algeria"
+   ]
+  ]
+ },
+ "dai_viet": {
+  "desc": "Dai Viet: red banner with a golden dragon in the center.",
+  "uses": [
+   [
+    "ott1520",
+    "Vietnam"
+   ],
+   [
+    "ott1453",
+    "Vietnam"
+   ],
+   [
+    "ott1299",
+    "Vietnam"
+   ],
+   [
+    "tim1380",
+    "Vietnam"
+   ]
+  ]
+ },
+ "denmark_norway": {
+  "desc": "Denmark-Norway: red field with a white Nordic cross (Dannebrog), and a golden crowned lion on the Norwegian side.",
+  "uses": [
+   [
+    "ott1299",
+    "Denmark"
+   ],
+   [
+    "ott1453",
+    "Denmark"
+   ],
+   [
+    "tim1380",
+    "Denmark"
+   ],
+   [
+    "ott1520",
+    "Denmark"
+   ]
+  ]
+ },
+ "delhi": {
+  "desc": "Delhi sultanate: green banner with a white crescent and white sun emblem.",
+  "uses": [
+   [
+    "ott1299",
+    "India"
+   ],
+   [
+    "ott1453",
+    "India"
+   ],
+   [
+    "ott1520",
+    "India"
+   ],
+   [
+    "tim1380",
+    "India"
+   ]
+  ]
+ },
+ "demak": {
+  "desc": "Demak sultanate (Java): white banner with a green crescent and a red sun in the center.",
+  "uses": [
+   [
+    "ott1520",
+    "Indonesia"
+   ]
+  ]
+ },
+ "wallachia_moldavia": {
+  "desc": "Wallachia and Moldavia: split vertically, left red with a golden eagle holding a cross (Wallachia), right red with an aurochs head and a star between its horns (Moldavia).",
+  "uses": [
+   [
+    "ott1453",
+    "Romania"
+   ],
+   [
+    "ott1520",
+    "Romania"
+   ],
+   [
+    "tim1380",
+    "Romania"
+   ],
+   [
+    "ott1299",
+    "Romania"
+   ]
+  ]
+ },
+ "ethiopia": {
+  "desc": "Ethiopian empire of the Solomonic dynasty: horizontal green, yellow, red with a golden Lion of Judah holding a cross in the center.",
+  "uses": [
+   [
+    "ott1299",
+    "Ethiopia"
+   ],
+   [
+    "ott1453",
+    "Ethiopia"
+   ],
+   [
+    "tim1380",
+    "Ethiopia"
+   ],
+   [
+    "ott1520",
+    "Ethiopia"
+   ]
+  ]
+ },
+ "philippines": {
+  "desc": "Philippine barangay/sultanates: red banner with a white crescent and a golden sun with eight rays.",
+  "uses": [
+   [
+    "ott1299",
+    "Philippines"
+   ],
+   [
+    "ott1453",
+    "Philippines"
+   ],
+   [
+    "ott1520",
+    "Philippines"
+   ],
+   [
+    "tim1380",
+    "Philippines"
+   ]
+  ]
+ },
+ "funj": {
+  "desc": "Funj sultanate / Nubian kingdoms: green and yellow horizontal stripes with a white lion in the center.",
+  "uses": [
+   [
+    "ott1520",
+    "Sudan"
+   ],
+   [
+    "ott1299",
+    "Sudan"
+   ],
+   [
+    "ott1453",
+    "Sudan"
+   ],
+   [
+    "tim1380",
+    "Sudan"
+   ]
+  ]
+ },
+ "goryeo_joseon": {
+  "desc": "Goryeo/Joseon Korea: white banner with a red-and-blue taegeuk swirl in the center, without trigrams.",
+  "uses": [
+   [
+    "ott1299",
+    "South Korea"
+   ],
+   [
+    "tim1380",
+    "South Korea"
+   ],
+   [
+    "ott1453",
+    "South Korea"
+   ],
+   [
+    "ott1520",
+    "South Korea"
+   ]
+  ]
+ },
+ "south_india": {
+  "desc": "South Indian dynasties: saffron-yellow banner with a red boar facing right and a crescent and sun above it (Vijayanagara).",
+  "uses": [
+   [
+    "ott1299",
+    "Sri Lanka"
+   ],
+   [
+    "ott1453",
+    "Sri Lanka"
+   ],
+   [
+    "ott1520",
+    "Sri Lanka"
+   ],
+   [
+    "tim1380",
+    "Sri Lanka"
+   ]
+  ]
+ },
+ "georgia": {
+  "desc": "Kingdom of Georgia: white banner with a large red St George's cross and four smaller red crosses in the quadrants (Bolnisi).",
+  "uses": [
+   [
+    "ott1520",
+    "Georgia"
+   ],
+   [
+    "ott1299",
+    "Georgia"
+   ],
+   [
+    "ott1453",
+    "Georgia"
+   ],
+   [
+    "tim1380",
+    "Georgia"
+   ]
+  ]
+ },
+ "habsburg": {
+  "desc": "House of Habsburg: banner with a red lion rampant on gold, or a black double-headed eagle on gold, crowned.",
+  "uses": [
+   [
+    "ott1520",
+    "Spain"
+   ]
+  ]
+ },
+ "hafsid": {
+  "desc": "Hafsid dynasty of Tunis: white banner with a black Arabic band and a red crescent.",
+  "uses": [
+   [
+    "ott1299",
+    "Tunisia"
+   ],
+   [
+    "ott1453",
+    "Tunisia"
+   ],
+   [
+    "ott1520",
+    "Tunisia"
+   ],
+   [
+    "tim1380",
+    "Tunisia"
+   ]
+  ]
+ },
+ "hausa_benin": {
+  "desc": "Hausa city-states and Benin kingdom: red banner with a golden leopard or a brass-colored ceremonial sword in the center.",
+  "uses": [
+   [
+    "ott1299",
+    "Nigeria"
+   ],
+   [
+    "ott1453",
+    "Nigeria"
+   ],
+   [
+    "ott1520",
+    "Nigeria"
+   ],
+   [
+    "tim1380",
+    "Nigeria"
+   ]
+  ]
+ },
+ "hormuz": {
+  "desc": "Kingdom of Hormuz: white banner with a red-striped border and a blue wave band across the bottom.",
+  "uses": [
+   [
+    "ott1299",
+    "United Arab Emirates"
+   ],
+   [
+    "ott1453",
+    "United Arab Emirates"
+   ],
+   [
+    "ott1520",
+    "United Arab Emirates"
+   ],
+   [
+    "tim1380",
+    "United Arab Emirates"
+   ]
+  ]
+ },
+ "kabul_kandahar": {
+  "desc": "Kabul/Kandahar/Herat principalities: black banner with a white mosque and a white crescent.",
+  "uses": [
+   [
+    "ott1453",
+    "Afghanistan"
+   ],
+   [
+    "ott1520",
+    "Afghanistan"
+   ],
+   [
+    "ott1299",
+    "Afghanistan"
+   ],
+   [
+    "tim1380",
+    "Afghanistan"
+   ]
+  ]
+ },
+ "kamakura": {
+  "desc": "Kamakura Shogunate: white banner with a black mon of three-leaf hollyhock, in the style of Japanese nobori.",
+  "uses": [
+   [
+    "ott1299",
+    "Japan"
+   ]
+  ]
+ },
+ "karamanids": {
+  "desc": "Karamanids / Armenian Cilicia: red banner with a white crescent; Cilicia part: blue banner with a golden lion.",
+  "uses": [
+   [
+    "ott1453",
+    "North Macedonia"
+   ],
+   [
+    "tim1380",
+    "North Macedonia"
+   ],
+   [
+    "ott1299",
+    "North Macedonia"
+   ]
+  ]
+ },
+ "kastilya": {
+  "desc": "Kingdom of Castile: red banner with a golden castle with three towers and blue windows (Castile) next to a purple lion (León) in the second quarter.",
+  "uses": [
+   [
+    "ott1299",
+    "Spain"
+   ],
+   [
+    "ott1453",
+    "Spain"
+   ],
+   [
+    "tim1380",
+    "Spain"
+   ]
+  ]
+ },
+ "kazakh_steppe": {
+  "desc": "Kazakh/Crimean steppe khanates: sky-blue banner with a golden steppe eagle in the center (Crimea: yellow banner with a gold tamga).",
+  "uses": [
+   [
+    "ott1520",
+    "Kazakhstan"
+   ],
+   [
+    "ott1520",
+    "Ukraine"
+   ]
+  ]
+ },
+ "khmer": {
+  "desc": "Khmer empire: red banner with the five towers of Angkor Wat in white in the center.",
+  "uses": [
+   [
+    "ott1299",
+    "Cambodia"
+   ],
+   [
+    "ott1453",
+    "Cambodia"
+   ],
+   [
+    "ott1520",
+    "Cambodia"
+   ],
+   [
+    "tim1380",
+    "Cambodia"
+   ]
+  ]
+ },
+ "kilwa": {
+  "desc": "Kilwa/Swahili coast: green banner with a white crescent and a white dhow (sailing ship).",
+  "uses": [
+   [
+    "ott1299",
+    "Tanzania"
+   ],
+   [
+    "ott1453",
+    "Tanzania"
+   ],
+   [
+    "ott1520",
+    "Tanzania"
+   ],
+   [
+    "tim1380",
+    "Tanzania"
+   ]
+  ]
+ },
+ "kongo": {
+  "desc": "Kingdom of Kongo: white banner with a blue shield showing an arm holding a sword (Kongo arms), or a red field with a golden crown.",
+  "uses": [
+   [
+    "ott1520",
+    "Dem. Rep. Congo"
+   ],
+   [
+    "ott1299",
+    "Dem. Rep. Congo"
+   ],
+   [
+    "ott1453",
+    "Dem. Rep. Congo"
+   ],
+   [
+    "tim1380",
+    "Dem. Rep. Congo"
+   ]
+  ]
+ },
+ "north_american": {
+  "desc": "North American native confederacies: fictional banner, earth-red field with a white central circle containing a black eagle feather symbol.",
+  "uses": [
+   [
+    "ott1299",
+    "United States of America"
+   ],
+   [
+    "ott1453",
+    "United States of America"
+   ],
+   [
+    "ott1520",
+    "United States of America"
+   ],
+   [
+    "tim1380",
+    "United States of America"
+   ]
+  ]
+ },
+ "northern_yuan": {
+  "desc": "Northern Yuan / Mongol khanates: light blue banner with a yellow Mongol nine-yak-tail standard (tug) emblem, or golden soyombo.",
+  "uses": [
+   [
+    "ott1453",
+    "Mongolia"
+   ],
+   [
+    "tim1380",
+    "Mongolia"
+   ],
+   [
+    "ott1520",
+    "Mongolia"
+   ],
+   [
+    "ott1299",
+    "Mongolia"
+   ]
+  ]
+ },
+ "cyprus_lusignan": {
+  "desc": "Lusignan Kingdom of Cyprus: white field with a golden Jerusalem cross, plus lion of Lusignan (red and silver stripes with blue lion).",
+  "uses": [
+   [
+    "ott1299",
+    "Cyprus"
+   ],
+   [
+    "ott1453",
+    "Cyprus"
+   ],
+   [
+    "tim1380",
+    "Cyprus"
+   ]
+  ]
+ },
+ "lan_xang": {
+  "desc": "Lan Xang kingdom: red banner with a white three-headed elephant under a white parasol.",
+  "uses": [
+   [
+    "ott1453",
+    "Laos"
+   ],
+   [
+    "ott1520",
+    "Laos"
+   ],
+   [
+    "tim1380",
+    "Laos"
+   ],
+   [
+    "ott1299",
+    "Laos"
+   ]
+  ]
+ },
+ "livonia": {
+  "desc": "Livonian/Teutonic Order: white field with a black cross pattée.",
+  "uses": [
+   [
+    "ott1520",
+    "Latvia"
+   ],
+   [
+    "ott1299",
+    "Latvia"
+   ],
+   [
+    "ott1453",
+    "Latvia"
+   ],
+   [
+    "tim1380",
+    "Latvia"
+   ]
+  ]
+ },
+ "madagascar": {
+  "desc": "Madagascar kingdoms: red and white vertical halves with a gold spear emblem in the center.",
+  "uses": [
+   [
+    "ott1299",
+    "Madagascar"
+   ],
+   [
+    "ott1453",
+    "Madagascar"
+   ],
+   [
+    "ott1520",
+    "Madagascar"
+   ],
+   [
+    "tim1380",
+    "Madagascar"
+   ]
+  ]
+ },
+ "majapahit": {
+  "desc": "Majapahit empire: the Gula Kelapa banner, nine horizontal stripes alternating red and white.",
+  "uses": [
+   [
+    "ott1299",
+    "Indonesia"
+   ],
+   [
+    "ott1453",
+    "Indonesia"
+   ],
+   [
+    "tim1380",
+    "Indonesia"
+   ]
+  ]
+ },
+ "malacca": {
+  "desc": "Malacca/Malay sultanates: yellow banner with a red crescent and a red keris dagger.",
+  "uses": [
+   [
+    "ott1453",
+    "Malaysia"
+   ],
+   [
+    "ott1299",
+    "Malaysia"
+   ],
+   [
+    "tim1380",
+    "Malaysia"
+   ],
+   [
+    "ott1520",
+    "Malaysia"
+   ]
+  ]
+ },
+ "maldives": {
+  "desc": "Maldive sultanate: red banner with a green rectangle in the center containing a white crescent.",
+  "uses": [
+   [
+    "ott1299",
+    "Maldives"
+   ],
+   [
+    "ott1453",
+    "Maldives"
+   ],
+   [
+    "ott1520",
+    "Maldives"
+   ],
+   [
+    "tim1380",
+    "Maldives"
+   ]
+  ]
+ },
+ "mali": {
+  "desc": "Mali/Songhay empire: green, yellow, red horizontal stripes with a black lion on the yellow stripe; Songhay: add a white crescent.",
+  "uses": [
+   [
+    "ott1299",
+    "Mali"
+   ],
+   [
+    "ott1453",
+    "Mali"
+   ],
+   [
+    "tim1380",
+    "Mali"
+   ],
+   [
+    "ott1520",
+    "Mali"
+   ],
+   [
+    "ott1299",
+    "Niger"
+   ],
+   [
+    "ott1453",
+    "Niger"
+   ],
+   [
+    "tim1380",
+    "Niger"
+   ]
+  ]
+ },
+ "maya": {
+  "desc": "Maya city-states: jade-green banner with a golden glyph-style sun god face in the center.",
+  "uses": [
+   [
+    "ott1299",
+    "Guatemala"
+   ],
+   [
+    "ott1453",
+    "Guatemala"
+   ],
+   [
+    "ott1520",
+    "Guatemala"
+   ],
+   [
+    "tim1380",
+    "Guatemala"
+   ]
+  ]
+ },
+ "melanesia": {
+  "desc": "Melanesia/Pacific peoples: fictional banner, ocean-blue field with a white canoe and a red star in the center.",
+  "uses": [
+   [
+    "ott1299",
+    "Papua New Guinea"
+   ],
+   [
+    "ott1453",
+    "Papua New Guinea"
+   ],
+   [
+    "ott1520",
+    "Papua New Guinea"
+   ],
+   [
+    "tim1380",
+    "Papua New Guinea"
+   ]
+  ]
+ },
+ "marinid": {
+  "desc": "Marinid/Wattasid/Saadi dynasties of Morocco: plain red banner (Wattasid) with a green seal of Solomon five-pointed star in the center.",
+  "uses": [
+   [
+    "ott1299",
+    "Morocco"
+   ],
+   [
+    "ott1453",
+    "Morocco"
+   ],
+   [
+    "tim1380",
+    "Morocco"
+   ],
+   [
+    "ott1520",
+    "Morocco"
+   ]
+  ]
+ },
+ "moghulistan": {
+  "desc": "Central Asian khanates (Chagatai, Moghulistan, Uzbek): sky-blue banner with a white crescent and a gold tamga.",
+  "uses": [
+   [
+    "ott1453",
+    "Kyrgyzstan"
+   ],
+   [
+    "tim1380",
+    "Kyrgyzstan"
+   ],
+   [
+    "ott1299",
+    "Uzbekistan"
+   ],
+   [
+    "ott1299",
+    "Kyrgyzstan"
+   ],
+   [
+    "ott1453",
+    "Kazakhstan"
+   ],
+   [
+    "ott1520",
+    "Uzbekistan"
+   ]
+  ]
+ },
+ "muisca": {
+  "desc": "Muisca and Carib chiefdoms: golden-yellow banner with a green El Dorado raft figure in the center.",
+  "uses": [
+   [
+    "ott1299",
+    "Colombia"
+   ],
+   [
+    "ott1453",
+    "Colombia"
+   ],
+   [
+    "ott1520",
+    "Colombia"
+   ],
+   [
+    "tim1380",
+    "Colombia"
+   ]
+  ]
+ },
+ "muromachi": {
+  "desc": "Muromachi/Sengoku Japan: white banner with a red sun disc, with golden chrysanthemum seal above it.",
+  "uses": [
+   [
+    "ott1453",
+    "Japan"
+   ],
+   [
+    "tim1380",
+    "Japan"
+   ],
+   [
+    "ott1520",
+    "Japan"
+   ]
+  ]
+ },
+ "muzaffarid": {
+  "desc": "Muzaffarids / Sarbadars / Ilkhanate governors of Persia: green banner with a gold lion-and-sun (shir-o-khorshid) emblem.",
+  "uses": [
+   [
+    "tim1380",
+    "Iran"
+   ],
+   [
+    "ott1299",
+    "Iran"
+   ]
+  ]
+ },
+ "naples_anjou": {
+  "desc": "Kingdom of Naples (Anjou/Aragon): blue field with golden fleurs-de-lis and a red label (Anjou), or red-and-gold stripes (Aragon).",
+  "uses": [
+   [
+    "ott1299",
+    "Malta"
+   ],
+   [
+    "tim1380",
+    "Malta"
+   ],
+   [
+    "ott1453",
+    "Malta"
+   ]
+  ]
+ },
+ "novgorod": {
+  "desc": "Novgorod Republic: red banner with a white saint (Saint George) on a white horse slaying a dragon.",
+  "uses": [
+   [
+    "ott1299",
+    "Greenland"
+   ],
+   [
+    "ott1453",
+    "Greenland"
+   ],
+   [
+    "tim1380",
+    "Greenland"
+   ]
+  ]
+ },
+ "portugal": {
+  "desc": "Kingdom of Portugal, medieval: white field with a blue cross-shaped escutcheon and seven golden castles on red border (Portuguese royal arms).",
+  "uses": [
+   [
+    "ott1299",
+    "Portugal"
+   ],
+   [
+    "ott1453",
+    "Portugal"
+   ],
+   [
+    "ott1520",
+    "Portugal"
+   ],
+   [
+    "tim1380",
+    "Portugal"
+   ]
+  ]
+ },
+ "rasulid": {
+  "desc": "Rasulid Yemen: red banner with a white crescent and white sword, in a medieval style.",
+  "uses": [
+   [
+    "ott1299",
+    "Yemen"
+   ],
+   [
+    "ott1453",
+    "Yemen"
+   ],
+   [
+    "tim1380",
+    "Yemen"
+   ],
+   [
+    "ott1520",
+    "Yemen"
+   ]
+  ]
+ },
+ "sindh_multan": {
+  "desc": "Sindh/Multan principalities: green banner with a white crescent and a white sword.",
+  "uses": [
+   [
+    "ott1299",
+    "Pakistan"
+   ],
+   [
+    "ott1453",
+    "Pakistan"
+   ],
+   [
+    "ott1520",
+    "Pakistan"
+   ],
+   [
+    "tim1380",
+    "Pakistan"
+   ]
+  ]
+ },
+ "serbia": {
+  "desc": "Medieval Serbia: red field with a white Serbian cross carrying four firesteels (Ocila) in the quarters, or a white double-headed eagle.",
+  "uses": [
+   [
+    "ott1453",
+    "Serbia"
+   ],
+   [
+    "tim1380",
+    "Serbia"
+   ],
+   [
+    "ott1299",
+    "Serbia"
+   ]
+  ]
+ },
+ "taiwan": {
+  "desc": "Taiwan indigenous peoples: fictional banner, teal green field with a white central stylized mountain and sun.",
+  "uses": [
+   [
+    "ott1299",
+    "Taiwan"
+   ],
+   [
+    "ott1453",
+    "Taiwan"
+   ],
+   [
+    "ott1520",
+    "Taiwan"
+   ],
+   [
+    "tim1380",
+    "Taiwan"
+   ]
+  ]
+ },
+ "tibet": {
+  "desc": "Tibet/Himalaya: the Snow Lion flag, white snow lion on a banner with sun, blue and red rays.",
+  "uses": [
+   [
+    "ott1299",
+    "Bhutan"
+   ],
+   [
+    "ott1453",
+    "Bhutan"
+   ],
+   [
+    "ott1520",
+    "Bhutan"
+   ],
+   [
+    "tim1380",
+    "Bhutan"
+   ]
+  ]
+ },
+ "tupi": {
+  "desc": "Tupi-Guarani peoples: fictional banner, green field with a red feather headdress in the center.",
+  "uses": [
+   [
+    "ott1299",
+    "Brazil"
+   ],
+   [
+    "ott1453",
+    "Brazil"
+   ],
+   [
+    "ott1520",
+    "Brazil"
+   ],
+   [
+    "tim1380",
+    "Brazil"
+   ]
+  ]
+ },
+ "oman": {
+  "desc": "Oman (Nabhani/Ibadi imamate): plain red banner with a white khanjar dagger and crossed swords.",
+  "uses": [
+   [
+    "ott1299",
+    "Oman"
+   ],
+   [
+    "ott1453",
+    "Oman"
+   ],
+   [
+    "ott1520",
+    "Oman"
+   ],
+   [
+    "tim1380",
+    "Oman"
+   ]
+  ]
+ },
+ "ilkhanate": {
+  "desc": "Ilkhanate: light blue banner with a gold lion-and-sun and white crescent.",
+  "uses": [
+   [
+    "ott1299",
+    "Azerbaijan"
+   ]
+  ]
+ },
+ "inca": {
+  "desc": "Inca empire: the seven-colored wiphala checkered flag (rainbow squares) in the center of a white banner.",
+  "uses": [
+   [
+    "ott1520",
+    "Peru"
+   ],
+   [
+    "ott1299",
+    "Peru"
+   ],
+   [
+    "ott1453",
+    "Peru"
+   ],
+   [
+    "tim1380",
+    "Peru"
+   ]
+  ]
+ },
+ "ireland": {
+  "desc": "Irish lordships: blue field with a golden harp with silver strings.",
+  "uses": [
+   [
+    "ott1299",
+    "Ireland"
+   ],
+   [
+    "ott1453",
+    "Ireland"
+   ],
+   [
+    "ott1520",
+    "Ireland"
+   ],
+   [
+    "tim1380",
+    "Ireland"
+   ]
+  ]
+ },
+ "sweden": {
+  "desc": "Kingdom of Sweden, medieval: blue banner with three golden crowns (two over one).",
+  "uses": [
+   [
+    "ott1299",
+    "Sweden"
+   ],
+   [
+    "ott1453",
+    "Sweden"
+   ],
+   [
+    "ott1520",
+    "Sweden"
+   ],
+   [
+    "tim1380",
+    "Sweden"
+   ]
+  ]
+ },
+ "switzerland": {
+  "desc": "Old Swiss Confederacy: red banner with a white cross (Schwyz style).",
+  "uses": [
+   [
+    "ott1520",
+    "Switzerland"
+   ]
+  ]
+ }
+}
