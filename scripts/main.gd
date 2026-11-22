@@ -2066,7 +2066,7 @@ func _on_ui_action(act: String, arg) -> void:
 		"build":
 			var bp = gs.provinces[arg]
 			var opts: Array = []
-			for k in ["farm", "mine", "oil", "wood", "press"]:
+			for k in ["farm", "mine", "oil", "wood", "refinery", "export", "school", "press"]:
 				var bk: String = k
 				var bc: float = bp.bld_cost(bk)
 				opts.append({"text": "%s — %s (%s)%s" % [Model.bld_name(bk, Macro.era_on and Eras.family() == "pre"), Macro.money(bc), Model.BLD[bk].info, Loc.t(" ★ zengin kaynak: %35 ucuz, getirisi +%30") if bk == bp.rich() else ""], "cb": func():
@@ -2094,7 +2094,7 @@ func _on_ui_action(act: String, arg) -> void:
 func _open_bulk_dialog() -> void:
 	var pre: bool = Macro.era_on and Eras.family() == "pre"
 	var opts: Array = []
-	for k in ["farm", "mine", "oil", "wood", "press"]:
+	for k in ["farm", "mine", "oil", "wood", "refinery", "export", "school", "press"]:
 		var bk: String = k
 		var pv: Dictionary = gs.bulk_preview("build", bk)
 		if pv.n > 0:

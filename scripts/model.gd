@@ -6,6 +6,9 @@ const BLD := {
 	"mine": {"name": "Maden ocağı", "bonus": 0.40, "mult": 12.0, "icon": "bld_mine", "info": "Gelir +%40"},
 	"oil": {"name": "Petrol tesisi", "bonus": 0.55, "mult": 16.0, "icon": "bld_oil", "info": "Gelir +%55"},
 	"wood": {"name": "Kereste atölyesi", "bonus": 0.20, "mult": 6.0, "icon": "bld_factory", "info": "Gelir +%20, kereste üretimi"},
+	"school": {"name": "Okul ve kütüphane", "bonus": 0.08, "mult": 9.0, "icon": "bld_university", "info": "Gelir +%8, teknolojiyi hızlandırır"},
+	"refinery": {"name": "Rafineri", "bonus": 0.25, "mult": 14.0, "icon": "bld_refinery", "info": "Gelir +%25, petrol satışı +%8"},
+	"export": {"name": "İhracat limanı", "bonus": 0.15, "mult": 10.0, "icon": "bld_harbor", "info": "Gelir +%15, tüm mal satışları +%6"},
 	"press": {"name": "Kağıt fabrikası ve matbaa", "bonus": 0.20, "mult": 7.0, "icon": "bld_press", "info": "Gelir +%20, huzursuzluğu azaltır"},
 }
 const BLD_WEEKS := 8

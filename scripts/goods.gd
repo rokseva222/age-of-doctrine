@@ -87,9 +87,11 @@ static func _scan(gs, only: int = -1) -> Dictionary:
 			continue
 		var e: Dictionary = acc.get(p.owner, {})
 		if e.is_empty():
-			e = {"pop": 0.0, "grain": 0.0, "wood": 0.0, "ore": 0.0, "oil": 0.0}
+			e = {"pop": 0.0, "grain": 0.0, "wood": 0.0, "ore": 0.0, "oil": 0.0, "school": 0, "refinery": 0, "export": 0}
 			acc[p.owner] = e
 		var rk: String = p.rich()
+		if p.bld == "school" or p.bld == "refinery" or p.bld == "export":
+			e[p.bld] = int(e[p.bld]) + 1
 		e.pop += maxf(0.05, p.pop)
 		for g in GOODS:
 			e[g] += prov_prod(p, g, rk)
@@ -108,6 +110,7 @@ static func _recount(gs, c) -> void:
 			_acc_gs = gid
 		e = _acc.get(c.id, {})
 	var pop: float = float(e.get("pop", 0.0))
+	c.goods["bl"] = {"school": int(e.get("school", 0)), "refinery": int(e.get("refinery", 0)), "export": int(e.get("export", 0))}
 	var ind: float = 0.7 + 0.6 * clampf(c.industry, 0.0, 100.0) / 100.0
 	var war: float = 1.0 + (0.15 if not c.enemies.is_empty() else 0.0)
 	for g in GOODS:
@@ -231,6 +234,12 @@ static func weekly(gs, c) -> float:
 		g0.deals = live
 	var money := 0.0
 	var short := {}
+	var bl: Dictionary = g0.get("bl", {})
+	var ex_mult: float = 1.0 + 0.06 * float(mini(5, int(bl.get("export", 0))))
+	var ref_mult: float = 1.0 + 0.08 * float(mini(5, int(bl.get("refinery", 0))))
+	var nsch: int = mini(10, int(bl.get("school", 0)))
+	if nsch > 0:
+		c.tech = minf(1.0, c.tech + 0.00012 * float(nsch))
 	for g in GOODS:
 		var r: Dictionary = g0.rate[g]
 		var prod: float = float(r.prod)
@@ -255,7 +264,7 @@ static func weekly(gs, c) -> float:
 				stock -= drain
 				net_units += drain
 			if net_units > 0.0:
-				money += net_units * avail * unit * px * SELL_DISCOUNT
+				money += net_units * avail * unit * px * SELL_DISCOUNT * ex_mult * (ref_mult if g == "oil" else 1.0)
 		else:
 			var need: float = -diff
 			var from_stock: float = minf(stock, need)
