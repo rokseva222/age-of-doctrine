@@ -24,6 +24,21 @@ const KINDS := {
 	"energy": {"name": "Enerji Şoku", "icon": "bld_oil", "inc": 0.07, "stab": 0.18, "dur": [10, 14], "eras": ["", "ww2"], "role": "fin",
 		"names": {"ww2": "Yakıt Kıtlığı"},
 		"q": "Efendim, petrol fiyatları fırladı; sanayi ve ulaşım zorlanıyor. Ne yapalım?"},
+	"trade_war": {"name": "Küresel Ticaret Savaşı", "icon": "cr_embargo", "inc": 0.07, "stab": 0.18, "dur": [10, 14], "eras": [""], "role": "fin",
+		"names": {},
+		"q": "Efendim, büyük ekonomiler birbirine gümrük duvarları örüyor; ihracat ve tedarik zincirleri sarsılıyor. Ne yapalım?"},
+	"cyber": {"name": "Küresel Siber Saldırı Dalgası", "icon": "cr_spy", "inc": 0.06, "stab": 0.20, "dur": [8, 12], "eras": [""], "role": "spy",
+		"names": {},
+		"q": "Efendim, devlet kurumlarına ve bankalara yönelik büyük bir siber saldırı dalgası başladı; sistemler çöküyor. Ne yapalım?"},
+	"migration": {"name": "Küresel Göç Dalgası", "icon": "cr_migration", "inc": 0.05, "stab": 0.28, "dur": [10, 16], "eras": ["", "ww1", "ww2"], "role": "int",
+		"names": {"ww1": "Mülteci Akını", "ww2": "Mülteci Akını"},
+		"q": "Efendim, savaş ve yoksulluktan kaçan kitleler sınırlara dayandı; kamplar ve şehirler zorlanıyor. Ne yapalım?"},
+	"drought": {"name": "Küresel Kuraklık", "icon": "cr_drought", "inc": 0.06, "stab": 0.26, "dur": [12, 18], "eras": ["", "ww1", "ww2"], "role": "int",
+		"names": {},
+		"q": "Efendim, nehirler çekiliyor ve ekinler kuruyor; sulama ve içme suyu sıkıntısı başladı. Ne yapalım?"},
+	"strike": {"name": "Genel Grev Dalgası", "icon": "cr_strike", "inc": 0.06, "stab": 0.20, "dur": [8, 12], "eras": ["", "ww1", "ww2"], "role": "int",
+		"names": {"ww1": "Büyük Grev Dalgası"},
+		"q": "Efendim, fabrikalarda ve limanlarda grevler art arda başlıyor; üretim ve ihracat aksıyor. Ne yapalım?"},
 }
 
 
