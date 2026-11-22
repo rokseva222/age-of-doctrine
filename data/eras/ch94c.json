@@ -211,7 +211,8 @@
     "leader": "Cumhurbaşkanı|Cahar Dudayev",
     "troops": 90000,
     "gold_mult": 1.5,
-    "play": true
+    "play": true,
+    "flag": "I:ichkeria"
    }
   ],
   "garrison": [

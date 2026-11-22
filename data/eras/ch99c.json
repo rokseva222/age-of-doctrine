@@ -213,7 +213,8 @@
     "leader": "Cumhurbaşkanı|Aslan Maskhadov",
     "troops": 110000,
     "gold_mult": 1.2,
-    "play": true
+    "play": true,
+    "flag": "I:ichkeria"
    }
   ],
   "garrison": [

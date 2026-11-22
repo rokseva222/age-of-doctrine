@@ -491,5 +491,25 @@
   "Vietnam": "A:vn",
   "Liechtenstein": "I:ddr",
   "Brunei": "I:cw62_south_vietnam"
+ },
+ "ch94": {
+  "Serbia": "I:yugoslavia_fr",
+  "Georgia": "I:georgia_1990",
+  "Belarus": "I:belarus_1991"
+ },
+ "ch94c": {
+  "Serbia": "I:yugoslavia_fr",
+  "Georgia": "I:georgia_1990",
+  "Belarus": "I:belarus_1991"
+ },
+ "ch99": {
+  "Serbia": "I:yugoslavia_fr",
+  "Georgia": "I:georgia_1990",
+  "Belarus": "I:belarus_1995"
+ },
+ "ch99c": {
+  "Serbia": "I:yugoslavia_fr",
+  "Georgia": "I:georgia_1990",
+  "Belarus": "I:belarus_1995"
  }
 }
