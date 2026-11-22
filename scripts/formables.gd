@@ -50,6 +50,23 @@ static func progress(gs, f: Dictionary) -> Dictionary:
 	return {"have": have, "total": total, "need": need, "ok": total > 0 and have >= need}
 
 
+## Formu tamamlamak için alınması gereken yerler: şu an kimin elinde olduğuna göre [[ülke adı, eyalet sayısı], ...] (en çoktan aza).
+static func missing_by_owner(gs, f: Dictionary) -> Array:
+	var ids := {}
+	for c in gs.countries:
+		if (f.lands as Array).has(c.name_en) and not c.is_rebel:
+			ids[c.id] = true
+	var cnt := {}
+	for p in gs.provinces:
+		if ids.has(p.home) and p.owner != gs.player:
+			cnt[p.owner] = int(cnt.get(p.owner, 0)) + 1
+	var out: Array = []
+	for k in cnt:
+		out.append([gs.countries[k].name, cnt[k]])
+	out.sort_custom(func(a, b): return a[1] > b[1])
+	return out
+
+
 ## Formun hedef eyaletleri {pid: true} (haritada gösterim için).
 static func target_provinces(gs, f: Dictionary) -> Dictionary:
 	var ids := {}

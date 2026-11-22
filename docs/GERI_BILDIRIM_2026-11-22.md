@@ -51,14 +51,14 @@ Ilk listede olmayan ya da eksik kalan maddeler. Durum etiketi kodda bakılarak y
 - E3. [KODDA VAR, yeniden denenmeli] Hata 1/4/5 (Furkan): savaşsız adaya ordu geçirilemiyor, geçit izni bitince ordu içeride kalıyor, Japonlar gibi denize çıkılamıyor. Dost deniz nakliyesi, çıkarma ve geçit bitince eve gönderme kodda var; ss'ler 19–21 Kasım sürümünden.
 - E4. [YOK] Saldırı/ordu hareketi animasyonu; hava bombardımanında küçük patlama efekti (Furkan/Eren fikri).
 - E5. [KISMEN] Savaş sonrası asimilasyon/din dönüştürme VAR (eyalet kartı); "isyan çıkma sıklığı çok fazla, fetihten başka gelişim yok" dengesi bakılmadı (mainanonacc).
-- E6. [BAKILACAK] "Osmanlı'yı oluştur" formlarken nereleri almam gerektiği haritada gösterilsin.
+- E6. [YAPILDI: formlama kartında 'Haritada göster' + 'Alınacak yerler (elinde tutan ülke)' listesi] "Osmanlı'yı oluştur" formlarken nereleri almam gerektiği haritada gösterilsin.
 - E7. [KISMEN] Yeni senaryolar: Osmanlı kuruluşu (ott1299) ve İstanbul'un fethi (ott1453) VAR; 15 Temmuz, 12 Eylül, Navalny protestosu, Weimar/Beyaz Rusya/Sovyet çatışması YOK.
 - E8. [BAKILACAK] Senaryo editörü: haritadan tıklayarak ülke/il seçme, kaydırma sorunu, tarih/harita ayarı.
-- E9. [KISMEN: eğitim ve tarım bütçesi eklendi; kiralık asker tipleri, zorunlu askerlik artışı ve vergi↔asker sürgüsü YOK] Kiralık asker 3 tip (çete / orta / özel harekat); zorunlu askerlik tur başına çok az (5–10 bin); vergi↔asker sürgüsü; bütçede eğitim, tarım, vergi.
-- E10. [YOK] Eyalet sayısı dengesiz: Arabistan tek il, Türkiye'de 2 tek il (Emir Ali).
-- E11. [YOK] Savaş ilanında savaş sebebi (casus belli) seçilsin (Taha); ittifak kurmak kolaylaşsın, para biriktirirken ilişki düşmesin (Yasin).
-- E12. [BAKILACAK] Propaganda sistemi yöntem seçimi (sözlü/yazılı) ve "hükümete inanç" seviyesi (Kemalist Halife).
+- E9. [YAPILDI: eğitim/tarım bütçesi, 3 tip kiralık asker (gönüllü/profesyonel/özel harekât) zaten vardı, bu tur Askerlik düzeni: gönüllü/normal/zorunlu eklendi] Kiralık asker 3 tip (çete / orta / özel harekat); zorunlu askerlik tur başına çok az (5–10 bin); vergi↔asker sürgüsü; bütçede eğitim, tarım, vergi.
+- E10. [İNCELENDİ: tek eyaletli olanlar yalnız 26 mikro devlet (Singapur, Malta, Monako...); Türkiye/Arabistan çok eyaletli] Eyalet sayısı dengesiz: Arabistan tek il, Türkiye'de 2 tek il (Emir Ali).
+- E11. [YAPILDI: savaş ilanında sebep penceresi; sebep yoksa istikrar -3 ve tüm ülkelerle ilişki -6; ittifak kolaylığı yapılmadı] Savaş ilanında savaş sebebi (casus belli) seçilsin (Taha); ittifak kurmak kolaylaşsın, para biriktirirken ilişki düşmesin (Yasin).
+- E12. [VAR: sözlü/yazılı/afiş yöntemleri ve 'Güven' göstergesi Halk sekmesinde] Propaganda sistemi yöntem seçimi (sözlü/yazılı) ve "hükümete inanç" seviyesi (Kemalist Halife).
 - E13. [BAKILACAK] Hata 2/3/6 (Furkan): 1939'da Grodno ve Brest ile Polonya sınırındaki bölge Sovyet görünüyor; Hindistan'ın içindeki beylikler yok; 1914 haritasında Kars/Hicaz ve Avusturya'nın İtalya/Romanya'dan aldığı toprak fazlası. (WW1'de Kars→Rusya, Hicaz→Osmanlı aktarımı kodda var; 1939 Polonya doğusu için tarih doğrulaması gerek.)
-- E14. [YOK] Fransa/İngiltere'nin Afrika-Asya-Amerika topraklarını vasal yap (ör. Cezayir, WW2'de Fransa vasalı).
+- E14. [VAR: 1914 ve 1939'da Cezayir/Hindistan/Vietnam... vasal olarak başlar; günümüz haritasında yok] Fransa/İngiltere'nin Afrika-Asya-Amerika topraklarını vasal yap (ör. Cezayir, WW2'de Fransa vasalı).
 - E15. [İNCELENDİ] Pil tüketimi: 2 saatte %15 (mainanonacc); cihaz profili gerekir (B1 ile aynı).
 - E16. [KISMEN: bütçeye Eğitim ve Bilim (teknolojiyi yıllar içinde yükseltir) ile Tarım ve Gıda (gelir +, istikrar +) kalemleri eklendi; vergi↔asker sürgüsü ve tank/top/tüfek gücü ayarı YOK] Eğitim, tarım, vergi, asker alımı, tank/top/tüfek gücü içeren "teknoloji/ülke yönetimi ekranı" (Emir Ali/Furkan sohbeti, World Empire benzeri).

@@ -1,6 +1,7 @@
 extends RefCounted
 ## Ülke formlama ekranı: oyuncunun ülkesinin kurabileceği tarihî devletler, ilerleme çubuğu ve "Formla" düğmesi.
 
+const Loc = preload("res://scripts/loc.gd")
 const TK = preload("res://scripts/theme_kit.gd")
 const Formables = preload("res://scripts/formables.gd")
 const Eras = preload("res://scripts/eras.gd")
@@ -49,6 +50,13 @@ static func open(ui, gs) -> void:
 		pb.add_theme_stylebox_override("fill", TK.box(col, col, 2, 0, 0))
 		v.add_child(pb)
 		v.add_child(TK.t("%d / %d eyalet gerekli (toplam %d)" % [pr.have, pr.need, pr.total], "small", col))
+		if not pr.ok:
+			var mo: Array = Formables.missing_by_owner(gs, f)
+			var parts: Array = []
+			for e in mo.slice(0, 6):
+				parts.append("%s (%d)" % [e[0], e[1]])
+			if not parts.is_empty():
+				v.add_child(_wrap(Loc.t("Alınacak yerler (elinde tutan ülke): %s") % ", ".join(parts)))
 		var b := TK.button("Formla" if pr.ok else "Henüz yetmiyor", "gold" if pr.ok else "ghost", "flag", Vector2(0, 52), 16)
 		b.disabled = not pr.ok
 		var fd: Dictionary = f
