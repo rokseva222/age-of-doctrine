@@ -5,13 +5,14 @@ const BLD := {
 	"farm": {"name": "Tarım çiftliği", "bonus": 0.25, "mult": 8.0, "icon": "bld_farm", "info": "Gelir +%25"},
 	"mine": {"name": "Maden ocağı", "bonus": 0.40, "mult": 12.0, "icon": "bld_mine", "info": "Gelir +%40"},
 	"oil": {"name": "Petrol tesisi", "bonus": 0.55, "mult": 16.0, "icon": "bld_oil", "info": "Gelir +%55"},
+	"wood": {"name": "Kereste atölyesi", "bonus": 0.20, "mult": 6.0, "icon": "bld_factory", "info": "Gelir +%20, kereste üretimi"},
 	"press": {"name": "Kağıt fabrikası ve matbaa", "bonus": 0.20, "mult": 7.0, "icon": "bld_press", "info": "Gelir +%20, huzursuzluğu azaltır"},
 }
 const BLD_WEEKS := 8
 ## O5: bölgesel kaynaklar. Ülke bazında bilinen üreticilerde eyaletlerin bir kısmı o kaynakta zengindir: o bina %35 ucuz, getirisi %30 fazla.
 ## Yatak seçimi eyalet kimliğinden deterministik türetilir (kayda girmez); gs.ensure_rich() ülke bantlarını kurar.
 const RichStore = preload("res://scripts/rich_store.gd")
-const RICH_NAMES := {"farm": "Verimli tarım ovası", "mine": "Zengin maden yatağı", "oil": "Petrol ve gaz sahası"}
+const RICH_NAMES := {"farm": "Verimli tarım ovası", "mine": "Zengin maden yatağı", "oil": "Petrol ve gaz sahası", "wood": "Zengin orman"}
 const RICH_COST := 0.65
 const RICH_BONUS := 1.3
 ## Eski çağda (pre) petrol tesisi / matbaa yok: dönem adları
@@ -69,6 +70,9 @@ class Province:
 			if h >= lo and h < lo + w:
 				return k
 			lo += w
+		var ww: int = int(b.get("wood", 0))
+		if ww > 0 and int((id * 40503 + 17) % 100) < ww:
+			return "wood"
 		return ""
 
 	func rev() -> float:
@@ -156,6 +160,7 @@ class Country:
 	var recruit_acc := 0.0
 	var gold_delta := 0.0
 	var fund := 0.0                          # savunma fonu (M$): askerlik + silah alımı bu havuzdan
+	var goods: Dictionary = {}               # mal ekonomisi (scripts/goods.gd)
 	var tech := 0.5                          # silah teknolojisi düzeyi 0..1
 	var bloc := "us"
 	var inv: Dictionary = {}                 # silah kimliği -> adet

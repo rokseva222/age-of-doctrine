@@ -13,7 +13,7 @@ const Model = preload("res://scripts/model.gd")
 static var rec_gs = null
 
 ## gs'yi ilk argüman olarak ALMAYAN modül emirleri (yeniden oynatırken gs eklenmez)
-const NOGS := ["Macro.set_budget", "Macro.set_front"]
+const NOGS := ["Macro.set_budget", "Macro.set_front", "Goods.set_policy"]
 
 ## Modül adı → betik (statik fonksiyonları çağırmak için)
 const MODULES := {
@@ -21,7 +21,7 @@ const MODULES := {
 	"Macro": "res://scripts/macro.gd", "UN": "res://scripts/un.gd", "Focus": "res://scripts/focus.gd",
 	"Politics": "res://scripts/politics.gd", "Carriers": "res://scripts/carriers.gd", "Chokepoints": "res://scripts/chokepoints.gd",
 	"Formables": "res://scripts/formables.gd", "GrandOp": "res://scripts/grand_op.gd", "Ultimatum": "res://scripts/ultimatum.gd",
-	"Propaganda": "res://scripts/propaganda.gd", "Faith": "res://scripts/faith.gd",
+	"Propaganda": "res://scripts/propaganda.gd", "Faith": "res://scripts/faith.gd", "Goods": "res://scripts/goods.gd",
 }
 
 
@@ -116,7 +116,7 @@ const MODULE_CMDS := ["Air.player_strike", "Air.rebase", "Air.airlift", "Air.ren
 	"Chokepoints.set_mode", "Fleets.order_move", "Fleets.stop", "Fleets.merge", "Fleets.blockade", "Fleets.player_bombard",
 	"Fleets.player_torpedo", "Fleets.embark", "Fleets.debark", "Fleets.rename", "Fleets.set_flag", "Fleets.set_stance",
 	"Fleets.set_escort", "Fleets.split", "Focus.start", "Focus.cancel", "Formables.form", "GrandOp.launch",
-	"Macro.set_front", "Macro.set_budget", "Macro.set_doctrine", "Macro.mobilize", "Macro.buy",
+	"Macro.set_front", "Macro.set_budget", "Goods.set_policy", "Macro.set_doctrine", "Macro.mobilize", "Macro.buy",
 	"Politics.choose", "Politics.do_action", "Ultimatum.deliver", "UN.propose", "UN.player_vote"]
 const OBJ_PARAMS := ["a", "f", "w", "army", "fleet", "wing", "fid", "c", "me", "country_obj"]
 static var _sigs: Dictionary = {}

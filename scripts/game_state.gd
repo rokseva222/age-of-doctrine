@@ -229,6 +229,9 @@ const RICH_MINE := ["Australia", "Chile", "Peru", "South Africa", "Democratic Re
 const RICH_FARM := ["United States of America", "Brazil", "India", "France", "Ukraine", "Argentina", "Thailand", "Vietnam", "China", "Russia", "Turkey", "Canada", "Australia", "Germany", "Poland", "Egypt", "Pakistan", "Indonesia", "Romania", "Hungary", "Kazakhstan", "Spain", "Italy", "Paraguay", "Uruguay"]
 
 
+const RICH_WOOD := ["Russia", "Canada", "Finland", "Sweden", "Norway", "Brazil", "Indonesia", "Malaysia", "Latvia", "Estonia", "Lithuania", "Belarus", "Austria", "Romania", "Chile", "New Zealand", "Papua New Guinea", "Gabon", "Congo", "Democratic Republic of the Congo", "Myanmar", "Laos", "Vietnam", "Japan", "United States of America", "Germany", "Poland", "Ukraine"]
+
+
 func ensure_rich() -> void:
 	RichStore.bands.clear()
 	for c in countries:
@@ -239,7 +242,7 @@ func ensure_rich() -> void:
 			oil = 2
 			mine = 2
 			farm = 2
-		RichStore.bands[c.id] = {"oil": oil, "mine": mine, "farm": farm}
+		RichStore.bands[c.id] = {"oil": oil, "mine": mine, "farm": farm, "wood": 40 if RICH_WOOD.has(c.name_en) else 8}
 
 
 func start_game(player_country: int) -> void:

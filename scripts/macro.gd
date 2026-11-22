@@ -10,6 +10,7 @@ const Names = preload("res://scripts/names.gd")
 const Propaganda = preload("res://scripts/propaganda.gd")
 const Crises = preload("res://scripts/crises.gd")
 const Carriers = preload("res://scripts/carriers.gd")
+const Goods = preload("res://scripts/goods.gd")
 const Loc = preload("res://scripts/loc.gd")
 const Focus = preload("res://scripts/focus.gd")
 const Currency = preload("res://scripts/currency.gd")
@@ -580,6 +581,9 @@ static func weekly(gs) -> void:
 		c.stability = clampf(c.stability + Propaganda.stability_delta(c), 3.0, 100.0)
 		_invest(gs, c, f)
 		c.gold_delta = f["net"]
+		var gm: float = Goods.weekly(gs, c)
+		c.gold += gm
+		c.gold_delta += gm
 		if c.gold < 0.0:
 			for a in gs.armies_of(c.id):
 				a.size = maxi(100, int(a.size * 0.97))
@@ -1141,7 +1145,7 @@ static func cat_total(c, cat: String) -> int:
 ## macro durumunu kayıt için sözlüğe çevirir
 static func to_dict(c) -> Dictionary:
 	return {"budget": c.budget, "doctrine": c.doctrine, "dturn": c.doctrine_turn, "industry": c.industry, "cyber": c.cyber,
-		"logistics": c.logistics, "stability": c.stability, "capacity": c.capacity, "tech": c.tech, "bloc": c.bloc,
+		"logistics": c.logistics, "stability": c.stability, "capacity": c.capacity, "tech": c.tech, "bloc": c.bloc, "goods": Goods.to_dict(c),
 		"inv": c.inv, "orders": c.orders, "auto_buy": c.auto_buy, "auto_cmd": c.auto_cmd, "pri": c.pri, "base": c.base_troops,
 		"fund": c.fund, "embargo": c.embargo, "fronts": c.fronts, "tblock": c.trade_block, "alliance": c.alliance, "leader": c.leader, "carriers": c.carriers, "car_x": c.carrier_extra, "shx": c.ship_extra, "car_cd": c.carrier_cd, "covert": c.covert_cd, "cab": c.cab, "elect": c.elect_turn, "mob": c.mob_until, "mobcd": c.mob_cd, "buffs": c.buffs, "trust": c.trust, "prop": c.prop}
 
@@ -1163,6 +1167,7 @@ static func from_dict(c, d: Dictionary) -> void:
 	c.prop = str(d.get("prop", ""))
 	c.capacity = d.get("capacity", 0.5)
 	c.tech = d.get("tech", 0.5)
+	Goods.from_dict(c, d.get("goods", {}))
 	c.bloc = d.get("bloc", "us")
 	c.inv = d.get("inv", {}).duplicate()
 	c.orders = d.get("orders", []).duplicate(true)

@@ -3,6 +3,7 @@ const Icons = preload("res://scripts/icons.gd")
 const Loc = preload("res://scripts/loc.gd")
 ## Politika paneli: bütçe, doktrin, isimli silah alımı, envanter, ticaret/ambargo ve cepheler.
 
+const Goods = preload("res://scripts/goods.gd")
 const TK = preload("res://scripts/theme_kit.gd")
 const Macro = preload("res://scripts/macro.gd")
 const Eras = preload("res://scripts/eras.gd")
@@ -740,6 +741,9 @@ func _tab_trade() -> void:
 		content.add_child(_wrap("Siber saldırı yüzünden dış ticaret %d hafta daha kesik." % c.trade_block, "small", TK.RED_TEXT))
 	content.add_child(_wrap("Savaştaki ve ambargolu ülkelerle ticaret durur. Ambargo her iki tarafı da vurur; rakibini ekonomik olarak sıkıştırmak için kullan.", "small", TK.FAINT))
 	content.add_child(TK.hsep())
+	_goods_section(c)
+	content.add_child(TK.hsep())
+	content.add_child(_kick("Ticaret ortakları"))
 	for e in c.partners:
 		var j: int = e[0]
 		var o = gs.countries[j]
@@ -782,6 +786,51 @@ func _tab_trade() -> void:
 		h.add_child(b)
 		content.add_child(h)
 		content.add_child(TK.hsep(0.5))
+
+
+func _goods_section(c) -> void:
+	Goods.ensure(c)
+	content.add_child(_kick("Mal ve kaynak pazarı"))
+	content.add_child(_wrap("Eyaletlerin tahıl, kereste, maden ve petrol üretir; halkın ve sanayin tüketir. Açık kalan haftalık pazardan alınır, fazlası satılır; stok biriktirebilirsin. Kıtlık: tahıl istikrarı, kereste/maden sanayiyi, petrol lojistiği düşürür. Ambargo, abluka ve siber kesinti ithalatı keser. Eyalette kereste atölyesi, maden, petrol, çiftlik kurarak üretimi artır.", "small", TK.MUTED))
+	var tot: float = float(c.goods.get("gold", 0.0))
+	content.add_child(_stat_row([
+		["Mal ticareti (net)", ("+" if tot >= 0.0 else "") + Macro.money(tot) + Loc.t("/hf"), TK.GREEN if tot >= 0.0 else TK.RED_TEXT],
+	]))
+	for gk in Goods.GOODS:
+		var g: String = gk
+		var r: Dictionary = c.goods.rate[g]
+		var stock: float = float(c.goods.stock.get(g, 0.0))
+		var bal: float = float(r.prod) - float(r.dem)
+		var sh: float = float(c.goods.short.get(g, 0.0)) if c.goods.has("short") else 0.0
+		var pol: String = str(c.goods.pol.get(g, "auto"))
+		var h := HBoxContainer.new()
+		h.add_theme_constant_override("separation", 12)
+		var ic := TK.IconView.new()
+		ic.icon = String(Goods.ICONS[g])
+		ic.color = TK.PAPER
+		ic.custom_minimum_size = Vector2(40, 40)
+		ic.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+		h.add_child(ic)
+		var v := VBoxContainer.new()
+		v.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		v.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+		v.add_theme_constant_override("separation", 0)
+		v.add_child(TK.t(String(Goods.NAMES[g]), "bodyb", TK.RED_TEXT if sh > 0.0 else TK.TEXT))
+		v.add_child(_wrap(Loc.t("Üretim %s · Tüketim %s · Stok %s · Fiyat x%.2f") % [Macro.num(int(r.prod * 10.0)), Macro.num(int(r.dem * 10.0)), Macro.num(int(stock * 10.0)), Goods.price(gs, g)], "small", TK.MUTED))
+		h.add_child(v)
+		var bl := TK.t(("+" if bal >= 0.0 else "") + Macro.num(int(bal * 10.0)), "mono", TK.GREEN if bal >= 0.0 else (TK.RED_TEXT if sh > 0.0 else TK.ORANGE))
+		bl.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+		h.add_child(bl)
+		var pb := TK.button(Goods.POLICY_NAMES[pol], "gold" if pol != "auto" else "ghost", "", Vector2(150, 52), 15)
+		pb.pressed.connect(func():
+			ui._click()
+			var nx: String = Goods.POLICIES[(Goods.POLICIES.find(pol) + 1) % Goods.POLICIES.size()]
+			Goods.set_policy(c, g, nx)
+			render())
+		h.add_child(pb)
+		content.add_child(h)
+		content.add_child(TK.hsep(0.5))
+	content.add_child(_wrap("Politika: Otomatik = fazla satılır, açık stoktan ve pazardan karşılanır. Depola = fazla satılmaz, uzun vadeli stok (40 hafta) birikir. Sat = stok her hafta %10 eritilip satılır.", "small", TK.FAINT))
 
 
 # ------------------------------------------------------------------ 5) cepheler
