@@ -14,6 +14,7 @@ static var _cache: Dictionary = {}
 static var era_specs: Dictionary = {}      # name_en -> flag_db kısa tanımı (tarihî dönem bayrakları)
 
 
+const MODERN_IMG := {"Somaliland": "somaliland", "N. Cyprus": "northern_cyprus"}
 static var _tex: Dictionary = {}           # iso -> Texture2D (gerçek bayrak görselleri; yoksa kodla çizilir)
 
 
@@ -47,6 +48,12 @@ static func _texture_for(c):
 			return null
 	if c.is_rebel:
 		return null
+	if MODERN_IMG.has(c.name_en):                # iso kodu olmayan bugünkü devletler (Somaliland, K. Kıbrıs)
+		var mp := "res://assets/flags/era_%s.png" % MODERN_IMG[c.name_en]
+		if not _tex.has(mp):
+			_tex[mp] = load(mp) if ResourceLoader.exists(mp) else null
+		if _tex[mp] != null:
+			return _tex[mp]
 	var k: String = _key(c).to_lower()
 	if k.length() != 2:
 		return null
