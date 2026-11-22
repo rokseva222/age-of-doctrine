@@ -588,6 +588,236 @@
 }
 },
 {
+"id": "baghdad_1534",
+"y": 1534,
+"m": 11,
+"title": "Irakeyn Seferi: Bağdat'ın Fethi",
+"scene": "pre_siege",
+"icon": "flag",
+"text": "Kanuni Safevî Şahı'nın üzerine yürüdü; Bağdat ve Irak topraklarını aldı. Doğu cephesi Osmanlı'nın uzun vadeli mücadelesine dönüyor.",
+"major": true,
+"default_fx": [
+[
+"occupy",
+"Turkey",
+"Iran"
+],
+[
+"stab",
+"Turkey",
+4
+],
+[
+"stab",
+"Iran",
+-4
+]
+],
+"roles": {
+"Turkey": {
+"text": "Tebriz alındı; Safevî Şahı savaştan kaçıyor. Bağdat'a inmek mi, Tebriz'de kalmak mı?",
+"options": [
+{
+"t": "Bağdat'ı al (tarihî)",
+"d": "Irak ve Basra yolu",
+"fx": [
+[
+"buff",
+"Turkey",
+"att",
+1.15,
+8
+],
+[
+"gold",
+"Turkey",
+2.0
+]
+],
+"r": "Osmanlı Bağdat'ı aldı; Irak Osmanlı'ya bağlandı."
+},
+{
+"t": "Tebriz'i tut",
+"d": "İran içlerine ilerle",
+"fx": [
+[
+"troops",
+"Turkey",
+-4
+],
+[
+"buff",
+"Turkey",
+"def",
+1.1,
+8
+]
+],
+"r": "Osmanlı ordusu Tebriz'de kaldı; kış zorlaştırdı."
+}
+]
+},
+"Iran": {
+"text": "Osmanlı ordusu kıştan önce geldi; açık savaş riskli. Tahmasb geri çekilip yıpratma taktiği mi uygulasın?",
+"options": [
+{
+"t": "Yakıp çekil (tarihî)",
+"d": "Osmanlı'yı yıprat",
+"fx": [
+[
+"buff",
+"Iran",
+"def",
+1.3,
+10
+],
+[
+"stab",
+"Iran",
+-3
+]
+],
+"r": "Şah Tahmasb yakıp yıkarak çekildi."
+},
+{
+"t": "Savaş ver",
+"d": "Büyük risk",
+"fx": [
+[
+"troops",
+"Iran",
+-8
+],
+[
+"buff",
+"Iran",
+"att",
+1.1,
+4
+]
+],
+"r": "Safevî ordusu Osmanlı'yla karşı karşıya geldi."
+}
+]
+}
+}
+},
+{
+"id": "tunis_1535",
+"y": 1535,
+"m": 7,
+"title": "Tunus Seferi",
+"scene": "landing",
+"icon": "landing",
+"text": "Barbaros Hayreddin Tunus'u ele geçirdi; V. Karl Akdeniz'de karşılık verdi. Habsburg donanması Tunus'a çıkarma yaptı, Hafsî Sultanı'nı geri getirdi.",
+"major": true,
+"default_fx": [
+[
+"war",
+"Spain",
+"Algeria"
+],
+[
+"occupy",
+"Spain",
+"Tunisia"
+],
+[
+"stab",
+"Spain",
+4
+]
+],
+"roles": {
+"Spain": {
+"text": "Hafsî tahtı Barbaros'a düştü. İmparator bizzat sefere çıkmak istiyor.",
+"options": [
+{
+"t": "Tunus'a çıkarma yap (tarihî)",
+"d": "La Goulette'i al",
+"fx": [
+[
+"buff",
+"Spain",
+"att",
+1.2,
+8
+],
+[
+"stab",
+"Spain",
+4
+],
+[
+"rel",
+"Spain",
+"Turkey",
+-6
+]
+],
+"r": "Habsburg ordusu Tunus'u aldı ve Hafsî Sultanı'nı tahta çıkardı."
+},
+{
+"t": "Donanma harcamasından kaçın",
+"d": "Kaynak tasarrufu",
+"fx": [
+[
+"gold",
+"Spain",
+1.0
+]
+],
+"r": "Habsburg donanmasını Akdeniz'de sınırlı kullandı."
+}
+]
+},
+"Turkey": {
+"text": "Barbaros Tunus'u almış ama Habsburg donanması geliyor. Takviye mi, geri çekilme mi?",
+"options": [
+{
+"t": "Cezayir'e çekil (tarihî)",
+"d": "Donanmayı koru",
+"fx": [
+[
+"buff",
+"Turkey",
+"def",
+1.1,
+8
+],
+[
+"rel",
+"Turkey",
+"Algeria",
+4
+]
+],
+"r": "Barbaros Tunus'u terk edip Cezayir'e çekildi."
+},
+{
+"t": "Donanmayı gönder",
+"d": "Akdeniz mücadelesi",
+"fx": [
+[
+"buff",
+"Turkey",
+"att",
+1.1,
+6
+],
+[
+"troops",
+"Turkey",
+-3
+]
+],
+"r": "Osmanlı donanması Tunus'a yöneldi."
+}
+]
+}
+}
+},
+{
 "id": "preveza",
 "y": 1538,
 "m": 9,
@@ -683,6 +913,611 @@
 ]
 ],
 "r": "Doria filoyu korudu."
+}
+]
+}
+}
+},
+{
+"id": "djerba_1560",
+"y": 1560,
+"m": 5,
+"title": "Cerbe Deniz Savaşı",
+"scene": "carrier",
+"icon": "carrier",
+"text": "Piyale Paşa'nın donanması Cerbe Adası açıklarında Habsburg ve Malta müttefik donanmasını bozguna uğrattı. Akdeniz'in doğu ve ortası Osmanlı üstünlüğüne geçti.",
+"major": true,
+"default_fx": [
+[
+"troops",
+"Spain",
+-8
+],
+[
+"stab",
+"Spain",
+-4
+],
+[
+"buff",
+"Turkey",
+"att",
+1.1,
+10
+]
+],
+"roles": {
+"Turkey": {
+"text": "Trablus'u kurtarmak için Piyale Paşa donanmayla Cerbe'de. Habsburg donanması hâlâ adada.",
+"options": [
+{
+"t": "Müttefik donanmaya saldır (tarihî)",
+"d": "Akdeniz'e hükmet",
+"fx": [
+[
+"buff",
+"Turkey",
+"att",
+1.2,
+12
+],
+[
+"stab",
+"Turkey",
+5
+],
+[
+"gold",
+"Turkey",
+1.5
+]
+],
+"r": "Osmanlı donanması Cerbe'de Habsburg donanmasını yok etti."
+},
+{
+"t": "Trablus'a git, savaşma",
+"d": "Donanmayı koru",
+"fx": [
+[
+"stab",
+"Turkey",
+1
+]
+],
+"r": "Osmanlı donanması Trablus'u korudu ama savaşmaktan kaçındı."
+}
+]
+},
+"Spain": {
+"text": "Cerbe'deki kale kuşatıldı. Donanma kaybedildi; Filip II intikam isteyecek.",
+"options": [
+{
+"t": "Yeni donanma inşa et (tarihî)",
+"d": "Akdeniz'de geri dönüş",
+"fx": [
+[
+"gold",
+"Spain",
+-1.5
+],
+[
+"buff",
+"Spain",
+"att",
+1.1,
+14
+]
+],
+"r": "Habsburg yeni bir donanma inşa etmeye başladı."
+},
+{
+"t": "Barış yap",
+"d": "Atlantik'e odaklan",
+"fx": [
+[
+"peace",
+"Spain",
+"Turkey"
+],
+[
+"stab",
+"Spain",
+-2
+]
+],
+"r": "Madrid Osmanlı'yla ateşkes arayışına girdi."
+}
+]
+}
+}
+},
+{
+"id": "malta_1565",
+"y": 1565,
+"m": 5,
+"title": "Malta Büyük Kuşatması",
+"scene": "pre_siege",
+"icon": "landing",
+"text": "Osmanlı donanması ve ordusu Malta'daki Aziz Yuhanna Şövalyeleri'ni kuşattı. Sant'Elmo bir ayda düştü ama La Valette Birgu ve Senglea'yı tuttu; kuşatma dört ay sürdü.",
+"major": true,
+"default_fx": [
+[
+"war",
+"Turkey",
+"Malta"
+],
+[
+"troops",
+"Turkey",
+-8
+],
+[
+"troops",
+"Malta",
+-6
+]
+],
+"roles": {
+"Malta": {
+"text": "Sant'Elmo düştü; elinde Birgu ve Senglea var. Habsburg yardım filosu Sicilya'da bekliyor.",
+"options": [
+{
+"t": "Sonuna kadar savun (tarihî)",
+"d": "La Valette ruhu",
+"fx": [
+[
+"buff",
+"Malta",
+"def",
+1.5,
+14
+],
+[
+"stab",
+"Malta",
+6
+]
+],
+"r": "Şövalyeler iki mevzii tuttu; yardım ordusu geldi, Osmanlı çekildi."
+},
+{
+"t": "Teslim şartlarını görüş",
+"d": "Şerefli teslim",
+"fx": [
+[
+"stab",
+"Malta",
+-4
+]
+],
+"r": "Büyük Üstat teslim şartlarını görüşmeyi reddetti."
+}
+]
+},
+"Turkey": {
+"text": "Dragut'un ölümü komuta birliğini bozdu; Habsburg yardım donanması yaklaşıyor.",
+"options": [
+{
+"t": "Kuşatmayı sürdür",
+"d": "Büyük taarruz",
+"fx": [
+[
+"troops",
+"Turkey",
+-8
+],
+[
+"buff",
+"Turkey",
+"att",
+1.1,
+4
+]
+],
+"r": "Osmanlı kuvvetleri yeni taarruzlar yaptı ve ağır kayıp verdi."
+},
+{
+"t": "Kuşatmayı kaldır (tarihî)",
+"d": "Donanmayı koru",
+"fx": [
+[
+"stab",
+"Turkey",
+-3
+],
+[
+"buff",
+"Turkey",
+"def",
+1.1,
+8
+]
+],
+"r": "Osmanlı donanması Malta'dan çekildi."
+}
+]
+}
+}
+},
+{
+"id": "szigetvar_1566",
+"y": 1566,
+"m": 9,
+"title": "Zigetvar Seferi",
+"scene": "pre_siege",
+"icon": "flag",
+"text": "Yaşlı Kanuni son seferinde Zigetvar'ı kuşattı; Zrinyi'nin küçük garnizonu dayanıyor. Sultan kuşatma sırasında öldü; haber ordudan saklandı.",
+"major": true,
+"default_fx": [
+[
+"troops",
+"Turkey",
+-6
+],
+[
+"troops",
+"Hungary",
+-4
+],
+[
+"stab",
+"Turkey",
+-3
+]
+],
+"roles": {
+"Turkey": {
+"text": "Sultan hasta ve kale hâlâ direniyor. Sadrazam Sokollu ne yapacak?",
+"options": [
+{
+"t": "Ölümü gizle, kaleyi al (tarihî)",
+"d": "Taht mücadelesini önle",
+"fx": [
+[
+"buff",
+"Turkey",
+"att",
+1.15,
+6
+],
+[
+"stab",
+"Turkey",
+3
+]
+],
+"r": "Sokollu Padişah'ın ölümünü gizleyip kaleyi aldı."
+},
+{
+"t": "Kuşatmayı kaldır",
+"d": "Orduyu koru",
+"fx": [
+[
+"stab",
+"Turkey",
+-6
+]
+],
+"r": "Osmanlı ordusu geri çekildi; taht krizi başladı."
+}
+]
+},
+"Hungary": {
+"text": "Zrinyi tahkimatı terk etmeden çıkış savaşı mı yapacak?",
+"options": [
+{
+"t": "Çıkış savaşı yap (tarihî)",
+"d": "Şan",
+"fx": [
+[
+"buff",
+"Hungary",
+"def",
+1.3,
+8
+],
+[
+"stab",
+"Hungary",
+4
+],
+[
+"troops",
+"Hungary",
+-4
+]
+],
+"r": "Zrinyi son çıkışı yaptı; kale düştü ama Osmanlı yıprandı."
+},
+{
+"t": "Teslim ol",
+"d": "Can kurtar",
+"fx": [
+[
+"stab",
+"Hungary",
+-4
+]
+],
+"r": "Zigetvar garnizonu teslim şartlarını kabul etti."
+}
+]
+}
+}
+},
+{
+"id": "cyprus_1570",
+"y": 1570,
+"m": 7,
+"title": "Kıbrıs Seferi",
+"scene": "landing",
+"icon": "landing",
+"text": "II. Selim Venedik'in elindeki Kıbrıs'a sefer başlattı. Lala Mustafa Paşa Lefkoşa ve Mağusa'yı kuşattı; Mağusa bir yıl direndi. Venedik Papa ve Habsburg'dan ittifak arıyor.",
+"major": true,
+"default_fx": [
+[
+"war",
+"Turkey",
+"Italy"
+],
+[
+"stab",
+"Italy",
+-5
+],
+[
+"rel",
+"Italy",
+"Spain",
+8
+]
+],
+"roles": {
+"Turkey": {
+"text": "Kıbrıs Doğu Akdeniz'in kilidi; Venedik'in ticaret ve haçlı ittifakı riski var.",
+"options": [
+{
+"t": "Kıbrıs'ı fethet (tarihî)",
+"d": "Doğu Akdeniz bizim",
+"fx": [
+[
+"buff",
+"Turkey",
+"att",
+1.15,
+10
+],
+[
+"gold",
+"Turkey",
+2.0
+]
+],
+"r": "Osmanlı Kıbrıs'ı ele geçirdi; Mağusa 1571'de düştü."
+},
+{
+"t": "Venedik'le barış yap",
+"d": "Ticaret kazancı",
+"fx": [
+[
+"peace",
+"Turkey",
+"Italy"
+],
+[
+"gold",
+"Turkey",
+1.0
+]
+],
+"r": "Osmanlı Venedik'le yeni ticaret şartları yaptı."
+}
+]
+},
+"Italy": {
+"text": "Kıbrıs kuşatıldı. Papa ve Habsburg ile Kutsal Birlik kurmak şart.",
+"options": [
+{
+"t": "Kutsal Birlik'i kur (tarihî)",
+"d": "Haçlı donanması",
+"fx": [
+[
+"rel",
+"Italy",
+"Spain",
+10
+],
+[
+"buff",
+"Italy",
+"att",
+1.1,
+10
+]
+],
+"r": "Venedik, Papa ve Habsburg Kutsal Birlik'i kurdu."
+},
+{
+"t": "Tek başına direniş",
+"d": "Gururlu ama riskli",
+"fx": [
+[
+"troops",
+"Italy",
+-5
+],
+[
+"stab",
+"Italy",
+-3
+]
+],
+"r": "Venedik Kıbrıs'ı yalnız savunmaya çalıştı."
+}
+]
+}
+}
+},
+{
+"id": "lepanto_1571",
+"y": 1571,
+"m": 10,
+"title": "İnebahtı Deniz Savaşı",
+"scene": "carrier",
+"icon": "carrier",
+"text": "Kutsal Birlik donanması, Ali Paşa'nın Osmanlı donanmasını İnebahtı Körfezi'nde yendi. Kadırgalar birbirine yaklaştı ve savaş çarpışma, top ve arkebüzle sürdü. Osmanlı kayıp verdi ama bir yılda donanmayı yeniledi.",
+"major": true,
+"default_fx": [
+[
+"troops",
+"Turkey",
+-10
+],
+[
+"stab",
+"Turkey",
+-3
+],
+[
+"stab",
+"Spain",
+5
+],
+[
+"stab",
+"Italy",
+3
+]
+],
+"roles": {
+"Turkey": {
+"text": "Ali Paşa Kutsal Birlik donanmasına saldırmak üzere. Donanma sayıca üstün ama topçu zayıf.",
+"options": [
+{
+"t": "Saldır (tarihî)",
+"d": "Kadırga savaşı",
+"fx": [
+[
+"troops",
+"Turkey",
+-8
+],
+[
+"buff",
+"Turkey",
+"att",
+1.1,
+4
+],
+[
+"gold",
+"Turkey",
+-1.0
+]
+],
+"r": "Osmanlı donanması İnebahtı'da yenildi; ama bir yılda yenilendi."
+},
+{
+"t": "Limanda bekle",
+"d": "Donanma korunur",
+"fx": [
+[
+"stab",
+"Turkey",
+-2
+]
+],
+"r": "Osmanlı donanması limanda kaldı."
+}
+]
+},
+"Spain": {
+"text": "Don Juan komutanlığında Kutsal Birlik hazır. Osmanlı donanmasına saldırmak mı?",
+"options": [
+{
+"t": "Saldır (tarihî)",
+"d": "Hristiyan zaferi",
+"fx": [
+[
+"buff",
+"Spain",
+"att",
+1.2,
+10
+],
+[
+"stab",
+"Spain",
+5
+],
+[
+"rel",
+"Spain",
+"Italy",
+6
+]
+],
+"r": "Kutsal Birlik İnebahtı'da büyük zafer kazandı."
+},
+{
+"t": "İttifaktan çekil",
+"d": "Maliyet azalt",
+"fx": [
+[
+"rel",
+"Spain",
+"Italy",
+-8
+],
+[
+"gold",
+"Spain",
+1.0
+]
+],
+"r": "Habsburg ittifaktan sessizce çekildi."
+}
+]
+},
+"Italy": {
+"text": "Venedik Kıbrıs'ı kaybetti; Kutsal Birlik ise Venedik'in sonuçları için savaşıyor.",
+"options": [
+{
+"t": "Birlikle savaş (tarihî)",
+"d": "Donanmayı yenile",
+"fx": [
+[
+"buff",
+"Italy",
+"att",
+1.15,
+8
+],
+[
+"stab",
+"Italy",
+4
+]
+],
+"r": "Venedik gemileri İnebahtı'da kilit rol oynadı."
+},
+{
+"t": "Osmanlı'yla ayrı barış",
+"d": "Ticareti kurtar",
+"fx": [
+[
+"peace",
+"Italy",
+"Turkey"
+],
+[
+"rel",
+"Italy",
+"Spain",
+-8
+]
+],
+"r": "Venedik 1573'te Osmanlı'yla ayrı barış imzaladı."
 }
 ]
 }
@@ -786,6 +1621,122 @@
 "Preveze'de kalyonlar rüzgârsız kaldı.": "At Preveza the galleons were becalmed.",
 "Abluka ve çekil": "Blockade and withdraw",
 "Filoyu koru": "Preserve the fleet",
-"Doria filoyu korudu.": "Doria preserved the fleet."
+"Doria filoyu korudu.": "Doria preserved the fleet.",
+"Bağdat'ı al (tarihî)": "Take Baghdad (historical)",
+"Irak ve Basra yolu": "Iraq and the road to Basra",
+"Osmanlı Bağdat'ı aldı; Irak Osmanlı'ya bağlandı.": "The Ottomans took Baghdad; Iraq joined the empire.",
+"Tebriz'i tut": "Hold Tabriz",
+"İran içlerine ilerle": "Push into Persia",
+"Osmanlı ordusu Tebriz'de kaldı; kış zorlaştırdı.": "The Ottoman army stayed at Tabriz; winter hindered it.",
+"Tebriz alındı; Safevî Şahı savaştan kaçıyor. Bağdat'a inmek mi, Tebriz'de kalmak mı?": "Tabriz is taken; the Safavid Shah avoids battle. Descend on Baghdad or stay in Tabriz?",
+"Yakıp çekil (tarihî)": "Scorched-earth retreat (historical)",
+"Osmanlı'yı yıprat": "Wear the Ottomans down",
+"Şah Tahmasb yakıp yıkarak çekildi.": "Shah Tahmasp withdrew, scorching the land.",
+"Savaş ver": "Give battle",
+"Büyük risk": "A big risk",
+"Safevî ordusu Osmanlı'yla karşı karşıya geldi.": "The Safavid army met the Ottomans in battle.",
+"Osmanlı ordusu kıştan önce geldi; açık savaş riskli. Tahmasb geri çekilip yıpratma taktiği mi uygulasın?": "The Ottoman army arrived before winter; open battle is risky. Should Tahmasp retreat and wear them down?",
+"Irakeyn Seferi: Bağdat'ın Fethi": "The Campaign of the Two Iraqs",
+"Kanuni Safevî Şahı'nın üzerine yürüdü; Bağdat ve Irak topraklarını aldı. Doğu cephesi Osmanlı'nın uzun vadeli mücadelesine dönüyor.": "Suleiman marched against the Safavid Shah and took Baghdad and the Iraqi lands. The eastern front becomes a long-term Ottoman struggle.",
+"Tunus'a çıkarma yap (tarihî)": "Land at Tunis (historical)",
+"La Goulette'i al": "Take La Goulette",
+"Habsburg ordusu Tunus'u aldı ve Hafsî Sultanı'nı tahta çıkardı.": "The Habsburg army took Tunis and restored the Hafsid Sultan.",
+"Donanma harcamasından kaçın": "Avoid naval spending",
+"Kaynak tasarrufu": "Save resources",
+"Habsburg donanmasını Akdeniz'de sınırlı kullandı.": "The Habsburgs used their fleet sparingly.",
+"Hafsî tahtı Barbaros'a düştü. İmparator bizzat sefere çıkmak istiyor.": "The Hafsid throne has fallen to Barbarossa. The Emperor wants to lead the expedition himself.",
+"Cezayir'e çekil (tarihî)": "Pull back to Algiers (historical)",
+"Donanmayı koru": "Save the fleet",
+"Barbaros Tunus'u terk edip Cezayir'e çekildi.": "Barbarossa abandoned Tunis for Algiers.",
+"Donanmayı gönder": "Send the fleet",
+"Akdeniz mücadelesi": "Mediterranean struggle",
+"Osmanlı donanması Tunus'a yöneldi.": "The Ottoman fleet headed for Tunis.",
+"Barbaros Tunus'u almış ama Habsburg donanması geliyor. Takviye mi, geri çekilme mi?": "Barbarossa took Tunis but the Habsburg fleet is coming. Reinforce or withdraw?",
+"Tunus Seferi": "The Conquest of Tunis",
+"Barbaros Hayreddin Tunus'u ele geçirdi; V. Karl Akdeniz'de karşılık verdi. Habsburg donanması Tunus'a çıkarma yaptı, Hafsî Sultanı'nı geri getirdi.": "Barbarossa seized Tunis; Charles V struck back. A Habsburg fleet landed at Tunis and restored the Hafsid Sultan.",
+"Müttefik donanmaya saldır (tarihî)": "Attack the allied fleet (historical)",
+"Akdeniz'e hükmet": "Rule the Mediterranean",
+"Osmanlı donanması Cerbe'de Habsburg donanmasını yok etti.": "The Ottoman fleet destroyed the Habsburg fleet at Djerba.",
+"Trablus'a git, savaşma": "Go to Tripoli without a fight",
+"Osmanlı donanması Trablus'u korudu ama savaşmaktan kaçındı.": "The Ottoman fleet protected Tripoli but avoided battle.",
+"Trablus'u kurtarmak için Piyale Paşa donanmayla Cerbe'de. Habsburg donanması hâlâ adada.": "Piyale Pasha is at Djerba with the fleet to save Tripoli. The Habsburg fleet is still at the island.",
+"Yeni donanma inşa et (tarihî)": "Build a new fleet (historical)",
+"Akdeniz'de geri dönüş": "A Mediterranean comeback",
+"Habsburg yeni bir donanma inşa etmeye başladı.": "The Habsburgs began building a new fleet.",
+"Barış yap": "Make peace",
+"Atlantik'e odaklan": "Focus on the Atlantic",
+"Madrid Osmanlı'yla ateşkes arayışına girdi.": "Madrid sought a truce with the Ottomans.",
+"Cerbe'deki kale kuşatıldı. Donanma kaybedildi; Filip II intikam isteyecek.": "The fort at Djerba is besieged. The fleet is lost; Philip II will seek revenge.",
+"Cerbe Deniz Savaşı": "The Battle of Djerba",
+"Piyale Paşa'nın donanması Cerbe Adası açıklarında Habsburg ve Malta müttefik donanmasını bozguna uğrattı. Akdeniz'in doğu ve ortası Osmanlı üstünlüğüne geçti.": "Piyale Pasha's fleet routed the combined Habsburg and Maltese fleet off Djerba. The eastern and central Mediterranean fell under Ottoman supremacy.",
+"Sonuna kadar savun (tarihî)": "Defend to the last (historical)",
+"La Valette ruhu": "The spirit of La Valette",
+"Şövalyeler iki mevzii tuttu; yardım ordusu geldi, Osmanlı çekildi.": "The Knights held two positions; the relief army arrived and the Ottomans withdrew.",
+"Teslim şartlarını görüş": "Negotiate terms",
+"Şerefli teslim": "Honourable surrender",
+"Büyük Üstat teslim şartlarını görüşmeyi reddetti.": "The Grand Master refused to negotiate terms.",
+"Sant'Elmo düştü; elinde Birgu ve Senglea var. Habsburg yardım filosu Sicilya'da bekliyor.": "St Elmo has fallen; you hold Birgu and Senglea. The Habsburg relief fleet waits in Sicily.",
+"Kuşatmayı sürdür": "Continue the siege",
+"Büyük taarruz": "A grand assault",
+"Osmanlı kuvvetleri yeni taarruzlar yaptı ve ağır kayıp verdi.": "Ottoman forces made fresh assaults and took heavy losses.",
+"Kuşatmayı kaldır (tarihî)": "Lift the siege (historical)",
+"Osmanlı donanması Malta'dan çekildi.": "The Ottoman fleet withdrew from Malta.",
+"Dragut'un ölümü komuta birliğini bozdu; Habsburg yardım donanması yaklaşıyor.": "Dragut's death broke the unity of command; the Habsburg relief fleet is approaching.",
+"Malta Büyük Kuşatması": "The Great Siege of Malta",
+"Osmanlı donanması ve ordusu Malta'daki Aziz Yuhanna Şövalyeleri'ni kuşattı. Sant'Elmo bir ayda düştü ama La Valette Birgu ve Senglea'yı tuttu; kuşatma dört ay sürdü.": "The Ottoman fleet and army besieged the Knights of St John on Malta. Fort St Elmo fell in a month but La Valette held Birgu and Senglea; the siege lasted four months.",
+"Ölümü gizle, kaleyi al (tarihî)": "Hide the death, take the fortress (historical)",
+"Taht mücadelesini önle": "Prevent a succession struggle",
+"Sokollu Padişah'ın ölümünü gizleyip kaleyi aldı.": "Sokollu hid the Sultan's death and took the fortress.",
+"Kuşatmayı kaldır": "Lift the siege",
+"Orduyu koru": "Save the army",
+"Osmanlı ordusu geri çekildi; taht krizi başladı.": "The Ottoman army withdrew; a succession crisis began.",
+"Sultan hasta ve kale hâlâ direniyor. Sadrazam Sokollu ne yapacak?": "The Sultan is ill and the fortress still resists. What will Grand Vizier Sokollu do?",
+"Çıkış savaşı yap (tarihî)": "Make a sortie (historical)",
+"Şan": "Glory",
+"Zrinyi son çıkışı yaptı; kale düştü ama Osmanlı yıprandı.": "Zrinyi made a last sortie; the fort fell but the Ottomans were worn down.",
+"Teslim ol": "Surrender",
+"Can kurtar": "Save lives",
+"Zigetvar garnizonu teslim şartlarını kabul etti.": "The garrison accepted terms of surrender.",
+"Zrinyi tahkimatı terk etmeden çıkış savaşı mı yapacak?": "Will Zrinyi fight a sortie rather than abandon the fort?",
+"Zigetvar Seferi": "The Siege of Szigetvár",
+"Yaşlı Kanuni son seferinde Zigetvar'ı kuşattı; Zrinyi'nin küçük garnizonu dayanıyor. Sultan kuşatma sırasında öldü; haber ordudan saklandı.": "The ageing Suleiman besieged Szigetvár on his last campaign; Zrinyi's small garrison held out. The Sultan died during the siege; the news was hidden from the army.",
+"Kıbrıs'ı fethet (tarihî)": "Conquer Cyprus (historical)",
+"Doğu Akdeniz bizim": "The eastern Mediterranean is ours",
+"Osmanlı Kıbrıs'ı ele geçirdi; Mağusa 1571'de düştü.": "The Ottomans conquered Cyprus; Famagusta fell in 1571.",
+"Venedik'le barış yap": "Make peace with Venice",
+"Ticaret kazancı": "Trade gains",
+"Osmanlı Venedik'le yeni ticaret şartları yaptı.": "The Ottomans agreed new trade terms with Venice.",
+"Kıbrıs Doğu Akdeniz'in kilidi; Venedik'in ticaret ve haçlı ittifakı riski var.": "Cyprus is the lock of the eastern Mediterranean; Venice and a crusader league are a risk.",
+"Kutsal Birlik'i kur (tarihî)": "Form the Holy League (historical)",
+"Haçlı donanması": "A crusader fleet",
+"Venedik, Papa ve Habsburg Kutsal Birlik'i kurdu.": "Venice, the Pope and the Habsburgs formed the Holy League.",
+"Tek başına direniş": "Resist alone",
+"Gururlu ama riskli": "Proud but risky",
+"Venedik Kıbrıs'ı yalnız savunmaya çalıştı.": "Venice tried to defend Cyprus alone.",
+"Kıbrıs kuşatıldı. Papa ve Habsburg ile Kutsal Birlik kurmak şart.": "Cyprus is besieged. A Holy League with the Pope and the Habsburgs is vital.",
+"Kıbrıs Seferi": "The Conquest of Cyprus",
+"II. Selim Venedik'in elindeki Kıbrıs'a sefer başlattı. Lala Mustafa Paşa Lefkoşa ve Mağusa'yı kuşattı; Mağusa bir yıl direndi. Venedik Papa ve Habsburg'dan ittifak arıyor.": "Selim II launched a campaign against Venetian Cyprus. Lala Mustafa Pasha besieged Nicosia and Famagusta; Famagusta held for a year. Venice seeks an alliance with the Pope and the Habsburgs.",
+"Saldır (tarihî)": "Attack (historical)",
+"Kadırga savaşı": "A galley battle",
+"Osmanlı donanması İnebahtı'da yenildi; ama bir yılda yenilendi.": "The Ottoman fleet was beaten at Lepanto but rebuilt within a year.",
+"Limanda bekle": "Wait in port",
+"Donanma korunur": "Fleet preserved",
+"Osmanlı donanması limanda kaldı.": "The Ottoman fleet stayed in port.",
+"Ali Paşa Kutsal Birlik donanmasına saldırmak üzere. Donanma sayıca üstün ama topçu zayıf.": "Ali Pasha is about to engage the Holy League fleet. You have more ships but weaker gunnery.",
+"Hristiyan zaferi": "A Christian victory",
+"Kutsal Birlik İnebahtı'da büyük zafer kazandı.": "The Holy League won a great victory at Lepanto.",
+"İttifaktan çekil": "Leave the League",
+"Maliyet azalt": "Cut costs",
+"Habsburg ittifaktan sessizce çekildi.": "The Habsburgs quietly withdrew from the League.",
+"Don Juan komutanlığında Kutsal Birlik hazır. Osmanlı donanmasına saldırmak mı?": "The Holy League stands ready under Don Juan. Attack the Ottoman fleet?",
+"Birlikle savaş (tarihî)": "Fight with the League (historical)",
+"Donanmayı yenile": "Renew the fleet",
+"Venedik gemileri İnebahtı'da kilit rol oynadı.": "Venetian ships played a key role at Lepanto.",
+"Osmanlı'yla ayrı barış": "A separate peace with the Ottomans",
+"Ticareti kurtar": "Save trade",
+"Venedik 1573'te Osmanlı'yla ayrı barış imzaladı.": "Venice signed a separate peace with the Ottomans in 1573.",
+"Venedik Kıbrıs'ı kaybetti; Kutsal Birlik ise Venedik'in sonuçları için savaşıyor.": "Venice lost Cyprus; the League fights for Venice's interests.",
+"İnebahtı Deniz Savaşı": "The Battle of Lepanto",
+"Kutsal Birlik donanması, Ali Paşa'nın Osmanlı donanmasını İnebahtı Körfezi'nde yendi. Kadırgalar birbirine yaklaştı ve savaş çarpışma, top ve arkebüzle sürdü. Osmanlı kayıp verdi ama bir yılda donanmayı yeniledi.": "The Holy League fleet defeated Ali Pasha's Ottoman fleet in the Gulf of Patras. The galleys closed together and the battle went on with boarding, cannon and arquebus. The Ottomans lost heavily but rebuilt their fleet within a year."
 }
 }
