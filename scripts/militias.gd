@@ -293,6 +293,20 @@ static func _pool(c) -> Dictionary:
 	return POOLS.get(cul, POOLS["west"])
 
 
+const REB_SPECIAL := {"Russia": "ru", "Turkey": "tr", "Taiwan": "tw", "Japan": "jp", "United States of America": "us"}
+
+
+## Isyancı grubun bayrak görseli anahtarı (assets/flags/era_<anahtar>.png): çağ, ülke ve kültüre göre; ad kodundan seçilir (rastgelelik harcamaz).
+static func flag_key(c, group_name: String) -> String:
+	var h: int = absi(group_name.hash())
+	if _fam() == "pre":
+		return "reb_pre_%d" % (h % 3 + 1)
+	if c != null and REB_SPECIAL.has(c.name_en):
+		return "reb_%s" % REB_SPECIAL[c.name_en]
+	var cul: String = Sil.culture_for(c) if c != null else "west"
+	return "reb_%s_%d" % [cul, h % 2 + 1]
+
+
 static func _fam() -> String:
 	return Eras.family() if Macro.era_on else ""
 

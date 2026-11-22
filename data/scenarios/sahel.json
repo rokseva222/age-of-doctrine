@@ -16,6 +16,7 @@
  "factions": [
   {
    "name": "Çöl Birliği",
+   "flag": "I:reb_col_birligi",
    "leader": "Komutan|Abdelhakim el-Sahri",
    "from": [
     [

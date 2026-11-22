@@ -4404,6 +4404,7 @@ func _spawn_rebels(p) -> bool:
 		faction.is_rebel = true
 		faction.name = Militias.unique(Militias.make(countries[owner_id], rng, "rebel"), rebel_name_count)
 		faction.name_en = faction.name
+		faction.flag_spec = "I:" + Militias.flag_key(countries[owner_id], faction.name)
 		faction.color = Color.from_hsv(rng.randf(), 0.6, 0.42)
 		faction.color2 = Color(0.12, 0.12, 0.14)
 		faction.color3 = Color(0.8, 0.12, 0.12)

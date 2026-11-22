@@ -24,6 +24,11 @@ static func clear_cache() -> void:
 
 
 static func _texture_for(c):
+	if c.is_rebel and c.flag_spec.begins_with("I:"):        # isyancı grubun görsel bayrağı (kültür/çağ başına)
+		var rp := "res://assets/flags/era_%s.png" % c.flag_spec.substr(2)
+		if not _tex.has(rp):
+			_tex[rp] = load(rp) if ResourceLoader.exists(rp) else null
+		return _tex[rp]
 	if c.flag_spec != "" and not c.is_rebel:
 		if c.flag_spec.begins_with("I:"):        # formlanan devletin görsel bayrağı: assets/flags/era_<ad>.png
 			var fp := "res://assets/flags/era_%s.png" % c.flag_spec.substr(2).split("|")[0]
@@ -226,7 +231,7 @@ static func _generated(c) -> Array:
 
 
 static func layers_for(c) -> Array:
-	if c.flag_spec != "" and not c.is_rebel:
+	if c.flag_spec != "" and not c.is_rebel and not c.flag_spec.begins_with("I:"):
 		var fk: String = "F:" + c.flag_spec
 		if not _cache.has(fk):
 			_cache[fk] = _parse(c.flag_spec)
