@@ -1114,6 +1114,47 @@ func show_deal_dialog(w, winner: int, options: Array, on_confirm: Callable, on_w
 	sh.footer.add_child(confirm)
 
 
+# ------------------------------------------------------------------ ordu bulucu
+
+## Oyuncunun tüm orduları: büyükten küçüğe; dokununca harita o ordunun eyaletine odaklanır (ordunun yerini kaybetme sorunu).
+func show_my_armies() -> void:
+	if gs == null or gs.player < 0:
+		return
+	var sh = _open_sheet("Ordularım", 700, true, true, gs.countries[gs.player].name)
+	var list: Array = gs.armies_of(gs.player)
+	list.sort_custom(func(a, b): return a.size > b.size)
+	var total := 0
+	for a in list:
+		total += a.size
+	sh.body.add_child(TK.t(Loc.t("%d ordu, toplam %s asker. Satıra dokununca harita o ordunun üzerine gider.") % [list.size(), _fmt(total)], "small", TK.MUTED))
+	if list.is_empty():
+		sh.body.add_child(TK.t("Şu an sahada ordun yok. Eyalet kartından yeni birlik kurabilirsin.", "body", TK.FAINT))
+	for a in list:
+		var pid: int = a.prov
+		var st := ""
+		if gs.is_sieging(a):
+			st = Loc.t("kuşatıyor")
+		elif not a.path.is_empty():
+			st = Loc.t("yolda")
+		elif a.hold:
+			st = Loc.t("konuşlu")
+		else:
+			st = Loc.t("beklemede")
+		if a.merc != "":
+			st += " · " + Loc.t("paralı")
+		var p = gs.provinces[pid]
+		var foreign: String = "" if p.owner == gs.player else "  (" + gs.countries[p.owner].name + ")"
+		var b := TK.button("%s — %s   %s%s" % [_fmt(a.size), p.name + foreign, st, ""], "", "sword", Vector2(0, 56), 17)
+		b.alignment = HORIZONTAL_ALIGNMENT_LEFT
+		b.clip_text = true
+		b.pressed.connect(func():
+			_click()
+			sh.close()
+			action.emit("focus", pid))
+		sh.body.add_child(b)
+	sh.add_button("Kapat", func(): pass, "ghost", true, "", 150)
+
+
 # ------------------------------------------------------------------ duraklatma menüsü
 
 func show_pause_menu() -> void:
@@ -1126,6 +1167,7 @@ func show_pause_menu() -> void:
 		["Hedefler ve başarımlar", "", "trophy", func(): show_goals()],
 		["Hareket paneli", "", "flag", func(): show_indep()],
 		["Divan (Hikâye Modu)", "", "crown", func(): show_career()],
+		["Ordularım", "", "sword", func(): show_my_armies()],
 		["Savaş Odası", "", "swords", func(): WarRoomUI.open(self)],
 		["Siyasi sistem", "", "gavel", func(): show_politics()],
 		["Deniz filoları", "", Icons.pick("uc_ship", "ship"), func(): FleetPanel.open(self, gs, false)],
