@@ -1928,12 +1928,22 @@ func _on_ui_action(act: String, arg) -> void:
 				ui.show_province(arg, selected_army)
 		"war":
 			var err: String = gs.war_gate_error(arg)
-			if err == "":
-				err = gs.player_declare_war(arg)
 			if err != "":
 				ui.toast(err)
 				sfx.play("error")
-			_refresh_selection()
+				_refresh_selection()
+			else:
+				var wr: String = gs.war_reason(gs.player, arg)
+				var wname: String = gs.countries[arg].name
+				var wtxt: String = (Loc.t("Savaş sebebi: %s") % Loc.t(gs.WAR_REASONS[wr])) if wr != "" else Loc.t("Geçerli bir savaş sebebin yok. Saldırırsan iç istikrar 3 puan düşer ve tüm ülkelerle ilişkiler bozulur.")
+				ui.show_dialog(Loc.t("%s: savaş ilan edilsin mi?") % wname, wtxt, [
+					{"text": "Savaş ilan et", "kind": "danger" if wr == "" else "gold", "cb": func():
+						var e2: String = gs.player_declare_war(arg)
+						if e2 != "":
+							ui.toast(e2)
+							sfx.play("error")
+						_refresh_selection()},
+					{"text": "Vazgeç", "cb": func(): pass}])
 		"peace":
 			_player_peace(arg)
 		"alliance":

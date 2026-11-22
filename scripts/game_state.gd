@@ -3,6 +3,7 @@ extends RefCounted
 
 const EraNames = preload("res://scripts/era_names.gd")
 const Model = preload("res://scripts/model.gd")
+const Loc = preload("res://scripts/loc.gd")
 const RichStore = preload("res://scripts/rich_store.gd")
 const Settings = preload("res://scripts/settings.gd")
 const Names = preload("res://scripts/names.gd")
@@ -4002,8 +4003,44 @@ func player_declare_war(target: int) -> String:
 		return "Müttefike savaş açamazsın; önce ittifakı boz."
 	if countries[player].truce.get(target, -1) > turn:
 		return "Ateşkes sürüyor (%d tur)." % (countries[player].truce[target] - turn)
+	var cb: String = war_reason(player, target)
 	declare_war(player, target)
+	if cb == "":
+		# savaş sebebi yok: dünya kamuoyu ve iç kamuoyu tepki gösterir
+		var me = countries[player]
+		me.stability = maxf(5.0, me.stability - 3.0)
+		for o in countries:
+			if o.alive and not o.is_rebel and o.id != player and o.id != target and not is_allied(player, o.id):
+				relation_add(player, o.id, -6.0)
+		post_news("Sebepsiz saldırı dünya kamuoyunu karşına aldı: iç istikrar ve ilişkiler düştü.", -1, "info")
+	else:
+		post_news(Loc.t("Savaş sebebi: %s") % Loc.t(WAR_REASONS[cb]), -1, "info")
 	state_changed.emit()
+	return ""
+
+
+const WAR_REASONS := {
+	"reclaim": "Tarihi topraklarımızı geri alma",
+	"embargo": "Ambargoya karşılık",
+	"ally": "Müttefikimizi savunma",
+	"hostile": "Düşmanca ilişkiler ve tehdit",
+}
+
+
+## Savaş sebebi (casus belli): geçerli bir sebep varsa kimliği, yoksa "" döner.
+func war_reason(a: int, b: int) -> String:
+	var ca = countries[a]
+	var cb = countries[b]
+	for p in provinces:
+		if p.home == a and p.owner == b:
+			return "reclaim"
+	if cb.embargo.has(a):
+		return "embargo"
+	for al in ca.allies:
+		if at_war(al, b):
+			return "ally"
+	if float(ca.relation.get(b, 50.0)) < 20.0 or float(cb.relation.get(a, 50.0)) < 20.0:
+		return "hostile"
 	return ""
 
 
