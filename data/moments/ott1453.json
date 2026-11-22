@@ -1,0 +1,899 @@
+{
+"moments": [
+{
+"id": "constantinople_1453",
+"y": 1453,
+"m": 5,
+"title": "İstanbul'un Fethi",
+"scene": "pre_siege",
+"icon": "flag",
+"text": "II. Mehmed devasa toplarla Theodosius Surları'nı dövüyor; 29 Mayıs'taki genel taarruz sonucu şehir düştü. Bizans'ın bin yıllık hikâyesi bitiyor, bir çağ kapanıyor.",
+"major": true,
+"default_fx": [
+[
+"occupy",
+"Turkey",
+"Greece"
+],
+[
+"stab",
+"Turkey",
+8
+],
+[
+"stab",
+"Greece",
+-12
+],
+[
+"rel",
+"Italy",
+"Turkey",
+-10
+]
+],
+"roles": {
+"Turkey": {
+"text": "Surlar delindi; son taarruz için hazırsın. Şehri ele geçirince ne yapacaksın?",
+"options": [
+{
+"t": "Genel taarruz (tarihî)",
+"d": "Şehir sizin olsun",
+"fx": [
+[
+"buff",
+"Turkey",
+"att",
+1.2,
+10
+],
+[
+"stab",
+"Turkey",
+8
+],
+[
+"gold",
+"Turkey",
+2.0
+]
+],
+"r": "Osmanlı ordusu İstanbul'a girdi; Ayasofya camiye çevrildi."
+},
+{
+"t": "Muhasarayı sürdür",
+"d": "Daha az kayıp",
+"fx": [
+[
+"troops",
+"Turkey",
+-3
+],
+[
+"rel",
+"Italy",
+"Turkey",
+-4
+]
+],
+"r": "Muhasara sürdü; Venedik filosu yaklaşıyor."
+}
+]
+},
+"Greece": {
+"text": "Giustiniani yaralandı; Haliç zinciri tutuyor ama sayı çok az. İmparator son savunmada.",
+"options": [
+{
+"t": "Surlarda son savunma (tarihî)",
+"d": "Şan ve onur",
+"fx": [
+[
+"buff",
+"Greece",
+"def",
+1.5,
+4
+],
+[
+"stab",
+"Greece",
+4
+]
+],
+"r": "Konstantinos surlarda düştü; şehir düştü."
+},
+{
+"t": "Şehri bırak, Mora'ya kaç",
+"d": "Mora'da ayakta kal",
+"fx": [
+[
+"stab",
+"Greece",
+-8
+],
+[
+"troops",
+"Greece",
+2
+]
+],
+"r": "İmparator Mora'ya çekildi."
+}
+]
+},
+"Italy": {
+"text": "Venedik ve Cenova İstanbul'daki ticaretini kaybediyor; Papa haçlı çağrısı yapıyor.",
+"options": [
+{
+"t": "Osmanlı ile ticaret antlaşması yap (tarihî)",
+"d": "Ticaret yollarını koru",
+"fx": [
+[
+"rel",
+"Italy",
+"Turkey",
+8
+],
+[
+"gold",
+"Italy",
+1.0
+]
+],
+"r": "Venedik Osmanlı ile yeni bir ticaret anlaşması yaptı."
+},
+{
+"t": "Haçlı ittifakı kur",
+"d": "Savaş riski",
+"fx": [
+[
+"rel",
+"Italy",
+"Turkey",
+-10
+],
+[
+"rel",
+"Italy",
+"Hungary",
+6
+]
+],
+"r": "Roma bir haçlı ittifakı kurmaya çalıştı."
+}
+]
+}
+}
+},
+{
+"id": "belgrade_1456",
+"y": 1456,
+"m": 7,
+"title": "Belgrad Kuşatması",
+"scene": "pre_siege",
+"icon": "helmet_ww1",
+"text": "Fatih, Tuna'nın anahtarı Belgrad'ı kuşattı. Hunyadi János ve Capistrano'nun haçlı gönüllüleri nehirdeki Osmanlı filosunu yardı; Fatih yaralandı ve kuşatma kalktı.",
+"major": true,
+"default_fx": [
+[
+"troops",
+"Turkey",
+-8
+],
+[
+"stab",
+"Turkey",
+-3
+],
+[
+"stab",
+"Hungary",
+8
+]
+],
+"roles": {
+"Turkey": {
+"text": "Surlar kırıldı ama haçlı takviyesi nehri açtı. Askerler yorgun.",
+"options": [
+{
+"t": "Kuşatmayı sürdür",
+"d": "Şehri al veya kaybet",
+"fx": [
+[
+"troops",
+"Turkey",
+-6
+],
+[
+"buff",
+"Turkey",
+"att",
+1.1,
+4
+]
+],
+"r": "Osmanlı ordusu son bir taarruz yaptı ve ağır kayıp verdi."
+},
+{
+"t": "Kuşatmayı kaldır (tarihî)",
+"d": "Orduyu koru",
+"fx": [
+[
+"buff",
+"Turkey",
+"def",
+1.1,
+8
+],
+[
+"stab",
+"Turkey",
+-2
+]
+],
+"r": "Fatih kuşatmayı kaldırıp geri çekildi."
+}
+]
+},
+"Hungary": {
+"text": "Hunyadi Belgrad'da; haçlı gönüllüleri köylülerden oluşuyor. Nehir savaşı kaderi belirleyecek.",
+"options": [
+{
+"t": "Osmanlı filosunu yar (tarihî)",
+"d": "Belgrad'ı kurtar",
+"fx": [
+[
+"buff",
+"Hungary",
+"def",
+1.3,
+14
+],
+[
+"stab",
+"Hungary",
+8
+],
+[
+"rel",
+"Hungary",
+"Italy",
+6
+]
+],
+"r": "Macarlar Osmanlı filosunu Tuna'da dağıttı; Belgrad kurtuldu."
+},
+{
+"t": "Kaleye kapan",
+"d": "Kuşatmayı bekle",
+"fx": [
+[
+"buff",
+"Hungary",
+"def",
+1.2,
+8
+]
+],
+"r": "Macarlar kalenin arkasında savundu."
+}
+]
+},
+"Serbia": {
+"text": "Belgrad Macarlara bağlı; Despot Đurađ ölü, ülke bölünmüş durumda.",
+"options": [
+{
+"t": "Macarlara bağlı kal (tarihî)",
+"d": "Haçlı ittifakı",
+"fx": [
+[
+"rel",
+"Serbia",
+"Hungary",
+8
+],
+[
+"rel",
+"Serbia",
+"Turkey",
+-6
+]
+],
+"r": "Sırp beyleri Macaristan'ın yanında kaldı."
+},
+{
+"t": "Osmanlı'ya haraç ver",
+"d": "Barışı koru",
+"fx": [
+[
+"rel",
+"Serbia",
+"Turkey",
+6
+],
+[
+"stab",
+"Serbia",
+-2
+]
+],
+"r": "Sırp Despotluğu Osmanlı'ya haraç vermeye devam etti."
+}
+]
+}
+}
+},
+{
+"id": "morea_1460",
+"y": 1460,
+"m": 5,
+"title": "Mora Despotluğu'nun Sonu",
+"scene": "pre_siege",
+"icon": "flag",
+"text": "Bizans'ın son parçası Mora'daki Palaiologos kardeşlerin kavgası Fatih'e fırsat verdi. Osmanlı ordusu Mistra'yı aldı; Mora'nın kalan kalesi düşüyor.",
+"major": true,
+"default_fx": [
+[
+"occupy",
+"Turkey",
+"Greece"
+],
+[
+"stab",
+"Turkey",
+4
+],
+[
+"stab",
+"Greece",
+-8
+]
+],
+"roles": {
+"Turkey": {
+"text": "Mora despotları vergi vermedi ve birbirine düştü. Seferi başlatma zamanı.",
+"options": [
+{
+"t": "Mora'yı fethet (tarihî)",
+"d": "Yarımadayı ele geçir",
+"fx": [
+[
+"buff",
+"Turkey",
+"att",
+1.15,
+8
+],
+[
+"gold",
+"Turkey",
+1.0
+]
+],
+"r": "Osmanlı ordusu Mora'yı ele geçirdi."
+},
+{
+"t": "Haraç al, savaşma",
+"d": "Daha az masraf",
+"fx": [
+[
+"gold",
+"Turkey",
+0.5
+]
+],
+"r": "Osmanlı Mora'dan haraçla yetindi."
+}
+]
+},
+"Greece": {
+"text": "Thomas ve Demetrios birbirine düşman; Osmanlı ordusu kapıda.",
+"options": [
+{
+"t": "Papalık'tan yardım iste (tarihî)",
+"d": "Haçlı çağrısı",
+"fx": [
+[
+"rel",
+"Greece",
+"Italy",
+8
+],
+[
+"stab",
+"Greece",
+-3
+]
+],
+"r": "Mora despotları Roma'dan yardım istedi; yardım gelmedi."
+},
+{
+"t": "Osmanlı'ya bağlan",
+"d": "Hayatta kal",
+"fx": [
+[
+"peace",
+"Greece",
+"Turkey"
+],
+[
+"stab",
+"Greece",
+-6
+]
+],
+"r": "Despotlar Osmanlı egemenliğini kabul etti."
+}
+]
+}
+}
+},
+{
+"id": "vlad_1462",
+"y": 1462,
+"m": 6,
+"title": "Kazıklı Voyvoda",
+"scene": "crisis",
+"icon": "flame",
+"text": "Eflak Voyvodası Vlad Dracula haracı reddetti ve Osmanlı elçilerini idam etti; Fatih Tuna'yı geçti. Vlad gece baskını yaptı; kazıklı cesetlerle dolu bir orman Osmanlı ordusunu dehşete düşürdü.",
+"major": true,
+"default_fx": [
+[
+"war",
+"Turkey",
+"Romania"
+],
+[
+"troops",
+"Turkey",
+-4
+],
+[
+"stab",
+"Romania",
+3
+]
+],
+"roles": {
+"Romania": {
+"text": "Osmanlı ordusu Eflak'a girdi; yakıp yıkma taktiğiyle karşı koyabilirsin.",
+"options": [
+{
+"t": "Yakıp yık ve gece baskını yap (tarihî)",
+"d": "Direniş",
+"fx": [
+[
+"buff",
+"Romania",
+"def",
+1.4,
+8
+],
+[
+"troops",
+"Turkey",
+-4
+],
+[
+"stab",
+"Romania",
+4
+]
+],
+"r": "Vlad gece baskınıyla Osmanlı ordusunu yıprattı."
+},
+{
+"t": "Macaristan'dan yardım iste",
+"d": "İttifak",
+"fx": [
+[
+"rel",
+"Romania",
+"Hungary",
+6
+],
+[
+"stab",
+"Romania",
+-4
+]
+],
+"r": "Vlad Macaristan'dan yardım istedi; Mátyás onu tutukladı."
+}
+]
+},
+"Turkey": {
+"text": "Vlad'ın korku taktiği ordunun morali için tehlike. Seferi sürdür mü?",
+"options": [
+{
+"t": "Radu'yu tahta çıkar (tarihî)",
+"d": "Kardeşi vasal yap",
+"fx": [
+[
+"rel",
+"Turkey",
+"Romania",
+6
+],
+[
+"gold",
+"Turkey",
+1.0
+]
+],
+"r": "Osmanlı Vlad'ın kardeşi Radu'yu Eflak tahtına oturttu."
+},
+{
+"t": "Seferi sürdür",
+"d": "Zorlu arazi",
+"fx": [
+[
+"troops",
+"Turkey",
+-6
+],
+[
+"buff",
+"Turkey",
+"att",
+1.1,
+4
+]
+],
+"r": "Osmanlı birlikleri Eflak'ta ilerlemeye çalıştı."
+}
+]
+}
+}
+},
+{
+"id": "negroponte_1470",
+"y": 1470,
+"m": 7,
+"title": "Eğriboz'un Fethi",
+"scene": "landing",
+"icon": "landing",
+"text": "Osmanlı donanması ve ordusu Venedik'in Ege'deki en önemli üssü Eğriboz'u (Negroponte) kuşattı. Şehir kuşatmanın 17. gününde düştü; Venedik-Osmanlı savaşı sürüyor.",
+"major": true,
+"default_fx": [
+[
+"war",
+"Turkey",
+"Italy"
+],
+[
+"occupy",
+"Turkey",
+"Italy"
+],
+[
+"stab",
+"Italy",
+-6
+]
+],
+"roles": {
+"Italy": {
+"text": "Eğriboz kuşatıldı; Venedik donanması yetişemiyor. Büyük bir kayıp.",
+"options": [
+{
+"t": "Uzun Hasan ile ittifak kur (tarihî)",
+"d": "Doğu cephesi aç",
+"fx": [
+[
+"rel",
+"Italy",
+"Iran",
+8
+],
+[
+"rel",
+"Italy",
+"Turkey",
+-4
+]
+],
+"r": "Venedik Akkoyunlu Uzun Hasan'la ittifak aradı."
+},
+{
+"t": "Barış iste",
+"d": "Ticareti koru",
+"fx": [
+[
+"peace",
+"Italy",
+"Turkey"
+],
+[
+"gold",
+"Italy",
+-1.0
+]
+],
+"r": "Venedik Osmanlı ile barış görüşmelerine başladı."
+}
+]
+},
+"Turkey": {
+"text": "Eğriboz Ege'nin anahtarı. Donanma ve ordu ortak harekâtla şehri ele geçirebilir.",
+"options": [
+{
+"t": "Şehri fethet (tarihî)",
+"d": "Ege'de üstünlük",
+"fx": [
+[
+"buff",
+"Turkey",
+"att",
+1.15,
+10
+],
+[
+"gold",
+"Turkey",
+1.5
+],
+[
+"stab",
+"Turkey",
+4
+]
+],
+"r": "Osmanlı Eğriboz'u aldı; Venedik'in Ege üstünlüğü bitti."
+},
+{
+"t": "Venedik'le barış yap",
+"d": "Ticaret kazancı",
+"fx": [
+[
+"peace",
+"Turkey",
+"Italy"
+],
+[
+"gold",
+"Turkey",
+1.0
+]
+],
+"r": "Osmanlı Venedik'le ticaret antlaşmasına yöneldi."
+}
+]
+}
+}
+},
+{
+"id": "otranto_1480",
+"y": 1480,
+"m": 8,
+"title": "Otranto Çıkarması",
+"scene": "landing",
+"icon": "landing",
+"text": "Gedik Ahmed Paşa'nın donanması Otranto'ya çıktı ve şehri aldı; Roma'ya yürüyüş korkusu Avrupa'yı sarstı. Fatih'in ölümü seferi kesecek.",
+"major": true,
+"default_fx": [
+[
+"war",
+"Turkey",
+"Italy"
+],
+[
+"occupy",
+"Turkey",
+"Italy"
+],
+[
+"stab",
+"Italy",
+-4
+]
+],
+"roles": {
+"Turkey": {
+"text": "İtalya'da köprübaşı kuruldu. Bu üssü kalıcı yapmak veya Roma'yı tehdit etmek mümkün.",
+"options": [
+{
+"t": "Otranto'yu tahkim et (tarihî)",
+"d": "İtalya'da üs",
+"fx": [
+[
+"buff",
+"Turkey",
+"def",
+1.1,
+10
+],
+[
+"rel",
+"Italy",
+"Turkey",
+-8
+]
+],
+"r": "Osmanlı Otranto'yu güçlendirdi; Fatih'in ölümüyle seferi yarım kaldı."
+},
+{
+"t": "Roma'ya yürü",
+"d": "Büyük hedef",
+"fx": [
+[
+"buff",
+"Turkey",
+"att",
+1.15,
+8
+],
+[
+"troops",
+"Turkey",
+-5
+]
+],
+"r": "Osmanlı ordusu İtalya içlerine ilerlemeye çalıştı."
+}
+]
+},
+"Italy": {
+"text": "Otranto düştü; Napoli ve Roma panikte. Papa Sixtus haçlı çağrısı yapıyor.",
+"options": [
+{
+"t": "Otranto'yu geri al (tarihî)",
+"d": "İtalyan birliği",
+"fx": [
+[
+"buff",
+"Italy",
+"att",
+1.2,
+8
+],
+[
+"stab",
+"Italy",
+4
+],
+[
+"rel",
+"Italy",
+"Spain",
+6
+]
+],
+"r": "İtalyan devletleri birleşip Otranto'yu geri aldı."
+},
+{
+"t": "Osmanlı ile müzakere et",
+"d": "Savaştan kaçın",
+"fx": [
+[
+"rel",
+"Italy",
+"Turkey",
+4
+],
+[
+"stab",
+"Italy",
+-3
+]
+],
+"r": "İtalyan şehir devletleri Osmanlı ile görüşmeleri açtı."
+}
+]
+}
+}
+}
+],
+"en": {
+"Genel taarruz (tarihî)": "General assault (historical)",
+"Şehir sizin olsun": "The city is yours",
+"Osmanlı ordusu İstanbul'a girdi; Ayasofya camiye çevrildi.": "The Ottoman army entered Constantinople; Hagia Sophia became a mosque.",
+"Muhasarayı sürdür": "Prolong the siege",
+"Daha az kayıp": "Fewer losses",
+"Muhasara sürdü; Venedik filosu yaklaşıyor.": "The siege continued as the Venetian fleet approached.",
+"Surlar delindi; son taarruz için hazırsın. Şehri ele geçirince ne yapacaksın?": "The walls are breached; you are ready for the final assault. What will you do once the city is yours?",
+"Surlarda son savunma (tarihî)": "Last stand on the walls (historical)",
+"Şan ve onur": "Glory and honour",
+"Konstantinos surlarda düştü; şehir düştü.": "Constantine fell on the walls; the city fell.",
+"Şehri bırak, Mora'ya kaç": "Abandon the city, flee to the Morea",
+"Mora'da ayakta kal": "Survive in the Morea",
+"İmparator Mora'ya çekildi.": "The emperor withdrew to the Morea.",
+"Giustiniani yaralandı; Haliç zinciri tutuyor ama sayı çok az. İmparator son savunmada.": "Giustiniani is wounded; the Golden Horn chain holds but numbers are few. The emperor makes a last stand.",
+"Osmanlı ile ticaret antlaşması yap (tarihî)": "Seek a trade treaty with the Ottomans (historical)",
+"Ticaret yollarını koru": "Protect trade routes",
+"Venedik Osmanlı ile yeni bir ticaret anlaşması yaptı.": "Venice signed a new trade agreement with the Ottomans.",
+"Haçlı ittifakı kur": "Build a crusader league",
+"Savaş riski": "Risk of war",
+"Roma bir haçlı ittifakı kurmaya çalıştı.": "Rome tried to assemble a crusader league.",
+"Venedik ve Cenova İstanbul'daki ticaretini kaybediyor; Papa haçlı çağrısı yapıyor.": "Venice and Genoa are losing their Constantinople trade; the Pope is calling for a crusade.",
+"İstanbul'un Fethi": "The Fall of Constantinople",
+"II. Mehmed devasa toplarla Theodosius Surları'nı dövüyor; 29 Mayıs'taki genel taarruz sonucu şehir düştü. Bizans'ın bin yıllık hikâyesi bitiyor, bir çağ kapanıyor.": "Mehmed II is pounding the Theodosian Walls with giant cannons; the general assault of 29 May brought the city down. A thousand-year Byzantine story ends and an age closes.",
+"Kuşatmayı sürdür": "Keep pressing",
+"Şehri al veya kaybet": "Take it or lose it",
+"Osmanlı ordusu son bir taarruz yaptı ve ağır kayıp verdi.": "The Ottoman army made a last assault and took heavy losses.",
+"Kuşatmayı kaldır (tarihî)": "Lift the siege (historical)",
+"Orduyu koru": "Preserve the army",
+"Fatih kuşatmayı kaldırıp geri çekildi.": "Mehmed lifted the siege and withdrew.",
+"Surlar kırıldı ama haçlı takviyesi nehri açtı. Askerler yorgun.": "The walls are breached but crusader reinforcements opened the river. The troops are exhausted.",
+"Osmanlı filosunu yar (tarihî)": "Break the Ottoman fleet (historical)",
+"Belgrad'ı kurtar": "Save Belgrade",
+"Macarlar Osmanlı filosunu Tuna'da dağıttı; Belgrad kurtuldu.": "The Hungarians scattered the Ottoman fleet on the Danube; Belgrade was saved.",
+"Kaleye kapan": "Hold behind the walls",
+"Kuşatmayı bekle": "Weather the siege",
+"Macarlar kalenin arkasında savundu.": "The Hungarians defended from behind the walls.",
+"Hunyadi Belgrad'da; haçlı gönüllüleri köylülerden oluşuyor. Nehir savaşı kaderi belirleyecek.": "Hunyadi is at Belgrade; the crusaders are mostly peasants. The river battle will decide the day.",
+"Macarlara bağlı kal (tarihî)": "Stay with Hungary (historical)",
+"Haçlı ittifakı": "The crusader alliance",
+"Sırp beyleri Macaristan'ın yanında kaldı.": "Serbian lords stayed with Hungary.",
+"Osmanlı'ya haraç ver": "Pay tribute to the Ottomans",
+"Barışı koru": "Preserve peace",
+"Sırp Despotluğu Osmanlı'ya haraç vermeye devam etti.": "The Serbian Despotate kept paying tribute to the Ottomans.",
+"Belgrad Macarlara bağlı; Despot Đurađ ölü, ülke bölünmüş durumda.": "Belgrade is held for Hungary; Despot Đurađ is dead and the land is divided.",
+"Belgrad Kuşatması": "The Siege of Belgrade",
+"Fatih, Tuna'nın anahtarı Belgrad'ı kuşattı. Hunyadi János ve Capistrano'nun haçlı gönüllüleri nehirdeki Osmanlı filosunu yardı; Fatih yaralandı ve kuşatma kalktı.": "Mehmed besieged Belgrade, the key to the Danube. John Hunyadi and Capistrano's crusader volunteers broke the Ottoman river fleet; Mehmed was wounded and the siege lifted.",
+"Mora'yı fethet (tarihî)": "Conquer the Morea (historical)",
+"Yarımadayı ele geçir": "Take the peninsula",
+"Osmanlı ordusu Mora'yı ele geçirdi.": "The Ottoman army conquered the Morea.",
+"Haraç al, savaşma": "Take tribute and stay out",
+"Daha az masraf": "Lower cost",
+"Osmanlı Mora'dan haraçla yetindi.": "The Ottomans settled for tribute from the Morea.",
+"Mora despotları vergi vermedi ve birbirine düştü. Seferi başlatma zamanı.": "The Morean despots stopped paying tribute and fell to quarrelling. Time to launch the campaign.",
+"Papalık'tan yardım iste (tarihî)": "Appeal to the Papacy (historical)",
+"Haçlı çağrısı": "A crusade call",
+"Mora despotları Roma'dan yardım istedi; yardım gelmedi.": "The Morean despots appealed to Rome; no help came.",
+"Osmanlı'ya bağlan": "Submit to the Ottomans",
+"Hayatta kal": "Survive",
+"Despotlar Osmanlı egemenliğini kabul etti.": "The despots accepted Ottoman suzerainty.",
+"Thomas ve Demetrios birbirine düşman; Osmanlı ordusu kapıda.": "Thomas and Demetrios are enemies; the Ottoman army is at the gates.",
+"Mora Despotluğu'nun Sonu": "The End of the Morea",
+"Bizans'ın son parçası Mora'daki Palaiologos kardeşlerin kavgası Fatih'e fırsat verdi. Osmanlı ordusu Mistra'yı aldı; Mora'nın kalan kalesi düşüyor.": "The last Byzantine remnant, the Morea, was weakened by the Palaiologos brothers' feud. The Ottoman army took Mistra; the remaining fortresses are falling.",
+"Yakıp yık ve gece baskını yap (tarihî)": "Scorched earth and night raids (historical)",
+"Direniş": "Resistance",
+"Vlad gece baskınıyla Osmanlı ordusunu yıprattı.": "Vlad's night raid wore down the Ottoman army.",
+"Macaristan'dan yardım iste": "Ask Hungary for help",
+"İttifak": "An alliance",
+"Vlad Macaristan'dan yardım istedi; Mátyás onu tutukladı.": "Vlad asked Hungary for help; Matthias had him imprisoned.",
+"Osmanlı ordusu Eflak'a girdi; yakıp yıkma taktiğiyle karşı koyabilirsin.": "The Ottoman army has entered Wallachia; you can resist with scorched earth.",
+"Radu'yu tahta çıkar (tarihî)": "Install Radu (historical)",
+"Kardeşi vasal yap": "Make his brother a vassal",
+"Osmanlı Vlad'ın kardeşi Radu'yu Eflak tahtına oturttu.": "The Ottomans installed Vlad's brother Radu on the Wallachian throne.",
+"Seferi sürdür": "Press on",
+"Zorlu arazi": "Difficult terrain",
+"Osmanlı birlikleri Eflak'ta ilerlemeye çalıştı.": "Ottoman troops pushed on through Wallachia.",
+"Vlad'ın korku taktiği ordunun morali için tehlike. Seferi sürdür mü?": "Vlad's terror tactic threatens morale. Press on or withdraw?",
+"Kazıklı Voyvoda": "Vlad the Impaler",
+"Eflak Voyvodası Vlad Dracula haracı reddetti ve Osmanlı elçilerini idam etti; Fatih Tuna'yı geçti. Vlad gece baskını yaptı; kazıklı cesetlerle dolu bir orman Osmanlı ordusunu dehşete düşürdü.": "Wallachian prince Vlad Dracula refused tribute and executed Ottoman envoys; Mehmed crossed the Danube. Vlad launched a night raid; a forest of impaled bodies horrified the Ottoman army.",
+"Uzun Hasan ile ittifak kur (tarihî)": "Ally with Uzun Hasan (historical)",
+"Doğu cephesi aç": "Open an eastern front",
+"Venedik Akkoyunlu Uzun Hasan'la ittifak aradı.": "Venice sought an alliance with Uzun Hasan of the Akkoyunlu.",
+"Barış iste": "Sue for peace",
+"Ticareti koru": "Keep trade",
+"Venedik Osmanlı ile barış görüşmelerine başladı.": "Venice opened peace talks with the Ottomans.",
+"Eğriboz kuşatıldı; Venedik donanması yetişemiyor. Büyük bir kayıp.": "Negroponte is under siege and the fleet cannot arrive in time. A major loss.",
+"Şehri fethet (tarihî)": "Capture the city (historical)",
+"Ege'de üstünlük": "Supremacy in the Aegean",
+"Osmanlı Eğriboz'u aldı; Venedik'in Ege üstünlüğü bitti.": "The Ottomans took Negroponte; Venice's Aegean dominance ended.",
+"Venedik'le barış yap": "Make peace with Venice",
+"Ticaret kazancı": "Trade gains",
+"Osmanlı Venedik'le ticaret antlaşmasına yöneldi.": "The Ottomans turned to a trade treaty with Venice.",
+"Eğriboz Ege'nin anahtarı. Donanma ve ordu ortak harekâtla şehri ele geçirebilir.": "Negroponte is the key to the Aegean. Fleet and army can take it in a joint operation.",
+"Eğriboz'un Fethi": "The Fall of Negroponte",
+"Osmanlı donanması ve ordusu Venedik'in Ege'deki en önemli üssü Eğriboz'u (Negroponte) kuşattı. Şehir kuşatmanın 17. gününde düştü; Venedik-Osmanlı savaşı sürüyor.": "The Ottoman fleet and army besieged Negroponte, Venice's most important Aegean base. The city fell on the 17th day; the Venetian-Ottoman war goes on.",
+"Otranto'yu tahkim et (tarihî)": "Fortify Otranto (historical)",
+"İtalya'da üs": "A base in Italy",
+"Osmanlı Otranto'yu güçlendirdi; Fatih'in ölümüyle seferi yarım kaldı.": "The Ottomans strengthened Otranto; Mehmed's death left the campaign unfinished.",
+"Roma'ya yürü": "March on Rome",
+"Büyük hedef": "A grand objective",
+"Osmanlı ordusu İtalya içlerine ilerlemeye çalıştı.": "The Ottoman army tried to advance inland.",
+"İtalya'da köprübaşı kuruldu. Bu üssü kalıcı yapmak veya Roma'yı tehdit etmek mümkün.": "A bridgehead in Italy is established. You can make it permanent or threaten Rome.",
+"Otranto'yu geri al (tarihî)": "Retake Otranto (historical)",
+"İtalyan birliği": "Italian unity",
+"İtalyan devletleri birleşip Otranto'yu geri aldı.": "The Italian states united and retook Otranto.",
+"Osmanlı ile müzakere et": "Negotiate with the Ottomans",
+"Savaştan kaçın": "Avoid war",
+"İtalyan şehir devletleri Osmanlı ile görüşmeleri açtı.": "The Italian city-states opened talks with the Ottomans.",
+"Otranto düştü; Napoli ve Roma panikte. Papa Sixtus haçlı çağrısı yapıyor.": "Otranto has fallen; Naples and Rome are in a panic. Pope Sixtus calls for a crusade.",
+"Otranto Çıkarması": "The Landing at Otranto",
+"Gedik Ahmed Paşa'nın donanması Otranto'ya çıktı ve şehri aldı; Roma'ya yürüyüş korkusu Avrupa'yı sarstı. Fatih'in ölümü seferi kesecek.": "Gedik Ahmed Pasha's fleet landed at Otranto and took the city; fear of a march on Rome shook Europe. Mehmed's death will cut the campaign short."
+}
+}
