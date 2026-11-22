@@ -43,3 +43,22 @@ Kaynak: ahmett_ttarik, luciferdeu, erenkbtss, devranpashaa, play store paylaşı
 ## Durum (2026-11-22 akşam)
 - S1 tamam (cyprus 1974/2027). S2 tamam (ch94/ch94c/ch99/ch99c, 32 olay kartı). O18 tamam.
 - Sıradaki: B1–B11 hata listesi, ardından S3 (tüm modlarda olay artırımı).
+
+## Ek: ss'lerin ikinci okuması (2026-11-23, 63 ekran görüntüsü, tamamı tekrar okundu)
+Ilk listede olmayan ya da eksik kalan maddeler. Durum etiketi kodda bakılarak yazıldı; "BAKILACAK" olanlar doğrulanmadı.
+- E1. [BAKILACAK] Ülke renkleri haritada belirgin/farklı olsun (Emir Ali, harita görüntüleri); Türkiye–Yunanistan renkleri yer değiştirmiş görünüyor.
+- E2. [KISMEN] Alınan teçhizatın (tank, top, denizaltı) farkı anlaşılsın, savaşa etkisi olsun: model bazlı güç ve simge VAR; haritada/ordu kartında görsel fark ve açık etki yazısı eksik.
+- E3. [KODDA VAR, yeniden denenmeli] Hata 1/4/5 (Furkan): savaşsız adaya ordu geçirilemiyor, geçit izni bitince ordu içeride kalıyor, Japonlar gibi denize çıkılamıyor. Dost deniz nakliyesi, çıkarma ve geçit bitince eve gönderme kodda var; ss'ler 19–21 Kasım sürümünden.
+- E4. [YOK] Saldırı/ordu hareketi animasyonu; hava bombardımanında küçük patlama efekti (Furkan/Eren fikri).
+- E5. [KISMEN] Savaş sonrası asimilasyon/din dönüştürme VAR (eyalet kartı); "isyan çıkma sıklığı çok fazla, fetihten başka gelişim yok" dengesi bakılmadı (mainanonacc).
+- E6. [BAKILACAK] "Osmanlı'yı oluştur" formlarken nereleri almam gerektiği haritada gösterilsin.
+- E7. [KISMEN] Yeni senaryolar: Osmanlı kuruluşu (ott1299) ve İstanbul'un fethi (ott1453) VAR; 15 Temmuz, 12 Eylül, Navalny protestosu, Weimar/Beyaz Rusya/Sovyet çatışması YOK.
+- E8. [BAKILACAK] Senaryo editörü: haritadan tıklayarak ülke/il seçme, kaydırma sorunu, tarih/harita ayarı.
+- E9. [YOK] Kiralık asker 3 tip (çete / orta / özel harekat); zorunlu askerlik tur başına çok az (5–10 bin); vergi↔asker sürgüsü; bütçede eğitim, tarım, vergi.
+- E10. [YOK] Eyalet sayısı dengesiz: Arabistan tek il, Türkiye'de 2 tek il (Emir Ali).
+- E11. [YOK] Savaş ilanında savaş sebebi (casus belli) seçilsin (Taha); ittifak kurmak kolaylaşsın, para biriktirirken ilişki düşmesin (Yasin).
+- E12. [BAKILACAK] Propaganda sistemi yöntem seçimi (sözlü/yazılı) ve "hükümete inanç" seviyesi (Kemalist Halife).
+- E13. [BAKILACAK] Hata 2/3/6 (Furkan): 1939'da Grodno ve Brest ile Polonya sınırındaki bölge Sovyet görünüyor; Hindistan'ın içindeki beylikler yok; 1914 haritasında Kars/Hicaz ve Avusturya'nın İtalya/Romanya'dan aldığı toprak fazlası. (WW1'de Kars→Rusya, Hicaz→Osmanlı aktarımı kodda var; 1939 Polonya doğusu için tarih doğrulaması gerek.)
+- E14. [YOK] Fransa/İngiltere'nin Afrika-Asya-Amerika topraklarını vasal yap (ör. Cezayir, WW2'de Fransa vasalı).
+- E15. [İNCELENDİ] Pil tüketimi: 2 saatte %15 (mainanonacc); cihaz profili gerekir (B1 ile aynı).
+- E16. [YOK] Eğitim, tarım, vergi, asker alımı, tank/top/tüfek gücü içeren "teknoloji/ülke yönetimi ekranı" (Emir Ali/Furkan sohbeti, World Empire benzeri).
