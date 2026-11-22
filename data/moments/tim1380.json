@@ -1,178 +1,505 @@
 {
 "moments": [
 {
-"id": "ankara1402",
-"y": 1402,
-"m": 7,
-"title": "Ankara Savaşı",
+"id": "kulikovo_1380",
+"y": 1380,
+"m": 9,
+"title": "Kulikovo Savaşı",
 "scene": "pre_assault",
-"icon": "u_elephant",
-"text": "Timur ve Bayezid Çubuk Ovası'nda karşılaştı: Osmanlı ordusu dağıldı, Yıldırım esir.",
+"icon": "flag",
+"text": "Moskova Büyük Dükü Dimitri Donskoy, Don Nehri kıyısında Mamay'ın Altın Orda ordusuna karşı çıktı. Rus prensleri ilk kez büyük bir birlik halinde Tatarlara savaş açtı; Mamay yenildi ve Toktamış'ın yükselişi kolaylaştı.",
 "major": true,
 "default_fx": [
 [
-"war",
-"Uzbekistan",
-"Turkey"
+"troops",
+"Russia",
+-6
+],
+[
+"troops",
+"Kazakhstan",
+-6
 ],
 [
 "stab",
-"Turkey",
--30
+"Russia",
+6
+],
+[
+"stab",
+"Kazakhstan",
+-4
 ]
 ],
 "roles": {
-"Uzbekistan": {
-"text": "Bayezid Çubuk'ta. Anadolu beylerinin askerleri onun saflarında ama eski beylerine sadık.",
+"Russia": {
+"text": "Moskova ve müttefik prensler Don kıyısında; Mamay'ın ordusu Litvanya yardımını bekliyor. İlk vurmak mı, beklemek mi?",
 "options": [
 {
-"t": "Beyleri saf değiştirmeye çağır (tarihî)",
-"d": "Filler ve okçular",
+"t": "Don'u geç ve saldır (tarihî)",
+"d": "Büyük kumar",
 "fx": [
 [
-"war",
-"Uzbekistan",
-"Turkey"
+"buff",
+"Russia",
+"att",
+1.2,
+6
 ],
 [
+"stab",
+"Russia",
+6
+],
+[
+"troops",
+"Russia",
+-5
+]
+],
+"r": "Dimitri Don'u geçip Mamay'ı Kulikovo'da yendi."
+},
+{
+"t": "Savunma hattında bekle",
+"d": "Kayıp az",
+"fx": [
+[
 "buff",
-"Uzbekistan",
-"att",
-1.4,
+"Russia",
+"def",
+1.2,
 8
 ],
 [
 "stab",
-"Turkey",
--35
-],
-[
-"flag",
-"ankara_won"
+"Russia",
+1
 ]
 ],
-"r": "Osmanlı ordusu dağıldı; Bayezid esir."
-},
-{
-"t": "Su kaynaklarını kes, bekle",
-"d": "Susuz ordu",
-"fx": [
-[
-"war",
-"Uzbekistan",
-"Turkey"
-],
-[
-"buff",
-"Uzbekistan",
-"att",
-1.2,
-13
-]
-],
-"r": "Osmanlı ordusu susuz kaldı."
-},
-{
-"t": "Anadolu'ya girme, Çin'e dön",
-"d": "Ming seferi",
-"fx": [
-[
-"rel",
-"Uzbekistan",
-"Turkey",
-10
-],
-[
-"buff",
-"Uzbekistan",
-"att",
-1.1,
-52
-]
-],
-"r": "Timur doğuya döndü."
+"r": "Moskova savunma mevzilerinde bekledi."
 }
 ]
 },
-"Turkey": {
-"text": "Timur Sivas'ı yerle bir etti. Ordun Çubuk'ta; Anadolu beylerinin askerleri saf değiştirebilir.",
+"Kazakhstan": {
+"text": "Mamay Altın Orda'nın fiili yöneticisi; Litvanya ve Ryazan yardımı yolda. Önce Moskova'yı ezmek mi?",
 "options": [
 {
-"t": "Savaş (tarihî)",
-"d": "Yıldırım'ın onuru",
+"t": "Moskova'ya saldır (tarihî)",
+"d": "Hükmü yeniden kur",
 "fx": [
 [
-"war",
-"Turkey",
-"Uzbekistan"
-],
-[
 "buff",
-"Turkey",
+"Kazakhstan",
 "att",
-1.1,
-4
+1.15,
+6
 ],
 [
 "troops",
-"Turkey",
--35
+"Kazakhstan",
+-6
 ],
 [
 "stab",
-"Turkey",
--30
+"Kazakhstan",
+-4
 ]
 ],
-"r": "Ankara: ordu dağıldı."
+"r": "Mamay Moskova'ya yürüdü ve Kulikovo'da yenildi."
 },
 {
-"t": "Bursa'ya çekil, Rumeli'ye geç",
-"d": "Zaman kazan",
+"t": "Doğudaki rakibe odaklan",
+"d": "Toktamış tehdidi",
 "fx": [
 [
 "buff",
-"Turkey",
+"Kazakhstan",
 "def",
+1.1,
+8
+]
+],
+"r": "Mamay doğudaki rakip Toktamış'a yöneldi."
+}
+]
+}
+}
+},
+{
+"id": "tokhtamysh",
+"y": 1382,
+"m": 8,
+"title": "Moskova Yakıldı",
+"scene": "pre_war",
+"icon": "flame",
+"text": "Altın Orda hanı Toktamış Moskova'yı yaktı: Kulikovo'nun intikamı.",
+"major": true,
+"default_fx": [
+[
+"war",
+"Kazakhstan",
+"Russia"
+],
+[
+"stab",
+"Russia",
+-15
+]
+],
+"roles": {
+"Russia": {
+"text": "Kulikovo'dan iki yıl sonra Toktamış Moskova'da. Dmitri Donskoy asker toplamak için kuzeye gitti.",
+"options": [
+{
+"t": "Şehri savun",
+"d": "Kremlin surları",
+"fx": [
+[
+"buff",
+"Russia",
+"def",
+1.3,
+8
+],
+[
+"troops",
+"Russia",
+-10
+]
+],
+"r": "Moskova direndi."
+},
+{
+"t": "Kapıları aç, haraç öde (tarihî)",
+"d": "Yıkım",
+"fx": [
+[
+"gold",
+"Russia",
+-5
+],
+[
+"stab",
+"Russia",
+-20
+],
+[
+"rel",
+"Russia",
+"Kazakhstan",
+10
+]
+],
+"r": "Moskova yakıldı; haraç yeniden."
+},
+{
+"t": "Kuzeye çekil, orduyu topla",
+"d": "Kostroma",
+"fx": [
+[
+"buff",
+"Russia",
+"att",
 1.2,
 26
 ],
 [
-"cede",
-"Turkey",
-"Uzbekistan",
-2
-],
-[
 "stab",
-"Turkey",
+"Russia",
 -10
 ]
 ],
-"r": "Anadolu geçici kaybedildi, devlet kurtuldu."
+"r": "Dmitri Kostroma'da ordu topluyor."
+}
+]
 },
+"Kazakhstan": {
+"text": "Timur'un desteğiyle Altın Orda'yı birleştirdin. Moskova haraç vermiyor.",
+"options": [
 {
-"t": "Haraç öde",
-"d": "Timur'a boyun eğ",
+"t": "Moskova'yı yak (tarihî)",
+"d": "Ders",
 "fx": [
 [
-"gold",
-"Turkey",
--8
+"war",
+"Kazakhstan",
+"Russia"
 ],
 [
-"rel",
-"Turkey",
-"Uzbekistan",
-30
+"buff",
+"Kazakhstan",
+"att",
+1.3,
+8
 ],
 [
 "stab",
-"Turkey",
--15
+"Russia",
+-20
 ]
 ],
-"r": "Bayezid Timur'a boyun eğdi."
+"r": "Moskova küle döndü."
+},
+{
+"t": "Timur'a karşı dön",
+"d": "Harezm ve Azerbaycan",
+"fx": [
+[
+"war",
+"Kazakhstan",
+"Uzbekistan"
+],
+[
+"buff",
+"Kazakhstan",
+"att",
+1.15,
+26
+]
+],
+"r": "Toktamış Timur'a meydan okudu."
+}
+]
+}
+}
+},
+{
+"id": "krewo_1385",
+"y": 1385,
+"m": 8,
+"title": "Krewo Birliği",
+"scene": "peace",
+"icon": "treaty",
+"text": "Litvanya Büyük Dükü Jogaila, Polonya Kraliçesi Jadwiga ile evlenmek ve Litvanya'yı Hristiyanlaştırmak şartıyla iki devleti birleştirdi. Doğu Avrupa'nın en büyük bloğu doğuyor; Cermen Şövalyeleri tehdit altında.",
+"major": true,
+"default_fx": [
+[
+"ally",
+"Poland",
+"Lithuania"
+],
+[
+"stab",
+"Poland",
+4
+],
+[
+"stab",
+"Lithuania",
+3
+]
+],
+"roles": {
+"Lithuania": {
+"text": "Cermen Şövalyeleri Litvanya'ya haçlı seferleri düzenliyor. Polonya'yla birleşmek vaftiz ve ittifak demek.",
+"options": [
+{
+"t": "Polonya ile birleş (tarihî)",
+"d": "Cermen tehdidine karşı",
+"fx": [
+[
+"ally",
+"Lithuania",
+"Poland"
+],
+[
+"rel",
+"Lithuania",
+"Germany",
+-6
+],
+[
+"stab",
+"Lithuania",
+4
+]
+],
+"r": "Jogaila Polonya'yla birleşip vaftiz edildi."
+},
+{
+"t": "Bağımsızlığı koru",
+"d": "Putperest kal",
+"fx": [
+[
+"stab",
+"Lithuania",
+-2
+],
+[
+"rel",
+"Lithuania",
+"Germany",
+-3
+]
+],
+"r": "Litvanya Polonya'ya bağlanmadı."
+}
+]
+},
+"Poland": {
+"text": "Kraliçe Jadwiga'nın tahtı için Litvanya ile birleşmek; ama Polonya soyluları kuşkulu.",
+"options": [
+{
+"t": "Birliği kabul et (tarihî)",
+"d": "Büyük bir doğu devleti",
+"fx": [
+[
+"ally",
+"Poland",
+"Lithuania"
+],
+[
+"stab",
+"Poland",
+3
+],
+[
+"troops",
+"Poland",
+3
+]
+],
+"r": "Polonya soyluları Krewo birliğini onayladı."
+},
+{
+"t": "Macar adayı destekle",
+"d": "Bağlantıyı koru",
+"fx": [
+[
+"rel",
+"Poland",
+"Hungary",
+5
+],
+[
+"stab",
+"Poland",
+-2
+]
+],
+"r": "Polonya Macar adayı destekledi."
+}
+]
+}
+}
+},
+{
+"id": "isfahan_1387",
+"y": 1387,
+"m": 11,
+"title": "İsfahan Katliamı",
+"scene": "pre_siege",
+"icon": "flame",
+"text": "Timur Muzafferî topraklarına girdi ve İsfahan'ı aldı. Şehir ayaklandığında Timur karşılık olarak halkı kılıçtan geçirdi; kafataslarından kuleler yapıldı. Doğu İran artık Timur'un.",
+"major": true,
+"default_fx": [
+[
+"occupy",
+"Uzbekistan",
+"Iran"
+],
+[
+"stab",
+"Iran",
+-6
+],
+[
+"stab",
+"Uzbekistan",
+3
+]
+],
+"roles": {
+"Uzbekistan": {
+"text": "İsfahan fethedildi, ama halk ayaklandı. Terör mü uygulayacaksın, yoksa yumuşak mı olacaksın?",
+"options": [
+{
+"t": "Kıyımla bastır (tarihî)",
+"d": "Korku yayılır",
+"fx": [
+[
+"stab",
+"Uzbekistan",
+3
+],
+[
+"buff",
+"Uzbekistan",
+"att",
+1.15,
+10
+],
+[
+"rel",
+"Uzbekistan",
+"Egypt",
+-4
+]
+],
+"r": "Timur ayaklanmayı bastırmak için halkı kılıçtan geçirdi."
+},
+{
+"t": "Af ve vergi",
+"d": "Daha ılımlı",
+"fx": [
+[
+"gold",
+"Uzbekistan",
+1.5
+],
+[
+"stab",
+"Uzbekistan",
+-1
+]
+],
+"r": "Timur affedip ağır vergi koydu."
+}
+]
+},
+"Iran": {
+"text": "Şah Şücâ ölü; oğulları birbirine düştü. Timur'a teslim olmak mı, direnmek mi?",
+"options": [
+{
+"t": "Direnişi sürdür (tarihî)",
+"d": "Şiraz'ı savun",
+"fx": [
+[
+"buff",
+"Iran",
+"def",
+1.2,
+8
+],
+[
+"troops",
+"Iran",
+-4
+],
+[
+"stab",
+"Iran",
+-3
+]
+],
+"r": "Muzafferî prensler direndi ama Timur karşısında yenildi."
+},
+{
+"t": "Timur'a bağlan",
+"d": "Başkenti kurtar",
+"fx": [
+[
+"peace",
+"Iran",
+"Uzbekistan"
+],
+[
+"stab",
+"Iran",
+-5
+]
+],
+"r": "Muzafferîler Timur'un egemenliğini kabul etti."
 }
 ]
 }
@@ -355,138 +682,247 @@
 }
 },
 {
-"id": "tokhtamysh",
-"y": 1382,
-"m": 8,
-"title": "Moskova Yakıldı",
-"scene": "pre_war",
-"icon": "flame",
-"text": "Altın Orda hanı Toktamış Moskova'yı yaktı: Kulikovo'nun intikamı.",
+"id": "kondurcha_1391",
+"y": 1391,
+"m": 6,
+"title": "Kondurça Savaşı",
+"scene": "pre_assault",
+"icon": "tank",
+"text": "Timur eski müttefiki Toktamış'ı Altın Orda'nın bozkırında yendi. Yüz binlik ordular bir araya geldi; Toktamış'ın gücü kırıldı ama savaşın asıl sonucu Doğu Avrupa ve İpek Yolu'nun dengesini değiştirecek.",
 "major": true,
 "default_fx": [
 [
-"war",
+"troops",
 "Kazakhstan",
-"Russia"
+-10
 ],
 [
 "stab",
-"Russia",
--15
-]
+"Kazakhstan",
+-6
 ],
-"roles": {
-"Russia": {
-"text": "Kulikovo'dan iki yıl sonra Toktamış Moskova'da. Dmitri Donskoy asker toplamak için kuzeye gitti.",
-"options": [
-{
-"t": "Şehri savun",
-"d": "Kremlin surları",
-"fx": [
 [
 "buff",
-"Russia",
-"def",
-1.3,
-8
-],
-[
-"troops",
-"Russia",
--10
-]
-],
-"r": "Moskova direndi."
-},
-{
-"t": "Kapıları aç, haraç öde (tarihî)",
-"d": "Yıkım",
-"fx": [
-[
-"gold",
-"Russia",
--5
-],
-[
-"stab",
-"Russia",
--20
-],
-[
-"rel",
-"Russia",
-"Kazakhstan",
+"Uzbekistan",
+"att",
+1.1,
 10
 ]
 ],
-"r": "Moskova yakıldı; haraç yeniden."
-},
+"roles": {
+"Uzbekistan": {
+"text": "Toktamış sınırlarını ihlal etti; Timur seferi kuzeye çevirdi. Bozkırda kovalama mı?",
+"options": [
 {
-"t": "Kuzeye çekil, orduyu topla",
-"d": "Kostroma",
+"t": "Bozkırda takip et (tarihî)",
+"d": "Toktamış'ı yok et",
 "fx": [
 [
 "buff",
-"Russia",
+"Uzbekistan",
 "att",
 1.2,
-26
+10
 ],
 [
 "stab",
-"Russia",
--10
+"Uzbekistan",
+4
+],
+[
+"gold",
+"Uzbekistan",
+1.5
 ]
 ],
-"r": "Dmitri Kostroma'da ordu topluyor."
+"r": "Timur Ulu Tağ'dan başlayıp Toktamış'ı Kondurça'da yendi."
+},
+{
+"t": "Sınırı koru",
+"d": "Maliyeti düşük tut",
+"fx": [
+[
+"buff",
+"Uzbekistan",
+"def",
+1.15,
+8
+]
+],
+"r": "Timur sınırını tahkim etti."
 }
 ]
 },
 "Kazakhstan": {
-"text": "Timur'un desteğiyle Altın Orda'yı birleştirdin. Moskova haraç vermiyor.",
+"text": "Altın Orda sarsılmış; Timur'un ordusu kuzeye geliyor. Savaş mı, çekilme mi?",
 "options": [
 {
-"t": "Moskova'yı yak (tarihî)",
-"d": "Ders",
+"t": "Savaş ver (tarihî)",
+"d": "Büyük orduyla çarpış",
 "fx": [
-[
-"war",
-"Kazakhstan",
-"Russia"
-],
 [
 "buff",
 "Kazakhstan",
 "att",
-1.3,
+1.1,
+4
+],
+[
+"troops",
+"Kazakhstan",
+-8
+]
+],
+"r": "Toktamış Timur'a karşı savaştı ve yenildi."
+},
+{
+"t": "Batıya çekil",
+"d": "Güçlü hat kur",
+"fx": [
+[
+"buff",
+"Kazakhstan",
+"def",
+1.15,
 8
 ],
 [
 "stab",
-"Russia",
--20
+"Kazakhstan",
+-3
 ]
 ],
-"r": "Moskova küle döndü."
+"r": "Toktamış batıya çekilip yeni güç topladı."
+}
+]
+}
+}
 },
 {
-"t": "Timur'a karşı dön",
-"d": "Harezm ve Azerbaycan",
+"id": "nicopolis_1396",
+"y": 1396,
+"m": 9,
+"title": "Niğbolu Savaşı",
+"scene": "pre_assault",
+"icon": "helmet_ww1",
+"text": "Macar Kralı Sigismund önderliğinde Avrupa şövalyelerinin haçlı ordusu Niğbolu'yu kuşattı; Yıldırım Bayezid yetişip haçlıları ağır şekilde yendi. Osmanlı Balkanlar'daki üstünlüğünü pekiştirdi.",
+"major": true,
+"default_fx": [
+[
+"troops",
+"Hungary",
+-8
+],
+[
+"troops",
+"Turkey",
+-4
+],
+[
+"stab",
+"Turkey",
+6
+],
+[
+"stab",
+"Hungary",
+-4
+]
+],
+"roles": {
+"Turkey": {
+"text": "Haçlı ordusu Niğbolu'yu kuşatmış; Bayezid İstanbul kuşatmasını bırakıp yetişebilir.",
+"options": [
+{
+"t": "Haçlıların üzerine yürü (tarihî)",
+"d": "Büyük zafer",
 "fx": [
 [
-"war",
-"Kazakhstan",
-"Uzbekistan"
+"buff",
+"Turkey",
+"att",
+1.25,
+8
+],
+[
+"stab",
+"Turkey",
+6
+],
+[
+"gold",
+"Turkey",
+1.5
+]
+],
+"r": "Bayezid haçlıları Niğbolu'da yendi."
+},
+{
+"t": "İstanbul kuşatmasını sürdür",
+"d": "Karşı hamle bekle",
+"fx": [
+[
+"troops",
+"Turkey",
+-2
 ],
 [
 "buff",
-"Kazakhstan",
-"att",
-1.15,
-26
+"Turkey",
+"def",
+1.1,
+6
 ]
 ],
-"r": "Toktamış Timur'a meydan okudu."
+"r": "Bayezid kuşatmayı sürdürdü."
+}
+]
+},
+"Hungary": {
+"text": "Haçlı ordusu ağır süvariyle dolu ama düzensiz; Sigismund temkinli plan istiyor.",
+"options": [
+{
+"t": "Öncü şövalyeler saldırsın (tarihî)",
+"d": "Şeref ve zafer",
+"fx": [
+[
+"buff",
+"Hungary",
+"att",
+1.15,
+4
+],
+[
+"troops",
+"Hungary",
+-8
+],
+[
+"stab",
+"Hungary",
+-4
+]
+],
+"r": "Fransız şövalyeleri hatalı bir hücum yaptı; haçlı ordusu çöktü."
+},
+{
+"t": "Disiplinli savaş planı uygula",
+"d": "Daha az kayıp",
+"fx": [
+[
+"buff",
+"Hungary",
+"def",
+1.2,
+8
+],
+[
+"stab",
+"Hungary",
+1
+]
+],
+"r": "Sigismund temkinli bir düzen kurdu."
 }
 ]
 }
@@ -586,6 +1022,310 @@
 ]
 }
 }
+},
+{
+"id": "damascus_1400",
+"y": 1400,
+"m": 12,
+"title": "Halep ve Şam'ın Alınışı",
+"scene": "pre_siege",
+"icon": "flame",
+"text": "Timur Memlük Suriyesi'ne girdi; Halep ve Şam'ı ele geçirdi. Memlük Sultanı Ferec'in ordusu bozuldu; Timur Mısır'a doğru değil Anadolu'ya dönmeyi planlıyor.",
+"major": true,
+"default_fx": [
+[
+"occupy",
+"Uzbekistan",
+"Egypt"
+],
+[
+"troops",
+"Egypt",
+-8
+],
+[
+"stab",
+"Egypt",
+-6
+],
+[
+"stab",
+"Uzbekistan",
+4
+]
+],
+"roles": {
+"Egypt": {
+"text": "Suriye düşüyor; genç Sultan Ferec Şam'da. Kahire'ye çekilip savunmak mı?",
+"options": [
+{
+"t": "Kahire'ye çekil (tarihî)",
+"d": "Çekirdek bölgeyi koru",
+"fx": [
+[
+"buff",
+"Egypt",
+"def",
+1.25,
+12
+],
+[
+"stab",
+"Egypt",
+-3
+]
+],
+"r": "Ferec Kahire'ye çekildi."
+},
+{
+"t": "Şam'ı savun",
+"d": "Büyük risk",
+"fx": [
+[
+"troops",
+"Egypt",
+-6
+],
+[
+"buff",
+"Egypt",
+"def",
+1.1,
+4
+]
+],
+"r": "Memlük ordusu Şam'da yenilgiye uğradı."
+}
+]
+},
+"Uzbekistan": {
+"text": "Suriye açık. Mısır'a mı yürümek, yoksa Bayezid'e mi dönmek?",
+"options": [
+{
+"t": "Bayezid'e dön (tarihî)",
+"d": "Anadolu seferi",
+"fx": [
+[
+"buff",
+"Uzbekistan",
+"att",
+1.15,
+12
+],
+[
+"gold",
+"Uzbekistan",
+1.5
+],
+[
+"rel",
+"Uzbekistan",
+"Turkey",
+-8
+]
+],
+"r": "Timur Suriye'den Anadolu'ya yöneldi."
+},
+{
+"t": "Mısır'a yürü",
+"d": "Kahire'yi al",
+"fx": [
+[
+"buff",
+"Uzbekistan",
+"att",
+1.1,
+8
+],
+[
+"troops",
+"Uzbekistan",
+-4
+]
+],
+"r": "Timur Mısır sınırına yöneldi."
+}
+]
+}
+}
+},
+{
+"id": "ankara1402",
+"y": 1402,
+"m": 7,
+"title": "Ankara Savaşı",
+"scene": "pre_assault",
+"icon": "u_elephant",
+"text": "Timur ve Bayezid Çubuk Ovası'nda karşılaştı: Osmanlı ordusu dağıldı, Yıldırım esir.",
+"major": true,
+"default_fx": [
+[
+"war",
+"Uzbekistan",
+"Turkey"
+],
+[
+"stab",
+"Turkey",
+-30
+]
+],
+"roles": {
+"Uzbekistan": {
+"text": "Bayezid Çubuk'ta. Anadolu beylerinin askerleri onun saflarında ama eski beylerine sadık.",
+"options": [
+{
+"t": "Beyleri saf değiştirmeye çağır (tarihî)",
+"d": "Filler ve okçular",
+"fx": [
+[
+"war",
+"Uzbekistan",
+"Turkey"
+],
+[
+"buff",
+"Uzbekistan",
+"att",
+1.4,
+8
+],
+[
+"stab",
+"Turkey",
+-35
+],
+[
+"flag",
+"ankara_won"
+]
+],
+"r": "Osmanlı ordusu dağıldı; Bayezid esir."
+},
+{
+"t": "Su kaynaklarını kes, bekle",
+"d": "Susuz ordu",
+"fx": [
+[
+"war",
+"Uzbekistan",
+"Turkey"
+],
+[
+"buff",
+"Uzbekistan",
+"att",
+1.2,
+13
+]
+],
+"r": "Osmanlı ordusu susuz kaldı."
+},
+{
+"t": "Anadolu'ya girme, Çin'e dön",
+"d": "Ming seferi",
+"fx": [
+[
+"rel",
+"Uzbekistan",
+"Turkey",
+10
+],
+[
+"buff",
+"Uzbekistan",
+"att",
+1.1,
+52
+]
+],
+"r": "Timur doğuya döndü."
+}
+]
+},
+"Turkey": {
+"text": "Timur Sivas'ı yerle bir etti. Ordun Çubuk'ta; Anadolu beylerinin askerleri saf değiştirebilir.",
+"options": [
+{
+"t": "Savaş (tarihî)",
+"d": "Yıldırım'ın onuru",
+"fx": [
+[
+"war",
+"Turkey",
+"Uzbekistan"
+],
+[
+"buff",
+"Turkey",
+"att",
+1.1,
+4
+],
+[
+"troops",
+"Turkey",
+-35
+],
+[
+"stab",
+"Turkey",
+-30
+]
+],
+"r": "Ankara: ordu dağıldı."
+},
+{
+"t": "Bursa'ya çekil, Rumeli'ye geç",
+"d": "Zaman kazan",
+"fx": [
+[
+"buff",
+"Turkey",
+"def",
+1.2,
+26
+],
+[
+"cede",
+"Turkey",
+"Uzbekistan",
+2
+],
+[
+"stab",
+"Turkey",
+-10
+]
+],
+"r": "Anadolu geçici kaybedildi, devlet kurtuldu."
+},
+{
+"t": "Haraç öde",
+"d": "Timur'a boyun eğ",
+"fx": [
+[
+"gold",
+"Turkey",
+-8
+],
+[
+"rel",
+"Turkey",
+"Uzbekistan",
+30
+],
+[
+"stab",
+"Turkey",
+-15
+]
+],
+"r": "Bayezid Timur'a boyun eğdi."
+}
+]
+}
+}
 }
 ],
 "en": {
@@ -661,6 +1401,102 @@
 "Tuğluklar haraç ödedi.": "The Tughluqs paid tribute.",
 "Batı'ya dön: Bağdat ve Şam": "Turn west: Baghdad and Damascus",
 "Memlükler": "The Mamluks",
-"Timur Suriye'ye döndü.": "Timur turned to Syria."
+"Timur Suriye'ye döndü.": "Timur turned to Syria.",
+"Don'u geç ve saldır (tarihî)": "Cross the Don and attack (historical)",
+"Büyük kumar": "A great gamble",
+"Dimitri Don'u geçip Mamay'ı Kulikovo'da yendi.": "Dmitri crossed the Don and beat Mamai at Kulikovo.",
+"Savunma hattında bekle": "Wait on the defensive",
+"Kayıp az": "Lower losses",
+"Moskova savunma mevzilerinde bekledi.": "Moscow waited in defensive positions.",
+"Moskova ve müttefik prensler Don kıyısında; Mamay'ın ordusu Litvanya yardımını bekliyor. İlk vurmak mı, beklemek mi?": "Moscow and allied princes stand on the Don; Mamai awaits Lithuanian aid. Strike first or wait?",
+"Moskova'ya saldır (tarihî)": "Attack Moscow (historical)",
+"Hükmü yeniden kur": "Re-assert dominion",
+"Mamay Moskova'ya yürüdü ve Kulikovo'da yenildi.": "Mamai marched on Moscow and was defeated at Kulikovo.",
+"Doğudaki rakibe odaklan": "Focus on the eastern rival",
+"Toktamış tehdidi": "The Tokhtamysh threat",
+"Mamay doğudaki rakip Toktamış'a yöneldi.": "Mamai turned to his eastern rival Tokhtamysh.",
+"Mamay Altın Orda'nın fiili yöneticisi; Litvanya ve Ryazan yardımı yolda. Önce Moskova'yı ezmek mi?": "Mamai is the Golden Horde's de facto ruler; Lithuanian and Ryazan aid is on the way. Crush Moscow first?",
+"Kulikovo Savaşı": "The Battle of Kulikovo",
+"Moskova Büyük Dükü Dimitri Donskoy, Don Nehri kıyısında Mamay'ın Altın Orda ordusuna karşı çıktı. Rus prensleri ilk kez büyük bir birlik halinde Tatarlara savaş açtı; Mamay yenildi ve Toktamış'ın yükselişi kolaylaştı.": "Dmitri Donskoy, Grand Prince of Moscow, faced Mamai's Golden Horde army on the Don. Russian princes united for the first time against the Tatars; Mamai was defeated, easing Tokhtamysh's rise.",
+"Polonya ile birleş (tarihî)": "Unite with Poland (historical)",
+"Cermen tehdidine karşı": "Against the Teutonic threat",
+"Jogaila Polonya'yla birleşip vaftiz edildi.": "Jogaila united with Poland and was baptised.",
+"Bağımsızlığı koru": "Keep independence",
+"Putperest kal": "Stay pagan",
+"Litvanya Polonya'ya bağlanmadı.": "Lithuania did not join Poland.",
+"Cermen Şövalyeleri Litvanya'ya haçlı seferleri düzenliyor. Polonya'yla birleşmek vaftiz ve ittifak demek.": "The Teutonic Knights keep launching crusades against Lithuania. Union with Poland means baptism and alliance.",
+"Birliği kabul et (tarihî)": "Accept the union (historical)",
+"Büyük bir doğu devleti": "A great eastern state",
+"Polonya soyluları Krewo birliğini onayladı.": "Polish nobles approved the Union of Krewo.",
+"Macar adayı destekle": "Back a Hungarian candidate",
+"Bağlantıyı koru": "Keep the old ties",
+"Polonya Macar adayı destekledi.": "Poland backed a Hungarian candidate.",
+"Kraliçe Jadwiga'nın tahtı için Litvanya ile birleşmek; ama Polonya soyluları kuşkulu.": "Uniting with Lithuania for Queen Jadwiga's throne; but Polish nobles are suspicious.",
+"Krewo Birliği": "The Union of Krewo",
+"Litvanya Büyük Dükü Jogaila, Polonya Kraliçesi Jadwiga ile evlenmek ve Litvanya'yı Hristiyanlaştırmak şartıyla iki devleti birleştirdi. Doğu Avrupa'nın en büyük bloğu doğuyor; Cermen Şövalyeleri tehdit altında.": "Jogaila, Grand Duke of Lithuania, agreed to marry Queen Jadwiga of Poland and Christianise Lithuania, uniting the two realms. The largest bloc in Eastern Europe is born; the Teutonic Knights feel threatened.",
+"Kıyımla bastır (tarihî)": "Suppress with massacre (historical)",
+"Korku yayılır": "Fear spreads",
+"Timur ayaklanmayı bastırmak için halkı kılıçtan geçirdi.": "Timur put the population to the sword to crush the revolt.",
+"Af ve vergi": "Amnesty and taxation",
+"Daha ılımlı": "Milder",
+"Timur affedip ağır vergi koydu.": "Timur pardoned them and imposed heavy tax.",
+"İsfahan fethedildi, ama halk ayaklandı. Terör mü uygulayacaksın, yoksa yumuşak mı olacaksın?": "Isfahan is conquered but the people rose up. Terror or leniency?",
+"Direnişi sürdür (tarihî)": "Continue resistance (historical)",
+"Şiraz'ı savun": "Defend Shiraz",
+"Muzafferî prensler direndi ama Timur karşısında yenildi.": "The Muzaffarid princes resisted but lost to Timur.",
+"Timur'a bağlan": "Submit to Timur",
+"Başkenti kurtar": "Save the capital",
+"Muzafferîler Timur'un egemenliğini kabul etti.": "The Muzaffarids accepted Timur's suzerainty.",
+"Şah Şücâ ölü; oğulları birbirine düştü. Timur'a teslim olmak mı, direnmek mi?": "Shah Shuja is dead; his sons are at odds. Submit to Timur or resist?",
+"İsfahan Katliamı": "The Massacre of Isfahan",
+"Timur Muzafferî topraklarına girdi ve İsfahan'ı aldı. Şehir ayaklandığında Timur karşılık olarak halkı kılıçtan geçirdi; kafataslarından kuleler yapıldı. Doğu İran artık Timur'un.": "Timur entered Muzaffarid lands and took Isfahan. When the city rose up, Timur had the population put to the sword; towers were made of skulls. Eastern Persia now belongs to Timur.",
+"Bozkırda takip et (tarihî)": "Pursue across the steppe (historical)",
+"Toktamış'ı yok et": "Destroy Tokhtamysh",
+"Timur Ulu Tağ'dan başlayıp Toktamış'ı Kondurça'da yendi.": "Timur marched from Ulu Tagh and beat Tokhtamysh at the Kondurcha.",
+"Sınırı koru": "Guard the border",
+"Maliyeti düşük tut": "Keep costs low",
+"Timur sınırını tahkim etti.": "Timur fortified his border.",
+"Toktamış sınırlarını ihlal etti; Timur seferi kuzeye çevirdi. Bozkırda kovalama mı?": "Tokhtamysh broke your borders; Timur turned north. A chase across the steppe?",
+"Savaş ver (tarihî)": "Give battle (historical)",
+"Büyük orduyla çarpış": "Clash with a great army",
+"Toktamış Timur'a karşı savaştı ve yenildi.": "Tokhtamysh fought Timur and lost.",
+"Batıya çekil": "Withdraw west",
+"Güçlü hat kur": "Build a stronger line",
+"Toktamış batıya çekilip yeni güç topladı.": "Tokhtamysh retreated west to regroup.",
+"Altın Orda sarsılmış; Timur'un ordusu kuzeye geliyor. Savaş mı, çekilme mi?": "The Golden Horde is shaken; Timur's army is coming north. Fight or retreat?",
+"Kondurça Savaşı": "The Battle of the Kondurcha",
+"Timur eski müttefiki Toktamış'ı Altın Orda'nın bozkırında yendi. Yüz binlik ordular bir araya geldi; Toktamış'ın gücü kırıldı ama savaşın asıl sonucu Doğu Avrupa ve İpek Yolu'nun dengesini değiştirecek.": "Timur defeated his former protégé Tokhtamysh on the Golden Horde's steppe. Armies of hundreds of thousands clashed; Tokhtamysh's power was broken, but the real result will reshape Eastern Europe and the Silk Road.",
+"Haçlıların üzerine yürü (tarihî)": "March on the crusaders (historical)",
+"Büyük zafer": "A great victory",
+"Bayezid haçlıları Niğbolu'da yendi.": "Bayezid beat the crusaders at Nicopolis.",
+"İstanbul kuşatmasını sürdür": "Continue the siege of Constantinople",
+"Karşı hamle bekle": "Wait for their move",
+"Bayezid kuşatmayı sürdürdü.": "Bayezid kept up the siege.",
+"Haçlı ordusu Niğbolu'yu kuşatmış; Bayezid İstanbul kuşatmasını bırakıp yetişebilir.": "The crusader army besieges Nicopolis; Bayezid can drop the siege of Constantinople and rush north.",
+"Öncü şövalyeler saldırsın (tarihî)": "Let the knights charge (historical)",
+"Şeref ve zafer": "Glory and victory",
+"Fransız şövalyeleri hatalı bir hücum yaptı; haçlı ordusu çöktü.": "French knights charged recklessly; the crusade collapsed.",
+"Disiplinli savaş planı uygula": "Follow a disciplined plan",
+"Daha az kayıp": "Fewer losses",
+"Sigismund temkinli bir düzen kurdu.": "Sigismund set up a cautious formation.",
+"Haçlı ordusu ağır süvariyle dolu ama düzensiz; Sigismund temkinli plan istiyor.": "The crusader army is full of heavy cavalry but undisciplined; Sigismund wants a cautious plan.",
+"Niğbolu Savaşı": "The Battle of Nicopolis",
+"Macar Kralı Sigismund önderliğinde Avrupa şövalyelerinin haçlı ordusu Niğbolu'yu kuşattı; Yıldırım Bayezid yetişip haçlıları ağır şekilde yendi. Osmanlı Balkanlar'daki üstünlüğünü pekiştirdi.": "A crusader army of European knights under Hungary's King Sigismund besieged Nicopolis; Bayezid the Thunderbolt arrived and decisively beat the crusaders. The Ottomans consolidated their Balkan supremacy.",
+"Kahire'ye çekil (tarihî)": "Withdraw to Cairo (historical)",
+"Çekirdek bölgeyi koru": "Protect the core",
+"Ferec Kahire'ye çekildi.": "Faraj withdrew to Cairo.",
+"Şam'ı savun": "Defend Damascus",
+"Büyük risk": "A great risk",
+"Memlük ordusu Şam'da yenilgiye uğradı.": "The Mamluk army was beaten at Damascus.",
+"Suriye düşüyor; genç Sultan Ferec Şam'da. Kahire'ye çekilip savunmak mı?": "Syria is falling; the young Sultan Faraj is in Damascus. Retreat to defend Cairo?",
+"Bayezid'e dön (tarihî)": "Turn on Bayezid (historical)",
+"Anadolu seferi": "The Anatolian campaign",
+"Timur Suriye'den Anadolu'ya yöneldi.": "Timur turned from Syria toward Anatolia.",
+"Mısır'a yürü": "March on Egypt",
+"Kahire'yi al": "Take Cairo",
+"Timur Mısır sınırına yöneldi.": "Timur moved toward the Egyptian frontier.",
+"Suriye açık. Mısır'a mı yürümek, yoksa Bayezid'e mi dönmek?": "Syria lies open. March on Egypt or turn on Bayezid?",
+"Halep ve Şam'ın Alınışı": "The Sack of Aleppo and Damascus",
+"Timur Memlük Suriyesi'ne girdi; Halep ve Şam'ı ele geçirdi. Memlük Sultanı Ferec'in ordusu bozuldu; Timur Mısır'a doğru değil Anadolu'ya dönmeyi planlıyor.": "Timur invaded Mamluk Syria and took Aleppo and Damascus. Sultan Faraj's army was routed; Timur plans to turn to Anatolia rather than Egypt."
 }
 }

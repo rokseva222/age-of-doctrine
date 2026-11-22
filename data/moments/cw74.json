@@ -1,1870 +1,2386 @@
 {
- "moments": [
-  {
-   "id": "cy74_darbe",
-   "y": 1974,
-   "m": 7,
-   "title": "Ayşe Tatile Çıkıyor",
-   "scene": "pre_landing",
-   "icon": "landing",
-   "text": "15 Temmuz 1974: Atina cuntasının desteklediği Millî Muhafız Ordusu Makarios'u devirdi; Nikos Sampson 'cumhurbaşkanı' ilan edildi. Ada Yunanistan'la birleşmenin (Enosis) eşiğinde. Zürih-Londra anlaşmalarının garantörleri Türkiye, İngiltere ve Yunanistan.",
-   "major": true,
-   "default_fx": [
-    [
-     "war",
-     "Turkey",
-     "Cyprus",
-     "solo"
-    ],
-    [
-     "war",
-     "N. Cyprus",
-     "Cyprus",
-     "solo"
-    ],
-    [
-     "troops",
-     "N. Cyprus",
-     300
-    ],
-    [
-     "rel",
-     "Turkey",
-     "United States of America",
-     -15
-    ],
-    [
-     "rel",
-     "Turkey",
-     "Greece",
-     -20
-    ],
-    [
-     "stab",
-     "Cyprus",
-     -10
-    ],
-    [
-     "stab",
-     "Greece",
-     -4
-    ],
-    [
-     "flag",
-     "cy74_landing"
-    ]
-   ],
-   "roles": {
-    "Turkey": {
-     "text": "Ecevit Londra'dan eli boş döndü: İngiltere ortak müdahaleyi reddetti. Garantörlük hakkın Zürih ve Londra anlaşmalarından geliyor. Ordu Mersin'de hazır, donanma limanda; Genelkurmay 'Ayşe' kod adlı çıkarma planını masaya koydu.",
-     "options": [
-      {
-       "t": "Ayşe tatile çıksın (tarihî)",
-       "d": "Girne'ye çıkarma; Kıbrıs'la savaş",
-       "fx": [
-        [
-         "war",
-         "Turkey",
-         "Cyprus",
-         "solo"
-        ],
-        [
-         "war",
-         "N. Cyprus",
-         "Cyprus",
-         "solo"
-        ],
-        [
-         "troops",
-         "N. Cyprus",
-         120
-        ],
-        [
-         "buff",
-         "Turkey",
-         "att",
-         1.3,
-         10
-        ],
-        [
-         "xstab",
-         "Turkey",
-         10
-        ],
-        [
-         "rel",
-         "Turkey",
-         "United States of America",
-         -20
-        ],
-        [
-         "rel",
-         "Turkey",
-         "Greece",
-         -25
-        ],
-        [
-         "rel",
-         "Turkey",
-         "United Kingdom",
-         -5
-        ],
-        [
-         "stab",
-         "Cyprus",
-         -10
-        ],
-        [
-         "flag",
-         "cy74_landing"
-        ]
-       ],
-       "r": "20 Temmuz sabahı Türk birlikleri Girne açıklarında; Kıbrıs Barış Harekâtı başladı."
-      },
-      {
-       "t": "Son bir diplomasi turu",
-       "d": "Cenevre görüşmeleri; savaş ilanı yok",
-       "fx": [
-        [
-         "rel",
-         "Turkey",
-         "United Kingdom",
-         15
-        ],
-        [
-         "rel",
-         "Turkey",
-         "Greece",
-         -10
-        ],
-        [
-         "xstab",
-         "Turkey",
-         -2
-        ],
-        [
-         "flag",
-         "cy74_diplo"
-        ]
-       ],
-       "r": "Ankara Londra ve Washington'ın arabuluculuğunu bekliyor; adada çatışmalar sürüyor."
-      },
-      {
-       "t": "Bekle",
-       "d": "Darbe kendiliğinden çökene kadar",
-       "fx": [
-        [
-         "xstab",
-         "Turkey",
-         -8
-        ],
-        [
-         "stab",
-         "Cyprus",
-         -8
-        ],
-        [
-         "flag",
-         "cy74_diplo"
-        ]
-       ],
-       "r": "Ankara bekledi; adada Türk köylerine yönelik saldırı haberleri ülkede öfke yarattı."
-      }
-     ]
-    },
-    "Greece": {
-     "text": "Cunta darbeyi kendi eliyle yaptı; Türk çıkarması kapıda ve Yunan ordusu Türkiye ile savaşa hazır değil. Cunta lideri İoannidis'in ayakta kalma şansı azalıyor.",
-     "options": [
-      {
-       "t": "Cunta düşsün, Karamanlis dönsün",
-       "d": "Demokrasiye dönüş",
-       "fx": [
-        [
-         "xstab",
-         "Greece",
-         15
-        ],
-        [
-         "peace",
-         "Greece",
-         "Turkey"
-        ],
-        [
-         "rel",
-         "Greece",
-         "United States of America",
-         10
-        ],
-        [
-         "flag",
-         "cy74_karamanlis"
-        ]
-       ],
-       "r": "Cunta çöktü; Karamanlis Paris'ten Atina'ya döndü.",
-       "keep_default": true
-      },
-      {
-       "t": "Seferberlik ve Ege'de savaş",
-       "d": "Türkiye'ye savaş ilan et",
-       "fx": [
-        [
-         "war",
-         "Greece",
-         "Turkey"
-        ],
-        [
-         "mob",
-         "Greece",
-         8
-        ],
-        [
-         "buff",
-         "Greece",
-         "def",
-         1.1,
-         13
-        ],
-        [
-         "xstab",
-         "Greece",
-         -10
-        ]
-       ],
-       "r": "Yunanistan seferberlik ilan etti; Ege'de savaş rüzgârı esiyor.",
-       "keep_default": true
-      },
-      {
-       "t": "Kıbrıs'a takviye gönder",
-       "d": "Enosis'te ısrar",
-       "fx": [
-        [
-         "troops",
-         "Cyprus",
-         30
-        ],
-        [
-         "rel",
-         "Greece",
-         "Turkey",
-         -20
-        ],
-        [
-         "xstab",
-         "Greece",
-         -3
-        ]
-       ],
-       "r": "Atina adaya gizlice takviye gönderiyor; Ankara'da gerilim tırmanıyor.",
-       "keep_default": true
-      }
-     ]
-    },
-    "Cyprus": {
-     "text": "Millî Muhafız Ordusu iktidarı aldı ama Makarios yaşıyor ve Londra'da. Türk çıkarması her an gelebilir; Türk Kıbrıslılar kuzey ve Lefkoşa'daki mahallelerde tehdit altında.",
-     "options": [
-      {
-       "t": "Savunmayı örgütle",
-       "d": "Girne-Lefkoşa hattı",
-       "fx": [
-        [
-         "troops",
-         "Cyprus",
-         40
-        ],
-        [
-         "buff",
-         "Cyprus",
-         "def",
-         1.2,
-         10
-        ],
-        [
-         "xstab",
-         "Cyprus",
-         -3
-        ]
-       ],
-       "r": "Millî Muhafız birlikleri Girne dağlarında mevzilendi.",
-       "keep_default": true
-      },
-      {
-       "t": "BM Güvenlik Konseyi'ne başvur",
-       "d": "Uluslararası baskı çağır",
-       "fx": [
-        [
-         "rel",
-         "Cyprus",
-         "United States of America",
-         10
-        ],
-        [
-         "rel",
-         "Cyprus",
-         "Russia",
-         10
-        ],
-        [
-         "stab",
-         "Cyprus",
-         -3
-        ]
-       ],
-       "r": "Güvenlik Konseyi olağanüstü toplandı; Moskova ve Washington adanın birliğinden yana.",
-       "keep_default": true
-      },
-      {
-       "t": "Türk Kıbrıslılarla uzlaş",
-       "d": "Gerilimi düşür",
-       "fx": [
-        [
-         "stab",
-         "Cyprus",
-         5
-        ],
-        [
-         "rel",
-         "Cyprus",
-         "N. Cyprus",
-         20
-        ],
-        [
-         "rel",
-         "Cyprus",
-         "Turkey",
-         8
-        ]
-       ],
-       "r": "Lefkoşa'da Türk mahallelerine güvence verildi; gerilim bir an düştü.",
-       "keep_default": true
-      }
-     ]
-    },
-    "United Kingdom": {
-     "text": "Garantör sensin ama Wilson hükümeti ortak müdahaleyi reddetti; Akrotiri ve Dhekelia'daki Egemen Üsler'in güvenliği öncelik. Washington Londra'dan arabuluculuk bekliyor.",
-     "options": [
-      {
-       "t": "Cenevre'de arabuluculuk",
-       "d": "Üç garantör konferansı",
-       "fx": [
-        [
-         "rel",
-         "United Kingdom",
-         "Turkey",
-         5
-        ],
-        [
-         "rel",
-         "United Kingdom",
-         "Greece",
-         5
-        ],
-        [
-         "xstab",
-         "United Kingdom",
-         2
-        ]
-       ],
-       "r": "Dışişleri Bakanı Callaghan Cenevre'de üç garantörü bir araya getirmeye çalışıyor.",
-       "keep_default": true
-      },
-      {
-       "t": "Türkiye ile ortak müdahale",
-       "d": "Garantörlüğü kullan",
-       "fx": [
-        [
-         "ally",
-         "United Kingdom",
-         "Turkey"
-        ],
-        [
-         "war",
-         "United Kingdom",
-         "Cyprus",
-         "solo"
-        ],
-        [
-         "xstab",
-         "United Kingdom",
-         -4
-        ],
-        [
-         "rel",
-         "United Kingdom",
-         "Greece",
-         -20
-        ]
-       ],
-       "r": "Londra ve Ankara ortak müdahale kararı aldı; NATO şokta.",
-       "keep_default": true
-      },
-      {
-       "t": "Egemen Üslere çekil",
-       "d": "Tarafsız kal",
-       "fx": [
-        [
-         "xstab",
-         "United Kingdom",
-         1
-        ],
-        [
-         "rel",
-         "United Kingdom",
-         "Turkey",
-         -5
-        ]
-       ],
-       "r": "İngiliz birlikleri üslere çekildi; Ankara'da Londra'ya tepki büyüyor.",
-       "keep_default": true
-      }
-     ]
-    },
-    "United States of America": {
-     "text": "Kissinger: NATO'nun iki üyesi savaşın eşiğinde, Soğuk Savaş'ın güney kanadı çöküyor. Watergate yüzünden Beyaz Saray zayıf; Kongre Türkiye'ye silah ambargosu için hazırlanıyor.",
-     "options": [
-      {
-       "t": "Türkiye'ye baskı: ambargo tehdidi",
-       "d": "Silah yardımını kes",
-       "fx": [
-        [
-         "rel",
-         "United States of America",
-         "Turkey",
-         -25
-        ],
-        [
-         "rel",
-         "United States of America",
-         "Greece",
-         10
-        ],
-        [
-         "xstab",
-         "United States of America",
-         1
-        ]
-       ],
-       "r": "Washington Ankara'ya silah yardımını keseceğini bildirdi.",
-       "keep_default": true
-      },
-      {
-       "t": "Sessiz diplomasi",
-       "d": "Arabuluculuğu İngiltere'ye bırak",
-       "fx": [
-        [
-         "rel",
-         "United States of America",
-         "United Kingdom",
-         5
-        ],
-        [
-         "rel",
-         "United States of America",
-         "Turkey",
-         3
-        ]
-       ],
-       "r": "Kissinger telefon diplomasisiyle iki başkent arasında mekik dokuyor.",
-       "keep_default": true
-      },
-      {
-       "t": "Cuntaya destek: Enosis'e göz yum",
-       "d": "Güney kanadı sabitle",
-       "fx": [
-        [
-         "rel",
-         "United States of America",
-         "Greece",
-         15
-        ],
-        [
-         "rel",
-         "United States of America",
-         "Turkey",
-         -20
-        ],
-        [
-         "stab",
-         "Greece",
-         4
-        ]
-       ],
-       "r": "Washington Atina cuntasına dokunmadı; Ankara'da Amerikan karşıtlığı yükseliyor.",
-       "keep_default": true
-      }
-     ]
-    },
-    "Russia": {
-     "text": "Moskova adanın bağlantısız kalmasından yana; NATO'nun Doğu Akdeniz'e yerleşmesinden çekiniyor. Makarios'un Sovyet dostluğu eski bir dosya.",
-     "options": [
-      {
-       "t": "Makarios'u destekle",
-       "d": "BM'de bağımsızlık savunusu",
-       "fx": [
-        [
-         "rel",
-         "Russia",
-         "Cyprus",
-         25
-        ],
-        [
-         "rel",
-         "Russia",
-         "Turkey",
-         -5
-        ],
-        [
-         "rel",
-         "Russia",
-         "Greece",
-         -5
-        ]
-       ],
-       "r": "Moskova Kıbrıs'ın bağımsızlığını savunan sert bir bildiri yayımladı.",
-       "keep_default": true
-      },
-      {
-       "t": "Türkiye ile yakınlaş",
-       "d": "Ankara'yı Washington'dan uzaklaştır",
-       "fx": [
-        [
-         "rel",
-         "Russia",
-         "Turkey",
-         20
-        ],
-        [
-         "rel",
-         "Russia",
-         "United States of America",
-         -3
-        ]
-       ],
-       "r": "Kremlin Ankara'ya ekonomik işbirliği teklif etti.",
-       "keep_default": true
-      },
-      {
-       "t": "İzle",
-       "d": "Müdahale etme",
-       "fx": [
-        [
-         "xstab",
-         "Russia",
-         1
-        ]
-       ],
-       "r": "Moskova gelişmeleri uzaktan izliyor.",
-       "keep_default": true
-      }
-     ]
-    }
-   }
-  },
-  {
-   "id": "cy74_gec",
-   "y": 1974,
-   "m": 8,
-   "title": "Sabır Tükendi",
-   "scene": "pre_landing",
-   "icon": "landing",
-   "text": "Diplomasi sonuç vermedi; adada Türk mahallelerine baskılar sürüyor. Ankara'da 'şimdi ya da hiç' sesleri yükseldi.",
-   "major": true,
-   "default_fx": [
-    [
-     "war",
-     "Turkey",
-     "Cyprus",
-     "solo"
-    ],
-    [
-     "war",
-     "N. Cyprus",
-     "Cyprus",
-     "solo"
-    ],
-    [
-     "troops",
-     "N. Cyprus",
-     300
-    ],
-    [
-     "rel",
-     "Turkey",
-     "United States of America",
-     -10
-    ],
-    [
-     "stab",
-     "Cyprus",
-     -8
-    ],
-    [
-     "flag",
-     "cy74_landing"
-    ]
-   ],
-   "roles": {
-    "Turkey": {
-     "text": "Müzakere yolu kapanıyor. Ordunun hazırlığı sürüyor; ama ABD ve Britanya baskısı da artıyor.",
-     "options": [
-      {
-       "t": "Şimdi çıkarma",
-       "d": "Girne'ye çıkarma",
-       "fx": [
-        [
-         "war",
-         "Turkey",
-         "Cyprus",
-         "solo"
-        ],
-        [
-         "war",
-         "N. Cyprus",
-         "Cyprus",
-         "solo"
-        ],
-        [
-         "troops",
-         "N. Cyprus",
-         120
-        ],
-        [
-         "buff",
-         "Turkey",
-         "att",
-         1.3,
-         10
-        ],
-        [
-         "xstab",
-         "Turkey",
-         10
-        ],
-        [
-         "rel",
-         "Turkey",
-         "United States of America",
-         -20
-        ],
-        [
-         "rel",
-         "Turkey",
-         "Greece",
-         -25
-        ],
-        [
-         "rel",
-         "Turkey",
-         "United Kingdom",
-         -5
-        ],
-        [
-         "stab",
-         "Cyprus",
-         -10
-        ],
-        [
-         "flag",
-         "cy74_landing"
-        ]
-       ],
-       "r": "Türk birlikleri geç kalmış bir çıkarmayla Girne'de karaya çıktı."
-      },
-      {
-       "t": "Müzakereye devam",
-       "d": "Çıkarma yok",
-       "fx": [
-        [
-         "xstab",
-         "Turkey",
-         -5
-        ],
-        [
-         "rel",
-         "Turkey",
-         "United States of America",
-         5
-        ]
-       ],
-       "r": "Ankara müzakere masasında kalıyor; kamuoyunda hoşnutsuzluk büyüyor."
-      }
-     ]
-    }
-   },
-   "requires": [
-    "cy74_diplo"
-   ],
-   "forbid": [
-    "cy74_landing"
-   ]
-  },
-  {
-   "id": "cy74_cenevre",
-   "y": 1974,
-   "m": 8,
-   "title": "Cenevre Çöktü: İkinci Harekât",
-   "scene": "pre_landing",
-   "icon": "landing",
-   "text": "Cenevre'de iki turlu görüşme çöktü. Türk birlikleri kıyı şeridinde tutunmuş, Türkiye ikinci aşamaya hazır. Yunanistan'da Karamanlis hükümeti NATO'nun askerî kanadından çekilmeyi tartışıyor.",
-   "major": true,
-   "default_fx": [
-    [
-     "buff",
-     "Turkey",
-     "att",
-     1.25,
-     6
-    ],
-    [
-     "troops",
-     "N. Cyprus",
-     80
-    ],
-    [
-     "rel",
-     "Greece",
-     "United States of America",
-     -15
-    ],
-    [
-     "stab",
-     "Greece",
-     8
-    ],
-    [
-     "stab",
-     "Cyprus",
-     -8
-    ],
-    [
-     "rel",
-     "Turkey",
-     "Greece",
-     -10
-    ],
-    [
-     "flag",
-     "cy74_phase2"
-    ]
-   ],
-   "roles": {
-    "Turkey": {
-     "text": "Cenevre'de federasyon önerin reddedildi; Rum yönetimi Türk bölgesinde kalan kasabalarda baskıyı artırdı. Ordu ikinci aşama için emir bekliyor.",
-     "options": [
-      {
-       "t": "İkinci harekât: Gazimağusa'ya kadar",
-       "d": "Adanın yaklaşık %36'sı",
-       "fx": [
-        [
-         "buff",
-         "Turkey",
-         "att",
-         1.25,
-         6
-        ],
-        [
-         "xstab",
-         "Turkey",
-         5
-        ],
-        [
-         "rel",
-         "Turkey",
-         "United States of America",
-         -10
-        ],
-        [
-         "rel",
-         "Turkey",
-         "United Kingdom",
-         -5
-        ],
-        [
-         "rel",
-         "Turkey",
-         "Greece",
-         -10
-        ],
-        [
-         "flag",
-         "cy74_phase2"
-        ]
-       ],
-       "r": "14 Ağustos: ikinci harekât başladı; Türk birlikleri Gazimağusa'ya doğru ilerliyor."
-      },
-      {
-       "t": "Mevzileri koru, Cenevre'ye dön",
-       "d": "Diplomatik yol",
-       "fx": [
-        [
-         "rel",
-         "Turkey",
-         "United States of America",
-         10
-        ],
-        [
-         "rel",
-         "Turkey",
-         "United Kingdom",
-         5
-        ],
-        [
-         "xstab",
-         "Turkey",
-         -3
-        ]
-       ],
-       "r": "Ankara ikinci harekâtı erteledi; Kissinger rahat bir nefes aldı."
-      }
-     ]
-    },
-    "Greece": {
-     "text": "Karamanlis hükümeti Türkiye ile savaşı kaldıramaz; ama kamuoyu NATO'dan hıncını çıkarmak istiyor.",
-     "options": [
-      {
-       "t": "NATO'nun askerî kanadından çekil",
-       "d": "Yunan kamuoyunun talebi",
-       "fx": [
-        [
-         "rel",
-         "Greece",
-         "United States of America",
-         -20
-        ],
-        [
-         "xstab",
-         "Greece",
-         10
-        ],
-        [
-         "rel",
-         "Greece",
-         "Turkey",
-         -5
-        ],
-        [
-         "flag",
-         "cy74_nato_exit"
-        ]
-       ],
-       "r": "Atina NATO'nun askerî kanadından çekildi; Washington Yunan lobisiyle karşı karşıya.",
-       "keep_default": true
-      },
-      {
-       "t": "NATO'da kal, diplomasiye yüklen",
-       "d": "Batı ile bağı koru",
-       "fx": [
-        [
-         "rel",
-         "Greece",
-         "United States of America",
-         10
-        ],
-        [
-         "xstab",
-         "Greece",
-         -5
-        ]
-       ],
-       "r": "Karamanlis sakin kalmayı seçti; muhalefet sokakları doldurdu.",
-       "keep_default": true
-      }
-     ]
-    },
-    "Cyprus": {
-     "text": "Türk birlikleri kuzeyde yerleşti; Klerides Cenevre'de pazarlıkta. Ordunun morali düşük.",
-     "options": [
-      {
-       "t": "Müzakereyi sürdür",
-       "d": "Ateşkes için baskı",
-       "fx": [
-        [
-         "stab",
-         "Cyprus",
-         3
-        ],
-        [
-         "rel",
-         "Cyprus",
-         "United States of America",
-         8
-        ]
-       ],
-       "r": "Klerides Cenevre'de ateşkes için uğraşıyor.",
-       "keep_default": true
-      },
-      {
-       "t": "Direniş: yeni cephe hattı",
-       "d": "Lefkoşa'yı savun",
-       "fx": [
-        [
-         "buff",
-         "Cyprus",
-         "def",
-         1.2,
-         8
-        ],
-        [
-         "troops",
-         "Cyprus",
-         25
-        ],
-        [
-         "stab",
-         "Cyprus",
-         -4
-        ]
-       ],
-       "r": "Millî Muhafız Lefkoşa çevresinde yeni hatlar kurdu.",
-       "keep_default": true
-      }
-     ]
-    },
-    "United States of America": {
-     "text": "Kongre, Türkiye'ye silah ambargosu için oy hazırlığında. Dışişleri Bakanlığı iki NATO müttefiki arasında köprü arıyor.",
-     "options": [
-      {
-       "t": "Ambargoyu destekle",
-       "d": "Kongre ile hareket et",
-       "fx": [
-        [
-         "rel",
-         "United States of America",
-         "Turkey",
-         -20
-        ],
-        [
-         "rel",
-         "United States of America",
-         "Greece",
-         10
-        ]
-       ],
-       "r": "Beyaz Saray Kongre'nin ambargo girişimine karşı koymadı.",
-       "keep_default": true
-      },
-      {
-       "t": "Ambargoyu engelle",
-       "d": "NATO bütünlüğü",
-       "fx": [
-        [
-         "rel",
-         "United States of America",
-         "Turkey",
-         12
-        ],
-        [
-         "rel",
-         "United States of America",
-         "Greece",
-         -8
-        ],
-        [
-         "xstab",
-         "United States of America",
-         -2
-        ]
-       ],
-       "r": "Ford yönetimi ambargoyu engellemek için Kongre'ye ricada bulundu.",
-       "keep_default": true
-      }
-     ]
-    }
-   },
-   "requires": [
-    "cy74_landing"
-   ]
-  },
-  {
-   "id": "cy74_ateskes",
-   "y": 1974,
-   "m": 9,
-   "title": "Yeşil Hat: Ada İkiye Bölündü",
-   "scene": "pre_landing",
-   "icon": "landing",
-   "text": "Silahlar sustu. Yaklaşık 160–200 bin Rum güneye, 45 bin Türk kuzeye göç etti; BM gözetiminde Yeşil Hat adayı ikiye böldü.",
-   "major": true,
-   "default_fx": [
-    [
-     "peace",
-     "Turkey",
-     "Cyprus"
-    ],
-    [
-     "peace",
-     "N. Cyprus",
-     "Cyprus"
-    ],
-    [
-     "stab",
-     "Cyprus",
-     -15
-    ],
-    [
-     "flag",
-     "cy74_ceasefire"
-    ]
-   ],
-   "roles": {
-    "Turkey": {
-     "text": "Ateşkes hattı oturdu. Kuzey Türk denetiminde; ABD ve Britanya federal çözüm istiyor, Rumlar hâlâ müzakereye yanaşmıyor.",
-     "options": [
-      {
-       "t": "Ateşkesi kabul et, kazanımı koru",
-       "d": "Barış",
-       "fx": [
-        [
-         "peace",
-         "Turkey",
-         "Cyprus"
-        ],
-        [
-         "peace",
-         "N. Cyprus",
-         "Cyprus"
-        ],
-        [
-         "xstab",
-         "Turkey",
-         5
-        ],
-        [
-         "flag",
-         "cy74_ceasefire"
-        ]
-       ],
-       "r": "Kıbrıs'ta ateşkes yürürlükte; Türk bayrağı Girne'de dalgalanıyor."
-      },
-      {
-       "t": "Harekâta devam: Larnaka ve Limasol",
-       "d": "Tüm ada baskısı",
-       "fx": [
-        [
-         "buff",
-         "Turkey",
-         "att",
-         1.2,
-         8
-        ],
-        [
-         "rel",
-         "Turkey",
-         "United States of America",
-         -15
-        ],
-        [
-         "rel",
-         "Turkey",
-         "United Kingdom",
-         -10
-        ],
-        [
-         "xstab",
-         "Turkey",
-         -3
-        ],
-        [
-         "stab",
-         "Cyprus",
-         -10
-        ]
-       ],
-       "r": "Ankara ateşkesi tanımadı; ilerleyiş güneye doğru sürüyor."
-      },
-      {
-       "t": "Federasyon önerisi sun",
-       "d": "Barış + müzakere",
-       "fx": [
-        [
-         "peace",
-         "Turkey",
-         "Cyprus"
-        ],
-        [
-         "peace",
-         "N. Cyprus",
-         "Cyprus"
-        ],
-        [
-         "rel",
-         "Turkey",
-         "United Kingdom",
-         10
-        ],
-        [
-         "rel",
-         "Turkey",
-         "United States of America",
-         10
-        ],
-        [
-         "flag",
-         "cy74_ceasefire"
-        ]
-       ],
-       "r": "Ankara iki toplumlu federasyon önerdi; Londra ve Washington ilgi gösterdi."
-      }
-     ]
-    },
-    "Cyprus": {
-     "text": "Yüz binlerce mülteci güneyde çadırlarda. Klerides Türkiye ile ateşkesi kabul etmek zorunda mı?",
-     "options": [
-      {
-       "t": "Ateşkesi kabul et",
-       "d": "Savaşı durdur",
-       "fx": [
-        [
-         "peace",
-         "Cyprus",
-         "Turkey"
-        ],
-        [
-         "peace",
-         "Cyprus",
-         "N. Cyprus"
-        ],
-        [
-         "stab",
-         "Cyprus",
-         -8
-        ],
-        [
-         "flag",
-         "cy74_ceasefire"
-        ]
-       ],
-       "r": "Rum yönetimi ateşkesi kabul etti; mülteci krizi başladı.",
-       "keep_default": true
-      },
-      {
-       "t": "Direnişi sürdür",
-       "d": "Ateşkesi reddet",
-       "fx": [
-        [
-         "buff",
-         "Cyprus",
-         "def",
-         1.2,
-         8
-        ],
-        [
-         "stab",
-         "Cyprus",
-         -5
-        ]
-       ],
-       "r": "Lefkoşa ateşkesi reddetti; çatışmalar sürüyor."
-      }
-     ]
-    },
-    "Greece": {
-     "text": "Atina savaşa giremedi; Kıbrıs'ta bölünme kalıcı görünüyor. Karamanlis kamuoyuna ne söyleyecek?",
-     "options": [
-      {
-       "t": "Diplomatik zafer ara",
-       "d": "BM ve AB'ye başvur",
-       "fx": [
-        [
-         "xstab",
-         "Greece",
-         3
-        ],
-        [
-         "rel",
-         "Greece",
-         "United Kingdom",
-         5
-        ]
-       ],
-       "r": "Karamanlis Kıbrıs'ı uluslararası alana taşıdı.",
-       "keep_default": true
-      },
-      {
-       "t": "Öfke: Türkiye'ye karşı cephe",
-       "d": "Ege'de askerî hazırlık",
-       "fx": [
-        [
-         "rel",
-         "Greece",
-         "Turkey",
-         -15
-        ],
-        [
-         "troops",
-         "Greece",
-         15
-        ],
-        [
-         "xstab",
-         "Greece",
-         -3
-        ]
-       ],
-       "r": "Yunanistan Ege adalarını silahlandırıyor; Ankara tepkili.",
-       "keep_default": true
-      }
-     ]
-    }
-   },
-   "requires": [
-    "cy74_landing"
-   ],
-   "forbid": [
-    "cy74_ceasefire"
-   ]
-  },
-  {
-   "id": "cy74_makarios",
-   "y": 1974,
-   "m": 12,
-   "title": "Makarios Döndü, Kongre Ambargo Dedi",
-   "scene": "pre_landing",
-   "icon": "landing",
-   "text": "7 Aralık'ta Makarios adaya döndü. Ardından ABD Kongresi, Türkiye'ye silah yardımının kesilmesini öngören kararı kabul etti; ambargo Şubat 1975'te yürürlüğe girecek.",
-   "major": true,
-   "default_fx": [
-    [
-     "rel",
-     "Turkey",
-     "United States of America",
-     -20
-    ],
-    [
-     "stab",
-     "Cyprus",
-     8
-    ],
-    [
-     "rel",
-     "Cyprus",
-     "Turkey",
-     -5
-    ]
-   ],
-   "roles": {
-    "Turkey": {
-     "text": "Ambargo ordunun yedek parça ve mühimmat hattını tehdit ediyor. Ankara'da ABD üslerinin kapatılması tartışılıyor.",
-     "options": [
-      {
-       "t": "Sert yanıt: üsleri kısıtla",
-       "d": "Amerikan üsleri askıya",
-       "fx": [
-        [
-         "rel",
-         "Turkey",
-         "United States of America",
-         -25
-        ],
-        [
-         "xstab",
-         "Turkey",
-         5
-        ],
-        [
-         "rel",
-         "Turkey",
-         "Russia",
-         10
-        ],
-        [
-         "flag",
-         "cy74_us_bases"
-        ]
-       ],
-       "r": "Ankara ABD'nin üs faaliyetlerini kısıtlama kararı aldı."
-      },
-      {
-       "t": "Kongre'yi diplomasiyle ikna et",
-       "d": "Lobi çalışması",
-       "fx": [
-        [
-         "rel",
-         "Turkey",
-         "United States of America",
-         5
-        ],
-        [
-         "xstab",
-         "Turkey",
-         -2
-        ]
-       ],
-       "r": "Ankara Washington'da lobi faaliyetini artırdı."
-      },
-      {
-       "t": "SSCB ile yakınlaş",
-       "d": "Çok yönlü dış politika",
-       "fx": [
-        [
-         "rel",
-         "Turkey",
-         "Russia",
-         25
-        ],
-        [
-         "rel",
-         "Turkey",
-         "United States of America",
-         -15
-        ]
-       ],
-       "r": "Ankara Moskova'ya yönelik açılım sinyalleri verdi."
-      }
-     ]
-    },
-    "United States of America": {
-     "text": "Kongre ambargoyu dayattı; Başkan Ford veto etti ama Meclis aştı. Türkiye'nin tepkisi sert olabilir.",
-     "options": [
-      {
-       "t": "Ambargoyu uygula",
-       "d": "Kongre kararı",
-       "fx": [
-        [
-         "rel",
-         "United States of America",
-         "Turkey",
-         -15
-        ],
-        [
-         "rel",
-         "United States of America",
-         "Greece",
-         8
-        ]
-       ],
-       "r": "ABD ambargoyu uyguluyor; Ankara öfkeli.",
-       "keep_default": true
-      },
-      {
-       "t": "Esnetmeye çalış",
-       "d": "Yürütme yetkisi",
-       "fx": [
-        [
-         "rel",
-         "United States of America",
-         "Turkey",
-         8
-        ],
-        [
-         "xstab",
-         "United States of America",
-         -2
-        ]
-       ],
-       "r": "Beyaz Saray ambargoyu esnetmek için yollar arıyor.",
-       "keep_default": true
-      }
-     ]
-    },
-    "Cyprus": {
-     "text": "Makarios adaya döndü ama ada artık bölünmüş. Cumhurbaşkanlığı koltuğu geri verildi.",
-     "options": [
-      {
-       "t": "Makarios yönetimini yeniden kur",
-       "d": "Meşru yönetim",
-       "fx": [
-        [
-         "xstab",
-         "Cyprus",
-         8
-        ],
-        [
-         "rel",
-         "Cyprus",
-         "Greece",
-         10
-        ]
-       ],
-       "r": "Makarios Lefkoşa'da coşkuyla karşılandı.",
-       "keep_default": true
-      },
-      {
-       "t": "Federasyon pazarlığı",
-       "d": "Viyana görüşmeleri",
-       "fx": [
-        [
-         "rel",
-         "Cyprus",
-         "Turkey",
-         8
-        ],
-        [
-         "rel",
-         "Cyprus",
-         "N. Cyprus",
-         10
-        ],
-        [
-         "xstab",
-         "Cyprus",
-         -2
-        ]
-       ],
-       "r": "Rum liderliği federasyon görüşmelerine ilk kez yeşil ışık yaktı.",
-       "keep_default": true
-      }
-     ]
-    }
-   },
-   "requires": [
-    "cy74_landing"
-   ]
-  },
-  {
-   "id": "cy74_federe",
-   "y": 1975,
-   "m": 2,
-   "title": "Kıbrıs Türk Federe Devleti",
-   "scene": "pre_landing",
-   "icon": "landing",
-   "text": "13 Şubat 1975: Kuzeyde Kıbrıs Türk Federe Devleti ilan edildi; başkan Rauf Denktaş. ABD'nin Türkiye'ye silah ambargosu yürürlüğe girdi.",
-   "major": true,
-   "default_fx": [
-    [
-     "rel",
-     "N. Cyprus",
-     "Cyprus",
-     -15
-    ],
-    [
-     "stab",
-     "Cyprus",
-     -4
-    ]
-   ],
-   "roles": {
-    "N. Cyprus": {
-     "text": "Kuzey fiilen ayrı bir idare. Ankara'nın desteğiyle bir federe devlet ilan etmek bölünmeyi kalıcılaştırır ama Rumlar da adanın tamamını temsil iddiasında.",
-     "options": [
-      {
-       "t": "Federe Devleti ilan et (tarihî)",
-       "d": "Anayasal çerçeve",
-       "fx": [
-        [
-         "xstab",
-         "N. Cyprus",
-         8
-        ],
-        [
-         "rel",
-         "N. Cyprus",
-         "Turkey",
-         15
-        ],
-        [
-         "rel",
-         "N. Cyprus",
-         "Cyprus",
-         -15
-        ]
-       ],
-       "r": "Lefkoşa'nın kuzeyinde Kıbrıs Türk Federe Devleti ilan edildi.",
-       "keep_default": true
-      },
-      {
-       "t": "Bekle: tek devlet çatısı",
-       "d": "Viyana'da federasyon",
-       "fx": [
-        [
-         "rel",
-         "N. Cyprus",
-         "Cyprus",
-         5
-        ],
-        [
-         "xstab",
-         "N. Cyprus",
-         -3
-        ]
-       ],
-       "r": "Denktaş federasyon görüşmeleri için zaman kazanıyor.",
-       "keep_default": true
-      }
-     ]
-    },
-    "Turkey": {
-     "text": "Kuzey Kıbrıs Federe Devleti'ni ilan etmek üzere. Ambargo yürürlükte, tepki beklenmeli.",
-     "options": [
-      {
-       "t": "Federe Devleti destekle",
-       "d": "Ankara'nın bayrağı",
-       "fx": [
-        [
-         "rel",
-         "Turkey",
-         "N. Cyprus",
-         15
-        ],
-        [
-         "rel",
-         "Turkey",
-         "Cyprus",
-         -10
-        ],
-        [
-         "xstab",
-         "Turkey",
-         3
-        ]
-       ],
-       "r": "Ankara Federe Devlet'in ilanını destekledi."
-      },
-      {
-       "t": "Frenle: federasyon çerçevesi",
-       "d": "Viyana",
-       "fx": [
-        [
-         "rel",
-         "Turkey",
-         "United Kingdom",
-         5
-        ],
-        [
-         "rel",
-         "Turkey",
-         "United States of America",
-         5
-        ]
-       ],
-       "r": "Ankara 'federal çözüm' mesajını güçlendirdi."
-      }
-     ]
-    }
-   },
-   "requires": [
-    "cy74_landing"
-   ]
-  },
-  {
-   "id": "cy74_uslerin",
-   "y": 1975,
-   "m": 7,
-   "title": "Türkiye ABD Üslerini Kapattı",
-   "scene": "pre_landing",
-   "icon": "landing",
-   "text": "26 Temmuz 1975: Ambargoya karşılık Türkiye ABD'nin üs faaliyetlerini askıya aldı (İncirlik hariç). NATO'nun güney kanadı sarsıldı.",
-   "major": false,
-   "default_fx": [
-    [
-     "rel",
-     "Turkey",
-     "United States of America",
-     -15
-    ],
-    [
-     "xstab",
-     "Turkey",
-     3
-    ]
-   ],
-   "roles": {
-    "Turkey": {
-     "text": "Üsler Amerikan elektronik istihbaratı için can damarı. Kapatmak Washington'a mesajdır ama Türkiye'yi de yalnızlaştırır.",
-     "options": [
-      {
-       "t": "Üsleri askıya al (tarihî)",
-       "d": "Kararlı mesaj",
-       "fx": [
-        [
-         "rel",
-         "Turkey",
-         "United States of America",
-         -20
-        ],
-        [
-         "xstab",
-         "Turkey",
-         4
-        ],
-        [
-         "rel",
-         "Turkey",
-         "Russia",
-         8
-        ]
-       ],
-       "r": "Ankara Amerikan üslerini askıya aldı; Moskova memnun."
-      },
-      {
-       "t": "Üsleri açık tut",
-       "d": "İkili ilişki",
-       "fx": [
-        [
-         "rel",
-         "Turkey",
-         "United States of America",
-         8
-        ],
-        [
-         "xstab",
-         "Turkey",
-         -3
-        ]
-       ],
-       "r": "Ankara üsleri açık tutarak Kongre'ye baskıyı sürdürdü."
-      }
-     ]
-    },
-    "United States of America": {
-     "text": "Üsler kapanırsa Sovyetler hakkındaki elektronik dinleme ağı ciddi hasar görür. Ambargoyu kaldırmak için Kongre'ye gidebilirsin.",
-     "options": [
-      {
-       "t": "Ambargoyu kaldır (kısmen)",
-       "d": "Üsler için tavizi kabul et",
-       "fx": [
-        [
-         "rel",
-         "United States of America",
-         "Turkey",
-         25
-        ],
-        [
-         "xstab",
-         "United States of America",
-         -2
-        ],
-        [
-         "rel",
-         "United States of America",
-         "Greece",
-         -8
-        ]
-       ],
-       "r": "Kongre ambargoyu kısmen kaldırdı; Türkiye üslerle ilgili tutumunu yumuşattı.",
-       "keep_default": true
-      },
-      {
-       "t": "Sürdür",
-       "d": "İlkeli duruş",
-       "fx": [
-        [
-         "rel",
-         "United States of America",
-         "Turkey",
-         -10
-        ],
-        [
-         "rel",
-         "United States of America",
-         "Greece",
-         5
-        ]
-       ],
-       "r": "Washington ambargoyu sürdürüyor; Ankara üslerde kararlı.",
-       "keep_default": true
-      }
-     ]
-    }
-   },
-   "requires": [
-    "cy74_landing"
-   ]
-  },
-  {
-   "id": "cy74_makarios_oldu",
-   "y": 1977,
-   "m": 8,
-   "title": "Makarios Öldü",
-   "scene": "pre_landing",
-   "icon": "landing",
-   "text": "3 Ağustos 1977: Başpiskopos Makarios kalp krizinden öldü; Rum tarafında yeni lider Spyros Kiprianu. Ada hâlâ bölünmüş.",
-   "major": false,
-   "default_fx": [
-    [
-     "stab",
-     "Cyprus",
-     -6
-    ]
-   ],
-   "roles": {}
-  }
- ],
- "en": {
-  "Ayşe tatile çıksın (tarihî)": "Let Ayşe go on holiday (historical)",
-  "Girne'ye çıkarma; Kıbrıs'la savaş": "Landing at Kyrenia; war with Cyprus",
-  "20 Temmuz sabahı Türk birlikleri Girne açıklarında; Kıbrıs Barış Harekâtı başladı.": "On the morning of 20 July Turkish forces are off Kyrenia; the Cyprus Peace Operation has begun.",
-  "Son bir diplomasi turu": "One last round of diplomacy",
-  "Cenevre görüşmeleri; savaş ilanı yok": "Geneva talks; no declaration of war",
-  "Ankara Londra ve Washington'ın arabuluculuğunu bekliyor; adada çatışmalar sürüyor.": "Ankara waits for London and Washington to mediate; fighting continues on the island.",
-  "Bekle": "Wait",
-  "Darbe kendiliğinden çökene kadar": "Until the coup collapses on its own",
-  "Ankara bekledi; adada Türk köylerine yönelik saldırı haberleri ülkede öfke yarattı.": "Ankara waited; reports of attacks on Turkish villages on the island caused anger at home.",
-  "Ecevit Londra'dan eli boş döndü: İngiltere ortak müdahaleyi reddetti. Garantörlük hakkın Zürih ve Londra anlaşmalarından geliyor. Ordu Mersin'de hazır, donanma limanda; Genelkurmay 'Ayşe' kod adlı çıkarma planını masaya koydu.": "Ecevit came back from London empty-handed: Britain refused a joint intervention. Your guarantor right comes from the Zurich and London agreements. The army is ready at Mersin, the fleet in port; the General Staff has tabled the landing plan code-named 'Ayşe'.",
-  "Cunta düşsün, Karamanlis dönsün": "Let the junta fall, bring back Karamanlis",
-  "Demokrasiye dönüş": "Return to democracy",
-  "Cunta çöktü; Karamanlis Paris'ten Atina'ya döndü.": "The junta collapsed; Karamanlis flew back from Paris to Athens.",
-  "Seferberlik ve Ege'de savaş": "Mobilise and go to war in the Aegean",
-  "Türkiye'ye savaş ilan et": "Declare war on Turkey",
-  "Yunanistan seferberlik ilan etti; Ege'de savaş rüzgârı esiyor.": "Greece declared mobilisation; the winds of war blow over the Aegean.",
-  "Kıbrıs'a takviye gönder": "Reinforce Cyprus",
-  "Enosis'te ısrar": "Insist on Enosis",
-  "Atina adaya gizlice takviye gönderiyor; Ankara'da gerilim tırmanıyor.": "Athens secretly sends reinforcements; tension rises in Ankara.",
-  "Cunta darbeyi kendi eliyle yaptı; Türk çıkarması kapıda ve Yunan ordusu Türkiye ile savaşa hazır değil. Cunta lideri İoannidis'in ayakta kalma şansı azalıyor.": "The junta staged the coup itself; a Turkish landing is at the door and the Greek army is not ready for war with Turkey. Junta leader Ioannidis's hold on power is slipping.",
-  "Savunmayı örgütle": "Organise the defence",
-  "Girne-Lefkoşa hattı": "The Kyrenia–Nicosia line",
-  "Millî Muhafız birlikleri Girne dağlarında mevzilendi.": "National Guard units dug in on the Kyrenia range.",
-  "BM Güvenlik Konseyi'ne başvur": "Appeal to the UN Security Council",
-  "Uluslararası baskı çağır": "Call for international pressure",
-  "Güvenlik Konseyi olağanüstü toplandı; Moskova ve Washington adanın birliğinden yana.": "The Security Council met in emergency session; Moscow and Washington back the island's unity.",
-  "Türk Kıbrıslılarla uzlaş": "Reach out to the Turkish Cypriots",
-  "Gerilimi düşür": "Lower the tension",
-  "Lefkoşa'da Türk mahallelerine güvence verildi; gerilim bir an düştü.": "Assurances were given to the Turkish quarters in Nicosia; tension eased for a moment.",
-  "Millî Muhafız Ordusu iktidarı aldı ama Makarios yaşıyor ve Londra'da. Türk çıkarması her an gelebilir; Türk Kıbrıslılar kuzey ve Lefkoşa'daki mahallelerde tehdit altında.": "The National Guard has seized power but Makarios is alive and in London. A Turkish landing may come any moment; Turkish Cypriots in the north and the Nicosia quarters are under threat.",
-  "Cenevre'de arabuluculuk": "Mediate in Geneva",
-  "Üç garantör konferansı": "Conference of the three guarantors",
-  "Dışişleri Bakanı Callaghan Cenevre'de üç garantörü bir araya getirmeye çalışıyor.": "Foreign Secretary Callaghan tries to bring the three guarantors together in Geneva.",
-  "Türkiye ile ortak müdahale": "Join Turkey in an intervention",
-  "Garantörlüğü kullan": "Use the guarantor right",
-  "Londra ve Ankara ortak müdahale kararı aldı; NATO şokta.": "London and Ankara agreed a joint intervention; NATO is in shock.",
-  "Egemen Üslere çekil": "Fall back to the Sovereign Bases",
-  "Tarafsız kal": "Stay neutral",
-  "İngiliz birlikleri üslere çekildi; Ankara'da Londra'ya tepki büyüyor.": "British troops withdrew to their bases; resentment of London grows in Ankara.",
-  "Garantör sensin ama Wilson hükümeti ortak müdahaleyi reddetti; Akrotiri ve Dhekelia'daki Egemen Üsler'in güvenliği öncelik. Washington Londra'dan arabuluculuk bekliyor.": "You are a guarantor but Wilson's government refused a joint intervention; the safety of the Sovereign Base Areas at Akrotiri and Dhekelia comes first. Washington expects London to mediate.",
-  "Türkiye'ye baskı: ambargo tehdidi": "Pressure Turkey: threaten an embargo",
-  "Silah yardımını kes": "Cut arms aid",
-  "Washington Ankara'ya silah yardımını keseceğini bildirdi.": "Washington told Ankara it would cut off arms aid.",
-  "Sessiz diplomasi": "Quiet diplomacy",
-  "Arabuluculuğu İngiltere'ye bırak": "Leave mediation to Britain",
-  "Kissinger telefon diplomasisiyle iki başkent arasında mekik dokuyor.": "Kissinger shuttles between the two capitals by telephone.",
-  "Cuntaya destek: Enosis'e göz yum": "Back the junta: tolerate Enosis",
-  "Güney kanadı sabitle": "Stabilise the southern flank",
-  "Washington Atina cuntasına dokunmadı; Ankara'da Amerikan karşıtlığı yükseliyor.": "Washington left the Athens junta alone; anti-American feeling rises in Ankara.",
-  "Kissinger: NATO'nun iki üyesi savaşın eşiğinde, Soğuk Savaş'ın güney kanadı çöküyor. Watergate yüzünden Beyaz Saray zayıf; Kongre Türkiye'ye silah ambargosu için hazırlanıyor.": "Kissinger: two NATO members are on the verge of war and the southern flank of the Cold War is crumbling. The White House is weak because of Watergate; Congress is preparing an arms embargo on Turkey.",
-  "Makarios'u destekle": "Support Makarios",
-  "BM'de bağımsızlık savunusu": "Defend independence at the UN",
-  "Moskova Kıbrıs'ın bağımsızlığını savunan sert bir bildiri yayımladı.": "Moscow issued a sharp statement defending Cyprus's independence.",
-  "Türkiye ile yakınlaş": "Court Turkey",
-  "Ankara'yı Washington'dan uzaklaştır": "Pull Ankara away from Washington",
-  "Kremlin Ankara'ya ekonomik işbirliği teklif etti.": "The Kremlin offered Ankara economic cooperation.",
-  "İzle": "Watch",
-  "Müdahale etme": "Do not intervene",
-  "Moskova gelişmeleri uzaktan izliyor.": "Moscow watches from a distance.",
-  "Moskova adanın bağlantısız kalmasından yana; NATO'nun Doğu Akdeniz'e yerleşmesinden çekiniyor. Makarios'un Sovyet dostluğu eski bir dosya.": "Moscow favours a non-aligned island and fears NATO settling the Eastern Mediterranean. Makarios's friendship with the Soviets is a long-standing file.",
-  "Ayşe Tatile Çıkıyor": "Ayşe Goes on Holiday",
-  "15 Temmuz 1974: Atina cuntasının desteklediği Millî Muhafız Ordusu Makarios'u devirdi; Nikos Sampson 'cumhurbaşkanı' ilan edildi. Ada Yunanistan'la birleşmenin (Enosis) eşiğinde. Zürih-Londra anlaşmalarının garantörleri Türkiye, İngiltere ve Yunanistan.": "15 July 1974: the National Guard, backed by Athens' junta, overthrew Makarios and Nikos Sampson was declared 'president'. The island is on the brink of union with Greece (Enosis). The guarantors of the Zurich-London agreements are Turkey, Britain and Greece.",
-  "Şimdi çıkarma": "Land now",
-  "Girne'ye çıkarma": "Landing at Kyrenia",
-  "Türk birlikleri geç kalmış bir çıkarmayla Girne'de karaya çıktı.": "Turkish forces went ashore at Kyrenia in a delayed landing.",
-  "Müzakereye devam": "Keep negotiating",
-  "Çıkarma yok": "No landing",
-  "Ankara müzakere masasında kalıyor; kamuoyunda hoşnutsuzluk büyüyor.": "Ankara stays at the table; public discontent grows.",
-  "Müzakere yolu kapanıyor. Ordunun hazırlığı sürüyor; ama ABD ve Britanya baskısı da artıyor.": "The negotiation path is closing. The army's preparations continue, but pressure from the US and Britain is rising too.",
-  "Sabır Tükendi": "Patience Runs Out",
-  "Diplomasi sonuç vermedi; adada Türk mahallelerine baskılar sürüyor. Ankara'da 'şimdi ya da hiç' sesleri yükseldi.": "Diplomacy led nowhere; pressure on Turkish quarters continues on the island. In Ankara the cry is 'now or never'.",
-  "İkinci harekât: Gazimağusa'ya kadar": "Second operation: push to Famagusta",
-  "Adanın yaklaşık %36'sı": "About 36% of the island",
-  "14 Ağustos: ikinci harekât başladı; Türk birlikleri Gazimağusa'ya doğru ilerliyor.": "14 August: the second operation began; Turkish forces advance on Famagusta.",
-  "Mevzileri koru, Cenevre'ye dön": "Hold what you have, return to Geneva",
-  "Diplomatik yol": "Diplomatic track",
-  "Ankara ikinci harekâtı erteledi; Kissinger rahat bir nefes aldı.": "Ankara postponed the second operation; Kissinger breathed a sigh of relief.",
-  "Cenevre'de federasyon önerin reddedildi; Rum yönetimi Türk bölgesinde kalan kasabalarda baskıyı artırdı. Ordu ikinci aşama için emir bekliyor.": "Your federation proposal was rejected in Geneva; the Greek-Cypriot side stepped up pressure on remaining Turkish towns. The army awaits orders for a second phase.",
-  "NATO'nun askerî kanadından çekil": "Leave NATO's military wing",
-  "Yunan kamuoyunun talebi": "A demand of Greek opinion",
-  "Atina NATO'nun askerî kanadından çekildi; Washington Yunan lobisiyle karşı karşıya.": "Athens left NATO's military wing; Washington is up against the Greek lobby.",
-  "NATO'da kal, diplomasiye yüklen": "Stay in NATO and lean on diplomacy",
-  "Batı ile bağı koru": "Keep the Western link",
-  "Karamanlis sakin kalmayı seçti; muhalefet sokakları doldurdu.": "Karamanlis chose calm; the opposition filled the streets.",
-  "Karamanlis hükümeti Türkiye ile savaşı kaldıramaz; ama kamuoyu NATO'dan hıncını çıkarmak istiyor.": "Karamanlis's government cannot afford war with Turkey, but public opinion wants to punish NATO.",
-  "Müzakereyi sürdür": "Keep negotiating",
-  "Ateşkes için baskı": "Push for a ceasefire",
-  "Klerides Cenevre'de ateşkes için uğraşıyor.": "Clerides works for a ceasefire in Geneva.",
-  "Direniş: yeni cephe hattı": "Resist: a new front line",
-  "Lefkoşa'yı savun": "Defend Nicosia",
-  "Millî Muhafız Lefkoşa çevresinde yeni hatlar kurdu.": "The National Guard built new lines around Nicosia.",
-  "Türk birlikleri kuzeyde yerleşti; Klerides Cenevre'de pazarlıkta. Ordunun morali düşük.": "Turkish troops are settled in the north; Clerides bargains in Geneva. The army's morale is low.",
-  "Ambargoyu destekle": "Back the embargo",
-  "Kongre ile hareket et": "Move with Congress",
-  "Beyaz Saray Kongre'nin ambargo girişimine karşı koymadı.": "The White House did not resist Congress's embargo drive.",
-  "Ambargoyu engelle": "Block the embargo",
-  "NATO bütünlüğü": "NATO cohesion",
-  "Ford yönetimi ambargoyu engellemek için Kongre'ye ricada bulundu.": "The Ford administration lobbied Congress to block the embargo.",
-  "Kongre, Türkiye'ye silah ambargosu için oy hazırlığında. Dışişleri Bakanlığı iki NATO müttefiki arasında köprü arıyor.": "Congress is preparing an arms embargo vote against Turkey. The State Department looks for a bridge between two NATO allies.",
-  "Cenevre Çöktü: İkinci Harekât": "Geneva Collapses: the Second Operation",
-  "Cenevre'de iki turlu görüşme çöktü. Türk birlikleri kıyı şeridinde tutunmuş, Türkiye ikinci aşamaya hazır. Yunanistan'da Karamanlis hükümeti NATO'nun askerî kanadından çekilmeyi tartışıyor.": "Two rounds of talks in Geneva collapsed. Turkish forces hold a coastal bridgehead and Turkey is ready for a second phase. In Greece Karamanlis's government is debating leaving NATO's military wing.",
-  "Ateşkesi kabul et, kazanımı koru": "Accept the ceasefire, keep the gains",
-  "Barış": "Peace",
-  "Kıbrıs'ta ateşkes yürürlükte; Türk bayrağı Girne'de dalgalanıyor.": "The ceasefire holds; the Turkish flag flies at Kyrenia.",
-  "Harekâta devam: Larnaka ve Limasol": "Fight on: Larnaca and Limassol",
-  "Tüm ada baskısı": "Pressure for the whole island",
-  "Ankara ateşkesi tanımadı; ilerleyiş güneye doğru sürüyor.": "Ankara ignored the ceasefire; the advance continues south.",
-  "Federasyon önerisi sun": "Propose a federation",
-  "Barış + müzakere": "Peace plus negotiation",
-  "Ankara iki toplumlu federasyon önerdi; Londra ve Washington ilgi gösterdi.": "Ankara proposed a bi-communal federation; London and Washington showed interest.",
-  "Ateşkes hattı oturdu. Kuzey Türk denetiminde; ABD ve Britanya federal çözüm istiyor, Rumlar hâlâ müzakereye yanaşmıyor.": "The ceasefire line has set. The north is under Turkish control; the US and Britain want a federal solution, the Greek side still refuses to talk.",
-  "Ateşkesi kabul et": "Accept the ceasefire",
-  "Savaşı durdur": "Stop the war",
-  "Rum yönetimi ateşkesi kabul etti; mülteci krizi başladı.": "The Greek-Cypriot administration accepted the ceasefire; the refugee crisis begins.",
-  "Direnişi sürdür": "Keep fighting",
-  "Ateşkesi reddet": "Reject the ceasefire",
-  "Lefkoşa ateşkesi reddetti; çatışmalar sürüyor.": "Nicosia rejected the ceasefire; fighting continues.",
-  "Yüz binlerce mülteci güneyde çadırlarda. Klerides Türkiye ile ateşkesi kabul etmek zorunda mı?": "Hundreds of thousands of refugees are in tents in the south. Does Clerides have to accept the ceasefire with Turkey?",
-  "Diplomatik zafer ara": "Seek a diplomatic win",
-  "BM ve AB'ye başvur": "Turn to the UN and Europe",
-  "Karamanlis Kıbrıs'ı uluslararası alana taşıdı.": "Karamanlis took Cyprus to the international stage.",
-  "Öfke: Türkiye'ye karşı cephe": "Anger: a front against Turkey",
-  "Ege'de askerî hazırlık": "Military build-up in the Aegean",
-  "Yunanistan Ege adalarını silahlandırıyor; Ankara tepkili.": "Greece is arming the Aegean islands; Ankara reacts angrily.",
-  "Atina savaşa giremedi; Kıbrıs'ta bölünme kalıcı görünüyor. Karamanlis kamuoyuna ne söyleyecek?": "Athens could not go to war; the partition of Cyprus looks permanent. What will Karamanlis tell the public?",
-  "Yeşil Hat: Ada İkiye Bölündü": "The Green Line: The Island Is Divided",
-  "Silahlar sustu. Yaklaşık 160–200 bin Rum güneye, 45 bin Türk kuzeye göç etti; BM gözetiminde Yeşil Hat adayı ikiye böldü.": "The guns fell silent. Roughly 160–200 thousand Greek Cypriots fled south and 45 thousand Turkish Cypriots moved north; the UN-patrolled Green Line cut the island in two.",
-  "Sert yanıt: üsleri kısıtla": "Hard response: restrict the bases",
-  "Amerikan üsleri askıya": "Suspend US facilities",
-  "Ankara ABD'nin üs faaliyetlerini kısıtlama kararı aldı.": "Ankara decided to restrict US base activities.",
-  "Kongre'yi diplomasiyle ikna et": "Win Congress over with diplomacy",
-  "Lobi çalışması": "Lobbying",
-  "Ankara Washington'da lobi faaliyetini artırdı.": "Ankara stepped up lobbying in Washington.",
-  "SSCB ile yakınlaş": "Move closer to the USSR",
-  "Çok yönlü dış politika": "Multi-directional foreign policy",
-  "Ankara Moskova'ya yönelik açılım sinyalleri verdi.": "Ankara signalled an opening to Moscow.",
-  "Ambargo ordunun yedek parça ve mühimmat hattını tehdit ediyor. Ankara'da ABD üslerinin kapatılması tartışılıyor.": "The embargo threatens the army's spare-parts and ammunition pipeline. Ankara debates closing US bases.",
-  "Ambargoyu uygula": "Enforce the embargo",
-  "Kongre kararı": "Congress's decision",
-  "ABD ambargoyu uyguluyor; Ankara öfkeli.": "The US enforces the embargo; Ankara is furious.",
-  "Esnetmeye çalış": "Seek flexibility",
-  "Yürütme yetkisi": "Executive latitude",
-  "Beyaz Saray ambargoyu esnetmek için yollar arıyor.": "The White House looks for ways to soften the embargo.",
-  "Kongre ambargoyu dayattı; Başkan Ford veto etti ama Meclis aştı. Türkiye'nin tepkisi sert olabilir.": "Congress forced the embargo; President Ford vetoed but was overridden. Turkey's reaction may be harsh.",
-  "Makarios yönetimini yeniden kur": "Rebuild Makarios's rule",
-  "Meşru yönetim": "The legitimate government",
-  "Makarios Lefkoşa'da coşkuyla karşılandı.": "Makarios was welcomed with enthusiasm in Nicosia.",
-  "Federasyon pazarlığı": "Bargain over a federation",
-  "Viyana görüşmeleri": "Vienna talks",
-  "Rum liderliği federasyon görüşmelerine ilk kez yeşil ışık yaktı.": "The Greek-Cypriot leadership gave the green light to federation talks for the first time.",
-  "Makarios adaya döndü ama ada artık bölünmüş. Cumhurbaşkanlığı koltuğu geri verildi.": "Makarios is back but the island is divided. The presidency was restored to him.",
-  "Makarios Döndü, Kongre Ambargo Dedi": "Makarios Returns, Congress Says Embargo",
-  "7 Aralık'ta Makarios adaya döndü. Ardından ABD Kongresi, Türkiye'ye silah yardımının kesilmesini öngören kararı kabul etti; ambargo Şubat 1975'te yürürlüğe girecek.": "On 7 December Makarios returned to the island. Then the US Congress passed a measure cutting arms aid to Turkey; the embargo takes effect in February 1975.",
-  "Federe Devleti ilan et (tarihî)": "Proclaim the Federated State (historical)",
-  "Anayasal çerçeve": "A constitutional framework",
-  "Lefkoşa'nın kuzeyinde Kıbrıs Türk Federe Devleti ilan edildi.": "The Turkish Federated State of Cyprus was proclaimed north of Nicosia.",
-  "Bekle: tek devlet çatısı": "Wait: one-state umbrella",
-  "Viyana'da federasyon": "Federation at Vienna",
-  "Denktaş federasyon görüşmeleri için zaman kazanıyor.": "Denktaş buys time for federation talks.",
-  "Kuzey fiilen ayrı bir idare. Ankara'nın desteğiyle bir federe devlet ilan etmek bölünmeyi kalıcılaştırır ama Rumlar da adanın tamamını temsil iddiasında.": "The north is effectively a separate administration. A federated state with Ankara's backing would make partition permanent, but the Greek side claims to represent the whole island.",
-  "Federe Devleti destekle": "Back the Federated State",
-  "Ankara'nın bayrağı": "Ankara's flag",
-  "Ankara Federe Devlet'in ilanını destekledi.": "Ankara backed the proclamation of the Federated State.",
-  "Frenle: federasyon çerçevesi": "Brake: a federal framework",
-  "Viyana": "Vienna",
-  "Ankara 'federal çözüm' mesajını güçlendirdi.": "Ankara strengthened its 'federal solution' message.",
-  "Kuzey Kıbrıs Federe Devleti'ni ilan etmek üzere. Ambargo yürürlükte, tepki beklenmeli.": "The north is about to proclaim a Federated State. The embargo is in force, so reaction should be expected.",
-  "Kıbrıs Türk Federe Devleti": "The Turkish Federated State of Cyprus",
-  "13 Şubat 1975: Kuzeyde Kıbrıs Türk Federe Devleti ilan edildi; başkan Rauf Denktaş. ABD'nin Türkiye'ye silah ambargosu yürürlüğe girdi.": "13 February 1975: the Turkish Federated State of Cyprus was proclaimed in the north under Rauf Denktaş. The US arms embargo on Turkey took effect.",
-  "Üsleri askıya al (tarihî)": "Suspend the bases (historical)",
-  "Kararlı mesaj": "A firm message",
-  "Ankara Amerikan üslerini askıya aldı; Moskova memnun.": "Ankara suspended US bases; Moscow is pleased.",
-  "Üsleri açık tut": "Keep the bases open",
-  "İkili ilişki": "Bilateral ties",
-  "Ankara üsleri açık tutarak Kongre'ye baskıyı sürdürdü.": "Ankara kept the bases open and kept pressure on Congress.",
-  "Üsler Amerikan elektronik istihbaratı için can damarı. Kapatmak Washington'a mesajdır ama Türkiye'yi de yalnızlaştırır.": "The bases are a lifeline for US signals intelligence. Closing them sends Washington a message but isolates Turkey too.",
-  "Ambargoyu kaldır (kısmen)": "Lift the embargo (partly)",
-  "Üsler için tavizi kabul et": "Concede for the bases",
-  "Kongre ambargoyu kısmen kaldırdı; Türkiye üslerle ilgili tutumunu yumuşattı.": "Congress partly lifted the embargo; Turkey softened its stance on the bases.",
-  "Sürdür": "Hold firm",
-  "İlkeli duruş": "A principled stand",
-  "Washington ambargoyu sürdürüyor; Ankara üslerde kararlı.": "Washington keeps the embargo; Ankara stands firm on the bases.",
-  "Üsler kapanırsa Sovyetler hakkındaki elektronik dinleme ağı ciddi hasar görür. Ambargoyu kaldırmak için Kongre'ye gidebilirsin.": "If the bases close, the electronic listening net on the Soviets is badly damaged. You can go to Congress to lift the embargo.",
-  "Türkiye ABD Üslerini Kapattı": "Turkey Closes US Bases",
-  "26 Temmuz 1975: Ambargoya karşılık Türkiye ABD'nin üs faaliyetlerini askıya aldı (İncirlik hariç). NATO'nun güney kanadı sarsıldı.": "26 July 1975: in response to the embargo Turkey suspended US facilities (except Incirlik). NATO's southern flank is shaken.",
-  "Makarios Öldü": "Makarios Died",
-  "3 Ağustos 1977: Başpiskopos Makarios kalp krizinden öldü; Rum tarafında yeni lider Spyros Kiprianu. Ada hâlâ bölünmüş.": "3 August 1977: Archbishop Makarios died of a heart attack; Spyros Kyprianou is the new leader on the Greek side. The island remains divided."
- }
+"moments": [
+{
+"id": "cy74_darbe",
+"y": 1974,
+"m": 7,
+"title": "Ayşe Tatile Çıkıyor",
+"scene": "pre_landing",
+"icon": "landing",
+"text": "15 Temmuz 1974: Atina cuntasının desteklediği Millî Muhafız Ordusu Makarios'u devirdi; Nikos Sampson 'cumhurbaşkanı' ilan edildi. Ada Yunanistan'la birleşmenin (Enosis) eşiğinde. Zürih-Londra anlaşmalarının garantörleri Türkiye, İngiltere ve Yunanistan.",
+"major": true,
+"default_fx": [
+[
+"war",
+"Turkey",
+"Cyprus",
+"solo"
+],
+[
+"war",
+"N. Cyprus",
+"Cyprus",
+"solo"
+],
+[
+"troops",
+"N. Cyprus",
+300
+],
+[
+"rel",
+"Turkey",
+"United States of America",
+-15
+],
+[
+"rel",
+"Turkey",
+"Greece",
+-20
+],
+[
+"stab",
+"Cyprus",
+-10
+],
+[
+"stab",
+"Greece",
+-4
+],
+[
+"flag",
+"cy74_landing"
+]
+],
+"roles": {
+"Turkey": {
+"text": "Ecevit Londra'dan eli boş döndü: İngiltere ortak müdahaleyi reddetti. Garantörlük hakkın Zürih ve Londra anlaşmalarından geliyor. Ordu Mersin'de hazır, donanma limanda; Genelkurmay 'Ayşe' kod adlı çıkarma planını masaya koydu.",
+"options": [
+{
+"t": "Ayşe tatile çıksın (tarihî)",
+"d": "Girne'ye çıkarma; Kıbrıs'la savaş",
+"fx": [
+[
+"war",
+"Turkey",
+"Cyprus",
+"solo"
+],
+[
+"war",
+"N. Cyprus",
+"Cyprus",
+"solo"
+],
+[
+"troops",
+"N. Cyprus",
+120
+],
+[
+"buff",
+"Turkey",
+"att",
+1.3,
+10
+],
+[
+"xstab",
+"Turkey",
+10
+],
+[
+"rel",
+"Turkey",
+"United States of America",
+-20
+],
+[
+"rel",
+"Turkey",
+"Greece",
+-25
+],
+[
+"rel",
+"Turkey",
+"United Kingdom",
+-5
+],
+[
+"stab",
+"Cyprus",
+-10
+],
+[
+"flag",
+"cy74_landing"
+]
+],
+"r": "20 Temmuz sabahı Türk birlikleri Girne açıklarında; Kıbrıs Barış Harekâtı başladı."
+},
+{
+"t": "Son bir diplomasi turu",
+"d": "Cenevre görüşmeleri; savaş ilanı yok",
+"fx": [
+[
+"rel",
+"Turkey",
+"United Kingdom",
+15
+],
+[
+"rel",
+"Turkey",
+"Greece",
+-10
+],
+[
+"xstab",
+"Turkey",
+-2
+],
+[
+"flag",
+"cy74_diplo"
+]
+],
+"r": "Ankara Londra ve Washington'ın arabuluculuğunu bekliyor; adada çatışmalar sürüyor."
+},
+{
+"t": "Bekle",
+"d": "Darbe kendiliğinden çökene kadar",
+"fx": [
+[
+"xstab",
+"Turkey",
+-8
+],
+[
+"stab",
+"Cyprus",
+-8
+],
+[
+"flag",
+"cy74_diplo"
+]
+],
+"r": "Ankara bekledi; adada Türk köylerine yönelik saldırı haberleri ülkede öfke yarattı."
+}
+]
+},
+"Greece": {
+"text": "Cunta darbeyi kendi eliyle yaptı; Türk çıkarması kapıda ve Yunan ordusu Türkiye ile savaşa hazır değil. Cunta lideri İoannidis'in ayakta kalma şansı azalıyor.",
+"options": [
+{
+"t": "Cunta düşsün, Karamanlis dönsün",
+"d": "Demokrasiye dönüş",
+"fx": [
+[
+"xstab",
+"Greece",
+15
+],
+[
+"peace",
+"Greece",
+"Turkey"
+],
+[
+"rel",
+"Greece",
+"United States of America",
+10
+],
+[
+"flag",
+"cy74_karamanlis"
+]
+],
+"r": "Cunta çöktü; Karamanlis Paris'ten Atina'ya döndü.",
+"keep_default": true
+},
+{
+"t": "Seferberlik ve Ege'de savaş",
+"d": "Türkiye'ye savaş ilan et",
+"fx": [
+[
+"war",
+"Greece",
+"Turkey"
+],
+[
+"mob",
+"Greece",
+8
+],
+[
+"buff",
+"Greece",
+"def",
+1.1,
+13
+],
+[
+"xstab",
+"Greece",
+-10
+]
+],
+"r": "Yunanistan seferberlik ilan etti; Ege'de savaş rüzgârı esiyor.",
+"keep_default": true
+},
+{
+"t": "Kıbrıs'a takviye gönder",
+"d": "Enosis'te ısrar",
+"fx": [
+[
+"troops",
+"Cyprus",
+30
+],
+[
+"rel",
+"Greece",
+"Turkey",
+-20
+],
+[
+"xstab",
+"Greece",
+-3
+]
+],
+"r": "Atina adaya gizlice takviye gönderiyor; Ankara'da gerilim tırmanıyor.",
+"keep_default": true
+}
+]
+},
+"Cyprus": {
+"text": "Millî Muhafız Ordusu iktidarı aldı ama Makarios yaşıyor ve Londra'da. Türk çıkarması her an gelebilir; Türk Kıbrıslılar kuzey ve Lefkoşa'daki mahallelerde tehdit altında.",
+"options": [
+{
+"t": "Savunmayı örgütle",
+"d": "Girne-Lefkoşa hattı",
+"fx": [
+[
+"troops",
+"Cyprus",
+40
+],
+[
+"buff",
+"Cyprus",
+"def",
+1.2,
+10
+],
+[
+"xstab",
+"Cyprus",
+-3
+]
+],
+"r": "Millî Muhafız birlikleri Girne dağlarında mevzilendi.",
+"keep_default": true
+},
+{
+"t": "BM Güvenlik Konseyi'ne başvur",
+"d": "Uluslararası baskı çağır",
+"fx": [
+[
+"rel",
+"Cyprus",
+"United States of America",
+10
+],
+[
+"rel",
+"Cyprus",
+"Russia",
+10
+],
+[
+"stab",
+"Cyprus",
+-3
+]
+],
+"r": "Güvenlik Konseyi olağanüstü toplandı; Moskova ve Washington adanın birliğinden yana.",
+"keep_default": true
+},
+{
+"t": "Türk Kıbrıslılarla uzlaş",
+"d": "Gerilimi düşür",
+"fx": [
+[
+"stab",
+"Cyprus",
+5
+],
+[
+"rel",
+"Cyprus",
+"N. Cyprus",
+20
+],
+[
+"rel",
+"Cyprus",
+"Turkey",
+8
+]
+],
+"r": "Lefkoşa'da Türk mahallelerine güvence verildi; gerilim bir an düştü.",
+"keep_default": true
+}
+]
+},
+"United Kingdom": {
+"text": "Garantör sensin ama Wilson hükümeti ortak müdahaleyi reddetti; Akrotiri ve Dhekelia'daki Egemen Üsler'in güvenliği öncelik. Washington Londra'dan arabuluculuk bekliyor.",
+"options": [
+{
+"t": "Cenevre'de arabuluculuk",
+"d": "Üç garantör konferansı",
+"fx": [
+[
+"rel",
+"United Kingdom",
+"Turkey",
+5
+],
+[
+"rel",
+"United Kingdom",
+"Greece",
+5
+],
+[
+"xstab",
+"United Kingdom",
+2
+]
+],
+"r": "Dışişleri Bakanı Callaghan Cenevre'de üç garantörü bir araya getirmeye çalışıyor.",
+"keep_default": true
+},
+{
+"t": "Türkiye ile ortak müdahale",
+"d": "Garantörlüğü kullan",
+"fx": [
+[
+"ally",
+"United Kingdom",
+"Turkey"
+],
+[
+"war",
+"United Kingdom",
+"Cyprus",
+"solo"
+],
+[
+"xstab",
+"United Kingdom",
+-4
+],
+[
+"rel",
+"United Kingdom",
+"Greece",
+-20
+]
+],
+"r": "Londra ve Ankara ortak müdahale kararı aldı; NATO şokta.",
+"keep_default": true
+},
+{
+"t": "Egemen Üslere çekil",
+"d": "Tarafsız kal",
+"fx": [
+[
+"xstab",
+"United Kingdom",
+1
+],
+[
+"rel",
+"United Kingdom",
+"Turkey",
+-5
+]
+],
+"r": "İngiliz birlikleri üslere çekildi; Ankara'da Londra'ya tepki büyüyor.",
+"keep_default": true
+}
+]
+},
+"United States of America": {
+"text": "Kissinger: NATO'nun iki üyesi savaşın eşiğinde, Soğuk Savaş'ın güney kanadı çöküyor. Watergate yüzünden Beyaz Saray zayıf; Kongre Türkiye'ye silah ambargosu için hazırlanıyor.",
+"options": [
+{
+"t": "Türkiye'ye baskı: ambargo tehdidi",
+"d": "Silah yardımını kes",
+"fx": [
+[
+"rel",
+"United States of America",
+"Turkey",
+-25
+],
+[
+"rel",
+"United States of America",
+"Greece",
+10
+],
+[
+"xstab",
+"United States of America",
+1
+]
+],
+"r": "Washington Ankara'ya silah yardımını keseceğini bildirdi.",
+"keep_default": true
+},
+{
+"t": "Sessiz diplomasi",
+"d": "Arabuluculuğu İngiltere'ye bırak",
+"fx": [
+[
+"rel",
+"United States of America",
+"United Kingdom",
+5
+],
+[
+"rel",
+"United States of America",
+"Turkey",
+3
+]
+],
+"r": "Kissinger telefon diplomasisiyle iki başkent arasında mekik dokuyor.",
+"keep_default": true
+},
+{
+"t": "Cuntaya destek: Enosis'e göz yum",
+"d": "Güney kanadı sabitle",
+"fx": [
+[
+"rel",
+"United States of America",
+"Greece",
+15
+],
+[
+"rel",
+"United States of America",
+"Turkey",
+-20
+],
+[
+"stab",
+"Greece",
+4
+]
+],
+"r": "Washington Atina cuntasına dokunmadı; Ankara'da Amerikan karşıtlığı yükseliyor.",
+"keep_default": true
+}
+]
+},
+"Russia": {
+"text": "Moskova adanın bağlantısız kalmasından yana; NATO'nun Doğu Akdeniz'e yerleşmesinden çekiniyor. Makarios'un Sovyet dostluğu eski bir dosya.",
+"options": [
+{
+"t": "Makarios'u destekle",
+"d": "BM'de bağımsızlık savunusu",
+"fx": [
+[
+"rel",
+"Russia",
+"Cyprus",
+25
+],
+[
+"rel",
+"Russia",
+"Turkey",
+-5
+],
+[
+"rel",
+"Russia",
+"Greece",
+-5
+]
+],
+"r": "Moskova Kıbrıs'ın bağımsızlığını savunan sert bir bildiri yayımladı.",
+"keep_default": true
+},
+{
+"t": "Türkiye ile yakınlaş",
+"d": "Ankara'yı Washington'dan uzaklaştır",
+"fx": [
+[
+"rel",
+"Russia",
+"Turkey",
+20
+],
+[
+"rel",
+"Russia",
+"United States of America",
+-3
+]
+],
+"r": "Kremlin Ankara'ya ekonomik işbirliği teklif etti.",
+"keep_default": true
+},
+{
+"t": "İzle",
+"d": "Müdahale etme",
+"fx": [
+[
+"xstab",
+"Russia",
+1
+]
+],
+"r": "Moskova gelişmeleri uzaktan izliyor.",
+"keep_default": true
+}
+]
+}
+}
+},
+{
+"id": "cy74_gec",
+"y": 1974,
+"m": 8,
+"title": "Sabır Tükendi",
+"scene": "pre_landing",
+"icon": "landing",
+"text": "Diplomasi sonuç vermedi; adada Türk mahallelerine baskılar sürüyor. Ankara'da 'şimdi ya da hiç' sesleri yükseldi.",
+"major": true,
+"default_fx": [
+[
+"war",
+"Turkey",
+"Cyprus",
+"solo"
+],
+[
+"war",
+"N. Cyprus",
+"Cyprus",
+"solo"
+],
+[
+"troops",
+"N. Cyprus",
+300
+],
+[
+"rel",
+"Turkey",
+"United States of America",
+-10
+],
+[
+"stab",
+"Cyprus",
+-8
+],
+[
+"flag",
+"cy74_landing"
+]
+],
+"roles": {
+"Turkey": {
+"text": "Müzakere yolu kapanıyor. Ordunun hazırlığı sürüyor; ama ABD ve Britanya baskısı da artıyor.",
+"options": [
+{
+"t": "Şimdi çıkarma",
+"d": "Girne'ye çıkarma",
+"fx": [
+[
+"war",
+"Turkey",
+"Cyprus",
+"solo"
+],
+[
+"war",
+"N. Cyprus",
+"Cyprus",
+"solo"
+],
+[
+"troops",
+"N. Cyprus",
+120
+],
+[
+"buff",
+"Turkey",
+"att",
+1.3,
+10
+],
+[
+"xstab",
+"Turkey",
+10
+],
+[
+"rel",
+"Turkey",
+"United States of America",
+-20
+],
+[
+"rel",
+"Turkey",
+"Greece",
+-25
+],
+[
+"rel",
+"Turkey",
+"United Kingdom",
+-5
+],
+[
+"stab",
+"Cyprus",
+-10
+],
+[
+"flag",
+"cy74_landing"
+]
+],
+"r": "Türk birlikleri geç kalmış bir çıkarmayla Girne'de karaya çıktı."
+},
+{
+"t": "Müzakereye devam",
+"d": "Çıkarma yok",
+"fx": [
+[
+"xstab",
+"Turkey",
+-5
+],
+[
+"rel",
+"Turkey",
+"United States of America",
+5
+]
+],
+"r": "Ankara müzakere masasında kalıyor; kamuoyunda hoşnutsuzluk büyüyor."
+}
+]
+}
+},
+"requires": [
+"cy74_diplo"
+],
+"forbid": [
+"cy74_landing"
+]
+},
+{
+"id": "cy74_cenevre",
+"y": 1974,
+"m": 8,
+"title": "Cenevre Çöktü: İkinci Harekât",
+"scene": "pre_landing",
+"icon": "landing",
+"text": "Cenevre'de iki turlu görüşme çöktü. Türk birlikleri kıyı şeridinde tutunmuş, Türkiye ikinci aşamaya hazır. Yunanistan'da Karamanlis hükümeti NATO'nun askerî kanadından çekilmeyi tartışıyor.",
+"major": true,
+"default_fx": [
+[
+"buff",
+"Turkey",
+"att",
+1.25,
+6
+],
+[
+"troops",
+"N. Cyprus",
+80
+],
+[
+"rel",
+"Greece",
+"United States of America",
+-15
+],
+[
+"stab",
+"Greece",
+8
+],
+[
+"stab",
+"Cyprus",
+-8
+],
+[
+"rel",
+"Turkey",
+"Greece",
+-10
+],
+[
+"flag",
+"cy74_phase2"
+]
+],
+"roles": {
+"Turkey": {
+"text": "Cenevre'de federasyon önerin reddedildi; Rum yönetimi Türk bölgesinde kalan kasabalarda baskıyı artırdı. Ordu ikinci aşama için emir bekliyor.",
+"options": [
+{
+"t": "İkinci harekât: Gazimağusa'ya kadar",
+"d": "Adanın yaklaşık %36'sı",
+"fx": [
+[
+"buff",
+"Turkey",
+"att",
+1.25,
+6
+],
+[
+"xstab",
+"Turkey",
+5
+],
+[
+"rel",
+"Turkey",
+"United States of America",
+-10
+],
+[
+"rel",
+"Turkey",
+"United Kingdom",
+-5
+],
+[
+"rel",
+"Turkey",
+"Greece",
+-10
+],
+[
+"flag",
+"cy74_phase2"
+]
+],
+"r": "14 Ağustos: ikinci harekât başladı; Türk birlikleri Gazimağusa'ya doğru ilerliyor."
+},
+{
+"t": "Mevzileri koru, Cenevre'ye dön",
+"d": "Diplomatik yol",
+"fx": [
+[
+"rel",
+"Turkey",
+"United States of America",
+10
+],
+[
+"rel",
+"Turkey",
+"United Kingdom",
+5
+],
+[
+"xstab",
+"Turkey",
+-3
+]
+],
+"r": "Ankara ikinci harekâtı erteledi; Kissinger rahat bir nefes aldı."
+}
+]
+},
+"Greece": {
+"text": "Karamanlis hükümeti Türkiye ile savaşı kaldıramaz; ama kamuoyu NATO'dan hıncını çıkarmak istiyor.",
+"options": [
+{
+"t": "NATO'nun askerî kanadından çekil",
+"d": "Yunan kamuoyunun talebi",
+"fx": [
+[
+"rel",
+"Greece",
+"United States of America",
+-20
+],
+[
+"xstab",
+"Greece",
+10
+],
+[
+"rel",
+"Greece",
+"Turkey",
+-5
+],
+[
+"flag",
+"cy74_nato_exit"
+]
+],
+"r": "Atina NATO'nun askerî kanadından çekildi; Washington Yunan lobisiyle karşı karşıya.",
+"keep_default": true
+},
+{
+"t": "NATO'da kal, diplomasiye yüklen",
+"d": "Batı ile bağı koru",
+"fx": [
+[
+"rel",
+"Greece",
+"United States of America",
+10
+],
+[
+"xstab",
+"Greece",
+-5
+]
+],
+"r": "Karamanlis sakin kalmayı seçti; muhalefet sokakları doldurdu.",
+"keep_default": true
+}
+]
+},
+"Cyprus": {
+"text": "Türk birlikleri kuzeyde yerleşti; Klerides Cenevre'de pazarlıkta. Ordunun morali düşük.",
+"options": [
+{
+"t": "Müzakereyi sürdür",
+"d": "Ateşkes için baskı",
+"fx": [
+[
+"stab",
+"Cyprus",
+3
+],
+[
+"rel",
+"Cyprus",
+"United States of America",
+8
+]
+],
+"r": "Klerides Cenevre'de ateşkes için uğraşıyor.",
+"keep_default": true
+},
+{
+"t": "Direniş: yeni cephe hattı",
+"d": "Lefkoşa'yı savun",
+"fx": [
+[
+"buff",
+"Cyprus",
+"def",
+1.2,
+8
+],
+[
+"troops",
+"Cyprus",
+25
+],
+[
+"stab",
+"Cyprus",
+-4
+]
+],
+"r": "Millî Muhafız Lefkoşa çevresinde yeni hatlar kurdu.",
+"keep_default": true
+}
+]
+},
+"United States of America": {
+"text": "Kongre, Türkiye'ye silah ambargosu için oy hazırlığında. Dışişleri Bakanlığı iki NATO müttefiki arasında köprü arıyor.",
+"options": [
+{
+"t": "Ambargoyu destekle",
+"d": "Kongre ile hareket et",
+"fx": [
+[
+"rel",
+"United States of America",
+"Turkey",
+-20
+],
+[
+"rel",
+"United States of America",
+"Greece",
+10
+]
+],
+"r": "Beyaz Saray Kongre'nin ambargo girişimine karşı koymadı.",
+"keep_default": true
+},
+{
+"t": "Ambargoyu engelle",
+"d": "NATO bütünlüğü",
+"fx": [
+[
+"rel",
+"United States of America",
+"Turkey",
+12
+],
+[
+"rel",
+"United States of America",
+"Greece",
+-8
+],
+[
+"xstab",
+"United States of America",
+-2
+]
+],
+"r": "Ford yönetimi ambargoyu engellemek için Kongre'ye ricada bulundu.",
+"keep_default": true
+}
+]
+}
+},
+"requires": [
+"cy74_landing"
+]
+},
+{
+"id": "cy74_ateskes",
+"y": 1974,
+"m": 9,
+"title": "Yeşil Hat: Ada İkiye Bölündü",
+"scene": "pre_landing",
+"icon": "landing",
+"text": "Silahlar sustu. Yaklaşık 160–200 bin Rum güneye, 45 bin Türk kuzeye göç etti; BM gözetiminde Yeşil Hat adayı ikiye böldü.",
+"major": true,
+"default_fx": [
+[
+"peace",
+"Turkey",
+"Cyprus"
+],
+[
+"peace",
+"N. Cyprus",
+"Cyprus"
+],
+[
+"stab",
+"Cyprus",
+-15
+],
+[
+"flag",
+"cy74_ceasefire"
+]
+],
+"roles": {
+"Turkey": {
+"text": "Ateşkes hattı oturdu. Kuzey Türk denetiminde; ABD ve Britanya federal çözüm istiyor, Rumlar hâlâ müzakereye yanaşmıyor.",
+"options": [
+{
+"t": "Ateşkesi kabul et, kazanımı koru",
+"d": "Barış",
+"fx": [
+[
+"peace",
+"Turkey",
+"Cyprus"
+],
+[
+"peace",
+"N. Cyprus",
+"Cyprus"
+],
+[
+"xstab",
+"Turkey",
+5
+],
+[
+"flag",
+"cy74_ceasefire"
+]
+],
+"r": "Kıbrıs'ta ateşkes yürürlükte; Türk bayrağı Girne'de dalgalanıyor."
+},
+{
+"t": "Harekâta devam: Larnaka ve Limasol",
+"d": "Tüm ada baskısı",
+"fx": [
+[
+"buff",
+"Turkey",
+"att",
+1.2,
+8
+],
+[
+"rel",
+"Turkey",
+"United States of America",
+-15
+],
+[
+"rel",
+"Turkey",
+"United Kingdom",
+-10
+],
+[
+"xstab",
+"Turkey",
+-3
+],
+[
+"stab",
+"Cyprus",
+-10
+]
+],
+"r": "Ankara ateşkesi tanımadı; ilerleyiş güneye doğru sürüyor."
+},
+{
+"t": "Federasyon önerisi sun",
+"d": "Barış + müzakere",
+"fx": [
+[
+"peace",
+"Turkey",
+"Cyprus"
+],
+[
+"peace",
+"N. Cyprus",
+"Cyprus"
+],
+[
+"rel",
+"Turkey",
+"United Kingdom",
+10
+],
+[
+"rel",
+"Turkey",
+"United States of America",
+10
+],
+[
+"flag",
+"cy74_ceasefire"
+]
+],
+"r": "Ankara iki toplumlu federasyon önerdi; Londra ve Washington ilgi gösterdi."
+}
+]
+},
+"Cyprus": {
+"text": "Yüz binlerce mülteci güneyde çadırlarda. Klerides Türkiye ile ateşkesi kabul etmek zorunda mı?",
+"options": [
+{
+"t": "Ateşkesi kabul et",
+"d": "Savaşı durdur",
+"fx": [
+[
+"peace",
+"Cyprus",
+"Turkey"
+],
+[
+"peace",
+"Cyprus",
+"N. Cyprus"
+],
+[
+"stab",
+"Cyprus",
+-8
+],
+[
+"flag",
+"cy74_ceasefire"
+]
+],
+"r": "Rum yönetimi ateşkesi kabul etti; mülteci krizi başladı.",
+"keep_default": true
+},
+{
+"t": "Direnişi sürdür",
+"d": "Ateşkesi reddet",
+"fx": [
+[
+"buff",
+"Cyprus",
+"def",
+1.2,
+8
+],
+[
+"stab",
+"Cyprus",
+-5
+]
+],
+"r": "Lefkoşa ateşkesi reddetti; çatışmalar sürüyor."
+}
+]
+},
+"Greece": {
+"text": "Atina savaşa giremedi; Kıbrıs'ta bölünme kalıcı görünüyor. Karamanlis kamuoyuna ne söyleyecek?",
+"options": [
+{
+"t": "Diplomatik zafer ara",
+"d": "BM ve AB'ye başvur",
+"fx": [
+[
+"xstab",
+"Greece",
+3
+],
+[
+"rel",
+"Greece",
+"United Kingdom",
+5
+]
+],
+"r": "Karamanlis Kıbrıs'ı uluslararası alana taşıdı.",
+"keep_default": true
+},
+{
+"t": "Öfke: Türkiye'ye karşı cephe",
+"d": "Ege'de askerî hazırlık",
+"fx": [
+[
+"rel",
+"Greece",
+"Turkey",
+-15
+],
+[
+"troops",
+"Greece",
+15
+],
+[
+"xstab",
+"Greece",
+-3
+]
+],
+"r": "Yunanistan Ege adalarını silahlandırıyor; Ankara tepkili.",
+"keep_default": true
+}
+]
+}
+},
+"requires": [
+"cy74_landing"
+],
+"forbid": [
+"cy74_ceasefire"
+]
+},
+{
+"id": "cy74_secim",
+"y": 1974,
+"m": 11,
+"title": "Yunanistan'da Seçim ve Karamanlis",
+"scene": "peace",
+"icon": "treaty",
+"text": "Cunta çöktükten sonra Konstantinos Karamanlis Paris'ten dönüp sivil hükûmeti kurdu. Seçimler yapılıyor; Atina NATO askerî kanadından ayrılmayı düşünüyor. Kıbrıs konusunda Türkiye ile gerginlik sürüyor.",
+"major": true,
+"default_fx": [
+[
+"stab",
+"Greece",
+6
+],
+[
+"rel",
+"Greece",
+"United States of America",
+-6
+]
+],
+"roles": {
+"Greece": {
+"text": "Demokrasi geri döndü; halk ABD ve NATO'ya kızgın. Askerî kanattan çıkmak mı?",
+"options": [
+{
+"t": "NATO askerî kanadından çık (tarihî)",
+"d": "Siyasi öfkeyi yansıt",
+"fx": [
+[
+"rel",
+"Greece",
+"United States of America",
+-6
+],
+[
+"stab",
+"Greece",
+4
+]
+],
+"r": "Yunanistan NATO askerî komutasından çekildi."
+},
+{
+"t": "İttifakta kal, Türkiye'yle görüş",
+"d": "Dengeli yol",
+"fx": [
+[
+"rel",
+"Greece",
+"Turkey",
+4
+],
+[
+"stab",
+"Greece",
+-1
+]
+],
+"r": "Atina NATO'da kalıp Ankara'ya diyalog önerdi."
+}
+]
+},
+"Turkey": {
+"text": "Atina'da sivil yönetim kurulunca ilişkiler yeni bir sayfa açabilir; ama adadaki Türk bölgesi sorunu sürüyor.",
+"options": [
+{
+"t": "Yumuşama sinyali ver (tarihî)",
+"d": "Müzakere zemini",
+"fx": [
+[
+"rel",
+"Turkey",
+"Greece",
+4
+],
+[
+"stab",
+"Turkey",
+1
+]
+],
+"r": "Ankara Atina'yla temas kurdu."
+},
+{
+"t": "Sert duruş koru",
+"d": "Elde edileni koru",
+"fx": [
+[
+"rel",
+"Turkey",
+"Greece",
+-3
+],
+[
+"rel",
+"Turkey",
+"United States of America",
+-2
+]
+],
+"r": "Türkiye Kıbrıs'taki kazanımlarını savundu."
+}
+]
+}
+}
+},
+{
+"id": "cy74_makarios",
+"y": 1974,
+"m": 12,
+"title": "Makarios Döndü, Kongre Ambargo Dedi",
+"scene": "pre_landing",
+"icon": "landing",
+"text": "7 Aralık'ta Makarios adaya döndü. Ardından ABD Kongresi, Türkiye'ye silah yardımının kesilmesini öngören kararı kabul etti; ambargo Şubat 1975'te yürürlüğe girecek.",
+"major": true,
+"default_fx": [
+[
+"rel",
+"Turkey",
+"United States of America",
+-20
+],
+[
+"stab",
+"Cyprus",
+8
+],
+[
+"rel",
+"Cyprus",
+"Turkey",
+-5
+]
+],
+"roles": {
+"Turkey": {
+"text": "Ambargo ordunun yedek parça ve mühimmat hattını tehdit ediyor. Ankara'da ABD üslerinin kapatılması tartışılıyor.",
+"options": [
+{
+"t": "Sert yanıt: üsleri kısıtla",
+"d": "Amerikan üsleri askıya",
+"fx": [
+[
+"rel",
+"Turkey",
+"United States of America",
+-25
+],
+[
+"xstab",
+"Turkey",
+5
+],
+[
+"rel",
+"Turkey",
+"Russia",
+10
+],
+[
+"flag",
+"cy74_us_bases"
+]
+],
+"r": "Ankara ABD'nin üs faaliyetlerini kısıtlama kararı aldı."
+},
+{
+"t": "Kongre'yi diplomasiyle ikna et",
+"d": "Lobi çalışması",
+"fx": [
+[
+"rel",
+"Turkey",
+"United States of America",
+5
+],
+[
+"xstab",
+"Turkey",
+-2
+]
+],
+"r": "Ankara Washington'da lobi faaliyetini artırdı."
+},
+{
+"t": "SSCB ile yakınlaş",
+"d": "Çok yönlü dış politika",
+"fx": [
+[
+"rel",
+"Turkey",
+"Russia",
+25
+],
+[
+"rel",
+"Turkey",
+"United States of America",
+-15
+]
+],
+"r": "Ankara Moskova'ya yönelik açılım sinyalleri verdi."
+}
+]
+},
+"United States of America": {
+"text": "Kongre ambargoyu dayattı; Başkan Ford veto etti ama Meclis aştı. Türkiye'nin tepkisi sert olabilir.",
+"options": [
+{
+"t": "Ambargoyu uygula",
+"d": "Kongre kararı",
+"fx": [
+[
+"rel",
+"United States of America",
+"Turkey",
+-15
+],
+[
+"rel",
+"United States of America",
+"Greece",
+8
+]
+],
+"r": "ABD ambargoyu uyguluyor; Ankara öfkeli.",
+"keep_default": true
+},
+{
+"t": "Esnetmeye çalış",
+"d": "Yürütme yetkisi",
+"fx": [
+[
+"rel",
+"United States of America",
+"Turkey",
+8
+],
+[
+"xstab",
+"United States of America",
+-2
+]
+],
+"r": "Beyaz Saray ambargoyu esnetmek için yollar arıyor.",
+"keep_default": true
+}
+]
+},
+"Cyprus": {
+"text": "Makarios adaya döndü ama ada artık bölünmüş. Cumhurbaşkanlığı koltuğu geri verildi.",
+"options": [
+{
+"t": "Makarios yönetimini yeniden kur",
+"d": "Meşru yönetim",
+"fx": [
+[
+"xstab",
+"Cyprus",
+8
+],
+[
+"rel",
+"Cyprus",
+"Greece",
+10
+]
+],
+"r": "Makarios Lefkoşa'da coşkuyla karşılandı.",
+"keep_default": true
+},
+{
+"t": "Federasyon pazarlığı",
+"d": "Viyana görüşmeleri",
+"fx": [
+[
+"rel",
+"Cyprus",
+"Turkey",
+8
+],
+[
+"rel",
+"Cyprus",
+"N. Cyprus",
+10
+],
+[
+"xstab",
+"Cyprus",
+-2
+]
+],
+"r": "Rum liderliği federasyon görüşmelerine ilk kez yeşil ışık yaktı.",
+"keep_default": true
+}
+]
+}
+},
+"requires": [
+"cy74_landing"
+]
+},
+{
+"id": "cy74_federe",
+"y": 1975,
+"m": 2,
+"title": "Kıbrıs Türk Federe Devleti",
+"scene": "pre_landing",
+"icon": "landing",
+"text": "13 Şubat 1975: Kuzeyde Kıbrıs Türk Federe Devleti ilan edildi; başkan Rauf Denktaş. ABD'nin Türkiye'ye silah ambargosu yürürlüğe girdi.",
+"major": true,
+"default_fx": [
+[
+"rel",
+"N. Cyprus",
+"Cyprus",
+-15
+],
+[
+"stab",
+"Cyprus",
+-4
+]
+],
+"roles": {
+"N. Cyprus": {
+"text": "Kuzey fiilen ayrı bir idare. Ankara'nın desteğiyle bir federe devlet ilan etmek bölünmeyi kalıcılaştırır ama Rumlar da adanın tamamını temsil iddiasında.",
+"options": [
+{
+"t": "Federe Devleti ilan et (tarihî)",
+"d": "Anayasal çerçeve",
+"fx": [
+[
+"xstab",
+"N. Cyprus",
+8
+],
+[
+"rel",
+"N. Cyprus",
+"Turkey",
+15
+],
+[
+"rel",
+"N. Cyprus",
+"Cyprus",
+-15
+]
+],
+"r": "Lefkoşa'nın kuzeyinde Kıbrıs Türk Federe Devleti ilan edildi.",
+"keep_default": true
+},
+{
+"t": "Bekle: tek devlet çatısı",
+"d": "Viyana'da federasyon",
+"fx": [
+[
+"rel",
+"N. Cyprus",
+"Cyprus",
+5
+],
+[
+"xstab",
+"N. Cyprus",
+-3
+]
+],
+"r": "Denktaş federasyon görüşmeleri için zaman kazanıyor.",
+"keep_default": true
+}
+]
+},
+"Turkey": {
+"text": "Kuzey Kıbrıs Federe Devleti'ni ilan etmek üzere. Ambargo yürürlükte, tepki beklenmeli.",
+"options": [
+{
+"t": "Federe Devleti destekle",
+"d": "Ankara'nın bayrağı",
+"fx": [
+[
+"rel",
+"Turkey",
+"N. Cyprus",
+15
+],
+[
+"rel",
+"Turkey",
+"Cyprus",
+-10
+],
+[
+"xstab",
+"Turkey",
+3
+]
+],
+"r": "Ankara Federe Devlet'in ilanını destekledi."
+},
+{
+"t": "Frenle: federasyon çerçevesi",
+"d": "Viyana",
+"fx": [
+[
+"rel",
+"Turkey",
+"United Kingdom",
+5
+],
+[
+"rel",
+"Turkey",
+"United States of America",
+5
+]
+],
+"r": "Ankara 'federal çözüm' mesajını güçlendirdi."
+}
+]
+}
+},
+"requires": [
+"cy74_landing"
+]
+},
+{
+"id": "cy74_uslerin",
+"y": 1975,
+"m": 7,
+"title": "Türkiye ABD Üslerini Kapattı",
+"scene": "pre_landing",
+"icon": "landing",
+"text": "26 Temmuz 1975: Ambargoya karşılık Türkiye ABD'nin üs faaliyetlerini askıya aldı (İncirlik hariç). NATO'nun güney kanadı sarsıldı.",
+"major": false,
+"default_fx": [
+[
+"rel",
+"Turkey",
+"United States of America",
+-15
+],
+[
+"xstab",
+"Turkey",
+3
+]
+],
+"roles": {
+"Turkey": {
+"text": "Üsler Amerikan elektronik istihbaratı için can damarı. Kapatmak Washington'a mesajdır ama Türkiye'yi de yalnızlaştırır.",
+"options": [
+{
+"t": "Üsleri askıya al (tarihî)",
+"d": "Kararlı mesaj",
+"fx": [
+[
+"rel",
+"Turkey",
+"United States of America",
+-20
+],
+[
+"xstab",
+"Turkey",
+4
+],
+[
+"rel",
+"Turkey",
+"Russia",
+8
+]
+],
+"r": "Ankara Amerikan üslerini askıya aldı; Moskova memnun."
+},
+{
+"t": "Üsleri açık tut",
+"d": "İkili ilişki",
+"fx": [
+[
+"rel",
+"Turkey",
+"United States of America",
+8
+],
+[
+"xstab",
+"Turkey",
+-3
+]
+],
+"r": "Ankara üsleri açık tutarak Kongre'ye baskıyı sürdürdü."
+}
+]
+},
+"United States of America": {
+"text": "Üsler kapanırsa Sovyetler hakkındaki elektronik dinleme ağı ciddi hasar görür. Ambargoyu kaldırmak için Kongre'ye gidebilirsin.",
+"options": [
+{
+"t": "Ambargoyu kaldır (kısmen)",
+"d": "Üsler için tavizi kabul et",
+"fx": [
+[
+"rel",
+"United States of America",
+"Turkey",
+25
+],
+[
+"xstab",
+"United States of America",
+-2
+],
+[
+"rel",
+"United States of America",
+"Greece",
+-8
+]
+],
+"r": "Kongre ambargoyu kısmen kaldırdı; Türkiye üslerle ilgili tutumunu yumuşattı.",
+"keep_default": true
+},
+{
+"t": "Sürdür",
+"d": "İlkeli duruş",
+"fx": [
+[
+"rel",
+"United States of America",
+"Turkey",
+-10
+],
+[
+"rel",
+"United States of America",
+"Greece",
+5
+]
+],
+"r": "Washington ambargoyu sürdürüyor; Ankara üslerde kararlı.",
+"keep_default": true
+}
+]
+}
+},
+"requires": [
+"cy74_landing"
+]
+},
+{
+"id": "cy74_helsinki",
+"y": 1975,
+"m": 8,
+"title": "Helsinki Nihai Senedi",
+"scene": "peace",
+"icon": "treaty",
+"text": "Avrupa'da Güvenlik ve İşbirliği Konferansı sona erdi: sınırların dokunulmazlığı, insan hakları ve işbirliği ilkeleri imzalandı. Kıbrıs'ta ise fiilî bölünme devam ediyor; ABD'nin Türkiye'ye silah ambargosu ilişkileri sarsıyor.",
+"major": false,
+"default_fx": [
+[
+"rel",
+"United States of America",
+"Russia",
+3
+],
+[
+"rel",
+"Turkey",
+"United States of America",
+-4
+]
+],
+"roles": {
+"Turkey": {
+"text": "Ambargo askerî donanımı vuruyor; Moskova bir alternatif sunuyor.",
+"options": [
+{
+"t": "ABD'yle yeniden pazarlık yap (tarihî)",
+"d": "Ambargoyu kaldırtmaya çalış",
+"fx": [
+[
+"rel",
+"Turkey",
+"United States of America",
+4
+],
+[
+"stab",
+"Turkey",
+1
+]
+],
+"r": "Ankara Washington'la ambargoyu kaldırmak için pazarlık etti."
+},
+{
+"t": "SSCB ile yakınlaş",
+"d": "Yeni tedarikçi",
+"fx": [
+[
+"rel",
+"Turkey",
+"Russia",
+6
+],
+[
+"rel",
+"Turkey",
+"United States of America",
+-6
+],
+[
+"gold",
+"Turkey",
+1.0
+]
+],
+"r": "Türkiye SSCB ile ekonomik ve askerî temaslarını artırdı."
+}
+]
+},
+"United States of America": {
+"text": "Kongre ambargoyu istiyor; ama Türkiye NATO'nun güney kanadında kilit.",
+"options": [
+{
+"t": "Ambargoyu sürdür (tarihî)",
+"d": "Kongre baskısı",
+"fx": [
+[
+"rel",
+"United States of America",
+"Turkey",
+-4
+],
+[
+"rel",
+"United States of America",
+"Greece",
+4
+]
+],
+"r": "ABD ambargoyu sürdürdü."
+},
+{
+"t": "Ambargoyu esnet",
+"d": "NATO güney kanadını koru",
+"fx": [
+[
+"rel",
+"United States of America",
+"Turkey",
+5
+],
+[
+"rel",
+"United States of America",
+"Greece",
+-3
+]
+],
+"r": "Washington ambargoyu gevşetmeye yöneldi."
+}
+]
+}
+}
+},
+{
+"id": "cy74_sismik",
+"y": 1976,
+"m": 8,
+"title": "Sismik-1 ve Ege Krizi",
+"scene": "naval",
+"icon": "ship",
+"text": "Türk araştırma gemisi Sismik-1 Ege'de tartışmalı kıta sahanlığında sismik araştırmaya çıktı; Yunanistan savaş gemileriyle karşılık vermekle tehdit ediyor. Ege'de kıta sahanlığı ve hava sahası anlaşmazlığı ilk kez bu kadar yükseldi.",
+"major": true,
+"default_fx": [
+[
+"rel",
+"Turkey",
+"Greece",
+-6
+],
+[
+"rel",
+"Greece",
+"Turkey",
+-6
+]
+],
+"roles": {
+"Turkey": {
+"text": "Sismik-1 sahaya çıkmak üzere; Yunan savaş gemileri izliyor. Devam mı, geri dönüş mü?",
+"options": [
+{
+"t": "Araştırmayı sürdür (tarihî)",
+"d": "Haklarımızı savun",
+"fx": [
+[
+"stab",
+"Turkey",
+3
+],
+[
+"rel",
+"Turkey",
+"Greece",
+-4
+],
+[
+"buff",
+"Turkey",
+"def",
+1.1,
+8
+]
+],
+"r": "Türkiye Sismik-1'in araştırmasını donanma eşliğinde sürdürdü."
+},
+{
+"t": "Gemiyi geri çek ve uluslararası yola git",
+"d": "Diplomasi",
+"fx": [
+[
+"rel",
+"Turkey",
+"Greece",
+3
+],
+[
+"stab",
+"Turkey",
+-2
+]
+],
+"r": "Ankara BM ve diplomatik kanallara başvurdu."
+}
+]
+},
+"Greece": {
+"text": "Türk gemisi tartışmalı alanda; Yunan donanması alarmda. Uluslararası başvuru mu, kuvvet mi?",
+"options": [
+{
+"t": "Lahey'e ve BM'ye başvur (tarihî)",
+"d": "Hukuki yol",
+"fx": [
+[
+"rel",
+"Greece",
+"United States of America",
+3
+],
+[
+"stab",
+"Greece",
+2
+]
+],
+"r": "Yunanistan Lahey ve BM Güvenlik Konseyi'ne başvurdu."
+},
+{
+"t": "Donanmayı bölgeye gönder",
+"d": "Gösteri gücü",
+"fx": [
+[
+"troops",
+"Greece",
+2
+],
+[
+"rel",
+"Greece",
+"Turkey",
+-4
+]
+],
+"r": "Atina donanmayı Ege'de konuşlandırdı."
+}
+]
+}
+}
+},
+{
+"id": "cy74_makarios_oldu",
+"y": 1977,
+"m": 8,
+"title": "Makarios Öldü",
+"scene": "pre_landing",
+"icon": "landing",
+"text": "3 Ağustos 1977: Başpiskopos Makarios kalp krizinden öldü; Rum tarafında yeni lider Spyros Kiprianu. Ada hâlâ bölünmüş.",
+"major": false,
+"default_fx": [
+[
+"stab",
+"Cyprus",
+-6
+]
+],
+"roles": {}
+},
+{
+"id": "cy74_ambargo",
+"y": 1978,
+"m": 9,
+"title": "ABD Silah Ambargosu Kalktı",
+"scene": "peace",
+"icon": "treaty",
+"text": "Kongre, uzun tartışmalar sonunda Türkiye'ye uygulanan silah ambargosunu kaldırdı. Türkiye NATO üslerini yeniden açmayı değerlendiriyor; Yunanistan ise tepkili.",
+"major": false,
+"default_fx": [
+[
+"rel",
+"United States of America",
+"Turkey",
+6
+],
+[
+"rel",
+"United States of America",
+"Greece",
+-3
+],
+[
+"stab",
+"Turkey",
+3
+]
+],
+"roles": {
+"Turkey": {
+"text": "Ambargo kalktı; ABD'yle ilişkiler düzeliyor. Üsleri tamamen açmak mı?",
+"options": [
+{
+"t": "Üsleri yeniden aç (tarihî)",
+"d": "NATO ile uyumlu",
+"fx": [
+[
+"rel",
+"Turkey",
+"United States of America",
+5
+],
+[
+"gold",
+"Turkey",
+1.0
+]
+],
+"r": "Türkiye ABD üslerini yeniden faaliyete açtı."
+},
+{
+"t": "Karşılıklı anlaşma talep et",
+"d": "Pazarlık gücü",
+"fx": [
+[
+"rel",
+"Turkey",
+"United States of America",
+2
+],
+[
+"gold",
+"Turkey",
+0.5
+]
+],
+"r": "Ankara savunma ve ekonomik iş birliği anlaşması istedi."
+}
+]
+},
+"Greece": {
+"text": "Atina ambargonun kalkmasına tepkili; Yunan-ABD ilişkisi sarsılıyor.",
+"options": [
+{
+"t": "NATO'ya dönüş şartı koş (tarihî)",
+"d": "Ege'de denge",
+"fx": [
+[
+"rel",
+"Greece",
+"United States of America",
+2
+],
+[
+"rel",
+"Greece",
+"Turkey",
+-2
+]
+],
+"r": "Atina NATO'ya dönüş için Ege'de dengeye dair şartlar koştu."
+},
+{
+"t": "Avrupa Topluluğu yolunu seç",
+"d": "Batı'ya farklı bağ",
+"fx": [
+[
+"rel",
+"Greece",
+"France",
+4
+],
+[
+"stab",
+"Greece",
+2
+]
+],
+"r": "Yunanistan Avrupa Topluluğu üyeliğine yöneldi."
+}
+]
+}
+}
+}
+],
+"en": {
+"Ayşe tatile çıksın (tarihî)": "Let Ayşe go on holiday (historical)",
+"Girne'ye çıkarma; Kıbrıs'la savaş": "Landing at Kyrenia; war with Cyprus",
+"20 Temmuz sabahı Türk birlikleri Girne açıklarında; Kıbrıs Barış Harekâtı başladı.": "On the morning of 20 July Turkish forces are off Kyrenia; the Cyprus Peace Operation has begun.",
+"Son bir diplomasi turu": "One last round of diplomacy",
+"Cenevre görüşmeleri; savaş ilanı yok": "Geneva talks; no declaration of war",
+"Ankara Londra ve Washington'ın arabuluculuğunu bekliyor; adada çatışmalar sürüyor.": "Ankara waits for London and Washington to mediate; fighting continues on the island.",
+"Bekle": "Wait",
+"Darbe kendiliğinden çökene kadar": "Until the coup collapses on its own",
+"Ankara bekledi; adada Türk köylerine yönelik saldırı haberleri ülkede öfke yarattı.": "Ankara waited; reports of attacks on Turkish villages on the island caused anger at home.",
+"Ecevit Londra'dan eli boş döndü: İngiltere ortak müdahaleyi reddetti. Garantörlük hakkın Zürih ve Londra anlaşmalarından geliyor. Ordu Mersin'de hazır, donanma limanda; Genelkurmay 'Ayşe' kod adlı çıkarma planını masaya koydu.": "Ecevit came back from London empty-handed: Britain refused a joint intervention. Your guarantor right comes from the Zurich and London agreements. The army is ready at Mersin, the fleet in port; the General Staff has tabled the landing plan code-named 'Ayşe'.",
+"Cunta düşsün, Karamanlis dönsün": "Let the junta fall, bring back Karamanlis",
+"Demokrasiye dönüş": "Return to democracy",
+"Cunta çöktü; Karamanlis Paris'ten Atina'ya döndü.": "The junta collapsed; Karamanlis flew back from Paris to Athens.",
+"Seferberlik ve Ege'de savaş": "Mobilise and go to war in the Aegean",
+"Türkiye'ye savaş ilan et": "Declare war on Turkey",
+"Yunanistan seferberlik ilan etti; Ege'de savaş rüzgârı esiyor.": "Greece declared mobilisation; the winds of war blow over the Aegean.",
+"Kıbrıs'a takviye gönder": "Reinforce Cyprus",
+"Enosis'te ısrar": "Insist on Enosis",
+"Atina adaya gizlice takviye gönderiyor; Ankara'da gerilim tırmanıyor.": "Athens secretly sends reinforcements; tension rises in Ankara.",
+"Cunta darbeyi kendi eliyle yaptı; Türk çıkarması kapıda ve Yunan ordusu Türkiye ile savaşa hazır değil. Cunta lideri İoannidis'in ayakta kalma şansı azalıyor.": "The junta staged the coup itself; a Turkish landing is at the door and the Greek army is not ready for war with Turkey. Junta leader Ioannidis's hold on power is slipping.",
+"Savunmayı örgütle": "Organise the defence",
+"Girne-Lefkoşa hattı": "The Kyrenia–Nicosia line",
+"Millî Muhafız birlikleri Girne dağlarında mevzilendi.": "National Guard units dug in on the Kyrenia range.",
+"BM Güvenlik Konseyi'ne başvur": "Appeal to the UN Security Council",
+"Uluslararası baskı çağır": "Call for international pressure",
+"Güvenlik Konseyi olağanüstü toplandı; Moskova ve Washington adanın birliğinden yana.": "The Security Council met in emergency session; Moscow and Washington back the island's unity.",
+"Türk Kıbrıslılarla uzlaş": "Reach out to the Turkish Cypriots",
+"Gerilimi düşür": "Lower the tension",
+"Lefkoşa'da Türk mahallelerine güvence verildi; gerilim bir an düştü.": "Assurances were given to the Turkish quarters in Nicosia; tension eased for a moment.",
+"Millî Muhafız Ordusu iktidarı aldı ama Makarios yaşıyor ve Londra'da. Türk çıkarması her an gelebilir; Türk Kıbrıslılar kuzey ve Lefkoşa'daki mahallelerde tehdit altında.": "The National Guard has seized power but Makarios is alive and in London. A Turkish landing may come any moment; Turkish Cypriots in the north and the Nicosia quarters are under threat.",
+"Cenevre'de arabuluculuk": "Mediate in Geneva",
+"Üç garantör konferansı": "Conference of the three guarantors",
+"Dışişleri Bakanı Callaghan Cenevre'de üç garantörü bir araya getirmeye çalışıyor.": "Foreign Secretary Callaghan tries to bring the three guarantors together in Geneva.",
+"Türkiye ile ortak müdahale": "Join Turkey in an intervention",
+"Garantörlüğü kullan": "Use the guarantor right",
+"Londra ve Ankara ortak müdahale kararı aldı; NATO şokta.": "London and Ankara agreed a joint intervention; NATO is in shock.",
+"Egemen Üslere çekil": "Fall back to the Sovereign Bases",
+"Tarafsız kal": "Stay neutral",
+"İngiliz birlikleri üslere çekildi; Ankara'da Londra'ya tepki büyüyor.": "British troops withdrew to their bases; resentment of London grows in Ankara.",
+"Garantör sensin ama Wilson hükümeti ortak müdahaleyi reddetti; Akrotiri ve Dhekelia'daki Egemen Üsler'in güvenliği öncelik. Washington Londra'dan arabuluculuk bekliyor.": "You are a guarantor but Wilson's government refused a joint intervention; the safety of the Sovereign Base Areas at Akrotiri and Dhekelia comes first. Washington expects London to mediate.",
+"Türkiye'ye baskı: ambargo tehdidi": "Pressure Turkey: threaten an embargo",
+"Silah yardımını kes": "Cut arms aid",
+"Washington Ankara'ya silah yardımını keseceğini bildirdi.": "Washington told Ankara it would cut off arms aid.",
+"Sessiz diplomasi": "Quiet diplomacy",
+"Arabuluculuğu İngiltere'ye bırak": "Leave mediation to Britain",
+"Kissinger telefon diplomasisiyle iki başkent arasında mekik dokuyor.": "Kissinger shuttles between the two capitals by telephone.",
+"Cuntaya destek: Enosis'e göz yum": "Back the junta: tolerate Enosis",
+"Güney kanadı sabitle": "Stabilise the southern flank",
+"Washington Atina cuntasına dokunmadı; Ankara'da Amerikan karşıtlığı yükseliyor.": "Washington left the Athens junta alone; anti-American feeling rises in Ankara.",
+"Kissinger: NATO'nun iki üyesi savaşın eşiğinde, Soğuk Savaş'ın güney kanadı çöküyor. Watergate yüzünden Beyaz Saray zayıf; Kongre Türkiye'ye silah ambargosu için hazırlanıyor.": "Kissinger: two NATO members are on the verge of war and the southern flank of the Cold War is crumbling. The White House is weak because of Watergate; Congress is preparing an arms embargo on Turkey.",
+"Makarios'u destekle": "Support Makarios",
+"BM'de bağımsızlık savunusu": "Defend independence at the UN",
+"Moskova Kıbrıs'ın bağımsızlığını savunan sert bir bildiri yayımladı.": "Moscow issued a sharp statement defending Cyprus's independence.",
+"Türkiye ile yakınlaş": "Court Turkey",
+"Ankara'yı Washington'dan uzaklaştır": "Pull Ankara away from Washington",
+"Kremlin Ankara'ya ekonomik işbirliği teklif etti.": "The Kremlin offered Ankara economic cooperation.",
+"İzle": "Watch",
+"Müdahale etme": "Do not intervene",
+"Moskova gelişmeleri uzaktan izliyor.": "Moscow watches from a distance.",
+"Moskova adanın bağlantısız kalmasından yana; NATO'nun Doğu Akdeniz'e yerleşmesinden çekiniyor. Makarios'un Sovyet dostluğu eski bir dosya.": "Moscow favours a non-aligned island and fears NATO settling the Eastern Mediterranean. Makarios's friendship with the Soviets is a long-standing file.",
+"Ayşe Tatile Çıkıyor": "Ayşe Goes on Holiday",
+"15 Temmuz 1974: Atina cuntasının desteklediği Millî Muhafız Ordusu Makarios'u devirdi; Nikos Sampson 'cumhurbaşkanı' ilan edildi. Ada Yunanistan'la birleşmenin (Enosis) eşiğinde. Zürih-Londra anlaşmalarının garantörleri Türkiye, İngiltere ve Yunanistan.": "15 July 1974: the National Guard, backed by Athens' junta, overthrew Makarios and Nikos Sampson was declared 'president'. The island is on the brink of union with Greece (Enosis). The guarantors of the Zurich-London agreements are Turkey, Britain and Greece.",
+"Şimdi çıkarma": "Land now",
+"Girne'ye çıkarma": "Landing at Kyrenia",
+"Türk birlikleri geç kalmış bir çıkarmayla Girne'de karaya çıktı.": "Turkish forces went ashore at Kyrenia in a delayed landing.",
+"Müzakereye devam": "Keep negotiating",
+"Çıkarma yok": "No landing",
+"Ankara müzakere masasında kalıyor; kamuoyunda hoşnutsuzluk büyüyor.": "Ankara stays at the table; public discontent grows.",
+"Müzakere yolu kapanıyor. Ordunun hazırlığı sürüyor; ama ABD ve Britanya baskısı da artıyor.": "The negotiation path is closing. The army's preparations continue, but pressure from the US and Britain is rising too.",
+"Sabır Tükendi": "Patience Runs Out",
+"Diplomasi sonuç vermedi; adada Türk mahallelerine baskılar sürüyor. Ankara'da 'şimdi ya da hiç' sesleri yükseldi.": "Diplomacy led nowhere; pressure on Turkish quarters continues on the island. In Ankara the cry is 'now or never'.",
+"İkinci harekât: Gazimağusa'ya kadar": "Second operation: push to Famagusta",
+"Adanın yaklaşık %36'sı": "About 36% of the island",
+"14 Ağustos: ikinci harekât başladı; Türk birlikleri Gazimağusa'ya doğru ilerliyor.": "14 August: the second operation began; Turkish forces advance on Famagusta.",
+"Mevzileri koru, Cenevre'ye dön": "Hold what you have, return to Geneva",
+"Diplomatik yol": "Diplomatic track",
+"Ankara ikinci harekâtı erteledi; Kissinger rahat bir nefes aldı.": "Ankara postponed the second operation; Kissinger breathed a sigh of relief.",
+"Cenevre'de federasyon önerin reddedildi; Rum yönetimi Türk bölgesinde kalan kasabalarda baskıyı artırdı. Ordu ikinci aşama için emir bekliyor.": "Your federation proposal was rejected in Geneva; the Greek-Cypriot side stepped up pressure on remaining Turkish towns. The army awaits orders for a second phase.",
+"NATO'nun askerî kanadından çekil": "Leave NATO's military wing",
+"Yunan kamuoyunun talebi": "A demand of Greek opinion",
+"Atina NATO'nun askerî kanadından çekildi; Washington Yunan lobisiyle karşı karşıya.": "Athens left NATO's military wing; Washington is up against the Greek lobby.",
+"NATO'da kal, diplomasiye yüklen": "Stay in NATO and lean on diplomacy",
+"Batı ile bağı koru": "Keep the Western link",
+"Karamanlis sakin kalmayı seçti; muhalefet sokakları doldurdu.": "Karamanlis chose calm; the opposition filled the streets.",
+"Karamanlis hükümeti Türkiye ile savaşı kaldıramaz; ama kamuoyu NATO'dan hıncını çıkarmak istiyor.": "Karamanlis's government cannot afford war with Turkey, but public opinion wants to punish NATO.",
+"Müzakereyi sürdür": "Keep negotiating",
+"Ateşkes için baskı": "Push for a ceasefire",
+"Klerides Cenevre'de ateşkes için uğraşıyor.": "Clerides works for a ceasefire in Geneva.",
+"Direniş: yeni cephe hattı": "Resist: a new front line",
+"Lefkoşa'yı savun": "Defend Nicosia",
+"Millî Muhafız Lefkoşa çevresinde yeni hatlar kurdu.": "The National Guard built new lines around Nicosia.",
+"Türk birlikleri kuzeyde yerleşti; Klerides Cenevre'de pazarlıkta. Ordunun morali düşük.": "Turkish troops are settled in the north; Clerides bargains in Geneva. The army's morale is low.",
+"Ambargoyu destekle": "Back the embargo",
+"Kongre ile hareket et": "Move with Congress",
+"Beyaz Saray Kongre'nin ambargo girişimine karşı koymadı.": "The White House did not resist Congress's embargo drive.",
+"Ambargoyu engelle": "Block the embargo",
+"NATO bütünlüğü": "NATO cohesion",
+"Ford yönetimi ambargoyu engellemek için Kongre'ye ricada bulundu.": "The Ford administration lobbied Congress to block the embargo.",
+"Kongre, Türkiye'ye silah ambargosu için oy hazırlığında. Dışişleri Bakanlığı iki NATO müttefiki arasında köprü arıyor.": "Congress is preparing an arms embargo vote against Turkey. The State Department looks for a bridge between two NATO allies.",
+"Cenevre Çöktü: İkinci Harekât": "Geneva Collapses: the Second Operation",
+"Cenevre'de iki turlu görüşme çöktü. Türk birlikleri kıyı şeridinde tutunmuş, Türkiye ikinci aşamaya hazır. Yunanistan'da Karamanlis hükümeti NATO'nun askerî kanadından çekilmeyi tartışıyor.": "Two rounds of talks in Geneva collapsed. Turkish forces hold a coastal bridgehead and Turkey is ready for a second phase. In Greece Karamanlis's government is debating leaving NATO's military wing.",
+"Ateşkesi kabul et, kazanımı koru": "Accept the ceasefire, keep the gains",
+"Barış": "Peace",
+"Kıbrıs'ta ateşkes yürürlükte; Türk bayrağı Girne'de dalgalanıyor.": "The ceasefire holds; the Turkish flag flies at Kyrenia.",
+"Harekâta devam: Larnaka ve Limasol": "Fight on: Larnaca and Limassol",
+"Tüm ada baskısı": "Pressure for the whole island",
+"Ankara ateşkesi tanımadı; ilerleyiş güneye doğru sürüyor.": "Ankara ignored the ceasefire; the advance continues south.",
+"Federasyon önerisi sun": "Propose a federation",
+"Barış + müzakere": "Peace plus negotiation",
+"Ankara iki toplumlu federasyon önerdi; Londra ve Washington ilgi gösterdi.": "Ankara proposed a bi-communal federation; London and Washington showed interest.",
+"Ateşkes hattı oturdu. Kuzey Türk denetiminde; ABD ve Britanya federal çözüm istiyor, Rumlar hâlâ müzakereye yanaşmıyor.": "The ceasefire line has set. The north is under Turkish control; the US and Britain want a federal solution, the Greek side still refuses to talk.",
+"Ateşkesi kabul et": "Accept the ceasefire",
+"Savaşı durdur": "Stop the war",
+"Rum yönetimi ateşkesi kabul etti; mülteci krizi başladı.": "The Greek-Cypriot administration accepted the ceasefire; the refugee crisis begins.",
+"Direnişi sürdür": "Keep fighting",
+"Ateşkesi reddet": "Reject the ceasefire",
+"Lefkoşa ateşkesi reddetti; çatışmalar sürüyor.": "Nicosia rejected the ceasefire; fighting continues.",
+"Yüz binlerce mülteci güneyde çadırlarda. Klerides Türkiye ile ateşkesi kabul etmek zorunda mı?": "Hundreds of thousands of refugees are in tents in the south. Does Clerides have to accept the ceasefire with Turkey?",
+"Diplomatik zafer ara": "Seek a diplomatic win",
+"BM ve AB'ye başvur": "Turn to the UN and Europe",
+"Karamanlis Kıbrıs'ı uluslararası alana taşıdı.": "Karamanlis took Cyprus to the international stage.",
+"Öfke: Türkiye'ye karşı cephe": "Anger: a front against Turkey",
+"Ege'de askerî hazırlık": "Military build-up in the Aegean",
+"Yunanistan Ege adalarını silahlandırıyor; Ankara tepkili.": "Greece is arming the Aegean islands; Ankara reacts angrily.",
+"Atina savaşa giremedi; Kıbrıs'ta bölünme kalıcı görünüyor. Karamanlis kamuoyuna ne söyleyecek?": "Athens could not go to war; the partition of Cyprus looks permanent. What will Karamanlis tell the public?",
+"Yeşil Hat: Ada İkiye Bölündü": "The Green Line: The Island Is Divided",
+"Silahlar sustu. Yaklaşık 160–200 bin Rum güneye, 45 bin Türk kuzeye göç etti; BM gözetiminde Yeşil Hat adayı ikiye böldü.": "The guns fell silent. Roughly 160–200 thousand Greek Cypriots fled south and 45 thousand Turkish Cypriots moved north; the UN-patrolled Green Line cut the island in two.",
+"Sert yanıt: üsleri kısıtla": "Hard response: restrict the bases",
+"Amerikan üsleri askıya": "Suspend US facilities",
+"Ankara ABD'nin üs faaliyetlerini kısıtlama kararı aldı.": "Ankara decided to restrict US base activities.",
+"Kongre'yi diplomasiyle ikna et": "Win Congress over with diplomacy",
+"Lobi çalışması": "Lobbying",
+"Ankara Washington'da lobi faaliyetini artırdı.": "Ankara stepped up lobbying in Washington.",
+"SSCB ile yakınlaş": "Move closer to the USSR",
+"Çok yönlü dış politika": "Multi-directional foreign policy",
+"Ankara Moskova'ya yönelik açılım sinyalleri verdi.": "Ankara signalled an opening to Moscow.",
+"Ambargo ordunun yedek parça ve mühimmat hattını tehdit ediyor. Ankara'da ABD üslerinin kapatılması tartışılıyor.": "The embargo threatens the army's spare-parts and ammunition pipeline. Ankara debates closing US bases.",
+"Ambargoyu uygula": "Enforce the embargo",
+"Kongre kararı": "Congress's decision",
+"ABD ambargoyu uyguluyor; Ankara öfkeli.": "The US enforces the embargo; Ankara is furious.",
+"Esnetmeye çalış": "Seek flexibility",
+"Yürütme yetkisi": "Executive latitude",
+"Beyaz Saray ambargoyu esnetmek için yollar arıyor.": "The White House looks for ways to soften the embargo.",
+"Kongre ambargoyu dayattı; Başkan Ford veto etti ama Meclis aştı. Türkiye'nin tepkisi sert olabilir.": "Congress forced the embargo; President Ford vetoed but was overridden. Turkey's reaction may be harsh.",
+"Makarios yönetimini yeniden kur": "Rebuild Makarios's rule",
+"Meşru yönetim": "The legitimate government",
+"Makarios Lefkoşa'da coşkuyla karşılandı.": "Makarios was welcomed with enthusiasm in Nicosia.",
+"Federasyon pazarlığı": "Bargain over a federation",
+"Viyana görüşmeleri": "Vienna talks",
+"Rum liderliği federasyon görüşmelerine ilk kez yeşil ışık yaktı.": "The Greek-Cypriot leadership gave the green light to federation talks for the first time.",
+"Makarios adaya döndü ama ada artık bölünmüş. Cumhurbaşkanlığı koltuğu geri verildi.": "Makarios is back but the island is divided. The presidency was restored to him.",
+"Makarios Döndü, Kongre Ambargo Dedi": "Makarios Returns, Congress Says Embargo",
+"7 Aralık'ta Makarios adaya döndü. Ardından ABD Kongresi, Türkiye'ye silah yardımının kesilmesini öngören kararı kabul etti; ambargo Şubat 1975'te yürürlüğe girecek.": "On 7 December Makarios returned to the island. Then the US Congress passed a measure cutting arms aid to Turkey; the embargo takes effect in February 1975.",
+"Federe Devleti ilan et (tarihî)": "Proclaim the Federated State (historical)",
+"Anayasal çerçeve": "A constitutional framework",
+"Lefkoşa'nın kuzeyinde Kıbrıs Türk Federe Devleti ilan edildi.": "The Turkish Federated State of Cyprus was proclaimed north of Nicosia.",
+"Bekle: tek devlet çatısı": "Wait: one-state umbrella",
+"Viyana'da federasyon": "Federation at Vienna",
+"Denktaş federasyon görüşmeleri için zaman kazanıyor.": "Denktaş buys time for federation talks.",
+"Kuzey fiilen ayrı bir idare. Ankara'nın desteğiyle bir federe devlet ilan etmek bölünmeyi kalıcılaştırır ama Rumlar da adanın tamamını temsil iddiasında.": "The north is effectively a separate administration. A federated state with Ankara's backing would make partition permanent, but the Greek side claims to represent the whole island.",
+"Federe Devleti destekle": "Back the Federated State",
+"Ankara'nın bayrağı": "Ankara's flag",
+"Ankara Federe Devlet'in ilanını destekledi.": "Ankara backed the proclamation of the Federated State.",
+"Frenle: federasyon çerçevesi": "Brake: a federal framework",
+"Viyana": "Vienna",
+"Ankara 'federal çözüm' mesajını güçlendirdi.": "Ankara strengthened its 'federal solution' message.",
+"Kuzey Kıbrıs Federe Devleti'ni ilan etmek üzere. Ambargo yürürlükte, tepki beklenmeli.": "The north is about to proclaim a Federated State. The embargo is in force, so reaction should be expected.",
+"Kıbrıs Türk Federe Devleti": "The Turkish Federated State of Cyprus",
+"13 Şubat 1975: Kuzeyde Kıbrıs Türk Federe Devleti ilan edildi; başkan Rauf Denktaş. ABD'nin Türkiye'ye silah ambargosu yürürlüğe girdi.": "13 February 1975: the Turkish Federated State of Cyprus was proclaimed in the north under Rauf Denktaş. The US arms embargo on Turkey took effect.",
+"Üsleri askıya al (tarihî)": "Suspend the bases (historical)",
+"Kararlı mesaj": "A firm message",
+"Ankara Amerikan üslerini askıya aldı; Moskova memnun.": "Ankara suspended US bases; Moscow is pleased.",
+"Üsleri açık tut": "Keep the bases open",
+"İkili ilişki": "Bilateral ties",
+"Ankara üsleri açık tutarak Kongre'ye baskıyı sürdürdü.": "Ankara kept the bases open and kept pressure on Congress.",
+"Üsler Amerikan elektronik istihbaratı için can damarı. Kapatmak Washington'a mesajdır ama Türkiye'yi de yalnızlaştırır.": "The bases are a lifeline for US signals intelligence. Closing them sends Washington a message but isolates Turkey too.",
+"Ambargoyu kaldır (kısmen)": "Lift the embargo (partly)",
+"Üsler için tavizi kabul et": "Concede for the bases",
+"Kongre ambargoyu kısmen kaldırdı; Türkiye üslerle ilgili tutumunu yumuşattı.": "Congress partly lifted the embargo; Turkey softened its stance on the bases.",
+"Sürdür": "Hold firm",
+"İlkeli duruş": "A principled stand",
+"Washington ambargoyu sürdürüyor; Ankara üslerde kararlı.": "Washington keeps the embargo; Ankara stands firm on the bases.",
+"Üsler kapanırsa Sovyetler hakkındaki elektronik dinleme ağı ciddi hasar görür. Ambargoyu kaldırmak için Kongre'ye gidebilirsin.": "If the bases close, the electronic listening net on the Soviets is badly damaged. You can go to Congress to lift the embargo.",
+"Türkiye ABD Üslerini Kapattı": "Turkey Closes US Bases",
+"26 Temmuz 1975: Ambargoya karşılık Türkiye ABD'nin üs faaliyetlerini askıya aldı (İncirlik hariç). NATO'nun güney kanadı sarsıldı.": "26 July 1975: in response to the embargo Turkey suspended US facilities (except Incirlik). NATO's southern flank is shaken.",
+"Makarios Öldü": "Makarios Died",
+"3 Ağustos 1977: Başpiskopos Makarios kalp krizinden öldü; Rum tarafında yeni lider Spyros Kiprianu. Ada hâlâ bölünmüş.": "3 August 1977: Archbishop Makarios died of a heart attack; Spyros Kyprianou is the new leader on the Greek side. The island remains divided.",
+"NATO askerî kanadından çık (tarihî)": "Leave NATO's military wing (historical)",
+"Siyasi öfkeyi yansıt": "Reflect political anger",
+"Yunanistan NATO askerî komutasından çekildi.": "Greece withdrew from NATO's military command.",
+"İttifakta kal, Türkiye'yle görüş": "Stay in the alliance and talk to Turkey",
+"Dengeli yol": "A balanced path",
+"Atina NATO'da kalıp Ankara'ya diyalog önerdi.": "Athens stayed in NATO and offered dialogue to Ankara.",
+"Demokrasi geri döndü; halk ABD ve NATO'ya kızgın. Askerî kanattan çıkmak mı?": "Democracy is back; the public is angry at the US and NATO. Withdraw from the military wing?",
+"Yumuşama sinyali ver (tarihî)": "Signal a thaw (historical)",
+"Müzakere zemini": "A negotiating basis",
+"Ankara Atina'yla temas kurdu.": "Ankara opened contact with Athens.",
+"Sert duruş koru": "Keep a hard line",
+"Elde edileni koru": "Protect your gains",
+"Türkiye Kıbrıs'taki kazanımlarını savundu.": "Turkey defended its gains in Cyprus.",
+"Atina'da sivil yönetim kurulunca ilişkiler yeni bir sayfa açabilir; ama adadaki Türk bölgesi sorunu sürüyor.": "With civilian rule in Athens relations could turn a page, but the Turkish zone on the island is unresolved.",
+"Yunanistan'da Seçim ve Karamanlis": "Greek Elections and Karamanlis",
+"Cunta çöktükten sonra Konstantinos Karamanlis Paris'ten dönüp sivil hükûmeti kurdu. Seçimler yapılıyor; Atina NATO askerî kanadından ayrılmayı düşünüyor. Kıbrıs konusunda Türkiye ile gerginlik sürüyor.": "After the junta's collapse Konstantinos Karamanlis returned from Paris to form a civilian government. Elections are held; Athens considers leaving NATO's military wing. Tension with Turkey over Cyprus continues.",
+"ABD'yle yeniden pazarlık yap (tarihî)": "Renegotiate with the US (historical)",
+"Ambargoyu kaldırtmaya çalış": "Seek to lift the embargo",
+"Ankara Washington'la ambargoyu kaldırmak için pazarlık etti.": "Ankara bargained with Washington to lift the embargo.",
+"Yeni tedarikçi": "A new supplier",
+"Türkiye SSCB ile ekonomik ve askerî temaslarını artırdı.": "Turkey increased economic and military contact with the USSR.",
+"Ambargo askerî donanımı vuruyor; Moskova bir alternatif sunuyor.": "The embargo hurts military equipment; Moscow dangles an alternative.",
+"Ambargoyu sürdür (tarihî)": "Maintain the embargo (historical)",
+"Kongre baskısı": "Congressional pressure",
+"ABD ambargoyu sürdürdü.": "The US maintained the embargo.",
+"Ambargoyu esnet": "Ease the embargo",
+"NATO güney kanadını koru": "Protect NATO's southern flank",
+"Washington ambargoyu gevşetmeye yöneldi.": "Washington moved to ease the embargo.",
+"Kongre ambargoyu istiyor; ama Türkiye NATO'nun güney kanadında kilit.": "Congress wants the embargo, but Turkey is key on NATO's southern flank.",
+"Helsinki Nihai Senedi": "The Helsinki Final Act",
+"Avrupa'da Güvenlik ve İşbirliği Konferansı sona erdi: sınırların dokunulmazlığı, insan hakları ve işbirliği ilkeleri imzalandı. Kıbrıs'ta ise fiilî bölünme devam ediyor; ABD'nin Türkiye'ye silah ambargosu ilişkileri sarsıyor.": "The Conference on Security and Cooperation in Europe ended: principles on the inviolability of borders, human rights and cooperation were signed. In Cyprus the de facto partition continues; the US arms embargo on Turkey strains ties.",
+"Araştırmayı sürdür (tarihî)": "Continue the survey (historical)",
+"Haklarımızı savun": "Defend our rights",
+"Türkiye Sismik-1'in araştırmasını donanma eşliğinde sürdürdü.": "Turkey continued Sismik-1's survey under naval escort.",
+"Gemiyi geri çek ve uluslararası yola git": "Withdraw and go to international bodies",
+"Diplomasi": "Diplomacy",
+"Ankara BM ve diplomatik kanallara başvurdu.": "Ankara turned to the UN and diplomatic channels.",
+"Sismik-1 sahaya çıkmak üzere; Yunan savaş gemileri izliyor. Devam mı, geri dönüş mü?": "Sismik-1 is about to enter the zone; Greek warships shadow it. Continue or turn back?",
+"Lahey'e ve BM'ye başvur (tarihî)": "Appeal to The Hague and the UN (historical)",
+"Hukuki yol": "The legal route",
+"Yunanistan Lahey ve BM Güvenlik Konseyi'ne başvurdu.": "Greece appealed to The Hague and the UN Security Council.",
+"Donanmayı bölgeye gönder": "Send the navy",
+"Gösteri gücü": "A show of force",
+"Atina donanmayı Ege'de konuşlandırdı.": "Athens deployed the navy in the Aegean.",
+"Türk gemisi tartışmalı alanda; Yunan donanması alarmda. Uluslararası başvuru mu, kuvvet mi?": "A Turkish ship is in the disputed zone; the Greek navy is on alert. An international appeal or force?",
+"Sismik-1 ve Ege Krizi": "Sismik-1 and the Aegean Crisis",
+"Türk araştırma gemisi Sismik-1 Ege'de tartışmalı kıta sahanlığında sismik araştırmaya çıktı; Yunanistan savaş gemileriyle karşılık vermekle tehdit ediyor. Ege'de kıta sahanlığı ve hava sahası anlaşmazlığı ilk kez bu kadar yükseldi.": "The Turkish survey ship Sismik-1 set out to conduct seismic research on the disputed Aegean continental shelf; Greece threatens a response with warships. The dispute over the shelf and airspace has risen as never before.",
+"Üsleri yeniden aç (tarihî)": "Reopen the bases (historical)",
+"NATO ile uyumlu": "In step with NATO",
+"Türkiye ABD üslerini yeniden faaliyete açtı.": "Turkey reopened the US bases.",
+"Karşılıklı anlaşma talep et": "Demand a reciprocal deal",
+"Pazarlık gücü": "Bargaining power",
+"Ankara savunma ve ekonomik iş birliği anlaşması istedi.": "Ankara demanded a defence and economic cooperation deal.",
+"Ambargo kalktı; ABD'yle ilişkiler düzeliyor. Üsleri tamamen açmak mı?": "The embargo is lifted; ties with the US are improving. Reopen the bases fully?",
+"NATO'ya dönüş şartı koş (tarihî)": "Set conditions for returning to NATO (historical)",
+"Ege'de denge": "A balance in the Aegean",
+"Atina NATO'ya dönüş için Ege'de dengeye dair şartlar koştu.": "Athens set Aegean-balance conditions for rejoining NATO.",
+"Avrupa Topluluğu yolunu seç": "Choose the European Community path",
+"Batı'ya farklı bağ": "A different tie to the West",
+"Yunanistan Avrupa Topluluğu üyeliğine yöneldi.": "Greece turned toward European Community membership.",
+"Atina ambargonun kalkmasına tepkili; Yunan-ABD ilişkisi sarsılıyor.": "Athens is upset about the lifting; Greek–US relations are rattled.",
+"ABD Silah Ambargosu Kalktı": "The US Arms Embargo Is Lifted",
+"Kongre, uzun tartışmalar sonunda Türkiye'ye uygulanan silah ambargosunu kaldırdı. Türkiye NATO üslerini yeniden açmayı değerlendiriyor; Yunanistan ise tepkili.": "After long debate Congress lifted the arms embargo on Turkey. Turkey considers reopening the NATO bases; Greece is displeased."
+}
 }

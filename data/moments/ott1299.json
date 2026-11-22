@@ -1,0 +1,583 @@
+{
+"moments": [
+{
+"id": "ghazan_1299",
+"y": 1299,
+"m": 12,
+"title": "Gazan Han Suriye'de",
+"scene": "crisis",
+"icon": "flag",
+"text": "İlhanlı hükümdarı Gazan Han Memlük topraklarına girdi; Humus yakınında Memlük ordusunu yendi ve Şam'a yürüdü. Anadolu'daki Moğol baskısı ve Selçuklu çöküşü uç beylerine alan açıyor.",
+"major": true,
+"default_fx": [
+[
+"war",
+"Iran",
+"Egypt"
+],
+[
+"troops",
+"Egypt",
+-6
+],
+[
+"stab",
+"Egypt",
+-3
+]
+],
+"roles": {
+"Egypt": {
+"text": "Memlük ordusu Humus'ta bozuldu; Şam açık. Naib Kıpçak'ın direnişi mi, yoksa pazarlık mı?",
+"options": [
+{
+"t": "Şam'ı savun ve orduyu topla (tarihî)",
+"d": "Moğollar çekilir",
+"fx": [
+[
+"buff",
+"Egypt",
+"def",
+1.25,
+14
+],
+[
+"stab",
+"Egypt",
+3
+]
+],
+"r": "Memlükler Şam'da toparlandı; Moğollar kış şartları nedeniyle çekildi."
+},
+{
+"t": "Haraç ver, barış iste",
+"d": "Zaman kazan",
+"fx": [
+[
+"peace",
+"Egypt",
+"Iran"
+],
+[
+"stab",
+"Egypt",
+-4
+]
+],
+"r": "Kahire İlhanlılara haraç önerdi."
+}
+]
+},
+"Iran": {
+"text": "Gazan Suriye'yi aldı. Kışın kalıp yerleşmek mi, geri çekilmek mi?",
+"options": [
+{
+"t": "Şam'ı işgal et",
+"d": "Suriye'yi elde tut",
+"fx": [
+[
+"buff",
+"Iran",
+"att",
+1.15,
+8
+],
+[
+"gold",
+"Iran",
+1.0
+]
+],
+"r": "İlhanlı ordusu Şam'ı işgal etti."
+},
+{
+"t": "Geri çekil, vali bırak (tarihî)",
+"d": "Orduyu koru",
+"fx": [
+[
+"buff",
+"Iran",
+"def",
+1.1,
+8
+]
+],
+"r": "Gazan Han Suriye'den çekildi ve yerine vali bıraktı."
+}
+]
+},
+"Turkey": {
+"text": "Moğol-Memlük savaşı Anadolu'daki rakipleri dağıttı; Osman Bey uçta güçlenme fırsatı buluyor.",
+"options": [
+{
+"t": "Bizans sınırında ilerle (tarihî)",
+"d": "Uç gazası",
+"fx": [
+[
+"buff",
+"Turkey",
+"att",
+1.2,
+14
+],
+[
+"stab",
+"Turkey",
+3
+],
+[
+"gold",
+"Turkey",
+0.5
+]
+],
+"r": "Osman Bey Bizans sınırında akınlarını artırdı."
+},
+{
+"t": "Güçleri toparla",
+"d": "Savunmayı sağlamlaştır",
+"fx": [
+[
+"buff",
+"Turkey",
+"def",
+1.2,
+10
+]
+],
+"r": "Osman Bey sınır boyunca kalelerini güçlendirdi."
+}
+]
+}
+}
+},
+{
+"id": "bapheus_1302",
+"y": 1302,
+"m": 7,
+"title": "Koyunhisar (Bafeus) Savaşı",
+"scene": "pre_siege",
+"icon": "helmet_ww1",
+"text": "Osman Bey'in akıncıları Nikomedeia yakınlarındaki Koyunhisar'da Bizans'ın Georgios Muzalon komutasındaki ordusunu yendi. Bizans'ın Anadolu'daki savunması çöküyor; Bitinya köylüleri kaçıyor.",
+"major": true,
+"default_fx": [
+[
+"troops",
+"Greece",
+-6
+],
+[
+"stab",
+"Greece",
+-4
+],
+[
+"stab",
+"Turkey",
+6
+],
+[
+"buff",
+"Turkey",
+"att",
+1.15,
+10
+]
+],
+"roles": {
+"Turkey": {
+"text": "Zafer geldi; kaçan köylüler Osman'a katılıyor. Hedef Bursa ve İznik mi?",
+"options": [
+{
+"t": "Bursa ve İznik'i çevir (tarihî)",
+"d": "Kale kuşatması",
+"fx": [
+[
+"buff",
+"Turkey",
+"att",
+1.2,
+14
+],
+[
+"gold",
+"Turkey",
+1.0
+]
+],
+"r": "Osman Bey Bursa ve İznik çevresinde kaleler kurdu."
+},
+{
+"t": "Rakip beyliklere yönel",
+"d": "Anadolu birliği",
+"fx": [
+[
+"rel",
+"Turkey",
+"Iran",
+3
+],
+[
+"stab",
+"Turkey",
+2
+]
+],
+"r": "Osman rakip beyliklerle ittifak aradı."
+}
+]
+},
+"Greece": {
+"text": "Muzalon bozguna uğradı; Anadolu sınırı savunmasız. Katalan Birliği'ni kiralayacak mısın?",
+"options": [
+{
+"t": "Katalan paralı askerleri kirala (tarihî)",
+"d": "Bedeli büyük",
+"fx": [
+[
+"gold",
+"Greece",
+-1.5
+],
+[
+"buff",
+"Greece",
+"def",
+1.15,
+10
+]
+],
+"r": "Andronikos Katalan paralı askerleri kiraladı; maaşlar hazineyi boşalttı."
+},
+{
+"t": "Ücretsiz kalelere güven",
+"d": "Maliyet düşük",
+"fx": [
+[
+"stab",
+"Greece",
+-3
+],
+[
+"troops",
+"Greece",
+-2
+]
+],
+"r": "Bizans kale garnizonlarına güvendi."
+}
+]
+}
+}
+},
+{
+"id": "bursa_1326",
+"y": 1326,
+"m": 4,
+"title": "Bursa Düştü",
+"scene": "pre_siege",
+"icon": "flag",
+"text": "Yıllarca süren kuşatmanın ardından Orhan Gazi Bursa'yı aldı ve burayı beyliğin başkenti yaptı. Osman Bey'in vefat haberi aynı günlere denk geliyor. Beylik artık şehir devleti olacak.",
+"major": true,
+"default_fx": [
+[
+"occupy",
+"Turkey",
+"Greece"
+],
+[
+"stab",
+"Turkey",
+6
+],
+[
+"stab",
+"Greece",
+-5
+],
+[
+"gold",
+"Turkey",
+1.0
+]
+],
+"roles": {
+"Turkey": {
+"text": "Bursa teslim oluyor. Şehre ve halkına nasıl davranacaksın?",
+"options": [
+{
+"t": "Hoşgörüyle yönet (tarihî)",
+"d": "Yerleşik halkı kazan",
+"fx": [
+[
+"stab",
+"Turkey",
+6
+],
+[
+"gold",
+"Turkey",
+1.5
+]
+],
+"r": "Orhan Bey Bursa halkına güvence verip ticareti canlandırdı."
+},
+{
+"t": "Garnizon kur ve vergi koy",
+"d": "Daha sert yönetim",
+"fx": [
+[
+"troops",
+"Turkey",
+2
+],
+[
+"gold",
+"Turkey",
+2.0
+],
+[
+"stab",
+"Turkey",
+-2
+]
+],
+"r": "Orhan Bey Bursa'ya garnizon yerleştirip vergiler koydu."
+}
+]
+},
+"Greece": {
+"text": "Bursa gitti; İznik ve İzmit sıradaki. İmparator III. Andronikos Anadolu'yu savunacak mı?",
+"options": [
+{
+"t": "Pelekanon'da karşı koy (tarihî)",
+"d": "Saha savaşı",
+"fx": [
+[
+"buff",
+"Greece",
+"att",
+1.1,
+4
+],
+[
+"troops",
+"Greece",
+-5
+],
+[
+"stab",
+"Greece",
+-3
+]
+],
+"r": "Bizans ordusu Pelekanon'da Osmanlı'ya karşı çıktı ve yenildi."
+},
+{
+"t": "Boğazlar'a çekil",
+"d": "Başkenti koru",
+"fx": [
+[
+"buff",
+"Greece",
+"def",
+1.2,
+10
+],
+[
+"stab",
+"Greece",
+-4
+]
+],
+"r": "Bizans Anadolu'daki mevzilerini bırakıp Boğazlar'a çekildi."
+}
+]
+}
+}
+},
+{
+"id": "iznik_1331",
+"y": 1331,
+"m": 3,
+"title": "İznik'in Fethi",
+"scene": "pre_siege",
+"icon": "flag",
+"text": "Bizans İmparatoru III. Andronikos İznik'i kurtarmaya çalışırken Orhan Bey'in ordusuna yenildi. İznik teslim oldu; Osmanlı ilk medresesini burada kurdu. Beylik Bizans'ın hemen komşusu.",
+"major": true,
+"default_fx": [
+[
+"occupy",
+"Turkey",
+"Greece"
+],
+[
+"stab",
+"Turkey",
+4
+],
+[
+"stab",
+"Greece",
+-5
+]
+],
+"roles": {
+"Turkey": {
+"text": "İznik düştü; Bizans başkentinin 100 km yakınındasın. Sıradaki hedef İzmit mi?",
+"options": [
+{
+"t": "İzmit'e yürü (tarihî)",
+"d": "Marmara kıyısına ulaş",
+"fx": [
+[
+"buff",
+"Turkey",
+"att",
+1.15,
+10
+],
+[
+"gold",
+"Turkey",
+1.0
+]
+],
+"r": "Osmanlılar İzmit'e doğru ilerledi."
+},
+{
+"t": "Kuruluşu sağlamlaştır",
+"d": "Medrese ve kadı atamaları",
+"fx": [
+[
+"stab",
+"Turkey",
+5
+],
+[
+"gold",
+"Turkey",
+0.5
+]
+],
+"r": "Orhan Bey devlet teşkilatını güçlendirdi."
+}
+]
+},
+"Greece": {
+"text": "İznik'i kaybettin; Anadolu'nun tamamı tehlikede. İtalyan şehir devletlerinden yardım mı?",
+"options": [
+{
+"t": "Venedik ve Cenova'dan yardım iste (tarihî)",
+"d": "Bedel ticarî imtiyaz",
+"fx": [
+[
+"rel",
+"Greece",
+"Italy",
+6
+],
+[
+"gold",
+"Greece",
+-1.0
+]
+],
+"r": "Bizans İtalyan şehir devletlerine yeni imtiyazlar verdi."
+},
+{
+"t": "Osmanlı ile barış yap",
+"d": "Oyala",
+"fx": [
+[
+"peace",
+"Greece",
+"Turkey"
+],
+[
+"stab",
+"Greece",
+-3
+]
+],
+"r": "Bizans Osmanlı ile barış antlaşması yaptı."
+}
+]
+}
+}
+}
+],
+"en": {
+"Şam'ı savun ve orduyu topla (tarihî)": "Defend Damascus and rally the army (historical)",
+"Moğollar çekilir": "The Mongols retreat",
+"Memlükler Şam'da toparlandı; Moğollar kış şartları nedeniyle çekildi.": "The Mamluks regrouped at Damascus; the Mongols withdrew in the winter.",
+"Haraç ver, barış iste": "Offer tribute and seek peace",
+"Zaman kazan": "Buy time",
+"Kahire İlhanlılara haraç önerdi.": "Cairo offered tribute to the Ilkhanids.",
+"Memlük ordusu Humus'ta bozuldu; Şam açık. Naib Kıpçak'ın direnişi mi, yoksa pazarlık mı?": "The Mamluk army broke at Homs; Damascus is open. Resistance or bargaining?",
+"Şam'ı işgal et": "Occupy Damascus",
+"Suriye'yi elde tut": "Hold Syria",
+"İlhanlı ordusu Şam'ı işgal etti.": "The Ilkhanid army occupied Damascus.",
+"Geri çekil, vali bırak (tarihî)": "Withdraw, leave a governor (historical)",
+"Orduyu koru": "Preserve the army",
+"Gazan Han Suriye'den çekildi ve yerine vali bıraktı.": "Ghazan withdrew from Syria, leaving a governor.",
+"Gazan Suriye'yi aldı. Kışın kalıp yerleşmek mi, geri çekilmek mi?": "Ghazan has taken Syria. Stay through the winter and settle, or withdraw?",
+"Bizans sınırında ilerle (tarihî)": "Press on the Byzantine frontier (historical)",
+"Uç gazası": "Frontier raiding",
+"Osman Bey Bizans sınırında akınlarını artırdı.": "Osman Bey stepped up raids on the Byzantine frontier.",
+"Güçleri toparla": "Consolidate",
+"Savunmayı sağlamlaştır": "Strengthen defences",
+"Osman Bey sınır boyunca kalelerini güçlendirdi.": "Osman Bey strengthened fortresses along the frontier.",
+"Moğol-Memlük savaşı Anadolu'daki rakipleri dağıttı; Osman Bey uçta güçlenme fırsatı buluyor.": "The Mongol–Mamluk war scatters rivals in Anatolia; Osman Bey sees a chance to grow on the frontier.",
+"Gazan Han Suriye'de": "Ghazan Khan in Syria",
+"İlhanlı hükümdarı Gazan Han Memlük topraklarına girdi; Humus yakınında Memlük ordusunu yendi ve Şam'a yürüdü. Anadolu'daki Moğol baskısı ve Selçuklu çöküşü uç beylerine alan açıyor.": "The Ilkhanid ruler Ghazan Khan invaded Mamluk lands, defeated the Mamluk army near Homs and marched on Damascus. The Mongol pressure in Anatolia and the Seljuk collapse open room for the frontier beys.",
+"Bursa ve İznik'i çevir (tarihî)": "Surround Bursa and Nicaea (historical)",
+"Kale kuşatması": "Fort-by-fort siege",
+"Osman Bey Bursa ve İznik çevresinde kaleler kurdu.": "Osman Bey built forts around Bursa and Nicaea.",
+"Rakip beyliklere yönel": "Turn to rival beyliks",
+"Anadolu birliği": "Anatolian unity",
+"Osman rakip beyliklerle ittifak aradı.": "Osman sought alliances with rival beyliks.",
+"Zafer geldi; kaçan köylüler Osman'a katılıyor. Hedef Bursa ve İznik mi?": "Victory is yours; fleeing villagers join Osman. Is the target Bursa and Nicaea?",
+"Katalan paralı askerleri kirala (tarihî)": "Hire the Catalan mercenaries (historical)",
+"Bedeli büyük": "A costly bargain",
+"Andronikos Katalan paralı askerleri kiraladı; maaşlar hazineyi boşalttı.": "Andronikos hired the Catalan Company; pay drained the treasury.",
+"Ücretsiz kalelere güven": "Rely on the fortress garrisons",
+"Maliyet düşük": "Low cost",
+"Bizans kale garnizonlarına güvendi.": "Byzantium relied on garrisons.",
+"Muzalon bozguna uğradı; Anadolu sınırı savunmasız. Katalan Birliği'ni kiralayacak mısın?": "Mouzalon is routed; the Anatolian frontier is undefended. Will you hire the Catalan Company?",
+"Koyunhisar (Bafeus) Savaşı": "The Battle of Bapheus",
+"Osman Bey'in akıncıları Nikomedeia yakınlarındaki Koyunhisar'da Bizans'ın Georgios Muzalon komutasındaki ordusunu yendi. Bizans'ın Anadolu'daki savunması çöküyor; Bitinya köylüleri kaçıyor.": "Osman's raiders defeated the Byzantine army under George Mouzalon at Bapheus near Nicomedia. Byzantine defence in Anatolia is collapsing; Bithynian villagers are fleeing.",
+"Hoşgörüyle yönet (tarihî)": "Rule with tolerance (historical)",
+"Yerleşik halkı kazan": "Win over the townspeople",
+"Orhan Bey Bursa halkına güvence verip ticareti canlandırdı.": "Orhan Bey reassured Bursa's people and revived trade.",
+"Garnizon kur ve vergi koy": "Garrison and tax",
+"Daha sert yönetim": "Harsher rule",
+"Orhan Bey Bursa'ya garnizon yerleştirip vergiler koydu.": "Orhan Bey garrisoned Bursa and imposed taxes.",
+"Bursa teslim oluyor. Şehre ve halkına nasıl davranacaksın?": "Bursa is surrendering. How will you treat the city and its people?",
+"Pelekanon'da karşı koy (tarihî)": "Resist at Pelekanon (historical)",
+"Saha savaşı": "A field battle",
+"Bizans ordusu Pelekanon'da Osmanlı'ya karşı çıktı ve yenildi.": "The Byzantine army met the Ottomans at Pelekanon and lost.",
+"Boğazlar'a çekil": "Fall back to the Straits",
+"Başkenti koru": "Protect the capital",
+"Bizans Anadolu'daki mevzilerini bırakıp Boğazlar'a çekildi.": "Byzantium abandoned Anatolian positions for the Straits.",
+"Bursa gitti; İznik ve İzmit sıradaki. İmparator III. Andronikos Anadolu'yu savunacak mı?": "Bursa is gone; Nicaea and Nicomedia are next. Will Andronikos III defend Anatolia?",
+"Bursa Düştü": "The Fall of Bursa",
+"Yıllarca süren kuşatmanın ardından Orhan Gazi Bursa'yı aldı ve burayı beyliğin başkenti yaptı. Osman Bey'in vefat haberi aynı günlere denk geliyor. Beylik artık şehir devleti olacak.": "After years of siege Orhan Ghazi took Bursa and made it the capital of the beylik. News of Osman Bey's death coincides with the days. The beylik is about to become a city-state.",
+"İzmit'e yürü (tarihî)": "March on Nicomedia (historical)",
+"Marmara kıyısına ulaş": "Reach the Marmara coast",
+"Osmanlılar İzmit'e doğru ilerledi.": "The Ottomans advanced toward Nicomedia.",
+"Kuruluşu sağlamlaştır": "Consolidate institutions",
+"Medrese ve kadı atamaları": "Madrasa and qadi appointments",
+"Orhan Bey devlet teşkilatını güçlendirdi.": "Orhan Bey strengthened the state apparatus.",
+"İznik düştü; Bizans başkentinin 100 km yakınındasın. Sıradaki hedef İzmit mi?": "Nicaea has fallen; you are 100 km from the Byzantine capital. Is İzmit next?",
+"Venedik ve Cenova'dan yardım iste (tarihî)": "Ask Venice and Genoa for help (historical)",
+"Bedel ticarî imtiyaz": "The price is trade privileges",
+"Bizans İtalyan şehir devletlerine yeni imtiyazlar verdi.": "Byzantium granted new privileges to the Italian city-states.",
+"Osmanlı ile barış yap": "Make peace with the Ottomans",
+"Oyala": "Delay",
+"Bizans Osmanlı ile barış antlaşması yaptı.": "Byzantium signed a peace with the Ottomans.",
+"İznik'i kaybettin; Anadolu'nun tamamı tehlikede. İtalyan şehir devletlerinden yardım mı?": "You lost Nicaea; all Anatolia is at risk. Seek help from the Italian city-states?",
+"İznik'in Fethi": "The Capture of Nicaea",
+"Bizans İmparatoru III. Andronikos İznik'i kurtarmaya çalışırken Orhan Bey'in ordusuna yenildi. İznik teslim oldu; Osmanlı ilk medresesini burada kurdu. Beylik Bizans'ın hemen komşusu.": "Byzantine emperor Andronikos III tried to relieve Nicaea but was beaten by Orhan's army. Nicaea surrendered; the Ottomans founded their first madrasa here. The beylik is now Byzantium's next-door neighbour."
+}
+}
