@@ -3,7 +3,7 @@
 Kaynak: ahmett_ttarik, luciferdeu, erenkbtss, devranpashaa, play store paylaşımı (Rule the World), geliştirici grubu.
 
 ## Hatalar
-- B1. [İNCELENDİ: masaüstünde tur geçişi ~150 ms, belirgin darboğaz yok; cihaz profili gerekli] Kasma/donma arttı (kullanıcı notu).
+- B1. [YAPILDI: tur ~150→~115 ms (YZ ekonomi/hava eşitleme seyrek, hava AI menzil önbelleği, Faith/Chokepoints); telefonda cihaz profili hâlâ gerekli] Kasma/donma arttı (kullanıcı notu).
 - B2. [YAPILDI] Senaryo menüsü bir kez kapatılınca tekrar açılamıyor / tıklanmıyor (grup, Eren Akgün).
 - B3. [YAPILDI: ilişki 30'dan itibaren YZ savaş isteği azalır, 70'te hiç açmaz] Ruslarla ilişki %41 iken Rusya savaş açtı (1914?) — savaş koşulu kontrol edilmeli.
 - B4. [YAPILDI: oyuncuya karşı tek savaşta en çok 3 müttefik katılır; 3+ savaştaysa YZ yığılmaz] Bir devletle yeni savaşa girince 5 devlet daha savaş açıyor, bitirince 5 yeni devlet açıyor; "saldırganlık %0" görünüyor — sürekli savaş açma sarmalı.
@@ -53,7 +53,7 @@ Ilk listede olmayan ya da eksik kalan maddeler. Durum etiketi kodda bakılarak y
 - E5. [KONTROL EDİLDİ: aynı anda en çok 6 isyan, kıta başına 3; güven ve garnizon huzursuzluğu azaltır; ek değişiklik yapılmadı] Savaş sonrası asimilasyon/din dönüştürme VAR (eyalet kartı); "isyan çıkma sıklığı çok fazla, fetihten başka gelişim yok" dengesi bakılmadı (mainanonacc).
 - E6. [YAPILDI: formlama kartında 'Haritada göster' + 'Alınacak yerler (elinde tutan ülke)' listesi] "Osmanlı'yı oluştur" formlarken nereleri almam gerektiği haritada gösterilsin.
 - E7. [KISMEN: 15 Temmuz ve Rusya protestoları senaryosu EKLENDİ; 12 Eylül ve Weimar/Beyaz Rusya için 1980/1920 harita dönemi gerekir] Yeni senaryolar: Osmanlı kuruluşu (ott1299) ve İstanbul'un fethi (ott1453) VAR; 15 Temmuz, 12 Eylül, Navalny protestosu, Weimar/Beyaz Rusya/Sovyet çatışması YOK.
-- E8. [BAKILACAK] Senaryo editörü: haritadan tıklayarak ülke/il seçme, kaydırma sorunu, tarih/harita ayarı.
+- E8. [YAPILDI: xvfb'de 7 sayfa + haritadan il seç + olay ekle/kaydet/oyna uçtan uca test edildi; sabit boy pencere, seçilen iller haritada altın, kaynak ülkeye yakınlaşma] Senaryo editörü: haritadan tıklayarak ülke/il seçme, kaydırma sorunu, tarih/harita ayarı.
 - E9. [YAPILDI: eğitim/tarım bütçesi, 3 tip kiralık asker (gönüllü/profesyonel/özel harekât) zaten vardı, bu tur Askerlik düzeni: gönüllü/normal/zorunlu eklendi] Kiralık asker 3 tip (çete / orta / özel harekat); zorunlu askerlik tur başına çok az (5–10 bin); vergi↔asker sürgüsü; bütçede eğitim, tarım, vergi.
 - E10. [İNCELENDİ: tek eyaletli olanlar yalnız 26 mikro devlet (Singapur, Malta, Monako...); Türkiye/Arabistan çok eyaletli] Eyalet sayısı dengesiz: Arabistan tek il, Türkiye'de 2 tek il (Emir Ali).
 - E11. [YAPILDI: savaş ilanında sebep penceresi; sebep yoksa istikrar -3 ve tüm ülkelerle ilişki -6; ittifak kolaylığı yapılmadı] Savaş ilanında savaş sebebi (casus belli) seçilsin (Taha); ittifak kurmak kolaylaşsın, para biriktirirken ilişki düşmesin (Yasin).
