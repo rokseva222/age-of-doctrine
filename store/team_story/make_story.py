@@ -481,24 +481,24 @@ def card_single(im, cfg, col, m, idx, total, box, base_dir):
     label_h = 34 if label else 0
     scale = 1.0
     while True:
-        role_lines, rf, rlh = fit_text(display_role(m, cfg), BODY_B, tw, 46 * scale, 24, max_lines=2)
-        name_lines, nf, nlh = fit_text(display_name(m, cfg), HEAD, tw, 130 * scale, 44, max_lines=2)
+        role_lines, rf, rlh = fit_text(display_role(m, cfg), BODY_B, tw, 40 * scale, 22, max_lines=2)
+        name_lines, nf, nlh = fit_text(display_name(m, cfg), HEAD, tw, 108 * scale, 44, max_lines=2)
         bio_lines, bf, blh = [], None, 0
         if bio:
             bio_lines, bf, blh = fit_text(bio, BODY, tw - 40, 34 * scale, 20, max_lines=5)
         text_h = label_h + 14 + nlh * len(name_lines) + 14 + 2 + 20 + rlh * len(role_lines)
         if bio_lines:
             text_h += 34 + blh * len(bio_lines) + 40
-        ps = int(min(700, h - text_h - 36 - 30, w - 100))
+        ps = int(min(700, h - text_h - 24 - 16, w - 60))
         if ps >= 300 or scale < 0.5:
             break
         scale -= 0.07
     ps = max(ps, 200)
-    block = ps + 36 + text_h
+    block = ps + 28 + text_h
     y = y0 + max(0, (h - block) / 2)
     pt = make_portrait(m, ps, cfg, col, base_dir)
     im.paste(pt, ((W - ps) // 2, int(y)), pt)
-    y += ps + 36
+    y += ps + 28
     if label:
         draw_text(d, (W / 2, y), label, font(MONO_B, 26), col["red"], "ma", 5)
         y += label_h + 14
