@@ -1,0 +1,472 @@
+{
+ "moments": [
+  {
+   "id": "ind_pahalgam",
+   "turn": 4,
+   "title": "Pehelgam Saldırısı ve 'Sindoor'",
+   "scene": "border",
+   "icon": "border_clash",
+   "text": "Keşmir'de turistlere yönelik silahlı saldırı 26 kişinin ölümüne yol açtı. Yeni Delhi İndus Suları Antlaşması'nı askıya aldı, sınırı kapattı ve misilleme yolunu açık tuttu; İslamabad 'su akışının durdurulması savaş eylemidir' dedi.",
+   "major": true,
+   "default_fx": [
+    [
+     "rel",
+     "India",
+     "Pakistan",
+     -8
+    ],
+    [
+     "stab",
+     "Pakistan",
+     -1
+    ]
+   ],
+   "roles": {
+    "India": {
+     "text": "Halk karşılık istiyor. Hava ve füze vuruşları kontrollü kalırsa tırmanma sınırlı olabilir; ama nükleer gölge hep orada.",
+     "options": [
+      {
+       "t": "Sınır ötesi hava harekâtı (tarihî)",
+       "d": "Sınır ötesi hava harekâtı (tarihî)",
+       "fx": [
+        [
+         "war",
+         "India",
+         "Pakistan",
+         "solo"
+        ],
+        [
+         "buff",
+         "India",
+         "att",
+         1.1,
+         6
+        ],
+        [
+         "rel",
+         "India",
+         "Pakistan",
+         -10
+        ],
+        [
+         "stab",
+         "India",
+         2
+        ]
+       ],
+       "r": "Hindistan Pakistan'daki 9 hedefe füze ve hava saldırısı yaptı."
+      },
+      {
+       "t": "Su ve ticaret yaptırımları",
+       "d": "Su ve ticaret yaptırımları",
+       "fx": [
+        [
+         "rel",
+         "India",
+         "Pakistan",
+         -6
+        ],
+        [
+         "gold",
+         "Pakistan",
+         -1.0
+        ],
+        [
+         "rel",
+         "India",
+         "China",
+         -1
+        ]
+       ],
+       "r": "Delhi İndus'taki baraj işlemlerini sınırladı, ticareti kesti."
+      }
+     ]
+    },
+    "Pakistan": {
+     "text": "Orduyu ve halkı birleştiren dış tehdit; ama ekonomi kırılgan ve IMF programı gölgede. Çin'in desteği kritik.",
+     "options": [
+      {
+       "t": "Sert karşılık ver",
+       "d": "Sert karşılık ver",
+       "fx": [
+        [
+         "war",
+         "Pakistan",
+         "India",
+         "solo"
+        ],
+        [
+         "buff",
+         "Pakistan",
+         "def",
+         1.1,
+         6
+        ],
+        [
+         "rel",
+         "Pakistan",
+         "India",
+         -8
+        ],
+        [
+         "rel",
+         "Pakistan",
+         "China",
+         3
+        ]
+       ],
+       "r": "Pakistan topçu ve insansız hava araçlarıyla misilleme yaptı."
+      },
+      {
+       "t": "Soruşturma teklif et, tırmanma önle",
+       "d": "Soruşturma teklif et, tırmanma önle",
+       "fx": [
+        [
+         "rel",
+         "Pakistan",
+         "India",
+         2
+        ],
+        [
+         "rel",
+         "Pakistan",
+         "United States of America",
+         3
+        ],
+        [
+         "stab",
+         "Pakistan",
+         -1
+        ]
+       ],
+       "r": "İslamabad tarafsız soruşturma önerdi ve Körfez'den arabuluculuk istedi."
+      }
+     ]
+    },
+    "China": {
+     "text": "Pekin Pakistan'ın yakın müttefiki; ama Hindistan'la ilişkileri düzeltme çabasında.",
+     "options": [
+      {
+       "t": "Pakistan'a diplomatik ve askerî destek",
+       "d": "Pakistan'a diplomatik ve askerî destek",
+       "fx": [
+        [
+         "rel",
+         "China",
+         "Pakistan",
+         6
+        ],
+        [
+         "rel",
+         "China",
+         "India",
+         -5
+        ]
+       ],
+       "r": "Çin Pakistan'a istihbarat ve hava savunma desteği verdi.",
+       "keep_default": true
+      },
+      {
+       "t": "İki tarafa sakin ol çağrısı",
+       "d": "İki tarafa sakin ol çağrısı",
+       "fx": [
+        [
+         "rel",
+         "China",
+         "India",
+         2
+        ],
+        [
+         "rel",
+         "China",
+         "Pakistan",
+         -1
+        ]
+       ],
+       "r": "Pekin iki tarafı da itidale çağırdı.",
+       "keep_default": true
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "ind_ateskes",
+   "turn": 10,
+   "title": "Dört Günlük Savaşın Ateşkesi",
+   "scene": "peace",
+   "icon": "dove",
+   "text": "Karşılıklı hava ve füze vuruşlarının ardından, ABD'nin telefon diplomasisi ve Körfez arabuluculuğuyla ateşkes ilan edildi; ancak her iki taraf da 'zaferi' kendine yazdı. Su sorunu ve Keşmir çözümsüz.",
+   "major": true,
+   "default_fx": [
+    [
+     "peace",
+     "India",
+     "Pakistan"
+    ],
+    [
+     "rel",
+     "India",
+     "Pakistan",
+     3
+    ],
+    [
+     "rel",
+     "India",
+     "United States of America",
+     -2
+    ]
+   ],
+   "roles": {
+    "India": {
+     "text": "Ateşkes iç kamuoyunda 'yarım kalan iş' algısı yaratabilir; ama ekonomi büyüme hedefine odaklı.",
+     "options": [
+      {
+       "t": "Ateşkesi kabul et (tarihî)",
+       "d": "Ateşkesi kabul et (tarihî)",
+       "fx": [
+        [
+         "peace",
+         "India",
+         "Pakistan"
+        ],
+        [
+         "stab",
+         "India",
+         1
+        ]
+       ],
+       "r": "Hindistan ateşkesi kabul etti ve 'harekât sürüyor' dedi."
+      },
+      {
+       "t": "Baskıyı sürdür",
+       "d": "Baskıyı sürdür",
+       "fx": [
+        [
+         "rel",
+         "India",
+         "Pakistan",
+         -4
+        ],
+        [
+         "stab",
+         "India",
+         1
+        ],
+        [
+         "rel",
+         "India",
+         "United States of America",
+         -2
+        ]
+       ],
+       "r": "Delhi ateşkese rağmen su ve ticaret baskısını sürdürdü."
+      }
+     ]
+    },
+    "Pakistan": {
+     "text": "Mareşal rütbesine terfi eden komutan çevresinde ordu kenetlendi; ama ekonomi toparlanmaya muhtaç.",
+     "options": [
+      {
+       "t": "Ateşkesi kabul et, zaferi ilan et (tarihî)",
+       "d": "Ateşkesi kabul et, zaferi ilan et (tarihî)",
+       "fx": [
+        [
+         "peace",
+         "Pakistan",
+         "India"
+        ],
+        [
+         "stab",
+         "Pakistan",
+         3
+        ],
+        [
+         "rel",
+         "Pakistan",
+         "United States of America",
+         4
+        ]
+       ],
+       "r": "Pakistan ateşkesi kabul etti; ordu zafer kutlaması yaptı."
+      },
+      {
+       "t": "Su meselesini uluslararasılaştır",
+       "d": "Su meselesini uluslararasılaştır",
+       "fx": [
+        [
+         "rel",
+         "Pakistan",
+         "India",
+         -3
+        ],
+        [
+         "rel",
+         "Pakistan",
+         "China",
+         2
+        ]
+       ],
+       "r": "İslamabad İndus sorununu BM ve Dünya Bankası'na taşıdı."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "ind_indus",
+   "turn": 48,
+   "title": "İndus Suları ve Ekim Hasadı",
+   "scene": "trade",
+   "icon": "warning",
+   "text": "Hindistan İndus kolları üzerinde yeni barajlar ve su yönlendirmeleri planlarken Pakistan 'su kesilirse savaş' diyor. Muson sonrası kuraklık Pencap'ta gerilimi artırıyor.",
+   "major": false,
+   "default_fx": [
+    [
+     "rel",
+     "India",
+     "Pakistan",
+     -3
+    ],
+    [
+     "stab",
+     "Pakistan",
+     -1
+    ]
+   ],
+   "roles": {
+    "Pakistan": {
+     "text": "Pencap'ın tarımı İndus'a bağlı; suyun azalması iç huzursuzluk getirebilir.",
+     "options": [
+      {
+       "t": "Uluslararası tahkim iste",
+       "d": "Uluslararası tahkim iste",
+       "fx": [
+        [
+         "rel",
+         "Pakistan",
+         "United States of America",
+         2
+        ],
+        [
+         "rel",
+         "Pakistan",
+         "India",
+         -2
+        ]
+       ],
+       "r": "Pakistan Daimi Tahkim Divanı'na başvurdu."
+      },
+      {
+       "t": "Sınırda gövde gösterisi",
+       "d": "Sınırda gövde gösterisi",
+       "fx": [
+        [
+         "troops",
+         "Pakistan",
+         3
+        ],
+        [
+         "rel",
+         "Pakistan",
+         "India",
+         -4
+        ]
+       ],
+       "r": "Pakistan birliklerini Pencap sınırına kaydırdı."
+      }
+     ]
+    },
+    "India": {
+     "text": "Baraj yatırımları uzun vadeli; kısa vadede kuraklık Hindistan'ın kendi çiftçilerini de vuruyor.",
+     "options": [
+      {
+       "t": "Barajları hızlandır",
+       "d": "Barajları hızlandır",
+       "fx": [
+        [
+         "rel",
+         "India",
+         "Pakistan",
+         -4
+        ],
+        [
+         "gold",
+         "India",
+         -0.5
+        ],
+        [
+         "stab",
+         "India",
+         1
+        ]
+       ],
+       "r": "Delhi Chenab üzerindeki projeleri hızlandırdı."
+      },
+      {
+       "t": "Su görüşmelerini yeniden başlat",
+       "d": "Su görüşmelerini yeniden başlat",
+       "fx": [
+        [
+         "rel",
+         "India",
+         "Pakistan",
+         4
+        ],
+        [
+         "stab",
+         "India",
+         -1
+        ]
+       ],
+       "r": "Hindistan Pakistan'la teknik su görüşmelerine razı oldu."
+      }
+     ]
+    }
+   }
+  }
+ ],
+ "moments_en": {
+  "Sınır ötesi hava harekâtı (tarihî)": "Cross-border air strikes (historical)",
+  "Hindistan Pakistan'daki 9 hedefe füze ve hava saldırısı yaptı.": "India struck nine targets in Pakistan with missiles and aircraft.",
+  "Su ve ticaret yaptırımları": "Water and trade sanctions",
+  "Delhi İndus'taki baraj işlemlerini sınırladı, ticareti kesti.": "Delhi curtailed dam operations on the Indus and cut trade.",
+  "Halk karşılık istiyor. Hava ve füze vuruşları kontrollü kalırsa tırmanma sınırlı olabilir; ama nükleer gölge hep orada.": "The public wants retaliation. Air and missile strikes can stay limited, but the nuclear shadow is always there.",
+  "Sert karşılık ver": "Retaliate firmly",
+  "Pakistan topçu ve insansız hava araçlarıyla misilleme yaptı.": "Pakistan retaliated with artillery and drones.",
+  "Soruşturma teklif et, tırmanma önle": "Offer an inquiry and avoid escalation",
+  "İslamabad tarafsız soruşturma önerdi ve Körfez'den arabuluculuk istedi.": "Islamabad offered a neutral inquiry and sought Gulf mediation.",
+  "Orduyu ve halkı birleştiren dış tehdit; ama ekonomi kırılgan ve IMF programı gölgede. Çin'in desteği kritik.": "An external threat unites army and public; yet the economy is fragile with an IMF programme in the background. Chinese support is critical.",
+  "Pakistan'a diplomatik ve askerî destek": "Back Pakistan diplomatically and militarily",
+  "Çin Pakistan'a istihbarat ve hava savunma desteği verdi.": "China gave Pakistan intelligence and air-defence support.",
+  "İki tarafa sakin ol çağrısı": "Call on both sides to calm down",
+  "Pekin iki tarafı da itidale çağırdı.": "Beijing urged restraint on both.",
+  "Pekin Pakistan'ın yakın müttefiki; ama Hindistan'la ilişkileri düzeltme çabasında.": "Beijing is Pakistan's close ally but is trying to mend ties with India.",
+  "Pehelgam Saldırısı ve 'Sindoor'": "The Pahalgam Attack and 'Sindoor'",
+  "Keşmir'de turistlere yönelik silahlı saldırı 26 kişinin ölümüne yol açtı. Yeni Delhi İndus Suları Antlaşması'nı askıya aldı, sınırı kapattı ve misilleme yolunu açık tuttu; İslamabad 'su akışının durdurulması savaş eylemidir' dedi.": "An armed attack on tourists in Kashmir killed 26 people. New Delhi suspended the Indus Waters Treaty, closed the border and kept retaliation open; Islamabad said stopping the water would be an act of war.",
+  "Ateşkesi kabul et (tarihî)": "Accept the ceasefire (historical)",
+  "Hindistan ateşkesi kabul etti ve 'harekât sürüyor' dedi.": "India accepted the ceasefire, saying the operation continues.",
+  "Baskıyı sürdür": "Keep the pressure on",
+  "Delhi ateşkese rağmen su ve ticaret baskısını sürdürdü.": "Delhi kept up water and trade pressure despite the truce.",
+  "Ateşkes iç kamuoyunda 'yarım kalan iş' algısı yaratabilir; ama ekonomi büyüme hedefine odaklı.": "The ceasefire may look like unfinished business at home, but the economy is focused on growth.",
+  "Ateşkesi kabul et, zaferi ilan et (tarihî)": "Accept the ceasefire and claim victory (historical)",
+  "Pakistan ateşkesi kabul etti; ordu zafer kutlaması yaptı.": "Pakistan accepted the ceasefire and the army celebrated victory.",
+  "Su meselesini uluslararasılaştır": "Internationalise the water dispute",
+  "İslamabad İndus sorununu BM ve Dünya Bankası'na taşıdı.": "Islamabad took the Indus issue to the UN and the World Bank.",
+  "Mareşal rütbesine terfi eden komutan çevresinde ordu kenetlendi; ama ekonomi toparlanmaya muhtaç.": "The army rallied around its newly promoted field marshal; but the economy needs recovery.",
+  "Dört Günlük Savaşın Ateşkesi": "The Four-Day War Ceasefire",
+  "Karşılıklı hava ve füze vuruşlarının ardından, ABD'nin telefon diplomasisi ve Körfez arabuluculuğuyla ateşkes ilan edildi; ancak her iki taraf da 'zaferi' kendine yazdı. Su sorunu ve Keşmir çözümsüz.": "After exchanges of air and missile strikes, a ceasefire was declared through US telephone diplomacy and Gulf mediation; yet both sides claimed victory. The water issue and Kashmir remain unresolved.",
+  "Uluslararası tahkim iste": "Seek international arbitration",
+  "Pakistan Daimi Tahkim Divanı'na başvurdu.": "Pakistan went to the Permanent Court of Arbitration.",
+  "Sınırda gövde gösterisi": "Show force at the border",
+  "Pakistan birliklerini Pencap sınırına kaydırdı.": "Pakistan moved units to the Punjab frontier.",
+  "Pencap'ın tarımı İndus'a bağlı; suyun azalması iç huzursuzluk getirebilir.": "Punjab's farming depends on the Indus; falling water could bring unrest.",
+  "Barajları hızlandır": "Speed up the dams",
+  "Delhi Chenab üzerindeki projeleri hızlandırdı.": "Delhi accelerated its Chenab projects.",
+  "Su görüşmelerini yeniden başlat": "Restart water talks",
+  "Hindistan Pakistan'la teknik su görüşmelerine razı oldu.": "India agreed to technical water talks with Pakistan.",
+  "Baraj yatırımları uzun vadeli; kısa vadede kuraklık Hindistan'ın kendi çiftçilerini de vuruyor.": "Dam investments are long-term; in the short term drought also hits Indian farmers.",
+  "İndus Suları ve Ekim Hasadı": "The Indus Waters and the Autumn Harvest",
+  "Hindistan İndus kolları üzerinde yeni barajlar ve su yönlendirmeleri planlarken Pakistan 'su kesilirse savaş' diyor. Muson sonrası kuraklık Pencap'ta gerilimi artırıyor.": "India plans new dams and diversions on the Indus tributaries while Pakistan says cutting water means war. A post-monsoon drought raises tension in Punjab."
+ }
+}

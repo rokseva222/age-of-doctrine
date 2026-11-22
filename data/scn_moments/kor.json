@@ -1,0 +1,474 @@
+{
+ "moments": [
+  {
+   "id": "kor_kale",
+   "turn": 6,
+   "title": "Sınırı Aşılmaz Kale Yap",
+   "scene": "pre_war",
+   "icon": "missile",
+   "text": "Kim Jong Un orduya Güney Kore sınırını 'aşılmaz bir kale'ye çevirme emri verdi; Pyongyang Seul'ü 'en düşman devlet' ilan etti ve tehdit edilirse Güney'i yok edebileceğini söyledi. Seul ise 'dron savaşçıları' yetiştiriyor.",
+   "major": true,
+   "default_fx": [
+    [
+     "stab",
+     "South Korea",
+     -1
+    ],
+    [
+     "rel",
+     "North Korea",
+     "South Korea",
+     -4
+    ]
+   ],
+   "roles": {
+    "North Korea": {
+     "text": "Rusya ile askerî ortaklık sizi cesaretlendirdi; ama yaptırımlar ve elektrik açığı sürüyor.",
+     "options": [
+      {
+       "t": "Sınırı tahkim et, füze testlerini artır",
+       "d": "Sınırı tahkim et, füze testlerini artır",
+       "fx": [
+        [
+         "buff",
+         "North Korea",
+         "def",
+         1.1,
+         8
+        ],
+        [
+         "rel",
+         "North Korea",
+         "South Korea",
+         -5
+        ],
+        [
+         "rel",
+         "North Korea",
+         "United States of America",
+         -3
+        ]
+       ],
+       "r": "Kuzey Kore sınır boyunca tahkimat kurdu ve füze testi yaptı."
+      },
+      {
+       "t": "ABD'ye diyalog kapısı aç",
+       "d": "ABD'ye diyalog kapısı aç",
+       "fx": [
+        [
+         "rel",
+         "North Korea",
+         "United States of America",
+         4
+        ],
+        [
+         "rel",
+         "North Korea",
+         "South Korea",
+         -1
+        ]
+       ],
+       "r": "Pyongyang ABD ile müzakereye 'koşullu' açık olduğunu söyledi."
+      }
+     ]
+    },
+    "South Korea": {
+     "text": "Seul caydırıcılıkta kararlı ama tırmanma istemiyor; yeni hükûmet diyalog çağrısı yapıyor.",
+     "options": [
+      {
+       "t": "Gerilimi azaltma çağrısı",
+       "d": "Gerilimi azaltma çağrısı",
+       "fx": [
+        [
+         "rel",
+         "South Korea",
+         "North Korea",
+         3
+        ],
+        [
+         "stab",
+         "South Korea",
+         1
+        ]
+       ],
+       "r": "Seul propaganda hoparlörlerini susturup görüşme önerdi."
+      },
+      {
+       "t": "Dron ve füze savunmasını artır",
+       "d": "Dron ve füze savunmasını artır",
+       "fx": [
+        [
+         "troops",
+         "South Korea",
+         3
+        ],
+        [
+         "rel",
+         "South Korea",
+         "United States of America",
+         3
+        ],
+        [
+         "rel",
+         "South Korea",
+         "North Korea",
+         -3
+        ]
+       ],
+       "r": "Güney Kore dron birimlerini ve füze savunmasını güçlendirdi."
+      }
+     ]
+    },
+    "United States of America": {
+     "text": "Washington Kore'de iki cephe istemiyor; ama müttefiklerine güven vermek zorunda.",
+     "options": [
+      {
+       "t": "Ortak tatbikat ve genişletilmiş caydırıcılık",
+       "d": "Ortak tatbikat ve genişletilmiş caydırıcılık",
+       "fx": [
+        [
+         "rel",
+         "United States of America",
+         "South Korea",
+         4
+        ],
+        [
+         "rel",
+         "United States of America",
+         "North Korea",
+         -4
+        ]
+       ],
+       "r": "ABD ve Güney Kore ortak tatbikat yaptı.",
+       "keep_default": true
+      },
+      {
+       "t": "Doğrudan görüşme önerisi",
+       "d": "Doğrudan görüşme önerisi",
+       "fx": [
+        [
+         "rel",
+         "United States of America",
+         "North Korea",
+         4
+        ],
+        [
+         "rel",
+         "United States of America",
+         "South Korea",
+         -2
+        ]
+       ],
+       "r": "Beyaz Saray Kim'le zirve ihtimalini açık bıraktı.",
+       "keep_default": true
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "kor_tatbikatlar",
+   "turn": 30,
+   "title": "Yaz Tatbikatları ve Rus Mühimmatı",
+   "scene": "air",
+   "icon": "jet",
+   "text": "Seul, Tokyo ve Washington üçlü tatbikat yaparken Kuzey Kore'nin Rusya'ya mühimmat ve asker gönderdiği, karşılığında teknoloji ve yakıt aldığı biliniyor. Pyongyang tatbikatları 'işgal provası' diye niteliyor.",
+   "major": false,
+   "default_fx": [
+    [
+     "rel",
+     "North Korea",
+     "United States of America",
+     -3
+    ],
+    [
+     "rel",
+     "North Korea",
+     "Japan",
+     -3
+    ],
+    [
+     "buff",
+     "North Korea",
+     "att",
+     1.05,
+     6
+    ]
+   ],
+   "roles": {
+    "North Korea": {
+     "text": "Rusya ittifakı size askerî deneyim ve gelir getirdi; ama çok sayıda asker kaybı da var.",
+     "options": [
+      {
+       "t": "Moskova'yla ittifakı derinleştir",
+       "d": "Moskova'yla ittifakı derinleştir",
+       "fx": [
+        [
+         "gold",
+         "North Korea",
+         1.5
+        ],
+        [
+         "troops",
+         "North Korea",
+         2
+        ],
+        [
+         "rel",
+         "North Korea",
+         "United States of America",
+         -3
+        ]
+       ],
+       "r": "Kuzey Kore ve Rusya yeni bir savunma işbirliği protokolü imzaladı."
+      },
+      {
+       "t": "Çin'e yaklaş, dengeyi koru",
+       "d": "Çin'e yaklaş, dengeyi koru",
+       "fx": [
+        [
+         "gold",
+         "North Korea",
+         1.0
+        ],
+        [
+         "rel",
+         "North Korea",
+         "China",
+         5
+        ],
+        [
+         "stab",
+         "North Korea",
+         1
+        ]
+       ],
+       "r": "Pyongyang Pekin'le ticaret ve yakıt anlaşmalarını yeniledi."
+      }
+     ]
+    },
+    "Japan": {
+     "text": "Tokyo balistik füze alarmlarıyla yaşıyor; üçlü tatbikat Çin'i de rahatsız ediyor.",
+     "options": [
+      {
+       "t": "Üçlü ittifakı derinleştir",
+       "d": "Üçlü ittifakı derinleştir",
+       "fx": [
+        [
+         "rel",
+         "Japan",
+         "South Korea",
+         4
+        ],
+        [
+         "rel",
+         "Japan",
+         "United States of America",
+         3
+        ],
+        [
+         "rel",
+         "Japan",
+         "China",
+         -3
+        ]
+       ],
+       "r": "Japonya, ABD ve Güney Kore füze uyarı verilerini paylaşmaya başladı.",
+       "keep_default": true
+      },
+      {
+       "t": "Bölgesel diyalog önder ol",
+       "d": "Bölgesel diyalog önder ol",
+       "fx": [
+        [
+         "rel",
+         "Japan",
+         "China",
+         3
+        ],
+        [
+         "rel",
+         "Japan",
+         "North Korea",
+         1
+        ]
+       ],
+       "r": "Tokyo Kuzey Kore'yle temas ve Çin'le istişare önerdi.",
+       "keep_default": true
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "kor_sinir",
+   "turn": 64,
+   "title": "Sınırda Silah Sesi",
+   "scene": "border",
+   "icon": "border_clash",
+   "text": "DMZ'de bir uyarı ateşi kazaya dönüştü: bir askerî devriye mayına bastı, iki tarafın topçusu ateş açtı. Hotline sessiz kalırsa tırmanma kaçınılmaz.",
+   "major": true,
+   "default_fx": [
+    [
+     "stab",
+     "North Korea",
+     -1
+    ],
+    [
+     "stab",
+     "South Korea",
+     -1
+    ],
+    [
+     "rel",
+     "North Korea",
+     "South Korea",
+     -5
+    ]
+   ],
+   "roles": {
+    "South Korea": {
+     "text": "Karşılık vermezsen zayıf görünürsün, verirsen savaşa kayabilirsin.",
+     "options": [
+      {
+       "t": "Orantılı karşılık, sıcak hat",
+       "d": "Orantılı karşılık, sıcak hat",
+       "fx": [
+        [
+         "rel",
+         "South Korea",
+         "North Korea",
+         -2
+        ],
+        [
+         "stab",
+         "South Korea",
+         1
+        ]
+       ],
+       "r": "Seul topçu ile sınırlı karşılık verip sıcak hattı açtı."
+      },
+      {
+       "t": "Sert vuruş",
+       "d": "Sert vuruş",
+       "fx": [
+        [
+         "war",
+         "South Korea",
+         "North Korea",
+         "solo"
+        ],
+        [
+         "buff",
+         "South Korea",
+         "att",
+         1.1,
+         6
+        ],
+        [
+         "rel",
+         "South Korea",
+         "North Korea",
+         -8
+        ]
+       ],
+       "r": "Güney Kore sınır karakollarına yoğun topçu ateşi açtı."
+      }
+     ]
+    },
+    "North Korea": {
+     "text": "Olayı fırsat sayıp 'misilleme' diyebilirsiniz; ya da kontrolü kaybetmeden durdurursunuz.",
+     "options": [
+      {
+       "t": "Misilleme yap",
+       "d": "Misilleme yap",
+       "fx": [
+        [
+         "war",
+         "North Korea",
+         "South Korea",
+         "solo"
+        ],
+        [
+         "buff",
+         "North Korea",
+         "att",
+         1.1,
+         6
+        ],
+        [
+         "rel",
+         "North Korea",
+         "South Korea",
+         -8
+        ]
+       ],
+       "r": "Kuzey Kore sınırda topçu ve roketatarlarla ateş açtı."
+      },
+      {
+       "t": "Olayı kapat, kınama yayınla",
+       "d": "Olayı kapat, kınama yayınla",
+       "fx": [
+        [
+         "rel",
+         "North Korea",
+         "South Korea",
+         1
+        ],
+        [
+         "stab",
+         "North Korea",
+         1
+        ]
+       ],
+       "r": "Pyongyang olayı 'provokasyon' diye kınayıp tırmandırmadı."
+      }
+     ]
+    }
+   }
+  }
+ ],
+ "moments_en": {
+  "Sınırı tahkim et, füze testlerini artır": "Fortify the border and test more missiles",
+  "Kuzey Kore sınır boyunca tahkimat kurdu ve füze testi yaptı.": "North Korea fortified the border and tested missiles.",
+  "ABD'ye diyalog kapısı aç": "Open a door to dialogue with the US",
+  "Pyongyang ABD ile müzakereye 'koşullu' açık olduğunu söyledi.": "Pyongyang said it is 'conditionally' open to talks with the US.",
+  "Rusya ile askerî ortaklık sizi cesaretlendirdi; ama yaptırımlar ve elektrik açığı sürüyor.": "The military partnership with Russia has emboldened you; yet sanctions and power shortages persist.",
+  "Gerilimi azaltma çağrısı": "Call for de-escalation",
+  "Seul propaganda hoparlörlerini susturup görüşme önerdi.": "Seoul silenced propaganda loudspeakers and proposed talks.",
+  "Dron ve füze savunmasını artır": "Boost drone and missile defence",
+  "Güney Kore dron birimlerini ve füze savunmasını güçlendirdi.": "South Korea strengthened its drone units and missile defence.",
+  "Seul caydırıcılıkta kararlı ama tırmanma istemiyor; yeni hükûmet diyalog çağrısı yapıyor.": "Seoul is firm on deterrence but does not want escalation; the new government calls for dialogue.",
+  "Ortak tatbikat ve genişletilmiş caydırıcılık": "Joint drills and extended deterrence",
+  "ABD ve Güney Kore ortak tatbikat yaptı.": "The US and South Korea held joint drills.",
+  "Doğrudan görüşme önerisi": "Offer direct talks",
+  "Beyaz Saray Kim'le zirve ihtimalini açık bıraktı.": "The White House left the door open for a summit with Kim.",
+  "Washington Kore'de iki cephe istemiyor; ama müttefiklerine güven vermek zorunda.": "Washington wants no second front in Korea, yet must reassure its allies.",
+  "Sınırı Aşılmaz Kale Yap": "Make the Border an Impregnable Fortress",
+  "Kim Jong Un orduya Güney Kore sınırını 'aşılmaz bir kale'ye çevirme emri verdi; Pyongyang Seul'ü 'en düşman devlet' ilan etti ve tehdit edilirse Güney'i yok edebileceğini söyledi. Seul ise 'dron savaşçıları' yetiştiriyor.": "Kim Jong Un ordered the army to turn the South Korean border into an 'impregnable fortress'; Pyongyang declared Seoul its 'most hostile state' and said it could destroy the South if threatened. Seoul, meanwhile, is training 'drone warriors'.",
+  "Moskova'yla ittifakı derinleştir": "Deepen the Moscow alliance",
+  "Kuzey Kore ve Rusya yeni bir savunma işbirliği protokolü imzaladı.": "North Korea and Russia signed a new defence cooperation protocol.",
+  "Çin'e yaklaş, dengeyi koru": "Lean toward China to keep balance",
+  "Pyongyang Pekin'le ticaret ve yakıt anlaşmalarını yeniledi.": "Pyongyang renewed trade and fuel deals with Beijing.",
+  "Rusya ittifakı size askerî deneyim ve gelir getirdi; ama çok sayıda asker kaybı da var.": "The Russian alliance brought combat experience and income, but also heavy troop losses.",
+  "Üçlü ittifakı derinleştir": "Deepen the trilateral alignment",
+  "Japonya, ABD ve Güney Kore füze uyarı verilerini paylaşmaya başladı.": "Japan, the US and South Korea began sharing missile-warning data.",
+  "Bölgesel diyalog önder ol": "Lead regional dialogue",
+  "Tokyo Kuzey Kore'yle temas ve Çin'le istişare önerdi.": "Tokyo proposed contact with Pyongyang and consultations with China.",
+  "Tokyo balistik füze alarmlarıyla yaşıyor; üçlü tatbikat Çin'i de rahatsız ediyor.": "Tokyo lives with ballistic-missile alerts; the trilateral drill also bothers China.",
+  "Yaz Tatbikatları ve Rus Mühimmatı": "Summer Drills and Russian Munitions",
+  "Seul, Tokyo ve Washington üçlü tatbikat yaparken Kuzey Kore'nin Rusya'ya mühimmat ve asker gönderdiği, karşılığında teknoloji ve yakıt aldığı biliniyor. Pyongyang tatbikatları 'işgal provası' diye niteliyor.": "As Seoul, Tokyo and Washington hold trilateral drills, North Korea is known to send munitions and troops to Russia in exchange for technology and fuel. Pyongyang calls the drills an 'invasion rehearsal'.",
+  "Orantılı karşılık, sıcak hat": "Proportional response and the hotline",
+  "Seul topçu ile sınırlı karşılık verip sıcak hattı açtı.": "Seoul answered with limited artillery fire and opened the hotline.",
+  "Sert vuruş": "Hit back hard",
+  "Güney Kore sınır karakollarına yoğun topçu ateşi açtı.": "South Korea heavily shelled border posts.",
+  "Karşılık vermezsen zayıf görünürsün, verirsen savaşa kayabilirsin.": "If you do not respond you look weak; if you do, you may slide into war.",
+  "Misilleme yap": "Retaliate",
+  "Kuzey Kore sınırda topçu ve roketatarlarla ateş açtı.": "North Korea opened fire with artillery and rocket launchers.",
+  "Olayı kapat, kınama yayınla": "Close the incident with a statement",
+  "Pyongyang olayı 'provokasyon' diye kınayıp tırmandırmadı.": "Pyongyang condemned a 'provocation' without escalating.",
+  "Olayı fırsat sayıp 'misilleme' diyebilirsiniz; ya da kontrolü kaybetmeden durdurursunuz.": "You can use the incident as a pretext for 'retaliation', or stop it before losing control.",
+  "Sınırda Silah Sesi": "Shots at the Border",
+  "DMZ'de bir uyarı ateşi kazaya dönüştü: bir askerî devriye mayına bastı, iki tarafın topçusu ateş açtı. Hotline sessiz kalırsa tırmanma kaçınılmaz.": "A warning shot in the DMZ turned into an accident: a patrol hit a mine and artillery on both sides opened fire. If the hotline stays silent, escalation is unavoidable."
+ }
+}

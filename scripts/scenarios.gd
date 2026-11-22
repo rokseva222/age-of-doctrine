@@ -174,15 +174,37 @@ static func _localized(d: Dictionary) -> Dictionary:
 	return c
 
 
+## data/scn_moments/<id>.json: yerleşik ve dış senaryolara ek tarihî/olay kartları ("moments" + "moments_en") bindirir.
+static func _with_moments(d: Dictionary) -> Dictionary:
+	var id := String(d.get("id", ""))
+	if id == "" or String(d.get("kind", "")) == "user":
+		return d
+	var path := "res://data/scn_moments/%s.json" % id
+	if not FileAccess.file_exists(path):
+		return d
+	var x = DataUtil.read_json(path)
+	if not (x is Dictionary):
+		return d
+	var ms: Array = (d.get("moments", []) as Array).duplicate()
+	ms.append_array(x.get("moments", []))
+	d["moments"] = ms
+	var en: Dictionary = (d.get("moments_en", {}) as Dictionary).duplicate()
+	en.merge(x.get("moments_en", {}), true)
+	d["moments_en"] = en
+	return d
+
+
 ## Tüm senaryolar: yerleşik + data/scenarios + kullanıcı senaryoları (tür sırasına göre)
 static func all() -> Array:
 	_load_ext()
 	if _cache_lang == Loc.lang:
 		return _cache
 	_cache_lang = Loc.lang
-	var pool: Array = LIST.duplicate()
+	var pool: Array = []
+	for d0 in LIST:
+		pool.append(_with_moments(d0.duplicate()))
 	for d in _raw_ext:
-		pool.append(_localized(d))
+		pool.append(_with_moments(_localized(d)))
 	var out: Array = []
 	for kd in KIND_ORDER:
 		for sc in pool:

@@ -1,0 +1,618 @@
+{
+ "moments": [
+  {
+   "id": "ukr_abudabi",
+   "turn": 6,
+   "title": "Abu Dabi Görüşmeleri",
+   "scene": "peace",
+   "icon": "treaty",
+   "text": "ABD arabuluculuğunda Rusya ve Ukrayna heyetleri Abu Dabi'de yeniden masaya oturdu; esir takası ve 'gerilimi azaltma adımları' konuşuluyor, ama Moskova toprak ve NATO taleplerinden vazgeçmiyor. Avrupalı güçler masadan dışlandı.",
+   "major": true,
+   "default_fx": [
+    [
+     "rel",
+     "Russia",
+     "Ukraine",
+     3
+    ],
+    [
+     "stab",
+     "Ukraine",
+     1
+    ]
+   ],
+   "roles": {
+    "Ukraine": {
+     "text": "Kiev masada ama güvenlik garantisi şartı net: NATO 5. madde benzeri bağlayıcı bir taahhüt. ABD 'NATO'ya benzer bir şey' öneriyor.",
+     "options": [
+      {
+       "t": "Garantisiz anlaşmayı reddet",
+       "d": "Garantisiz anlaşmayı reddet",
+       "fx": [
+        [
+         "stab",
+         "Ukraine",
+         2
+        ],
+        [
+         "rel",
+         "Ukraine",
+         "Russia",
+         -4
+        ]
+       ],
+       "r": "Bağlayıcı güvenlik garantisi olmadan Ukrayna toprak vermeyecek."
+      },
+      {
+       "t": "ABD formülüne evet de",
+       "d": "ABD formülüne evet de",
+       "fx": [
+        [
+         "rel",
+         "Ukraine",
+         "United States of America",
+         6
+        ],
+        [
+         "rel",
+         "Ukraine",
+         "Russia",
+         2
+        ],
+        [
+         "stab",
+         "Ukraine",
+         -1
+        ]
+       ],
+       "r": "Kiev ABD'nin güvenlik taahhüdünü kabul etti; müzakereler hız kazandı."
+      }
+     ]
+    },
+    "Russia": {
+     "text": "Rus heyeti 'ancak kendi şartlarımızla kazanınca barış' diyor; cephe ise yerinde sayıyor ve rafineri vuruşları bütçeyi zorluyor.",
+     "options": [
+      {
+       "t": "Maksimalist talepleri sürdür",
+       "d": "Maksimalist talepleri sürdür",
+       "fx": [
+        [
+         "rel",
+         "Russia",
+         "United States of America",
+         -3
+        ],
+        [
+         "stab",
+         "Russia",
+         1
+        ]
+       ],
+       "r": "Moskova toprak ve NATO geri çekilmesi talebinde ısrar etti."
+      },
+      {
+       "t": "Ateşkes için taviz ver",
+       "d": "Ateşkes için taviz ver",
+       "fx": [
+        [
+         "rel",
+         "Russia",
+         "United States of America",
+         5
+        ],
+        [
+         "rel",
+         "Russia",
+         "Ukraine",
+         3
+        ],
+        [
+         "stab",
+         "Russia",
+         1
+        ]
+       ],
+       "r": "Rusya sınırlı bir ateşkes ve enerji saldırılarına ara önerdi."
+      }
+     ]
+    },
+    "United States of America": {
+     "text": "Washington arabulucu ama Avrupa'yı ve Kongre'yi de idare etmek zorunda; yaptırımlar mı gevşesin, sıkılaşsın mı?",
+     "options": [
+      {
+       "t": "Yaptırımları sıkılaştır",
+       "d": "Yaptırımları sıkılaştır",
+       "fx": [
+        [
+         "rel",
+         "United States of America",
+         "Russia",
+         -6
+        ],
+        [
+         "rel",
+         "United States of America",
+         "Ukraine",
+         4
+        ]
+       ],
+       "r": "ABD, Rus enerjisine yönelik yaptırımları artırdı.",
+       "keep_default": true
+      },
+      {
+       "t": "Anlaşma için esneklik göster",
+       "d": "Anlaşma için esneklik göster",
+       "fx": [
+        [
+         "rel",
+         "United States of America",
+         "Russia",
+         5
+        ],
+        [
+         "rel",
+         "United States of America",
+         "Ukraine",
+         -3
+        ]
+       ],
+       "r": "Beyaz Saray Moskova'ya yaptırım gevşetmesinin kapısını aralık tuttu.",
+       "keep_default": true
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "ukr_enerji",
+   "turn": 20,
+   "title": "Enerji Altyapısı Vuruluyor",
+   "scene": "air",
+   "icon": "missile",
+   "text": "Rusya balistik füze ve yüzlerce dronla Ukrayna enerji santrallerini ve trafo merkezlerini vurdu; Ukrayna'nın uzun menzilli dronları da Rus rafinerilerini ve limanlarını hedef alıyor. Kış yaklaşırken iki taraf da birbirinin ekonomisine zarar vermeye çalışıyor.",
+   "major": true,
+   "default_fx": [
+    [
+     "stab",
+     "Ukraine",
+     -3
+    ],
+    [
+     "stab",
+     "Russia",
+     -2
+    ],
+    [
+     "gold",
+     "Russia",
+     -1.0
+    ]
+   ],
+   "roles": {
+    "Ukraine": {
+     "text": "Karanlık şehirler, yarım kalan ısıtma: halk dayanıklı ama enerji kıtlığı moral ve sanayiyi vuruyor.",
+     "options": [
+      {
+       "t": "Hava savunmasını şehirlere yığ",
+       "d": "Hava savunmasını şehirlere yığ",
+       "fx": [
+        [
+         "stab",
+         "Ukraine",
+         2
+        ],
+        [
+         "troops",
+         "Ukraine",
+         -3
+        ]
+       ],
+       "r": "Hava savunması şehirlere kaydırıldı; cephede açıklar doğdu."
+      },
+      {
+       "t": "Rus rafinerilerine misilleme",
+       "d": "Rus rafinerilerine misilleme",
+       "fx": [
+        [
+         "gold",
+         "Russia",
+         -1.5
+        ],
+        [
+         "stab",
+         "Ukraine",
+         -1
+        ],
+        [
+         "rel",
+         "Ukraine",
+         "United States of America",
+         -1
+        ]
+       ],
+       "r": "Ukrayna dronları rafineri ve petrol depolarını vurdu."
+      }
+     ]
+    },
+    "Russia": {
+     "text": "Rafineri vuruşları yakıt kıtlığına ve bütçe açığına yol açıyor; ama enerji saldırıları da Ukrayna'yı yıpratıyor.",
+     "options": [
+      {
+       "t": "Enerji saldırılarını artır",
+       "d": "Enerji saldırılarını artır",
+       "fx": [
+        [
+         "stab",
+         "Ukraine",
+         -3
+        ],
+        [
+         "rel",
+         "Russia",
+         "United States of America",
+         -3
+        ],
+        [
+         "stab",
+         "Russia",
+         -1
+        ]
+       ],
+       "r": "Rus füzeleri Ukrayna şebekesini yeniden vurdu."
+      },
+      {
+       "t": "Rafineri savunmasını güçlendir",
+       "d": "Rafineri savunmasını güçlendir",
+       "fx": [
+        [
+         "stab",
+         "Russia",
+         2
+        ],
+        [
+         "gold",
+         "Russia",
+         -0.5
+        ]
+       ],
+       "r": "Rusya hava savunmasını rafinerilere kaydırdı."
+      }
+     ]
+    },
+    "Poland": {
+     "text": "Polonya sınırında dron parçaları düşüyor; NATO'nun doğu kanadı alarmda.",
+     "options": [
+      {
+       "t": "NATO 4. maddeyi tetikle",
+       "d": "NATO 4. maddeyi tetikle",
+       "fx": [
+        [
+         "rel",
+         "Poland",
+         "Russia",
+         -6
+        ],
+        [
+         "rel",
+         "Poland",
+         "United States of America",
+         3
+        ]
+       ],
+       "r": "Varşova NATO istişaresi çağrısı yaptı.",
+       "keep_default": true
+      },
+      {
+       "t": "Hava sahasını kapat, sakin kal",
+       "d": "Hava sahasını kapat, sakin kal",
+       "fx": [
+        [
+         "stab",
+         "Poland",
+         1
+        ]
+       ],
+       "r": "Polonya sınır hava savunmasını artırdı.",
+       "keep_default": true
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "ukr_doktor",
+   "turn": 44,
+   "title": "Doğu Dönüm Noktası: Donbas'ın Son Çeyreği",
+   "scene": "pre_assault",
+   "icon": "tank",
+   "text": "Rusya Donbas'ın Ukrayna elindeki son bölümünü almak için kış taarruzuna hazırlanıyor; kayıp rakamları rekor kırıyor ama net kazanım küçük. Kiev ise dron duvarı ve tahkimatlarla direniyor.",
+   "major": true,
+   "default_fx": [
+    [
+     "buff",
+     "Russia",
+     "att",
+     1.1,
+     8
+    ],
+    [
+     "troops",
+     "Russia",
+     -2
+    ],
+    [
+     "troops",
+     "Ukraine",
+     -2
+    ]
+   ],
+   "roles": {
+    "Russia": {
+     "text": "Kış taarruzu pahalı olacak; yine de siyasî olarak 'kazanıyoruz' görüntüsü gerekiyor.",
+     "options": [
+      {
+       "t": "Genel taarruz",
+       "d": "Genel taarruz",
+       "fx": [
+        [
+         "buff",
+         "Russia",
+         "att",
+         1.15,
+         8
+        ],
+        [
+         "troops",
+         "Russia",
+         -3
+        ],
+        [
+         "stab",
+         "Russia",
+         -1
+        ]
+       ],
+       "r": "Rus piyadesi Donbas'ta çok cepheli saldırıya geçti."
+      },
+      {
+       "t": "Kuşatma ve topçu ile yıpratma",
+       "d": "Kuşatma ve topçu ile yıpratma",
+       "fx": [
+        [
+         "troops",
+         "Russia",
+         -1
+        ],
+        [
+         "stab",
+         "Russia",
+         1
+        ]
+       ],
+       "r": "Rusya yavaş ilerleyip topçu yığınağıyla yıpratma taktiğini seçti."
+      }
+     ]
+    },
+    "Ukraine": {
+     "text": "Cephe hattı iyi tahkim edildi ama yedek askerler azalıyor; dron duvarı Rus piyadesini hâlâ durduruyor.",
+     "options": [
+      {
+       "t": "Esnek savunma: gerektiğinde geri çekil",
+       "d": "Esnek savunma: gerektiğinde geri çekil",
+       "fx": [
+        [
+         "buff",
+         "Ukraine",
+         "def",
+         1.1,
+         8
+        ],
+        [
+         "stab",
+         "Ukraine",
+         -1
+        ]
+       ],
+       "r": "Ukrayna birliklerini kayıp vermeden geri çekmeyi tercih etti."
+      },
+      {
+       "t": "Her mevziyi tut",
+       "d": "Her mevziyi tut",
+       "fx": [
+        [
+         "buff",
+         "Ukraine",
+         "def",
+         1.2,
+         8
+        ],
+        [
+         "troops",
+         "Ukraine",
+         -3
+        ],
+        [
+         "stab",
+         "Ukraine",
+         1
+        ]
+       ],
+       "r": "Kiev geri çekilme emri vermedi; kayıplar arttı."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "ukr_takas",
+   "turn": 80,
+   "title": "Büyük Esir Takası",
+   "scene": "peace",
+   "icon": "dove",
+   "text": "Binlerce esirin değiştirildiği yeni bir takas yapıldı; iki başkent de 'ilerleme' dedi ama ateşkes hâlâ yok. Müzakerecilere göre bir sonraki aşama enerji ateşkesi.",
+   "major": false,
+   "default_fx": [
+    [
+     "rel",
+     "Russia",
+     "Ukraine",
+     4
+    ],
+    [
+     "stab",
+     "Ukraine",
+     1
+    ],
+    [
+     "stab",
+     "Russia",
+     1
+    ]
+   ],
+   "roles": {
+    "Ukraine": {
+     "text": "Takas halkı rahatlattı; şimdi enerji ateşkesi ve güvenlik garantileri için baskı zamanı.",
+     "options": [
+      {
+       "t": "Enerji ateşkesi öner",
+       "d": "Enerji ateşkesi öner",
+       "fx": [
+        [
+         "peace",
+         "Ukraine",
+         "Russia"
+        ],
+        [
+         "rel",
+         "Ukraine",
+         "Russia",
+         4
+        ]
+       ],
+       "r": "Kiev karşılıklı enerji ateşkesi önerdi."
+      },
+      {
+       "t": "Cepheyi güçlendirmeye devam et",
+       "d": "Cepheyi güçlendirmeye devam et",
+       "fx": [
+        [
+         "troops",
+         "Ukraine",
+         3
+        ],
+        [
+         "rel",
+         "Ukraine",
+         "United States of America",
+         2
+        ]
+       ],
+       "r": "Ukrayna Batı'dan yeni silah talebini artırdı."
+      }
+     ]
+    },
+    "Russia": {
+     "text": "Takas pazarlıkta koz; Moskova enerji ateşkesini 'yaptırım gevşetmesi' karşılığı kabul edebilir.",
+     "options": [
+      {
+       "t": "Enerji ateşkesine razı ol",
+       "d": "Enerji ateşkesine razı ol",
+       "fx": [
+        [
+         "peace",
+         "Russia",
+         "Ukraine"
+        ],
+        [
+         "rel",
+         "Russia",
+         "United States of America",
+         4
+        ],
+        [
+         "stab",
+         "Russia",
+         2
+        ]
+       ],
+       "r": "Rusya geçici bir enerji ateşkesini kabul etti."
+      },
+      {
+       "t": "Reddet, savaşı sürdür",
+       "d": "Reddet, savaşı sürdür",
+       "fx": [
+        [
+         "rel",
+         "Russia",
+         "United States of America",
+         -3
+        ]
+       ],
+       "r": "Kremlin, ateşkesi 'oyalama' diye niteledi."
+      }
+     ]
+    }
+   }
+  }
+ ],
+ "moments_en": {
+  "Garantisiz anlaşmayı reddet": "Refuse a deal without guarantees",
+  "Bağlayıcı güvenlik garantisi olmadan Ukrayna toprak vermeyecek.": "Ukraine will cede no land without a binding security guarantee.",
+  "ABD formülüne evet de": "Accept the US formula",
+  "Kiev ABD'nin güvenlik taahhüdünü kabul etti; müzakereler hız kazandı.": "Kyiv accepted the US security pledge; talks gained speed.",
+  "Kiev masada ama güvenlik garantisi şartı net: NATO 5. madde benzeri bağlayıcı bir taahhüt. ABD 'NATO'ya benzer bir şey' öneriyor.": "Kyiv is at the table but its condition is clear: a binding Article 5-style guarantee. Washington offers 'something similar to NATO'.",
+  "Maksimalist talepleri sürdür": "Keep the maximalist demands",
+  "Moskova toprak ve NATO geri çekilmesi talebinde ısrar etti.": "Moscow insisted on territory and a NATO rollback.",
+  "Ateşkes için taviz ver": "Offer concessions for a ceasefire",
+  "Rusya sınırlı bir ateşkes ve enerji saldırılarına ara önerdi.": "Russia proposed a limited ceasefire and a pause in energy strikes.",
+  "Rus heyeti 'ancak kendi şartlarımızla kazanınca barış' diyor; cephe ise yerinde sayıyor ve rafineri vuruşları bütçeyi zorluyor.": "The Russian delegation says 'peace only on our terms'; the front is stalling and refinery strikes strain the budget.",
+  "Yaptırımları sıkılaştır": "Tighten sanctions",
+  "ABD, Rus enerjisine yönelik yaptırımları artırdı.": "The US stepped up sanctions on Russian energy.",
+  "Anlaşma için esneklik göster": "Show flexibility for a deal",
+  "Beyaz Saray Moskova'ya yaptırım gevşetmesinin kapısını aralık tuttu.": "The White House kept the door open to sanctions relief.",
+  "Washington arabulucu ama Avrupa'yı ve Kongre'yi de idare etmek zorunda; yaptırımlar mı gevşesin, sıkılaşsın mı?": "Washington mediates but must handle Europe and Congress too: should sanctions ease or tighten?",
+  "Abu Dabi Görüşmeleri": "The Abu Dhabi Talks",
+  "ABD arabuluculuğunda Rusya ve Ukrayna heyetleri Abu Dabi'de yeniden masaya oturdu; esir takası ve 'gerilimi azaltma adımları' konuşuluyor, ama Moskova toprak ve NATO taleplerinden vazgeçmiyor. Avrupalı güçler masadan dışlandı.": "Russian and Ukrainian delegations sat down again in Abu Dhabi under US mediation; prisoner swaps and 'de-escalation steps' are on the table, but Moscow will not drop its territorial and NATO demands. The European powers were left out of the room.",
+  "Hava savunmasını şehirlere yığ": "Mass air defence on the cities",
+  "Hava savunması şehirlere kaydırıldı; cephede açıklar doğdu.": "Air defence shifted to the cities, opening gaps at the front.",
+  "Rus rafinerilerine misilleme": "Retaliate against Russian refineries",
+  "Ukrayna dronları rafineri ve petrol depolarını vurdu.": "Ukrainian drones hit refineries and oil depots.",
+  "Karanlık şehirler, yarım kalan ısıtma: halk dayanıklı ama enerji kıtlığı moral ve sanayiyi vuruyor.": "Dark cities and half-working heating: the public is resilient, but the energy shortage hits morale and industry.",
+  "Enerji saldırılarını artır": "Escalate the energy strikes",
+  "Rus füzeleri Ukrayna şebekesini yeniden vurdu.": "Russian missiles struck the Ukrainian grid again.",
+  "Rafineri savunmasını güçlendir": "Reinforce refinery defences",
+  "Rusya hava savunmasını rafinerilere kaydırdı.": "Russia moved air defences to its refineries.",
+  "Rafineri vuruşları yakıt kıtlığına ve bütçe açığına yol açıyor; ama enerji saldırıları da Ukrayna'yı yıpratıyor.": "Refinery strikes cause fuel shortages and a budget gap, but the energy campaign wears Ukraine down.",
+  "NATO 4. maddeyi tetikle": "Invoke NATO Article 4",
+  "Varşova NATO istişaresi çağrısı yaptı.": "Warsaw called for NATO consultations.",
+  "Hava sahasını kapat, sakin kal": "Close the airspace and stay calm",
+  "Polonya sınır hava savunmasını artırdı.": "Poland reinforced border air defence.",
+  "Polonya sınırında dron parçaları düşüyor; NATO'nun doğu kanadı alarmda.": "Drone debris falls on Polish soil; NATO's eastern flank is on alert.",
+  "Enerji Altyapısı Vuruluyor": "Strikes on the Power Grid",
+  "Rusya balistik füze ve yüzlerce dronla Ukrayna enerji santrallerini ve trafo merkezlerini vurdu; Ukrayna'nın uzun menzilli dronları da Rus rafinerilerini ve limanlarını hedef alıyor. Kış yaklaşırken iki taraf da birbirinin ekonomisine zarar vermeye çalışıyor.": "Russia hit Ukrainian power plants and substations with ballistic missiles and hundreds of drones, while Ukraine's long-range drones strike Russian refineries and ports. With winter approaching, each side tries to hurt the other's economy.",
+  "Genel taarruz": "Launch the general offensive",
+  "Rus piyadesi Donbas'ta çok cepheli saldırıya geçti.": "Russian infantry attacked on several axes in Donbas.",
+  "Kuşatma ve topçu ile yıpratma": "Grind with artillery and encirclement",
+  "Rusya yavaş ilerleyip topçu yığınağıyla yıpratma taktiğini seçti.": "Russia chose a slow advance and an artillery grind.",
+  "Kış taarruzu pahalı olacak; yine de siyasî olarak 'kazanıyoruz' görüntüsü gerekiyor.": "The winter offensive will be costly, yet politics demand a picture of winning.",
+  "Esnek savunma: gerektiğinde geri çekil": "Elastic defence: trade space for lives",
+  "Ukrayna birliklerini kayıp vermeden geri çekmeyi tercih etti.": "Ukraine chose to pull back rather than take losses.",
+  "Her mevziyi tut": "Hold every position",
+  "Kiev geri çekilme emri vermedi; kayıplar arttı.": "Kyiv refused to order withdrawals; losses rose.",
+  "Cephe hattı iyi tahkim edildi ama yedek askerler azalıyor; dron duvarı Rus piyadesini hâlâ durduruyor.": "The line is well fortified but reserves are thin; the drone wall still stops Russian infantry.",
+  "Doğu Dönüm Noktası: Donbas'ın Son Çeyreği": "The Last Quarter of Donbas",
+  "Rusya Donbas'ın Ukrayna elindeki son bölümünü almak için kış taarruzuna hazırlanıyor; kayıp rakamları rekor kırıyor ama net kazanım küçük. Kiev ise dron duvarı ve tahkimatlarla direniyor.": "Russia prepares a winter offensive for the last part of Donbas still held by Ukraine; casualty figures hit records while net gains stay small. Kyiv holds on with a drone wall and fortified lines.",
+  "Enerji ateşkesi öner": "Propose an energy truce",
+  "Kiev karşılıklı enerji ateşkesi önerdi.": "Kyiv proposed a mutual energy truce.",
+  "Cepheyi güçlendirmeye devam et": "Keep reinforcing the front",
+  "Ukrayna Batı'dan yeni silah talebini artırdı.": "Ukraine pressed the West for more weapons.",
+  "Takas halkı rahatlattı; şimdi enerji ateşkesi ve güvenlik garantileri için baskı zamanı.": "The swap eased the public; now is the time to press for an energy truce and security guarantees.",
+  "Enerji ateşkesine razı ol": "Accept an energy truce",
+  "Rusya geçici bir enerji ateşkesini kabul etti.": "Russia accepted a temporary energy truce.",
+  "Reddet, savaşı sürdür": "Refuse and fight on",
+  "Kremlin, ateşkesi 'oyalama' diye niteledi.": "The Kremlin called the truce a 'stalling tactic'.",
+  "Takas pazarlıkta koz; Moskova enerji ateşkesini 'yaptırım gevşetmesi' karşılığı kabul edebilir.": "The swap is a bargaining chip; Moscow might accept an energy truce for sanctions relief.",
+  "Büyük Esir Takası": "The Great Prisoner Swap",
+  "Binlerce esirin değiştirildiği yeni bir takas yapıldı; iki başkent de 'ilerleme' dedi ama ateşkes hâlâ yok. Müzakerecilere göre bir sonraki aşama enerji ateşkesi.": "A new swap exchanged thousands of prisoners; both capitals spoke of 'progress', yet there is still no ceasefire. Negotiators say the next step is an energy truce."
+ }
+}

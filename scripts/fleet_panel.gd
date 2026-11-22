@@ -27,6 +27,10 @@ static func open(ui, gs, air: bool) -> void:
 		Settings.save_all()
 		ui.settings_changed.emit(),
 		"Haritada kalabalık olursa kapat; filolar çalışmaya devam eder, yalnız rozetler gizlenir."))
+	if air:
+		var hint := TK.t("Hava gücünü artırmak için: Politika ekranından silah envanterinde «Uçak & İHA» kalemi satın al ve savunma bütçesini yükselt. Kanatlar uçak sayına göre kendiliğinden büyür; savaşta kayıplar envanterden düşer.", "small", TK.FAINT)
+		hint.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		sh.body.add_child(hint)
 	sh.body.add_child(TK.hsep())
 	var rows: Array = []
 	if air:

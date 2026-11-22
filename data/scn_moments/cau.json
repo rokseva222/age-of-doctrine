@@ -1,0 +1,465 @@
+{
+ "moments": [
+  {
+   "id": "cau_washington",
+   "turn": 5,
+   "title": "Washington Zirvesi: Barış Metni",
+   "scene": "peace",
+   "icon": "treaty",
+   "text": "Ağustos 2025'te Beyaz Saray'da Aliyev ve Paşinyan barış anlaşması metnini paraf etti; ABD, Ermenistan'dan geçerek Azerbaycan'ı Nahçıvan'a bağlayacak 'Trump Rotası' (TRIPP) kurulmasını öngörüyor. Anayasa değişikliği ve Rusya'nın tepkisi ise sürecin önündeki engeller.",
+   "major": true,
+   "default_fx": [
+    [
+     "rel",
+     "Azerbaijan",
+     "Armenia",
+     5
+    ],
+    [
+     "rel",
+     "Armenia",
+     "United States of America",
+     3
+    ],
+    [
+     "rel",
+     "Armenia",
+     "Russia",
+     -3
+    ]
+   ],
+   "roles": {
+    "Armenia": {
+     "text": "Barış, ablukanın kalkması ve ticaret demek; ama anayasa referandumu ve Karabağ yenilgisinin hatıraları iç siyaseti kaynatıyor.",
+     "options": [
+      {
+       "t": "Barışı ve Rota'yı onayla (tarihî)",
+       "d": "Barışı ve Rota'yı onayla (tarihî)",
+       "fx": [
+        [
+         "rel",
+         "Armenia",
+         "Azerbaijan",
+         6
+        ],
+        [
+         "rel",
+         "Armenia",
+         "United States of America",
+         4
+        ],
+        [
+         "rel",
+         "Armenia",
+         "Russia",
+         -4
+        ],
+        [
+         "stab",
+         "Armenia",
+         -1
+        ]
+       ],
+       "r": "Erivan barış metnini ve ABD'nin yönettiği geçiş koridorunu kabul etti."
+      },
+      {
+       "t": "Önce anayasa ve güvenlik garantisi iste",
+       "d": "Önce anayasa ve güvenlik garantisi iste",
+       "fx": [
+        [
+         "rel",
+         "Armenia",
+         "Azerbaijan",
+         -2
+        ],
+        [
+         "stab",
+         "Armenia",
+         1
+        ]
+       ],
+       "r": "Paşinyan imzayı koşullara bağladı; süreç yavaşladı."
+      }
+     ]
+    },
+    "Azerbaijan": {
+     "text": "Zafer sizde; barış metnini ve Zengezur koridorunu istiyorsunuz. Rusya ile ilişkiler gergin, Türkiye tam destekçi.",
+     "options": [
+      {
+       "t": "Barışı imzala, sınırı aç (tarihî)",
+       "d": "Barışı imzala, sınırı aç (tarihî)",
+       "fx": [
+        [
+         "rel",
+         "Azerbaijan",
+         "Armenia",
+         6
+        ],
+        [
+         "rel",
+         "Azerbaijan",
+         "United States of America",
+         4
+        ],
+        [
+         "rel",
+         "Azerbaijan",
+         "Turkey",
+         1
+        ]
+       ],
+       "r": "Bakü barış metnini paraf etti ve Ermenistan'a transit izni verdi."
+      },
+      {
+       "t": "Koridor için baskıyı artır",
+       "d": "Koridor için baskıyı artır",
+       "fx": [
+        [
+         "rel",
+         "Azerbaijan",
+         "Armenia",
+         -5
+        ],
+        [
+         "troops",
+         "Azerbaijan",
+         2
+        ]
+       ],
+       "r": "Bakü Zengezur koridoru için baskıyı sürdürdü."
+      }
+     ]
+    },
+    "Russia": {
+     "text": "Rusya'nın Güney Kafkasya'daki etkisi azalıyor: Ermenistan CSTO'yu dondurdu, ABD koridor kuruyor.",
+     "options": [
+      {
+       "t": "Ermenistan'a baskı yap",
+       "d": "Ermenistan'a baskı yap",
+       "fx": [
+        [
+         "rel",
+         "Russia",
+         "Armenia",
+         -6
+        ],
+        [
+         "gold",
+         "Armenia",
+         -0.5
+        ],
+        [
+         "rel",
+         "Russia",
+         "United States of America",
+         -2
+        ]
+       ],
+       "r": "Moskova Ermeni mallarına kısıtlama ve gaz fiyatı baskısı uyguladı.",
+       "keep_default": true
+      },
+      {
+       "t": "Barış sürecine uyum sağla",
+       "d": "Barış sürecine uyum sağla",
+       "fx": [
+        [
+         "rel",
+         "Russia",
+         "Armenia",
+         2
+        ],
+        [
+         "rel",
+         "Russia",
+         "Azerbaijan",
+         2
+        ]
+       ],
+       "r": "Rusya koridorun sınır denetimine katkı önerdi.",
+       "keep_default": true
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "cau_rota",
+   "turn": 26,
+   "title": "Zengezur Rotası İnşaatı",
+   "scene": "trade",
+   "icon": "trade",
+   "text": "Ermenistan'ın güneyinden geçen demiryolu ve karayolu hattı için fizibilite çalışması bitti; Türkiye Kars–Nahçıvan bağlantısını hızlandırıyor, İran ise sınırlarının yakınında ABD varlığından rahatsız.",
+   "major": false,
+   "default_fx": [
+    [
+     "rel",
+     "Azerbaijan",
+     "Turkey",
+     3
+    ],
+    [
+     "rel",
+     "Iran",
+     "United States of America",
+     -2
+    ],
+    [
+     "gold",
+     "Azerbaijan",
+     1.0
+    ]
+   ],
+   "roles": {
+    "Iran": {
+     "text": "Güney Ermenistan'daki koridor sizi Kafkasya'dan izole edebilir; ama Hürmüz krizi önceliğiniz.",
+     "options": [
+      {
+       "t": "Sert itiraz, sınıra birlik",
+       "d": "Sert itiraz, sınıra birlik",
+       "fx": [
+        [
+         "rel",
+         "Iran",
+         "Azerbaijan",
+         -4
+        ],
+        [
+         "rel",
+         "Iran",
+         "United States of America",
+         -3
+        ],
+        [
+         "troops",
+         "Iran",
+         2
+        ]
+       ],
+       "r": "Tahran sınır bölgesine birlik kaydırdı ve koridora itiraz etti."
+      },
+      {
+       "t": "Ticarete ortak ol",
+       "d": "Ticarete ortak ol",
+       "fx": [
+        [
+         "rel",
+         "Iran",
+         "Azerbaijan",
+         3
+        ],
+        [
+         "rel",
+         "Iran",
+         "Armenia",
+         2
+        ]
+       ],
+       "r": "İran koridora kuzey-güney ticaretinde ortaklık önerdi."
+      }
+     ]
+    },
+    "Turkey": {
+     "text": "Ankara Ermenistan sınırını açmaya hazır; Azerbaycan'la 'tek millet iki devlet' bağı güçlü.",
+     "options": [
+      {
+       "t": "Sınırı aç, diplomatik ilişki kur",
+       "d": "Sınırı aç, diplomatik ilişki kur",
+       "fx": [
+        [
+         "rel",
+         "Turkey",
+         "Armenia",
+         6
+        ],
+        [
+         "rel",
+         "Turkey",
+         "Azerbaijan",
+         -1
+        ],
+        [
+         "rel",
+         "Turkey",
+         "United States of America",
+         2
+        ]
+       ],
+       "r": "Türkiye Ermenistan'la diplomatik ilişki kurma yolunu açtı.",
+       "keep_default": true
+      },
+      {
+       "t": "Azerbaycan'ın önceliğine uy",
+       "d": "Azerbaycan'ın önceliğine uy",
+       "fx": [
+        [
+         "rel",
+         "Turkey",
+         "Azerbaijan",
+         4
+        ],
+        [
+         "rel",
+         "Turkey",
+         "Armenia",
+         -2
+        ]
+       ],
+       "r": "Ankara sınırı Bakü'nün şartlarına bağladı.",
+       "keep_default": true
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "cau_referandum",
+   "turn": 60,
+   "title": "Anayasa Referandumu",
+   "scene": "pre_court",
+   "icon": "flag",
+   "text": "Ermenistan'da Karabağ'a atıf yapan anayasa maddesinin kaldırılması referanduma gidiyor; muhalefet ve kilise karşı, Bakü ise bu değişikliği barışın ön şartı sayıyor.",
+   "major": false,
+   "default_fx": [
+    [
+     "stab",
+     "Armenia",
+     -2
+    ]
+   ],
+   "roles": {
+    "Armenia": {
+     "text": "Referandum barışın sigortası ama kaybederseniz hükûmet çökebilir.",
+     "options": [
+      {
+       "t": "Referandumu yap",
+       "d": "Referandumu yap",
+       "fx": [
+        [
+         "stab",
+         "Armenia",
+         -2
+        ],
+        [
+         "rel",
+         "Armenia",
+         "Azerbaijan",
+         4
+        ],
+        [
+         "rel",
+         "Armenia",
+         "United States of America",
+         3
+        ]
+       ],
+       "r": "Erivan anayasa referandumunu takvime aldı."
+      },
+      {
+       "t": "Ertele, toplumsal mutabakat ara",
+       "d": "Ertele, toplumsal mutabakat ara",
+       "fx": [
+        [
+         "stab",
+         "Armenia",
+         1
+        ],
+        [
+         "rel",
+         "Armenia",
+         "Azerbaijan",
+         -3
+        ]
+       ],
+       "r": "Hükûmet referandumu erteleyip kilise ve muhalefetle görüştü."
+      }
+     ]
+    },
+    "Azerbaijan": {
+     "text": "Anayasa şartı barışın son engeli gibi görünüyor; baskı yaparsanız Paşinyan zayıflar, ama beklerseniz süreç donar.",
+     "options": [
+      {
+       "t": "Sabırlı ol, ticareti aç",
+       "d": "Sabırlı ol, ticareti aç",
+       "fx": [
+        [
+         "rel",
+         "Azerbaijan",
+         "Armenia",
+         4
+        ],
+        [
+         "gold",
+         "Azerbaijan",
+         0.5
+        ]
+       ],
+       "r": "Bakü Ermenistan'a kısmi ticaret ve transit izni verdi."
+      },
+      {
+       "t": "Süre koy ve baskı yap",
+       "d": "Süre koy ve baskı yap",
+       "fx": [
+        [
+         "rel",
+         "Azerbaijan",
+         "Armenia",
+         -4
+        ],
+        [
+         "rel",
+         "Azerbaijan",
+         "United States of America",
+         -1
+        ]
+       ],
+       "r": "Aliyev anayasa değişikliği için son tarih verdi."
+      }
+     ]
+    }
+   }
+  }
+ ],
+ "moments_en": {
+  "Barışı ve Rota'yı onayla (tarihî)": "Endorse peace and the Route (historical)",
+  "Erivan barış metnini ve ABD'nin yönettiği geçiş koridorunu kabul etti.": "Yerevan accepted the peace text and the US-run transit corridor.",
+  "Önce anayasa ve güvenlik garantisi iste": "Demand constitutional and security guarantees first",
+  "Paşinyan imzayı koşullara bağladı; süreç yavaşladı.": "Pashinyan tied his signature to conditions; the process slowed.",
+  "Barış, ablukanın kalkması ve ticaret demek; ama anayasa referandumu ve Karabağ yenilgisinin hatıraları iç siyaseti kaynatıyor.": "Peace means the end of the blockade and trade, but a constitutional referendum and memories of the Karabakh defeat stir domestic politics.",
+  "Barışı imzala, sınırı aç (tarihî)": "Sign peace and open the border (historical)",
+  "Bakü barış metnini paraf etti ve Ermenistan'a transit izni verdi.": "Baku initialled the peace text and allowed transit to Armenia.",
+  "Koridor için baskıyı artır": "Press harder for the corridor",
+  "Bakü Zengezur koridoru için baskıyı sürdürdü.": "Baku kept pressing for the Zangezur corridor.",
+  "Zafer sizde; barış metnini ve Zengezur koridorunu istiyorsunuz. Rusya ile ilişkiler gergin, Türkiye tam destekçi.": "The victory is yours; you want the peace text and the Zangezur corridor. Ties with Russia are tense; Turkey is a full backer.",
+  "Ermenistan'a baskı yap": "Pressure Armenia",
+  "Moskova Ermeni mallarına kısıtlama ve gaz fiyatı baskısı uyguladı.": "Moscow restricted Armenian goods and pressed on gas prices.",
+  "Barış sürecine uyum sağla": "Adapt to the peace process",
+  "Rusya koridorun sınır denetimine katkı önerdi.": "Russia offered to help with border control on the corridor.",
+  "Rusya'nın Güney Kafkasya'daki etkisi azalıyor: Ermenistan CSTO'yu dondurdu, ABD koridor kuruyor.": "Russia's influence in the South Caucasus is shrinking: Armenia froze its CSTO role and the US builds a corridor.",
+  "Washington Zirvesi: Barış Metni": "The Washington Summit: A Peace Text",
+  "Ağustos 2025'te Beyaz Saray'da Aliyev ve Paşinyan barış anlaşması metnini paraf etti; ABD, Ermenistan'dan geçerek Azerbaycan'ı Nahçıvan'a bağlayacak 'Trump Rotası' (TRIPP) kurulmasını öngörüyor. Anayasa değişikliği ve Rusya'nın tepkisi ise sürecin önündeki engeller.": "In August 2025 Aliyev and Pashinyan initialled a peace deal at the White House; the US envisions the 'Trump Route' (TRIPP), linking Azerbaijan to Nakhchivan through Armenia. A constitutional change and Russia's reaction remain obstacles.",
+  "Sert itiraz, sınıra birlik": "Object sharply and move units to the border",
+  "Tahran sınır bölgesine birlik kaydırdı ve koridora itiraz etti.": "Tehran moved units to the border and objected to the corridor.",
+  "Ticarete ortak ol": "Join the trade",
+  "İran koridora kuzey-güney ticaretinde ortaklık önerdi.": "Iran offered partnership in north–south trade along the corridor.",
+  "Güney Ermenistan'daki koridor sizi Kafkasya'dan izole edebilir; ama Hürmüz krizi önceliğiniz.": "A corridor through southern Armenia could isolate you from the Caucasus; yet the Hormuz crisis is your priority.",
+  "Sınırı aç, diplomatik ilişki kur": "Open the border and establish relations",
+  "Türkiye Ermenistan'la diplomatik ilişki kurma yolunu açtı.": "Turkey opened the way to diplomatic relations with Armenia.",
+  "Azerbaycan'ın önceliğine uy": "Follow Azerbaijan's priority",
+  "Ankara sınırı Bakü'nün şartlarına bağladı.": "Ankara tied the border to Baku's conditions.",
+  "Ankara Ermenistan sınırını açmaya hazır; Azerbaycan'la 'tek millet iki devlet' bağı güçlü.": "Ankara is ready to open the Armenian border; the 'one nation, two states' bond with Azerbaijan is strong.",
+  "Zengezur Rotası İnşaatı": "Building the Zangezur Route",
+  "Ermenistan'ın güneyinden geçen demiryolu ve karayolu hattı için fizibilite çalışması bitti; Türkiye Kars–Nahçıvan bağlantısını hızlandırıyor, İran ise sınırlarının yakınında ABD varlığından rahatsız.": "Feasibility is complete for the rail and road line through southern Armenia; Turkey accelerates a Kars–Nakhchivan link, while Iran is uneasy about a US presence near its border.",
+  "Referandumu yap": "Hold the referendum",
+  "Erivan anayasa referandumunu takvime aldı.": "Yerevan scheduled the constitutional referendum.",
+  "Ertele, toplumsal mutabakat ara": "Postpone and seek consensus",
+  "Hükûmet referandumu erteleyip kilise ve muhalefetle görüştü.": "The government postponed the vote and talked to the church and opposition.",
+  "Referandum barışın sigortası ama kaybederseniz hükûmet çökebilir.": "The referendum is peace insurance, but losing could bring down the government.",
+  "Sabırlı ol, ticareti aç": "Be patient and open trade",
+  "Bakü Ermenistan'a kısmi ticaret ve transit izni verdi.": "Baku granted Armenia partial trade and transit.",
+  "Süre koy ve baskı yap": "Set a deadline and press",
+  "Aliyev anayasa değişikliği için son tarih verdi.": "Aliyev set a deadline for the constitutional change.",
+  "Anayasa şartı barışın son engeli gibi görünüyor; baskı yaparsanız Paşinyan zayıflar, ama beklerseniz süreç donar.": "The constitutional condition looks like the last obstacle; pressure weakens Pashinyan, but waiting freezes the process.",
+  "Anayasa Referandumu": "The Constitutional Referendum",
+  "Ermenistan'da Karabağ'a atıf yapan anayasa maddesinin kaldırılması referanduma gidiyor; muhalefet ve kilise karşı, Bakü ise bu değişikliği barışın ön şartı sayıyor.": "In Armenia a referendum on removing the Karabakh reference from the constitution is looming; the opposition and the church are opposed, while Baku sees the change as a precondition for peace."
+ }
+}

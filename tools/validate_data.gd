@@ -38,6 +38,12 @@ func _init() -> void:
 					files.append("%s/%s" % [d, f])
 	for f in files:
 		_file(f)
+	if OS.get_cmdline_user_args().is_empty():
+		for d in ["res://data/scn_moments", "res://data/moments"]:
+			for f in DirAccess.get_files_at(d):
+				if f.ends_with(".json"):
+					_moments_file("%s/%s" % [d, f])
+					files.append(f)
 	print("---- hata=%d uyarı=%d dosya=%d" % [errs, warns, files.size()])
 	quit(1 if errs > 0 else 0)
 
@@ -242,6 +248,60 @@ func _file(path: String) -> void:
 		_events_en(d, evs.size(), "events")
 
 
+const FX_LEN := {"war": 3, "peace": 3, "ally": 3, "stab": 3, "xstab": 3, "gold": 3, "troops": 3, "buff": 5, "rel": 4, "cede": 4, "flag": 2, "unflag": 2, "mob": 2, "occupy": 3, "own": 3, "unrest": 3}
+
+
+func _fx(f, where: String) -> void:
+	if typeof(f) != TYPE_ARRAY or f.size() < 2 or not FX_LEN.has(String(f[0])):
+		E("%s: geçersiz fx %s" % [where, str(f)])
+		return
+	var k := String(f[0])
+	if f.size() < int(FX_LEN[k]):
+		E("%s: fx '%s' eksik argüman" % [where, k])
+		return
+	if k in ["flag", "unflag", "unrest", "mob"]:
+		return
+	_country(f[1], where + " fx " + k)
+	if k in ["war", "peace", "ally", "rel", "cede", "occupy", "own"]:
+		if typeof(f[2]) == TYPE_STRING:
+			_country(f[2], where + " fx " + k)
+
+
+func _moments_file(path: String) -> void:
+	cur = path.get_file()
+	var d = DataUtil.read_json(path)
+	var arr = d.get("moments", []) if typeof(d) == TYPE_DICTIONARY else d
+	var en: Dictionary = d.get("moments_en", d.get("en", {})) if typeof(d) == TYPE_DICTIONARY else {}
+	if typeof(arr) != TYPE_ARRAY:
+		E("moments dizi değil")
+		return
+	var ids := {}
+	for m in arr:
+		var mid := String(m.get("id", ""))
+		var w := "moment " + mid
+		if mid == "" or ids.has(mid):
+			E("%s: id boş/yinelenen" % w)
+		ids[mid] = true
+		for k in ["title", "text"]:
+			if String(m.get(k, "")) == "":
+				E("%s: '%s' eksik" % [w, k])
+			elif path.contains("scn_moments") and not en.has(String(m[k])):
+				W("%s: '%s' için EN yok" % [w, k])
+		for f in m.get("default_fx", []):
+			_fx(f, w + " default")
+		for rn in m.get("roles", {}).keys():
+			_country(rn, w + " rol")
+			var r = m["roles"][rn]
+			if r.get("options", []).size() < 2:
+				W("%s/%s: <2 seçenek" % [w, rn])
+			for o in r.get("options", []):
+				for f in o.get("fx", []):
+					_fx(f, "%s/%s" % [w, rn])
+				for k in ["t", "d", "r"]:
+					if path.contains("scn_moments") and not en.has(String(o.get(k, ""))):
+						W("%s/%s: '%s' için EN yok" % [w, rn, String(o.get(k, "")).left(30)])
+
+
 func _scenario(d: Dictionary) -> void:
 	if not (String(d.get("kind", "")) in ["real", "fiction"]):
 		E("kind 'real' ya da 'fiction' olmalı")
@@ -328,7 +388,7 @@ func _era(d: Dictionary) -> void:
 		if typeof(tr) != TYPE_ARRAY or tr.size() < 3:
 			E("split [eyalet,eski,yeni,tür] olmalı")
 			continue
-		_prov(tr[0], "split")
+		_prov(tr[0][0] if typeof(tr[0]) == TYPE_ARRAY and tr[0].size() > 0 else tr[0], "split")
 		_country(tr[1], "split")
 		_country(tr[2], "split")
 	for c in d.get("capital", {}).keys():

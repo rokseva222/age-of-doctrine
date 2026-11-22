@@ -1,0 +1,463 @@
+{
+ "moments": [
+  {
+   "id": "twn_tatbikat",
+   "turn": 5,
+   "title": "Adalet Misyonu Tatbikatı",
+   "scene": "pre_war",
+   "icon": "jet",
+   "text": "Çin ordusu Tayvan'ı çevreleyen iki günlük büyük bir tatbikat başlattı: kara, deniz, hava ve roket birlikleri ablukayı prova ediyor; adaya yaklaşan Çin gemi ve uçak sayısı rekor. ABD silah satışı Pekin'i öfkelendirdi.",
+   "major": true,
+   "default_fx": [
+    [
+     "stab",
+     "Taiwan",
+     -2
+    ],
+    [
+     "rel",
+     "China",
+     "United States of America",
+     -3
+    ],
+    [
+     "rel",
+     "China",
+     "Taiwan",
+     -4
+    ]
+   ],
+   "roles": {
+    "Taiwan": {
+     "text": "Limanlar ve hava sahası saatlerce kısıtlandı; borsa düştü. Savunma bakanlığı seferberlik hazırlığı soruyor.",
+     "options": [
+      {
+       "t": "Alarma geç, yedekleri çağır",
+       "d": "Alarma geç, yedekleri çağır",
+       "fx": [
+        [
+         "troops",
+         "Taiwan",
+         4
+        ],
+        [
+         "stab",
+         "Taiwan",
+         1
+        ],
+        [
+         "rel",
+         "Taiwan",
+         "China",
+         -3
+        ]
+       ],
+       "r": "Tayvan alarm seviyesini yükseltti."
+      },
+      {
+       "t": "Soğukkanlı kal, diplomasi",
+       "d": "Soğukkanlı kal, diplomasi",
+       "fx": [
+        [
+         "stab",
+         "Taiwan",
+         1
+        ],
+        [
+         "rel",
+         "Taiwan",
+         "China",
+         1
+        ]
+       ],
+       "r": "Taipei gerginliği tırmandırmamak için temkinli konuştu."
+      }
+     ]
+    },
+    "China": {
+     "text": "Tatbikat 'bağımsızlıkçı güçlere' mesaj; ama aşırı baskı Japonya ve ABD'yi daha da yakınlaştırıyor.",
+     "options": [
+      {
+       "t": "Ablukayı prova et (tarihî)",
+       "d": "Ablukayı prova et (tarihî)",
+       "fx": [
+        [
+         "buff",
+         "China",
+         "att",
+         1.05,
+         6
+        ],
+        [
+         "rel",
+         "China",
+         "United States of America",
+         -4
+        ],
+        [
+         "rel",
+         "China",
+         "Japan",
+         -4
+        ]
+       ],
+       "r": "PLA Tayvan çevresinde kara, deniz, hava ve roket tatbikatı yaptı."
+      },
+      {
+       "t": "Tatbikatı sınırlı tut",
+       "d": "Tatbikatı sınırlı tut",
+       "fx": [
+        [
+         "rel",
+         "China",
+         "United States of America",
+         2
+        ],
+        [
+         "rel",
+         "China",
+         "Taiwan",
+         1
+        ]
+       ],
+       "r": "Pekin tatbikatı kısa tuttu ve diplomatik kanalı açık bıraktı."
+      }
+     ]
+    },
+    "United States of America": {
+     "text": "Kongre Tayvan'a yeni bir silah paketi onayladı; Beyaz Saray Pekin'le ticaret görüşmelerini de korumak istiyor.",
+     "options": [
+      {
+       "t": "Silah satışını sürdür",
+       "d": "Silah satışını sürdür",
+       "fx": [
+        [
+         "rel",
+         "United States of America",
+         "Taiwan",
+         5
+        ],
+        [
+         "rel",
+         "United States of America",
+         "China",
+         -4
+        ]
+       ],
+       "r": "ABD Tayvan'a yeni silah teslimatını onayladı.",
+       "keep_default": true
+      },
+      {
+       "t": "Pekin'le zirve için sessiz kal",
+       "d": "Pekin'le zirve için sessiz kal",
+       "fx": [
+        [
+         "rel",
+         "United States of America",
+         "China",
+         4
+        ],
+        [
+         "rel",
+         "United States of America",
+         "Taiwan",
+         -3
+        ]
+       ],
+       "r": "Washington açıklamaları yumuşattı.",
+       "keep_default": true
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "twn_ablukaprova",
+   "turn": 28,
+   "title": "Karantina Kuşatması",
+   "scene": "pre_siege",
+   "icon": "border_clash",
+   "text": "Çin sahil güvenliği Tayvan limanlarına gelen kargo gemilerini 'denetlemeye' başladı; resmen abluka değil ama enerji sevkiyatı yavaşlıyor. Tayvan'ın LNG stoku haftalık hesaba bağlı.",
+   "major": true,
+   "default_fx": [
+    [
+     "gold",
+     "Taiwan",
+     -1.5
+    ],
+    [
+     "stab",
+     "Taiwan",
+     -3
+    ],
+    [
+     "rel",
+     "China",
+     "United States of America",
+     -3
+    ]
+   ],
+   "roles": {
+    "Taiwan": {
+     "text": "LNG ve gıda gemileri bekliyor. Karantina 'savaş eylemi' mi, yoksa polis işlemi mi? Cevabın tüm dünyayı ilgilendiriyor.",
+     "options": [
+      {
+       "t": "Müttefiklerden eskort iste",
+       "d": "Müttefiklerden eskort iste",
+       "fx": [
+        [
+         "rel",
+         "Taiwan",
+         "United States of America",
+         4
+        ],
+        [
+         "rel",
+         "Taiwan",
+         "Japan",
+         4
+        ],
+        [
+         "rel",
+         "Taiwan",
+         "China",
+         -4
+        ]
+       ],
+       "r": "Tayvan, ABD ve Japonya'dan konvoy eskortu istedi."
+      },
+      {
+       "t": "Denetimi kabul et, pazarlık yap",
+       "d": "Denetimi kabul et, pazarlık yap",
+       "fx": [
+        [
+         "stab",
+         "Taiwan",
+         -1
+        ],
+        [
+         "rel",
+         "Taiwan",
+         "China",
+         3
+        ]
+       ],
+       "r": "Taipei geçici bir denetim düzenini kabul etti."
+      }
+     ]
+    },
+    "China": {
+     "text": "Kuşatma kontrollü bir baskı; ama bir kaza (çarpışma, vurulma) krizi savaşa çevirebilir.",
+     "options": [
+      {
+       "t": "Baskıyı artır",
+       "d": "Baskıyı artır",
+       "fx": [
+        [
+         "gold",
+         "Taiwan",
+         -1
+        ],
+        [
+         "rel",
+         "China",
+         "Japan",
+         -3
+        ],
+        [
+         "rel",
+         "China",
+         "United States of America",
+         -3
+        ]
+       ],
+       "r": "Çin sahil güvenliği devriyelerini artırdı."
+      },
+      {
+       "t": "Gevşet ve müzakere iste",
+       "d": "Gevşet ve müzakere iste",
+       "fx": [
+        [
+         "rel",
+         "China",
+         "Taiwan",
+         3
+        ],
+        [
+         "rel",
+         "China",
+         "United States of America",
+         2
+        ]
+       ],
+       "r": "Pekin denetimleri azaltıp 'çerçeve görüşme' önerdi."
+      }
+     ]
+    },
+    "Japan": {
+     "text": "Tokyo 'Tayvan olası bir kriz Japonya'nın da krizi' diyor; Yonaguni'ye füze bataryası konuyor.",
+     "options": [
+      {
+       "t": "Yonaguni'yi güçlendir",
+       "d": "Yonaguni'yi güçlendir",
+       "fx": [
+        [
+         "rel",
+         "Japan",
+         "China",
+         -5
+        ],
+        [
+         "rel",
+         "Japan",
+         "United States of America",
+         3
+        ],
+        [
+         "stab",
+         "Japan",
+         1
+        ]
+       ],
+       "r": "Japonya Güneybatı Adaları'na füze ve radar yığdı.",
+       "keep_default": true
+      },
+      {
+       "t": "Çin'le temas kanalı aç",
+       "d": "Çin'le temas kanalı aç",
+       "fx": [
+        [
+         "rel",
+         "Japan",
+         "China",
+         4
+        ]
+       ],
+       "r": "Tokyo Pekin'le krizi azaltma görüşmesi önerdi.",
+       "keep_default": true
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "twn_secim",
+   "turn": 70,
+   "title": "Seçim ve Çıkmaz",
+   "scene": "trade",
+   "icon": "flag",
+   "text": "Tayvan'da yerel seçimler yaklaşırken Pekin hem sopa hem havuç gösteriyor: ticaret kolaylıkları ile askerî baskıyı birlikte uyguluyor. Boğaz'da iki taraf da ilk vuran olmak istemiyor.",
+   "major": false,
+   "default_fx": [
+    [
+     "stab",
+     "Taiwan",
+     -1
+    ],
+    [
+     "rel",
+     "China",
+     "Taiwan",
+     2
+    ]
+   ],
+   "roles": {
+    "Taiwan": {
+     "text": "Halk bölünmüş: bir kesim savunma harcamasını, diğer kesim Pekin'le ticareti istiyor.",
+     "options": [
+      {
+       "t": "Savunma bütçesini artır",
+       "d": "Savunma bütçesini artır",
+       "fx": [
+        [
+         "troops",
+         "Taiwan",
+         3
+        ],
+        [
+         "gold",
+         "Taiwan",
+         -0.5
+        ],
+        [
+         "rel",
+         "Taiwan",
+         "United States of America",
+         3
+        ]
+       ],
+       "r": "Taipei savunma harcamasını GSYH'nin %3,5'ine çıkarmayı vaat etti."
+      },
+      {
+       "t": "Ticaret ve temas çizgisi",
+       "d": "Ticaret ve temas çizgisi",
+       "fx": [
+        [
+         "gold",
+         "Taiwan",
+         1.0
+        ],
+        [
+         "rel",
+         "Taiwan",
+         "China",
+         4
+        ],
+        [
+         "rel",
+         "Taiwan",
+         "United States of America",
+         -2
+        ]
+       ],
+       "r": "Taipei Pekin'le ekonomik temas kanalı önerdi."
+      }
+     ]
+    }
+   }
+  }
+ ],
+ "moments_en": {
+  "Alarma geç, yedekleri çağır": "Raise the alert and call reservists",
+  "Tayvan alarm seviyesini yükseltti.": "Taiwan raised its alert level.",
+  "Soğukkanlı kal, diplomasi": "Stay calm and use diplomacy",
+  "Taipei gerginliği tırmandırmamak için temkinli konuştu.": "Taipei spoke cautiously to avoid escalation.",
+  "Limanlar ve hava sahası saatlerce kısıtlandı; borsa düştü. Savunma bakanlığı seferberlik hazırlığı soruyor.": "Ports and airspace were restricted for hours and stocks fell. The defence ministry asks about mobilisation.",
+  "Ablukayı prova et (tarihî)": "Rehearse the blockade (historical)",
+  "PLA Tayvan çevresinde kara, deniz, hava ve roket tatbikatı yaptı.": "The PLA drilled army, navy, air and rocket forces around Taiwan.",
+  "Tatbikatı sınırlı tut": "Keep the drill limited",
+  "Pekin tatbikatı kısa tuttu ve diplomatik kanalı açık bıraktı.": "Beijing kept the drill short and left diplomacy open.",
+  "Tatbikat 'bağımsızlıkçı güçlere' mesaj; ama aşırı baskı Japonya ve ABD'yi daha da yakınlaştırıyor.": "The drill is a message to 'separatist forces'; but too much pressure pushes Japan and the US closer.",
+  "Silah satışını sürdür": "Keep the arms sales going",
+  "ABD Tayvan'a yeni silah teslimatını onayladı.": "The US cleared new weapon deliveries to Taiwan.",
+  "Pekin'le zirve için sessiz kal": "Stay quiet ahead of a summit with Beijing",
+  "Washington açıklamaları yumuşattı.": "Washington toned down its statements.",
+  "Kongre Tayvan'a yeni bir silah paketi onayladı; Beyaz Saray Pekin'le ticaret görüşmelerini de korumak istiyor.": "Congress approved a new Taiwan arms package; the White House also wants to protect trade talks with Beijing.",
+  "Adalet Misyonu Tatbikatı": "Joint Exercise 'Justice Mission'",
+  "Çin ordusu Tayvan'ı çevreleyen iki günlük büyük bir tatbikat başlattı: kara, deniz, hava ve roket birlikleri ablukayı prova ediyor; adaya yaklaşan Çin gemi ve uçak sayısı rekor. ABD silah satışı Pekin'i öfkelendirdi.": "China's military launched a two-day exercise ringing Taiwan: army, navy, air and rocket forces rehearse a blockade, and the number of ships and aircraft near the island hit a record. A US arms sale had angered Beijing.",
+  "Müttefiklerden eskort iste": "Ask allies for escorts",
+  "Tayvan, ABD ve Japonya'dan konvoy eskortu istedi.": "Taiwan asked the US and Japan for convoy escorts.",
+  "Denetimi kabul et, pazarlık yap": "Accept inspections and bargain",
+  "Taipei geçici bir denetim düzenini kabul etti.": "Taipei accepted a temporary inspection regime.",
+  "LNG ve gıda gemileri bekliyor. Karantina 'savaş eylemi' mi, yoksa polis işlemi mi? Cevabın tüm dünyayı ilgilendiriyor.": "LNG and food ships are waiting. Is the 'quarantine' an act of war or a police action? Your answer concerns the whole world.",
+  "Baskıyı artır": "Raise the pressure",
+  "Çin sahil güvenliği devriyelerini artırdı.": "China's coast guard added patrols.",
+  "Gevşet ve müzakere iste": "Ease off and ask for talks",
+  "Pekin denetimleri azaltıp 'çerçeve görüşme' önerdi.": "Beijing eased inspections and offered 'framework talks'.",
+  "Kuşatma kontrollü bir baskı; ama bir kaza (çarpışma, vurulma) krizi savaşa çevirebilir.": "The squeeze is controlled pressure; but an accident (a collision or a shot) could turn the crisis into war.",
+  "Yonaguni'yi güçlendir": "Reinforce Yonaguni",
+  "Japonya Güneybatı Adaları'na füze ve radar yığdı.": "Japan moved missiles and radar to the Southwest Islands.",
+  "Çin'le temas kanalı aç": "Open a channel with China",
+  "Tokyo Pekin'le krizi azaltma görüşmesi önerdi.": "Tokyo proposed crisis-reduction talks with Beijing.",
+  "Tokyo 'Tayvan olası bir kriz Japonya'nın da krizi' diyor; Yonaguni'ye füze bataryası konuyor.": "Tokyo says a Taiwan contingency is a Japan contingency; missile batteries go to Yonaguni.",
+  "Karantina Kuşatması": "The 'Quarantine' Blockade",
+  "Çin sahil güvenliği Tayvan limanlarına gelen kargo gemilerini 'denetlemeye' başladı; resmen abluka değil ama enerji sevkiyatı yavaşlıyor. Tayvan'ın LNG stoku haftalık hesaba bağlı.": "The Chinese coast guard began 'inspecting' cargo ships heading for Taiwan's ports; it is not a formal blockade, yet energy deliveries slow down. Taiwan's LNG stocks are counted in weeks.",
+  "Savunma bütçesini artır": "Raise the defence budget",
+  "Taipei savunma harcamasını GSYH'nin %3,5'ine çıkarmayı vaat etti.": "Taipei pledged defence spending of 3.5% of GDP.",
+  "Ticaret ve temas çizgisi": "Trade and contact line",
+  "Taipei Pekin'le ekonomik temas kanalı önerdi.": "Taipei proposed an economic contact channel with Beijing.",
+  "Halk bölünmüş: bir kesim savunma harcamasını, diğer kesim Pekin'le ticareti istiyor.": "The public is split: some want more defence spending, others want trade with Beijing.",
+  "Seçim ve Çıkmaz": "Elections and Stalemate",
+  "Tayvan'da yerel seçimler yaklaşırken Pekin hem sopa hem havuç gösteriyor: ticaret kolaylıkları ile askerî baskıyı birlikte uyguluyor. Boğaz'da iki taraf da ilk vuran olmak istemiyor.": "As local elections approach in Taiwan, Beijing uses both stick and carrot: trade concessions along with military pressure. In the Strait neither side wants to be the first to fire."
+ }
+}
