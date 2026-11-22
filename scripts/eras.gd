@@ -382,7 +382,7 @@ static func prepare(id: String) -> void:
 	var fl: Dictionary = {}
 	fl = era_flag_table(id)
 	for n2 in DF:
-		if DF[n2].has("flag") and not str(fl.get(n2, "")).begins_with("I:"):
+		if DF[n2].has("flag") and not (str(fl.get(n2, "")).begins_with("I:") or str(fl.get(n2, "")).begins_with("A:")):
 			fl[n2] = DF[n2]["flag"]
 	Flags.set_era_specs(fl)
 

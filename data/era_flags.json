@@ -14,7 +14,7 @@
   "Portugal": "A:pt",
   "Canada": "I:ww1_canada",
   "Australia": "I:ww1_australia",
-  "New Zealand": "R:0,0,1,1,#00247d|S:.75,.35,.05,#c8102e,5|S:.65,.55,.05,#c8102e,5|S:.85,.55,.05,#c8102e,5",
+  "New Zealand": "A:nz",
   "South Africa": "I:ww1_south_africa",
   "Iran": "I:ww1_persia",
   "Thailand": "H:#c8102e,#ffffff,#c8102e|C:.5,.5,.1,#ffffff",
@@ -54,7 +54,7 @@
   "Spain": "H:#aa151b*1,#f1bf00*2,#aa151b*1",
   "Romania": "A:ro",
   "Australia": "I:ww1_australia",
-  "New Zealand": "R:0,0,1,1,#00247d|S:.75,.35,.05,#c8102e,5|S:.65,.55,.05,#c8102e,5|S:.85,.55,.05,#c8102e,5",
+  "New Zealand": "A:nz",
   "South Africa": "H:#c8102e,#ffffff,#1c3f94",
   "Finland": "A:fi",
   "Bulgaria": "A:bg",
@@ -95,14 +95,16 @@
   "Afghanistan": "I:ww2_afghanistan",
   "Yemen": "I:ww2_yemen",
   "Oman": "I:cw_oman",
-  "United States of America": "I:ww_usa48"
+  "United States of America": "I:ww_usa48",
+  "Russia": "I:ussr",
+  "China": "A:tw"
  },
  "cw62": {
-  "Russia": "R:0,0,1,1,#cc0000|S:.14,.2,.09,#ffd700|P:#ffd700,.07,.38,.22,.34,.22,.4,.07,.42",
-  "China": "R:0,0,1,1,#de2910|S:.17,.26,.15,#ffde00|S:.33,.1,.05,#ffde00|S:.4,.2,.05,#ffde00|S:.4,.34,.05,#ffde00|S:.33,.45,.05,#ffde00",
-  "Cuba": "H:#002a8f,w,#002a8f,w,#002a8f|P:#cf142b,0,0,.45,.5,0,1|S:.15,.5,.1,#ffffff,5",
+  "Russia": "I:ussr",
+  "China": "A:cn",
+  "Cuba": "A:cu",
   "Egypt": "H:#c8102e,#ffffff,#141414|S:.4,.5,.06,#2e7d32|S:.6,.5,.06,#2e7d32",
-  "Serbia": "H:#1c3f94,#ffffff,#c8102e|S:.5,.5,.1,#f4c430",
+  "Serbia": "I:yugoslavia_federal",
   "Czechia": "H:#ffffff,#c8102e|P:#1c3f94,0,0,.5,.5,0,1",
   "Iran": "I:cw62_iran",
   "Afghanistan": "I:cw62_afghanistan",
@@ -128,7 +130,8 @@
   "Sri Lanka": "I:cw62_ceylon",
   "Mali": "I:cw62_mali",
   "Mauritania": "I:cw62_mauritania",
-  "Oman": "I:cw_oman"
+  "Oman": "I:cw_oman",
+  "Vietnam": "A:vn"
  },
  "ott1520": {
   "Turkey": "I:pre_ottoman_1520|R:0,0,1,1,#c8102e|C:0.42,.5,0.22,#ffffff|C:0.49,.5,0.19,#c8102e|S:.62,.5,.07,#ffffff",
@@ -203,7 +206,7 @@
   "Brazil": "H:#2e7d32,#f4c430,#2e7d32",
   "Cuba": "R:0,0,1,1,#2e7d32|C:0.5,0.5,0.16,#ffffff",
   "United States of America": "H:#6d4c41,#8d6e63,#6d4c41|C:.5,.5,.14,#f4c430",
-  "Canada": "H:#2e5e3e,#4a7c59,#2e5e3e|C:.5,.5,.14,#ffffff"
+  "Canada": "I:algonquin_iroquois"
  },
  "tim1380": {
   "Turkey": "I:pre_ottoman_1299|R:0,0,1,1,#c8102e|C:0.42,.5,0.22,#ffffff|C:0.49,.5,0.19,#c8102e|S:.62,.5,.07,#ffffff",
@@ -278,7 +281,7 @@
   "Brazil": "H:#2e7d32,#f4c430,#2e7d32",
   "Cuba": "R:0,0,1,1,#2e7d32|C:0.5,0.5,0.16,#ffffff",
   "United States of America": "H:#6d4c41,#8d6e63,#6d4c41|C:.5,.5,.14,#f4c430",
-  "Canada": "H:#2e5e3e,#4a7c59,#2e5e3e|C:.5,.5,.14,#ffffff",
+  "Canada": "I:algonquin_iroquois",
   "Kyrgyzstan": "R:0,0,1,1,#4aa3df|C:0.42,.5,0.22,#ffffff|C:0.49,.5,0.19,#4aa3df",
   "Azerbaijan": "R:0,0,1,1,#212121|C:.5,.5,.2,#ffffff",
   "North Macedonia": "R:0,0,1,1,#4aa3df|C:0.42,.5,0.22,#f4c430|C:0.49,.5,0.19,#4aa3df",
@@ -300,11 +303,13 @@
   "Turkey": "I:pre_ottoman_1299|R:0,0,1,1,#c8102e|C:0.42,.5,0.22,#ffffff|C:0.49,.5,0.19,#c8102e|S:.62,.5,.07,#ffffff",
   "China": "I:pre_yuan|R:0,0,1,1,#f4c430|C:0.5,0.5,0.24,#c8102e|C:.5,.5,.11,#f4c430",
   "France": "I:pre_france_1299|R:0,0,1,1,#1c3f94|S:.3,.3,.075,#f4c430,8|S:.7,.3,.075,#f4c430,8|S:.5,.68,.075,#f4c430,8",
-  "Uzbekistan": "R:0,0,1,1,#8e1b2f|O:#f4c430,.025,.42,.4,.1|O:#f4c430,.025,.58,.4,.1|O:#f4c430,.025,.5,.6,.1"
+  "Uzbekistan": "R:0,0,1,1,#8e1b2f|O:#f4c430,.025,.42,.4,.1|O:#f4c430,.025,.58,.4,.1|O:#f4c430,.025,.5,.6,.1",
+  "Canada": "I:algonquin_iroquois"
  },
  "ott1453": {
   "Turkey": "I:pre_ottoman_1453|R:0,0,1,1,#c8102e|C:0.42,.5,0.22,#ffffff|C:0.49,.5,0.19,#c8102e|S:.62,.5,.07,#ffffff",
   "Iran": "I:pre_timurid|R:0,0,1,1,#1b5e20|C:0.5,0.5,0.2,#f4c430|C:.5,.5,.1,#1b5e20",
-  "Germany": "I:pre_hre_1520|R:0,0,1,1,#f4c430|P:#141414,.5,0.2,0.71,.5,.5,0.8,0.29000000000000004,.5"
+  "Germany": "I:pre_hre_1520|R:0,0,1,1,#f4c430|P:#141414,.5,0.2,0.71,.5,.5,0.8,0.29000000000000004,.5",
+  "Canada": "I:algonquin_iroquois"
  }
 }
