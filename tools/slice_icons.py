@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Tek görselde (ızgara) üretilmiş ikonları assets/icons/<ad>_c.png olarak keser.
-Kullanım: python3 tools/slice_icons.py sayfa.png [sütun] [satır] [--set=objects|pack2|pack3|pack4|pack5|pack6|pack7|pack8|pack9|pack10|pack11|pack12|pack13|pack14|items01..items11|all] [--start=N] [--mono] [--tiles]
+Kullanım: python3 tools/slice_icons.py sayfa.png [sütun] [satır] [--set=objects|pack2|pack3|pack4|pack5|pack6|pack7|pack8|pack9|pack10|pack11|pack12|pack13|pack14|pack15|pack16|items01..items11|all] [--start=N] [--mono] [--tiles]
  - İkonlar soldan sağa, yukarıdan aşağıya tools/ICON_PROMPTS.md'deki sırayla dizilmeli.
  - Düz magenta (#FF00FF) arka plan (veya şeffaf) otomatik şeffaflaştırılır; renkli ikon korunur.
  - --mono: renkleri beyaz tek renk glife çevirir ve <ad>.png yazar (oyun bunu duruma göre boyar).
@@ -23,6 +23,7 @@ PACK13 = ['op_night', 'op_armor', 'op_siege', 'op_encircle', 'op_deception', 'va
 PACK14 = ['m_abrams', 'm_patton', 'm_leopard', 'm_t72', 'm_t14', 'm_type99', 'm_merkava', 'm_k2', 'm_leclerc', 'm_f35', 'm_f15', 'm_f16', 'm_su57', 'm_su27', 'm_rafale', 'm_apache', 'm_tb2', 'm_kamikaze', 'm_kizilelma', 'm_su25', 'm_mig21', 'm_himars', 'm_grad', 'm_spg', 'm_spg_wheeled', 'm_tos', 'm_bmp', 'm_bradley', 'm_wheeled', 'm_apc_old', 'm_sub_nuke', 'm_sub_diesel']
 
 PACK15 = ['uc_transport', 'uc_amphib', 'uc_frigate', 'uc_cruiser']
+PACK16 = ['uc_transport', 'uc_amphib', 'uc_frigate', 'uc_cruiser', 'uc_corvette', 'uc_patrol', 'uc_missile_boat', 'uc_landing_ship', 'uc_torpedo_boat', 'uc_heavy_cruiser', 'uc_light_cruiser', 'uc_escort', 'uc_drone', 'uc_recon', 'uc_airlift']
 
 import json as _json, os as _os
 _ITEMS = _json.load(open(_os.path.join(_os.path.dirname(_os.path.abspath(__file__)), "item_sets.json")))
@@ -34,7 +35,7 @@ src = open(os.path.join(root, "scripts/icons.gd")).read()
 allnames = re.findall(r'"([a-z0-9_]+)"', re.search(r'const NAMES := \[(.*?)\]', src, re.S).group(1))
 opts = {a.split("=")[0]: (a.split("=")[1] if "=" in a else True) for a in sys.argv[1:] if a.startswith("--")}
 args = [a for a in sys.argv[1:] if not a.startswith("--")]
-names = {"objects": OBJECTS, "pack2": PACK2, "pack3": PACK3, "pack4": PACK4, "pack5": PACK5, "pack6": PACK6, "pack7": PACK7, "pack8": PACK8, "pack9": PACK9, "pack10": PACK10, "pack11": PACK11, "pack12": PACK12, "pack13": PACK13, "pack14": PACK14, "pack15": PACK15, "raw60": RAW60, **ITEMSETS}.get(opts.get("--set", "objects"), allnames)
+names = {"objects": OBJECTS, "pack2": PACK2, "pack3": PACK3, "pack4": PACK4, "pack5": PACK5, "pack6": PACK6, "pack7": PACK7, "pack8": PACK8, "pack9": PACK9, "pack10": PACK10, "pack11": PACK11, "pack12": PACK12, "pack13": PACK13, "pack14": PACK14, "pack15": PACK15, "pack16": PACK16, "raw60": RAW60, **ITEMSETS}.get(opts.get("--set", "objects"), allnames)
 start = int(opts.get("--start", 0))
 mono = "--mono" in opts
 if "--tiles" in opts:
@@ -51,7 +52,7 @@ if "--tiles" in opts:
         if h > 40 and w > 40:
             boxes.append((sl[0].start, sl[1].start, sl[0].stop, sl[1].stop))
     boxes.sort(key=lambda b: (round((b[0] + b[2]) / 2 / 60), b[1]))
-    names = {"objects": OBJECTS, "pack2": PACK2, "pack3": PACK3, "pack4": PACK4, "pack5": PACK5, "pack6": PACK6, "pack7": PACK7, "pack8": PACK8, "pack9": PACK9, "pack10": PACK10, "pack11": PACK11, "pack12": PACK12, "pack13": PACK13, "pack14": PACK14, "pack15": PACK15, "raw60": RAW60, **ITEMSETS}.get(opts.get("--set", "objects"), allnames)
+    names = {"objects": OBJECTS, "pack2": PACK2, "pack3": PACK3, "pack4": PACK4, "pack5": PACK5, "pack6": PACK6, "pack7": PACK7, "pack8": PACK8, "pack9": PACK9, "pack10": PACK10, "pack11": PACK11, "pack12": PACK12, "pack13": PACK13, "pack14": PACK14, "pack15": PACK15, "pack16": PACK16, "raw60": RAW60, **ITEMSETS}.get(opts.get("--set", "objects"), allnames)
     out = os.path.join(root, "assets/icons"); os.makedirs(out, exist_ok=True)
     cnt = 0
     for name, (y0, x0, y1, x1) in zip(names[int(opts.get("--start", 0)):], boxes):

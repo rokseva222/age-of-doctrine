@@ -11,6 +11,7 @@ const Loc = preload("res://scripts/loc.gd")
 const Ext = preload("res://scripts/fleet_ext.gd")
 const Eras = preload("res://scripts/eras.gd")
 const Cmd = preload("res://scripts/cmd.gd")
+const Icons = preload("res://scripts/icons.gd")
 
 const KINDS := ["fighter", "bomber", "drone", "transport", "recon"]
 const KIND_TR := {"fighter": "Avcı filosu", "bomber": "Bombardıman filosu", "drone": "İHA filosu", "transport": "Hava nakliye filosu", "recon": "Keşif ve erken uyarı filosu"}
@@ -113,11 +114,11 @@ static func kind_icon(kind: String) -> String:
 		"bomber":
 			return "uc_bomber"
 		"transport":
-			return "plane"
+			return Icons.pick("uc_airlift", "plane")
 		"drone":
-			return "drone"
+			return Icons.pick("uc_drone", "drone")
 		"recon":
-			return "radar"
+			return Icons.pick("uc_recon", "radar")
 	return "uc_jet"
 
 
