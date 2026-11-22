@@ -35,7 +35,9 @@ English Channel
 Chokepoints.set_mode
 %s closed the %s to everyone: world trade is shaken!
 Macro.set_budget
+Macro.set_draft
 Macro.set_front
+Goods.set_policy
 Fleets
 Air
 Cabinet
@@ -49,6 +51,7 @@ Formables
 GrandOp
 Ultimatum
 Faith
+Goods
 Fleets.set_escort
 Fleets.order_move
 Fleets.stop
@@ -66,6 +69,8 @@ Focus.start
 Focus.cancel
 Formables.form
 GrandOp.launch
+Goods.make_deal
+Goods.cancel_deal
 Macro.set_doctrine
 Macro.mobilize
 Macro.buy

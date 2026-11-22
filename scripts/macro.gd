@@ -419,6 +419,16 @@ static func fix_budget(c) -> void:
 		c.budget["res"] = int(c.budget["res"]) - over
 
 
+const DRAFT_NAMES := ["Gönüllü ordu", "Normal askerlik", "Zorunlu askerlik"]
+const DRAFT_INFO := ["Asker alımı yavaş; gelir +%2, istikrar yavaşça artar.", "Dengeli: gelir ve istikrar etkilenmez.", "Asker alımı neredeyse 2 kat; gelir -%5, istikrar her hafta düşer."]
+const DRAFT_RECRUIT := [0.7, 1.0, 1.9]
+
+
+static func set_draft(c, mode: int) -> void:
+	var _cmd := Cmd.Scope.new(Cmd.rec_gs, "Macro.set_draft", [c, mode])
+	c.draft = clampi(mode, 0, 2)
+
+
 static func set_budget(c, key: String, val: int) -> void:
 	var _cmd := Cmd.Scope.new(Cmd.rec_gs, "Macro.set_budget", [c, key, val])
 	fix_budget(c)
@@ -502,6 +512,7 @@ static func calc(gs, c) -> Dictionary:
 	rev *= Politics.income_mult(gs, c)
 	rev *= Faith.income_mult(gs, c)
 	rev *= Propaganda.income_mult(c)
+	rev *= 1.0 + 0.02 * float(1 - c.draft) * (1.0 if c.draft == 0 else 2.5)      # askerlik düzeni: gönüllü +%2, zorunlu -%5 gelir
 	rev *= 1.0 + clampf(0.005 * (float(c.budget.get("agri", 4)) - 4.0), -0.02, 0.10)      # tarım payı: verimli üretim, gelir artar
 	rev *= blockade_mult(gs, c)
 	rev *= 1.0 - 0.10 * c.fleet_block      # filo ablukası (fleets.gd): kıyı bölgelerinde üstün düşman donanması
@@ -640,6 +651,8 @@ static func _invest(gs, c, f: Dictionary) -> void:
 	c.logistics = _grow(c.logistics, pots["logi"] / (inc * 0.15), 0.30, 0.12)
 	var war_pen: float = 0.12 if not c.enemies.is_empty() else 0.0
 	c.stability = _grow(c.stability, pots["stab"] / (inc * 0.15), 0.35, 0.15 + war_pen)
+	if c.draft != 1:
+		c.stability = clampf(c.stability + (0.04 if c.draft == 0 and c.stability < 70.0 else (-0.12 if c.draft == 2 else 0.0)), 3.0, 100.0)
 	c.stability = clampf(c.stability + 0.12 * clampf(pots["agri"] / (inc * 0.06) - 0.6, 0.0, 2.0) * (1.0 - c.stability / 110.0), 3.0, 100.0)   # gıda güvenliği istikrarı korur
 	var er: float = clampf(pots["edu"] / (inc * 0.08), 0.0, 2.2)
 	c.tech = clampf(c.tech + 0.00025 * maxf(0.0, er - 0.6), 0.0, 1.0)      # eğitim payı: yıllar içinde teknoloji yükselir
@@ -734,7 +747,7 @@ static func _recruit(gs, c, mult: float) -> void:
 	if c.troops >= goal or c.fund <= 0.0:
 		return
 	var unit: float = recruit_cost(c)
-	var maxn: int = int(goal * 0.012 * mult * (2.5 if mob_active(c) else 1.0) * buff(c, "recruit"))
+	var maxn: int = int(goal * 0.012 * mult * (2.5 if mob_active(c) else 1.0) * buff(c, "recruit") * DRAFT_RECRUIT[clampi(c.draft, 0, 2)])
 	var n: int = mini(int(goal - c.troops), mini(maxn, int(c.fund * 0.45 / unit)))
 	if n < 200:
 		return
@@ -1145,7 +1158,7 @@ static func cat_total(c, cat: String) -> int:
 ## macro durumunu kayıt için sözlüğe çevirir
 static func to_dict(c) -> Dictionary:
 	return {"budget": c.budget, "doctrine": c.doctrine, "dturn": c.doctrine_turn, "industry": c.industry, "cyber": c.cyber,
-		"logistics": c.logistics, "stability": c.stability, "capacity": c.capacity, "tech": c.tech, "bloc": c.bloc, "goods": Goods.to_dict(c),
+		"logistics": c.logistics, "stability": c.stability, "capacity": c.capacity, "tech": c.tech, "bloc": c.bloc, "goods": Goods.to_dict(c), "draft": c.draft,
 		"inv": c.inv, "orders": c.orders, "auto_buy": c.auto_buy, "auto_cmd": c.auto_cmd, "pri": c.pri, "base": c.base_troops,
 		"fund": c.fund, "embargo": c.embargo, "fronts": c.fronts, "tblock": c.trade_block, "alliance": c.alliance, "leader": c.leader, "carriers": c.carriers, "car_x": c.carrier_extra, "shx": c.ship_extra, "car_cd": c.carrier_cd, "covert": c.covert_cd, "cab": c.cab, "elect": c.elect_turn, "mob": c.mob_until, "mobcd": c.mob_cd, "buffs": c.buffs, "trust": c.trust, "prop": c.prop}
 
@@ -1168,6 +1181,7 @@ static func from_dict(c, d: Dictionary) -> void:
 	c.capacity = d.get("capacity", 0.5)
 	c.tech = d.get("tech", 0.5)
 	Goods.from_dict(c, d.get("goods", {}))
+	c.draft = clampi(int(d.get("draft", 1)), 0, 2)
 	c.bloc = d.get("bloc", "us")
 	c.inv = d.get("inv", {}).duplicate()
 	c.orders = d.get("orders", []).duplicate(true)

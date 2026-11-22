@@ -13,7 +13,7 @@ const Model = preload("res://scripts/model.gd")
 static var rec_gs = null
 
 ## gs'yi ilk argüman olarak ALMAYAN modül emirleri (yeniden oynatırken gs eklenmez)
-const NOGS := ["Macro.set_budget", "Macro.set_front", "Goods.set_policy"]
+const NOGS := ["Macro.set_budget", "Macro.set_draft", "Macro.set_front", "Goods.set_policy"]
 
 ## Modül adı → betik (statik fonksiyonları çağırmak için)
 const MODULES := {
@@ -116,7 +116,7 @@ const MODULE_CMDS := ["Air.player_strike", "Air.rebase", "Air.airlift", "Air.ren
 	"Chokepoints.set_mode", "Fleets.order_move", "Fleets.stop", "Fleets.merge", "Fleets.blockade", "Fleets.player_bombard",
 	"Fleets.player_torpedo", "Fleets.embark", "Fleets.debark", "Fleets.rename", "Fleets.set_flag", "Fleets.set_stance",
 	"Fleets.set_escort", "Fleets.split", "Focus.start", "Focus.cancel", "Formables.form", "GrandOp.launch",
-	"Macro.set_front", "Macro.set_budget", "Goods.set_policy", "Goods.make_deal", "Goods.cancel_deal", "Macro.set_doctrine", "Macro.mobilize", "Macro.buy",
+	"Macro.set_front", "Macro.set_budget", "Macro.set_draft", "Goods.set_policy", "Goods.make_deal", "Goods.cancel_deal", "Macro.set_doctrine", "Macro.mobilize", "Macro.buy",
 	"Politics.choose", "Politics.do_action", "Ultimatum.deliver", "UN.propose", "UN.player_vote"]
 const OBJ_PARAMS := ["a", "f", "w", "army", "fleet", "wing", "fid", "c", "me", "country_obj"]
 static var _sigs: Dictionary = {}

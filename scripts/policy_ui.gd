@@ -217,6 +217,21 @@ func _tab_budget() -> void:
 		content.add_child(row)
 	refresh_rows.call()
 	content.add_child(TK.hsep())
+	content.add_child(_kick("Askerlik düzeni"))
+	var dr := HBoxContainer.new()
+	dr.add_theme_constant_override("separation", 10)
+	for di in Macro.DRAFT_NAMES.size():
+		var dmode: int = di
+		var dbtn := TK.button(Macro.DRAFT_NAMES[di], "gold" if c.draft == di else "ghost", "", Vector2(0, 52), 14)
+		dbtn.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		dbtn.pressed.connect(func():
+			ui._click()
+			Macro.set_draft(c, dmode)
+			render())
+		dr.add_child(dbtn)
+	content.add_child(dr)
+	content.add_child(_wrap(Macro.DRAFT_INFO[c.draft], "small", TK.MUTED))
+	content.add_child(TK.hsep())
 	content.add_child(_kick("Durum göstergeleri"))
 	content.add_child(_stat_row([
 		["Sanayi", "%d" % int(c.industry)],

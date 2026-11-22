@@ -160,6 +160,7 @@ class Country:
 	var recruit_acc := 0.0
 	var gold_delta := 0.0
 	var fund := 0.0                          # savunma fonu (M$): askerlik + silah alımı bu havuzdan
+	var draft := 1                           # askerlik düzeni: 0 gönüllü, 1 normal, 2 zorunlu
 	var goods: Dictionary = {}               # mal ekonomisi (scripts/goods.gd)
 	var tech := 0.5                          # silah teknolojisi düzeyi 0..1
 	var bloc := "us"
