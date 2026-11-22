@@ -37,6 +37,7 @@ signal news_posted(text: String, prov: int, kind: String)
 signal province_changed(pid: int)
 signal armies_changed()
 signal state_changed()
+signal fx(pid: int, kind: String)          # harita efekti: "battle" (çatışma) | "bomb" (hava bombardımanı)
 signal peace_proposal(war, from_country: int, kind: String)
 signal game_over(victory: bool, text: String)
 signal objective_done(id: String)
@@ -1177,6 +1178,10 @@ func net_income(c) -> float:
 
 func power_of(c) -> float:
 	return Macro.power(self, c)
+
+
+func is_headless_sim() -> bool:
+	return DisplayServer.get_name() == "headless"
 
 
 func at_war(a: int, b: int) -> bool:
@@ -3411,6 +3416,8 @@ func _relocate(a, dest: int) -> void:
 
 func _battle(att, def, dest: int) -> void:
 	var p = provinces[dest]
+	if not _quiet and not is_headless_sim():
+		fx.emit(dest, "battle")
 	var home: bool = (p.owner == def.owner) or (p.controller == def.owner)
 	var op_id: String = att.op if OPS.has(att.op) else "assault"
 	var o: Dictionary = OPS[op_id].duplicate()

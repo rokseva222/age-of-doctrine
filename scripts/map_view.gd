@@ -58,6 +58,7 @@ var _press_pos := Vector2.ZERO
 var _vel := Vector2.ZERO
 var _tween: Tween = null
 var pulses: Array = []
+var blasts: Array = []                   # savaş efektleri (çatışma/bombardıman): {pos, t, kind}
 var army_anim: Dictionary = {}
 var _army_prev: Dictionary = {}
 var country_labels: Dictionary = {}     # cid -> {pos, w}
@@ -188,6 +189,7 @@ func bind(game_state) -> void:
 	army_anim.clear()
 	_army_prev.clear()
 	gs.province_changed.connect(_on_province_changed)
+	gs.fx.connect(_on_fx)
 	gs.armies_changed.connect(_on_armies_changed)
 	gs.state_changed.connect(_on_state_changed)
 	repaint_all()
@@ -273,6 +275,13 @@ func set_highlight_country(cid: int) -> void:
 		return
 	highlight_country = cid
 	repaint_all()
+	hud.queue_redraw()
+
+
+func _on_fx(pid: int, kind: String) -> void:
+	if pid < 0 or pid >= gs.provinces.size() or blasts.size() >= 10:
+		return
+	blasts.append({"pos": gs.provinces[pid].label_pos, "t": 0.0, "kind": kind})
 	hud.queue_redraw()
 
 
@@ -506,6 +515,11 @@ func _process(delta: float) -> void:
 		for pl in pulses:
 			pl.t += delta * 1.5
 		pulses = pulses.filter(func(pl): return pl.t < 1.0)
+		redraw = true
+	if not blasts.is_empty():
+		for bl in blasts:
+			bl.t += delta * (1.1 if bl.kind == "bomb" else 1.6)
+		blasts = blasts.filter(func(bl): return bl.t < 1.0)
 		redraw = true
 	if not army_anim.is_empty():
 		for k in army_anim.keys():

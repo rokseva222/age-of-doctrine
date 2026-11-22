@@ -174,6 +174,19 @@ func _draw() -> void:
 		if show_air:
 			_draw_wings(gs, z, screen)
 
+	# --- savaş efektleri: çatışma kıvılcımı, bombardıman patlaması
+	for bl in map.blasts:
+		var bp: Vector2 = map.world_to_screen(bl.pos)
+		var bt: float = bl.t
+		var big: bool = bl.kind == "bomb"
+		var r: float = (14.0 if big else 9.0) + bt * (34.0 if big else 22.0)
+		draw_circle(bp, r, Color(1.0, 0.62 if big else 0.8, 0.15, (1.0 - bt) * 0.45))
+		draw_arc(bp, r, 0.0, TAU, 28, Color(1.0, 0.9, 0.5, (1.0 - bt) * 0.9), 2.5, true)
+		for i in (8 if big else 5):
+			var ang: float = float(i) * TAU / float(8 if big else 5) + bt * 1.2
+			var d1: float = r * (0.5 + 0.5 * bt)
+			draw_line(bp + Vector2(cos(ang), sin(ang)) * d1, bp + Vector2(cos(ang), sin(ang)) * (d1 + 7.0 * (1.0 - bt)), Color(1.0, 0.95, 0.7, (1.0 - bt)), 2.0)
+
 	# --- fetih nabızları
 	for pl in map.pulses:
 		var sp2: Vector2 = map.world_to_screen(pl.pos)

@@ -437,6 +437,8 @@ static func targets(gs, w) -> Array:
 
 ## Saldırı çözümü. Dönüş: {err, killed, lost, down} (down: düşürülen düşman avcısı)
 static func resolve_strike(gs, w, pid: int, quiet: bool = false) -> Dictionary:
+	if not quiet and not gs.is_headless_sim():
+		gs.fx.emit(pid, "bomb")
 	var res := {"err": "", "killed": 0, "lost": 0.0, "down": 0.0, "eff": 0.0}
 	var holder: int = gs._holder(pid)
 	if holder < 0 or not gs.at_war(w.owner, holder):
