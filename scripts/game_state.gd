@@ -4355,7 +4355,12 @@ func _ai_orders(c) -> int:
 				skip = true
 				break
 		var path: Array = []
-		if not skip:
+		var style: int = Settings.auto_style if cid == player else 0
+		if style == 2 and not skip:
+			path = path_nearest(cid, a.prov, func(pid): return (provinces[pid].is_capital or provinces[pid].value() >= 3) and _ai_target_ok(cid, pid, arm), 14)
+		if style == 1:
+			skip = true       # savunma tarzı: saldırı hedefi aranmaz, yalnızca cepheye toplanır
+		if not skip and path.is_empty():
 			path = path_nearest(cid, a.prov, func(pid): return _ai_compact_ok(cid, pid, arm), 5)      # önce bütünlüğü bozmayan hedef
 			if path.is_empty():
 				path = path_nearest(cid, a.prov, func(pid): return _ai_target_ok(cid, pid, arm))
@@ -4364,9 +4369,9 @@ func _ai_orders(c) -> int:
 		if not path.is_empty():
 			a.path = path
 			n += 1
-		elif _ai_try_landing(cid, arm):
+		elif style != 1 and _ai_try_landing(cid, arm):
 			n += 1
-		elif ((cid == player and not sea_campaign.is_empty()) or (cid != player and _sea_only_foe(cid))) and _campaign_shuttle(cid, arm):
+		elif style != 1 and ((cid == player and not sea_campaign.is_empty()) or (cid != player and _sea_only_foe(cid))) and _campaign_shuttle(cid, arm):
 			n += 1
 		elif not _ai_threatened(cid, a.prov, true):
 			# saldırı yok: iç bölgedeki ordu en yakın tehdit altındaki boş cephe eyaletine kayar

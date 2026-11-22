@@ -7,8 +7,8 @@ const Macro = preload("res://scripts/macro.gd")
 const Names = preload("res://scripts/names.gd")
 const Cmd = preload("res://scripts/cmd.gd")
 
-const ORDER := ["ceasefire", "rebuild", "aid", "peace_keep", "develop", "guarantee", "sanction", "embargo", "probe", "disarm", "attack"]
-const FRIENDLY := ["rebuild", "aid", "peace_keep", "develop", "guarantee"]
+const ORDER := ["ceasefire", "rebuild", "aid", "peace_keep", "develop", "guarantee", "restore", "sanction", "embargo", "probe", "disarm", "attack"]
+const FRIENDLY := ["rebuild", "aid", "peace_keep", "develop", "guarantee", "restore"]
 const HOSTILE := ["sanction", "embargo", "probe", "disarm", "attack"]
 # mult: önerge bedeli = hf geliri x mult; cd: aynı önergeyi yeniden verme bekleme süresi (hafta)
 const KINDS := {
@@ -21,6 +21,7 @@ const KINDS := {
 	"embargo": {"name": "Silah ambargosu", "desc": "Hedef ülkenin sanayisi ve lojistiği zayıflar.", "mult": 6.0, "cd": 26},
 	"probe": {"name": "Uluslararası soruşturma", "desc": "Hedef ülkenin istikrarı ve saldırganlığı düşer.", "mult": 3.0, "cd": 26},
 	"disarm": {"name": "Silahsızlanma kararı", "desc": "Hedef ülkenin ordusu yüzde 12 küçülür.", "mult": 8.0, "cd": 39},
+	"restore": {"name": "Yıkılan devleti diriltme", "desc": "Yıkılmış bir devletin eski topraklarını elinde tutan ülkeden alıp devleti yeniden kurar (kendi fethettiğin devleti de serbest bırakabilirsin).", "mult": 10.0, "cd": 52},
 	"sanction": {"name": "Yaptırım kararı", "desc": "Hedef ülkenin geliri 26 hafta boyunca yüzde 25 düşer.", "mult": 5.0, "cd": 26},
 	"attack": {"name": "Ortak harekât", "desc": "Kabul edilirse lehte oy veren ülkeler hedefe savaş açar.", "mult": 12.0, "cd": 52},
 }
@@ -60,6 +61,15 @@ static func targets(gs, kind: String) -> Array:
 			if not (gs.countries[w.a].is_rebel or gs.countries[w.b].is_rebel):
 				out.append(gs.wars.find(w))
 		return out
+	if kind == "restore":
+		var cnt: Dictionary = {}
+		for pr in gs.provinces:
+			if pr.owner >= 0 and pr.home >= 0 and pr.home != pr.owner and not gs.countries[pr.home].alive and not gs.countries[pr.home].is_rebel and gs.countries[pr.owner].alive and not gs.countries[pr.owner].is_rebel:
+				cnt[pr.owner] = int(cnt.get(pr.owner, 0)) + 1
+		for k in cnt:
+			out.append(int(k))
+		out.sort_custom(func(a, b): return int(cnt[a]) > int(cnt[b]))
+		return out
 	for c in gs.countries:
 		if not c.alive or c.is_rebel:
 			continue
@@ -98,6 +108,16 @@ static func _p_yes(gs, kind: String, m: int, proposer: int, target: int, w) -> f
 			elif mc.alliance >= 0 and mc.alliance == gs.countries[target].alliance:
 				base = 0.9
 			return clampf(base, 0.05, 0.95)
+		"restore":
+			if m == target:
+				return 1.0 if proposer == target else 0.0
+			if proposer == target:
+				return 0.8
+			if gs.at_war(m, target):
+				return 0.9
+			if gs.is_allied(m, target):
+				return 0.12
+			return clampf(0.5 + (0.1 if gs.is_allied(m, proposer) else 0.0) - 0.15 * gs.countries[m].aggression, 0.1, 0.85)
 		"sanction", "embargo", "probe", "disarm":
 			if m == target:
 				return 0.0
@@ -284,6 +304,8 @@ static func _apply(gs, kind: String, proposer: int, target: int, w, yes_ids: Arr
 			for a3 in gs.armies_of(target):
 				a3.size = maxi(1, int(a3.size * 0.88))
 			return "%s ordusu yüzde 12 küçüldü." % gs.countries[target].name
+		"restore":
+			return _restore_state(gs, proposer, target)
 		"sanction":
 			var t3 = gs.countries[target]
 			t3.sanction_until = gs.turn + 26
@@ -408,3 +430,33 @@ static func pending_text(gs) -> String:
 	if p.target == gs.player:
 		tn = "SENİN ÜLKEN"
 	return "%s önerge verdi: %s. Hedef: %s.\n%s" % [pn, def.name, tn, def.desc]
+
+
+## O15: yıkılmış bir devletin eski topraklarından (target elinde) devleti yeniden kurar.
+static func _restore_state(gs, proposer: int, target: int) -> String:
+	var by: Dictionary = {}
+	for pr in gs.provinces:
+		if pr.owner == target and pr.home >= 0 and pr.home != target and not gs.countries[pr.home].alive and not gs.countries[pr.home].is_rebel:
+			if not by.has(pr.home):
+				by[pr.home] = []
+			by[pr.home].append(pr.id)
+	var best := -1
+	for h in by:
+		if best < 0 or (by[h] as Array).size() > (by[best] as Array).size():
+			best = int(h)
+	if best < 0:
+		return "Geri verilecek eski toprak bulunamadı."
+	var dead = gs.countries[best]
+	var tc = gs.countries[target]
+	var flag: String = dead.flag_spec
+	if flag == "" and dead.iso != "":
+		flag = "A:" + String(dead.iso).to_lower()
+	var spec := {"from": [[tc.name_en, 0]], "pids": by[best], "name": dead.name, "key": "", "colors": [dead.color.to_html(false), dead.color2.to_html(false), dead.color3.to_html(false)],
+		"flag": flag, "troops": 15000, "tech": maxf(0.2, dead.tech_set if dead.tech_set >= 0.0 else dead.tech), "leader": dead.leader, "aggression": 0.15, "war": false, "defect": true, "gold_mult": 1.0}
+	var nid: int = gs.create_faction(spec)
+	if nid < 0:
+		return "Geri verilecek eski toprak bulunamadı."
+	gs.countries[nid].stability = 70.0
+	if proposer >= 0 and proposer != nid:
+		gs.relation_add(proposer, nid, 25.0)
+	return "%s devleti BM kararıyla yeniden kuruldu (%s elindeki topraklardan)." % [dead.name, tc.name]

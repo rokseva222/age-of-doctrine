@@ -138,6 +138,33 @@ static func open_settings(parent: Node, on_change: Callable, sfx = null) -> void
 	sh.body.add_child(TK.toggle_row("Otomatik asker atama", Settings.auto_orders, func(on: bool):
 		Settings.auto_orders = on
 		changed.call(), "Bir turda hiç emir vermezsen, savaştaki boş ordular en uygun cephe hedeflerine kendiliğinden yönlendirilir. Kapalıyken ordular sen söyleyene dek yerinde bekler."))
+	var arow := HBoxContainer.new()
+	arow.add_theme_constant_override("separation", 8)
+	var al := TK.t("Otomatik komut tarzı", "body")
+	al.custom_minimum_size = Vector2(220, 0)
+	al.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	arow.add_child(al)
+	var abtns: Array = []
+	var anames := ["Dengeli", "Savunma", "Şehir odaklı"]
+	for i in 3:
+		var ab := TK.button(anames[i], "", "", Vector2(0, 60), 16)
+		ab.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		abtns.append(ab)
+		arow.add_child(ab)
+	var arefresh := func():
+		for i in 3:
+			TK.style_button(abtns[i], "gold" if Settings.auto_style == i else "ghost")
+	for i in 3:
+		var aidx := i
+		abtns[i].pressed.connect(func():
+			Settings.auto_style = aidx
+			arefresh.call()
+			changed.call())
+	arefresh.call()
+	sh.body.add_child(arow)
+	var ahint := TK.t("Dengeli: en yakın zayıf hedefe saldırır. Savunma: saldırmaz, boştaki orduları tehdit altındaki cephe eyaletlerine toplar. Şehir odaklı: önce başkent ve büyük şehirleri hedefler.", "small", TK.FAINT)
+	ahint.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	sh.body.add_child(ahint)
 	sh.body.add_child(TK.toggle_row("Yerel para birimi", Settings.currency, func(on: bool):
 		Settings.currency = on
 		changed.call(), "Paralar, oynadığın ülkenin para biriminde (TL, €, £…) gösterilir; kurlar güncel piyasa verilerine dayanır ve zamanla oynar. Kapalıyken her şey dolar olarak görünür. Oyun dengesi değişmez."))

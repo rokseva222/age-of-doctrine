@@ -648,6 +648,9 @@ Wang Wei
 Huang Lei
 Rok Games Studios
 Age of Doctrine
+Otomatik komut tarzı
+Şehir odaklı
+Dengeli: en yakın zayıf hedefe saldırır. Savunma: saldırmaz, boştaki orduları tehdit altındaki cephe eyaletlerine toplar. Şehir odaklı: önce başkent ve büyük şehirleri hedefler.
 Normal
 AodNet
 Online · %s: %s
@@ -848,6 +851,10 @@ VBoxContainer
 HBoxContainer
 HFlowContainer
 %d km
+Yıkılan devleti diriltme
+Yıkılmış bir devletin eski topraklarını elinde tutan ülkeden alıp devleti yeniden kurar (kendi fethettiğin devleti de serbest bırakabilirsin).
+Geri verilecek eski toprak bulunamadı.
+%s devleti BM kararıyla yeniden kuruldu (%s elindeki topraklardan).
 AOD1.
 %d hafta ayakta kal
 Survive %d weeks
