@@ -16,3 +16,7 @@ Araç: `godot --headless --path . -s tools/asset_audit.gd` (silah ikonları; lis
 6. "Kaynak ara/İnşa" için özel `build` (çekiç) ikonu yok; coins yedeği.
 7. Play Store: ekran görüntüleri 16 Kasım'dan (mal pazarı, askerlik düzeni, senaryo editörü yok); Android 13 tek renkli (monochrome) uygulama ikonu yok; tablet görüntüleri yok.
 8. Yazı tipi: Çince/Japonca/Korece/Arapça/Farsça/Hintçe için sistem yazı tipine güveniyor (pakette yok); eski/özel Android cihazlarda kutucuk çıkabilir.
+
+## Güncelleme (23 Kasım, öğleden sonra)
+- Android 13 tek renkli ikon: icon_mono_432.png üretildi ve export_presets.cfg'ye `launcher_icons/monochrome_432x432` eklendi; ANCAK Godot 4.3 bu seçeneği tanımıyor (yalnız 4.4+). Şu an etkisiz; Godot 4.4'e geçince otomatik devreye girer. 4.3'te yapmak için android/build şablonuna mipmap-anydpi-v26/ic_launcher.xml içine <monochrome> eklemek gerekir (şablon repoda yok).
+- Kalan görseller: Kurtuluş Savaşı çağ kartı (ICON_PROMPTS_20) + 8 rozet (ICON_PROMPTS_21).
