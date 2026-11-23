@@ -1,0 +1,564 @@
+{
+ "moments": [
+  {
+   "id": "amasya",
+   "y": 1919,
+   "m": 6,
+   "title": "Amasya Genelgesi",
+   "scene": "pre_mobilize",
+   "icon": "uprising_banner",
+   "text": "Mustafa Kemal Amasya'da genelge yayımladı: 'Vatanın bütünlüğü, milletin istiklali tehlikededir.' İstanbul hükûmeti etkisiz; millî irade Anadolu'dan doğacak.",
+   "major": true,
+   "default_fx": [
+    [
+     "stab",
+     "Turkey",
+     3
+    ]
+   ],
+   "roles": {
+    "Turkey": {
+     "text": "İstanbul seni geri çağırıyor, İngilizler baskı yapıyor. Genelge Anadolu'daki bütün komutanlara ve valilere gidecek: yazarsan geri dönüş yok.",
+     "options": [
+      {
+       "t": "Genelgeyi yayımla (tarihî)",
+       "d": "Millî örgütlenme başlar",
+       "fx": [
+        [
+         "xstab",
+         "Turkey",
+         8
+        ],
+        [
+         "troops",
+         "Turkey",
+         8
+        ],
+        [
+         "buff",
+         "Turkey",
+         "recruit",
+         1.2,
+         26
+        ],
+        [
+         "flag",
+         "amasya"
+        ]
+       ],
+       "r": "Genelge Anadolu'ya yayıldı; cemiyetler örgütleniyor."
+      },
+      {
+       "t": "İstanbul'a dön",
+       "d": "Emirlere uy, direniş dağınık kalır",
+       "fx": [
+        [
+         "xstab",
+         "Turkey",
+         -10
+        ],
+        [
+         "gold",
+         "Turkey",
+         2
+        ]
+       ],
+       "r": "Direniş başsız kaldı; Anadolu'da dağınık çeteler sürüyor."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "sivas",
+   "y": 1919,
+   "m": 9,
+   "title": "Sivas Kongresi",
+   "scene": "pre_alliance",
+   "icon": "treaty",
+   "text": "Anadolu ve Rumeli Müdafaa-i Hukuk Cemiyetleri Sivas'ta toplandı. Gündem: tek yönetim altında birleşmek ve manda fikri.",
+   "major": true,
+   "default_fx": [
+    [
+     "stab",
+     "Turkey",
+     4
+    ]
+   ],
+   "roles": {
+    "Turkey": {
+     "text": "Bazı delegeler Amerikan mandasını bir çıkış yolu olarak görüyor. Kongre tek bir karar vermek zorunda.",
+     "options": [
+      {
+       "t": "Mandayı reddet, tam bağımsızlık (tarihî)",
+       "d": "Tek bir irade, tek bir cephe",
+       "fx": [
+        [
+         "xstab",
+         "Turkey",
+         10
+        ],
+        [
+         "buff",
+         "Turkey",
+         "def",
+         1.15,
+         26
+        ],
+        [
+         "flag",
+         "sivas"
+        ]
+       ],
+       "r": "Sivas Kongresi tam bağımsızlık ilkesini kabul etti."
+      },
+      {
+       "t": "Amerikan mandasını araştır",
+       "d": "Wilson'un desteği, ama bağımsızlıktan ödün",
+       "fx": [
+        [
+         "rel",
+         "Turkey",
+         "United States of America",
+         20
+        ],
+        [
+         "gold",
+         "Turkey",
+         6
+        ],
+        [
+         "xstab",
+         "Turkey",
+         -6
+        ]
+       ],
+       "r": "Washington'a heyet gönderildi; kongrede ikilik var."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "tbmm",
+   "y": 1920,
+   "m": 4,
+   "title": "TBMM Açılıyor",
+   "scene": "pre_court",
+   "icon": "treaty",
+   "text": "İstanbul işgal edildi, Meclis-i Mebusan basıldı. Ankara'da Büyük Millet Meclisi toplanıyor: 'Hâkimiyet kayıtsız şartsız milletindir.'",
+   "major": true,
+   "default_fx": [
+    [
+     "stab",
+     "Turkey",
+     6
+    ]
+   ],
+   "roles": {
+    "Turkey": {
+     "text": "Ankara'da yeni bir meclis kurulabilir; ama padişah ve İstanbul hükûmeti seni asi ilan etti, fetvalar çıkıyor.",
+     "options": [
+      {
+       "t": "Meclisi aç, hükûmeti kur (tarihî)",
+       "d": "Millî egemenlik, ordu için kaynak",
+       "fx": [
+        [
+         "xstab",
+         "Turkey",
+         12
+        ],
+        [
+         "troops",
+         "Turkey",
+         10
+        ],
+        [
+         "buff",
+         "Turkey",
+         "recruit",
+         1.2,
+         52
+        ],
+        [
+         "flag",
+         "tbmm"
+        ]
+       ],
+       "r": "23 Nisan 1920: TBMM açıldı; Ankara yeni devletin merkezi oldu."
+      },
+      {
+       "t": "Padişaha bağlı kal",
+       "d": "Tutuculuk: İngiltere ile ilişki düzelir",
+       "fx": [
+        [
+         "xstab",
+         "Turkey",
+         -12
+        ],
+        [
+         "gold",
+         "Turkey",
+         4
+        ],
+        [
+         "rel",
+         "Turkey",
+         "United Kingdom",
+         10
+        ]
+       ],
+       "r": "Ankara'da meclis kurulamadı; ordu dağınık kaldı."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "dogu_guney",
+   "y": 1920,
+   "m": 9,
+   "title": "Doğu mu, Güney mi?",
+   "scene": "pre_border",
+   "icon": "sword",
+   "text": "Sevr'in gölgesinde Ermenistan doğuda, Fransa güneyde baskı yapıyor. Yunan ordusu batıda yeni bir taarruza hazırlanıyor. Birini seçmek zorundasın.",
+   "major": true,
+   "default_fx": [
+    [
+     "war",
+     "Turkey",
+     "Armenia",
+     "solo"
+    ]
+   ],
+   "roles": {
+    "Turkey": {
+     "text": "Kâzım Karabekir doğuda hazır; güneyde Maraş, Antep ve Urfa direnişi sürüyor. Üç cepheyi aynı anda taşıyamazsın.",
+     "options": [
+      {
+       "t": "Önce Doğu: Ermenistan'a taarruz (tarihî)",
+       "d": "Kars'ı geri al, Rusya'yla yakınlaş",
+       "fx": [
+        [
+         "war",
+         "Turkey",
+         "Armenia",
+         "solo"
+        ],
+        [
+         "buff",
+         "Turkey",
+         "att",
+         1.2,
+         12
+        ],
+        [
+         "xstab",
+         "Turkey",
+         4
+        ],
+        [
+         "flag",
+         "kars"
+        ]
+       ],
+       "r": "Doğu Cephesi açıldı; Sarıkamış ve Kars hedefte."
+      },
+      {
+       "t": "Önce Güney: Kilikya'yı kuşat",
+       "d": "Fransa'yla savaş, Fransız çekilmesi için baskı",
+       "fx": [
+        [
+         "war",
+         "Turkey",
+         "France",
+         "solo"
+        ],
+        [
+         "buff",
+         "Turkey",
+         "def",
+         1.1,
+         12
+        ],
+        [
+         "xstab",
+         "Turkey",
+         -2
+        ]
+       ],
+       "r": "Kuvayımilliye Kilikya'ya yöneldi; Fransa zor durumda."
+      },
+      {
+       "t": "Moskova'yla görüş",
+       "d": "Sovyet altını ve silahı, ama yavaş",
+       "fx": [
+        [
+         "rel",
+         "Turkey",
+         "Russia",
+         25
+        ],
+        [
+         "gold",
+         "Turkey",
+         5
+        ],
+        [
+         "xstab",
+         "Turkey",
+         2
+        ]
+       ],
+       "r": "Moskova'ya heyet gönderildi; silah ve altın yardımı pazarlığı sürüyor."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "inonu",
+   "y": 1921,
+   "m": 1,
+   "title": "İnönü",
+   "scene": "pre_assault",
+   "icon": "sword",
+   "text": "Yunan ordusu Bursa'dan Eskişehir'e doğru ilerliyor. Yeni kurulan düzenli ordunun ilk büyük sınavı İnönü'de.",
+   "major": true,
+   "default_fx": [
+    [
+     "stab",
+     "Greece",
+     -3
+    ]
+   ],
+   "roles": {
+    "Turkey": {
+     "text": "İsmet Paşa İnönü mevzilerinde. Düzenli ordu daha çok genç; çekilirsen Eskişehir demiryolu düşer.",
+     "options": [
+      {
+       "t": "Mevzide dur (tarihî)",
+       "d": "Düzenli ordunun ilk zaferi",
+       "fx": [
+        [
+         "buff",
+         "Turkey",
+         "def",
+         1.2,
+         8
+        ],
+        [
+         "xstab",
+         "Turkey",
+         6
+        ],
+        [
+         "troops",
+         "Turkey",
+         5
+        ],
+        [
+         "flag",
+         "inonu"
+        ]
+       ],
+       "r": "İnönü kazanıldı: Yunan taarruzu püskürtüldü."
+      },
+      {
+       "t": "Geri çekil, mevzi değiştir",
+       "d": "Orduyu koru, toprak ver",
+       "fx": [
+        [
+         "xstab",
+         "Turkey",
+         -5
+        ],
+        [
+         "buff",
+         "Turkey",
+         "def",
+         1.1,
+         6
+        ]
+       ],
+       "r": "Ordu Sakarya doğrultusunda geri çekildi."
+      }
+     ]
+    },
+    "Greece": {
+     "text": "Kral Konstantinos ordunun başında; Eskişehir'e ulaşırsan Ankara'nın demiryolu bağlantısı kesilir.",
+     "options": [
+      {
+       "t": "Eskişehir'e ilerle (tarihî)",
+       "d": "Büyük taarruz, ağır kayıp riski",
+       "fx": [
+        [
+         "buff",
+         "Greece",
+         "att",
+         1.15,
+         8
+        ],
+        [
+         "troops",
+         "Greece",
+         -5
+        ]
+       ],
+       "r": "Yunan ordusu İnönü mevzilerine saldırdı."
+      },
+      {
+       "t": "Hatları tahkim et",
+       "d": "Temkinli kal",
+       "fx": [
+        [
+         "buff",
+         "Greece",
+         "def",
+         1.1,
+         8
+        ],
+        [
+         "stab",
+         "Greece",
+         2
+        ]
+       ],
+       "r": "Yunan ordusu Bursa hattında kaldı."
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "saltanat",
+   "y": 1922,
+   "m": 11,
+   "title": "Saltanatın Kaldırılması",
+   "scene": "pre_court",
+   "icon": "treaty",
+   "text": "Zafer kazanıldı; Lozan'a hem Ankara hem İstanbul davet edildi. TBMM tek temsilci olacağını ilan etmek zorunda.",
+   "major": true,
+   "default_fx": [
+    [
+     "stab",
+     "Turkey",
+     4
+    ]
+   ],
+   "roles": {
+    "Turkey": {
+     "text": "İki hükûmetle Lozan'a gidilemez. Saltanatı kaldırmak devleti tek elde toplar ama muhafazakâr tepki doğurur.",
+     "options": [
+      {
+       "t": "Saltanatı kaldır (tarihî)",
+       "d": "Tek temsilci, güçlü Ankara",
+       "fx": [
+        [
+         "xstab",
+         "Turkey",
+         10
+        ],
+        [
+         "flag",
+         "saltanat"
+        ],
+        [
+         "rel",
+         "Turkey",
+         "United Kingdom",
+         -3
+        ]
+       ],
+       "r": "1 Kasım 1922: saltanat kaldırıldı; Osmanlı hanedanının hükümdarlığı sona erdi."
+      },
+      {
+       "t": "Saltanatı koru",
+       "d": "Muhafazakârları yatıştır, Lozan'da iki ses",
+       "fx": [
+        [
+         "xstab",
+         "Turkey",
+         -3
+        ],
+        [
+         "rel",
+         "Turkey",
+         "United Kingdom",
+         6
+        ]
+       ],
+       "r": "İtilaf iki ayrı heyetle muhatap oldu; Lozan zorlaştı."
+      }
+     ]
+    }
+   }
+  }
+ ],
+ "en": {
+  "Amasya Genelgesi": "Amasya Circular",
+  "Mustafa Kemal Amasya'da genelge yayımladı: 'Vatanın bütünlüğü, milletin istiklali tehlikededir.' İstanbul hükûmeti etkisiz; millî irade Anadolu'dan doğacak.": "Mustafa Kemal issued a circular at Amasya: 'The integrity of the homeland and the independence of the nation are in danger.' The Istanbul government is powerless; the national will must rise from Anatolia.",
+  "İstanbul seni geri çağırıyor, İngilizler baskı yapıyor. Genelge Anadolu'daki bütün komutanlara ve valilere gidecek: yazarsan geri dönüş yok.": "Istanbul is recalling you and the British are pressing. The circular will go to every commander and governor in Anatolia: once you send it, there is no way back.",
+  "Genelgeyi yayımla (tarihî)": "Issue the circular (historical)",
+  "Millî örgütlenme başlar": "National organisation begins",
+  "Genelge Anadolu'ya yayıldı; cemiyetler örgütleniyor.": "The circular spread across Anatolia; resistance societies are organising.",
+  "İstanbul'a dön": "Return to Istanbul",
+  "Emirlere uy, direniş dağınık kalır": "Obey orders; resistance stays scattered",
+  "Direniş başsız kaldı; Anadolu'da dağınık çeteler sürüyor.": "The resistance lost its head; scattered bands carry on in Anatolia.",
+  "Sivas Kongresi": "Sivas Congress",
+  "Anadolu ve Rumeli Müdafaa-i Hukuk Cemiyetleri Sivas'ta toplandı. Gündem: tek yönetim altında birleşmek ve manda fikri.": "The Anatolian and Rumelian defence-of-rights societies met at Sivas. On the agenda: uniting under one leadership, and the mandate idea.",
+  "Bazı delegeler Amerikan mandasını bir çıkış yolu olarak görüyor. Kongre tek bir karar vermek zorunda.": "Some delegates see an American mandate as a way out. The congress must settle on a single line.",
+  "Mandayı reddet, tam bağımsızlık (tarihî)": "Reject the mandate: full independence (historical)",
+  "Tek bir irade, tek bir cephe": "One will, one front",
+  "Sivas Kongresi tam bağımsızlık ilkesini kabul etti.": "The Sivas Congress adopted the principle of full independence.",
+  "Amerikan mandasını araştır": "Explore an American mandate",
+  "Wilson'un desteği, ama bağımsızlıktan ödün": "Wilson's backing at the cost of independence",
+  "Washington'a heyet gönderildi; kongrede ikilik var.": "A delegation went to Washington; the congress is divided.",
+  "TBMM Açılıyor": "The Grand National Assembly Opens",
+  "İstanbul işgal edildi, Meclis-i Mebusan basıldı. Ankara'da Büyük Millet Meclisi toplanıyor: 'Hâkimiyet kayıtsız şartsız milletindir.'": "Istanbul is occupied and the Ottoman parliament has been raided. In Ankara the Grand National Assembly convenes: 'Sovereignty belongs unconditionally to the nation.'",
+  "Ankara'da yeni bir meclis kurulabilir; ama padişah ve İstanbul hükûmeti seni asi ilan etti, fetvalar çıkıyor.": "A new assembly can be founded in Ankara, but the sultan and the Istanbul government have branded you a rebel and fatwas are being issued.",
+  "Meclisi aç, hükûmeti kur (tarihî)": "Open the assembly and form a government (historical)",
+  "Millî egemenlik, ordu için kaynak": "National sovereignty and resources for the army",
+  "23 Nisan 1920: TBMM açıldı; Ankara yeni devletin merkezi oldu.": "23 April 1920: the TBMM opened and Ankara became the centre of the new state.",
+  "Padişaha bağlı kal": "Stay loyal to the sultan",
+  "Tutuculuk: İngiltere ile ilişki düzelir": "Caution: relations with Britain improve",
+  "Ankara'da meclis kurulamadı; ordu dağınık kaldı.": "No assembly was formed in Ankara and the army stayed fragmented.",
+  "Doğu mu, Güney mi?": "East or South?",
+  "Sevr'in gölgesinde Ermenistan doğuda, Fransa güneyde baskı yapıyor. Yunan ordusu batıda yeni bir taarruza hazırlanıyor. Birini seçmek zorundasın.": "In the shadow of Sèvres Armenia presses in the east and France in the south, while the Greek army prepares a new offensive in the west. You must choose one front.",
+  "Kâzım Karabekir doğuda hazır; güneyde Maraş, Antep ve Urfa direnişi sürüyor. Üç cepheyi aynı anda taşıyamazsın.": "Kâzım Karabekir is ready in the east; resistance in Maraş, Antep and Urfa continues in the south. You cannot carry three fronts at once.",
+  "Önce Doğu: Ermenistan'a taarruz (tarihî)": "East first: attack Armenia (historical)",
+  "Kars'ı geri al, Rusya'yla yakınlaş": "Retake Kars and draw closer to Russia",
+  "Doğu Cephesi açıldı; Sarıkamış ve Kars hedefte.": "The Eastern Front opened; Sarıkamış and Kars are the objectives.",
+  "Önce Güney: Kilikya'yı kuşat": "South first: besiege Cilicia",
+  "Fransa'yla savaş, Fransız çekilmesi için baskı": "War with France; pressure for a French withdrawal",
+  "Kuvayımilliye Kilikya'ya yöneldi; Fransa zor durumda.": "The national forces turned on Cilicia; France is in trouble.",
+  "Moskova'yla görüş": "Talk to Moscow",
+  "Sovyet altını ve silahı, ama yavaş": "Soviet gold and arms, but slowly",
+  "Moskova'ya heyet gönderildi; silah ve altın yardımı pazarlığı sürüyor.": "A delegation went to Moscow; talks on arms and gold aid continue.",
+  "İnönü": "İnönü",
+  "Yunan ordusu Bursa'dan Eskişehir'e doğru ilerliyor. Yeni kurulan düzenli ordunun ilk büyük sınavı İnönü'de.": "The Greek army is advancing from Bursa towards Eskişehir. İnönü is the first big test of the newly formed regular army.",
+  "İsmet Paşa İnönü mevzilerinde. Düzenli ordu daha çok genç; çekilirsen Eskişehir demiryolu düşer.": "İsmet Pasha is in the İnönü positions. The regular army is still young; if you fall back the Eskişehir railway is lost.",
+  "Mevzide dur (tarihî)": "Hold the line (historical)",
+  "Düzenli ordunun ilk zaferi": "The regular army's first victory",
+  "İnönü kazanıldı: Yunan taarruzu püskürtüldü.": "İnönü was won: the Greek offensive was beaten back.",
+  "Geri çekil, mevzi değiştir": "Fall back and regroup",
+  "Orduyu koru, toprak ver": "Save the army, give up ground",
+  "Ordu Sakarya doğrultusunda geri çekildi.": "The army withdrew toward the Sakarya line.",
+  "Kral Konstantinos ordunun başında; Eskişehir'e ulaşırsan Ankara'nın demiryolu bağlantısı kesilir.": "King Konstantinos is at the head of the army; if you reach Eskişehir Ankara's rail link is cut.",
+  "Eskişehir'e ilerle (tarihî)": "Advance on Eskişehir (historical)",
+  "Büyük taarruz, ağır kayıp riski": "A big push with heavy losses likely",
+  "Yunan ordusu İnönü mevzilerine saldırdı.": "The Greek army attacked the İnönü positions.",
+  "Hatları tahkim et": "Consolidate the lines",
+  "Temkinli kal": "Stay cautious",
+  "Yunan ordusu Bursa hattında kaldı.": "The Greek army stayed on the Bursa line.",
+  "Saltanatın Kaldırılması": "Abolition of the Sultanate",
+  "Zafer kazanıldı; Lozan'a hem Ankara hem İstanbul davet edildi. TBMM tek temsilci olacağını ilan etmek zorunda.": "Victory is won; both Ankara and Istanbul were invited to Lausanne. The TBMM must declare itself the only representative.",
+  "İki hükûmetle Lozan'a gidilemez. Saltanatı kaldırmak devleti tek elde toplar ama muhafazakâr tepki doğurur.": "You cannot go to Lausanne with two governments. Abolishing the sultanate unifies the state but stirs conservative backlash.",
+  "Saltanatı kaldır (tarihî)": "Abolish the sultanate (historical)",
+  "Tek temsilci, güçlü Ankara": "One representative, a strong Ankara",
+  "1 Kasım 1922: saltanat kaldırıldı; Osmanlı hanedanının hükümdarlığı sona erdi.": "1 November 1922: the sultanate was abolished and Ottoman rule came to an end.",
+  "Saltanatı koru": "Keep the sultanate",
+  "Muhafazakârları yatıştır, Lozan'da iki ses": "Placate conservatives, two voices at Lausanne",
+  "İtilaf iki ayrı heyetle muhatap oldu; Lozan zorlaştı.": "The Entente now faces two delegations; Lausanne gets harder."
+ }
+}

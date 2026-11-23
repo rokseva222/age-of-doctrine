@@ -1,0 +1,1136 @@
+{
+ "id": "ks1919",
+ "name": "Kurtuluş Savaşı",
+ "sub": "Mayıs 1919 – Türkiye",
+ "base": "ww1",
+ "family": "ww1",
+ "icon": "uprising_banner",
+ "mood": "war",
+ "start_year": 1919,
+ "start_doy": 138,
+ "blurb": "Mayıs 1919: İstanbul İtilaf işgalinde, Yunan ordusu İzmir'e çıktı, güneyi Fransa ve İtalya tuttu. Mustafa Kemal Samsun'a çıkıp Anadolu'da direniş örgütlüyor. Ya istiklal, ya ölüm.",
+ "suggest": [
+  "Turkey",
+  "Greece",
+  "France",
+  "Italy",
+  "United Kingdom",
+  "Armenia"
+ ],
+ "look": {
+  "shadow": [
+   0.09,
+   0.07,
+   0.05
+  ],
+  "mid": [
+   0.56,
+   0.45,
+   0.29
+  ],
+  "light": [
+   0.96,
+   0.9,
+   0.74
+  ],
+  "amount": 0.38,
+  "vignette": 0.18,
+  "grain": 0.012
+ },
+ "absorb": {
+  "India": [
+   "Pakistan",
+   "Bangladesh"
+  ],
+  "South Korea": [
+   "North Korea"
+  ],
+  "Germany": [],
+  "Austria": [],
+  "Turkey": [],
+  "Russia": [
+   "Ukraine",
+   "Belarus",
+   "Kazakhstan",
+   "Uzbekistan",
+   "Turkmenistan",
+   "Tajikistan",
+   "Kyrgyzstan"
+  ],
+  "United Kingdom": [
+   "Ireland",
+   "Singapore",
+   "Brunei",
+   "S. Sudan",
+   "Kenya",
+   "Uganda",
+   "Ghana",
+   "Sierra Leone",
+   "Gambia",
+   "Zambia",
+   "Zimbabwe",
+   "Malawi",
+   "Botswana",
+   "Lesotho",
+   "eSwatini",
+   "Somaliland",
+   "Cyprus",
+   "N. Cyprus",
+   "Malta",
+   "Jamaica",
+   "Bahamas",
+   "Barbados",
+   "Belize",
+   "Guyana",
+   "Trinidad and Tobago",
+   "Fiji",
+   "Kuwait",
+   "Bahrain",
+   "Qatar",
+   "United Arab Emirates",
+   "Maldives",
+   "Antigua and Barb.",
+   "Dominica",
+   "Grenada",
+   "Saint Lucia",
+   "St. Kitts and Nevis",
+   "St. Vin. and Gren.",
+   "Solomon Is.",
+   "Tonga",
+   "Mauritius",
+   "Seychelles",
+   "Kiribati",
+   "Tuvalu",
+   "Iraq",
+   "Jordan",
+   "Palestine",
+   "Israel",
+   "Tanzania"
+  ],
+  "Australia": [
+   "Papua New Guinea",
+   "Nauru"
+  ],
+  "New Zealand": [
+   "Samoa"
+  ],
+  "France": [
+   "Mauritania",
+   "Mali",
+   "Niger",
+   "Chad",
+   "Senegal",
+   "Guinea",
+   "Côte d'Ivoire",
+   "Burkina Faso",
+   "Benin",
+   "Gabon",
+   "Congo",
+   "Central African Rep.",
+   "Comoros",
+   "Djibouti",
+   "Vanuatu",
+   "Syria",
+   "Lebanon",
+   "Cameroon",
+   "Togo"
+  ],
+  "Italy": [
+   "Eritrea",
+   "Somalia"
+  ],
+  "Japan": [
+   "Palau",
+   "Micronesia",
+   "Marshall Is."
+  ],
+  "Netherlands": [
+   "Suriname"
+  ],
+  "Belgium": [
+   "Rwanda",
+   "Burundi"
+  ],
+  "Portugal": [
+   "Guinea-Bissau",
+   "Cabo Verde",
+   "São Tomé and Principe",
+   "Timor-Leste"
+  ],
+  "Spain": [
+   "W. Sahara",
+   "Eq. Guinea"
+  ],
+  "United States of America": [],
+  "Denmark": [
+   "Greenland",
+   "Iceland"
+  ],
+  "Serbia": [
+   "Croatia",
+   "Slovenia",
+   "Bosnia and Herz.",
+   "Montenegro",
+   "North Macedonia",
+   "Kosovo"
+  ],
+  "South Africa": [
+   "Namibia"
+  ],
+  "Romania": [
+   "Moldova"
+  ]
+ },
+ "split": [
+  [
+   [
+    228
+   ],
+   "Russia",
+   "Germany",
+   "own"
+  ],
+  [
+   32,
+   "China",
+   "United Kingdom",
+   "own"
+  ],
+  [
+   31,
+   "China",
+   "United Kingdom",
+   "own"
+  ],
+  [
+   428,
+   "Turkey",
+   "Greece",
+   "own"
+  ],
+  [
+   [
+    430
+   ],
+   "Turkey",
+   "France",
+   "own"
+  ],
+  [
+   [
+    1963
+   ],
+   "Turkey",
+   "France",
+   "own"
+  ],
+  [
+   [
+    1965
+   ],
+   "Turkey",
+   "France",
+   "own"
+  ],
+  [
+   422,
+   "Turkey",
+   "France",
+   "own"
+  ],
+  [
+   [
+    421
+   ],
+   "Turkey",
+   "France",
+   "own"
+  ],
+  [
+   [
+    1950
+   ],
+   "Turkey",
+   "France",
+   "own"
+  ],
+  [
+   429,
+   "Turkey",
+   "Italy",
+   "own"
+  ],
+  [
+   423,
+   "Turkey",
+   "United Kingdom",
+   "occ"
+  ],
+  [
+   [
+    425
+   ],
+   "Turkey",
+   "United Kingdom",
+   "occ"
+  ],
+  [
+   420,
+   "Turkey",
+   "Armenia",
+   "own"
+  ]
+ ],
+ "capital": {
+  "Turkey": 431,
+  "Russia": 257,
+  "Brazil": 184
+ },
+ "defs": {
+  "Germany": {
+   "name": "Weimar Almanyası",
+   "color": "6d6f78",
+   "leader": "Cumhurbaşkanı|Friedrich Ebert",
+   "gdp": 140,
+   "mil": {
+    "personnel": 400000,
+    "tank": 0,
+    "afv": 0,
+    "arty": 800,
+    "air": 20,
+    "sub": 0
+   }
+  },
+  "Turkey": {
+   "name": "Ankara Hükûmeti (Millî Mücadele)",
+   "color": "c85a4a",
+   "leader": "Heyet-i Temsiliye Başkanı|Mustafa Kemal Paşa",
+   "gdp": 14,
+   "mil": {
+    "personnel": 60000,
+    "tank": 0,
+    "afv": 0,
+    "arty": 180,
+    "air": 2,
+    "sub": 0
+   }
+  },
+  "Russia": {
+   "name": "Sovyet Rusya",
+   "color": "b53a2e",
+   "flag": "R:0,0,1,1,#cc0000|S:.14,.2,.09,#ffd700",
+   "leader": "Başkan|Vladimir Lenin",
+   "gdp": 120,
+   "mil": {
+    "personnel": 3000000,
+    "tank": 0,
+    "afv": 40,
+    "arty": 4000,
+    "air": 100,
+    "sub": 8
+   }
+  },
+  "United Kingdom": {
+   "name": "Birleşik Krallık",
+   "color": "d98ca0",
+   "leader": "Başbakan|David Lloyd George",
+   "gdp": 280,
+   "mil": {
+    "personnel": 1500000,
+    "tank": 200,
+    "afv": 200,
+    "arty": 3000,
+    "air": 800,
+    "sub": 100
+   }
+  },
+  "France": {
+   "name": "Fransa",
+   "color": "4f74b8",
+   "leader": "Başbakan|Georges Clemenceau",
+   "gdp": 130,
+   "mil": {
+    "personnel": 1800000,
+    "tank": 1500,
+    "afv": 400,
+    "arty": 6000,
+    "air": 1500,
+    "sub": 60
+   }
+  },
+  "Italy": {
+   "name": "İtalya",
+   "color": "8fb070",
+   "leader": "Başbakan|Francesco Nitti",
+   "gdp": 90,
+   "mil": {
+    "personnel": 1000000,
+    "tank": 0,
+    "afv": 20,
+    "arty": 2500,
+    "air": 300,
+    "sub": 40
+   }
+  },
+  "Japan": {
+   "name": "Japon İmparatorluğu",
+   "color": "e2a53a",
+   "leader": "Başbakan|Hara Takashi",
+   "gdp": 70,
+   "mil": {
+    "personnel": 800000,
+    "tank": 0,
+    "afv": 0,
+    "arty": 1500,
+    "air": 30,
+    "sub": 12
+   }
+  },
+  "United States of America": {
+   "name": "ABD",
+   "color": "7fa65a",
+   "leader": "Başkan|Woodrow Wilson",
+   "gdp": 600,
+   "mil": {
+    "personnel": 300000,
+    "tank": 100,
+    "afv": 100,
+    "arty": 1500,
+    "air": 400,
+    "sub": 80
+   }
+  },
+  "Serbia": {
+   "name": "Sırp-Hırvat-Sloven Krallığı",
+   "color": "b87a6a",
+   "leader": "Kral|I. Petar",
+   "gdp": 14,
+   "mil": {
+    "personnel": 300000,
+    "tank": 0,
+    "afv": 0,
+    "arty": 700,
+    "air": 10,
+    "sub": 0
+   }
+  },
+  "Belgium": {
+   "name": "Belçika",
+   "color": "8f6bb0",
+   "leader": "Kral|I. Albert",
+   "gdp": 25,
+   "mil": {
+    "personnel": 200000,
+    "tank": 0,
+    "afv": 10,
+    "arty": 400,
+    "air": 20,
+    "sub": 0
+   }
+  },
+  "Bulgaria": {
+   "name": "Bulgaristan",
+   "color": "7aa05a",
+   "leader": "Çar|III. Boris",
+   "gdp": 5,
+   "mil": {
+    "personnel": 300000,
+    "tank": 0,
+    "afv": 0,
+    "arty": 700,
+    "air": 10,
+    "sub": 0
+   }
+  },
+  "Romania": {
+   "name": "Romanya",
+   "color": "b0a05a",
+   "leader": "Kral|I. Ferdinand",
+   "gdp": 10,
+   "mil": {
+    "personnel": 500000,
+    "tank": 0,
+    "afv": 0,
+    "arty": 1000,
+    "air": 10,
+    "sub": 0
+   }
+  },
+  "Greece": {
+   "name": "Yunanistan",
+   "color": "6a9ad0",
+   "leader": "Başbakan|Eleftherios Venizelos",
+   "gdp": 8,
+   "mil": {
+    "personnel": 220000,
+    "tank": 0,
+    "afv": 0,
+    "arty": 550,
+    "air": 30,
+    "sub": 0
+   }
+  },
+  "China": {
+   "name": "Çin Cumhuriyeti",
+   "color": "d6b25e",
+   "flag": "H:#de2910,#ffd700,#002b7f,w,k",
+   "leader": "Başkan|Yuan Shikai",
+   "gdp": 100,
+   "mil": {
+    "personnel": 500000,
+    "tank": 0,
+    "afv": 0,
+    "arty": 500,
+    "air": 5,
+    "sub": 0
+   }
+  },
+  "Netherlands": {
+   "name": "Hollanda",
+   "color": "e08a3c",
+   "leader": "Kraliçe|Wilhelmina",
+   "gdp": 15,
+   "mil": {
+    "personnel": 200000,
+    "tank": 0,
+    "afv": 0,
+    "arty": 300,
+    "air": 10,
+    "sub": 10
+   }
+  },
+  "Spain": {
+   "name": "İspanya",
+   "color": "a07a50",
+   "leader": "Kral|XIII. Alfonso",
+   "gdp": 20,
+   "mil": {
+    "personnel": 200000,
+    "tank": 0,
+    "afv": 0,
+    "arty": 400,
+    "air": 10,
+    "sub": 2
+   }
+  },
+  "Sweden": {
+   "name": "İsveç",
+   "color": "6a9ac0",
+   "leader": "Kral|V. Gustaf",
+   "gdp": 8,
+   "mil": {
+    "personnel": 150000,
+    "tank": 0,
+    "afv": 0,
+    "arty": 300,
+    "air": 10,
+    "sub": 12
+   }
+  },
+  "Norway": {
+   "name": "Norveç",
+   "color": "b86a6a",
+   "leader": "Kral|VII. Haakon",
+   "gdp": 3,
+   "mil": {
+    "personnel": 60000,
+    "tank": 0,
+    "afv": 0,
+    "arty": 100,
+    "air": 5,
+    "sub": 6
+   }
+  },
+  "Denmark": {
+   "name": "Danimarka",
+   "color": "c75c5c",
+   "leader": "Kral|X. Christian",
+   "gdp": 4,
+   "mil": {
+    "personnel": 50000,
+    "tank": 0,
+    "afv": 0,
+    "arty": 100,
+    "air": 5,
+    "sub": 6
+   }
+  },
+  "Portugal": {
+   "name": "Portekiz",
+   "color": "8aa05a",
+   "leader": "Başkan|Manuel de Arriaga",
+   "gdp": 4,
+   "mil": {
+    "personnel": 60000,
+    "tank": 0,
+    "afv": 0,
+    "arty": 100,
+    "air": 5,
+    "sub": 2
+   }
+  },
+  "Canada": {
+   "name": "Kanada",
+   "color": "e6a2b5",
+   "leader": "Başbakan|Robert Borden",
+   "gdp": 25,
+   "mil": {
+    "personnel": 3000,
+    "tank": 0,
+    "afv": 0,
+    "arty": 50,
+    "air": 0,
+    "sub": 0
+   }
+  },
+  "Australia": {
+   "name": "Avustralya",
+   "color": "e6a2b5",
+   "leader": "Başbakan|Joseph Cook",
+   "gdp": 15,
+   "mil": {
+    "personnel": 5000,
+    "tank": 0,
+    "afv": 0,
+    "arty": 50,
+    "air": 0,
+    "sub": 2
+   }
+  },
+  "New Zealand": {
+   "name": "Yeni Zelanda",
+   "color": "e6a2b5",
+   "leader": "Başbakan|William Massey",
+   "gdp": 3,
+   "mil": {
+    "personnel": 3000,
+    "tank": 0,
+    "afv": 0,
+    "arty": 20,
+    "air": 0,
+    "sub": 0
+   }
+  },
+  "South Africa": {
+   "name": "Güney Afrika",
+   "color": "cf8aa0",
+   "leader": "Başbakan|Louis Botha",
+   "gdp": 6,
+   "mil": {
+    "personnel": 8000,
+    "tank": 0,
+    "afv": 0,
+    "arty": 40,
+    "air": 0,
+    "sub": 0
+   }
+  },
+  "Saudi Arabia": {
+   "name": "Necid Emirliği",
+   "color": "98b070",
+   "leader": "Emir|Abdülaziz bin Suud",
+   "gdp": 1,
+   "mil": {
+    "personnel": 15000,
+    "tank": 0,
+    "afv": 0,
+    "arty": 10,
+    "air": 0,
+    "sub": 0
+   }
+  },
+  "Iran": {
+   "name": "Pers Devleti",
+   "color": "b0a070",
+   "leader": "Şah|Ahmed Şah Kaçar",
+   "gdp": 4,
+   "mil": {
+    "personnel": 30000,
+    "tank": 0,
+    "afv": 0,
+    "arty": 50,
+    "air": 0,
+    "sub": 0
+   }
+  },
+  "Switzerland": {
+   "name": "İsviçre",
+   "color": "c07a7a",
+   "leader": "Federal Konsey Başkanı|Arthur Hoffmann",
+   "gdp": 8,
+   "mil": {
+    "personnel": 250000,
+    "tank": 0,
+    "afv": 0,
+    "arty": 400,
+    "air": 10,
+    "sub": 0
+   }
+  },
+  "Thailand": {
+   "name": "Siyam",
+   "color": "a67a9a",
+   "leader": "Kral|Vajiravudh",
+   "gdp": 3,
+   "mil": {
+    "personnel": 50000,
+    "tank": 0,
+    "afv": 0,
+    "arty": 100,
+    "air": 0,
+    "sub": 0
+   }
+  },
+  "Brazil": {
+   "name": "Brezilya",
+   "color": "5aa070",
+   "leader": "Başkan|Hermes da Fonseca",
+   "gdp": 20,
+   "mil": {
+    "personnel": 60000,
+    "tank": 0,
+    "afv": 0,
+    "arty": 100,
+    "air": 5,
+    "sub": 0
+   }
+  },
+  "Argentina": {
+   "name": "Arjantin",
+   "color": "7ab0d0",
+   "leader": "Başkan|Victorino de la Plaza",
+   "gdp": 25,
+   "mil": {
+    "personnel": 40000,
+    "tank": 0,
+    "afv": 0,
+    "arty": 100,
+    "air": 5,
+    "sub": 0
+   }
+  },
+  "Poland": {
+   "name": "Polonya",
+   "color": "c9506a",
+   "leader": "Devlet Başkanı|Józef Piłsudski",
+   "gdp": 22,
+   "mil": {
+    "personnel": 600000,
+    "tank": 0,
+    "afv": 20,
+    "arty": 1200,
+    "air": 100,
+    "sub": 0
+   }
+  },
+  "Armenia": {
+   "name": "Ermenistan Cumhuriyeti",
+   "color": "a0507a",
+   "leader": "Başbakan|Alexander Khatisian",
+   "gdp": 1,
+   "mil": {
+    "personnel": 40000,
+    "tank": 0,
+    "afv": 0,
+    "arty": 120,
+    "air": 0,
+    "sub": 0
+   }
+  },
+  "Georgia": {
+   "name": "Gürcistan Demokratik Cumhuriyeti",
+   "color": "6aa08a",
+   "leader": "Başkan|Noe Jordania",
+   "gdp": 1,
+   "mil": {
+    "personnel": 30000,
+    "tank": 0,
+    "afv": 0,
+    "arty": 60,
+    "air": 0,
+    "sub": 0
+   }
+  },
+  "Azerbaijan": {
+   "name": "Azerbaycan Cumhuriyeti",
+   "color": "7a9a5a",
+   "leader": "Başbakan|Nasib bey Yusifbeyli",
+   "gdp": 2,
+   "mil": {
+    "personnel": 30000,
+    "tank": 0,
+    "afv": 0,
+    "arty": 70,
+    "air": 0,
+    "sub": 0
+   }
+  }
+ },
+ "setup": {
+  "blocs": [
+   {
+    "name": "İtilaf Devletleri",
+    "members": [
+     "United Kingdom",
+     "France",
+     "Italy",
+     "Greece",
+     "Belgium",
+     "Japan",
+     "Serbia",
+     "Romania",
+     "Poland",
+     "Canada",
+     "Australia",
+     "New Zealand",
+     "South Africa"
+    ],
+    "emblem": {
+     "shape": 5,
+     "inner": 1,
+     "symbol": "shield",
+     "c1": "2f4f9a",
+     "c2": "ece6d6",
+     "c3": "2f4f9a"
+    }
+   }
+  ],
+  "wars": [],
+  "truce": [
+   [
+    "Turkey",
+    "United Kingdom",
+    130
+   ],
+   [
+    "Turkey",
+    "France",
+    130
+   ],
+   [
+    "Turkey",
+    "Italy",
+    130
+   ]
+  ],
+  "intro": "19 Mayıs 1919: Mondros Mütarekesi'nden sonra İstanbul İtilaf işgalinde; dört gün önce Yunan ordusu İzmir'e çıktı. Mustafa Kemal Paşa Samsun'da, Anadolu'da bir direniş örgütlemeye çalışıyor. Ya istiklal, ya ölüm."
+ },
+ "free": true,
+ "inherit_until": [
+  9999,
+  1
+ ],
+ "events": [
+  {
+   "y": 1919,
+   "m": 6,
+   "t": "Amasya Genelgesi: 'Vatanın bütünlüğü, milletin istiklali tehlikededir.' Anadolu'da direniş örgütleniyor.",
+   "fx": [
+    [
+     "stab",
+     "Turkey",
+     3
+    ]
+   ]
+  },
+  {
+   "y": 1919,
+   "m": 8,
+   "t": "Erzurum Kongresi toplandı: Doğu vilayetleri Millî Mücadele'de birleşti.",
+   "fx": [
+    [
+     "stab",
+     "Turkey",
+     3
+    ]
+   ]
+  },
+  {
+   "y": 1919,
+   "m": 9,
+   "t": "Sivas Kongresi: Anadolu ve Rumeli Müdafaa-i Hukuk Cemiyetleri tek çatıda toplandı; manda fikri reddedildi.",
+   "fx": [
+    [
+     "stab",
+     "Turkey",
+     4
+    ]
+   ]
+  },
+  {
+   "y": 1919,
+   "m": 11,
+   "t": "ABD Senatosu Versay Antlaşması'nı reddetti: Wilson'un manda planları çöktü.",
+   "fx": [
+    [
+     "stab",
+     "United States of America",
+     -3
+    ]
+   ]
+  },
+  {
+   "y": 1920,
+   "m": 1,
+   "t": "Misak-ı Millî kabul edildi: Anadolu'nun ve Doğu Trakya'nın bölünmezliği ilan edildi.",
+   "fx": [
+    [
+     "stab",
+     "Turkey",
+     3
+    ]
+   ]
+  },
+  {
+   "y": 1920,
+   "m": 3,
+   "t": "İtilaf İstanbul'u resmen işgal etti, Meclis-i Mebusan basıldı; milletvekilleri Malta'ya sürülüyor.",
+   "fx": [
+    [
+     "stab",
+     "Turkey",
+     -3
+    ]
+   ]
+  },
+  {
+   "y": 1920,
+   "m": 4,
+   "t": "Türkiye Büyük Millet Meclisi Ankara'da açıldı: 'Hâkimiyet kayıtsız şartsız milletindir.'",
+   "fx": [
+    [
+     "stab",
+     "Turkey",
+     6
+    ]
+   ]
+  },
+  {
+   "y": 1920,
+   "m": 6,
+   "t": "Güney Cephesi: Maraş, Antep ve Urfa halkı Fransız işgaline direniyor.",
+   "fx": [
+    [
+     "stab",
+     "France",
+     -3
+    ]
+   ]
+  },
+  {
+   "y": 1920,
+   "m": 9,
+   "t": "Doğu Cephesi: Kâzım Karabekir'in ordusu Ermenistan'a karşı harekete geçti.",
+   "fx": []
+  },
+  {
+   "y": 1920,
+   "m": 12,
+   "t": "Gümrü Antlaşması: Doğu Cephesi kapandı, Kars Türkiye'ye döndü.",
+   "fx": [
+    [
+     "peace",
+     "Turkey",
+     "Armenia"
+    ],
+    [
+     "stab",
+     "Turkey",
+     3
+    ]
+   ]
+  },
+  {
+   "y": 1921,
+   "m": 1,
+   "t": "I. İnönü Muharebesi: Düzenli ordu Yunanlıları geri püskürttü.",
+   "fx": [
+    [
+     "stab",
+     "Turkey",
+     5
+    ],
+    [
+     "stab",
+     "Greece",
+     -3
+    ]
+   ]
+  },
+  {
+   "y": 1921,
+   "m": 3,
+   "t": "Moskova Antlaşması: Sovyet Rusya ile Ankara arasında dostluk ve yardım.",
+   "fx": [
+    [
+     "stab",
+     "Turkey",
+     2
+    ]
+   ]
+  },
+  {
+   "y": 1921,
+   "m": 10,
+   "t": "Ankara Antlaşması: Fransa Kilikya'yı boşaltmayı kabul etti.",
+   "fx": [
+    [
+     "peace",
+     "Turkey",
+     "France"
+    ],
+    [
+     "stab",
+     "Turkey",
+     2
+    ]
+   ]
+  },
+  {
+   "y": 1922,
+   "m": 11,
+   "t": "Saltanat kaldırıldı: Osmanlı hanedanının hükümdarlığı sona erdi.",
+   "fx": [
+    [
+     "stab",
+     "Turkey",
+     4
+    ]
+   ]
+  }
+ ],
+ "objectives": {
+  "*": [
+   {
+    "id": "o1",
+    "type": "survive",
+    "text": "Dört yıl ayakta kal",
+    "turns": 208
+   },
+   {
+    "id": "o2",
+    "type": "alliances",
+    "text": "2 müttefik edin",
+    "n": 2,
+    "required": false
+   }
+  ],
+  "Turkey": [
+   {
+    "id": "t1",
+    "type": "own_province",
+    "province": 428,
+    "text": "İzmir'i geri al"
+   },
+   {
+    "id": "t2",
+    "type": "own_province",
+    "province": 430,
+    "text": "Adana ve Kilikya'yı kurtar",
+    "required": false
+   },
+   {
+    "id": "t3",
+    "type": "own_province",
+    "province": 1949,
+    "text": "Kars'ı geri al",
+    "required": false
+   },
+   {
+    "id": "t4",
+    "type": "stability",
+    "text": "İstikrarı 45 üzerinde tut",
+    "n": 45
+   }
+  ],
+  "Greece": [
+   {
+    "id": "g1",
+    "type": "own_province",
+    "province": 428,
+    "text": "İzmir'i elinde tut"
+   },
+   {
+    "id": "g2",
+    "type": "stability",
+    "text": "İstikrarı 45 üzerinde tut",
+    "n": 45
+   }
+  ],
+  "France": [
+   {
+    "id": "f1",
+    "type": "own_province",
+    "province": 430,
+    "text": "Kilikya'yı elinde tut",
+    "required": false
+   },
+   {
+    "id": "f2",
+    "type": "stability",
+    "text": "İstikrarı 50 üzerinde tut",
+    "n": 50
+   }
+  ],
+  "Italy": [
+   {
+    "id": "i1",
+    "type": "own_province",
+    "province": 429,
+    "text": "Antalya bölgesini elinde tut",
+    "required": false
+   },
+   {
+    "id": "i2",
+    "type": "stability",
+    "text": "İstikrarı 45 üzerinde tut",
+    "n": 45
+   }
+  ],
+  "Armenia": [
+   {
+    "id": "a1",
+    "type": "own_province",
+    "province": 420,
+    "text": "Kars'ı elinde tut"
+   }
+  ]
+ },
+ "en": {
+  "name": "War of Independence",
+  "sub": "May 1919 – Turkey",
+  "blurb": "May 1919: Istanbul is occupied by the Entente, Greece has landed at Izmir, France and Italy hold the south. Mustafa Kemal lands at Samsun to organise a resistance in Anatolia. Independence or death.",
+  "setup_intro": "19 May 1919: after the Armistice of Mudros Istanbul is under Entente occupation; four days ago a Greek army landed at Izmir. Mustafa Kemal Pasha is at Samsun, trying to build a resistance in Anatolia. Independence or death.",
+  "events": {
+   "0": "Amasya Circular: 'The independence of the nation is in danger.' Resistance is organised across Anatolia.",
+   "1": "The Erzurum Congress convened: the eastern provinces united in the national struggle.",
+   "2": "Sivas Congress: the Anatolian and Rumelian defence-of-rights societies merged; the idea of a mandate was rejected.",
+   "3": "The US Senate rejected the Treaty of Versailles: Wilson's mandate plans collapsed.",
+   "4": "The National Pact was adopted: the indivisibility of Anatolia and Eastern Thrace was proclaimed.",
+   "5": "The Entente formally occupied Istanbul and raided the Ottoman parliament; deputies are exiled to Malta.",
+   "6": "The Grand National Assembly opened in Ankara: 'Sovereignty belongs unconditionally to the nation.'",
+   "7": "Southern Front: the people of Maraş, Antep and Urfa are resisting the French occupation.",
+   "8": "Eastern Front: Kâzım Karabekir's army moved against Armenia.",
+   "9": "Treaty of Gümrü: the Eastern Front closed and Kars returned to Turkey.",
+   "10": "First Battle of İnönü: the new regular army threw the Greeks back.",
+   "11": "Treaty of Moscow: friendship and aid between Soviet Russia and Ankara.",
+   "12": "Treaty of Ankara: France agreed to evacuate Cilicia.",
+   "13": "The sultanate was abolished: the Ottoman dynasty's rule came to an end."
+  },
+  "objectives": {
+   "o1": "Survive four years",
+   "o2": "Make 2 allies",
+   "t1": "Recapture Izmir",
+   "t2": "Liberate Adana and Cilicia",
+   "t3": "Take back Kars",
+   "t4": "Keep stability above 45",
+   "g1": "Hold Izmir",
+   "g2": "Keep stability above 45",
+   "f1": "Hold Cilicia",
+   "f2": "Keep stability above 50",
+   "i1": "Hold the Antalya region",
+   "i2": "Keep stability above 45",
+   "a1": "Hold Kars"
+  }
+ }
+}
