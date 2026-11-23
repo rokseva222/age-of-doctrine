@@ -1950,12 +1950,19 @@ func _on_ui_action(act: String, arg) -> void:
 				var wr: String = gs.war_reason(gs.player, arg)
 				var wname: String = gs.countries[arg].name
 				var wtxt: String = (Loc.t("Savaş sebebi: %s") % Loc.t(gs.WAR_REASONS[wr])) if wr != "" else Loc.t("Geçerli bir savaş sebebin yok. Saldırırsan iç istikrar 3 puan düşer ve tüm ülkelerle ilişkiler bozulur.")
+				var parl: bool = gs.parliament_on(gs.player)
+				if parl:
+					wtxt += "\n\n" + Loc.t("Meclis onayı gerekli: tezkerenin geçme olasılığı %s.") % Loc.pct(gs.war_vote_chance(gs.player, arg))
+				var war_target: int = arg
 				ui.show_dialog(Loc.t("%s: savaş ilan edilsin mi?") % wname, wtxt, [
-					{"text": "Savaş ilan et", "kind": "danger" if wr == "" else "gold", "cb": func():
-						var e2: String = gs.player_declare_war(arg)
+					{"text": "Tezkereyi Meclis'e sun" if parl else "Savaş ilan et", "kind": "danger" if wr == "" else "gold", "cb": func():
+						var e2: String = gs.player_declare_war(war_target)
 						if e2 != "":
-							ui.toast(e2)
 							sfx.play("error")
+							if parl and not gs.at_war(gs.player, war_target):
+								_parliament_refused(war_target, e2)
+							else:
+								ui.toast(e2)
 						_refresh_selection()},
 					{"text": "Vazgeç", "cb": func(): pass}])
 		"peace":
@@ -2542,3 +2549,23 @@ func _start_tutorial() -> void:
 	if tutorial != null and is_instance_valid(tutorial):
 		tutorial.queue_free()
 	tutorial = load("res://scripts/tutorial.gd").open(ui, gs, self)
+
+
+## Meclis tezkereyi reddetti: meclise rağmen savaş, sıkıyönetim ya da vazgeç
+func _parliament_refused(target: int, msg: String) -> void:
+	var opts: Array = [
+		{"text": "Meclise rağmen savaş aç", "kind": "danger", "cb": func():
+			var e3: String = gs.player_declare_war(target, true)
+			if e3 != "":
+				ui.toast(e3)
+			_refresh_selection()}]
+	var can_martial := false
+	for a in Politics.actions(gs):
+		if String(a.get("id", "")) == "martial" and bool(a.get("ok", false)):
+			can_martial = true
+	if can_martial:
+		opts.append({"text": "Sıkıyönetim ilan et", "kind": "gold", "cb": func():
+			ui.toast(Politics.do_action(gs, "martial"))
+			_refresh_selection()})
+	opts.append({"text": "Vazgeç", "cb": func(): pass})
+	ui.show_dialog(Loc.t("Meclis tezkereyi reddetti"), msg + "\n\n" + Loc.t("Meclise rağmen savaş açarsan istikrar 8 puan düşer, dünya tepkisi artar ve demokrasilerle ilişkiler bozulur. Sıkıyönetim ilan edersen 12 hafta meclis onayı gerekmez ama gelir düşer."), opts)

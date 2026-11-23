@@ -4092,8 +4092,37 @@ func player_cancel_move(a) -> void:
 	armies_changed.emit()
 
 
-func player_declare_war(target: int) -> String:
-	var _cmd := Cmd.Scope.new(self, "player_declare_war", [target])
+## Meclis onayı: demokrasi ve meşruti monarşide savaş tezkeresi meclisten geçmeli (sıkıyönetimde gerekmez).
+func parliament_on(cid: int) -> bool:
+	if Macro.era_on and Eras.family() == "pre":
+		return false
+	if Politics.martial_on(self, cid):
+		return false
+	var r: String = Politics.regime(self, cid)
+	return r == "democracy" or r == "constitutional"
+
+
+## Tezkerenin geçme olasılığı (yüzde)
+func war_vote_chance(cid: int, target: int) -> int:
+	var c = countries[cid]
+	var cb: String = war_reason(cid, target)
+	var ch: float = 40.0
+	if cb == "ally":
+		ch += 40.0
+	elif cb != "":
+		ch += 28.0
+	ch += (c.stability - 50.0) * 0.35
+	var rel: float = relation_of(cid, target)
+	if rel < 25.0:
+		ch += 10.0
+	elif rel > 70.0:
+		ch -= 15.0
+	ch -= 8.0 * float(maxi(0, c.enemies.size() - 1))
+	return clampi(int(round(ch)), 5, 95)
+
+
+func player_declare_war(target: int, force: bool = false) -> String:
+	var _cmd := Cmd.Scope.new(self, "player_declare_war", [target, force])
 	if target < 0 or target >= countries.size():
 		return "Geçersiz hedef."
 	if target == player or not countries[target].alive:
@@ -4105,6 +4134,30 @@ func player_declare_war(target: int) -> String:
 	if countries[player].truce.get(target, -1) > turn:
 		return "Ateşkes sürüyor (%d tur)." % (countries[player].truce[target] - turn)
 	var cb: String = war_reason(player, target)
+	if parliament_on(player):
+		var me0 = countries[player]
+		if force:
+			# meclisi hiçe saymak: istikrar, dünya tepkisi ve demokrasilerle ilişki bedeli
+			me0.stability = maxf(5.0, me0.stability - 8.0)
+			infamy = minf(100.0, infamy + 6.0)
+			for o in countries:
+				if o.alive and not o.is_rebel and o.id != player and o.id != target and (Politics.regime(self, o.id) == "democracy" or Politics.regime(self, o.id) == "constitutional"):
+					relation_add(player, o.id, -4.0)
+			post_news(Loc.t("%s hükümeti meclisi hiçe sayarak savaş ilan etti.") % me0.name, me0.capital, "info")
+		else:
+			var ch: int = war_vote_chance(player, target)
+			var rr := RandomNumberGenerator.new()
+			rr.seed = hash([seed_value, turn, player, target])
+			var roll: float = rr.randf() * 100.0
+			var yes: int = clampi(int(round(600.0 * (0.5 + (float(ch) - roll) / 200.0))), 0, 600)
+			if roll >= float(ch):
+				yes = mini(yes, 299)
+				post_news(Loc.t("Meclis savaş tezkeresini reddetti (%d evet, %d hayır).") % [yes, 600 - yes], me0.capital, "info")
+				state_changed.emit()
+				return Loc.t("Meclis savaş tezkeresini reddetti (%d evet, %d hayır).") % [yes, 600 - yes]
+			yes = maxi(yes, 301)
+			me0.stability = minf(100.0, me0.stability + 1.0)
+			post_news(Loc.t("Meclis savaş tezkeresini onayladı (%d evet, %d hayır).") % [yes, 600 - yes], me0.capital, "info")
 	declare_war(player, target)
 	if cb == "":
 		# savaş sebebi yok: dünya kamuoyu ve iç kamuoyu tepki gösterir
