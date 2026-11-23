@@ -424,6 +424,24 @@ const DRAFT_INFO := ["Asker alımı yavaş; gelir +%2, istikrar yavaşça artar.
 const DRAFT_RECRUIT := [0.7, 1.0, 1.9]
 
 
+## Otomatik silah tedariki / tedarik önceliği / ordu otomatik komutası (çevrimiçi kayıtlı emirler)
+static func set_auto_buy(c, on: bool) -> void:
+	var _cmd := Cmd.Scope.new(Cmd.rec_gs, "Macro.set_auto_buy", [c, on])
+	c.auto_buy = on
+
+
+static func set_pri(c, cat: String, lvl: float) -> void:
+	var _cmd := Cmd.Scope.new(Cmd.rec_gs, "Macro.set_pri", [c, cat, lvl])
+	if not Arsenal.CATS.has(cat):
+		return
+	c.pri[cat] = clampf(lvl, 0.2, 3.0)
+
+
+static func set_auto_cmd(c, on: bool) -> void:
+	var _cmd := Cmd.Scope.new(Cmd.rec_gs, "Macro.set_auto_cmd", [c, on])
+	c.auto_cmd = on
+
+
 static func set_draft(c, mode: int) -> void:
 	var _cmd := Cmd.Scope.new(Cmd.rec_gs, "Macro.set_draft", [c, mode])
 	c.draft = clampi(mode, 0, 2)

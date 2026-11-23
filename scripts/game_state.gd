@@ -2129,6 +2129,29 @@ func _bloc_join_quiet(bid: int, cid: int) -> void:
 	bloc_add(bid, cid)
 
 
+## Oyuncu blokunun adını/amblemini düzenler (çevrimiçi kayıtlı emir)
+func player_bloc_edit(nm: String, emblem: Dictionary) -> String:
+	var _cmd := Cmd.Scope.new(self, "player_bloc_edit", [nm, emblem])
+	if player < 0 or countries[player].alliance < 0:
+		return "İttifakın yok."
+	var b: Dictionary = bloc_get(countries[player].alliance)
+	if b.is_empty():
+		return "İttifakın yok."
+	nm = nm.strip_edges().substr(0, 32)
+	if nm.length() < 3:
+		return "İttifak adı en az 3 harf olmalı."
+	b["name"] = nm
+	b["emblem"] = emblem.duplicate(true)
+	return ""
+
+
+## Oyuncu ittifak blokundan ayrılır (çevrimiçi kayıtlı emir)
+func player_bloc_leave() -> void:
+	var _cmd := Cmd.Scope.new(self, "player_bloc_leave", [])
+	if player >= 0:
+		bloc_leave(player)
+
+
 func bloc_leave(cid: int, silent: bool = false) -> void:
 	var bid: int = countries[cid].alliance
 	if bid < 0:

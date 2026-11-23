@@ -347,7 +347,7 @@ func _tab_buy() -> void:
 
 
 func _buy_policy(c) -> void:
-	content.add_child(TK.toggle_row("Otomatik silah tedariki", c.auto_buy, func(on: bool): c.auto_buy = on,
+	content.add_child(TK.toggle_row("Otomatik silah tedariki", c.auto_buy, func(on: bool): Macro.set_auto_buy(c, on),
 		"Açıkken savunma fonu, aşağıdaki öncelik ve doktrine göre kendiliğinden silah alır. Kapalıyken fon birikir; alımı sen yaparsın."))
 	content.add_child(TK.hsep())
 	content.add_child(_kick("Tedarik önceliği (otomatik alım)"))
@@ -364,12 +364,7 @@ func _buy_policy(c) -> void:
 		b.pressed.connect(func():
 			ui._click()
 			var cur: float = c.pri.get(key, 1.0)
-			if cur < 0.8:
-				c.pri[key] = 1.0
-			elif cur < 1.6:
-				c.pri[key] = 2.0
-			else:
-				c.pri[key] = 0.4
+			Macro.set_pri(c, key, 1.0 if cur < 0.8 else (2.0 if cur < 1.6 else 0.4))
 			render())
 		pr.add_child(b)
 	content.add_child(pr)
@@ -919,7 +914,7 @@ func _merc_section(c) -> void:
 
 func _tab_fronts() -> void:
 	var c = _pl()
-	content.add_child(TK.toggle_row("Ordular otomatik komuta edilsin", c.auto_cmd, func(on: bool): c.auto_cmd = on,
+	content.add_child(TK.toggle_row("Ordular otomatik komuta edilsin", c.auto_cmd, func(on: bool): Macro.set_auto_cmd(c, on),
 		"Açıkken kurmay, savaştığın düşmanın zayıf eyaletlerine kendiliğinden harekât düzenler. Kapalıyken ordulara haritadan sen emir verirsin."))
 	content.add_child(TK.hsep())
 	_merc_section(c)
@@ -1134,12 +1129,10 @@ func _tab_alliance() -> void:
 		var sv := TK.button("Kaydet", "gold", "check", Vector2(180, 56), 15)
 		sv.pressed.connect(func():
 			ui._click()
-			var nm: String = _draft_name.strip_edges()
-			if nm.length() < 3:
-				_toast("İttifak adı en az 3 harf olmalı.")
+			var berr: String = gs.player_bloc_edit(_draft_name, _draft.duplicate())
+			if berr != "":
+				_toast(berr)
 				return
-			b["name"] = nm
-			b["emblem"] = _draft.duplicate()
 			_editing = false
 			_draft = {}
 			gs.state_changed.emit()
@@ -1225,7 +1218,7 @@ func _tab_alliance() -> void:
 	var lv := TK.button("İttifaktan ayrıl", "danger", "retreat", Vector2(0, 56), 15)
 	lv.pressed.connect(func():
 		ui._click()
-		gs.bloc_leave(c.id)
+		gs.player_bloc_leave()
 		_editing = false
 		_draft = {}
 		render())
