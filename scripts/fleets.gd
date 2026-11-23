@@ -1155,6 +1155,7 @@ static func cargo_cap(gs, f) -> int:
 ## Ordu limandaki kendi ordusunu bir filoya (fid >= 0) ya da otomatik nakliye filosuna bindirir.
 static func embark(gs, pid: int, count: int = 0, fid: int = -1) -> String:
 	var _cmd := Cmd.Scope.new(gs, "Fleets.embark", [pid, count, fid])
+	ensure(gs)          # filolar henüz kurulmadıysa ilk tur kurulumu yeni nakliyeyi silmesin
 	var me: int = gs.player
 	var a = gs.armies.get(pid)
 	if a == null or a.owner != me:

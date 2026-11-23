@@ -1442,6 +1442,8 @@ func friendly_port(cid: int, pid: int) -> bool:
 	var p = provinces[pid]
 	if p.controller == cid or p.owner == cid:
 		return true
+	if p.controller == p.owner and has_passage(cid, p.owner):
+		return true         # geçiş izni: o ülkenin limanlarına barışçıl çıkış/iniş
 	return is_allied(cid, p.controller) or is_allied(cid, p.owner)
 
 
