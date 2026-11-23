@@ -383,7 +383,7 @@ static func fill_panel(sh, gs, toast: Callable, reopen: Callable, focus: Callabl
 		for dpid in Districts.pids(gs):
 			var pid_i: int = dpid
 			var ctl: float = Districts.control(gs, pid_i)
-			var db := TK.button("%s   %%%d" % [gs.provinces[pid_i].title(), int(round(ctl * 100.0))], "", Icons.pick("uprising_banner", ""), Vector2(0, 54), 17)
+			var db := TK.button("%s   %s" % [gs.provinces[pid_i].title(), Loc.pct(int(round(ctl * 100.0)))], "", Icons.pick("uprising_banner", ""), Vector2(0, 54), 17)
 			db.pressed.connect(func():
 				open_districts(sh.get_parent(), gs, pid_i, toast, reopen, focus))
 			sh.body.add_child(db)

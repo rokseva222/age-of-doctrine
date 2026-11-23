@@ -208,7 +208,7 @@ static func cancel(gs) -> void:
 static func phase_label(gs, ph: Dictionary) -> String:
 	var p = gs.provinces[int(ph.pid)]
 	var opn: String = String(gs.OPS[String(ph.op)].name) if gs.OPS.has(String(ph.op)) else String(ph.op)
-	return "%s  —  %s  (%%%d)" % [p.title(), Loc.t(opn), int(round(float(ph.frac) * 100.0))]
+	return "%s  —  %s  (%s)" % [p.title(), Loc.t(opn), Loc.pct(int(round(float(ph.frac) * 100.0)))]
 
 
 static func state_label(st: String) -> String:

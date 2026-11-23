@@ -1,4 +1,5 @@
 extends RefCounted
+const Loc = preload("res://scripts/loc.gd")
 ## Kabine kartı penceresi: solda yüzsüz siluet portre, sağda bakanın sorusu ve seçenekler.
 ## Seçimden sonra sonuç özeti gösterilir. Riskli seçeneklerde ☠ uyarısı vardır.
 
@@ -96,7 +97,7 @@ static func open(ui, gs, card: Dictionary, rng: RandomNumberGenerator, on_fatal:
 			iv.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 			hb.add_child(iv)
 		if opt.has("gamble"):
-			var dice := TK.t("%%%d" % int(round(float(opt.gamble.p) * 100.0)), "kicker", TK.GOLD)
+			var dice := TK.t(Loc.pct(int(round(float(opt.gamble.p) * 100.0))), "kicker", TK.GOLD)
 			dice.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 			hb.add_child(dice)
 		if fatal > 0.0:

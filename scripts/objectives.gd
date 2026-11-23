@@ -144,7 +144,7 @@ static func progress(gs, o: Dictionary) -> String:
 		"stability":
 			return "%d/%d" % [int(pc.stability), int(o.n)]
 		"gdp_share":
-			return "%%%d/%%%d" % [int(_gdp_share(gs) * 100.0), int(o.pct)]
+			return "%s/%s" % [Loc.pct(int(_gdp_share(gs) * 100.0)), Loc.pct(int(o.pct))]
 		"bloc_members":
 			return "%d/%d" % [_bloc_size(gs), int(o.n)]
 	return ""

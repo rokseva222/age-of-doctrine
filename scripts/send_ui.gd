@@ -1,4 +1,5 @@
 extends RefCounted
+const Loc = preload("res://scripts/loc.gd")
 ## "Kaç asker gönderilsin?" penceresi: ordudan yalnızca bir kısmı hedefe yürür, kalanlar yerinde durur.
 
 const TK = preload("res://scripts/theme_kit.gd")
@@ -39,7 +40,7 @@ static func open(ui, gs, army, dest: int, on_send: Callable) -> void:
 	slider_holder.add_child(sl_row)
 	for f in [0.25, 0.5, 0.75, 1.0]:
 		var fv: float = f
-		var b := TK.button("%%%d" % int(fv * 100.0), "ghost", "", Vector2(0, 52), 18)
+		var b := TK.button(Loc.pct(int(fv * 100.0)), "ghost", "", Vector2(0, 52), 18)
 		b.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		b.pressed.connect(func():
 			ui._click()

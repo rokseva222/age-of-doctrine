@@ -1714,7 +1714,7 @@ func show_grand_op(cid: int) -> void:
 		bar.custom_minimum_size = Vector2(0, 22)
 		bar.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 		hb.add_child(bar)
-		var pl := TK.t("%%%d" % int(float(comp[k]) * 100.0), "small", TK.MUTED)
+		var pl := TK.t(Loc.pct(int(float(comp[k]) * 100.0)), "small", TK.MUTED)
 		pl.custom_minimum_size = Vector2(60, 0)
 		hb.add_child(pl)
 		sh.body.add_child(hb)
@@ -1727,7 +1727,7 @@ func show_grand_op(cid: int) -> void:
 		v.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		v.add_theme_constant_override("separation", -4)
 		v.add_child(TK.t(e[0], "kicker", e[2]))
-		v.add_child(TK.t("%%%d" % int(round(float(e[1]) * 100.0)), "h3", e[2]))
+		v.add_child(TK.t(Loc.pct(int(round(float(e[1]) * 100.0))), "h3", e[2]))
 		orow.add_child(v)
 	sh.body.add_child(orow)
 	var total: int = GrandOp.target_cities(gs, cid)

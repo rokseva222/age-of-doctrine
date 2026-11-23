@@ -171,7 +171,7 @@ static func _picker(ui, st: Dictionary) -> void:
 	frow.add_theme_constant_override("separation", 8)
 	for f in FRACS:
 		var fv: float = f
-		var fb := TK.button("%%%d" % int(fv * 100.0), "primary" if absf(float(st.frac) - fv) < 0.01 else "", "", Vector2(110, 50), 18)
+		var fb := TK.button(Loc.pct(int(fv * 100.0)), "primary" if absf(float(st.frac) - fv) < 0.01 else "", "", Vector2(110, 50), 18)
 		fb.pressed.connect(func():
 			ui._click()
 			st["frac"] = fv

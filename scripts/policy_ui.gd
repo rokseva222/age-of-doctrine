@@ -52,7 +52,7 @@ func _pl():
 
 func _build() -> void:
 	var c = _pl()
-	sh = ui._open_sheet("Politika", 1020, false, true, "Genel Kurmay  /  " + c.name)
+	sh = ui._open_sheet("Politika", 1020, false, true, Loc.t("Genel Kurmay") + "  /  " + c.name)
 	var tabs := HFlowContainer.new()
 	tabs.add_theme_constant_override("h_separation", 6)
 	tabs.add_theme_constant_override("v_separation", 6)
@@ -578,9 +578,9 @@ func _tab_people() -> void:
 	var tr: float = c.trust
 	content.add_child(_kick("Hükümete güven"))
 	content.add_child(_stat_row([
-		["Güven", "%%%d" % int(tr), TK.GREEN if tr >= 60.0 else (TK.ORANGE if tr >= 35.0 else TK.RED_TEXT)],
+		["Güven", Loc.pct(int(tr)), TK.GREEN if tr >= 60.0 else (TK.ORANGE if tr >= 35.0 else TK.RED_TEXT)],
 		["Durum", Propaganda.label(tr)],
-		["Hedef düzey", "%%%d" % int(Propaganda.target(gs, c))],
+		["Hedef düzey", Loc.pct(int(Propaganda.target(gs, c)))],
 		["Propaganda gideri", Macro.money(cost) + "/hf" if cost > 0.0 else "—", TK.GOLD],
 	]))
 	content.add_child(_wrap("Güven; halkın kararlara, vergiye ve yasalara ne kadar uyduğunu belirler. Yüksek güven istikrarı ve vergi gelirini artırır, işgal edilmiş eyaletlerde huzursuzluğu yavaşlatır, isyan çıkma ihtimalini düşürür. Düşük güvende ise tam tersi olur. Güven kendiliğinden istikrarına doğru kayar; savaş ve yaptırım onu düşürür. Propaganda onu yukarı iter, ama her yöntemin gücü halkın şu anki güvenine bağlıdır.", "small", TK.FAINT))
@@ -744,8 +744,8 @@ func _tab_trade() -> void:
 	var c = _pl()
 	content.add_child(_stat_row([
 		["Ticaret geliri", Macro.money(c.trade_income) + Loc.t("/hf"), TK.GOLD],
-		["Açık ticaret", "%%%d" % int(c.trade_share * 100.0)],
-		["Deniz ablukası", "%%%d" % int(c.blockade * 100.0), TK.RED_TEXT if c.blockade > 0.05 else TK.TEXT],
+		["Açık ticaret", Loc.pct(int(c.trade_share * 100.0))],
+		["Deniz ablukası", Loc.pct(int(c.blockade * 100.0)), TK.RED_TEXT if c.blockade > 0.05 else TK.TEXT],
 	]))
 	if c.trade_block > 0:
 		content.add_child(_wrap("Siber saldırı yüzünden dış ticaret %d hafta daha kesik." % c.trade_block, "small", TK.RED_TEXT))
@@ -768,7 +768,7 @@ func _tab_trade() -> void:
 		nm.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		nm.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 		h.add_child(nm)
-		h.add_child(TK.t("%%%d" % int(e[1] * 100.0), "mono", TK.MUTED))
+		h.add_child(TK.t(Loc.pct(int(e[1] * 100.0)), "mono", TK.MUTED))
 		var st := "Açık"
 		var col := TK.GREEN
 		if c.enemies.has(j):
