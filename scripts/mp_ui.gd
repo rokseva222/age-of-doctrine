@@ -13,10 +13,10 @@ static func open_mode(parent: Node, on_multi: Callable, on_online: Callable) -> 
 	var box := VBoxContainer.new()
 	box.add_theme_constant_override("separation", 10)
 	sh.body.add_child(box)
-	box.add_child(_choice("Aynı Telefon", "Aynı telefon, sırayla. 2–6 kişi telefonu elden ele verir; masa oyunu gibi.", "users", func():
+	box.add_child(_choice("Aynı Telefon", "Aynı telefon, sırayla. 2–6 kişi telefonu elden ele verir; masa oyunu gibi.", Icons.pick("mp_hotseat", "users"), func():
 		sh.close()
 		on_multi.call()))
-	box.add_child(_choice("Online", "Sunucu listesi, kodla katılma, LAN. Herkes kendi telefonundan oynar.", "globe", func():
+	box.add_child(_choice("Online", "Sunucu listesi, kodla katılma, LAN. Herkes kendi telefonundan oynar.", Icons.pick("mp_online", "radio_tower"), func():
 		sh.close()
 		on_online.call()))
 	sh.add_button("Kapat", func(): pass, "ghost", true, "", 170)

@@ -471,7 +471,7 @@ func _build_side() -> void:
 	side.offset_top = BAR_H + TICK_H + 14
 	side.add_theme_constant_override("separation", 6)
 	root.add_child(side)
-	var defs := [["crown", "career"], ["tank", "policy"], ["globe", "world"], ["swords", "wars"], ["handshake", "rel"], ["target", "capital"], ["map", "fit"]]
+	var defs := [["crown", "career"], [Icons.pick("politics", "tank"), "policy"], ["globe", "world"], [Icons.pick("war_declared", "swords"), "wars"], [Icons.pick("diplomacy", "handshake"), "rel"], [Icons.pick("capital", "target"), "capital"], ["map", "fit"]]
 	for d in defs:
 		var b := TK.icon_button(d[0], 70, "")
 		b.add_theme_stylebox_override("normal", TK.box(Color(TK.PANEL.r, TK.PANEL.g, TK.PANEL.b, 0.96), TK.LINE, 3, 1, 1))
@@ -1933,7 +1933,7 @@ func show_world_panel(tab: int = 0) -> void:
 	sh.body.add_child(scroll)
 	var state := {"tab": tab, "filter": 0, "render": Callable()}
 	var names := ["Ülkeler", "Savaşlar", "Haberler", "İttifaklar", "BM"]
-	var icons := ["flag", "swords", "news", "handshake", "gavel"]
+	var icons := ["flag", Icons.pick("war_declared", "swords"), "news", Icons.pick("alliance_shield", "handshake"), "gavel"]
 	var tab_n: int = 5 if UN.available(gs) else 4
 	var tab_btns: Array = []
 	var build_countries := func():

@@ -32,6 +32,8 @@ const Focus = preload("res://scripts/focus.gd")
 const Propaganda = preload("res://scripts/propaganda.gd")
 var focus_sel := ""
 
+# Her sekme kendine ait ikon kullansın (HUD yan butonlarıyla ve diğer ekranlarla çakışmasın); resim yoksa TABS içindeki eski ad kullanılır.
+const TAB_ICON_NEW := {"Envanter": "arsenal", "Ticaret": "trade", "Cepheler": "war_room", "İttifak": "alliance_shield", "Odak": "focus", "Halk": "people", "Kabine": "cabinet"}
 const TABS := [["Bütçe", "coins"], ["Silah Alımı", "tank"], ["Envanter", "shield"], ["Ticaret", "globe"], ["Cepheler", "swords"], ["İttifak", "handshake"], ["İstihbarat", "eye"], ["Kabine", "badge"], ["Odak", "target"], ["Halk", "flag"]]
 const CAT_ICON := {"inf": "rifle", "tank": "tank", "afv": "afv", "arty": "arty", "air": "jet", "sub": "sub"}
 const TIER_COL := [Color("646c77"), Color("9aa2ad"), Color("5ba4e0"), Color("a98be0")]
@@ -68,7 +70,7 @@ func _build() -> void:
 	sh.body.add_child(scroll)
 	for i in TABS.size():
 		var idx := i
-		var tb := TK.button(TABS[i][0], "ghost", Icons.pick("focus", "target") if TABS[i][0] == "Odak" else TABS[i][1], Vector2(0, 56), 15)
+		var tb := TK.button(TABS[i][0], "ghost", Icons.pick(TAB_ICON_NEW.get(TABS[i][0], ""), TABS[i][1]), Vector2(0, 56), 15)
 		tb.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		tb.custom_minimum_size = Vector2(150, 56)
 		tb.pressed.connect(func():

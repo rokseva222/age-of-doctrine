@@ -326,7 +326,7 @@ func _build_main() -> void:
 	btns.add_theme_constant_override("separation", 10)
 	bscroll.add_child(btns)
 	bscroll.set_deferred("scroll_vertical", 0)   # dil değişimi/yeniden kurulumdan sonra liste başı (Tarihî Savaşlar) görünür kalsın
-	var hist := TK.button("Tarihî Savaşlar", "", "hourglass", Vector2(0, 64), 21)
+	var hist := TK.button("Tarihî Savaşlar", "", Icons.pick("chronicle", "hourglass"), Vector2(0, 64), 21)
 	hist.pressed.connect(func():
 		_click()
 		_open_eras())
@@ -339,7 +339,7 @@ func _build_main() -> void:
 			return
 		CareerUI.open_era(root, func(eid: String): career_era.emit(eid)))
 	btns.add_child(career_btn)
-	var indep_btn := TK.button("Bağımsızlık Yolu", "", "flag", Vector2(0, 64), 21)
+	var indep_btn := TK.button("Bağımsızlık Yolu", "", Icons.pick("independence", "flag"), Vector2(0, 64), 21)
 	indep_btn.pressed.connect(func():
 		_click()
 		if not AP.mode_unlocked("indep"):
@@ -347,12 +347,12 @@ func _build_main() -> void:
 			return
 		IndepUI.open_setup(root, func(p): indep_start.emit(p)))
 	btns.add_child(indep_btn)
-	var daily_btn := TK.button("Günlük Meydan Okuma", "", "target", Vector2(0, 64), 21)
+	var daily_btn := TK.button("Günlük Meydan Okuma", "", Icons.pick("daily_challenge", "target"), Vector2(0, 64), 21)
 	daily_btn.pressed.connect(func():
 		_click()
 		DailyUI.open(root, func(c): daily_start.emit(c)))
 	btns.add_child(daily_btn)
-	var online_btn := TK.button("Çok Oyunculu", "", "globe", Vector2(0, 64), 21)
+	var online_btn := TK.button("Çok Oyunculu", "", Icons.pick("mp_multi", Icons.pick("summit", "users")), Vector2(0, 64), 21)
 	online_btn.pressed.connect(func():
 		_click()
 		multi_pressed.emit())
@@ -362,7 +362,7 @@ func _build_main() -> void:
 		_click()
 		continue_pressed.emit())
 	btns.add_child(continue_btn)
-	_shop_btn = TK.button("Mağaza", "", "coins", Vector2(0, 64), 21)
+	_shop_btn = TK.button("Mağaza", "", Icons.pick("shop", "money_bag"), Vector2(0, 64), 21)
 	_shop_btn.pressed.connect(func():
 		_click()
 		ApUi.open(root, toast))
@@ -377,7 +377,7 @@ func _build_main() -> void:
 	_shop_dot.grow_vertical = Control.GROW_DIRECTION_BOTH
 	_shop_dot.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	_shop_btn.add_child(_shop_dot)
-	var how := TK.button("Nasıl Oynanır", "", "book", Vector2(0, 64), 21)
+	var how := TK.button("Nasıl Oynanır", "", Icons.pick("howto", "hint"), Vector2(0, 64), 21)
 	how.pressed.connect(func():
 		_click()
 		Info.open_howto(root))
@@ -491,7 +491,7 @@ func _build_select() -> void:
 	tv.add_child(_sel_title)
 	head.add_child(tv)
 	v.add_child(head)
-	_scn_btn = TK.button("Dünya 2027", "", "book", Vector2(0, 60), 16)
+	_scn_btn = TK.button("Dünya 2027", "", Icons.pick("world2027", "year"), Vector2(0, 60), 16)
 	_scn_btn.clip_text = true
 	_scn_btn.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
 	_scn_btn.pressed.connect(func():
