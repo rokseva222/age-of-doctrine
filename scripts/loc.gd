@@ -133,6 +133,17 @@ static func _build(src: Dictionary) -> void:
 			if key.length() >= 10:
 				long_keys.append(key)
 			continue
+		# ham biçim dizgisi (Loc.t("… %d …") % x) doğrudan bulunabilsin: yer tutucu dizisi aynıysa çeviri ham haliyle de kaydedilir
+		var seq_k: Array = []
+		for m0 in ms:
+			if m0.get_string() != "%%":
+				seq_k.append(m0.get_string())
+		var seq_t: Array = []
+		for m1 in ph.search_all(tgt):
+			if m1.get_string() != "%%":
+				seq_t.append(m1.get_string())
+		if seq_k == seq_t and not _exact.has(key):
+			_exact[key] = tgt
 		# şablon: kaynak -> regex
 		var pat := "^"
 		var last := 0
