@@ -115,6 +115,8 @@ const SPLIT := {
 		[[2127], "Ukraine", "Hungary", "own"], [[2125], "Ukraine", "Romania", "own"],
 		[689, "Ukraine", "Poland", "own"], [683, "Ukraine", "Poland", "own"], [[2126], "Ukraine", "Poland", "own"], [1385, "Belarus", "Poland", "own"], [1387, "Belarus", "Poland", "own"],
 		[788, "Poland", "Germany", "own"], [790, "Poland", "Germany", "own"], [791, "Poland", "Germany", "own"], [792, "Poland", "Germany", "own"],
+		[[1671], "Lithuania", "Poland", "own"],     # Wilno 1922-39 Polonya
+		[[1674], "Lithuania", "Germany", "own"],    # Memel Mart 1939'da Almanya'ya katıldı
 		[5, "China", "Japan", "own"], [6, "China", "Japan", "own"], [7, "China", "Japan", "own"], [2, "China", "Japan", "own"],
 		[18, "China", "Japan", "occ"], [17, "China", "Japan", "occ"], [16, "China", "Japan", "occ"], [15, "China", "Japan", "occ"],
 		[13, "China", "Japan", "occ"], [14, "China", "Japan", "occ"], [26, "China", "Japan", "occ"],
@@ -129,6 +131,8 @@ const SPLIT := {
 		["Lublin", "Poland", "Russia", "own"], [786, "Poland", "Austria", "own"], [787, "Poland", "Austria", "own"],
 		[689, "Ukraine", "Austria", "own"], ["Bozen", "Italy", "Austria", "own"],
 		[[504], "France", "Germany", "own"],
+		[[1079], "Romania", "Romania", "own"],      # Vâlcea (Eflak/Oltenya) Romanya'da kalır; aynı eski eyaletin Transilvanya parçaları aşağıda Avusturya'ya
+		[[1074], "Romania", "Austria", "own"],      # Güney Bukovina (Suceava) 1775-1918 Avusturya
 		[1071, "Romania", "Austria", "own"], [1072, "Romania", "Austria", "own"], [1075, "Romania", "Austria", "own"], [1081, "Romania", "Austria", "own"],
 		[1079, "Romania", "Austria", "own"], [1459, "Serbia", "Austria", "own"],
 		[32, "China", "United Kingdom", "own"], [31, "China", "United Kingdom", "own"],
