@@ -21,7 +21,7 @@ func _init() -> void:
 	out = "/tmp/tour_" + lang
 	DirAccess.make_dir_recursive_absolute(out)
 	var St = load("res://scripts/settings.gd")
-	St.load_all(); St.language = lang; St.seen_howto = true; St.seen_promo = true; St.tut_done = true; St.sfx = 0.0; St.music = 0.0
+	St.load_all(); St.language = lang; St.seen_howto = true; St.seen_promo = true; St.seen_update = load("res://scripts/info_sheets.gd").UPDATE_VER; St.tut_done = true; St.sfx = 0.0; St.music = 0.0
 	main = load("res://main.tscn").instantiate()
 	get_root().add_child(main)
 	await create_timer(1.2).timeout
