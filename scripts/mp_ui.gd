@@ -1,6 +1,7 @@
 extends RefCounted
 ## Çok oyunculu arayüzü: mod seçimi, oyuncu sayısı, "telefonu devret" perdesi.
 
+const Icons = preload("res://scripts/icons.gd")
 const TK = preload("res://scripts/theme_kit.gd")
 const Sheet = preload("res://scripts/sheet.gd")
 const Loc = preload("res://scripts/loc.gd")
