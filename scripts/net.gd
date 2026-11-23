@@ -59,6 +59,7 @@ var _lan_udp: PacketPeerUDP = null
 var _lan_t := 0.0
 var _st_t := 0.0
 var _world_seed := 0
+var _scn_code := ""           # kullanıcı senaryosu paylaşım kodu (sunucuda dosyası yoksa buradan kurulur)
 var _server_logs: Array = []
 var upnp_state := ""                       # "", "trying", "ok", "fail"
 var upnp_ip := ""                          # UPnP ile öğrenilen dış IP
@@ -161,6 +162,7 @@ func host(cfg: Dictionary) -> bool:
 		"max": int(cfg.get("max", MAX_PLAYERS)), "pass": String(cfg.get("pass", "")), "secs": float(cfg.get("round_secs", 120.0)),
 		"port": port, "proto": PROTO, "ver": String(cfg.get("ver", "")), "fog": clampi(int(cfg.get("fog", 0)), 0, 2)}
 	_world_seed = int(cfg.get("seed", randi() % 1000000))
+	_scn_code = String(cfg.get("scn_code", ""))
 	_lan_udp = PacketPeerUDP.new()
 	_lan_udp.set_broadcast_enabled(true)
 	_lan_udp.set_dest_address("255.255.255.255", LAN_PORT)
@@ -392,6 +394,13 @@ func _build_world(picks: Array) -> void:
 		Eras.start(g, era)
 	# oda kurucunun seçtiği senaryo (dönemin üstüne ya da serbest dünyaya) herkes için aynı başlangıç durumunu kurar
 	var scn: String = String(info.get("scn", ""))
+	if scn != "" and Scenarios.get_sc(scn).is_empty() and _scn_code != "":
+		var U = load("res://scripts/user_scn.gd")
+		var ud: Dictionary = U.import_code(_scn_code)
+		if not ud.is_empty():
+			ud["id"] = scn
+			U.save(ud)
+			Scenarios.reload()
 	if scn != "" and not Scenarios.get_sc(scn).is_empty():
 		Scenarios.apply(g, scn)
 	g.scn_play = -1

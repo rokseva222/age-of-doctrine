@@ -820,7 +820,7 @@ func online_host(cfg: Dictionary) -> void:
 func online_host_remote(cfg: Dictionary) -> void:
 	var m = get_master()
 	menu.toast(Loc.t("Oda sunucuda kuruluyor..."))
-	var req := {"name": cfg.get("name", ""), "era": cfg.get("era", ""), "scenario": cfg.get("scenario", ""), "pass": cfg.get("pass", ""),
+	var req := {"name": cfg.get("name", ""), "era": cfg.get("era", ""), "scenario": cfg.get("scenario", ""), "scn_code": cfg.get("scn_code", ""), "pass": cfg.get("pass", ""),
 		"secs": cfg.get("round_secs", 120.0), "max": cfg.get("max", 4), "fog": cfg.get("fog", 0), "ver": Info.UPDATE_VER}
 	var st := {"done": false}
 	var ok_cb := func(info: Dictionary):

@@ -29,6 +29,9 @@ func _init() -> void:
 	await process_frame
 	var cfg := {"name": _arg("name", "Sunucu"), "era": _arg("era", ""), "scenario": _arg("scn", ""), "port": int(_arg("port", "47320")), "round_secs": float(_arg("secs", "120")),
 		"max": clampi(int(_arg("max", "6")), 2, 12), "pass": _arg("pass", ""), "ver": _arg("ver", ""), "upnp": _arg("upnp", "0") == "1", "fog": int(_arg("fog", "0"))}
+	var sf: String = _arg("scnfile", "")
+	if sf != "" and FileAccess.file_exists(sf):
+		cfg["scn_code"] = FileAccess.get_file_as_string(sf).strip_edges()
 	if not net.host(cfg):
 		print("Sunucu açılamadı")
 		quit(1)

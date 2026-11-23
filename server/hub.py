@@ -16,13 +16,14 @@ import argparse, json, os, re, secrets, subprocess, sys, threading, time
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 
 TTL = 90.0
-MAX_BODY = 4096
+MAX_BODY = 131072        # kullanıcı senaryosu kodu (sıkıştırılmış) taşıyabilsin
 servers = {}            # token -> duyuru kaydı (odalar kendini bildirir)
 rooms = {}              # port -> {"proc","ip","t","name"}
 lock = threading.Lock()
 A = None
 updating = False        # güncelleme sürerken yeni oda açılmaz
 SAFE = re.compile(r"^[a-z0-9_]{0,24}$")
+CODE_OK = re.compile(r"^AOD1\.[0-9]{1,7}\.[A-Za-z0-9_\-=]{1,90000}$")   # kullanıcı senaryosu paylaşım kodu
 
 
 def clean(s, n=40):
@@ -63,6 +64,9 @@ def create_room(b, ip):
     scn = str(b.get("scenario", ""))
     if not SAFE.match(era) or not SAFE.match(scn):
         return 400, {"err": "geçersiz çağ/senaryo"}
+    code = str(b.get("scn_code", ""))
+    if code and not CODE_OK.match(code):
+        return 400, {"err": "geçersiz senaryo kodu"}
     try:
         mx = max(2, min(12, int(b.get("max", 4))))
         secs = max(0.0, min(600.0, float(b.get("secs", 120))))
@@ -105,6 +109,13 @@ def create_room(b, ip):
                "--idle", str(A.idle)]
         if pw:
             cmd += ["--pass", pw]
+        if code:
+            cdir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "scn_codes")
+            os.makedirs(cdir, exist_ok=True)
+            cpath = os.path.join(cdir, "%d.txt" % port)
+            with open(cpath, "w") as fh:
+                fh.write(code)
+            cmd += ["--scnfile", cpath]
         try:
             proc = subprocess.Popen(cmd, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
         except Exception as e:

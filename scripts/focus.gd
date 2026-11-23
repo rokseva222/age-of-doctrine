@@ -198,17 +198,27 @@ static func has_national(gs) -> bool:
 static func ensure(gs) -> void:
 	if not (gs.focus is Dictionary) or gs.focus.is_empty():
 		gs.focus = {"done": [], "cur": "", "left": 0}
+		return
+	var f: Dictionary = gs.focus          # eksik anahtarlı kayıt/ağ durumu (ör. yalnız "done" gelmiş)
+	if not f.has("done"):
+		f["done"] = []
+	if not f.has("cur"):
+		f["cur"] = ""
+	if not f.has("left"):
+		f["left"] = 0
 
 
 static func is_done(gs, id: String) -> bool:
+	if gs.player < 0:
+		return false
 	ensure(gs)
-	return (gs.focus.done as Array).has(id)
+	return (gs.focus.get("done", []) as Array).has(id)
 
 
 static func can_start(gs, id: String) -> String:
-	ensure(gs)
 	if gs.player < 0:
 		return _t("Oyuncu yok.", "No player.")
+	ensure(gs)
 	if not visible_for(gs, id):
 		return _t("Bu odak ülkene ait değil.", "This focus is not for your country.")
 	if is_done(gs, id):
@@ -252,9 +262,11 @@ static func tick(gs) -> void:
 
 
 static func _tick_one(gs) -> void:
+	if gs.player < 0:
+		return          # sunucuda insan yokken (player=-1) odak durumu yok
 	ensure(gs)
-	var id := String(gs.focus.cur)
-	if id == "" or gs.player < 0:
+	var id := String(gs.focus.get("cur", ""))
+	if id == "":
 		return
 	gs.focus.left = int(gs.focus.left) - 1
 	if int(gs.focus.left) > 0:

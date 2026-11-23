@@ -230,7 +230,10 @@ static func host_form(main) -> void:
 		if String(sc["id"]) == "free":
 			continue
 		era_ob.add_item(Loc.t("Senaryo") + ": " + String(sc["name"]))
-		era_ob.set_item_metadata(era_ob.item_count - 1, {"era": String(sc.get("era", "")), "scn": String(sc["id"])})
+		var meta := {"era": String(sc.get("era", "")), "scn": String(sc["id"]), "code": ""}
+		if String(sc.get("kind", "")) == "user":        # kendi senaryon: sunucuda yok, paylaşım koduyla gönderilir
+			meta["code"] = load("res://scripts/user_scn.gd").export_code(load("res://scripts/user_scn.gd").load_one(String(sc["id"])))
+		era_ob.set_item_metadata(era_ob.item_count - 1, meta)
 	sh.body.add_child(era_ob)
 	# tur süresi
 	sh.body.add_child(TK.t("Tur süresi", "kicker"))
@@ -314,7 +317,7 @@ static func host_form(main) -> void:
 	sh.body.add_child(note)
 	sh.add_button("Oda kur", func():
 		var pick: Dictionary = era_ob.get_item_metadata(era_ob.selected)
-		var hcfg := {"name": nm.text.strip_edges(), "era": String(pick.era), "scenario": String(pick.scn), "pass": pw.text, "round_secs": float(st.secs), "max": int(st.max), "region": String(st.region), "fog": int(st.fog)}
+		var hcfg := {"name": nm.text.strip_edges(), "era": String(pick.era), "scenario": String(pick.scn), "scn_code": String(pick.get("code", "")), "pass": pw.text, "round_secs": float(st.secs), "max": int(st.max), "region": String(st.region), "fog": int(st.fog)}
 		if st.remote:
 			main.online_host_remote(hcfg)
 		else:
