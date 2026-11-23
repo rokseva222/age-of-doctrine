@@ -767,6 +767,8 @@ func show_province(pid: int, selected_army) -> void:
 		_abtn("Toplu işlemler", "gold", Icons.pick("build", "coins"), "bulk", pid)
 	if p.owner == me and p.controller == me and Faith.of(gs, pid) != Faith.state_faith(gs, me):
 		_abtn("İnancı değiştir (%s)" % Macro.money(gs.faith_convert_cost(pid)), "", "book", "convert_faith", pid)
+	if p.owner == me and p.controller == me and p.is_capital:
+		_abtn(Loc.t("Devlet dinini değiştir (%s)") % Macro.money(gs.state_faith_cost()), "ghost", "book", "state_faith", pid)
 	if p.owner == me and p.controller == me and p.core != me:
 		_abtn("Asimile et (%s)" % Macro.money(gs.assimilate_cost(pid)), "", "users", "assimilate", pid)
 	if p.owner == me and not Formables.available(gs).is_empty():

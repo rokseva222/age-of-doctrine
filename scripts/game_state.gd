@@ -739,6 +739,35 @@ func player_bulk(kind: String, bkind: String = "") -> int:
 	return done
 
 
+var faith_reform_cd: Dictionary = {}     # ülke id -> devlet dini yeniden değiştirilebilecek hafta
+
+
+func state_faith_cost() -> float:
+	return maxf(30.0, countries[player].income * 4.0)
+
+
+## Devlet dinini değiştir (başkentin inancı devlet inancıdır): istikrar −12, 2 yıl bekleme
+func player_set_state_faith(code: String) -> String:
+	var _cmd := Cmd.Scope.new(self, "player_set_state_faith", [code])
+	var me = countries[player]
+	if not Faith.FAITHS.has(code) or me.capital < 0:
+		return "Geçersiz seçim."
+	if code == Faith.state_faith(self, player):
+		return "Bu zaten devlet dini."
+	if int(faith_reform_cd.get(player, -1)) > turn:
+		return Loc.t("Devlet dini yeniden %d hafta sonra değiştirilebilir.") % (int(faith_reform_cd[player]) - turn)
+	var cost: float = state_faith_cost()
+	if me.gold < cost:
+		return "Kasa yetmiyor."
+	me.gold -= cost
+	faith[str(me.capital)] = code
+	me.stability = maxf(5.0, me.stability - 12.0)
+	faith_reform_cd[player] = turn + 104
+	post_news(Loc.t("%s devlet dinini değiştirdi: %s.") % [me.name, Faith.name_of(code)], me.capital, "info")
+	state_changed.emit()
+	return ""
+
+
 func player_convert_faith(pid: int) -> String:
 	var _cmd := Cmd.Scope.new(self, "player_convert_faith", [pid])
 	var p = provinces[pid]
@@ -3303,6 +3332,7 @@ func end_turn() -> void:
 	refresh_stats()
 	t = _tp("stats_unrest", t)
 	_check_rebels()
+	_revolution_tick()
 	t = _tp("rebels", t)
 	Macro.weekly(self)
 	t = _tp("macro", t)
@@ -5081,6 +5111,48 @@ func _spawn_rebels(p) -> bool:
 	var kind := "rebel_player" if owner_id == player else "rebel"
 	post_news(Names.rebel_uprising(rng, faction.name, p.name, countries[owner_id].name), p.id, kind)
 	return true
+
+
+var revo_hold: Dictionary = {}           # ülke id -> devrimcilerin başkenti elde tuttuğu hafta sayısı
+
+
+## Devrimciler (tester #9): istikrarı çöken oyuncu ülkesinde hükümeti devirmeye çalışan isyan; başkenti 4 hafta tutarlarsa hükümet düşer
+func _revolution_tick() -> void:
+	var cids: Array = [player] if humans.is_empty() else humans.duplicate()
+	for cid in cids:
+		if cid < 0 or cid >= countries.size() or not countries[cid].alive:
+			continue
+		var c = countries[cid]
+		if c.capital < 0:
+			continue
+		var capp = provinces[c.capital]
+		if capp.controller >= 0 and capp.controller != cid and countries[capp.controller].is_rebel:
+			revo_hold[cid] = int(revo_hold.get(cid, 0)) + 1
+			if int(revo_hold[cid]) >= 4:
+				revo_hold[cid] = 0
+				var to: String = "junta" if Politics.regime(self, cid) != "junta" else "authoritarian"
+				pol.reg[str(cid)] = to
+				c.stability = 35.0
+				capp.controller = cid
+				for a in armies.values().duplicate():
+					if a.prov == capp.id and a.owner != cid:
+						armies.erase(a.prov)
+				post_news(Loc.t("Hükümet devrildi! Devrimciler başkenti ele geçirdi; yeni yönetim: %s.") % Politics.name_of(to), c.capital, "rebel_player")
+				province_changed.emit(capp.id)
+			continue
+		revo_hold[cid] = 0
+		if c.stability >= 20.0 or (turn + cid) % 3 != 0 or rng.randf() > 0.12:
+			continue
+		var cands: Array = []
+		for nb in capp.neighbors:
+			var q = provinces[nb]
+			if q.owner == cid and q.controller == cid and armies.get(nb) == null:
+				cands.append(q)
+		if cands.is_empty():
+			continue
+		var p = cands[rng.randi_range(0, cands.size() - 1)]
+		if _spawn_rebels(p):
+			post_news(Loc.t("Devrimciler ayaklandı: %s yakınında hükümeti devirmek için silaha sarıldılar.") % capp.name, p.id, "rebel_player")
 
 
 func _check_rebels() -> void:

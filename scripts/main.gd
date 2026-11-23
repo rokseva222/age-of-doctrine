@@ -48,6 +48,7 @@ const CareerUI = preload("res://scripts/career_ui.gd")
 const EraMoments = preload("res://scripts/era_moments.gd")
 const Daily = preload("res://scripts/daily.gd")
 const Politics = preload("res://scripts/politics.gd")
+const Faith = preload("res://scripts/faith.gd")
 const ApUi = preload("res://scripts/ap_ui.gd")
 const SlotsUI = preload("res://scripts/slots_ui.gd")
 const Mp = preload("res://scripts/mp.gd")
@@ -2003,6 +2004,26 @@ func _on_ui_action(act: String, arg) -> void:
 						_refresh_selection(), "kind": "danger"},
 					{"text": "Vazgeç", "cb": func(): pass},
 				])
+		"state_faith":
+			var counts: Dictionary = {}
+			for pid2 in gs.countries[gs.player].owned_ids:
+				var fc: String = Faith.of(gs, pid2)
+				counts[fc] = int(counts.get(fc, 0)) + 1
+			counts["secular"] = int(counts.get("secular", 0))
+			var codes: Array = counts.keys()
+			codes.sort_custom(func(x, y): return int(counts[x]) > int(counts[y]))
+			var cur: String = Faith.state_faith(gs, gs.player)
+			var fopts: Array = []
+			for code in codes:
+				if code == cur or fopts.size() >= 5:
+					continue
+				var cd2: String = code
+				fopts.append({"text": Faith.name_of(code) + ("  (%d)" % int(counts[code]) if int(counts[code]) > 0 else ""), "cb": func():
+					var ef: String = gs.player_set_state_faith(cd2)
+					ui.toast(ef if ef != "" else Loc.t("Devlet dini değişti."))
+					_refresh_selection()})
+			fopts.append({"text": "Vazgeç", "cb": func(): pass})
+			ui.show_dialog(Loc.t("Devlet dinini değiştir"), Loc.t("Şu anki devlet dini: %s. Değiştirmek %s tutar, istikrar 12 düşer ve 2 yıl yeniden değiştirilemez. Parantezde o inançtaki eyalet sayın.") % [Faith.name_of(cur), Macro.money(gs.state_faith_cost())], fopts)
 		"fight_rebels":
 			var er1: String = gs.player_fight_rebels(arg)
 			ui.toast(er1 if er1 != "" else Loc.t("İsyancılara savaş açıldı; ev sahibi ülke minnettar."))
