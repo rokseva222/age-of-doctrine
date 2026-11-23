@@ -603,8 +603,11 @@ func player_explore(pid: int) -> Dictionary:
 	if me.gold < cost:
 		return {"ok": false, "text": "Kasa yetmiyor."}
 	me.gold -= cost
-	if rng.randf() < 0.30:
-		var r: float = rng.randf()
+	# deterministik zar (dünya tohumu + il + tur): çevrimiçi istemci ile sunucu aynı sonucu görür
+	var xr := RandomNumberGenerator.new()
+	xr.seed = hash([seed_value, pid, turn, player])
+	if xr.randf() < 0.30:
+		var r: float = xr.randf()
 		p.found = "oil" if r < 0.5 else ("mine" if r < 0.8 else "wood")
 		post_news(Loc.t("%s eyaletinde yeni kaynak bulundu: %s") % [p.name, Loc.t(Model.RICH_NAMES[p.found])], pid, "info")
 		if not _quiet:

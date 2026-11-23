@@ -5,6 +5,7 @@ const FleetsM = preload("res://scripts/fleets.gd")
 const AirM = preload("res://scripts/air.gd")
 const Model = preload("res://scripts/model.gd")
 const Propaganda = preload("res://scripts/propaganda.gd")
+const GoodsM = preload("res://scripts/goods.gd")
 
 var rng := RandomNumberGenerator.new()
 var count: Dictionary = {}      # eylem adı -> kaç kez
@@ -61,7 +62,7 @@ func act(g, cid: int, n: int, humans: Array) -> void:
 		var t: int = _pick(others) if (hum.is_empty() or rng.randf() < 0.5) else _pick(hum)
 		if garbage and online_garbage and rng.randf() < 0.04:
 			t = rng.randi_range(-5, g.countries.size() + 5)      # geçersiz hedef
-		var k: int = rng.randi_range(0, 31)
+		var k: int = rng.randi_range(0, 37)
 		match k:
 			0, 1:
 				_n("savaş_ilan")
@@ -191,3 +192,40 @@ func act(g, cid: int, n: int, humans: Array) -> void:
 			31:
 				_n("ittifak_yardım")
 				g.player_request_aid(t)
+			32:
+				_n("mal_politika")
+				GoodsM.set_policy(me, _pick(GoodsM.GOODS), _pick(GoodsM.POLICIES))
+			33:
+				var gd: String = _pick(GoodsM.GOODS)
+				var sup: Array = GoodsM.suppliers(g, me, gd)
+				_n("mal_anlaşma")
+				if not sup.is_empty() and rng.randf() < 0.7:
+					GoodsM.make_deal(g, me, gd, int(sup[0][0]))
+				else:
+					GoodsM.cancel_deal(g, me, gd)
+			34:
+				_n("askerlik_düzeni")
+				Macro.set_draft(me, rng.randi_range(0, 2))
+			35:
+				var mp3: Array = _mine_prov(g, cid)
+				if not mp3.is_empty():
+					_n("kaynak_ara")
+					g.player_explore(_pick(mp3))
+			36:
+				var arm3: Array = _mine_armies(g, cid)
+				if not arm3.is_empty():
+					var a3 = _pick(arm3)
+					if g.provinces[a3.prov].coastal:
+						_n("gemiye_bin")
+						FleetsM.embark(g, a3.prov, rng.randi_range(1000, maxi(1000, a3.size)))
+			37:
+				var fl2: Array = []
+				for f3 in g.fleets.values():
+					if f3.owner == cid and f3.cargo > 0:
+						fl2.append(f3)
+				if not fl2.is_empty():
+					var f4 = _pick(fl2)
+					var tg: Array = FleetsM.debark_targets(g, f4)
+					if not tg.is_empty():
+						_n("karaya_çık")
+						FleetsM.debark(g, f4.id, int(_pick(tg)))

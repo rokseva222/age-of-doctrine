@@ -169,6 +169,8 @@ static func suppliers(gs, c, g: String) -> Array:
 		if c.enemies.has(o.id) or c.embargo.has(o.id) or o.embargo.has(c.id) or o.trade_block > 0:
 			continue
 		ensure(o)
+		if float(o.goods.rate[g].dem) <= 0.0:
+			_recount(gs, o)          # yüklenen kayıt / çevrimiçi istemci: oranlar henüz hesaplanmadı
 		if float(o.goods.rate[g].dem) <= 0.02 or float(o.goods.rate[g].prod) < float(o.goods.rate[g].dem) * 1.25:
 			continue
 		var sur: float = float(o.goods.rate[g].prod) - float(o.goods.rate[g].dem)
