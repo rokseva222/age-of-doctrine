@@ -11,6 +11,7 @@ const Propaganda = preload("res://scripts/propaganda.gd")
 const Crises = preload("res://scripts/crises.gd")
 const Carriers = preload("res://scripts/carriers.gd")
 const Goods = preload("res://scripts/goods.gd")
+const MilRes = preload("res://scripts/milres.gd")
 const Loc = preload("res://scripts/loc.gd")
 const Focus = preload("res://scripts/focus.gd")
 const Currency = preload("res://scripts/currency.gd")
@@ -272,7 +273,7 @@ static func recalc(c) -> void:
 		if n <= 0.0 or not Arsenal.ITEMS.has(id):
 			continue
 		var cat: String = Arsenal.cat_of(id)
-		var pw: float = Arsenal.power_of(id)
+		var pw: float = Arsenal.power_of(id) * MilRes.mult(c, cat)
 		sums[cat] = float(sums.get(cat, 0.0)) + n * pw
 		val += n * Arsenal.cost_of(id)
 		if cat == "inf":
@@ -422,6 +423,9 @@ static func fix_budget(c) -> void:
 const DRAFT_NAMES := ["Gönüllü ordu", "Normal askerlik", "Zorunlu askerlik"]
 const DRAFT_INFO := ["Asker alımı yavaş; gelir +%2, istikrar yavaşça artar.", "Dengeli: gelir ve istikrar etkilenmez.", "Asker alımı neredeyse 2 kat; gelir -%5, istikrar her hafta düşer."]
 const DRAFT_RECRUIT := [0.7, 1.0, 1.9]
+const TAX_NAMES := ["Düşük vergi", "Normal vergi", "Yüksek vergi", "Savaş vergisi"]
+const TAX_INFO := ["Gelir -%12; halk memnun, istikrar her hafta yavaşça artar.", "Dengeli: gelir ve istikrar etkilenmez.", "Gelir +%12; istikrar her hafta düşer.", "Gelir +%25; savaşta katlanılır, barışta istikrar hızla düşer."]
+const TAX_REV := [0.88, 1.0, 1.12, 1.25]
 
 
 ## Otomatik silah tedariki / tedarik önceliği / ordu otomatik komutası (çevrimiçi kayıtlı emirler)
@@ -440,6 +444,11 @@ static func set_pri(c, cat: String, lvl: float) -> void:
 static func set_auto_cmd(c, on: bool) -> void:
 	var _cmd := Cmd.Scope.new(Cmd.rec_gs, "Macro.set_auto_cmd", [c, on])
 	c.auto_cmd = on
+
+
+static func set_tax(c, lvl: int) -> void:
+	var _cmd := Cmd.Scope.new(Cmd.rec_gs, "Macro.set_tax", [c, lvl])
+	c.tax = clampi(lvl, 0, 3)
 
 
 static func set_draft(c, mode: int) -> void:
@@ -531,6 +540,7 @@ static func calc(gs, c) -> Dictionary:
 	rev *= Faith.income_mult(gs, c)
 	rev *= Propaganda.income_mult(c)
 	rev *= 1.0 + 0.02 * float(1 - c.draft) * (1.0 if c.draft == 0 else 2.5)      # askerlik düzeni: gönüllü +%2, zorunlu -%5 gelir
+	rev *= TAX_REV[clampi(c.tax, 0, 3)]                                               # vergi oranı
 	rev *= 1.0 + clampf(0.005 * (float(c.budget.get("agri", 4)) - 4.0), -0.02, 0.10)      # tarım payı: verimli üretim, gelir artar
 	rev *= blockade_mult(gs, c)
 	rev *= 1.0 - 0.10 * c.fleet_block      # filo ablukası (fleets.gd): kıyı bölgelerinde üstün düşman donanması
@@ -630,7 +640,7 @@ static func weekly(gs) -> void:
 			pf["invest"] = int(pf.get("invest", 0)) + Time.get_ticks_usec() - _t0
 			_t0 = Time.get_ticks_usec()
 		c.gold_delta = f["net"]
-		var gm: float = Goods.weekly(gs, c)
+		var gm: float = Goods.weekly(gs, c) + MilRes.weekly(gs, c)
 		c.gold += gm
 		c.gold_delta += gm
 		if gs.profile:
@@ -697,6 +707,11 @@ static func _invest(gs, c, f: Dictionary) -> void:
 	c.stability = _grow(c.stability, pots["stab"] / (inc * 0.15), 0.35, 0.15 + war_pen)
 	if c.draft != 1:
 		c.stability = clampf(c.stability + (0.04 if c.draft == 0 and c.stability < 70.0 else (-0.12 if c.draft == 2 else 0.0)), 3.0, 100.0)
+	if c.tax != 1:
+		var tx: float = [0.05, 0.0, -0.08, (-0.10 if not c.enemies.is_empty() else -0.30)][clampi(c.tax, 0, 3)]
+		if c.tax == 0 and c.stability >= 75.0:
+			tx = 0.0
+		c.stability = clampf(c.stability + tx, 3.0, 100.0)
 	c.stability = clampf(c.stability + 0.12 * clampf(pots["agri"] / (inc * 0.06) - 0.6, 0.0, 2.0) * (1.0 - c.stability / 110.0), 3.0, 100.0)   # gıda güvenliği istikrarı korur
 	var er: float = clampf(pots["edu"] / (inc * 0.08), 0.0, 2.2)
 	c.tech = clampf(c.tech + 0.00025 * maxf(0.0, er - 0.6), 0.0, 1.0)      # eğitim payı: yıllar içinde teknoloji yükselir
@@ -1202,7 +1217,7 @@ static func cat_total(c, cat: String) -> int:
 ## macro durumunu kayıt için sözlüğe çevirir
 static func to_dict(c) -> Dictionary:
 	return {"budget": c.budget, "doctrine": c.doctrine, "dturn": c.doctrine_turn, "industry": c.industry, "cyber": c.cyber,
-		"logistics": c.logistics, "stability": c.stability, "capacity": c.capacity, "tech": c.tech, "bloc": c.bloc, "goods": Goods.to_dict(c), "draft": c.draft,
+		"logistics": c.logistics, "stability": c.stability, "capacity": c.capacity, "tech": c.tech, "bloc": c.bloc, "goods": Goods.to_dict(c), "draft": c.draft, "tax": c.tax, "mres": MilRes.to_dict(c),
 		"inv": c.inv, "orders": c.orders, "auto_buy": c.auto_buy, "auto_cmd": c.auto_cmd, "pri": c.pri, "base": c.base_troops,
 		"fund": c.fund, "embargo": c.embargo, "fronts": c.fronts, "tblock": c.trade_block, "alliance": c.alliance, "leader": c.leader, "carriers": c.carriers, "car_x": c.carrier_extra, "shx": c.ship_extra, "car_cd": c.carrier_cd, "covert": c.covert_cd, "cab": c.cab, "elect": c.elect_turn, "mob": c.mob_until, "mobcd": c.mob_cd, "buffs": c.buffs, "trust": c.trust, "prop": c.prop}
 
@@ -1226,6 +1241,8 @@ static func from_dict(c, d: Dictionary) -> void:
 	c.tech = d.get("tech", 0.5)
 	Goods.from_dict(c, d.get("goods", {}))
 	c.draft = clampi(int(d.get("draft", 1)), 0, 2)
+	c.tax = clampi(int(d.get("tax", 1)), 0, 3)
+	MilRes.from_dict(c, d.get("mres", {}))
 	c.bloc = d.get("bloc", "us")
 	c.inv = d.get("inv", {}).duplicate()
 	c.orders = d.get("orders", []).duplicate(true)

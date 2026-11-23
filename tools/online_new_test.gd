@@ -31,6 +31,8 @@ func _init():
 	var me = cp.countries[tr]
 	Goods.set_policy(me, "oil", "hold")
 	Macro.set_draft(me, 2)
+	Macro.set_tax(me, 2)
+	load("res://scripts/milres.gd").set_research(me, "arty")
 	Macro.set_auto_buy(me, false)
 	Macro.set_pri(me, "tank", 2.0)
 	Macro.set_auto_cmd(me, true)
@@ -63,6 +65,8 @@ func _init():
 	var sc = g.countries[tr]
 	ck("sunucuda petrol politikası 'hold'", str(sc.goods.pol.get("oil", "")) == "hold")
 	ck("sunucuda askerlik düzeni zorunlu", sc.draft == 2)
+	ck("sunucuda vergi oranı yüksek", sc.tax == 2)
+	ck("sunucuda Ar-Ge dalı topçu", String(sc.mres.get("cur", "")) == "arty")
 	ck("sunucuda kaynak arandı (il işaretli)", g.provinces[pid].found != "" )
 	ck("sunucuda mal anlaşması (%s)" % dg, dg != "" and not (sc.goods.deals as Array).is_empty())
 	ck("sunucuda otomatik tedarik kapalı", sc.auto_buy == false)

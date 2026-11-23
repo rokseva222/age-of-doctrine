@@ -167,6 +167,8 @@ class Country:
 	var gold_delta := 0.0
 	var fund := 0.0                          # savunma fonu (M$): askerlik + silah alımı bu havuzdan
 	var draft := 1                           # askerlik düzeni: 0 gönüllü, 1 normal, 2 zorunlu
+	var tax := 1                             # vergi oranı: 0 düşük, 1 normal, 2 yüksek, 3 savaş vergisi
+	var mres: Dictionary = {}                # askeri Ar-Ge (milres.gd)
 	var goods: Dictionary = {}               # mal ekonomisi (scripts/goods.gd)
 	var tech := 0.5                          # silah teknolojisi düzeyi 0..1
 	var bloc := "us"

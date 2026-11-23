@@ -4,6 +4,7 @@ const Loc = preload("res://scripts/loc.gd")
 ## Politika paneli: bütçe, doktrin, isimli silah alımı, envanter, ticaret/ambargo ve cepheler.
 
 const Goods = preload("res://scripts/goods.gd")
+const MilRes = preload("res://scripts/milres.gd")
 const TK = preload("res://scripts/theme_kit.gd")
 const Macro = preload("res://scripts/macro.gd")
 const Eras = preload("res://scripts/eras.gd")
@@ -231,6 +232,23 @@ func _tab_budget() -> void:
 		dr.add_child(dbtn)
 	content.add_child(dr)
 	content.add_child(_wrap(Macro.DRAFT_INFO[c.draft], "small", TK.MUTED))
+	content.add_child(TK.hsep())
+	content.add_child(_kick("Vergi oranı"))
+	var txr := HBoxContainer.new()
+	txr.add_theme_constant_override("separation", 8)
+	for ti in Macro.TAX_NAMES.size():
+		var tl: int = ti
+		var tbtn := TK.button(Macro.TAX_NAMES[ti], ("danger" if ti == 3 else "gold") if c.tax == ti else "ghost", "", Vector2(0, 52), 13)
+		tbtn.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		tbtn.pressed.connect(func():
+			ui._click()
+			Macro.set_tax(c, tl)
+			render())
+		txr.add_child(tbtn)
+	content.add_child(txr)
+	content.add_child(_wrap(Macro.TAX_INFO[c.tax], "small", TK.MUTED))
+	content.add_child(TK.hsep())
+	_milres_section(c)
 	content.add_child(TK.hsep())
 	content.add_child(_kick("Durum göstergeleri"))
 	content.add_child(_stat_row([
@@ -1372,3 +1390,46 @@ func _focus_detail(id: String) -> void:
 	else:
 		v.add_child(_wrap(err, "small", TK.RED_TEXT))
 	content.add_child(v)
+
+
+## Askeri Ar-Ge: dal başına seviye çubuğu + "Araştır" düğmesi (aynı anda tek dal)
+func _milres_section(c) -> void:
+	MilRes.ensure(c)
+	content.add_child(_kick("Askeri Ar-Ge"))
+	var cur: String = String(c.mres["cur"])
+	var info: String = Loc.t("Aynı anda tek dal araştırılır. Seviye başına o sınıfın savaş gücü +%d%%. Eğitim payı hızlandırır.") % int(MilRes.PER_LV * 100.0)
+	if cur != "":
+		info += "\n" + Loc.t("Araştırılıyor: %s — haftalık %s") % [Loc.t(MilRes.NAMES[cur]), Macro.money(MilRes.weekly_cost(c))]
+	content.add_child(_wrap(info, "small", TK.MUTED))
+	for b in MilRes.BRANCHES:
+		var br: String = b
+		var lv: int = MilRes.level(c, b)
+		var row := HBoxContainer.new()
+		row.add_theme_constant_override("separation", 10)
+		var nm := TK.t(Loc.t(MilRes.NAMES[b]) + "  " + Loc.t("Sv. %d/%d") % [lv, MilRes.MAX_LV], "body", TK.TEXT)
+		nm.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		nm.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+		row.add_child(nm)
+		var bonus := TK.t("+%d%%" % int(round(MilRes.PER_LV * 100.0 * lv)), "mono", TK.GOLD)
+		bonus.custom_minimum_size = Vector2(64, 0)
+		bonus.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+		row.add_child(bonus)
+		var label: String
+		var kind: String
+		if lv >= MilRes.MAX_LV:
+			label = "En üst"
+			kind = "ghost"
+		elif cur == b:
+			label = Loc.t("Durdur") + "  %d%%" % int(100.0 * float(c.mres["prog"]) / MilRes.need(c, b))
+			kind = "gold"
+		else:
+			label = "Araştır"
+			kind = "blue"
+		var btn := TK.button(label, kind, Icons.pick("res_" + b, MilRes.ICONS[b]), Vector2(170, 48), 13)
+		btn.disabled = lv >= MilRes.MAX_LV
+		btn.pressed.connect(func():
+			ui._click()
+			MilRes.set_research(c, "" if String(c.mres["cur"]) == br else br)
+			render())
+		row.add_child(btn)
+		content.add_child(row)
