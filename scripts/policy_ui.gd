@@ -160,7 +160,8 @@ func _tab_budget() -> void:
 	content.add_child(_stat_row([
 		["Gelir", Macro.money(f["rev"]), TK.GOLD],
 		["Ordu maaşı", Macro.money(f["wages"])],
-		["Silah bakımı", Macro.money(f["upkeep"])],
+		["Silah bakımı", Macro.money(f["upkeep"] - float(f.get("salaries", 0.0)))],
+		["Kabine maaşları", Macro.money(float(f.get("salaries", 0.0)))],
 		["Net hazine", ("+" if net >= 0.0 else "") + Macro.money(net), TK.GREEN if net >= 0.0 else TK.RED_TEXT],
 	]))
 	if f.get("covered", 0.0) > 0.0:

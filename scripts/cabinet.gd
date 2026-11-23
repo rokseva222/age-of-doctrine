@@ -470,7 +470,8 @@ static func _base_minister(c, role: String, turn: int = 0) -> Array:
 
 const APPOINT := ["def", "for", "int", "fin", "hlt", "spy"]
 const Q_NAME := ["Acemi", "Kıdemli", "Usta"]
-const Q_COST := [0.08, 0.35, 1.0]               # haftalık net gelirin katı
+const Q_COST := [0.03, 0.10, 0.25]              # göreve başlama primi (haftalık net gelirin katı); asıl bedel haftalık maaş
+const Q_SAL := [0.002, 0.006, 0.014]             # haftalık maaş (gelirin payı)
 const ROLE_FX := {
 	"def": ["Ordu mevcudu büyümez", "Ordu mevcudu yavaş büyür", "Ordu mevcudu hızla büyür"],
 	"for": ["Komşular değişmez", "Komşular yavaşça yumuşar", "Komşular belirgin biçimde yumuşar"],
@@ -544,7 +545,7 @@ static func candidates(gs, role: String) -> Array:
 		if q == 0:
 			cost = minf(cost, c.gold)
 		out.append({"n": NameGen.person(NameGen.culture_of(c), key, fem), "f": fem, "q": q,
-			"bio": bios[absi(hash(key)) % bios.size()], "cost": cost, "afford": c.gold >= cost})
+			"bio": bios[absi(hash(key)) % bios.size()], "cost": cost, "sal": maxf(c.income, 1.0) * Q_SAL[q], "afford": c.gold >= cost})
 	return out
 
 
@@ -553,7 +554,8 @@ static func appoint(gs, role: String, cand: Dictionary) -> void:
 	var c = gs.countries[gs.player]
 	c.gold = maxf(0.0, c.gold - float(cand.cost))
 	var term: int = 52 * (3 + absi(hash(cand.n)) % 3)
-	c.cab[role] = {"n": cand.n, "f": cand.f, "q": int(cand.q), "since": gs.turn, "until": gs.turn + term, "real": false, "why": ""}
+	var sal: float = maxf(c.income, 1.0) * Q_SAL[clampi(int(cand.q), 0, 2)]
+	c.cab[role] = {"n": cand.n, "f": cand.f, "q": int(cand.q), "since": gs.turn, "until": gs.turn + term, "real": false, "why": "", "sal": sal}
 	gs.post_news("%s: %s göreve başladı. (%s)" % [role_title(role), cand.n, Q_NAME[int(cand.q)]], -1, "info", "badge")
 
 

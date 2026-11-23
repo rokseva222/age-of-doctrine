@@ -37,14 +37,14 @@ Kaynak: Eren Akgün, Taha, Emir Ali Ulusoy, Kemalist Halife, Furkancifci47. Duru
 1. **Ültimatom / vasallaştırma (Taha)** — ✅ ültimatom (toprak, haraç, geçiş izni; reddedilirse savaş). 🔵 vasallaştırma.
 2. **Teçhizat satın alırken "tier" yerine tank/top görselleri (Eren, 7 pixel-art tank görseli yolladı)** — Her silah modeline ayrı görsel (modele göre değişen). 🟡/🔵 görseller Eren'den alınıp ekipman ekranına bağlanabilir; lisans/kendi çizimi olduğunu Eren teyit etti ("kendim yaptım").
 3. **Silah satın alma miktarı (Eren)** — Tüfekte tek seferde 25 yerine 100; buna bağlı fiyat düzeni, belki küçük ucuzlatma. 🟡 (denge testi gerekir).
-4. **Kabine fiyatları (Eren)** — 200 milyona bakan çok pahalı; tek seferlik para yerine maaş olarak ülke gelirinden düşsün. Ayrıca "ucuzlatalım" (kullanıcı kararı). 🟡 ucuzlatma / 🔵 maaş sistemi.
+4. ✅ (maaş sistemi: atama primi düşük, haftalık maaş gelirden) **Kabine fiyatları (Eren)** — 200 milyona bakan çok pahalı; tek seferlik para yerine maaş olarak ülke gelirinden düşsün. Ayrıca "ucuzlatalım" (kullanıcı kararı). 🟡 ucuzlatma / 🔵 maaş sistemi.
 5. **Para birimi sistemi (Emir Ali)** — Her ülke kendi para birimiyle (ör. Türkiye TL), kurlar artıp azalsın (1 dolar = 50 TL gibi). Ayarlardan aç/kapa. Bugün test edilir, dengeliyse bu güncellemeye, değilse 2. güncellemeye (kullanıcı kararı). ❓ Emir'in notu: sadece gruptakilere ücretsiz olsun.
 6. **Gelir dengesi (Emir Ali)** — Türkiye çok vergi alıyor; ÇİN/ABD/Rusya/Hindistan'dan sonra en yüksek gelir Türkiye'de olsun. ❓ denge ve gerçekçilik.
 7. **Eventler (Taha)** — Oyuna daha çok event gelsin. 🔵
 8. **Odak ağacı (Taha)** — HoI4 tarzı odak ağacı; mobilde yok, "belki bir ilk olur". Emir: "Focus'lu 1. Dünya Savaşı" senaryosu. 🔵 büyük.
 9. **Asiler / devirme (Taha)** — İşgal edilen yerde halk isyanı zaten var; "bizi devirmeye çalışan asiler" istiyor. 🟡 mevcutla ilişkilendir (rejim darbe/isyan kartı), ❓ ayrıntı.
-10. **Meclis onayı (Kemalist Halife)** — Meclisin onaylamadığı eylemde istikrar, güven, seçim etkisi, propagandaya inanç düşebilir. Eren: demokrasiyi değiştirip sıkıyönetim ilan edebilmek. 🟡 savaş ilanı için onay ya da ceza (kullanıcıya sorulmuştu).
-11. **Yabancı ülkenin isyancılarına savaş ilan etme (Eren)** — 🔵 (isyancı gruplara destek/savaş).
+10. ✅ (savaş tezkeresi meclis oylaması, reddedilirse meclise rağmen savaş ya da sıkıyönetim) **Meclis onayı (Kemalist Halife)** — Meclisin onaylamadığı eylemde istikrar, güven, seçim etkisi, propagandaya inanç düşebilir. Eren: demokrasiyi değiştirip sıkıyönetim ilan edebilmek. 🟡 savaş ilanı için onay ya da ceza (kullanıcıya sorulmuştu).
+11. ✅ (isyancılara savaş aç / para-silah desteği) **Yabancı ülkenin isyancılarına savaş ilan etme (Eren)** — 🔵 (isyancı gruplara destek/savaş).
 12. **Hikâye modu (Emir Ali, Eren)** — Toplam 3 hikâye olsun, ortak fikirleşip 1-2 yenisi; ör. Kurtuluş Savaşı (Mondros'tan Lozan'a, Samsun'a çıkış), oyun sonunu değiştiren tercihli hikâye. Mevcut: kariyer modu gibi tek hikâye. 🔵
 13. **Hükümet/din değişikliği (Furkancifci47)** — rejim değişikliği ✅ (barış şartı), din 🔵 son sıra.
 14. **Geri bildirim** — Taha: "Oyun süper"; boğazlar özelliği beğenildi; "3.1 sürümü dehşet olacak" (beklenti yüksek). "Resmi tester olmayan arkadaşlar 17:00'ye kadar linkleri ve yönergeleri alacak" (kullanıcı).
@@ -55,12 +55,12 @@ Eren, "Önerilerinizi bir liste haline getirdim, üst gruba atacağım" dedi; Em
 
 16. **Sandbox modu (Furkancifci47, Emir Ali; kullanıcı: "bunu kesinlikle getireceğiz")** — Bannerlord tarzı serbest mod: hile yapmak, serbestçe test/deneyim; seçimler oyunun gidişatını etkilesin. Emir: "öncelik bu". 🔵 yüksek öncelik.
 17. **Savaşta toprak alma tartışması** — Taha: savaş sırasında ordunun gerçek zamanlı toprak alması; Furkan: AoH3 gibi önce işgal sonra barışta alma daha iyi; Emir: işgal etmeden savaş puanı yettiği kadar alma "büyük hata" olabilir (dengeye dikkat), ayarlardan açılıp kapanabilsin; Furkan: %90 savaş skoruyla puan yetince alma. ❓ mevcut sistem: işgal + puanla barış. Karar: değiştirme.
-18. **Müttefikten toprak alma / sadakat ödülü (Emir Ali)** — Müttefikten toprak alırken onun topraklarını işgal etmek gerekmesin, puan yettiği kadar. Koalisyon savaşına ya da müttefik daveti ile katkı yapınca toprak (sınır yoksa para / teçhizat) ödülü. 🟡/🔵 (ittifak yardımı ödülü).
+18. ✅ (müttefik barışında katkı puanı kadar sınır eyaleti, işgal şartı yok; sınır yoksa para) **Müttefikten toprak alma / sadakat ödülü (Emir Ali)** — Müttefikten toprak alırken onun topraklarını işgal etmek gerekmesin, puan yettiği kadar. Koalisyon savaşına ya da müttefik daveti ile katkı yapınca toprak (sınır yoksa para / teçhizat) ödülü. 🟡/🔵 (ittifak yardımı ödülü).
 19. **Agresif genişleme (Emir Ali)** — Dünya tepkisi/koalisyon zaten var ✅.
 20. **Savaş sisi + casus (Furkancifci47)** — Savaş sisi mevcut (ayarlardan Kapalı/Orta/Tam) ✅; "düşman ordusunu görmek hile olur, casus gelsin: ilişki/ittifak/savaş ekranına casus, tek turluk ordu ve para görme". 🔵 casus sistemi.
 21. **Senaryo oluşturucu (Eren)** — Toprakla oynama (eyalet sahipliği boyama), yıl ayarlama, çok seçenek. Mevcut: senaryo düzenleyici + AOD koduyla paylaşma (Eren içe aktarıp denemiş; toprak ayarı olmadığı için yarıda kalmış). Örnek: Suriye istilası senaryosu. 🔵 (toprak boyama + yıl).
-22. **Olaylar / "Zaman çizelgesi" (Eren, Emir)** — Başka bir oyundan örnek: yıl bazlı haber/olay çizelgesi ("Gelecek olayları simüle et"); Emir: Fatih Sultan Mehmet dönemi İstanbul'un fethinde gemileri karadan götürme olayı. 🔵 olay/hikâye içeriği.
-23. **Teslimiyet mantığı (Taha)** — "Biz veya karşı taraf teslim olsun". 🔵 (AI savaş yorgunluğu/teslim).
+22. ✅ (Hedefler → Zaman çizelgesi: senaryo/çağ olayları geçmiş+gelecek) **Olaylar / "Zaman çizelgesi" (Eren, Emir)** — Başka bir oyundan örnek: yıl bazlı haber/olay çizelgesi ("Gelecek olayları simüle et"); Emir: Fatih Sultan Mehmet dönemi İstanbul'un fethinde gemileri karadan götürme olayı. 🔵 olay/hikâye içeriği.
+23. ✅ (başkenti düşen ve topraklarının yarısını kaybeden YZ koşulsuz teslimiyet önerir) **Teslimiyet mantığı (Taha)** — "Biz veya karşı taraf teslim olsun". 🔵 (AI savaş yorgunluğu/teslim).
 24. **Silah miktarı + fiyat (Eren)**, **kabine maaş (Eren)**, **para birimi (Emir)** — 1. parçadaki 3, 4, 5. maddelerle aynı.
 
 ## 17:00 güncellemesi — yapılanlar (v1.1)

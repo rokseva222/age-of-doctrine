@@ -2465,6 +2465,76 @@ func player_aid_join(ally: int) -> String:
 	return ""
 
 
+## Yabancı isyancılar: isyanın hedefi olan ülke (ilk devlet düşmanı)
+func rebel_host(rid: int) -> int:
+	if rid < 0 or rid >= countries.size() or not countries[rid].is_rebel:
+		return -1
+	for e in countries[rid].enemies:
+		if e >= 0 and e < countries.size() and not countries[e].is_rebel:
+			return e
+	return -1
+
+
+var rebel_fund_cd: Dictionary = {}      # isyancı id -> yeniden destek verilebilecek hafta
+
+
+func rebel_fund_cost() -> float:
+	return maxf(15.0, countries[player].income * 2.0)
+
+
+## İsyancılara savaş aç: ev sahibi ülkeye yardım (ilişki +), meclis gerekmez
+func player_fight_rebels(rid: int) -> String:
+	var _cmd := Cmd.Scope.new(self, "player_fight_rebels", [rid])
+	if rid < 0 or rid >= countries.size() or not countries[rid].is_rebel or not countries[rid].alive:
+		return "Geçersiz hedef."
+	if at_war(player, rid):
+		return "Zaten savaştasınız."
+	var host: int = rebel_host(rid)
+	if host == player:
+		return "Geçersiz hedef."
+	declare_war(player, rid, true)
+	if host >= 0:
+		relation_add(player, host, 10.0)
+		post_news(Loc.t("%s, %s'deki isyancılara karşı savaşa girdi.") % [countries[player].name, countries[host].name], -1, "info")
+	state_changed.emit()
+	return ""
+
+
+## İsyancıları para ve silahla destekle: isyancılara takviye, ev sahibiyle ilişki düşer
+func player_fund_rebels(rid: int) -> String:
+	var _cmd := Cmd.Scope.new(self, "player_fund_rebels", [rid])
+	if rid < 0 or rid >= countries.size() or not countries[rid].is_rebel or not countries[rid].alive:
+		return "Geçersiz hedef."
+	if at_war(player, rid):
+		return "Savaştığın isyancıları destekleyemezsin."
+	var host: int = rebel_host(rid)
+	if host == player or host < 0:
+		return "Geçersiz hedef."
+	if int(rebel_fund_cd.get(rid, -1)) > turn:
+		return Loc.t("Yeni destek için %d hafta beklemelisin.") % (int(rebel_fund_cd[rid]) - turn)
+	var cost: float = rebel_fund_cost()
+	var me = countries[player]
+	if me.gold < cost:
+		return "Hazinede yeterli para yok."
+	me.gold -= cost
+	rebel_fund_cd[rid] = turn + 6
+	var reb = countries[rid]
+	reb.gold += cost * 0.6
+	var added := 0
+	for a in armies.values():
+		if a.owner == rid:
+			var n: int = clampi(int(cost * 60.0), 2000, 15000)
+			a.size += n
+			added += n
+			break
+	if not at_war(player, host):
+		relation_add(player, host, -15.0)
+	infamy = minf(100.0, infamy + 2.0)
+	post_news(Loc.t("Yabancı bir güç %s içindeki %s isyancılarını silahlandırıyor.") % [countries[host].name, reb.name], -1, "info")
+	state_changed.emit()
+	return ""
+
+
 func aid_gold_cost() -> float:
 	return maxf(20.0, countries[player].income * 3.0)
 
@@ -2940,6 +3010,40 @@ func _ally_spoils(winner: int, loser: int) -> void:
 	if not is_allied(player, winner) or not me.enemies.has(loser):
 		return
 	var wc = countries[winner]
+	# katkı ödülü: ortak düşmanla kendi savaşındaki puan kadar toprak (işgal şartı yok), sınır yoksa para
+	var wp = null
+	for w2 in wars:
+		if w2.involves(player) and w2.involves(loser):
+			wp = w2
+	if wp != null and countries[loser].alive:
+		var k: int = clampi(int(wp.score_of(player)) / 25, 0, 3)
+		var cands: Array = []
+		for p in provinces:
+			if p.owner != loser or p.is_capital:
+				continue
+			var near: bool = p.controller == player
+			if not near:
+				for nb in p.neighbors:
+					if provinces[nb].owner == player:
+						near = true
+						break
+			if near:
+				cands.append(p)
+		cands.sort_custom(func(x, y):
+			var cx: int = 1 if x.controller == player else 0
+			var cy: int = 1 if y.controller == player else 0
+			if cx != cy:
+				return cx > cy
+			return x.id < y.id)
+		if k > 0 and not cands.is_empty():
+			var annex: Array = []
+			for i in mini(k, cands.size()):
+				annex.append(cands[i].id)
+			if annex.size() < countries[loser].prov_owned:
+				finish_peace(wp, player, annex)
+				relation_add(player, winner, 8.0)
+				post_news(Loc.t("Ortak zafer: %s, savaştaki katkın için %d eyaletini sana bıraktı.") % [countries[loser].name, annex.size()], annex[0], "peace")
+				return
 	var amt: float = maxf(me.income, 1.0) * 5.0
 	amt = minf(amt, maxf(wc.gold, 0.0) * 0.5 + maxf(me.income, 1.0))
 	me.gold += amt
@@ -2996,6 +3100,24 @@ func _send_home(arm) -> void:
 
 func war_weariness_turns(w) -> int:
 	return turn - w.start
+
+
+## Teslimiyet: başkenti düşmüş ve topraklarının yarısından fazlasını kaybetmiş ülke koşulsuz teslim olmayı önerir
+func capitulating(cid: int) -> bool:
+	var c = countries[cid]
+	if c.capital < 0 or c.is_rebel:
+		return false
+	return provinces[c.capital].controller != cid and _lost_ratio(cid) > 0.5
+
+
+## Koşulsuz teslimiyet: oyuncunun işgal ettiği tüm eyaletler + tazminat + silahsızlandırma
+func accept_capitulation(w, foe: int) -> void:
+	var annex: Array = []
+	for pid in countries[foe].owned_ids:
+		if provinces[pid].controller == player:
+			annex.append(pid)
+	finish_peace(w, player, annex, ["reparations", "disarm"])
+	post_news(Loc.t("%s koşulsuz teslim oldu.") % countries[foe].name, -1, "peace")
 
 
 func _lost_ratio(cid: int) -> float:
@@ -3114,7 +3236,9 @@ func _war_diplomacy() -> void:
 			var theirs: int = w.score_of(player)
 			var dur: int = turn - w.start
 			var kind := ""
-			if _ai_wants_peace(ai, w) and rng.randf() < 0.3:
+			if capitulating(ai) and mine < theirs and rng.randf() < 0.45:
+				kind = "capitulate"
+			elif _ai_wants_peace(ai, w) and rng.randf() < 0.3:
 				kind = "loser_asks" if mine < theirs else "stalemate"
 			elif mine > theirs * 1.4 + 5 and dur >= 8 and rng.randf() < 0.12 and not peace_options(w, ai).is_empty():
 				kind = "winner_demands"

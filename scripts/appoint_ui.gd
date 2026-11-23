@@ -1,4 +1,5 @@
 extends RefCounted
+const Loc = preload("res://scripts/loc.gd")
 ## Bakan atama penceresi: 3 aday. En usta pahalı, en acemi ucuz (ama riskli), ortadaki orta.
 
 const TK = preload("res://scripts/theme_kit.gd")
@@ -64,6 +65,9 @@ static func open(ui, gs, role: String):
 		cl.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 		cl.add_theme_font_size_override("font_size", 24)
 		rv.add_child(cl)
+		var sl := TK.t(Loc.t("maaş %s/hafta") % Macro.money(float(cd.get("sal", 0.0))), "small", TK.MUTED)
+		sl.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+		rv.add_child(sl)
 		hb.add_child(rv)
 		TK.ignore_mouse(hb)
 		if not cd.afford:

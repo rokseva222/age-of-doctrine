@@ -553,6 +553,12 @@ static func calc(gs, c) -> Dictionary:
 	var pots: Dictionary = {}
 	for k in BUDGET_KEYS:
 		pots[k] = rev * float(c.budget[k]) / 100.0
+	var salaries := 0.0
+	if c.cab is Dictionary:
+		for r in c.cab:
+			if c.cab[r] is Dictionary:
+				salaries += float(c.cab[r].get("sal", 0.0))
+	upkeep += salaries
 	var forced: float = wages + upkeep
 	var fund_in: float = maxf(0.0, pots["mil"] - forced)
 	var need: float = maxf(0.0, forced - pots["mil"])
@@ -565,7 +571,7 @@ static func calc(gs, c) -> Dictionary:
 			need -= take
 			covered += take
 	var short: float = need
-	return {"rev": rev, "wages": wages, "upkeep": upkeep, "pots": pots, "forced": forced,
+	return {"rev": rev, "wages": wages, "upkeep": upkeep, "salaries": salaries, "pots": pots, "forced": forced,
 		"fund_in": fund_in, "short": short, "covered": covered, "net": pots["res"] - short, "trade": c.trade_income}
 
 

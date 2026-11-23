@@ -22,6 +22,7 @@ const Settings = preload("res://scripts/settings.gd")
 const Info = preload("res://scripts/info_sheets.gd")
 const UN = preload("res://scripts/un.gd")
 const Goals = preload("res://scripts/goals.gd")
+const Timeline = preload("res://scripts/timeline.gd")
 const Objectives = preload("res://scripts/objectives.gd")
 const GrandOp = preload("res://scripts/grand_op.gd")
 const IndepUI = preload("res://scripts/independence_ui.gd")
@@ -745,6 +746,14 @@ func show_province(pid: int, selected_army) -> void:
 		_abtn("Vasalı serbest bırak", "ghost", "x", "release_vassal", p.owner)
 	if not oc.is_rebel:
 		_abtn("Diplomasi", "blue", Icons.pick("diplomacy", "handshake"), "diplomacy", p.owner)
+	if p.controller >= 0 and p.controller != me and gs.countries[p.controller].is_rebel and gs.countries[p.controller].alive and gs.rebel_host(p.controller) != me:
+		if not gs.at_war(me, p.controller):
+			_abtn("İsyancılara savaş aç", "danger", Icons.pick("rebels_fight", "sword"), "fight_rebels", p.controller)
+			var fcd: int = int(gs.rebel_fund_cd.get(p.controller, -1)) - gs.turn
+			if fcd > 0:
+				_abtn(Loc.t("İsyancı desteği: %d hafta") % fcd, "", "hourglass", "none", 0, false)
+			else:
+				_abtn(Loc.t("İsyancıları destekle (%s)") % Macro.money(gs.rebel_fund_cost()), "ghost", Icons.pick("rebels_fund", "coins"), "fund_rebels", p.controller)
 	if p.owner == me and p.controller == me:
 		if p.bld != "":
 			_abtn("%s: %s" % [Loc.t(Model.bld_name(p.bld, Macro.era_on and Eras.family() == "pre")), Loc.t(Model.BLD[p.bld].info)], "", "coins", "none", 0, false)
@@ -1328,8 +1337,50 @@ func _objectives_block(sh) -> void:
 		sh.body.add_child(dlab)
 
 
+## Zaman çizelgesi: senaryo ve çağ olayları; geçmiş soluk, gelecek parlak, "şimdi" çizgisi
+func show_timeline() -> void:
+	var sh = _open_sheet("Zaman çizelgesi", 640, false, true, Names.date_string(gs.turn))
+	var items: Array = Timeline.list(gs)
+	var now_drawn := false
+	var shown := 0
+	var first_future := -1
+	for i in items.size():
+		if not bool(items[i]["done"]):
+			first_future = i
+			break
+	var start_i: int = maxi(0, (first_future if first_future >= 0 else items.size()) - 6)
+	for i in range(start_i, items.size()):
+		var it: Dictionary = items[i]
+		if not now_drawn and not bool(it["done"]):
+			now_drawn = true
+			var nl := TK.t(Loc.t("— Şimdi —") + "  " + Names.date_string(gs.turn), "kicker", TK.GOLD)
+			nl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+			sh.body.add_child(nl)
+		var row := VBoxContainer.new()
+		var dl := TK.t(String(it["date"]), "kicker", TK.MUTED if bool(it["done"]) else TK.GOLD)
+		row.add_child(dl)
+		var tl := Label.new()
+		tl.text = String(it["t"])
+		tl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		tl.add_theme_font_size_override("font_size", 16)
+		tl.add_theme_color_override("font_color", TK.MUTED if bool(it["done"]) else TK.TEXT)
+		row.add_child(tl)
+		sh.body.add_child(row)
+		shown += 1
+		if shown >= 60:
+			break
+	if items.is_empty():
+		sh.body.add_child(TK.t(Loc.t("Bu oyunda zamanlanmış olay yok."), "body", TK.MUTED))
+
+
 func show_goals() -> void:
 	var sh = _open_sheet("Hedefler ve başarımlar", 640, false, true, "İlerleme")
+	if gs != null and Timeline.available(gs):
+		var tlb := TK.button("Zaman çizelgesi", "blue", Icons.pick("timeline", "hourglass"), Vector2(0, 52), 16)
+		tlb.pressed.connect(func():
+			_click()
+			show_timeline())
+		sh.body.add_child(tlb)
 	_objectives_block(sh)
 	_missions_block(sh)
 	var nxt: Dictionary = Goals.next_tutorial()

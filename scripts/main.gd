@@ -2003,6 +2003,20 @@ func _on_ui_action(act: String, arg) -> void:
 						_refresh_selection(), "kind": "danger"},
 					{"text": "Vazgeç", "cb": func(): pass},
 				])
+		"fight_rebels":
+			var er1: String = gs.player_fight_rebels(arg)
+			ui.toast(er1 if er1 != "" else Loc.t("İsyancılara savaş açıldı; ev sahibi ülke minnettar."))
+			sfx.play("error" if er1 != "" else "war", 0.7)
+			_refresh_selection()
+		"fund_rebels":
+			var rid: int = arg
+			var host: int = gs.rebel_host(rid)
+			ui.show_dialog(Loc.t("İsyancıları destekle"), Loc.t("%s isyancılarına %s değerinde para ve silah gönderilsin mi? İsyancılar takviye alır; %s ile ilişkin 15 düşer ve dünya tepkisi artar.") % [gs.countries[rid].name, Macro.money(gs.rebel_fund_cost()), gs.countries[host].name if host >= 0 else "?"], [
+				{"text": "Destekle", "kind": "danger", "cb": func():
+					var er2: String = gs.player_fund_rebels(rid)
+					ui.toast(er2 if er2 != "" else Loc.t("İsyancılara destek gönderildi."))
+					_refresh_selection()},
+				{"text": "Vazgeç", "cb": func(): pass}])
 		"aid_gold":
 			var cost: float = gs.aid_gold_cost()
 			ui.show_dialog("Mali yardım", "%s altını %s devletine göndermek ister misin? (Müttefikin %s alır, istikrarı artar, sana minnet duyar.)" % [Macro.money(cost), gs.countries[arg].name, Macro.money(cost * 0.8)], [
@@ -2188,6 +2202,16 @@ func _on_peace_proposal(w, from_country: int, kind: String) -> void:
 	_on_speed_changed(0)
 	var cname: String = gs.countries[from_country].name
 	match kind:
+		"capitulate":
+			var occ := 0
+			for pid in gs.countries[from_country].owned_ids:
+				if gs.provinces[pid].controller == gs.player:
+					occ += 1
+			ui.show_dialog(Loc.t("Teslimiyet"), Loc.t("%s başkentini kaybetti ve koşulsuz teslim olmayı öneriyor.\nKabul edersen işgal ettiğin %d eyaletin tamamı sana geçer, savaş tazminatı alırsın ve orduları yarıya indirilir.") % [cname, occ], [
+				{"text": "Teslimiyeti kabul et", "cb": func(): gs.accept_capitulation(w, from_country), "kind": "good"},
+				{"text": "Masaya otur", "cb": func(): _open_deal(w, false)},
+				{"text": "Reddet", "cb": func(): gs.cancel_proposal(), "kind": "danger"},
+			])
 		"loser_asks":
 			ui.show_dialog("Barış teklifi", "%s barış istiyor. Savaş puanların: sen %d, onlar %d.\nMasaya oturup eyalet alabilirsin." % [cname, w.score_of(gs.player), w.score_of(from_country)], [
 				{"text": "Masaya otur", "cb": func(): _open_deal(w, false), "kind": "good"},
