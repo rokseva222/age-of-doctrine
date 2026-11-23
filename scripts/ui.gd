@@ -52,7 +52,7 @@ const TERM_ICONS := {"reparations": ["reparations", "coins"], "disarm": ["disarm
 ## BM önerge ikonları: [yeni ikon adı, yedek]
 const UN_ICONS := {"ceasefire": ["ceasefire", "dove"], "rebuild": ["rebuild", "home"], "aid": ["aid", "coins"], "peace_keep": ["un_peacekeeper", "shield"],
 	"develop": ["develop", "factory"], "guarantee": ["guarantee", "shield_star"], "sanction": ["sanction", "lock"], "embargo": ["embargo", "lock"],
-	"probe": ["probe", "eye"], "disarm": ["disarm", "rifle"], "attack": ["war_declared", "swords"]}
+	"probe": ["probe", "eye"], "disarm": ["disarm", "rifle"], "attack": ["war_declared", "swords"], "restore": ["formation", "flag"]}
 
 const BAR_H := 80.0
 const TICK_H := 52.0
@@ -2045,7 +2045,7 @@ func show_world_panel(tab: int = 0) -> void:
 			var b := TK.row_button(Color(0, 0, 0, 0), TK.LINE, 92)
 			var hb := TK.row_layout(b, 14)
 			var uic := TK.IconView.new()
-			uic.icon = Icons.pick(UN_ICONS[k][0], UN_ICONS[k][1])
+			uic.icon = Icons.pick(UN_ICONS.get(k, ["", "flag"])[0], UN_ICONS.get(k, ["", "flag"])[1])
 			uic.color = TK.TEXT
 			uic.custom_minimum_size = Vector2(44, 44)
 			uic.size_flags_vertical = Control.SIZE_SHRINK_CENTER

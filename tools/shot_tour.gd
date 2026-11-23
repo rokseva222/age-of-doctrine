@@ -55,9 +55,10 @@ func _init() -> void:
 	main.ui.show_goals()
 	await _shot("hedefler")
 	await _close()
-	main.ui.show_world_panel(0)
-	await _shot("dunya")
-	await _close()
+	for wt in [0, 1, 4]:
+		main.ui.show_world_panel(wt)
+		await _shot("dunya_%d" % wt)
+		await _close()
 	for i in 6:
 		main.gs.end_turn()
 	main.ui.refresh_top()
