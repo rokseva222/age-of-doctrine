@@ -34,7 +34,7 @@ Durum: ✅ yapıldı · 🔧 sırada · 💡 öneri/tartışılacak · ❓ soru 
 ## Grup önerileri — 1. parça (17 Kasım, 15:12–15:18 ekran görüntüleri)
 Kaynak: Eren Akgün, Taha, Emir Ali Ulusoy, Kemalist Halife, Furkancifci47. Durum: ✅ yapıldı · 🟡 17:00'ye alınabilir (küçük) · 🔵 sonraki sürüm (büyük) · ❓ karar gerek
 
-1. **Ültimatom / vasallaştırma (Taha)** — ✅ ültimatom (toprak, haraç, geçiş izni; reddedilirse savaş). 🔵 vasallaştırma.
+1. **Ültimatom / vasallaştırma (Taha)** — ✅ ültimatom (toprak, haraç, geçiş izni; reddedilirse savaş). ✅ vasallaştırma (barış şartı: Vasal devlet; ilhak/serbest bırakma Diplomasi'de).
 2. **Teçhizat satın alırken "tier" yerine tank/top görselleri (Eren, 7 pixel-art tank görseli yolladı)** — Her silah modeline ayrı görsel (modele göre değişen). 🟡/🔵 görseller Eren'den alınıp ekipman ekranına bağlanabilir; lisans/kendi çizimi olduğunu Eren teyit etti ("kendim yaptım").
 3. ✅ **Silah satın alma miktarı (Eren)** — (ordu büyüklüğüne göre adım ölçeği: Macro.step_scale 1→100) — Tüfekte tek seferde 25 yerine 100; buna bağlı fiyat düzeni, belki küçük ucuzlatma. 🟡 (denge testi gerekir).
 4. ✅ (maaş sistemi: atama primi düşük, haftalık maaş gelirden) **Kabine fiyatları (Eren)** — 200 milyona bakan çok pahalı; tek seferlik para yerine maaş olarak ülke gelirinden düşsün. Ayrıca "ucuzlatalım" (kullanıcı kararı). 🟡 ucuzlatma / 🔵 maaş sistemi.

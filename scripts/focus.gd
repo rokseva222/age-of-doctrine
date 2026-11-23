@@ -81,6 +81,21 @@ const BASE_TREE := {
 
 ## Ülkeye özel ulusal dal (yalnızca ilgili ülke görür): ad TR/EN, açıklama TR/EN, etkiler, hafta, önkoşul (aynı ülkenin kaçıncı odağı)
 const NAT := {
+	"Italy": [
+		["Akdeniz Hâkimiyeti", "Mediterranean Mastery", "Donanma ve limanlar Akdeniz'i bir göle çevirir.", "Navy and ports turn the Mediterranean into a lake.", {"income": 4, "att": 3}, 8, []],
+		["Alp Cepheleri", "Alpine Fronts", "Dağ birlikleri ve tahkimatlar sınırı kapatır.", "Mountain troops and fortifications seal the border.", {"def": 5, "fund": 4}, 8, []],
+		["Yeni Roma", "New Rome", "Sanayi, ordu ve prestij birlikte yükselir.", "Industry, army and prestige rise together.", {"ind": 8, "att": 3, "rel": 3}, 12, [0, 1]],
+	],
+	"Austria": [
+		["Çok Uluslu Ordu", "Multinational Army", "Farklı halkların alayları tek komuta altında.", "Regiments of many peoples under one command.", {"recruit": 10, "def": 3}, 8, []],
+		["Tuna Ticaret Ağı", "Danube Trade Network", "Tuna boyu ticaret ve demiryolu gelir getirir.", "Danube trade and railways bring revenue.", {"income": 5, "rel": 3}, 8, []],
+		["Habsburg Dengesi", "Habsburg Balance", "İç huzur ve ittifaklar imparatorluğu ayakta tutar.", "Internal calm and alliances hold the empire together.", {"def": 4, "rel": 4, "gold": 3}, 12, [0, 1]],
+	],
+	"Greece": [
+		["Büyük İdea", "Megali Idea", "Ege'nin iki yakasını birleştirme hedefi orduyu harekete geçirir.", "The goal of uniting both shores of the Aegean mobilizes the army.", {"att": 4, "recruit": 8}, 8, []],
+		["Deniz Ticareti", "Maritime Trade", "Armatörler ve limanlar gelir getirir.", "Shipowners and ports bring revenue.", {"income": 5}, 8, []],
+		["Ege Hâkimiyeti", "Aegean Supremacy", "Donanma ve ittifaklar Ege'yi kontrol eder.", "Navy and alliances control the Aegean.", {"def": 4, "rel": 4, "fund": 4}, 12, [0, 1]],
+	],
 	"Turkey": [
 		["Millî Savunma Sanayii", "National Defense Industry", "Yerli silah üretimi savunma fonunu ve orduyu güçlendirir.", "Domestic arms production boosts the defense fund and the army.", {"fund": 6, "att": 3}, 8, []],
 		["Boğazlar ve Enerji Koridoru", "Straits and Energy Corridor", "Boğazların ve boru hatlarının kontrolü gelir getirir.", "Control of the straits and pipelines brings revenue.", {"income": 4, "rel": 3}, 8, []],
@@ -137,7 +152,7 @@ const NAT := {
 		["Hızlı Seferberlik", "Rapid Mobilization", "Yedekler birkaç günde hazır.", "Reserves ready within days.", {"recruit": 20, "att": 3}, 12, [0, 1]],
 	],
 }
-const NAT_ISO := {"Turkey": "tr", "United States of America": "us", "China": "cn", "Russia": "ru", "India": "in", "Germany": "de", "France": "fr", "United Kingdom": "gb", "Japan": "jp", "Iran": "ir", "Israel": "il"}
+const NAT_ISO := {"Turkey": "tr", "United States of America": "us", "China": "cn", "Russia": "ru", "India": "in", "Germany": "de", "France": "fr", "United Kingdom": "gb", "Japan": "jp", "Iran": "ir", "Israel": "il", "Italy": "it", "Austria": "at", "Greece": "gr"}
 
 
 static var TREE: Dictionary = _build_tree()
