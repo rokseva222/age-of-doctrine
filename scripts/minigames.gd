@@ -1,4 +1,5 @@
 extends RefCounted
+const Loc = preload("res://scripts/loc.gd")
 ## Etkileşimli mini oyunlar (tarihî ağırlıkta, kısa). Şimdilik: Düello (tek dövüş / meydan okuma).
 ## Kullanım: duel(ui, {foe, style, skill, title, intro, win_text, lose_text}, func(result: String, info: Dictionary): ...)
 ## result: "win" | "lose" | "draw" | "yield"
@@ -486,7 +487,7 @@ class NegView extends Control:
 			r -= w[i]
 		var acc: float = clampf(0.55 + skill * 0.3, 0.45, 0.88)
 		var shown: int = stance if rng.randf() < acc else (stance + 1 + rng.randi() % 2) % 3
-		tell_lbl.text = "Karşı tarafı izle: " + String(NEG_TELLS[shown])
+		tell_lbl.text = Loc.t("Karşı tarafı izle: ") + Loc.t(String(NEG_TELLS[shown]))
 		info_lbl.text = ""
 		for b in btns:
 			b.disabled = false

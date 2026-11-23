@@ -1,4 +1,5 @@
 extends RefCounted
+const Loc = preload("res://scripts/loc.gd")
 ## Diplomasi ekranı: ülkelerle ilişki kademeleri, ilişki geliştirme (elçi / hediye / anlaşma), ittifak, geçiş izni, barış.
 
 const TK = preload("res://scripts/theme_kit.gd")
@@ -284,7 +285,7 @@ static func _detail(ui, gs, cid: int) -> void:
 		box.add_child(_act_btn(ui, "İttifakı boz", "ghost", "x", func(): ui.action.emit("break_alliance", cid), sh))
 	else:
 		var need: float = gs.RELATION_ALLIANCE_MIN
-		var al := TK.button("İttifak teklif et" + ("" if r >= need else "  (en az %d ilişki)" % int(need)), "blue", "handshake", Vector2(0, 56), 17)
+		var al := TK.button(Loc.t("İttifak teklif et") + ("" if r >= need else Loc.t("  (en az %d ilişki)") % int(need)), "blue", "handshake", Vector2(0, 56), 17)
 		al.disabled = r < need
 		al.pressed.connect(func():
 			ui._click()

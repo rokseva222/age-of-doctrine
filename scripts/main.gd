@@ -2325,7 +2325,7 @@ func _on_moment_card() -> void:
 				ds.append("• %s: %s" % [String(o2.t), String(o2.d)])
 		if not ds.is_empty():
 			body += "\n\n" + "\n".join(ds)
-	ui.show_dialog("TARİHÎ AN  /  " + String(c.title), body, btns, String(c.scene), String(c.icon))
+	ui.show_dialog(Loc.t("TARİHÎ AN") + "  /  " + String(c.title), body, btns, String(c.scene), String(c.icon))
 
 
 func _on_career_card() -> void:
