@@ -279,6 +279,8 @@ static func sync_country(gs, c, by_owner: Dictionary, fresh: bool = false) -> vo
 			var half: float = floor(need * 0.5)
 			lst.append(new_fleet(gs, c.id, home, "carrier", need - half))
 			lst.append(new_fleet(gs, c.id, home, "carrier", half))
+		elif lst.size() >= MAX_FLEETS and _any_kind(lst, "carrier") != null:
+			_any_kind(lst, "carrier").size += need   # sınır dolu: mevcut gruba kat
 		else:
 			lst.append(new_fleet(gs, c.id, home, "carrier", need))
 	elif shr_c:
@@ -294,6 +296,8 @@ static func sync_country(gs, c, by_owner: Dictionary, fresh: bool = false) -> vo
 		elif fresh and need2 >= 80.0 and _count_kind(lst, "carrier") < 2:
 			lst.append(new_fleet(gs, c.id, sub_zone, "sub", need2 * 0.5))
 			lst.append(new_fleet(gs, c.id, home, "sub", need2 * 0.5))
+		elif lst.size() >= MAX_FLEETS and _any_kind(lst, "sub") != null:
+			_any_kind(lst, "sub").size += need2
 		else:
 			lst.append(new_fleet(gs, c.id, sub_zone, "sub", need2))
 	elif shr_s:
@@ -317,6 +321,13 @@ static func sync_country(gs, c, by_owner: Dictionary, fresh: bool = false) -> vo
 				lst.append(new_fleet(gs, c.id, home, "surface", add))
 	elif shr_f:
 		_scale_kind(gs, lst, "surface", surf / cur_f if surf > 0.0 else 0.0)
+
+
+static func _any_kind(lst: Array, kind: String):
+	for f in lst:
+		if f.kind == kind and f.cargo == 0:
+			return f
+	return null
 
 
 static func _count_kind(lst: Array, kind: String) -> int:

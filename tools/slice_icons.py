@@ -59,7 +59,7 @@ if "--blobs" in opts:
     big = [(objs[i], i + 1) for i in range(n) if sizes[i] > minpx]
     rowh = max(1, int(np.median([sl[0].stop - sl[0].start for sl, _ in big]) * 0.6)) if big else 1
     big.sort(key=lambda t: (round(((t[0][0].start + t[0][0].stop) / 2) / rowh), t[0][1].start))
-    names = {"pack16": PACK16, "pack18": PACK18, "pack19": PACK19, "pack20": PACK20, "pack21": PACK21}.get(opts.get("--set", ""), allnames)
+    names = {"pack16": PACK16, "pack18": PACK18, "pack19": PACK19, "pack20": PACK20, "pack21": PACK21, "pack22": PACK22}.get(opts.get("--set", ""), allnames)
     out = os.path.join(root, "assets/icons"); os.makedirs(out, exist_ok=True)
     cnt = 0
     for (sl, i), name in zip(big, names[start:]):
