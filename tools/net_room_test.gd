@@ -47,7 +47,7 @@ func _init() -> void:
 			foe = nb
 			break
 	chk(foe >= 0, "komşu hedef var")
-	var r1: String = c0.player_declare_war(foe)
+	var r1: String = c0.player_declare_war(foe, true)
 	chk(r1 == "", "istemci savaş ilanı: %s" % r1)
 	var old_b: int = int(c0.countries[ids[0]].budget.get("army", 0)) if c0.countries[ids[0]].budget.has("army") else -1
 	Macro.set_budget(c0.countries[ids[0]], "army", 30)
@@ -95,7 +95,7 @@ func _init() -> void:
 			foe1 = nb
 			break
 	if foe1 >= 0:
-		c1.player_declare_war(foe1)
+		c1.player_declare_war(foe1, true)
 	# gönder
 	chk(room.submit(ids[0], c0.cmd_log), "submit 0")
 	chk(room.submit(ids[1], c1.cmd_log), "submit 1")

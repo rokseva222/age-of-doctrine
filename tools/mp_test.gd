@@ -79,7 +79,7 @@ func _init() -> void:
 	chk(o.is_allied(a, b) and o.offers.is_empty(), "kabul → müttefik")
 	o.switch_player(a)
 	o.break_alliance_for_test(a, b) if o.has_method("break_alliance_for_test") else null
-	o.player_declare_war(picks[2])
+	o.player_declare_war(picks[2], true)
 	var res: Dictionary = o.player_request_peace(picks[2])
 	chk(not res.ok and o.offers.size() == 1, "barış teklifi insana gitti: %s" % str(res))
 	o.switch_player(picks[2])
