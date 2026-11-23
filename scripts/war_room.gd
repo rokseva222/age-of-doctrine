@@ -6,6 +6,7 @@ extends RefCounted
 
 const Loc = preload("res://scripts/loc.gd")
 const Macro = preload("res://scripts/macro.gd")
+const Cmd = preload("res://scripts/cmd.gd")
 
 const MAX_PHASES := 6
 const REFUND := 0.15
@@ -30,6 +31,8 @@ static func ensure(gs) -> void:
 
 
 static func active(gs) -> bool:
+	if gs.player < 0:
+		return false
 	ensure(gs)
 	return bool(gs.wroom.on)
 
@@ -50,6 +53,9 @@ static func reset(gs) -> void:
 
 
 static func new_plan(gs, enemy: int) -> void:
+	var _cmd := Cmd.Scope.new(gs, "WarRoom.new_plan", [enemy])
+	if gs.player < 0 or enemy < 0 or enemy >= gs.countries.size():
+		return
 	reset(gs)
 	gs.wroom["enemy"] = enemy
 	gs.wroom["name"] = _t("Harekât: %s", "Operation: %s") % gs.countries[enemy].name
@@ -99,7 +105,12 @@ static func odds(gs, pid: int, op: String, frac: float) -> float:
 
 
 static func add_phase(gs, pid: int, op: String, frac: float, delay: int) -> String:
+	var _cmd := Cmd.Scope.new(gs, "WarRoom.add_phase", [pid, op, frac, delay])
+	if gs.player < 0 or pid < 0 or pid >= gs.provinces.size():
+		return "Geçersiz eyalet."
 	ensure(gs)
+	frac = clampf(frac, 0.1, 1.0)
+	delay = clampi(delay, 0, 12)
 	if gs.wroom.phases.size() >= MAX_PHASES:
 		return "En fazla 6 aşama eklenebilir."
 	for ph in gs.wroom.phases:
@@ -110,11 +121,19 @@ static func add_phase(gs, pid: int, op: String, frac: float, delay: int) -> Stri
 
 
 static func remove_phase(gs, i: int) -> void:
+	var _cmd := Cmd.Scope.new(gs, "WarRoom.remove_phase", [i])
+	if gs.player < 0:
+		return
+	ensure(gs)
 	if i >= 0 and i < gs.wroom.phases.size() and not bool(gs.wroom.on):
 		gs.wroom.phases.remove_at(i)
 
 
 static func move_phase(gs, i: int, d: int) -> void:
+	var _cmd := Cmd.Scope.new(gs, "WarRoom.move_phase", [i, d])
+	if gs.player < 0:
+		return
+	ensure(gs)
 	var ph: Array = gs.wroom.phases
 	var j: int = i + d
 	if bool(gs.wroom.on) or i < 0 or j < 0 or i >= ph.size() or j >= ph.size():
@@ -156,6 +175,9 @@ static func suggest(gs, enemy: int) -> Array:
 
 
 static func start(gs) -> String:
+	var _cmd := Cmd.Scope.new(gs, "WarRoom.start", [])
+	if gs.player < 0:
+		return "Oyuncu yok."
 	ensure(gs)
 	var w: Dictionary = gs.wroom
 	if w.phases.is_empty():
@@ -174,6 +196,9 @@ static func start(gs) -> String:
 
 
 static func cancel(gs) -> void:
+	var _cmd := Cmd.Scope.new(gs, "WarRoom.cancel", [])
+	if gs.player < 0:
+		return
 	ensure(gs)
 	if bool(gs.wroom.on):
 		gs.post_news(_t("Savaş Odası: plan iptal edildi.", "War Room: the plan was cancelled."), -1, "info")
@@ -222,6 +247,8 @@ static func _finish_phase(gs, ph: Dictionary, ok: bool, why: String = "") -> voi
 
 ## Her tur
 static func tick(gs) -> void:
+	if gs.player < 0:
+		return
 	ensure(gs)
 	var w: Dictionary = gs.wroom
 	if not bool(w.on) or gs.player < 0:

@@ -6,6 +6,7 @@ const Cmd = preload("res://scripts/cmd.gd")
 const Goods = preload("res://scripts/goods.gd")
 const Macro = preload("res://scripts/macro.gd")
 const Fleets = preload("res://scripts/fleets.gd")
+const WarRoom = preload("res://scripts/war_room.gd")
 var fails := 0
 func ck(n: String, ok: bool) -> void:
 	print(("OK   " if ok else "HATA ") + n)
@@ -43,6 +44,17 @@ func _init():
 			dg = gd
 			print("anlaşma: ", gd, " <- ", cp.countries[int(sup[0][0])].name, " sonuç='", Goods.make_deal(cp, me, gd, int(sup[0][0])), "'")
 			break
+	# Savaş Odası planı (oyuncuya özel, sunucuda insan başına saklanır)
+	var gr := _id(cp, "Greece")
+	WarRoom.new_plan(cp, gr)
+	var cands: Array = WarRoom.candidates(cp, gr, 4)
+	var wr_add := ""
+	if not cands.is_empty():
+		var c0 = cands[0]
+		var pid0: int = int(c0[0]) if c0 is Array else int(c0)
+		var ops: Array = WarRoom.ops_for(cp, pid0)
+		wr_add = WarRoom.add_phase(cp, pid0, String(ops[0]) if not ops.is_empty() else "attack", 0.5, 0)
+	print("savaş odası aşama: '", wr_add, "'")
 	print("komutlar: ", cp.cmd_log.map(func(x): return x.n))
 	room.submit(tr, cp.cmd_log); room.set_ready(tr, true)
 	room.submit(de, []); room.set_ready(de, true)
@@ -56,6 +68,9 @@ func _init():
 	ck("sunucuda otomatik tedarik kapalı", sc.auto_buy == false)
 	ck("sunucuda tank önceliği yüksek", float(sc.pri.get("tank", 1.0)) == 2.0)
 	ck("sunucuda otomatik komuta açık", sc.auto_cmd == true)
+	var wb: Dictionary = g.wroom_by.get(tr, {})
+	ck("sunucuda Savaş Odası planı Türkiye'ye ait (Yunanistan)", int(wb.get("enemy", -1)) == gr)
+	ck("Savaş Odası planı Almanya'ya karışmadı", int((g.wroom_by.get(de, {}) as Dictionary).get("enemy", -1)) != gr)
 	ck("reddedilen komut yok", int(res.rejected) == 0)
 	print("HATA SAYISI=", fails)
 	quit()

@@ -21,7 +21,7 @@ const MODULES := {
 	"Macro": "res://scripts/macro.gd", "UN": "res://scripts/un.gd", "Focus": "res://scripts/focus.gd",
 	"Politics": "res://scripts/politics.gd", "Carriers": "res://scripts/carriers.gd", "Chokepoints": "res://scripts/chokepoints.gd",
 	"Formables": "res://scripts/formables.gd", "GrandOp": "res://scripts/grand_op.gd", "Ultimatum": "res://scripts/ultimatum.gd",
-	"Propaganda": "res://scripts/propaganda.gd", "Faith": "res://scripts/faith.gd", "Goods": "res://scripts/goods.gd",
+	"Propaganda": "res://scripts/propaganda.gd", "Faith": "res://scripts/faith.gd", "Goods": "res://scripts/goods.gd", "WarRoom": "res://scripts/war_room.gd",
 }
 
 
@@ -117,7 +117,7 @@ const MODULE_CMDS := ["Air.player_strike", "Air.rebase", "Air.airlift", "Air.ren
 	"Fleets.player_torpedo", "Fleets.embark", "Fleets.debark", "Fleets.rename", "Fleets.set_flag", "Fleets.set_stance",
 	"Fleets.set_escort", "Fleets.split", "Focus.start", "Focus.cancel", "Formables.form", "GrandOp.launch",
 	"Macro.set_front", "Macro.set_budget", "Macro.set_draft", "Macro.set_auto_buy", "Macro.set_pri", "Macro.set_auto_cmd", "Goods.set_policy", "Goods.make_deal", "Goods.cancel_deal", "Macro.set_doctrine", "Macro.mobilize", "Macro.buy",
-	"Politics.choose", "Politics.do_action", "Ultimatum.deliver", "UN.propose", "UN.player_vote"]
+	"Politics.choose", "Politics.do_action", "WarRoom.new_plan", "WarRoom.add_phase", "WarRoom.remove_phase", "WarRoom.move_phase", "WarRoom.start", "WarRoom.cancel", "Ultimatum.deliver", "UN.propose", "UN.player_vote"]
 const OBJ_PARAMS := ["a", "f", "w", "army", "fleet", "wing", "fid", "c", "me", "country_obj"]
 static var _sigs: Dictionary = {}
 

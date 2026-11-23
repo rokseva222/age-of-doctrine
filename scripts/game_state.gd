@@ -112,7 +112,17 @@ var indep: Dictionary = {}               # Bağımsızlık Yolu kipi durumu (ind
 var career: Dictionary = {}              # Hikâye Modu (kariyer) durumu (career.gd)
 var moment_pending: Dictionary = {}      # bekleyen tarihî an kartı (era_moments.gd)
 var moment_flags: Dictionary = {}        # tarihî an bayrakları ve ateşlenenler
-var wroom: Dictionary = {}               # Savaş Odası planı (war_room.gd)
+var wroom: Dictionary:                   # Savaş Odası planı (war_room.gd); her insan oyuncunun kendisi (çevrimiçi)
+	get:
+		if player < 0:
+			return {}
+		if not wroom_by.has(player):
+			wroom_by[player] = {}
+		return wroom_by[player]
+	set(v):
+		if player >= 0:
+			wroom_by[player] = v
+var wroom_by: Dictionary = {}
 var pol: Dictionary = {}                 # siyasi sistem durumu (politics.gd): rejimler, YZ seçimleri, kartlar
 var daily: Dictionary = {}               # Günlük Meydan Okuma durumu (daily.gd)
 var chokes: Dictionary = {}              # stratejik geçitler: {id: {mode, ctrl, cd}} (chokepoints.gd)
@@ -3206,7 +3216,7 @@ func end_turn() -> void:
 	t = _tp("r_Daily_tick", t)
 	Politics.tick(self)
 	t = _tp("r_Politics_tick", t)
-	WarRoom.tick(self)
+	for_each_human(func(): WarRoom.tick(self))
 	t = _tp("r_WarRoom_tick", t)
 	Objectives.tick(self)
 	t = _tp("r_Objectives_tick", t)
@@ -4985,7 +4995,7 @@ func to_dict() -> Dictionary:
 		"v": 3, "seed": seed_value, "base": base_country_count,
 		"turn": turn, "player": player, "humans": humans, "hs_i": hs_i, "offers": offers.duplicate(true), "next_offer_id": next_offer_id, "next_army_id": next_army_id, "victory": victory_declared,
 		"rng_state": rng.state, "rebel_names": rebel_name_count, "merc_names": merc_names, "stats": stats,
-		"difficulty": difficulty, "blocs": blocs, "next_bloc": next_bloc_id, "cold": cold, "sea_camp": sea_campaign.keys(), "crisis": crisis, "crisis_end": crisis_last_end, "scn": scn, "era": Eras.current, "nuke_cd_by": nuke_cd_by.duplicate(true), "gas_cd_by": gas_cd_by.duplicate(true), "grand_by": grand_by.duplicate(true), "spy_cd_by": spy_cd_by.duplicate(true), "focus_by": focus_by.duplicate(true), "chokes": chokes, "daily": daily, "pol": pol, "faith": faith,  "syear": Names.start_year, "wroom": wroom, "indep": indep, "career": career, "moment_p": moment_pending, "moment_f": moment_flags, "infamy_by": infamy_by.duplicate(true), "infamy_w_by": infamy_warned_by.duplicate(true), "un_cd_by": un_cd_by.duplicate(true), "un_log": un_log, "aid": aid, "trade_by": trade_by.duplicate(true), "vassals": vassals, "custom_ovr": custom_ovr,
+		"difficulty": difficulty, "blocs": blocs, "next_bloc": next_bloc_id, "cold": cold, "sea_camp": sea_campaign.keys(), "crisis": crisis, "crisis_end": crisis_last_end, "scn": scn, "era": Eras.current, "nuke_cd_by": nuke_cd_by.duplicate(true), "gas_cd_by": gas_cd_by.duplicate(true), "grand_by": grand_by.duplicate(true), "spy_cd_by": spy_cd_by.duplicate(true), "focus_by": focus_by.duplicate(true), "chokes": chokes, "daily": daily, "pol": pol, "faith": faith,  "syear": Names.start_year, "wroom_by": wroom_by.duplicate(true), "indep": indep, "career": career, "moment_p": moment_pending, "moment_f": moment_flags, "infamy_by": infamy_by.duplicate(true), "infamy_w_by": infamy_warned_by.duplicate(true), "un_cd_by": un_cd_by.duplicate(true), "un_log": un_log, "aid": aid, "trade_by": trade_by.duplicate(true), "vassals": vassals, "custom_ovr": custom_ovr,
 	}
 	Fleets.ensure(self)
 	d["fleets"] = Fleets.to_array(self)
@@ -5169,7 +5179,9 @@ func from_dict(d: Dictionary) -> bool:
 	faith = d.get("faith", {}).duplicate(true)
 	if era_id == "" and d.has("syear"):
 		Names.start_year = int(d["syear"])
-	wroom = d.get("wroom", {}).duplicate(true)
+	wroom_by = _int_keyed_dict(d.get("wroom_by", {}))
+	if pl1 >= 0 and d.has("wroom") and not d.has("wroom_by"):     # eski kayıt
+		wroom_by[pl1] = (d.get("wroom", {}) as Dictionary).duplicate(true)
 	Chokepoints.ensure(self)
 	Chokepoints.tick(self)
 	indep = d.get("indep", {}).duplicate(true)
