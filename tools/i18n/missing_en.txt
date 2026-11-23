@@ -36,8 +36,13 @@ Chokepoints.set_mode
 %s closed the %s to everyone: world trade is shaken!
 Macro.set_budget
 Macro.set_draft
+Macro.set_tax
+MilRes.set_research
 Macro.set_front
 Goods.set_policy
+Macro.set_auto_buy
+Macro.set_pri
+Macro.set_auto_cmd
 Fleets
 Air
 Cabinet
@@ -52,6 +57,8 @@ GrandOp
 Ultimatum
 Faith
 Goods
+WarRoom
+MilRes
 Fleets.set_escort
 Fleets.order_move
 Fleets.stop
@@ -76,6 +83,12 @@ Macro.mobilize
 Macro.buy
 Politics.choose
 Politics.do_action
+WarRoom.new_plan
+WarRoom.add_phase
+WarRoom.remove_phase
+WarRoom.move_phase
+WarRoom.start
+WarRoom.cancel
 Ultimatum.deliver
 UN.propose
 UN.player_vote
@@ -332,6 +345,42 @@ Healthcare and pensions tie the people to the state.
 National Identity
 A shared identity and a strong people's army.
 Prosperity, stability and confidence.
+Akdeniz Hâkimiyeti
+Mediterranean Mastery
+Donanma ve limanlar Akdeniz'i bir göle çevirir.
+Navy and ports turn the Mediterranean into a lake.
+Alp Cepheleri
+Alpine Fronts
+Dağ birlikleri ve tahkimatlar sınırı kapatır.
+Mountain troops and fortifications seal the border.
+Yeni Roma
+New Rome
+Sanayi, ordu ve prestij birlikte yükselir.
+Industry, army and prestige rise together.
+Çok Uluslu Ordu
+Multinational Army
+Farklı halkların alayları tek komuta altında.
+Regiments of many peoples under one command.
+Tuna Ticaret Ağı
+Danube Trade Network
+Tuna boyu ticaret ve demiryolu gelir getirir.
+Danube trade and railways bring revenue.
+Habsburg Dengesi
+Habsburg Balance
+İç huzur ve ittifaklar imparatorluğu ayakta tutar.
+Internal calm and alliances hold the empire together.
+Büyük İdea
+Megali Idea
+Ege'nin iki yakasını birleştirme hedefi orduyu harekete geçirir.
+The goal of uniting both shores of the Aegean mobilizes the army.
+Deniz Ticareti
+Maritime Trade
+Armatörler ve limanlar gelir getirir.
+Shipowners and ports bring revenue.
+Ege Hâkimiyeti
+Aegean Supremacy
+Donanma ve ittifaklar Ege'yi kontrol eder.
+Navy and alliances control the Aegean.
 National Defense Industry
 Domestic arms production boosts the defense fund and the army.
 Straits and Energy Corridor
@@ -420,6 +469,7 @@ New national focus: %s (%d weeks).
 Focus completed: %s — %s
  weekly income
 Democratic Republic of the Congo
+İttifakın yok.
 ülke ortadan kalktı
 savaş çıktı
 ilişkiler bozuldu
