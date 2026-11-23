@@ -78,7 +78,7 @@ setup = {
     "blocs": [{"name": "İtilaf Devletleri", "members": [UK, "France", "Italy", "Greece", "Belgium", "Japan", "Serbia", "Romania", "Poland", "Canada", "Australia", "New Zealand", "South Africa"],
         "emblem": {"shape": 5, "inner": 1, "symbol": "shield", "c1": "2f4f9a", "c2": "ece6d6", "c3": "2f4f9a"}}],
     "wars": [],
-    "truce": [["Turkey", UK, 130], ["Turkey", "France", 130], ["Turkey", "Italy", 130]],
+    "truce": [["Turkey", UK, 365], ["Turkey", "France", 365], ["Turkey", "Italy", 365]],
     "intro": "19 Mayıs 1919: Mondros Mütarekesi'nden sonra İstanbul İtilaf işgalinde; dört gün önce Yunan ordusu İzmir'e çıktı. Mustafa Kemal Paşa Samsun'da, Anadolu'da bir direniş örgütlemeye çalışıyor. Ya istiklal, ya ölüm.",
 }
 
