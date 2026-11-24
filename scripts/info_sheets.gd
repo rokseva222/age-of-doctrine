@@ -327,8 +327,11 @@ static func open_howto(parent: Node) -> void:
 			render.call())
 
 
-const UPDATE_VER := "1.2.49"
+const UPDATE_VER := "1.2.50"
 const WHATS_NEW := [
+	["12 dilde tam çeviri", "Oyun metinleri, senaryolar, olaylar ve görevler Türkçe, İngilizce, Almanca, İspanyolca, Fransızca, İtalyanca, Portekizce, Rusça, Arapça, Farsça, Çince, Japonca, Korece ve Hintçe olarak tamamlandı."],
+	["Yeni simgeler", "Çok oyunculu, online, mağaza, nasıl oynanır, halk ve kabine için kendi simgeleri geldi; aynı simge artık birden fazla yerde kullanılmıyor."],
+	["Düzeltmeler", "Savaş gemisi sayısı sınırı aşılmıyor; İtalya, Avusturya ve Yunanistan için ulusal odak dalları eklendi; Kurtuluş Savaşı senaryosu ve Meclis savaş oylaması testlerle doğrulandı."],
 	["Bağımsızlık Yolu: kendi bayrağını tasarla", "Hareketi kurarken «Bayrak tasarla» düğmesiyle kendi bayrağını çizebilirsin; boş bırakırsan renklerinden otomatik çizilir."],
 	["Bayraklar: tüm dünya gerçek görsellerle", "Dönem bayrakları (1914, 1939, 1962, Orta Çağ), oluşturulabilir devletler, Somaliland, Kuzey Kıbrıs ve senaryo devletleri artık gerçek bayrak görselleriyle çizilir. İsyancı gruplar da ülkesine ve çağına göre farklı bir bayrak taşır."],
 	["Online: ortak sayaçlar herkese ayrı", "Dünya tepkisi, kimyasal ve nükleer bekleme, BM önergesi ve casusluk beklemesi artık her oyuncuya ayrı; koalisyon yalnızca fetihlerle yükselen oyuncuya kurulur. Odak ağacı ile Büyük Harekât sunucuda ilerliyor (önceden online'da ilerlemiyordu)."],
