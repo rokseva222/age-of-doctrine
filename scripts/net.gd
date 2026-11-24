@@ -478,9 +478,16 @@ func srv_chat(text: String) -> void:
 	var t: String = text.strip_edges().left(200)
 	if t == "":
 		return
+	# kim yazdığı her zaman görünsün: oyuncu adı (boşsa "Oyuncu") + ülke
+	var cn: String = String(players.get(id, {}).get("cname", ""))
+	if cn == "" and cid >= 0 and gs_server != null and cid < gs_server.countries.size():
+		cn = String(gs_server.countries[cid].name)
+	var shown: String = pn.strip_edges() if pn.strip_edges() != "" else "Oyuncu"
+	if cn != "" and cn != shown:
+		shown += " (" + cn + ")"
 	for pid in players.keys():
 		if bool(players[pid].get("pass_ok", false)):
-			_to(pid, "cli_chat", [cid, pn, t])
+			_to(pid, "cli_chat", [cid, shown, t])
 
 
 func _check_round() -> void:

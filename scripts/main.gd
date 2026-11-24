@@ -542,7 +542,18 @@ func _on_speed_changed(_idx: int) -> void:
 
 
 ## Turu Geç: yükleniyor ekranı -> tur hesabı -> Cihan Bülteni (haber ve harp raporu).
+var _stuck_press_ms := -100000
+
 func _on_step() -> void:
+	# Online: önceki turun raporu/teklifi bittiği hâlde turn_busy takılı kaldıysa «Turu geç» sessizce yutulmasın.
+	if online and turn_busy and playing and mode == "game" and not ui.is_dialog_open() and (_wait_ov == null or not is_instance_valid(_wait_ov)):
+		var now: int = Time.get_ticks_msec()
+		if now - _stuck_press_ms < 6000:
+			turn_busy = false          # ikinci basış: takılmayı kır, turu geç
+		else:
+			_stuck_press_ms = now
+			ui.toast(Loc.t("Önceki işlem bitiyor; tekrar basarsan tur yine de geçilir."))
+			return
 	if turn_busy or not playing or mode != "game" or ui.is_dialog_open():
 		return
 	if online:

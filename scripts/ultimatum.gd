@@ -5,6 +5,9 @@ extends RefCounted
 const Macro = preload("res://scripts/macro.gd")
 const Cmd = preload("res://scripts/cmd.gd")
 const COOLDOWN := 8     # aynı ülkeye iki ültimatom arası hafta
+const COOLDOWN_ANY := 4        # hangi ülkeye olursa olsun iki ültimatom arası hafta (ültimatom spamini önler)
+const COOLDOWN_TRIBUTE := 30   # aynı ülkeden tekrar haraç isteme aralığı (hafta)
+const TKEY := 100000           # ult_turn içinde "haraç:hedef" anahtarı için ofset
 
 const KINDS := {
 	"passage": {"name": "Askerî geçiş izni", "need": 1.0, "rel": -8.0},
@@ -84,7 +87,15 @@ static func blocked(gs, target: int) -> String:
 	var cd: int = int(gs.countries[me].ult_turn.get(target, -999)) + COOLDOWN - gs.turn
 	if cd > 0:
 		return "Yeni ültimatom için %d hafta beklemelisin." % cd
+	var ca: int = int(gs.countries[me].ult_turn.get(-1, -999)) + COOLDOWN_ANY - gs.turn
+	if ca > 0:
+		return "Üst üste ültimatom verilemez; %d hafta bekle." % ca
 	return ""
+
+
+## Haraç için ek bekleme: aynı ülkeden kısa sürede tekrar para alınamaz.
+static func tribute_wait(gs, target: int) -> int:
+	return maxi(0, int(gs.countries[gs.player].ult_turn.get(TKEY + target, -999)) + COOLDOWN_TRIBUTE - gs.turn)
 
 
 static func describe(gs, kind: String, target: int) -> String:
@@ -104,14 +115,14 @@ static func describe(gs, kind: String, target: int) -> String:
 
 static func tribute_amount(gs, target: int) -> float:
 	var t = gs.countries[target]
-	return maxf(0.0, minf(t.gold * 0.4, maxf(t.income, 0.0) * 12.0))
+	return maxf(0.0, minf(t.gold * 0.25, maxf(t.income, 0.0) * 8.0))
 
 
 static func available(gs, kind: String, target: int) -> bool:
 	if kind == "land":
 		return border_province(gs, gs.player, target) >= 0
 	if kind == "tribute":
-		return tribute_amount(gs, target) >= 1.0
+		return tribute_amount(gs, target) >= 1.0 and tribute_wait(gs, target) <= 0
 	if kind == "passage":
 		return not gs.has_passage(gs.player, target)
 	return true
@@ -123,10 +134,15 @@ static func deliver(gs, kind: String, target: int) -> Dictionary:
 	var why := blocked(gs, target)
 	if why != "":
 		return {"ok": false, "text": why}
+	if kind == "tribute" and tribute_wait(gs, target) > 0:
+		return {"ok": false, "text": "Bu ülkeden haraç istemek için %d hafta beklemelisin." % tribute_wait(gs, target)}
 	var me: int = gs.player
 	var c = gs.countries[me]
 	var t = gs.countries[target]
 	c.ult_turn[target] = gs.turn
+	c.ult_turn[-1] = gs.turn
+	if kind == "tribute":
+		c.ult_turn[TKEY + target] = gs.turn
 	var p := chance(gs, kind, target)
 	if gs.rng.randf() < p:
 		var txt := ""
