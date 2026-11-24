@@ -4,6 +4,7 @@ cd "$(dirname "$0")/.."
 mkdir -p /tmp/aod_tests; : > /tmp/aod_tests/summary.txt
 for f in tools/*_test.gd; do
   n=$(basename "$f" .gd)
+  case " ${SKIP_TESTS:-} " in *" $n "*) continue;; esac
   timeout ${TEST_TIMEOUT:-180} godot --headless --path . -s "$f" > /tmp/aod_tests/$n.log 2>&1
   rc=$?
   bad=$(grep -v "HATA SAYISI=0" "/tmp/aod_tests/$n.log" | grep -c -E "^HATA|SCRIPT ERROR|Parse Error" )
