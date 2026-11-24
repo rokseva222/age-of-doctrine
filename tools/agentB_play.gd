@@ -1,6 +1,6 @@
 extends SceneTree
 ## Ajan B: çok stratejili GERÇEK oynayan bot + her turda değişmez (invariant) denetimi + oynanış ölçümü.
-## Kullanım: godot --headless --path . -s tools/agentB_play.gd -- <free|era> <id> <ülke_en> <strateji> <tur> <seed> [kayıt_turu]
+## Kullanım: godot --headless --path . -s tools/agentB_play.gd -- <free|era|scn> <id> <ülke_en> <strateji> <tur> <seed> [kayıt_turu]
 ## Stratejiler: conquer (saldırgan genişleme, çıkarma), weapons (conquer + gaz/nükleer/paralı), turtle (savunma/barış),
 ##   bloc (ittifak/blok/BM/diplomasi), econ (ekonomi/kabine/silah alımı), fuzz (rastgele API çağrıları, elle emirler)
 ## Her koşu sonunda tek satır "RESULT ..." ve her sorun için "ISSUE ..." yazar.
@@ -99,6 +99,8 @@ func _init() -> void:
 	gs.start_game(pid_)
 	if kind == "era":
 		Eras.start(gs, era_id)
+	elif kind == "scn":
+		load("res://scripts/scenarios.gd").apply(gs, era_id)
 	gs.profile = false
 	_bind_bot(strat == "conquer" or strat == "weapons")
 	var pl = gs.countries[pid_]
