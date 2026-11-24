@@ -16,21 +16,16 @@ const IOS_EMBEDDED_FRAMEWORKS: Array = [  ]
 const IOS_LINKER_FLAGS: Array = [ "-ObjC" ]
 
 var android_export_plugin: AndroidExportPlugin
-var ios_export_plugin: IosExportPlugin
 
 
 func _enter_tree() -> void:
 	android_export_plugin = AndroidExportPlugin.new()
 	add_export_plugin(android_export_plugin)
-	ios_export_plugin = IosExportPlugin.new()
-	add_export_plugin(ios_export_plugin)
 
 
 func _exit_tree() -> void:
 	remove_export_plugin(android_export_plugin)
 	android_export_plugin = null
-	remove_export_plugin(ios_export_plugin)
-	ios_export_plugin = null
 
 
 class AndroidExportPlugin extends EditorExportPlugin:
@@ -150,27 +145,4 @@ class AndroidExportPlugin extends EditorExportPlugin:
 		__dest_file.close()
 
 
-class IosExportPlugin extends EditorExportPlugin:
-
-	var _plugin_name = PLUGIN_NAME
-
-
-	func _supports_platform(platform: EditorExportPlatform) -> bool:
-		if platform is EditorExportPlatformIOS:
-			return true
-		return false
-
-
-	func _get_name() -> String:
-		return _plugin_name
-
-
-	func _export_begin(features: PackedStringArray, is_debug: bool, path: String, flags: int) -> void:
-		for __framework in IOS_FRAMEWORKS:
-			add_apple_embedded_platform_framework(__framework)
-
-		for __framework in IOS_EMBEDDED_FRAMEWORKS:
-			add_apple_embedded_platform_embedded_framework(__framework)
-
-		for __flag in IOS_LINKER_FLAGS:
-			add_apple_embedded_platform_linker_flags(__flag)
+# iOS dışa aktarma bölümü kaldırıldı (bu proje yalnızca Android; Godot 4.3 add_apple_* işlevlerini tanımaz).
