@@ -80,6 +80,15 @@ func _build(title: String, width: float, tall: bool, closable: bool, kicker: Str
 	scroll.add_child(body)
 	v.add_child(scroll)
 	body.minimum_size_changed.connect(_refit)
+	# içerik görünen alandan uzunsa «▼» ipucu: yazının devamı olduğu belli olsun (kaydırılabilir)
+	_more = TK.t("▼", "kicker", TK.GOLD)
+	_more.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	_more.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_more.visible = false
+	v.add_child(_more)
+	scroll.get_v_scroll_bar().value_changed.connect(func(_x): _update_more.call_deferred())
+	scroll.resized.connect(func(): _update_more.call_deferred())
+	body.resized.connect(func(): _update_more.call_deferred())
 	footer = HFlowContainer.new()
 	footer.alignment = FlowContainer.ALIGNMENT_END
 	footer.add_theme_constant_override("h_separation", 12)
@@ -93,6 +102,14 @@ func _build(title: String, width: float, tall: bool, closable: bool, kicker: Str
 
 var head_box: HBoxContainer
 var scroll: ScrollContainer
+var _more: Label
+
+
+func _update_more() -> void:
+	if _more == null or scroll == null or not is_inside_tree():
+		return
+	var bar := scroll.get_v_scroll_bar()
+	_more.visible = bar.max_value - bar.page > 6.0 and bar.value < bar.max_value - bar.page - 6.0
 
 
 ## Sayfalı editörler: pencere her sayfada ekranı doldurur (sayfa değişince boy/alt düğmeler zıplamasın)

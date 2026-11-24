@@ -597,8 +597,7 @@ func _open_scenarios() -> void:
 		b.add_child(hb)
 		b.custom_minimum_size = Vector2(0, 150 if kd != "free" else 138)
 		var min_h: float = 150.0 if kd != "free" else 138.0
-		tv.minimum_size_changed.connect(func():
-			b.custom_minimum_size.y = maxf(min_h, tv.get_combined_minimum_size().y + 36.0))
+		_fit_card(b, tv, bl, min_h)
 		b.pressed.connect(func():
 			_click()
 			set_scenario(sid)
@@ -617,6 +616,27 @@ func _after_editor(id: String) -> void:
 	elif scenario_id.begins_with("u_") and Scenarios.get_sc(scenario_id).is_empty():
 		set_scenario("free")
 	_open_scenarios()
+
+
+## Kart yüksekliği içeriğe uyar: açıklama metni satır sayısı değişince (ölçek/dil/genişlik) kart yeniden ölçülür, yazı kesilmez.
+func _fit_card(b: Control, tv: Control, bl: Label, min_h: float) -> void:
+	var fit := func():
+		if not is_instance_valid(b) or not is_instance_valid(tv) or not is_instance_valid(bl):
+			return
+		var lines: int = maxi(bl.get_line_count(), 1)
+		var lh: float = float(bl.get_line_height())
+		var others: float = 0.0
+		for c in tv.get_children():
+			if c != bl:
+				others += c.get_combined_minimum_size().y
+		var need: float = maxf(tv.get_combined_minimum_size().y, others + lh * float(lines) + 4.0) + 40.0
+		if absf(b.custom_minimum_size.y - maxf(min_h, need)) > 1.0:
+			b.custom_minimum_size.y = maxf(min_h, need)
+	var deferred := func(): fit.call_deferred()
+	tv.minimum_size_changed.connect(deferred)
+	bl.resized.connect(deferred)
+	b.resized.connect(deferred)
+	deferred.call()
 
 
 func _open_eras() -> void:
@@ -668,8 +688,7 @@ func _open_eras() -> void:
 		b.add_child(hb)
 		b.custom_minimum_size = Vector2(0, 176)
 		# uzun tanıtım metni (İngilizce/Arapça) kartın dışına taşmasın: kart içeriğe göre uzar
-		tv.minimum_size_changed.connect(func():
-			b.custom_minimum_size.y = maxf(176.0, tv.get_combined_minimum_size().y + 36.0))
+		_fit_card(b, tv, bl, 176.0)
 		var ename: String = e["name"]
 		b.pressed.connect(func():
 			_click()
