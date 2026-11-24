@@ -1,11 +1,11 @@
 extends Node
-## Android yerel bildirimleri: devam eden bir oyun varken uygulama arka plana alınınca 5 saatte bir
+## Android yerel bildirimleri: devam eden bir oyun varken uygulama arka plana alınınca 2 saatte bir
 ## "ordun seni bekliyor" hatırlatması planlar; oyuna dönünce iptal eder.
 ## Eklenti: "Android Notification Scheduler" (AssetLib). Eklenti kurulu değilse (masaüstü/test) hiçbir şey yapmaz.
 
 const NOTIF_ID := 7001
 const CHANNEL := "aod_reminder"
-const INTERVAL := 5 * 3600
+const INTERVAL := 2 * 3600
 
 var _sched: Node = null
 var _ready_ok := false

@@ -2579,7 +2579,7 @@ func _notification(what: int) -> void:
 			notifier.cancel()
 
 
-## Yalnızca devam eden (bitmemiş) bir oyun varken 5 saatte bir hatırlatma planlanır.
+## Yalnızca devam eden (bitmemiş) bir oyun varken 2 saatte bir hatırlatma planlanır.
 func _arm_reminder() -> void:
 	if notifier == null or not Settings.notifications or not notifier.available():
 		return
@@ -2589,12 +2589,23 @@ func _arm_reminder() -> void:
 	var cn: String = gs.countries[gs.player].name
 	var msgs: Array = [
 		"Ordun seni bekliyor, komutan!",
-		"%s için yeni kararlar bekliyor. Turu geç!" % cn,
+		"%s için yeni kararlar bekliyor. Turu geç!",
 		"Cephede hareketlilik var; emirlerini ver.",
 		"Kasanda birikim var. Silah mı, bina mı? Karar senin.",
 		"Dünya sensiz dönmüyor: Cihan Bülteni'nde yeni haberler var.",
+		"Komşuların seni izliyor. Bir sonraki hamlen ne?",
+		"Hazine doldu, fabrikalar çalışıyor. Yatırım zamanı!",
+		"Diplomatlar kapıda: yeni bir ittifak teklifi seni bekliyor olabilir.",
+		"Bugünkü meydan okuma seni bekliyor. Tamamlamaya ne dersin?",
+		"Bir tur daha, bir eyalet daha. Harita seni çağırıyor!",
+		"Casusların yeni bilgiler getirmiş olabilir. Bir göz at.",
+		"Düşman dinlenmiyor; sen de dinlenme. Orduna emir ver!",
+		"Bir tarih yazıyorsun: %s'in kaderi senin ellerinde.",
 	]
-	notifier.schedule("Age of Doctrine", tr(msgs[randi() % msgs.size()]))
+	var m: String = Loc.t(msgs[randi() % msgs.size()])
+	if m.contains("%s"):
+		m = m % cn
+	notifier.schedule("Age of Doctrine", m)
 
 
 func _unhandled_key_input(event: InputEvent) -> void:

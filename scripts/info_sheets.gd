@@ -182,7 +182,7 @@ static func open_settings(parent: Node, on_change: Callable, sfx = null) -> void
 		changed.call(), "Oyun menüsüne \"Sandbox\" paneli ekler: hazine, asker, eyalet verme/alma, savaş ve barış gibi deneme araçları. Dengeyi bozar; öğrenmek ve denemek içindir."))
 	sh.body.add_child(TK.toggle_row("Bildirimler", Settings.notifications, func(on: bool):
 		Settings.notifications = on
-		changed.call(), "Telefonda, devam eden bir oyun varken 5 saatte bir \"ordun seni bekliyor\" hatırlatması gönderir. Oyun yoksa ya da bittiyse bildirim gelmez."))
+		changed.call(), "Telefonda, devam eden bir oyun varken 2 saatte bir \"ordun seni bekliyor\" hatırlatması gönderir. Oyun yoksa ya da bittiyse bildirim gelmez."))
 	var drow := HBoxContainer.new()
 	drow.add_theme_constant_override("separation", 8)
 	var dl := TK.t("Zorluk", "body")

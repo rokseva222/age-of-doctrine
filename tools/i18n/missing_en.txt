@@ -706,6 +706,7 @@ Rok Games Studios
 Age of Doctrine
 Normal
 AodNet
+AodVoice
 Online · %s: %s
 Online
 Antarctica
@@ -904,6 +905,9 @@ VBoxContainer
 HBoxContainer
 HFlowContainer
 %d km
+haraç:hedef
+Üst üste ültimatom verilemez; %d hafta bekle.
+Bu ülkeden haraç istemek için %d hafta beklemelisin.
 AOD1.
 %d hafta ayakta kal
 Survive %d weeks
@@ -915,6 +919,9 @@ Reach %d bloc members
 Reach %d%% of world GDP
 Make peace with %s
 Eliminate %s
+AodVoiceMic
+Android
+RECORD_AUDIO
 Operation: %s
 War Room: %s is under way.
 War Room: the plan was cancelled.
