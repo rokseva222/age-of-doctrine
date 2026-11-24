@@ -68,6 +68,7 @@ signal action(name: String, arg)
 signal settings_changed()
 signal main_menu_requested()
 signal chat_requested()
+signal voice_requested()
 var online_mode := false
 signal load_requested()
 signal save_requested()
@@ -1218,6 +1219,7 @@ func show_pause_menu() -> void:
 		["Stratejik geçitler", "", "anchor", func(): show_chokes()],
 		["Sandbox", "purple", Icons.pick("sandbox", "gear"), func(): SandboxUI.open(self, gs)],
 		["Sohbet", "", "diplomacy", func(): chat_requested.emit()],
+		["Sesli görüşme", "", Icons.pick("mp_online", "radio_tower"), func(): voice_requested.emit()],
 		["Mağaza", "", "coins", func(): shop_requested.emit()],
 		["Öğretici", "", "book", func(): tutorial_requested.emit()],
 		["Nasıl oynanır", "", "book", func(): Info.open_howto(root)],
@@ -1232,7 +1234,7 @@ func show_pause_menu() -> void:
 			continue
 		if it[0] == "Sandbox" and not Settings.sandbox:
 			continue
-		if it[0] == "Sohbet" and not online_mode:
+		if (it[0] == "Sohbet" or it[0] == "Sesli görüşme") and not online_mode:
 			continue
 		if online_mode and (it[0] == "Kaydet" or it[0] == "Yükle" or it[0] == "Sandbox"):
 			continue

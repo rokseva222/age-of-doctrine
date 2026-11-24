@@ -69,6 +69,7 @@ var timer: Timer
 var drift_timer: Timer
 var speed_idx := 0
 var turn_busy := false
+var voice = null
 var selected_pid := -1
 var selected_army = null
 var selected_fleet = null
@@ -145,6 +146,7 @@ func _ready() -> void:
 	ui.settings_changed.connect(_apply_settings)
 	ui.main_menu_requested.connect(_menu_pressed)
 	ui.chat_requested.connect(_open_chat)
+	ui.voice_requested.connect(func(): if voice != null: voice.open())
 	ui.tutorial_requested.connect(_start_tutorial)
 	ui.shop_requested.connect(func(): ApUi.open(ui.root, ui.toast))
 	ui.load_requested.connect(func(): SlotsUI.open(ui.root, "load", _load_game, ui._click))
@@ -804,6 +806,11 @@ func get_net():
 		net.disconnected.connect(_online_lost)
 		net.over.connect(_online_over)
 		net.chat.connect(_on_net_chat)
+		if voice == null:
+			voice = load("res://scripts/voice.gd").new()
+			voice.name = "AodVoice"
+			add_child(voice)
+			voice.setup(net, func(): return gs, ui)
 		net.note.connect(_online_note)
 		net.flush_asked.connect(_online_flush)
 	return net

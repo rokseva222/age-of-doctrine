@@ -32,6 +32,9 @@ signal error(msg: String)
 signal chat(from_cid: int, pname: String, text: String)
 signal over(text: String)
 signal flush_asked()
+signal voice_invite(from_cid: int, from_name: String, gid: int)
+signal voice_state()
+signal voice_audio(from_cid: int, data: PackedByteArray)
 signal note(kind: String, cid: int, text: String)   # oyuncu olayları: ready, afk, back, left, grace, diplo...
 
 # ---- ortak durum
@@ -244,6 +247,7 @@ func _on_peer_disconnected(id: int) -> void:
 		var gone_cid: int = int(p.get("cid", -1))
 		if started and room != null and gone_cid >= 0:
 			room.set_afk(gone_cid, true)      # bağlantı koptu: yapay zekâ devralır
+		_voice_remove(id)
 		players.erase(id)
 		_hello_t.erase(id)
 		if started and room != null and gone_cid >= 0:
@@ -412,6 +416,7 @@ func _build_world(picks: Array) -> void:
 func _kick(pid: int) -> void:
 	if pid == 1 or multiplayer.multiplayer_peer == null:
 		return
+	_voice_remove(pid)
 	players.erase(pid)
 	multiplayer.multiplayer_peer.disconnect_peer(pid)
 
@@ -907,3 +912,129 @@ func _apply_state(raw: PackedByteArray, cid: int, wait: Array, era: String) -> v
 	my_cid = cid
 	waiting = wait
 	gs_client = g
+
+
+
+# ------------------------------------------------------------------ sesli görüşme odası
+# Sunucu yalnızca ses paketlerini aynı görüşme odasındakilere iletir (8 bit µ-law, 16 kHz, tek kanal).
+var voice_groups: Dictionary = {}     # sunucu: gid -> [peer id]
+var voice_of: Dictionary = {}         # sunucu: peer id -> gid
+var _voice_next := 1
+var voice_gid := 0                    # istemci: içinde olduğum görüşme (0 = yok)
+var voice_members: Array = []         # istemci: görüşmedeki ülke numaraları
+const VOICE_MAX := 6
+
+
+func _peer_of_cid(cid: int) -> int:
+	for pid in players.keys():
+		if int(players[pid].get("cid", -1)) == cid and bool(players[pid].get("pass_ok", false)):
+			return int(pid)
+	return -1
+
+
+func _voice_cid(id: int) -> int:
+	return int(players.get(id, {}).get("cid", -1))
+
+
+func _voice_push(gid: int) -> void:
+	var peers: Array = voice_groups.get(gid, [])
+	var cids: Array = []
+	for pid in peers:
+		cids.append(_voice_cid(int(pid)))
+	for pid in peers:
+		_to(int(pid), "cli_voice_state", [gid, cids])
+
+
+func _voice_remove(id: int) -> void:
+	if not is_server or not voice_of.has(id):
+		return
+	var gid: int = int(voice_of[id])
+	voice_of.erase(id)
+	var peers: Array = voice_groups.get(gid, [])
+	peers.erase(id)
+	_to(id, "cli_voice_state", [0, []])
+	if peers.size() <= 1:
+		for pid in peers:
+			voice_of.erase(pid)
+			_to(int(pid), "cli_voice_state", [0, []])
+		voice_groups.erase(gid)
+	else:
+		voice_groups[gid] = peers
+		_voice_push(gid)
+
+
+@rpc("any_peer", "call_remote", "reliable")
+func srv_voice_invite(target_cid: int) -> void:
+	if not is_server:
+		return
+	var id: int = _sender()
+	var my: int = _voice_cid(id)
+	if my < 0 or not bool(players.get(id, {}).get("pass_ok", false)):
+		return
+	var tp: int = _peer_of_cid(target_cid)
+	if tp < 0 or tp == id:
+		return
+	var gid: int = int(voice_of.get(id, 0))
+	if gid == 0:
+		gid = _voice_next
+		_voice_next += 1
+		voice_groups[gid] = [id]
+		voice_of[id] = gid
+		_to(id, "cli_voice_state", [gid, [my]])
+	_to(tp, "cli_voice_invite", [my, String(players[id].get("name", "")), gid])
+
+
+@rpc("any_peer", "call_remote", "reliable")
+func srv_voice_accept(gid: int) -> void:
+	if not is_server:
+		return
+	var id: int = _sender()
+	if _voice_cid(id) < 0 or not voice_groups.has(gid):
+		return
+	if int(voice_of.get(id, 0)) == gid:
+		return
+	_voice_remove(id)
+	var peers: Array = voice_groups[gid]
+	if peers.size() >= VOICE_MAX:
+		return
+	peers.append(id)
+	voice_groups[gid] = peers
+	voice_of[id] = gid
+	_voice_push(gid)
+
+
+@rpc("any_peer", "call_remote", "reliable")
+func srv_voice_leave() -> void:
+	if is_server:
+		_voice_remove(_sender())
+
+
+@rpc("any_peer", "call_remote", "unreliable")
+func srv_voice(data: PackedByteArray) -> void:
+	if not is_server or data.size() == 0 or data.size() > 2000:
+		return
+	var id: int = _sender()
+	var gid: int = int(voice_of.get(id, 0))
+	if gid == 0:
+		return
+	var cid: int = _voice_cid(id)
+	for pid in voice_groups.get(gid, []):
+		if int(pid) != id:
+			_to(int(pid), "cli_voice", [cid, data])
+
+
+@rpc("authority", "call_remote", "reliable")
+func cli_voice_invite(from_cid: int, from_name: String, gid: int) -> void:
+	voice_invite.emit(from_cid, from_name, gid)
+
+
+@rpc("authority", "call_remote", "reliable")
+func cli_voice_state(gid: int, cids: Array) -> void:
+	voice_gid = gid
+	voice_members = cids
+	voice_state.emit()
+
+
+@rpc("authority", "call_remote", "unreliable")
+func cli_voice(from_cid: int, data: PackedByteArray) -> void:
+	voice_audio.emit(from_cid, data)
