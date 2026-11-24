@@ -3,6 +3,7 @@ extends Node
 ## "ordun seni bekliyor" hatırlatması planlar; oyuna dönünce iptal eder.
 ## Eklenti: "Android Notification Scheduler" (AssetLib). Eklenti kurulu değilse (masaüstü/test) hiçbir şey yapmaz.
 
+const Settings = preload("res://scripts/settings.gd")
 const NOTIF_ID := 7001
 const CHANNEL := "aod_reminder"
 const INTERVAL := 2 * 3600
@@ -19,14 +20,26 @@ func _ready() -> void:
 		return
 	_sched = load(path).new()
 	add_child(_sched)
+	if _sched.has_signal("initialization_completed"):
+		_sched.connect("initialization_completed", _on_init_done)
 	if _sched.has_method("initialize"):
 		_sched.call("initialize")
+	else:
+		_on_init_done()
+
+
+## Eklenti hazır olunca bildirim kanalı açılır; ayar açıksa izin istenir (Android 13+).
+func _on_init_done() -> void:
+	if _ready_ok:
+		return
 	var ch_path := _class_path("NotificationChannel")
 	if ch_path != "":
 		var ch = load(ch_path).new()
 		ch.set_id(CHANNEL).set_name("Hatırlatmalar").set_description("Ordun seni bekliyor").set_importance(3)
 		_sched.call("create_notification_channel", ch)
 	_ready_ok = true
+	if Settings.notifications:
+		ask_permission()
 
 
 static func _class_path(cname: String) -> String:

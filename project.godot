@@ -32,3 +32,7 @@ textures/vram_compression/import_etc2_astc=true
 [audio]
 
 driver/enable_input=true
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/NotificationSchedulerPlugin/plugin.cfg")
