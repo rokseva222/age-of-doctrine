@@ -296,7 +296,29 @@ func _on_province_changed(pid: int) -> void:
 		pulses.append({"pos": p.label_pos, "t": 0.0, "col": gs.countries[p.controller].color if p.controller >= 0 else Color.WHITE})
 
 
+## Boyanmış sahip/denetim bilgisi (province_changed sinyali kaçırılsa bile harita her turda gerçek duruma eşitlenir)
+var _paint_own := PackedInt32Array()
+var _paint_ctl := PackedInt32Array()
+
+
+func _reconcile_paint() -> void:
+	var n: int = gs.provinces.size()
+	if _paint_own.size() != n:
+		_paint_own.resize(n)
+		_paint_ctl.resize(n)
+		_paint_own.fill(-2)
+		_paint_ctl.fill(-2)
+	for p in gs.provinces:
+		if _paint_own[p.id] != p.owner or _paint_ctl[p.id] != p.controller:
+			_paint_own[p.id] = p.owner
+			_paint_ctl[p.id] = p.controller
+			_dirty_provs[p.id] = true
+			_labels_dirty = true
+
+
 func _on_state_changed() -> void:
+	if gs != null:
+		_reconcile_paint()
 	if rel_country >= 0 or not form_set.is_empty():
 		repaint_all()
 	hud.queue_redraw()

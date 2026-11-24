@@ -58,6 +58,7 @@ byname['Taiwan']['name'] = 'Tayvan'
 setp(251, 'Magadan', None)
 setp(1518, 'Sjælland', None)
 setp(905, 'Huambo', None)
+setp(421, 'Malatya', None)   # bölge adı yanlışlıkla 'Şanlıurfa' idi (ikinci Şanlıurfa: 1950)
 
 # --- yazım/artefakt temizliği
 FIX = {"llorin": "Ilorin", "lafia": "Lafia", "SALTA": "Salta", "Ciego de Ávila ili": "Ciego de Ávila", "Haumbo": "Huambo", "Cambi": "Jambi",
