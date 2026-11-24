@@ -56,7 +56,7 @@ static func open_era(parent: Node, on_pick: Callable) -> void:
 		tv.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		tv.add_child(TK.t(String(e.get("sub", "")), "kicker", TK.GOLD))
 		tv.add_child(TK.t(String(e.get("name", "")), "caps", TK.TEXT))
-		var bl := TK.t(String(e.get("blurb", "")).split(". ")[0].left(100), "small", TK.MUTED)
+		var bl := TK.t(String(e.get("blurb", "")), "small", TK.MUTED)
 		bl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		bl.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		tv.add_child(bl)
@@ -67,6 +67,14 @@ static func open_era(parent: Node, on_pick: Callable) -> void:
 			hb.add_child(lk)
 		b.add_child(hb)
 		b.custom_minimum_size = Vector2(0, 130)
+		# tam açıklama gösterilir; kart metnin satır sayısına göre uzar
+		var fit_card := func():
+			if is_instance_valid(b) and is_instance_valid(tv):
+				var need: float = maxf(130.0, tv.get_combined_minimum_size().y + 28.0)
+				if absf(b.custom_minimum_size.y - need) > 1.0:
+					b.custom_minimum_size.y = need
+		tv.minimum_size_changed.connect(func(): fit_card.call_deferred())
+		bl.resized.connect(func(): fit_card.call_deferred())
 		b.pressed.connect(func():
 			if eid != "" and not AP.era_unlocked(eid):
 				return
