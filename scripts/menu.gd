@@ -492,8 +492,9 @@ func _build_select() -> void:
 	head.add_child(tv)
 	v.add_child(head)
 	_scn_btn = TK.button("Dünya 2027", "", Icons.pick("world2027", "year"), Vector2(0, 60), 16)
-	_scn_btn.clip_text = true
-	_scn_btn.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
+	# uzun senaryo/çağ adı «...» ile kesilmesin: satıra sarılır, düğme yükselir
+	_scn_btn.clip_text = false
+	_scn_btn.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	_scn_btn.pressed.connect(func():
 		_click()
 		_open_scenarios())
