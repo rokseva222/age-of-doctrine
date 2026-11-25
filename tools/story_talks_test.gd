@@ -1,6 +1,7 @@
 extends SceneTree
 ## Hikâye modu: duel/champion/prisoner/tax kartları müzakere masası açar; masa oynanır, sonuç etkileri uygulanır, bekleyen kart temizlenir.
 const Career = preload("res://scripts/career.gd")
+const Loc = preload("res://scripts/loc.gd")
 var main
 var errs := 0
 func ck(n: String, ok: bool) -> void:
@@ -13,6 +14,10 @@ func _find_btn_prefix(n: Node, pre: String) -> Button:
 		var r = _find_btn_prefix(c, pre)
 		if r != null: return r
 	return null
+func _dump(n: Node) -> void:
+	if n is Button and (n as Button).is_visible_in_tree():
+		print("  BTN[", (n as Button).text, "]")
+	for c in n.get_children(): _dump(c)
 func _init() -> void:
 	main = load("res://main.tscn").instantiate()
 	get_root().add_child(main)
@@ -37,6 +42,10 @@ func _init() -> void:
 		main._on_career_card()
 		await create_timer(0.8).timeout
 		var b := _find_btn_prefix(get_root(), String(wants[id]))
+		if b == null:
+			b = _find_btn_prefix(get_root(), String(Loc.t(String(wants[id]))))
+		if b == null:
+			_dump(get_root())
 		ck("%s: düğme görünür (%s)" % [id, wants[id]], b != null)
 		if b == null:
 			continue
