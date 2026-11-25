@@ -3,9 +3,10 @@
 # Kullanım: bash tools/bot_sweep.sh [tur=50]   Çıktı: /tmp/aod_sweep/summary.txt (sorunlu koşular "ISSUE" satırlarıyla)
 cd "$(dirname "$0")/.."
 TURNS=${1:-50}
-OUT=/tmp/aod_sweep; mkdir -p $OUT; : > $OUT/summary.txt; : > $OUT/issues.txt
+OUT=/tmp/aod_sweep; mkdir -p $OUT; touch $OUT/summary.txt $OUT/issues.txt   # kaldığı yerden devam eder (yeniden başlatmaya dayanıklı)
 STRATS=(conquer fuzz bloc)
 run() {  # tür id ülke strateji seed
+  grep -q "^$1 $2 $3 $4 rc=" $OUT/summary.txt && return
   local log=$OUT/$1_$2_$3_$4.log
   timeout ${RUN_TIMEOUT:-240} godot --headless --path . -s tools/agentB_play.gd -- $1 $2 "$3" $4 $TURNS $5 > $log 2>&1
   local rc=$?
