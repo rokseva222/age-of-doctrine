@@ -1,7 +1,7 @@
 extends RefCounted
 const PickButton = preload("res://scripts/pick_button.gd")
 const Minigames = preload("res://scripts/minigames.gd")
-const SwordDuel = preload("res://scripts/sword_duel.gd")
+const SwordDuel = preload("res://scripts/blade_duel.gd")
 ## Hikâye Modu arayüzü: çağ seçimi → hükümdar/tımar/karakter kurulumu → Divan paneli → hikâye kartları.
 
 const TK = preload("res://scripts/theme_kit.gd")
