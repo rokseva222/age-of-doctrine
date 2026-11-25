@@ -1839,5 +1839,23 @@
     "Switzerland"
    ]
   ]
+ },
+ "rsfsr_1919": {
+  "desc": "Soviet Russia (RSFSR) 1918-1937: plain red field with the gold Cyrillic letters РСФСР in the upper-left corner.",
+  "uses": [
+   [
+    "ks1919",
+    "Russia"
+   ]
+  ]
+ },
+ "yemen_1919": {
+  "desc": "Mutawakkilite Kingdom of Yemen: plain red field with a white sword (Dhu al-Fiqar) in the center and five white five-pointed stars above it.",
+  "uses": [
+   [
+    "ks1919",
+    "Yemen"
+   ]
+  ]
  }
 }
