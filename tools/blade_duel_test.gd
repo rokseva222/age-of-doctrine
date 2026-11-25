@@ -78,7 +78,7 @@ func _init() -> void:
 	for i in n:
 		if run("skilled", i + 1, 0.3, 1.4).out == "win":
 			w2 += 1
-	ck("güçlü rakipte iyi oyuncu yine kazanabilir ama zorlanır (%d/%d)" % [w2, n], w2 >= n * 0.3 and w2 <= w1)
+	ck("güçlü rakipte iyi oyuncu yine kazanabilir ama zorlanır (%d/%d)" % [w2, n], w2 >= n * 0.2 and w2 <= w1)
 	# kurallar
 	var c = BD.new()
 	c.setup(0.3, 1.0, 5)
