@@ -329,6 +329,7 @@ static func open_howto(parent: Node) -> void:
 
 const UPDATE_VER := "1.2.50"
 const WHATS_NEW := [
+	["Online: oyunlar artık kaydediliyor", "Sunucudaki odalar her tur sonunda kaydedilir. Oda kapansa ya da sunucu yenilense bile «Çok Oyunculu → Online → Kayıtlı oyunlarım» listesinden «Devam et» deyip aynı ülkeye dönersin. Herkes dönene kadar (en çok 4 dk) tur işlenmez; dönmeyenin ülkesini yapay zekâ yönetir. Kurtuluş Savaşı'nda Sovyet Rusya ve Yemen bayrakları da düzeltildi."],
 	["Online: sesli görüşme odası", "Menüden «Sesli görüşme»: bir oyuncuyu görüşmeye çağır, kabul ederse aynı odada konuşursunuz (en çok 6 kişi). Sohbette artık kimin yazdığı görünür; ültimatomla sürekli para alma sınırlandı; «Turu geç» takılması giderildi."],
 	["Harita ve barış düzeltmeleri", "İkinci Şanlıurfa düzeltildi (Malatya); barışla alınan eyaletlerin ve müttefik ordularının harita rengi her turda gerçek duruma eşitleniyor."],
 	["12 dilde tam çeviri", "Oyun metinleri, senaryolar, olaylar ve görevler Türkçe, İngilizce, Almanca, İspanyolca, Fransızca, İtalyanca, Portekizce, Rusça, Arapça, Farsça, Çince, Japonca, Korece ve Hintçe olarak tamamlandı."],
