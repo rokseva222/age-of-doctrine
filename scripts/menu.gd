@@ -23,6 +23,7 @@ const ApUi = preload("res://scripts/ap_ui.gd")
 
 const PROMO_PATH := "res://assets/brand/promo.ogv"
 const INTRO_PATH := "res://assets/brand/rok_intro.ogv"
+const SHOW_STUDIO_INTRO := false      # stüdyo açılış videosu kapalı (dosya durur; true yapınca geri gelir)
 
 signal splash_done()
 signal play_pressed()
@@ -154,7 +155,7 @@ func _process(delta: float) -> void:
 
 ## Stüdyo açılış videosu (Rok Games Studios): tüm arayüzün üstünde oynar; dokununca geçilir, bitince Age of Doctrine açılışı başlar.
 func _build_intro() -> void:
-	if DisplayServer.get_name() == "headless" or not ResourceLoader.exists(INTRO_PATH):
+	if not SHOW_STUDIO_INTRO or DisplayServer.get_name() == "headless" or not ResourceLoader.exists(INTRO_PATH):
 		return
 	var stream = load(INTRO_PATH)
 	if stream == null:
