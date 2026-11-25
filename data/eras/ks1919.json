@@ -318,7 +318,7 @@
   "Russia": {
    "name": "Sovyet Rusya",
    "color": "b53a2e",
-   "flag": "R:0,0,1,1,#cc0000|S:.14,.2,.09,#ffd700",
+   "flag": "I:ussr",
    "leader": "Başkan|Vladimir Lenin",
    "gdp": 120,
    "mil": {
