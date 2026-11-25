@@ -1,4 +1,5 @@
-.godot/
 *.import
+.godot/
 __pycache__/
+server/saves/
 server/scn_codes/

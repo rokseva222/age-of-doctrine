@@ -117,6 +117,48 @@ static func browser(main) -> void:
 		host_form(main))
 	row2.add_child(mk)
 	sh.body.add_child(TK.hsep())
+	# Kayıtlı oyunlarım: sunucu her tur sonunda odayı kaydeder; oyuncular aynı koltuğa geri döner
+	var saves_box := VBoxContainer.new()
+	saves_box.add_theme_constant_override("separation", 6)
+	sh.body.add_child(saves_box)
+	var render_saves := func(arr: Array):
+		for ch in saves_box.get_children():
+			saves_box.remove_child(ch)
+			ch.queue_free()
+		if arr.is_empty():
+			return
+		saves_box.add_child(TK.t("Kayıtlı oyunlarım", "kicker"))
+		for s in arr:
+			var srow := HBoxContainer.new()
+			srow.add_theme_constant_override("separation", 8)
+			var sera: String = String(s.get("era", "")) if String(s.get("era", "")) != "" else Loc.t("Dünya 2027")
+			var stxt := "%s  ·  %s  ·  %s %d  ·  %s" % [String(s.get("name", "")), sera, Loc.t("Tur"), int(s.get("turn", 0)), String(s.get("seat", ""))]
+			var sb := TK.button(stxt, "gold", "play", Vector2(0, 64), 15)
+			sb.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+			sb.clip_text = true
+			sb.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
+			var sid: String = String(s.get("id", ""))
+			sb.pressed.connect(func():
+				sh.close()
+				main.online_resume(sid))
+			srow.add_child(sb)
+			var armed := {"v": false}
+			var xb := TK.button("Sil", "danger", "", Vector2(130, 64), 15)
+			xb.pressed.connect(func():
+				if armed.v:
+					xb.disabled = true
+					master.delete_save(sid)
+				else:
+					armed.v = true
+					xb.text = Loc.t("Emin misin?"))
+			srow.add_child(xb)
+			saves_box.add_child(srow)
+		saves_box.add_child(TK.hsep())
+	master.saves_ready.connect(render_saves)
+	sh.closed.connect(func():
+		if master.saves_ready.is_connected(render_saves):
+			master.saves_ready.disconnect(render_saves))
+	master.fetch_saves()
 	var hdr := TK.t("Sunucu  ·  Çağ  ·  Oyuncu  ·  Ping  ·  Konum", "kicker")
 	sh.body.add_child(hdr)
 	var list := VBoxContainer.new()
@@ -163,7 +205,8 @@ static func browser(main) -> void:
 			if ping == -2:
 				net.ping(String(e.ip), int(e.port))
 	refresh.pressed.connect(func():
-		master.fetch())
+		master.fetch()
+		master.fetch_saves())
 	var on_list := func(arr: Array):
 		state.net = arr
 		render.call()

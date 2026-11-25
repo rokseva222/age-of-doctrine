@@ -871,6 +871,39 @@ func online_host_remote(cfg: Dictionary) -> void:
 	m.create_room(req)
 
 
+## Kayıtlı çok oyunculu oyunu sunucuda yeniden açtırır ve aynı koltuğa geri döner.
+func online_resume(id: String) -> void:
+	var m = get_master()
+	menu.toast(Loc.t("Kayıtlı oyun açılıyor..."))
+	var st := {"done": false}
+	var ok_cb := func(info: Dictionary):
+		if st.done:
+			return
+		st.done = true
+		online_join(String(info.ip), int(info.port))
+	var fail_cb := func(code: String, msg: String):
+		if st.done:
+			return
+		st.done = true
+		match code:
+			"ver":
+				if _ver_older(msg, Info.UPDATE_VER):
+					menu.toast(Loc.t("Sunucu yeni sürüme geçiyor, birkaç dakika sonra tekrar dene."))
+				else:
+					menu.toast(Loc.t("Sunucu sürümü %s. Oyunu güncelle.") % msg)
+			"update":
+				menu.toast(Loc.t("Sunucu güncelleniyor, 1-2 dakika sonra tekrar dene."))
+			"full":
+				menu.toast(Loc.t("Sunucu dolu, biraz sonra tekrar dene."))
+			"nosave":
+				menu.toast(Loc.t("Kayıt bulunamadı (silinmiş ya da süresi dolmuş olabilir)."))
+			_:
+				menu.toast(Loc.t("Merkezi sunucu şu an kullanılamıyor."))
+	m.created.connect(ok_cb, CONNECT_ONE_SHOT)
+	m.create_failed.connect(fail_cb, CONNECT_ONE_SHOT)
+	m.resume_room(id, Info.UPDATE_VER)
+
+
 ## "1.2.46" < "1.2.47" mi?
 func _ver_older(a: String, b: String) -> bool:
 	var x: PackedStringArray = a.split(".")

@@ -6,6 +6,7 @@ const MASTER_URL := "https://master.example.invalid"     # Kendi liste sunucunu 
 ## Sabit topluluk sunucuları listesi: depodaki server/servers.json dosyası (ana liste sunucusu olmadan da çalışır).
 const STATIC_URL := "https://raw.githubusercontent.com/rokseva222/age-of-doctrine/main/server/servers.json"
 const Settings = preload("res://scripts/settings.gd")
+const NetS = preload("res://scripts/net.gd")
 ## Ana liste sunucusu kurulmamış olsa bile çalışan herkese açık oda panosu (ntfy.sh konusu): odalar kendini buraya yazar, liste buradan okunur.
 const FEED_URL := "https://ntfy.sh/aod-rooms-v1-k7q2x9"
 ## Merkezi sunucu (hub) adresi depodaki server/hub.json dosyasından okunur: sunucu değişince uygulamayı güncellemek gerekmez.
@@ -16,6 +17,7 @@ const FEED_TTL := 660             # sn: bu kadar süredir duyuru yapmayan oda d�
 
 signal list_ready(servers: Array)
 signal failed(msg: String)
+signal saves_ready(list: Array)          # bu cihazın koltuğu olan kayıtlı oyunlar
 signal created(info: Dictionary)          # merkezi sunucuda oda açıldı: {"ip","port"}
 signal create_failed(code: String, msg: String)
 signal _hub_cfg_done
@@ -24,6 +26,9 @@ var url := MASTER_URL
 var hub_url := ""
 var _hreq: HTTPRequest
 var _creq: HTTPRequest
+var _svreq: HTTPRequest
+var _rsreq: HTTPRequest
+var _dsreq: HTTPRequest
 var _req: HTTPRequest
 var _sreq: HTTPRequest
 var _dyn: Array = []
@@ -73,6 +78,18 @@ func _ready() -> void:
 	_creq.timeout = 20.0
 	add_child(_creq)
 	_creq.request_completed.connect(_on_created)
+	_svreq = HTTPRequest.new()
+	_svreq.timeout = 10.0
+	add_child(_svreq)
+	_svreq.request_completed.connect(_on_saves)
+	_rsreq = HTTPRequest.new()
+	_rsreq.timeout = 25.0
+	add_child(_rsreq)
+	_rsreq.request_completed.connect(_on_created)
+	_dsreq = HTTPRequest.new()
+	_dsreq.timeout = 10.0
+	add_child(_dsreq)
+	_dsreq.request_completed.connect(func(_r: int, _c: int, _h: PackedStringArray, _b: PackedByteArray): fetch_saves())
 	_hb = HTTPRequest.new()
 	_hb.timeout = 8.0
 	add_child(_hb)
@@ -278,6 +295,49 @@ func create_room(cfg: Dictionary) -> void:
 		create_failed.emit("nohub", "")
 
 
+## Bu cihazın koltuğu olan kayıtlı oyunları ister (sunucu her tur sonunda odayı kaydeder). Sonuç saves_ready.
+func fetch_saves() -> void:
+	if not _configured():
+		await _load_hub_cfg()
+	if not _configured():
+		saves_ready.emit([])
+		return
+	_svreq.cancel_request()
+	if _svreq.request(_base() + "/saves?token=" + NetS.my_token()) != OK:
+		saves_ready.emit([])
+
+
+func _on_saves(result: int, code: int, _h: PackedStringArray, body: PackedByteArray) -> void:
+	var out: Array = []
+	if result == HTTPRequest.RESULT_SUCCESS and code == 200:
+		var j = JSON.parse_string(body.get_string_from_utf8())
+		if j is Array:
+			for e in j:
+				if e is Dictionary and e.has("id"):
+					out.append(e)
+	saves_ready.emit(out)
+
+
+## Kayıtlı oyunu sunucuda yeniden açtırır (açıksa var olan odaya yönlendirir). Başarılıysa created({"ip","port"}), olmazsa create_failed(kod, mesaj); kod "nosave" olabilir.
+func resume_room(id: String, ver: String) -> void:
+	if not _configured():
+		await _load_hub_cfg()
+	if not _configured():
+		create_failed.emit("nohub", "")
+		return
+	_rsreq.cancel_request()
+	var err: int = _rsreq.request(_base() + "/resume", ["Content-Type: application/json"], HTTPClient.METHOD_POST, JSON.stringify({"id": id, "token": NetS.my_token(), "ver": ver}))
+	if err != OK:
+		create_failed.emit("nohub", "")
+
+
+func delete_save(id: String) -> void:
+	if not _configured():
+		return
+	_dsreq.cancel_request()
+	_dsreq.request(_base() + "/delsave", ["Content-Type: application/json"], HTTPClient.METHOD_POST, JSON.stringify({"id": id, "token": NetS.my_token()}))
+
+
 func _on_created(result: int, code: int, _h: PackedStringArray, body: PackedByteArray) -> void:
 	if result != HTTPRequest.RESULT_SUCCESS:
 		create_failed.emit("nohub", "")
@@ -287,6 +347,8 @@ func _on_created(result: int, code: int, _h: PackedStringArray, body: PackedByte
 		created.emit({"ip": String(j.get("ip", "")), "port": int(j.port)})
 	elif code == 409 and j is Dictionary:
 		create_failed.emit("ver", String(j.get("server_ver", "")))
+	elif code == 404:
+		create_failed.emit("nosave", "")
 	elif code == 429:
 		create_failed.emit("limit", "")
 	elif code == 503 and j is Dictionary and String(j.get("err", "")) == "update":

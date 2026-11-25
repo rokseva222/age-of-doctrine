@@ -22,6 +22,7 @@ const MAX_COUNTRY_ID := 400
 const HELLO_SECS := 10.0
 const GRACE_SECS := 120.0                    # biri turu bitirince diğerlerine tanınan bekleme süresi
 const MISS_LIMIT := 2                        # üst üste bu kadar tur kaçıran oyuncunun ülkesini yapay zekâ devralır
+const RESUME_WAIT := 240.0                   # kayıttan açılan odada, ilk oyuncu girince diğerlerini bekleme süresi (sn)
 
 signal lobby_changed()
 signal game_started(cid: int)
@@ -70,6 +71,8 @@ var _upnp: UPNP = null
 var _upnp_thread: Thread = null
 var _upnp_port := 0
 var _seats: Dictionary = {}                # token -> {"cid", "cname"} (bağlantısı kopan oyuncu geri dönünce koltuğunu alır)
+var save_dir := ""                         # sunucu: oda kayıtlarının klasörü (boşsa kayıt kapalı). Her tur sonunda oda kaydedilir.
+var _resume_left := 0.0                    # >0: kayıttan açıldı, koltuk sahiplerinin dönmesi bekleniyor (tur işlenmez)
 
 # ---- ping (UDP sorgu: sunucu port+1'de dinler)
 var _q_srv: UDPServer = null
@@ -286,6 +289,7 @@ func srv_hello(proto: int, pname: String, token: String = "") -> void:
 		_say("back", int(seat.cid))
 		_push_lobby()
 		_push_status()
+		_resume_check()
 		return
 	if players.size() >= int(info.max):
 		_to(id, "cli_denied", ["Sunucu dolu."])
@@ -367,6 +371,9 @@ func srv_start() -> void:
 	started = true
 	_round_timer = float(info.secs)
 	_flushed = false
+	if save_dir != "" and String(info.get("save", "")) == "":
+		info["save"] = _new_save_id()
+	save_room()
 	for pid in players.keys():
 		if int(players[pid].cid) < 0:
 			_to(pid, "cli_denied", ["Oyun başladı; ülke seçmediğin için bu turda yer alamıyorsun."])
@@ -498,6 +505,8 @@ func srv_chat(text: String) -> void:
 func _check_round() -> void:
 	if not is_server or not started or room == null:
 		return
+	if _resume_left > 0.0:
+		return                                   # kayıttan açıldı: koltuk sahipleri dönene kadar tur işlenmez
 	if room.all_ready():
 		_run_round()
 
@@ -537,11 +546,16 @@ func _run_round() -> void:
 			if bool(players[pid].get("pass_ok", false)):
 				_to(pid, "cli_over", [String(r.over)])
 		_reset_to_lobby()
+	else:
+		save_room()
 
 
 ## Oyun bitti: oda boşalır, kurucu yeni oyun başlatabilir (eski koltuklar silinir).
 func _reset_to_lobby() -> void:
+	delete_save(String(info.get("save", "")))
+	info.erase("save")
 	started = false
+	_resume_left = 0.0
 	room = null
 	gs_server = null
 	_seats.clear()
@@ -549,6 +563,152 @@ func _reset_to_lobby() -> void:
 	for pid in players.keys():
 		players[pid].cid = -1
 		players[pid]["cname"] = ""
+
+
+# ------------------------------------------------------------------ oda kaydı (sunucu)
+# Her tur sonunda oda diske yazılır (<kimlik>.dat = oyun durumu, <kimlik>.json = liste için özet). Oda süreci kapansa
+# da oyuncular uygulamadan "Kayıtlı oyunlarım" ile aynı koltuklarına geri döner (koltuk = cihaz kodu / token).
+
+func _new_save_id() -> String:
+	var s: String = String(info.get("name", "oda")).to_lower()
+	var out := ""
+	for ch in s:
+		if (ch >= "a" and ch <= "z") or (ch >= "0" and ch <= "9"):
+			out += ch
+	return "%s_%08x%04x" % [out.left(12) if out != "" else "oda", randi(), randi() % 65536]
+
+
+static func save_id_ok(id: String) -> bool:
+	if id == "" or id.length() > 40:
+		return false
+	for ch in id:
+		if not ((ch >= "a" and ch <= "z") or (ch >= "0" and ch <= "9") or ch == "_"):
+			return false
+	return true
+
+
+func save_room() -> void:
+	var id: String = String(info.get("save", ""))
+	if save_dir == "" or not save_id_ok(id) or room == null or gs_server == null:
+		return
+	DirAccess.make_dir_recursive_absolute(save_dir)
+	var base: String = save_dir.path_join(id)
+	var f := FileAccess.open(base + ".tmp", FileAccess.WRITE)
+	if f == null:
+		return
+	f.store_var({"gs": gs_server.to_dict(), "afk": room.afk.duplicate(), "missed": room.missed.duplicate()})
+	f.close()
+	DirAccess.rename_absolute(base + ".tmp", base + ".dat")
+	var seats: Dictionary = {}
+	for tok in _seats:
+		seats[String(tok)] = String(_seats[tok].get("cname", ""))
+	var seat_cid: Dictionary = {}
+	for tok in _seats:
+		seat_cid[String(tok)] = int(_seats[tok].cid)
+	var meta := {"id": id, "name": String(info.get("name", "Oda")), "era": String(info.get("era", "")), "scn": String(info.get("scn", "")),
+		"turn": int(gs_server.turn), "max": int(info.get("max", 6)), "secs": float(info.get("secs", 120.0)), "fog": int(info.get("fog", 0)),
+		"pass": String(info.get("pass", "")), "ver": String(info.get("ver", "")), "saved": int(Time.get_unix_time_from_system()),
+		"seats": seats, "seat_cid": seat_cid}
+	var mf := FileAccess.open(base + ".json.tmp", FileAccess.WRITE)
+	if mf == null:
+		return
+	mf.store_string(JSON.stringify(meta))
+	mf.close()
+	DirAccess.rename_absolute(base + ".json.tmp", base + ".json")
+
+
+static func read_meta(dir: String, id: String) -> Dictionary:
+	if not save_id_ok(id):
+		return {}
+	var p: String = dir.path_join(id + ".json")
+	if not FileAccess.file_exists(p):
+		return {}
+	var v = JSON.parse_string(FileAccess.get_file_as_string(p))
+	return v if v is Dictionary else {}
+
+
+func delete_save(id: String) -> void:
+	if save_dir == "" or not save_id_ok(id):
+		return
+	for ext in [".dat", ".json", ".tmp", ".json.tmp"]:
+		var p: String = save_dir.path_join(id + ext)
+		if FileAccess.file_exists(p):
+			DirAccess.remove_absolute(p)
+
+
+## Sunucu başlarken: kayıtlı odayı yükler. Oyuncular koltuk kodlarıyla bağlanınca kaldıkları yerden devam eder.
+func load_saved(id: String) -> bool:
+	if save_dir == "" or not save_id_ok(id):
+		return false
+	var meta: Dictionary = read_meta(save_dir, id)
+	var p: String = save_dir.path_join(id + ".dat")
+	if meta.is_empty() or not FileAccess.file_exists(p):
+		return false
+	var f := FileAccess.open(p, FileAccess.READ)
+	if f == null:
+		return false
+	var d = f.get_var()
+	f.close()
+	if typeof(d) != TYPE_DICTIONARY or not (d.get("gs") is Dictionary):
+		return false
+	var sd: Dictionary = d.gs
+	var era: String = String(sd.get("era", ""))
+	if era != "":
+		Eras.prepare(era)
+	else:
+		Eras.clear()
+	var g = GS.new()
+	g.new_world(int(sd.get("seed", 0)))
+	if not g.from_dict(sd) or g.humans.is_empty():
+		return false
+	var r = Room.new()
+	r.restore(g, d.get("afk", {}), d.get("missed", {}))
+	room = r
+	gs_server = g
+	info["save"] = id
+	info["era"] = era
+	_seats.clear()
+	var seats: Dictionary = meta.get("seats", {})
+	var seat_cid: Dictionary = meta.get("seat_cid", {})
+	for tok in seats:
+		var c: int = int(seat_cid.get(tok, -1))
+		if c >= 0 and g.humans.has(c):
+			_seats[String(tok)] = {"cid": c, "cname": String(seats[tok])}
+	if _seats.is_empty():
+		room = null
+		gs_server = null
+		return false
+	for h in g.humans:
+		r.set_afk(int(h), true)                  # dönene kadar yapay zekâ yönetir; geri gelen koltuğunu alır
+	started = true
+	_round_timer = float(info.secs)
+	_flushed = false
+	_grace_on = false
+	_resume_left = RESUME_WAIT
+	return true
+
+
+func _seated_count() -> int:
+	var n := 0
+	for p in players.values():
+		if int(p.get("cid", -1)) >= 0 and bool(p.get("pass_ok", false)):
+			n += 1
+	return n
+
+
+## Kayıttan açılmış odada: bütün koltuk sahipleri döndüyse beklemeyi bitirir.
+func _resume_check() -> void:
+	if _resume_left <= 0.0 or room == null:
+		return
+	var back: Dictionary = {}
+	for p in players.values():
+		var tk: String = String(p.get("token", ""))
+		if tk != "" and _seats.has(tk):
+			back[tk] = true
+	if back.size() >= _seats.size():
+		_resume_left = 0.0
+		_push_status()
+		_check_round()
 
 
 func _push_lobby() -> void:
@@ -682,7 +842,13 @@ func _process(delta: float) -> void:
 				_hello_t.erase(hp)
 				if multiplayer.multiplayer_peer != null:
 					multiplayer.multiplayer_peer.disconnect_peer(int(hp))
-		if started and room != null and room.active_count() > 0:
+		if _resume_left > 0.0 and started and room != null and _seated_count() > 0:
+			_resume_left -= delta
+			if _resume_left <= 0.0:
+				_resume_left = 0.0
+				_push_status()
+				_check_round()
+		if started and room != null and room.active_count() > 0 and _resume_left <= 0.0:
 			var w: Array = room.waiting_for()
 			# biri turu bitirdi, diğerleri hâlâ oynuyor: bekleme süresi başlar
 			if not _grace_on and not w.is_empty() and w.size() < room.active_count():

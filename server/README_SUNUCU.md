@@ -71,3 +71,11 @@ Oyunda Çok Oyunculu → Online → **Oda kur**. Telefon hem sunucu hem oyuncu o
    - Kendi sunucun: `docker build -f server/Dockerfile.master -t aod-master server && docker run -p 8780:8780 aod-master`
      (önüne Caddy/nginx ile HTTPS koy).
    - Sunucu programı `--master https://adresin --region EU` ile listeye kendini bildirir.
+
+### Kayıtlı oyunlar
+
+Her tur sonunda oda `server/saves/` klasörüne kaydedilir (`<kimlik>.dat` oyun durumu, `<kimlik>.json` liste özeti). Oda boş kalıp kapansa,
+sunucu yeniden başlasa ya da gece güncellemesi gelse de oyun kaybolmaz: oyuncular **Online → Kayıtlı oyunlarım → Devam et** ile aynı
+koltuğa (cihaz kodu) geri döner; hub odayı kayıttan yeniden açar. Kayıttan açılan odada ilk oyuncu girince diğerleri için 4 dk beklenir
+(hepsi dönerse hemen başlar); dönmeyenin ülkesini yapay zekâ yönetir, geri gelince koltuğunu alır. Oyun bitince kayıt silinir; 45 gündür
+oynanmayan kayıtlar da silinir. Kaydı yedeklemek için `server/saves/` klasörünü kopyalamak yeter.

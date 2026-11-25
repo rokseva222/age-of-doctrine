@@ -6,6 +6,9 @@ bağlanır: port yönlendirme, UPnP, kod derdi yok.
 
   GET  /servers   → açık odalar (en az 1 oyuncusu olanlar)
   POST /create    {"name","era","scenario","max","pass","secs","fog","ver"} → {"ip","port"}  (oda süreci başlatır)
+  GET  /saves?token=T  → bu cihazın koltuğu olan kayıtlı oyunlar (oda her tur sonunda kaydedilir)
+  POST /resume    {"id","token","ver"} → kayıtlı oyunu yeniden açar (ya da açıksa adresini verir) → {"ip","port"}
+  POST /delsave   {"id","token"} → kaydı siler
   POST /register, /remove  → oda süreçlerinin kendi duyurusu (yalnızca yerel makineden)
   GET  /health
 
@@ -23,6 +26,10 @@ lock = threading.Lock()
 A = None
 updating = False        # güncelleme sürerken yeni oda açılmaz
 SAFE = re.compile(r"^[a-z0-9_]{0,24}$")
+ID_OK = re.compile(r"^[a-z0-9_]{1,40}$")          # kayıt kimliği
+TOK_OK = re.compile(r"^[0-9A-Za-z]{8,32}$")        # cihaz kodu (koltuk)
+SAVE_TTL = 45 * 86400                              # bu kadar gündür oynanmayan kayıt silinir
+_last_purge = 0.0
 CODE_OK = re.compile(r"^AOD1\.[0-9]{1,7}\.[A-Za-z0-9_\-=]{1,90000}$")   # kullanıcı senaryosu paylaşım kodu
 
 
@@ -38,8 +45,62 @@ def server_ver():
         return ""
 
 
+def save_path(i, ext):
+    return os.path.join(A.savedir, i + ext)
+
+
+def read_meta(i):
+    try:
+        with open(save_path(i, ".json"), encoding="utf-8") as fh:
+            m = json.load(fh)
+        return m if isinstance(m, dict) else None
+    except Exception:
+        return None
+
+
+def delete_save_files(i):
+    for ext in (".dat", ".json", ".tmp", ".json.tmp"):
+        try:
+            os.remove(save_path(i, ext))
+        except OSError:
+            pass
+
+
+def purge_saves():
+    """Uzun süredir oynanmayan kayıtları siler (en çok günde bir tarama gibi seyrek çalışır)."""
+    global _last_purge
+    now = time.time()
+    if now - _last_purge < 3600:
+        return
+    _last_purge = now
+    try:
+        names = [n[:-5] for n in os.listdir(A.savedir) if n.endswith(".json")]
+    except OSError:
+        return
+    with lock:
+        live = {r.get("save") for r in rooms.values()}
+    for i in names:
+        m = read_meta(i)
+        if m is None or (now - float(m.get("saved", 0)) > SAVE_TTL and i not in live):
+            if ID_OK.match(i):
+                delete_save_files(i)
+
+
+def live_port(i):
+    """Bu kayıt şu an açık bir odada mı? Açıksa portu döner."""
+    with lock:
+        for p, r in rooms.items():
+            if r.get("save") == i and r["proc"].poll() is None:
+                return p
+        for v in servers.values():
+            if v.get("save") == i and v["port"] in rooms:
+                return v["port"]
+    return 0
+
+
 def reap():
     """Biten süreçleri ve eski duyuruları temizler."""
+    purge_saves()
     now = time.time()
     with lock:
         for p in [p for p, r in rooms.items() if r["proc"].poll() is not None]:
@@ -106,7 +167,7 @@ def create_room(b, ip):
         cmd = [A.godot, "--headless", "--path", A.project, "-s", "server/dedicated.gd", "--",
                "--name", name, "--era", era, "--scn", scn, "--port", str(port), "--secs", str(secs), "--max", str(mx),
                "--fog", str(fog), "--ver", sv, "--master", "http://127.0.0.1:%d" % A.port, "--region", A.region,
-               "--idle", str(A.idle)]
+               "--idle", str(A.idle), "--savedir", A.savedir]
         if pw:
             cmd += ["--pass", pw]
         if code:
@@ -122,6 +183,78 @@ def create_room(b, ip):
             return 500, {"err": "başlatılamadı: %s" % e}
         rooms[port] = {"proc": proc, "ip": ip, "t": time.time(), "name": name}
     return 200, {"ip": A.public_host, "port": port}
+
+
+def my_saves(token):
+    out = []
+    try:
+        names = [n[:-5] for n in os.listdir(A.savedir) if n.endswith(".json")]
+    except OSError:
+        return out
+    for i in names:
+        m = read_meta(i)
+        if not m or token not in (m.get("seats") or {}):
+            continue
+        out.append({"id": i, "name": clean(m.get("name", "Oda"), 24), "era": clean(m.get("era", ""), 20), "turn": int(m.get("turn", 0)),
+                    "seat": clean((m.get("seats") or {}).get(token, ""), 40), "players": len(m.get("seats") or {}),
+                    "saved": int(m.get("saved", 0)), "live": bool(live_port(i)), "ver": clean(m.get("ver", ""), 16)})
+    out.sort(key=lambda s: -s["saved"])
+    return out
+
+
+def resume_room(b, ip):
+    i = str(b.get("id", ""))
+    tok = str(b.get("token", ""))
+    if not ID_OK.match(i) or not TOK_OK.match(tok):
+        return 400, {"err": "geçersiz"}
+    m = read_meta(i)
+    if not m or tok not in (m.get("seats") or {}):
+        return 404, {"err": "kayıt yok"}
+    sv = server_ver()
+    if sv and str(b.get("ver", "")) != sv:
+        return 409, {"err": "ver", "server_ver": sv}
+    reap()
+    p = live_port(i)
+    if p:
+        return 200, {"ip": A.public_host, "port": p}      # oda zaten açık: herkes aynı odaya girer
+    with lock:
+        if updating:
+            return 503, {"err": "update"}
+        if len(rooms) >= A.max_rooms:
+            return 503, {"err": "dolu"}
+        port = free_port()
+        if not port:
+            return 503, {"err": "dolu"}
+        cmd = [A.godot, "--headless", "--path", A.project, "-s", "server/dedicated.gd", "--",
+               "--resume", i, "--savedir", A.savedir, "--port", str(port), "--ver", sv,
+               "--master", "http://127.0.0.1:%d" % A.port, "--region", A.region, "--idle", str(A.idle)]
+        try:
+            proc = subprocess.Popen(cmd, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        except Exception as e:
+            return 500, {"err": "başlatılamadı: %s" % e}
+        rooms[port] = {"proc": proc, "ip": ip, "t": time.time(), "name": clean(m.get("name", "Oda"), 24), "save": i}
+    return 200, {"ip": A.public_host, "port": port}
+
+
+def delete_save(b):
+    i = str(b.get("id", ""))
+    tok = str(b.get("token", ""))
+    if not ID_OK.match(i) or not TOK_OK.match(tok):
+        return 400, {"err": "geçersiz"}
+    m = read_meta(i)
+    if not m or tok not in (m.get("seats") or {}):
+        return 404, {"err": "kayıt yok"}
+    p = live_port(i)
+    if p:
+        with lock:
+            r = rooms.pop(p, None)
+        if r:
+            try:
+                r["proc"].terminate()
+            except Exception:
+                pass
+    delete_save_files(i)
+    return 200, {"ok": True}
 
 
 class H(BaseHTTPRequestHandler):
@@ -154,6 +287,15 @@ class H(BaseHTTPRequestHandler):
         if path == "/health":
             reap()
             return self._send(200, {"ok": True, "rooms": len(rooms), "ver": server_ver()})
+        if path == "/saves":
+            q = self.path.split("?", 1)[1] if "?" in self.path else ""
+            tok = ""
+            for kv in q.split("&"):
+                if kv.startswith("token="):
+                    tok = kv[6:]
+            if not TOK_OK.match(tok):
+                return self._send(400, {"err": "geçersiz"})
+            return self._send(200, my_saves(tok))
         if path != "/servers":
             return self._send(404, {"err": "yok"})
         reap()
@@ -171,6 +313,12 @@ class H(BaseHTTPRequestHandler):
         if self.path == "/create":
             code, obj = create_room(b, ip)
             return self._send(code, obj)
+        if self.path == "/resume":
+            code, obj = resume_room(b, ip)
+            return self._send(code, obj)
+        if self.path == "/delsave":
+            code, obj = delete_save(b)
+            return self._send(code, obj)
         local = self.client_address[0] in ("127.0.0.1", "::1")
         if not local:
             return self._send(403, {"err": "yalnızca yerel"})
@@ -186,7 +334,8 @@ class H(BaseHTTPRequestHandler):
                     servers[tok] = {"name": clean(b.get("name", "Oda")), "era": clean(b.get("era", ""), 20),
                                     "players": max(0, min(64, int(b.get("players", 0)))), "max": max(1, min(64, int(b.get("max", 6)))),
                                     "ip": A.public_host, "port": port, "pass": bool(b.get("pass", False)),
-                                    "ver": clean(b.get("ver", ""), 16), "region": clean(b.get("region", ""), 16), "t": time.time()}
+                                    "ver": clean(b.get("ver", ""), 16), "region": clean(b.get("region", ""), 16), "t": time.time(),
+                                    "save": (str(b.get("save", "")) if ID_OK.match(str(b.get("save", ""))) else "")}
             except Exception:
                 return self._send(400, {"err": "geçersiz"})
             return self._send(200, {"token": tok})
@@ -261,9 +410,13 @@ def main():
     ap.add_argument("--per-ip", type=int, default=2)
     ap.add_argument("--idle", type=int, default=600, help="oda boş kalınca kaç sn sonra kapanır")
     ap.add_argument("--region", default="TR")
+    ap.add_argument("--savedir", default="", help="oda kayıtlarının klasörü (varsayılan: server/saves)")
     ap.add_argument("--no-update", action="store_true", help="otomatik git güncellemesini kapat")
     A = ap.parse_args()
     A.port_lo, A.port_hi = [int(x) for x in A.ports.split("-")]
+    if not A.savedir:
+        A.savedir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "saves")
+    os.makedirs(A.savedir, exist_ok=True)
     threading.Thread(target=lambda: [(reap(), time.sleep(5)) for _ in iter(int, 1)], daemon=True).start()
     threading.Thread(target=updater, daemon=True).start()
     print("hub hazır: :%d  genel adres=%s  sürüm=%s" % (A.port, A.public_host, server_ver()), flush=True)

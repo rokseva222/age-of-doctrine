@@ -34,6 +34,21 @@ func setup(g, picks: Array) -> void:
 	gs.player = -1
 
 
+## Kayıttan yüklenmiş dünyadan oda kurar (insanlar gs.humans içinde zaten var).
+func restore(g, afk_d: Dictionary, missed_d: Dictionary) -> void:
+	gs = g
+	gs.cmd_log = null
+	FleetsM.ensure(gs)
+	AirM.ensure(gs)
+	for h in gs.humans:
+		gs.countries[h].is_player = true
+		cmds[h] = []
+		ready[h] = false
+		afk[h] = bool(afk_d.get(h, false))
+		missed[h] = int(missed_d.get(h, 0))
+	gs.player = -1
+
+
 func is_human(cid: int) -> bool:
 	return gs.humans.has(cid)
 
