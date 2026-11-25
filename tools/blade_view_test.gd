@@ -41,10 +41,11 @@ func _init() -> void:
 		await process_frame
 	ck("düello bitti", view.finished)
 	ck("bot kazandı ya da kaybetti (sonuç var)", view.core.outcome != "")
+	var want: String = view.core.outcome
 	view._press_end()
 	await process_frame
 	await process_frame
-	ck("geri çağrı bir kez, sonuç doğru", res.n == 1 and res.r == view.core.outcome)
+	ck("geri çağrı bir kez, sonuç doğru", res.n == 1 and res.r == want)
 	ck("ekran kapandı", not is_instance_valid(view))
 	# 2) çekilme: iki dokunuş
 	res.n = 0
