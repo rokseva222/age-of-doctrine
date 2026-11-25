@@ -513,8 +513,9 @@
   "Belarus": "I:belarus_1995"
  },
  "ks1919": {
-  "Russia": "I:ussr",
+  "Russia": "I:rsfsr_1919",
   "Serbia": "I:yugoslavia_kingdom",
-  "Georgia": "I:georgia_1990"
+  "Georgia": "I:georgia_1990",
+  "Yemen": "I:yemen_1919"
  }
 }
