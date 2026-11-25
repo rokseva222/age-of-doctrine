@@ -7,15 +7,15 @@ OUT=/tmp/aod_sweep; mkdir -p $OUT; touch $OUT/summary.txt $OUT/issues.txt   # ka
 STRATS=(conquer fuzz bloc)
 run() {  # tür id ülke strateji seed
   grep -q "^$1 $2 $3 $4 rc=" $OUT/summary.txt && return
-  local log=$OUT/$1_$2_$3_$4.log
-  timeout ${RUN_TIMEOUT:-240} godot --headless --path . -s tools/agentB_play.gd -- $1 $2 "$3" $4 $TURNS $5 > $log 2>&1
+  local log="$OUT/$1_$2_${3// /_}_$4.log"
+  timeout ${RUN_TIMEOUT:-240} godot --headless --path . -s tools/agentB_play.gd -- $1 $2 "$3" $4 $TURNS $5 > "$log" 2>&1
   local rc=$?
-  local err=$(grep -c -E "SCRIPT ERROR|Parse Error" $log)
-  local iss=$(grep -c "^ISSUE" $log)
+  local err=$(grep -c -E "SCRIPT ERROR|Parse Error" "$log")
+  local iss=$(grep -c "^ISSUE" "$log")
   echo "$1 $2 $3 $4 rc=$rc script_err=$err issue=$iss" >> $OUT/summary.txt
   if [ "$err" != "0" ] || [ "$iss" != "0" ] || [ "$rc" = "124" ]; then
     echo "== $1 $2 $3 $4 rc=$rc" >> $OUT/issues.txt
-    grep -E "SCRIPT ERROR|^ISSUE" $log | sort | uniq -c | head -6 >> $OUT/issues.txt
+    grep -E "SCRIPT ERROR|^ISSUE" "$log" | sort | uniq -c | head -6 >> $OUT/issues.txt
   fi
 }
 # çağlar: önerilen ilk iki ülke × stratejiler

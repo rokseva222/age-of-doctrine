@@ -267,6 +267,9 @@ func _check(g) -> void:
 		if not g.countries[w.a].enemies.has(w.b) or not g.countries[w.b].enemies.has(w.a):
 			bad("savaş_var_enemies_yok", "%s-%s" % [g.countries[w.a].name_en, g.countries[w.b].name_en])
 	var deep: bool = g.turn % 5 == 0
+	for f in g.fleets.values():
+		if f.cargo > 0 and f.owner >= 0 and f.owner < nc:
+			by_owner[f.owner] = int(by_owner.get(f.owner, 0)) + f.cargo     # denizdeki asker de toplama girer
 	for c in g.countries:
 		if not c.alive:
 			if c.owned_ids.size() > 0 and int(cnt.get(c.id, 0)) > 0:

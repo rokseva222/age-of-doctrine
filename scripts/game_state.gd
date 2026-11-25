@@ -3936,6 +3936,45 @@ func _check_elimination() -> void:
 			if owned[c.id] > 0 and Independence.Districts.holdout(self, c.id):
 				continue
 			_eliminate(c)
+	_fix_dead_holders()
+
+
+## Güvenlik ağı: yok olmuş (alive=false) bir ülkeye sahip ya da onun denetiminde eyalet kalmasın (haritada «delik»/yanlış renk olur).
+## Eyalet önce denetleyen canlı ülkeye, yoksa en çok komşusu olan canlı ülkeye verilir.
+func _fix_dead_holders() -> void:
+	var nc: int = countries.size()
+	for p in provinces:
+		var bad_owner: bool = p.owner >= 0 and p.owner < nc and not countries[p.owner].alive
+		var bad_ctl: bool = p.controller >= 0 and p.controller < nc and not countries[p.controller].alive
+		if not bad_owner and not bad_ctl:
+			continue
+		var new_owner: int = p.owner
+		if bad_owner:
+			new_owner = -1
+			if p.controller >= 0 and p.controller < nc and countries[p.controller].alive and p.controller != p.owner:
+				new_owner = p.controller
+			else:
+				var votes := {}
+				for q in p.neighbors:
+					var o: int = provinces[q].owner
+					if o >= 0 and o < nc and countries[o].alive:
+						votes[o] = int(votes.get(o, 0)) + 1
+				var best := -1
+				var bv := 0
+				for o in votes.keys():
+					if int(votes[o]) > bv:
+						bv = int(votes[o])
+						best = int(o)
+				new_owner = best
+			if new_owner < 0:
+				continue
+			p.owner = new_owner
+			p.acquired = turn
+			p.is_capital = false
+		p.controller = p.owner if (p.controller < 0 or p.controller >= nc or not countries[p.controller].alive) else p.controller
+		p.siege = 0
+		p.siege_by = -1
+		province_changed.emit(p.id)
 
 
 func _eliminate(c) -> void:
