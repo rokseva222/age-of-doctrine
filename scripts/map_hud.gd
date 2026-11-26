@@ -47,7 +47,7 @@ func _ready() -> void:
 	top.hud = self
 	top.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	top.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	add_child(top)
+	get_parent().add_child.call_deferred(top)
 
 
 ## Seçim çerçevesi ve seçili ordu nabzı: sadece bu küçük katman her karede çizilir; ağır HUD yalnızca değişince.
@@ -58,6 +58,7 @@ class TopLayer extends Control:
 			return
 		if hud.map.selected_prov >= 0:
 			hud._draw_selection(hud.map.gs, hud.map.selected_prov, self)
+		draw_set_transform_matrix(hud.get_transform())    # HUD hareket sırasında GPU ile kaydırılır/ölçeklenir
 		if hud.map.selected_fleet != null and hud.sel_fleet_rect.size.x > 0.0:
 			var pulse2 := 0.5 + 0.5 * sin(hud.map.anim_time * 6.0)
 			draw_rect(hud.sel_fleet_rect.grow(4.0 + pulse2 * 2.0), Color(TK.PAPER.r, TK.PAPER.g, TK.PAPER.b, 0.9), false, 2.0)
@@ -67,6 +68,7 @@ class TopLayer extends Control:
 		if hud.map.selected_army != null and hud.sel_army_rect.size.x > 0.0:
 			var pulse := 0.5 + 0.5 * sin(hud.map.anim_time * 6.0)
 			draw_rect(hud.sel_army_rect.grow(4.0 + pulse * 2.0), Color(TK.PAPER.r, TK.PAPER.g, TK.PAPER.b, 0.9), false, 2.0)
+		draw_set_transform(Vector2.ZERO, 0.0, Vector2.ONE)
 
 
 func _gs():
@@ -91,15 +93,16 @@ func _draw() -> void:
 	var gs = _gs()
 	if gs == null or map.wd == null:
 		return
+	map.hud_drawn()
 	var z: float = map.zoom
 	var vp := get_viewport_rect().size
-	var screen := Rect2(Vector2.ZERO, vp).grow(60.0)
+	var screen := Rect2(Vector2.ZERO, vp).grow(map.HUD_MARGIN)
 	var font_b: Font = TK.map_font(true)
 	var font_m: Font = TK.map_font(false)
 
 	# --- deniz bağlantıları (uzak görünümde yalnızca seçili eyaletinkiler: binlerce kesikli çizgi telefonda kasma yapıyordu)
 	if z >= 1.0:
-		var all_links: bool = z >= 3.0 and Settings.smooth
+		var all_links: bool = z >= 3.0 and Settings.smooth and not fast
 		var sel: int = map.selected_prov
 		if all_links:
 			for p in gs.provinces:
@@ -522,6 +525,8 @@ func _draw_selection(gs, pid: int, cv: CanvasItem) -> void:
 
 func _draw_paths(gs) -> void:
 	for a in gs.armies.values():
+		if a.owner != gs.player and a != map.selected_army:
+			continue
 		var routes: Array = []
 		if a.sp_size > 0:
 			routes.append(a.sp_path)
@@ -529,8 +534,6 @@ func _draw_paths(gs) -> void:
 				routes.append(sx.path)
 		else:
 			routes.append(a.path)
-		if a.owner != gs.player and a != map.selected_army:
-			continue
 		for route in routes:
 			_draw_one_path(gs, a, route)
 

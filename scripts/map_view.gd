@@ -65,6 +65,15 @@ var _army_prev: Dictionary = {}
 var country_labels: Dictionary = {}     # cid -> {pos, w}
 var anim_time := 0.0
 
+# --- HUD'un hareket sırasında GPU ile kaydırılması: kamera kıpırdarken yazılar/ordular her karede CPU ile yeniden çizilmez
+const HUD_MARGIN := 240.0              # HUD ekranın dışına bu kadar taşırarak çizilir (kaydırma payı)
+const HUD_LAZY_SHIFT := 190.0          # bu kadar piksel kayınca HUD yeniden çizilir
+const HUD_LAZY_K_MIN := 0.78
+const HUD_LAZY_K_MAX := 1.28
+var _hud_cam := Vector2.ZERO
+var _hud_zoom := 1.0
+var _hud_pending := true               # HUD yeniden çizilmek üzere sırada (bu sırada geçici dönüşüm uygulanmaz)
+
 
 func _ready() -> void:
 	ocean_layer = CanvasLayer.new()
@@ -195,7 +204,7 @@ func bind(game_state) -> void:
 	gs.state_changed.connect(_on_state_changed)
 	repaint_all()
 	_snapshot_armies()
-	hud.queue_redraw()
+	hud_redraw()
 
 
 func repaint_all() -> void:
@@ -250,13 +259,13 @@ func set_form_view(ids: Dictionary) -> void:
 		rel_country = -1
 		highlight_country = -1
 	repaint_all()
-	hud.queue_redraw()
+	hud_redraw()
 
 
 func set_relation_view(cid: int) -> void:
 	rel_country = cid
 	repaint_all()
-	hud.queue_redraw()
+	hud_redraw()
 
 
 func _write_lut(p) -> void:
@@ -278,14 +287,14 @@ func set_highlight_country(cid: int) -> void:
 		return
 	highlight_country = cid
 	repaint_all()
-	hud.queue_redraw()
+	hud_redraw()
 
 
 func _on_fx(pid: int, kind: String) -> void:
 	if pid < 0 or pid >= gs.provinces.size() or blasts.size() >= 10:
 		return
 	blasts.append({"pos": gs.provinces[pid].label_pos, "t": 0.0, "kind": kind})
-	hud.queue_redraw()
+	hud_redraw()
 
 
 func _on_province_changed(pid: int) -> void:
@@ -321,7 +330,7 @@ func _on_state_changed() -> void:
 		_reconcile_paint()
 	if rel_country >= 0 or not form_set.is_empty():
 		repaint_all()
-	hud.queue_redraw()
+	hud_redraw()
 
 
 func _snapshot_armies() -> void:
@@ -336,7 +345,7 @@ func _on_armies_changed() -> void:
 		if old != null and old != a.prov:
 			army_anim[a.id] = {"from": gs.provinces[old].label_pos, "to": gs.provinces[a.prov].label_pos, "t": 0.0}
 	_snapshot_armies()
-	hud.queue_redraw()
+	hud_redraw()
 
 
 func select_province(pid: int) -> void:
@@ -350,24 +359,24 @@ func select_province(pid: int) -> void:
 			if q >= 0 and q < gs.provinces.size() and not gs.provinces[q].sea_links.is_empty():
 				heavy = true
 	if heavy:
-		hud.queue_redraw()
+		hud_redraw()
 	else:
 		hud.top.queue_redraw()
 
 
 func set_selected_army(a) -> void:
 	selected_army = a
-	hud.queue_redraw()
+	hud_redraw()
 
 
 func set_selected_fleet(f) -> void:
 	selected_fleet = f
-	hud.queue_redraw()
+	hud_redraw()
 
 
 func set_selected_wing(w) -> void:
 	selected_wing = w
-	hud.queue_redraw()
+	hud_redraw()
 
 
 # ------------------------------------------------------------------ kamera
@@ -431,7 +440,39 @@ func _apply() -> void:
 	for m in glow_mats:
 		m.set_shader_parameter("zoom", zoom)
 	_cam_t = Time.get_ticks_msec()
+	_hud_follow()
+
+
+## Kamera hareket ederken HUD'u yeniden çizmek yerine tek bir dönüşümle (kaydır + ölçekle) taşır; fazla uzaklaşınca tam çizer.
+func _hud_follow() -> void:
+	if hud == null:
+		return
+	if _hud_pending:
+		return
+	var k: float = zoom / maxf(_hud_zoom, 0.0001)
+	var t: Vector2 = (_hud_cam - cam_pos) * zoom
+	if k < HUD_LAZY_K_MIN or k > HUD_LAZY_K_MAX or t.length() > HUD_LAZY_SHIFT:
+		hud_redraw()
+		return
+	hud.pivot_offset = get_viewport_rect().size * 0.5
+	hud.scale = Vector2(k, k)
+	hud.position = t
+	if hud.top != null:
+		hud.top.queue_redraw()
+
+
+func hud_redraw() -> void:
+	_hud_pending = true
 	hud.queue_redraw()
+
+
+## HUD _draw başında çağırır: çizim güncel kamerada yapılır, geçici dönüşüm sıfırlanır.
+func hud_drawn() -> void:
+	_hud_pending = false
+	_hud_cam = cam_pos
+	_hud_zoom = zoom
+	hud.position = Vector2.ZERO
+	hud.scale = Vector2.ONE
 
 
 func zoom_at(screen_pos: Vector2, factor: float) -> void:
@@ -518,7 +559,9 @@ func _process(delta: float) -> void:
 	var moving: bool = Time.get_ticks_msec() - _cam_t < 180
 	if hud.fast != moving:
 		hud.fast = moving
-		hud.queue_redraw()    # hareket bitince yazılar tam kalitede yeniden çizilir
+		hud_redraw()          # hareket bitince yazılar tam kalitede yeniden çizilir
+		for gn in glow_nodes:
+			gn.visible = not moving    # kıyı parıltısı yalnızca durağan görünümde (telefonlarda dolgu hızını yer)
 	if gs == null:
 		return
 	var redraw := false
@@ -555,7 +598,7 @@ func _process(delta: float) -> void:
 	if selected_prov >= 0 or selected_army != null or selected_fleet != null or selected_wing != null:
 		hud.top.queue_redraw()    # seçili eyalet nabzı: yalnızca hafif üst katman
 	if redraw:
-		hud.queue_redraw()
+		hud_redraw()
 
 
 ## AoC / HoI4 tarzı ülke yazısı: ülkenin en büyük kara parçasının asal ekseni boyunca,
