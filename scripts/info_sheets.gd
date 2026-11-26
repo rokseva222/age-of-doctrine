@@ -327,8 +327,11 @@ static func open_howto(parent: Node) -> void:
 			render.call())
 
 
-const UPDATE_VER := "1.2.50"
+const UPDATE_VER := "1.2.51"
 const WHATS_NEW := [
+	["Tahıl ve ticaret anlaşması çökmesi giderildi", "Politika → Ticaret'ten tedarik anlaşması yaparken oyunun kapanması düzeltildi. Anlaşma ya da vazgeçme sonrası Politika penceresi aynı sekmede yeniden açılır. Kabine'de «Görevden al» onayında da aynı hata vardı, o da düzeldi."],
+	["Haritada kasma azaldı", "Haritayı kaydırırken ve yakınlaştırırken yazılar, ordular ve işaretler her karede yeniden çizilmiyor; hareket sırasında gereksiz parlama katmanları gizleniyor. Özellikle orta ve düşük sınıf telefonlarda akıcılık artar."],
+	["Gemi inşası kilitlenmesi", "Savaşta gemi kaybedince «Daha fazla gemi grubu işletemezsin» uyarısında takılı kalma düzeltildi; batan gemiler sayaçtan düşer."],
 	["Online: oyunlar artık kaydediliyor", "Sunucudaki odalar her tur sonunda kaydedilir. Oda kapansa ya da sunucu yenilense bile «Çok Oyunculu → Online → Kayıtlı oyunlarım» listesinden «Devam et» deyip aynı ülkeye dönersin. Herkes dönene kadar (en çok 4 dk) tur işlenmez; dönmeyenin ülkesini yapay zekâ yönetir. Kurtuluş Savaşı'nda Sovyet Rusya ve Yemen bayrakları da düzeltildi."],
 	["Online: sesli görüşme odası", "Menüden «Sesli görüşme»: bir oyuncuyu görüşmeye çağır, kabul ederse aynı odada konuşursunuz (en çok 6 kişi). Sohbette artık kimin yazdığı görünür; ültimatomla sürekli para alma sınırlandı; «Turu geç» takılması giderildi."],
 	["Harita ve barış düzeltmeleri", "İkinci Şanlıurfa düzeltildi (Malatya); barışla alınan eyaletlerin ve müttefik ordularının harita rengi her turda gerçek duruma eşitleniyor."],
