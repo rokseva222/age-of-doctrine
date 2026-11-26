@@ -83,7 +83,15 @@ func _build() -> void:
 	render()
 
 
+## Onay/seçim penceresi (ui.show_dialog) Politika penceresini kapatır; işlem bitince aynı sekmede yeniden aç.
+func _reopen() -> void:
+	open(ui, gs, tab, cat)
+
+
 func render() -> void:
+	# Pencere kapanmışsa (üstüne başka diyalog açılınca serbest bırakılır) çizme: yayın sürümünde serbest bırakılmış nesneye erişim çöker
+	if content == null or not is_instance_valid(content):
+		return
 	for ch in content.get_children():
 		content.remove_child(ch)
 		ch.queue_free()
@@ -688,8 +696,9 @@ func _tab_cabinet() -> void:
 			ui.show_dialog("Görevden alma", "%s görevden alınsın mı? İstikrar −2. Yerine bir sonraki bülten sonrasında 3 aday gelir." % e.n, [
 				{"text": "Görevden al", "cb": func():
 					Cabinet.dismiss(gs, rl)
-					ui.toast("%s görevden alındı" % e.n), "kind": "danger"},
-				{"text": "Vazgeç", "cb": func(): pass}]))
+					ui.toast("%s görevden alındı" % e.n)
+					_reopen(), "kind": "danger"},
+				{"text": "Vazgeç", "cb": func(): _reopen()}]))
 		h.add_child(fb)
 		content.add_child(h)
 
@@ -827,8 +836,8 @@ func _goods_deal_dialog(c, g: String) -> void:
 		opts.append({"text": Loc.t("%s — fazlası %s birim/hf") % [o.name, Goods.fmt(sp[1])], "cb": func():
 			var e: String = Goods.make_deal(gs, c, g, pid)
 			ui.toast(Loc.t(e) if e != "" else Loc.t("%s ile %s anlaşması imzalandı (52 hafta)." ) % [o.name, Loc.t(Goods.NAMES[g])])
-			render(), "kind": "gold"})
-	opts.append({"text": "Vazgeç", "cb": func(): pass})
+			_reopen(), "kind": "gold"})
+	opts.append({"text": "Vazgeç", "cb": func(): _reopen()})
 	var body: String = Loc.t("52 haftalık tedarik anlaşması: açığını bu ülkeden %20 ucuza ve ambargo/abluka engeline takılmadan alırsın; satıcı ülke gelir elde eder, ilişkiler düzelir. Savaş, ambargo ya da siber kesinti anlaşmayı bozar. En çok 3 anlaşma.")
 	if opts.size() == 1:
 		body = Loc.t("Şu an bu malı fazlasıyla satabilecek (ambargosuz, savaşta olmayan) ülke yok.")
@@ -1079,6 +1088,8 @@ func _emblem_editor(em: Dictionary, on_change: Callable) -> Control:
 
 ## düzenleme sırasında sekmeyi, kaydırma konumunu bozmadan yeniden çiz
 func render_keep() -> void:
+	if content == null or not is_instance_valid(content):
+		return
 	var sc: ScrollContainer = content.get_parent()
 	var pos: int = sc.scroll_vertical
 	render()
