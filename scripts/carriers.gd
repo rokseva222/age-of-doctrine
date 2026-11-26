@@ -54,12 +54,20 @@ static func ship_upkeep(c) -> float:
 	return float(c.ship_extra) * ship_cost(c) * 0.003
 
 
+## Denizde gerçekten ayakta kalan inşa edilmiş gemi grubu sayısı (muharebe kayıpları ship_extra sayacına yansımadığı için sayaçtan küçük olabilir).
+static func effective_ships(gs, c) -> int:
+	Fleets.ensure(gs)
+	var cur: float = Fleets._sum_kind(Fleets.fleets_of(gs, c.id), "surface")
+	var base: float = maxf(1.0, Fleets.SURFACE_RATIO * Fleets.sub_target(c) + 2.0 * float(maxi(c.carriers, 0)))
+	return clampi(int(floor((cur - base) / SHIP_POWER + 0.5)), 0, maxi(c.ship_extra, 0))
+
+
 static func can_build_ship(gs, c) -> String:
 	if Eras.family() == "pre" and c.tech < 0.1:
 		return "Gemi inşası için teknoloji yetersiz."
 	if not c.alive or c.is_rebel or Fleets.Seas.home_port(gs, c.id)[1] == "":
 		return "Gemi inşa edecek bir limanın yok."
-	if c.ship_extra >= SHIP_MAX:
+	if c.ship_extra >= SHIP_MAX and effective_ships(gs, c) >= SHIP_MAX:
 		return "Daha fazla gemi grubu işletemezsin."
 	if c.gold < ship_cost(c):
 		return "Kasa yetersiz: %s gerekir." % Macro.money(ship_cost(c))
@@ -73,6 +81,8 @@ static func build_ship(gs) -> String:
 	if err != "":
 		return err
 	Fleets.ensure(gs)
+	if c.ship_extra >= SHIP_MAX:
+		c.ship_extra = effective_ships(gs, c)      # savaşta batan gemiler sayaçtan düşer; sınırda kilitli kalma
 	c.gold -= ship_cost(c)
 	c.ship_extra += 1
 	var home: String = String(Fleets.Seas.home_port(gs, c.id)[1])
