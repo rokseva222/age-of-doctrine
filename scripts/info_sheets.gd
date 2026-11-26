@@ -329,6 +329,7 @@ static func open_howto(parent: Node) -> void:
 
 const UPDATE_VER := "1.2.51"
 const WHATS_NEW := [
+	["Online: barış masası düzeldi", "Online oyunda barış masasında seçtiğin eyaletler sunucuya iletilmiyordu; tur geçince ateşkes iptal oluyor, alınan eyaletler yine işgal görünüyordu. Barış, beraberlik ve teslimiyet artık sunucuda da geçerli."],
 	["Tahıl ve ticaret anlaşması çökmesi giderildi", "Politika → Ticaret'ten tedarik anlaşması yaparken oyunun kapanması düzeltildi. Anlaşma ya da vazgeçme sonrası Politika penceresi aynı sekmede yeniden açılır. Kabine'de «Görevden al» onayında da aynı hata vardı, o da düzeldi."],
 	["Haritada kasma azaldı", "Haritayı kaydırırken ve yakınlaştırırken yazılar, ordular ve işaretler her karede yeniden çizilmiyor; hareket sırasında gereksiz parlama katmanları gizleniyor. Özellikle orta ve düşük sınıf telefonlarda akıcılık artar."],
 	["Gemi inşası kilitlenmesi", "Savaşta gemi kaybedince «Daha fazla gemi grubu işletemezsin» uyarısında takılı kalma düzeltildi; batan gemiler sayaçtan düşer."],

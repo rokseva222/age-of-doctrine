@@ -2256,18 +2256,27 @@ func _player_peace(enemy: int) -> void:
 		_refresh_selection()
 
 
+## Barış masası emri: reddedilirse (sunucu doğrulaması ile aynı denetim) nedenini göster, teklifi kapat.
+func _peace_cmd(enemy: int, mode: String, annex: Array = [], terms: Array = []) -> void:
+	var err: String = gs.player_finish_peace(enemy, mode, annex, terms)
+	if err != "":
+		ui.toast(err)
+		gs.cancel_proposal()
+	_refresh_selection()
+
+
 func _open_deal(w, _from_player_request: bool) -> void:
 	_on_speed_changed(0)
 	var options: Array = gs.peace_options(w, gs.player, true)
 	if options.is_empty():
 		ui.show_dialog("Barış", "İşgal ettiğin eyalet yok; beraberlik barışı yapılacak.", [
-			{"text": "Beraberlik barışı", "cb": func(): gs.finish_peace(w, -1, []), "kind": "good"},
+			{"text": "Beraberlik barışı", "cb": func(): _peace_cmd(w.other(gs.player), "draw"), "kind": "good"},
 			{"text": "Vazgeç", "cb": func(): gs.cancel_proposal()},
 		])
 		return
 	ui.show_deal_dialog(w, gs.player, options,
-		func(picked, terms): gs.finish_peace(w, gs.player, picked, terms),
-		func(): gs.finish_peace(w, -1, []))
+		func(picked, terms): _peace_cmd(w.other(gs.player), "win", picked, terms),
+		func(): _peace_cmd(w.other(gs.player), "draw"))
 
 
 func _on_peace_proposal(w, from_country: int, kind: String) -> void:
@@ -2280,7 +2289,7 @@ func _on_peace_proposal(w, from_country: int, kind: String) -> void:
 				if gs.provinces[pid].controller == gs.player:
 					occ += 1
 			ui.show_dialog(Loc.t("Teslimiyet"), Loc.t("%s başkentini kaybetti ve koşulsuz teslim olmayı öneriyor.\nKabul edersen işgal ettiğin %d eyaletin tamamı sana geçer, savaş tazminatı alırsın ve orduları yarıya indirilir.") % [cname, occ], [
-				{"text": "Teslimiyeti kabul et", "cb": func(): gs.accept_capitulation(w, from_country), "kind": "good"},
+				{"text": "Teslimiyeti kabul et", "cb": func(): _peace_cmd(from_country, "capitulate"), "kind": "good"},
 				{"text": "Masaya otur", "cb": func(): _open_deal(w, false)},
 				{"text": "Reddet", "cb": func(): gs.cancel_proposal(), "kind": "danger"},
 			])
@@ -2298,12 +2307,12 @@ func _on_peace_proposal(w, from_country: int, kind: String) -> void:
 				gs.cancel_proposal()
 				return
 			ui.show_dialog("Barış şartları", "%s barış için şunları talep ediyor: %s.\nReddedersen savaş sürer." % [cname, ", ".join(names)], [
-				{"text": "Kabul et", "cb": func(): gs.finish_peace(w, from_country, annex), "kind": "good"},
+				{"text": "Kabul et", "cb": func(): _peace_cmd(from_country, "lose"), "kind": "good"},
 				{"text": "Reddet", "cb": func(): gs.cancel_proposal(), "kind": "danger"},
 			])
 		_:
 			ui.show_dialog("Beraberlik teklifi", "%s beraberlik barışı öneriyor. İşgal edilen yerler geri verilir." % cname, [
-				{"text": "Kabul et", "cb": func(): gs.finish_peace(w, -1, []), "kind": "good"},
+				{"text": "Kabul et", "cb": func(): _peace_cmd(from_country, "draw"), "kind": "good"},
 				{"text": "Reddet", "cb": func(): gs.cancel_proposal(), "kind": "danger"},
 			])
 

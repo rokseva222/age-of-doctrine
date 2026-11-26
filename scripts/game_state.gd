@@ -3232,6 +3232,55 @@ func player_request_peace(enemy: int) -> Dictionary:
 	return {"ok": true, "mode": "done", "text": "Beraberlik barışı imzalandı."}
 
 
+## Barış masası sonucu (oyuncu emri). Online'da sunucu yalnızca `player_` önekli komutları yeniden oynatır; eskiden masadaki seçim
+## doğrudan finish_peace ile yapılıyordu, sunucu bunu "bilinmeyen komut" diye reddedip tur geçince savaşı geri getiriyordu.
+## mode: "win" (eyalet/şart seç), "draw" (beraberlik), "lose" (rakibin şartlarını kabul et), "capitulate" (teslimiyeti kabul et).
+## Sunucu tarafı doğrulama: alınan eyaletler masadaki seçeneklerden olmalı, toplam maliyet savaş puanını aşamaz.
+func player_finish_peace(enemy: int, mode: String, annex: Array = [], terms: Array = []) -> String:
+	var _cmd := Cmd.Scope.new(self, "player_finish_peace", [enemy, mode, annex, terms])
+	var w = get_war(player, enemy)
+	if w == null:
+		return "Bu ülkeyle savaşta değilsin."
+	if countries[enemy].is_rebel or is_human_target(enemy) or is_other_human(enemy):
+		return "Bu ülkeyle barış masası kurulamaz."
+	match mode:
+		"draw":
+			finish_peace(w, -1, [])
+		"lose":
+			finish_peace(w, enemy, _ai_choose_annex(w, enemy))
+		"capitulate":
+			if not capitulating(enemy):
+				return "Teslimiyet teklifi yok."
+			accept_capitulation(w, enemy)
+		"win":
+			var cost_of := {}
+			for o in peace_options(w, player, true):
+				cost_of[int(o.pid)] = int(o.cost)
+			var total := 0
+			var seen := {}
+			var clean: Array = []
+			for v in annex:
+				var pid: int = int(v)
+				if not cost_of.has(pid) or seen.has(pid):
+					return "Geçersiz eyalet seçimi."
+				seen[pid] = true
+				total += int(cost_of[pid])
+				clean.append(pid)
+			var tclean: Array = []
+			for tv in terms:
+				var tk: String = String(tv)
+				if not PEACE_TERMS.has(tk) or tclean.has(tk):
+					return "Geçersiz şart."
+				total += int(PEACE_TERMS[tk].cost)
+				tclean.append(tk)
+			if total > w.score_of(player):
+				return "Savaş puanın yetmiyor."
+			finish_peace(w, player, clean, tclean)
+		_:
+			return "Bilinmeyen barış türü."
+	return ""
+
+
 func _auto_peace(w) -> void:
 	var winner := -1
 	if w.score_a > w.score_b:
